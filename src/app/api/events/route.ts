@@ -1,15 +1,18 @@
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
   try {
-    const events = await prisma.event.findMany({
-      orderBy: {
-        createdAt: 'asc',
-      },
-    });
-    return NextResponse.json(events);
-  } catch {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    if (error) throw error;
+
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error('Supabase error:', err);
     return NextResponse.json({ error: 'Failed to fetch events' }, { status: 500 });
   }
 }
