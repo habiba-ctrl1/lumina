@@ -2,156 +2,115 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { LogOut, Mail, Calendar, User, Trash2, RefreshCw } from "lucide-react";
+import { Image, MessageSquareQuote, Mail, TrendingUp } from "lucide-react";
 
-type Inquiry = {
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  created_at: string;
+type Stats = {
+  events: number;
+  testimonials: number;
+  inquiries: number;
 };
 
 export default function AdminDashboard() {
-  const [inquiries, setInquiries] = useState<Inquiry[]>([]);
+  const [stats, setStats] = useState<Stats>({ events: 0, testimonials: 0, inquiries: 0 });
+  const [recentInquiries, setRecentInquiries] = useState<{ id: string; name: string; email: string; created_at: string }[]>([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
-    const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        router.push("/admin/login");
-      }
-    };
-    checkUser();
-    fetchInquiries();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
+    fetchStats();
+  }, []);
 
-  const fetchInquiries = async () => {
+  const fetchStats = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("contact_messages")
-      .select("*")
-      .order("created_at", { ascending: false });
+    const [eventsRes, testimonialsRes, inquiriesRes] = await Promise.all([
+      supabase.from("events").select("id", { count: "exact", head: true }),
+      supabase.from("testimonials").select("id", { count: "exact", head: true }),
+      supabase.from("contact_messages").select("id", { count: "exact", head: true }),
+    ]);
 
-    if (error) {
-      console.error("Error fetching inquiries:", error);
-    } else {
-      setInquiries(data || []);
-    }
+    setStats({
+      events: eventsRes.count || 0,
+      testimonials: testimonialsRes.count || 0,
+      inquiries: inquiriesRes.count || 0,
+    });
+
+    // Fetch recent 5 inquiries
+    const { data } = await supabase
+      .from("contact_messages")
+      .select("id, name, email, created_at")
+      .order("created_at", { ascending: false })
+      .limit(5);
+
+    setRecentInquiries(data || []);
     setLoading(false);
   };
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/admin/login");
-  };
-
-  const deleteInquiry = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this inquiry?")) return;
-    
-    const { error } = await supabase
-      .from("contact_messages")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      alert("Error deleting inquiry");
-    } else {
-      setInquiries(inquiries.filter(i => i.id !== id));
-    }
-  };
+  const statCards = [
+    { label: "Total Events", value: stats.events, icon: Image, color: "from-amber-500/20 to-amber-600/5", iconColor: "text-amber-400" },
+    { label: "Testimonials", value: stats.testimonials, icon: MessageSquareQuote, color: "from-emerald-500/20 to-emerald-600/5", iconColor: "text-emerald-400" },
+    { label: "Inquiries", value: stats.inquiries, icon: Mail, color: "from-blue-500/20 to-blue-600/5", iconColor: "text-blue-400" },
+  ];
 
   return (
-    <div className="min-h-screen bg-charcoal-900 text-white">
-      {/* Sidebar / Header */}
-      <nav className="border-b border-white/5 bg-charcoal-800/50 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-light">
-            Lumina <span className="text-gold-500 font-semibold italic">Dashboard</span>
-          </h1>
-          <button 
-            onClick={handleLogout}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <LogOut size={18} />
-            <span className="hidden sm:inline">Logout</span>
-          </button>
-        </div>
-      </nav>
+    <div>
+      <div className="mb-10">
+        <h1 className="text-3xl font-light text-white mb-2">
+          Welcome to <span className="text-gold-500 font-semibold italic">Dashboard</span>
+        </h1>
+        <p className="text-gray-500">Overview of your website content and activity.</p>
+      </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex justify-between items-center mb-10">
-          <div>
-            <h2 className="text-3xl font-light mb-2">Contact Inquiries</h2>
-            <p className="text-gray-500">Manage your latest messages from potential clients</p>
-          </div>
-          <button 
-            onClick={fetchInquiries}
-            className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-gold-500"
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {statCards.map((card, i) => (
+          <motion.div
+            key={card.label}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className={`bg-gradient-to-br ${card.color} border border-white/5 rounded-2xl p-6`}
           >
-            <RefreshCw size={20} className={loading ? "animate-spin" : ""} />
-          </button>
-        </div>
+            <div className="flex items-center justify-between mb-4">
+              <card.icon size={24} className={card.iconColor} />
+              <TrendingUp size={16} className="text-gray-600" />
+            </div>
+            <p className="text-3xl font-bold text-white mb-1">
+              {loading ? "—" : card.value}
+            </p>
+            <p className="text-sm text-gray-400">{card.label}</p>
+          </motion.div>
+        ))}
+      </div>
 
+      {/* Recent Inquiries */}
+      <div className="bg-charcoal-800 border border-white/5 rounded-2xl overflow-hidden">
+        <div className="px-6 py-4 border-b border-white/5">
+          <h2 className="text-lg font-medium text-white">Recent Inquiries</h2>
+        </div>
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-64 bg-charcoal-800 animate-pulse rounded-2xl border border-white/5" />
+          <div className="p-6 space-y-4">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-12 bg-charcoal-900 animate-pulse rounded-lg" />
             ))}
           </div>
-        ) : inquiries.length === 0 ? (
-          <div className="text-center py-24 bg-charcoal-800 rounded-2xl border border-white/5">
-            <Mail size={48} className="mx-auto text-gray-700 mb-4" />
-            <p className="text-gray-500">No inquiries found yet.</p>
-          </div>
+        ) : recentInquiries.length === 0 ? (
+          <div className="p-12 text-center text-gray-500">No inquiries yet.</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {inquiries.map((inquiry) => (
-              <motion.div
-                key={inquiry.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-charcoal-800 border border-white/5 p-6 rounded-2xl group hover:border-gold-500/30 transition-all duration-300"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="p-2 bg-gold-500/10 rounded-lg text-gold-500">
-                    <User size={20} />
-                  </div>
-                  <button 
-                    onClick={() => deleteInquiry(inquiry.id)}
-                    className="text-gray-600 hover:text-red-500 transition-colors p-1"
-                  >
-                    <Trash2 size={18} />
-                  </button>
+          <div className="divide-y divide-white/5">
+            {recentInquiries.map((inq) => (
+              <div key={inq.id} className="px-6 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors">
+                <div>
+                  <p className="text-white text-sm font-medium">{inq.name}</p>
+                  <p className="text-gray-500 text-xs">{inq.email}</p>
                 </div>
-
-                <h3 className="text-lg font-semibold text-white mb-1">{inquiry.name}</h3>
-                <p className="text-gold-500 text-sm mb-4 flex items-center gap-1">
-                  <Mail size={14} /> {inquiry.email}
+                <p className="text-xs text-gray-600">
+                  {new Date(inq.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
                 </p>
-                
-                <div className="bg-charcoal-900/50 p-4 rounded-xl border border-white/5 mb-4 h-32 overflow-y-auto">
-                  <p className="text-gray-400 text-sm leading-relaxed">{inquiry.message}</p>
-                </div>
-
-                <div className="flex items-center text-xs text-gray-500 gap-1">
-                  <Calendar size={14} />
-                  {new Date(inquiry.created_at).toLocaleDateString(undefined, { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,140 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
+import { 
+  LayoutDashboard, 
+  Image, 
+  MessageSquareQuote, 
+  Mail, 
+  LogOut, 
+  Menu, 
+  X,
+  Sparkles
+} from "lucide-react";
+
+const navItems = [
+  { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/events", label: "Events", icon: Image },
+  { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
+  { href: "/admin/inquiries", label: "Inquiries", icon: Mail },
+];
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session && pathname !== "/admin/login") {
+        router.push("/admin/login");
+      } else {
+        setAuthenticated(true);
+      }
+      setLoading(false);
+    };
+    checkAuth();
+  }, [pathname, router]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/admin/login");
+  };
+
+  // Login page gets no layout
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-charcoal-900 flex items-center justify-center">
+        <div className="w-10 h-10 border-2 border-gold-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!authenticated) return null;
+
+  return (
+    <div className="min-h-screen bg-charcoal-900 flex">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-charcoal-800 border-r border-white/5 flex flex-col transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
+        <div className="p-6 border-b border-white/5">
+          <Link href="/admin/dashboard" className="flex items-center gap-2">
+            <Sparkles className="text-gold-500" size={22} />
+            <span className="text-xl font-light text-white">
+              Lumina <span className="text-gold-500 font-semibold italic">Admin</span>
+            </span>
+          </Link>
+        </div>
+
+        <nav className="flex-1 p-4 space-y-1">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setSidebarOpen(false)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? "bg-gold-500/10 text-gold-500 border border-gold-500/20"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <item.icon size={18} />
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="p-4 border-t border-white/5">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-all duration-200 w-full"
+          >
+            <LogOut size={18} />
+            Logout
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col min-h-screen">
+        {/* Top Bar */}
+        <header className="sticky top-0 z-30 bg-charcoal-900/80 backdrop-blur-md border-b border-white/5 px-6 py-4 flex items-center justify-between lg:justify-end">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="lg:hidden text-white p-2 hover:bg-white/5 rounded-lg"
+          >
+            {sidebarOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+          <p className="text-gray-500 text-sm">
+            Lumina Events Management Panel
+          </p>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-6 lg:p-10">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+}
