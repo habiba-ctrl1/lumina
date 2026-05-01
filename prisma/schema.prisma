@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Event {
+  id        Int      @id @default(autoincrement())
+  src       String
+  alt       String
+  className String
+  createdAt DateTime @default(now())
+}
+
+model Testimonial {
+  id      Int      @id @default(autoincrement())
+  quote   String
+  author  String
+  role    String
+  rating  Int      @default(5)
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    @apply bg-charcoal-800/40 backdrop-blur-md border border-white/5;
+  }
+}
