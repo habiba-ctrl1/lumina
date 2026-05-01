@@ -16,11 +16,9 @@ export async function POST(request: Request) {
     }
 
     // 1. Save to Supabase
-    const { data, error: supabaseError } = await supabase
+    const { error: supabaseError } = await supabase
       .from('contact_messages')
-      .insert([{ name, email, message }])
-      .select()
-      .single();
+      .insert([{ name, email, message }]);
 
     if (supabaseError) throw supabaseError;
 
@@ -67,7 +65,7 @@ export async function POST(request: Request) {
       console.error('Resend email error:', emailError);
     }
 
-    return NextResponse.json({ success: true, data }, { status: 201 });
+    return NextResponse.json({ success: true, message: 'Your inquiry has been submitted successfully.' }, { status: 201 });
   } catch (error) {
     console.error('General error:', error);
     return NextResponse.json(
