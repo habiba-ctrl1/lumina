@@ -20,16 +20,16 @@ export default function AdminDashboard() {
   const router = useRouter();
 
   useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        router.push("/admin/login");
+      }
+    };
     checkUser();
     fetchInquiries();
-  }, []);
-
-  const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
-      router.push("/admin/login");
-    }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
 
   const fetchInquiries = async () => {
     setLoading(true);
