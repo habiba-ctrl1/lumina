@@ -13,6 +13,8 @@ const services = [
     description: "Bespoke wedding planning with meticulous attention to detail, transforming your special day into a timeless masterpiece.",
     image: "/wedding.png",
     seoAlt: "Luxury wedding planning and premium coordination services",
+    details: ["Venue Sourcing", "Floral Styling", "Guest Management", "Photography Direction", "Catering Curation"],
+    starting: "From $15,000",
   },
   {
     id: 2,
@@ -21,6 +23,8 @@ const services = [
     description: "Elevate your brand with high-end corporate events, conferences, and executive retreats designed to impress.",
     image: "/corporate.png",
     seoAlt: "High-end corporate gala and executive retreat event management",
+    details: ["Stage & AV Production", "Brand Integration", "VIP Hospitality", "Entertainment Booking", "Logistics Planning"],
+    starting: "From $25,000",
   },
   {
     id: 3,
@@ -29,6 +33,8 @@ const services = [
     description: "Exclusive VIP events, milestone birthdays, and private dinners crafted for the ultimate sophisticated experience.",
     image: "/private_party.png",
     seoAlt: "Exclusive private party, VIP event, and milestone birthday planning",
+    details: ["Theme Design", "Luxury Catering", "Live Entertainment", "Decor & Ambiance", "Security Coordination"],
+    starting: "From $10,000",
   },
 ];
 
@@ -88,13 +94,27 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           {/* Gold line */}
           <div className="w-10 h-[2px] bg-gold-500 mb-4 group-hover:w-16 transition-all duration-500" />
 
-          <h3 className="text-2xl md:text-3xl font-display font-medium text-white mb-3 group-hover:text-gold-400 transition-colors duration-300">
+          <h3 className="text-2xl md:text-3xl font-display font-medium text-white mb-2 group-hover:text-gold-400 transition-colors duration-300">
             {service.title}
           </h3>
 
-          <p className="text-gray-300/80 text-sm leading-relaxed mb-6 max-w-xs opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+          {/* Starting price */}
+          <p className="text-gold-500/70 text-xs uppercase tracking-[0.2em] font-medium mb-3">
+            {service.starting}
+          </p>
+
+          <p className="text-gray-300/80 text-sm leading-relaxed mb-4 max-w-xs opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
             {service.description}
           </p>
+
+          {/* Sub-services */}
+          <div className="flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-150">
+            {service.details.map((detail, i) => (
+              <span key={i} className="text-[10px] text-gray-400 uppercase tracking-wider border border-white/10 px-2.5 py-1">
+                {detail}
+              </span>
+            ))}
+          </div>
 
           <div className="flex items-center gap-2 text-gold-500 text-sm font-semibold uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
             <span>Learn More</span>

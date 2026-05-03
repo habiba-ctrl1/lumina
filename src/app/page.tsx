@@ -2,15 +2,19 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import Services from "@/components/Services";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import StatsSection from "@/components/StatsSection";
+import HowItWorks from "@/components/HowItWorks";
 import RecentEvents from "@/components/RecentEvents";
+import FounderSection from "@/components/FounderSection";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
+import BusinessLiveFeed from "@/components/BusinessLiveFeed";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import HowItWorks from "@/components/HowItWorks";
 
 export default function Home() {
   const jsonLd = {
@@ -59,10 +63,14 @@ export default function Home() {
       <Hero />
       <MarqueeStrip />
       <Services />
+      <WhyChooseUs />
       <StatsSection />
       <HowItWorks />
       <RecentEvents />
+      <BusinessLiveFeed />
+      <FounderSection />
       <Testimonials />
+      <FAQ />
       <ContactSection />
       <Footer />
       <WhatsAppButton />

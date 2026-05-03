@@ -11,7 +11,7 @@
 
 /* Premium Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
@@ -38,6 +38,10 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
 }
 
 /* Subtle Noise Grain Overlay for Premium Texture */
@@ -48,7 +52,25 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.35;
+  opacity: 0.3;
+}
+
+/* Premium Typography Base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), "Georgia", serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-weight: 300;
+}
+
+p {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.8;
+}
+
+/* Luxury section spacing */
+section {
+  position: relative;
 }
 
 @layer utilities {
@@ -118,4 +140,24 @@ body::after {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury Keyframe Animations */
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+/* Date input styling for dark theme */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.7);
+  cursor: pointer;
+}
+
+/* Select dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
 }

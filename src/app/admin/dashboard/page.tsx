@@ -14,34 +14,59 @@ type Stats = {
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({ events: 0, testimonials: 0, inquiries: 0 });
   const [recentInquiries, setRecentInquiries] = useState<{ id: string; name: string; email: string; created_at: string }[]>([]);
+  const [statuses, setStatuses] = useState<{ id: string; text: string; label: string; date: string }[]>([
+    { id: "1", text: "Successfully organized the Grand Gala for Lumina's Anniversary.", label: "Success", date: "2026-05-01" },
+    { id: "2", text: "New luxury wedding project signed for the upcoming winter season.", label: "Active", date: "2026-04-28" },
+    { id: "3", text: "Reached 50+ satisfied high-end clients milestone.", label: "Milestone", date: "2026-04-15" },
+  ]);
+  const [newStatus, setNewStatus] = useState("");
+  const [statusLabel, setStatusLabel] = useState("Active");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchStats();
   }, []);
 
+  const handleAddStatus = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newStatus.trim()) return;
+
+    const status = {
+      id: Math.random().toString(36).substr(2, 9),
+      text: newStatus,
+      label: statusLabel,
+      date: new Date().toISOString().split("T")[0],
+    };
+
+    setStatuses([status, ...statuses]);
+    setNewStatus("");
+  };
+
   const fetchStats = async () => {
     setLoading(true);
-    const [eventsRes, testimonialsRes, inquiriesRes] = await Promise.all([
-      supabase.from("events").select("id", { count: "exact", head: true }),
-      supabase.from("testimonials").select("id", { count: "exact", head: true }),
-      supabase.from("contact_messages").select("id", { count: "exact", head: true }),
-    ]);
+    try {
+      const [eventsRes, testimonialsRes, inquiriesRes] = await Promise.all([
+        supabase.from("events").select("id", { count: "exact", head: true }),
+        supabase.from("testimonials").select("id", { count: "exact", head: true }),
+        supabase.from("contact_messages").select("id", { count: "exact", head: true }),
+      ]);
 
-    setStats({
-      events: eventsRes.count || 0,
-      testimonials: testimonialsRes.count || 0,
-      inquiries: inquiriesRes.count || 0,
-    });
+      setStats({
+        events: eventsRes.count || 0,
+        testimonials: testimonialsRes.count || 0,
+        inquiries: inquiriesRes.count || 0,
+      });
 
-    // Fetch recent 5 inquiries
-    const { data } = await supabase
-      .from("contact_messages")
-      .select("id, name, email, created_at")
-      .order("created_at", { ascending: false })
-      .limit(5);
+      const { data } = await supabase
+        .from("contact_messages")
+        .select("id, name, email, created_at")
+        .order("created_at", { ascending: false })
+        .limit(5);
 
-    setRecentInquiries(data || []);
+      setRecentInquiries(data || []);
+    } catch (error) {
+      console.error("Error fetching stats:", error);
+    }
     setLoading(false);
   };
 
@@ -52,12 +77,18 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div>
-      <div className="mb-10">
-        <h1 className="text-3xl font-light text-white mb-2">
-          Welcome to <span className="text-gold-500 font-semibold italic">Dashboard</span>
-        </h1>
-        <p className="text-gray-500">Overview of your website content and activity.</p>
+    <div className="pb-10">
+      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-light text-white mb-2">
+            Welcome to <span className="text-gold-500 font-semibold italic">Dashboard</span>
+          </h1>
+          <p className="text-gray-500">Overview of your website content and activity.</p>
+        </div>
+        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl flex items-center gap-3">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+          <span className="text-xs text-gray-400 uppercase tracking-widest font-medium">System Online</span>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -68,10 +99,12 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className={`bg-gradient-to-br ${card.color} border border-white/5 rounded-2xl p-6`}
+            className={`bg-gradient-to-br ${card.color} border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-colors group`}
           >
             <div className="flex items-center justify-between mb-4">
-              <card.icon size={24} className={card.iconColor} />
+              <div className={`p-2 rounded-lg bg-charcoal-900 group-hover:scale-110 transition-transform`}>
+                <card.icon size={20} className={card.iconColor} />
+              </div>
               <TrendingUp size={16} className="text-gray-600" />
             </div>
             <p className="text-3xl font-bold text-white mb-1">
@@ -82,34 +115,131 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      {/* Recent Inquiries */}
-      <div className="bg-charcoal-800 border border-white/5 rounded-2xl overflow-hidden">
-        <div className="px-6 py-4 border-b border-white/5">
-          <h2 className="text-lg font-medium text-white">Recent Inquiries</h2>
-        </div>
-        {loading ? (
-          <div className="p-6 space-y-4">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="h-12 bg-charcoal-900 animate-pulse rounded-lg" />
-            ))}
-          </div>
-        ) : recentInquiries.length === 0 ? (
-          <div className="p-12 text-center text-gray-500">No inquiries yet.</div>
-        ) : (
-          <div className="divide-y divide-white/5">
-            {recentInquiries.map((inq) => (
-              <div key={inq.id} className="px-6 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors">
-                <div>
-                  <p className="text-white text-sm font-medium">{inq.name}</p>
-                  <p className="text-gray-500 text-xs">{inq.email}</p>
-                </div>
-                <p className="text-xs text-gray-600">
-                  {new Date(inq.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
-                </p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        {/* Left Column: Recent Inquiries */}
+        <div className="lg:col-span-2 space-y-8">
+          <div className="bg-charcoal-800 border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="px-6 py-4 border-b border-white/5 flex items-center justify-between">
+              <h2 className="text-lg font-medium text-white">Recent Inquiries</h2>
+              <Link href="/admin/inquiries" className="text-xs text-gold-500 hover:text-gold-400 transition-colors uppercase tracking-wider">View All</Link>
+            </div>
+            {loading ? (
+              <div className="p-6 space-y-4">
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="h-12 bg-charcoal-900 animate-pulse rounded-lg" />
+                ))}
               </div>
-            ))}
+            ) : recentInquiries.length === 0 ? (
+              <div className="p-12 text-center text-gray-500">No inquiries yet.</div>
+            ) : (
+              <div className="divide-y divide-white/5">
+                {recentInquiries.map((inq) => (
+                  <div key={inq.id} className="px-6 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors">
+                    <div>
+                      <p className="text-white text-sm font-medium">{inq.name}</p>
+                      <p className="text-gray-500 text-xs">{inq.email}</p>
+                    </div>
+                    <p className="text-xs text-gray-600">
+                      {new Date(inq.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+
+          {/* Quick Stats/Activity Graph Mockup */}
+          <div className="bg-charcoal-800 border border-white/5 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+             <div className="absolute top-0 right-0 p-4 opacity-10">
+                <TrendingUp size={120} className="text-gold-500" />
+             </div>
+             <h2 className="text-lg font-medium text-white mb-6">Business Growth</h2>
+             <div className="h-48 flex items-end justify-between gap-2">
+                {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
+                  <div key={i} className="flex-1 space-y-2">
+                    <motion.div 
+                      initial={{ height: 0 }}
+                      animate={{ height: `${h}%` }}
+                      transition={{ delay: i * 0.1, duration: 1 }}
+                      className="w-full bg-gradient-to-t from-gold-600/20 to-gold-500 rounded-t-lg"
+                    />
+                    <p className="text-[10px] text-gray-600 text-center">Day {i+1}</p>
+                  </div>
+                ))}
+             </div>
+          </div>
+        </div>
+
+        {/* Right Column: Status Updates */}
+        <div className="space-y-8">
+          <div className="bg-charcoal-800 border border-white/5 rounded-2xl p-6 shadow-2xl">
+            <h2 className="text-lg font-medium text-white mb-6 flex items-center gap-2">
+              <Sparkles size={20} className="text-gold-500" />
+              Status Update
+            </h2>
+            
+            <form onSubmit={handleAddStatus} className="space-y-4">
+              <div>
+                <textarea 
+                  value={newStatus}
+                  onChange={(e) => setNewStatus(e.target.value)}
+                  placeholder="What's happening in your business?"
+                  className="w-full bg-charcoal-900 border border-white/10 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-gold-500/50 min-h-[100px] resize-none"
+                />
+              </div>
+              <div className="flex items-center gap-2 overflow-x-auto pb-2">
+                {["Active", "Milestone", "Success", "Planning"].map((label) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => setStatusLabel(label)}
+                    className={`px-3 py-1.5 rounded-full text-[10px] uppercase tracking-wider transition-all ${
+                      statusLabel === label 
+                      ? "bg-gold-500 text-charcoal-900 font-bold" 
+                      : "bg-white/5 text-gray-400 hover:bg-white/10"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <button 
+                type="submit"
+                className="w-full py-3 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/10"
+              >
+                Post Update
+              </button>
+            </form>
+
+            <div className="mt-10 space-y-6">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-gray-600 font-bold mb-4">Recent Updates</h3>
+              <div className="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-white/5">
+                {statuses.map((status) => (
+                  <div key={status.id} className="relative pl-8">
+                    <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-charcoal-900 border border-white/10 flex items-center justify-center">
+                      <div className={`w-2 h-2 rounded-full ${
+                        status.label === "Success" ? "bg-emerald-500" : 
+                        status.label === "Milestone" ? "bg-amber-500" : 
+                        status.label === "Planning" ? "bg-blue-500" : "bg-gold-500"
+                      }`} />
+                    </div>
+                    <div className="flex justify-between items-start mb-1">
+                      <span className={`text-[9px] uppercase tracking-tighter px-2 py-0.5 rounded bg-white/5 ${
+                        status.label === "Success" ? "text-emerald-400" : 
+                        status.label === "Milestone" ? "text-amber-400" : 
+                        status.label === "Planning" ? "text-blue-400" : "text-gold-400"
+                      }`}>
+                        {status.label}
+                      </span>
+                      <span className="text-[10px] text-gray-600">{status.date}</span>
+                    </div>
+                    <p className="text-sm text-gray-400 leading-relaxed">{status.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
