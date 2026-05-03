@@ -72,7 +72,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('General error:', error);
     return NextResponse.json(
-      { error: 'An unexpected error occurred.', details: (error as any)?.message || JSON.stringify(error) },
+      { error: 'An unexpected error occurred.', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
