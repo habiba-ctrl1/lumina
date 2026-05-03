@@ -32,7 +32,7 @@ const reasons = [
   {
     icon: <Globe size={28} />,
     title: "Global Reach",
-    desc: "From New York penthouses to Italian vineyards — we execute flawlessly in any location worldwide.",
+    desc: "From royal palaces in Riyadh to elite venues in Dubai — we execute flawlessly across the Middle East.",
   },
 ];
 
@@ -68,8 +68,7 @@ export default function WhyChooseUs() {
               transition={{ delay: 0.2 }}
               className="text-gray-400 font-light leading-relaxed mb-8"
             >
-              We don&apos;t just plan events — we eliminate every source of stress 
-              and replace it with the joy of watching your vision come alive, flawlessly.
+              We deliver absolute perfection, transforming your grandest visions into flawless realities.
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
