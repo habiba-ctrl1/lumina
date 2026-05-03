@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       // Admin Notification
       await resend.emails.send({
         from: 'Lumina Events <onboarding@resend.dev>',
-        to: ['delivered@resend.dev'], // Resend default testing address or your verified email
+        to: ['hello@luminaevents.com'],
         subject: `New Inquiry: ${name}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px; color: #333;">
