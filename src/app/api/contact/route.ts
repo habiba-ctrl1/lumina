@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       // Admin Notification
       await resend.emails.send({
         from: 'Lumina Events <onboarding@resend.dev>',
-        to: ['hello@luminaevents.com'],
+        to: ['habiti747@gmail.com'],
         subject: `New Inquiry: ${name}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px; color: #333;">
