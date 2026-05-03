@@ -18,6 +18,7 @@ import {
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/events", label: "Events", icon: Image },
+  { href: "/admin/blog", label: "Blog", icon: Sparkles },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
   { href: "/admin/inquiries", label: "Inquiries", icon: Mail },
 ];

@@ -9,13 +9,27 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isArabic, setIsArabic] = useState(false);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.dir = isArabic ? "rtl" : "ltr";
+      document.documentElement.lang = isArabic ? "ar" : "en";
+      // Optional: Add a class to body for specific font handling
+      if (isArabic) {
+        document.body.classList.add("font-arabic");
+      } else {
+        document.body.classList.remove("font-arabic");
+      }
+    }
+  }, [isArabic]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Active section detection
-      const sections = ["home", "services", "gallery", "testimonials", "contact"];
+      const sections = ["home", "services", "gallery", "vendors", "testimonials", "contact"];
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
         if (el) {
@@ -35,6 +49,8 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
     { name: "Portfolio", href: "#gallery" },
+    { name: "Vendors", href: "/vendors" },
+    { name: "Live Tracking", href: "#tracking" },
     { name: "Blog", href: "/blog" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "FAQ", href: "#faq" },
@@ -83,10 +99,19 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Language Toggle */}
+            <button 
+              onClick={() => setIsArabic(!isArabic)}
+              className="flex items-center gap-2 px-3 py-2 text-xs font-medium text-gray-300 hover:text-gold-500 transition-colors border border-white/10 hover:border-gold-500/30 rounded-full mr-4 uppercase tracking-widest"
+            >
+              <span className={`w-2 h-2 rounded-full ${isArabic ? "bg-emerald-500" : "bg-gold-500"} animate-pulse`} />
+              {isArabic ? "English" : "Arabic"}
+            </button>
+
             {/* Premium CTA */}
             <Link
               href="#contact"
-              className="ml-6 px-6 py-2.5 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
+              className="px-6 py-2.5 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
             >
               Book Discovery Call
             </Link>

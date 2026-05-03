@@ -1,16 +1,37 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
-const updates = [
-  { id: "1", text: "Successfully organized the Grand Gala for Lumina's Anniversary.", label: "Success", date: "May 1, 2026" },
-  { id: "2", text: "New luxury wedding project signed for the upcoming winter season.", label: "Active", date: "April 28, 2026" },
-  { id: "3", text: "Reached 50+ satisfied high-end clients milestone.", label: "Milestone", date: "April 15, 2026" },
-];
+type Update = {
+  id: string;
+  text: string;
+  label: string;
+  created_at: string;
+};
 
 export default function BusinessLiveFeed() {
+  const [updates, setUpdates] = useState<Update[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUpdates = async () => {
+      const { data } = await supabase
+        .from("business_updates")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(3);
+      
+      if (data) setUpdates(data);
+      setLoading(false);
+    };
+
+    fetchUpdates();
+  }, []);
+
   return (
     <section className="py-24 bg-charcoal-900 overflow-hidden relative">
       {/* Background Decorative Elements */}
@@ -50,26 +71,40 @@ export default function BusinessLiveFeed() {
           <div className="relative">
             <div className="absolute inset-0 bg-gold-500/5 blur-[80px] rounded-full" />
             <div className="relative space-y-4">
-              {updates.map((update, i) => (
-                <motion.div
-                  key={update.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2, duration: 0.6 }}
-                  className="bg-white/[0.02] border border-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 group"
-                >
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold-500 bg-gold-500/10 px-2.5 py-1 rounded-full border border-gold-500/20">
-                      {update.label}
-                    </span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-widest">{update.date}</span>
-                  </div>
-                  <p className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors duration-500">
-                    {update.text}
-                  </p>
-                </motion.div>
-              ))}
+              {loading ? (
+                [1, 2, 3].map((i) => (
+                  <div key={i} className="h-32 bg-white/[0.02] border border-white/5 rounded-2xl animate-pulse" />
+                ))
+              ) : updates.length > 0 ? (
+                updates.map((update, i) => (
+                  <motion.div
+                    key={update.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.2, duration: 0.6 }}
+                    className="bg-white/[0.02] border border-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 group"
+                  >
+                    <div className="flex justify-between items-start mb-3">
+                      <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${
+                        update.label === "Success" ? "text-emerald-400 border-emerald-500/20 bg-emerald-500/10" : 
+                        update.label === "Milestone" ? "text-amber-400 border-amber-500/20 bg-amber-500/10" : 
+                        update.label === "Planning" ? "text-blue-400 border-blue-500/20 bg-blue-500/10" : "text-gold-500 border-gold-500/20 bg-gold-500/10"
+                      }`}>
+                        {update.label}
+                      </span>
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest">
+                        {new Date(update.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
+                      </span>
+                    </div>
+                    <p className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors duration-500">
+                      {update.text}
+                    </p>
+                  </motion.div>
+                ))
+              ) : (
+                <div className="text-center py-12 text-gray-500 italic">No recent updates. Check back soon!</div>
+              )}
               
               {/* Pulsing indicator to show it's "Live" */}
               <div className="flex items-center justify-center pt-6 gap-2">

@@ -12,18 +12,18 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         charcoal: {
-          950: "#050505",
-          900: "#0a0a0a",
-          800: "#111111",
-          700: "#1a1a1a",
-          600: "#222222",
+          950: "#050a08",
+          900: "#0a1310",
+          800: "#0d1a15",
+          700: "#13261f",
+          600: "#183329",
         },
         gold: {
-          300: "#f0d878",
-          400: "#e6c353",
-          500: "#D4AF37",
-          600: "#b5952f",
-          700: "#967a26",
+          300: "#d9c29b",
+          400: "#cca96b",
+          500: "#C5A059",
+          600: "#9c7a3d",
+          700: "#82632b",
         },
       },
       fontFamily: {
@@ -32,7 +32,7 @@ const config: Config = {
       },
       backgroundImage: {
         "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))",
-        "gold-gradient": "linear-gradient(135deg, #D4AF37, #f0d878, #D4AF37)",
+        "gold-gradient": "linear-gradient(135deg, #C5A059, #d9c29b, #C5A059)",
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
@@ -51,16 +51,16 @@ const config: Config = {
           "100%": { backgroundPosition: "200% center" },
         },
         pulseGold: {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(212,175,55,0.4)" },
-          "50%": { boxShadow: "0 0 0 15px rgba(212,175,55,0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(197,160,89,0.4)" },
+          "50%": { boxShadow: "0 0 0 15px rgba(197,160,89,0)" },
         },
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(212,175,55,0.1)" },
-          "100%": { boxShadow: "0 0 40px rgba(212,175,55,0.3)" },
+          "0%": { boxShadow: "0 0 20px rgba(197,160,89,0.1)" },
+          "100%": { boxShadow: "0 0 40px rgba(197,160,89,0.3)" },
         },
       },
     },

@@ -122,10 +122,10 @@ export default function Hero() {
           transition={{ duration: 1, delay: 2.6, ease: [0.19, 1, 0.22, 1] }}
           className="text-5xl md:text-7xl lg:text-8xl font-display font-light text-white tracking-tight mb-6 leading-[1.1]"
         >
-          Where Dreams{" "}
-          <span className="text-shimmer font-semibold italic">Become</span>
+          Royal Events{" "}
+          <span className="text-shimmer font-semibold italic">Redefined</span>
           <br />
-          Reality
+          Across KSA & PK
         </motion.h1>
 
         {/* Subtitle */}
@@ -135,8 +135,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 2.9 }}
           className="text-lg md:text-xl text-gray-300/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
         >
-          Bespoke luxury weddings, high-end corporate galas, and exclusive private
-          parties — crafted with meticulous attention to every detail.
+          Exquisite luxury weddings, grand royal ballrooms, and elite private
+          celebrations — bringing world-class elegance to Riyadh, Jeddah, and beyond.
         </motion.p>
 
         {/* CTA Buttons */}

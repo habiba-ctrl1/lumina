@@ -10,12 +10,12 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 const galleryItems = [
-  { id: 1, src: "/gallery_wedding_reception.png", title: "Royal Wedding Reception", category: "Weddings" },
-  { id: 2, src: "/gallery_corporate_gala.png", title: "Tech Summit Gala", category: "Corporate" },
-  { id: 3, src: "/gallery_destination_wedding.png", title: "Oceanfront Vows", category: "Weddings" },
-  { id: 4, src: "/gallery_vip_party.png", title: "Exclusive Penthouse Soiree", category: "Private" },
-  { id: 5, src: "/gallery_charity_gala.png", title: "Annual Charity Ball", category: "Corporate" },
-  { id: 6, src: "/gallery_garden_party.png", title: "Enchanted Garden Party", category: "Private" },
+  { id: 1, src: "/gallery_wedding_reception.png", title: "Royal Riyadh Wedding", category: "Weddings" },
+  { id: 2, src: "/gallery_corporate_gala.png", title: "Executive Summit Jeddah", category: "Corporate" },
+  { id: 3, src: "/gallery_destination_wedding.png", title: "Elite Majlis Gathering", category: "Private" },
+  { id: 4, src: "/gallery_vip_party.png", title: "Dubai Luxury Soiree", category: "Private" },
+  { id: 5, src: "/gallery_charity_gala.png", title: "Lahore Cultural Festival", category: "Culture" },
+  { id: 6, src: "/gallery_garden_party.png", title: "Desert Resort Oasis", category: "Private" },
 ];
 
 export default function RecentEvents() {
@@ -85,7 +85,7 @@ export default function RecentEvents() {
           >
             {galleryItems.map((item) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
-                <div className="relative w-[260px] md:w-[400px] lg:w-[450px] h-[360px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden group border border-white/10 shadow-2xl shadow-charcoal-950/50">
+                <div className="relative w-[240px] md:w-[350px] lg:w-[400px] h-[300px] md:h-[400px] lg:h-[450px] rounded-2xl overflow-hidden group border border-white/10 shadow-2xl shadow-charcoal-950/50">
                   <Image 
                     src={item.src} 
                     alt={item.title} 

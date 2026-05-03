@@ -14,32 +14,47 @@ type Stats = {
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({ events: 0, testimonials: 0, inquiries: 0 });
   const [recentInquiries, setRecentInquiries] = useState<{ id: string; name: string; email: string; created_at: string }[]>([]);
-  const [statuses, setStatuses] = useState<{ id: string; text: string; label: string; date: string }[]>([
-    { id: "1", text: "Successfully organized the Grand Gala for Lumina's Anniversary.", label: "Success", date: "2026-05-01" },
-    { id: "2", text: "New luxury wedding project signed for the upcoming winter season.", label: "Active", date: "2026-04-28" },
-    { id: "3", text: "Reached 50+ satisfied high-end clients milestone.", label: "Milestone", date: "2026-04-15" },
-  ]);
   const [newStatus, setNewStatus] = useState("");
   const [statusLabel, setStatusLabel] = useState("Active");
   const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
+  const [statuses, setStatuses] = useState<{ id: string; text: string; label: string; created_at: string }[]>([]);
 
   useEffect(() => {
     fetchStats();
   }, []);
 
-  const handleAddStatus = (e: React.FormEvent) => {
+  const handleAddStatus = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newStatus.trim()) return;
+    if (!newStatus.trim() || updating) return;
 
-    const status = {
-      id: Math.random().toString(36).substr(2, 9),
-      text: newStatus,
-      label: statusLabel,
-      date: new Date().toISOString().split("T")[0],
-    };
+    setUpdating(true);
+    try {
+      const { data, error } = await supabase
+        .from("business_updates")
+        .insert([{ text: newStatus, label: statusLabel }])
+        .select()
+        .single();
 
-    setStatuses([status, ...statuses]);
-    setNewStatus("");
+      if (error) throw error;
+      if (data) {
+        setStatuses([data, ...statuses]);
+        setNewStatus("");
+      }
+    } catch (error) {
+      console.error("Error adding status:", error);
+    }
+    setUpdating(false);
+  };
+
+  const handleDeleteStatus = async (id: string) => {
+    try {
+      const { error } = await supabase.from("business_updates").delete().eq("id", id);
+      if (error) throw error;
+      setStatuses(statuses.filter(s => s.id !== id));
+    } catch (error) {
+      console.error("Error deleting status:", error);
+    }
   };
 
   const fetchStats = async () => {
@@ -56,6 +71,14 @@ export default function AdminDashboard() {
         testimonials: testimonialsRes.count || 0,
         inquiries: inquiriesRes.count || 0,
       });
+
+      const { data: statusData } = await supabase
+        .from("business_updates")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(10);
+
+      setStatuses(statusData || []);
 
       const { data } = await supabase
         .from("contact_messages")
@@ -205,9 +228,10 @@ export default function AdminDashboard() {
               </div>
               <button 
                 type="submit"
-                className="w-full py-3 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/10"
+                disabled={updating}
+                className="w-full py-3 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Post Update
+                {updating ? "Posting..." : "Post Update"}
               </button>
             </form>
 
@@ -215,7 +239,7 @@ export default function AdminDashboard() {
               <h3 className="text-xs uppercase tracking-[0.2em] text-gray-600 font-bold mb-4">Recent Updates</h3>
               <div className="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-white/5">
                 {statuses.map((status) => (
-                  <div key={status.id} className="relative pl-8">
+                  <div key={status.id} className="relative pl-8 group/item">
                     <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-charcoal-900 border border-white/10 flex items-center justify-center">
                       <div className={`w-2 h-2 rounded-full ${
                         status.label === "Success" ? "bg-emerald-500" : 
@@ -224,18 +248,31 @@ export default function AdminDashboard() {
                       }`} />
                     </div>
                     <div className="flex justify-between items-start mb-1">
-                      <span className={`text-[9px] uppercase tracking-tighter px-2 py-0.5 rounded bg-white/5 ${
-                        status.label === "Success" ? "text-emerald-400" : 
-                        status.label === "Milestone" ? "text-amber-400" : 
-                        status.label === "Planning" ? "text-blue-400" : "text-gold-400"
-                      }`}>
-                        {status.label}
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[9px] uppercase tracking-tighter px-2 py-0.5 rounded bg-white/5 ${
+                          status.label === "Success" ? "text-emerald-400" : 
+                          status.label === "Milestone" ? "text-amber-400" : 
+                          status.label === "Planning" ? "text-blue-400" : "text-gold-400"
+                        }`}>
+                          {status.label}
+                        </span>
+                        <button 
+                          onClick={() => handleDeleteStatus(status.id)}
+                          className="opacity-0 group-hover/item:opacity-100 text-[8px] text-red-500 uppercase tracking-widest hover:text-red-400 transition-opacity"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                      <span className="text-[10px] text-gray-600">
+                        {new Date(status.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
                       </span>
-                      <span className="text-[10px] text-gray-600">{status.date}</span>
                     </div>
                     <p className="text-sm text-gray-400 leading-relaxed">{status.text}</p>
                   </div>
                 ))}
+                {statuses.length === 0 && !loading && (
+                  <p className="text-center text-gray-600 text-xs py-4">No updates posted yet.</p>
+                )}
               </div>
             </div>
           </div>

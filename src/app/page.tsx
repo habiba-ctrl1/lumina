@@ -6,11 +6,13 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import StatsSection from "@/components/StatsSection";
 import HowItWorks from "@/components/HowItWorks";
 import RecentEvents from "@/components/RecentEvents";
-import FounderSection from "@/components/FounderSection";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import BusinessLiveFeed from "@/components/BusinessLiveFeed";
+import BlogPreview from "@/components/BlogPreview";
+import VendorMarketplace from "@/components/VendorMarketplace";
+import LiveEventTracker from "@/components/LiveEventTracker";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -67,8 +69,10 @@ export default function Home() {
       <StatsSection />
       <HowItWorks />
       <RecentEvents />
+      <VendorMarketplace />
+      <LiveEventTracker />
+      <BlogPreview />
       <BusinessLiveFeed />
-      <FounderSection />
       <Testimonials />
       <FAQ />
       <ContactSection />

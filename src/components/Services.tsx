@@ -9,32 +9,32 @@ const services = [
   {
     id: 1,
     num: "01",
-    title: "Luxury Weddings",
-    description: "Bespoke wedding planning with meticulous attention to detail, transforming your special day into a timeless masterpiece.",
+    title: "Royal Weddings",
+    description: "Opulent wedding planning specializing in grand ballroom settings and traditional royal ceremonies across the Middle East.",
     image: "/wedding.png",
-    seoAlt: "Luxury wedding planning and premium coordination services",
-    details: ["Venue Sourcing", "Floral Styling", "Guest Management", "Photography Direction", "Catering Curation"],
-    starting: "From $15,000",
+    seoAlt: "Luxury royal wedding planning in Saudi Arabia and Pakistan",
+    details: ["Royal Ballrooms", "Arabic Catering", "Floral Installations", "Zaffa Processions", "Bridal Suites"],
+    starting: "Starting from SAR 50,000",
   },
   {
     id: 2,
     num: "02",
-    title: "Corporate Galas",
-    description: "Elevate your brand with high-end corporate events, conferences, and executive retreats designed to impress.",
+    title: "Majlis & Corporate",
+    description: "Sophisticated Majlis arrangements and high-profile corporate summits designed for executive networking and brand prestige.",
     image: "/corporate.png",
-    seoAlt: "High-end corporate gala and executive retreat event management",
-    details: ["Stage & AV Production", "Brand Integration", "VIP Hospitality", "Entertainment Booking", "Logistics Planning"],
-    starting: "From $25,000",
+    seoAlt: "High-end Majlis and corporate event management in KSA",
+    details: ["Majlis Design", "VIP Hospitality", "Government Summits", "Audio-Visual Excellence", "Catering Curation"],
+    starting: "Starting from SAR 75,000",
   },
   {
     id: 3,
     num: "03",
-    title: "Private Parties",
-    description: "Exclusive VIP events, milestone birthdays, and private dinners crafted for the ultimate sophisticated experience.",
+    title: "Elite Birthdays",
+    description: "Bespoke milestone celebrations and private gatherings in exclusive villas or desert resorts, tailored to perfection.",
     image: "/private_party.png",
-    seoAlt: "Exclusive private party, VIP event, and milestone birthday planning",
-    details: ["Theme Design", "Luxury Catering", "Live Entertainment", "Decor & Ambiance", "Security Coordination"],
-    starting: "From $10,000",
+    seoAlt: "Elite private party and milestone birthday planning in Saudi Arabia",
+    details: ["Villa Events", "Desert Resort Galas", "Bespoke Cakes", "Live Orchestras", "Guest Concierge"],
+    starting: "Starting from SAR 25,000",
   },
 ];
 
@@ -79,7 +79,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         </div>
 
         {/* Image */}
-        <div className="relative h-[420px] w-full overflow-hidden">
+        <div className="relative h-[320px] md:h-[380px] lg:h-[420px] w-full overflow-hidden">
           <Image
             src={service.image}
             alt={service.seoAlt}

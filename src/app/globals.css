@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
+  --background: #0a1310;
   --foreground: #ededed;
-  --gold: #D4AF37;
-  --gold-light: #f0d878;
+  --gold: #C5A059;
+  --gold-light: #d9c29b;
+  --emerald-deep: #050a08;
+  --emerald-rich: #0d1a15;
 }
 
 /* Premium Custom Scrollbar */
@@ -17,16 +19,16 @@
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4AF37, #b5952f);
+  background: linear-gradient(180deg, #C5A059, #9c7a3d);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #e6c353, #D4AF37);
+  background: linear-gradient(180deg, #d9c29b, #C5A059);
 }
 
 /* Premium Text Selection */
 ::selection {
-  background: rgba(212, 175, 55, 0.3);
+  background: rgba(197, 160, 89, 0.3);
   color: #fff;
 }
 
@@ -88,7 +90,7 @@ section {
 
   /* Gold Shimmer Text Effect */
   .text-shimmer {
-    background: linear-gradient(120deg, #D4AF37 0%, #f0d878 25%, #D4AF37 50%, #f0d878 75%, #D4AF37 100%);
+    background: linear-gradient(120deg, #C5A059 0%, #d9c29b 25%, #C5A059 50%, #d9c29b 75%, #C5A059 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -116,7 +118,7 @@ section {
     left: 100%;
   }
   .btn-glow:hover {
-    box-shadow: 0 0 30px rgba(212,175,55,0.4), 0 0 60px rgba(212,175,55,0.1);
+    box-shadow: 0 0 30px rgba(197,160,89,0.4), 0 0 60px rgba(197,160,89,0.1);
   }
 
   /* Gold Line Decoration */
@@ -125,14 +127,14 @@ section {
     display: block;
     width: 60px;
     height: 1px;
-    background: linear-gradient(90deg, #D4AF37, transparent);
+    background: linear-gradient(90deg, #C5A059, transparent);
     margin-top: 1rem;
   }
 }
 
 /* Smooth Focus Outline */
 *:focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid #C5A059;
   outline-offset: 2px;
 }
 
@@ -157,7 +159,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Select dropdown arrow */
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C5A059' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
