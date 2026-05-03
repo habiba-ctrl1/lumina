@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API);
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, phone, eventType, budget, message } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     // 1. Save to Supabase
     const { error: supabaseError } = await supabase
       .from('contact_messages')
-      .insert([{ name, email, message }]);
+      .insert([{ name, email, phone, event_type: eventType, budget, message }]);
 
     if (supabaseError) throw supabaseError;
 
@@ -34,6 +34,9 @@ export async function POST(request: Request) {
             <h2 style="color: #D4AF37;">New Inquiry Received</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Event Type:</strong> ${eventType || 'Not provided'}</p>
+            <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
             <p><strong>Message:</strong></p>
             <p style="background: #f4f4f4; padding: 15px; border-radius: 5px;">${message}</p>
             <hr />
