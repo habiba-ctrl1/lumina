@@ -5,19 +5,114 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --gold: #D4AF37;
+  --gold-light: #f0d878;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37, #b5952f);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e6c353, #D4AF37);
+}
+
+/* Premium Text Selection */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #fff;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Subtle Noise Grain Overlay for Premium Texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
   .glass {
     @apply bg-charcoal-800/40 backdrop-blur-md border border-white/5;
   }
+
+  .glass-strong {
+    @apply bg-charcoal-800/60 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Gold Shimmer Text Effect */
+  .text-shimmer {
+    background: linear-gradient(120deg, #D4AF37 0%, #f0d878 25%, #D4AF37 50%, #f0d878 75%, #D4AF37 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Premium Button Glow Sweep */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn-glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+  }
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 30px rgba(212,175,55,0.4), 0 0 60px rgba(212,175,55,0.1);
+  }
+
+  /* Gold Line Decoration */
+  .line-decoration::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, #D4AF37, transparent);
+    margin-top: 1rem;
+  }
+}
+
+/* Smooth Focus Outline */
+*:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* Anti-aliased Fonts */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Lumina | Luxury Event Management Services",
@@ -17,14 +18,7 @@ export const metadata: Metadata = {
     description: "Premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties.",
     url: "/",
     siteName: "Lumina Events",
-    images: [
-      {
-        url: "/hero_bg.png",
-        width: 1200,
-        height: 630,
-        alt: "Lumina Luxury Event Management",
-      },
-    ],
+    images: [{ url: "/hero_bg.png", width: 1200, height: 630, alt: "Lumina Luxury Event Management" }],
     locale: "en_US",
     type: "website",
   },
@@ -34,9 +28,7 @@ export const metadata: Metadata = {
     description: "Premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties.",
     images: ["/hero_bg.png"],
   },
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({
@@ -46,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

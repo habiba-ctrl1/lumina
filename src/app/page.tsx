@@ -1,10 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import MarqueeStrip from "@/components/MarqueeStrip";
 import Services from "@/components/Services";
+import StatsSection from "@/components/StatsSection";
 import RecentEvents from "@/components/RecentEvents";
 import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import ScrollProgress from "@/components/ScrollProgress";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   const jsonLd = {
@@ -30,15 +35,7 @@ export default function Home() {
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
       "opens": "00:00",
       "closes": "23:59"
     },
@@ -55,13 +52,18 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Preloader />
+      <ScrollProgress />
       <Navbar />
       <Hero />
+      <MarqueeStrip />
       <Services />
+      <StatsSection />
       <RecentEvents />
       <Testimonials />
       <ContactSection />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
