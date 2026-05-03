@@ -46,14 +46,14 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#gallery" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "Vendors", href: "/vendors" },
-    { name: "Live Tracking", href: "#tracking" },
+    { name: "Live Tracking", href: "/tracking" },
     { name: "Blog", href: "/blog" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "FAQ", href: "#faq" },
+    { name: "Testimonials", href: "/testimonials" },
+    { name: "FAQ", href: "/faq" },
   ];
 
   return (
@@ -71,7 +71,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="#home" className="text-2xl font-display font-bold text-white tracking-[0.15em] uppercase group">
+            <Link href="/" className="text-2xl font-display font-bold text-white tracking-[0.15em] uppercase group">
               Lumina<span className="text-gold-500 group-hover:text-gold-400 transition-colors">.</span>
             </Link>
           </div>

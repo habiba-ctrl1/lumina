@@ -1,18 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import StatsSection from "@/components/StatsSection";
 import HowItWorks from "@/components/HowItWorks";
-import RecentEvents from "@/components/RecentEvents";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import BusinessLiveFeed from "@/components/BusinessLiveFeed";
 import BlogPreview from "@/components/BlogPreview";
-import VendorMarketplace from "@/components/VendorMarketplace";
-import LiveEventTracker from "@/components/LiveEventTracker";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -64,17 +58,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <MarqueeStrip />
-      <Services />
       <WhyChooseUs />
       <StatsSection />
       <HowItWorks />
-      <RecentEvents />
-      <VendorMarketplace />
-      <LiveEventTracker />
       <BlogPreview />
       <BusinessLiveFeed />
-      <Testimonials />
-      <FAQ />
       <ContactSection />
       <Footer />
       <WhatsAppButton />
