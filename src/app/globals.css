@@ -30,10 +30,13 @@
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 

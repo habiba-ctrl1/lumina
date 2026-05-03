@@ -57,7 +57,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <div id="home" ref={containerRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Ken Burns Background Slideshow */}
       <AnimatePresence mode="popLayout">
         <motion.div

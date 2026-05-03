@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <Link href="#" className="text-3xl font-display font-bold text-white tracking-widest uppercase block mb-6">
+            <Link href="#home" className="text-3xl font-display font-bold text-white tracking-widest uppercase block mb-6">
               Lumina<span className="text-gold-500">.</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">Crafting extraordinary experiences and timeless memories through unparalleled luxury event management.</p>
@@ -54,7 +54,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold uppercase tracking-wider mb-6 text-sm">Company</h4>
             <ul className="space-y-4">
-              {[{ name: "About Us", href: "#" }, { name: "Our Portfolio", href: "#gallery" }, { name: "Testimonials", href: "#testimonials" }, { name: "Contact Us", href: "#contact" }].map((item) => (
+              {[{ name: "About Us", href: "/about" }, { name: "Our Portfolio", href: "#gallery" }, { name: "Testimonials", href: "#testimonials" }, { name: "Contact Us", href: "#contact" }].map((item) => (
                 <li key={item.name}><a href={item.href} className="text-gray-400 hover:text-gold-500 transition-colors text-sm group flex items-center gap-2"><span className="w-0 h-px bg-gold-500 group-hover:w-4 transition-all duration-300" />{item.name}</a></li>
               ))}
             </ul>
@@ -74,8 +74,8 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-xs mb-4 md:mb-0">&copy; {new Date().getFullYear()} Lumina Event Management. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Terms of Service</a>
+            <Link href="/privacy" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
