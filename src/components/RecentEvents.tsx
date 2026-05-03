@@ -85,7 +85,7 @@ export default function RecentEvents() {
           >
             {galleryItems.map((item) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
-                <div className="relative w-[300px] md:w-[500px] h-[400px] md:h-[600px] rounded-2xl overflow-hidden group border border-white/10 shadow-2xl shadow-charcoal-950/50">
+                <div className="relative w-[260px] md:w-[400px] lg:w-[450px] h-[360px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden group border border-white/10 shadow-2xl shadow-charcoal-950/50">
                   <Image 
                     src={item.src} 
                     alt={item.title} 

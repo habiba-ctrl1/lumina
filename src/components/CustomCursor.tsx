@@ -6,8 +6,14 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Check if it's a touch device
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouchDevice(true);
+      return;
+    }
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -37,6 +43,7 @@ export default function CustomCursor() {
 
   // Hide the default cursor globally when this component is mounted
   useEffect(() => {
+    if (isTouchDevice) return;
     document.body.style.cursor = "none";
     const style = document.createElement("style");
     style.innerHTML = `
@@ -47,7 +54,9 @@ export default function CustomCursor() {
       document.body.style.cursor = "auto";
       document.head.removeChild(style);
     };
-  }, []);
+  }, [isTouchDevice]);
+
+  if (isTouchDevice) return null;
 
   return (
     <>
