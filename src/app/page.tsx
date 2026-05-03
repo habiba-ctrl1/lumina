@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function Home() {
   const jsonLd = {
@@ -59,6 +60,7 @@ export default function Home() {
       <MarqueeStrip />
       <Services />
       <StatsSection />
+      <HowItWorks />
       <RecentEvents />
       <Testimonials />
       <ContactSection />

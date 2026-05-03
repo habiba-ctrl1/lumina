@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+        <CustomCursor />
         {children}
       </body>
     </html>
