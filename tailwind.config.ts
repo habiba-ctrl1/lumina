@@ -25,6 +25,12 @@ const config: Config = {
           600: "#9c7a3d",
           700: "#82632b",
         },
+        gray: {
+          300: "#e5e7eb",
+          400: "#d1d5db",
+          500: "#9ca3af",
+          600: "#6b7280",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

@@ -90,7 +90,7 @@ export default function VendorsPage() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-light text-white mb-6">
             Vendor <span className="text-shimmer font-semibold italic">Directory</span>
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light leading-relaxed">
             Browse our handpicked selection of the most prestigious event partners, 
             from award-winning photographers to master cake artisans.
           </p>
@@ -152,16 +152,18 @@ export default function VendorsPage() {
                       </div>
 
                       <div className="mt-auto pt-6 flex items-center justify-between border-t border-white/5">
-                        <span className="text-gray-500 text-xs italic">
+                        <span className="text-gray-400 text-xs italic">
                           {vendor.reviews} Verified Reviews
                         </span>
-                        <Link 
-                          href={`/vendors/${vendor.id}`}
+                        <a 
+                          href={`https://wa.me/923001234567?text=Hi Lumina Events, I would like to know more about the vendor: ${encodeURIComponent(vendor.name)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn"
                         >
                           View Details
                           <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   </div>
