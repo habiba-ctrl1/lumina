@@ -3,8 +3,8 @@ import { supabase } from '@/lib/supabase';
 import { Resend } from 'resend';
 
 export async function POST(request: Request) {
-  const resend = new Resend(process.env.RESEND_API);
   try {
+    const resend = new Resend(process.env.RESEND_API || 'missing-key');
     const body = await request.json();
     const { name, email, phone, eventType, budget, message } = body;
 
