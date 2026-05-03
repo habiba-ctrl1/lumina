@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import Image from "next/image";
-import Link from "next/link";
+
 import { Camera, Cake, Flower2, Star, ArrowRight } from "lucide-react";
 
 const categories = [
