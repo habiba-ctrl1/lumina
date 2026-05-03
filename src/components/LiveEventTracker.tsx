@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Clock, CheckCircle2, Circle, AlertCircle, MapPin, Users, Zap } from "lucide-react";
 
@@ -14,7 +14,7 @@ const eventMilestones = [
 ];
 
 export default function LiveEventTracker() {
-  const [progress, setProgress] = useState(65);
+  const [progress] = useState(65);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -136,7 +136,7 @@ export default function LiveEventTracker() {
               {/* Vertical Line */}
               <div className="absolute left-[11px] top-2 bottom-2 w-px bg-white/10" />
 
-              {eventMilestones.map((milestone, idx) => (
+              {eventMilestones.map((milestone) => (
                 <div key={milestone.id} className="relative pl-10">
                   {/* Dot */}
                   <div className={`absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 bg-charcoal-900 flex items-center justify-center z-10 transition-colors duration-500 ${

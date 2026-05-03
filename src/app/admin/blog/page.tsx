@@ -2,7 +2,7 @@
 
 import { blogPosts } from "@/lib/blog-data";
 import { motion } from "framer-motion";
-import { Eye, Edit3, Plus, ExternalLink, Calendar, Clock } from "lucide-react";
+import { Edit3, Plus, ExternalLink, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 

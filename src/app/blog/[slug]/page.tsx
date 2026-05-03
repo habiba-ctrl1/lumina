@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Clock, Calendar, User, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
