@@ -6,21 +6,30 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { 
   LayoutDashboard, 
-  Image, 
+  Image as ImageIcon, 
   MessageSquareQuote, 
   Mail, 
   LogOut, 
   Menu, 
   X,
-  Sparkles
+  Sparkles,
+  CalendarDays,
+  Users,
+  Briefcase,
+  Activity,
+  Bookmark
 } from "lucide-react";
 
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/events", label: "Events", icon: Image },
-  { href: "/admin/blog", label: "Blog", icon: Sparkles },
+  { href: "/admin/calendar", label: "Calendar & Schedule", icon: CalendarDays },
+  { href: "/admin/events", label: "Bookings & Events", icon: Bookmark },
+  { href: "/admin/inquiries", label: "Leads & Inquiries", icon: Mail },
+  { href: "/admin/clients", label: "Clients CRM", icon: Users },
+  { href: "/admin/vendors", label: "Vendors & Team", icon: Briefcase },
+  { href: "/admin/status", label: "Business Status", icon: Activity },
+  { href: "/admin/blog", label: "Blog Content", icon: Sparkles },
   { href: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
-  { href: "/admin/inquiries", label: "Inquiries", icon: Mail },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

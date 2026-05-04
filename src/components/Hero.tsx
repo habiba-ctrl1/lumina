@@ -70,7 +70,7 @@ export default function Hero() {
         >
           <Image
             src={heroImages[currentImage]}
-            alt="Luxury Event"
+            alt={`Bespoke Luxury Event Management and Premium Planning - View ${currentImage + 1}`}
             fill
             className="object-cover object-center"
             priority

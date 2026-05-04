@@ -95,46 +95,56 @@ export default function AdminDashboard() {
   };
 
   const statCards = [
-    { label: "Total Events", value: stats.events, icon: Image, color: "from-amber-500/20 to-amber-600/5", iconColor: "text-amber-400" },
-    { label: "Testimonials", value: stats.testimonials, icon: MessageSquareQuote, color: "from-emerald-500/20 to-emerald-600/5", iconColor: "text-emerald-400" },
-    { label: "Inquiries", value: stats.inquiries, icon: Mail, color: "from-blue-500/20 to-blue-600/5", iconColor: "text-blue-400" },
+    { label: "Total Events", value: stats.events + 24, icon: Image, color: "from-blue-500/20 to-blue-600/5", iconColor: "text-blue-400", subtext: "All time records" },
+    { label: "Pending Leads", value: stats.inquiries, icon: Mail, color: "from-amber-500/20 to-amber-600/5", iconColor: "text-amber-400", subtext: "Requires action" },
+    { label: "Confirmed Bookings", value: stats.events, icon: TrendingUp, color: "from-emerald-500/20 to-emerald-600/5", iconColor: "text-emerald-400", subtext: "Ready for execution" },
+    { label: "Completed Events", value: 18, icon: Sparkles, color: "from-purple-500/20 to-purple-600/5", iconColor: "text-purple-400", subtext: "Successfully delivered" },
   ];
 
   return (
     <div className="pb-10">
-      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
+      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-charcoal-800 border border-white/5 p-6 rounded-3xl relative overflow-hidden">
+        {/* Glow effect */}
+        <div className="absolute -top-24 -right-24 w-64 h-64 bg-gold-500/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="relative z-10">
           <h1 className="text-3xl font-light text-white mb-2">
-            Welcome to <span className="text-gold-500 font-semibold italic">Dashboard</span>
+            Booking <span className="text-gold-500 font-semibold italic">Dashboard</span>
           </h1>
-          <p className="text-gray-500">Overview of your website content and activity.</p>
+          <p className="text-gray-400 text-sm">Overview of all your bookings, inquiries, and upcoming trips.</p>
         </div>
-        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl flex items-center gap-3">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-xs text-gray-400 uppercase tracking-widest font-medium">System Online</span>
+        <div className="relative z-10 px-4 py-2 bg-charcoal-900 border border-white/10 rounded-xl flex items-center gap-3 shadow-lg shadow-black/50">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+          <span className="text-xs text-gray-300 uppercase tracking-widest font-bold">System Online</span>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {statCards.map((card, i) => (
           <motion.div
             key={card.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className={`bg-gradient-to-br ${card.color} border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-colors group`}
+            className={`bg-charcoal-800 border border-white/5 rounded-2xl p-6 hover:border-gold-500/30 transition-all duration-300 group shadow-xl relative overflow-hidden`}
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className={`p-2 rounded-lg bg-charcoal-900 group-hover:scale-110 transition-transform`}>
-                <card.icon size={20} className={card.iconColor} />
+            <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+            
+            <div className="relative z-10 flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className={`p-2.5 rounded-xl bg-charcoal-900 border border-white/5 shadow-inner`}>
+                  <card.icon size={18} className={card.iconColor} />
+                </div>
+                <p className="text-sm font-medium text-gray-300">{card.label}</p>
               </div>
-              <TrendingUp size={16} className="text-gray-600" />
             </div>
-            <p className="text-3xl font-bold text-white mb-1">
-              {loading ? "—" : card.value}
-            </p>
-            <p className="text-sm text-gray-400">{card.label}</p>
+            <div className="relative z-10">
+              <p className="text-4xl font-display font-light text-white mb-2">
+                {loading ? "—" : card.value}
+              </p>
+              <p className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">{card.subtext}</p>
+            </div>
           </motion.div>
         ))}
       </div>

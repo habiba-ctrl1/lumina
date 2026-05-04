@@ -11,19 +11,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const staticPages = [
+    '',
+    '/about',
+    '/services',
+    '/portfolio',
+    '/faq',
+    '/vendors',
+    '/testimonials',
+    '/blog',
+    '/privacy',
+    '/terms'
+  ];
+
+  const staticEntries = staticPages.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: route === '' || route === '/blog' ? 'weekly' : 'monthly' as any,
+    priority: route === '' ? 1 : (route === '/blog' || route === '/services' || route === '/portfolio' ? 0.8 : 0.6),
+  }));
+
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+    ...staticEntries,
     ...blogEntries,
   ];
 }
