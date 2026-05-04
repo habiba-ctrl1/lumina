@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { Image, MessageSquareQuote, Mail, TrendingUp, Sparkles } from "lucide-react";
+import { Image, Mail, TrendingUp, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 type Stats = {

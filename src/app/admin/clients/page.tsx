@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, Search, Filter, MoreVertical, Mail, Phone } from "lucide-react";
+import { Search, Filter, MoreVertical, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 const mockClients = [

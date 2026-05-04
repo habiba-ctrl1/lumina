@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { CalendarDays, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function CalendarPage() {
