@@ -125,7 +125,7 @@ export default function ExhibitionsPage() {
           <div className="absolute inset-0 z-0">
             <Image 
               src="/blog_corporate_events.png" 
-              alt="Exition management Saudi Arabia - Trade show organizer Riyadh" 
+              alt="Exhibition management Saudi Arabia - Trade show organizer Riyadh" 
               fill 
               className="object-cover opacity-40"
               priority
@@ -156,7 +156,7 @@ export default function ExhibitionsPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              The premier trade show organizer in Riyadh and expo management collective in KSA. Elevating B2B platforms through world-class stand building and strategic planning.
+              The premier partner for <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence at <strong className="text-white">RECC</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -173,6 +173,31 @@ export default function ExhibitionsPage() {
           </div>
         </section>
 
+        {/* E-E-A-T Signals & Partnerships */}
+        <section className="py-12 border-y border-white/5 bg-charcoal-900/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-wrap justify-between items-center gap-10">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
+                  <Award className="text-gold-500" size={24} />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm tracking-widest">Official RECC Partner</p>
+                  <p className="text-[10px] text-gray-500 uppercase">Venue Logistics & Support</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-8 grayscale opacity-50">
+                <span className="text-xs font-bold tracking-tighter">INDEX SAUDI</span>
+                <span className="text-xs font-bold tracking-tighter">SAUDI AGRICULTURE</span>
+                <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
+              </div>
+              <div className="text-xs text-gold-500 font-bold italic tracking-widest uppercase">
+                "Award-Winning Exhibition Design 2024"
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Core Services Grid */}
         <section className="py-32 bg-charcoal-900/30 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -183,14 +208,14 @@ export default function ExhibitionsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {[
-                { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end trade fair organizer Jeddah and Riyadh services for international delegations." },
-                { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts creating immersive brand environments." },
-                { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder Saudi Arabia with precision engineering and luxury finishes." },
-                { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global markets with KSA." },
+                { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level summits with international delegations." },
+                { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and Big 5 Saudi pavilions." },
+                { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030 initiatives with precision engineering." },
+                { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
                 { icon: Monitor, title: "Digital Showcase", desc: "High-impact product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
-                { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking and deal-making." },
-                { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions." },
-                { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC." },
+                { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
+                { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions like Index Saudi." },
+                { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC Riyadh." },
               ].map((service, i) => (
                 <motion.div 
                   key={i}
@@ -209,7 +234,34 @@ export default function ExhibitionsPage() {
           </div>
         </section>
 
+        {/* Topical Authority Content Section */}
+        <section className="py-24 bg-charcoal-950 relative border-y border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              <div className="lg:col-span-1 space-y-6">
+                <h3 className="text-2xl font-display text-white">Exhibitor <br/><span className="text-gold-500 italic">Insights</span></h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom's most prestigious trade shows.</p>
+                <Link href="/blog" className="inline-block text-gold-500 text-xs font-bold uppercase tracking-widest border-b border-gold-500 pb-1">View All Guides</Link>
+              </div>
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Complete guide to exhibiting at Saudi trade shows", desc: "Everything you need to know about logistics, staffing, and cultural etiquette at RICEC and RECC." },
+                  { title: "Best exhibition venues in Saudi Arabia 2025", desc: "A comparative review of the Kingdom's top expo centers from Riyadh to Jeddah." },
+                  { title: "How to maximize ROI at Saudi exhibitions", desc: "Data-driven strategies for lead generation and brand awareness in the KSA market." },
+                  { title: "Saudi trade show calendar 2025", desc: "Don't miss the major summits: Index, Big 5, and the journey toward Saudi Expo 2030." }
+                ].map((post, idx) => (
+                  <div key={idx} className="p-8 bg-charcoal-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
+                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Localized Arabic Section */}
+abic Section */}
         <section className="py-32 bg-white text-charcoal-950 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
