@@ -52,6 +52,17 @@ const services = [
     details: ["Booth Design", "Stand Building", "RICEC Logistics", "B2B Matchmaking", "Digital Displays"],
     starting: "Starting from SAR 60,000",
   },
+  {
+    id: 5,
+    num: "05",
+    title: "Seasonal & Cultural",
+    href: "/services/seasonal",
+    description: "Bespoke Ramadan events, Saudi National Day galas, and traditional Eid celebrations preserving Saudi heritage.",
+    image: "/private_party.png",
+    seoAlt: "Ramadan and Saudi National Day event planning in Saudi Arabia",
+    details: ["Ramadan Iftars", "National Day Galas", "Founding Day", "Eid Celebrations", "Cultural Heritage"],
+    starting: "Starting from SAR 40,000",
+  },
 ];
 
 /* 3D Tilt Card Component */
@@ -190,7 +201,7 @@ export default function Services() {
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
