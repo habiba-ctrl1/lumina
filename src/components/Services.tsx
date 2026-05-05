@@ -6,7 +6,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
-const WHATSAPP_BASE = "https://wa.me/923001234567?text=";
 
 const services = [
   {
