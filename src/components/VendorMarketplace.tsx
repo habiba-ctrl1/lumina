@@ -5,6 +5,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { Camera, Cake, Flower2, Utensils, Star, ArrowRight } from "lucide-react";
 
+const WHATSAPP_BASE = "https://wa.me/923001234567?text=";
+
 const categories = [
   { id: "photographers", name: "Photographers", icon: Camera },
   { id: "cakes", name: "Bespoke Cakes", icon: Cake },
@@ -17,7 +19,7 @@ const vendors = [
     id: 1,
     category: "photographers",
     name: "Al-Majid Studios",
-    image: "/vendor_photo_1.png",
+    image: "/gallery_wedding_reception.png",
     rating: 5.0,
     reviews: 124,
     location: "Riyadh, KSA",
@@ -27,7 +29,7 @@ const vendors = [
     id: 2,
     category: "cakes",
     name: "The Golden Whisk",
-    image: "/vendor_cake_1.png",
+    image: "/gallery_corporate_gala.png",
     rating: 4.9,
     reviews: 89,
     location: "Dubai, UAE",
@@ -36,18 +38,18 @@ const vendors = [
   {
     id: 3,
     category: "florists",
-    name: "Emerald Blooms",
-    image: "/vendor_floral_1.png",
+    name: "Sapphire Blooms",
+    image: "/gallery_destination_wedding.png",
     rating: 5.0,
     reviews: 56,
-    location: "Lahore, PK",
+    location: "Riyadh, SA",
     specialty: "Exotic Installations",
   },
   {
     id: 4,
     category: "catering",
     name: "Saffron & Silk",
-    image: "/vendor_catering_1.png",
+    image: "/gallery_garden_party.png",
     rating: 4.8,
     reviews: 210,
     location: "Jeddah, KSA",
@@ -57,7 +59,7 @@ const vendors = [
     id: 5,
     category: "photographers",
     name: "Elite Vision PK",
-    image: "/vendor_photo_2.png",
+    image: "/gallery_vip_party.png",
     rating: 4.9,
     reviews: 45,
     location: "Islamabad, PK",
@@ -67,7 +69,7 @@ const vendors = [
     id: 6,
     category: "cakes",
     name: "Velvet Sugar",
-    image: "/vendor_cake_2.png",
+    image: "/gallery_charity_gala.png",
     rating: 5.0,
     reviews: 32,
     location: "Karachi, PK",
@@ -83,7 +85,7 @@ export default function VendorMarketplace() {
     : vendors.filter(v => v.category === activeCategory);
 
   return (
-    <section id="vendors" className="py-28 bg-emerald-950 relative overflow-hidden">
+    <section id="vendors" className="py-28 bg-charcoal-950 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -121,7 +123,7 @@ export default function VendorMarketplace() {
               onClick={() => setActiveCategory("all")}
               className={`px-6 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
                 activeCategory === "all" 
-                ? "bg-gold-500 text-emerald-950" 
+                ? "bg-gold-500 text-charcoal-900" 
                 : "bg-white/5 text-gray-400 hover:bg-white/10"
               }`}
             >
@@ -133,7 +135,7 @@ export default function VendorMarketplace() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`flex items-center gap-2 px-6 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
                   activeCategory === cat.id 
-                  ? "bg-gold-500 text-emerald-950" 
+                  ? "bg-gold-500 text-charcoal-900" 
                   : "bg-white/5 text-gray-400 hover:bg-white/10"
                 }`}
               >
@@ -165,7 +167,7 @@ export default function VendorMarketplace() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-emerald-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
+                  <span className="px-3 py-1 bg-charcoal-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
                     {vendor.specialty}
                   </span>
                 </div>
@@ -192,10 +194,15 @@ export default function VendorMarketplace() {
                   <span className="text-gray-500 text-xs italic">
                     {vendor.reviews} Verified Reviews
                   </span>
-                  <button className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn">
+                  <a 
+                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Lumina! I'd like to know more about ${vendor.name}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn"
+                  >
                     View Portfolio
                     <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -207,15 +214,20 @@ export default function VendorMarketplace() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 p-12 bg-gradient-to-r from-emerald-900 to-emerald-800 rounded-3xl border border-gold-500/20 text-center"
+          className="mt-20 p-12 bg-gradient-to-r from-charcoal-800 to-charcoal-700 rounded-3xl border border-gold-500/20 text-center"
         >
           <h3 className="text-2xl md:text-3xl font-display text-white mb-4">Are you a premium vendor?</h3>
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>
-          <button className="px-10 py-4 bg-gold-500 text-emerald-950 font-bold uppercase tracking-widest text-sm hover:bg-gold-400 transition-all duration-300 rounded-sm">
+          <a 
+            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Lumina! I'm a premium vendor and I'd like to apply to join your network.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-10 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-400 transition-all duration-300 rounded-sm"
+          >
             Apply to Join
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

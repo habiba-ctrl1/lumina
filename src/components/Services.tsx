@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
+const WHATSAPP_BASE = "https://wa.me/923001234567?text=";
+
 const services = [
   {
     id: 1,
@@ -71,10 +73,10 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative overflow-hidden bg-charcoal-800 border border-white/5 hover:border-gold-500/30 transition-colors duration-700 cursor-pointer"
+        className="group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 cursor-pointer rounded-sm"
       >
         {/* Number tag */}
-        <div className="absolute top-6 left-6 z-20 text-gold-500/20 text-6xl font-display font-bold select-none group-hover:text-gold-500/40 transition-colors duration-500">
+        <div className="absolute top-6 left-6 z-20 text-[#041E42]/5 text-6xl font-display font-bold select-none group-hover:text-[#041E42]/10 transition-colors duration-500">
           {service.num}
         </div>
 
@@ -84,42 +86,47 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             src={service.image}
             alt={service.seoAlt}
             fill
-            className="object-cover object-center transition-transform duration-[1200ms] group-hover:scale-110"
+            className="object-cover object-center transition-transform duration-[1200ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/5 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-700" />
         </div>
 
         {/* Content overlay */}
         <div className="absolute inset-0 p-8 flex flex-col justify-end">
           {/* Gold line */}
-          <div className="w-10 h-[2px] bg-gold-500 mb-4 group-hover:w-16 transition-all duration-500" />
+          <div className="w-12 h-[1px] bg-champagne-500 mb-6 group-hover:w-24 transition-all duration-700" />
 
-          <h3 className="text-2xl md:text-3xl font-display font-medium text-white mb-2 group-hover:text-gold-400 transition-colors duration-300">
+          <h3 className="text-2xl font-display font-medium text-[#041E42] mb-4 group-hover:text-champagne-500 transition-colors duration-300">
             {service.title}
           </h3>
 
           {/* Starting price */}
-          <p className="text-gold-500/70 text-xs uppercase tracking-[0.2em] font-medium mb-3">
+          <p className="text-[#041E42]/40 text-[11px] uppercase tracking-[0.2em] font-medium mb-4">
             {service.starting}
           </p>
 
-          <p className="text-gray-300/80 text-sm leading-relaxed mb-4 max-w-xs opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+          <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-xs opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
             {service.description}
           </p>
 
           {/* Sub-services */}
           <div className="flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-150">
             {service.details.map((detail, i) => (
-              <span key={i} className="text-[10px] text-gray-400 uppercase tracking-wider border border-white/10 px-2.5 py-1">
+              <span key={i} className="text-[10px] text-gray-400 uppercase tracking-[0.2em] border border-gray-100 px-3 py-1.5 bg-gray-50/50">
                 {detail}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-gold-500 text-sm font-semibold uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+          <a 
+            href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Lumina! I'm interested in your ${service.title} service. Please share more details.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-[#041E42] text-[11px] font-bold uppercase tracking-[0.2em] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
+          >
             <span>Learn More</span>
             <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </div>
+          </a>
         </div>
       </motion.div>
     </motion.div>
@@ -128,7 +135,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
 export default function Services() {
   return (
-    <section id="services" className="py-28 bg-charcoal-900 relative">
+    <section id="services" className="section-padding bg-white relative">
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-500/3 rounded-full blur-[150px] pointer-events-none" />
 
@@ -139,18 +146,18 @@ export default function Services() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+            className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
           >
             What We Do
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
           >
-            Our <span className="text-shimmer font-semibold italic">Expertise</span>
+            Curated <span className="text-shimmer italic font-medium">Services</span>
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, width: 0 }}
@@ -164,7 +171,7 @@ export default function Services() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg font-light"
+            className="text-gray-400 max-w-xl mx-auto text-[10px] uppercase tracking-[0.3em]"
           >
             Delivering unparalleled excellence across diverse event categories.
           </motion.p>

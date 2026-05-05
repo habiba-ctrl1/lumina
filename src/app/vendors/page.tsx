@@ -1,8 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
-import CustomCursor from "@/components/CustomCursor";
 import Image from "next/image";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 import { Camera, Cake, Flower2, Star, ArrowRight } from "lucide-react";
 
@@ -52,11 +51,11 @@ const vendors = [
   {
     id: 5,
     categoryId: "floral",
-    name: "Emerald Blooms",
+    name: "Sapphire Blooms",
     image: "/gallery_destination_wedding.png",
     rating: 5.0,
     reviews: 56,
-    location: "Lahore, PK",
+    location: "Dubai, UAE",
   },
   {
     id: 6,
@@ -76,9 +75,7 @@ export const metadata = {
 
 export default function VendorsPage() {
   return (
-    <main className="min-h-screen bg-emerald-950 overflow-hidden pt-24">
-      <Preloader />
-      <CustomCursor />
+    <main className="min-h-screen bg-charcoal-950 overflow-hidden pt-24">
       <Navbar />
 
       {/* Hero Section for Vendors */}
@@ -131,7 +128,7 @@ export default function VendorsPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-emerald-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
+                        <span className="px-3 py-1 bg-blue-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
                           {vendor.location}
                         </span>
                       </div>
@@ -175,6 +172,7 @@ export default function VendorsPage() {
       </div>
 
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }

@@ -61,7 +61,8 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-gold-500 rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        style={{ backgroundColor: "#FBE1BD" }}
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
@@ -75,7 +76,8 @@ export default function CustomCursor() {
         }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border border-gold-500/50 rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-12 h-12 border rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        style={{ borderColor: "rgba(251, 225, 189, 0.5)" }}
         animate={{
           x: mousePosition.x - 24,
           y: mousePosition.y - 24,

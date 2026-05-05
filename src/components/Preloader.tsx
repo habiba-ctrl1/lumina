@@ -7,13 +7,13 @@ export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2200);
-    document.body.style.overflow = isLoading ? "hidden" : "";
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    document.body.style.overflow = "hidden";
     return () => {
       clearTimeout(timer);
       document.body.style.overflow = "";
     };
-  }, [isLoading]);
+  }, []);
 
   return (
     <AnimatePresence>

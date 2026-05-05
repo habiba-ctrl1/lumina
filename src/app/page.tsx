@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import RecentEvents from "@/components/RecentEvents";
 
 export default function Home() {
   const jsonLd = {
@@ -45,7 +46,7 @@ export default function Home() {
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
           "opens": "00:00",
           "closes": "23:59"
         },
@@ -82,6 +83,7 @@ export default function Home() {
       <MarqueeStrip />
       <WhyChooseUs />
       <StatsSection />
+      <RecentEvents />
       <HowItWorks />
       <BlogPreview />
       <BusinessLiveFeed />

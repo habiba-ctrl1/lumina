@@ -33,7 +33,7 @@ export default function BusinessLiveFeed() {
   }, []);
 
   return (
-    <section className="py-24 bg-charcoal-900 overflow-hidden relative">
+    <section className="py-24 bg-charcoal-950 overflow-hidden relative border-t border-white/5">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] -ml-32 -mb-32" />
@@ -73,7 +73,7 @@ export default function BusinessLiveFeed() {
             <div className="relative space-y-4">
               {loading ? (
                 [1, 2, 3].map((i) => (
-                  <div key={i} className="h-32 bg-white/[0.02] border border-white/5 rounded-2xl animate-pulse" />
+                  <div key={i} className="h-32 bg-charcoal-800/50 border border-white/5 rounded-2xl animate-pulse" />
                 ))
               ) : updates.length > 0 ? (
                 updates.map((update, i) => (
@@ -83,7 +83,7 @@ export default function BusinessLiveFeed() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.2, duration: 0.6 }}
-                    className="bg-white/[0.02] border border-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 group"
+                    className="bg-charcoal-900/40 border border-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-charcoal-800/60 hover:shadow-lg hover:border-gold-500/20 transition-all duration-500 group"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${
@@ -97,7 +97,7 @@ export default function BusinessLiveFeed() {
                         {new Date(update.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
                       </span>
                     </div>
-                    <p className="text-gray-300 font-light leading-relaxed group-hover:text-white transition-colors duration-500">
+                    <p className="text-gray-400 font-light leading-relaxed group-hover:text-white transition-colors duration-500">
                       {update.text}
                     </p>
                   </motion.div>

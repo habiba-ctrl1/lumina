@@ -24,19 +24,26 @@ export default function ContactSection() {
     }
   };
 
-  const ic = (field: string) => `w-full bg-charcoal-900/80 border rounded-sm px-5 py-4 text-white text-sm placeholder-gray-600 focus:outline-none transition-all duration-500 ${focusedField === field ? "border-gold-500 shadow-[0_0_15px_rgba(212,175,55,0.1)]" : "border-white/10 hover:border-white/20"}`;
+  const ic = (field: string) => `w-full bg-gray-50/50 border border-gray-100 p-5 text-xs text-[#041E42] placeholder-gray-400 focus:border-champagne-500 transition-all uppercase tracking-widest outline-none ${focusedField === field ? "bg-white shadow-lg" : "hover:bg-white"}`;
 
   return (
-    <section id="contact" className="py-28 bg-charcoal-800 relative border-t border-white/5 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none" />
+    <section id="contact" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block">Start Your Journey</motion.span>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-4">Book a <span className="text-shimmer font-semibold italic">Discovery Call</span></motion.h2>
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-gray-400 text-lg font-light mb-3">Tell us about your vision and we&apos;ll craft a bespoke proposal.</motion.p>
+          <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block">Start Your Journey</motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
+          >
+            Start Your <span className="text-shimmer italic font-medium">Legacy</span>
+          </motion.h2>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-gray-500 text-xl font-light mb-12">Tell us about your vision and we&apos;ll craft a bespoke proposal.</motion.p>
           {/* Response time badge */}
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="inline-flex items-center gap-2 text-gold-500/80 text-xs uppercase tracking-wider border border-gold-500/20 px-4 py-2">
-            <Clock size={12} />
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="inline-flex items-center gap-3 text-gray-400 text-[10px] uppercase tracking-widest border border-gray-100 px-8 py-4">
+            <Clock size={14} className="text-champagne-500" />
             Average response time: under 2 hours
           </motion.div>
         </div>
@@ -44,41 +51,47 @@ export default function ContactSection() {
         <motion.form initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} onSubmit={handleSubmit} className="space-y-6">
           {/* Row 1: Name + Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="c-name" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">Full Name *</label>
-              <input type="text" id="c-name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} onFocus={() => setFocusedField("name")} onBlur={() => setFocusedField(null)} className={ic("name")} placeholder="Your full name" />
-            </div>
-            <div>
-              <label htmlFor="c-email" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">Email Address *</label>
-              <input type="email" id="c-email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} onFocus={() => setFocusedField("email")} onBlur={() => setFocusedField(null)} className={ic("email")} placeholder="you@example.com" />
-            </div>
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="w-full bg-gray-50/50 border border-gray-100 p-5 text-xs text-[#041E42] placeholder-gray-400 focus:border-champagne-500 transition-all uppercase tracking-widest outline-none hover:bg-white focus:bg-white focus:shadow-lg"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="w-full bg-gray-50/50 border border-gray-100 p-5 text-xs text-[#041E42] placeholder-gray-400 focus:border-champagne-500 transition-all tracking-widest outline-none hover:bg-white focus:bg-white focus:shadow-lg"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
           </div>
 
           {/* Row 2: Phone + Event Type + Budget */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label htmlFor="c-phone" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">Phone</label>
-              <input type="tel" id="c-phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} onFocus={() => setFocusedField("phone")} onBlur={() => setFocusedField(null)} className={ic("phone")} placeholder="+92 3XX XXXXXXX" />
+              <input type="tel" id="c-phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} onFocus={() => setFocusedField("phone")} onBlur={() => setFocusedField(null)} className={ic("phone")} placeholder="Phone" />
             </div>
             <div>
-              <label htmlFor="c-type" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider"><Calendar size={12} className="inline mr-1" />Event Type</label>
               <select id="c-type" value={formData.eventType} onChange={(e) => setFormData({ ...formData, eventType: e.target.value })} onFocus={() => setFocusedField("type")} onBlur={() => setFocusedField(null)} className={`${ic("type")} appearance-none cursor-pointer`}>
-                <option value="" className="bg-charcoal-900">Select type...</option>
-                <option value="wedding" className="bg-charcoal-900">Wedding</option>
-                <option value="corporate" className="bg-charcoal-900">Corporate Gala</option>
-                <option value="private" className="bg-charcoal-900">Private Party</option>
-                <option value="destination" className="bg-charcoal-900">Destination Event</option>
-                <option value="other" className="bg-charcoal-900">Other</option>
+                <option value="" className="bg-white text-[#041E42]">Event Type</option>
+                <option value="wedding" className="bg-white text-[#041E42]">Wedding</option>
+                <option value="corporate" className="bg-white text-[#041E42]">Corporate Gala</option>
+                <option value="private" className="bg-white text-[#041E42]">Private Party</option>
+                <option value="destination" className="bg-white text-[#041E42]">Destination Event</option>
+                <option value="other" className="bg-white text-[#041E42]">Other</option>
               </select>
             </div>
             <div>
               <label htmlFor="c-budget" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider"><DollarSign size={12} className="inline mr-1" />Starting Investment</label>
               <select id="c-budget" value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} onFocus={() => setFocusedField("budget")} onBlur={() => setFocusedField(null)} className={`${ic("budget")} appearance-none cursor-pointer`}>
-                <option value="" className="bg-charcoal-900">Select range...</option>
-                <option value="10-25k" className="bg-charcoal-900">$10K – $25K</option>
-                <option value="25-50k" className="bg-charcoal-900">$25K – $50K</option>
-                <option value="50-100k" className="bg-charcoal-900">$50K – $100K</option>
-                <option value="100k+" className="bg-charcoal-900">$100K+</option>
+                <option value="" className="bg-white text-[#041E42]">Select range...</option>
+                <option value="10-25k" className="bg-white text-[#041E42]">SAR 10,000 – 25,000</option>
+                <option value="25-50k" className="bg-white text-[#041E42]">SAR 25,000 – 50,000</option>
+                <option value="50-100k" className="bg-white text-[#041E42]">SAR 50,000 – 100,000</option>
+                <option value="100k+" className="bg-white text-[#041E42]">SAR 100,000+</option>
               </select>
             </div>
           </div>
@@ -92,12 +105,12 @@ export default function ContactSection() {
             <div>
               <label htmlFor="c-guests" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider"><Users size={12} className="inline mr-1" />Guest Count</label>
               <select id="c-guests" value={formData.guestCount} onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })} onFocus={() => setFocusedField("guests")} onBlur={() => setFocusedField(null)} className={`${ic("guests")} appearance-none cursor-pointer`}>
-                <option value="" className="bg-charcoal-900">Estimated guests...</option>
-                <option value="<50" className="bg-charcoal-900">Under 50</option>
-                <option value="50-150" className="bg-charcoal-900">50 – 150</option>
-                <option value="150-300" className="bg-charcoal-900">150 – 300</option>
-                <option value="300-500" className="bg-charcoal-900">300 – 500</option>
-                <option value="500+" className="bg-charcoal-900">500+</option>
+                <option value="" className="bg-white text-[#041E42]">Estimated guests...</option>
+                <option value="<50" className="bg-white text-[#041E42]">Under 50</option>
+                <option value="50-150" className="bg-white text-[#041E42]">50 – 150</option>
+                <option value="150-300" className="bg-white text-[#041E42]">150 – 300</option>
+                <option value="300-500" className="bg-white text-[#041E42]">300 – 500</option>
+                <option value="500+" className="bg-white text-[#041E42]">500+</option>
               </select>
             </div>
             <div>
@@ -113,11 +126,11 @@ export default function ContactSection() {
           </div>
 
           {/* Submit */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <motion.button type="submit" disabled={status === "loading"} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto px-12 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-wider text-sm btn-glow flex items-center justify-center gap-3 disabled:opacity-50">
-              {status === "loading" ? (<><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-charcoal-900/30 border-t-charcoal-900 rounded-full" />Processing...</>) : (<><Send size={16} />Book Discovery Call</>)}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 pt-10">
+            <motion.button type="submit" disabled={status === "loading"} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto px-16 py-5 bg-[#041E42] text-white font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-[#062a5c] transition-all duration-700 flex items-center justify-center gap-4 shadow-xl">
+              {status === "loading" ? (<><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />Processing...</>) : (<><Send size={16} className="text-champagne-500" />Submit Inquiry</>)}
             </motion.button>
-            <p className="text-gray-600 text-xs">By submitting, you agree to our <a href="/privacy" className="text-gold-500/60 hover:text-gold-500 transition-colors">Privacy Policy</a></p>
+            <p className="text-gray-400 text-[10px] uppercase tracking-widest">By submitting, you agree to our <a href="/privacy" className="text-[#041E42] hover:text-champagne-500 transition-colors underline underline-offset-4">Privacy Policy</a></p>
           </div>
 
           <AnimatePresence>

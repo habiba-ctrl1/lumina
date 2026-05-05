@@ -14,15 +14,14 @@ const galleryItems = [
   { id: 2, src: "/gallery_corporate_gala.png", title: "Executive Summit Jeddah", category: "Corporate" },
   { id: 3, src: "/gallery_destination_wedding.png", title: "Elite Majlis Gathering", category: "Private" },
   { id: 4, src: "/gallery_vip_party.png", title: "Dubai Luxury Soiree", category: "Private" },
-  { id: 5, src: "/gallery_charity_gala.png", title: "Lahore Cultural Festival", category: "Culture" },
+  { id: 5, src: "/gallery_charity_gala.png", title: "Dubai Sands Festival", category: "Culture" },
   { id: 6, src: "/gallery_garden_party.png", title: "Desert Resort Oasis", category: "Private" },
 ];
 
 export default function RecentEvents() {
   return (
-    <section id="gallery" className="py-28 bg-charcoal-900 relative border-t border-white/5 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none" />
+    <section id="gallery" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -31,26 +30,26 @@ export default function RecentEvents() {
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true }} 
-            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+            className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
           >
             Portfolio
           </motion.span>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }} 
+            initial={{ opacity: 0, y: 10 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6"
+            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
           >
-            3D Event <span className="text-shimmer font-semibold italic">Showcase</span>
+            Recent <span className="text-shimmer italic font-medium">Masterpieces</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true }} 
             transition={{ delay: 0.2 }} 
-            className="text-gray-400 max-w-2xl mx-auto text-lg font-light"
+            className="text-gray-500 max-w-2xl mx-auto text-xl font-light mb-16 leading-relaxed"
           >
-            Swipe through our most spectacular luxury events in this immersive 3D gallery.
+            Explore our most spectacular luxury events in this immersive curated gallery.
           </motion.p>
         </div>
 
@@ -85,7 +84,7 @@ export default function RecentEvents() {
           >
             {galleryItems.map((item) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
-                <div className="relative w-[240px] md:w-[350px] lg:w-[400px] h-[300px] md:h-[400px] lg:h-[450px] rounded-2xl overflow-hidden group border border-white/10 shadow-2xl shadow-charcoal-950/50">
+                <div className="relative w-[240px] md:w-[350px] lg:w-[400px] h-[300px] md:h-[400px] lg:h-[450px] rounded-sm overflow-hidden group border border-black/5 shadow-2xl shadow-black/5">
                   <Image 
                     src={item.src} 
                     alt={item.title} 
@@ -94,16 +93,12 @@ export default function RecentEvents() {
                     sizes="(max-width: 768px) 300px, 500px"
                   />
                   {/* Luxury Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-charcoal-900/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
                   
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <span className="text-gold-500 text-xs uppercase tracking-[0.3em] font-medium block mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                      {item.category}
-                    </span>
-                    <h3 className="text-white text-2xl md:text-3xl font-display font-medium">
-                      {item.title}
-                    </h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-12 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 bg-white">
+                    <h3 className="text-xl font-display font-medium text-[#041E42] mb-2">{item.title}</h3>
+                    <p className="text-[11px] text-champagne-500 uppercase tracking-[0.2em]">{item.category}</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -127,7 +122,7 @@ export default function RecentEvents() {
         }
         .swiper-3d .swiper-slide-shadow-left,
         .swiper-3d .swiper-slide-shadow-right {
-          background-image: linear-gradient(to left, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0));
+          background-image: linear-gradient(to left, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
         }
       `}} />
     </section>

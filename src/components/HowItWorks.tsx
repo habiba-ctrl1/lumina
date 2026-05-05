@@ -22,16 +22,16 @@ const steps = [
   {
     icon: <Sparkles size={32} />,
     title: "Timeless Memories",
-    desc: "We deliver an unforgettable celebration that exceeds your expectations and captivates your guests.",
+    desc: "We deliver an unforgettable celebration that exceeds expectations, turning your vision into a cherished legacy.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="py-28 bg-charcoal-950 relative overflow-hidden">
+    <section id="process" className="section-padding bg-[#F8F9FA] relative overflow-hidden">
       {/* 3D Background Elements */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-champagne-500/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-champagne-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
@@ -39,24 +39,24 @@ export default function HowItWorks() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+            className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
           >
-            The Process
+            The Journey
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6"
+            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
           >
-            How We <span className="text-shimmer font-semibold italic">Work</span>
+            How We <span className="text-shimmer italic font-medium">Work</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg font-light"
+            className="text-gray-500 max-w-3xl mx-auto text-xl font-light leading-relaxed"
           >
             A seamless journey from your first idea to the final applause.
           </motion.p>
@@ -64,34 +64,30 @@ export default function HowItWorks() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-24 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-gold-500/20 to-transparent" />
+          <div className="hidden lg:block absolute top-24 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-champagne-500/20 to-transparent" />
 
           {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              className="relative group perspective-[1000px]"
-            >
-              <div className="glass-strong rounded-2xl p-8 h-full border-t border-white/10 hover:border-gold-500/40 transition-all duration-500 transform-gpu group-hover:-translate-y-4 group-hover:rotate-x-6 group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.05)]">
-                {/* Step Number Background */}
-                <div className="absolute -top-4 -right-2 text-9xl font-display font-bold text-white/[0.02] select-none pointer-events-none group-hover:text-gold-500/[0.05] transition-colors duration-500">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: index * 0.1 }}
+                className="relative group p-12 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 rounded-sm"
+              >
+                <div className="absolute top-6 right-8 text-7xl font-display font-bold text-[#041E42]/5 group-hover:text-champagne-500/10 transition-colors">
                   {index + 1}
                 </div>
-                
-                <div className="w-16 h-16 rounded-full bg-charcoal-900 border border-gold-500/30 flex items-center justify-center text-gold-500 mb-6 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-charcoal-900 transition-all duration-500 shadow-lg shadow-gold-500/10">
+                <div className="text-champagne-500 mb-10 group-hover:scale-110 transition-transform duration-500">
                   {step.icon}
                 </div>
-                <h3 className="text-xl font-display font-medium text-white mb-4 group-hover:text-gold-400 transition-colors">
+                <h3 className="text-[#041E42] font-display text-2xl mb-6">
                   {step.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-500 text-lg font-light leading-relaxed">
                   {step.desc}
                 </p>
-              </div>
-            </motion.div>
+              </motion.div>
           ))}
         </div>
       </div>

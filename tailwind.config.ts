@@ -11,39 +11,49 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        charcoal: {
-          950: "#050a08",
-          900: "#0a1310",
-          800: "#0d1a15",
-          700: "#13261f",
-          600: "#183329",
+        navy: {
+          950: "#020f21",
+          900: "#03152e",
+          800: "#041E42",
+          700: "#062a5c",
+          600: "#083675",
         },
-        gold: {
-          300: "#d9c29b",
-          400: "#cca96b",
-          500: "#C5A059",
-          600: "#9c7a3d",
-          700: "#82632b",
+        champagne: {
+          100: "#fdf8f0",
+          200: "#f9edd6",
+          300: "#f0d5a3",
+          400: "#e7bd70",
+          500: "#D4AF37",
+        },
+        plum: {
+          900: "#2D0A2E",
+          800: "#3D0E3D",
+          700: "#4A154B", // Deep Plum
+        },
+        sage: {
+          100: "#E8EBE8",
+          200: "#D1D9D1",
+          500: "#8FA28F", // Sage Green
         },
         gray: {
-          300: "#e5e7eb",
-          400: "#d1d5db",
-          500: "#9ca3af",
-          600: "#6b7280",
+          50: "#F8F9FA",
+          100: "#F1F3F5",
+          200: "#E9ECEF",
+          300: "#DEE2E6",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-playfair)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        display: ["var(--font-playfair)", "Playfair Display", "serif"],
       },
       backgroundImage: {
         "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))",
-        "gold-gradient": "linear-gradient(135deg, #C5A059, #d9c29b, #C5A059)",
+        "navy-gradient": "linear-gradient(135deg, #041E42, #062a5c, #041E42)",
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
         "shimmer": "shimmer 3s ease-in-out infinite",
-        "pulse-gold": "pulseGold 2s ease-in-out infinite",
+        "pulse-navy": "pulseNavy 2s ease-in-out infinite",
         "marquee": "marquee 30s linear infinite",
         "glow": "glow 2s ease-in-out infinite alternate",
       },
@@ -56,17 +66,17 @@ const config: Config = {
           "0%": { backgroundPosition: "-200% center" },
           "100%": { backgroundPosition: "200% center" },
         },
-        pulseGold: {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(197,160,89,0.4)" },
-          "50%": { boxShadow: "0 0 0 15px rgba(197,160,89,0)" },
+        pulseNavy: {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(4, 30, 66, 0.4)" },
+          "50%": { boxShadow: "0 0 0 15px rgba(4, 30, 66, 0)" },
         },
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(197,160,89,0.1)" },
-          "100%": { boxShadow: "0 0 40px rgba(197,160,89,0.3)" },
+          "0%": { boxShadow: "0 0 20px rgba(4, 30, 66, 0.05)" },
+          "100%": { boxShadow: "0 0 40px rgba(4, 30, 66, 0.1)" },
         },
       },
     },

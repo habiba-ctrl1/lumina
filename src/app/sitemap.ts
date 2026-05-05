@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/vendors',
     '/testimonials',
     '/blog',
+    '/tracking',
     '/privacy',
     '/terms'
   ];

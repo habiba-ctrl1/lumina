@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -79,83 +80,68 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-charcoal-900/55 z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-charcoal-900/30 z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/40 via-transparent to-charcoal-900/40 z-[1]" />
-
-      {/* Gold Particles */}
-      <GoldParticles />
-
-      {/* Image Slide Indicators */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3">
-        {heroImages.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentImage(i)}
-            className={`w-[3px] rounded-full transition-all duration-500 ${
-              i === currentImage ? "h-10 bg-gold-500" : "h-4 bg-white/30 hover:bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 z-[1]" style={{ backgroundColor: 'rgba(0, 15, 50, 0.65)' }} />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#041E42] via-transparent to-[#041E42]/40 z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#041E42]/30 via-transparent to-[#041E42]/30 z-[1]" />
 
       {/* Content */}
-      <motion.div style={{ y, opacity }} className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Tagline */}
+      <motion.div style={{ y, opacity }} className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-24 md:pt-36">
+        {/* Top Tagline with Lines */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.4 }}
-          className="mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="flex items-center justify-center gap-4 mb-6"
         >
-          <span className="inline-flex items-center gap-3 text-gold-500 text-xs uppercase tracking-[0.4em] font-medium">
-            <span className="w-12 h-px bg-gold-500/50" />
+          <div className="w-8 md:w-16 h-px bg-champagne-500/40" />
+          <span className="text-champagne-300 text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-medium whitespace-nowrap">
             Luxury Event Management
-            <span className="w-12 h-px bg-gold-500/50" />
           </span>
+          <div className="w-8 md:w-16 h-px bg-champagne-500/40" />
         </motion.div>
 
-        {/* Main Title with Character Reveal */}
+        {/* Main Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2.6, ease: [0.19, 1, 0.22, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-light text-white tracking-tight mb-6 leading-[1.1]"
+          transition={{ duration: 1, delay: 0.7 }}
+          className="font-display text-white tracking-tight uppercase mb-6 leading-[1.1]"
+          style={{ fontSize: "clamp(2rem, 5vw, 3.8rem)" }}
         >
-          Masterpieces of{" "}
-          <span className="text-shimmer font-semibold italic">Luxury</span>
+          Masterpieces of <span className="text-champagne-500 italic font-medium">Luxury</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.9 }}
-          className="text-lg md:text-xl text-gray-300/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          className="text-sm md:text-base text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light tracking-wide"
         >
-          Curating exquisite weddings, corporate galas, and private celebrations. 
-          We bring world-class elegance to Riyadh, Jeddah, Lahore, and beyond.
+          Curating exquisite weddings, corporate galas, and private celebrations.
+          <br className="hidden md:block" />
+          We bring world-class elegance to <span className="text-champagne-500">Riyadh</span>, <span className="text-champagne-500">Jeddah</span>, <span className="text-champagne-500">Dubai</span>, and beyond.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 3.1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5"
+          transition={{ duration: 1, delay: 1.1 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <a
-            href="#services"
-            className="group relative px-10 py-4 bg-gold-500 text-charcoal-900 font-semibold uppercase tracking-wider text-sm btn-glow w-full sm:w-auto text-center overflow-hidden"
+          <Link
+            href="/services"
+            className="w-full sm:w-auto px-10 py-4 bg-champagne-500 text-[#041E42] text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 shadow-2xl"
           >
-            <span className="relative z-10">Explore Services</span>
-          </a>
-          <a
-            href="#contact"
-            className="group px-10 py-4 border border-white/20 hover:border-gold-500/60 text-white font-semibold uppercase tracking-wider text-sm transition-all duration-500 w-full sm:w-auto text-center hover:bg-white/5 backdrop-blur-sm"
+            Explore Services
+          </Link>
+          <Link
+            href="/#contact"
+            className="w-full sm:w-auto px-10 py-4 border border-white/20 text-white text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-all duration-500"
           >
             Book Consultation
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
 
@@ -164,14 +150,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
       >
-        <span className="text-gray-400 text-[10px] uppercase tracking-[0.3em] mb-3">Discover</span>
+        <span className="text-gray-400 text-[9px] uppercase tracking-[0.4em] mb-2">Discover</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ChevronDown size={20} className="text-gold-500/60" />
+          <ChevronDown size={16} className="text-champagne-500/60" />
         </motion.div>
       </motion.div>
     </div>

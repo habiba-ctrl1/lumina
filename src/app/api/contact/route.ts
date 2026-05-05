@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API || 'missing-key');
     const body = await request.json();
-    const { name, email, phone, eventType, budget, message } = body;
+    const { name, email, phone, eventType, budget, eventDate, guestCount, venueCity, message } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -16,11 +16,37 @@ export async function POST(request: Request) {
     }
 
     // 1. Save to Supabase
+    // Prepare data, converting empty strings to null for optional fields
+    const insertData = {
+      name,
+      email,
+      phone: phone || null,
+      event_type: eventType || null,
+      budget: budget || null,
+      event_date: eventDate || null,
+      guest_count: guestCount || null,
+      venue_city: venueCity || null,
+      message
+    };
+
     const { error: supabaseError } = await supabase
       .from('contact_messages')
-      .insert([{ name, email, phone, event_type: eventType, budget, message }]);
+      .insert([insertData]);
 
-    if (supabaseError) throw supabaseError;
+    if (supabaseError) {
+      console.error('Supabase Insert Error:', supabaseError);
+      
+      // Fallback: Try inserting only core fields if the above failed 
+      // (likely due to missing columns in the database)
+      const { error: fallbackError } = await supabase
+        .from('contact_messages')
+        .insert([{ name, email, message }]);
+        
+      if (fallbackError) {
+        console.error('Supabase Fallback Error:', fallbackError);
+        throw new Error(`Database error: ${supabaseError.message}`);
+      }
+    }
 
     // 2. Send Emails via Resend
     try {

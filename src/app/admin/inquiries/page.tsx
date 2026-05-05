@@ -9,6 +9,12 @@ type Inquiry = {
   id: string;
   name: string;
   email: string;
+  phone?: string;
+  event_type?: string;
+  budget?: string;
+  event_date?: string;
+  guest_count?: string;
+  venue_city?: string;
   message: string;
   created_at: string;
 };
@@ -96,36 +102,64 @@ export default function AdminInquiries() {
               key={inquiry.id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-charcoal-800 border border-white/5 p-6 rounded-2xl group hover:border-gold-500/30 transition-all duration-300"
+              className="bg-charcoal-800 border border-white/5 p-6 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2 bg-gold-500/10 rounded-lg text-gold-500">
-                  <User size={20} />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-gold-500/10 rounded-lg text-gold-500">
+                    <User size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white leading-tight">{inquiry.name}</h3>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-widest mt-0.5">
+                      {inquiry.event_type || "Event Inquiry"}
+                    </p>
+                  </div>
                 </div>
                 <button
                   onClick={() => deleteInquiry(inquiry.id)}
-                  className="text-gray-600 hover:text-red-500 transition-colors p-1"
+                  className="text-gray-700 hover:text-red-500 transition-colors p-1"
                 >
                   <Trash2 size={18} />
                 </button>
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-1">{inquiry.name}</h3>
-              <p className="text-gold-500 text-sm mb-4 flex items-center gap-1">
-                <Mail size={14} /> {inquiry.email}
-              </p>
-
-              <div className="bg-charcoal-900/50 p-4 rounded-xl border border-white/5 mb-4 h-32 overflow-y-auto">
-                <p className="text-gray-400 text-sm leading-relaxed">{inquiry.message}</p>
+              <div className="space-y-2 mb-4">
+                <p className="text-gold-500 text-sm flex items-center gap-2">
+                  <Mail size={14} className="shrink-0" /> {inquiry.email}
+                </p>
+                {inquiry.phone && (
+                  <p className="text-gray-400 text-sm flex items-center gap-2">
+                    <RefreshCw size={14} className="shrink-0 rotate-90" /> {inquiry.phone}
+                  </p>
+                )}
               </div>
 
-              <div className="flex items-center text-xs text-gray-500 gap-1">
-                <Calendar size={14} />
-                {new Date(inquiry.created_at).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="bg-charcoal-900/40 p-2 rounded border border-white/5">
+                  <p className="text-[8px] text-gray-500 uppercase tracking-tighter">Budget</p>
+                  <p className="text-xs text-white font-medium">{inquiry.budget || "N/A"}</p>
+                </div>
+                <div className="bg-charcoal-900/40 p-2 rounded border border-white/5">
+                  <p className="text-[8px] text-gray-500 uppercase tracking-tighter">Location</p>
+                  <p className="text-xs text-white font-medium truncate">{inquiry.venue_city || "N/A"}</p>
+                </div>
+              </div>
+
+              <div className="bg-charcoal-900/50 p-4 rounded-xl border border-white/5 mb-4 flex-grow">
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">{inquiry.message}</p>
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-white/5">
+                <span className="flex items-center gap-1">
+                  <Calendar size={14} />
+                  {new Date(inquiry.created_at).toLocaleDateString()}
+                </span>
+                {inquiry.guest_count && (
+                  <span className="bg-white/5 px-2 py-0.5 rounded text-[10px]">
+                    {inquiry.guest_count} Guests
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}
