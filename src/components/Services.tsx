@@ -63,6 +63,17 @@ const services = [
     details: ["Ramadan Iftars", "National Day Galas", "Founding Day", "Eid Celebrations", "Cultural Heritage"],
     starting: "Starting from SAR 40,000",
   },
+  {
+    id: 6,
+    num: "06",
+    title: "Production & Venues",
+    href: "/services/production-venues",
+    description: "Full-service AV production, luxury catering, and exclusive venue sourcing across Riyadh and Jeddah.",
+    image: "/gallery_wedding_reception.png",
+    seoAlt: "Event services and luxury venue rental in Saudi Arabia",
+    details: ["AV Production", "Venue Sourcing", "Luxury Catering", "Stage Design", "Photography"],
+    starting: "Starting from SAR 15,000",
+  },
 ];
 
 /* 3D Tilt Card Component */
