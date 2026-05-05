@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Plane, Landmark, Sparkles, Building2, Globe } from "lucide-react";
+import { Sparkles, Building2, Globe } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Event Management Dubai | Palm Jumeirah & Burj Khalifa Events',

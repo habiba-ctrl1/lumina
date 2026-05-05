@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Head from "next/head";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Building2, Users, MapPin, Target, Briefcase, Calendar } from "lucide-react";

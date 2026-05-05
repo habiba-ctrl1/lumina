@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Anchor, Waves, Camera, Building, Calendar } from "lucide-react";
+import { Anchor, Waves, Camera, Building } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Event Management Jeddah | Corniche & Al-Balad Events',

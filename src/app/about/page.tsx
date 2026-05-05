@@ -54,7 +54,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-2xl shadow-xl max-w-xs">
-              <p className="text-gold-600 font-display text-xl mb-2 font-medium italic">"We don't just plan events; we orchestrate emotions."</p>
+              <p className="text-gold-600 font-display text-xl mb-2 font-medium italic">&quot;We don&apos;t just plan events; we orchestrate emotions.&quot;</p>
               <p className="text-gray-500 text-xs uppercase tracking-widest font-bold">— Habiba, Founder</p>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Our philosophy is rooted in the belief that every celebration is a unique narrative. 
-                Whether it's a royal wedding under the desert stars or a high-stakes corporate gala, 
+                Whether it&apos;s a royal wedding under the desert stars or a high-stakes corporate gala, 
                 we bring a level of meticulous detail and artistic flair that is unmatched in the industry.
               </p>
             </div>

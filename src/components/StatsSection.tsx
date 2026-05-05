@@ -50,6 +50,7 @@ export default function StatsSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <motion.div
+              key={index}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -57,7 +58,7 @@ export default function StatsSection() {
               className="relative z-10 group"
             >
               <div className="text-6xl md:text-8xl font-display text-[#041E42] mb-3 tracking-tighter">
-                {stat.value}
+                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-[12px] uppercase tracking-[0.5em] text-champagne-500 font-bold opacity-80">
                 {stat.label}

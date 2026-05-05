@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Trophy, Building2, Calendar } from "lucide-react";
+import { MapPin, Star, Trophy, Building2 } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Event Management Riyadh | Kingdom Centre & Diriyah Events',
