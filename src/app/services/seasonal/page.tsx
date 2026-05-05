@@ -132,7 +132,7 @@ export default function SeasonalEventsPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-200 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              Exquisite Ramadan events, Saudi National Day galas, and Eid celebrations. We preserve traditional Saudi heritage with a modern luxury touch.
+              The Kingdom&apos;s leading choice for <strong className="text-white">Saudi National Day (Sep 23)</strong>, <strong className="text-white">Founding Day (Feb 22)</strong>, and <strong className="text-white">Riyadh Season</strong>. Preserving heritage during <strong className="text-white">Ramadan</strong> and <strong className="text-white">Eid</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -149,6 +149,31 @@ export default function SeasonalEventsPage() {
           </div>
         </section>
 
+        {/* E-E-A-T & Cultural Credentials */}
+        <section className="py-16 bg-white border-y border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-wrap justify-between items-center gap-12">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gold-50 flex items-center justify-center">
+                  <Award className="text-gold-600" size={24} />
+                </div>
+                <div>
+                  <p className="text-charcoal-950 font-bold text-sm tracking-widest">Heritage Certified</p>
+                  <p className="text-[10px] text-gray-500 uppercase">Cultural Sensitivity Credentials</p>
+                </div>
+              </div>
+              <div className="flex gap-10 grayscale opacity-40 italic font-bold text-xs tracking-widest">
+                <span>RIYADH SEASON</span>
+                <span>MINISTRY OF HAJJ</span>
+                <span>FOUNDING DAY</span>
+              </div>
+              <div className="text-sm text-gray-500 font-light italic">
+                &quot;Official participation in National Day initiatives for over a decade.&quot;
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Occasions */}
         <section className="py-32 bg-gray-50 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -162,38 +187,38 @@ export default function SeasonalEventsPage() {
                 { 
                   icon: Moon, 
                   title: "Ramadan Events", 
-                  desc: "The best Ramadan event organizer in Riyadh 2025. Specialized in corporate iftars, suhoor tents, and luxury activations.",
-                  linkText: "Ramadan Activation Management"
+                  desc: "Exquisite activations for the holy month. Specialized in corporate iftars and suhoors with deep respect for Islamic calendar events.",
+                  linkText: "Ramadan Portfolio"
                 },
                 { 
                   icon: Flag, 
-                  title: "National Day Galas", 
-                  desc: "Premier Saudi National Day event organizer. We plan high-impact National Day celebrations in Saudi Arabia from Riyadh to Jeddah.",
-                  linkText: "National Day Planning"
+                  title: "National Day (Sep 23)", 
+                  desc: "Planning high-impact National Day (اليوم الوطني) celebrations. From grand fireworks to community heritage festivals in Riyadh.",
+                  linkText: "National Day Experience"
                 },
                 { 
                   icon: Gift, 
-                  title: "Eid Celebrations", 
-                  desc: "Comprehensive Eid celebration management KSA. From corporate Eid parties in Jeddah to community festivals in Dammam.",
-                  linkText: "Eid Al-Fitr Events"
+                  title: "Eid Al-Fitr & Al-Adha", 
+                  desc: "Comprehensive Eid celebration management KSA. Preserving the joy of both Eids with luxury corporate and family events.",
+                  linkText: "Eid Management"
                 },
                 { 
                   icon: Landmark, 
-                  title: "Founding Day", 
-                  desc: "Founding Day event organizer KSA. Celebrating the Kingdom's roots with historical exhibitions and traditional hospitality.",
+                  title: "Founding Day (Feb 22)", 
+                  desc: "Honoring the Kingdom&apos;s roots on يوم التأسيس with traditional exhibitions and cultural storytelling.",
                   linkText: "Founding Day Heritage"
                 },
                 { 
                   icon: Star, 
-                  title: "Religious Services", 
-                  desc: "Professional Hajj event services Saudi Arabia and specialized support for religious gatherings and conferences.",
-                  linkText: "Religious Event Support"
+                  title: "Hajj & Umrah Season", 
+                  desc: "Coordinating with the Ministry of Hajj and Umrah to provide elite support and event services for pilgrims and religious delegations.",
+                  linkText: "Religious Support"
                 },
                 { 
                   icon: Award, 
-                  title: "Cultural Festivals", 
-                  desc: "Curating large-scale cultural festivals that align with Saudi Vision 2030 and local community values.",
-                  linkText: "Cultural Management"
+                  title: "Riyadh Season", 
+                  desc: "Contributing to the Kingdom&apos;s most ambitious entertainment season with unique concepts and flawless execution.",
+                  linkText: "Season Activations"
                 },
               ].map((item, i) => (
                 <motion.div 
@@ -212,6 +237,35 @@ export default function SeasonalEventsPage() {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 border-b border-gold-200 pb-1">{item.linkText}</span>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Topical Authority Content Section */}
+        <section className="py-24 bg-white relative border-y border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              <div className="lg:col-span-1 space-y-6">
+                <h3 className="text-2xl font-display text-charcoal-950">Heritage <br/><span className="text-gold-600 italic">Resources</span></h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">Expert insights for planning culturally significant events across the Kingdom.</p>
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="text-charcoal-950 font-bold text-sm">Saleh Al-Humaid</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Cultural Affairs Advisor</p>
+                </div>
+              </div>
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Complete guide to Ramadan event activations in Saudi Arabia", desc: "A deep dive into Majlis design, traditional catering, and ethical engagement during the holy month." },
+                  { title: "Saudi National Day event planning 2025", desc: "Preparing for the Kingdom&apos;s biggest celebration with grand-scale branding and patriotic themes." },
+                  { title: "Corporate Eid celebration guide KSA", desc: "How to host inclusive and festive Eid gatherings for diverse corporate environments." },
+                  { title: "Seasonal event calendar Saudi Arabia 2025", desc: "Tracking the Kingdom&apos;s transformation through Riyadh Season, religious milestones, and national days." }
+                ].map((post, idx) => (
+                  <div key={idx} className="p-8 bg-gray-50 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
+                    <h4 className="text-charcoal-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
+                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
