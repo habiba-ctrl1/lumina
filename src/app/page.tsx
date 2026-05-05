@@ -71,7 +71,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-charcoal-900 overflow-hidden">
+    <main className="min-h-screen bg-charcoal-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

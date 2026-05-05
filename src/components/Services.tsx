@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
@@ -12,6 +13,7 @@ const services = [
     id: 1,
     num: "01",
     title: "Royal Weddings",
+    href: "/services/weddings",
     description: "Opulent wedding planning specializing in grand ballroom settings and traditional royal ceremonies across the Middle East.",
     image: "/wedding.png",
     seoAlt: "Luxury royal wedding planning in Saudi Arabia and Pakistan",
@@ -22,6 +24,7 @@ const services = [
     id: 2,
     num: "02",
     title: "Majlis & Corporate",
+    href: "/services/corporate-events",
     description: "Sophisticated Majlis arrangements and high-profile corporate summits designed for executive networking and brand prestige.",
     image: "/corporate.png",
     seoAlt: "High-end Majlis and corporate event management in KSA",
@@ -32,6 +35,7 @@ const services = [
     id: 3,
     num: "03",
     title: "Elite Birthdays",
+    href: "/#contact",
     description: "Bespoke milestone celebrations and private gatherings in exclusive villas or desert resorts, tailored to perfection.",
     image: "/private_party.png",
     seoAlt: "Elite private party and milestone birthday planning in Saudi Arabia",
@@ -118,15 +122,13 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             ))}
           </div>
 
-          <a 
-            href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Lumina! I'm interested in your ${service.title} service. Please share more details.`)}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link 
+            href={service.href}
             className="flex items-center gap-3 text-[#041E42] text-[11px] font-bold uppercase tracking-[0.2em] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
           >
-            <span>Learn More</span>
+            <span>Explore Service</span>
             <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </a>
+          </Link>
         </div>
       </motion.div>
     </motion.div>
