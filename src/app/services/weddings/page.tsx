@@ -217,16 +217,16 @@ export default function WeddingsPage() {
                   Crafting the Best <br/><span className="text-gold-600 italic">Wedding Experience</span> in Riyadh
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  As the premier <strong className="text-charcoal-950">wedding planner in Saudi Arabia</strong>, Lumina specializes in transforming your vision into an editorial masterpiece. Whether you are planning a traditional Saudi wedding or a contemporary luxury celebration, our team ensures every detail reflects your unique story.
+                  As the premier <strong className="text-charcoal-950">wedding planner in Saudi Arabia</strong> for over 15 years, Lumina specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <strong className="text-charcoal-950">Ritz-Carlton Riyadh</strong>, <strong className="text-charcoal-950">Four Seasons</strong>, and the iconic <strong className="text-charcoal-950">Al-Khayala</strong> venues.
                 </p>
                 <div className="grid grid-cols-2 gap-8 pt-8">
                   <div>
                     <h4 className="text-gold-600 font-bold mb-2">مخططة أفراح السعودية</h4>
-                    <p className="text-sm text-gray-500 font-light">Expertise in local traditions and high-end cultural nuances.</p>
+                    <p className="text-sm text-gray-500 font-light">Unrivaled expertise in traditional Saudi wedding traditions and modern luxury.</p>
                   </div>
                   <div>
-                    <h4 className="text-gold-600 font-bold mb-2">Luxury Wedding Packages</h4>
-                    <p className="text-sm text-gray-500 font-light">Bespoke 2025 packages for Jeddah and Riyadh venues.</p>
+                    <h4 className="text-gold-600 font-bold mb-2">Venue Partnerships</h4>
+                    <p className="text-sm text-gray-500 font-light">Preferred planning partner for JW Marriott Riyadh and InterContinental Jeddah.</p>
                   </div>
                 </div>
               </div>
@@ -234,8 +234,28 @@ export default function WeddingsPage() {
           </div>
         </section>
 
+        {/* E-E-A-T & Portfolio Highlights */}
+        <section className="py-16 bg-gray-50 border-y border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-wrap justify-between items-center gap-12">
+              <div className="flex items-center gap-4">
+                <div className="text-3xl font-display text-gold-600 font-bold">15+</div>
+                <div className="text-[10px] uppercase tracking-widest text-gray-400">Years in <br/>Saudi Market</div>
+              </div>
+              <div className="flex gap-10 grayscale opacity-40">
+                <span className="text-xs font-bold tracking-widest">FOUR SEASONS</span>
+                <span className="text-xs font-bold tracking-widest">RITZ-CARLTON</span>
+                <span className="text-xs font-bold tracking-widest">JW MARRIOTT</span>
+              </div>
+              <div className="text-sm text-gray-500 font-light italic">
+                "Award-winning planning excellence for the Kingdom's elite."
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Grid */}
-        <section className="py-32 bg-gray-50 relative">
+        <section className="py-32 bg-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-20">
             <span className="text-gold-600 text-xs uppercase tracking-widest font-bold mb-4 block">Our Expertise</span>
             <h2 className="text-4xl md:text-6xl font-display text-charcoal-950">Social Event <span className="italic">Planning</span></h2>
@@ -261,6 +281,35 @@ export default function WeddingsPage() {
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Topical Authority Content Section */}
+        <section className="py-24 bg-white relative border-y border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              <div className="lg:col-span-1 space-y-6">
+                <h3 className="text-2xl font-display text-charcoal-950">Bridal <br/><span className="text-gold-600 italic">Resources</span></h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">Expert advice for navigating the luxury wedding landscape in the Kingdom.</p>
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="text-charcoal-950 font-bold text-sm">Fatima Al-Rashid</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Senior Wedding Consultant</p>
+                </div>
+              </div>
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Ultimate Saudi wedding planning guide 2025", desc: "Everything from timeline management to navigating the latest decor trends in Riyadh." },
+                  { title: "Traditional vs modern weddings in KSA", desc: "How to balance ancient cultural traditions with contemporary luxury aesthetics." },
+                  { title: "Saudi wedding venue comparison: Riyadh vs Jeddah", desc: "An in-depth look at the Kingdom's top ballrooms and outdoor social spaces." },
+                  { title: "Cultural guide: planning a wedding in Saudi Arabia", desc: "Essential protocol and etiquette for hosting the perfect Saudi celebration." }
+                ].map((post, idx) => (
+                  <div key={idx} className="p-8 bg-gray-50 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
+                    <h4 className="text-charcoal-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
+                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
