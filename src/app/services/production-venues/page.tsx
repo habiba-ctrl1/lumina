@@ -137,7 +137,7 @@ export default function ProductionVenuesPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-300 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              From the best AV production company in Riyadh to outdoor event venue rental, we provide end-to-end solutions for Saudi Arabia's most prestigious gatherings.
+              From the best AV production company in Riyadh to outdoor event venue rental, we provide end-to-end solutions for Saudi Arabia&apos;s most prestigious gatherings.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

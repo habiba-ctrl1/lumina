@@ -123,7 +123,7 @@ export default function CorporateEventsPage() {
               </div>
               <div className="h-8 w-px bg-white/10 hidden md:block" />
               <div className="text-sm text-gray-400 font-light italic">
-                "Trusted by HRDF and major Saudi Vision 2030 initiatives for over 12 years."
+                &quot;Trusted by HRDF and major Saudi Vision 2030 initiatives for over 12 years.&quot;
               </div>
             </div>
           </div>

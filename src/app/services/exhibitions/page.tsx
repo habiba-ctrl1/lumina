@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp } from "lucide-react";
+import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ExhibitionsPage() {
@@ -192,7 +192,7 @@ export default function ExhibitionsPage() {
                 <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
               </div>
               <div className="text-xs text-gold-500 font-bold italic tracking-widest uppercase">
-                "Award-Winning Exhibition Design 2024"
+                &quot;Award-Winning Exhibition Design 2024&quot;
               </div>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function ExhibitionsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
                 <h3 className="text-2xl font-display text-white">Exhibitor <br/><span className="text-gold-500 italic">Insights</span></h3>
-                <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom's most prestigious trade shows.</p>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
                 <Link href="/blog" className="inline-block text-gold-500 text-xs font-bold uppercase tracking-widest border-b border-gold-500 pb-1">View All Guides</Link>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -261,7 +261,6 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Localized Arabic Section */}
-abic Section */}
         <section className="py-32 bg-white text-charcoal-950 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">

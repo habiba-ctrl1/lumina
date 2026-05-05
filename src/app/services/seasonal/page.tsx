@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Star, Flag, Gift, Calendar, MapPin, Landmark, Award } from "lucide-react";
+import { Moon, Star, Flag, Gift, Landmark, Award } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SeasonalEventsPage() {

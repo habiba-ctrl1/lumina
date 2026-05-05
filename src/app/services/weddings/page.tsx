@@ -248,7 +248,7 @@ export default function WeddingsPage() {
                 <span className="text-xs font-bold tracking-widest">JW MARRIOTT</span>
               </div>
               <div className="text-sm text-gray-500 font-light italic">
-                "Award-winning planning excellence for the Kingdom's elite."
+                &quot;Award-winning planning excellence for the Kingdom&apos;s elite.&quot;
               </div>
             </div>
           </div>
