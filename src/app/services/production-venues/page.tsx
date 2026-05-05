@@ -88,6 +88,23 @@ export default function ProductionVenuesPage() {
             }
           }
         ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Event Services & Venues", "item": "https://luminaevents.com/services/production-venues" }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "name": "Lumina Event Services",
+        "description": "Leading technical production partner for KAICC and RECC summits in Saudi Arabia.",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "KAEC Strategic Service Network"
+        }
       }
     ]
   };

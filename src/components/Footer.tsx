@@ -80,6 +80,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Strategic Alignment */}
+        <div className="border-y border-gray-100 py-8 mb-12">
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 grayscale opacity-40">
+            {[
+              "Vision 2030", "GEA", "Ministry of Culture", "Saudi Tourism Authority", 
+              "NEOM", "Diriyah Gate", "Red Sea Development", "Riyadh Season", 
+              "RCEF", "KAICC", "RECC", "AlUla", "GIGA Projects", "Saudi Seasons"
+            ].map((entity) => (
+              <span key={entity} className="text-[10px] font-bold tracking-[0.2em] uppercase">{entity}</span>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <p className="text-[9px] text-gray-400 uppercase tracking-[0.4em] font-light">
+              Proudly supporting Saudi Arabia&apos;s <span className="text-champagne-600 font-bold">Vision 2030</span> through world-class events.
+            </p>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-[10px] mb-4 md:mb-0 uppercase tracking-widest">&copy; {new Date().getFullYear()} Lumina Event Management. All rights reserved.</p>

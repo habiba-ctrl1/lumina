@@ -60,8 +60,57 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://luminaevents.com/#organization",
+        "name": "Lumina Events",
+        "url": "https://luminaevents.com",
+        "logo": "https://luminaevents.com/logo.png",
+        "sameAs": [
+          "https://instagram.com/luminaevents",
+          "https://linkedin.com/company/luminaevents"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://luminaevents.com/#localbusiness",
+        "name": "Lumina Luxury Event Management Riyadh",
+        "image": "https://luminaevents.com/hero_bg.png",
+        "telephone": "+966501234567",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Olaya St",
+          "addressLocality": "Riyadh",
+          "addressRegion": "Riyadh Province",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "24.7136",
+          "longitude": "46.6753"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://luminaevents.com/#website",
+        "url": "https://luminaevents.com",
+        "name": "Lumina Events",
+        "publisher": { "@id": "https://luminaevents.com/#organization" }
+      }
+    ]
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <CustomCursor />
         {children}

@@ -107,6 +107,23 @@ export default function ExhibitionsPage() {
             "text": "Execute setup with our expert on-site logistics team."
           }
         ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Exhibitions & Trade Shows", "item": "https://luminaevents.com/services/exhibitions" }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "name": "Lumina Exhibition Management",
+        "description": "Partnering with the Royal Commission for Riyadh City (RCEF) and Saudi Expo 2030 initiatives.",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "RECC Official Partner Network"
+        }
       }
     ]
   };

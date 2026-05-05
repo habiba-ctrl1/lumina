@@ -134,6 +134,23 @@ export default function WeddingsPage() {
       },
       "ratingValue": "4.9",
       "reviewCount": "120"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
+        { "@type": "ListItem", "position": 3, "name": "Weddings & Social Events", "item": "https://luminaevents.com/services/weddings" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "Lumina Luxury Weddings",
+      "description": "Aligning with the Saudi Tourism Authority to showcase the Kingdom's finest wedding destinations.",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Ministry of Culture Creative Network"
+      }
     }
     ]
   };

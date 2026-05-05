@@ -32,7 +32,12 @@ const reasons = [
   {
     icon: <Globe size={28} />,
     title: "Global Reach",
-    desc: "From royal palaces in Riyadh to elite venues in Dubai — we execute flawlessly across the Middle East.",
+    desc: "From royal palaces in Riyadh to GIGA projects in NEOM — we execute flawlessly across AlUla and the Red Sea.",
+  },
+  {
+    icon: <Sparkles size={28} />,
+    title: "Vision 2030 Alignment",
+    desc: "Supporting the General Entertainment Authority (GEA) and Saudi Seasons through world-class cultural activations.",
   },
 ];
 

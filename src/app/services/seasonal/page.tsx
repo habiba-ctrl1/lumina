@@ -83,6 +83,23 @@ export default function SeasonalEventsPage() {
         },
         "datePublished": "2024-09-01",
         "description": "A comprehensive guide to organizing high-impact National Day galas and community festivals in Riyadh."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Seasonal & Religious Events", "item": "https://luminaevents.com/services/seasonal" }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "name": "Lumina Seasonal Events",
+        "description": "Specializing in Saudi National Day, Founding Day, and Riyadh Season cultural activations.",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "GEA Certified Event Organizers"
+        }
       }
     ]
   };

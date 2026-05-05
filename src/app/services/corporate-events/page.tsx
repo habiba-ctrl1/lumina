@@ -63,6 +63,23 @@ const jsonLd = {
           }
         }
       ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
+        { "@type": "ListItem", "position": 3, "name": "Corporate Events", "item": "https://luminaevents.com/services/corporate-events" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "Lumina Corporate Events",
+      "description": "Aligning with Saudi Vision 2030 and the General Entertainment Authority (GEA) for world-class summits.",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Ministry of Culture Partners"
+      }
     }
   ]
 };
