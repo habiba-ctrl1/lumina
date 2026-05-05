@@ -137,7 +137,7 @@ export default function ProductionVenuesPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-300 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              From the best AV production company in Riyadh to outdoor event venue rental, we provide end-to-end solutions for Saudi Arabia&apos;s most prestigious gatherings.
+              Exclusive access to <strong className="text-white">KAICC</strong>, <strong className="text-white">RECC</strong>, and the prestigious <strong className="text-white">King Abdullah Economic City (KAEC)</strong>. Partnered with <strong className="text-white">Rosewood Jeddah</strong> and <strong className="text-white">Four Seasons</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -154,19 +154,44 @@ export default function ProductionVenuesPage() {
           </div>
         </section>
 
+        {/* E-E-A-T & Vendor Partnerships */}
+        <section className="py-12 border-y border-white/5 bg-charcoal-900/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-wrap justify-between items-center gap-10">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
+                  <Star className="text-gold-500" size={24} />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm tracking-widest">ISO 9001 Certified</p>
+                  <p className="text-[10px] text-gray-500 uppercase">Quality Management Partners</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-8 grayscale opacity-50 text-[10px] font-bold tracking-[0.2em]">
+                <span>MADINAT AL FAISALIAH</span>
+                <span>JW MARRIOTT</span>
+                <span>RITZ-CARLTON</span>
+              </div>
+              <div className="text-xs text-gold-500 font-bold italic tracking-widest uppercase border-l border-white/10 pl-8">
+                &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Showcase */}
         <section className="py-32 bg-charcoal-900/50">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               {[
-                { icon: Speaker, title: "AV Production", desc: "The premier AV production company Riyadh. Concert-grade audio and cinematic LED visuals." },
-                { icon: Map, title: "Venue Sourcing", desc: "Exclusive access to the finest event venue Riyadh and outdoor event venue rental options." },
-                { icon: Zap, title: "Stage Design", desc: "Award-winning stage design company KSA. Immersive architectural environments for high-profile events." },
-                { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia. Curated menus featuring local and international fusion." },
-                { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah and Riyadh. Transforming spaces with floral and structural art." },
-                { icon: Camera, title: "Media Production", desc: "Professional event photography Saudi Arabia and cinematic videography for milestone moments." },
-                { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, creating mood and atmosphere through intelligent design." },
-                { icon: Star, title: "Elite Hospitality", desc: "VIP guest management and concierge services for a seamless luxury experience." },
+                { icon: Speaker, title: "AV Production", desc: "ISO-certified production for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
+                { icon: Map, title: "Venue Sourcing", desc: "Exclusive access to the finest event venue Riyadh and King Abdullah Economic City (KAEC) options." },
+                { icon: Zap, title: "Stage Design", desc: "Award-winning design at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
+                { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia. Partnered with Rosewood Jeddah for five-star dining experiences." },
+                { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah. Utilizing 2025 KSA decoration trends for stunning transformations." },
+                { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
+                { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
+                { icon: Star, title: "Elite Hospitality", desc: "VIP guest management and concierge services at Ritz-Carlton and Four Seasons venues." },
               ].map((service, i) => (
                 <motion.div 
                   key={i}
@@ -183,6 +208,35 @@ export default function ProductionVenuesPage() {
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Topical Authority Content Section */}
+        <section className="py-24 bg-charcoal-950 relative border-y border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              <div className="lg:col-span-1 space-y-6">
+                <h3 className="text-2xl font-display text-white">Production <br/><span className="text-gold-500 italic">Hub</span></h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
+                <div className="pt-6 border-t border-white/10">
+                  <p className="text-white font-bold text-sm">Fahad Al-Sulaiman</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Head of Production</p>
+                </div>
+              </div>
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Complete guide to event services in Saudi Arabia", desc: "From AV technical riders to catering licenses: navigating the KSA service landscape." },
+                  { title: "Top event venues in Riyadh 2025", desc: "An exclusive look at KAICC, Ritz-Carlton, and the future of venue spaces in KAFD." },
+                  { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
+                  { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
+                ].map((post, idx) => (
+                  <div key={idx} className="p-8 bg-charcoal-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
+                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
