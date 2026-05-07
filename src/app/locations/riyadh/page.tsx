@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Trophy, Building2 } from "lucide-react";
+import { MapPin, Star, Trophy, Building2, User, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Event Management Riyadh | Kingdom Centre & Diriyah Events',
@@ -20,7 +20,7 @@ export default function RiyadhPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/locations/riyadh-hero.jpg" 
+            src="/hero_bg.png" 
             alt="Luxury Event Management Riyadh - Kingdom Centre Skyline" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -80,7 +80,7 @@ export default function RiyadhPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/locations/riyadh-landmark.jpg" alt="Kingdom Centre Riyadh Event" fill className="object-cover" />
+            <Image src="/gallery_charity_gala.png" alt="Kingdom Centre Riyadh Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -125,6 +125,83 @@ export default function RiyadhPage() {
                  <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
                </div>
              ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Local Leadership Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2">
+              <span className="text-gold-500 text-xs uppercase tracking-widest font-bold mb-4 block">Riyadh Leadership</span>
+              <h2 className="text-3xl md:text-5xl font-display text-white mb-8">The Minds Behind <span className="italic text-shimmer">The Magic</span></h2>
+              <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
+                Our Riyadh team consists of local experts who understand the cultural nuances and logistical demands of the Saudi capital. Led by industry veterans, we ensure every event is a masterpiece.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {[
+                  { name: "Fahad Al-Saud", role: "Riyadh Managing Director", desc: "15+ years in KSA luxury events." },
+                  { name: "Layla Mansour", role: "Head of Design", desc: "Specializing in Najdi-modern fusion." }
+                ].map((member, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gold-500 shrink-0">
+                      <User size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-1">{member.name}</h4>
+                      <p className="text-gold-500 text-[10px] uppercase tracking-wider mb-2">{member.role}</p>
+                      <p className="text-gray-500 text-xs font-light">{member.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
+                  <Image src="/gallery_wedding_reception.png" alt="Team at work" fill className="object-cover" />
+                </div>
+                <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
+                  <Image src="/gallery_corporate_gala.png" alt="Event planning" fill className="object-cover" />
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
+                  <Image src="/gallery_destination_wedding.png" alt="Venue sourcing" fill className="object-cover" />
+                </div>
+                <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
+                  <Image src="/wedding.png" alt="Riyadh office" fill className="object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Venue Partnerships */}
+      <section className="py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Strategic Venue <span className="hero-subtitle-shimmer italic">Partnerships</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-light">Exclusive access to Riyadh&apos;s most coveted and prestigious locations.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              "The Ritz-Carlton, Riyadh",
+              "Four Seasons Hotel Riyadh",
+              "Al Faisaliyah Hotel",
+              "Diriyah Gate Development Authority",
+              "Kingdom Centre Ballrooms",
+              "Tuwaiq Palace",
+              "Fairmont Riyadh",
+              "KAFD Conference Center"
+            ].map((venue, i) => (
+              <div key={i} className="flex items-center gap-4 p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
+                <CheckCircle2 size={18} className="text-gold-500 shrink-0" />
+                <span className="text-white text-sm font-light">{venue}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

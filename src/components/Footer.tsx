@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Instagram = ({ size = 20, className = "" }: { size?: number; className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>);
@@ -24,8 +25,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="text-2xl font-display font-bold text-[#041E42] tracking-widest uppercase block mb-4">
-              Lumina<span className="text-champagne-500">.</span>
+            <Link href="/" className="block mb-6">
+              <Image 
+                src="/lumina-logo-transparent.png" 
+                alt="Lumina Events Logo" 
+                width={180} 
+                height={70}
+                className="object-contain h-16 w-auto"
+              />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed mb-6 font-light max-w-sm">Crafting extraordinary experiences and timeless memories through unparalleled luxury event management across the Middle East.</p>
             <div className="flex space-x-3">
@@ -61,8 +68,9 @@ export default function Footer() {
               {[
                 { name: "Portfolio", href: "/portfolio" },
                 { name: "Journal", href: "/blog" },
+                { name: "Locations", href: "/locations" },
                 { name: "FAQ", href: "/faq" },
-                { name: "Contact", href: "/#contact" }
+                { name: "Book Session", href: "/consultation" }
               ].map((item) => (
                 <li key={item.name}><Link href={item.href} className="text-gray-500 hover:text-champagne-500 transition-colors text-sm font-light flex items-center gap-2 group"><span className="w-0 h-px bg-champagne-500 group-hover:w-3 transition-all duration-300" />{item.name}</Link></li>
               ))}
@@ -84,9 +92,20 @@ export default function Footer() {
         <div className="border-y border-gray-100 py-8 mb-12">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 grayscale opacity-40">
             {[
-              "Vision 2030", "GEA", "Ministry of Culture", "Saudi Tourism Authority", 
-              "NEOM", "Diriyah Gate", "Red Sea Development", "Riyadh Season", 
-              "RCEF", "KAICC", "RECC", "AlUla", "GIGA Projects", "Saudi Seasons"
+              "General Entertainment Authority — هيئة الترفيه", 
+              "Ministry of Culture — وزارة الثقافة", 
+              "Saudi Tourism Authority — هيئة السياحة", 
+              "Vision 2030 — رؤية 2030", 
+              "NEOM", 
+              "Diriyah Gate Development Authority", 
+              "Red Sea Development Company", 
+              "Riyadh Season — موسم الرياض", 
+              "RCEF — الهيئة الملكية للمعارض", 
+              "King Abdulaziz International Conference Center", 
+              "Riyadh Exhibition & Convention Center (RECC)", 
+              "AlUla", 
+              "GIGA projects", 
+              "Saudi Seasons"
             ].map((entity) => (
               <span key={entity} className="text-[10px] font-bold tracking-[0.2em] uppercase">{entity}</span>
             ))}

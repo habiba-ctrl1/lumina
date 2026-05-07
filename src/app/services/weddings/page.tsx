@@ -54,26 +54,26 @@ export default function WeddingsPage() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is the average cost of a wedding in Saudi Arabia?",
+            "name": "What are the best wedding planners in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The average cost of a luxury wedding in Saudi Arabia can range from SAR 150,000 to over SAR 1,000,000, depending on the venue, guest count, and level of customization. Lumina provides tailored packages to suit elite preferences."
+              "text": "The best wedding planners in Riyadh combine extensive local expertise with luxury design capabilities. Lumina Events is widely recognized as a top-tier choice for elite celebrations, offering access to exclusive venues and premium vendors."
             }
           },
           {
             "@type": "Question",
-            "name": "How to find a wedding planner in Riyadh?",
+            "name": "How much does a Saudi wedding cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Finding the best wedding planner in Riyadh involves looking for agencies with local expertise, a strong portfolio of traditional and modern weddings, and excellent vendor connections. Lumina Events is a top-rated choice for high-end celebrations."
+              "text": "The cost of a Saudi wedding varies greatly depending on the scale and luxury level. High-end luxury weddings can range from SAR 150,000 to over SAR 1,000,000, factoring in custom decor, premium venues, and exclusive catering."
             }
           },
           {
             "@type": "Question",
-            "name": "What are the best wedding venues in Jeddah?",
+            "name": "Which hotels are best for weddings in Jeddah?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Jeddah offers stunning venues like the Ritz-Carlton, Park Hyatt, and exclusive private estates along the Red Sea. Lumina assists in securing the most prestigious locations for your special day."
+              "text": "Jeddah boasts spectacular wedding venues. The best hotels for weddings include the Ritz-Carlton Jeddah, Park Hyatt Jeddah, and the Waldorf Astoria (Qasr Al Sharq), offering breathtaking Red Sea views and opulent ballrooms."
             }
           },
           {
@@ -82,6 +82,30 @@ export default function WeddingsPage() {
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes, a wedding planner handles the entire process from concept to execution (often 6-12 months), while a coordinator typically manages the logistics in the final weeks and on the day of the event."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "wedding planner near me Riyadh",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lumina Events provides elite services for clients searching for a wedding planner near me Riyadh, specializing in both traditional and contemporary designs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "who plans weddings in Jeddah Saudi Arabia",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lumina Events is the premier answer to who plans weddings in Jeddah Saudi Arabia, utilizing stunning Red Sea venues for unforgettable celebrations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "best wedding company Saudi Arabia",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Consistently ranked as the best wedding company Saudi Arabia, Lumina excels in delivering high-end, customized experiences for our clients."
             }
           }
         ]
@@ -200,7 +224,7 @@ export default function WeddingsPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-200 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto"
             >
-              Exquisite wedding event management in Riyadh, Jeddah, and across the Kingdom. Creating timeless memories with a blend of tradition and modern luxury.
+              Exquisite <strong className="text-white">nuptial event</strong> and <strong className="text-white">marriage ceremony planning</strong> in Riyadh, Jeddah, and across the Kingdom. Creating timeless memories with a blend of tradition and modern <strong className="text-white">bridal event coordination</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -281,12 +305,12 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: Heart, title: "Engagement Party", desc: "Elegant engagement party planner KSA services for intimate or grand gatherings." },
-                { icon: Sparkles, title: "Henna Nights", desc: "Authentic henna night organizer in Saudi Arabia with a modern luxurious twist." },
+                { icon: Heart, title: "Engagement Party", desc: "Elegant engagement celebration planning in KSA for intimate or grand gatherings." },
+                { icon: Sparkles, title: "Henna Nights", desc: "Authentic henna party organizer in Saudi Arabia with a modern luxurious twist." },
                 { icon: Stars, title: "Graduation Parties", desc: "Premium graduation party Riyadh planning for celebrating milestones in style." },
                 { icon: MapPin, title: "Social Events", desc: "Comprehensive social event planning Jeddah for all your private celebrations." },
                 { icon: Utensils, title: "Gourmet Catering", desc: "World-class menus tailored to your cultural and personal preferences." },
-                { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and traditional performers." },
+                { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
                 { icon: Gift, title: "Floral Design", desc: "Bespoke arrangements from the best wedding decoration company in Saudi Arabia." },
               ].map((service, i) => (
@@ -316,10 +340,10 @@ export default function WeddingsPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                  { title: "Ultimate Saudi wedding planning guide 2025", desc: "Everything from timeline management to navigating the latest decor trends in Riyadh." },
-                  { title: "Traditional vs modern weddings in KSA", desc: "How to balance ancient cultural traditions with contemporary luxury aesthetics." },
-                  { title: "Saudi wedding venue comparison: Riyadh vs Jeddah", desc: "An in-depth look at the Kingdom's top ballrooms and outdoor social spaces." },
-                  { title: "Cultural guide: planning a wedding in Saudi Arabia", desc: "Essential protocol and etiquette for hosting the perfect Saudi celebration." }
+                  { title: "Real wedding stories & photo essays", desc: "Explore our gallery of breathtaking recent celebrations across Riyadh and Jeddah." },
+                  { title: "Price guide for Saudi weddings 2025", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
+                  { title: "Wedding vendor directory Saudi Arabia", desc: "Our exclusive network of the Kingdom's finest caterers, designers, and entertainers." },
+                  { title: "Saudi wedding trends 2025", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
                 ].map((post, idx) => (
                   <div key={idx} className="p-8 bg-gray-50 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-charcoal-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
@@ -364,10 +388,13 @@ export default function WeddingsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What is the average cost of a wedding in Saudi Arabia?", a: "The average cost of a luxury wedding in Saudi Arabia can range from SAR 150,000 to over SAR 1,000,000. Factors include guest count, venue choice (like luxury hotels in Riyadh or Jeddah), and custom décor requirements." },
-                { q: "How to find a wedding planner in Riyadh?", a: "Look for planners with a strong presence in the KSA market, positive client reviews, and a style that matches yours. Lumina is recognized as one of the best wedding planners in Riyadh for our attention to cultural authenticity and luxury." },
-                { q: "What are the best wedding venues in Jeddah?", a: "Jeddah features world-class venues such as the Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria. We help you source and book these exclusive locations, often with better rates and perks." },
-                { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner is involved in the entire creative and logistical journey, while a wedding coordinator focuses on the 'day-of' execution to ensure everything runs smoothly." }
+                { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Lumina Events is highly rated for transforming high-profile venues like the Ritz-Carlton into bespoke masterpieces." },
+                { q: "How much does a Saudi wedding cost?", a: "A luxury Saudi wedding typically ranges from SAR 150,000 to upwards of SAR 1,000,000. This includes premium venue sourcing, custom floral designs, and world-class entertainment and catering." },
+                { q: "Which hotels are best for weddings in Jeddah?", a: "The Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria are among the best hotels for weddings in Jeddah. We specialize in securing these exclusive Red Sea venues with preferred rates." },
+                { q: "wedding planner near me Riyadh", a: "Lumina Events is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your bespoke nuptial event." },
+                { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
+                { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Lumina is frequently called the best wedding company Saudi Arabia." },
+                { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }
               ].map((faq, i) => (
                 <div key={i} className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
                   <h3 className="text-lg font-bold text-charcoal-950 mb-3">{faq.q}</h3>

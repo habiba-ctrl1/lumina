@@ -10,12 +10,14 @@ type Inquiry = {
   name: string;
   email: string;
   phone?: string;
+  company?: string;
   event_type?: string;
   budget?: string;
   event_date?: string;
   guest_count?: string;
   venue_city?: string;
   message: string;
+  source?: string;
   created_at: string;
 };
 
@@ -49,7 +51,8 @@ export default function AdminInquiries() {
     (i) =>
       i.name.toLowerCase().includes(search.toLowerCase()) ||
       i.email.toLowerCase().includes(search.toLowerCase()) ||
-      i.message.toLowerCase().includes(search.toLowerCase())
+      i.message.toLowerCase().includes(search.toLowerCase()) ||
+      (i.company && i.company.toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
@@ -59,7 +62,7 @@ export default function AdminInquiries() {
           <h1 className="text-3xl font-light text-white mb-2">
             Client <span className="text-gold-500 font-semibold italic">Inquiries</span>
           </h1>
-          <p className="text-gray-500">Messages received from the contact form.</p>
+          <p className="text-gray-500">Messages received from all entry points.</p>
         </div>
         <button
           onClick={fetchInquiries}
@@ -76,7 +79,7 @@ export default function AdminInquiries() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search by name, email, or message..."
+          placeholder="Search by name, company, email..."
           className="w-full bg-charcoal-800 border border-white/5 rounded-xl py-3 pl-12 pr-4 text-white text-sm focus:outline-none focus:border-gold-500/30 transition-colors"
         />
       </div>
@@ -102,8 +105,14 @@ export default function AdminInquiries() {
               key={inquiry.id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-charcoal-800 border border-white/5 p-6 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 flex flex-col h-full"
+              className="bg-charcoal-800 border border-white/5 p-6 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 flex flex-col h-full relative"
             >
+              {inquiry.source && (
+                <div className="absolute top-0 right-12 translate-y-[-50%] px-3 py-1 bg-gold-500 text-charcoal-900 text-[8px] font-bold uppercase tracking-widest rounded-full shadow-lg">
+                  {inquiry.source.replace("_", " ")}
+                </div>
+              )}
+
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-gold-500/10 rounded-lg text-gold-500">
@@ -111,8 +120,8 @@ export default function AdminInquiries() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white leading-tight">{inquiry.name}</h3>
-                    <p className="text-gray-500 text-[10px] uppercase tracking-widest mt-0.5">
-                      {inquiry.event_type || "Event Inquiry"}
+                    <p className="text-gray-500 text-[9px] uppercase tracking-widest mt-0.5">
+                      {inquiry.company ? `${inquiry.company} • ` : ""}{inquiry.event_type || "Event Inquiry"}
                     </p>
                   </div>
                 </div>
@@ -153,7 +162,7 @@ export default function AdminInquiries() {
               <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-white/5">
                 <span className="flex items-center gap-1">
                   <Calendar size={14} />
-                  {new Date(inquiry.created_at).toLocaleDateString()}
+                  {inquiry.event_date ? new Date(inquiry.event_date).toLocaleDateString() : new Date(inquiry.created_at).toLocaleDateString()}
                 </span>
                 {inquiry.guest_count && (
                   <span className="bg-white/5 px-2 py-0.5 rounded text-[10px]">

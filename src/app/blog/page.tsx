@@ -220,7 +220,7 @@ export default function BlogPage() {
                 Let&apos;s Bring Your <span className="text-shimmer italic">Vision</span> to Life
               </h2>
               <p className="text-gray-400 font-light max-w-lg mx-auto mb-8">Our team of luxury event experts is ready to transform your ideas into unforgettable experiences.</p>
-              <Link href="/#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 btn-glow">
+              <Link href="/consultation" className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 btn-glow">
                 Book a Discovery Call <ArrowRight size={16} />
               </Link>
             </div>

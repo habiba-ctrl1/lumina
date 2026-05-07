@@ -99,6 +99,83 @@ export default function RootLayout({
         "url": "https://luminaevents.com",
         "name": "Lumina Events",
         "publisher": { "@id": "https://luminaevents.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://luminaevents.com/#webpage",
+        "url": "https://luminaevents.com",
+        "name": "Lumina Events",
+        "isPartOf": { "@id": "https://luminaevents.com/#website" }
+      },
+      {
+        "@type": "EventSeries",
+        "@id": "https://luminaevents.com/#eventseries",
+        "name": "Lumina Signature Events",
+        "description": "A series of high-profile corporate, exhibition, and luxury social events managed by Lumina across KSA.",
+        "organizer": { "@id": "https://luminaevents.com/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://luminaevents.com/#faqpage",
+        "mainEntity": []
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://luminaevents.com/#howto",
+        "name": "How to Plan an Event in Saudi Arabia with Lumina",
+        "step": [
+          { "@type": "HowToStep", "text": "Contact our expert consultants for a discovery session." },
+          { "@type": "HowToStep", "text": "Collaborate on bespoke event design and logistics planning." },
+          { "@type": "HowToStep", "text": "Experience flawless execution of your premium event." }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://luminaevents.com/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://luminaevents.com/#article",
+        "headline": "Lumina Event Management Insights",
+        "author": { "@type": "Person", "name": "Lumina Experts" },
+        "publisher": { "@id": "https://luminaevents.com/#organization" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://luminaevents.com/#person",
+        "name": "Habiba",
+        "jobTitle": "Founder & Event Director"
+      },
+      {
+        "@type": "AggregateRating",
+        "@id": "https://luminaevents.com/#aggregaterating",
+        "itemReviewed": { "@id": "https://luminaevents.com/#localbusiness" },
+        "ratingValue": "4.9",
+        "reviewCount": "150"
+      },
+      {
+        "@type": "Review",
+        "@id": "https://luminaevents.com/#review",
+        "itemReviewed": { "@id": "https://luminaevents.com/#localbusiness" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+        "author": { "@type": "Person", "name": "VIP Client" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://luminaevents.com/#service",
+        "name": "Luxury Event Management",
+        "provider": { "@id": "https://luminaevents.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "75000",
+            "priceCurrency": "SAR"
+          }
+        }
       }
     ]
   };

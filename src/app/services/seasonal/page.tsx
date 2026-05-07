@@ -42,18 +42,26 @@ export default function SeasonalEventsPage() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What events happen during Ramadan in Saudi Arabia?",
+            "name": "What should I know about planning events during Ramadan in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Ramadan in Saudi Arabia is marked by festive community iftars, suhoor tents, religious lectures, and charity markets. Lumina specializes in luxury corporate iftars and private Ramadan activations."
+              "text": "Ramadan in Saudi Arabia requires cultural sensitivity, adjusting event timings to post-iftar or suhoor hours, and focusing on traditional hospitality. As a premier Ramadan event planner KSA, Lumina manages all aspects of luxury corporate iftars and brand activations."
             }
           },
           {
             "@type": "Question",
-            "name": "How to plan a National Day event in KSA?",
+            "name": "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Planning a National Day event requires early venue booking, GEA permit coordination, and patriotic-themed décor. We recommend starting the process at least 3-4 months in advance."
+              "text": "Starting a Ramadan activation requires early concept design and venue booking. Lumina provides full-service solutions for brand activations, from bespoke Majlis setups to luxury catering."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to organize a National Day celebration for our company?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Organizing a National Day celebration requires patriotic branding, entertainment permits, and engaging cultural activities. As your National Day event organizer Riyadh, we recommend starting the process 3-4 months in advance."
             }
           },
           {
@@ -70,6 +78,22 @@ export default function SeasonalEventsPage() {
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Due to high demand, we recommend booking your Ramadan event organizer at least 2-3 months before the holy month starts to secure the best venues and vendors."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ramadan event company near me Saudi Arabia",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lumina Events is a premier Ramadan event company near me Saudi Arabia, offering localized, high-end Islamic seasonal events across Riyadh, Jeddah, and the Eastern Province."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "National Day party organizer Riyadh",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As the top National Day party organizer Riyadh, Lumina creates massive patriotic festivals and exclusive corporate celebrations for the Kingdom's most important holiday."
             }
           }
         ]
@@ -149,7 +173,7 @@ export default function SeasonalEventsPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-200 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              The Kingdom&apos;s leading choice for <strong className="text-white">Saudi National Day (Sep 23)</strong>, <strong className="text-white">Founding Day (Feb 22)</strong>, and <strong className="text-white">Riyadh Season</strong>. Preserving heritage during <strong className="text-white">Ramadan</strong> and <strong className="text-white">Eid</strong>.
+              The Kingdom&apos;s leading <strong className="text-white">National Day event organizer Riyadh</strong> and <strong className="text-white">Eid celebration company Saudi Arabia</strong>. Providing exceptional <strong className="text-white">religious celebration management</strong> and <strong className="text-white">annual celebration planning</strong>. Preserving heritage and delivering luxury experiences as your preferred <strong className="text-white">Ramadan event planner KSA</strong> for all <strong className="text-white">Islamic seasonal events</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -204,37 +228,37 @@ export default function SeasonalEventsPage() {
                 { 
                   icon: Moon, 
                   title: "Ramadan Events", 
-                  desc: "Exquisite activations for the holy month. Specialized in corporate iftars and suhoors with deep respect for Islamic calendar events.",
+                  desc: "Exquisite activations for the holy month. Specialized in corporate iftars and suhoors with deep respect for Islamic seasonal events.",
                   linkText: "Ramadan Portfolio"
                 },
                 { 
                   icon: Flag, 
                   title: "National Day (Sep 23)", 
-                  desc: "Planning high-impact National Day (اليوم الوطني) celebrations. From grand fireworks to community heritage festivals in Riyadh.",
+                  desc: "Planning high-impact National Day (اليوم الوطني) celebrations and holiday activation KSA. From grand fireworks to community heritage festivals.",
                   linkText: "National Day Experience"
                 },
                 { 
                   icon: Gift, 
                   title: "Eid Al-Fitr & Al-Adha", 
-                  desc: "Comprehensive Eid celebration management KSA. Preserving the joy of both Eids with luxury corporate and family events.",
+                  desc: "Comprehensive religious celebration management KSA. Preserving the joy of both Eids with luxury corporate and family events.",
                   linkText: "Eid Management"
                 },
                 { 
                   icon: Landmark, 
                   title: "Founding Day (Feb 22)", 
-                  desc: "Honoring the Kingdom&apos;s roots on يوم التأسيس with traditional exhibitions and cultural storytelling.",
+                  desc: "Honoring the Kingdom&apos;s roots on يوم التأسيس with traditional exhibitions and Saudi heritage events.",
                   linkText: "Founding Day Heritage"
                 },
                 { 
                   icon: Star, 
                   title: "Hajj & Umrah Season", 
-                  desc: "Coordinating with the Ministry of Hajj and Umrah to provide elite support and event services for pilgrims and religious delegations.",
+                  desc: "Coordinating with the Ministry of Hajj and Umrah to provide elite support and event services for pilgrims during the spiritual festival season Saudi Arabia.",
                   linkText: "Religious Support"
                 },
                 { 
                   icon: Award, 
                   title: "Riyadh Season", 
-                  desc: "Contributing to the Kingdom&apos;s most ambitious entertainment season with unique concepts and flawless execution.",
+                  desc: "Contributing to the Kingdom&apos;s most ambitious entertainment season with unique annual celebration planning and flawless execution.",
                   linkText: "Season Activations"
                 },
               ].map((item, i) => (
@@ -331,10 +355,13 @@ export default function SeasonalEventsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What events happen during Ramadan in Saudi Arabia?", a: "Ramadan is filled with religious, social, and cultural events. Lumina specializes in creating high-end Ramadan activation event management Saudi Arabia experiences, including corporate suhoors and decorative mall activations." },
-                { q: "How to plan a National Day event in KSA?", a: "Focus on patriotic themes, early venue coordination (like Boulevard Riyadh City), and secure necessary permits. As a Saudi National Day event organizer, we handle all logistics from branding to fireworks." },
+                { q: "What should I know about planning events during Ramadan in Saudi Arabia?", a: "Planning requires deep cultural understanding. Event timings shift to late night (Suhoor), and decor emphasizes traditional hospitality. As a top Ramadan event planner KSA, Lumina creates authentic, high-end experiences." },
+                { q: "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?", a: "Start with a culturally resonant concept. We help you design the activation, secure premium mall or hotel space, and execute flawlessly." },
+                { q: "How to organize a National Day celebration for our company?", a: "Focus on patriotic themes, early venue coordination, and secure necessary GEA permits. As your National Day event organizer Riyadh, we handle everything from green-themed decor to traditional entertainment." },
+                { q: "Can you manage Eid celebrations as well?", a: "Yes, we are a leading Eid celebration company Saudi Arabia, specializing in both intimate luxury family gatherings and large-scale corporate Eid festivities." },
                 { q: "What is special about Saudi Founding Day celebrations?", a: "It's a time to celebrate traditional 'Najdi' and regional Saudi heritage. Our events emphasize traditional hospitality, crafts, and historical storytelling." },
-                { q: "How early should I book a Ramadan event organizer?", a: "To ensure the best Ramadan events Saudi Arabia venues and custom fabrication, we recommend booking at least 90 days before the start of the holy month." }
+                { q: "Ramadan event company near me Saudi Arabia", a: "Lumina operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
+                { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Lumina specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
               ].map((faq, i) => (
                 <div key={i} className="bg-gray-50 p-10 rounded-2xl border border-gray-100">
                   <h3 className="text-xl font-bold text-charcoal-950 mb-4">{faq.q}</h3>

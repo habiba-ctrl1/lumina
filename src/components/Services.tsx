@@ -1,78 +1,83 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Heart, Briefcase, GlassWater, MapPin, Flower2, Utensils, Music, Map, Star } from "lucide-react";
 import { useRef } from "react";
 
 
 const services = [
   {
     id: 1,
-    num: "01",
-    title: "Royal Weddings",
+    title: "Wedding & Celebrations",
     href: "/services/weddings",
-    description: "Opulent wedding planning specializing in grand ballroom settings and traditional royal ceremonies across the Middle East.",
-    image: "/wedding.png",
-    seoAlt: "Luxury royal wedding planning in Saudi Arabia and Pakistan",
-    details: ["Royal Ballrooms", "Arabic Catering", "Floral Installations", "Zaffa Processions", "Bridal Suites"],
-    starting: "Starting from SAR 50,000",
+    description: "Opulent wedding planning specializing in grand ballroom settings and traditional royal ceremonies.",
+    icon: Heart,
+    starting: "From SAR 50,000",
   },
   {
     id: 2,
-    num: "02",
-    title: "Majlis & Corporate",
+    title: "Corporate Galas",
     href: "/services/corporate-events",
-    description: "Sophisticated Majlis arrangements and high-profile corporate summits designed for executive networking and brand prestige.",
-    image: "/corporate.png",
-    seoAlt: "High-end Majlis and corporate event management in KSA",
-    details: ["Majlis Design", "VIP Hospitality", "Government Summits", "Audio-Visual Excellence", "Catering Curation"],
-    starting: "Starting from SAR 75,000",
+    description: "High-profile corporate summits and galas designed for executive networking and brand prestige.",
+    icon: Briefcase,
+    starting: "From SAR 75,000",
   },
   {
     id: 3,
-    num: "03",
-    title: "Elite Birthdays",
-    href: "/#contact",
-    description: "Bespoke milestone celebrations and private gatherings in exclusive villas or desert resorts, tailored to perfection.",
-    image: "/private_party.png",
-    seoAlt: "Elite private party and milestone birthday planning in Saudi Arabia",
-    details: ["Villa Events", "Desert Resort Galas", "Bespoke Cakes", "Live Orchestras", "Guest Concierge"],
-    starting: "Starting from SAR 25,000",
+    title: "Private Events",
+    href: "/services/private-events",
+    description: "Bespoke milestone celebrations and private gatherings in exclusive villas or desert resorts.",
+    icon: GlassWater,
+    starting: "From SAR 25,000",
   },
   {
     id: 4,
-    num: "04",
-    title: "Exhibitions & Trade Shows",
-    href: "/services/exhibitions",
-    description: "Expert trade show organizing and exhibition management in Riyadh, featuring bespoke booth designs and stand building.",
-    image: "/gallery_corporate_gala.png",
-    seoAlt: "Exhibition management and trade show organizer in Saudi Arabia",
-    details: ["Booth Design", "Stand Building", "RICEC Logistics", "B2B Matchmaking", "Digital Displays"],
-    starting: "Starting from SAR 60,000",
+    title: "Destination Events",
+    href: "/services/destination",
+    description: "Seamlessly executed luxury destination weddings and events across global hotspots.",
+    icon: MapPin,
+    starting: "From SAR 100,000",
   },
   {
     id: 5,
-    num: "05",
-    title: "Seasonal & Cultural",
-    href: "/services/seasonal",
-    description: "Bespoke Ramadan events, Saudi National Day galas, and traditional Eid celebrations preserving Saudi heritage.",
-    image: "/private_party.png",
-    seoAlt: "Ramadan and Saudi National Day event planning in Saudi Arabia",
-    details: ["Ramadan Iftars", "National Day Galas", "Founding Day", "Eid Celebrations", "Cultural Heritage"],
-    starting: "Starting from SAR 40,000",
+    title: "Floral & Décor",
+    href: "/services/floral-decor",
+    description: "Breathtaking floral installations and custom spatial design tailored to your vision.",
+    icon: Flower2,
+    starting: "From SAR 15,000",
   },
   {
     id: 6,
-    num: "06",
-    title: "Production & Venues",
-    href: "/services/production-venues",
-    description: "Full-service AV production, luxury catering, and exclusive venue sourcing across Riyadh and Jeddah.",
-    image: "/gallery_wedding_reception.png",
-    seoAlt: "Event services and luxury venue rental in Saudi Arabia",
-    details: ["AV Production", "Venue Sourcing", "Luxury Catering", "Stage Design", "Photography"],
-    starting: "Starting from SAR 15,000",
+    title: "Catering Curation",
+    href: "/services/catering",
+    description: "Exquisite culinary experiences featuring world-class chefs and bespoke menus.",
+    icon: Utensils,
+    starting: "From SAR 450 / Guest",
+  },
+  {
+    id: 7,
+    title: "Entertainment Booking",
+    href: "/services/entertainment",
+    description: "Exclusive access to top-tier performers, live orchestras, and cultural entertainment.",
+    icon: Music,
+    starting: "From SAR 20,000",
+  },
+  {
+    id: 8,
+    title: "Venue Sourcing",
+    href: "/services/venue-sourcing",
+    description: "Securing the most prestigious and exclusive palaces, resorts, and ballrooms.",
+    icon: Map,
+    starting: "From SAR 5,000 (Sourcing Fee)",
+  },
+  {
+    id: 9,
+    title: "VIP Guest Management",
+    href: "/services/vip-management",
+    description: "Impeccable concierge services, travel coordination, and on-site VIP hospitality.",
+    icon: Star,
+    starting: "Custom Pricing",
   },
 ];
 
@@ -109,57 +114,31 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 cursor-pointer rounded-sm"
+        className="group relative h-full bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 cursor-pointer rounded-sm p-10 flex flex-col items-start justify-between"
       >
-        {/* Number tag */}
-        <div className="absolute top-6 left-6 z-20 text-[#041E42]/5 text-6xl font-display font-bold select-none group-hover:text-[#041E42]/10 transition-colors duration-500">
-          {service.num}
+        <div className="w-16 h-16 bg-gray-50 border border-gray-100 flex items-center justify-center rounded-full mb-8 group-hover:bg-gold-50 group-hover:border-gold-500/20 transition-all duration-500">
+          <service.icon size={28} className="text-[#041E42] group-hover:text-gold-500 transition-colors duration-500" />
         </div>
 
-        {/* Image */}
-        <div className="relative h-[320px] md:h-[380px] lg:h-[420px] w-full overflow-hidden">
-          <Image
-            src={service.image}
-            alt={service.seoAlt}
-            fill
-            className="object-cover object-center transition-transform duration-[1200ms] group-hover:scale-110 opacity-90 group-hover:opacity-100"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/5 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-700" />
-        </div>
-
-        {/* Content overlay */}
-        <div className="absolute inset-0 p-8 flex flex-col justify-end">
-          {/* Gold line */}
-          <div className="w-12 h-[1px] bg-champagne-500 mb-6 group-hover:w-24 transition-all duration-700" />
-
-          <h3 className="text-2xl font-display font-medium text-[#041E42] mb-4 group-hover:text-champagne-500 transition-colors duration-300">
+        <div>
+          <h3 className="text-2xl font-display font-medium text-[#041E42] mb-3 group-hover:text-champagne-500 transition-colors duration-300">
             {service.title}
           </h3>
-
-          {/* Starting price */}
-          <p className="text-[#041E42]/40 text-[11px] uppercase tracking-[0.2em] font-medium mb-4">
-            {service.starting}
-          </p>
-
-          <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-xs opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+          <p className="text-gray-500 text-sm leading-relaxed mb-6">
             {service.description}
           </p>
+        </div>
 
-          {/* Sub-services */}
-          <div className="flex flex-wrap gap-2 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-150">
-            {service.details.map((detail, i) => (
-              <span key={i} className="text-[10px] text-gray-400 uppercase tracking-[0.2em] border border-gray-100 px-3 py-1.5 bg-gray-50/50">
-                {detail}
-              </span>
-            ))}
-          </div>
-
+        <div className="w-full mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+          <p className="text-[#041E42]/60 text-[10px] uppercase tracking-[0.2em] font-medium">
+            {service.starting}
+          </p>
           <Link 
             href={service.href}
-            className="flex items-center gap-3 text-[#041E42] text-[11px] font-bold uppercase tracking-[0.2em] opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200"
+            className="flex items-center gap-2 text-champagne-500 text-[11px] font-bold uppercase tracking-[0.1em]"
           >
-            <span>Explore Service</span>
-            <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            <span>Learn more</span>
+            <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </Link>
         </div>
       </motion.div>

@@ -80,11 +80,11 @@ section {
 
 @layer utilities {
   .section-padding {
-    @apply py-32 md:py-48;
+    @apply py-16 md:py-32 lg:py-48;
   }
 
   .section-margin {
-    @apply my-32 md:my-48;
+    @apply my-16 md:my-32 lg:my-48;
   }
 
   .text-balance {
@@ -189,7 +189,7 @@ section {
 .container-tight {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 4rem; /* More whitespace */
+  padding: 0 clamp(1rem, 5vw, 4rem); /* Responsive whitespace */
 }
 
 /* Smooth Focus Outline */

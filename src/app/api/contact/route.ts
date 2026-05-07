@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API || 'missing-key');
     const body = await request.json();
-    const { name, email, phone, eventType, budget, eventDate, guestCount, venueCity, message } = body;
+    const { name, email, phone, company, eventType, budget, eventDate, guestCount, venueCity, message, source } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -21,12 +21,14 @@ export async function POST(request: Request) {
       name,
       email,
       phone: phone || null,
+      company: company || null,
       event_type: eventType || null,
       budget: budget || null,
       event_date: eventDate || null,
       guest_count: guestCount || null,
       venue_city: venueCity || null,
-      message
+      message,
+      source: source || 'direct_contact'
     };
 
     const { error: supabaseError } = await supabase
@@ -61,6 +63,8 @@ export async function POST(request: Request) {
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+            <p><strong>Source:</strong> ${source || 'Direct'}</p>
             <p><strong>Event Type:</strong> ${eventType || 'Not provided'}</p>
             <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
             <p><strong>Message:</strong></p>

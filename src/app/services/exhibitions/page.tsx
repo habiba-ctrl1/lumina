@@ -50,34 +50,74 @@ export default function ExhibitionsPage() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What are the biggest trade shows in Saudi Arabia?",
+            "name": "What are the major exhibitions in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Saudi Arabia hosts several world-class trade shows, including LEAP in Riyadh, the Big 5 Construct Saudi, and the Saudi International Exhibition & Conference for Internet of Things."
+              "text": "The major exhibitions in Saudi Arabia include LEAP, the Big 5 Construct Saudi, Saudi Agriculture, and the upcoming Saudi Expo 2030 initiatives. Lumina provides comprehensive event management for all major summits."
             }
           },
           {
             "@type": "Question",
-            "name": "How to book exhibition space at RECC?",
+            "name": "Who manages trade shows in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Booking space at the Riyadh Exhibition and Convention Center (RECC) typically requires early registration through the event organizer. Lumina manages the entire booking and coordination process for our clients."
+              "text": "Lumina Events is a leading exhibition management company that manages trade shows in Riyadh. We offer end-to-end B2B matchmaking, booth design, and full-scale logistics at RICEC and RECC."
             }
           },
           {
             "@type": "Question",
-            "name": "What is the cost of exhibition management in KSA?",
+            "name": "When is the next big expo in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Costs vary depending on the scale and booth complexity. Comprehensive management services in KSA can range from SAR 50,000 for standard booths to over SAR 500,000 for bespoke multi-story pavilions."
+              "text": "Saudi Arabia has a packed annual exhibition calendar with major expos happening year-round, notably in Q1 and Q4. Check our Annual Saudi exhibition calendar to stay updated on the next big expo."
             }
           },
           {
             "@type": "Question",
-            "name": "How to attract visitors to a trade show in Saudi Arabia?",
+            "name": "We want to exhibit at a trade show in Riyadh — where should we start?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Attracting visitors involves interactive booth designs, strategic pre-event marketing, lead generation technologies, and high-impact digital displays, all of which Lumina specializes in."
+              "text": "The first step is to secure your presence and book exhibition space KSA. Lumina provides an end-to-end service, helping you choose the right event, secure premium space at RICEC or RECC, and manage all logistics as your primary trade show organizer Saudi Arabia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the upcoming major exhibitions in Saudi Arabia in 2025?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In 2025, major exhibitions include LEAP, the Big 5 Construct Saudi, Index Saudi, and critical summits leading up to Saudi Expo 2030. We monitor the complete Saudi exhibition calendar to align your brand with the most impactful events."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to design an exhibition booth for a Saudi audience?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Designing for a Saudi audience requires a balance of cultural respect, VIP hospitality spaces (like a Majlis), and cutting-edge technology. Our exhibition stand design Riyadh team specializes in creating culturally resonant, high-impact pavilions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "trade show organizer near me Riyadh",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lumina Events is strategically based in Riyadh, making us the ideal partner when you need a top-tier trade show organizer near me Riyadh for your commercial display event."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "exhibition management company Saudi Arabia",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As a leading exhibition management company Saudi Arabia, we handle everything from international business fair planning to local product showcase event execution."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "expo booth builder Jeddah",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lumina serves as an expert expo booth builder Jeddah, creating stunning exhibition pavilion Saudi setups along the Red Sea coast."
             }
           }
         ]
@@ -173,7 +213,7 @@ export default function ExhibitionsPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              The premier partner for <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence at <strong className="text-white">RECC</strong>.
+              The premier <strong className="text-white">trade show organizer Saudi Arabia</strong>. Partnering with <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence for any <strong className="text-white">trade exhibition</strong> or <strong className="text-white">product showcase event</strong> and helping international brands effortlessly <strong className="text-white">book exhibition space KSA</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -225,11 +265,11 @@ export default function ExhibitionsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {[
-                { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level summits with international delegations." },
-                { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and Big 5 Saudi pavilions." },
-                { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030 initiatives with precision engineering." },
+                { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level industry expos with international delegations." },
+                { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and massive business fair pavilions." },
+                { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030, creating breathtaking exhibition pavilion Saudi structures." },
                 { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
-                { icon: Monitor, title: "Digital Showcase", desc: "High-impact product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
+                { icon: Monitor, title: "Digital Showcase", desc: "High-impact commercial display event and product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
                 { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
                 { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions like Index Saudi." },
                 { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC Riyadh." },
@@ -262,10 +302,10 @@ export default function ExhibitionsPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                  { title: "Complete guide to exhibiting at Saudi trade shows", desc: "Everything you need to know about logistics, staffing, and cultural etiquette at RICEC and RECC." },
-                  { title: "Best exhibition venues in Saudi Arabia 2025", desc: "A comparative review of the Kingdom's top expo centers from Riyadh to Jeddah." },
-                  { title: "How to maximize ROI at Saudi exhibitions", desc: "Data-driven strategies for lead generation and brand awareness in the KSA market." },
-                  { title: "Saudi trade show calendar 2025", desc: "Don't miss the major summits: Index, Big 5, and the journey toward Saudi Expo 2030." }
+                  { title: "Annual Saudi exhibition calendar", desc: "Stay ahead with our comprehensive timeline of the Kingdom's most critical trade shows and B2B summits." },
+                  { title: "Exhibitor success stories", desc: "Discover how our clients maximize ROI and secure high-value leads at competitive venues." },
+                  { title: "Exhibition cost breakdown guides", desc: "A transparent analysis of booth construction, technology integration, and staffing costs in KSA." },
+                  { title: "Venue comparison articles", desc: "An in-depth review of RICEC, RECC, and Jeddah Center for Forums & Events to choose your optimal location." }
                 ].map((post, idx) => (
                   <div key={idx} className="p-8 bg-charcoal-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
@@ -316,10 +356,15 @@ export default function ExhibitionsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What are the biggest trade shows in Saudi Arabia?", a: "Saudi Arabia hosts several world-class trade shows, including LEAP (tech), Big 5 Construct, and various Vision 2030 summits at RICEC and RECC." },
-                { q: "How to set up a trade show booth in Riyadh?", a: "Successful setup involves early space booking, collaborating with an expert exhibition stand builder in Saudi Arabia, and ensuring your design complies with venue regulations in Riyadh or Jeddah." },
-                { q: "What is the cost of exhibition management in KSA?", a: "Costs depend on booth size and complexity. Lumina offers tailored packages from standard shell schemes to bespoke premium pavilions at RICEC." },
-                { q: "How to book exhibition space at RECC?", a: "Booking is usually done through the official event organizer. As your expo management partner, Lumina handles all logistics, venue coordination, and paperwork." }
+                { q: "What are the major exhibitions in Saudi Arabia?", a: "Major exhibitions include LEAP, Big 5 Construct, and Index Saudi. We provide premium booth design and management for international brands at these high-profile events." },
+                { q: "Who manages trade shows in Riyadh?", a: "Lumina Events is a leading trade show organizer Saudi Arabia, acting as the primary liaison between exhibitors and venues like RICEC and RECC for flawless execution." },
+                { q: "When is the next big expo in Saudi Arabia?", a: "The exhibition calendar is dynamic, with peak seasons in Q1 and Q4. Contact us for our detailed 'Annual Saudi exhibition calendar' and strategic planning timelines." },
+                { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Lumina provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
+                { q: "What are the upcoming major exhibitions in Saudi Arabia in 2025?", a: "2025 features LEAP, Saudi Agriculture, Index Saudi, and major summits aligned with Vision 2030. We can align your brand with the most relevant B2B opportunities." },
+                { q: "How to design an exhibition booth for a Saudi audience?", a: "It requires balancing modern technology with cultural nuances, such as private Majlis meeting areas. Our exhibition stand design Riyadh team excels at creating culturally resonant, high-impact pavilions." },
+                { q: "trade show organizer near me Riyadh", a: "Lumina Events is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
+                { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
+                { q: "expo booth builder Jeddah", a: "Lumina operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
               ].map((faq, i) => (
                 <div key={i} className="bg-charcoal-950 p-8 rounded-2xl border border-white/5">
                   <h3 className="text-lg font-bold text-gold-500 mb-3">{faq.q}</h3>

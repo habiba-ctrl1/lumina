@@ -20,7 +20,7 @@ export default function DubaiPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/locations/dubai-hero.jpg" 
+            src="/gallery_vip_party.png" 
             alt="Luxury Event Management Dubai - Palm Jumeirah View" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -82,7 +82,7 @@ export default function DubaiPage() {
             </div>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image src="/locations/dubai-landmark.jpg" alt="Burj Al Arab Event Dubai" fill className="object-cover" />
+            <Image src="/gallery_1.png" alt="Burj Al Arab Event Dubai" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">

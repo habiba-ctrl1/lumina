@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, AlertCircle, Calendar, DollarSign, MapPin, Users, Clock } from "lucide-react";
+import { MessageCircle, Send, CheckCircle, AlertCircle, Calendar, MapPin, Users, Clock } from "lucide-react";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", budget: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
@@ -16,7 +16,7 @@ export default function ContactSection() {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", eventType: "", budget: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
@@ -69,10 +69,10 @@ export default function ContactSection() {
             />
           </div>
 
-          {/* Row 2: Phone + Event Type + Budget */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Row 2: Phone + Event Type */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <input type="tel" id="c-phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} onFocus={() => setFocusedField("phone")} onBlur={() => setFocusedField(null)} className={ic("phone")} placeholder="Phone" />
+              <input type="tel" id="c-phone" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} onFocus={() => setFocusedField("phone")} onBlur={() => setFocusedField(null)} className={ic("phone")} placeholder="Phone / WhatsApp Number" />
             </div>
             <div>
               <select id="c-type" value={formData.eventType} onChange={(e) => setFormData({ ...formData, eventType: e.target.value })} onFocus={() => setFocusedField("type")} onBlur={() => setFocusedField(null)} className={`${ic("type")} appearance-none cursor-pointer`}>
@@ -82,16 +82,6 @@ export default function ContactSection() {
                 <option value="private" className="bg-white text-[#041E42]">Private Party</option>
                 <option value="destination" className="bg-white text-[#041E42]">Destination Event</option>
                 <option value="other" className="bg-white text-[#041E42]">Other</option>
-              </select>
-            </div>
-            <div>
-              <label htmlFor="c-budget" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider"><DollarSign size={12} className="inline mr-1" />Starting Investment</label>
-              <select id="c-budget" value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} onFocus={() => setFocusedField("budget")} onBlur={() => setFocusedField(null)} className={`${ic("budget")} appearance-none cursor-pointer`}>
-                <option value="" className="bg-white text-[#041E42]">Select range...</option>
-                <option value="10-25k" className="bg-white text-[#041E42]">SAR 10,000 – 25,000</option>
-                <option value="25-50k" className="bg-white text-[#041E42]">SAR 25,000 – 50,000</option>
-                <option value="50-100k" className="bg-white text-[#041E42]">SAR 50,000 – 100,000</option>
-                <option value="100k+" className="bg-white text-[#041E42]">SAR 100,000+</option>
               </select>
             </div>
           </div>
@@ -126,12 +116,21 @@ export default function ContactSection() {
           </div>
 
           {/* Submit */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 pt-10">
-            <motion.button type="submit" disabled={status === "loading"} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full sm:w-auto px-16 py-5 bg-[#041E42] text-white font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-[#062a5c] transition-all duration-700 flex items-center justify-center gap-4 shadow-xl">
+          <div className="flex flex-col md:flex-row items-center gap-6 pt-10">
+            <motion.button type="submit" disabled={status === "loading"} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="w-full md:w-auto px-16 py-5 bg-[#041E42] text-white font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-[#062a5c] transition-all duration-700 flex items-center justify-center gap-4 shadow-xl">
               {status === "loading" ? (<><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />Processing...</>) : (<><Send size={16} className="text-champagne-500" />Submit Inquiry</>)}
             </motion.button>
-            <p className="text-gray-400 text-[10px] uppercase tracking-widest">By submitting, you agree to our <a href="/privacy" className="text-[#041E42] hover:text-champagne-500 transition-colors underline underline-offset-4">Privacy Policy</a></p>
+            <span className="text-gray-300 uppercase text-[10px] tracking-widest hidden md:block">OR</span>
+            <a 
+              href="https://wa.me/923001234567?text=Hi%20Lumina%20Events!%20I%20would%20like%20to%20discuss%20an%20upcoming%20event." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full md:w-auto px-10 py-5 bg-green-500/10 border border-green-500/20 text-green-600 font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-green-500 hover:text-white transition-all duration-700 flex items-center justify-center gap-3"
+            >
+              <MessageCircle size={16} /> Chat on WhatsApp
+            </a>
           </div>
+          <p className="text-center md:text-left mt-6 text-gray-400 text-[10px] uppercase tracking-widest">By submitting, you agree to our <a href="/privacy" className="text-[#041E42] hover:text-champagne-500 transition-colors underline underline-offset-4">Privacy Policy</a></p>
 
           <AnimatePresence>
             {status === "success" && (<motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-3 text-green-400 text-sm bg-green-400/10 border border-green-400/20 px-5 py-3 rounded-sm"><CheckCircle size={18} />Thank you! We&apos;ll be in touch within 2 hours to schedule your discovery call.</motion.div>)}

@@ -1,0 +1,106 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import Image from "next/image";
+import Link from "next/link";
+import { MapPin, ArrowRight } from "lucide-react";
+
+export const metadata = {
+  title: 'Our Locations | Lumina Events',
+  description: 'Discover Lumina Events across the Middle East and beyond. Premier luxury event management in Riyadh, Dubai, Jeddah, and Lahore.',
+  keywords: 'event management locations, Lumina Riyadh, Lumina Dubai, Lumina Jeddah, Lumina Lahore',
+};
+
+const locations = [
+  {
+    city: "Riyadh",
+    country: "Saudi Arabia",
+    image: "/gallery_2.png",
+    slug: "riyadh",
+    description: "The capital of luxury, elevating Riyadh's most iconic celebrations from the Kingdom Centre to Diriyah.",
+  },
+  {
+    city: "Dubai",
+    country: "United Arab Emirates",
+    image: "/gallery_vip_party.png",
+    slug: "dubai",
+    description: "Curating breathtaking destination events and elite corporate galas in the heart of the UAE.",
+  },
+  {
+    city: "Jeddah",
+    country: "Saudi Arabia",
+    image: "/gallery_corporate_gala.png",
+    slug: "jeddah",
+    description: "Spectacular seaside celebrations and exclusive Red Sea coastal events.",
+  },
+  {
+    city: "Lahore",
+    country: "Pakistan",
+    image: "/gallery_wedding_reception.png",
+    slug: "lahore",
+    description: "Blending rich cultural heritage with modern luxury for unforgettable South Asian weddings.",
+  }
+];
+
+export default function LocationsPage() {
+  return (
+    <main className="min-h-screen bg-[#1e2653] overflow-hidden pt-20">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative py-24 md:py-32 flex items-center justify-center border-b border-white/10">
+        <div className="absolute inset-0 bg-[url('/hero_bg.png')] opacity-5 bg-cover bg-center" />
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            Global Presence
+          </span>
+          <h1 className="text-4xl md:text-6xl font-display text-white mb-6 leading-tight">
+            Our <span className="hero-subtitle-shimmer italic font-semibold">Destinations</span>
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto">
+            Lumina Events curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
+          </p>
+        </div>
+      </section>
+
+      {/* Locations Grid */}
+      <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {locations.map((loc) => (
+            <Link 
+              key={loc.slug} 
+              href={`/locations/${loc.slug}`}
+              className="group block relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-gold-500/50 transition-all duration-500"
+            >
+              <div className="relative h-80 w-full overflow-hidden">
+                <Image 
+                  src={loc.image} 
+                  alt={loc.city} 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653] via-[#1e2653]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin size={16} className="text-gold-500" />
+                  <span className="text-gold-500 text-xs uppercase tracking-widest">{loc.country}</span>
+                </div>
+                <h2 className="text-3xl font-display text-white mb-3">{loc.city}</h2>
+                <p className="text-gray-400 text-sm font-light leading-relaxed mb-6 line-clamp-2">
+                  {loc.description}
+                </p>
+                <div className="flex items-center text-white text-sm font-medium uppercase tracking-wider group-hover:text-gold-500 transition-colors">
+                  Explore Location <ArrowRight size={16} className="ml-2" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </main>
+  );
+}

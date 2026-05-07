@@ -20,7 +20,7 @@ export default function JeddahPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/locations/jeddah-hero.jpg" 
+            src="/gallery_corporate_gala.png" 
             alt="Luxury Event Management Jeddah - Red Sea Coastline" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -60,7 +60,7 @@ export default function JeddahPage() {
       <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image src="/locations/jeddah-landmark.jpg" alt="Al-Balad Jeddah Event" fill className="object-cover" />
+            <Image src="/gallery_garden_party.png" alt="Al-Balad Jeddah Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">

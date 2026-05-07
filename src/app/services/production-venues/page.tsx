@@ -57,34 +57,50 @@ export default function ProductionVenuesPage() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What services do event management companies provide in Saudi Arabia?",
+            "name": "What AV equipment do I need for a 500-person conference in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Full-service agencies like Lumina provide venue sourcing, AV production, stage design, catering, décor, photography, and on-site logistics management across KSA."
+              "text": "A 500-person conference typically requires a line array audio system, multiple LED screens or a central ultra-wide display, confidence monitors, and professional lighting. Lumina is a premier AV company for events KSA, supplying and managing all technical needs."
             }
           },
           {
             "@type": "Question",
-            "name": "How to choose an event venue in Riyadh?",
+            "name": "Can you recommend event caterers in Jeddah?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Consider guest capacity, location (like the Diplomatic Quarter or King Abdullah Financial District), technical infrastructure, and accessibility. We help you source the best event venue Riyadh has to offer."
+              "text": "Yes, we partner with top-tier culinary teams, including those at Rosewood Jeddah. We can provide customized event catering quotes Saudi Arabia based on your guest count and preference for traditional or international menus."
             }
           },
           {
             "@type": "Question",
-            "name": "What is included in full-service event management in KSA?",
+            "name": "What event decoration styles are popular in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "It includes everything from conceptual design and budget planning to vendor management, production, and post-event analysis."
+              "text": "Popular styles blend futuristic minimalism with traditional Najdi or Hejazi geometric patterns. Clients often request lush floral arches, architectural lighting, and bespoke Majlis seating areas."
             }
           },
           {
             "@type": "Question",
-            "name": "How much do AV services cost for events in Saudi Arabia?",
+            "name": "event venue near me Riyadh",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AV production company Riyadh prices vary. Basic setups start around SAR 15,000, while complex LED wall and concert-grade audio systems can exceed SAR 200,000."
+              "text": "Lumina Events provides exclusive access and booking support when you need an elite event venue near me Riyadh for corporate or social gatherings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "catering company for events Jeddah",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As a top-tier catering company for events Jeddah, we partner with five-star culinary teams to deliver exceptional dining experiences along the Red Sea."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "AV production near me Saudi Arabia",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For clients seeking AV production near me Saudi Arabia, Lumina offers concert-grade audio and cinematic visual setups across the Kingdom."
             }
           }
         ]
@@ -154,7 +170,7 @@ export default function ProductionVenuesPage() {
               transition={{ delay: 0.4 }}
               className="text-gray-300 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
             >
-              Exclusive access to <strong className="text-white">KAICC</strong>, <strong className="text-white">RECC</strong>, and the prestigious <strong className="text-white">King Abdullah Economic City (KAEC)</strong>. Partnered with <strong className="text-white">Rosewood Jeddah</strong> and <strong className="text-white">Four Seasons</strong>.
+              Exclusive access to <strong className="text-white">KAICC</strong>, <strong className="text-white">RECC</strong>, and the prestigious <strong className="text-white">King Abdullah Economic City (KAEC)</strong>. We streamline your <strong className="text-white">event venue rental Riyadh</strong> and <strong className="text-white">venue sourcing Saudi Arabia</strong> processes. Delivering comprehensive <strong className="text-white">production services events Saudi</strong>, from <strong className="text-white">audio visual production events</strong> to complex <strong className="text-white">event logistics KSA</strong>.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -201,14 +217,14 @@ export default function ProductionVenuesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               {[
-                { icon: Speaker, title: "AV Production", desc: "ISO-certified production for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
-                { icon: Map, title: "Venue Sourcing", desc: "Exclusive access to the finest event venue Riyadh and King Abdullah Economic City (KAEC) options." },
-                { icon: Zap, title: "Stage Design", desc: "Award-winning design at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
+                { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
+                { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
+                { icon: Zap, title: "Stage Design", desc: "Award-winning event staging at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
                 { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia. Partnered with Rosewood Jeddah for five-star dining experiences." },
-                { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah. Utilizing 2025 KSA decoration trends for stunning transformations." },
+                { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah, providing robust event infrastructure and utilizing 2025 KSA design trends." },
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
                 { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
-                { icon: Star, title: "Elite Hospitality", desc: "VIP guest management and concierge services at Ritz-Carlton and Four Seasons venues." },
+                { icon: Star, title: "Elite Hospitality", desc: "VIP guest management, concierge services, and flawless event logistics KSA at Ritz-Carlton venues." },
               ].map((service, i) => (
                 <motion.div 
                   key={i}
@@ -336,9 +352,14 @@ export default function ProductionVenuesPage() {
             <h2 className="text-4xl font-display mb-16 text-center">Service <span className="italic text-gold-600">Queries</span></h2>
             <div className="space-y-6">
               {[
+                { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Lumina provides complete technical specifications tailored to your venue." },
+                { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We hold exclusive partnerships with elite culinary teams, including executive chefs at the Rosewood Jeddah. We can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
+                { q: "What event decoration styles are popular in Saudi Arabia?", a: "The current trend fuses futuristic minimalism with traditional heritage. Think sleek metallic accents paired with traditional Najdi geometric patterns, ambient architectural lighting, and opulent, fragrant floral installations." },
                 { q: "What is included in full-service event management in KSA?", a: "Lumina's full-service model covers everything from venue scouting and creative design to AV production, catering, and on-site event execution." },
-                { q: "How to choose an event venue in Riyadh?", a: "We analyze your event's theme, guest list, and technical needs to recommend the best event venue Riyadh has to offer, from 5-star hotels to exclusive desert retreats." },
-                { q: "What makes you the best AV production company for events in Riyadh?", a: "Our commitment to the latest technology (including transparent LEDs and spatial audio) combined with an expert technical team makes us a leader in Saudi event production." }
+                { q: "How to choose an event venue in Riyadh?", a: "We analyze your event's theme, guest list, and technical needs to facilitate the ideal event venue rental Riyadh, whether it's a 5-star hotel or an exclusive desert retreat." },
+                { q: "event venue near me Riyadh", a: "Lumina Events operates locally in Riyadh, granting you immediate, exclusive access to the city's most sought-after palaces, hotels, and exhibition centers." },
+                { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
+                { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Lumina provides localized, concert-grade AV production and technical support wherever your event takes place." }
               ].map((faq, i) => (
                 <div key={i} className="border-b border-gray-100 pb-8">
                   <h3 className="text-xl font-bold mb-4">{faq.q}</h3>
