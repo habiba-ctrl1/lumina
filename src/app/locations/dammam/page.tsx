@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Building2, Briefcase, User, CheckCircle2 } from "lucide-react";
+import { MapPin, Star, Building2, Briefcase, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Event Management Dammam & Al-Khobar | Eastern Province Events',

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Trophy, Sparkles, User, CheckCircle2 } from "lucide-react";
+import { MapPin, Star, Trophy, Sparkles, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Destination Weddings AlUla | UNESCO Heritage Events',

@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Calendar, 
   Clock, 
-  Send, 
   CheckCircle, 
   AlertCircle, 
   ChevronRight, 
@@ -47,7 +45,7 @@ export default function ConsultationPage() {
     }
   };
 
-  const inputClasses = "w-full bg-white/5 border border-white/10 p-4 text-sm text-white placeholder-gray-500 focus:border-gold-500 transition-all outline-none rounded-sm";
+
 
   return (
     <main className="min-h-screen bg-[#041E42] overflow-hidden">
