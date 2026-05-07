@@ -81,7 +81,7 @@ export default function Footer() {
           <div>
             <h4 className="text-[#041E42] font-bold uppercase tracking-wider mb-5 text-[10px]">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex items-start"><MapPin size={14} className="text-champagne-500 mr-2 mt-0.5 shrink-0" /><span className="text-gray-500 text-xs font-light">Riyadh, Jeddah & Dubai</span></li>
+              <li className="flex items-start"><MapPin size={14} className="text-champagne-500 mr-2 mt-0.5 shrink-0" /><span className="text-gray-500 text-xs font-light">Riyadh, Jeddah, AlUla & Dammam</span></li>
               <li className="flex items-center"><Phone size={14} className="text-champagne-500 mr-2 shrink-0" /><span className="text-gray-500 text-xs font-light">+966 50 123 4567</span></li>
               <li className="flex items-center"><Mail size={14} className="text-champagne-500 mr-2 shrink-0" /><span className="text-gray-500 text-xs font-light">hello@luminaevents.com</span></li>
             </ul>

@@ -7,8 +7,8 @@ import { MapPin, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: 'Our Locations | Lumina Events',
-  description: 'Discover Lumina Events across the Middle East and beyond. Premier luxury event management in Riyadh, Dubai, Jeddah, and Lahore.',
-  keywords: 'event management locations, Lumina Riyadh, Lumina Dubai, Lumina Jeddah, Lumina Lahore',
+  description: 'Discover Lumina Events across the Kingdom of Saudi Arabia. Premier luxury event management in Riyadh, Jeddah, AlUla, and Dammam.',
+  keywords: 'event management locations, Lumina Riyadh, Lumina Jeddah, Lumina AlUla, Lumina Dammam, Saudi luxury events',
 };
 
 const locations = [
@@ -20,13 +20,6 @@ const locations = [
     description: "The capital of luxury, elevating Riyadh's most iconic celebrations from the Kingdom Centre to Diriyah.",
   },
   {
-    city: "Dubai",
-    country: "United Arab Emirates",
-    image: "/gallery_vip_party.png",
-    slug: "dubai",
-    description: "Curating breathtaking destination events and elite corporate galas in the heart of the UAE.",
-  },
-  {
     city: "Jeddah",
     country: "Saudi Arabia",
     image: "/gallery_corporate_gala.png",
@@ -34,11 +27,18 @@ const locations = [
     description: "Spectacular seaside celebrations and exclusive Red Sea coastal events.",
   },
   {
-    city: "Lahore",
-    country: "Pakistan",
-    image: "/gallery_wedding_reception.png",
-    slug: "lahore",
-    description: "Blending rich cultural heritage with modern luxury for unforgettable South Asian weddings.",
+    city: "AlUla",
+    country: "Saudi Arabia",
+    image: "/gallery_destination_wedding.png",
+    slug: "alula",
+    description: "Saudi Arabia's most breathtaking destination — ancient desert landscapes, UNESCO heritage, and ultra-luxury resorts.",
+  },
+  {
+    city: "Dammam",
+    country: "Saudi Arabia",
+    image: "/gallery_vip_party.png",
+    slug: "dammam",
+    description: "The Eastern Province gateway to luxury — elite corporate galas, Aramco-tier celebrations, and spectacular family weddings.",
   }
 ];
 
