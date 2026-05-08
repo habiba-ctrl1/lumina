@@ -1,9 +1,18 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+
+const backgroundImages = [
+  "/gallery_wedding_reception.png",
+  "/gallery_corporate_gala.png",
+  "/gallery_destination_wedding.png",
+  "/gallery_charity_gala.png",
+  "/gallery_vip_party.png",
+  "/gallery_garden_party.png",
+];
 
 const titleWords = ["Masterpieces", "of", "Luxury"];
 
@@ -97,15 +106,57 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div
       id="home"
       ref={containerRef}
       className="relative min-h-[90vh] w-full flex items-center justify-center bg-white pt-20"
     >
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50/50 -skew-x-12 translate-x-1/2 z-0" />
-      
+      <GoldParticles />
+
+      {/* Image Slideshow Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={backgroundImages[currentImageIndex]}
+              alt="Event Background"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Overlays — also decorative, so aria-hidden */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{ backgroundColor: "rgba(0, 15, 50, 0.65)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-[#041E42] via-transparent to-[#041E42]/40 z-[1]"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-[#041E42]/30 via-transparent to-[#041E42]/30 z-[1]"
+        aria-hidden="true"
+      />
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
@@ -130,7 +181,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-black font-bold uppercase tracking-tight leading-[1.1] mb-8"
+          className="text-white font-bold uppercase tracking-tight leading-[1.1] mb-8"
           style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
         >
           Masterpieces of <br />
@@ -142,12 +193,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
         >
           Curating exquisite weddings, corporate galas, and private celebrations.
-          We bring world-class elegance to <span className="text-black font-bold">Riyadh</span>, 
-          <span className="text-black font-bold"> Jeddah</span>, <span className="text-black font-bold">Makkah</span>, 
-          <span className="text-black font-bold"> Madinah</span>, and <span className="text-black font-bold">AlUla</span>.
+          We bring world-class elegance to <span className="text-white font-bold">Riyadh</span>, 
+          <span className="text-white font-bold"> Jeddah</span>, <span className="text-white font-bold">Makkah</span>, 
+          <span className="text-white font-bold"> Madinah</span>, and <span className="text-white font-bold">AlUla</span>.
         </motion.p>
 
         {/* Quick Booking Form */}
@@ -155,7 +206,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 p-6 md:p-8 max-w-4xl mx-auto mb-8 relative z-20"
+          className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-white/20 p-6 md:p-8 max-w-4xl mx-auto mb-8 relative z-20"
         >
           <form 
             onSubmit={(e) => { 
@@ -165,8 +216,8 @@ export default function Hero() {
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
           >
             <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Event Type</label>
-              <select className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Event Type</label>
+              <select className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
                 <option>Luxury Wedding</option>
                 <option>Corporate Gala</option>
                 <option>VIP Reception</option>
@@ -175,8 +226,8 @@ export default function Hero() {
             </div>
             
             <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Location</label>
-              <select className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Location</label>
+              <select className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
                 <option>Riyadh</option>
                 <option>Jeddah</option>
                 <option>Makkah</option>
@@ -187,8 +238,8 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Date</label>
-              <input type="date" className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Date</label>
+              <input type="date" className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
             </div>
 
             <div className="flex items-end">
