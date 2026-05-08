@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ShieldCheck, Users, Clock, Sparkles, HeartHandshake, Globe } from "lucide-react";
 
 const reasons = [
@@ -43,69 +44,102 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
-          {/* Left Header */}
-          <div className="lg:col-span-2">
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
-            >
-              The Lumina Difference
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
-            >
-              The Lumina <span className="text-plum-700 italic font-medium">Standard</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-gray-500 text-xl leading-relaxed max-w-xl mb-16"
-            >
-              Absolute perfection for your grandest visions.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="w-20 h-[1px] bg-champagne-500"
-            />
-          </div>
-
-          {/* Right Grid */}
-          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {reasons.map((reason, index) => (
-              <motion.div
-                key={index}
+    <section className="py-24 bg-gray-50 relative overflow-hidden">
+      <div className="container-luxury relative z-10">
+        {/* Main Box Wrapper */}
+        <div className="border border-gray-200 bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            {/* Left Header Area */}
+            <div className="lg:col-span-4 flex flex-col justify-start pt-4">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
+              >
+                The Lumina Difference
+              </motion.span>
+              <motion.h3
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-12 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 rounded-sm"
+                className="text-black text-3xl md:text-4xl lg:text-5xl mb-6 font-bold"
               >
-                <div className="text-champagne-500 mb-10 group-hover:scale-110 transition-transform duration-500">
-                  {reason.icon}
-                </div>
-                <h3 className="text-[#041E42] font-display text-2xl mb-6 group-hover:text-champagne-500 transition-colors">
-                  {reason.title}
-                </h3>
-                <p className="text-gray-500 text-lg leading-relaxed font-light">
-                  {reason.desc}
+                The Lumina <span className="text-primary italic">Standard</span>
+              </motion.h3>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 max-w-sm"
+              >
+                Absolute perfection for your grandest visions.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="w-16 h-0.5 bg-primary/40 mb-10"
+              />
+
+              {/* Consultation Form / CTA (Top of section) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 border border-gray-100 p-6 rounded-2xl shadow-sm"
+              >
+                <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-4">Request a Consultation</h4>
+                <p className="text-gray-500 text-xs mb-6 leading-relaxed">
+                  Tell us about your vision and we'll craft a bespoke proposal tailored to your needs.
                 </p>
+                <div className="flex flex-col gap-3">
+                  <Link 
+                    href="https://wa.me/966501234567?text=Hi%20Lumina!%20I%20would%20like%20to%20request%20a%20consultation%20for%20my%20upcoming%20event."
+                    target="_blank"
+                    className="w-full bg-[#25D366] text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all"
+                  >
+                    Chat on WhatsApp
+                  </Link>
+                  <Link 
+                    href="/contact"
+                    className="w-full bg-primary text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-primary-dark transition-all"
+                  >
+                    Submit Inquiry
+                  </Link>
+                </div>
               </motion.div>
-            ))}
+            </div>
+
+            {/* Right Grid of Reasons */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
+                {reasons.map((reason, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex flex-col group"
+                  >
+                    <div className="text-primary mb-5 bg-gold-50 w-14 h-14 flex items-center justify-center rounded-full border border-gold-100 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      {reason.icon}
+                    </div>
+                    <h5 className="text-black text-base md:text-lg mb-3 font-bold uppercase tracking-tight">
+                      {reason.title}
+                    </h5>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {reason.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -27,11 +27,11 @@ export default function LiveEventTracker() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <section id="tracking" className="section-padding bg-[#F8F9FA] relative overflow-hidden">
+    <section id="tracking" className="py-24 bg-[#F8F9FA] relative overflow-hidden">
       {/* Ambient backgrounds */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -41,7 +41,7 @@ export default function LiveEventTracker() {
             <span className="w-2 h-2 rounded-full bg-champagne-500 animate-pulse" />
             Live Event Operations
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-display text-[#041E42] mb-8">
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-[#041E42] mb-8">
             Real-Time <span className="text-plum-700 font-semibold italic">Execution</span> Tracking
           </h2>
           <p className="text-gray-500 max-w-3xl mx-auto text-lg font-light leading-relaxed">
@@ -52,17 +52,17 @@ export default function LiveEventTracker() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Dashboard Card */}
-          <div className="lg:col-span-2 space-y-10">
+          <div className="lg:col-span-2 space-y-8">
             <div className="bg-white border border-gray-100 rounded-sm p-10 shadow-sm">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
                 <div>
-                  <h3 className="text-2xl font-display text-[#041E42] mb-2">The Royal Wedding Reception</h3>
+                  <h3 className="text-xl font-sans font-bold text-[#041E42] mb-2">The Royal Wedding Reception</h3>
                   <p className="text-gray-500 flex items-center gap-2 text-sm font-light">
                     <MapPin size={16} className="text-champagne-500" /> Riyadh International Ballroom
                   </p>
                 </div>
                 <div className="md:text-right">
-                  <div className="text-[#041E42] font-display text-4xl font-bold tracking-tighter">
+                  <div className="text-[#041E42] font-sans text-3xl font-bold tracking-tighter">
                     {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                   </div>
                   <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] mt-2 font-medium">Local Event Time</p>
@@ -98,15 +98,15 @@ export default function LiveEventTracker() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-4xl font-display font-bold text-[#041E42]">{progress}%</span>
+                    <span className="text-3xl font-sans font-bold text-[#041E42]">85%</span>
                     <span className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold mt-1">Ready</span>
                   </div>
                 </div>
 
-                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-12 w-full">
                   <div className="p-6 bg-[#F8F9FA] rounded-sm border border-gray-100">
                     <Users className="text-champagne-500 mb-4" size={24} />
-                    <div className="text-2xl font-display font-bold text-[#041E42]">850</div>
+                    <div className="text-xl font-sans font-bold text-[#041E42]">850</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Guests</div>
                   </div>
                   <div className="p-6 bg-[#F8F9FA] rounded-sm border border-gray-100">
@@ -129,7 +129,7 @@ export default function LiveEventTracker() {
                 <span className="w-2 h-2 rounded-full bg-sage-500 animate-pulse" />
                 Latest Strategic Updates
               </h4>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {[
                   { text: "Catering team has finalized the appetizers station. Temperature checks verified.", time: "2 minutes ago", team: "Ops Team", color: "bg-sage-500" },
                   { text: "Orchestra sound check successfully completed in the Main Atrium.", time: "15 minutes ago", team: "Tech Team", color: "bg-champagne-500" }
@@ -149,7 +149,7 @@ export default function LiveEventTracker() {
           {/* Timeline */}
           <div className="bg-white border border-gray-100 rounded-sm p-10 shadow-sm h-fit">
             <h3 className="text-xl font-display text-[#041E42] mb-10">Event Timeline</h3>
-            <div className="space-y-10 relative">
+            <div className="space-y-8 relative">
               <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gray-100" />
 
               {eventMilestones.map((milestone) => (

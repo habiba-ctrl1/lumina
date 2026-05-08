@@ -50,7 +50,36 @@ async function main() {
     })
   }
 
-  console.log('Database seeded successfully!')
+  // Seed Vendors
+  const vendors = [
+    { name: "Velvet Lens Photography", category: "Photography", price: 2500, location: "Riyadh", rating: 4.9 },
+    { name: "Royal Banquet Catering", category: "Catering", price: 5000, location: "Jeddah", rating: 4.8 },
+    { name: "Floral Elegance", category: "Decoration", price: 1500, location: "Dammam", rating: 5.0 },
+    { name: "Grand Vision AV", category: "Audio/Visual", price: 3000, location: "Riyadh", rating: 4.7 },
+  ]
+
+  const createdVendors = []
+  for (const vendor of vendors) {
+    const v = await prisma.vendor.create({
+      data: vendor
+    })
+    createdVendors.push(v)
+  }
+
+  // Seed Quotes
+  const quotes = [
+    { clientName: "Faisal Ahmed", clientEmail: "faisal@example.com", details: "Wedding photography for 300 guests", status: "Pending", vendorId: createdVendors[0].id },
+    { clientName: "Sarah Khalid", clientEmail: "sarah@example.com", details: "Corporate dinner catering", status: "Approved", vendorId: createdVendors[1].id },
+    { clientName: "Omar Hassan", clientEmail: "omar@example.com", details: "Full event decoration with floral theme", status: "Pending", vendorId: createdVendors[2].id },
+  ]
+
+  for (const quote of quotes) {
+    await prisma.quote.create({
+      data: quote
+    })
+  }
+
+  console.log('Database seeded successfully with Events, Testimonials, Vendors, and Quotes!')
 }
 
 main()

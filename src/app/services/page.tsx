@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-charcoal-900 overflow-hidden pt-20">
+    <main className="min-h-screen bg-navy-950 overflow-hidden pt-20">
       <Navbar />
       <Services />
       <Footer />

@@ -159,16 +159,16 @@ export default function ProductionVenuesPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Exquisite <span className="italic font-light">Services</span> <br/>
-              & <span className="text-shimmer">Elite Venues</span>
+              Exquisite <span className="font-bold text-gold-500">Services</span> <br/>
+              & <span className="text-shimmer font-bold">Elite Venues</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-300 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               Exclusive access to <strong className="text-white">KAICC</strong>, <strong className="text-white">RECC</strong>, and the prestigious <strong className="text-white">King Abdullah Economic City (KAEC)</strong>. We streamline your <strong className="text-white">event venue rental Riyadh</strong> and <strong className="text-white">venue sourcing Saudi Arabia</strong> processes. Delivering comprehensive <strong className="text-white">production services events Saudi</strong>, from <strong className="text-white">audio visual production events</strong> to complex <strong className="text-white">event logistics KSA</strong>.
             </motion.p>
@@ -205,7 +205,7 @@ export default function ProductionVenuesPage() {
                 <span>JW MARRIOTT</span>
                 <span>RITZ-CARLTON</span>
               </div>
-              <div className="text-xs text-gold-500 font-bold italic tracking-widest uppercase border-l border-white/10 pl-8">
+              <div className="text-xs text-gold-500 font-bold  tracking-widest uppercase border-l border-white/10 pl-8">
                 &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function ProductionVenuesPage() {
                   <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-gold-500/10 group-hover:border-gold-500/50 transition-all duration-500">
                     <service.icon size={24} className="text-gold-500" />
                   </div>
-                  <h3 className="text-xl font-display text-white mb-4">{service.title}</h3>
+                  <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
@@ -250,7 +250,7 @@ export default function ProductionVenuesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-display text-white">Production <br/><span className="text-gold-500 italic">Hub</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-white">Production <br/><span className="text-gold-500">Hub</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
                 <div className="pt-6 border-t border-white/10">
                   <p className="text-white font-bold text-sm">Fahad Al-Sulaiman</p>
@@ -279,8 +279,8 @@ export default function ProductionVenuesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
-                <h2 className="text-4xl md:text-6xl font-display text-charcoal-950">
-                  خدمات <br/><span className="text-gold-600 italic">عالمية المستوى</span>
+                <h2 className="text-2xl md:text-4xl font-sans text-charcoal-950 font-bold">
+                  خدمات <br/><span className="text-gold-600">عالمية المستوى</span>
                 </h2>
                 <div className="space-y-6">
                   <div className="p-8 bg-gray-50 border-l-4 border-gold-500">
@@ -313,7 +313,7 @@ export default function ProductionVenuesPage() {
         <section className="py-32 bg-charcoal-900 relative">
           <div className="max-w-5xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-4xl font-display text-white">Investment <span className="italic text-gold-500">Guide</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Investment <span className="text-gold-500">Guide</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-[0.4em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
             </div>
 
@@ -349,7 +349,7 @@ export default function ProductionVenuesPage() {
         {/* FAQ Section */}
         <section className="py-32 bg-white text-charcoal-950">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <h2 className="text-4xl font-display mb-16 text-center">Service <span className="italic text-gold-600">Queries</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans mb-16 text-center font-bold">Service <span className="text-gold-600">Queries</span></h2>
             <div className="space-y-6">
               {[
                 { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Lumina provides complete technical specifications tailored to your venue." },

@@ -66,7 +66,7 @@ export default function AdminEvents() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
         <div>
           <h1 className="text-3xl font-light text-white mb-2">
-            Manage <span className="text-gold-500 font-semibold italic">Events</span>
+            Manage <span className="text-gold-500 font-semibold ">Events</span>
           </h1>
           <p className="text-gray-500">Add or remove gallery images shown on the website.</p>
         </div>

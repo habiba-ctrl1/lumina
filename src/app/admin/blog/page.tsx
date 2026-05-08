@@ -12,7 +12,7 @@ export default function AdminBlogPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
         <div>
           <h1 className="text-3xl font-light text-white mb-2">
-            Blog <span className="text-gold-500 font-semibold italic">Management</span>
+            Blog <span className="text-gold-500 font-semibold ">Management</span>
           </h1>
           <p className="text-gray-500 text-sm">Manage your lifestyle articles and event planning tips.</p>
         </div>

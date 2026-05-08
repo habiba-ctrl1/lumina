@@ -31,8 +31,8 @@ export default function AboutPage() {
           <span className="text-gold-500 text-xs uppercase tracking-[0.5em] font-bold mb-4 block">
             Established 2018
           </span>
-          <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-tight">
-            Curators of <span className="hero-subtitle-shimmer italic font-semibold">Extraordinary</span> <br /> Moments
+          <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-6 leading-tight">
+            Curators of <span className="hero-subtitle-shimmer  font-semibold">Extraordinary</span> <br /> Moments
           </h1>
           <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto">
             From Riyadh to the world, Lumina Events blends architectural precision with raw emotion to craft events that defy expectation.
@@ -54,13 +54,13 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-2xl shadow-xl max-w-xs">
-              <p className="text-gold-600 font-display text-xl mb-2 font-medium italic">&quot;We don&apos;t just plan events; we orchestrate emotions.&quot;</p>
+              <p className="text-gold-600 font-sans text-lg mb-2 font-bold">&quot;We don&apos;t just plan events; we orchestrate emotions.&quot;</p>
               <p className="text-gray-500 text-xs uppercase tracking-widest font-bold">— Habiba, Founder</p>
             </div>
           </div>
 
           <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-display text-white leading-tight">Crafting <span className="italic text-gold-500 font-semibold">Unparalleled</span> Moments</h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-white leading-tight">Crafting Unparalleled Moments</h2>
             <div className="space-y-6 text-gray-400 font-light leading-relaxed text-lg">
               <p>
                 Lumina was born from a singular vision: to redefine the landscape of luxury event management in the Middle East and beyond. 
@@ -101,7 +101,7 @@ export default function AboutPage() {
       <section className="py-24 bg-charcoal-950 relative border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Our Core <span className="text-gold-500 italic font-semibold">Values</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans font-bold text-white mb-6">Our Core Values</h2>
             <div className="w-16 h-px bg-gold-500/50 mx-auto" />
           </div>
 
@@ -113,7 +113,7 @@ export default function AboutPage() {
             ].map((value, i) => (
               <div key={i} className="bg-charcoal-900 border border-white/10 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group hover:shadow-xl">
                 <value.icon size={32} className="text-gold-500 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-display text-white mb-4 font-semibold">{value.title}</h3>
+                <h3 className="text-xl font-sans font-bold text-white mb-4">{value.title}</h3>
                 <p className="text-gray-400 text-sm font-light leading-relaxed">{value.desc}</p>
               </div>
             ))}
@@ -126,7 +126,7 @@ export default function AboutPage() {
         <div className="bg-charcoal-950 border border-white/5 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden max-w-7xl mx-auto">
           <div className="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay" />
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Ready to create <span className="text-gold-500 italic">Magic?</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans font-bold text-white mb-6">Ready to create Magic?</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-10 font-light">
               Let us transform your vision into an extraordinary reality. Connect with our principal planners today.
             </p>

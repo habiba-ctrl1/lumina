@@ -202,16 +202,16 @@ export default function ExhibitionsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Exhibition <span className="italic font-light">Management</span> <br/>
-              <span className="text-shimmer">Saudi Arabia</span>
+              Exhibition <span className="font-bold">Management</span> <br/>
+              <span className="text-shimmer font-bold">Saudi Arabia</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               The premier <strong className="text-white">trade show organizer Saudi Arabia</strong>. Partnering with <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence for any <strong className="text-white">trade exhibition</strong> or <strong className="text-white">product showcase event</strong> and helping international brands effortlessly <strong className="text-white">book exhibition space KSA</strong>.
             </motion.p>
@@ -248,7 +248,7 @@ export default function ExhibitionsPage() {
                 <span className="text-xs font-bold tracking-tighter">SAUDI AGRICULTURE</span>
                 <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
               </div>
-              <div className="text-xs text-gold-500 font-bold italic tracking-widest uppercase">
+              <div className="text-xs text-gold-500 font-bold  tracking-widest uppercase">
                 &quot;Award-Winning Exhibition Design 2024&quot;
               </div>
             </div>
@@ -259,7 +259,7 @@ export default function ExhibitionsPage() {
         <section className="py-32 bg-charcoal-900/30 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-4xl md:text-5xl font-display text-white mb-6">Our Expo <span className="italic text-gold-500">Expertise</span></h2>
+              <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Our Expo <span className="text-gold-500">Expertise</span></h2>
               <div className="w-24 h-px bg-gold-500/50 mx-auto" />
             </div>
 
@@ -283,7 +283,7 @@ export default function ExhibitionsPage() {
                   className="bg-charcoal-900 border border-white/5 p-10 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group"
                 >
                   <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-display text-white mb-4">{service.title}</h3>
+                  <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
@@ -296,7 +296,7 @@ export default function ExhibitionsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-display text-white">Exhibitor <br/><span className="text-gold-500 italic">Insights</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-white">Exhibitor <br/><span className="text-gold-500">Insights</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
                 <Link href="/blog" className="inline-block text-gold-500 text-xs font-bold uppercase tracking-widest border-b border-gold-500 pb-1">View All Guides</Link>
               </div>
@@ -323,8 +323,8 @@ export default function ExhibitionsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
-                <h2 className="text-4xl md:text-6xl font-display leading-tight">
-                  الريادة في <br/><span className="text-gold-600 italic">تنظيم المعارض</span>
+                <h2 className="text-2xl md:text-4xl font-sans leading-tight font-bold">
+                  الريادة في <br/><span className="text-gold-600">تنظيم المعارض</span>
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
                   تعتبر لومينا أفضل <strong className="text-charcoal-950">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-charcoal-950">مركز الرياض للمعارض والمؤتمرات</strong>.
@@ -350,7 +350,7 @@ export default function ExhibitionsPage() {
         <section className="py-32 bg-charcoal-900 relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-4xl font-display text-white">Expo <span className="italic text-gold-500">Guide</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Expo <span className="text-gold-500">Guide</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-widest text-xs">Everything you need to know about Saudi Trade Shows</p>
             </div>
 

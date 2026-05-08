@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
           <Link href="/" className="inline-flex items-center text-gold-500 hover:text-gold-400 mb-8 transition-colors text-sm">
             <ArrowLeft size={16} className="mr-2" /> Back to Home
           </Link>
-          <h1 className="text-4xl md:text-5xl font-display text-white mb-6">Privacy Policy</h1>
+          <h1 className="text-3xl md:text-4xl font-sans font-bold text-white mb-6">Privacy Policy</h1>
           <div className="prose prose-invert prose-gold max-w-none text-gray-300">
             <p className="mb-4">Last updated: May 2026</p>
             <p className="mb-4">

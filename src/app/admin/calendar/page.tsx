@@ -10,7 +10,7 @@ export default function CalendarPage() {
     <div className="pb-10">
       <div className="mb-10">
         <h1 className="text-3xl font-light text-white mb-2">
-          Event <span className="text-gold-500 font-semibold italic">Calendar</span> & Dispatch
+          Event <span className="text-gold-500 font-semibold ">Calendar</span> & Dispatch
         </h1>
         <p className="text-gray-500 text-sm">Manage all your upcoming luxury events, bookings, and team dispatches.</p>
       </div>

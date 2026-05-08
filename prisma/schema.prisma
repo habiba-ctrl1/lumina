@@ -11,6 +11,7 @@ model Event {
   id        Int      @id @default(autoincrement())
   src       String
   alt       String
+  category  String   @default("All")
   className String
   createdAt DateTime @default(now())
 }
@@ -25,9 +26,38 @@ model Testimonial {
 }
 
 model ContactMessage {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String
-  message   String
-  createdAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  event_type  String?
+  budget      String?
+  event_date  String?
+  guest_count String?
+  venue_city  String?
+  message     String
+  source      String?  @default("direct_contact")
+  createdAt   DateTime @default(now())
+}
+
+model Vendor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  category    String   // e.g., "Photography", "Catering"
+  price       Float
+  location    String
+  rating      Float    @default(5.0)
+  quotes      Quote[]
+}
+
+model Quote {
+  id          Int      @id @default(autoincrement())
+  clientName  String
+  clientEmail String
+  details     String
+  status      String   @default("Pending") // Pending, Approved, Rejected
+  vendor      Vendor   @relation(fields: [vendorId], references: [id])
+  vendorId    Int
+  createdAt   DateTime @default(now())
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -31,6 +31,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Locations", href: "/locations" },
+    { name: "Partners", href: "#partners" },
     { name: "Journal", href: "/blog" },
   ];
 
@@ -39,12 +40,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-        isScrolled ? "bg-white/80 backdrop-blur-xl shadow-sm border-b border-gold-500/50 py-3" : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-white/70 backdrop-blur-xl shadow-sm border-b border-white/10 py-4`}
       onMouseLeave={() => setHoveredLink(null)}
     >
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -52,40 +51,42 @@ export default function Navbar() {
               <Image 
                 src="/lumina-logo-transparent.png" 
                 alt="Lumina Events Logo" 
-                width={160} 
-                height={60}
-                className={`transition-all duration-700 object-contain h-12 w-auto ${isScrolled ? "brightness-50" : "brightness-100"}`}
+                width={140} 
+                height={50}
+                className="object-contain h-10 w-auto"
                 priority
               />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-[clamp(1rem,2.5vw,2.5rem)]">
+          <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
-              const isServices = link.name === "Services";
 
               return (
                 <div 
                   key={link.name} 
-                  className="relative group h-full flex items-center py-4"
+                  className="relative group h-full flex items-center"
                   onMouseEnter={() => setHoveredLink(link.name)}
                 >
                   <Link
                     href={link.href}
-                    className={`relative px-2 py-1 text-[11px] font-medium uppercase tracking-[0.3em] transition-all duration-500 ${
-                      isScrolled 
-                        ? (isActive || hoveredLink === link.name ? "text-[#041E42]" : "text-gray-500 hover:text-[#041E42]") 
-                        : (isActive || hoveredLink === link.name ? "text-champagne-500" : "text-white/90 hover:text-white")
+                    className={`relative px-2 py-1 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                      isActive || hoveredLink === link.name ? "text-black" : "text-gray-500 hover:text-black"
                     }`}
                   >
-                    {link.name}
-                    <span className={`absolute bottom-0 left-0 h-px bg-champagne-500 transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    <span className="flex items-center gap-1">
+                      {link.name}
+                      {["Services", "Partners", "Locations"].includes(link.name) && (
+                        <ChevronDown size={10} className={`transition-transform duration-300 ${hoveredLink === link.name ? "rotate-180" : ""}`} />
+                      )}
+                    </span>
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
                   </Link>
 
                   {/* Mega Menu for Services */}
-                  {isServices && (
+                  {link.name === "Services" && (
                     <AnimatePresence>
                       {hoveredLink === "Services" && (
                         <motion.div
@@ -93,19 +94,19 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white border border-gray-100 shadow-2xl rounded-sm overflow-hidden flex"
+                          className="absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden flex mt-4"
                         >
                           <div className="w-1/3 bg-gray-50 relative p-8">
                             <Image 
                               src="/gallery_1.png" 
-                              alt="Lumina Luxury Services" 
+                              alt="Lumina Services" 
                               fill 
-                              className="object-cover opacity-80"
+                              className="object-cover opacity-50 grayscale"
                             />
-                            <div className="absolute inset-0 bg-[#041E42]/80 mix-blend-multiply" />
+                            <div className="absolute inset-0 bg-black/10" />
                             <div className="relative z-10 h-full flex flex-col justify-end">
-                              <h3 className="text-white font-display text-2xl mb-2">Bespoke<br/>Experiences</h3>
-                              <p className="text-gray-300 text-xs font-light">Crafting extraordinary events across the Middle East.</p>
+                              <h3 className="text-black font-sans text-lg mb-2 font-bold">Bespoke<br/>Experiences</h3>
+                              <p className="text-gray-600 text-[10px] font-semibold">Crafting extraordinary events.</p>
                             </div>
                           </div>
                           <div className="w-2/3 p-8 grid grid-cols-2 gap-x-8 gap-y-4">
@@ -121,13 +122,71 @@ export default function Navbar() {
                                 key={item.name} 
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
-                                className="group/item flex items-center gap-3 p-3 hover:bg-gray-50 rounded-sm transition-colors"
+                                className="group/item flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-gold-500/30 group-hover/item:bg-gold-500 transition-colors" />
-                                <span className="text-[#041E42] text-xs font-medium uppercase tracking-widest">{item.name}</span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary transition-colors" />
+                                <span className="text-black text-[11px] font-bold uppercase tracking-widest">{item.name}</span>
                               </Link>
                             ))}
                           </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+
+                  {/* Dropdown for Partners */}
+                  {link.name === "Partners" && (
+                    <AnimatePresence>
+                      {hoveredLink === "Partners" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute top-full left-0 w-[280px] bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden mt-4 p-2"
+                        >
+                          <Link 
+                            href="/partners" 
+                            className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                            onClick={() => setHoveredLink(null)}
+                          >
+                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Partner with Us</span>
+                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Overview of partnerships</span>
+                          </Link>
+                          <Link 
+                            href="/vendor-registration" 
+                            className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                            onClick={() => setHoveredLink(null)}
+                          >
+                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Vendor Registration</span>
+                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Join our elite vendor network</span>
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+
+                  {/* Dropdown for Locations */}
+                  {link.name === "Locations" && (
+                    <AnimatePresence>
+                      {hoveredLink === "Locations" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute top-full left-0 w-[200px] bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden mt-4 p-2"
+                        >
+                          {["Riyadh", "Jeddah", "Makkah", "Madinah", "AlUla", "Dammam"].map((city) => (
+                            <Link 
+                              key={city}
+                              href="/locations" 
+                              className="flex p-3 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                              onClick={() => setHoveredLink(null)}
+                            >
+                              <span className="text-black text-[10px] font-bold uppercase tracking-widest group-hover/sub:text-primary transition-colors">{city}</span>
+                            </Link>
+                          ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -137,25 +196,14 @@ export default function Navbar() {
             })}
 
             {/* Premium CTA */}
-            <div className="flex items-center gap-6 ml-4">
-              <div className="flex items-center bg-gray-100/10 p-1 rounded-full border border-white/5">
-                <button className={`px-3 py-1 text-[9px] font-bold uppercase tracking-widest transition-all rounded-full ${isScrolled ? (true ? "text-[#041E42] bg-white shadow-sm" : "text-gray-400") : "text-white"}`}>
-                  EN
-                </button>
-                <button className={`px-3 py-1 text-[9px] font-bold uppercase tracking-widest transition-all rounded-full text-gray-500 hover:text-champagne-500`}>
-                  AR
-                </button>
-              </div>
-              
+            <div className="flex items-center gap-6">
               <Link
-                href="/consultation"
-                className={`px-8 py-3 text-[10px] font-bold uppercase tracking-[0.25em] transition-all duration-700 border ${
-                  isScrolled 
-                    ? "bg-[#041E42] border-[#041E42] text-white hover:bg-transparent hover:text-[#041E42]" 
-                    : "bg-white border-white text-[#041E42] hover:bg-transparent hover:text-white"
-                }`}
+                href="https://wa.me/966501234567?text=Hi%20Lumina%20Events!%20I%20am%20interested%20in%20your%20event%20management%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-white text-[10px] py-3 px-8 uppercase tracking-[0.2em] font-bold rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30"
               >
-                Consultation
+                Book Now
               </Link>
             </div>
           </div>
@@ -164,7 +212,7 @@ export default function Navbar() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white p-2 transition-colors"
+              className="text-black p-2 transition-colors"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -177,23 +225,23 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-4 right-4 z-[100] lg:hidden bg-white border border-gray-100 rounded-sm overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 right-0 z-[100] lg:hidden bg-white border-b border-gray-100 overflow-hidden shadow-xl"
           >
-            <div className="px-8 py-10 space-y-4 text-center">
+            <div className="px-8 py-10 space-y-8">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-lg font-display text-[#041E42] uppercase tracking-widest hover:text-champagne-500 transition-colors"
+                    className="block text-sm font-bold uppercase tracking-widest text-gray-900 hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -202,13 +250,13 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="pt-6"
+                transition={{ delay: 0.5 }}
+                className="pt-4"
               >
                 <Link
                   href="/consultation"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full py-5 bg-[#041E42] text-white text-[11px] font-bold uppercase tracking-[0.3em]"
+                  className="btn-primary w-full py-4 text-xs"
                 >
                   Book Consultation
                 </Link>

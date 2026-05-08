@@ -213,16 +213,16 @@ export default function WeddingsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Wedding <span className="italic font-light">Planner</span> <br/>
-              <span className="text-shimmer">Saudi Arabia</span>
+              Wedding <span className="font-bold">Planner</span> <br/>
+              <span className="text-shimmer font-bold">Saudi Arabia</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-200 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto"
+              className="text-gray-200 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
             >
               Exquisite <strong className="text-white">nuptial event</strong> and <strong className="text-white">marriage ceremony planning</strong> in Riyadh, Jeddah, and across the Kingdom. Creating timeless memories with a blend of tradition and modern <strong className="text-white">bridal event coordination</strong>.
             </motion.p>
@@ -254,8 +254,8 @@ export default function WeddingsPage() {
                 />
               </div>
               <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl font-display text-charcoal-950 leading-tight">
-                  Crafting the Best <br/><span className="text-gold-600 italic">Wedding Experience</span> in Riyadh
+                <h2 className="text-2xl md:text-4xl font-sans text-charcoal-950 leading-tight font-bold">
+                  Crafting the Best <br/><span className="text-gold-600">Wedding Experience</span> in Riyadh
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
                   As the premier <strong className="text-charcoal-950">wedding planner in Saudi Arabia</strong> for over 15 years, Lumina specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <strong className="text-charcoal-950">Ritz-Carlton Riyadh</strong>, <strong className="text-charcoal-950">Four Seasons</strong>, and the iconic <strong className="text-charcoal-950">Al-Khayala</strong> venues.
@@ -280,7 +280,7 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-12">
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-display text-gold-600 font-bold">15+</div>
+                <div className="text-3xl font-sans text-gold-600 font-bold">15+</div>
                 <div className="text-[10px] uppercase tracking-widest text-gray-400">Years in <br/>Saudi Market</div>
               </div>
               <div className="flex gap-10 grayscale opacity-40">
@@ -288,7 +288,7 @@ export default function WeddingsPage() {
                 <span className="text-xs font-bold tracking-widest">RITZ-CARLTON</span>
                 <span className="text-xs font-bold tracking-widest">JW MARRIOTT</span>
               </div>
-              <div className="text-sm text-gray-500 font-light italic">
+              <div className="text-sm text-gray-500 font-light ">
                 &quot;Award-winning planning excellence for the Kingdom&apos;s elite.&quot;
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function WeddingsPage() {
         <section className="py-32 bg-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-20">
             <span className="text-gold-600 text-xs uppercase tracking-widest font-bold mb-4 block">Our Expertise</span>
-            <h2 className="text-4xl md:text-6xl font-display text-charcoal-950">Social Event <span className="italic">Planning</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-charcoal-950 font-bold">Social Event <span className="text-gold-600">Planning</span></h2>
           </div>
 
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -318,8 +318,8 @@ export default function WeddingsPage() {
                   <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-500 transition-colors">
                     <service.icon size={28} className="text-gold-600 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-display text-charcoal-950 mb-4">{service.title}</h3>
-                  <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
+                  <h3 className="text-xl font-sans font-bold text-charcoal-950 mb-4">{service.title}</h3>
+                  <p className="text-gray-500 text-sm font-normal leading-relaxed">{service.desc}</p>
                 </div>
               ))}
             </div>
@@ -331,8 +331,8 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-display text-charcoal-950">Bridal <br/><span className="text-gold-600 italic">Resources</span></h3>
-                <p className="text-gray-500 text-sm font-light leading-relaxed">Expert advice for navigating the luxury wedding landscape in the Kingdom.</p>
+                <h3 className="text-2xl font-sans font-bold text-charcoal-950">Bridal <br/><span className="text-gold-600">Resources</span></h3>
+                <p className="text-gray-500 text-sm font-normal leading-relaxed">Expert advice for navigating the luxury wedding landscape in the Kingdom.</p>
                 <div className="pt-6 border-t border-gray-100">
                   <p className="text-charcoal-950 font-bold text-sm">Fatima Al-Rashid</p>
                   <p className="text-gray-500 text-[10px] uppercase tracking-widest">Senior Wedding Consultant</p>
@@ -347,7 +347,7 @@ export default function WeddingsPage() {
                 ].map((post, idx) => (
                   <div key={idx} className="p-8 bg-gray-50 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-charcoal-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
-                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                    <p className="text-gray-500 text-[11px] font-normal leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
               </div>
@@ -358,21 +358,21 @@ export default function WeddingsPage() {
         {/* Localized Arabic Focus Section */}
         <section className="py-32 bg-charcoal-950 text-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-4xl md:text-6xl font-display mb-16">
-              نصمم <span className="text-gold-500 italic">أجمل اللحظات</span> في المملكة
+            <h2 className="text-2xl md:text-4xl font-sans mb-16 font-bold">
+              نصمم <span className="text-gold-500">أجمل اللحظات</span> في المملكة
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="p-8 border border-white/10 rounded-2xl">
-                <h3 className="text-2xl font-display text-gold-500 mb-4">مخطط أفراح الرياض</h3>
-                <p className="text-gray-400 font-light">إدارة حفلات الزفاف الفاخرة في قلب العاصمة مع اهتمام بأدق التفاصيل.</p>
+                <h3 className="text-2xl font-sans font-bold text-gold-500 mb-4">مخطط أفراح الرياض</h3>
+                <p className="text-gray-400 font-normal">إدارة حفلات الزفاف الفاخرة في قلب العاصمة مع اهتمام بأدق التفاصيل.</p>
               </div>
               <div className="p-8 border border-white/10 rounded-2xl">
-                <h3 className="text-2xl font-display text-gold-500 mb-4">شركة تنظيم حفلات جدة</h3>
-                <p className="text-gray-400 font-light">تنظيم مناسبات اجتماعية راقية على ساحل البحر الأحمر بأسلوب عصري.</p>
+                <h3 className="text-2xl font-sans font-bold text-gold-500 mb-4">شركة تنظيم حفلات جدة</h3>
+                <p className="text-gray-400 font-normal">تنظيم مناسبات اجتماعية راقية على ساحل البحر الأحمر بأسلوب عصري.</p>
               </div>
               <div className="p-8 border border-white/10 rounded-2xl">
-                <h3 className="text-2xl font-display text-gold-500 mb-4">حفلات الأعراس الدمام</h3>
-                <p className="text-gray-400 font-light">خبرة واسعة في تنظيم الأعراس والمناسبات الكبرى في المنطقة الشرقية.</p>
+                <h3 className="text-2xl font-sans font-bold text-gold-500 mb-4">حفلات الأعراس الدمام</h3>
+                <p className="text-gray-400 font-normal">خبرة واسعة في تنظيم الأعراس والمناسبات الكبرى في المنطقة الشرقية.</p>
               </div>
             </div>
           </div>
@@ -382,7 +382,7 @@ export default function WeddingsPage() {
         <section className="py-32 bg-white relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-4xl font-display text-charcoal-950">Common <span className="italic text-gold-600">Inquiries</span></h2>
+              <h2 className="text-2xl font-sans text-charcoal-950 font-bold">Common <span className="text-gold-600">Inquiries</span></h2>
               <p className="text-gray-500 mt-4">Everything you need to know about planning your Saudi wedding.</p>
             </div>
 

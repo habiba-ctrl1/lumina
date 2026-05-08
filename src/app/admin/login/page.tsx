@@ -48,7 +48,7 @@ export default function AdminLogin() {
         <div className="bg-charcoal-800 border border-white/5 p-8 rounded-2xl shadow-2xl backdrop-blur-sm">
           <div className="text-center mb-10">
             <h1 className="text-3xl font-light text-white mb-2">
-              Lumina <span className="text-gold-500 font-semibold italic">Admin</span>
+              Lumina <span className="text-gold-500 font-semibold ">Admin</span>
             </h1>
             <p className="text-gray-400">Please sign in to access the dashboard</p>
           </div>

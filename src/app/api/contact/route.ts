@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
 
 export async function POST(request: Request) {
@@ -9,46 +9,25 @@ export async function POST(request: Request) {
     const { name, email, phone, company, eventType, budget, eventDate, guestCount, venueCity, message, source } = body;
 
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Name, email, and message are required.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
     }
 
-    // 1. Save to Supabase
-    // Prepare data, converting empty strings to null for optional fields
-    const insertData = {
-      name,
-      email,
-      phone: phone || null,
-      company: company || null,
-      event_type: eventType || null,
-      budget: budget || null,
-      event_date: eventDate || null,
-      guest_count: guestCount || null,
-      venue_city: venueCity || null,
-      message,
-      source: source || 'direct_contact'
-    };
-
-    const { error: supabaseError } = await supabase
-      .from('contact_messages')
-      .insert([insertData]);
-
-    if (supabaseError) {
-      console.error('Supabase Insert Error:', supabaseError);
-      
-      // Fallback: Try inserting only core fields if the above failed 
-      // (likely due to missing columns in the database)
-      const { error: fallbackError } = await supabase
-        .from('contact_messages')
-        .insert([{ name, email, message }]);
-        
-      if (fallbackError) {
-        console.error('Supabase Fallback Error:', fallbackError);
-        throw new Error(`Database error: ${supabaseError.message}`);
+    // 1. Save to Prisma (Local SQLite)
+    const contact = await prisma.contactMessage.create({
+      data: {
+        name,
+        email,
+        phone,
+        company,
+        event_type: eventType,
+        budget,
+        event_date: eventDate,
+        guest_count: guestCount,
+        venue_city: venueCity,
+        message,
+        source: source || 'direct_contact'
       }
-    }
+    });
 
     // 2. Send Emails via Resend
     try {
@@ -57,22 +36,7 @@ export async function POST(request: Request) {
         from: 'Lumina Events <onboarding@resend.dev>',
         to: ['habiti747@gmail.com'],
         subject: `New Inquiry: ${name}`,
-        html: `
-          <div style="font-family: sans-serif; padding: 20px; color: #333;">
-            <h2 style="color: #D4AF37;">New Inquiry Received</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-            <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-            <p><strong>Source:</strong> ${source || 'Direct'}</p>
-            <p><strong>Event Type:</strong> ${eventType || 'Not provided'}</p>
-            <p><strong>Budget:</strong> ${budget || 'Not provided'}</p>
-            <p><strong>Message:</strong></p>
-            <p style="background: #f4f4f4; padding: 15px; border-radius: 5px;">${message}</p>
-            <hr />
-            <p style="font-size: 12px; color: #888;">Sent from Lumina Events Website Backend</p>
-          </div>
-        `,
+        html: `<div style="font-family: sans-serif; padding: 20px;"><h2>New Inquiry Received</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p></div>`,
       });
 
       // User Confirmation
@@ -80,30 +44,56 @@ export async function POST(request: Request) {
         from: 'Lumina Events <onboarding@resend.dev>',
         to: [email],
         subject: 'We received your inquiry - Lumina Events',
-        html: `
-          <div style="font-family: sans-serif; padding: 20px; color: #333; text-align: center;">
-            <h1 style="color: #D4AF37;">Thank You!</h1>
-            <p>Hi ${name},</p>
-            <p>We've received your message and our team will get back to you within 24 hours.</p>
-            <div style="margin-top: 30px; padding: 20px; border-top: 1px solid #eee;">
-              <p style="font-size: 14px; color: #555;">Best Regards,</p>
-              <p style="font-weight: bold; color: #D4AF37;">Lumina Events Team</p>
-            </div>
-          </div>
-        `,
+        html: `<div style="font-family: sans-serif; padding: 20px;"><h1>Thank You!</h1><p>Hi ${name}, we received your message and will get back to you soon.</p></div>`,
       });
     } catch (emailError) {
-      // We don't want to fail the whole request if email fails, 
-      // but we should log it.
-      console.error('Resend email error:', emailError);
+      console.error('Email error:', emailError);
     }
 
-    return NextResponse.json({ success: true, message: 'Your inquiry has been submitted successfully.' }, { status: 201 });
+    return NextResponse.json({ success: true, contact }, { status: 201 });
   } catch (error) {
-    console.error('General error:', error);
-    return NextResponse.json(
-      { error: 'An unexpected error occurred.', details: error instanceof Error ? error.message : String(error) },
-      { status: 500 }
-    );
+    console.error('Prisma Error:', error);
+    return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });
+  }
+}
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const search = searchParams.get('search');
+    const category = searchParams.get('category');
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
+
+    let where: any = {};
+
+    if (search) {
+      where.OR = [
+        { name: { contains: search } },
+        { email: { contains: search } },
+        { message: { contains: search } },
+        { company: { contains: search } }
+      ];
+    }
+
+    if (category && category !== 'all') {
+      where.event_type = category;
+    }
+
+    if (startDate || endDate) {
+      where.createdAt = {};
+      if (startDate) where.createdAt.gte = new Date(startDate);
+      if (endDate) where.createdAt.lte = new Date(endDate);
+    }
+
+    const inquiries = await prisma.contactMessage.findMany({
+      where,
+      orderBy: { createdAt: 'desc' }
+    });
+
+    return NextResponse.json(inquiries);
+  } catch (error) {
+    console.error('Prisma Fetch Error:', error);
+    return NextResponse.json({ error: 'Failed to fetch inquiries' }, { status: 500 });
   }
 }

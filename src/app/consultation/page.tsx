@@ -70,15 +70,15 @@ export default function ConsultationPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-display text-white mb-8"
+            className="text-3xl md:text-5xl font-sans font-bold text-white mb-8"
           >
-            Book Your <span className="hero-subtitle-shimmer italic font-semibold">Discovery Session</span>
+            Book Your <span className="hero-subtitle-shimmer font-bold">Discovery Session</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto"
+            className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
             Let&apos;s begin the journey of creating your next masterpiece. Our senior consultants are ready to bring your vision to life.
           </motion.p>
@@ -91,7 +91,7 @@ export default function ConsultationPage() {
           {/* Left Side: Info */}
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-white/5 border border-white/10 p-8 rounded-sm">
-              <h3 className="text-white font-display text-2xl mb-6">What to Expect</h3>
+              <h3 className="text-white font-sans font-bold text-xl mb-6 uppercase tracking-wider">What to Expect</h3>
               <ul className="space-y-6">
                 {[
                   { icon: Zap, title: "Initial Vision Discovery", desc: "A 30-minute deep dive into your event goals and inspirations." },

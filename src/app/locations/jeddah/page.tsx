@@ -33,8 +33,8 @@ export default function JeddahPage() {
           <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             The Bride of the Red Sea | Jeddah
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white mb-6 leading-tight">
-            Coastal Elegance & <br/><span className="hero-subtitle-shimmer italic font-semibold">Bespoke Galas</span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-6 leading-tight font-bold">
+            Coastal Elegance & <br/><span className="hero-subtitle-shimmer font-bold">Bespoke Galas</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl font-light mb-8">
             From the mesmerizing spray of <span className="text-white font-medium">King Fahd&apos;s Fountain</span> to the historic soul of <span className="text-white font-medium">Al-Balad</span>, we design events that breathe with the spirit of Jeddah.
@@ -64,13 +64,13 @@ export default function JeddahPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
-                 <p className="text-white text-sm font-light italic">&quot;Where the heritage of the past meets the luxury of the future.&quot;</p>
+                 <p className="text-white text-sm font-light ">&quot;Where the heritage of the past meets the luxury of the future.&quot;</p>
                </div>
             </div>
           </div>
           <div className="order-1 lg:order-2">
             <span className="text-gold-500 text-xs uppercase tracking-widest font-bold mb-4 block">Event Venues Jeddah</span>
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-8">Red Sea <span className="italic text-shimmer">Grandeur</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Red Sea <span className="text-shimmer">Grandeur</span></h2>
             <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
               Jeddah&apos;s vibrant energy is matched only by its stunning coastal backdrop. We excel in planning high-end waterfront weddings on the <span className="text-white">Jeddah Corniche</span> and intimate, soulful gatherings within the coral-stone walls of <span className="text-white">Al-Balad</span>. Our team understands the unique rhythm of the Hijaz region.
             </p>
@@ -83,7 +83,7 @@ export default function JeddahPage() {
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <item.icon size={20} className="text-gold-500" />
-                  <h4 className="text-white font-display text-sm">{item.title}</h4>
+                  <h4 className="text-white font-sans font-bold text-sm">{item.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed">{item.text}</p>
                 </div>
               ))}
@@ -103,7 +103,7 @@ export default function JeddahPage() {
               { label: "Logistics Fleet", val: "Premium" }
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-3xl md:text-4xl font-display text-white mb-2">{stat.val}</div>
+                <div className="text-2xl md:text-3xl font-sans font-bold text-white mb-2">{stat.val}</div>
                 <div className="text-xs uppercase tracking-widest text-gold-500">{stat.label}</div>
               </div>
             ))}

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Camera, Cake, Flower2, Utensils, Star, ArrowRight } from "lucide-react";
 
-const WHATSAPP_BASE = "https://wa.me/923001234567?text=";
+const WHATSAPP_BASE = "https://wa.me/966501234567?text=";
 
 const categories = [
   { id: "photographers", name: "Photographers", icon: Camera },
@@ -85,13 +85,13 @@ export default function VendorMarketplace() {
     : vendors.filter(v => v.category === activeCategory);
 
   return (
-    <section id="vendors" className="py-28 bg-charcoal-950 relative overflow-hidden">
+    <section id="vendors" className="py-24 bg-charcoal-950 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
@@ -107,7 +107,7 @@ export default function VendorMarketplace() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-0"
+              className="text-2xl md:text-3xl font-sans font-bold text-white mb-0"
             >
               The <span className="text-shimmer font-semibold italic">Elite</span> Collective
             </motion.h2>
@@ -147,7 +147,7 @@ export default function VendorMarketplace() {
         </div>
 
         {/* Vendor Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {filteredVendors.map((vendor, index) => (
             <motion.div
               layout
@@ -177,7 +177,7 @@ export default function VendorMarketplace() {
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-display font-medium text-white group-hover:text-gold-400 transition-colors">
+                    <h3 className="text-xl font-sans font-bold text-white group-hover:text-gold-400 transition-colors">
                       {vendor.name}
                     </h3>
                     <p className="text-gray-400 text-xs uppercase tracking-wider mt-1">
@@ -216,7 +216,7 @@ export default function VendorMarketplace() {
           viewport={{ once: true }}
           className="mt-20 p-12 bg-gradient-to-r from-charcoal-800 to-charcoal-700 rounded-3xl border border-gold-500/20 text-center"
         >
-          <h3 className="text-2xl md:text-3xl font-display text-white mb-4">Are you a premium vendor?</h3>
+          <h3 className="text-xl md:text-2xl font-sans font-bold text-white mb-4">Are you a premium vendor?</h3>
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>

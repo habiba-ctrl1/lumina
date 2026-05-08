@@ -12,6 +12,8 @@ import Preloader from "@/components/Preloader";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import RecentEvents from "@/components/RecentEvents";
+import PartnersSection from "@/components/PartnersSection";
+import FeedbackForms from "@/components/FeedbackForms";
 
 export default function Home() {
   const jsonLd = {
@@ -22,17 +24,17 @@ export default function Home() {
         "name": "Lumina Events",
         "image": "https://luminaevents.com/hero_bg.png",
         "@id": "https://luminaevents.com/#organization",
-        "url": "https://luminaevents.com",
-        "telephone": "+1-555-0198",
+        "url": "https://lumina-theta-gray.vercel.app",
+        "telephone": "+966501234567",
         "priceRange": "$$$$",
-        "description": "Award-winning premier event management agency specializing in bespoke luxury weddings and high-end corporate galas for 2026.",
+        "description": "Saudi Arabia's premier event management agency specializing in bespoke luxury weddings and high-end corporate galas across Riyadh, Jeddah, and AlUla.",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "123 Luxury Avenue",
-          "addressLocality": "New York",
-          "addressRegion": "NY",
-          "postalCode": "10001",
-          "addressCountry": "US"
+          "streetAddress": "Olaya District",
+          "addressLocality": "Riyadh",
+          "addressRegion": "Riyadh Province",
+          "postalCode": "12211",
+          "addressCountry": "SA"
         },
         "geo": {
           "@type": "GeoCoordinates",
@@ -58,8 +60,8 @@ export default function Home() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://luminaevents.com/#website",
-        "url": "https://luminaevents.com",
+        "@id": "https://lumina-theta-gray.vercel.app/#website",
+        "url": "https://lumina-theta-gray.vercel.app",
         "name": "Lumina Events",
         "description": "Luxury Event Management Services",
         "publisher": {
@@ -71,7 +73,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-charcoal-900">
+    <main className="min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -81,13 +83,14 @@ export default function Home() {
       <Navbar />
       <Hero />
       <MarqueeStrip />
-      <WhyChooseUs />
+      <ContactSection />
       <StatsSection />
       <RecentEvents />
       <HowItWorks />
       <BlogPreview />
+      <PartnersSection />
+      <FeedbackForms />
       <BusinessLiveFeed />
-      <ContactSection />
       <Footer />
       <WhatsAppButton />
     </main>
