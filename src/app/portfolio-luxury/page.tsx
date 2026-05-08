@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
-export default function Portfolio-luxuryPage() {
+export default function PortfolioLuxuryPage() {
   return (
     <div className="min-h-screen bg-charcoal-950 pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">

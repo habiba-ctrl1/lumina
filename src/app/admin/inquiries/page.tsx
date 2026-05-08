@@ -18,6 +18,7 @@ type Inquiry = {
   venue_city?: string;
   message: string;
   source?: string;
+  status?: string;
   created_at: string;
 };
 
