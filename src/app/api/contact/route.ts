@@ -44,7 +44,7 @@ export async function POST(request: Request) {
         from: 'Lumina Events <onboarding@resend.dev>',
         to: [email],
         subject: 'We received your inquiry - Lumina Events',
-        html: `<div style="font-family: sans-serif; padding: 20px;"><h1>Thank You!</h1><p>Hi ${name}, we received your message and will get back to you soon.</p></div>`,
+        html: `<div style="font-family: sans-serif; padding: 20px;"><h2>Thank You for Reaching Out!</h2><p>Hi ${name},</p><p>We have successfully received your inquiry at Lumina Events. As promised, our team is already reviewing your details and we will get back to you within <strong>2 hours</strong>.</p><p>We look forward to creating something extraordinary with you.</p><p>Warm regards,<br>The Lumina Events Team</p></div>`,
       });
     } catch (emailError) {
       console.error('Email error:', emailError);

@@ -90,7 +90,7 @@ export default function Home() {
       <BlogPreview />
       <PartnersSection />
       <FeedbackForms />
-      <BusinessLiveFeed />
+      {/* <BusinessLiveFeed /> */}
       <Footer />
       <WhatsAppButton />
     </main>
