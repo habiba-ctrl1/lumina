@@ -61,7 +61,7 @@ export default function AdminTestimonials() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
         <div>
           <h1 className="text-3xl font-light text-white mb-2">
-            Manage <span className="text-gold-500 font-semibold italic">Testimonials</span>
+            Manage <span className="text-gold-500 font-semibold ">Testimonials</span>
           </h1>
           <p className="text-gray-500">Add or remove client reviews shown on the website.</p>
         </div>

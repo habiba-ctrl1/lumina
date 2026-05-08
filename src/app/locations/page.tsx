@@ -44,7 +44,7 @@ const locations = [
 
 export default function LocationsPage() {
   return (
-    <main className="min-h-screen bg-[#1e2653] overflow-hidden pt-20">
+    <main className="min-h-screen bg-navy-950 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -54,10 +54,10 @@ export default function LocationsPage() {
           <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Global Presence
           </span>
-          <h1 className="text-4xl md:text-6xl font-display text-white mb-6 leading-tight">
-            Our <span className="hero-subtitle-shimmer italic font-semibold">Destinations</span>
+          <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 leading-tight font-bold">
+            Our <span className="hero-subtitle-shimmer font-bold">Destinations</span>
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Lumina Events curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function LocationsPage() {
             <Link 
               key={loc.slug} 
               href={`/locations/${loc.slug}`}
-              className="group block relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-gold-500/50 transition-all duration-500"
+              className="group block relative rounded-md overflow-hidden border border-white/10 bg-white/5 hover:border-gold-500/50 transition-all duration-500"
             >
               <div className="relative h-80 w-full overflow-hidden">
                 <Image 
@@ -79,18 +79,18 @@ export default function LocationsPage() {
                   fill 
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653] via-[#1e2653]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPin size={16} className="text-gold-500" />
                   <span className="text-gold-500 text-xs uppercase tracking-widest">{loc.country}</span>
                 </div>
-                <h2 className="text-3xl font-display text-white mb-3">{loc.city}</h2>
-                <p className="text-gray-400 text-sm font-light leading-relaxed mb-6 line-clamp-2">
+                <h2 className="text-2xl font-sans text-white mb-3 font-bold">{loc.city}</h2>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2">
                   {loc.description}
                 </p>
-                <div className="flex items-center text-white text-sm font-medium uppercase tracking-wider group-hover:text-gold-500 transition-colors">
+                <div className="flex items-center text-white text-sm font-bold uppercase tracking-wider group-hover:text-gold-500 transition-colors">
                   Explore Location <ArrowRight size={16} className="ml-2" />
                 </div>
               </div>

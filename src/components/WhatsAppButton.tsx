@@ -18,7 +18,7 @@ const WhatsAppIcon = ({ size = 28, className = "" }: { size?: number; className?
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
-  const WHATSAPP_URL = "https://wa.me/923001234567?text=Hi%20Lumina%20Events!%20I%20would%20like%20to%20connect.";
+  const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Lumina!%20I%20am%20interested%20in%20your%20event%20management%20services.";
 
   return (
     <motion.div
@@ -33,17 +33,17 @@ export default function WhatsAppButton() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
-            className="absolute right-20 top-1/2 -translate-y-1/2 bg-[#041E42] text-white text-[10px] uppercase tracking-[0.2em] font-bold px-5 py-3 border border-white/10 shadow-2xl whitespace-nowrap pointer-events-none"
+            className="absolute right-20 top-1/2 -translate-y-1/2 bg-white text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-gray-100 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
           >
-            Start Your Journey
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 w-2 h-2 bg-[#041E42] rotate-45 border-r border-t border-white/10" />
+            Chat with us
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-t border-gray-100" />
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Pulse Rings */}
-      <div className="absolute inset-0 rounded-full bg-green-500/20 animate-ping pointer-events-none" />
-      <div className="absolute inset-0 rounded-full bg-green-500/10 animate-pulse pointer-events-none" />
+      <div className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />
+      <div className="absolute inset-0 rounded-full bg-[#25D366]/20 animate-pulse pointer-events-none" />
 
       {/* Button */}
       <a
@@ -52,13 +52,10 @@ export default function WhatsAppButton() {
         rel="noopener noreferrer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative flex items-center justify-center w-16 h-16 bg-white border border-gray-100 text-[#25D366] shadow-2xl transition-all duration-700 hover:bg-[#25D366] hover:text-white rounded-full group overflow-hidden"
+        className="relative flex items-center justify-center w-16 h-16 bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.3)] transition-all duration-300 hover:scale-110 hover:shadow-[0_15px_40px_rgba(37,211,102,0.4)] rounded-full group"
         aria-label="Contact us on WhatsApp"
       >
-        {/* Shimmer Effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-        
-        <WhatsAppIcon className="relative z-10 transition-transform duration-500 group-hover:scale-110" />
+        <WhatsAppIcon className="relative z-10 transition-transform duration-500" />
       </a>
     </motion.div>
   );

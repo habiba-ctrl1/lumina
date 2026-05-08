@@ -28,7 +28,7 @@ export default function BlogPostPage() {
       <main className="min-h-screen bg-charcoal-900 flex items-center justify-center">
         <Navbar />
         <div className="text-center">
-          <h1 className="text-4xl font-display text-white mb-4">Article Not Found</h1>
+          <h1 className="text-2xl md:text-3xl font-sans font-bold text-white mb-4">Article Not Found</h1>
           <Link href="/blog" className="text-gold-500 hover:text-gold-400 text-sm uppercase tracking-wider">
             &larr; Back to Blog
           </Link>
@@ -40,14 +40,14 @@ export default function BlogPostPage() {
   const renderContent = (block: string) => {
     if (block.startsWith("## ")) {
       return (
-        <h2 className="text-2xl md:text-3xl font-display text-white mt-12 mb-4 leading-tight">
+        <h2 className="text-xl md:text-2xl font-sans font-bold text-white mt-12 mb-4 leading-tight">
           {block.replace("## ", "")}
         </h2>
       );
     }
     return (
       <p
-        className="text-gray-400 font-light leading-[1.9] mb-6"
+        className="text-gray-400 leading-[1.9] mb-6"
         dangerouslySetInnerHTML={{ __html: block }}
       />
     );
@@ -76,7 +76,7 @@ export default function BlogPostPage() {
                  <div className="w-12 h-px bg-gold-500" />
                  <span className="text-gold-500 text-[10px] uppercase tracking-[0.4em] font-bold">{post.category}</span>
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white leading-[1.1] mb-8 max-w-4xl">{post.title}</h1>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold text-white leading-[1.1] mb-8 max-w-4xl">{post.title}</h1>
               <div className="flex flex-wrap items-center gap-8 text-[10px] text-gray-500 uppercase tracking-[0.25em] font-medium border-t border-white/5 pt-8">
                 <span className="flex items-center gap-2">By <span className="text-white">{post.author}</span></span>
                 <span className="flex items-center gap-2">Date <span className="text-white">{post.date}</span></span>
@@ -95,7 +95,7 @@ export default function BlogPostPage() {
             <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               {/* Intro */}
               <div className="border-l-2 border-gold-500/30 pl-6 mb-10">
-                <p className="text-lg text-gray-300 font-light leading-relaxed italic" dangerouslySetInnerHTML={{ __html: post.content[0] }} />
+                <p className="text-lg text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: post.content[0] }} />
               </div>
 
               {/* Body */}
@@ -146,13 +146,13 @@ export default function BlogPostPage() {
             {prevPost ? (
               <Link href={`/blog/${prevPost.slug}`} className="group p-8 md:p-12 border-r border-white/5 hover:bg-charcoal-800/20 transition-colors duration-300">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-600 flex items-center gap-2 mb-3"><ArrowLeft size={12} /> Previous</span>
-                <h4 className="text-sm font-display text-white group-hover:text-gold-400 transition-colors line-clamp-2">{prevPost.title}</h4>
+                <h4 className="text-sm font-sans font-bold text-white group-hover:text-gold-400 transition-colors line-clamp-2">{prevPost.title}</h4>
               </Link>
             ) : <div className="p-8 md:p-12 border-r border-white/5" />}
             {nextPost ? (
               <Link href={`/blog/${nextPost.slug}`} className="group p-8 md:p-12 text-right hover:bg-charcoal-800/20 transition-colors duration-300">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-600 flex items-center justify-end gap-2 mb-3">Next <ArrowRight size={12} /></span>
-                <h4 className="text-sm font-display text-white group-hover:text-gold-400 transition-colors line-clamp-2">{nextPost.title}</h4>
+                <h4 className="text-sm font-sans font-bold text-white group-hover:text-gold-400 transition-colors line-clamp-2">{nextPost.title}</h4>
               </Link>
             ) : <div className="p-8 md:p-12" />}
           </div>
@@ -176,7 +176,7 @@ export default function BlogPostPage() {
                   </div>
                   <div className="flex flex-col justify-center">
                     <span className="text-gold-500 text-[10px] uppercase tracking-[0.2em] mb-2">{rp.category}</span>
-                    <h4 className="text-sm font-display text-white group-hover:text-gold-400 transition-colors line-clamp-2 mb-2">{rp.title}</h4>
+                    <h4 className="text-sm font-sans font-bold text-white group-hover:text-gold-400 transition-colors line-clamp-2 mb-2">{rp.title}</h4>
                     <span className="text-[10px] text-gray-500 uppercase tracking-wider">{rp.readTime}</span>
                   </div>
                 </motion.article>

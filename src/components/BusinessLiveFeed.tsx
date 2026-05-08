@@ -38,8 +38,8 @@ export default function BusinessLiveFeed() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] -ml-32 -mb-32" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Text Content */}
           <motion.div 
@@ -52,10 +52,10 @@ export default function BusinessLiveFeed() {
               <div className="w-10 h-px bg-gold-500/50" />
               <span className="text-xs uppercase tracking-[0.3em] text-gold-500 font-bold">Live from Lumina</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-display text-white mb-8 leading-tight">
-              Real-Time <span className="text-shimmer italic">Updates</span> & Business Milestones
+            <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 leading-tight font-bold">
+              Real-Time <span className="text-shimmer font-bold">Updates</span> & Business Milestones
             </h2>
-            <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-lg">
+            <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-lg">
               Transparency is at our core. Track our latest project progress, signed contracts, and agency achievements as they happen.
             </p>
             <Link 
@@ -70,7 +70,7 @@ export default function BusinessLiveFeed() {
           {/* Feed Content */}
           <div className="relative">
             <div className="absolute inset-0 bg-gold-500/5 blur-[80px] rounded-full" />
-            <div className="relative space-y-4">
+            <div className="relative space-y-8">
               {loading ? (
                 [1, 2, 3].map((i) => (
                   <div key={i} className="h-32 bg-charcoal-800/50 border border-white/5 rounded-2xl animate-pulse" />
@@ -97,7 +97,7 @@ export default function BusinessLiveFeed() {
                         {new Date(update.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
                       </span>
                     </div>
-                    <p className="text-gray-400 font-light leading-relaxed group-hover:text-white transition-colors duration-500">
+                    <p className="text-gray-400 leading-relaxed group-hover:text-white transition-colors duration-500">
                       {update.text}
                     </p>
                   </motion.div>

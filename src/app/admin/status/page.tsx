@@ -38,7 +38,7 @@ export default function StatusPage() {
       <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-light text-white mb-2">
-            Business <span className="text-gold-500 font-semibold italic">Status</span> Updates
+            Business <span className="text-gold-500 font-semibold ">Status</span> Updates
           </h1>
           <p className="text-gray-500 text-sm">Comprehensive log of all your business milestones and live feed posts.</p>
         </div>

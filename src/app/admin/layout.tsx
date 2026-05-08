@@ -22,6 +22,7 @@ import {
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/calendar", label: "Calendar & Schedule", icon: CalendarDays },
+  { href: "/admin/quotes", label: "Vendor Quotes", icon: MessageSquareQuote },
   { href: "/admin/events", label: "Bookings & Events", icon: Bookmark },
   { href: "/admin/inquiries", label: "Leads & Inquiries", icon: Mail },
   { href: "/admin/clients", label: "Clients CRM", icon: Users },
@@ -82,17 +83,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-charcoal-800 border-r border-white/5 flex flex-col transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
-        <div className="p-6 border-b border-white/5">
-          <Link href="/admin/dashboard" className="flex items-center gap-2">
-            <Sparkles className="text-gold-500" size={22} />
-            <span className="text-xl font-light text-white">
-              Lumina <span className="text-gold-500 font-semibold italic">Admin</span>
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-72 bg-charcoal-800 border-r border-white/5 flex flex-col transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
+        <div className="p-8 border-b border-white/5">
+          <Link href="/admin/dashboard" className="flex items-center gap-3">
+            <Sparkles className="text-gold-500" size={24} />
+            <span className="text-xl font-light text-white tracking-tight">
+              Lumina <span className="text-gold-500 font-bold">Admin</span>
             </span>
           </Link>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1">
+        <nav className="flex-1 p-8 space-y-3 overflow-y-auto custom-scrollbar">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -100,25 +101,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-6 px-6 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${
                   isActive
-                    ? "bg-gold-500/10 text-gold-500 border border-gold-500/20"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    ? "bg-gold-500/10 text-gold-500 border border-gold-500/20 shadow-2xl shadow-gold-500/5"
+                    : "text-gray-500 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
-                <item.icon size={18} />
-                {item.label}
+                <item.icon size={22} className={isActive ? "text-gold-500" : "text-gray-600 group-hover:text-white"} />
+                <span className="tracking-wide">{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-white/5">
+        <div className="p-6 border-t border-white/5">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-all duration-200 w-full"
+            className="flex items-center gap-4 px-5 py-3.5 rounded-2xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-all duration-300 w-full group"
           >
-            <LogOut size={18} />
+            <LogOut size={20} className="text-gray-500 group-hover:text-red-400" />
             Logout
           </button>
         </div>

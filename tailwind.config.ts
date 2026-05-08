@@ -66,10 +66,21 @@ const config: Config = {
           200: "#E9ECEF",
           300: "#DEE2E6",
         },
+        primary: {
+          DEFAULT: "#D4AF37",
+          dark: "#C2A02F",
+        },
+        secondary: {
+          DEFAULT: "#2563eb",
+        },
+        text: {
+          body: "#333333",
+          heading: "#000000",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "sans-serif"],
-        display: ["var(--font-playfair)", "Playfair Display", "serif"],
+        sans: ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["ui-sans-serif", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))",
@@ -105,7 +116,29 @@ const config: Config = {
         },
       },
     },
+    borderRadius: {
+      'none': '0',
+      'sm': '4px',
+      DEFAULT: '8px',
+      'md': '8px',
+      'lg': '12px',
+      'xl': '16px',
+      '2xl': '24px',
+      '3xl': '32px',
+      'full': '9999px',
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
   },
   plugins: [],
 };
+
 export default config;

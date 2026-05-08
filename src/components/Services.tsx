@@ -81,117 +81,81 @@ const services = [
   },
 ];
 
-/* 3D Tilt Card Component */
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 200, damping: 20 });
-
-  function handleMouseMove(e: React.MouseEvent) {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-  }
-  function handleMouseLeave() {
-    mouseX.set(0);
-    mouseY.set(0);
-  }
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: index * 0.2, ease: [0.19, 1, 0.22, 1] }}
-      className="perspective-[1000px]"
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="card-minimal flex flex-col items-start group hover:-translate-y-2.5 hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out cursor-pointer"
     >
-      <motion.div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative h-full bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 cursor-pointer rounded-sm p-10 flex flex-col items-start justify-between"
-      >
-        <div className="w-16 h-16 bg-gray-50 border border-gray-100 flex items-center justify-center rounded-full mb-8 group-hover:bg-gold-50 group-hover:border-gold-500/20 transition-all duration-500">
-          <service.icon size={28} className="text-[#041E42] group-hover:text-gold-500 transition-colors duration-500" />
-        </div>
+      <div className="w-14 h-14 bg-gray-50 flex items-center justify-center rounded-xl mb-8 group-hover:bg-primary/10 transition-colors duration-300">
+        <service.icon size={24} className="text-black" />
+      </div>
 
-        <div>
-          <h3 className="text-2xl font-display font-medium text-[#041E42] mb-3 group-hover:text-champagne-500 transition-colors duration-300">
-            {service.title}
-          </h3>
-          <p className="text-gray-500 text-sm leading-relaxed mb-6">
-            {service.description}
-          </p>
-        </div>
+      <div className="flex-grow">
+        <h3 className="text-lg font-bold text-black mb-4 uppercase tracking-tight">
+          {service.title}
+        </h3>
+        <p className="text-gray-600 text-sm leading-relaxed mb-8">
+          {service.description}
+        </p>
+      </div>
 
-        <div className="w-full mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
-          <p className="text-[#041E42]/60 text-[10px] uppercase tracking-[0.2em] font-medium">
-            {service.starting}
-          </p>
-          <Link 
-            href={service.href}
-            className="flex items-center gap-2 text-champagne-500 text-[11px] font-bold uppercase tracking-[0.1em]"
-          >
-            <span>Learn more</span>
-            <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </Link>
-        </div>
-      </motion.div>
+      <div className="w-full pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+          {service.starting}
+        </span>
+        <Link 
+          href={`https://wa.me/966501234567?text=I%20am%20interested%20in%20the%20${encodeURIComponent(service.title)}%20service.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-lg hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-md"
+        >
+          <span>Book via WhatsApp</span>
+        </Link>
+      </div>
     </motion.div>
   );
 }
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-white relative">
-      {/* Ambient glow */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-500/3 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="services" className="section-minimal bg-white">
+      <div className="container-minimal">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
+            className="text-primary text-[11px] uppercase tracking-[0.5em] font-bold mb-6 block"
           >
-            What We Do
+            Capabilities
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
+            transition={{ duration: 0.6 }}
+            className="text-black mb-10"
           >
-            Curated <span className="text-shimmer italic font-medium">Services</span>
+            Curated <span className="text-primary">Services</span>
           </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, width: 0 }}
-            whileInView={{ opacity: 1, width: "80px" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mb-6"
-          />
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 max-w-xl mx-auto text-[10px] uppercase tracking-[0.3em]"
+            className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed"
           >
-            Delivering unparalleled excellence across diverse event categories.
+            From royal weddings to corporate summits, we deliver unparalleled excellence 
+            across every category of event management.
           </motion.p>
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

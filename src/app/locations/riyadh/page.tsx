@@ -33,8 +33,8 @@ export default function RiyadhPage() {
           <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             The Capital of Luxury | Riyadh
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white mb-6 leading-tight">
-            Elevating Riyadh&apos;s Most <br/><span className="hero-subtitle-shimmer italic font-semibold">Iconic Celebrations</span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-6 leading-tight font-bold">
+            Elevating Riyadh&apos;s Most <br/><span className="hero-subtitle-shimmer font-semibold uppercase tracking-widest text-xl md:text-2xl">Iconic Celebrations</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl font-light mb-8">
             From the soaring heights of the <span className="text-white font-medium">Kingdom Centre</span> to the majestic heritage of <span className="text-white font-medium">Diriyah</span>, we curate experiences that define the Riyadh skyline.
@@ -61,7 +61,7 @@ export default function RiyadhPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="text-gold-500 text-xs uppercase tracking-widest font-bold mb-4 block">Event Venues Riyadh</span>
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-8">Where Heritage Meets <span className="italic text-shimmer">Modernity</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Where Heritage Meets <span className="text-shimmer">Modernity</span></h2>
             <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
               Riyadh is a city of grand contrasts. We specialize in transforming the most prestigious locations into bespoke event spaces. Whether it&apos;s a high-profile corporate summit at the <span className="text-white">Al Faisaliyah Center</span> or a private desert oasis gala, our local expertise ensures flawless execution.
             </p>
@@ -84,7 +84,7 @@ export default function RiyadhPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
-                 <p className="text-white text-sm font-light italic">&quot;Creating masterpieces in the heart of the Kingdom.&quot;</p>
+                 <p className="text-white text-sm font-light ">&quot;Creating masterpieces in the heart of the Kingdom.&quot;</p>
                </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function RiyadhPage() {
             { label: "Guest Concierge", val: "24/7" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-display text-white mb-2">{stat.val}</div>
+              <div className="text-2xl md:text-3xl font-sans font-bold text-white mb-2">{stat.val}</div>
               <div className="text-xs uppercase tracking-widest text-gold-500">{stat.label}</div>
             </div>
           ))}
@@ -110,7 +110,7 @@ export default function RiyadhPage() {
       <section className="py-24 bg-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Signature Riyadh <span className="hero-subtitle-shimmer italic">Services</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Signature Riyadh <span className="hero-subtitle-shimmer">Services</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">Customized event solutions for the capital&apos;s most discerning clientele.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -121,7 +121,7 @@ export default function RiyadhPage() {
              ].map((service, i) => (
                <div key={i} className="bg-[#1e2653] border border-white/10 p-10 rounded-3xl hover:border-gold-500/30 transition-all">
                  <service.icon size={32} className="text-gold-500 mb-6" />
-                 <h3 className="text-xl font-display text-white mb-4">{service.title}</h3>
+                 <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
                  <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
                </div>
              ))}
@@ -135,7 +135,7 @@ export default function RiyadhPage() {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
               <span className="text-gold-500 text-xs uppercase tracking-widest font-bold mb-4 block">Riyadh Leadership</span>
-              <h2 className="text-3xl md:text-5xl font-display text-white mb-8">The Minds Behind <span className="italic text-shimmer">The Magic</span></h2>
+              <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">The Minds Behind <span className="text-shimmer">The Magic</span></h2>
               <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
                 Our Riyadh team consists of local experts who understand the cultural nuances and logistical demands of the Saudi capital. Led by industry veterans, we ensure every event is a masterpiece.
               </p>
@@ -183,7 +183,7 @@ export default function RiyadhPage() {
       <section className="py-24 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Strategic Venue <span className="hero-subtitle-shimmer italic">Partnerships</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Strategic Venue <span className="hero-subtitle-shimmer">Partnerships</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">Exclusive access to Riyadh&apos;s most coveted and prestigious locations.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

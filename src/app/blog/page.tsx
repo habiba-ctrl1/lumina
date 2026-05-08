@@ -47,8 +47,8 @@ export default function BlogPage() {
               <Sparkles className="w-5 h-5 text-gold-500" />
               <span className="text-xs uppercase tracking-[0.25em] text-gold-500 font-medium">The Lumina Journal</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-display text-white mb-6 leading-[1.1]">
-              Inspire Your <span className="text-shimmer italic">Next Event</span>
+            <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 leading-[1.1] font-bold">
+              Inspire Your <span className="text-shimmer font-bold">Next Event</span>
             </h1>
             <p className="text-gray-400 text-lg font-light leading-relaxed max-w-xl">
               Event planning tips, trending color palettes, decor inspiration, and lifestyle insights curated by our luxury event experts.
@@ -82,7 +82,7 @@ export default function BlogPage() {
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
                       <span className="text-gold-500 text-[11px] uppercase tracking-[0.2em] font-medium">{post.category}</span>
-                      <h2 className="text-2xl md:text-3xl font-display text-white mt-2 mb-3 group-hover:text-gold-300 transition-colors duration-300 leading-tight">{post.title}</h2>
+                      <h2 className="text-xl md:text-2xl font-sans font-bold text-white mt-2 mb-3 group-hover:text-gold-300 transition-colors duration-300 leading-tight">{post.title}</h2>
                       <p className="text-gray-400 text-sm font-light line-clamp-2 mb-4">{post.excerpt}</p>
                       <div className="flex items-center gap-4 text-[11px] text-gray-500 uppercase tracking-wider">
                         <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>
@@ -106,7 +106,7 @@ export default function BlogPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-xl">
               <span className="text-[10px] uppercase tracking-[0.4em] text-gold-500 font-bold mb-4 block">The Collection</span>
-              <h2 className="text-4xl md:text-5xl font-display text-white leading-tight">Latest <span className="italic font-light opacity-60">Insights</span> & Lifestyle</h2>
+              <h2 className="text-2xl md:text-4xl font-sans font-bold text-white leading-tight">Latest <span className="opacity-60 font-bold">Insights</span> & Lifestyle</h2>
             </div>
             {/* Category selection refined */}
             <div className="flex flex-wrap gap-x-8 gap-y-4 border-b border-white/5 pb-4">
@@ -178,7 +178,7 @@ export default function BlogPage() {
                            <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">{post.readTime}</span>
                         </div>
                         
-                        <h3 className={`${isLarge ? "text-3xl md:text-4xl" : "text-xl"} font-display text-white mb-4 group-hover:text-gold-500 transition-colors duration-500 leading-[1.2]`}>
+                        <h3 className={`${isLarge ? "text-2xl md:text-3xl" : "text-lg"} font-sans font-bold text-white mb-4 group-hover:text-gold-500 transition-colors duration-500 leading-[1.2]`}>
                           {post.title}
                         </h3>
                         
@@ -216,8 +216,8 @@ export default function BlogPage() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/5 rounded-full blur-[100px]" />
             <div className="relative z-10">
               <span className="text-xs uppercase tracking-[0.25em] text-gold-500 font-medium mb-4 block">Ready to Create Something Extraordinary?</span>
-              <h2 className="text-3xl md:text-5xl font-display text-white mb-4">
-                Let&apos;s Bring Your <span className="text-shimmer italic">Vision</span> to Life
+              <h2 className="text-2xl md:text-4xl font-sans font-bold text-white mb-4">
+                Let&apos;s Bring Your <span className="text-shimmer font-bold">Vision</span> to Life
               </h2>
               <p className="text-gray-400 font-light max-w-lg mx-auto mb-8">Our team of luxury event experts is ready to transform your ideas into unforgettable experiences.</p>
               <Link href="/consultation" className="inline-flex items-center gap-3 px-8 py-4 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-[0.15em] hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 btn-glow">

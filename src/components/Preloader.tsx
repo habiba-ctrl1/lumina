@@ -15,7 +15,7 @@ export default function Preloader() {
   }, [isLoading]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3000);
+    const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -31,7 +31,7 @@ export default function Preloader() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-white tracking-[0.3em] uppercase font-display mb-8"
+            className="text-4xl md:text-5xl font-bold text-white tracking-[0.3em] uppercase font-sans mb-8"
           >
             Lumina<span className="text-gold-500">.</span>
           </motion.div>

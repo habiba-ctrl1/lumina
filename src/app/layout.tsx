@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://luminaevents.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lumina-theta-gray.vercel.app"),
   openGraph: {
     title: "Lumina | Luxury Event Management 2026",
     description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties for 2026.",
@@ -65,10 +68,10 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://luminaevents.com/#organization",
+        "@id": "https://lumina-theta-gray.vercel.app/#organization",
         "name": "Lumina Events",
-        "url": "https://luminaevents.com",
-        "logo": "https://luminaevents.com/logo.png",
+        "url": "https://lumina-theta-gray.vercel.app",
+        "logo": "https://lumina-theta-gray.vercel.app/logo.png",
         "sameAs": [
           "https://instagram.com/luminaevents",
           "https://linkedin.com/company/luminaevents"
@@ -76,9 +79,9 @@ export default function RootLayout({
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://luminaevents.com/#localbusiness",
+        "@id": "https://lumina-theta-gray.vercel.app/#localbusiness",
         "name": "Lumina Luxury Event Management Riyadh",
-        "image": "https://luminaevents.com/hero_bg.png",
+        "image": "https://lumina-theta-gray.vercel.app/hero_bg.png",
         "telephone": "+966501234567",
         "address": {
           "@type": "PostalAddress",
@@ -95,33 +98,33 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://luminaevents.com/#website",
-        "url": "https://luminaevents.com",
+        "@id": "https://lumina-theta-gray.vercel.app/#website",
+        "url": "https://lumina-theta-gray.vercel.app",
         "name": "Lumina Events",
-        "publisher": { "@id": "https://luminaevents.com/#organization" }
+        "publisher": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
       },
       {
         "@type": "WebPage",
-        "@id": "https://luminaevents.com/#webpage",
-        "url": "https://luminaevents.com",
+        "@id": "https://lumina-theta-gray.vercel.app/#webpage",
+        "url": "https://lumina-theta-gray.vercel.app",
         "name": "Lumina Events",
-        "isPartOf": { "@id": "https://luminaevents.com/#website" }
+        "isPartOf": { "@id": "https://lumina-theta-gray.vercel.app/#website" }
       },
       {
         "@type": "EventSeries",
-        "@id": "https://luminaevents.com/#eventseries",
+        "@id": "https://lumina-theta-gray.vercel.app/#eventseries",
         "name": "Lumina Signature Events",
         "description": "A series of high-profile corporate, exhibition, and luxury social events managed by Lumina across KSA.",
-        "organizer": { "@id": "https://luminaevents.com/#organization" }
+        "organizer": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
       },
       {
         "@type": "FAQPage",
-        "@id": "https://luminaevents.com/#faqpage",
+        "@id": "https://lumina-theta-gray.vercel.app/#faqpage",
         "mainEntity": []
       },
       {
         "@type": "HowTo",
-        "@id": "https://luminaevents.com/#howto",
+        "@id": "https://lumina-theta-gray.vercel.app/#howto",
         "name": "How to Plan an Event in Saudi Arabia with Lumina",
         "step": [
           { "@type": "HowToStep", "text": "Contact our expert consultants for a discovery session." },
@@ -131,43 +134,43 @@ export default function RootLayout({
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://luminaevents.com/#breadcrumb",
+        "@id": "https://lumina-theta-gray.vercel.app/#breadcrumb",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lumina-theta-gray.vercel.app" }
         ]
       },
       {
         "@type": "Article",
-        "@id": "https://luminaevents.com/#article",
+        "@id": "https://lumina-theta-gray.vercel.app/#article",
         "headline": "Lumina Event Management Insights",
         "author": { "@type": "Person", "name": "Lumina Experts" },
-        "publisher": { "@id": "https://luminaevents.com/#organization" }
+        "publisher": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
       },
       {
         "@type": "Person",
-        "@id": "https://luminaevents.com/#person",
+        "@id": "https://lumina-theta-gray.vercel.app/#person",
         "name": "Habiba",
         "jobTitle": "Founder & Event Director"
       },
       {
         "@type": "AggregateRating",
-        "@id": "https://luminaevents.com/#aggregaterating",
-        "itemReviewed": { "@id": "https://luminaevents.com/#localbusiness" },
+        "@id": "https://lumina-theta-gray.vercel.app/#aggregaterating",
+        "itemReviewed": { "@id": "https://lumina-theta-gray.vercel.app/#localbusiness" },
         "ratingValue": "4.9",
         "reviewCount": "150"
       },
       {
         "@type": "Review",
-        "@id": "https://luminaevents.com/#review",
-        "itemReviewed": { "@id": "https://luminaevents.com/#localbusiness" },
+        "@id": "https://lumina-theta-gray.vercel.app/#review",
+        "itemReviewed": { "@id": "https://lumina-theta-gray.vercel.app/#localbusiness" },
         "reviewRating": { "@type": "Rating", "ratingValue": "5" },
         "author": { "@type": "Person", "name": "VIP Client" }
       },
       {
         "@type": "Service",
-        "@id": "https://luminaevents.com/#service",
+        "@id": "https://lumina-theta-gray.vercel.app/#service",
         "name": "Luxury Event Management",
-        "provider": { "@id": "https://luminaevents.com/#organization" },
+        "provider": { "@id": "https://lumina-theta-gray.vercel.app/#organization" },
         "offers": {
           "@type": "Offer",
           "priceSpecification": {
@@ -181,14 +184,14 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
         />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`} suppressHydrationWarning>
         <CustomCursor />
         {children}
       </body>

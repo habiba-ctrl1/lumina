@@ -162,16 +162,16 @@ export default function SeasonalEventsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-tight"
+              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Seasonal <span className="italic font-light text-gold-500">& Religious</span> <br/>
+              Seasonal <span className="text-gold-500 font-bold">& Religious</span> <br/>
               Events KSA
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-200 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-gray-200 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               The Kingdom&apos;s leading <strong className="text-white">National Day event organizer Riyadh</strong> and <strong className="text-white">Eid celebration company Saudi Arabia</strong>. Providing exceptional <strong className="text-white">religious celebration management</strong> and <strong className="text-white">annual celebration planning</strong>. Preserving heritage and delivering luxury experiences as your preferred <strong className="text-white">Ramadan event planner KSA</strong> for all <strong className="text-white">Islamic seasonal events</strong>.
             </motion.p>
@@ -203,12 +203,12 @@ export default function SeasonalEventsPage() {
                   <p className="text-[10px] text-gray-500 uppercase">Cultural Sensitivity Credentials</p>
                 </div>
               </div>
-              <div className="flex gap-10 grayscale opacity-40 italic font-bold text-xs tracking-widest">
+              <div className="flex gap-10 grayscale opacity-40  font-bold text-xs tracking-widest">
                 <span>RIYADH SEASON</span>
                 <span>MINISTRY OF HAJJ</span>
                 <span>FOUNDING DAY</span>
               </div>
-              <div className="text-sm text-gray-500 font-light italic">
+              <div className="text-sm text-gray-500 font-light ">
                 &quot;Official participation in National Day initiatives for over a decade.&quot;
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function SeasonalEventsPage() {
         <section className="py-32 bg-gray-50 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-4xl md:text-5xl font-display text-charcoal-950 mb-6">Honoring Our <span className="italic text-gold-600">Traditions</span></h2>
+              <h2 className="text-2xl md:text-4xl font-sans text-charcoal-950 mb-6 font-bold">Honoring Our <span className="text-gold-600">Traditions</span></h2>
               <div className="w-24 h-px bg-gold-600/30 mx-auto" />
             </div>
 
@@ -273,7 +273,7 @@ export default function SeasonalEventsPage() {
                   <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-600 transition-colors">
                     <item.icon size={28} className="text-gold-600 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-2xl font-display text-charcoal-950 mb-4">{item.title}</h3>
+                  <h3 className="text-xl font-sans font-bold text-charcoal-950 mb-4">{item.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed mb-6">{item.desc}</p>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 border-b border-gold-200 pb-1">{item.linkText}</span>
                 </motion.div>
@@ -287,7 +287,7 @@ export default function SeasonalEventsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-display text-charcoal-950">Heritage <br/><span className="text-gold-600 italic">Resources</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-charcoal-950">Heritage <br/><span className="text-gold-600">Resources</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Expert insights for planning culturally significant events across the Kingdom.</p>
                 <div className="pt-6 border-t border-gray-100">
                   <p className="text-charcoal-950 font-bold text-sm">Saleh Al-Humaid</p>
@@ -324,8 +324,8 @@ export default function SeasonalEventsPage() {
                 />
               </div>
               <div className="space-y-10">
-                <h2 className="text-4xl md:text-6xl font-display leading-tight">
-                  الاحتفاء بـ <br/><span className="text-gold-500 italic">الهوية السعودية</span>
+                <h2 className="text-2xl md:text-4xl font-sans leading-tight font-bold">
+                  الاحتفاء بـ <br/><span className="text-gold-500">الهوية السعودية</span>
                 </h2>
                 <div className="space-y-6">
                   {[
@@ -349,7 +349,7 @@ export default function SeasonalEventsPage() {
         <section className="py-32 bg-white relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-4xl font-display text-charcoal-950">Cultural <span className="italic text-gold-600">Insights</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-charcoal-950 font-bold">Cultural <span className="text-gold-600">Insights</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-widest text-xs">Answering your questions about KSA Seasonal Events</p>
             </div>
 

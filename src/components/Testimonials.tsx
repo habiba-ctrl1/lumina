@@ -49,7 +49,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-32 bg-charcoal-900 relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-navy-950 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold-500/3 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/3 pointer-events-none" />
@@ -61,7 +61,7 @@ export default function Testimonials() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
           >
             Testimonials
           </motion.span>
@@ -96,13 +96,13 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-2xl md:text-3xl lg:text-4xl font-display font-light text-white mb-10 leading-snug max-w-3xl">
+                <p className="text-xl md:text-2xl font-sans text-white mb-10 leading-snug max-w-3xl">
                   &quot;{testimonials[current]?.quote}&quot;
                 </p>
 
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-px bg-gold-500/30 mb-5" />
-                  <h4 className="text-gold-500 font-medium text-lg uppercase tracking-wider mb-1">
+                  <h4 className="text-gold-500 font-sans font-bold text-base uppercase tracking-wider mb-1">
                     {testimonials[current]?.author}
                   </h4>
                   <p className="text-gray-500 text-sm">{testimonials[current]?.role}</p>

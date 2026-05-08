@@ -27,7 +27,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-28 bg-charcoal-800 relative border-t border-white/5">
+    <section id="faq" className="py-24 bg-charcoal-800 relative border-t border-white/5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.span 
@@ -42,13 +42,13 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 20 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-light text-white mb-6"
+            className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold"
           >
-            Curated <span className="text-shimmer font-semibold italic">Questions</span>
+            Curated <span className="text-shimmer font-bold">Questions</span>
           </motion.h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-8">
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
@@ -62,7 +62,7 @@ export default function FAQ() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between py-6 text-left group transition-colors duration-300"
               >
-                <span className={`text-lg md:text-xl font-display transition-colors ${openIndex === index ? 'text-gold-500' : 'text-gray-300 group-hover:text-white'}`}>
+                <span className={`text-base md:text-lg font-sans font-semibold transition-colors ${openIndex === index ? 'text-gold-500' : 'text-gray-300 group-hover:text-white'}`}>
                   {faq.question}
                 </span>
                 <span className="ml-6 flex-shrink-0 text-gold-500">

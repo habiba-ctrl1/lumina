@@ -35,8 +35,8 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-4 block bg-white/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
             Case Study
           </span>
-          <h1 className="text-4xl md:text-6xl font-display text-white mb-6 leading-tight">
-            The Royal <span className="text-shimmer italic font-semibold">Riyadh Wedding</span>
+          <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-6 leading-tight">
+            The Royal <span className="text-shimmer font-bold">Riyadh Wedding</span>
           </h1>
         </div>
       </section>
@@ -53,7 +53,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-gold-500 mx-auto mb-3" />
               <div className="text-xs uppercase tracking-widest text-gray-400 mb-1">{stat.label}</div>
-              <div className="text-lg font-display text-white font-medium">{stat.val}</div>
+              <div className="text-lg font-sans font-bold text-white">{stat.val}</div>
             </div>
           ))}
         </div>
@@ -64,7 +64,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         
         {/* The Challenge */}
         <div>
-          <h2 className="text-3xl font-display text-white mb-6">The <span className="text-gold-500 italic">Challenge</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">The <span className="text-gold-500">Challenge</span></h2>
           <p className="mb-4">
             Our esteemed clients desired a celebration that honored deep-rooted Saudi traditions while introducing avant-garde design elements. The sheer scale of the event—hosting over 1,200 VIP guests, dignitaries, and royalty over a three-day period in historical Diriyah—required meticulous logistical planning, flawless execution, and absolute discretion.
           </p>
@@ -76,7 +76,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         {/* The Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-display text-white mb-6">The <span className="text-gold-500 italic">Solution</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">The <span className="text-gold-500">Solution</span></h2>
             <p className="mb-4">
               Lumina deployed a team of 400 specialists, including international floral designers, lighting architects, and hospitality experts. We engineered a custom 5,000-square-meter glass marquee that provided panoramic views of the Najdi architecture while maintaining a pristine interior environment.
             </p>
@@ -101,7 +101,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
 
         {/* The Result */}
         <div>
-          <h2 className="text-3xl font-display text-white mb-6">The <span className="text-gold-500 italic">Result</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">The <span className="text-gold-500">Result</span></h2>
           <p className="mb-8">
             The event was widely regarded as a masterpiece of modern luxury, setting a new benchmark for high-society weddings in the Kingdom. Guest satisfaction was unprecedented, and the seamless integration of technology and tradition left a lasting impression.
           </p>
@@ -109,7 +109,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           {/* Testimonial */}
           <div className="bg-white/5 border border-white/10 p-10 rounded-3xl text-center relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1e2653] px-4 text-gold-500 text-4xl font-serif">&quot;</div>
-            <p className="text-xl md:text-2xl font-display text-white mb-6 italic leading-snug">
+            <p className="text-xl md:text-2xl font-sans font-bold text-white mb-6 leading-snug">
               &quot;Lumina did not just plan a wedding; they crafted a legacy. Their attention to detail and unwavering pursuit of perfection allowed us to be fully present in the most important moment of our lives.&quot;
             </p>
             <div className="text-gold-500 font-medium uppercase tracking-widest text-sm">— The Bride & Groom</div>
@@ -119,7 +119,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
 
       {/* CTA */}
       <section className="py-24 bg-white/5 text-center">
-        <h2 className="text-3xl md:text-4xl font-display text-white mb-6">Envision Your <span className="text-gold-500 italic">Masterpiece</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">Envision Your <span className="text-gold-500">Masterpiece</span></h2>
         <Link 
           href="/#contact" 
           className="inline-block px-10 py-4 bg-gold-500 text-[#1e2653] font-bold uppercase tracking-widest hover:bg-white transition-colors"

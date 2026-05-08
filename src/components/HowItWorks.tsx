@@ -28,18 +28,14 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="section-padding bg-[#F8F9FA] relative overflow-hidden">
-      {/* 3D Background Elements */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-champagne-500/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-champagne-500/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+    <section id="process" className="section-minimal bg-gray-50 relative overflow-hidden">
+      <div className="container-minimal">
+        <div className="text-center mb-24">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-champagne-500 text-sm uppercase tracking-[0.5em] font-medium mb-8 block"
+            className="text-primary text-[11px] uppercase tracking-[0.5em] font-bold mb-6 block"
           >
             The Journey
           </motion.span>
@@ -47,44 +43,40 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display text-[#041E42] mb-12"
+            className="text-black mb-10"
           >
-            How We <span className="text-shimmer italic font-medium">Work</span>
+            How We <span className="text-primary">Work</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-500 max-w-3xl mx-auto text-xl font-light leading-relaxed"
+            className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed"
           >
             A seamless journey from your first idea to the final applause.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-24 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-transparent via-champagne-500/20 to-transparent" />
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
-                className="relative group p-12 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-700 rounded-sm"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="card-minimal relative"
               >
-                <div className="absolute top-6 right-8 text-7xl font-display font-bold text-[#041E42]/5 group-hover:text-champagne-500/10 transition-colors">
-                  {index + 1}
+                <div className="absolute top-6 right-8 text-4xl font-bold text-gray-100">
+                  0{index + 1}
                 </div>
-                <div className="text-champagne-500 mb-10 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-primary mb-10">
                   {step.icon}
                 </div>
-                <h3 className="text-[#041E42] font-display text-2xl mb-6">
+                <h3 className="text-black text-lg mb-6 font-bold uppercase tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 text-lg font-light leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {step.desc}
                 </p>
               </motion.div>

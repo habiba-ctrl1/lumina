@@ -33,9 +33,9 @@ export default function AlUlaPage() {
           <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Saudi Arabia&apos;s Breathtaking Destination | AlUla
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display text-white mb-6 leading-tight">
-            Unforgettable <br/><span className="hero-subtitle-shimmer italic font-semibold">Intimate Celebrations</span>
-          </h1>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-6 leading-tight font-bold">
+          Unforgettable <br/><span className="hero-subtitle-shimmer font-semibold uppercase tracking-widest text-xl md:text-2xl">Intimate Celebrations</span>
+        </h1>
           <p className="text-gray-300 text-lg md:text-xl font-light mb-8">
             Amidst ancient <span className="text-white font-medium">UNESCO heritage</span> and ultra-luxury desert resorts, we weave stories that echo through time.
           </p>
@@ -61,7 +61,7 @@ export default function AlUlaPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="text-gold-500 text-xs uppercase tracking-widest font-bold mb-4 block">Exclusive Venues AlUla</span>
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-8">Ancient Landscapes, <span className="italic text-shimmer">Modern Luxury</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Ancient Landscapes, <span className="text-shimmer">Modern Luxury</span></h2>
             <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">
               AlUla is a living museum of human history. We specialize in creating high-end destination weddings that respect the sanctity of the landscape while providing the pinnacle of luxury service. From the sandstone canyons to the mirrored walls of Maraya, your event will be legendary.
             </p>
@@ -84,7 +84,7 @@ export default function AlUlaPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
-                 <p className="text-white text-sm font-light italic">&quot;Where history meets the future of luxury.&quot;</p>
+                 <p className="text-white text-sm font-light ">&quot;Where history meets the future of luxury.&quot;</p>
                </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function AlUlaPage() {
             { label: "Event Style", val: "Intimate" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-display text-white mb-2">{stat.val}</div>
+              <div className="text-2xl md:text-3xl font-sans font-bold text-white mb-2">{stat.val}</div>
               <div className="text-xs uppercase tracking-widest text-gold-500">{stat.label}</div>
             </div>
           ))}
@@ -110,8 +110,10 @@ export default function AlUlaPage() {
       <section className="py-24 bg-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">Signature AlUla <span className="hero-subtitle-shimmer italic">Experiences</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Signature AlUla <span className="hero-subtitle-shimmer">Experiences</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">Tailored solutions for the world&apos;s most ambitious destination events.</p>
+            <h2 className="text-2xl md:text-3xl font-sans text-white mb-6 font-bold">Signature AlUla <span className="hero-subtitle-shimmer">Experiences</span></h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">Tailored solutions for the world&apos;s most ambitious destination events.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              {[
@@ -121,8 +123,8 @@ export default function AlUlaPage() {
              ].map((service, i) => (
                <div key={i} className="bg-[#1e2653] border border-white/10 p-10 rounded-3xl hover:border-gold-500/30 transition-all">
                  <service.icon size={32} className="text-gold-500 mb-6" />
-                 <h3 className="text-xl font-display text-white mb-4">{service.title}</h3>
-                 <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
+                 <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
+                 <p className="text-gray-400 text-sm leading-relaxed">{service.desc}</p>
                </div>
              ))}
           </div>
@@ -133,7 +135,7 @@ export default function AlUlaPage() {
       <section className="py-24 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display text-white mb-6">AlUla Venue <span className="hero-subtitle-shimmer italic">Network</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">AlUla Venue <span className="hero-subtitle-shimmer">Network</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">We maintain direct relationships with AlUla&apos;s most exclusive management entities.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

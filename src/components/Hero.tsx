@@ -94,170 +94,148 @@ export default function Hero() {
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div
       id="home"
       ref={containerRef}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-[90vh] w-full flex items-center justify-center bg-white pt-20"
     >
-      <GoldParticles />
-
-      {/* Video Background */}
-      {/* CHANGE 4: aria-hidden="true" on the video wrapper — the video is
-          decorative background footage, not content. Screen readers should
-          skip it entirely. */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          // CHANGE 5: poster gives the video a fallback image frame while
-          // it loads. Without this, the background flashes black on slow
-          // connections before the video starts. Replace the src with your
-          // own hosted poster image for production.
-          poster="/images/hero-poster.jpg"
-          className="w-full h-full object-cover scale-105"
-        >
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-wedding-reception-with-elegant-decor-and-flowers-43362-large.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
-
-      {/* Overlays — also decorative, so aria-hidden */}
-      <div
-        className="absolute inset-0 z-[1]"
-        style={{ backgroundColor: "rgba(0, 15, 50, 0.65)" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-[#041E42] via-transparent to-[#041E42]/40 z-[1]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-[#041E42]/30 via-transparent to-[#041E42]/30 z-[1]"
-        aria-hidden="true"
-      />
-
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-50/50 -skew-x-12 translate-x-1/2 z-0" />
+      
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-24 md:pt-36"
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
       >
-        {/* Top Tagline with Lines */}
+        {/* Top Tagline */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="flex items-center justify-center gap-4 mb-6"
-          aria-hidden="true"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center justify-center gap-4 mb-8"
         >
-          <div className="w-8 md:w-16 h-px bg-champagne-500/40" />
-          <span className="text-champagne-300 text-[10px] md:text-[11px] uppercase tracking-[0.4em] font-medium whitespace-nowrap">
-            Luxury Event Management
+          <div className="w-12 h-px bg-primary/30" />
+          <span className="text-primary text-[11px] uppercase tracking-[0.4em] font-bold">
+            Bespoke Event Management
           </span>
-          <div className="w-8 md:w-16 h-px bg-champagne-500/40" />
+          <div className="w-12 h-px bg-primary/30" />
         </motion.div>
 
-        {/* Main Title — word-by-word animation */}
+        {/* Main Title */}
         <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.2, delayChildren: 0.5 },
-            },
-          }}
-          className="font-display text-white tracking-tight uppercase mb-6 leading-[1.1] flex flex-wrap justify-center gap-x-4 md:gap-x-6"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.8rem)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-black font-bold uppercase tracking-tight leading-[1.1] mb-8"
+          style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
         >
-          {titleWords.map((word, index) => (
-            <motion.span
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.8 },
-                },
-              }}
-              className={
-                word === "Luxury" ? "text-champagne-500 italic font-medium" : ""
-              }
-            >
-              {word}
-            </motion.span>
-          ))}
+          Masterpieces of <br />
+          <span className="text-primary">Luxury</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="text-sm md:text-base text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light tracking-wide"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
         >
           Curating exquisite weddings, corporate galas, and private celebrations.
-          <br className="hidden md:block" />
-          We bring world-class elegance to{" "}
-          <span className="text-champagne-500">Riyadh</span>,{" "}
-          <span className="text-champagne-500">Jeddah</span>,{" "}
-          <span className="text-champagne-500">Dubai</span>, and beyond.
+          We bring world-class elegance to <span className="text-black font-bold">Riyadh</span>, 
+          <span className="text-black font-bold"> Jeddah</span>, <span className="text-black font-bold">Makkah</span>, 
+          <span className="text-black font-bold"> Madinah</span>, and <span className="text-black font-bold">AlUla</span>.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Quick Booking Form */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 p-6 md:p-8 max-w-4xl mx-auto mb-8 relative z-20"
         >
-          <Link
-            href="/services"
-            className="w-full sm:w-auto px-10 py-4 bg-champagne-500 text-[#041E42] text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 shadow-2xl"
+          <form 
+            onSubmit={(e) => { 
+              e.preventDefault(); 
+              window.open(`https://wa.me/966501234567?text=Hi%20Lumina!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
           >
-            Explore Services
-          </Link>
-          {/* CHANGE 6: href was "/#contact" which causes a full-page
-              navigation in Next.js App Router. Changed to "/consultation"
-              to match your existing consultation page route. If you want
-              to scroll to a contact section on the homepage, use:
-              href="/#contact" AND make sure that section has id="contact". */}
-          <Link
-            href="/consultation"
-            className="w-full sm:w-auto px-10 py-4 border border-white/20 text-white text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-all duration-500"
-          >
-            Book Consultation
-          </Link>
+            <div className="flex flex-col text-left">
+              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Event Type</label>
+              <select className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+                <option>Luxury Wedding</option>
+                <option>Corporate Gala</option>
+                <option>VIP Reception</option>
+                <option>Private Concert</option>
+              </select>
+            </div>
+            
+            <div className="flex flex-col text-left">
+              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Location</label>
+              <select className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+                <option>Riyadh</option>
+                <option>Jeddah</option>
+                <option>Makkah</option>
+                <option>Madinah</option>
+                <option>AlUla</option>
+                <option>Dammam</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col text-left">
+              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Date</label>
+              <input type="date" className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
+            </div>
+
+            <div className="flex items-end">
+              <button 
+                type="submit" 
+                className="w-full bg-primary text-white font-bold uppercase tracking-widest text-[11px] rounded-xl px-4 py-4 hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/30"
+              >
+                Book via WhatsApp
+              </button>
+            </div>
+          </form>
+        </motion.div>
+
+        {/* Trust Indicators */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-wrap justify-center gap-8 md:gap-16 mt-8"
+        >
+          {[
+            { label: "100+ EVENTS DELIVERED" },
+            { label: "100% CLIENT SATISFACTION" },
+            { label: "AWARD-WINNING TEAM" },
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+                {stat.label}
+              </span>
+              <div className="w-8 h-px bg-primary/20 mt-1" />
+            </div>
+          ))}
         </motion.div>
       </motion.div>
 
       {/* Scroll Indicator */}
-      {/* CHANGE 7: aria-hidden="true" — the bouncing chevron is a visual
-          hint only. It carries no information for screen reader users. */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.5, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
-        aria-hidden="true"
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
       >
-        <span className="text-gray-400 text-[9px] uppercase tracking-[0.4em] mb-2">
-          Discover
-        </span>
         <motion.div
-          animate={{ y: [0, 5, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ChevronDown size={16} className="text-champagne-500/60" />
+          <ChevronDown size={24} className="text-gray-300" />
         </motion.div>
       </motion.div>
     </div>
