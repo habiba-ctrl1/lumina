@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Privacy Policy | Lumina Events',
-  description: 'Privacy policy for Lumina Event Management website and services.',
+  title: 'Privacy Policy | Saudi Event Management',
+  description: 'Privacy policy for Saudi Event Management website and services.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
           <div className="prose prose-invert prose-gold max-w-none text-gray-300">
             <p className="mb-4">Last updated: May 2026</p>
             <p className="mb-4">
-              At Lumina Event Management, we take your privacy seriously. This privacy policy describes how we collect, use, and protect your personal information when you use our website and services.
+              At Saudi Event Management, we take your privacy seriously. This privacy policy describes how we collect, use, and protect your personal information when you use our website and services.
             </p>
             <h2 className="text-2xl text-gold-500 mt-8 mb-4">Information Collection</h2>
             <p className="mb-4">

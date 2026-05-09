@@ -33,7 +33,7 @@ export default function Preloader() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold text-white tracking-[0.3em] uppercase font-sans mb-8"
           >
-            Lumina<span className="text-gold-500">.</span>
+            SEM<span className="text-gold-500">.</span>
           </motion.div>
 
           <div className="w-48 h-[1px] bg-white/10 relative overflow-hidden">

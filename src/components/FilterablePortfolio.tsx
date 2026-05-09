@@ -6,15 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 const portfolioItems = [
-  { id: 1, src: "/gallery_wedding_reception.png", title: "Royal Palace Wedding", category: "Riyadh", slug: "royal-riyadh-wedding" },
-  { id: 2, src: "/gallery_corporate_gala.png", title: "Executive Summit", category: "Jeddah", slug: "executive-summit-jeddah" },
-  { id: 3, src: "/gallery_destination_wedding.png", title: "VIP Retreat", category: "Makkah", slug: "makkah-vip-retreat" },
-  { id: 4, src: "/gallery_vip_party.png", title: "Luxury Soiree", category: "Riyadh", slug: "riyadh-luxury-soiree" },
-  { id: 5, src: "/gallery_charity_gala.png", title: "Desert Festival", category: "AlUla", slug: "alula-desert-festival" },
-  { id: 6, src: "/gallery_garden_party.png", title: "Corporate Seminar", category: "Dammam", slug: "dammam-corporate-seminar" },
-  { id: 7, src: "/wedding.png", title: "Spiritual Journey Event", category: "Madinah", slug: "madinah-spiritual-event" },
-  { id: 8, src: "/corporate.png", title: "Global Tech Summit", category: "Jeddah", slug: "global-tech-summit" },
-  { id: 9, src: "/private_party.png", title: "Elite Majlis Gathering", category: "Riyadh", slug: "riyadh-elite-majlis" },
+  { id: 1, src: "/gallery_wedding_reception.png", title: "Royal Riyadh Wedding", category: "Riyadh", slug: "royal-riyadh-wedding" },
+  { id: 2, src: "/gallery_corporate_gala.png", title: "NEOM Future Summit", category: "Riyadh", slug: "neom-future-summit" },
+  { id: 3, src: "/gallery_destination_wedding.png", title: "Red Sea VIP Retreat", category: "AlUla", slug: "#" },
+  { id: 4, src: "/gallery_vip_party.png", title: "Luxury Soiree", category: "Riyadh", slug: "#" },
+  { id: 5, src: "/gallery_charity_gala.png", title: "Winter at Tantora Festival", category: "AlUla", slug: "#" },
+  { id: 6, src: "/gallery_garden_party.png", title: "Corporate Majlis", category: "Jeddah", slug: "#" },
+  { id: 7, src: "/wedding.png", title: "Spiritual Journey Event", category: "Madinah", slug: "#" },
+  { id: 8, src: "/corporate.png", title: "Global Tech Summit", category: "Jeddah", slug: "#" },
+  { id: 9, src: "/private_party.png", title: "Elite Majlis Gathering", category: "Riyadh", slug: "#" },
 ];
 
 const categories = ["All", "Riyadh", "Jeddah", "Makkah", "Madinah", "AlUla", "Dammam"];

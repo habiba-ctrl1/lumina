@@ -22,7 +22,7 @@ export default function FounderSection() {
             <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
               <Image
                 src="/founder.png"
-                alt="Amara Chen, Founder & Creative Director of Lumina Events"
+                alt="Amara Chen, Founder & Creative Director of Saudi Event Management"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -63,7 +63,7 @@ export default function FounderSection() {
             <div className="space-y-8 text-gray-400 font-light leading-relaxed">
               <p>
                 With over a decade orchestrating the world&apos;s most exclusive celebrations, 
-                Amara founded Lumina with a singular vision: to transform fleeting moments into 
+                Amara founded Saudi Event Management with a singular vision: to transform fleeting moments into 
                 timeless legacies of beauty and emotion.
               </p>
               <p>

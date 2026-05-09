@@ -45,7 +45,7 @@ export default function SeasonalEventsPage() {
             "name": "What should I know about planning events during Ramadan in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Ramadan in Saudi Arabia requires cultural sensitivity, adjusting event timings to post-iftar or suhoor hours, and focusing on traditional hospitality. As a premier Ramadan event planner KSA, Lumina manages all aspects of luxury corporate iftars and brand activations."
+              "text": "Ramadan in Saudi Arabia requires cultural sensitivity, adjusting event timings to post-iftar or suhoor hours, and focusing on traditional hospitality. As a premier Ramadan event planner KSA, Saudi Event Management manages all aspects of luxury corporate iftars and brand activations."
             }
           },
           {
@@ -53,7 +53,7 @@ export default function SeasonalEventsPage() {
             "name": "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Starting a Ramadan activation requires early concept design and venue booking. Lumina provides full-service solutions for brand activations, from bespoke Majlis setups to luxury catering."
+              "text": "Starting a Ramadan activation requires early concept design and venue booking. Saudi Event Management provides full-service solutions for brand activations, from bespoke Majlis setups to luxury catering."
             }
           },
           {
@@ -85,7 +85,7 @@ export default function SeasonalEventsPage() {
             "name": "Ramadan event company near me Saudi Arabia",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events is a premier Ramadan event company near me Saudi Arabia, offering localized, high-end Islamic seasonal events across Riyadh, Jeddah, and the Eastern Province."
+              "text": "Saudi Event Management is a premier Ramadan event company near me Saudi Arabia, offering localized, high-end Islamic seasonal events across Riyadh, Jeddah, and the Eastern Province."
             }
           },
           {
@@ -93,7 +93,7 @@ export default function SeasonalEventsPage() {
             "name": "National Day party organizer Riyadh",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "As the top National Day party organizer Riyadh, Lumina creates massive patriotic festivals and exclusive corporate celebrations for the Kingdom's most important holiday."
+              "text": "As the top National Day party organizer Riyadh, Saudi Event Management creates massive patriotic festivals and exclusive corporate celebrations for the Kingdom's most important holiday."
             }
           }
         ]
@@ -103,7 +103,7 @@ export default function SeasonalEventsPage() {
         "headline": "How to Plan a National Day Celebration in Saudi Arabia",
         "author": {
           "@type": "Organization",
-          "name": "Lumina Events"
+          "name": "Saudi Event Management"
         },
         "datePublished": "2024-09-01",
         "description": "A comprehensive guide to organizing high-impact National Day galas and community festivals in Riyadh."
@@ -111,14 +111,14 @@ export default function SeasonalEventsPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Seasonal & Religious Events", "item": "https://luminaevents.com/services/seasonal" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Seasonal & Religious Events", "item": "https://saudieventmanagement.com/services/seasonal" }
         ]
       },
       {
         "@type": "Organization",
-        "name": "Lumina Seasonal Events",
+        "name": "Saudi Event Management Seasonal Events",
         "description": "Specializing in Saudi National Day, Founding Day, and Riyadh Season cultural activations.",
         "memberOf": {
           "@type": "Organization",
@@ -355,13 +355,13 @@ export default function SeasonalEventsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What should I know about planning events during Ramadan in Saudi Arabia?", a: "Planning requires deep cultural understanding. Event timings shift to late night (Suhoor), and decor emphasizes traditional hospitality. As a top Ramadan event planner KSA, Lumina creates authentic, high-end experiences." },
+                { q: "What should I know about planning events during Ramadan in Saudi Arabia?", a: "Planning requires deep cultural understanding. Event timings shift to late night (Suhoor), and decor emphasizes traditional hospitality. As a top Ramadan event planner KSA, Saudi Event Management creates authentic, high-end experiences." },
                 { q: "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?", a: "Start with a culturally resonant concept. We help you design the activation, secure premium mall or hotel space, and execute flawlessly." },
                 { q: "How to organize a National Day celebration for our company?", a: "Focus on patriotic themes, early venue coordination, and secure necessary GEA permits. As your National Day event organizer Riyadh, we handle everything from green-themed decor to traditional entertainment." },
                 { q: "Can you manage Eid celebrations as well?", a: "Yes, we are a leading Eid celebration company Saudi Arabia, specializing in both intimate luxury family gatherings and large-scale corporate Eid festivities." },
                 { q: "What is special about Saudi Founding Day celebrations?", a: "It's a time to celebrate traditional 'Najdi' and regional Saudi heritage. Our events emphasize traditional hospitality, crafts, and historical storytelling." },
-                { q: "Ramadan event company near me Saudi Arabia", a: "Lumina operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
-                { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Lumina specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
+                { q: "Ramadan event company near me Saudi Arabia", a: "Saudi Event Management operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
+                { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Saudi Event Management specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
               ].map((faq, i) => (
                 <div key={i} className="bg-gray-50 p-10 rounded-2xl border border-gray-100">
                   <h3 className="text-xl font-bold text-charcoal-950 mb-4">{faq.q}</h3>

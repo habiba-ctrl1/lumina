@@ -88,7 +88,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/dashboard" className="flex items-center gap-3">
             <Sparkles className="text-gold-500" size={24} />
             <span className="text-xl font-light text-white tracking-tight">
-              Lumina <span className="text-gold-500 font-bold">Admin</span>
+              Saudi Event Management <span className="text-gold-500 font-bold">Admin</span>
             </span>
           </Link>
         </div>
@@ -136,7 +136,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             {sidebarOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
           <p className="text-gray-500 text-sm">
-            Lumina Events Management Panel
+            Saudi Event Management Management Panel
           </p>
         </header>
 

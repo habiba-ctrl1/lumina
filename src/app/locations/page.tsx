@@ -6,9 +6,9 @@ import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: 'Our Locations | Lumina Events',
-  description: 'Discover Lumina Events across the Kingdom of Saudi Arabia. Premier luxury event management in Riyadh, Jeddah, AlUla, and Dammam.',
-  keywords: 'event management locations, Lumina Riyadh, Lumina Jeddah, Lumina AlUla, Lumina Dammam, Saudi luxury events',
+  title: 'Our Locations | Saudi Event Management',
+  description: 'Discover Saudi Event Management across the Kingdom of Saudi Arabia. Premier luxury event management in Riyadh, Jeddah, AlUla, and Dammam.',
+  keywords: 'event management locations, Saudi Event Management Riyadh, Saudi Event Management Jeddah, Saudi Event Management AlUla, Saudi Event Management Dammam, Saudi luxury events',
 };
 
 const locations = [
@@ -58,7 +58,7 @@ export default function LocationsPage() {
             Our <span className="hero-subtitle-shimmer font-bold">Destinations</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Lumina Events curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
+            Saudi Event Management curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
           </p>
         </div>
       </section>

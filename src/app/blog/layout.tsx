@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog & Lifestyle | Lumina Events - Event Planning Tips & Inspiration",
+  title: "Blog & Lifestyle | Saudi Event Management - Event Planning Tips & Inspiration",
   description:
-    "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights from the Lumina Events editorial team.",
+    "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights from the Saudi Event Management editorial team.",
   openGraph: {
-    title: "Blog & Lifestyle | Lumina Events",
+    title: "Blog & Lifestyle | Saudi Event Management",
     description:
       "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights.",
     url: "/blog",
-    siteName: "Lumina Events",
+    siteName: "Saudi Event Management",
     type: "website",
   },
   alternates: { canonical: "/blog" },

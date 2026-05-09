@@ -25,8 +25,8 @@ export default function WeddingsPage() {
         "description": "Bespoke luxury wedding planning and social event management services across Riyadh, Jeddah, and Dammam.",
         "provider": {
           "@type": "LocalBusiness",
-          "name": "Lumina Events",
-          "image": "https://luminaevents.com/wedding.png",
+          "name": "Saudi Event Management",
+          "image": "https://saudieventmanagement.com/wedding.png",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Riyadh",
@@ -57,7 +57,7 @@ export default function WeddingsPage() {
             "name": "What are the best wedding planners in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The best wedding planners in Riyadh combine extensive local expertise with luxury design capabilities. Lumina Events is widely recognized as a top-tier choice for elite celebrations, offering access to exclusive venues and premium vendors."
+              "text": "The best wedding planners in Riyadh combine extensive local expertise with luxury design capabilities. Saudi Event Management is widely recognized as a top-tier choice for elite celebrations, offering access to exclusive venues and premium vendors."
             }
           },
           {
@@ -89,7 +89,7 @@ export default function WeddingsPage() {
             "name": "wedding planner near me Riyadh",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events provides elite services for clients searching for a wedding planner near me Riyadh, specializing in both traditional and contemporary designs."
+              "text": "Saudi Event Management provides elite services for clients searching for a wedding planner near me Riyadh, specializing in both traditional and contemporary designs."
             }
           },
           {
@@ -97,7 +97,7 @@ export default function WeddingsPage() {
             "name": "who plans weddings in Jeddah Saudi Arabia",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events is the premier answer to who plans weddings in Jeddah Saudi Arabia, utilizing stunning Red Sea venues for unforgettable celebrations."
+              "text": "Saudi Event Management is the premier answer to who plans weddings in Jeddah Saudi Arabia, utilizing stunning Red Sea venues for unforgettable celebrations."
             }
           },
           {
@@ -105,7 +105,7 @@ export default function WeddingsPage() {
             "name": "best wedding company Saudi Arabia",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Consistently ranked as the best wedding company Saudi Arabia, Lumina excels in delivering high-end, customized experiences for our clients."
+              "text": "Consistently ranked as the best wedding company Saudi Arabia, Saudi Event Management excels in delivering high-end, customized experiences for our clients."
             }
           }
         ]
@@ -114,7 +114,7 @@ export default function WeddingsPage() {
       "@type": "Review",
       "itemReviewed": {
         "@type": "LocalBusiness",
-        "name": "Lumina Events"
+        "name": "Saudi Event Management"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -125,7 +125,7 @@ export default function WeddingsPage() {
         "@type": "Person",
         "name": "Sarah Al-Saud"
       },
-      "reviewBody": "Lumina made my dream wedding in Riyadh a reality. Their attention to detail and traditional Saudi touches were perfect."
+      "reviewBody": "Saudi Event Management made my dream wedding in Riyadh a reality. Their attention to detail and traditional Saudi touches were perfect."
     },
     {
       "@type": "Event",
@@ -143,18 +143,18 @@ export default function WeddingsPage() {
           "addressCountry": "SA"
         }
       },
-      "image": "https://luminaevents.com/wedding.png",
-      "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Lumina Events.",
+      "image": "https://saudieventmanagement.com/wedding.png",
+      "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
       "performer": {
         "@type": "Organization",
-        "name": "Lumina Events"
+        "name": "Saudi Event Management"
       }
     },
     {
       "@type": "AggregateRating",
       "itemReviewed": {
         "@type": "LocalBusiness",
-        "name": "Lumina Events"
+        "name": "Saudi Event Management"
       },
       "ratingValue": "4.9",
       "reviewCount": "120"
@@ -162,14 +162,14 @@ export default function WeddingsPage() {
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
-        { "@type": "ListItem", "position": 3, "name": "Weddings & Social Events", "item": "https://luminaevents.com/services/weddings" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+        { "@type": "ListItem", "position": 3, "name": "Weddings & Social Events", "item": "https://saudieventmanagement.com/services/weddings" }
       ]
     },
     {
       "@type": "Organization",
-      "name": "Lumina Luxury Weddings",
+      "name": "Saudi Event Management Luxury Weddings",
       "description": "Aligning with the Saudi Tourism Authority to showcase the Kingdom's finest wedding destinations.",
       "memberOf": {
         "@type": "Organization",
@@ -258,7 +258,7 @@ export default function WeddingsPage() {
                   Crafting the Best <br/><span className="text-gold-600">Wedding Experience</span> in Riyadh
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  As the premier <strong className="text-charcoal-950">wedding planner in Saudi Arabia</strong> for over 15 years, Lumina specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <strong className="text-charcoal-950">Ritz-Carlton Riyadh</strong>, <strong className="text-charcoal-950">Four Seasons</strong>, and the iconic <strong className="text-charcoal-950">Al-Khayala</strong> venues.
+                  As the premier <strong className="text-charcoal-950">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <strong className="text-charcoal-950">Ritz-Carlton Riyadh</strong>, <strong className="text-charcoal-950">Four Seasons</strong>, and the iconic <strong className="text-charcoal-950">Al-Khayala</strong> venues.
                 </p>
                 <div className="grid grid-cols-2 gap-8 pt-8">
                   <div>
@@ -388,12 +388,12 @@ export default function WeddingsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Lumina Events is highly rated for transforming high-profile venues like the Ritz-Carlton into bespoke masterpieces." },
+                { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Saudi Event Management is highly rated for transforming high-profile venues like the Ritz-Carlton into bespoke masterpieces." },
                 { q: "How much does a Saudi wedding cost?", a: "A luxury Saudi wedding typically ranges from SAR 150,000 to upwards of SAR 1,000,000. This includes premium venue sourcing, custom floral designs, and world-class entertainment and catering." },
                 { q: "Which hotels are best for weddings in Jeddah?", a: "The Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria are among the best hotels for weddings in Jeddah. We specialize in securing these exclusive Red Sea venues with preferred rates." },
-                { q: "wedding planner near me Riyadh", a: "Lumina Events is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your bespoke nuptial event." },
+                { q: "wedding planner near me Riyadh", a: "Saudi Event Management is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your bespoke nuptial event." },
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
-                { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Lumina is frequently called the best wedding company Saudi Arabia." },
+                { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Saudi Event Management is frequently called the best wedding company Saudi Arabia." },
                 { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }
               ].map((faq, i) => (
                 <div key={i} className="bg-gray-50 p-8 rounded-2xl border border-gray-100">

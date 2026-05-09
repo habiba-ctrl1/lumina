@@ -28,6 +28,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Locations", href: "/locations" },
@@ -49,9 +50,9 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
               <Image 
-                src="/lumina-logo-transparent.png" 
-                alt="Lumina Events Logo" 
-                width={140} 
+                src="/sem-logo.svg" 
+                alt="Saudi Event Management Logo" 
+                width={160} 
                 height={50}
                 className="object-contain h-10 w-auto"
                 priority
@@ -99,7 +100,7 @@ export default function Navbar() {
                           <div className="w-1/3 bg-gray-50 relative p-8">
                             <Image 
                               src="/gallery_1.png" 
-                              alt="Lumina Services" 
+                              alt="Saudi Event Management Services" 
                               fill 
                               className="object-cover opacity-50 grayscale"
                             />
@@ -197,8 +198,14 @@ export default function Navbar() {
 
             {/* Premium CTA */}
             <div className="flex items-center gap-6">
+              <button className="flex items-center gap-2 group">
+                <span className="text-[10px] font-bold tracking-widest text-primary">EN</span>
+                <span className="w-px h-3 bg-gray-200" />
+                <span className="text-[10px] font-bold tracking-widest text-gray-400 group-hover:text-black transition-colors">AR</span>
+              </button>
+              
               <Link
-                href="https://wa.me/966501234567?text=Hi%20Lumina%20Events!%20I%20am%20interested%20in%20your%20event%20management%20services."
+                href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary text-white text-[10px] py-3 px-8 uppercase tracking-[0.2em] font-bold rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30"

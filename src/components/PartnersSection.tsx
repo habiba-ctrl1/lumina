@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { name: "Ritz Carlton", logo: "https://logo.clearbit.com/ritzcarlton.com" },
-  { name: "Four Seasons", logo: "https://logo.clearbit.com/fourseasons.com" },
-  { name: "Bvlgari", logo: "https://logo.clearbit.com/bulgari.com" },
-  { name: "Cartier", logo: "https://logo.clearbit.com/cartier.com" },
-  { name: "Saudia", logo: "https://logo.clearbit.com/saudia.com" },
+  { name: "GEA", logo: "https://logo.clearbit.com/gea.gov.sa" },
   { name: "NEOM", logo: "https://logo.clearbit.com/neom.com" },
-  { name: "Aman Resorts", logo: "https://logo.clearbit.com/aman.com" },
-  { name: "Rosewood", logo: "https://logo.clearbit.com/rosewoodhotels.com" },
+  { name: "Vision 2030", logo: "https://logo.clearbit.com/vision2030.gov.sa" },
+  { name: "Ministry of Culture", logo: "https://logo.clearbit.com/moc.gov.sa" },
+  { name: "Riyadh Season", logo: "https://logo.clearbit.com/riyadhseason.sa" },
+  { name: "Red Sea Global", logo: "https://logo.clearbit.com/redseaglobal.com" },
+  { name: "Diriyah Gate", logo: "https://logo.clearbit.com/dgda.gov.sa" },
+  { name: "Saudia", logo: "https://logo.clearbit.com/saudia.com" },
 ];
 
 export default function PartnersSection() {

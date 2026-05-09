@@ -1,0 +1,11 @@
+<svg width="240" height="64" viewBox="0 0 240 64" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(4, 4) scale(0.8)">
+    <polygon points="36,4 68,36 36,68 4,36" fill="none" stroke="#C49A2A" stroke-width="1.2"/>
+    <polygon points="36,12 60,36 36,60 12,36" fill="#C49A2A"/>
+    <polygon points="36,20 52,36 36,52 20,36" fill="#0D0D0D"/>
+    <polygon points="36,28 44,36 36,44 28,36" fill="#C49A2A"/>
+  </g>
+  <text x="70" y="32" font-family="Georgia, serif" font-size="36" font-weight="700" letter-spacing="6" fill="#C49A2A">SEM</text>
+  <line x1="70" y1="38" x2="230" y2="38" stroke="#C49A2A" stroke-width="0.5" opacity="0.5"/>
+  <text x="70" y="52" font-family="Arial, sans-serif" font-size="8" letter-spacing="2.5" fill="#A88840">SAUDI EVENT MANAGEMENT</text>
+</svg>

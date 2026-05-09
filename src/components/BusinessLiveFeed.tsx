@@ -50,7 +50,7 @@ export default function BusinessLiveFeed() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-px bg-gold-500/50" />
-              <span className="text-xs uppercase tracking-[0.3em] text-gold-500 font-bold">Live from Lumina</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-gold-500 font-bold">Live from Saudi Event Management</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 leading-tight font-bold">
               Real-Time <span className="text-shimmer font-bold">Updates</span> & Business Milestones

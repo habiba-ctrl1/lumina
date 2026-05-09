@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Our Services | Lumina Events',
+  title: 'Our Services | Saudi Event Management',
   description: 'Explore our luxury event management services in KSA and Pakistan.',
 };
 

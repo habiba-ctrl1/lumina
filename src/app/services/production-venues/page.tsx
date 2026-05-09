@@ -18,7 +18,7 @@ export default function ProductionVenuesPage() {
         "serviceType": "Event Production",
         "provider": {
           "@type": "LocalBusiness",
-          "name": "Lumina Events",
+          "name": "Saudi Event Management",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Riyadh",
@@ -60,7 +60,7 @@ export default function ProductionVenuesPage() {
             "name": "What AV equipment do I need for a 500-person conference in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A 500-person conference typically requires a line array audio system, multiple LED screens or a central ultra-wide display, confidence monitors, and professional lighting. Lumina is a premier AV company for events KSA, supplying and managing all technical needs."
+              "text": "A 500-person conference typically requires a line array audio system, multiple LED screens or a central ultra-wide display, confidence monitors, and professional lighting. Saudi Event Management is a premier AV company for events KSA, supplying and managing all technical needs."
             }
           },
           {
@@ -84,7 +84,7 @@ export default function ProductionVenuesPage() {
             "name": "event venue near me Riyadh",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events provides exclusive access and booking support when you need an elite event venue near me Riyadh for corporate or social gatherings."
+              "text": "Saudi Event Management provides exclusive access and booking support when you need an elite event venue near me Riyadh for corporate or social gatherings."
             }
           },
           {
@@ -100,7 +100,7 @@ export default function ProductionVenuesPage() {
             "name": "AV production near me Saudi Arabia",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For clients seeking AV production near me Saudi Arabia, Lumina offers concert-grade audio and cinematic visual setups across the Kingdom."
+              "text": "For clients seeking AV production near me Saudi Arabia, Saudi Event Management offers concert-grade audio and cinematic visual setups across the Kingdom."
             }
           }
         ]
@@ -108,14 +108,14 @@ export default function ProductionVenuesPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Event Services & Venues", "item": "https://luminaevents.com/services/production-venues" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Event Services & Venues", "item": "https://saudieventmanagement.com/services/production-venues" }
         ]
       },
       {
         "@type": "Organization",
-        "name": "Lumina Event Services",
+        "name": "Saudi Event Management Event Services",
         "description": "Leading technical production partner for KAICC and RECC summits in Saudi Arabia.",
         "memberOf": {
           "@type": "Organization",
@@ -352,14 +352,14 @@ export default function ProductionVenuesPage() {
             <h2 className="text-2xl md:text-3xl font-sans mb-16 text-center font-bold">Service <span className="text-gold-600">Queries</span></h2>
             <div className="space-y-6">
               {[
-                { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Lumina provides complete technical specifications tailored to your venue." },
+                { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Saudi Event Management provides complete technical specifications tailored to your venue." },
                 { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We hold exclusive partnerships with elite culinary teams, including executive chefs at the Rosewood Jeddah. We can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
                 { q: "What event decoration styles are popular in Saudi Arabia?", a: "The current trend fuses futuristic minimalism with traditional heritage. Think sleek metallic accents paired with traditional Najdi geometric patterns, ambient architectural lighting, and opulent, fragrant floral installations." },
-                { q: "What is included in full-service event management in KSA?", a: "Lumina's full-service model covers everything from venue scouting and creative design to AV production, catering, and on-site event execution." },
+                { q: "What is included in full-service event management in KSA?", a: "Saudi Event Management's full-service model covers everything from venue scouting and creative design to AV production, catering, and on-site event execution." },
                 { q: "How to choose an event venue in Riyadh?", a: "We analyze your event's theme, guest list, and technical needs to facilitate the ideal event venue rental Riyadh, whether it's a 5-star hotel or an exclusive desert retreat." },
-                { q: "event venue near me Riyadh", a: "Lumina Events operates locally in Riyadh, granting you immediate, exclusive access to the city's most sought-after palaces, hotels, and exhibition centers." },
+                { q: "event venue near me Riyadh", a: "Saudi Event Management operates locally in Riyadh, granting you immediate, exclusive access to the city's most sought-after palaces, hotels, and exhibition centers." },
                 { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
-                { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Lumina provides localized, concert-grade AV production and technical support wherever your event takes place." }
+                { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Saudi Event Management provides localized, concert-grade AV production and technical support wherever your event takes place." }
               ].map((faq, i) => (
                 <div key={i} className="border-b border-gray-100 pb-8">
                   <h3 className="text-xl font-bold mb-4">{faq.q}</h3>

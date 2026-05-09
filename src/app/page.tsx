@@ -13,6 +13,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import RecentEvents from "@/components/RecentEvents";
 import PartnersSection from "@/components/PartnersSection";
+import Testimonials from "@/components/Testimonials";
 import FeedbackForms from "@/components/FeedbackForms";
 
 export default function Home() {
@@ -21,10 +22,10 @@ export default function Home() {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "name": "Lumina Events",
-        "image": "https://luminaevents.com/hero_bg.png",
-        "@id": "https://luminaevents.com/#organization",
-        "url": "https://lumina-theta-gray.vercel.app",
+        "name": "Saudi Event Management",
+        "image": "https://saudieventmanagement.com/hero_bg.png",
+        "@id": "https://saudieventmanagement.com/#organization",
+        "url": "https://saudieventmanagement.com",
         "telephone": "+966501234567",
         "priceRange": "$$$$",
         "description": "Saudi Arabia's premier event management agency specializing in bespoke luxury weddings and high-end corporate galas across Riyadh, Jeddah, and AlUla.",
@@ -53,19 +54,19 @@ export default function Home() {
           "closes": "23:59"
         },
         "sameAs": [
-          "https://www.facebook.com/luminaevents",
-          "https://www.instagram.com/luminaevents",
-          "https://www.twitter.com/luminaevents"
+          "https://www.facebook.com/saudieventmanagement",
+          "https://www.instagram.com/saudieventmanagement",
+          "https://www.twitter.com/saudieventmanagement"
         ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://lumina-theta-gray.vercel.app/#website",
-        "url": "https://lumina-theta-gray.vercel.app",
-        "name": "Lumina Events",
+        "@id": "https://saudieventmanagement.com/#website",
+        "url": "https://saudieventmanagement.com",
+        "name": "Saudi Event Management",
         "description": "Luxury Event Management Services",
         "publisher": {
-          "@id": "https://luminaevents.com/#organization"
+          "@id": "https://saudieventmanagement.com/#organization"
         },
         "inLanguage": "en-US"
       }
@@ -89,6 +90,7 @@ export default function Home() {
       <HowItWorks />
       <BlogPreview />
       <PartnersSection />
+      <Testimonials />
       <FeedbackForms />
       <BusinessLiveFeed />
       <Footer />

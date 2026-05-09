@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     try {
       // Admin Notification
       await resend.emails.send({
-        from: 'Lumina Events <onboarding@resend.dev>',
+        from: 'Saudi Event Management <onboarding@resend.dev>',
         to: ['habiti747@gmail.com'],
         subject: `New Inquiry: ${name}`,
         html: `<div style="font-family: sans-serif; padding: 20px;"><h2>New Inquiry Received</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p></div>`,
@@ -41,10 +41,10 @@ export async function POST(request: Request) {
 
       // User Confirmation
       await resend.emails.send({
-        from: 'Lumina Events <onboarding@resend.dev>',
+        from: 'Saudi Event Management <onboarding@resend.dev>',
         to: [email],
-        subject: 'We received your inquiry - Lumina Events',
-        html: `<div style="font-family: sans-serif; padding: 20px;"><h1>Thank You!</h1><p>Hi ${name}, we received your message and will get back to you soon.</p></div>`,
+        subject: 'We received your inquiry - Saudi Event Management',
+        html: `<div style="font-family: sans-serif; padding: 20px;"><h2>Thank You for Reaching Out!</h2><p>Hi ${name},</p><p>We have successfully received your inquiry at Saudi Event Management. As promised, our team is already reviewing your details and we will get back to you within <strong>2 hours</strong>.</p><p>We look forward to creating something extraordinary with you.</p><p>Warm regards,<br>The Saudi Event Management Team</p></div>`,
       });
     } catch (emailError) {
       console.error('Email error:', emailError);

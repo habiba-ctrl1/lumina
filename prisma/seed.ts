@@ -25,7 +25,7 @@ async function main() {
   // Seed Testimonials
   const testimonials = [
     {
-      quote: "Lumina transformed our vision into a reality that exceeded all expectations. Their attention to detail is unparalleled in the luxury event space.",
+      quote: "Saudi Event Management transformed our vision into a reality that exceeded all expectations. Their attention to detail is unparalleled in the luxury event space.",
       author: "Eleanor Vance",
       role: "Bride",
       rating: 5
@@ -37,7 +37,7 @@ async function main() {
       rating: 5
     },
     {
-      quote: "From the initial consultation to the final toast, every moment was orchestrated with grace and precision. Lumina doesn't just plan events; they craft legacies.",
+      quote: "From the initial consultation to the final toast, every moment was orchestrated with grace and precision. Saudi Event Management doesn't just plan events; they craft legacies.",
       author: "Sophia Laurent",
       role: "Philanthropist",
       rating: 5

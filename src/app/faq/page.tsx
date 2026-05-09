@@ -4,7 +4,7 @@ import FAQ from "@/components/FAQ";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'FAQ | Lumina Events',
+  title: 'FAQ | Saudi Event Management',
   description: 'Frequently asked questions about our event management services.',
 };
 

@@ -3,11 +3,12 @@ import Image from "next/image";
 import { Award, Users, MapPin, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'About Lumina | The Elite Collective',
-  description: 'Discover the legacy of Lumina Events, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
+  title: 'About Saudi Event Management | The Elite Collective',
+  description: 'Discover the legacy of Saudi Event Management, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
 };
 
 export default function AboutPage() {
@@ -35,7 +36,7 @@ export default function AboutPage() {
             Curators of <span className="hero-subtitle-shimmer  font-semibold">Extraordinary</span> <br /> Moments
           </h1>
           <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto">
-            From Riyadh to the world, Lumina Events blends architectural precision with raw emotion to craft events that defy expectation.
+            From Riyadh to the world, Saudi Event Management blends architectural precision with raw emotion to craft events that defy expectation.
           </p>
         </div>
       </section>
@@ -61,15 +62,18 @@ export default function AboutPage() {
 
           <div className="space-y-8">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-white leading-tight">Crafting Unparalleled Moments</h2>
-            <div className="space-y-6 text-gray-400 font-light leading-relaxed text-lg">
+            <div className="space-y-6 text-gray-400 font-light leading-relaxed text-lg text-justify">
               <p>
-                Lumina was born from a singular vision: to redefine the landscape of luxury event management in the Middle East and beyond. 
-                With a focus on Riyadh, Dubai, and Islamabad, we have become the go-to collective for those who demand nothing short of perfection.
+                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba, a visionary curator with an obsession for architectural precision and emotional resonance, Saudi Event Management has quickly ascended as the definitive collective for those who demand nothing short of perfection.
               </p>
               <p>
-                Our philosophy is rooted in the belief that every celebration is a unique narrative. 
-                Whether it&apos;s a royal wedding under the desert stars or a high-stakes corporate gala, 
-                we bring a level of meticulous detail and artistic flair that is unmatched in the industry.
+                Our philosophy is rooted in the belief that every celebration is not just an event, but a living narrative—a masterpiece in motion. We don&apos;t simply plan; we orchestrate. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with global avant-garde aesthetics. 
+              </p>
+              <p>
+                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong>Architectural Emotion</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand dignitaries or an intimate corporate retreat for world leaders, we apply the same level of rigorous detail, ensuring that every touchpoint tells a story of elegance and legacy.
+              </p>
+              <p>
+                As Saudi Arabia marches toward Vision 2030, Saudi Event Management stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural activations that showcase the Kingdom&apos;s sophistication to the global stage. Our mission is to transform fleeting moments into timeless legacies that echo through generations.
               </p>
             </div>
             
@@ -140,6 +144,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <Testimonials />
       <Footer />
       <WhatsAppButton />
     </main>

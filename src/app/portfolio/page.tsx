@@ -9,7 +9,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: 'Event Portfolio | Lumina Events',
+  title: 'Event Portfolio | Saudi Event Management',
   description: 'View our gallery of luxury events, weddings, and corporate summits.',
 };
 

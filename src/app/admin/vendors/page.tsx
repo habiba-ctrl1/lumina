@@ -207,7 +207,7 @@ export default function VendorsPage() {
                     <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Vendor Name</label>
                     <input 
                       type="text" 
-                      placeholder="e.g. Lumina Catering"
+                      placeholder="e.g. Saudi Event Management Catering"
                       className="w-full bg-charcoal-800 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500/50 transition-colors"
                     />
                   </div>

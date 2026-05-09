@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Building2, Users, MapPin, Target, Briefcase, Calendar } from "lucide-react";
 
 export const metadata = {
-  title: 'Corporate Event Management Saudi Arabia | Lumina',
+  title: 'Corporate Event Management Saudi Arabia | Saudi Event Management',
   description: 'Top-tier corporate event management in Saudi Arabia. We organize business conferences, AGM planning, team building, and corporate gala dinners in Riyadh & Jeddah.',
   keywords: 'corporate event management Saudi Arabia, شركة إدارة فعاليات الشركات, event company Riyadh, corporate events Jeddah KSA, business conference organizer Saudi Arabia, AGM planning Riyadh, team building events KSA, corporate gala dinner Saudi Arabia, seminar organizer Riyadh',
 };
@@ -17,8 +17,8 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "name": "Lumina Corporate Events",
-      "image": "https://www.luminaevents.com/corporate.png",
+      "name": "Saudi Event Management Corporate Events",
+      "image": "https://www.saudieventmanagement.com/corporate.png",
       "description": "Leading corporate event management company in Saudi Arabia specializing in business conferences, AGMs, and gala dinners.",
       "address": {
         "@type": "PostalAddress",
@@ -35,7 +35,7 @@ const jsonLd = {
           "name": "How much does a corporate event cost in Saudi Arabia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The cost of a corporate event in Saudi Arabia varies widely based on scale, venue, and requirements. Lumina offers bespoke packages starting from SAR 75,000 for premium summits."
+            "text": "The cost of a corporate event in Saudi Arabia varies widely based on scale, venue, and requirements. Saudi Event Management offers bespoke packages starting from SAR 75,000 for premium summits."
           }
         },
         {
@@ -43,7 +43,7 @@ const jsonLd = {
           "name": "Which event management companies operate in Riyadh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Several premier event management companies operate in Riyadh, with Lumina Events leading the luxury and corporate sector, specializing in exclusive business gatherings and Vision 2030 initiatives."
+            "text": "Several premier event management companies operate in Riyadh, with Saudi Event Management leading the luxury and corporate sector, specializing in exclusive business gatherings and Vision 2030 initiatives."
           }
         },
         {
@@ -51,7 +51,7 @@ const jsonLd = {
           "name": "Who organizes corporate conferences in Saudi Arabia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lumina Events is a top-tier corporate conference organizer in Saudi Arabia. We handle end-to-end planning, from GEA permitting and VIP logistics to state-of-the-art AV execution for entities like SABIC and NEOM."
+            "text": "Saudi Event Management is a top-tier corporate conference organizer in Saudi Arabia. We handle end-to-end planning, from GEA permitting and VIP logistics to state-of-the-art AV execution for entities like SABIC and NEOM."
           }
         },
         {
@@ -59,7 +59,7 @@ const jsonLd = {
           "name": "What are the top conference venues in Riyadh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The top conference venues in Riyadh include the King Abdullah Financial District (KAFD) Conference Center, The Ritz-Carlton Riyadh, and the Al Faisaliah Hotel, all of which Lumina partners with for elite corporate summits."
+            "text": "The top conference venues in Riyadh include the King Abdullah Financial District (KAFD) Conference Center, The Ritz-Carlton Riyadh, and the Al Faisaliah Hotel, all of which Saudi Event Management partners with for elite corporate summits."
           }
         },
         {
@@ -67,7 +67,7 @@ const jsonLd = {
           "name": "find a corporate event company near me in Riyadh",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lumina Events is centrally located in Riyadh. We are the premier choice when you need to find a corporate event company near me in Riyadh for high-level business gatherings."
+            "text": "Saudi Event Management is centrally located in Riyadh. We are the premier choice when you need to find a corporate event company near me in Riyadh for high-level business gatherings."
           }
         },
         {
@@ -75,7 +75,7 @@ const jsonLd = {
           "name": "who does business events in Saudi Arabia",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lumina Events does business events in Saudi Arabia, from intimate company functions and board retreats to large-scale enterprise events and professional conferences."
+            "text": "Saudi Event Management does business events in Saudi Arabia, from intimate company functions and board retreats to large-scale enterprise events and professional conferences."
           }
         },
         {
@@ -83,7 +83,7 @@ const jsonLd = {
           "name": "best conference organizer Jeddah",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As the best conference organizer Jeddah has to offer, Lumina provides end-to-end management for executive summits, ensuring flawless execution by the Red Sea."
+            "text": "As the best conference organizer Jeddah has to offer, Saudi Event Management provides end-to-end management for executive summits, ensuring flawless execution by the Red Sea."
           }
         }
       ]
@@ -91,14 +91,14 @@ const jsonLd = {
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
-        { "@type": "ListItem", "position": 3, "name": "Corporate Events", "item": "https://luminaevents.com/services/corporate-events" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+        { "@type": "ListItem", "position": 3, "name": "Corporate Events", "item": "https://saudieventmanagement.com/services/corporate-events" }
       ]
     },
     {
       "@type": "Organization",
-      "name": "Lumina Corporate Events",
+      "name": "Saudi Event Management Corporate Events",
       "description": "Aligning with Saudi Vision 2030 and the General Entertainment Authority (GEA) for world-class summits.",
       "memberOf": {
         "@type": "Organization",
@@ -209,7 +209,7 @@ export default function CorporateEventsPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                  { title: "Industry awards & rankings: Lumina named top event company", desc: "Recognized for excellence in corporate event management across Riyadh and Jeddah." },
+                  { title: "Industry awards & rankings: Saudi Event Management named top event company", desc: "Recognized for excellence in corporate event management across Riyadh and Jeddah." },
                   { title: "Partnership announcements with Saudi entities", desc: "Strategic alignments with the GEA, Ministry of Culture, and Vision 2030 initiatives." },
                   { title: "Detailed behind-the-scenes case studies", desc: "An exclusive look at how we execute flawless executive summits at KAFD." },
                   { title: "Comparison: corporate event venues in KSA", desc: "Evaluating the best business centers, luxury hotels, and convention halls for your next summit." }
@@ -234,13 +234,13 @@ export default function CorporateEventsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "Which event management companies operate in Riyadh?", a: "Lumina Events is a leading corporate and luxury event management company operating in Riyadh, specializing in high-impact business gatherings and exclusive galas." },
-                { q: "Who organizes corporate conferences in Saudi Arabia?", a: "Lumina acts as a premier professional conference organizer (PCO) across Saudi Arabia, managing everything from GEA permits to VIP logistics for large-scale corporate summits." },
+                { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management is a leading corporate and luxury event management company operating in Riyadh, specializing in high-impact business gatherings and exclusive galas." },
+                { q: "Who organizes corporate conferences in Saudi Arabia?", a: "Saudi Event Management acts as a premier professional conference organizer (PCO) across Saudi Arabia, managing everything from GEA permits to VIP logistics for large-scale corporate summits." },
                 { q: "What are the top conference venues in Riyadh?", a: "Top venues include the KAFD Conference Center, The Ritz-Carlton, and Al Faisaliah. We help organizations select and secure the most prestigious venues for their events." },
-                { q: "How much does a corporate event cost in Saudi Arabia?", a: "The cost of corporate event planning varies widely based on scale, venue, and requirements. Lumina offers bespoke packages starting from SAR 75,000 for premium summits." },
-                { q: "find a corporate event company near me in Riyadh", a: "Lumina Events is centrally located in Riyadh, providing immediate, high-end support for any local enterprise event or professional conference." },
-                { q: "who does business events in Saudi Arabia", a: "Lumina Events does business events in Saudi Arabia, mastering everything from an intimate company function to a massive executive summit." },
-                { q: "best conference organizer Jeddah", a: "Lumina is widely regarded as the best conference organizer Jeddah, utilizing premium Red Sea venues to host spectacular business gatherings and board retreats." }
+                { q: "How much does a corporate event cost in Saudi Arabia?", a: "The cost of corporate event planning varies widely based on scale, venue, and requirements. Saudi Event Management offers bespoke packages starting from SAR 75,000 for premium summits." },
+                { q: "find a corporate event company near me in Riyadh", a: "Saudi Event Management is centrally located in Riyadh, providing immediate, high-end support for any local enterprise event or professional conference." },
+                { q: "who does business events in Saudi Arabia", a: "Saudi Event Management does business events in Saudi Arabia, mastering everything from an intimate company function to a massive executive summit." },
+                { q: "best conference organizer Jeddah", a: "Saudi Event Management is widely regarded as the best conference organizer Jeddah, utilizing premium Red Sea venues to host spectacular business gatherings and board retreats." }
               ].map((faq, i) => (
                 <div key={i} className="bg-charcoal-900 border border-white/5 p-6 rounded-2xl">
                   <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>

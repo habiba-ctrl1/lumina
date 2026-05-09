@@ -195,7 +195,7 @@ export default function VendorMarketplace() {
                     {vendor.reviews} Verified Reviews
                   </span>
                   <a 
-                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Lumina! I'd like to know more about ${vendor.name}`)}`}
+                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Saudi Event Management! I'd like to know more about ${vendor.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn"
@@ -221,7 +221,7 @@ export default function VendorMarketplace() {
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>
           <a 
-            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Lumina! I'm a premium vendor and I'd like to apply to join your network.")}`}
+            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Saudi Event Management! I'm a premium vendor and I'd like to apply to join your network.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-10 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-400 transition-all duration-300 rounded-sm"

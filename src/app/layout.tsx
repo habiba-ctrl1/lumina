@@ -10,37 +10,37 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 
 export const metadata: Metadata = {
   title: {
-    default: "Lumina | Luxury Event Management 2026",
-    template: "%s | Lumina Luxury Events",
+    default: "Luxury Wedding Planner Riyadh & Corporate Event Management Jeddah | Saudi Event Management",
+    template: "%s | Saudi Event Management Luxury Events KSA",
   },
-  description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties for 2026. Book your unforgettable experience.",
-  applicationName: "Lumina Events",
-  keywords: ["luxury event management 2026", "wedding planner 2026", "corporate gala planner", "private party organizer", "bespoke events", "premium event agency", "award winning event planners", "sustainable luxury events"],
-  authors: [{ name: "Lumina Events", url: "https://luminaevents.com" }],
-  creator: "Lumina Events",
-  publisher: "Lumina Events",
+  description: "Saudi Event Management is Saudi Arabia's premier luxury event management agency. We specialize in bespoke royal weddings in Riyadh, high-end corporate galas in Jeddah, and exclusive cultural activations in AlUla. Book your elite experience.",
+  applicationName: "Saudi Event Management",
+  keywords: ["Luxury Wedding Planner Riyadh", "Corporate Event Management Jeddah", "Luxury Events Saudi Arabia", "Event Agency AlUla", "Bespoke Weddings KSA", "Royal Wedding Organizer Riyadh", "Corporate Gala Planner Saudi", "Sustainable Luxury Events KSA"],
+  authors: [{ name: "Saudi Event Management", url: "https://saudieventmanagement.com" }],
+  creator: "Saudi Event Management",
+  publisher: "Saudi Event Management",
   category: "Event Planning",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://lumina-theta-gray.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://saudieventmanagement.com"),
   openGraph: {
-    title: "Lumina | Luxury Event Management 2026",
+    title: "Saudi Event Management | Luxury Event Management 2026",
     description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties for 2026.",
     url: "/",
-    siteName: "Lumina Events",
-    images: [{ url: "/hero_bg.png", width: 1200, height: 630, alt: "Lumina Luxury Event Management" }],
+    siteName: "Saudi Event Management",
+    images: [{ url: "/hero_bg.png", width: 1200, height: 630, alt: "Saudi Event Management Luxury Event Management" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumina | Luxury Event Management 2026",
+    title: "Saudi Event Management | Luxury Event Management 2026",
     description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties.",
     images: ["/hero_bg.png"],
-    creator: "@luminaevents",
+    creator: "@saudieventmanagement",
   },
   robots: {
     index: true,
@@ -68,20 +68,20 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://lumina-theta-gray.vercel.app/#organization",
-        "name": "Lumina Events",
-        "url": "https://lumina-theta-gray.vercel.app",
-        "logo": "https://lumina-theta-gray.vercel.app/logo.png",
+        "@id": "https://saudieventmanagement.com/#organization",
+        "name": "Saudi Event Management",
+        "url": "https://saudieventmanagement.com",
+        "logo": "https://saudieventmanagement.com/sem-logo.svg",
         "sameAs": [
-          "https://instagram.com/luminaevents",
-          "https://linkedin.com/company/luminaevents"
+          "https://instagram.com/saudieventmanagement",
+          "https://linkedin.com/company/saudieventmanagement"
         ]
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://lumina-theta-gray.vercel.app/#localbusiness",
-        "name": "Lumina Luxury Event Management Riyadh",
-        "image": "https://lumina-theta-gray.vercel.app/hero_bg.png",
+        "@id": "https://saudieventmanagement.com/#localbusiness",
+        "name": "Saudi Event Management Luxury Event Management Riyadh",
+        "image": "https://saudieventmanagement.com/hero_bg.png",
         "telephone": "+966501234567",
         "address": {
           "@type": "PostalAddress",
@@ -98,34 +98,34 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://lumina-theta-gray.vercel.app/#website",
-        "url": "https://lumina-theta-gray.vercel.app",
-        "name": "Lumina Events",
-        "publisher": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
+        "@id": "https://saudieventmanagement.com/#website",
+        "url": "https://saudieventmanagement.com",
+        "name": "Saudi Event Management",
+        "publisher": { "@id": "https://saudieventmanagement.com/#organization" }
       },
       {
         "@type": "WebPage",
-        "@id": "https://lumina-theta-gray.vercel.app/#webpage",
-        "url": "https://lumina-theta-gray.vercel.app",
-        "name": "Lumina Events",
-        "isPartOf": { "@id": "https://lumina-theta-gray.vercel.app/#website" }
+        "@id": "https://saudieventmanagement.com/#webpage",
+        "url": "https://saudieventmanagement.com",
+        "name": "Saudi Event Management",
+        "isPartOf": { "@id": "https://saudieventmanagement.com/#website" }
       },
       {
         "@type": "EventSeries",
-        "@id": "https://lumina-theta-gray.vercel.app/#eventseries",
-        "name": "Lumina Signature Events",
-        "description": "A series of high-profile corporate, exhibition, and luxury social events managed by Lumina across KSA.",
-        "organizer": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
+        "@id": "https://saudieventmanagement.com/#eventseries",
+        "name": "Saudi Event Management Signature Events",
+        "description": "A series of high-profile corporate, exhibition, and luxury social events managed by Saudi Event Management across KSA.",
+        "organizer": { "@id": "https://saudieventmanagement.com/#organization" }
       },
       {
         "@type": "FAQPage",
-        "@id": "https://lumina-theta-gray.vercel.app/#faqpage",
+        "@id": "https://saudieventmanagement.com/#faqpage",
         "mainEntity": []
       },
       {
         "@type": "HowTo",
-        "@id": "https://lumina-theta-gray.vercel.app/#howto",
-        "name": "How to Plan an Event in Saudi Arabia with Lumina",
+        "@id": "https://saudieventmanagement.com/#howto",
+        "name": "How to Plan an Event in Saudi Arabia with Saudi Event Management",
         "step": [
           { "@type": "HowToStep", "text": "Contact our expert consultants for a discovery session." },
           { "@type": "HowToStep", "text": "Collaborate on bespoke event design and logistics planning." },
@@ -134,43 +134,43 @@ export default function RootLayout({
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://lumina-theta-gray.vercel.app/#breadcrumb",
+        "@id": "https://saudieventmanagement.com/#breadcrumb",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lumina-theta-gray.vercel.app" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" }
         ]
       },
       {
         "@type": "Article",
-        "@id": "https://lumina-theta-gray.vercel.app/#article",
-        "headline": "Lumina Event Management Insights",
-        "author": { "@type": "Person", "name": "Lumina Experts" },
-        "publisher": { "@id": "https://lumina-theta-gray.vercel.app/#organization" }
+        "@id": "https://saudieventmanagement.com/#article",
+        "headline": "Saudi Event Management Insights",
+        "author": { "@type": "Person", "name": "Saudi Event Management Experts" },
+        "publisher": { "@id": "https://saudieventmanagement.com/#organization" }
       },
       {
         "@type": "Person",
-        "@id": "https://lumina-theta-gray.vercel.app/#person",
+        "@id": "https://saudieventmanagement.com/#person",
         "name": "Habiba",
         "jobTitle": "Founder & Event Director"
       },
       {
         "@type": "AggregateRating",
-        "@id": "https://lumina-theta-gray.vercel.app/#aggregaterating",
-        "itemReviewed": { "@id": "https://lumina-theta-gray.vercel.app/#localbusiness" },
+        "@id": "https://saudieventmanagement.com/#aggregaterating",
+        "itemReviewed": { "@id": "https://saudieventmanagement.com/#localbusiness" },
         "ratingValue": "4.9",
         "reviewCount": "150"
       },
       {
         "@type": "Review",
-        "@id": "https://lumina-theta-gray.vercel.app/#review",
-        "itemReviewed": { "@id": "https://lumina-theta-gray.vercel.app/#localbusiness" },
+        "@id": "https://saudieventmanagement.com/#review",
+        "itemReviewed": { "@id": "https://saudieventmanagement.com/#localbusiness" },
         "reviewRating": { "@type": "Rating", "ratingValue": "5" },
         "author": { "@type": "Person", "name": "VIP Client" }
       },
       {
         "@type": "Service",
-        "@id": "https://lumina-theta-gray.vercel.app/#service",
+        "@id": "https://saudieventmanagement.com/#service",
         "name": "Luxury Event Management",
-        "provider": { "@id": "https://lumina-theta-gray.vercel.app/#organization" },
+        "provider": { "@id": "https://saudieventmanagement.com/#organization" },
         "offers": {
           "@type": "Offer",
           "priceSpecification": {

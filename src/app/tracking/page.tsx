@@ -4,7 +4,7 @@ import LiveEventTracker from "@/components/LiveEventTracker";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Live Event Tracking | Lumina Events',
+  title: 'Live Event Tracking | Saudi Event Management',
   description: 'Track the progress and execution of your luxury event in real-time.',
 };
 

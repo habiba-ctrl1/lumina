@@ -7,7 +7,7 @@ import { MapPin, Star, Trophy, Sparkles, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
   title: 'Luxury Destination Weddings AlUla | UNESCO Heritage Events',
-  description: 'Experience the magic of AlUla with Lumina Events. From ancient Hegra backdrops to ultra-luxury desert resorts, we curate breathtaking destination weddings.',
+  description: 'Experience the magic of AlUla with Saudi Event Management. From ancient Hegra backdrops to ultra-luxury desert resorts, we curate breathtaking destination weddings.',
   keywords: 'event management AlUla, destination weddings AlUla, Hegra events, Banyan Tree AlUla weddings, Habitas AlUla events, Saudi desert luxury events',
 };
 

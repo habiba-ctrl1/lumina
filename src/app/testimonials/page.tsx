@@ -4,7 +4,7 @@ import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Testimonials | Lumina Events',
+  title: 'Testimonials | Saudi Event Management',
   description: 'Read what our clients say about our luxury event management.',
 };
 

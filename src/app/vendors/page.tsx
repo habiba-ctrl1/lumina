@@ -166,7 +166,7 @@ export default function VendorsPage() {
                     <CheckCircle2 size={48} />
                   </div>
                   <h2 className="text-2xl font-bold text-white mb-2">Request Sent!</h2>
-                  <p className="text-gray-400">The vendor and Lumina admin have been notified. You will receive a quote shortly.</p>
+                  <p className="text-gray-400">The vendor and Saudi Event Management admin have been notified. You will receive a quote shortly.</p>
                 </div>
               ) : (
                 <>

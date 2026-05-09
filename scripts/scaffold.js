@@ -34,7 +34,7 @@ export default function ${pageName.charAt(0).toUpperCase() + pageName.slice(1)}P
         >
           <div className="flex items-center justify-center gap-3 mb-6">
             <Sparkles className="text-gold-500" size={24} />
-            <span className="text-gold-500 uppercase tracking-[0.4em] text-xs font-black">Lumina Luxury</span>
+            <span className="text-gold-500 uppercase tracking-[0.4em] text-xs font-black">Saudi Event Management Luxury</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-sans font-black text-white mb-8 tracking-tighter capitalize">
             ${pageName.replace(/-/g, ' ')}
@@ -49,7 +49,7 @@ export default function ${pageName.charAt(0).toUpperCase() + pageName.slice(1)}P
           <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 shadow-3xl">
             <h2 className="text-2xl font-black text-white mb-6 tracking-tight">Our Philosophy</h2>
             <p className="text-gray-400 leading-relaxed font-medium">
-              At Lumina, we believe that true luxury lies in the details. Our approach to ${pageName.replace(/-/g, ' ')} 
+              At Saudi Event Management, we believe that true luxury lies in the details. Our approach to ${pageName.replace(/-/g, ' ')} 
               is built on a foundation of precision, creativity, and unparalleled service.
             </p>
           </div>

@@ -167,13 +167,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center gap-4 mb-8"
+          className="flex flex-col items-center justify-center mb-8"
         >
-          <div className="w-12 h-px bg-primary/30" />
-          <span className="text-primary text-[11px] uppercase tracking-[0.4em] font-bold">
+          <span className="text-primary text-[14px] md:text-[18px] uppercase tracking-[0.5em] font-bold mb-2 block">
+            Saudi Event Management
+          </span>
+          <div className="w-12 h-px bg-primary/30 mx-auto mb-4" />
+          <span className="text-gray-300 text-[10px] uppercase tracking-[0.4em] font-bold">
             Bespoke Event Management
           </span>
-          <div className="w-12 h-px bg-primary/30" />
         </motion.div>
 
         {/* Main Title */}
@@ -211,7 +213,7 @@ export default function Hero() {
           <form 
             onSubmit={(e) => { 
               e.preventDefault(); 
-              window.open(`https://wa.me/966501234567?text=Hi%20Lumina!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
+              window.open(`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
             }}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
           >
@@ -251,6 +253,17 @@ export default function Hero() {
               </button>
             </div>
           </form>
+          
+          <div className="mt-6 flex justify-center">
+            <Link 
+              href="/#contact"
+              className="text-[10px] text-white/60 hover:text-primary uppercase tracking-[0.2em] font-bold flex items-center gap-2 transition-colors group"
+            >
+              <div className="w-8 h-px bg-white/20 group-hover:bg-primary transition-colors" />
+              Download Corporate Portfolio Brochure
+              <div className="w-8 h-px bg-white/20 group-hover:bg-primary transition-colors" />
+            </Link>
+          </div>
         </motion.div>
 
         {/* Trust Indicators */}

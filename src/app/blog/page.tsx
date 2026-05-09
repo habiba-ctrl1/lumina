@@ -45,7 +45,7 @@ export default function BlogPage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <Sparkles className="w-5 h-5 text-gold-500" />
-              <span className="text-xs uppercase tracking-[0.25em] text-gold-500 font-medium">The Lumina Journal</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-gold-500 font-medium">The Saudi Event Management Journal</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 leading-[1.1] font-bold">
               Inspire Your <span className="text-shimmer font-bold">Next Event</span>
