@@ -19,14 +19,20 @@ export default function BusinessLiveFeed() {
 
   useEffect(() => {
     const fetchUpdates = async () => {
-      const { data } = await supabase
-        .from("business_updates")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(3);
-      
-      if (data) setUpdates(data);
-      setLoading(false);
+      try {
+        const { data, error } = await supabase
+          .from("business_updates")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(3);
+        
+        if (error) throw error;
+        if (data) setUpdates(data);
+      } catch (err) {
+        console.error('Failed to fetch live updates:', err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchUpdates();

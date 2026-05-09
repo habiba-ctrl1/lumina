@@ -18,16 +18,24 @@ export default function AdminLogin() {
     setLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+      } else {
+        router.push("/admin/dashboard");
+      }
+    } catch (err: any) {
+      console.error('Login error:', err);
+      setError(err.message === 'Failed to fetch' 
+        ? 'Network error: Could not connect to the authentication server. Please check your internet connection or ad-blocker.' 
+        : 'An unexpected error occurred. Please try again.');
       setLoading(false);
-    } else {
-      router.push("/admin/dashboard");
     }
   };
 

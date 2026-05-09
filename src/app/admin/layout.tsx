@@ -41,13 +41,23 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session && pathname !== "/admin/login") {
-        router.push("/admin/login");
-      } else {
-        setAuthenticated(true);
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) throw error;
+        
+        if (!session && pathname !== "/admin/login") {
+          router.push("/admin/login");
+        } else {
+          setAuthenticated(true);
+        }
+      } catch (error) {
+        console.error('Auth check failed:', error);
+        if (pathname !== "/admin/login") {
+          router.push("/admin/login");
+        }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     checkAuth();
   }, [pathname, router]);
