@@ -67,7 +67,7 @@ export default function MadinahSpiritualEvent() {
         {/* The Essence */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
-            <Image src="/gallery_3.webp" alt="Madinah Event Ambience" fill className="object-cover" />
+            <Image src="/gallery_charity_gala.webp" alt="Madinah Event Ambience" fill className="object-cover" />
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Essence</span></h2>

@@ -79,10 +79,10 @@ export default function AlUlaDesertFestival() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_3.webp" alt="Festival Detail 1" fill className="object-cover" />
+                <Image src="/gallery_charity_gala.webp" alt="Festival Detail 1" fill className="object-cover" />
               </div>
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_corporate_event.webp" alt="Festival Detail 2" fill className="object-cover" />
+                <Image src="/gallery_corporate_gala.webp" alt="Festival Detail 2" fill className="object-cover" />
               </div>
             </div>
             <div className="pt-12">

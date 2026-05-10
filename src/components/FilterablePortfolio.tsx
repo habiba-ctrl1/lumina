@@ -12,7 +12,7 @@ const portfolioItems = [
   { id: 4, src: "/gallery_vip_party.webp", title: "Luxury Soiree Riyadh", category: "Riyadh", slug: "riyadh-luxury-soiree" },
   { id: 5, src: "/gallery_charity_gala.webp", title: "AlUla Desert Festival", category: "AlUla", slug: "alula-desert-festival" },
   { id: 6, src: "/gallery_2.webp", title: "Executive Summit Jeddah", category: "Jeddah", slug: "executive-summit-jeddah" },
-  { id: 7, src: "/gallery_3.webp", title: "Madinah Spiritual Event", category: "Madinah", slug: "madinah-spiritual-event" },
+  { id: 7, src: "/gallery_charity_gala.webp", title: "Madinah Spiritual Event", category: "Madinah", slug: "madinah-spiritual-event" },
   { id: 8, src: "/corporate.webp", title: "Global Tech Summit Jeddah", category: "Jeddah", slug: "global-tech-summit" },
   { id: 9, src: "/private_party.webp", title: "Elite Majlis Gathering", category: "Riyadh", slug: "riyadh-elite-majlis" },
   { id: 10, src: "/gallery_corporate_gala.webp", title: "Dammam Corporate Seminar", category: "Dammam", slug: "dammam-corporate-seminar" },

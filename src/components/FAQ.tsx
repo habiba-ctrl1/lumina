@@ -38,14 +38,14 @@ export default function FAQ() {
           >
             Inquiries
           </motion.span>
-          <motion.h2 
+          <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold"
+            className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold uppercase tracking-tight"
           >
-            Curated <span className="text-shimmer font-bold">Questions</span>
-          </motion.h2>
+            Curated <span className="text-primary font-bold">Questions</span>
+          </motion.h1>
         </div>
 
         <div className="space-y-8">

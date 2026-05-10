@@ -76,7 +76,7 @@ export default function GlobalTechSummit() {
             </p>
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-            <Image src="/gallery_corporate_event.webp" alt="Tech Summit Stage" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="Tech Summit Stage" fill className="object-cover" />
           </div>
         </div>
 
