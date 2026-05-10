@@ -138,7 +138,7 @@ export default function ProductionVenuesPage() {
         <section className="relative h-[80vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/gallery_wedding_reception.png" 
+              src="/gallery_wedding_reception.webp" 
               alt="Event services Saudi Arabia - Event venue Riyadh" 
               fill 
               className="object-cover opacity-50"
@@ -299,7 +299,7 @@ export default function ProductionVenuesPage() {
               </div>
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_corporate_gala.png" 
+                  src="/gallery_corporate_gala.webp" 
                   alt="خدمات الفعاليات السعودية - أماكن فعاليات الرياض" 
                   fill 
                   className="object-cover"

@@ -9,34 +9,35 @@ export const metadata = {
   title: 'Our Locations | Saudi Event Management',
   description: 'Discover Saudi Event Management across the Kingdom of Saudi Arabia. Premier luxury event management in Riyadh, Jeddah, AlUla, and Dammam.',
   keywords: 'event management locations, Saudi Event Management Riyadh, Saudi Event Management Jeddah, Saudi Event Management AlUla, Saudi Event Management Dammam, Saudi luxury events',
+  alternates: { canonical: 'https://saudieventmanagement.com/locations' },
 };
 
 const locations = [
   {
     city: "Riyadh",
     country: "Saudi Arabia",
-    image: "/gallery_2.png",
+    image: "/gallery_2.webp",
     slug: "riyadh",
     description: "The capital of luxury, elevating Riyadh's most iconic celebrations from the Kingdom Centre to Diriyah.",
   },
   {
     city: "Jeddah",
     country: "Saudi Arabia",
-    image: "/gallery_corporate_gala.png",
+    image: "/gallery_corporate_gala.webp",
     slug: "jeddah",
     description: "Spectacular seaside celebrations and exclusive Red Sea coastal events.",
   },
   {
     city: "AlUla",
     country: "Saudi Arabia",
-    image: "/gallery_destination_wedding.png",
+    image: "/gallery_destination_wedding.webp",
     slug: "alula",
     description: "Saudi Arabia's most breathtaking destination — ancient desert landscapes, UNESCO heritage, and ultra-luxury resorts.",
   },
   {
     city: "Dammam",
     country: "Saudi Arabia",
-    image: "/gallery_vip_party.png",
+    image: "/gallery_vip_party.webp",
     slug: "dammam",
     description: "The Eastern Province gateway to luxury — elite corporate galas, Aramco-tier celebrations, and spectacular family weddings.",
   }
@@ -49,7 +50,7 @@ export default function LocationsPage() {
 
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 flex items-center justify-center border-b border-white/10">
-        <div className="absolute inset-0 bg-[url('/hero_bg.png')] opacity-5 bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-5 bg-cover bg-center" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
             Global Presence

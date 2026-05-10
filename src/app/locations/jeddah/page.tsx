@@ -6,9 +6,10 @@ import Link from "next/link";
 import { Anchor, Waves, Camera, Building } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Event Management Jeddah | Corniche & Al-Balad Events',
-  description: 'The premier luxury event planner in Jeddah. Exquisite weddings by the Red Sea, corporate events near the King Fahd Fountain, and heritage galas in Al-Balad.',
-  keywords: 'event management Jeddah, luxury weddings Jeddah, Jeddah Corniche events, King Fahd Fountain events, Al-Balad event planning, Red Sea luxury events',
+  title: 'Luxury Event Management Jeddah | Coastal Weddings & Corporate Events',
+  description: 'Exquisite event planning in Jeddah. Specialists in Red Sea coastal weddings, corporate summits in the financial district, and luxury private parties.',
+  keywords: 'event management Jeddah, Jeddah weddings, corporate events Jeddah, Red Sea events, luxury planners Jeddah',
+  alternates: { canonical: 'https://saudieventmanagement.com/locations/jeddah' },
 };
 
 export default function JeddahPage() {
@@ -20,7 +21,7 @@ export default function JeddahPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/gallery_corporate_gala.png" 
+            src="/gallery_corporate_gala.webp" 
             alt="Luxury Event Management Jeddah - Red Sea Coastline" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -60,7 +61,7 @@ export default function JeddahPage() {
       <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image src="/gallery_garden_party.png" alt="Al-Balad Jeddah Event" fill className="object-cover" />
+            <Image src="/gallery_garden_party.webp" alt="Al-Balad Jeddah Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">

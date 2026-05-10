@@ -37,7 +37,7 @@ export default function ExhibitionsPage() {
       {
         "@type": "LocalBusiness",
         "name": "Saudi Event Management Exhibition Management",
-        "image": "https://saudieventmanagement.com/corporate.png",
+        "image": "https://saudieventmanagement.com/corporate.webp",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Riyadh",
@@ -181,7 +181,7 @@ export default function ExhibitionsPage() {
         <section className="relative h-[80vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/blog_corporate_events.png" 
+              src="/blog_corporate_events.webp" 
               alt="Exhibition management Saudi Arabia - Trade show organizer Riyadh" 
               fill 
               className="object-cover opacity-40"
@@ -336,7 +336,7 @@ export default function ExhibitionsPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_corporate_gala.png" 
+                  src="/gallery_corporate_gala.webp" 
                   alt="مركز الرياض للمعارض والمؤتمرات - تنظيم معارض" 
                   fill 
                   className="object-cover"

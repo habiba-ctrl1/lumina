@@ -9,6 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata = {
   title: 'About Saudi Event Management | The Elite Collective',
   description: 'Discover the legacy of Saudi Event Management, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
+  alternates: { canonical: 'https://saudieventmanagement.com/about' },
 };
 
 export default function AboutPage() {
@@ -20,7 +21,7 @@ export default function AboutPage() {
       <section className="relative h-[60vh] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.png" 
+            src="/hero_bg.webp" 
             alt="Luxury Event Backdrop" 
             fill 
             className="object-cover opacity-10 grayscale"
@@ -48,7 +49,7 @@ export default function AboutPage() {
             <div className="absolute -inset-4 bg-gold-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="relative h-[600px] rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
               <Image 
-                src="/founder.png" 
+                src="/founder.webp" 
                 alt="Our Founder" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"

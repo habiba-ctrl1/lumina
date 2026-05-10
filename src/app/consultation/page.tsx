@@ -54,7 +54,7 @@ export default function ConsultationPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/hero_bg.png')] opacity-10 bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-10 bg-cover bg-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#041E42] via-transparent to-[#041E42]" />
         </div>
 

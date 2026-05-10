@@ -21,7 +21,7 @@ export default function FounderSection() {
           >
             <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
               <Image
-                src="/founder.png"
+                src="/founder.webp"
                 alt="Amara Chen, Founder & Creative Director of Saudi Event Management"
                 fill
                 className="object-cover object-top"

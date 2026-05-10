@@ -1,11 +1,11 @@
-<svg width="240" height="64" viewBox="0 0 240 64" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(4, 4) scale(0.8)">
-    <polygon points="36,4 68,36 36,68 4,36" fill="none" stroke="#C49A2A" stroke-width="1.2"/>
-    <polygon points="36,12 60,36 36,60 12,36" fill="#C49A2A"/>
-    <polygon points="36,20 52,36 36,52 20,36" fill="#0D0D0D"/>
-    <polygon points="36,28 44,36 36,44 28,36" fill="#C49A2A"/>
-  </g>
-  <text x="70" y="32" font-family="Georgia, serif" font-size="36" font-weight="700" letter-spacing="6" fill="#C49A2A">SEM</text>
-  <line x1="70" y1="38" x2="230" y2="38" stroke="#C49A2A" stroke-width="0.5" opacity="0.5"/>
-  <text x="70" y="52" font-family="Arial, sans-serif" font-size="8" letter-spacing="2.5" fill="#A88840">SAUDI EVENT MANAGEMENT</text>
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Large SEM in Gold Serif -->
+  <text x="50%" y="120" text-anchor="middle" font-family="Serif, 'Playfair Display', Georgia" font-size="120" font-weight="bold" fill="#D4AF37" letter-spacing="0.1em">SEM</text>
+  
+  <!-- Vertical Line -->
+  <line x1="200" y1="40" x2="200" y2="160" stroke="#D4AF37" stroke-width="1" />
+  
+  <!-- SAUDI EVENT MANAGEMENT across it -->
+  <rect x="0" y="95" width="400" height="20" fill="none" />
+  <text x="50%" y="110" text-anchor="middle" font-family="Sans-Serif, Montserrat, Inter, Arial" font-size="14" font-weight="900" fill="#041E42" letter-spacing="0.4em" style="text-transform: uppercase;">SAUDI EVENT MANAGEMENT</text>
 </svg>

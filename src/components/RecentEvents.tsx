@@ -8,12 +8,12 @@ import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import Link from "next/link";
 
 const galleryItems = [
-  { id: 1, src: "/gallery_wedding_reception.png", title: "Royal Riyadh Wedding", category: "Weddings", slug: "royal-riyadh-wedding" },
-  { id: 2, src: "/gallery_corporate_gala.png", title: "Executive Summit Jeddah", category: "Corporate", slug: "" },
-  { id: 3, src: "/gallery_destination_wedding.png", title: "Elite Majlis Gathering", category: "Private", slug: "" },
-  { id: 4, src: "/gallery_vip_party.png", title: "Riyadh Luxury Soiree", category: "Private", slug: "" },
-  { id: 5, src: "/gallery_charity_gala.png", title: "AlUla Desert Festival", category: "Culture", slug: "" },
-  { id: 6, src: "/gallery_garden_party.png", title: "Desert Resort Oasis", category: "Private", slug: "" },
+  { id: 1, src: "/gallery_wedding_reception.webp", title: "Royal Riyadh Wedding", category: "Weddings", slug: "royal-riyadh-wedding" },
+  { id: 2, src: "/gallery_corporate_gala.webp", title: "Executive Summit Jeddah", category: "Corporate", slug: "executive-summit-jeddah" },
+  { id: 3, src: "/gallery_destination_wedding.webp", title: "Elite Majlis Gathering", category: "Private", slug: "riyadh-elite-majlis" },
+  { id: 4, src: "/gallery_vip_party.webp", title: "Riyadh Luxury Soiree", category: "Private", slug: "riyadh-luxury-soiree" },
+  { id: 5, src: "/gallery_charity_gala.webp", title: "AlUla Desert Festival", category: "Culture", slug: "alula-desert-festival" },
+  { id: 6, src: "/gallery_garden_party.webp", title: "NEOM Future Summit", category: "Corporate", slug: "neom-future-summit" },
 ];
 
 export default function RecentEvents({ hideHeader = false }: { hideHeader?: boolean }) {

@@ -6,9 +6,10 @@ import Link from "next/link";
 import { MapPin, Star, Building2, Briefcase, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Event Management Dammam & Al-Khobar | Eastern Province Events',
-  description: 'The premier luxury event planner in Dammam and the Eastern Province. Specializing in elite corporate galas, Aramco-tier celebrations, and grand coastal weddings.',
-  keywords: 'event management Dammam, Al-Khobar events, Eastern Province weddings, Aramco events, Dhahran event planning, Gulf coastal events',
+  title: 'Luxury Event Management Dammam | Corporate Galas & Industrial Summits',
+  description: 'Premier event management in Dammam and the Eastern Province. Specializing in high-profile corporate galas, industrial summits, and elite social gatherings.',
+  keywords: 'event management Dammam, Dammam corporate events, luxury weddings Dammam, Eastern Province event planning',
+  alternates: { canonical: 'https://saudieventmanagement.com/locations/dammam' },
 };
 
 export default function DammamPage() {
@@ -20,7 +21,7 @@ export default function DammamPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/gallery_vip_party.png" 
+            src="/gallery_vip_party.webp" 
             alt="Luxury Event Management Dammam - Eastern Province Skyline" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -80,7 +81,7 @@ export default function DammamPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_vip_party.png" alt="Dammam Coastal Event" fill className="object-cover" />
+            <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">

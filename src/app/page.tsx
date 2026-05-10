@@ -8,7 +8,7 @@ import ContactSection from "@/components/ContactSection";
 import BusinessLiveFeed from "@/components/BusinessLiveFeed";
 import BlogPreview from "@/components/BlogPreview";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
+
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import RecentEvents from "@/components/RecentEvents";
@@ -23,7 +23,7 @@ export default function Home() {
       {
         "@type": "LocalBusiness",
         "name": "Saudi Event Management",
-        "image": "https://saudieventmanagement.com/hero_bg.png",
+        "image": "https://saudieventmanagement.com/hero_bg.webp",
         "@id": "https://saudieventmanagement.com/#organization",
         "url": "https://saudieventmanagement.com",
         "telephone": "+966501234567",
@@ -79,7 +79,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Preloader />
+
       <ScrollProgress />
       <Navbar />
       <Hero />

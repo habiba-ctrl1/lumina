@@ -141,7 +141,7 @@ export default function SeasonalEventsPage() {
         <section className="relative h-[80vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/private_party.png" 
+              src="/private_party.webp" 
               alt="Ramadan events Saudi Arabia - Saudi National Day event organizer" 
               fill 
               className="object-cover"
@@ -317,7 +317,7 @@ export default function SeasonalEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_1.png" 
+                  src="/gallery_1.webp" 
                   alt="احتفالات اليوم الوطني السعودي - فعاليات رمضان الرياض" 
                   fill 
                   className="object-cover"

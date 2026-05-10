@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties for 2026.",
     url: "/",
     siteName: "Saudi Event Management",
-    images: [{ url: "/hero_bg.png", width: 1200, height: 630, alt: "Saudi Event Management Luxury Event Management" }],
+    images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Saudi Event Management Luxury Event Management" }],
     locale: "en_US",
     type: "website",
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Saudi Event Management | Luxury Event Management 2026",
     description: "Award-winning premier event management agency specializing in bespoke luxury weddings, high-end corporate galas, and exclusive private parties.",
-    images: ["/hero_bg.png"],
+    images: ["/hero_bg.webp"],
     creator: "@saudieventmanagement",
   },
   robots: {
@@ -53,10 +53,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: { canonical: "/" },
+  alternates: { 
+    canonical: "https://saudieventmanagement.com",
+  },
 };
 
 import CustomCursor from "@/components/CustomCursor";
+import SplashScreen from "@/components/SplashScreen";
 
 export default function RootLayout({
   children,
@@ -64,6 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalSchema = {
+// ... (omitting schema for brevity in replacement, but I will keep it in the actual call)
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -81,7 +85,7 @@ export default function RootLayout({
         "@type": "LocalBusiness",
         "@id": "https://saudieventmanagement.com/#localbusiness",
         "name": "Saudi Event Management Luxury Event Management Riyadh",
-        "image": "https://saudieventmanagement.com/hero_bg.png",
+        "image": "https://saudieventmanagement.com/hero_bg.webp",
         "telephone": "+966501234567",
         "address": {
           "@type": "PostalAddress",
@@ -192,6 +196,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`} suppressHydrationWarning>
+        <SplashScreen />
         <CustomCursor />
         {children}
       </body>

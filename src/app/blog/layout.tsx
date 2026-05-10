@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "Saudi Event Management",
     type: "website",
   },
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "https://saudieventmanagement.com/blog" },
 };
 
 export default function BlogLayout({

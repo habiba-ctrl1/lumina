@@ -8,6 +8,7 @@ import { ArrowLeft, CheckCircle2, Globe, Cpu, Zap, Building2 } from "lucide-reac
 export const metadata = {
   title: 'NEOM Future Summit Case Study | Saudi Event Management',
   description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
+  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/neom-future-summit' },
 };
 
 export default function NeomFutureSummitCaseStudy() {
@@ -19,7 +20,7 @@ export default function NeomFutureSummitCaseStudy() {
       <section className="relative h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.png" 
+            src="/hero_bg.webp" 
             alt="NEOM Future Summit" 
             fill 
             className="object-cover opacity-30 grayscale"
@@ -97,7 +98,7 @@ export default function NeomFutureSummitCaseStudy() {
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
             <div className="absolute inset-0 bg-gold-500/10 animate-pulse" />
-            <Image src="/gallery_corporate_event.png" alt="NEOM Tech Hub Setup" fill className="object-cover" />
+            <Image src="/gallery_corporate_event.webp" alt="NEOM Tech Hub Setup" fill className="object-cover" />
           </div>
         </div>
 

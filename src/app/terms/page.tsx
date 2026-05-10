@@ -5,8 +5,9 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Terms of Service | Saudi Event Management',
-  description: 'Terms of service for Saudi Event Management website and services.',
+  title: 'Terms & Conditions | Saudi Event Management',
+  description: 'Our terms and conditions for luxury event management services.',
+  alternates: { canonical: 'https://saudieventmanagement.com/terms' },
 };
 
 export default function TermsPage() {

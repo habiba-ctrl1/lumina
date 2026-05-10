@@ -13,9 +13,9 @@ const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Manag
 export default function Footer() {
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", url: "https://instagram.com/saudieventmanagement" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com/saudieventmanagement" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/company/saudieventmanagement" },
+    { icon: Instagram, label: "Instagram", url: "https://instagram.com" },
+    { icon: Twitter, label: "Twitter", url: "https://twitter.com" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
   ];
 
   return (
@@ -27,11 +27,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="block mb-8">
               <Image 
-                src="/sem-logo.svg" 
+                src="/main-logo.webp" 
                 alt="Saudi Event Management Logo" 
-                width={160} 
-                height={50}
-                className="object-contain h-12 w-auto"
+                width={280} 
+                height={100}
+                className="object-contain h-16 w-auto"
               />
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-sm">Crafting extraordinary experiences and timeless memories through unparalleled luxury event management across the Middle East.</p>

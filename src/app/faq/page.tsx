@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata = {
   title: 'FAQ | Saudi Event Management',
   description: 'Frequently asked questions about our event management services.',
+  alternates: { canonical: 'https://saudieventmanagement.com/faq' },
 };
 
 export default function FAQPage() {

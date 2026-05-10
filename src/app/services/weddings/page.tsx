@@ -26,7 +26,7 @@ export default function WeddingsPage() {
         "provider": {
           "@type": "LocalBusiness",
           "name": "Saudi Event Management",
-          "image": "https://saudieventmanagement.com/wedding.png",
+          "image": "https://saudieventmanagement.com/wedding.webp",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Riyadh",
@@ -143,7 +143,7 @@ export default function WeddingsPage() {
           "addressCountry": "SA"
         }
       },
-      "image": "https://saudieventmanagement.com/wedding.png",
+      "image": "https://saudieventmanagement.com/wedding.webp",
       "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
       "performer": {
         "@type": "Organization",
@@ -192,7 +192,7 @@ export default function WeddingsPage() {
         <section className="relative h-[85vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/wedding.png" 
+              src="/wedding.webp" 
               alt="Luxury wedding planner Saudi Arabia - Riyadh Wedding" 
               fill 
               className="object-cover"
@@ -247,7 +247,7 @@ export default function WeddingsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_wedding_reception.png" 
+                  src="/gallery_wedding_reception.webp" 
                   alt="Luxury wedding decoration company Saudi Arabia prices" 
                   fill 
                   className="object-cover"

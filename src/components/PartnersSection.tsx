@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { name: "GEA", logo: "https://logo.clearbit.com/gea.gov.sa" },
-  { name: "NEOM", logo: "https://logo.clearbit.com/neom.com" },
-  { name: "Vision 2030", logo: "https://logo.clearbit.com/vision2030.gov.sa" },
-  { name: "Ministry of Culture", logo: "https://logo.clearbit.com/moc.gov.sa" },
-  { name: "Riyadh Season", logo: "https://logo.clearbit.com/riyadhseason.sa" },
-  { name: "Red Sea Global", logo: "https://logo.clearbit.com/redseaglobal.com" },
-  { name: "Diriyah Gate", logo: "https://logo.clearbit.com/dgda.gov.sa" },
-  { name: "Saudia", logo: "https://logo.clearbit.com/saudia.com" },
+  { name: "GEA", logo: "https://placehold.co/400x200/000000/D4AF37?text=GEA" },
+  { name: "NEOM", logo: "https://placehold.co/400x200/000000/D4AF37?text=NEOM" },
+  { name: "Vision 2030", logo: "https://placehold.co/400x200/000000/D4AF37?text=Vision+2030" },
+  { name: "Ministry of Culture", logo: "https://placehold.co/400x200/000000/D4AF37?text=Culture" },
+  { name: "Riyadh Season", logo: "https://placehold.co/400x200/000000/D4AF37?text=Riyadh+Season" },
+  { name: "Red Sea Global", logo: "https://placehold.co/400x200/000000/D4AF37?text=Red+Sea" },
+  { name: "Diriyah Gate", logo: "https://placehold.co/400x200/000000/D4AF37?text=Diriyah" },
+  { name: "Saudia", logo: "https://placehold.co/400x200/000000/D4AF37?text=Saudia" },
 ];
 
 export default function PartnersSection() {
@@ -80,11 +80,13 @@ export default function PartnersSection() {
                   className="group relative w-[180px] h-[100px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 ease-in-out cursor-pointer scale-90 hover:scale-105"
                 >
                   <div className="relative w-full h-full p-4">
-                    <img
+                    <Image
                       src={partner.logo}
-                      alt={`${partner.name} Logo`}
-                      className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 filter brightness-0 group-hover:brightness-100"
-                      loading="lazy"
+                      alt={`${partner.name} Corporate Logo`}
+                      fill
+                      unoptimized
+                      className="object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 filter brightness-0 group-hover:brightness-100"
+                      sizes="180px"
                     />
                   </div>
                 </div>

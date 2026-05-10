@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "From venue selection to the final toast, discover the insider secrets that top event planners use to create seamless, unforgettable luxury experiences.",
     category: "Event Planning",
-    image: "/blog_event_planning.png",
+    image: "/blog_event_planning.webp",
     date: "April 28, 2026",
     readTime: "8 min read",
     author: "Saudi Event Management Editorial",
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Discover the stunning color trends dominating luxury events this year &mdash; from ethereal sage greens to bold terracotta and sophisticated deep plums.",
     category: "Color Trends",
-    image: "/blog_trending_colors.png",
+    image: "/blog_trending_colors.webp",
     date: "April 22, 2026",
     readTime: "6 min read",
     author: "Saudi Event Management Editorial",
@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Transform any venue into a breathtaking experience with these avant-garde decor concepts that blend artistry, innovation, and pure luxury.",
     category: "Decor Ideas",
-    image: "/blog_decor_ideas.png",
+    image: "/blog_decor_ideas.webp",
     date: "April 15, 2026",
     readTime: "10 min read",
     author: "Saudi Event Management Editorial",
@@ -157,7 +157,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "From selecting the perfect overseas locale to managing guest logistics, here&apos;s everything you need to know about planning a destination wedding that exceeds every expectation.",
     category: "Weddings",
-    image: "/blog_destination_wedding.png",
+    image: "/blog_destination_wedding.webp",
     date: "April 8, 2026",
     readTime: "9 min read",
     author: "Saudi Event Management Editorial",
@@ -196,7 +196,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Learn how to transform standard corporate gatherings into premium brand experiences that inspire teams, impress clients, and drive real business results.",
     category: "Corporate",
-    image: "/blog_corporate_events.png",
+    image: "/blog_corporate_events.webp",
     date: "April 1, 2026",
     readTime: "7 min read",
     author: "Saudi Event Management Editorial",
@@ -238,7 +238,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Master the art of luxurious table design with expert tips on layering textures, choosing linens, and creating centerpieces that make every seat the best seat in the house.",
     category: "Lifestyle",
-    image: "/blog_corporate_events.png",
+    image: "/blog_corporate_events.webp",
     date: "March 25, 2026",
     readTime: "7 min read",
     author: "Saudi Event Management Editorial",

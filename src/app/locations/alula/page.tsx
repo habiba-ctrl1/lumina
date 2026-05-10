@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Luxury Destination Weddings AlUla | UNESCO Heritage Events',
   description: 'Experience the magic of AlUla with Saudi Event Management. From ancient Hegra backdrops to ultra-luxury desert resorts, we curate breathtaking destination weddings.',
   keywords: 'event management AlUla, destination weddings AlUla, Hegra events, Banyan Tree AlUla weddings, Habitas AlUla events, Saudi desert luxury events',
+  alternates: { canonical: 'https://saudieventmanagement.com/locations/alula' },
 };
 
 export default function AlUlaPage() {
@@ -20,7 +21,7 @@ export default function AlUlaPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/gallery_destination_wedding.png" 
+            src="/gallery_destination_wedding.webp" 
             alt="Luxury Event Management AlUla - Desert Landscapes" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -80,7 +81,7 @@ export default function AlUlaPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_destination_wedding.png" alt="AlUla Desert Event" fill className="object-cover" />
+            <Image src="/gallery_destination_wedding.webp" alt="AlUla Desert Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">

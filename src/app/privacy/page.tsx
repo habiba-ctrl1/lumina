@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata = {
   title: 'Privacy Policy | Saudi Event Management',
   description: 'Privacy policy for Saudi Event Management website and services.',
+  alternates: { canonical: 'https://saudieventmanagement.com/privacy' },
 };
 
 export default function PrivacyPolicyPage() {

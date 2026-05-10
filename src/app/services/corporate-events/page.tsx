@@ -18,7 +18,7 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "name": "Saudi Event Management Corporate Events",
-      "image": "https://www.saudieventmanagement.com/corporate.png",
+      "image": "https://www.saudieventmanagement.com/corporate.webp",
       "description": "Leading corporate event management company in Saudi Arabia specializing in business conferences, AGMs, and gala dinners.",
       "address": {
         "@type": "PostalAddress",
@@ -122,7 +122,7 @@ export default function CorporateEventsPage() {
         <section className="relative h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/corporate.png" 
+              src="/corporate.webp" 
               alt="Corporate event management Saudi Arabia - Business conference" 
               fill 
               className="object-cover opacity-30"
