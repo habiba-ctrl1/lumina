@@ -64,7 +64,7 @@ export default function FounderSection() {
             <div className="space-y-6 text-gray-300 font-medium leading-relaxed">
               <p>
                 With over a decade orchestrating the world&apos;s most exclusive celebrations, 
-                our agency was founded with a singular vision: to transform fleeting moments into 
+                our agency was founded by **Habiba Asghar** with a singular vision: to transform fleeting moments into 
                 timeless legacies of beauty and emotion.
               </p>
               <p>
