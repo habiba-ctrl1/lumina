@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote } from "lucide-react";
+import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote, Plus, Trash2, CheckCircle2, Clock, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
 type Stats = {
@@ -77,41 +77,66 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     setLoading(true);
     try {
-      const [eventsRes, testimonialsRes, inquiriesRes] = await Promise.all([
-        supabase.from("events").select("id", { count: "exact", head: true }),
-        supabase.from("testimonials").select("id", { count: "exact", head: true }),
-        supabase.from("contact_messages").select("id", { count: "exact", head: true }),
+      // Fetch stats with individual error handling for each table
+      const fetchTableCount = async (table: string) => {
+        try {
+          const { count, error } = await supabase.from(table).select("id", { count: "exact", head: true });
+          if (error) return 0;
+          return count || 0;
+        } catch (e) {
+          return 0;
+        }
+      };
+
+      const [eventsCount, testimonialsCount, inquiriesCount] = await Promise.all([
+        fetchTableCount("events"),
+        fetchTableCount("testimonials"),
+        fetchTableCount("contact_messages"),
       ]);
 
-      const { data: statusData } = await supabase
-        .from("business_updates")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(10);
+      // Fetch business updates with error handling
+      try {
+        const { data: statusData, error: statusError } = await supabase
+          .from("business_updates")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(10);
+        
+        if (!statusError) setStatuses(statusData || []);
+      } catch (e) {
+        setStatuses([]);
+      }
 
-      setStatuses(statusData || []);
-
-      const { data: inqData } = await supabase
-        .from("contact_messages")
-        .select("id, name, email, created_at")
-        .order("created_at", { ascending: false })
-        .limit(5);
-
-      setRecentInquiries(inqData || []);
+      // Recent inquiries
+      try {
+        const { data: inqData, error: inqError } = await supabase
+          .from("contact_messages")
+          .select("id, name, email, created_at")
+          .order("created_at", { ascending: false })
+          .limit(5);
+        
+        if (!inqError) setRecentInquiries(inqData || []);
+      } catch (e) {
+        setRecentInquiries([]);
+      }
 
       // Fetch recent quotes from internal API
-      const quotesRes = await fetch('/api/quotes');
       let quotesCount = 0;
-      if (quotesRes.ok) {
-        const quoteData = await quotesRes.json();
-        setRecentQuotes(quoteData.slice(0, 5));
-        quotesCount = quoteData.length;
+      try {
+        const quotesRes = await fetch('/api/quotes');
+        if (quotesRes.ok) {
+          const quoteData = await quotesRes.json();
+          setRecentQuotes(quoteData.slice(0, 5));
+          quotesCount = quoteData.length;
+        }
+      } catch (e) {
+        console.error("Quotes API failed");
       }
 
       setStats({
-        events: eventsRes.count || 0,
-        testimonials: testimonialsRes.count || 0,
-        inquiries: inquiriesRes.count || 0,
+        events: eventsCount,
+        testimonials: testimonialsCount,
+        inquiries: inquiriesCount,
         quotes: quotesCount,
       });
 
@@ -122,139 +147,145 @@ export default function AdminDashboard() {
   };
 
   const statCards = [
-    { label: "Total Events", value: stats.events, icon: Image, color: "from-blue-500/20 to-blue-600/5", iconColor: "text-blue-400", subtext: "All time records" },
-    { label: "Pending Leads", value: stats.inquiries, icon: Mail, color: "from-amber-500/20 to-amber-600/5", iconColor: "text-amber-400", subtext: "Requires action" },
-    { label: "Vendor Quotes", value: stats.quotes, icon: MessageSquareQuote, color: "from-emerald-500/20 to-emerald-600/5", iconColor: "text-emerald-400", subtext: "Active requests" },
-    { label: "Business Status", value: statuses.length, icon: Sparkles, color: "from-purple-500/20 to-purple-600/5", iconColor: "text-purple-400", subtext: "Recent updates" },
+    { label: "Total Events", value: stats.events, icon: Image, color: "bg-blue-50 text-blue-600", iconColor: "text-blue-500", subtext: "Managed records" },
+    { label: "Pending Leads", value: stats.inquiries, icon: Mail, color: "bg-amber-50 text-amber-600", iconColor: "text-amber-500", subtext: "Requires action" },
+    { label: "Vendor Quotes", value: stats.quotes, icon: MessageSquareQuote, color: "bg-emerald-50 text-emerald-600", iconColor: "text-emerald-500", subtext: "Active requests" },
+    { label: "Pulse Updates", value: statuses.length, icon: Sparkles, color: "bg-purple-50 text-purple-600", iconColor: "text-purple-500", subtext: "Business status" },
   ];
 
   return (
-    <div className="pb-20 max-w-[1600px] mx-auto px-4 md:px-10">
-      <div className="mb-16 flex flex-col md:flex-row md:items-center justify-between gap-8 bg-charcoal-800/20 backdrop-blur-3xl border border-white/5 p-10 md:p-14 rounded-[3rem] relative overflow-hidden">
-        {/* Glow effect */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-gold-500/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="relative z-10">
-          <h1 className="text-4xl md:text-5xl font-sans font-extrabold text-white mb-4 tracking-tight">
-            Booking <span className="text-gold-500/90">Dashboard</span>
+    <div className="pb-20 max-w-7xl mx-auto">
+      {/* Header Section */}
+      <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+            Dashboard Overview
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">Welcome back. Experience the refined control center of Saudi Event Management events, optimized for clarity and high-end management.</p>
+          <p className="text-slate-500 font-medium">
+            Welcome back, Admin. Here's what's happening with Saudi Event Management today.
+          </p>
         </div>
-        <div className="relative z-10 px-8 py-4 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem] flex items-center gap-5 shadow-2xl">
-          <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_20px_rgba(16,185,129,0.5)]" />
-          <span className="text-[10px] text-gray-400 uppercase tracking-[0.4em] font-black">System: Optimal</span>
+        <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+          <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">System Live</span>
         </div>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {statCards.map((card, i) => (
           <motion.div
             key={card.label}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.8 }}
-            className={`bg-white/[0.02] backdrop-blur-3xl border border-white/[0.05] rounded-[2.5rem] p-10 hover:border-gold-500/10 transition-all duration-700 group shadow-3xl relative overflow-hidden`}
+            transition={{ delay: i * 0.1 }}
+            className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group"
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
-            
-            <div className="relative z-10 flex items-center justify-between mb-10">
-              <div className="flex items-center gap-5">
-                <div className={`p-4 rounded-[1.5rem] bg-charcoal-900/40 border border-white/5 shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-700`}>
-                  <card.icon size={22} className={card.iconColor} />
-                </div>
-                <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.3em]">{card.label}</p>
+            <div className="flex items-center justify-between mb-4">
+              <div className={`p-3 rounded-xl ${card.color} transition-colors`}>
+                <card.icon size={20} />
               </div>
+              <TrendingUp size={16} className="text-slate-300" />
             </div>
-            <div className="relative z-10">
-              <p className="text-5xl font-sans font-black text-white mb-4 tracking-tighter">
+            <div>
+              <p className="text-sm font-semibold text-slate-500 mb-1">{card.label}</p>
+              <h3 className="text-3xl font-bold text-slate-900">
                 {loading ? "—" : card.value}
-              </p>
-              <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-bold opacity-40">{card.subtext}</p>
+              </h3>
+              <p className="text-[11px] text-slate-400 mt-2 font-medium">{card.subtext}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-        {/* Left Column: Recent Inquiries & Quotes */}
-        <div className="lg:col-span-2 space-y-16">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Content Area */}
+        <div className="lg:col-span-2 space-y-8">
           {/* Quotes Section */}
-          <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/[0.05] rounded-[3rem] overflow-hidden shadow-3xl">
-            <div className="px-10 py-10 border-b border-white/[0.05] flex items-center justify-between bg-white/[0.01]">
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-black text-white tracking-tight">Recent Vendor Quotes</h2>
-                <p className="text-xs text-gray-500 mt-2 font-medium tracking-wide">Monitor incoming requests from your professional network</p>
+                <h2 className="text-lg font-bold text-slate-900">Recent Vendor Quotes</h2>
+                <p className="text-xs text-slate-500 mt-0.5">Manage and review incoming vendor proposals</p>
               </div>
-              <Link href="/admin/quotes" className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-2xl text-[10px] text-gold-500 transition-all uppercase tracking-[0.3em] font-black border border-white/5">View All</Link>
+              <Link href="/admin/quotes" className="text-xs font-bold text-gold-600 hover:text-gold-700 transition-colors bg-gold-50 px-4 py-2 rounded-lg">
+                View All
+              </Link>
             </div>
+            
             {loading ? (
-              <div className="p-10 space-y-6">
+              <div className="p-8 space-y-4">
                 {[1, 2, 3].map(i => (
-                  <div key={i} className="h-20 bg-white/[0.02] animate-pulse rounded-[2rem]" />
+                  <div key={i} className="h-16 bg-slate-50 animate-pulse rounded-xl" />
                 ))}
               </div>
             ) : recentQuotes.length === 0 ? (
-              <div className="p-20 text-center text-gray-600 flex flex-col items-center gap-6">
-                <MessageSquareQuote size={50} className="opacity-10" />
-                <p className="font-medium tracking-wide">No quotes received yet.</p>
+              <div className="p-16 text-center">
+                <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageSquareQuote size={24} className="text-slate-300" />
+                </div>
+                <p className="text-slate-400 font-medium">No recent quotes found.</p>
               </div>
             ) : (
-              <div className="divide-y divide-white/[0.05]">
+              <div className="divide-y divide-slate-100">
                 {recentQuotes.map((quote) => (
-                  <div key={quote.id} className="px-10 py-8 flex items-center justify-between hover:bg-white/[0.02] transition-all group">
-                    <div className="flex items-center gap-7">
-                      <div className="w-16 h-16 rounded-[1.5rem] bg-gold-500/10 flex items-center justify-center text-gold-500 text-xl font-black border border-gold-500/20 shadow-2xl">
+                  <div key={quote.id} className="px-8 py-5 flex items-center justify-between hover:bg-slate-50 transition-colors group">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-lg border border-slate-200">
                         {quote.clientName.charAt(0)}
                       </div>
                       <div>
-                        <div className="flex items-center gap-4">
-                          <p className="text-white text-lg font-bold tracking-tight">{quote.clientName}</p>
-                          <span className={`text-[9px] uppercase tracking-[0.2em] px-3 py-1 rounded-full border font-black ${
-                            quote.status === "Approved" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" :
-                            quote.status === "Rejected" ? "bg-red-500/10 text-red-400 border-red-500/20" :
-                            "bg-amber-500/10 text-amber-400 border-amber-500/20"
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="text-slate-900 font-bold">{quote.clientName}</p>
+                          <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold border ${
+                            quote.status === "Approved" ? "bg-emerald-50 text-emerald-600 border-emerald-100" :
+                            quote.status === "Rejected" ? "bg-red-50 text-red-600 border-red-100" :
+                            "bg-amber-50 text-amber-600 border-amber-100"
                           }`}>
                             {quote.status}
                           </span>
                         </div>
-                        <p className="text-gray-500 text-xs mt-1.5 font-medium">Requested for <span className="text-gray-300">{quote.vendor?.name}</span></p>
+                        <p className="text-xs text-slate-500">For <span className="font-semibold text-slate-700">{quote.vendor?.name}</span></p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-white text-sm font-semibold tracking-wide">
-                        {mounted ? new Date(quote.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : "---"}
+                    <div className="text-right flex flex-col items-end gap-2">
+                      <p className="text-xs font-bold text-slate-400">
+                        {mounted ? new Date(quote.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : "---"}
                       </p>
-                      <button className="text-[9px] text-gold-500 uppercase tracking-[0.3em] font-black opacity-0 group-hover:opacity-100 transition-all mt-2 hover:scale-105">Review</button>
+                      <button className="text-[10px] font-bold text-gold-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Review
+                      </button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
           </div>
-          <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/[0.05] rounded-[3rem] overflow-hidden shadow-3xl">
-            <div className="px-10 py-10 border-b border-white/[0.05] flex items-center justify-between bg-white/[0.01]">
-              <h2 className="text-2xl font-black text-white tracking-tight">Recent Inquiries</h2>
-              <Link href="/admin/inquiries" className="text-[10px] text-gold-500 hover:text-gold-400 transition-all uppercase tracking-[0.3em] font-black">View All</Link>
+
+          {/* Inquiries Section */}
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-slate-900">Latest Inquiries</h2>
+              <Link href="/admin/inquiries" className="text-xs font-bold text-gold-600 hover:text-gold-700">View All</Link>
             </div>
+            
             {loading ? (
-              <div className="p-10 space-y-6">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="h-16 bg-white/[0.02] animate-pulse rounded-[1.5rem]" />
+              <div className="p-8 space-y-4">
+                {[1, 2].map(i => (
+                  <div key={i} className="h-12 bg-slate-50 animate-pulse rounded-lg" />
                 ))}
               </div>
             ) : recentInquiries.length === 0 ? (
-              <div className="p-20 text-center text-gray-600 font-medium tracking-wide">No inquiries yet.</div>
+              <div className="p-12 text-center text-slate-400 font-medium">No new inquiries.</div>
             ) : (
-              <div className="divide-y divide-white/[0.05]">
+              <div className="divide-y divide-slate-100">
                 {recentInquiries.map((inq) => (
-                  <div key={inq.id} className="px-10 py-8 flex items-center justify-between hover:bg-white/[0.02] transition-all">
+                  <div key={inq.id} className="px-8 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-white text-base font-bold tracking-tight">{inq.name}</p>
-                      <p className="text-gray-500 text-xs mt-1.5 font-medium">{inq.email}</p>
+                      <p className="text-slate-900 font-bold text-sm">{inq.name}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{inq.email}</p>
                     </div>
-                    <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                       {mounted ? new Date(inq.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
                     </p>
                   </div>
@@ -264,87 +295,86 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Right Column: Status Updates */}
-        <div className="space-y-16">
-          <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/[0.05] rounded-[3rem] p-10 shadow-3xl">
-            <h2 className="text-2xl font-black text-white mb-10 flex items-center gap-5 tracking-tight">
-              <Sparkles size={28} className="text-gold-500" />
-              Pulse Update
-            </h2>
-            
-            <form onSubmit={handleAddStatus} className="space-y-8">
-              <div>
-                <textarea 
-                  value={newStatus}
-                  onChange={(e) => setNewStatus(e.target.value)}
-                  placeholder="What's happening at Saudi Event Management today?"
-                  className="w-full bg-white/[0.02] border border-white/10 rounded-[2rem] p-8 text-sm text-white focus:outline-none focus:border-gold-500/50 min-h-[150px] resize-none transition-all placeholder:text-gray-700 font-medium leading-relaxed shadow-inner"
-                />
+        {/* Sidebar Area */}
+        <div className="space-y-8">
+          {/* Pulse Update Card */}
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2 bg-gold-500 rounded-lg shadow-lg shadow-gold-500/20">
+                <Sparkles size={18} className="text-white" />
               </div>
-              <div className="flex items-center gap-3 overflow-x-auto pb-6 no-scrollbar">
+              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Post Update</h2>
+            </div>
+            
+            <form onSubmit={handleAddStatus} className="space-y-6">
+              <textarea 
+                value={newStatus}
+                onChange={(e) => setNewStatus(e.target.value)}
+                placeholder="What's the latest update?"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 min-h-[120px] resize-none transition-all placeholder:text-slate-400 font-medium"
+              />
+              
+              <div className="flex flex-wrap gap-2">
                 {["Active", "Milestone", "Success", "Planning"].map((label) => (
                   <button
                     key={label}
                     type="button"
                     onClick={() => setStatusLabel(label)}
-                    className={`px-6 py-3 rounded-2xl text-[10px] uppercase tracking-[0.3em] transition-all shrink-0 font-black border ${
+                    className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border ${
                       statusLabel === label 
-                      ? "bg-gold-500 text-charcoal-900 border-gold-500 shadow-3xl shadow-gold-500/20" 
-                      : "bg-white/5 text-gray-600 hover:bg-white/10 border-white/5 hover:text-gray-400"
+                      ? "bg-slate-900 text-white border-slate-900 shadow-md" 
+                      : "bg-white text-slate-500 hover:bg-slate-50 border-slate-200"
                     }`}
                   >
                     {label}
                   </button>
                 ))}
               </div>
+              
               <button 
                 type="submit"
                 disabled={updating}
-                className="w-full py-5 bg-gold-500 text-charcoal-900 text-[10px] font-black uppercase tracking-[0.4em] rounded-[2rem] hover:bg-gold-400 transition-all shadow-3xl shadow-gold-500/10 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95"
+                className="w-full py-4 bg-gold-500 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-600 transition-all shadow-lg shadow-gold-500/20 disabled:opacity-50 transform active:scale-95 flex items-center justify-center gap-2"
               >
-                {updating ? "Syncing..." : "Post Pulse"}
+                {updating ? <Clock size={16} className="animate-spin" /> : <Plus size={16} />}
+                {updating ? "Syncing..." : "Publish Pulse"}
               </button>
             </form>
 
-            <div className="mt-16 space-y-10">
-              <h3 className="text-[10px] uppercase tracking-[0.4em] text-gray-700 font-black mb-8">Activity Stream</h3>
-              <div className="space-y-10 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-white/[0.05]">
+            <div className="mt-12 space-y-6">
+              <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Activity Feed</h3>
+              <div className="space-y-6">
                 {statuses.map((status) => (
-                  <div key={status.id} className="relative pl-12 group/item">
-                    <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-charcoal-950 border border-white/10 flex items-center justify-center shadow-3xl">
-                      <div className={`w-2 h-2 rounded-full ${
-                        status.label === "Success" ? "bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)]" : 
-                        status.label === "Milestone" ? "bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]" : 
-                        status.label === "Planning" ? "bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.5)]" : 
-                        "bg-gold-500 shadow-[0_0_12px_rgba(212,175,55,0.5)]"
-                      }`} />
-                    </div>
-                    <div className="flex justify-between items-start mb-3">
-                      <div className="flex items-center gap-4">
-                        <span className={`text-[8px] uppercase tracking-[0.3em] px-3 py-1.5 rounded-xl border font-black ${
-                          status.label === "Success" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : 
-                          status.label === "Milestone" ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : 
-                          status.label === "Planning" ? "bg-blue-500/10 text-blue-400 border-blue-500/20" : 
-                          "bg-gold-500/10 text-gold-400 border-gold-500/20"
-                        }`}>
-                          {status.label}
-                        </span>
-                        <button 
-                          onClick={() => handleDeleteStatus(status.id)}
-                          className="opacity-0 group-hover/item:opacity-100 text-[8px] text-red-500 uppercase tracking-[0.3em] font-black hover:text-red-400 transition-all"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                      <span className="text-[9px] text-gray-700 font-bold uppercase tracking-widest">
-                        {mounted ? new Date(status.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
+                  <div key={status.id} className="relative pl-6 group">
+                    <div className="absolute left-0 top-1.5 w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-gold-500 transition-colors" />
+                    <div className="flex justify-between items-start mb-1">
+                      <span className={`text-[9px] font-bold uppercase tracking-wider ${
+                        status.label === "Success" ? "text-emerald-600" : 
+                        status.label === "Milestone" ? "text-amber-600" : 
+                        status.label === "Planning" ? "text-blue-600" : 
+                        "text-gold-600"
+                      }`}>
+                        {status.label}
                       </span>
+                      <button 
+                        onClick={() => handleDeleteStatus(status.id)}
+                        className="opacity-0 group-hover:opacity-100 p-1 text-red-400 hover:text-red-600 transition-all"
+                      >
+                        <Trash2 size={12} />
+                      </button>
                     </div>
-                    <p className="text-sm text-gray-500 leading-relaxed font-medium group-hover:text-gray-400 transition-colors">{status.text}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed font-medium mb-1">{status.text}</p>
+                    <span className="text-[10px] text-slate-400 font-medium">
+                      {mounted ? new Date(status.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
+                    </span>
                   </div>
                 ))}
+                
                 {statuses.length === 0 && !loading && (
-                  <p className="text-center text-gray-700 text-[10px] py-12 uppercase tracking-widest font-black">Pulse stream empty</p>
+                  <div className="flex flex-col items-center py-8 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                    <AlertCircle size={24} className="text-slate-300 mb-2" />
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Feed Empty</p>
+                  </div>
                 )}
               </div>
             </div>
