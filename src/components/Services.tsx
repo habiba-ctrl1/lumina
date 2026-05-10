@@ -134,15 +134,15 @@ export default function Services() {
           >
             Capabilities
           </motion.span>
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-black mb-10"
+            className="text-black mb-10 text-3xl md:text-5xl font-sans font-bold uppercase tracking-tight"
           >
-            Curated <span className="text-primary">Services</span>
-          </motion.h2>
+            Curated <span className="text-primary font-bold">Services</span>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

@@ -19,16 +19,17 @@ export default function FounderSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
+            <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden rounded-2xl">
               <Image
-                src="/founder.webp"
-                alt="Amara Chen, Founder & Creative Director of Saudi Event Management"
+                src="/gallery_2.webp"
+                alt="Luxury Event Vision"
                 fill
-                className="object-cover object-top"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Decorative border */}
-              <div className="absolute inset-0 border border-gold-500/20" />
+              <div className="absolute inset-0 border border-primary/20 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#041E42]/60 to-transparent" />
             </div>
             {/* Floating badge */}
             <motion.div
@@ -36,10 +37,10 @@ export default function FounderSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="absolute -bottom-6 -right-6 bg-charcoal-800 border border-gold-500/30 px-8 py-5 hidden md:block"
+              className="absolute -bottom-6 -right-6 bg-[#041E42] border border-primary/30 px-8 py-5 hidden md:block rounded-xl shadow-2xl"
             >
-              <p className="text-gold-500 text-2xl font-sans font-bold">12+</p>
-              <p className="text-gray-400 text-xs uppercase tracking-wider">Years of Excellence</p>
+              <p className="text-primary text-2xl font-sans font-bold">12+</p>
+              <p className="text-gray-300 text-[10px] uppercase tracking-wider font-bold">Years of Excellence</p>
             </motion.div>
           </motion.div>
 
@@ -50,30 +51,29 @@ export default function FounderSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block">
-              The Visionary
+            <span className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+              The Vision
             </span>
-            <h2 className="text-2xl md:text-3xl font-sans text-white mb-3 font-bold">
-              Meet <span className="text-shimmer font-bold">Amara Chen</span>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-3 font-bold uppercase tracking-tight leading-tight">
+              Crafting <span className="text-primary font-bold">Timeless</span> Legacies
             </h2>
-            <p className="text-gold-500/80 text-sm uppercase tracking-[0.2em] mb-8">
-              Founder & Creative Director
+            <p className="text-gray-400 text-sm uppercase tracking-[0.2em] mb-8 font-semibold">
+              Bespoke Event Management
             </p>
 
-            <div className="space-y-8 text-gray-400 font-light leading-relaxed">
+            <div className="space-y-6 text-gray-300 font-medium leading-relaxed">
               <p>
                 With over a decade orchestrating the world&apos;s most exclusive celebrations, 
-                Amara founded Saudi Event Management with a singular vision: to transform fleeting moments into 
+                our agency was founded with a singular vision: to transform fleeting moments into 
                 timeless legacies of beauty and emotion.
               </p>
               <p>
-                Trained at the Paris School of Art and Design and mentored by industry luminaries, 
-                she brings an unparalleled eye for detail and a deep understanding of what makes 
-                an event truly unforgettable.
+                We bring an unparalleled eye for detail and a deep understanding of what makes 
+                an event truly unforgettable. Every celebration is treated as a unique work of art.
               </p>
               <p>
-                Her philosophy is simple — every celebration should feel like a work of art, 
-                effortlessly beautiful and deeply personal.
+                Our philosophy is simple — every detail should feel intentional, 
+                effortlessly beautiful and deeply resonant with our clients&apos; vision.
               </p>
             </div>
 

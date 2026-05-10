@@ -47,7 +47,7 @@ export default function BlogPage() {
               <Sparkles className="w-5 h-5 text-gold-500" />
               <span className="text-xs uppercase tracking-[0.25em] text-gold-500 font-medium">The Saudi Event Management Journal</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 leading-[1.1] font-bold">
+            <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 leading-[1.1] font-bold opacity-100">
               Inspire Your <span className="text-shimmer font-bold">Next Event</span>
             </h1>
             <p className="text-gray-400 text-lg font-light leading-relaxed max-w-xl">

@@ -76,7 +76,7 @@ export default function DammamCorporateSeminar() {
             </p>
           </div>
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
-            <Image src="/gallery_corporate_event.webp" alt="Industrial Seminar Stage" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="Industrial Seminar Stage" fill className="object-cover" />
           </div>
         </div>
 

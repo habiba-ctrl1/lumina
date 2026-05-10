@@ -112,7 +112,10 @@ export default function BecomeOne() {
             {/* Left Side: Info */}
             <div className="lg:col-span-4 space-y-12">
               <div>
-                <h3 className="text-black font-bold uppercase tracking-widest text-sm mb-6">Partnership Value</h3>
+                <h2 className="text-black font-sans font-bold uppercase tracking-tight text-2xl mb-8 leading-tight">
+                  Why Partner with <span className="text-primary italic">Lumina</span>
+                </h2>
+                <h3 className="text-black font-bold uppercase tracking-widest text-[10px] mb-6 opacity-60">Partnership Value</h3>
                 <ul className="space-y-8">
                   {[
                     { title: "Joint Innovation", desc: "Collaborate on groundbreaking event concepts and technologies." },

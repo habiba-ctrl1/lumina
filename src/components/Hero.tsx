@@ -131,9 +131,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-10 relative z-20"
+          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-xl shadow-black/20 border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-6 relative z-20"
         >
-          <div className="bg-[#041E42]/40 backdrop-blur-md border border-white/5 rounded-[1.8rem] p-4 md:p-5">
+          <div className="bg-[#041E42]/40 backdrop-blur-md border border-white/5 rounded-[1.8rem] p-3 md:p-4">
             <form 
               onSubmit={(e) => { 
                 e.preventDefault(); 
@@ -183,14 +183,14 @@ export default function Hero() {
               </button>
             </form>
             
-            <div className="mt-8 flex justify-center">
+            <div className="mt-4 flex justify-center">
               <Link 
                 href="/#contact"
-                className="text-[9px] text-white/30 hover:text-primary uppercase tracking-[0.4em] font-bold flex items-center gap-4 transition-all group"
+                className="text-[8px] text-white/30 hover:text-primary uppercase tracking-[0.3em] font-bold flex items-center gap-3 transition-all group"
               >
-                <div className="w-10 h-px bg-white/10 group-hover:bg-primary transition-all" />
+                <div className="w-8 h-px bg-white/10 group-hover:bg-primary transition-all" />
                 Download Portfolio
-                <div className="w-10 h-px bg-white/10 group-hover:bg-primary transition-all" />
+                <div className="w-8 h-px bg-white/10 group-hover:bg-primary transition-all" />
               </Link>
             </div>
           </div>

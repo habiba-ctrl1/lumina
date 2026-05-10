@@ -91,7 +91,10 @@ export default function ConsultationPage() {
           {/* Left Side: Info */}
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-white/5 border border-white/10 p-8 rounded-sm">
-              <h3 className="text-white font-sans font-bold text-xl mb-6 uppercase tracking-wider">What to Expect</h3>
+              <h2 className="text-white font-sans font-bold text-2xl mb-6 uppercase tracking-tight">
+                Your <span className="text-gold-500">Discovery</span> Journey
+              </h2>
+              <h3 className="text-white/60 font-sans font-bold text-xs mb-6 uppercase tracking-widest">What to Expect</h3>
               <ul className="space-y-6">
                 {[
                   { icon: Zap, title: "Initial Vision Discovery", desc: "A 30-minute deep dive into your event goals and inspirations." },

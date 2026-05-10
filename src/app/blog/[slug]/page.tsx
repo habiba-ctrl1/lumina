@@ -76,7 +76,9 @@ export default function BlogPostPage() {
                  <div className="w-12 h-px bg-gold-500" />
                  <span className="text-gold-500 text-[10px] uppercase tracking-[0.4em] font-bold">{post.category}</span>
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold text-white leading-[1.1] mb-8 max-w-4xl">{post.title}</h1>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold text-white leading-[1.1] mb-8 max-w-4xl opacity-100">
+                {post.title}
+              </h1>
               <div className="flex flex-wrap items-center gap-8 text-[10px] text-gray-500 uppercase tracking-[0.25em] font-medium border-t border-white/5 pt-8">
                 <span className="flex items-center gap-2">By <span className="text-white">{post.author}</span></span>
                 <span className="flex items-center gap-2">Date <span className="text-white">{post.date}</span></span>

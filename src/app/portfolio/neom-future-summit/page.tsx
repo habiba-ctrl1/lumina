@@ -98,7 +98,7 @@ export default function NeomFutureSummitCaseStudy() {
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
             <div className="absolute inset-0 bg-gold-500/10 animate-pulse" />
-            <Image src="/gallery_corporate_event.webp" alt="NEOM Tech Hub Setup" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" fill className="object-cover" />
           </div>
         </div>
 
