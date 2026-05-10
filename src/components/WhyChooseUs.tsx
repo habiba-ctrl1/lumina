@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
               >
-                The Lumina Difference
+                The Saudi Event Management Difference
               </motion.span>
               <motion.h3
                 initial={{ opacity: 0, y: 10 }}
@@ -66,7 +66,7 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 className="text-black text-3xl md:text-4xl lg:text-5xl mb-6 font-bold"
               >
-                The Lumina <span className="text-primary italic">Standard</span>
+                The Saudi Event Management <span className="text-primary italic">Standard</span>
               </motion.h3>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
                 </p>
                 <div className="flex flex-col gap-3">
                   <Link 
-                    href="https://wa.me/966501234567?text=Hi%20Lumina!%20I%20would%20like%20to%20request%20a%20consultation%20for%20my%20upcoming%20event."
+                    href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20request%20a%20consultation%20for%20my%20upcoming%20event."
                     target="_blank"
                     className="w-full bg-[#25D366] text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all"
                   >

@@ -18,16 +18,24 @@ export default function AdminLogin() {
     setLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+      } else {
+        router.push("/admin/dashboard");
+      }
+    } catch (err: any) {
+      console.error('Login error:', err);
+      setError(err.message === 'Failed to fetch' 
+        ? 'Network error: Could not connect to the authentication server. Please check your internet connection or ad-blocker.' 
+        : 'An unexpected error occurred. Please try again.');
       setLoading(false);
-    } else {
-      router.push("/admin/dashboard");
     }
   };
 
@@ -48,7 +56,7 @@ export default function AdminLogin() {
         <div className="bg-charcoal-800 border border-white/5 p-8 rounded-2xl shadow-2xl backdrop-blur-sm">
           <div className="text-center mb-10">
             <h1 className="text-3xl font-light text-white mb-2">
-              Lumina <span className="text-gold-500 font-semibold ">Admin</span>
+              Saudi Event Management <span className="text-gold-500 font-semibold ">Admin</span>
             </h1>
             <p className="text-gray-400">Please sign in to access the dashboard</p>
           </div>
@@ -76,7 +84,7 @@ export default function AdminLogin() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full bg-charcoal-900 border border-white/10 rounded-xl py-3 pl-10 pr-4 text-white focus:outline-none focus:border-gold-500/50 transition-colors"
-                  placeholder="admin@luminaevents.com"
+                  placeholder="admin@saudieventmanagement.com"
                 />
               </div>
             </div>

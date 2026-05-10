@@ -7,7 +7,7 @@ const items = [
   { icon: Heart, text: "100% Client Satisfaction" },
   { icon: Star, text: "Award-Winning Team" },
   { icon: Gem, text: "Luxury Certified" },
-  { icon: Award, text: "Featured in Vogue" },
+  { icon: Award, text: "Vision 2030 Partner" },
   { icon: Sparkles, text: "Premium Partners" },
 ];
 

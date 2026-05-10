@@ -6,8 +6,9 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Users, Calendar, MapPin } from "lucide-react";
 
 export const metadata = {
-  title: 'Royal Riyadh Wedding Case Study | Lumina Events',
-  description: 'An inside look into how Lumina Events orchestrated a magnificent Royal Wedding in Riyadh, blending tradition with modern luxury.',
+  title: 'Royal Riyadh Wedding Case Study | Saudi Event Management',
+  description: 'An inside look into how Saudi Event Management orchestrated a magnificent Royal Wedding in Riyadh, blending tradition with modern luxury.',
+  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/royal-riyadh-wedding' },
 };
 
 export default function RoyalRiyadhWeddingCaseStudy() {
@@ -19,7 +20,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
       <section className="relative h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/gallery_wedding_reception.png" 
+            src="/gallery_wedding_reception.webp" 
             alt="Royal Riyadh Wedding" 
             fill 
             className="object-cover opacity-60"
@@ -78,7 +79,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">The <span className="text-gold-500">Solution</span></h2>
             <p className="mb-4">
-              Lumina deployed a team of 400 specialists, including international floral designers, lighting architects, and hospitality experts. We engineered a custom 5,000-square-meter glass marquee that provided panoramic views of the Najdi architecture while maintaining a pristine interior environment.
+              Saudi Event Management deployed a team of 400 specialists, including international floral designers, lighting architects, and hospitality experts. We engineered a custom 5,000-square-meter glass marquee that provided panoramic views of the Najdi architecture while maintaining a pristine interior environment.
             </p>
             <ul className="space-y-3 mt-6">
               {[
@@ -95,7 +96,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
             </ul>
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden">
-            <Image src="/locations/riyadh-hero.jpg" alt="Construction and Details" fill className="object-cover" />
+            <Image src="/locations/riyadh-hero.webp" alt="Construction and Details" fill className="object-cover" />
           </div>
         </div>
 
@@ -110,7 +111,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           <div className="bg-white/5 border border-white/10 p-10 rounded-3xl text-center relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1e2653] px-4 text-gold-500 text-4xl font-serif">&quot;</div>
             <p className="text-xl md:text-2xl font-sans font-bold text-white mb-6 leading-snug">
-              &quot;Lumina did not just plan a wedding; they crafted a legacy. Their attention to detail and unwavering pursuit of perfection allowed us to be fully present in the most important moment of our lives.&quot;
+              &quot;Saudi Event Management did not just plan a wedding; they crafted a legacy. Their attention to detail and unwavering pursuit of perfection allowed us to be fully present in the most important moment of our lives.&quot;
             </p>
             <div className="text-gold-500 font-medium uppercase tracking-widest text-sm">— The Bride & Groom</div>
           </div>

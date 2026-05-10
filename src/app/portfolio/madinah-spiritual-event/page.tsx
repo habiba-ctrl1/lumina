@@ -1,0 +1,130 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, CheckCircle2, Heart, Moon, Users, MapPin } from "lucide-react";
+
+export const metadata = {
+  title: 'Madinah Spiritual Event Case Study | Saudi Event Management',
+  description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
+  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/madinah-spiritual-event' },
+};
+
+export default function MadinahSpiritualEvent() {
+  return (
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative h-[80vh] flex items-center justify-center">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/locations/riyadh-hero.webp" 
+            alt="Madinah Spiritual Event" 
+            fill 
+            className="object-cover opacity-50 grayscale"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
+        </div>
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+          <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+          </Link>
+          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
+            Reverence & Grace
+          </span>
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-6 leading-tight uppercase tracking-tight">
+            Madinah <span className="text-primary italic">Spiritual</span> Event
+          </h1>
+          <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Crafting moments of profound peace in the City of the Prophet. A celebration of faith, heritage, and unparalleled hospitality.</p>
+        </div>
+      </section>
+
+      {/* Project Overview */}
+      <section className="py-16 bg-white border border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+          {[
+            { icon: Moon, label: "Theme", val: "Spiritual Peace" },
+            { icon: Users, label: "Attendees", val: "International" },
+            { icon: Heart, label: "Experience", val: "Deeply Personal" },
+            { icon: MapPin, label: "Location", val: "Madinah Al-Munawwarah" }
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <stat.icon size={24} className="text-primary mx-auto mb-3" />
+              <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1 font-bold">{stat.label}</div>
+              <div className="text-sm font-sans font-bold text-black uppercase">{stat.val}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+        
+        {/* The Essence */}
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
+            <Image src="/gallery_3.webp" alt="Madinah Event Ambience" fill className="object-cover" />
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Essence</span></h2>
+            <p className="mb-6">
+              Madinah demands a unique approach to event management—one that prioritizes tranquility, respect, and effortless flow. For this spiritual gathering, we were commissioned to design a space that felt like an extension of the holy city&apos;s innate serenity.
+            </p>
+            <p>
+              We utilized soft, ambient lighting, natural materials, and traditional architectural motifs to create a sanctuary where guests could reflect and connect in absolute comfort.
+            </p>
+          </div>
+        </div>
+
+        {/* Pillars of Peace */}
+        <div>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-12 uppercase tracking-tight">Pillars of <span className="text-primary italic">Peace</span></h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { title: "Atmospheric Design", desc: "Using acoustic dampening and scent curation to create an environment that felt separate from the outside world." },
+              { title: "Cultural Narrative", desc: "Integrating traditional Madinah craftsmanship into every touchpoint, from the invitations to the furniture." },
+              { title: "Seamless Flow", desc: "Logistical planning that respected prayer times and the city's unique movement patterns." },
+              { title: "Personalized Service", desc: "A high staff-to-guest ratio ensuring every individual's needs were met with discretion and grace." }
+            ].map((item, i) => (
+              <div key={i} className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:bg-white hover:shadow-lg transition-all">
+                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-primary" /> {item.title}
+                </h4>
+                <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Conclusion */}
+        <div className="bg-black text-white p-12 md:p-24 rounded-[4rem] text-center">
+          <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">A <span className="text-primary italic">Profound</span> Impact</h2>
+          <p className="text-gray-400 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            The event was described by attendees as a "transformative experience." Saudi Event Management's ability to handle the complexities of the city while maintaining a profound sense of reverence and luxury established a new benchmark for spiritual events.
+          </p>
+          <div className="inline-block px-8 py-4 bg-white/5 rounded-full border border-white/10">
+            <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">Excellence in Spiritual Hospitality</span>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 text-center bg-gray-50">
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host a <span className="text-primary italic">Soulful Gathering</span></h2>
+        <Link 
+          href="/#contact" 
+          className="inline-block px-12 py-6 bg-black text-white font-bold uppercase tracking-[0.2em] hover:bg-primary transition-all rounded-xl shadow-2xl text-xs"
+        >
+          Inquire About Madinah Services
+        </Link>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </main>
+  );
+}

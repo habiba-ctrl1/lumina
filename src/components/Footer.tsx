@@ -8,14 +8,14 @@ const Instagram = ({ size = 20, className = "" }: { size?: number; className?: s
 const Twitter = ({ size = 20, className = "" }: { size?: number; className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>);
 const Linkedin = ({ size = 20, className = "" }: { size?: number; className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>);
 
-const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Lumina%20Events!%20I%20would%20like%20to%20connect.";
+const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20connect.";
 
 export default function Footer() {
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", url: WHATSAPP_URL },
-    { icon: Twitter, label: "Twitter", url: WHATSAPP_URL },
-    { icon: Linkedin, label: "LinkedIn", url: WHATSAPP_URL },
+    { icon: Instagram, label: "Instagram", url: "https://instagram.com" },
+    { icon: Twitter, label: "Twitter", url: "https://twitter.com" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
   ];
 
   return (
@@ -27,11 +27,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="block mb-8">
               <Image 
-                src="/lumina-logo-transparent.png" 
-                alt="Lumina Events Logo" 
-                width={140} 
-                height={50}
-                className="object-contain h-12 w-auto"
+                src="/main-logo.webp" 
+                alt="Saudi Event Management Logo" 
+                width={280} 
+                height={100}
+                className="object-contain h-16 w-auto"
               />
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed mb-8 max-w-sm">Crafting extraordinary experiences and timeless memories through unparalleled luxury event management across the Middle East.</p>
@@ -66,6 +66,7 @@ export default function Footer() {
             <h4 className="text-black font-bold uppercase tracking-[0.2em] mb-6 text-[11px]">Company</h4>
             <ul className="space-y-8">
               {[
+                { name: "About Us", href: "/about" },
                 { name: "Portfolio", href: "/portfolio" },
                 { name: "Journal", href: "/blog" },
                 { name: "Locations", href: "/locations" },
@@ -83,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-8">
               <li className="flex items-start"><MapPin size={16} className="text-primary mr-3 mt-0.5 shrink-0" /><span className="text-gray-600 text-sm">Riyadh, Jeddah, AlUla & Dammam</span></li>
               <li className="flex items-center"><Phone size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">+966 50 123 4567</span></li>
-              <li className="flex items-center"><Mail size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">hello@luminaevents.com</span></li>
+              <li className="flex items-center"><Mail size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">saudieventmanagementt@gmail.com</span></li>
             </ul>
           </div>
         </div>
@@ -116,9 +117,34 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Newsletter Signup */}
+        <div className="bg-white border border-gray-100 rounded-[2rem] p-10 md:p-16 mb-20 relative overflow-hidden shadow-sm">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase tracking-tight">Stay Inspired</h3>
+              <p className="text-gray-500 text-sm md:text-base leading-relaxed">Join our inner circle for exclusive event insights, luxury trends, and a first look at our latest masterpieces.</p>
+            </div>
+            <form className="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="Email Address" 
+                className="flex-grow bg-gray-50 border border-gray-100 p-5 rounded-xl text-sm focus:border-primary outline-none transition-all"
+                required
+              />
+              <button 
+                type="submit" 
+                className="bg-black text-white px-10 py-5 rounded-xl text-[11px] font-bold uppercase tracking-widest hover:bg-gray-900 transition-all shadow-lg"
+              >
+                Join the Circle
+              </button>
+            </form>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-[11px] mb-4 md:mb-0 uppercase tracking-widest">&copy; {new Date().getFullYear()} Lumina Event Management. All rights reserved.</p>
+          <p className="text-gray-400 text-[11px] mb-4 md:mb-0 uppercase tracking-widest">&copy; {new Date().getFullYear()} Saudi Event Management. All rights reserved.</p>
           <div className="flex space-x-8">
             <Link href="/privacy" className="text-gray-400 hover:text-primary text-[11px] uppercase tracking-widest transition-colors">Privacy</Link>
             <Link href="/terms" className="text-gray-400 hover:text-primary text-[11px] uppercase tracking-widest transition-colors">Terms</Link>

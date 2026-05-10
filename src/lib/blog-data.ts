@@ -28,10 +28,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "From venue selection to the final toast, discover the insider secrets that top event planners use to create seamless, unforgettable luxury experiences.",
     category: "Event Planning",
-    image: "/blog_event_planning.png",
+    image: "/blog_event_planning.webp",
     date: "April 28, 2026",
     readTime: "8 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: true,
     content: [
       "Planning a luxury event is an art form that requires meticulous attention to detail, creative vision, and flawless execution. Whether you&apos;re organizing an intimate dinner for 20 or a grand gala for 500, the principles of exceptional event planning remain the same. Here&apos;s our comprehensive guide to creating an event that leaves lasting impressions.",
@@ -70,10 +70,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Discover the stunning color trends dominating luxury events this year &mdash; from ethereal sage greens to bold terracotta and sophisticated deep plums.",
     category: "Color Trends",
-    image: "/blog_trending_colors.png",
+    image: "/blog_trending_colors.webp",
     date: "April 22, 2026",
     readTime: "6 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: true,
     content: [
       "Color is the silent language of events. Before a single word is spoken or a note of music played, color sets the emotional tone for your entire celebration. The trending palettes of 2026 reflect a world seeking both tranquility and boldness &mdash; a beautiful contradiction that creates visually stunning events.",
@@ -109,10 +109,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Transform any venue into a breathtaking experience with these avant-garde decor concepts that blend artistry, innovation, and pure luxury.",
     category: "Decor Ideas",
-    image: "/blog_decor_ideas.png",
+    image: "/blog_decor_ideas.webp",
     date: "April 15, 2026",
     readTime: "10 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: false,
     content: [
       "The difference between a good event and an extraordinary one often comes down to decor. Not just any decor, but thoughtfully curated design elements that tell a story, evoke emotion, and create shareable moments. Here are 10 ideas that will transform your next event from memorable to absolutely unforgettable.",
@@ -157,10 +157,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "From selecting the perfect overseas locale to managing guest logistics, here&apos;s everything you need to know about planning a destination wedding that exceeds every expectation.",
     category: "Weddings",
-    image: "/blog_destination_wedding.png",
+    image: "/blog_destination_wedding.webp",
     date: "April 8, 2026",
     readTime: "9 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: false,
     content: [
       "A destination wedding is more than a ceremony &mdash; it&apos;s a multi-day experience that weaves together travel, celebration, and intimacy in a way that traditional weddings simply can&apos;t. When done right, a destination wedding creates a chapter of memories that you and your guests will treasure forever. Here&apos;s how to make it happen.",
@@ -196,10 +196,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Learn how to transform standard corporate gatherings into premium brand experiences that inspire teams, impress clients, and drive real business results.",
     category: "Corporate",
-    image: "/blog_corporate_events.png",
+    image: "/blog_corporate_events.webp",
     date: "April 1, 2026",
     readTime: "7 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: false,
     content: [
       "Corporate events have evolved far beyond the standard conference room presentation and rubber chicken dinner. Today&apos;s most impactful corporate events are immersive brand experiences that inspire, connect, and deliver measurable business results. Here&apos;s how to elevate your corporate events to match the caliber of your brand.",
@@ -238,10 +238,10 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Master the art of luxurious table design with expert tips on layering textures, choosing linens, and creating centerpieces that make every seat the best seat in the house.",
     category: "Lifestyle",
-    image: "/blog_corporate_events.png",
+    image: "/blog_corporate_events.webp",
     date: "March 25, 2026",
     readTime: "7 min read",
-    author: "Lumina Editorial",
+    author: "Saudi Event Management Editorial",
     featured: false,
     content: [
       "Tablescaping is where art meets hospitality. A beautifully designed table setting doesn&apos;t just hold your dinnerware &mdash; it sets the emotional tone for the entire meal. Whether you&apos;re designing for a formal gala or an intimate dinner party, these principles will help you create tables that guests can&apos;t stop photographing.",

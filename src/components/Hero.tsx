@@ -2,99 +2,22 @@
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
 const backgroundImages = [
-  "/gallery_wedding_reception.png",
-  "/gallery_corporate_gala.png",
-  "/gallery_destination_wedding.png",
-  "/gallery_charity_gala.png",
-  "/gallery_vip_party.png",
-  "/gallery_garden_party.png",
+  "/gallery_wedding_reception.webp",
+  "/gallery_corporate_gala.webp",
+  "/gallery_destination_wedding.webp",
+  "/gallery_charity_gala.webp",
+  "/gallery_vip_party.webp",
+  "/gallery_garden_party.webp",
 ];
 
-const titleWords = ["Masterpieces", "of", "Luxury"];
 
-// ─── Particle type ────────────────────────────────────────────────────────────
-interface Particle {
-  id: number;
-  width: number;
-  height: number;
-  left: string;
-  top: string;
-  opacityPeak: number;
-  yEnd: number;
-  xEnd: number;
-  duration: number;
-  delay: number;
-}
 
-// ─── Gold Particles ───────────────────────────────────────────────────────────
-//
-// CHANGE 1 (Critical — bug fix):
-// Previously, Math.random() was called directly inside JSX during render.
-// In Next.js (SSR), the server generates one set of random values and the
-// client generates a completely different set, causing a React hydration
-// mismatch error: "Prop did not match. Server: X Client: Y".
-// Fix: generate all random values once inside useEffect (client-only),
-// store them in state, and render nothing until they are ready.
-//
-function GoldParticles() {
-  const [particles, setParticles] = useState<Particle[]>([]);
 
-  useEffect(() => {
-    const generated: Particle[] = Array.from({ length: 25 }).map((_, i) => ({
-      id: i,
-      width: 1 + Math.random() * 3,
-      height: 1 + Math.random() * 3,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      opacityPeak: 0.3 + Math.random() * 0.4,
-      yEnd: -(120 + Math.random() * 180),
-      xEnd: (Math.random() - 0.5) * 80,
-      duration: 5 + Math.random() * 7,
-      delay: Math.random() * 6,
-    }));
-    setParticles(generated);
-  }, []);
-
-  // CHANGE 2: aria-hidden="true" — these dots are purely decorative.
-  // Screen readers should not announce them.
-  return (
-    <div
-      className="absolute inset-0 overflow-hidden pointer-events-none z-[1]"
-      aria-hidden="true"
-    >
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full"
-          style={{
-            width: p.width,
-            height: p.height,
-            left: p.left,
-            top: p.top,
-            // CHANGE 3: opacityPeak is now a stable value from state,
-            // not a new random number on every render.
-            background: `radial-gradient(circle, rgba(212,175,55,${p.opacityPeak}), transparent)`,
-          }}
-          animate={{
-            y: [0, p.yEnd],
-            x: [0, p.xEnd],
-            opacity: [0, 0.8, 0],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            delay: p.delay,
-            ease: "easeOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export default function Hero() {
@@ -119,9 +42,9 @@ export default function Hero() {
     <div
       id="home"
       ref={containerRef}
-      className="relative min-h-[90vh] w-full flex items-center justify-center bg-white pt-20"
+      className="relative min-h-screen lg:h-screen w-full flex items-center justify-center bg-white pt-32 md:pt-48 pb-12"
     >
-      <GoldParticles />
+
 
       {/* Image Slideshow Background */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -134,46 +57,48 @@ export default function Hero() {
             transition={{ duration: 2, ease: "easeOut" }}
             className="absolute inset-0"
           >
-            <img
+            <Image
               src={backgroundImages[currentImageIndex]}
-              alt="Event Background"
-              className="w-full h-full object-cover"
+              alt={`Luxury Event Scene ${currentImageIndex + 1}`}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Overlays — also decorative, so aria-hidden */}
+      {/* Overlays — restored navy blue theme for consistency */}
       <div
         className="absolute inset-0 z-[1]"
-        style={{ backgroundColor: "rgba(0, 15, 50, 0.65)" }}
+        style={{ backgroundColor: "rgba(4, 30, 66, 0.65)" }}
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-[#041E42] via-transparent to-[#041E42]/40 z-[1]"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#041E42]/70 via-transparent to-[#041E42]/80"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-r from-[#041E42]/30 via-transparent to-[#041E42]/30 z-[1]"
+        className="absolute inset-0 z-[1] bg-gradient-to-r from-[#041E42]/40 via-transparent to-[#041E42]/40"
         aria-hidden="true"
       />
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12 md:mt-16"
       >
         {/* Top Tagline */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center gap-4 mb-8"
+          className="flex flex-col items-center justify-center mb-8"
         >
-          <div className="w-12 h-px bg-primary/30" />
-          <span className="text-primary text-[11px] uppercase tracking-[0.4em] font-bold">
-            Bespoke Event Management
+          <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold mb-3 block">
+            Saudi Event Management
           </span>
-          <div className="w-12 h-px bg-primary/30" />
+          <div className="w-10 h-px bg-primary/30 mx-auto" />
         </motion.div>
 
         {/* Main Title */}
@@ -182,7 +107,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-white font-bold uppercase tracking-tight leading-[1.1] mb-8"
-          style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)" }}
+          style={{ fontSize: "clamp(1.5rem, 4vw, 2.6rem)" }}
         >
           Masterpieces of <br />
           <span className="text-primary">Luxury</span>
@@ -193,64 +118,82 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-12 leading-relaxed font-medium"
         >
           Curating exquisite weddings, corporate galas, and private celebrations.
-          We bring world-class elegance to <span className="text-white font-bold">Riyadh</span>, 
-          <span className="text-white font-bold"> Jeddah</span>, <span className="text-white font-bold">Makkah</span>, 
-          <span className="text-white font-bold"> Madinah</span>, and <span className="text-white font-bold">AlUla</span>.
+          We bring world-class elegance to <span className="text-white font-bold tracking-tight">Riyadh</span>, 
+          <span className="text-white font-bold tracking-tight"> Jeddah</span>, <span className="text-white font-bold tracking-tight">Makkah</span>, 
+          <span className="text-white font-bold tracking-tight"> Madinah</span>, and <span className="text-white font-bold tracking-tight">AlUla</span>.
         </motion.p>
 
-        {/* Quick Booking Form */}
+        {/* Quick Booking Form — refined and concise */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white/10 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-white/20 p-6 md:p-8 max-w-4xl mx-auto mb-8 relative z-20"
+          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-10 relative z-20"
         >
-          <form 
-            onSubmit={(e) => { 
-              e.preventDefault(); 
-              window.open(`https://wa.me/966501234567?text=Hi%20Lumina!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
-            }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Event Type</label>
-              <select className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
-                <option>Luxury Wedding</option>
-                <option>Corporate Gala</option>
-                <option>VIP Reception</option>
-                <option>Private Concert</option>
-              </select>
-            </div>
-            
-            <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Location</label>
-              <select className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
-                <option>Riyadh</option>
-                <option>Jeddah</option>
-                <option>Makkah</option>
-                <option>Madinah</option>
-                <option>AlUla</option>
-                <option>Dammam</option>
-              </select>
-            </div>
+          <div className="bg-[#041E42]/40 backdrop-blur-md border border-white/5 rounded-[1.8rem] p-4 md:p-5">
+            <form 
+              onSubmit={(e) => { 
+                e.preventDefault(); 
+                window.open(`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
+              }}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end"
+            >
+              <div className="flex flex-col text-left">
+                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Event Type</label>
+                <div className="relative">
+                  <select className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 appearance-none cursor-pointer hover:bg-white/[0.08] transition-all">
+                    <option className="bg-charcoal-900">Luxury Wedding</option>
+                    <option className="bg-charcoal-900">Corporate Gala</option>
+                    <option className="bg-charcoal-900">VIP Reception</option>
+                    <option className="bg-charcoal-900">Private Concert</option>
+                  </select>
+                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+                </div>
+              </div>
+              
+              <div className="flex flex-col text-left">
+                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Location</label>
+                <div className="relative">
+                  <select className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 appearance-none cursor-pointer hover:bg-white/[0.08] transition-all">
+                    <option className="bg-charcoal-900">Riyadh</option>
+                    <option className="bg-charcoal-900">Jeddah</option>
+                    <option className="bg-charcoal-900">Makkah</option>
+                    <option className="bg-charcoal-900">AlUla</option>
+                  </select>
+                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+                </div>
+              </div>
 
-            <div className="flex flex-col text-left">
-              <label className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Date</label>
-              <input type="date" className="bg-white/10 border border-white/20 text-white rounded-xl px-4 py-3.5 text-sm font-medium focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" />
-            </div>
+              <div className="flex flex-col text-left">
+                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Preferred Date</label>
+                <input 
+                  type="date" 
+                  className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 [color-scheme:dark] hover:bg-white/[0.08] transition-all" 
+                />
+              </div>
 
-            <div className="flex items-end">
               <button 
-                type="submit" 
-                className="w-full bg-primary text-white font-bold uppercase tracking-widest text-[11px] rounded-xl px-4 py-4 hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/30"
+                type="submit"
+                className="w-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-lg hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
               >
-                Book via WhatsApp
+                Inquiry
               </button>
+            </form>
+            
+            <div className="mt-8 flex justify-center">
+              <Link 
+                href="/#contact"
+                className="text-[9px] text-white/30 hover:text-primary uppercase tracking-[0.4em] font-bold flex items-center gap-4 transition-all group"
+              >
+                <div className="w-10 h-px bg-white/10 group-hover:bg-primary transition-all" />
+                Download Portfolio
+                <div className="w-10 h-px bg-white/10 group-hover:bg-primary transition-all" />
+              </Link>
             </div>
-          </form>
+          </div>
         </motion.div>
 
         {/* Trust Indicators */}
@@ -258,18 +201,18 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-8 md:gap-16 mt-8"
+          className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6"
         >
           {[
-            { label: "100+ EVENTS DELIVERED" },
-            { label: "100% CLIENT SATISFACTION" },
-            { label: "AWARD-WINNING TEAM" },
+            { label: "100+ EVENTS" },
+            { label: "100% SATISFACTION" },
+            { label: "AWARD-WINNING" },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center">
-              <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+              <span className="text-primary text-[9px] font-bold uppercase tracking-[0.2em]">
                 {stat.label}
               </span>
-              <div className="w-8 h-px bg-primary/20 mt-1" />
+              <div className="w-6 h-px bg-primary/20 mt-1" />
             </div>
           ))}
         </motion.div>

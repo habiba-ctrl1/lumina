@@ -6,7 +6,7 @@ import { MessageCircle, Send, CheckCircle, AlertCircle, Calendar, MapPin, Users,
 import Link from "next/link";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "", budget: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
@@ -17,7 +17,7 @@ export default function ContactSection() {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", eventType: "", eventDate: "", guestCount: "", venueCity: "", message: "", budget: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
@@ -130,16 +130,16 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Row 3: Event Date + Guest Count + Venue City */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Row 3: Event Date + Guest Count + City + Budget */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Calendar size={12} className="text-primary" /> Event Date</label>
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Calendar size={12} className="text-primary" /> Date</label>
                   <input type="date" value={formData.eventDate} onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })} onFocus={() => setFocusedField("date")} onBlur={() => setFocusedField(null)} className={ic("date")} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Users size={12} className="text-primary" /> Estimated Guests</label>
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Users size={12} className="text-primary" /> Guests</label>
                   <select value={formData.guestCount} onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })} onFocus={() => setFocusedField("guests")} onBlur={() => setFocusedField(null)} className={`${ic("guests")} appearance-none cursor-pointer`}>
-                    <option value="">Guest Count...</option>
+                    <option value="">Count...</option>
                     <option value="<50">Under 50</option>
                     <option value="50-150">50 – 150</option>
                     <option value="150-300">150 – 300</option>
@@ -149,7 +149,18 @@ export default function ContactSection() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><MapPin size={12} className="text-primary" /> City</label>
-                  <input type="text" value={formData.venueCity} onChange={(e) => setFormData({ ...formData, venueCity: e.target.value })} onFocus={() => setFocusedField("city")} onBlur={() => setFocusedField(null)} className={ic("city")} placeholder="e.g. Riyadh" />
+                  <input type="text" value={formData.venueCity} onChange={(e) => setFormData({ ...formData, venueCity: e.target.value })} onFocus={() => setFocusedField("city")} onBlur={() => setFocusedField(null)} className={ic("city")} placeholder="Riyadh" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2">Budget (SAR)</label>
+                  <select value={formData.budget} onChange={(e) => setFormData({ ...formData, budget: e.target.value })} onFocus={() => setFocusedField("budget")} onBlur={() => setFocusedField(null)} className={`${ic("budget")} appearance-none cursor-pointer`}>
+                    <option value="">Budget...</option>
+                    <option value="50k-100k">50k – 100k</option>
+                    <option value="100k-250k">100k – 250k</option>
+                    <option value="250k-500k">250k – 500k</option>
+                    <option value="500k-1M">500k – 1M</option>
+                    <option value="1M+">1M+</option>
+                  </select>
                 </div>
               </div>
 
@@ -172,7 +183,7 @@ export default function ContactSection() {
                 </motion.button>
                 <span className="text-gray-300 uppercase text-[9px] tracking-widest hidden sm:block">OR</span>
                 <motion.a 
-                  href="https://wa.me/966501234567?text=Hi%20Lumina!%20I%20would%20like%20to%20discuss%20an%20event." 
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20discuss%20an%20event." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   whileHover={{ y: -2, scale: 1.01 }}

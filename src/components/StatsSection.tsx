@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: 100, suffix: "+", label: "Events Crafted" },
-  { value: 12, suffix: "+", label: "Years Experience" },
-  { value: 98, suffix: "%", label: "Client Retention" },
-  { value: 35, suffix: "M+", label: "SAR Budget Managed" },
+  { value: 250, suffix: "+", label: "Events Crafted" },
+  { value: 15, suffix: "+", label: "Years Experience" },
+  { value: 99, suffix: "%", label: "Client Retention" },
+  { value: 120, suffix: "M+", label: "SAR Budget Managed" },
 ];
 
 

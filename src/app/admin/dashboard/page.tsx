@@ -139,7 +139,7 @@ export default function AdminDashboard() {
           <h1 className="text-4xl md:text-5xl font-sans font-extrabold text-white mb-4 tracking-tight">
             Booking <span className="text-gold-500/90">Dashboard</span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">Welcome back. Experience the refined control center of Lumina events, optimized for clarity and high-end management.</p>
+          <p className="text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">Welcome back. Experience the refined control center of Saudi Event Management events, optimized for clarity and high-end management.</p>
         </div>
         <div className="relative z-10 px-8 py-4 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem] flex items-center gap-5 shadow-2xl">
           <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_20px_rgba(16,185,129,0.5)]" />
@@ -277,7 +277,7 @@ export default function AdminDashboard() {
                 <textarea 
                   value={newStatus}
                   onChange={(e) => setNewStatus(e.target.value)}
-                  placeholder="What's happening at Lumina today?"
+                  placeholder="What's happening at Saudi Event Management today?"
                   className="w-full bg-white/[0.02] border border-white/10 rounded-[2rem] p-8 text-sm text-white focus:outline-none focus:border-gold-500/50 min-h-[150px] resize-none transition-all placeholder:text-gray-700 font-medium leading-relaxed shadow-inner"
                 />
               </div>

@@ -19,7 +19,7 @@ const vendors = [
     id: 1,
     category: "photographers",
     name: "Al-Majid Studios",
-    image: "/gallery_wedding_reception.png",
+    image: "/gallery_wedding_reception.webp",
     rating: 5.0,
     reviews: 124,
     location: "Riyadh, KSA",
@@ -29,7 +29,7 @@ const vendors = [
     id: 2,
     category: "cakes",
     name: "The Golden Whisk",
-    image: "/gallery_corporate_gala.png",
+    image: "/gallery_corporate_gala.webp",
     rating: 4.9,
     reviews: 89,
     location: "Dubai, UAE",
@@ -39,7 +39,7 @@ const vendors = [
     id: 3,
     category: "florists",
     name: "Sapphire Blooms",
-    image: "/gallery_destination_wedding.png",
+    image: "/gallery_destination_wedding.webp",
     rating: 5.0,
     reviews: 56,
     location: "Riyadh, SA",
@@ -49,7 +49,7 @@ const vendors = [
     id: 4,
     category: "catering",
     name: "Saffron & Silk",
-    image: "/gallery_garden_party.png",
+    image: "/gallery_garden_party.webp",
     rating: 4.8,
     reviews: 210,
     location: "Jeddah, KSA",
@@ -59,7 +59,7 @@ const vendors = [
     id: 5,
     category: "photographers",
     name: "Elite Vision PK",
-    image: "/gallery_vip_party.png",
+    image: "/gallery_vip_party.webp",
     rating: 4.9,
     reviews: 45,
     location: "Islamabad, PK",
@@ -69,7 +69,7 @@ const vendors = [
     id: 6,
     category: "cakes",
     name: "Velvet Sugar",
-    image: "/gallery_charity_gala.png",
+    image: "/gallery_charity_gala.webp",
     rating: 5.0,
     reviews: 32,
     location: "Karachi, PK",
@@ -195,7 +195,7 @@ export default function VendorMarketplace() {
                     {vendor.reviews} Verified Reviews
                   </span>
                   <a 
-                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Lumina! I'd like to know more about ${vendor.name}`)}`}
+                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Saudi Event Management! I'd like to know more about ${vendor.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn"
@@ -221,7 +221,7 @@ export default function VendorMarketplace() {
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>
           <a 
-            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Lumina! I'm a premium vendor and I'd like to apply to join your network.")}`}
+            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Saudi Event Management! I'm a premium vendor and I'd like to apply to join your network.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-10 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-400 transition-all duration-300 rounded-sm"

@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Luxury Event Management Riyadh | Kingdom Centre & Diriyah Events',
   description: 'The premier luxury event planner in Riyadh. From royal weddings near the Kingdom Centre to exclusive corporate galas in historical Diriyah.',
   keywords: 'event management Riyadh, luxury weddings Riyadh, corporate events Riyadh, Kingdom Centre events, Diriyah event planning, Al Faisaliyah Center events',
+  alternates: { canonical: 'https://saudieventmanagement.com/locations/riyadh' },
 };
 
 export default function RiyadhPage() {
@@ -20,7 +21,7 @@ export default function RiyadhPage() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.png" 
+            src="/hero_bg.webp" 
             alt="Luxury Event Management Riyadh - Kingdom Centre Skyline" 
             fill 
             className="object-cover opacity-40 grayscale"
@@ -80,7 +81,7 @@ export default function RiyadhPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_charity_gala.png" alt="Kingdom Centre Riyadh Event" fill className="object-cover" />
+            <Image src="/gallery_charity_gala.webp" alt="Kingdom Centre Riyadh Event" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -160,18 +161,18 @@ export default function RiyadhPage() {
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_wedding_reception.png" alt="Team at work" fill className="object-cover" />
+                  <Image src="/gallery_wedding_reception.webp" alt="Team at work" fill className="object-cover" />
                 </div>
                 <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_corporate_gala.png" alt="Event planning" fill className="object-cover" />
+                  <Image src="/gallery_corporate_gala.webp" alt="Event planning" fill className="object-cover" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_destination_wedding.png" alt="Venue sourcing" fill className="object-cover" />
+                  <Image src="/gallery_destination_wedding.webp" alt="Venue sourcing" fill className="object-cover" />
                 </div>
                 <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/wedding.png" alt="Riyadh office" fill className="object-cover" />
+                  <Image src="/wedding.webp" alt="Riyadh office" fill className="object-cover" />
                 </div>
               </div>
             </div>

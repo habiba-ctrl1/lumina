@@ -30,14 +30,14 @@ export default function ExhibitionsPage() {
         "description": "The premier B2B trade show for international brands in Saudi Arabia.",
         "organizer": {
           "@type": "Organization",
-          "name": "Lumina Events",
-          "url": "https://luminaevents.com"
+          "name": "Saudi Event Management",
+          "url": "https://saudieventmanagement.com"
         }
       },
       {
         "@type": "LocalBusiness",
-        "name": "Lumina Exhibition Management",
-        "image": "https://luminaevents.com/corporate.png",
+        "name": "Saudi Event Management Exhibition Management",
+        "image": "https://saudieventmanagement.com/corporate.webp",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Riyadh",
@@ -53,7 +53,7 @@ export default function ExhibitionsPage() {
             "name": "What are the major exhibitions in Saudi Arabia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The major exhibitions in Saudi Arabia include LEAP, the Big 5 Construct Saudi, Saudi Agriculture, and the upcoming Saudi Expo 2030 initiatives. Lumina provides comprehensive event management for all major summits."
+              "text": "The major exhibitions in Saudi Arabia include LEAP, the Big 5 Construct Saudi, Saudi Agriculture, and the upcoming Saudi Expo 2030 initiatives. Saudi Event Management provides comprehensive event management for all major summits."
             }
           },
           {
@@ -61,7 +61,7 @@ export default function ExhibitionsPage() {
             "name": "Who manages trade shows in Riyadh?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events is a leading exhibition management company that manages trade shows in Riyadh. We offer end-to-end B2B matchmaking, booth design, and full-scale logistics at RICEC and RECC."
+              "text": "Saudi Event Management is a leading exhibition management company that manages trade shows in Riyadh. We offer end-to-end B2B matchmaking, booth design, and full-scale logistics at RICEC and RECC."
             }
           },
           {
@@ -77,7 +77,7 @@ export default function ExhibitionsPage() {
             "name": "We want to exhibit at a trade show in Riyadh — where should we start?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The first step is to secure your presence and book exhibition space KSA. Lumina provides an end-to-end service, helping you choose the right event, secure premium space at RICEC or RECC, and manage all logistics as your primary trade show organizer Saudi Arabia."
+              "text": "The first step is to secure your presence and book exhibition space KSA. Saudi Event Management provides an end-to-end service, helping you choose the right event, secure premium space at RICEC or RECC, and manage all logistics as your primary trade show organizer Saudi Arabia."
             }
           },
           {
@@ -101,7 +101,7 @@ export default function ExhibitionsPage() {
             "name": "trade show organizer near me Riyadh",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina Events is strategically based in Riyadh, making us the ideal partner when you need a top-tier trade show organizer near me Riyadh for your commercial display event."
+              "text": "Saudi Event Management is strategically based in Riyadh, making us the ideal partner when you need a top-tier trade show organizer near me Riyadh for your commercial display event."
             }
           },
           {
@@ -117,7 +117,7 @@ export default function ExhibitionsPage() {
             "name": "expo booth builder Jeddah",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Lumina serves as an expert expo booth builder Jeddah, creating stunning exhibition pavilion Saudi setups along the Red Sea coast."
+              "text": "Saudi Event Management serves as an expert expo booth builder Jeddah, creating stunning exhibition pavilion Saudi setups along the Red Sea coast."
             }
           }
         ]
@@ -136,7 +136,7 @@ export default function ExhibitionsPage() {
           },
           {
             "@type": "HowToStep",
-            "text": "Collaborate with Lumina for professional expo booth design and stand building."
+            "text": "Collaborate with Saudi Event Management for professional expo booth design and stand building."
           },
           {
             "@type": "HowToStep",
@@ -151,14 +151,14 @@ export default function ExhibitionsPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://luminaevents.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://luminaevents.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Exhibitions & Trade Shows", "item": "https://luminaevents.com/services/exhibitions" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Exhibitions & Trade Shows", "item": "https://saudieventmanagement.com/services/exhibitions" }
         ]
       },
       {
         "@type": "Organization",
-        "name": "Lumina Exhibition Management",
+        "name": "Saudi Event Management Exhibition Management",
         "description": "Partnering with the Royal Commission for Riyadh City (RCEF) and Saudi Expo 2030 initiatives.",
         "memberOf": {
           "@type": "Organization",
@@ -181,7 +181,7 @@ export default function ExhibitionsPage() {
         <section className="relative h-[80vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/blog_corporate_events.png" 
+              src="/blog_corporate_events.webp" 
               alt="Exhibition management Saudi Arabia - Trade show organizer Riyadh" 
               fill 
               className="object-cover opacity-40"
@@ -336,7 +336,7 @@ export default function ExhibitionsPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_corporate_gala.png" 
+                  src="/gallery_corporate_gala.webp" 
                   alt="مركز الرياض للمعارض والمؤتمرات - تنظيم معارض" 
                   fill 
                   className="object-cover"
@@ -357,14 +357,14 @@ export default function ExhibitionsPage() {
             <div className="space-y-6">
               {[
                 { q: "What are the major exhibitions in Saudi Arabia?", a: "Major exhibitions include LEAP, Big 5 Construct, and Index Saudi. We provide premium booth design and management for international brands at these high-profile events." },
-                { q: "Who manages trade shows in Riyadh?", a: "Lumina Events is a leading trade show organizer Saudi Arabia, acting as the primary liaison between exhibitors and venues like RICEC and RECC for flawless execution." },
+                { q: "Who manages trade shows in Riyadh?", a: "Saudi Event Management is a leading trade show organizer Saudi Arabia, acting as the primary liaison between exhibitors and venues like RICEC and RECC for flawless execution." },
                 { q: "When is the next big expo in Saudi Arabia?", a: "The exhibition calendar is dynamic, with peak seasons in Q1 and Q4. Contact us for our detailed 'Annual Saudi exhibition calendar' and strategic planning timelines." },
-                { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Lumina provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
+                { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Saudi Event Management provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
                 { q: "What are the upcoming major exhibitions in Saudi Arabia in 2025?", a: "2025 features LEAP, Saudi Agriculture, Index Saudi, and major summits aligned with Vision 2030. We can align your brand with the most relevant B2B opportunities." },
                 { q: "How to design an exhibition booth for a Saudi audience?", a: "It requires balancing modern technology with cultural nuances, such as private Majlis meeting areas. Our exhibition stand design Riyadh team excels at creating culturally resonant, high-impact pavilions." },
-                { q: "trade show organizer near me Riyadh", a: "Lumina Events is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
+                { q: "trade show organizer near me Riyadh", a: "Saudi Event Management is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
                 { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
-                { q: "expo booth builder Jeddah", a: "Lumina operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
+                { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
               ].map((faq, i) => (
                 <div key={i} className="bg-charcoal-950 p-8 rounded-2xl border border-white/5">
                   <h3 className="text-lg font-bold text-gold-500 mb-3">{faq.q}</h3>

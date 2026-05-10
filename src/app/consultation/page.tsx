@@ -54,7 +54,7 @@ export default function ConsultationPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('/hero_bg.png')] opacity-10 bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-10 bg-cover bg-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#041E42] via-transparent to-[#041E42]" />
         </div>
 
@@ -206,10 +206,10 @@ export default function ConsultationPage() {
                       onChange={(e) => setFormData({...formData, budget: e.target.value})}
                     >
                       <option value="">Budget Range</option>
-                      <option value="50k-100k">$50k – $100k</option>
-                      <option value="100k-250k">$100k – $250k</option>
-                      <option value="250k-500k">$250k – $500k</option>
-                      <option value="500k+">$500k+</option>
+                      <option value="50k-100k">SAR 50,000 – SAR 100,000</option>
+                      <option value="100k-250k">SAR 100,000 – SAR 250,000</option>
+                      <option value="250k-500k">SAR 250,000 – SAR 500,000</option>
+                      <option value="500k+">SAR 500,000+</option>
                     </select>
                   </div>
                 </div>

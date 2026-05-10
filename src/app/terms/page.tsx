@@ -5,8 +5,9 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'Terms of Service | Lumina Events',
-  description: 'Terms of service for Lumina Event Management website and services.',
+  title: 'Terms & Conditions | Saudi Event Management',
+  description: 'Our terms and conditions for luxury event management services.',
+  alternates: { canonical: 'https://saudieventmanagement.com/terms' },
 };
 
 export default function TermsPage() {
@@ -22,7 +23,7 @@ export default function TermsPage() {
           <div className="prose prose-invert prose-gold max-w-none text-gray-300">
             <p className="mb-4">Last updated: May 2026</p>
             <p className="mb-4">
-              Welcome to Lumina Event Management. By accessing our website and utilizing our services, you agree to comply with and be bound by the following terms and conditions.
+              Welcome to Saudi Event Management. By accessing our website and utilizing our services, you agree to comply with and be bound by the following terms and conditions.
             </p>
             <h2 className="text-2xl text-gold-500 mt-8 mb-4">Service Agreement</h2>
             <p className="mb-4">
@@ -30,7 +31,7 @@ export default function TermsPage() {
             </p>
             <h2 className="text-2xl text-gold-500 mt-8 mb-4">Intellectual Property</h2>
             <p className="mb-4">
-              All content on this website, including text, graphics, logos, and images, is the property of Lumina Event Management and protected by intellectual property laws.
+              All content on this website, including text, graphics, logos, and images, is the property of Saudi Event Management and protected by intellectual property laws.
             </p>
           </div>
         </div>

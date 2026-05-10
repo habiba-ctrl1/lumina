@@ -90,7 +90,7 @@ export default function VendorRegistration() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
           >
-            Join Lumina's elite network of world-class vendors. We collaborate with the most prestigious 
+            Join Saudi Event Management's elite network of world-class vendors. We collaborate with the most prestigious 
             service providers to deliver masterpieces of luxury across the Middle East.
           </motion.p>
         </div>
@@ -126,7 +126,7 @@ export default function VendorRegistration() {
                 <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4">Direct Support</h4>
                 <p className="text-gray-500 text-[11px] mb-6 leading-relaxed">Prefer to speak with our partnership team directly?</p>
                 <a 
-                  href="https://wa.me/966501234567?text=Hi%20Lumina!%20I%20want%20to%20register%20as%20a%20vendor."
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20register%20as%20a%20vendor."
                   target="_blank"
                   className="w-full bg-[#25D366] text-white py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#128C7E] transition-all"
                 >
@@ -242,7 +242,7 @@ export default function VendorRegistration() {
                     <textarea 
                       rows={4} 
                       className={`${inputClasses} resize-none`} 
-                      placeholder="Describe your experience, past projects, and why you want to partner with Lumina..."
+                      placeholder="Describe your experience, past projects, and why you want to partner with Saudi Event Management..."
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                     />
@@ -257,7 +257,7 @@ export default function VendorRegistration() {
                       {status === "loading" ? "Processing..." : "Submit Application"}
                     </button>
                     <a 
-                      href="https://wa.me/966501234567?text=Hi%20Lumina!%20I%20am%20interested%20in%20the%20vendor%20registration%20process."
+                      href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20the%20vendor%20registration%20process."
                       target="_blank"
                       className="w-full md:w-auto bg-[#25D366] text-white px-10 py-5 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-[#128C7E] transition-all"
                     >

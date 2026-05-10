@@ -9,8 +9,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: 'Event Portfolio | Lumina Events',
+  title: 'Event Portfolio | Saudi Event Management',
   description: 'View our gallery of luxury events, weddings, and corporate summits.',
+  alternates: { canonical: 'https://saudieventmanagement.com/portfolio' },
 };
 
 export default function PortfolioPage() {
@@ -40,7 +41,7 @@ export default function PortfolioPage() {
 
       {/* Final CTA Section */}
       <section className="py-24 bg-navy-950 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('/hero_bg.png')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-10 bg-[url('/hero_bg.webp')] bg-cover bg-center" />
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Ready to Start Your <span className="text-shimmer font-bold">Legacy?</span></h2>
           <p className="text-gray-300 text-lg mb-12">Let&apos;s discuss your vision and create something truly extraordinary together.</p>

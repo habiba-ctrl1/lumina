@@ -15,12 +15,12 @@ const categories = [
 ];
 
 const vendors = [
-  { id: 1, categoryId: "photography", name: "Al-Majid Studios", image: "/wedding.png", rating: 5.0, reviews: 124, location: "Riyadh, KSA" },
-  { id: 2, categoryId: "photography", name: "Elite Vision PK", image: "/gallery_1.png", rating: 4.9, reviews: 45, location: "Islamabad, PK" },
-  { id: 3, categoryId: "cakes", name: "The Golden Whisk", image: "/gallery_wedding_reception.png", rating: 4.9, reviews: 89, location: "Riyadh, KSA" },
-  { id: 4, categoryId: "cakes", name: "Velvet Sugar", image: "/gallery_corporate_gala.png", rating: 5.0, reviews: 32, location: "Karachi, PK" },
-  { id: 5, categoryId: "floral", name: "Sapphire Blooms", image: "/gallery_destination_wedding.png", rating: 5.0, reviews: 56, location: "Jeddah, KSA" },
-  { id: 6, categoryId: "floral", name: "Oasis Petals", image: "/gallery_garden_party.png", rating: 4.8, reviews: 78, location: "Jeddah, KSA" },
+  { id: 1, categoryId: "photography", name: "Al-Majid Studios", image: "/wedding.webp", rating: 5.0, reviews: 124, location: "Riyadh, KSA" },
+  { id: 2, categoryId: "photography", name: "Elite Vision PK", image: "/gallery_1.webp", rating: 4.9, reviews: 45, location: "Islamabad, PK" },
+  { id: 3, categoryId: "cakes", name: "The Golden Whisk", image: "/gallery_wedding_reception.webp", rating: 4.9, reviews: 89, location: "Riyadh, KSA" },
+  { id: 4, categoryId: "cakes", name: "Velvet Sugar", image: "/gallery_corporate_gala.webp", rating: 5.0, reviews: 32, location: "Karachi, PK" },
+  { id: 5, categoryId: "floral", name: "Sapphire Blooms", image: "/gallery_destination_wedding.webp", rating: 5.0, reviews: 56, location: "Jeddah, KSA" },
+  { id: 6, categoryId: "floral", name: "Oasis Petals", image: "/gallery_garden_party.webp", rating: 4.8, reviews: 78, location: "Jeddah, KSA" },
 ];
 
 export default function VendorsPage() {
@@ -166,7 +166,7 @@ export default function VendorsPage() {
                     <CheckCircle2 size={48} />
                   </div>
                   <h2 className="text-2xl font-bold text-white mb-2">Request Sent!</h2>
-                  <p className="text-gray-400">The vendor and Lumina admin have been notified. You will receive a quote shortly.</p>
+                  <p className="text-gray-400">The vendor and Saudi Event Management admin have been notified. You will receive a quote shortly.</p>
                 </div>
               ) : (
                 <>

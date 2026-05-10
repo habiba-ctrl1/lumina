@@ -1,0 +1,38 @@
+import { Metadata } from "next";
+import { blogPosts } from "@/lib/blog-data";
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = blogPosts.find((p) => p.slug === params.slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return {
+    title: `${post.title} | Saudi Event Management Journal`,
+    description: post.excerpt,
+    alternates: {
+      canonical: `https://saudieventmanagement.com/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${params.slug}`,
+      images: [{ url: post.image }],
+    },
+  };
+}
+
+export default function BlogPostLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}

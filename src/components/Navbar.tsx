@@ -28,10 +28,11 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Locations", href: "/locations" },
-    { name: "Partners", href: "#partners" },
+    { name: "Partners", href: "/partners" },
     { name: "Journal", href: "/blog" },
   ];
 
@@ -40,27 +41,31 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-white/70 backdrop-blur-xl shadow-sm border-b border-white/10 py-4`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100 py-2" 
+          : "bg-white/80 backdrop-blur-lg border-b border-transparent py-3"
+      }`}
       onMouseLeave={() => setHoveredLink(null)}
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
               <Image 
-                src="/lumina-logo-transparent.png" 
-                alt="Lumina Events Logo" 
-                width={140} 
-                height={50}
-                className="object-contain h-10 w-auto"
+                src="/main-logo.webp" 
+                alt="Saudi Event Management Logo" 
+                width={280} 
+                height={100}
+                className={`object-contain transition-all duration-500 ${isScrolled ? "h-12" : "h-16"} w-auto`}
                 priority
               />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-6 flex-1 justify-end px-12">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
 
@@ -98,8 +103,8 @@ export default function Navbar() {
                         >
                           <div className="w-1/3 bg-gray-50 relative p-8">
                             <Image 
-                              src="/gallery_1.png" 
-                              alt="Lumina Services" 
+                              src="/gallery_1.webp" 
+                              alt="Saudi Event Management Services" 
                               fill 
                               className="object-cover opacity-50 grayscale"
                             />
@@ -154,12 +159,12 @@ export default function Navbar() {
                             <span className="text-gray-400 text-[10px] font-medium leading-tight">Overview of partnerships</span>
                           </Link>
                           <Link 
-                            href="/vendor-registration" 
+                            href="/partners/become-one" 
                             className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
                             onClick={() => setHoveredLink(null)}
                           >
-                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Vendor Registration</span>
-                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Join our elite vendor network</span>
+                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Become a Partner</span>
+                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Join our elite ecosystem</span>
                           </Link>
                         </motion.div>
                       )}
@@ -177,14 +182,19 @@ export default function Navbar() {
                           transition={{ duration: 0.3 }}
                           className="absolute top-full left-0 w-[200px] bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden mt-4 p-2"
                         >
-                          {["Riyadh", "Jeddah", "Makkah", "Madinah", "AlUla", "Dammam"].map((city) => (
+                          {[
+                            { name: "Riyadh", href: "/locations/riyadh" },
+                            { name: "Jeddah", href: "/locations/jeddah" },
+                            { name: "AlUla", href: "/locations/alula" },
+                            { name: "Dammam", href: "/locations/dammam" },
+                          ].map((city) => (
                             <Link 
-                              key={city}
-                              href="/locations" 
+                              key={city.name}
+                              href={city.href} 
                               className="flex p-3 hover:bg-gray-50 rounded-xl transition-all group/sub"
                               onClick={() => setHoveredLink(null)}
                             >
-                              <span className="text-black text-[10px] font-bold uppercase tracking-widest group-hover/sub:text-primary transition-colors">{city}</span>
+                              <span className="text-black text-[10px] font-bold uppercase tracking-widest group-hover/sub:text-primary transition-colors">{city.name}</span>
                             </Link>
                           ))}
                         </motion.div>
@@ -194,18 +204,25 @@ export default function Navbar() {
                 </div>
               );
             })}
-
-            {/* Premium CTA */}
-            <div className="flex items-center gap-6">
-              <Link
-                href="https://wa.me/966501234567?text=Hi%20Lumina%20Events!%20I%20am%20interested%20in%20your%20event%20management%20services."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary text-white text-[10px] py-3 px-8 uppercase tracking-[0.2em] font-bold rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30"
-              >
-                Book Now
-              </Link>
             </div>
+
+
+          {/* Premium CTA */}
+          <div className="hidden lg:flex items-center gap-6">
+            <button className="flex items-center gap-2 group">
+              <span className="text-[10px] font-bold tracking-widest text-primary">EN</span>
+              <span className="w-px h-3 bg-gray-200" />
+              <span className="text-[10px] font-bold tracking-widest text-gray-400 group-hover:text-black transition-colors">AR</span>
+            </button>
+            
+            <Link
+              href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white text-[10px] py-3 px-8 uppercase tracking-[0.2em] font-bold rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30"
+            >
+              Book Now
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
