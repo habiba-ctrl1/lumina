@@ -49,15 +49,15 @@ export default function AboutPage() {
             <div className="absolute -inset-4 bg-gold-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="relative h-[600px] rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
               <Image 
-                src="/founder.webp" 
-                alt="Our Founder" 
+                src="/gallery_2.webp" 
+                alt="Luxury Event Vision" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-2xl shadow-xl max-w-xs">
               <p className="text-gold-600 font-sans text-lg mb-2 font-bold">&quot;We don&apos;t just plan events; we orchestrate emotions.&quot;</p>
-              <p className="text-gray-500 text-xs uppercase tracking-widest font-bold">— Habiba, Founder</p>
+              <p className="text-gray-500 text-xs uppercase tracking-widest font-bold">— The Lumina Collective</p>
             </div>
           </div>
 
@@ -65,16 +65,16 @@ export default function AboutPage() {
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-white leading-tight">Crafting Unparalleled Moments</h2>
             <div className="space-y-6 text-gray-400 font-light leading-relaxed text-lg text-justify">
               <p>
-                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba, a visionary curator with an obsession for architectural precision and emotional resonance, Saudi Event Management has quickly ascended as the definitive collective for those who demand nothing short of perfection.
+                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. As a collective of visionary curators with an obsession for architectural precision and emotional resonance, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
               </p>
               <p>
                 Our philosophy is rooted in the belief that every celebration is not just an event, but a living narrative—a masterpiece in motion. We don&apos;t simply plan; we orchestrate. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with global avant-garde aesthetics. 
               </p>
               <p>
-                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong>Architectural Emotion</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand dignitaries or an intimate corporate retreat for world leaders, we apply the same level of rigorous detail, ensuring that every touchpoint tells a story of elegance and legacy.
+                At the heart of our philosophy is the concept of <strong>Architectural Emotion</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand dignitaries or an intimate corporate retreat for world leaders, we apply the same level of rigorous detail, ensuring that every touchpoint tells a story of elegance and legacy.
               </p>
               <p>
-                As Saudi Arabia marches toward Vision 2030, Saudi Event Management stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural activations that showcase the Kingdom&apos;s sophistication to the global stage. Our mission is to transform fleeting moments into timeless legacies that echo through generations.
+                As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural activations that showcase the Kingdom&apos;s sophistication to the global stage. Our mission is to transform fleeting moments into timeless legacies that echo through generations.
               </p>
             </div>
             
