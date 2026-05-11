@@ -12,6 +12,7 @@ type BlogPost = {
   slug: string;
   category: string;
   published: boolean;
+  readTime?: string;
   createdAt: string;
   media?: { url: string }[];
 };

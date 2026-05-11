@@ -19,6 +19,7 @@ type Inquiry = {
   message: string;
   source?: string;
   status?: string;
+  assignedTo?: string;
   createdAt: string;
 };
 

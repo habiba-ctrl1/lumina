@@ -7,7 +7,6 @@ export async function GET() {
     const posts = await prisma.blogPost.findMany({
       orderBy: { createdAt: 'desc' },
       include: {
-        author: true,
         media: true,
       }
     });
@@ -25,12 +24,10 @@ export async function POST(request: Request) {
       data: {
         title: body.title,
         slug: body.slug,
-        excerpt: body.excerpt,
         content: body.content,
         category: body.category,
         readTime: body.readTime || "5 min read",
-        published: body.published ?? false,
-        authorId: body.authorId, // Should come from session in real app
+        author: body.author || "Admin",
       },
     });
 

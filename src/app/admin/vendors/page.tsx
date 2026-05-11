@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Briefcase, Star, Search, RefreshCw, Plus, X, Phone, Mail, MapPin, MoreVertical } from "lucide-react";
+import { Briefcase, Star, Search, RefreshCw, Plus, X, Phone, Mail, MapPin, MoreVertical, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Vendor = {
