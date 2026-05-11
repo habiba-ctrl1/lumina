@@ -79,7 +79,7 @@ export default function AdminInquiries() {
     <div className="pb-20 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
             Client Inquiries
           </h1>
           <p className="text-slate-500 font-medium">Manage and respond to event leads from your elite network.</p>
@@ -231,7 +231,7 @@ export default function AdminInquiries() {
                   <User size={28} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-extrabold text-slate-900 leading-none mb-2">{inquiry.name}</h3>
+                  <h3 className="text-base font-extrabold text-slate-900 leading-none mb-2">{inquiry.name}</h3>
                   <div className="flex items-center gap-2">
                     <Briefcase size={12} className="text-gold-500" />
                     <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black">

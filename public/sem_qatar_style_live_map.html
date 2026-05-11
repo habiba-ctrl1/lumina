@@ -1,0 +1,236 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sem{background:#03030a;font-family:'Georgia',serif;padding:1.5rem 1rem 1rem;user-select:none}
+.sem-top{text-align:center;margin-bottom:1.2rem}
+.sem-eye{font-size:9px;letter-spacing:.35em;color:#D4AF37;font-family:sans-serif;margin-bottom:6px}
+.sem-h{font-size:19px;font-weight:400;color:#f0e6cc;letter-spacing:.04em}
+.sem-h em{font-style:italic;color:#D4AF37}
+.sem-body{display:flex;gap:10px;align-items:flex-start}
+.sem-side{width:148px;flex-shrink:0}
+.cc{background:#070710;border:.5px solid #1c1c2e;border-radius:8px;padding:9px 11px;margin-bottom:6px;cursor:pointer;transition:border-color .25s,background .25s}
+.cc:hover,.cc.on{border-color:#D4AF37;background:#0c0c1a}
+.cc .cn{font-size:10px;font-weight:700;color:#D4AF37;letter-spacing:.14em;font-family:sans-serif;margin-bottom:2px}
+.cc .cs{font-size:8px;color:#3a3a50;letter-spacing:.07em;font-family:sans-serif}
+.cc.on .cs{color:#6a6040}
+.sem-map{flex:1;position:relative}
+.sem-map svg{width:100%;height:auto;display:block}
+.sem-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;justify-content:center}
+.pill{font-size:8px;letter-spacing:.13em;padding:4px 11px;border-radius:20px;border:.5px solid #1a1a28;color:#444;cursor:pointer;transition:all .25s;background:transparent;font-family:sans-serif}
+.pill:hover,.pill.on{border-color:#D4AF37;color:#D4AF37;background:rgba(212,175,55,.06)}
+.pop{display:none;position:absolute;background:#09091a;border:1px solid #D4AF37;border-radius:10px;padding:13px 15px;min-width:165px;z-index:30;pointer-events:all}
+.pop.show{display:block}
+.pop::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:10px;height:6px;background:#D4AF37;clip-path:polygon(0 0,100% 0,50% 100%)}
+.pop .pn{font-size:11px;font-weight:700;color:#D4AF37;letter-spacing:.14em;font-family:sans-serif;margin-bottom:2px}
+.pop .ps{font-size:8px;color:#55556a;letter-spacing:.08em;font-family:sans-serif;margin-bottom:9px}
+.pop .pe{font-size:9px;color:#999;font-family:sans-serif;margin-bottom:9px}
+.pop .pe b{color:#D4AF37}
+.pop .pb{font-size:8px;color:#D4AF37;border:.5px solid #D4AF37;border-radius:4px;padding:5px 10px;display:block;text-align:center;letter-spacing:.1em;font-family:sans-serif;cursor:pointer;transition:background .2s}
+.pop .pb:hover{background:rgba(212,175,55,.1)}
+@keyframes rp{0%{r:7;stroke-opacity:.8}100%{r:18;stroke-opacity:0}}
+@keyframes rp2{0%{r:7;stroke-opacity:.6}100%{r:26;stroke-opacity:0}}
+@keyframes dd{from{stroke-dashoffset:28}to{stroke-dashoffset:0}}
+@keyframes ddr{from{stroke-dashoffset:0}to{stroke-dashoffset:28}}
+.ra{fill:none;stroke:#D4AF37;stroke-width:.9;stroke-opacity:.28;stroke-dasharray:3 6;animation:dd 3.5s linear infinite}
+.rar{fill:none;stroke:#D4AF37;stroke-width:.9;stroke-opacity:.28;stroke-dasharray:3 6;animation:ddr 4.2s linear infinite}
+.lp1{fill:none;stroke:#D4AF37;stroke-width:1;animation:rp 2.2s ease-out infinite}
+.lp2{fill:none;stroke:#D4AF37;stroke-width:1;animation:rp2 2.2s ease-out infinite;animation-delay:.9s}
+.dot{cursor:pointer}
+.dot circle.d{fill:#D4AF37}
+.dot:hover circle.d{r:7}
+.lbl{fill:#c9a428;font-size:7.5px;letter-spacing:.1em;pointer-events:none;font-family:sans-serif;font-weight:600}
+</style>
+
+<div class="sem">
+  <div class="sem-top">
+    <p class="sem-eye">OUR PRESENCE ACROSS THE KINGDOM</p>
+    <h2 class="sem-h">Crafting <em>Masterpieces</em> in Every Corner of Saudi Arabia</h2>
+  </div>
+
+  <div class="sem-body">
+    <div class="sem-side">
+      <div class="cc on" id="cc-riyadh" onclick="fc('riyadh')"><div class="cn">RIYADH</div><div class="cs">CAPITAL HEADQUARTERS</div></div>
+      <div class="cc" id="cc-jeddah" onclick="fc('jeddah')"><div class="cn">JEDDAH</div><div class="cs">RED SEA GATEWAY</div></div>
+      <div class="cc" id="cc-alula" onclick="fc('alula')"><div class="cn">ALULA</div><div class="cs">HERITAGE LUXURY</div></div>
+      <div class="cc" id="cc-makkah" onclick="fc('makkah')"><div class="cn">MAKKAH</div><div class="cs">SACRED ELEGANCE</div></div>
+      <div class="cc" id="cc-madinah" onclick="fc('madinah')"><div class="cn">MADINAH</div><div class="cs">HOLY CITY HUB</div></div>
+      <div class="cc" id="cc-dammam" onclick="fc('dammam')"><div class="cn">DAMMAM</div><div class="cs">EASTERN GATEWAY</div></div>
+    </div>
+
+    <div class="sem-map" id="mwrap">
+      <svg id="mapsvg" viewBox="0 0 950 780" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gg" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="ggg" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur stdDeviation="9" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="bg" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#0e0e22" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#03030a" stop-opacity="1"/>
+          </radialGradient>
+          <linearGradient id="arc1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- bg -->
+        <rect width="950" height="780" fill="url(#bg)" rx="10"/>
+
+        <!-- subtle grid dots -->
+        <pattern id="grid" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+          <circle cx="15" cy="15" r=".6" fill="#D4AF37" fill-opacity=".06"/>
+        </pattern>
+        <rect width="950" height="780" fill="url(#grid)" rx="10"/>
+
+        <!-- Saudi Arabia outline -->
+        <path d="M 38,151 C 55,100 70,60 79,43 L 190,43 C 220,43 270,58 317,78 C 370,100 440,115 495,130 C 515,155 530,175 535,195 L 554,208 C 575,222 608,230 634,281 C 650,305 662,315 666,325 L 674,390 L 686,411 C 730,430 800,442 833,455 L 853,477 C 830,520 780,565 713,606 C 680,640 655,658 634,671 L 535,692 C 490,705 440,712 396,714 L 348,701 C 340,697 338,694 336,692 L 316,670 C 305,650 300,638 296,627 C 285,605 278,592 276,584 C 268,562 262,550 258,541 C 240,510 228,503 218,498 C 205,488 190,470 178,455 C 160,430 148,418 138,411 C 122,390 112,375 118,368 C 105,348 95,335 99,325 C 88,303 72,290 79,281 C 68,258 52,248 59,238 C 45,215 35,202 40,195 C 32,172 30,160 36,151 Z"
+          fill="#0b0b1e" stroke="#D4AF37" stroke-width=".8" stroke-opacity=".4"/>
+
+        <!-- subtle country glow -->
+        <path d="M 38,151 C 55,100 70,60 79,43 L 190,43 C 220,43 270,58 317,78 C 370,100 440,115 495,130 C 515,155 530,175 535,195 L 554,208 C 575,222 608,230 634,281 C 650,305 662,315 666,325 L 674,390 L 686,411 C 730,430 800,442 833,455 L 853,477 C 830,520 780,565 713,606 C 680,640 655,658 634,671 L 535,692 C 490,705 440,712 396,714 L 348,701 C 340,697 338,694 336,692 L 316,670 C 305,650 300,638 296,627 C 285,605 278,592 276,584 C 268,562 262,550 258,541 C 240,510 228,503 218,498 C 205,488 190,470 178,455 C 160,430 148,418 138,411 C 122,390 112,375 118,368 C 105,348 95,335 99,325 C 88,303 72,290 79,281 C 68,258 52,248 59,238 C 45,215 35,202 40,195 C 32,172 30,160 36,151 Z"
+          fill="none" stroke="#D4AF37" stroke-width="3" stroke-opacity=".06" filter="url(#gg)"/>
+
+        <!-- ANIMATED ROUTE ARCS -->
+        <!-- Riyadh (505,357) → Jeddah (204,497) -->
+        <path class="ra" d="M 505,357 Q 290,240 204,497"/>
+        <!-- Riyadh → Dammam (638,284) -->
+        <path class="rar" d="M 505,357 Q 572,215 638,284"/>
+        <!-- Riyadh → AlUla (154,275) -->
+        <path class="ra" d="M 505,357 Q 310,185 154,275"/>
+        <!-- Riyadh → Madinah (220,365) -->
+        <path class="rar" d="M 505,357 Q 355,255 220,365"/>
+        <!-- Riyadh → Makkah (232,502) -->
+        <path class="ra" d="M 505,357 Q 295,268 232,502"/>
+        <!-- Jeddah → AlUla -->
+        <path class="rar" d="M 204,497 Q 88,360 154,275"/>
+        <!-- Jeddah → Makkah (short) -->
+        <path class="ra" d="M 204,497 Q 218,477 232,502"/>
+        <!-- Madinah → Makkah -->
+        <path class="rar" d="M 220,365 Q 188,430 232,502"/>
+        <!-- Dammam → Madinah -->
+        <path class="ra" d="M 638,284 Q 430,240 220,365"/>
+
+        <!-- CITY DOTS WITH PULSE -->
+        <!-- RIYADH -->
+        <g class="dot" id="dot-riyadh" onclick="sp('riyadh',this,505,357)">
+          <circle class="lp1" cx="505" cy="357" r="7"/>
+          <circle class="lp2" cx="505" cy="357" r="7"/>
+          <circle class="d" cx="505" cy="357" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="515" y="351">RIYADH</text>
+        </g>
+        <!-- JEDDAH -->
+        <g class="dot" id="dot-jeddah" onclick="sp('jeddah',this,204,497)">
+          <circle class="lp1" cx="204" cy="497" r="7"/>
+          <circle class="lp2" cx="204" cy="497" r="7"/>
+          <circle class="d" cx="204" cy="497" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="215" y="491">JEDDAH</text>
+        </g>
+        <!-- ALULA -->
+        <g class="dot" id="dot-alula" onclick="sp('alula',this,154,275)">
+          <circle class="lp1" cx="154" cy="275" r="7"/>
+          <circle class="lp2" cx="154" cy="275" r="7"/>
+          <circle class="d" cx="154" cy="275" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="165" y="269">ALULA</text>
+        </g>
+        <!-- MAKKAH -->
+        <g class="dot" id="dot-makkah" onclick="sp('makkah',this,232,502)">
+          <circle class="lp1" cx="232" cy="502" r="7"/>
+          <circle class="lp2" cx="232" cy="502" r="7"/>
+          <circle class="d" cx="232" cy="502" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="243" y="517">MAKKAH</text>
+        </g>
+        <!-- MADINAH -->
+        <g class="dot" id="dot-madinah" onclick="sp('madinah',this,220,365)">
+          <circle class="lp1" cx="220" cy="365" r="7"/>
+          <circle class="lp2" cx="220" cy="365" r="7"/>
+          <circle class="d" cx="220" cy="365" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="231" y="359">MADINAH</text>
+        </g>
+        <!-- DAMMAM -->
+        <g class="dot" id="dot-dammam" onclick="sp('dammam',this,638,284)">
+          <circle class="lp1" cx="638" cy="284" r="7"/>
+          <circle class="lp2" cx="638" cy="284" r="7"/>
+          <circle class="d" cx="638" cy="284" r="5" filter="url(#ggg)"/>
+          <text class="lbl" x="649" y="278">DAMMAM</text>
+        </g>
+      </svg>
+
+      <!-- Popup -->
+      <div class="pop" id="pop">
+        <div class="pn" id="pn">RIYADH</div>
+        <div class="ps" id="ps">CAPITAL HEADQUARTERS</div>
+        <div class="pe">Events delivered: <b id="pe">120+</b></div>
+        <div class="pb" id="pb">EXPLORE EVENTS →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sem-pills">
+    <div class="pill on" id="pill-riyadh" onclick="fc('riyadh')">RIYADH</div>
+    <div class="pill" id="pill-jeddah" onclick="fc('jeddah')">JEDDAH</div>
+    <div class="pill" id="pill-alula" onclick="fc('alula')">ALULA</div>
+    <div class="pill" id="pill-makkah" onclick="fc('makkah')">MAKKAH</div>
+    <div class="pill" id="pill-madinah" onclick="fc('madinah')">MADINAH</div>
+    <div class="pill" id="pill-dammam" onclick="fc('dammam')">DAMMAM</div>
+  </div>
+</div>
+
+<script>
+const CD={
+  riyadh:{n:'RIYADH',s:'CAPITAL HEADQUARTERS',e:'120+',svgX:505,svgY:357,href:'/locations/riyadh'},
+  jeddah:{n:'JEDDAH',s:'RED SEA GATEWAY',e:'85+',svgX:204,svgY:497,href:'/locations/jeddah'},
+  alula:{n:'ALULA',s:'HERITAGE LUXURY',e:'35+',svgX:154,svgY:275,href:'/locations/alula'},
+  makkah:{n:'MAKKAH',s:'SACRED ELEGANCE',e:'42+',svgX:232,svgY:502,href:'/locations/makkah'},
+  madinah:{n:'MADINAH',s:'HOLY CITY HUB',e:'30+',svgX:220,svgY:365,href:'/locations/madinah'},
+  dammam:{n:'DAMMAM',s:'EASTERN GATEWAY',e:'55+',svgX:638,svgY:284,href:'/locations/dammam'}
+};
+
+function fc(id){
+  document.querySelectorAll('.cc').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));
+  document.getElementById('cc-'+id).classList.add('on');
+  document.getElementById('pill-'+id).classList.add('on');
+  const svg=document.getElementById('mapsvg');
+  const g=document.getElementById('dot-'+id);
+  const c=CD[id];
+  showPop(id,c.svgX,c.svgY);
+}
+
+function sp(id,el,sx,sy){
+  fc(id);
+}
+
+function showPop(id,sx,sy){
+  const c=CD[id];
+  const pop=document.getElementById('pop');
+  const svg=document.getElementById('mapsvg');
+  const wrap=document.getElementById('mwrap');
+  const sr=svg.getBoundingClientRect();
+  const wr=wrap.getBoundingClientRect();
+  const scx=sr.width/950;
+  const scy=sr.height/780;
+  let px=(sx*scx)+(sr.left-wr.left);
+  let py=(sy*scy)+(sr.top-wr.top);
+  pop.style.left=(px-82)+'px';
+  pop.style.top=(py-145)+'px';
+  document.getElementById('pn').textContent=c.n;
+  document.getElementById('ps').textContent=c.s;
+  document.getElementById('pe').textContent=c.e;
+  document.getElementById('pb').onclick=()=>openLink('https://saudieventmanagement.com'+c.href);
+  pop.classList.add('show');
+}
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.dot')&&!e.target.closest('.cc')&&!e.target.closest('.pill')&&!e.target.closest('.pop')){
+    document.getElementById('pop').classList.remove('show');
+  }
+});
+
+setTimeout(()=>fc('riyadh'),400);
+</script>

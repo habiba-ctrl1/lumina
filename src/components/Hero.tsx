@@ -42,7 +42,7 @@ export default function Hero() {
     <div
       id="home"
       ref={containerRef}
-      className="relative min-h-screen lg:h-screen w-full flex items-center justify-center bg-white pt-32 md:pt-48 pb-12"
+      className="relative min-h-screen lg:h-[85vh] w-full flex items-center justify-center bg-white pt-32 md:pt-48 pb-12"
     >
 
 
@@ -106,8 +106,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white font-bold uppercase tracking-tight leading-[1.1] mb-8"
-          style={{ fontSize: "clamp(1.5rem, 4vw, 2.6rem)" }}
+          className="text-white font-bold uppercase tracking-tight leading-[1.1] mb-4"
+          style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.2rem)" }}
         >
           Masterpieces of <br />
           <span className="text-primary">Luxury</span>
@@ -118,7 +118,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-12 leading-relaxed font-medium"
+          className="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-8 leading-relaxed font-medium"
         >
           Curating exquisite weddings, corporate galas, and private celebrations.
           We bring world-class elegance to <span className="text-white font-bold tracking-tight">Riyadh</span>, 
@@ -131,7 +131,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-xl shadow-black/20 border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-6 relative z-20"
+          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-xl shadow-black/20 border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-4 relative z-20"
         >
           <div className="bg-[#041E42]/40 backdrop-blur-md border border-white/5 rounded-[1.8rem] p-3 md:p-4">
             <form 
@@ -204,9 +204,9 @@ export default function Hero() {
           className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6"
         >
           {[
-            { label: "100+ EVENTS" },
-            { label: "100% SATISFACTION" },
-            { label: "AWARD-WINNING" },
+            { label: "250+ ELITE EVENTS" },
+            { label: "100% RETENTION" },
+            { label: "SAUDI BUSINESS AWARDS 2025" },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center">
               <span className="text-primary text-[9px] font-bold uppercase tracking-[0.2em]">

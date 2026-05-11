@@ -44,7 +44,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-gray-50 relative overflow-hidden">
+    <section className="py-16 bg-gray-50 relative overflow-hidden">
       <div className="container-luxury relative z-10">
         {/* Main Box Wrapper */}
         <div className="border border-gray-200 bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md">
@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-black text-3xl md:text-4xl lg:text-5xl mb-6 font-bold"
+                className="text-black text-2xl md:text-3xl mb-4 font-bold"
               >
                 The Saudi Event Management <span className="text-primary italic">Standard</span>
               </motion.h3>
@@ -73,7 +73,7 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 max-w-sm"
+                className="text-gray-500 text-[13px] leading-relaxed mb-8 max-w-sm"
               >
                 Absolute perfection for your grandest visions.
               </motion.p>
@@ -129,10 +129,10 @@ export default function WhyChooseUs() {
                     <div className="text-primary mb-5 bg-gold-50 w-14 h-14 flex items-center justify-center rounded-full border border-gold-100 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                       {reason.icon}
                     </div>
-                    <h5 className="text-black text-base md:text-lg mb-3 font-bold uppercase tracking-tight">
+                    <h5 className="text-black text-sm md:text-base mb-3 font-bold uppercase tracking-tight">
                       {reason.title}
                     </h5>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-[13px] leading-relaxed">
                       {reason.desc}
                     </p>
                   </motion.div>

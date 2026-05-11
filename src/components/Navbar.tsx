@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Heart, Briefcase, Presentation, Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -101,36 +101,49 @@ export default function Navbar() {
                           transition={{ duration: 0.3 }}
                           className="absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden flex mt-4"
                         >
-                          <div className="w-1/3 bg-gray-50 relative p-8">
-                            <Image 
-                              src="/gallery_1.webp" 
-                              alt="Saudi Event Management Services" 
-                              fill 
-                              className="object-cover opacity-50 grayscale"
-                            />
-                            <div className="absolute inset-0 bg-black/10" />
-                            <div className="relative z-10 h-full flex flex-col justify-end">
-                              <h3 className="text-black font-sans text-lg mb-2 font-bold">Bespoke<br/>Experiences</h3>
-                              <p className="text-gray-600 text-[10px] font-semibold">Crafting extraordinary events.</p>
+                          <div className="w-[280px] bg-gray-50 relative p-8 border-r border-gray-100 flex flex-col justify-between overflow-hidden">
+                            <div className="absolute inset-0 opacity-10">
+                              <Image 
+                                src="/main-logo.webp" 
+                                alt="Background Pattern" 
+                                fill 
+                                className="object-contain p-4 scale-150 rotate-12"
+                              />
                             </div>
+                            <div className="relative z-10">
+                              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Our Expertise</span>
+                              <h3 className="text-black font-sans text-xl leading-tight font-bold">Bespoke<br/>Experiences</h3>
+                            </div>
+                            <Link 
+                              href="/services"
+                              onClick={() => setHoveredLink(null)}
+                              className="relative z-10 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-primary transition-colors group/all"
+                            >
+                              View All Services <ArrowRight size={12} className="group-hover/all:translate-x-1 transition-transform" />
+                            </Link>
                           </div>
-                          <div className="w-2/3 p-8 grid grid-cols-2 gap-x-8 gap-y-4">
+                          <div className="flex-1 p-8 grid grid-cols-2 gap-x-10 gap-y-6">
                             {[
-                              { name: "Royal Weddings", href: "/services/weddings" },
-                              { name: "Corporate Galas", href: "/services/corporate-events" },
-                              { name: "Exhibitions & Trade", href: "/services/exhibitions" },
-                              { name: "Production & Venues", href: "/services/production-venues" },
-                              { name: "Seasonal Festivals", href: "/services/seasonal" },
-                              { name: "Private Events", href: "/services" },
+                              { name: "Royal Weddings", href: "/services/weddings", icon: Heart, desc: "Ultra-luxury celebrations" },
+                              { name: "Corporate Galas", href: "/services/corporate-events", icon: Briefcase, desc: "High-stakes networking" },
+                              { name: "Exhibitions & Trade", href: "/services/exhibitions", icon: Presentation, desc: "B2B brand showcases" },
+                              { name: "Production & Venues", href: "/services/production-venues", icon: Landmark, desc: "Iconic space curation" },
+                              { name: "Seasonal Festivals", href: "/services/seasonal", icon: Sparkles, desc: "Regional cultural events" },
+                              { name: "Private Events", href: "/services", icon: Users, desc: "Exclusive social gatherings" },
                             ].map((item) => (
                               <Link 
                                 key={item.name} 
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
-                                className="group/item flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                                className="group/item flex items-start gap-4 transition-all"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/item:bg-primary transition-colors" />
-                                <span className="text-black text-[11px] font-bold uppercase tracking-widest">{item.name}</span>
+                                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/item:bg-primary group-hover/item:border-primary transition-all duration-300">
+                                  <item.icon size={18} className="text-gray-400 group-hover/item:text-white transition-colors" />
+                                </div>
+                                <div>
+                                  <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/item:text-primary transition-colors">{item.name}</span>
+                                  <span className="text-gray-400 text-[9px] font-medium leading-none block">{item.desc}</span>
+                                </div>
                               </Link>
                             ))}
                           </div>
@@ -152,19 +165,29 @@ export default function Navbar() {
                         >
                           <Link 
                             href="/partners" 
-                            className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                            className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
                             onClick={() => setHoveredLink(null)}
                           >
-                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Partner with Us</span>
-                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Overview of partnerships</span>
+                            <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/sub:bg-primary transition-colors">
+                              <Users size={14} className="text-gray-400 group-hover/sub:text-white" />
+                            </div>
+                            <div>
+                              <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/sub:text-primary transition-colors">Partner with Us</span>
+                              <span className="text-gray-400 text-[9px] font-medium leading-none block">Overview of partnerships</span>
+                            </div>
                           </Link>
                           <Link 
                             href="/partners/become-one" 
-                            className="flex flex-col p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                            className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
                             onClick={() => setHoveredLink(null)}
                           >
-                            <span className="text-black text-[11px] font-bold uppercase tracking-widest mb-1 group-hover/sub:text-primary transition-colors">Become a Partner</span>
-                            <span className="text-gray-400 text-[10px] font-medium leading-tight">Join our elite ecosystem</span>
+                            <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/sub:bg-primary transition-colors">
+                              <UserPlus size={14} className="text-gray-400 group-hover/sub:text-white" />
+                            </div>
+                            <div>
+                              <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/sub:text-primary transition-colors">Become a Partner</span>
+                              <span className="text-gray-400 text-[9px] font-medium leading-none block">Join our elite ecosystem</span>
+                            </div>
                           </Link>
                         </motion.div>
                       )}
@@ -191,9 +214,10 @@ export default function Navbar() {
                             <Link 
                               key={city.name}
                               href={city.href} 
-                              className="flex p-3 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                              className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-xl transition-all group/sub"
                               onClick={() => setHoveredLink(null)}
                             >
+                              <MapPin size={12} className="text-gray-300 group-hover/sub:text-primary" />
                               <span className="text-black text-[10px] font-bold uppercase tracking-widest group-hover/sub:text-primary transition-colors">{city.name}</span>
                             </Link>
                           ))}

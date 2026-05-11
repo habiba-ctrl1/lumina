@@ -174,7 +174,7 @@ export default function AdminDashboard() {
       {/* Header Section */}
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
             Dashboard Overview
           </h1>
           <p className="text-slate-500 font-medium">
@@ -213,8 +213,8 @@ export default function AdminDashboard() {
               <TrendingUp size={16} className="text-slate-300" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-500 mb-1">{card.label}</p>
-              <h3 className="text-3xl font-bold text-slate-900">
+              <p className="text-xs font-semibold text-slate-500 mb-1">{card.label}</p>
+              <h3 className="text-2xl font-bold text-slate-900">
                 {loading ? "—" : card.value}
               </h3>
               <p className="text-[11px] text-slate-400 mt-2 font-medium">{card.subtext}</p>
@@ -231,7 +231,7 @@ export default function AdminDashboard() {
               <BarChart3 size={18} />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Event Pipeline</h2>
+              <h2 className="text-base font-bold text-slate-900 tracking-tight">Event Pipeline</h2>
               <p className="text-xs text-slate-500 font-medium">Distribution of events by stage</p>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default function AdminDashboard() {
               <PieChartIcon size={18} />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Lead Sources</h2>
+              <h2 className="text-base font-bold text-slate-900 tracking-tight">Lead Sources</h2>
               <p className="text-xs text-slate-500 font-medium">Where your inquiries are coming from</p>
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function AdminDashboard() {
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
             <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-bold text-slate-900">Recent Vendor Quotes</h2>
+                <h2 className="text-base font-bold text-slate-900">Recent Vendor Quotes</h2>
                 <p className="text-xs text-slate-500 mt-0.5">Manage and review incoming vendor proposals</p>
               </div>
               <Link href="/admin/quotes" className="text-xs font-bold text-gold-600 hover:text-gold-700 transition-colors bg-gold-50 px-4 py-2 rounded-lg">
@@ -377,7 +377,7 @@ export default function AdminDashboard() {
           {/* Inquiries Section */}
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
             <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-slate-900">Latest Inquiries</h2>
+              <h2 className="text-base font-bold text-slate-900">Latest Inquiries</h2>
               <Link href="/admin/inquiries" className="text-xs font-bold text-gold-600 hover:text-gold-700">View All</Link>
             </div>
             

@@ -106,7 +106,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Sparkles className="text-gold-500 group-hover:text-white transition-colors" size={24} />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-black text-slate-900 tracking-tighter leading-none uppercase">Saudi Event</span>
+              <span className="text-base font-black text-slate-900 tracking-tighter leading-none uppercase">Saudi Event</span>
               <span className="text-[9px] text-gold-600 font-black uppercase tracking-[0.3em] mt-1.5 opacity-80">Intelligence Hub</span>
             </div>
           </Link>
@@ -123,7 +123,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center group relative px-5 py-4 rounded-2xl text-[13px] font-bold transition-all duration-300 ${
+                className={`flex items-center group relative px-5 py-4 rounded-2xl text-[12px] font-bold transition-all duration-300 ${
                   isActive
                     ? "bg-slate-900 text-white shadow-2xl shadow-slate-900/20"
                     : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"

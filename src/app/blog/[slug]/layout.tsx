@@ -6,7 +6,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return {
@@ -18,12 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} | Saudi Event Management Journal`,
     description: post.excerpt,
     alternates: {
-      canonical: `https://saudieventmanagement.com/blog/${params.slug}`,
+      canonical: `https://saudieventmanagement.com/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `/blog/${params.slug}`,
+      url: `/blog/${slug}`,
       images: [{ url: post.image }],
     },
   };

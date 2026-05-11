@@ -4,6 +4,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
+import SaudiMap from "@/components/SaudiMap";
 
 export const metadata = {
   title: 'Our Locations | Saudi Event Management',
@@ -64,8 +65,10 @@ export default function LocationsPage() {
         </div>
       </section>
 
+      <SaudiMap />
+
       {/* Locations Grid */}
-      <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {locations.map((loc) => (
             <Link 

@@ -10,18 +10,18 @@ export default function BlogPreview() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="section-minimal bg-white relative">
+    <section className="py-16 bg-white relative">
       <div className="container-minimal relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-px bg-primary/30" />
               <span className="text-[11px] uppercase tracking-[0.5em] text-primary font-bold">Journal</span>
             </div>
-            <h2 className="text-black mb-8">
+            <h2 className="text-black text-2xl md:text-3xl font-bold mb-4 uppercase tracking-tight">
               Latest <span className="text-primary">Stories</span>
             </h2>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xl">
+            <p className="text-gray-500 text-[13px] leading-relaxed max-w-xl">
               Explore our curated collection of event planning wisdom, industry insights, and trending aesthetics.
             </p>
           </div>
@@ -58,10 +58,10 @@ export default function BlogPreview() {
                     <span className="flex items-center gap-2"><Calendar size={14} className="text-primary" /> {post.date}</span>
                     <span className="flex items-center gap-2"><Clock size={14} className="text-primary" /> {post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-black mb-6 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-black mb-6 group-hover:text-primary transition-colors duration-300">
                     {post.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-8 line-clamp-2">
+                  <p className="text-gray-500 text-[13px] leading-relaxed mb-8 line-clamp-2">
                     {post.excerpt}
                   </p>
                   <div className="mt-auto flex items-center gap-3 text-black text-[11px] uppercase tracking-[0.3em] font-bold group-hover:gap-5 transition-all">

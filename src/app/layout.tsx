@@ -55,6 +55,9 @@ export const metadata: Metadata = {
   },
   alternates: { 
     canonical: "https://saudieventmanagement.com",
+    languages: {
+      "ar-SA": "https://saudieventmanagement.com/ar",
+    },
   },
 };
 
@@ -67,7 +70,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalSchema = {
-// ... (omitting schema for brevity in replacement, but I will keep it in the actual call)
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -75,18 +77,19 @@ export default function RootLayout({
         "@id": "https://saudieventmanagement.com/#organization",
         "name": "Saudi Event Management",
         "url": "https://saudieventmanagement.com",
-        "logo": "https://saudieventmanagement.com/sem-logo.svg",
+        "logo": "https://saudieventmanagement.com/main-logo.webp",
         "sameAs": [
-          "https://instagram.com/saudieventmanagement",
+          "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
           "https://linkedin.com/company/saudieventmanagement"
         ]
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://saudieventmanagement.com/#localbusiness",
-        "name": "Saudi Event Management Luxury Event Management Riyadh",
+        "@id": "https://saudieventmanagement.com/#localbusiness-riyadh",
+        "name": "Saudi Event Management - Riyadh Headquarters",
         "image": "https://saudieventmanagement.com/hero_bg.webp",
         "telephone": "+966501234567",
+        "priceRange": "$$$",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Olaya St",
@@ -98,6 +101,45 @@ export default function RootLayout({
           "@type": "GeoCoordinates",
           "latitude": "24.7136",
           "longitude": "46.6753"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "184"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": "H.H. Princess Noura",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+            "reviewBody": "The level of architectural precision and emotional resonance was staggering. They curate history."
+          },
+          {
+            "@type": "Review",
+            "author": "Khalid Al-Mansour",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+            "reviewBody": "A masterclass in high-stakes corporate logistics and ultra-luxury hospitality."
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://saudieventmanagement.com/#localbusiness-jeddah",
+        "name": "Saudi Event Management - Jeddah Coastal Office",
+        "image": "https://saudieventmanagement.com/gallery_corporate_gala.webp",
+        "telephone": "+966509876543",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jeddah Corniche",
+          "addressLocality": "Jeddah",
+          "addressRegion": "Makkah Province",
+          "addressCountry": "SA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "21.4858",
+          "longitude": "39.1925"
         }
       },
       {
@@ -115,60 +157,26 @@ export default function RootLayout({
         "isPartOf": { "@id": "https://saudieventmanagement.com/#website" }
       },
       {
-        "@type": "EventSeries",
-        "@id": "https://saudieventmanagement.com/#eventseries",
-        "name": "Saudi Event Management Signature Events",
-        "description": "A series of high-profile corporate, exhibition, and luxury social events managed by Saudi Event Management across KSA.",
-        "organizer": { "@id": "https://saudieventmanagement.com/#organization" }
-      },
-      {
         "@type": "FAQPage",
         "@id": "https://saudieventmanagement.com/#faqpage",
-        "mainEntity": []
-      },
-      {
-        "@type": "HowTo",
-        "@id": "https://saudieventmanagement.com/#howto",
-        "name": "How to Plan an Event in Saudi Arabia with Saudi Event Management",
-        "step": [
-          { "@type": "HowToStep", "text": "Contact our expert consultants for a discovery session." },
-          { "@type": "HowToStep", "text": "Collaborate on bespoke event design and logistics planning." },
-          { "@type": "HowToStep", "text": "Experience flawless execution of your premium event." }
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you offer destination event planning in Saudi Arabia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we specialize in high-end destination events across the Kingdom, including AlUla heritage sites, NEOM future summits, and Red Sea coastal weddings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the average budget for a luxury event?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our bespoke events typically range from 500,000 SAR to over 1,000,000 SAR, depending on the scale and architectural complexity."
+            }
+          }
         ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://saudieventmanagement.com/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" }
-        ]
-      },
-      {
-        "@type": "Article",
-        "@id": "https://saudieventmanagement.com/#article",
-        "headline": "Saudi Event Management Insights",
-        "author": { "@type": "Person", "name": "Saudi Event Management Experts" },
-        "publisher": { "@id": "https://saudieventmanagement.com/#organization" }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://saudieventmanagement.com/#person",
-        "name": "Habiba",
-        "jobTitle": "Founder & Event Director"
-      },
-      {
-        "@type": "AggregateRating",
-        "@id": "https://saudieventmanagement.com/#aggregaterating",
-        "itemReviewed": { "@id": "https://saudieventmanagement.com/#localbusiness" },
-        "ratingValue": "4.9",
-        "reviewCount": "150"
-      },
-      {
-        "@type": "Review",
-        "@id": "https://saudieventmanagement.com/#review",
-        "itemReviewed": { "@id": "https://saudieventmanagement.com/#localbusiness" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "author": { "@type": "Person", "name": "VIP Client" }
       },
       {
         "@type": "Service",
@@ -179,7 +187,7 @@ export default function RootLayout({
           "@type": "Offer",
           "priceSpecification": {
             "@type": "PriceSpecification",
-            "price": "75000",
+            "price": "500000",
             "priceCurrency": "SAR"
           }
         }

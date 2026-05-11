@@ -28,9 +28,9 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="section-minimal bg-gray-50 relative overflow-hidden">
+    <section id="process" className="py-16 bg-gray-50 relative overflow-hidden">
       <div className="container-minimal">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -43,7 +43,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-black mb-10"
+            className="text-black text-2xl md:text-3xl font-bold mb-4 uppercase tracking-tight"
           >
             How We <span className="text-primary">Work</span>
           </motion.h2>
@@ -51,7 +51,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed"
+            className="text-gray-500 max-w-2xl mx-auto text-[13px] leading-relaxed"
           >
             A seamless journey from your first idea to the final applause.
           </motion.p>
@@ -73,10 +73,10 @@ export default function HowItWorks() {
                 <div className="text-primary mb-10">
                   {step.icon}
                 </div>
-                <h3 className="text-black text-lg mb-6 font-bold uppercase tracking-tight">
+                <h3 className="text-black text-base mb-6 font-bold uppercase tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-[13px] leading-relaxed">
                   {step.desc}
                 </p>
               </motion.div>

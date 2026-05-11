@@ -13,9 +13,9 @@ const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Manag
 export default function Footer() {
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", url: "https://instagram.com" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com" },
+    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" },
+    { icon: Twitter, label: "Twitter", url: "https://twitter.com/saudieventmgmt" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/company/saudieventmanagement" },
   ];
 
   return (
@@ -84,7 +84,7 @@ export default function Footer() {
             <ul className="space-y-8">
               <li className="flex items-start"><MapPin size={16} className="text-primary mr-3 mt-0.5 shrink-0" /><span className="text-gray-600 text-sm">Riyadh, Jeddah, AlUla & Dammam</span></li>
               <li className="flex items-center"><Phone size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">+966 50 123 4567</span></li>
-              <li className="flex items-center"><Mail size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">saudieventmanagementt@gmail.com</span></li>
+              <li className="flex items-center"><Mail size={16} className="text-primary mr-3 shrink-0" /><span className="text-gray-600 text-sm">hello@saudieventmanagement.com</span></li>
             </ul>
           </div>
         </div>
@@ -122,14 +122,14 @@ export default function Footer() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase tracking-tight">Stay Inspired</h3>
-              <p className="text-gray-500 text-sm md:text-base leading-relaxed">Join our inner circle for exclusive event insights, luxury trends, and a first look at our latest masterpieces.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-4 uppercase tracking-tight">Stay Inspired</h3>
+              <p className="text-gray-500 text-[13px] leading-relaxed">Join our inner circle for exclusive event insights, luxury trends, and a first look at our latest masterpieces.</p>
             </div>
             <form className="flex flex-col sm:flex-row gap-4">
               <input 
                 type="email" 
                 placeholder="Email Address" 
-                className="flex-grow bg-gray-50 border border-gray-100 p-5 rounded-xl text-sm focus:border-primary outline-none transition-all"
+                className="flex-grow bg-white border-2 border-gray-100 p-5 rounded-xl text-sm focus:border-primary outline-none transition-all shadow-inner placeholder:text-gray-400 text-black"
                 required
               />
               <button 

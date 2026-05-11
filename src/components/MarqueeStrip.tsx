@@ -3,9 +3,9 @@
 import { Crown, Heart, Star, Gem, Award, Sparkles } from "lucide-react";
 
 const items = [
-  { icon: Crown, text: "500+ Events Delivered" },
+  { icon: Crown, text: "250+ Elite Events" },
   { icon: Heart, text: "100% Client Satisfaction" },
-  { icon: Star, text: "Award-Winning Team" },
+  { icon: Star, text: "Middle East Events Winner 2024" },
   { icon: Gem, text: "Luxury Certified" },
   { icon: Award, text: "Vision 2030 Partner" },
   { icon: Sparkles, text: "Premium Partners" },

@@ -9,12 +9,14 @@ import BusinessLiveFeed from "@/components/BusinessLiveFeed";
 import BlogPreview from "@/components/BlogPreview";
 import Footer from "@/components/Footer";
 
+import MapClient from "@/components/MapClient";
+
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import RecentEvents from "@/components/RecentEvents";
+import FilterablePortfolio from "@/components/FilterablePortfolio";
 import PartnersSection from "@/components/PartnersSection";
-import Testimonials from "@/components/Testimonials";
-import FeedbackForms from "@/components/FeedbackForms";
+import InstagramFeed from "@/components/InstagramFeed";
+import EngagementHub from "@/components/EngagementHub";
 
 export default function Home() {
   const jsonLd = {
@@ -55,7 +57,7 @@ export default function Home() {
         },
         "sameAs": [
           "https://www.facebook.com/saudieventmanagement",
-          "https://www.instagram.com/saudieventmanagement",
+          "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
           "https://www.twitter.com/saudieventmanagement"
         ]
       },
@@ -86,13 +88,13 @@ export default function Home() {
       <MarqueeStrip />
       <ContactSection />
       <StatsSection />
-      <RecentEvents />
+      <FilterablePortfolio />
       <HowItWorks />
+      <MapClient />
       <BlogPreview />
       <PartnersSection />
-      <Testimonials />
-      <FeedbackForms />
-      {/* <BusinessLiveFeed /> */}
+      <InstagramFeed />
+      <EngagementHub />
       <Footer />
       <WhatsAppButton />
     </main>

@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { name: "GEA", logo: "https://placehold.co/400x200/000000/D4AF37?text=GEA" },
-  { name: "NEOM", logo: "https://placehold.co/400x200/000000/D4AF37?text=NEOM" },
-  { name: "Vision 2030", logo: "https://placehold.co/400x200/000000/D4AF37?text=Vision+2030" },
-  { name: "Ministry of Culture", logo: "https://placehold.co/400x200/000000/D4AF37?text=Culture" },
-  { name: "Riyadh Season", logo: "https://placehold.co/400x200/000000/D4AF37?text=Riyadh+Season" },
-  { name: "Red Sea Global", logo: "https://placehold.co/400x200/000000/D4AF37?text=Red+Sea" },
-  { name: "Diriyah Gate", logo: "https://placehold.co/400x200/000000/D4AF37?text=Diriyah" },
-  { name: "Saudia", logo: "https://placehold.co/400x200/000000/D4AF37?text=Saudia" },
+  { name: "GEA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/General_Entertainment_Authority_Saudi_Arabia_logo.svg/512px-General_Entertainment_Authority_Saudi_Arabia_logo.svg.png" },
+  { name: "NEOM", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/NEOM_Logo.svg/512px-NEOM_Logo.svg.png" },
+  { name: "Vision 2030", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Saudi_Vision_2030_logo.svg/512px-Saudi_Vision_2030_logo.svg.png" },
+  { name: "Ministry of Culture", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Ministry_of_Culture_Saudi_Arabia_logo.svg/512px-Ministry_of_Culture_Saudi_Arabia_logo.svg.png" },
+  { name: "Riyadh Season", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Riyadh_Season_logo.svg/512px-Riyadh_Season_logo.svg.png" },
+  { name: "Red Sea Global", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Red_Sea_Global_Logo.png/512px-Red_Sea_Global_Logo.png" },
+  { name: "Diriyah Gate", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Diriyah_Gate_Development_Authority_logo.svg/512px-Diriyah_Gate_Development_Authority_logo.svg.png" },
+  { name: "Saudia", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Saudia_Logo.svg/512px-Saudia_Logo.svg.png" },
 ];
 
 export default function PartnersSection() {
   return (
-    <section id="partners" className="py-24 bg-white overflow-hidden border-y border-gray-50">
+    <section id="partners" className="py-16 bg-white overflow-hidden border-y border-gray-50">
       <div className="container-luxury">
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <motion.div
             animate={{ 
               y: [0, -5, 0],
@@ -41,12 +41,12 @@ export default function PartnersSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-bold text-black mb-6 uppercase tracking-tight"
+              className="text-2xl md:text-4xl font-bold text-black mb-4 uppercase tracking-tight"
             >
               Our Trusted <span className="text-primary italic">Partners</span>
             </motion.h2>
           </motion.div>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          <p className="text-gray-400 max-w-2xl mx-auto text-[13px] leading-relaxed">
             Collaborating with the world's most prestigious brands and suppliers to deliver excellence beyond expectations.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function PartnersSection() {
               {[...partners, ...partners, ...partners].map((partner, index) => (
                 <div
                   key={index}
-                  className="group relative w-[180px] h-[100px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 ease-in-out cursor-pointer scale-90 hover:scale-105"
+                  className="group relative w-[140px] h-[80px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 ease-in-out cursor-pointer scale-90 hover:scale-105"
                 >
                   <div className="relative w-full h-full p-4">
                     <Image
