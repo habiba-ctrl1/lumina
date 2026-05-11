@@ -1,59 +1,132 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { Resend } from 'resend';
+import { logActivity } from '@/lib/logger';
+
+import { generateAutomatedQuote } from '@/lib/quote-engine';
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API || 'missing-key');
+    const resend = new Resend(process.env.RESEND_API || 're_missing_key');
     const body = await request.json();
-    const { name, email, phone, company, eventType, budget, eventDate, guestCount, venueCity, message, source } = body;
+    const { 
+      name, email, phone, company, eventType, budget, 
+      eventDate, guestCount, venueCity, message, source 
+    } = body;
+
+    console.log('Incoming Inquiry:', { name, email, eventType });
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
     }
 
+    const team = ["Sarah", "Ahmed", "Nora", "Admin"];
+    const randomAssignee = team[Math.floor(Math.random() * team.length)];
+
     // 1. Save to Prisma (Local SQLite)
-    const contact = await prisma.contactMessage.create({
-      data: {
-        name,
-        email,
-        phone,
-        company,
-        event_type: eventType,
-        budget,
-        event_date: eventDate,
-        guest_count: guestCount,
-        venue_city: venueCity,
-        message,
-        source: source || 'direct_contact'
-      }
-    });
-
-    // 2. Send Emails via Resend
+    let inquiry;
     try {
-      // Admin Notification
-      await resend.emails.send({
-        from: 'Saudi Event Management <onboarding@resend.dev>',
-        to: ['saudieventmanagementt@gmail.com'],
-        subject: `New Inquiry: ${name}`,
-        html: `<div style="font-family: sans-serif; padding: 20px;"><h2>New Inquiry Received</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p></div>`,
-      });
+      // Generate Automated Quote
+      const quoteData = generateAutomatedQuote(eventType, guestCount, budget);
 
-      // User Confirmation
-      await resend.emails.send({
-        from: 'Saudi Event Management <onboarding@resend.dev>',
-        to: [email],
-        subject: 'We received your inquiry - Saudi Event Management',
-        html: `<div style="font-family: sans-serif; padding: 20px;"><h2>Thank You for Reaching Out!</h2><p>Hi ${name},</p><p>We have successfully received your inquiry at Saudi Event Management. As promised, our team is already reviewing your details and we will get back to you within <strong>2 hours</strong>.</p><p>We look forward to creating something extraordinary with you.</p><p>Warm regards,<br>The Saudi Event Management Team</p></div>`,
+      inquiry = await prisma.inquiry.create({
+        data: {
+          name,
+          email,
+          phone: phone || null,
+          company: company || null,
+          eventType: eventType || 'General',
+          budget: budget || null,
+          eventDate: eventDate || null,
+          guestCount: guestCount || null,
+          venueCity: venueCity || null,
+          message,
+          assignedTo: randomAssignee,
+          source: source || 'direct_contact',
+          estimate: {
+            create: {
+              baseAmount: quoteData.baseAmount,
+              serviceFee: quoteData.serviceFee,
+              totalAmount: quoteData.totalAmount,
+              breakdown: JSON.stringify(quoteData.breakdown),
+              status: 'Generated'
+            }
+          }
+        },
+        include: {
+          estimate: true
+        }
       });
-    } catch (emailError) {
-      console.error('Email error:', emailError);
+    } catch (prismaError) {
+      console.error('Prisma Create Error:', prismaError);
+      return NextResponse.json({ error: 'Database submission failed.', details: String(prismaError) }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, contact }, { status: 201 });
+    // 2. Log Activity
+    await logActivity(
+      'New Lead Received', 
+      `Inquiry from ${name} (Auto-assigned to ${inquiry.assignedTo}). Projected Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}`, 
+      email
+    );
+
+    // 3. Send Emails via Resend
+    if (process.env.RESEND_API && process.env.RESEND_API !== 'missing-key') {
+      try {
+        // Admin Notification
+        await resend.emails.send({
+          from: 'Lumina Intelligence <onboarding@resend.dev>',
+          to: ['saudieventmanagementt@gmail.com'],
+          subject: `New Lead: ${name} (Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()})`,
+          html: `
+            <div style="font-family: sans-serif; padding: 30px; border: 1px solid #f0f0f0; border-radius: 20px;">
+              <h2 style="color: #1a1a1a;">Automated Quote Generated</h2>
+              <p style="font-size: 16px; color: #666;">A new lead has been auto-assigned to <strong>${inquiry.assignedTo}</strong>.</p>
+              
+              <div style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #c5a059;">Projected Estimate: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}</h3>
+                <p><strong>Event:</strong> ${eventType} for ${guestCount} guests</p>
+                <p><strong>Location:</strong> ${venueCity}</p>
+                <p><strong>Client:</strong> ${name} (${email})</p>
+              </div>
+
+              <p style="font-size: 14px; color: #999;">Check the Admin Dashboard for a full breakdown.</p>
+            </div>
+          `,
+        });
+
+        // User Confirmation
+        await resend.emails.send({
+          from: 'Lumina Luxury Events <onboarding@resend.dev>',
+          to: [email],
+          subject: 'Your Luxury Event Projection - Saudi Event Management',
+          html: `
+            <div style="font-family: sans-serif; padding: 30px; line-height: 1.6;">
+              <h2 style="color: #c5a059;">Building Your Vision</h2>
+              <p>Dear ${name},</p>
+              <p>Thank you for choosing Saudi Event Management. Based on your initial inquiry for a <strong>${eventType}</strong>, our intelligence system has generated a preliminary projection to help you start planning.</p>
+              
+              <div style="border-left: 4px solid #c5a059; padding-left: 20px; margin: 25px 0;">
+                <p style="font-size: 18px; margin: 0;">Projected Investment: <strong>SAR ${inquiry.estimate?.totalAmount.toLocaleString()}*</strong></p>
+                <p style="font-size: 12px; color: #999; margin-top: 5px;">*This is an automated estimate for initial planning. Final pricing will be customized by your dedicated consultant.</p>
+              </div>
+
+              <p>Your dedicated lead consultant, <strong>${inquiry.assignedTo}</strong>, will contact you within 2 hours to discuss your specific requirements and refine this proposal.</p>
+              
+              <p>Warm regards,<br>The Lumina Team</p>
+            </div>
+          `,
+        });
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError);
+      }
+    } else {
+      console.warn('Resend API key missing. Emails not sent.');
+    }
+
+    return NextResponse.json({ success: true, inquiry }, { status: 201 });
   } catch (error) {
-    console.error('Prisma Error:', error);
-    return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });
+    console.error('General Contact API Error:', error);
+    return NextResponse.json({ error: 'An unexpected error occurred.', details: String(error) }, { status: 500 });
   }
 }
 
@@ -62,6 +135,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search');
     const category = searchParams.get('category');
+    const status = searchParams.get('status');
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');
 
@@ -77,7 +151,11 @@ export async function GET(request: Request) {
     }
 
     if (category && category !== 'all') {
-      where.event_type = category;
+      where.eventType = category;
+    }
+
+    if (status && status !== 'all') {
+      where.status = status;
     }
 
     if (startDate || endDate) {
@@ -86,7 +164,7 @@ export async function GET(request: Request) {
       if (endDate) where.createdAt.lte = new Date(endDate);
     }
 
-    const inquiries = await prisma.contactMessage.findMany({
+    const inquiries = await prisma.inquiry.findMany({
       where,
       orderBy: { createdAt: 'desc' }
     });
@@ -95,5 +173,46 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('Prisma Fetch Error:', error);
     return NextResponse.json({ error: 'Failed to fetch inquiries' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+    await prisma.inquiry.delete({ where: { id } });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Prisma Delete Error:', error);
+    return NextResponse.json({ error: 'Failed to delete inquiry' }, { status: 500 });
+  }
+}
+
+export async function PATCH(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+    const body = await request.json();
+    const updated = await prisma.inquiry.update({
+      where: { id },
+      data: body
+    });
+
+    if (body.assignedTo) {
+      await logActivity('Lead Assigned', `Inquiry from ${updated.name} assigned to ${body.assignedTo}`, 'admin@saudievent.com');
+    }
+    
+    if (body.status) {
+      await logActivity('Inquiry Updated', `Status changed to ${body.status} for ${updated.name}`, 'admin@saudievent.com');
+    }
+
+    return NextResponse.json(updated);
+  } catch (error) {
+    console.error('Prisma Patch Error:', error);
+    return NextResponse.json({ error: 'Failed to update inquiry' }, { status: 500 });
   }
 }

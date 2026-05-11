@@ -3,7 +3,19 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote, Plus, Trash2, CheckCircle2, Clock, AlertCircle } from "lucide-react";
+import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote, Plus, Trash2, CheckCircle2, Clock, AlertCircle, BarChart3, PieChart as PieChartIcon, FileText } from "lucide-react";
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell
+} from 'recharts';
 import Link from "next/link";
 
 type Stats = {
@@ -14,26 +26,33 @@ type Stats = {
 };
 
 type Quote = {
-  id: number;
+  id: string;
   clientName: string;
   clientEmail: string;
   details: string;
   status: string;
   createdAt: string;
-  vendor: {
+  vendor?: {
     name: string;
   };
+  event?: {
+    client?: {
+      name: string;
+    }
+  }
 };
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({ events: 0, testimonials: 0, inquiries: 0, quotes: 0 });
-  const [recentInquiries, setRecentInquiries] = useState<{ id: string; name: string; email: string; created_at: string }[]>([]);
+  const [recentInquiries, setRecentInquiries] = useState<{ id: string; name: string; email: string; createdAt: string }[]>([]);
   const [recentQuotes, setRecentQuotes] = useState<Quote[]>([]);
   const [newStatus, setNewStatus] = useState("");
   const [statusLabel, setStatusLabel] = useState("Active");
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [statuses, setStatuses] = useState<{ id: string; text: string; label: string; created_at: string }[]>([]);
+  const [pipelineData, setPipelineData] = useState<{ name: string; value: number }[]>([]);
+  const [sourceData, setSourceData] = useState<{ name: string; value: number }[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -77,22 +96,36 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     setLoading(true);
     try {
-      // Fetch stats with individual error handling for each table
-      const fetchTableCount = async (table: string) => {
-        try {
-          const { count, error } = await supabase.from(table).select("id", { count: "exact", head: true });
-          if (error) return 0;
-          return count || 0;
-        } catch (e) {
-          return 0;
-        }
-      };
-
-      const [eventsCount, testimonialsCount, inquiriesCount] = await Promise.all([
-        fetchTableCount("events"),
-        fetchTableCount("testimonials"),
-        fetchTableCount("contact_messages"),
+      // Fetch stats from local APIs
+      const [eventsRes, inquiriesRes, quotesRes, logsRes, testimonialsRes] = await Promise.all([
+        fetch('/api/events'),
+        fetch('/api/contact'),
+        fetch('/api/quotes'),
+        fetch('/api/logs'),
+        fetch('/api/testimonials')
       ]);
+
+      const eventsData = await eventsRes.json();
+      const inquiriesData = await inquiriesRes.json();
+      const quotesData = await quotesRes.json();
+      const logsData = await logsRes.json();
+      const testimonialsData = await testimonialsRes.json();
+
+      setStats({
+        events: eventsData.count || 0,
+        testimonials: Array.isArray(testimonialsData) ? testimonialsData.length : 0,
+        inquiries: Array.isArray(inquiriesData) ? inquiriesData.length : 0,
+        quotes: Array.isArray(quotesData) ? quotesData.length : 0,
+      });
+
+      setRecentInquiries((Array.isArray(inquiriesData) ? inquiriesData : []).slice(0, 5));
+      setRecentQuotes((Array.isArray(quotesData) ? quotesData : []).slice(0, 5));
+      setStatuses(Array.isArray(logsData) ? logsData.map((l: any) => ({
+        id: l.id,
+        text: l.details || l.action,
+        label: l.action,
+        created_at: l.createdAt
+      })) : []);
 
       // Fetch business updates with error handling
       try {
@@ -107,42 +140,25 @@ export default function AdminDashboard() {
         setStatuses([]);
       }
 
-      // Recent inquiries
-      try {
-        const { data: inqData, error: inqError } = await supabase
-          .from("contact_messages")
-          .select("id, name, email, created_at")
-          .order("created_at", { ascending: false })
-          .limit(5);
-        
-        if (!inqError) setRecentInquiries(inqData || []);
-      } catch (e) {
-        setRecentInquiries([]);
-      }
-
-      // Fetch recent quotes from internal API
-      let quotesCount = 0;
-      try {
-        const quotesRes = await fetch('/api/quotes');
-        if (quotesRes.ok) {
-          const quoteData = await quotesRes.json();
-          setRecentQuotes(quoteData.slice(0, 5));
-          quotesCount = quoteData.length;
-        }
-      } catch (e) {
-        console.error("Quotes API failed");
-      }
-
-      setStats({
-        events: eventsCount,
-        testimonials: testimonialsCount,
-        inquiries: inquiriesCount,
-        quotes: quotesCount,
-      });
-
     } catch (error) {
       console.error("Error fetching stats:", error);
     }
+
+    // Mock data for charts
+    setPipelineData([
+      { name: 'Inquiry', value: 12 },
+      { name: 'Quoted', value: 8 },
+      { name: 'Booked', value: 5 },
+      { name: 'Completed', value: 20 },
+    ]);
+
+    setSourceData([
+      { name: 'Direct', value: 45 },
+      { name: 'Referral', value: 25 },
+      { name: 'Social', value: 20 },
+      { name: 'Other', value: 10 },
+    ]);
+
     setLoading(false);
   };
 
@@ -165,9 +181,18 @@ export default function AdminDashboard() {
             Welcome back, Admin. Here's what's happening with Saudi Event Management today.
           </p>
         </div>
-        <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm">
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-          <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">System Live</span>
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">System Live</span>
+          </div>
+          <button 
+            onClick={() => window.print()}
+            className="flex items-center gap-2 px-6 py-2.5 bg-slate-900 text-white font-bold uppercase tracking-widest text-[10px] rounded-xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 active:scale-95"
+          >
+            <FileText size={14} className="text-gold-500" />
+            Generate Report
+          </button>
         </div>
       </div>
 
@@ -196,6 +221,96 @@ export default function AdminDashboard() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Charts Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+              <BarChart3 size={18} />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Event Pipeline</h2>
+              <p className="text-xs text-slate-500 font-medium">Distribution of events by stage</p>
+            </div>
+          </div>
+          <div className="h-72 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={pipelineData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis 
+                  dataKey="name" 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
+                  dy={10}
+                />
+                <YAxis hide />
+                <Tooltip 
+                  cursor={{ fill: '#f8fafc' }}
+                  contentStyle={{ 
+                    borderRadius: '12px', 
+                    border: 'none', 
+                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                    padding: '12px'
+                  }}
+                />
+                <Bar 
+                  dataKey="value" 
+                  fill="#EAB308" 
+                  radius={[6, 6, 0, 0]} 
+                  barSize={40}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-2 bg-purple-50 text-purple-600 rounded-lg">
+              <PieChartIcon size={18} />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Lead Sources</h2>
+              <p className="text-xs text-slate-500 font-medium">Where your inquiries are coming from</p>
+            </div>
+          </div>
+          <div className="h-72 w-full flex items-center">
+            <div className="flex-1 h-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={sourceData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={80}
+                    paddingAngle={8}
+                    dataKey="value"
+                  >
+                    {sourceData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][index % 4]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="flex-1 space-y-3 pl-8">
+              {sourceData.map((item, i) => (
+                <div key={item.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: ['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][i % 4] }} />
+                    <span className="text-xs font-bold text-slate-600">{item.name}</span>
+                  </div>
+                  <span className="text-xs font-black text-slate-900">{item.value}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -232,11 +347,11 @@ export default function AdminDashboard() {
                   <div key={quote.id} className="px-8 py-5 flex items-center justify-between hover:bg-slate-50 transition-colors group">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-lg border border-slate-200">
-                        {quote.clientName.charAt(0)}
+                        {(quote.event?.client?.name || quote.clientName || "?").charAt(0)}
                       </div>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
-                          <p className="text-slate-900 font-bold">{quote.clientName}</p>
+                          <p className="text-slate-900 font-bold">{quote.event?.client?.name || quote.clientName}</p>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold border ${
                             quote.status === "Approved" ? "bg-emerald-50 text-emerald-600 border-emerald-100" :
                             quote.status === "Rejected" ? "bg-red-50 text-red-600 border-red-100" :
@@ -252,9 +367,6 @@ export default function AdminDashboard() {
                       <p className="text-xs font-bold text-slate-400">
                         {mounted ? new Date(quote.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : "---"}
                       </p>
-                      <button className="text-[10px] font-bold text-gold-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Review
-                      </button>
                     </div>
                   </div>
                 ))}
@@ -286,7 +398,7 @@ export default function AdminDashboard() {
                       <p className="text-xs text-slate-500 mt-0.5">{inq.email}</p>
                     </div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                      {mounted ? new Date(inq.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
+                      {mounted ? new Date(inq.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
                     </p>
                   </div>
                 ))}

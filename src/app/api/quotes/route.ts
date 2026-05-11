@@ -1,24 +1,30 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { logActivity } from '@/lib/logger';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { vendorId, clientName, clientEmail, requirements } = body;
+    const { vendorId, eventId, details, amount } = body;
 
-    if (!vendorId || !clientName || !clientEmail) {
+    if (!vendorId || !eventId) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     const quote = await prisma.quote.create({
       data: {
-        vendorId: parseInt(vendorId),
-        clientName,
-        clientEmail,
-        details: requirements || "",
+        vendorId,
+        eventId,
+        details: details || "",
+        amount: amount ? parseFloat(amount) : null,
         status: 'Pending',
+      },
+      include: {
+        vendor: true
       }
     });
+
+    await logActivity('Generated Quote', `New quote from ${quote.vendor.name} for SAR ${quote.amount || 'TBD'}`, 'admin@saudievent.com');
 
     return NextResponse.json(quote, { status: 201 });
   } catch (error) {
@@ -32,7 +38,12 @@ export async function GET(request: Request) {
     const quotes = await prisma.quote.findMany({
       orderBy: { createdAt: 'desc' },
       include: {
-        vendor: true
+        vendor: true,
+        event: {
+          include: {
+            client: true
+          }
+        }
       }
     });
 
@@ -46,12 +57,20 @@ export async function GET(request: Request) {
 export async function PATCH(request: Request) {
   try {
     const body = await request.json();
-    const { id, status } = body;
+    const { id, status, amount } = body;
 
     const updatedQuote = await prisma.quote.update({
-      where: { id: parseInt(id) },
-      data: { status }
+      where: { id },
+      data: { 
+        status,
+        ...(amount && { amount: parseFloat(amount) })
+      },
+      include: {
+        vendor: true
+      }
     });
+
+    await logActivity('Updated Quote', `Quote status changed to ${status} for ${updatedQuote.vendor.name}`, 'admin@saudievent.com');
 
     return NextResponse.json(updatedQuote);
   } catch (error) {

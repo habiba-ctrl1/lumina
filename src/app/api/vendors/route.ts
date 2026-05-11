@@ -1,19 +1,20 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { logActivity } from '@/lib/logger';
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search');
     const category = searchParams.get('category');
-    const status = searchParams.get('status');
 
     let where: any = {};
 
     if (search) {
       where.OR = [
         { name: { contains: search } },
-        { location: { contains: search } }
+        { category: { contains: search } },
+        { services: { contains: search } }
       ];
     }
 
@@ -21,15 +22,15 @@ export async function GET(request: Request) {
       where.category = category;
     }
 
-    // Note: status is not in the original model I added, 
-    // but I can add it if needed. For now, matching the Prisma schema.
-    
     const vendors = await prisma.vendor.findMany({
       where,
       orderBy: { name: 'asc' },
       include: {
         _count: {
-          select: { quotes: true }
+          select: { 
+            quotes: true,
+            events: true
+          }
         }
       }
     });
@@ -48,11 +49,14 @@ export async function POST(request: Request) {
       data: {
         name: body.name,
         category: body.category,
-        price: parseFloat(body.price),
-        location: body.location,
+        services: body.services,
+        contactInfo: body.contactInfo,
         rating: body.rating ? parseFloat(body.rating) : 5.0,
       }
     });
+
+    await logActivity('Registered Partner', `New vendor added: ${vendor.name} (${vendor.category})`, 'admin@saudievent.com');
+
     return NextResponse.json(vendor, { status: 201 });
   } catch (error) {
     console.error('Vendor Create Error:', error);

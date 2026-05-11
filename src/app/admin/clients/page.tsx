@@ -1,100 +1,193 @@
 "use client";
 
-import { Search, Filter, MoreVertical, Mail, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
-const mockClients = [
-  { id: "1", name: "Sarah Al Saud", email: "sarah.alsaud@example.com", phone: "+966 50 123 4567", status: "VIP", events: 3, lastActive: "2 days ago" },
-  { id: "2", name: "Ahmed bin Tariq", email: "ahmed.bt@example.com", phone: "+966 55 987 6543", status: "Active", events: 1, lastActive: "5 hours ago" },
-  { id: "3", name: "Layan Corporation", email: "events@layancorp.com", phone: "+971 50 234 5678", status: "Corporate", events: 5, lastActive: "1 week ago" },
-];
+type Client = {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  status: string;
+  createdAt: string;
+  _count?: {
+    events: number;
+  };
+};
 
 export default function ClientsPage() {
+  const [clients, setClients] = useState<Client[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("all");
+
+  useEffect(() => {
+    fetchClients();
+  }, [search, status]);
+
+  const fetchClients = async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams({ search, status });
+      const response = await fetch(`/api/clients?${params.toString()}`);
+      const data = await response.json();
+      setClients(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Failed to fetch clients:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="pb-10">
-      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="pb-20 max-w-7xl mx-auto">
+      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
-          <h1 className="text-3xl font-light text-white mb-2">
-            Client <span className="text-gold-500 font-semibold ">CRM</span> Directory
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+            Client CRM
           </h1>
-          <p className="text-gray-500 text-sm">Manage your high-net-worth individuals and corporate clients.</p>
+          <p className="text-slate-500 font-medium">Manage and segment your high-net-worth network.</p>
         </div>
-        <button className="px-6 py-2.5 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-gold-400 transition-colors shadow-lg shadow-gold-500/20">
-          Add New Client
+        <button className="px-6 py-3 bg-slate-900 text-white font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 flex items-center gap-2">
+          <UserPlus size={16} className="text-gold-500" />
+          Add Client
         </button>
       </div>
 
-      <div className="bg-charcoal-800 border border-white/5 rounded-2xl shadow-2xl overflow-hidden">
-        <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row gap-4 items-center justify-between bg-charcoal-900/50">
-          <div className="relative w-full sm:w-96">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+      {/* Stats Quick View */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+          <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-2">Total Clients</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-2xl font-black text-slate-900">{clients.length}</h3>
+            <div className="text-emerald-500 flex items-center gap-1 text-xs font-bold">
+              <TrendingUp size={14} /> +12%
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+          <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-2">VIP Network</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-2xl font-black text-slate-900">{clients.filter(c => c.status === 'VIP').length}</h3>
+            <div className="text-gold-500 font-black text-[10px] uppercase tracking-widest">Elite</div>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+          <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-2">Corporate Partners</p>
+          <div className="flex items-end justify-between">
+            <h3 className="text-2xl font-black text-slate-900">{clients.filter(c => c.status === 'Corporate').length}</h3>
+            <div className="text-blue-500 font-black text-[10px] uppercase tracking-widest">Growth</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white border border-slate-200 rounded-[2.5rem] shadow-sm overflow-hidden">
+        <div className="p-8 border-b border-slate-100 flex flex-col sm:flex-row gap-6 items-center justify-between bg-slate-50/50">
+          <div className="relative w-full sm:w-[400px]">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
             <input 
               type="text" 
-              placeholder="Search clients by name, email, or status..." 
-              className="w-full bg-charcoal-900 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500/50 transition-colors"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by name, email, or company..." 
+              className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-3 text-sm text-slate-900 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-slate-400"
             />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-charcoal-900 border border-white/10 rounded-xl text-sm text-gray-300 hover:bg-white/5 transition-colors">
-            <Filter size={16} /> Filters
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <select 
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="flex-1 sm:flex-none px-4 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-bold text-slate-600 focus:outline-none focus:border-gold-500 transition-all appearance-none cursor-pointer min-w-[140px]"
+            >
+              <option value="all">All Statuses</option>
+              <option value="VIP">VIP</option>
+              <option value="Active">Active</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Lead">Lead</option>
+            </select>
+          </div>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-charcoal-900/80 border-b border-white/5 text-xs uppercase tracking-widest text-gray-500">
-                <th className="px-6 py-4 font-medium">Client Info</th>
-                <th className="px-6 py-4 font-medium">Contact</th>
-                <th className="px-6 py-4 font-medium">Status</th>
-                <th className="px-6 py-4 font-medium">Events</th>
-                <th className="px-6 py-4 font-medium text-right">Actions</th>
+              <tr className="border-b border-slate-100 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-black">
+                <th className="px-8 py-6">Client Identity</th>
+                <th className="px-8 py-6">Connection</th>
+                <th className="px-8 py-6">Status</th>
+                <th className="px-8 py-6">Engagement</th>
+                <th className="px-8 py-6 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
-              {mockClients.map((client, i) => (
-                <motion.tr 
-                  key={client.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="hover:bg-white/[0.02] transition-colors group"
-                >
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-500/20 to-gold-600/5 border border-gold-500/20 flex items-center justify-center text-gold-500 font-bold uppercase">
-                        {client.name.charAt(0)}
+            <tbody className="divide-y divide-slate-50">
+              {loading ? (
+                [1, 2, 3].map(i => (
+                  <tr key={i} className="animate-pulse">
+                    <td colSpan={5} className="px-8 py-8"><div className="h-8 bg-slate-50 rounded-xl" /></td>
+                  </tr>
+                ))
+              ) : clients.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="px-8 py-20 text-center text-slate-400 font-bold uppercase tracking-widest text-xs">No clients found matching your search.</td>
+                </tr>
+              ) : (
+                clients.map((client, i) => (
+                  <motion.tr 
+                    key={client.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="hover:bg-slate-50/50 transition-all group"
+                  >
+                    <td className="px-8 py-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-gold-50 border border-gold-100 flex items-center justify-center text-gold-600 font-black text-lg shadow-sm">
+                          {client.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-slate-900 font-black text-sm tracking-tight">{client.name}</p>
+                          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{client.company || 'Private Client'}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-white font-medium text-sm">{client.name}</p>
-                        <p className="text-xs text-gray-500">Active {client.lastActive}</p>
+                    </td>
+                    <td className="px-8 py-6">
+                      <div className="space-y-1.5">
+                        <p className="text-xs text-slate-600 font-semibold flex items-center gap-2 group-hover:text-gold-600 transition-colors">
+                          <Mail size={14} className="text-gold-500" /> {client.email}
+                        </p>
+                        {client.phone && (
+                          <p className="text-xs text-slate-500 font-medium flex items-center gap-2">
+                            <Phone size={14} className="text-slate-400" /> {client.phone}
+                          </p>
+                        )}
                       </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="space-y-1">
-                      <p className="text-xs text-gray-400 flex items-center gap-2"><Mail size={12}/> {client.email}</p>
-                      <p className="text-xs text-gray-400 flex items-center gap-2"><Phone size={12}/> {client.phone}</p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={`px-2.5 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full ${
-                      client.status === 'VIP' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/20' :
-                      client.status === 'Corporate' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/20' :
-                      'bg-emerald-500/20 text-emerald-400 border border-emerald-500/20'
-                    }`}>
-                      {client.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <p className="text-white text-sm font-semibold">{client.events} <span className="text-gray-500 font-normal">total</span></p>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
-                      <MoreVertical size={18} />
-                    </button>
-                  </td>
-                </motion.tr>
-              ))}
+                    </td>
+                    <td className="px-8 py-6">
+                      <span className={`px-3 py-1 text-[9px] uppercase tracking-[0.15em] font-black rounded-full border ${
+                        client.status === 'VIP' ? 'bg-amber-50 text-amber-600 border-amber-100' :
+                        client.status === 'Corporate' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                        client.status === 'Lead' ? 'bg-slate-50 text-slate-500 border-slate-100' :
+                        'bg-emerald-50 text-emerald-600 border-emerald-100'
+                      }`}>
+                        {client.status}
+                      </span>
+                    </td>
+                    <td className="px-8 py-6">
+                      <div className="flex flex-col">
+                        <span className="text-sm text-slate-900 font-black">{client._count?.events || 0}</span>
+                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Events Managed</span>
+                      </div>
+                    </td>
+                    <td className="px-8 py-6 text-right">
+                      <button className="w-10 h-10 flex items-center justify-center text-slate-300 hover:bg-white hover:text-slate-900 hover:shadow-md rounded-xl transition-all border border-transparent hover:border-slate-100">
+                        <MoreVertical size={20} />
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

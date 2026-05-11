@@ -1,72 +1,88 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { Activity, Trash2, RefreshCw, AlertCircle, Clock, CheckCircle2, Star, Target } from "lucide-react";
+import { Activity, Trash2, RefreshCw, AlertCircle, Clock, CheckCircle2, Star, Target, Filter } from "lucide-react";
+
+type LogEntry = {
+  id: string;
+  action: string;
+  details: string | null;
+  userEmail: string | null;
+  createdAt: string;
+};
 
 export default function StatusPage() {
-  const [statuses, setStatuses] = useState<{ id: string; text: string; label: string; created_at: string }[]>([]);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetchStatuses();
+    fetchLogs();
   }, []);
 
-  const fetchStatuses = async () => {
+  const fetchLogs = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase
-        .from("business_updates")
-        .select("*")
-        .order("created_at", { ascending: false });
-      
-      if (!error && data) {
-        setStatuses(data);
-      } else {
-        console.warn("Status table may be missing or inaccessible:", error);
-        setStatuses([]);
-      }
-    } catch (e) {
-      console.error("Fetch statuses failed:", e);
-      setStatuses([]);
+      const response = await fetch('/api/logs');
+      const data = await response.json();
+      setLogs(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Failed to fetch activity logs:", error);
+      setLogs([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleDeleteStatus = async (id: string) => {
-    if (!confirm("Delete this status update?")) return;
+  const handleDelete = async (id: string) => {
+    if (!confirm("Delete this log entry?")) return;
     try {
-      const { error } = await supabase.from("business_updates").delete().eq("id", id);
-      if (!error) {
-        setStatuses(statuses.filter(s => s.id !== id));
+      const response = await fetch(`/api/logs?id=${id}`, { method: 'DELETE' });
+      if (response.ok) {
+        setLogs(logs.filter(l => l.id !== id));
+      } else {
+        alert("Failed to delete log entry.");
       }
     } catch (error) {
-      console.error("Error deleting status:", error);
+      console.error("Delete failed:", error);
+      alert("A network error occurred.");
     }
   };
 
-  const getLabelIcon = (label: string) => {
-    switch (label) {
-      case "Success": return <CheckCircle2 size={12} />;
-      case "Milestone": return <Star size={12} />;
-      case "Planning": return <Target size={12} />;
-      default: return <Clock size={12} />;
-    }
+  const getLabelStyle = (action: string) => {
+    if (action.includes("Lead") || action.includes("Inquiry")) return "bg-amber-50 text-amber-600 border-amber-100";
+    if (action.includes("Quote")) return "bg-blue-50 text-blue-600 border-blue-100";
+    if (action.includes("Partner") || action.includes("Vendor")) return "bg-purple-50 text-purple-600 border-purple-100";
+    if (action.includes("Blog") || action.includes("Article")) return "bg-emerald-50 text-emerald-600 border-emerald-100";
+    if (action.includes("Gallery")) return "bg-pink-50 text-pink-600 border-pink-100";
+    return "bg-gold-50 text-gold-600 border-gold-100";
   };
+
+  const getLabelIcon = (action: string) => {
+    if (action.includes("Lead") || action.includes("Inquiry") || action.includes("Assigned")) return <Target size={12} />;
+    if (action.includes("Quote") || action.includes("Updated")) return <CheckCircle2 size={12} />;
+    if (action.includes("Blog") || action.includes("Partner")) return <Star size={12} />;
+    return <Clock size={12} />;
+  };
+
+  const filteredLogs = filter === "all" 
+    ? logs 
+    : logs.filter(l => l.action.toLowerCase().includes(filter.toLowerCase()));
+
+  const categories = ["all", "Lead", "Quote", "Partner", "Blog", "Gallery"];
 
   return (
     <div className="pb-20 max-w-5xl mx-auto">
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
-            Business Status Log
+            Business Activity Log
           </h1>
-          <p className="text-slate-500 font-medium">A comprehensive history of all Saudi Event Management milestones and updates.</p>
+          <p className="text-slate-500 font-medium">A comprehensive history of all Saudi Event Management operations and milestones.</p>
         </div>
         <button 
-          onClick={fetchStatuses}
+          onClick={fetchLogs}
           disabled={loading}
           className="flex items-center gap-2 px-6 py-2.5 bg-white border border-slate-200 text-slate-600 font-bold uppercase tracking-widest text-[10px] rounded-xl hover:bg-slate-50 transition-all shadow-sm disabled:opacity-50"
         >
@@ -75,12 +91,32 @@ export default function StatusPage() {
         </button>
       </div>
 
+      {/* Filter Bar */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setFilter(cat)}
+            className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+              filter === cat
+                ? "bg-slate-900 text-white border-slate-900 shadow-md"
+                : "bg-white text-slate-400 hover:bg-slate-50 border-slate-200"
+            }`}
+          >
+            {cat === "all" ? "All Activity" : cat}
+          </button>
+        ))}
+      </div>
+
       <div className="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
         <div className="flex items-center gap-3 px-8 py-6 border-b border-slate-100 bg-slate-50/50">
           <div className="p-2 bg-gold-500 rounded-lg shadow-lg shadow-gold-500/20">
             <Activity className="text-white" size={20} />
           </div>
-          <h2 className="text-lg font-bold text-slate-900">Activity Stream</h2>
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">Activity Stream</h2>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{filteredLogs.length} entries recorded</p>
+          </div>
         </div>
 
         <div className="p-8">
@@ -90,46 +126,49 @@ export default function StatusPage() {
                 <div key={i} className="h-20 bg-slate-50 animate-pulse rounded-2xl border border-slate-100" />
               ))}
             </div>
-          ) : statuses.length === 0 ? (
+          ) : filteredLogs.length === 0 ? (
             <div className="py-24 text-center">
               <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <AlertCircle size={24} className="text-slate-300" />
               </div>
-              <p className="text-slate-400 font-medium italic">No activity logs recorded yet.</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">No Activity Logged</h3>
+              <p className="text-slate-400 font-medium italic max-w-xs mx-auto">
+                {filter !== "all" ? "No entries match this filter." : "Actions like new leads, quote updates, and content changes will be tracked here."}
+              </p>
             </div>
           ) : (
             <div className="space-y-4">
-              {statuses.map((status, i) => (
+              {filteredLogs.map((log, i) => (
                 <motion.div 
-                  key={status.id}
+                  key={log.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: i * 0.03 }}
                   className="flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl hover:border-gold-500/30 hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className={`px-4 py-2 rounded-xl text-[9px] uppercase tracking-widest font-black flex items-center gap-2 border ${
-                      status.label === "Success" ? "bg-emerald-50 text-emerald-600 border-emerald-100" : 
-                      status.label === "Milestone" ? "bg-amber-50 text-amber-600 border-amber-100" : 
-                      status.label === "Planning" ? "bg-blue-50 text-blue-600 border-blue-100" : 
-                      "bg-gold-50 text-gold-600 border-gold-100"
-                    }`}>
-                      {getLabelIcon(status.label)}
-                      {status.label}
+                  <div className="flex items-center gap-6 flex-1 min-w-0">
+                    <div className={`px-4 py-2 rounded-xl text-[9px] uppercase tracking-widest font-black flex items-center gap-2 border flex-shrink-0 ${getLabelStyle(log.action)}`}>
+                      {getLabelIcon(log.action)}
+                      {log.action}
                     </div>
-                    <div>
-                      <p className="text-slate-900 font-bold text-sm mb-1">{status.text}</p>
-                      <div className="flex items-center gap-2 text-[10px] text-slate-400 font-bold">
-                        <Clock size={10} />
-                        {new Date(status.created_at).toLocaleString(undefined, { 
-                          year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
-                        })}
+                    <div className="min-w-0 flex-1">
+                      <p className="text-slate-900 font-bold text-sm mb-1 truncate">{log.details || log.action}</p>
+                      <div className="flex items-center gap-4 text-[10px] text-slate-400 font-bold">
+                        <div className="flex items-center gap-1.5">
+                          <Clock size={10} />
+                          {new Date(log.createdAt).toLocaleString(undefined, { 
+                            year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+                          })}
+                        </div>
+                        {log.userEmail && (
+                          <span className="text-slate-300">by {log.userEmail}</span>
+                        )}
                       </div>
                     </div>
                   </div>
                   <button 
-                    onClick={() => handleDeleteStatus(status.id)}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-300 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100 opacity-0 group-hover:opacity-100"
+                    onClick={() => handleDelete(log.id)}
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-300 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100 opacity-0 group-hover:opacity-100 flex-shrink-0"
                     title="Delete Entry"
                   >
                     <Trash2 size={18} />
@@ -143,4 +182,3 @@ export default function StatusPage() {
     </div>
   );
 }
-

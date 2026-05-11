@@ -19,7 +19,7 @@ export const supabase = createClient(
       detectSessionInUrl: true,
     },
     global: {
-      headers: { 'x-application-name': 'lumina-luxury-events' },
+      headers: { 'x-application-name': 'saudi-event-management' },
     },
   }
 )

@@ -59,7 +59,7 @@ export default function AdminLogin() {
               <ShieldCheck className="text-white" size={40} />
             </div>
             <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-              Lumina <span className="text-gold-500">Admin</span>
+              Saudi Event <span className="text-gold-500">Admin</span>
             </h1>
             <p className="text-slate-500 font-medium">Restricted Access • Strategic Operations</p>
           </div>
@@ -88,7 +88,7 @@ export default function AdminLogin() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-5 pl-14 pr-6 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-slate-400"
-                  placeholder="admin@lumina-events.com"
+                  placeholder="admin@saudievent.com"
                 />
               </div>
             </div>

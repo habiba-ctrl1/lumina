@@ -7,57 +7,145 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("admin") // admin, super_admin, editor
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  phone       String?
+  company     String?
+  status      String   @default("Active") // VIP, Active, Corporate, Lead
+  events      Event[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Event {
-  id        Int      @id @default(autoincrement())
-  src       String
-  alt       String
-  category  String   @default("All")
-  className String
-  createdAt DateTime @default(now())
+  id           String   @id @default(uuid())
+  title        String
+  description  String?
+  date         DateTime?
+  location     String?
+  type         String   @default("General") // Wedding, Corporate, Private, Culture
+  status       String   @default("Inquiry") // Inquiry, Quoted, Booked, Completed, Cancelled
+  guestCount   String?
+  budget       String?
+  client       Client?  @relation(fields: [clientId], references: [id])
+  clientId     String?
+  vendors      Vendor[] @relation("EventVendors")
+  quotes       Quote[]
+  media        MediaAsset[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
-model Testimonial {
-  id      Int      @id @default(autoincrement())
-  quote   String
-  author  String
-  role    String
-  rating  Int      @default(5)
-  createdAt DateTime @default(now())
+model Vendor {
+  id          String   @id @default(uuid())
+  name        String
+  category    String   // Photography, Catering, Venue, etc.
+  services    String?
+  contactInfo String?
+  rating      Float    @default(5.0)
+  events      Event[]  @relation("EventVendors")
+  quotes      Quote[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-model ContactMessage {
-  id          Int      @id @default(autoincrement())
+model Quote {
+  id          String   @id @default(uuid())
+  amount      Float?
+  details     String?
+  status      String   @default("Pending") // Pending, Approved, Rejected
+  event       Event    @relation(fields: [eventId], references: [id])
+  eventId     String
+  vendor      Vendor   @relation(fields: [vendorId], references: [id])
+  vendorId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Inquiry {
+  id          String   @id @default(uuid())
   name        String
   email       String
   phone       String?
   company     String?
-  event_type  String?
+  eventType   String?
   budget      String?
-  event_date  String?
-  guest_count String?
-  venue_city  String?
+  eventDate   String?
+  guestCount  String?
+  venueCity   String?
   message     String
+  status      String   @default("Pending") // Pending, Contacted, Confirmed, Cancelled
+  assignedTo  String?  // Agent name or ID
   source      String?  @default("direct_contact")
+  estimate    ClientEstimate?
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-model Vendor {
-  id          Int      @id @default(autoincrement())
-  name        String
-  category    String   // e.g., "Photography", "Catering"
-  price       Float
-  location    String
-  rating      Float    @default(5.0)
-  quotes      Quote[]
+model BlogPost {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String
+  category    String?
+  author      String?
+  readTime    String?  @default("5 min read")
+  publishedAt DateTime?
+  media       MediaAsset[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-model Quote {
-  id          Int      @id @default(autoincrement())
-  clientName  String
-  clientEmail String
-  details     String
-  status      String   @default("Pending") // Pending, Approved, Rejected
-  vendor      Vendor   @relation(fields: [vendorId], references: [id])
-  vendorId    Int
+model Testimonial {
+  id        String   @id @default(uuid())
+  quote     String
+  author    String
+  role      String?
+  rating    Int      @default(5)
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model MediaAsset {
+  id        String   @id @default(uuid())
+  url       String
+  type      String   @default("image") // image, video
+  alt       String?
+  event     Event?   @relation(fields: [eventId], references: [id])
+  eventId   String?
+  blogPost  BlogPost? @relation(fields: [blogPostId], references: [id])
+  blogPostId String?
+  createdAt DateTime @default(now())
+}
+
+model ClientEstimate {
+  id          String   @id @default(uuid())
+  baseAmount  Float
+  serviceFee  Float
+  totalAmount Float
+  breakdown   String?  // JSON string of costs
+  status      String   @default("Generated") // Generated, Sent, Accepted, Expired
+  inquiry     Inquiry  @relation(fields: [inquiryId], references: [id])
+  inquiryId   String   @unique
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  action    String   // e.g., "Created Event", "Updated Quote"
+  details   String?
+  userEmail String?
+  createdAt DateTime @default(now())
 }

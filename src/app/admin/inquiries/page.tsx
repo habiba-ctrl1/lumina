@@ -11,15 +11,15 @@ type Inquiry = {
   email: string;
   phone?: string;
   company?: string;
-  event_type?: string;
+  eventType?: string;
   budget?: string;
-  event_date?: string;
-  guest_count?: string;
-  venue_city?: string;
+  eventDate?: string;
+  guestCount?: string;
+  venueCity?: string;
   message: string;
   source?: string;
   status?: string;
-  created_at: string;
+  createdAt: string;
 };
 
 export default function AdminInquiries() {
@@ -61,8 +61,14 @@ export default function AdminInquiries() {
 
   const deleteInquiry = async (id: string) => {
     if (!confirm("Delete this inquiry?")) return;
-    const { error } = await supabase.from("contact_messages").delete().eq("id", id);
-    if (!error) setInquiries(inquiries.filter((i) => i.id !== id));
+    try {
+      const response = await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
+      if (response.ok) {
+        setInquiries(inquiries.filter((i) => i.id !== id));
+      }
+    } catch (error) {
+      console.error("Delete failed:", error);
+    }
   };
 
   const categories = ["Wedding", "Corporate", "Private", "Culture", "Other"];
@@ -188,15 +194,35 @@ export default function AdminInquiries() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white border border-slate-200 p-8 rounded-3xl group hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
             >
-              {/* Status Badge */}
+              {/* Status Dropdown */}
               <div className="absolute top-6 right-6">
-                <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border ${
-                  inquiry.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
-                  inquiry.status === 'Contacted' ? 'bg-blue-50 text-blue-600 border-blue-100' :
-                  'bg-amber-50 text-amber-600 border-amber-100'
-                }`}>
-                  {inquiry.status || 'Pending'}
-                </span>
+                <select 
+                  value={inquiry.status || 'Pending'}
+                  onChange={async (e) => {
+                    const newStatus = e.target.value;
+                    try {
+                      await fetch(`/api/contact?id=${inquiry.id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ status: newStatus })
+                      });
+                      fetchInquiries();
+                    } catch (err) {
+                      console.error("Status update failed:", err);
+                    }
+                  }}
+                  className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border focus:outline-none cursor-pointer transition-all ${
+                    inquiry.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
+                    inquiry.status === 'Contacted' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                    inquiry.status === 'Cancelled' ? 'bg-red-50 text-red-600 border-red-100' :
+                    'bg-amber-50 text-amber-600 border-amber-100'
+                  }`}
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Contacted">Contacted</option>
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
               </div>
 
               <div className="flex items-center gap-4 mb-8">
@@ -208,7 +234,7 @@ export default function AdminInquiries() {
                   <div className="flex items-center gap-2">
                     <Briefcase size={12} className="text-gold-500" />
                     <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black">
-                      {inquiry.event_type || 'General Inquiry'}
+                      {inquiry.eventType || 'General Inquiry'}
                     </p>
                   </div>
                 </div>
@@ -220,9 +246,19 @@ export default function AdminInquiries() {
                   <span className="truncate">{inquiry.email}</span>
                 </div>
                 {inquiry.phone && (
-                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
-                    <Phone size={18} className="text-gold-500" />
-                    <span>{inquiry.phone}</span>
+                  <div className="flex items-center justify-between gap-3 text-sm font-semibold text-slate-600">
+                    <div className="flex items-center gap-3">
+                      <Phone size={18} className="text-gold-500" />
+                      <span>{inquiry.phone}</span>
+                    </div>
+                    <a 
+                      href={`https://wa.me/${inquiry.phone.replace(/[^0-9]/g, '')}?text=Hello ${inquiry.name}, this is Saudi Event Management regarding your inquiry.`}
+                      target="_blank"
+                      className="text-emerald-500 hover:text-emerald-600 transition-colors p-1.5 bg-emerald-50 rounded-lg border border-emerald-100"
+                      title="Contact on WhatsApp"
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
                   </div>
                 )}
                 {inquiry.company && (
@@ -233,12 +269,39 @@ export default function AdminInquiries() {
                 )}
                 <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
                   <Calendar size={18} className="text-gold-500" />
-                  <span>{inquiry.event_date ? new Date(inquiry.event_date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'TBD'}</span>
+                  <span>{inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'TBD'}</span>
                 </div>
               </div>
 
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 mb-8 flex-grow">
                 <p className="text-slate-500 text-sm leading-relaxed font-medium line-clamp-4 italic">"{inquiry.message}"</p>
+              </div>
+
+              <div className="mb-6 space-y-2">
+                <label className="text-[10px] text-slate-400 uppercase font-black tracking-widest px-1">Lead Allocation</label>
+                <select 
+                  value={inquiry.assignedTo || ""}
+                  onChange={async (e) => {
+                    const newAssignee = e.target.value;
+                    try {
+                      await fetch(`/api/contact?id=${inquiry.id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ assignedTo: newAssignee })
+                      });
+                      fetchInquiries();
+                    } catch (err) {
+                      console.error("Assignment failed:", err);
+                    }
+                  }}
+                  className="w-full bg-white border border-slate-100 rounded-xl py-2.5 px-3 text-xs font-bold text-slate-700 focus:outline-none focus:border-gold-500 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="">Unassigned</option>
+                  <option value="Admin">Admin Team</option>
+                  <option value="Sarah">Sarah (VIP Relations)</option>
+                  <option value="Ahmed">Ahmed (Logistics)</option>
+                  <option value="Nora">Nora (Creative Director)</option>
+                </select>
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-slate-100">
