@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { name: "GEA", logo: "/partners/gea.png" },
-  { name: "NEOM", logo: "/partners/neom.png" },
-  { name: "Vision 2030", logo: "/partners/vision2030.png" },
-  { name: "Ministry of Culture", logo: "/partners/moc.png" },
+  { name: "GEA", logo: "/partners/gea.webp" },
+  { name: "NEOM", logo: "/partners/neom.webp" },
+  { name: "Vision 2030", logo: "/partners/vision2030.webp" },
+  { name: "Ministry of Culture", logo: "/partners/moc.webp" },
   { name: "Riyadh Season", logo: "/partners/riyadh_season.svg" },
   { name: "Red Sea Global", logo: "/partners/red_sea.svg" },
   { name: "Diriyah Gate", logo: "/partners/diriyah.svg" },
