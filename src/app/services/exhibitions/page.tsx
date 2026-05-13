@@ -183,8 +183,9 @@ export default function ExhibitionsPage() {
             <Image 
               src="/blog_corporate_events.webp" 
               alt="Exhibition management Saudi Arabia - Trade show organizer Riyadh" 
-              fill 
-              className="object-cover opacity-40"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover opacity-40"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/40 to-charcoal-950" />
@@ -338,8 +339,9 @@ export default function ExhibitionsPage() {
                 <Image 
                   src="/gallery_corporate_gala.webp" 
                   alt="مركز الرياض للمعارض والمؤتمرات - تنظيم معارض" 
-                  fill 
-                  className="object-cover"
+                  width={800}
+                  height={500}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>

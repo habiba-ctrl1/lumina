@@ -100,6 +100,7 @@ export default function WhyChooseUs() {
                   <Link 
                     href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20request%20a%20consultation%20for%20my%20upcoming%20event."
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full bg-[#25D366] text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all"
                   >
                     Chat on WhatsApp

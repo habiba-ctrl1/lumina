@@ -10,8 +10,8 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 
 export const metadata: Metadata = {
   title: {
-    default: "Luxury Wedding Planner Riyadh & Corporate Event Management Jeddah | Saudi Event Management",
-    template: "%s | Saudi Event Management Luxury Events KSA",
+    default: "Luxury Events & Wedding Planner | Saudi Event Management",
+    template: "%s | Saudi Event Management",
   },
   description: "Saudi Event Management is Saudi Arabia's premier luxury event management agency. We specialize in bespoke royal weddings in Riyadh, high-end corporate galas in Jeddah, and exclusive cultural activations in AlUla. Book your elite experience.",
   applicationName: "Saudi Event Management",

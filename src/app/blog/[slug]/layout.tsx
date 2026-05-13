@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Saudi Event Management Journal`,
+    title: post.title,
     description: post.excerpt,
     alternates: {
       canonical: `https://saudieventmanagement.com/blog/${slug}`,

@@ -60,10 +60,10 @@ export default function Hero() {
             <Image
               src={backgroundImages[currentImageIndex]}
               alt={`Luxury Event Scene ${currentImageIndex + 1}`}
-              fill
+              width={1920}
+              height={1080}
               priority
-              className="object-cover"
-              sizes="100vw"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         </AnimatePresence>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog & Lifestyle | Saudi Event Management - Event Planning Tips & Inspiration",
+  title: "Blog & Lifestyle Journal",
   description:
     "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights from the Saudi Event Management editorial team.",
   openGraph: {
-    title: "Blog & Lifestyle | Saudi Event Management",
+    title: "Blog & Lifestyle Journal",
     description:
       "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights.",
     url: "/blog",

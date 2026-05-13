@@ -255,6 +255,7 @@ export default function AdminInquiries() {
                     <a 
                       href={`https://wa.me/${inquiry.phone.replace(/[^0-9]/g, '')}?text=Hello ${inquiry.name}, this is Saudi Event Management regarding your inquiry.`}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="text-emerald-500 hover:text-emerald-600 transition-colors p-1.5 bg-emerald-50 rounded-lg border border-emerald-100"
                       title="Contact on WhatsApp"
                     >

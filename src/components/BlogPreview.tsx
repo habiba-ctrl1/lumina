@@ -46,7 +46,13 @@ export default function BlogPreview() {
               >
                 {/* Image */}
                 <div className="relative h-72 overflow-hidden">
-                  <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <Image 
+                    src={post.image} 
+                    alt={post.title} 
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  />
                   <div className="absolute top-6 left-6">
                     <span className="px-5 py-2 bg-white text-black text-[10px] uppercase tracking-[0.2em] font-bold shadow-lg rounded-md">
                       {post.category}

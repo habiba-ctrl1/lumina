@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Heart, Moon, Users, MapPin } from "lucide-react";
 
 export const metadata = {
-  title: 'Madinah Spiritual Event Case Study | Saudi Event Management',
+  title: 'Madinah Spiritual Event',
   description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/madinah-spiritual-event' },
 };
@@ -22,8 +22,9 @@ export default function MadinahSpiritualEvent() {
           <Image 
             src="/locations/riyadh-hero.webp" 
             alt="Madinah Spiritual Event" 
-            fill 
-            className="object-cover opacity-50 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-50 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
@@ -67,7 +68,7 @@ export default function MadinahSpiritualEvent() {
         {/* The Essence */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
-            <Image src="/gallery_charity_gala.webp" alt="Madinah Event Ambience" fill className="object-cover" />
+            <Image src="/gallery_charity_gala.webp" alt="Madinah Event Ambience" width={800} height={800} className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Essence</span></h2>

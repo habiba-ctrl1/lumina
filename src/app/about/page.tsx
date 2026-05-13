@@ -7,7 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'About Saudi Event Management | The Elite Collective',
+  title: 'About The Elite Collective',
   description: 'Discover the legacy of Saudi Event Management, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
   alternates: { canonical: 'https://saudieventmanagement.com/about' },
 };
@@ -23,8 +23,9 @@ export default function AboutPage() {
           <Image 
             src="/hero_bg.webp" 
             alt="Luxury Event Backdrop" 
-            fill 
-            className="object-cover opacity-10 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-10 grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900/60 via-charcoal-900/40 to-charcoal-900" />
         </div>
@@ -51,8 +52,9 @@ export default function AboutPage() {
               <Image 
                 src="/gallery_2.webp" 
                 alt="Luxury Event Vision" 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                width={800}
+                height={1200}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-2xl shadow-xl max-w-xs">
@@ -84,7 +86,7 @@ export default function AboutPage() {
                   <Award size={24} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Award Winning</h4>
+                  <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Award Winning</h3>
                   <p className="text-gray-500 text-xs">Voted Best Luxury Planner 2024</p>
                 </div>
               </div>
@@ -93,7 +95,7 @@ export default function AboutPage() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Global Presence</h4>
+                  <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-1">Global Presence</h3>
                   <p className="text-gray-500 text-xs">Operations in KSA, UAE, & PK</p>
                 </div>
               </div>

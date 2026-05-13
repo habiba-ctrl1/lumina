@@ -143,8 +143,9 @@ export default function SeasonalEventsPage() {
             <Image 
               src="/private_party.webp" 
               alt="Ramadan events Saudi Arabia - Saudi National Day event organizer" 
-              fill 
-              className="object-cover"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover"
               priority
             />
             <div className="absolute inset-0 bg-black/50" />
@@ -319,8 +320,9 @@ export default function SeasonalEventsPage() {
                 <Image 
                   src="/gallery_1.webp" 
                   alt="احتفالات اليوم الوطني السعودي - فعاليات رمضان الرياض" 
-                  fill 
-                  className="object-cover"
+                  width={800}
+                  height={800}
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="space-y-10">

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { MapPin, Star, Trophy, Sparkles, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Destination Weddings AlUla | UNESCO Heritage Events',
+  title: 'Luxury Events in AlUla',
   description: 'Experience the magic of AlUla with Saudi Event Management. From ancient Hegra backdrops to ultra-luxury desert resorts, we curate breathtaking destination weddings.',
   keywords: 'event management AlUla, destination weddings AlUla, Hegra events, Banyan Tree AlUla weddings, Habitas AlUla events, Saudi desert luxury events',
   alternates: { canonical: 'https://saudieventmanagement.com/locations/alula' },
@@ -23,8 +23,9 @@ export default function AlUlaPage() {
           <Image 
             src="/gallery_destination_wedding.webp" 
             alt="Luxury Event Management AlUla - Desert Landscapes" 
-            fill 
-            className="object-cover opacity-40 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1e2653]/80 via-[#1e2653]/60 to-[#1e2653]" />
@@ -81,7 +82,7 @@ export default function AlUlaPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_destination_wedding.webp" alt="AlUla Desert Event" fill className="object-cover" />
+            <Image src="/gallery_destination_wedding.webp" alt="AlUla Desert Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -113,8 +114,7 @@ export default function AlUlaPage() {
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Signature AlUla <span className="hero-subtitle-shimmer">Experiences</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">Tailored solutions for the world&apos;s most ambitious destination events.</p>
-            <h2 className="text-2xl md:text-3xl font-sans text-white mb-6 font-bold">Signature AlUla <span className="hero-subtitle-shimmer">Experiences</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">Tailored solutions for the world&apos;s most ambitious destination events.</p>
+
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              {[

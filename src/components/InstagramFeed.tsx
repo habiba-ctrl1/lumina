@@ -61,8 +61,9 @@ export default function InstagramFeed() {
               <Image 
                 src={post.src} 
                 alt="Instagram post" 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                width={400}
+                height={400}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
                 <div className="flex items-center gap-2 text-white">

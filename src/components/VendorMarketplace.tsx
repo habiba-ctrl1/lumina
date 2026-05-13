@@ -163,8 +163,9 @@ export default function VendorMarketplace() {
                 <Image
                   src={vendor.image}
                   alt={vendor.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-charcoal-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
@@ -194,11 +195,11 @@ export default function VendorMarketplace() {
                   <span className="text-gray-500 text-xs italic">
                     {vendor.reviews} Verified Reviews
                   </span>
-                  <a 
-                    href={`${WHATSAPP_BASE}${encodeURIComponent(`Hi Saudi Event Management! I'd like to know more about ${vendor.name}`)}`}
+                  <a
+                    href={`https://wa.me/${vendor.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest group/btn"
+                    className="flex-1 bg-[#25D366] text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all"
                   >
                     View Portfolio
                     <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
@@ -220,14 +221,14 @@ export default function VendorMarketplace() {
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>
-          <a 
-            href={`${WHATSAPP_BASE}${encodeURIComponent("Hi Saudi Event Management! I'm a premium vendor and I'd like to apply to join your network.")}`}
+          <Link
+            href="/vendor-registration"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-sm hover:bg-gold-400 transition-all duration-300 rounded-sm"
+            className="inline-flex items-center gap-3 px-12 py-5 bg-black text-white font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-primary transition-all duration-700 shadow-xl rounded-xl"
           >
             Apply to Join
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

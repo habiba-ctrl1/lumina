@@ -74,7 +74,7 @@ export default function BlogPage() {
                 <Link key={post.slug} href={`/blog/${post.slug}`}>
                   <motion.article initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 + idx * 0.15 }} onMouseEnter={() => setHoveredPost(post.slug)} onMouseLeave={() => setHoveredPost(null)} className="group relative h-[480px] overflow-hidden border border-white/5 bg-charcoal-800/30">
                     <div className="absolute inset-0">
-                      <Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <Image src={post.image} alt={post.title} width={800} height={480} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/60 to-transparent" />
                     </div>
                     <div className="absolute top-6 left-6 z-10">
@@ -157,8 +157,9 @@ export default function BlogPage() {
                         <Image
                           src={post.image}
                           alt={post.title}
-                          fill
-                          className="object-cover transition-transform duration-1000 scale-[1.02] group-hover:scale-110"
+                          width={isLarge ? 800 : 400}
+                          height={isLarge ? 500 : 500}
+                          className="w-full h-full object-cover transition-transform duration-1000 scale-[1.02] group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                         

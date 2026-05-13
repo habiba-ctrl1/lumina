@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Moon, Star, MapPin, Users } from "lucide-react";
 
 export const metadata = {
-  title: 'Makkah VIP Retreat | Saudi Event Management Portfolio',
+  title: 'Makkah VIP Retreat Case Study',
   description: 'Bespoke event management for spiritual and high-profile retreats in the Holy City of Makkah.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/makkah-vip-retreat' },
 };
@@ -22,8 +22,9 @@ export default function MakkahVipRetreat() {
           <Image 
             src="/locations/riyadh-hero.webp" 
             alt="Makkah VIP Retreat" 
-            fill 
-            className="object-cover opacity-40"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
@@ -76,7 +77,7 @@ export default function MakkahVipRetreat() {
             </p>
           </div>
           <div className="relative aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl">
-            <Image src="/gallery_1.webp" alt="Makkah Retreat Interior" fill className="object-cover" />
+            <Image src="/gallery_1.webp" alt="Makkah Retreat Interior" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -90,9 +91,9 @@ export default function MakkahVipRetreat() {
               { title: "Logistical Flow", desc: "Seamless private transport to and from the Haram with zero-wait protocols." }
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-black text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-primary" /> {item.title}
-                </h4>
+                </h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}

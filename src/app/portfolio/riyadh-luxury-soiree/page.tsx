@@ -20,8 +20,9 @@ export default function RiyadhLuxurySoiree() {
           <Image 
             src="/hero_bg.webp" 
             alt="Riyadh Luxury Soiree" 
-            fill 
-            className="object-cover opacity-30"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-30"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
@@ -78,7 +79,7 @@ export default function RiyadhLuxurySoiree() {
             </p>
           </div>
           <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-gray-50">
-            <Image src="/gallery_1.webp" alt="Soiree Ambience" fill className="object-cover" />
+            <Image src="/gallery_1.webp" alt="Soiree Ambience" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -93,7 +94,7 @@ export default function RiyadhLuxurySoiree() {
               <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
                 <CheckCircle2 size={24} className="text-white" />
               </div>
-              <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-4">{item.title}</h4>
+              <h3 className="text-black text-sm font-bold uppercase tracking-widest mb-4">{item.title}</h3>
               <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
             </div>
           ))}
@@ -102,7 +103,7 @@ export default function RiyadhLuxurySoiree() {
         {/* Impact */}
         <div className="bg-black text-white p-12 md:p-32 rounded-[5rem] text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-30">
-            <Image src="/hero_bg.webp" alt="Background" fill className="object-cover" />
+            <Image src="/hero_bg.webp" alt="Background" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary italic">Wonder</span></h2>

@@ -59,7 +59,7 @@ export default function BlogPostPage() {
 
       {/* Hero Image */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-        <Image src={post.image} alt={post.title} fill className="object-cover" priority />
+        <Image src={post.image} alt={post.title} width={1920} height={1080} className="w-full h-full object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-charcoal-900/20" />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal-900/60 via-transparent to-transparent" />
 
@@ -174,7 +174,7 @@ export default function BlogPostPage() {
               <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                 <motion.article whileHover={{ y: -4 }} className="group flex gap-6 border border-white/5 bg-charcoal-800/20 p-4 hover:border-gold-500/20 transition-all duration-500">
                   <div className="relative w-32 h-32 shrink-0 overflow-hidden">
-                    <Image src={rp.image} alt={rp.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Image src={rp.image} alt={rp.title} width={300} height={300} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex flex-col justify-center">
                     <span className="text-gold-500 text-[10px] uppercase tracking-[0.2em] mb-2">{rp.category}</span>

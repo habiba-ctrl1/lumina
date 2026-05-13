@@ -140,8 +140,9 @@ export default function ProductionVenuesPage() {
             <Image 
               src="/gallery_wedding_reception.webp" 
               alt="Event services Saudi Arabia - Event venue Riyadh" 
-              fill 
-              className="object-cover opacity-50"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover opacity-50"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-charcoal-950/20" />
@@ -301,8 +302,9 @@ export default function ProductionVenuesPage() {
                 <Image 
                   src="/gallery_corporate_gala.webp" 
                   alt="خدمات الفعاليات السعودية - أماكن فعاليات الرياض" 
-                  fill 
-                  className="object-cover"
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>

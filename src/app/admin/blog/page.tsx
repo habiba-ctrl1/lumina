@@ -105,7 +105,7 @@ export default function AdminBlogPage() {
                       <div className="flex items-center gap-5">
                         <div className="relative w-16 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-slate-100 shadow-sm bg-slate-50 flex items-center justify-center">
                           {post.media && post.media[0] ? (
-                            <Image src={post.media[0].url} alt={post.title} fill className="object-cover" />
+                            <Image src={post.media[0].url} alt={post.title} width={100} height={80} className="w-full h-full object-cover" />
                           ) : (
                             <FileText size={20} className="text-slate-300" />
                           )}
@@ -142,6 +142,7 @@ export default function AdminBlogPage() {
                         <Link 
                           href={`/blog/${post.slug}`}
                           target="_blank"
+                          rel="noopener noreferrer"
                           className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:text-slate-900 hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-slate-100"
                           title="View Publicly"
                         >

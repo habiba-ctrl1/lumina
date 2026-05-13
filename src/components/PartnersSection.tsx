@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const partners = [
-  { name: "GEA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/General_Entertainment_Authority_Saudi_Arabia_logo.svg/512px-General_Entertainment_Authority_Saudi_Arabia_logo.svg.png" },
-  { name: "NEOM", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/NEOM_Logo.svg/512px-NEOM_Logo.svg.png" },
-  { name: "Vision 2030", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Saudi_Vision_2030_logo.svg/512px-Saudi_Vision_2030_logo.svg.png" },
-  { name: "Ministry of Culture", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Ministry_of_Culture_Saudi_Arabia_logo.svg/512px-Ministry_of_Culture_Saudi_Arabia_logo.svg.png" },
-  { name: "Riyadh Season", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Riyadh_Season_logo.svg/512px-Riyadh_Season_logo.svg.png" },
-  { name: "Red Sea Global", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Red_Sea_Global_Logo.png/512px-Red_Sea_Global_Logo.png" },
-  { name: "Diriyah Gate", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Diriyah_Gate_Development_Authority_logo.svg/512px-Diriyah_Gate_Development_Authority_logo.svg.png" },
-  { name: "Saudia", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Saudia_Logo.svg/512px-Saudia_Logo.svg.png" },
+  { name: "GEA", logo: "/partners/gea.png" },
+  { name: "NEOM", logo: "/partners/neom.png" },
+  { name: "Vision 2030", logo: "/partners/vision2030.png" },
+  { name: "Ministry of Culture", logo: "/partners/moc.png" },
+  { name: "Riyadh Season", logo: "/partners/riyadh_season.svg" },
+  { name: "Red Sea Global", logo: "/partners/red_sea.svg" },
+  { name: "Diriyah Gate", logo: "/partners/diriyah.svg" },
+  { name: "Saudia", logo: "/partners/saudia.svg" },
 ];
 
 export default function PartnersSection() {
@@ -83,10 +83,10 @@ export default function PartnersSection() {
                     <Image
                       src={partner.logo}
                       alt={`${partner.name} Corporate Logo`}
-                      fill
+                      width={180}
+                      height={80}
                       unoptimized
-                      className="object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 filter brightness-0 group-hover:brightness-100"
-                      sizes="180px"
+                      className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-all duration-500 filter brightness-0 group-hover:brightness-100"
                     />
                   </div>
                 </div>

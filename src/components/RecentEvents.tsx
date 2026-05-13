@@ -21,7 +21,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
     <section id="gallery" className="section-minimal bg-white relative overflow-hidden">
       <div className="container-minimal relative z-10">
         {/* Header */}
-        {!hideHeader && (
+        {!hideHeader ? (
           <div className="text-center mb-16">
             <motion.span 
               initial={{ opacity: 0 }} 
@@ -48,6 +48,8 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
               Explore our most spectacular luxury events in this immersive curated gallery.
             </motion.p>
           </div>
+        ) : (
+          <h2 className="sr-only">Recent Portfolio Masterpieces</h2>
         )}
 
         {/* 3D Coverflow Gallery */}
@@ -86,9 +88,9 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
                     <Image 
                       src={item.src} 
                       alt={item.title} 
-                      fill 
-                      className="object-cover transition-transform duration-1000 group-hover:scale-110" 
-                      sizes="(max-width: 768px) 300px, 500px"
+                      width={600}
+                      height={400}
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
                     />
                     {/* Minimalist Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -140,6 +140,7 @@ export default function BecomeOne() {
                 <a 
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20discuss%20a%20strategic%20partnership."
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full bg-white text-black py-3.5 rounded-xl text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-primary hover:text-white transition-all"
                 >
                   <MessageCircle size={14} /> Partner Hotline
@@ -286,6 +287,21 @@ export default function BecomeOne() {
               </motion.div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Descriptive SEO Section */}
+      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center border-t border-gray-100">
+        <h2 className="text-black font-sans font-bold uppercase tracking-tight text-2xl mb-8 leading-tight">
+          The Partnership <span className="text-primary italic">Ecosystem</span>
+        </h2>
+        <div className="prose prose-gray max-w-none text-gray-500 font-light leading-relaxed space-y-6">
+          <p>
+            Becoming a partner with Saudi Event Management means joining an elite collective dedicated to redefining the luxury and corporate event landscape in the Kingdom. We believe that extraordinary events are the result of synergistic collaborations between the industry&apos;s most talented professionals. Our partnership ecosystem is designed to foster mutual growth, knowledge sharing, and the joint execution of high-stakes projects across Riyadh, Jeddah, AlUla, and beyond. We value partners who bring specialized expertise, whether in cutting-edge AV technology, traditional Saudi craftsmanship, bespoke catering, or architectural venue management.
+          </p>
+          <p>
+            Our selection process is rigorous, ensuring that every strategic alliance we form aligns with our core values of excellence, discretion, and cultural resonance. As a partner, you gain access to a pipeline of high-profile events and a network of high-net-worth clients and government entities. We prioritize long-term, sustainable relationships that contribute to the professionalization and elevation of the Saudi event sector in line with Vision 2030 objectives. By submitting your proposal, you are initiating a dialogue that could lead to your involvement in some of the most significant and culturally impactful events in Saudi Arabia&apos;s history.
+          </p>
         </div>
       </section>
 

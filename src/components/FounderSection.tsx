@@ -23,8 +23,9 @@ export default function FounderSection() {
               <Image
                 src="/gallery_2.webp"
                 alt="Luxury Event Vision"
-                fill
-                className="object-cover"
+                width={800}
+                height={1000}
+                className="w-full h-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Decorative border */}

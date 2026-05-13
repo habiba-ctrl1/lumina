@@ -105,7 +105,7 @@ export default function VendorsPage() {
                   <div key={vendor.id} className="group bg-charcoal-800/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5 flex flex-col">
                     <div className="relative h-64 w-full overflow-hidden">
                       <div className="absolute inset-0 bg-charcoal-900" />
-                      <Image src={vendor.image} alt={vendor.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" />
+                      <Image src={vendor.image} alt={vendor.name} width={600} height={400} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-blue-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">{vendor.location}</span>
                       </div>

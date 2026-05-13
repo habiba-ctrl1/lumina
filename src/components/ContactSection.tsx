@@ -51,6 +51,7 @@ export default function ContactSection() {
                <motion.a 
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20services." 
                   target="_blank" 
+                  rel="noopener noreferrer"
                   whileHover={{ y: -4 }}
                   className="flex items-center gap-4 bg-[#25D366] text-white px-8 py-5 rounded-2xl shadow-xl shadow-green-500/10 hover:shadow-green-500/20 transition-all w-fit"
                 >

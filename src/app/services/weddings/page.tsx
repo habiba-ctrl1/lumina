@@ -194,8 +194,9 @@ export default function WeddingsPage() {
             <Image 
               src="/wedding.webp" 
               alt="Luxury wedding planner Saudi Arabia - Riyadh Wedding" 
-              fill 
-              className="object-cover"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover"
               priority
             />
             <div className="absolute inset-0 bg-black/40" />
@@ -249,8 +250,9 @@ export default function WeddingsPage() {
                 <Image 
                   src="/gallery_wedding_reception.webp" 
                   alt="Luxury wedding decoration company Saudi Arabia prices" 
-                  fill 
-                  className="object-cover"
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="space-y-8">

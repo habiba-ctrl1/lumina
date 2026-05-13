@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Users, Calendar, MapPin } from "lucide-react";
 
 export const metadata = {
-  title: 'Royal Riyadh Wedding Case Study | Saudi Event Management',
+  title: 'Royal Riyadh Wedding Case Study',
   description: 'An inside look into how Saudi Event Management orchestrated a magnificent Royal Wedding in Riyadh, blending tradition with modern luxury.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/royal-riyadh-wedding' },
 };
@@ -22,8 +22,9 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           <Image 
             src="/gallery_wedding_reception.webp" 
             alt="Royal Riyadh Wedding" 
-            fill 
-            className="object-cover opacity-60"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-60"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653] via-[#1e2653]/60 to-transparent" />
@@ -96,7 +97,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
             </ul>
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden">
-            <Image src="/locations/riyadh-hero.webp" alt="Construction and Details" fill className="object-cover" />
+            <Image src="/locations/riyadh-hero.webp" alt="Construction and Details" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 

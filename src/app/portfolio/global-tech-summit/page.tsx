@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Cpu, Globe, Zap, Network } from "lucide-react";
 
 export const metadata = {
-  title: 'Global Tech Summit Case Study | Saudi Event Management',
+  title: 'Global Tech Summit',
   description: 'Executing a massive international technology summit in Saudi Arabia with cutting-edge production by Saudi Event Management.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/global-tech-summit' },
 };
@@ -22,8 +22,9 @@ export default function GlobalTechSummit() {
           <Image 
             src="/hero_bg.webp" 
             alt="Global Tech Summit" 
-            fill 
-            className="object-cover opacity-20 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-20 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -76,7 +77,7 @@ export default function GlobalTechSummit() {
             </p>
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-            <Image src="/gallery_corporate_gala.webp" alt="Tech Summit Stage" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="Tech Summit Stage" width={800} height={450} className="w-full h-full object-cover" />
           </div>
         </div>
 

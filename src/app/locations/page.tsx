@@ -7,7 +7,7 @@ import { MapPin, ArrowRight } from "lucide-react";
 import SaudiMap from "@/components/SaudiMap";
 
 export const metadata = {
-  title: 'Our Locations | Saudi Event Management',
+  title: 'Our Locations',
   description: 'Discover Saudi Event Management across the Kingdom of Saudi Arabia. Premier luxury event management in Riyadh, Jeddah, AlUla, and Dammam.',
   keywords: 'event management locations, Saudi Event Management Riyadh, Saudi Event Management Jeddah, Saudi Event Management AlUla, Saudi Event Management Dammam, Saudi luxury events',
   alternates: { canonical: 'https://saudieventmanagement.com/locations' },
@@ -66,6 +66,21 @@ export default function LocationsPage() {
       </section>
 
       <SaudiMap />
+      
+      {/* Descriptive SEO Section */}
+      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center">
+        <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold uppercase tracking-tight">
+          Kingdom-wide <span className="text-gold-500">Excellence</span>
+        </h2>
+        <div className="prose prose-invert prose-gold max-w-none text-gray-400 font-light leading-relaxed space-y-6">
+          <p>
+            Saudi Event Management operates at the intersection of local heritage and global luxury standards. Our presence across the Kingdom is not just about having offices; it&apos;s about our deep-rooted relationships with the finest venues, government authorities, and specialized artisans in each region. Whether you are planning a high-stakes corporate summit in the heart of Riyadh&apos;s financial district or a soulful wedding in the historic streets of Jeddah, our regional teams provide the logistical precision and cultural nuance required for world-class execution.
+          </p>
+          <p>
+            In AlUla, we navigate the complex requirements of UNESCO-protected sites to deliver breathtaking desert experiences, while in Dammam, we support the industrial and energy giants of the Eastern Province with sophisticated corporate galas and seminars. Our expansion strategy is aligned with Saudi Vision 2030, ensuring that every event we manage contributes to the Kingdom&apos;s growing reputation as a global hub for elite gatherings and cultural celebrations.
+          </p>
+        </div>
+      </section>
 
       {/* Locations Grid */}
       <section className="py-16 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,8 +95,9 @@ export default function LocationsPage() {
                 <Image 
                   src={loc.image} 
                   alt={loc.city} 
-                  fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
               </div>
@@ -90,7 +106,7 @@ export default function LocationsPage() {
                   <MapPin size={16} className="text-gold-500" />
                   <span className="text-gold-500 text-xs uppercase tracking-widest">{loc.country}</span>
                 </div>
-                <h2 className="text-2xl font-sans text-white mb-3 font-bold">{loc.city}</h2>
+                <h3 className="text-2xl font-sans text-white mb-3 font-bold">{loc.city}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2">
                   {loc.description}
                 </p>

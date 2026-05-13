@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = params.slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
   return {
-    title: `${title} | Saudi Event Management Portfolio`,
+    title: title,
     description: `Detailed case study of the ${title} project by Saudi Event Management.`,
     alternates: {
       canonical: `https://saudieventmanagement.com/portfolio/${params.slug}`,

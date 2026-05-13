@@ -144,9 +144,9 @@ export default function FilterablePortfolio() {
                   <Image 
                     src={item.src} 
                     alt={item.title} 
-                    fill 
-                    className="object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-70 group-hover:opacity-100" 
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    width={800}
+                    height={600}
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-70 group-hover:opacity-100" 
                   />
                   
                   {/* Overlay Gradient */}

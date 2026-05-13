@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Anchor, Waves, Camera, Building } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Event Management Jeddah | Coastal Weddings & Corporate Events',
+  title: 'Luxury Events in Jeddah',
   description: 'Exquisite event planning in Jeddah. Specialists in Red Sea coastal weddings, corporate summits in the financial district, and luxury private parties.',
   keywords: 'event management Jeddah, Jeddah weddings, corporate events Jeddah, Red Sea events, luxury planners Jeddah',
   alternates: { canonical: 'https://saudieventmanagement.com/locations/jeddah' },
@@ -23,8 +23,9 @@ export default function JeddahPage() {
           <Image 
             src="/gallery_corporate_gala.webp" 
             alt="Luxury Event Management Jeddah - Red Sea Coastline" 
-            fill 
-            className="object-cover opacity-40 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1e2653]/80 via-[#1e2653]/60 to-[#1e2653]" />
@@ -61,7 +62,7 @@ export default function JeddahPage() {
       <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image src="/gallery_garden_party.webp" alt="Al-Balad Jeddah Event" fill className="object-cover" />
+            <Image src="/gallery_garden_party.webp" alt="Al-Balad Jeddah Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -84,12 +85,27 @@ export default function JeddahPage() {
               ].map((item, i) => (
                 <div key={i} className="flex flex-col gap-2">
                   <item.icon size={20} className="text-gold-500" />
-                  <h4 className="text-white font-sans font-bold text-sm">{item.title}</h4>
+                  <h3 className="text-white font-sans font-bold text-sm">{item.title}</h3>
                   <p className="text-gray-500 text-xs leading-relaxed">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Descriptive SEO Section */}
+      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center">
+        <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold uppercase tracking-tight">
+          The Jeddah <span className="text-gold-500">Experience</span>
+        </h2>
+        <div className="prose prose-invert prose-gold max-w-none text-gray-400 font-light leading-relaxed space-y-6">
+          <p>
+            As the spiritual gateway to the Holy Cities and a vibrant hub for global trade, Jeddah offers a unique canvas for luxury events. Our Jeddah-based team specializes in navigating the city&apos;s diverse micro-environments, from the sleek, modern architecture of the Obhur coastline to the historic, coral-stone mansions of Al-Balad. We maintain close partnerships with the city&apos;s most prestigious five-star hotels and private estates, ensuring that our clients have access to the most exclusive venues available.
+          </p>
+          <p>
+            The &quot;Bride of the Red Sea&quot; is known for its sophisticated social scene and appreciation for the arts. Our event designs in Jeddah often incorporate elements of maritime elegance and Hijazi hospitality, blending traditional motifs with contemporary luxury. Whether it is a high-profile corporate product launch during the Jeddah Season or an intimate private celebration overlooking the world&apos;s tallest fountain, Saudi Event Management provides the end-to-end expertise required to manage Jeddah&apos;s unique climate, logistical requirements, and cultural expectations.
+          </p>
         </div>
       </section>
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Shield, Users, Coffee, Home } from "lucide-react";
 
 export const metadata = {
-  title: 'Riyadh Elite Majlis | Saudi Event Management Portfolio',
+  title: 'Riyadh Elite Majlis Case Study',
   description: 'Exquisite Majlis gathering in Riyadh, showcasing Najdi heritage with ultra-modern luxury.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/riyadh-elite-majlis' },
 };
@@ -22,8 +22,9 @@ export default function RiyadhEliteMajlis() {
           <Image 
             src="/hero_bg.webp" 
             alt="Riyadh Elite Majlis" 
-            fill 
-            className="object-cover opacity-30 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-30 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
@@ -68,7 +69,7 @@ export default function RiyadhEliteMajlis() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
             <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <Image src="/gallery_corporate_gala.webp" alt="Majlis Setup" fill className="object-cover" />
+              <Image src="/gallery_corporate_gala.webp" alt="Majlis Setup" width={600} height={800} className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="order-1 md:order-2">
@@ -97,7 +98,7 @@ export default function RiyadhEliteMajlis() {
                   <CheckCircle2 size={24} className="text-primary group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-2">{item.title}</h4>
+                  <h3 className="text-black text-xs font-bold uppercase tracking-widest mb-2">{item.title}</h3>
                   <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -108,7 +109,7 @@ export default function RiyadhEliteMajlis() {
         {/* Impact */}
         <div className="bg-gray-900 text-white p-12 md:p-24 rounded-[4rem] text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <Image src="/hero_bg.webp" alt="Pattern" fill className="object-cover" />
+            <Image src="/hero_bg.webp" alt="Pattern" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-primary italic">Legacy</span></h2>

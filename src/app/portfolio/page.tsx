@@ -9,7 +9,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: 'Event Portfolio | Saudi Event Management',
+  title: 'Luxury Event Portfolio',
   description: 'View our gallery of luxury events, weddings, and corporate summits.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio' },
 };

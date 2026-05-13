@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Building, Ship, Anchor, Waves } from "lucide-react";
 
 export const metadata = {
-  title: 'Executive Summit Jeddah Case Study | Saudi Event Management',
+  title: 'Executive Summit Jeddah Case Study',
   description: 'A high-level executive summit held in the coastal city of Jeddah, featuring coastal elegance and corporate precision by Saudi Event Management.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/executive-summit-jeddah' },
 };
@@ -22,8 +22,9 @@ export default function ExecutiveSummitJeddah() {
           <Image 
             src="/hero_bg.webp" 
             alt="Jeddah Executive Summit" 
-            fill 
-            className="object-cover opacity-20"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-20"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
@@ -67,7 +68,7 @@ export default function ExecutiveSummitJeddah() {
         {/* Coastal Elegance */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1 relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
-            <Image src="/gallery_2.webp" alt="Jeddah Coastal Event" fill className="object-cover" />
+            <Image src="/gallery_2.webp" alt="Jeddah Coastal Event" width={800} height={800} className="w-full h-full object-cover" />
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Coastal <span className="text-primary italic">Elegance</span></h2>
@@ -90,7 +91,7 @@ export default function ExecutiveSummitJeddah() {
               { title: "Security Excellence", desc: "A seamless, 'invisible' security net that protected VIPs while maintaining a relaxed atmosphere." }
             ].map((item, i) => (
               <div key={i} className="p-10 bg-gray-50 rounded-3xl border border-gray-100 hover:border-primary transition-all group">
-                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{item.title}</h4>
+                <h3 className="text-black text-xs font-bold uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}

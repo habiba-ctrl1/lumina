@@ -6,7 +6,7 @@ import Link from "next/link";
 import { MapPin, Star, Building2, Briefcase, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Event Management Dammam | Corporate Galas & Industrial Summits',
+  title: 'Luxury Events in Dammam',
   description: 'Premier event management in Dammam and the Eastern Province. Specializing in high-profile corporate galas, industrial summits, and elite social gatherings.',
   keywords: 'event management Dammam, Dammam corporate events, luxury weddings Dammam, Eastern Province event planning',
   alternates: { canonical: 'https://saudieventmanagement.com/locations/dammam' },
@@ -23,8 +23,9 @@ export default function DammamPage() {
           <Image 
             src="/gallery_vip_party.webp" 
             alt="Luxury Event Management Dammam - Eastern Province Skyline" 
-            fill 
-            className="object-cover opacity-40 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1e2653]/80 via-[#1e2653]/60 to-[#1e2653]" />
@@ -81,7 +82,7 @@ export default function DammamPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" fill className="object-cover" />
+            <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -113,8 +114,7 @@ export default function DammamPage() {
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Signature Eastern <span className="hero-subtitle-shimmer">Services</span></h2>
             <p className="text-gray-400 max-w-2xl mx-auto font-light">Custom solutions for the region&apos;s dynamic corporate and family landscape.</p>
-            <h2 className="text-2xl md:text-3xl font-sans text-white mb-6 font-bold">Signature Eastern <span className="hero-subtitle-shimmer">Services</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">Custom solutions for the region&apos;s dynamic corporate and family landscape.</p>
+
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              {[

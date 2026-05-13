@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Handshake, Award, Target, Users, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Strategic Partnerships | Saudi Event Management",
+  title: 'Strategic Partnerships',
   description: "Join Saudi Arabia's premier event management network. We collaborate with world-class brands and suppliers to deliver extraordinary luxury experiences.",
   alternates: { canonical: 'https://saudieventmanagement.com/partners' },
 };
@@ -43,8 +43,9 @@ export default function PartnersPage() {
           <Image 
             src="/hero_bg.webp" 
             alt="Strategic Partnerships" 
-            fill 
-            className="object-cover opacity-20 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-20 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
@@ -141,8 +142,9 @@ export default function PartnersPage() {
               <Image 
                 src="/gallery_1.webp" 
                 alt="Saudi Vision 2030 Events" 
-                fill 
-                className="object-cover"
+                width={800}
+                height={1000}
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-12 left-12 right-12">
@@ -159,7 +161,7 @@ export default function PartnersPage() {
       {/* CTA Section */}
       <section className="py-24 bg-black text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/hero_bg.webp" alt="Background" fill className="object-cover" />
+          <Image src="/hero_bg.webp" alt="Background" width={1920} height={600} className="w-full h-full object-cover" />
         </div>
         <div className="container-luxury relative z-10">
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-8 uppercase tracking-tight">Ready to <span className="text-primary">Join Us?</span></h2>

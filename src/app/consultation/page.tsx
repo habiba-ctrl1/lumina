@@ -268,6 +268,21 @@ export default function ConsultationPage() {
         </div>
       </section>
 
+      {/* Descriptive SEO Section */}
+      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center border-t border-white/5">
+        <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold uppercase tracking-tight">
+          The Power of <span className="text-gold-500">Early Consultation</span>
+        </h2>
+        <div className="prose prose-invert prose-gold max-w-none text-gray-400 font-light leading-relaxed space-y-6">
+          <p>
+            A discovery session with Saudi Event Management is more than just a meeting; it is the first step in translating your abstract ideas into a tangible, world-class experience. We believe that the foundation of any successful event lies in the initial conceptualization phase. During your consultation, our senior event directors will listen to your aspirations, understand your brand or personal narrative, and begin identifying the strategic pillars that will support your event&apos;s success. This collaborative approach allows us to align our architectural precision with your emotional vision from day one.
+          </p>
+          <p>
+            Our consultation process is designed to save you time and provide immediate clarity on the feasibility, scale, and potential of your project. We discuss high-level logistical considerations, venue availability in key Saudi cities, and preliminary budget frameworks that reflect your quality expectations. By engaging with our experts early in your planning journey, you gain access to a decade of industry expertise and a network of elite partners that can elevate your event from standard to extraordinary. We prioritize confidentiality and professional discretion throughout every interaction, ensuring your vision is protected while it is being refined.
+          </p>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

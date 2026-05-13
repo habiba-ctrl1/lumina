@@ -20,6 +20,22 @@ const faqs = [
   {
     question: "Can you accommodate high-profile and celebrity clientele?",
     answer: "We have extensive experience working with high-profile clients and understand the critical importance of discretion, privacy, and specialized security arrangements. Non-disclosure agreements (NDAs) are a standard part of our operating procedure."
+  },
+  {
+    question: "What is the average budget for a luxury event in Saudi Arabia?",
+    answer: "Our bespoke events typically range from SAR 250,000 for intimate luxury gatherings to over SAR 2,000,000 for grand-scale productions. Each project is unique, and we provide detailed proposals tailored to your specific vision, guest count, and venue requirements. We are transparent about costs from the initial consultation."
+  },
+  {
+    question: "Which cities in Saudi Arabia do you operate in?",
+    answer: "Saudi Event Management has a strong operational presence across the Kingdom, including Riyadh, Jeddah, AlUla, Dammam, Makkah, and Madinah. Our headquarters are in Riyadh, with dedicated regional teams in each city to ensure local expertise and vendor relationships for flawless execution."
+  },
+  {
+    question: "Do you provide day-of coordination services?",
+    answer: "Yes, we offer standalone day-of coordination for clients who have managed their own planning but require professional on-site management. Our coordination team ensures that timelines, vendors, and logistics run flawlessly on the day, allowing you and your guests to enjoy the event without any stress."
+  },
+  {
+    question: "What types of events do you specialize in?",
+    answer: "We specialize in luxury weddings, corporate summits and galas, cultural activations, private celebrations, exhibition management, and seasonal events including Ramadan gatherings and National Day celebrations. Our team brings the same level of architectural precision and creative excellence to every event type."
   }
 ];
 

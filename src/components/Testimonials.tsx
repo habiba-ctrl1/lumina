@@ -56,7 +56,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-4">
             <div className="w-10 h-px bg-primary/30" />
             <div>
-              <h4 className="text-[10px] font-bold text-black uppercase tracking-widest">{fallbackTestimonials[current].author}</h4>
+              <p className="text-[10px] font-bold text-black uppercase tracking-widest">{fallbackTestimonials[current].author}</p>
               <p className="text-[8px] text-gray-400 uppercase tracking-wider mt-0.5">{fallbackTestimonials[current].role}</p>
             </div>
           </div>

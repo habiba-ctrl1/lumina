@@ -6,7 +6,7 @@ import Link from "next/link";
 import { MapPin, Star, Trophy, Building2, User, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: 'Luxury Event Management Riyadh | Kingdom Centre & Diriyah Events',
+  title: 'Luxury Events in Riyadh',
   description: 'The premier luxury event planner in Riyadh. From royal weddings near the Kingdom Centre to exclusive corporate galas in historical Diriyah.',
   keywords: 'event management Riyadh, luxury weddings Riyadh, corporate events Riyadh, Kingdom Centre events, Diriyah event planning, Al Faisaliyah Center events',
   alternates: { canonical: 'https://saudieventmanagement.com/locations/riyadh' },
@@ -23,8 +23,9 @@ export default function RiyadhPage() {
           <Image 
             src="/hero_bg.webp" 
             alt="Luxury Event Management Riyadh - Kingdom Centre Skyline" 
-            fill 
-            className="object-cover opacity-40 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-40 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1e2653]/80 via-[#1e2653]/60 to-[#1e2653]" />
@@ -81,7 +82,7 @@ export default function RiyadhPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-            <Image src="/gallery_charity_gala.webp" alt="Kingdom Centre Riyadh Event" fill className="object-cover" />
+            <Image src="/gallery_charity_gala.webp" alt="Kingdom Centre Riyadh Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e2653]/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-2xl">
@@ -150,7 +151,7 @@ export default function RiyadhPage() {
                       <User size={20} />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium mb-1">{member.name}</h4>
+                      <h3 className="text-white font-medium mb-1">{member.name}</h3>
                       <p className="text-gold-500 text-[10px] uppercase tracking-wider mb-2">{member.role}</p>
                       <p className="text-gray-500 text-xs font-light">{member.desc}</p>
                     </div>
@@ -161,18 +162,18 @@ export default function RiyadhPage() {
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_wedding_reception.webp" alt="Team at work" fill className="object-cover" />
+                  <Image src="/gallery_wedding_reception.webp" alt="Team at work" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
                 <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_corporate_gala.webp" alt="Event planning" fill className="object-cover" />
+                  <Image src="/gallery_corporate_gala.webp" alt="Event planning" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="h-48 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/gallery_destination_wedding.webp" alt="Venue sourcing" fill className="object-cover" />
+                  <Image src="/gallery_destination_wedding.webp" alt="Venue sourcing" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
                 <div className="h-64 relative rounded-2xl overflow-hidden border border-white/10">
-                  <Image src="/wedding.webp" alt="Riyadh office" fill className="object-cover" />
+                  <Image src="/wedding.webp" alt="Riyadh office" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>

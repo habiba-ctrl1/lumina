@@ -106,13 +106,14 @@ export default function Navbar() {
                               <Image 
                                 src="/main-logo.webp" 
                                 alt="Background Pattern" 
-                                fill 
+                                width={300}
+                                height={200}
                                 className="object-contain p-4 scale-150 rotate-12"
                               />
                             </div>
                             <div className="relative z-10">
                               <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Our Expertise</span>
-                              <h3 className="text-black font-sans text-xl leading-tight font-bold">Bespoke<br/>Experiences</h3>
+                              <p className="text-black font-sans text-xl leading-tight font-bold">Bespoke<br/>Experiences</p>
                             </div>
                             <Link 
                               href="/services"

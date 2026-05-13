@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Tent, Sun, Camera, Wind } from "lucide-react";
 
 export const metadata = {
-  title: 'AlUla Desert Festival Case Study | Saudi Event Management',
+  title: 'AlUla Desert Festival Case Study',
   description: 'A breathtaking cultural festival in the ancient desert of AlUla, executed by Saudi Event Management.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/alula-desert-festival' },
 };
@@ -22,8 +22,9 @@ export default function AlUlaDesertFestival() {
           <Image 
             src="/gallery_1.webp" 
             alt="AlUla Desert Festival" 
-            fill 
-            className="object-cover"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover"
             priority
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -79,15 +80,15 @@ export default function AlUlaDesertFestival() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_charity_gala.webp" alt="Festival Detail 1" fill className="object-cover" />
+                <Image src="/gallery_charity_gala.webp" alt="Festival Detail 1" width={400} height={500} className="w-full h-full object-cover" />
               </div>
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_corporate_gala.webp" alt="Festival Detail 2" fill className="object-cover" />
+                <Image src="/gallery_corporate_gala.webp" alt="Festival Detail 2" width={400} height={400} className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="pt-12">
               <div className="relative aspect-[3/5] rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_1.webp" alt="Festival Detail 3" fill className="object-cover" />
+                <Image src="/gallery_1.webp" alt="Festival Detail 3" width={400} height={600} className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -106,7 +107,7 @@ export default function AlUlaDesertFestival() {
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <span className="text-primary font-bold text-xl">{i+1}</span>
                 </div>
-                <h4 className="text-black text-sm font-bold uppercase tracking-widest">{item.title}</h4>
+                <h3 className="text-black text-sm font-bold uppercase tracking-widest">{item.title}</h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -125,7 +126,7 @@ export default function AlUlaDesertFestival() {
       {/* CTA */}
       <section className="py-32 bg-black text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/gallery_1.webp" alt="Desert" fill className="object-cover" />
+          <Image src="/gallery_1.webp" alt="Desert" width={1920} height={1080} className="w-full h-full object-cover" />
         </div>
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary italic">Cultural Wave</span></h2>

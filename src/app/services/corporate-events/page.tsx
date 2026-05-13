@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Building2, Users, MapPin, Target, Briefcase, Calendar } from "lucide-react";
 
 export const metadata = {
-  title: 'Corporate Event Management Saudi Arabia | Saudi Event Management',
+  title: 'Corporate Event Management',
   description: 'Top-tier corporate event management in Saudi Arabia. We organize business conferences, AGM planning, team building, and corporate gala dinners in Riyadh & Jeddah.',
   keywords: 'corporate event management Saudi Arabia, شركة إدارة فعاليات الشركات, event company Riyadh, corporate events Jeddah KSA, business conference organizer Saudi Arabia, AGM planning Riyadh, team building events KSA, corporate gala dinner Saudi Arabia, seminar organizer Riyadh',
 };
@@ -124,8 +124,9 @@ export default function CorporateEventsPage() {
             <Image 
               src="/corporate.webp" 
               alt="Corporate event management Saudi Arabia - Business conference" 
-              fill 
-              className="object-cover opacity-30"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover opacity-30"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/60 to-charcoal-950" />

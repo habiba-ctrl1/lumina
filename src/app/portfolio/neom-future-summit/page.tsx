@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Globe, Cpu, Zap, Building2 } from "lucide-react";
 
 export const metadata = {
-  title: 'NEOM Future Summit Case Study | Saudi Event Management',
+  title: 'NEOM Future Summit Case Study',
   description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/neom-future-summit' },
 };
@@ -22,8 +22,9 @@ export default function NeomFutureSummitCaseStudy() {
           <Image 
             src="/hero_bg.webp" 
             alt="NEOM Future Summit" 
-            fill 
-            className="object-cover opacity-30 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-30 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/60 to-transparent" />
@@ -98,7 +99,7 @@ export default function NeomFutureSummitCaseStudy() {
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
             <div className="absolute inset-0 bg-gold-500/10 animate-pulse" />
-            <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 

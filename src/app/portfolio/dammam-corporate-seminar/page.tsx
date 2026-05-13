@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Briefcase, BarChart, ShieldCheck, Factory } from "lucide-react";
 
 export const metadata = {
-  title: 'Dammam Corporate Seminar Case Study | Saudi Event Management',
+  title: 'Dammam Corporate Seminar',
   description: 'Executing a massive industrial and corporate seminar in Dammam, the heart of Saudi industry, by Saudi Event Management.',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio/dammam-corporate-seminar' },
 };
@@ -22,8 +22,9 @@ export default function DammamCorporateSeminar() {
           <Image 
             src="/hero_bg.webp" 
             alt="Dammam Corporate Seminar" 
-            fill 
-            className="object-cover opacity-20 grayscale"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover opacity-20 grayscale"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/50" />
@@ -76,7 +77,7 @@ export default function DammamCorporateSeminar() {
             </p>
           </div>
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
-            <Image src="/gallery_corporate_gala.webp" alt="Industrial Seminar Stage" fill className="object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="Industrial Seminar Stage" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 

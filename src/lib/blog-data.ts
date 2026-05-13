@@ -24,7 +24,7 @@ export const blogCategories = [
 export const blogPosts: BlogPost[] = [
   {
     slug: "ultimate-guide-luxury-event-planning",
-    title: "The Ultimate Guide to Planning a Flawless Luxury Event",
+    title: "The Ultimate Luxury Event Planning Guide",
     excerpt:
       "From venue selection to the final toast, discover the insider secrets that top event planners use to create seamless, unforgettable luxury experiences.",
     category: "Event Planning",
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "trending-colors-2026-event-palette",
-    title: "Trending Colors of 2026: The Palette That Will Define Your Next Event",
+    title: "2026 Event Color Trends: The Defining Palette",
     excerpt:
       "Discover the stunning color trends dominating luxury events this year &mdash; from ethereal sage greens to bold terracotta and sophisticated deep plums.",
     category: "Color Trends",
@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "show-stopping-decor-ideas-events",
-    title: "10 Show-Stopping Decor Ideas for Unforgettable Events",
+    title: "10 Show-Stopping Event Decor Ideas",
     excerpt:
       "Transform any venue into a breathtaking experience with these avant-garde decor concepts that blend artistry, innovation, and pure luxury.",
     category: "Decor Ideas",
@@ -153,7 +153,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "destination-wedding-planning-guide",
-    title: "How to Plan a Destination Wedding That Feels Like a Dream",
+    title: "Planning a Dream Destination Wedding",
     excerpt:
       "From selecting the perfect overseas locale to managing guest logistics, here&apos;s everything you need to know about planning a destination wedding that exceeds every expectation.",
     category: "Weddings",
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "elevating-corporate-events-guide",
-    title: "Elevating Corporate Events: From Boardroom to Ballroom",
+    title: "Elevating Corporate Events",
     excerpt:
       "Learn how to transform standard corporate gatherings into premium brand experiences that inspire teams, impress clients, and drive real business results.",
     category: "Corporate",
@@ -234,7 +234,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "art-of-tablescaping-guide",
-    title: "The Art of Tablescaping: Creating Instagram-Worthy Table Settings",
+    title: "The Art of Tablescaping",
     excerpt:
       "Master the art of luxurious table design with expert tips on layering textures, choosing linens, and creating centerpieces that make every seat the best seat in the house.",
     category: "Lifestyle",
