@@ -82,7 +82,7 @@ export default function BlogPage() {
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
                       <span className="text-gold-500 text-[11px] uppercase tracking-[0.2em] font-medium">{post.category}</span>
-                      <h2 className="text-xl md:text-2xl font-sans font-bold text-white mt-2 mb-3 group-hover:text-gold-300 transition-colors duration-300 leading-tight">{post.title}</h2>
+                      <h3 className="text-xl md:text-2xl font-sans font-bold text-white mt-2 mb-3 group-hover:text-gold-300 transition-colors duration-300 leading-tight">{post.title}</h3>
                       <p className="text-gray-400 text-sm font-light line-clamp-2 mb-4">{post.excerpt}</p>
                       <div className="flex items-center gap-4 text-[11px] text-gray-500 uppercase tracking-wider">
                         <span className="flex items-center gap-1.5"><Calendar size={12} /> {post.date}</span>

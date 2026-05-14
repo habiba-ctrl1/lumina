@@ -106,7 +106,7 @@ export default function RiyadhLuxurySoiree() {
             <Image src="/hero_bg.webp" alt="Background" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary italic">Wonder</span></h2>
+            <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary italic">Wonder</span></h3>
             <p className="text-gray-400 text-xl max-w-3xl mx-auto font-light leading-relaxed mb-16">
               The soiree set a new standard for private celebrations in the Kingdom. It was not just a party; it was an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world.
             </p>
@@ -127,7 +127,7 @@ export default function RiyadhLuxurySoiree() {
 
       {/* CTA */}
       <section className="py-32 text-center bg-white">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary italic">Private Masterpiece</span></h2>
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary italic">Private Masterpiece</span></h3>
         <Link 
           href="/#contact" 
           className="inline-block px-12 py-6 bg-black text-white font-bold uppercase tracking-[0.2em] hover:bg-primary transition-all rounded-xl shadow-2xl text-xs"

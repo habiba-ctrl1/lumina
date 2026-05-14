@@ -38,6 +38,13 @@ export default function BlogPostPage() {
   }
 
   const renderContent = (block: string) => {
+    if (block.startsWith("### ")) {
+      return (
+        <h3 className="text-lg md:text-xl font-sans font-bold text-white mt-8 mb-4 leading-tight">
+          {block.replace("### ", "")}
+        </h3>
+      );
+    }
     if (block.startsWith("## ")) {
       return (
         <h2 className="text-xl md:text-2xl font-sans font-bold text-white mt-12 mb-4 leading-tight">

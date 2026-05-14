@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
       "## 8. Build in Contingencies",
       "The hallmark of a professional event planner is not that nothing goes wrong &mdash; it&apos;s that guests never know when something does. Plan for weather changes, vendor delays, and timeline shifts. Have backup plans for your backup plans. Keep a crisis kit with everything from extra buttons to portable chargers. The best events look effortless precisely because of the extensive planning behind them.",
 
-      "## The Bottom Line",
+      "### The Bottom Line",
       "A truly luxury event is one where every element has been considered, every detail intentional, and every guest feels valued. It&apos;s not about spending the most money &mdash; it&apos;s about spending it wisely on the details that matter most. Start planning early, trust your creative instincts, and never compromise on the things your guests will touch, taste, and remember.",
     ],
   },
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
       "## The Metallic Accent Story",
       "In 2026, the metallic conversation has expanded beyond classic gold and silver. Brushed brass, rose gold, and even oxidized copper are making statements. The key is choosing metallics that complement rather than compete with your color palette. Sage green loves brass. Deep plum adores antique gold. Dusty rose shines with rose gold. Let your palette guide your metallic choices for a cohesive, curated look.",
 
-      "## The Bottom Line",
+      "### The Bottom Line",
       "The most impactful events don&apos;t just follow trends &mdash; they interpret them through a personal lens. Use these trending palettes as inspiration, but always filter them through your brand, your personality, and the story you want to tell. The best color palette is one that feels authentically yours while still feeling fresh and of the moment.",
     ],
   },
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
       "## Weather Insurance &amp; Plan B",
       "Nature doesn&apos;t care about your wedding date. Always have a rain plan that&apos;s equally as beautiful as your outdoor setting. Many destination venues have both indoor and outdoor spaces that can be styled to match. Additionally, invest in wedding insurance that covers weather-related issues, vendor cancellations, and travel disruptions. This peace of mind is priceless.",
 
-      "## The Bottom Line",
+      "### The Bottom Line",
       "A destination wedding is an investment in experience. It naturally creates a more intimate guest list, encourages deeper connections, and provides a vacation for everyone involved. The extra planning complexity is more than offset by the extraordinary setting and concentrated celebration. Start early, communicate clearly, and don&apos;t forget to take a moment during the festivities to look around and take it all in &mdash; you&apos;re living your dream.",
     ],
   },
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
       "## The Follow-Through",
       "An event&apos;s impact extends far beyond the last speech. Send thoughtful follow-up packages &mdash; not just surveys, but curated gifts that reference shared experiences. Share professional photography and video highlights within 48 hours while memories are fresh. Create a post-event digital space where connections can continue. The follow-through is where corporate events deliver their greatest ROI.",
 
-      "## The Bottom Line",
+      "### The Bottom Line",
       "Exceptional corporate events are investments in culture, relationships, and brand perception. They require the same creative attention and strategic thinking as any major business initiative. When executed with purpose and premium attention to detail, corporate events become powerful tools for inspiration, connection, and growth. Your event is your brand in three dimensions &mdash; make sure it represents the best version of your story.",
     ],
   },
@@ -270,7 +270,7 @@ export const blogPosts: BlogPost[] = [
       "## Lighting Your Table",
       "Candles transform tables. Use a mix of heights &mdash; tall tapers for drama, votives for warmth, and pillars for substance. Consider non-traditional candle holders: brass geometric shapes, colored glass hurricanes, or minimalist concrete holders. LED candles are an acceptable alternative for venues with fire restrictions, but invest in high-quality ones with realistic flicker. The warm glow of candlelight is irreplaceable for creating intimacy.",
 
-      "## The Bottom Line",
+      "### The Bottom Line",
       "Great tablescaping tells a story. Every element &mdash; from the linen to the glassware to the last sprig of rosemary &mdash; should contribute to a cohesive narrative. Study your favorite table designs, collect inspiration, and don&apos;t be afraid to experiment. The most beautiful tables are those that reflect genuine thought and care, creating a space where guests feel both pampered and perfectly at home.",
     ],
   },

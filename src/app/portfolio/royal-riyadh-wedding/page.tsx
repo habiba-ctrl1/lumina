@@ -121,7 +121,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
 
       {/* CTA */}
       <section className="py-24 bg-white/5 text-center">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">Envision Your <span className="text-gold-500">Masterpiece</span></h2>
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white mb-6">Envision Your <span className="text-gold-500">Masterpiece</span></h3>
         <Link 
           href="/#contact" 
           className="inline-block px-10 py-4 bg-gold-500 text-[#1e2653] font-bold uppercase tracking-widest hover:bg-white transition-colors"
