@@ -56,9 +56,6 @@ export const metadata: Metadata = {
   },
   alternates: { 
     canonical: "https://saudieventmanagement.com",
-    languages: {
-      "ar-SA": "https://saudieventmanagement.com/ar",
-    },
   },
 };
 
