@@ -218,6 +218,22 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-010MKH4LLF"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-010MKH4LLF');
+            `,
+          }}
+        />
         <SplashScreen />
         <CustomCursor />
         {children}
