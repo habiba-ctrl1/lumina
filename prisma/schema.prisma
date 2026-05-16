@@ -149,3 +149,37 @@ model ActivityLog {
   userEmail String?
   createdAt DateTime @default(now())
 }
+model QuoteRequest {
+  id           String   @id @default(uuid())
+  clientName   String
+  clientPhone  String
+  clientEmail  String?
+  eventType    String
+  eventDate    DateTime?
+  eventCity    String
+  guestCount   Int?
+  budgetRange  String?
+  requirements String?
+  source       String   @default("website")
+  status       String   @default("pending") // pending | quote_sent | accepted | rejected | archived
+  proposals    Proposal[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Proposal {
+  id           String   @id @default(uuid())
+  request      QuoteRequest @relation(fields: [requestId], references: [id])
+  requestId    String
+  quoteNumber  String   @unique // e.g. "SEM-Q-2025-001"
+  lineItems    String   // JSON string of [{ service, description, qty, unitPrice, total }]
+  subtotal     Float
+  vatAmount    Float    // 15% VAT
+  totalAmount  Float
+  currency     String   @default("SAR")
+  validUntil   DateTime
+  notes        String?
+  status       String   @default("draft") // draft | sent | accepted | rejected | expired
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

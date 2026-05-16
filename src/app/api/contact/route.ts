@@ -57,6 +57,23 @@ export async function POST(request: Request) {
           estimate: true
         }
       });
+
+      // ALSO: Create a Record in QuoteRequest Table
+      await prisma.quoteRequest.create({
+        data: {
+          clientName: name,
+          clientPhone: phone || '---',
+          clientEmail: email,
+          eventType: eventType || 'General',
+          eventDate: eventDate ? new Date(eventDate) : null,
+          eventCity: venueCity || 'Riyadh',
+          guestCount: guestCount ? parseInt(guestCount) : null,
+          budgetRange: budget,
+          requirements: message,
+          source: 'homepage_form',
+          status: 'pending'
+        }
+      });
     } catch (prismaError) {
       console.error('Prisma Create Error:', prismaError);
       return NextResponse.json({ error: 'Database submission failed.', details: String(prismaError) }, { status: 500 });

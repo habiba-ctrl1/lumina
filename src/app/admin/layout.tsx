@@ -40,6 +40,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [pendingQuoteCount, setPendingQuoteCount] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -64,6 +65,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       }
     };
     checkAuth();
+
+    // Fetch pending quotes count
+    const fetchCounts = async () => {
+      try {
+        const res = await fetch('/api/admin/quote-requests');
+        const data = await res.json();
+        if (data.counts) setPendingQuoteCount(data.counts.pending || 0);
+      } catch (e) {
+        console.error('Failed to fetch counts');
+      }
+    };
+    fetchCounts();
+    const interval = setInterval(fetchCounts, 60000); // Refresh every minute
+    return () => clearInterval(interval);
   }, [pathname, router]);
 
   const handleLogout = async () => {
@@ -131,6 +146,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               >
                 <item.icon size={18} className={`transition-colors duration-300 ${isActive ? "text-gold-500" : "text-slate-400 group-hover:text-slate-900"}`} />
                 <span className="ml-4 tracking-tight">{item.label}</span>
+                {item.href === "/admin/quotes" && pendingQuoteCount > 0 && (
+                  <span className="ml-2 px-2 py-0.5 bg-gold-500 text-slate-900 text-[10px] font-black rounded-full">
+                    {pendingQuoteCount}
+                  </span>
+                )}
                 {isActive && (
                   <motion.div 
                     layoutId="active-indicator"

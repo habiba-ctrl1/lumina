@@ -38,9 +38,25 @@ export async function POST(request: Request) {
           status: 'New'
         }
       });
+
+      // ALSO: Create a Record in QuoteRequest Table
+      await prisma.quoteRequest.create({
+        data: {
+          clientName: name,
+          clientPhone: phone,
+          clientEmail: email,
+          eventType: eventType,
+          eventDate: eventDate ? new Date(eventDate) : null,
+          eventCity: 'Riyadh', // Default for now
+          guestCount: null,
+          budgetRange: budget,
+          requirements: message,
+          source: 'consultation_form',
+          status: 'pending'
+        }
+      });
     } catch (prismaError) {
       console.error('Prisma Create Error (Consultation):', prismaError);
-      // We'll continue even if DB fails, so we can still send emails
     }
 
     // 2. Log Activity
