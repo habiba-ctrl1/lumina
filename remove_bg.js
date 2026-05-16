@@ -2,7 +2,7 @@ const { Jimp } = require('jimp');
 
 async function processImage() {
   console.log("Loading image...");
-  const image = await Jimp.read('public/lumina-logo.png');
+  const image = await Jimp.read('public/Logo.png');
   
   image.scan(0, 0, image.bitmap.width, image.bitmap.height, function (x, y, idx) {
     const r = this.bitmap.data[idx + 0];
@@ -30,7 +30,7 @@ async function processImage() {
   });
 
   console.log("Saving image...");
-  await image.write('public/lumina-logo-transparent.png');
+  await image.write('public/sem-logo-transparent.png');
   console.log("Done!");
 }
 

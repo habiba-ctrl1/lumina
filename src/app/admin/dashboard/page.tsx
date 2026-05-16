@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
-import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote, Plus, Trash2, CheckCircle2, Clock, AlertCircle, BarChart3, PieChart as PieChartIcon, FileText } from "lucide-react";
+import { Image, Mail, TrendingUp, Sparkles, MessageSquareQuote, Plus, Trash2, CheckCircle2, Clock, AlertCircle, BarChart3, PieChart as PieChartIcon, FileText, PlusCircle, Calendar, Users, Download, X } from "lucide-react";
 import { 
   BarChart, 
   Bar, 
@@ -54,110 +54,141 @@ export default function AdminDashboard() {
   const [pipelineData, setPipelineData] = useState<{ name: string; value: number }[]>([]);
   const [sourceData, setSourceData] = useState<{ name: string; value: number }[]>([]);
   const [mounted, setMounted] = useState(false);
+  
+  // Quick Actions & Modal State
+  const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
+  const [inquiryForm, setInquiryForm] = useState({ name: "", phone: "", eventType: "", message: "" });
+  const [submittingInquiry, setSubmittingInquiry] = useState(false);
+  const [activityLogs, setActivityLogs] = useState<{ id: string; action: string; details: string; createdAt: string }[]>([]);
 
   useEffect(() => {
     setMounted(true);
     fetchStats();
   }, []);
 
-  const handleAddStatus = async (e: React.FormEvent) => {
+  const handleAddInquiry = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newStatus.trim() || updating) return;
-
-    setUpdating(true);
+    setSubmittingInquiry(true);
     try {
-      const { data, error } = await supabase
-        .from("business_updates")
-        .insert([{ text: newStatus, label: statusLabel }])
-        .select()
-        .single();
-
-      if (error) throw error;
-      if (data) {
-        setStatuses([data, ...statuses]);
-        setNewStatus("");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...inquiryForm, source: "Manual Admin Entry" })
+      });
+      if (res.ok) {
+        setIsInquiryModalOpen(false);
+        setInquiryForm({ name: "", phone: "", eventType: "", message: "" });
+        fetchStats(); // Refresh everything
       }
     } catch (error) {
-      console.error("Error adding status:", error);
+      console.error("Error adding manual inquiry:", error);
     }
-    setUpdating(false);
+    setSubmittingInquiry(false);
   };
 
-  const handleDeleteStatus = async (id: string) => {
+  const handleExport = async () => {
     try {
-      const { error } = await supabase.from("business_updates").delete().eq("id", id);
-      if (error) throw error;
-      setStatuses(statuses.filter(s => s.id !== id));
+      const res = await fetch("/api/contact");
+      const data = await res.json();
+      
+      // Filter for current month
+      const now = new Date();
+      const thisMonthData = data.filter((inq: any) => {
+        const d = new Date(inq.createdAt);
+        return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+      });
+
+      const headers = ["Name", "Email", "Phone", "Event Type", "Date", "Source"];
+      const csvContent = [
+        headers.join(","),
+        ...thisMonthData.map((inq: any) => [
+          `"${inq.name}"`,
+          `"${inq.email}"`,
+          `"${inq.phone}"`,
+          `"${inq.eventType}"`,
+          `"${new Date(inq.createdAt).toLocaleDateString()}"`,
+          `"${inq.source || 'direct'}"`
+        ].join(","))
+      ].join("\n");
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `monthly_report_${now.toLocaleString('default', { month: 'short' })}_${now.getFullYear()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
-      console.error("Error deleting status:", error);
+      console.error("Export failed:", error);
     }
   };
 
   const fetchStats = async () => {
     setLoading(true);
     try {
-      // Fetch stats from local APIs
-      const [eventsRes, inquiriesRes, quotesRes, logsRes, testimonialsRes] = await Promise.all([
-        fetch('/api/events'),
+      // 1. Fetch Overview Stats
+      const overviewRes = await fetch('/api/admin/stats/overview');
+      const overviewData = await overviewRes.json();
+      
+      setStats({
+        events: overviewData.totalEvents || 0,
+        testimonials: 0, // We can keep testimonials separate if needed, or add to overview
+        inquiries: overviewData.pendingLeads || 0,
+        quotes: overviewData.vendorQuotes || 0,
+      });
+
+      // 2. Fetch Recent Data
+      const [inquiriesRes, quotesRes, logsRes] = await Promise.all([
         fetch('/api/contact'),
         fetch('/api/quotes'),
-        fetch('/api/logs'),
-        fetch('/api/testimonials')
+        fetch('/api/logs')
       ]);
 
-      const eventsData = await eventsRes.json();
       const inquiriesData = await inquiriesRes.json();
       const quotesData = await quotesRes.json();
       const logsData = await logsRes.json();
-      const testimonialsData = await testimonialsRes.json();
-
-      setStats({
-        events: eventsData.count || 0,
-        testimonials: Array.isArray(testimonialsData) ? testimonialsData.length : 0,
-        inquiries: Array.isArray(inquiriesData) ? inquiriesData.length : 0,
-        quotes: Array.isArray(quotesData) ? quotesData.length : 0,
-      });
 
       setRecentInquiries((Array.isArray(inquiriesData) ? inquiriesData : []).slice(0, 5));
       setRecentQuotes((Array.isArray(quotesData) ? quotesData : []).slice(0, 5));
-      setStatuses(Array.isArray(logsData) ? logsData.map((l: any) => ({
-        id: l.id,
-        text: l.details || l.action,
-        label: l.action,
-        created_at: l.createdAt
-      })) : []);
+      
+      // Pulse Updates count
+      setStats(prev => ({ ...prev, pulse: overviewData.pulseUpdates || 0 }));
 
-      // Fetch business updates with error handling
-      try {
-        const { data: statusData, error: statusError } = await supabase
-          .from("business_updates")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(10);
-        
-        if (!statusError) setStatuses(statusData || []);
-      } catch (e) {
-        setStatuses([]);
+      // 3. Fetch Pipeline Stats
+      const pipelineRes = await fetch('/api/admin/stats/pipeline');
+      const pipelineDataRes = await pipelineRes.json();
+      const pipelineArr = [
+        { name: 'Inquiry', value: pipelineDataRes.inquiry },
+        { name: 'Quoted', value: pipelineDataRes.quoted },
+        { name: 'Booked', value: pipelineDataRes.booked },
+        { name: 'Completed', value: pipelineDataRes.completed },
+      ];
+      setPipelineData(pipelineArr);
+
+      // 4. Fetch Lead Sources
+      const sourcesRes = await fetch('/api/admin/stats/lead-sources');
+      const sourcesDataRes = await sourcesRes.json();
+      const totalSources = sourcesDataRes.direct + sourcesDataRes.referral + sourcesDataRes.social + sourcesDataRes.other;
+      
+      if (totalSources > 0) {
+        const sourceArr = [
+          { name: 'Direct', value: Math.round((sourcesDataRes.direct / totalSources) * 100) },
+          { name: 'Referral', value: Math.round((sourcesDataRes.referral / totalSources) * 100) },
+          { name: 'Social', value: Math.round((sourcesDataRes.social / totalSources) * 100) },
+          { name: 'Other', value: Math.round((sourcesDataRes.other / totalSources) * 100) },
+        ].filter(s => s.value > 0);
+        setSourceData(sourceArr);
+      } else {
+        setSourceData([]);
       }
+
+      // Set Activity Logs (last 5)
+      setActivityLogs((Array.isArray(logsData) ? logsData : []).slice(0, 5));
 
     } catch (error) {
       console.error("Error fetching stats:", error);
     }
-
-    // Mock data for charts
-    setPipelineData([
-      { name: 'Inquiry', value: 12 },
-      { name: 'Quoted', value: 8 },
-      { name: 'Booked', value: 5 },
-      { name: 'Completed', value: 20 },
-    ]);
-
-    setSourceData([
-      { name: 'Direct', value: 45 },
-      { name: 'Referral', value: 25 },
-      { name: 'Social', value: 20 },
-      { name: 'Other', value: 10 },
-    ]);
 
     setLoading(false);
   };
@@ -166,7 +197,7 @@ export default function AdminDashboard() {
     { label: "Total Events", value: stats.events, icon: Image, color: "bg-blue-50 text-blue-600", iconColor: "text-blue-500", subtext: "Managed records" },
     { label: "Pending Leads", value: stats.inquiries, icon: Mail, color: "bg-amber-50 text-amber-600", iconColor: "text-amber-500", subtext: "Requires action" },
     { label: "Vendor Quotes", value: stats.quotes, icon: MessageSquareQuote, color: "bg-emerald-50 text-emerald-600", iconColor: "text-emerald-500", subtext: "Active requests" },
-    { label: "Pulse Updates", value: statuses.length, icon: Sparkles, color: "bg-purple-50 text-purple-600", iconColor: "text-purple-500", subtext: "Business status" },
+    { label: "Pulse Updates", value: (stats as any).pulse ?? statuses.length, icon: Sparkles, color: "bg-purple-50 text-purple-600", iconColor: "text-purple-500", subtext: "Business status" },
   ];
 
   return (
@@ -235,35 +266,42 @@ export default function AdminDashboard() {
               <p className="text-xs text-slate-500 font-medium">Distribution of events by stage</p>
             </div>
           </div>
-          <div className="h-72 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={pipelineData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis 
-                  dataKey="name" 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
-                  dy={10}
-                />
-                <YAxis hide />
-                <Tooltip 
-                  cursor={{ fill: '#f8fafc' }}
-                  contentStyle={{ 
-                    borderRadius: '12px', 
-                    border: 'none', 
-                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
-                    padding: '12px'
-                  }}
-                />
-                <Bar 
-                  dataKey="value" 
-                  fill="#EAB308" 
-                  radius={[6, 6, 0, 0]} 
-                  barSize={40}
-                />
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="h-72 w-full flex items-center justify-center">
+            {!loading && pipelineData.every(d => d.value === 0) ? (
+              <div className="text-center">
+                <BarChart3 size={32} className="text-slate-200 mx-auto mb-2" />
+                <p className="text-xs text-slate-400 font-medium tracking-wide">No events yet. Start by adding your first event.</p>
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={pipelineData}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                  <XAxis 
+                    dataKey="name" 
+                    axisLine={false} 
+                    tickLine={false} 
+                    tick={{ fill: '#94a3b8', fontSize: 12, fontWeight: 600 }}
+                    dy={10}
+                  />
+                  <YAxis hide />
+                  <Tooltip 
+                    cursor={{ fill: '#f8fafc' }}
+                    contentStyle={{ 
+                      borderRadius: '12px', 
+                      border: 'none', 
+                      boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                      padding: '12px'
+                    }}
+                  />
+                  <Bar 
+                    dataKey="value" 
+                    fill="#EAB308" 
+                    radius={[6, 6, 0, 0]} 
+                    barSize={40}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </div>
         </div>
 
@@ -277,38 +315,47 @@ export default function AdminDashboard() {
               <p className="text-xs text-slate-500 font-medium">Where your inquiries are coming from</p>
             </div>
           </div>
-          <div className="h-72 w-full flex items-center">
-            <div className="flex-1 h-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={sourceData}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
-                    paddingAngle={8}
-                    dataKey="value"
-                  >
-                    {sourceData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][index % 4]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="flex-1 space-y-3 pl-8">
-              {sourceData.map((item, i) => (
-                <div key={item.name} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: ['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][i % 4] }} />
-                    <span className="text-xs font-bold text-slate-600">{item.name}</span>
-                  </div>
-                  <span className="text-xs font-black text-slate-900">{item.value}%</span>
+          <div className="h-72 w-full flex items-center justify-center">
+            {!loading && sourceData.length === 0 ? (
+              <div className="text-center">
+                <PieChartIcon size={32} className="text-slate-200 mx-auto mb-2" />
+                <p className="text-xs text-slate-400 font-medium tracking-wide">No lead data yet</p>
+              </div>
+            ) : (
+              <>
+                <div className="flex-1 h-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={sourceData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={80}
+                        paddingAngle={8}
+                        dataKey="value"
+                      >
+                        {sourceData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][index % 4]} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
-              ))}
-            </div>
+                <div className="flex-1 space-y-3 pl-8">
+                  {sourceData.map((item, i) => (
+                    <div key={item.name} className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: ['#EAB308', '#0F172A', '#64748B', '#F1F5F9'][i % 4] }} />
+                        <span className="text-xs font-bold text-slate-600">{item.name}</span>
+                      </div>
+                      <span className="text-xs font-black text-slate-900">{item.value}%</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -409,83 +456,77 @@ export default function AdminDashboard() {
 
         {/* Sidebar Area */}
         <div className="space-y-8">
-          {/* Pulse Update Card */}
+          {/* Quick Actions Card */}
           <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 bg-gold-500 rounded-lg shadow-lg shadow-gold-500/20">
-                <Sparkles size={18} className="text-white" />
+              <div className="p-2 bg-slate-900 rounded-lg">
+                <Sparkles size={18} className="text-gold-500" />
               </div>
-              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Post Update</h2>
+              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Quick Actions</h2>
             </div>
             
-            <form onSubmit={handleAddStatus} className="space-y-6">
-              <textarea 
-                value={newStatus}
-                onChange={(e) => setNewStatus(e.target.value)}
-                placeholder="What's the latest update?"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 min-h-[120px] resize-none transition-all placeholder:text-slate-400 font-medium"
-              />
-              
-              <div className="flex flex-wrap gap-2">
-                {["Active", "Milestone", "Success", "Planning"].map((label) => (
-                  <button
-                    key={label}
-                    type="button"
-                    onClick={() => setStatusLabel(label)}
-                    className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all border ${
-                      statusLabel === label 
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md" 
-                      : "bg-white text-slate-500 hover:bg-slate-50 border-slate-200"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              
+            <div className="grid grid-cols-1 gap-3">
               <button 
-                type="submit"
-                disabled={updating}
-                className="w-full py-4 bg-gold-500 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-600 transition-all shadow-lg shadow-gold-500/20 disabled:opacity-50 transform active:scale-95 flex items-center justify-center gap-2"
+                onClick={() => setIsInquiryModalOpen(true)}
+                className="flex items-center gap-3 w-full p-4 bg-slate-50 hover:bg-gold-50 border border-slate-100 hover:border-gold-200 rounded-xl transition-all group"
               >
-                {updating ? <Clock size={16} className="animate-spin" /> : <Plus size={16} />}
-                {updating ? "Syncing..." : "Publish Pulse"}
+                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-gold-500 group-hover:text-white transition-colors">
+                  <PlusCircle size={18} />
+                </div>
+                <span className="text-xs font-bold text-slate-700">New Inquiry</span>
               </button>
-            </form>
+
+              <Link 
+                href="/admin/events/new"
+                className="flex items-center gap-3 w-full p-4 bg-slate-50 hover:bg-blue-50 border border-slate-100 hover:border-blue-200 rounded-xl transition-all group"
+              >
+                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                  <Calendar size={18} />
+                </div>
+                <span className="text-xs font-bold text-slate-700">Add Event</span>
+              </Link>
+
+              <Link 
+                href="/admin/inquiries"
+                className="flex items-center gap-3 w-full p-4 bg-slate-50 hover:bg-purple-50 border border-slate-100 hover:border-purple-200 rounded-xl transition-all group"
+              >
+                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                  <Users size={18} />
+                </div>
+                <span className="text-xs font-bold text-slate-700">View All Leads</span>
+              </Link>
+
+              <button 
+                onClick={handleExport}
+                className="flex items-center gap-3 w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-100 hover:border-emerald-200 rounded-xl transition-all group"
+              >
+                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                  <Download size={18} />
+                </div>
+                <span className="text-xs font-bold text-slate-700">Export Report</span>
+              </button>
+            </div>
 
             <div className="mt-12 space-y-6">
-              <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Activity Feed</h3>
+              <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Recent Activity</h3>
               <div className="space-y-6">
-                {statuses.map((status) => (
-                  <div key={status.id} className="relative pl-6 group">
-                    <div className="absolute left-0 top-1.5 w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-gold-500 transition-colors" />
-                    <div className="flex justify-between items-start mb-1">
-                      <span className={`text-[9px] font-bold uppercase tracking-wider ${
-                        status.label === "Success" ? "text-emerald-600" : 
-                        status.label === "Milestone" ? "text-amber-600" : 
-                        status.label === "Planning" ? "text-blue-600" : 
-                        "text-gold-600"
-                      }`}>
-                        {status.label}
-                      </span>
-                      <button 
-                        onClick={() => handleDeleteStatus(status.id)}
-                        className="opacity-0 group-hover:opacity-100 p-1 text-red-400 hover:text-red-600 transition-all"
-                      >
-                        <Trash2 size={12} />
-                      </button>
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium mb-1">{status.text}</p>
-                    <span className="text-[10px] text-slate-400 font-medium">
-                      {mounted ? new Date(status.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "---"}
-                    </span>
+                {activityLogs.map((log) => (
+                  <div key={log.id} className="relative pl-6 group">
+                    <div className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-slate-200 group-hover:bg-gold-500 transition-colors" />
+                    <p className="text-xs text-slate-900 font-bold mb-0.5">{log.action}</p>
+                    <p className="text-[10px] text-slate-400 font-medium">
+                      {log.details ? `${log.details} — ` : ""}
+                      {mounted ? new Date(log.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "---"}
+                    </p>
                   </div>
                 ))}
                 
-                {statuses.length === 0 && !loading && (
+                {activityLogs.length === 0 && !loading && (
                   <div className="flex flex-col items-center py-8 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200">
                     <AlertCircle size={24} className="text-slate-300 mb-2" />
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Feed Empty</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-relaxed px-4">
+                      No recent activity. Activity will appear here as you use the system.
+                    </p>
                   </div>
                 )}
               </div>
@@ -493,6 +534,79 @@ export default function AdminDashboard() {
           </div>
         </div>
       </div>
+      {/* New Inquiry Modal */}
+      {isInquiryModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden"
+          >
+            <div className="p-8 border-b border-slate-100 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-slate-900 tracking-tight">Add New Inquiry</h3>
+              <button onClick={() => setIsInquiryModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={handleAddInquiry} className="p-8 space-y-5">
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:outline-none focus:border-gold-500 transition-all"
+                  placeholder="Client name"
+                  value={inquiryForm.name}
+                  onChange={e => setInquiryForm({...inquiryForm, name: e.target.value})}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
+                <input 
+                  type="tel" 
+                  required 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:outline-none focus:border-gold-500 transition-all"
+                  placeholder="+966"
+                  value={inquiryForm.phone}
+                  onChange={e => setInquiryForm({...inquiryForm, phone: e.target.value})}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Event Type</label>
+                <select 
+                  required 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:outline-none focus:border-gold-500 transition-all appearance-none"
+                  value={inquiryForm.eventType}
+                  onChange={e => setInquiryForm({...inquiryForm, eventType: e.target.value})}
+                >
+                  <option value="">Select event...</option>
+                  <option value="Wedding">Royal Wedding</option>
+                  <option value="Corporate">Corporate Gala</option>
+                  <option value="Private">Private Event</option>
+                  <option value="Culture">Cultural Activation</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Admin Notes</label>
+                <textarea 
+                  rows={3}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:outline-none focus:border-gold-500 transition-all resize-none"
+                  placeholder="Internal notes about this lead..."
+                  value={inquiryForm.message}
+                  onChange={e => setInquiryForm({...inquiryForm, message: e.target.value})}
+                />
+              </div>
+              <button 
+                type="submit" 
+                disabled={submittingInquiry}
+                className="w-full py-5 bg-slate-900 text-white text-[10px] font-bold uppercase tracking-[0.3em] rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20 disabled:opacity-50"
+              >
+                {submittingInquiry ? "Creating Lead..." : "Save Inquiry"}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

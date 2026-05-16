@@ -30,12 +30,30 @@ export default function ConsultationPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.eventType || !formData.budget || !formData.message) {
+      setStatus("error");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus("error");
+      return;
+    }
+
+    if (!formData.phone.startsWith("+966") && !formData.phone.startsWith("05")) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, source: "consultation_page" })
+        body: JSON.stringify(formData)
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
@@ -170,7 +188,7 @@ export default function ConsultationPage() {
                     <input 
                       type="tel" 
                       className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+966 50 123 4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     />
@@ -209,10 +227,10 @@ export default function ConsultationPage() {
                       onChange={(e) => setFormData({...formData, budget: e.target.value})}
                     >
                       <option value="">Budget Range</option>
-                      <option value="50k-100k">SAR 50,000 – SAR 100,000</option>
-                      <option value="100k-250k">SAR 100,000 – SAR 250,000</option>
-                      <option value="250k-500k">SAR 250,000 – SAR 500,000</option>
-                      <option value="500k+">SAR 500,000+</option>
+                      <option value="150k-350k">SAR 150,000 – 350,000</option>
+                      <option value="350k-900k">SAR 350,000 – 900,000</option>
+                      <option value="900k-1.8m">SAR 900,000 – 1,800,000</option>
+                      <option value="1.8m+">SAR 1,800,000+</option>
                     </select>
                   </div>
                 </div>
@@ -249,7 +267,7 @@ export default function ConsultationPage() {
                       animate={{ opacity: 1, y: 0 }}
                       className="bg-green-50 border border-green-100 p-4 flex items-center gap-3 text-green-700 text-sm"
                     >
-                      <CheckCircle size={18} /> Discovery session requested successfully. Our team will contact you shortly.
+                      <CheckCircle size={18} /> Thank you! Our concierge team will contact you within 90 minutes.
                     </motion.div>
                   )}
                   {status === "error" && (
@@ -258,10 +276,22 @@ export default function ConsultationPage() {
                       animate={{ opacity: 1, y: 0 }}
                       className="bg-red-50 border border-red-100 p-4 flex items-center gap-3 text-red-700 text-sm"
                     >
-                      <AlertCircle size={18} /> Something went wrong. Please try again or contact us via WhatsApp.
+                      <AlertCircle size={18} /> Please ensure all fields are correct. Phone must start with +966 or 05.
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                <div className="pt-6 border-t border-gray-100 text-center">
+                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-4">Prefer instant reply?</p>
+                  <a 
+                    href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I'd%20like%20to%20book%20a%20consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-green-600 font-bold text-xs uppercase tracking-widest hover:text-green-700 transition-colors"
+                  >
+                    Message us on WhatsApp
+                  </a>
+                </div>
               </form>
             </motion.div>
           </div>

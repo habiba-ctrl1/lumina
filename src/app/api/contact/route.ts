@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       try {
         // Admin Notification
         await resend.emails.send({
-          from: 'Lumina Intelligence <onboarding@resend.dev>',
+          from: 'Saudi Event Management <onboarding@resend.dev>',
           to: ['saudieventmanagementt@gmail.com'],
           subject: `New Lead: ${name} (Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()})`,
           html: `
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
 
         // User Confirmation
         await resend.emails.send({
-          from: 'Lumina Luxury Events <onboarding@resend.dev>',
+          from: 'Saudi Event Management <onboarding@resend.dev>',
           to: [email],
           subject: 'Your Luxury Event Projection - Saudi Event Management',
           html: `
@@ -112,7 +112,7 @@ export async function POST(request: Request) {
 
               <p>Your dedicated lead consultant, <strong>${inquiry.assignedTo}</strong>, will contact you within 2 hours to discuss your specific requirements and refine this proposal.</p>
               
-              <p>Warm regards,<br>The Lumina Team</p>
+              <p>Warm regards,<br>The Saudi Event Management Team</p>
             </div>
           `,
         });
