@@ -112,16 +112,16 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
       {/* Custom Styles for Swiper Pagination */}
       <style dangerouslySetInnerHTML={{__html: `
         .swiper-pagination-bullet {
-          background: #1C1C26;
-          border: 1px solid #2E2E3E;
+          background: #CBD5E1;
+          border: 1px solid #94A3B8;
           width: 8px;
           height: 8px;
           transition: all 0.3s ease;
           opacity: 1;
         }
         .swiper-pagination-bullet-active {
-          background: #D4AF37;
-          border-color: #D4AF37;
+          background: #C5A880;
+          border-color: #C5A880;
           width: 24px;
           border-radius: 4px;
         }

@@ -16,15 +16,15 @@ export const metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-slate-50 overflow-hidden">
       <Navbar />
       
       {/* Hero Carousel (Teaser) */}
-      <div className="pt-24 bg-gray-50/30">
+      <div className="pt-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-gold-500 text-sm uppercase tracking-[0.5em] font-bold mb-4 block">Curated Excellence</span>
-            <h1 className="text-3xl md:text-5xl font-sans text-navy-950 font-bold">Portfolio <span className="text-shimmer font-bold">Showcase</span></h1>
+            <span className="section-label">Curated Excellence</span>
+            <h1 className="font-display font-medium text-slate-900 text-3xl md:text-5xl">Portfolio <span className="text-shimmer italic font-semibold">Showcase</span></h1>
           </div>
         </div>
         <RecentEvents hideHeader={true} />
@@ -40,14 +40,14 @@ export default function PortfolioPage() {
       <Testimonials />
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-navy-950 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('/hero_bg.webp')] bg-cover bg-center" />
+      <section className="py-24 bg-emerald-950 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/hero_bg.webp')] bg-cover bg-center" />
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Ready to Start Your <span className="text-shimmer font-bold">Legacy?</span></h2>
-          <p className="text-gray-300 text-lg mb-12">Let&apos;s discuss your vision and create something truly extraordinary together.</p>
+          <h2 className="font-display font-medium text-white mb-8 text-2xl md:text-4xl">Ready to Start Your <span className="text-shimmer italic font-semibold text-white">Legacy?</span></h2>
+          <p className="text-slate-200 text-sm md:text-base mb-12">Let&apos;s discuss your vision and create something truly extraordinary together.</p>
           <Link 
             href="/#contact"
-            className="inline-flex items-center gap-3 px-12 py-5 bg-gold-500 text-navy-950 font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all duration-700 shadow-xl rounded-md"
+            className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
           >
             <span>Book Your Discovery Call</span>
             <ArrowRight size={16} />
