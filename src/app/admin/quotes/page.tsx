@@ -28,6 +28,7 @@ import {
   TrendingUp,
   AlertCircle
 } from "lucide-react";
+import Link from "next/link";
 
 type QuoteRequest = {
   id: string;
