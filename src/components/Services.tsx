@@ -88,30 +88,30 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="card-minimal flex flex-col items-start group hover:-translate-y-2.5 hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out cursor-pointer"
+      className="bg-ink-900 border border-ink-600 rounded-sm p-8 flex flex-col items-start group hover:-translate-y-2.5 transition-all duration-300 ease-in-out cursor-pointer card-hover"
     >
-      <div className="w-14 h-14 bg-gray-50 flex items-center justify-center rounded-xl mb-8 group-hover:bg-primary/10 transition-colors duration-300">
-        <service.icon size={24} className="text-black" />
+      <div className="w-14 h-14 bg-ink-950 flex items-center justify-center rounded-sm mb-8 group-hover:bg-gold-400/10 transition-colors duration-300 border border-ink-600">
+        <service.icon size={24} className="text-gold-400" />
       </div>
 
       <div className="flex-grow">
-        <h3 className="text-lg font-bold text-black mb-4 uppercase tracking-tight">
+        <h3 className="font-display font-medium text-lg text-sand-50 mb-4 uppercase tracking-tight">
           {service.title}
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed mb-8">
+        <p className="text-sand-400 text-sm leading-relaxed mb-8">
           {service.description}
         </p>
       </div>
 
-      <div className="w-full pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+      <div className="w-full pt-6 border-t border-ink-600 flex items-center justify-between mt-auto">
+        <span className="text-[10px] font-bold text-sand-400 uppercase tracking-widest">
           {service.starting}
         </span>
         <Link 
           href={`https://wa.me/966501234567?text=I%20am%20interested%20in%20the%20${encodeURIComponent(service.title)}%20service.`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-lg hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-md"
+          className="flex items-center gap-2 bg-gold-400 text-ink-950 text-[10px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-sm hover:bg-gold-500 hover:scale-105 transition-all duration-300 shadow-sm"
         >
           <span>Book via WhatsApp</span>
         </Link>
@@ -122,32 +122,32 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
 export default function Services() {
   return (
-    <section id="services" className="section-minimal bg-white">
-      <div className="container-minimal">
+    <section id="services" className="py-24 bg-ink-950 relative border-t border-ink-600">
+      <div className="container-luxury relative z-10">
         {/* Section Header */}
         <div className="text-center mb-24">
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-primary text-[11px] uppercase tracking-[0.5em] font-bold mb-6 block"
+            className="section-label"
           >
             Capabilities
           </motion.span>
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-black mb-10 text-3xl md:text-5xl font-sans font-bold uppercase tracking-tight"
+            className="font-display font-medium text-sand-50 mb-10 text-3xl md:text-5xl uppercase tracking-tight"
           >
-            Curated <span className="text-primary font-bold">Services</span>
-          </motion.h1>
+            Curated <span className="text-shimmer italic">Services</span>
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gray-500 max-w-2xl mx-auto text-sm leading-relaxed"
+            className="text-sand-400 max-w-2xl mx-auto text-sm leading-relaxed"
           >
             From royal weddings to corporate summits, we deliver unparalleled excellence 
             across every category of event management.

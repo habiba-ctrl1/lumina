@@ -107,7 +107,7 @@ export default function WhyChooseUs() {
                   </Link>
                   <Link 
                     href="/contact"
-                    className="w-full bg-primary text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-primary-dark transition-all"
+                    className="w-full bg-primary text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-primary-hover transition-all"
                   >
                     Submit Inquiry
                   </Link>

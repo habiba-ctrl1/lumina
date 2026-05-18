@@ -62,7 +62,7 @@ export default function FeedbackForms() {
                     <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Question</label>
                     <textarea rows={4} className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all resize-none uppercase tracking-widest" placeholder="What would you like to know?"></textarea>
                   </div>
-                  <button className="bg-primary text-white px-10 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
+                  <button className="bg-primary text-white px-10 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-primary-hover transition-all shadow-lg shadow-primary/20">
                     Send Question <Send size={14} />
                   </button>
                 </form>

@@ -15,18 +15,13 @@ const backgroundImages = [
   "/gallery_garden_party.webp",
 ];
 
-
-
-
-
-// ─── Hero ─────────────────────────────────────────────────────────────────────
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y       = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,16 +37,14 @@ export default function Hero() {
     <div
       id="home"
       ref={containerRef}
-      className="relative min-h-screen lg:h-[85vh] w-full flex items-center justify-center bg-white pt-32 md:pt-48 pb-12"
+      className="relative min-h-screen w-full flex items-center justify-center bg-ink-950"
     >
-
-
-      {/* Image Slideshow Background */}
+      {/* Slideshow Background */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImageIndex}
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2, ease: "easeOut" }}
@@ -60,137 +53,131 @@ export default function Hero() {
             <Image
               src={backgroundImages[currentImageIndex]}
               alt={`Luxury Event Scene ${currentImageIndex + 1}`}
-              width={1920}
-              height={1080}
+              fill
               priority
-              className="w-full h-full object-cover"
+              className="object-cover"
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Overlays — restored navy blue theme for consistency */}
-      <div
-        className="absolute inset-0 z-[1]"
-        style={{ backgroundColor: "rgba(4, 30, 66, 0.65)" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#041E42]/70 via-transparent to-[#041E42]/80"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 z-[1] bg-gradient-to-r from-[#041E42]/40 via-transparent to-[#041E42]/40"
-        aria-hidden="true"
-      />
+      {/* Overlays — dark charcoal (not navy blue) */}
+      <div className="absolute inset-0 z-[1] bg-ink-950/60"                                                  aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink-950/90 via-transparent to-ink-950/30" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink-950/30 via-transparent to-ink-950/30" aria-hidden="true" />
+
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12 md:mt-16"
+        className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-28 md:pt-32 pb-16"
       >
-        {/* Top Tagline */}
+        {/* Eyebrow label */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col items-center justify-center mb-8"
+          className="flex flex-col items-center mb-8"
         >
-          <span className="text-primary text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold mb-3 block">
-            Saudi Event Management
-          </span>
-          <div className="w-10 h-px bg-primary/30 mx-auto" />
+          <span className="section-label tracking-[0.5em]">Saudi Event Management</span>
+          <span className="block w-8 h-px bg-gold-400/40 mx-auto mt-2" />
         </motion.div>
 
-        {/* Main Title */}
+        {/* Main heading — max text-4xl (36px) per design rules */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white font-bold uppercase tracking-tight leading-[1.1] mb-4"
-          style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.2rem)" }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="font-display font-medium text-sand-50 uppercase tracking-wide leading-[1.2] mb-5"
+          style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.25rem)" }}
         >
-          Masterpieces of <br />
-          <span className="text-primary">Luxury</span>
+          Masterpieces of{" "}
+          <span className="text-shimmer italic">Luxury</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-8 leading-relaxed font-medium"
+          transition={{ duration: 0.9, delay: 0.35 }}
+          className="text-sm text-sand-300 max-w-lg mx-auto mb-10 leading-relaxed"
         >
-          Curating exquisite weddings, corporate galas, and private celebrations.
-          We bring world-class elegance to <span className="text-white font-bold tracking-tight">Riyadh</span>, 
-          <span className="text-white font-bold tracking-tight"> Jeddah</span>, <span className="text-white font-bold tracking-tight">Makkah</span>, 
-          <span className="text-white font-bold tracking-tight"> Madinah</span>, and <span className="text-white font-bold tracking-tight">AlUla</span>.
+          Curating exquisite weddings, corporate galas, and private celebrations
+          across{" "}
+          <span className="text-sand-100 font-medium">Riyadh</span>,{" "}
+          <span className="text-sand-100 font-medium">Jeddah</span>,{" "}
+          <span className="text-sand-100 font-medium">Makkah</span>,{" "}
+          <span className="text-sand-100 font-medium">Madinah</span>, and{" "}
+          <span className="text-sand-100 font-medium">AlUla</span>.
         </motion.p>
 
-        {/* Quick Booking Form — refined and concise */}
+        {/* Quick Booking Form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white/[0.03] backdrop-blur-3xl rounded-[2rem] shadow-xl shadow-black/20 border border-white/10 p-1 md:p-1.5 max-w-2xl mx-auto mb-4 relative z-20"
+          transition={{ duration: 0.9, delay: 0.5 }}
+          className="max-w-2xl mx-auto mb-8"
         >
-          <div className="bg-[#041E42]/40 backdrop-blur-md border border-white/5 rounded-[1.8rem] p-3 md:p-4">
-            <form 
-              onSubmit={(e) => { 
-                e.preventDefault(); 
-                window.open(`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.`, '_blank'); 
+          <div className="bg-ink-950/50 backdrop-blur-xl border border-ink-600/60 rounded-lg p-4 md:p-5">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                window.open(
+                  "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.",
+                  "_blank"
+                );
               }}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 items-end"
             >
-              <div className="flex flex-col text-left">
-                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Event Type</label>
+              <div className="flex flex-col text-left gap-1.5">
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Event Type</label>
                 <div className="relative">
-                  <select className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 appearance-none cursor-pointer hover:bg-white/[0.08] transition-all">
-                    <option className="bg-charcoal-900">Luxury Wedding</option>
-                    <option className="bg-charcoal-900">Corporate Gala</option>
-                    <option className="bg-charcoal-900">VIP Reception</option>
-                    <option className="bg-charcoal-900">Private Concert</option>
+                  <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
+                    <option className="bg-ink-900">Luxury Wedding</option>
+                    <option className="bg-ink-900">Corporate Gala</option>
+                    <option className="bg-ink-900">VIP Reception</option>
+                    <option className="bg-ink-900">Private Concert</option>
                   </select>
-                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
-                </div>
-              </div>
-              
-              <div className="flex flex-col text-left">
-                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Location</label>
-                <div className="relative">
-                  <select className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 appearance-none cursor-pointer hover:bg-white/[0.08] transition-all">
-                    <option className="bg-charcoal-900">Riyadh</option>
-                    <option className="bg-charcoal-900">Jeddah</option>
-                    <option className="bg-charcoal-900">Makkah</option>
-                    <option className="bg-charcoal-900">AlUla</option>
-                  </select>
-                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
                 </div>
               </div>
 
-              <div className="flex flex-col text-left">
-                <label className="text-[8px] font-bold text-white/40 uppercase tracking-[0.3em] mb-2 ml-1">Preferred Date</label>
-                <input 
-                  type="date" 
-                  className="w-full bg-white/[0.05] border border-white/10 text-white rounded-lg px-3 py-2 text-[10px] font-semibold tracking-wide focus:outline-none focus:border-primary/50 [color-scheme:dark] hover:bg-white/[0.08] transition-all" 
+              <div className="flex flex-col text-left gap-1.5">
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Location</label>
+                <div className="relative">
+                  <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
+                    <option className="bg-ink-900">Riyadh</option>
+                    <option className="bg-ink-900">Jeddah</option>
+                    <option className="bg-ink-900">Makkah</option>
+                    <option className="bg-ink-900">AlUla</option>
+                  </select>
+                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
+                </div>
+              </div>
+
+              <div className="flex flex-col text-left gap-1.5">
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Preferred Date</label>
+                <input
+                  type="date"
+                  className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 [color-scheme:dark] hover:border-ink-400 transition-colors"
                 />
               </div>
 
-              <button 
+              <button
                 type="submit"
-                className="w-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-lg hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                className="w-full bg-gold-400 text-ink-950 text-[10px] font-medium uppercase tracking-[0.2em] py-2.5 rounded-md hover:bg-gold-500 transition-all duration-200 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
               >
                 Inquiry
               </button>
             </form>
-            
+
             <div className="mt-4 flex justify-center">
-              <Link 
+              <Link
                 href="/#contact"
-                className="text-[8px] text-white/30 hover:text-primary uppercase tracking-[0.3em] font-bold flex items-center gap-3 transition-all group"
+                className="text-[9px] text-sand-500 hover:text-gold-400 uppercase tracking-[0.3em] font-medium flex items-center gap-3 transition-colors group"
               >
-                <div className="w-8 h-px bg-white/10 group-hover:bg-primary transition-all" />
+                <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
                 Download Portfolio
-                <div className="w-8 h-px bg-white/10 group-hover:bg-primary transition-all" />
+                <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
               </Link>
             </div>
           </div>
@@ -200,19 +187,13 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="flex flex-wrap justify-center gap-8 md:gap-12"
         >
-          {[
-            { label: "250+ ELITE EVENTS" },
-            { label: "100% RETENTION" },
-            { label: "SAUDI BUSINESS AWARDS 2025" },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <span className="text-primary text-[9px] font-bold uppercase tracking-[0.2em]">
-                {stat.label}
-              </span>
-              <div className="w-6 h-px bg-primary/20 mt-1" />
+          {["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"].map((label, i) => (
+            <div key={i} className="flex flex-col items-center gap-1">
+              <span className="text-gold-400 text-[9px] font-medium uppercase tracking-[0.22em]">{label}</span>
+              <span className="w-4 h-px bg-gold-400/25" />
             </div>
           ))}
         </motion.div>
@@ -222,14 +203,15 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-10"
+        transition={{ delay: 1.6, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
       >
+        <span className="text-[8px] uppercase tracking-[0.3em] text-sand-500">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ChevronDown size={24} className="text-gray-300" />
+          <ChevronDown size={16} className="text-sand-500" />
         </motion.div>
       </motion.div>
     </div>

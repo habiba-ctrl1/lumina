@@ -84,7 +84,7 @@ export default function FilterablePortfolio() {
     : portfolioItems.filter(item => item.category === activeCategory);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-24 bg-ink-950 relative overflow-hidden">
       <div className="container-luxury relative z-10">
         
         {/* Header */}
@@ -93,7 +93,7 @@ export default function FilterablePortfolio() {
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true }} 
-            className="text-primary text-[10px] uppercase tracking-[0.6em] font-bold mb-4 block"
+            className="section-label"
           >
             Portfolio of Excellence
           </motion.span>
@@ -101,11 +101,11 @@ export default function FilterablePortfolio() {
             initial={{ opacity: 0, y: 10 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="text-black text-2xl md:text-4xl font-bold mb-4 uppercase tracking-tight"
+            className="font-display font-medium text-sand-50 text-2xl md:text-4xl mb-4 uppercase tracking-tight"
           >
-            Recent <span className="text-primary">Masterpieces</span>
+            Recent <span className="text-shimmer italic">Masterpieces</span>
           </motion.h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-[13px] font-light leading-relaxed">
+          <p className="text-sand-400 max-w-2xl mx-auto text-[13px] font-light leading-relaxed">
             From royal weddings to high-stakes summits, we define the standard of Saudi luxury events.
           </p>
         </div>
@@ -116,10 +116,10 @@ export default function FilterablePortfolio() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-10 py-3.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 rounded-full font-bold border ${
+              className={`px-10 py-3.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 rounded-sm font-medium border ${
                 activeCategory === category 
-                  ? "bg-black text-white border-black shadow-xl" 
-                  : "bg-transparent text-gray-400 border-gray-100 hover:border-black hover:text-black"
+                  ? "bg-gold-400 text-ink-950 border-gold-400 shadow-md" 
+                  : "bg-transparent text-sand-400 border-ink-600 hover:border-gold-400 hover:text-sand-50"
               }`}
             >
               {category}
@@ -138,7 +138,7 @@ export default function FilterablePortfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.6 }}
-                className="group relative h-[320px] overflow-hidden rounded-[2rem] bg-gray-900 border border-gray-100"
+                className="group relative h-[320px] overflow-hidden rounded-sm bg-ink-900 border border-ink-600"
               >
                 <Link href={`/portfolio/${item.slug}`} className="block w-full h-full">
                   <Image 
@@ -153,7 +153,7 @@ export default function FilterablePortfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
                   
                   {/* Category Tag */}
-                  <div className="absolute top-8 right-8 overflow-hidden rounded-full">
+                  <div className="absolute top-8 right-8 overflow-hidden rounded-sm">
                     <div className="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2">
                        <span className="text-[9px] text-white uppercase tracking-widest font-bold">{item.category}</span>
                     </div>
@@ -163,8 +163,8 @@ export default function FilterablePortfolio() {
                   <div className="absolute inset-0 p-6 flex flex-col justify-end">
                     <div className="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-6 h-px bg-primary" />
-                        <span className="text-primary text-[9px] uppercase tracking-widest font-bold">{item.client}</span>
+                        <div className="w-6 h-px bg-gold-400" />
+                        <span className="text-gold-400 text-[9px] uppercase tracking-widest font-bold">{item.client}</span>
                       </div>
                       <h3 className="text-xl text-white mb-3 font-bold tracking-tight">{item.title}</h3>
                       
@@ -172,15 +172,15 @@ export default function FilterablePortfolio() {
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
                         <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6 mb-6">
                            <div>
-                             <p className="text-[8px] text-gray-400 uppercase tracking-widest mb-1">Guests</p>
+                             <p className="text-[8px] text-sand-400 uppercase tracking-widest mb-1">Guests</p>
                              <p className="text-xs text-white font-bold">{item.guests}</p>
                            </div>
                            <div>
-                             <p className="text-[8px] text-gray-400 uppercase tracking-widest mb-1">Date</p>
+                             <p className="text-[8px] text-sand-400 uppercase tracking-widest mb-1">Date</p>
                              <p className="text-xs text-white font-bold">{item.date}</p>
                            </div>
                         </div>
-                        <p className="text-[10px] text-gray-300 leading-relaxed font-light italic">
+                        <p className="text-[10px] text-sand-300 leading-relaxed font-light italic">
                           &quot;{item.outcome}&quot;
                         </p>
                       </div>

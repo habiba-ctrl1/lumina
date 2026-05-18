@@ -2,105 +2,305 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   Saudi Event Management — Global Styles
+   Theme : Dark Luxury Corporate
+   Fonts : Cormorant Garamond (display) + DM Sans (body)
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── CSS Tokens ─────────────────────────────────────────────────────────────
+   All values map directly to the tailwind.config.ts color scale.
+   Use these var() tokens in any inline style or plain CSS.
+   For Tailwind classes, use the token names: bg-ink-950, text-gold-400, etc.
+──────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #333333;
-  --heading: #000000;
-  --primary: #D4AF37;
-  --primary-dark: #C2A02F;
-  --secondary: #2563eb;
-  --gray-light: #f5f5f5;
-  --border: #E5E7EB;
+  /* Surfaces */
+  --background:        #08080C;   /* ink-950 — deepest page bg */
+  --surface:           #141419;   /* ink-800 — card bg */
+  --surface-raised:    #1A1A21;   /* ink-700 — elevated card / hover */
+  --border:            #22222B;   /* ink-600 — dividers */
+  --border-subtle:     #2E2E38;   /* ink-500 — very subtle dividers */
+
+  /* Text */
+  --foreground:        #F0EFE8;   /* sand-100 — primary body text */
+  --foreground-muted:  #A8A69A;   /* sand-300 — captions, labels */
+  --foreground-faint:  #706E65;   /* sand-400 — placeholders */
+  --heading:           #FAFAF7;   /* sand-50  — headings (warm near-white) */
+
+  /* Brand */
+  --gold:              #D4AF37;   /* gold-400 — main accent */
+  --gold-hover:        #B8962E;   /* gold-500 — hover state */
+  --gold-muted:        rgba(212, 175, 55, 0.15); /* subtle tint for bg fills */
+
+  /* Legacy aliases — keep so any component not yet migrated still works */
+  --primary:           #D4AF37;
+  --primary-dark:      #B8962E;
+  --secondary:         #2563eb;
+  --gray-light:        #1A1A21;
 }
 
-/* Premium Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-::-webkit-scrollbar-thumb {
-  background: #D4AF37;
-  border-radius: 10px;
-}
+/* ── Scrollbar ───────────────────────────────────────────────────────────────
+   Thin gold thumb on dark track — matches the luxury palette
+──────────────────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 5px; }
+::-webkit-scrollbar-track   { background: #08080C; }
+::-webkit-scrollbar-thumb   { background: #D4AF37; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #B8962E; }
 
-/* Premium Text Selection */
+/* ── Text Selection ──────────────────────────────────────────────────────────
+   Gold tint selection — readable on dark backgrounds
+──────────────────────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(212, 175, 55, 0.2);
-  color: #000;
+  background: rgba(212, 175, 55, 0.25);
+  color: #FAFAF7;
 }
 
+/* ── Base HTML ───────────────────────────────────────────────────────────────*/
 html {
   scroll-behavior: smooth;
+  background-color: #08080C; /* prevents white flash on load */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  color:            var(--foreground);
+  background-color: var(--background);
+  /* DM Sans loaded via next/font — variable injected on <html> */
+  font-family:      var(--font-sans), system-ui, sans-serif;
+  font-size:        1rem;        /* 16px base */
+  line-height:      1.75;        /* comfortable reading on dark bg */
+  font-weight:      400;
+  overflow-x:       hidden;
+  -webkit-font-smoothing:  antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Scale */
+/* ── Typography Scale ────────────────────────────────────────────────────────
+   RULE: text-4xl (36px) is the HARD CEILING for any heading.
+   Cormorant Garamond looks best at weight 400–500, NOT 700.
+   Headings use font-display (Cormorant Garamond).
+   Body text uses font-sans (DM Sans) — set on <body> above.
+
+   Scale (matching tailwind.config.ts fontSize):
+     h1 → max 2.25rem  (36px)  — hero / page title
+     h2 → max 1.875rem (30px)  — section headings
+     h3 → max 1.5rem   (24px)  — card titles / sub-sections
+     h4 → max 1.25rem  (20px)  — labels with emphasis
+     h5 → max 1.125rem (18px)  — small labels
+     h6 → max 1rem     (16px)  — fine print headings
+──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--heading);
-  font-family: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+  color:       var(--heading);
+  font-family: var(--font-display), Georgia, serif;  /* Cormorant Garamond */
+  line-height: 1.25;
+  font-weight: 500;      /* 500 not 700 — Cormorant looks elegant, not heavy */
+  letter-spacing: 0.01em;
+  margin-bottom: 0;      /* let components own their spacing, not global margin */
 }
 
-h1 { font-size: clamp(3rem, 6vw, 4.5rem); }
-h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
-h3 { font-size: clamp(2rem, 4vw, 2.75rem); }
-p { 
-  margin-bottom: 1.5rem; 
-  line-height: 1.625; /* leading-relaxed */
+/* Responsive but CAPPED — no runaway clamp values */
+h1 { font-size: clamp(1.75rem, 3.5vw, 2.25rem);  } /* 28px → 36px MAX */
+h2 { font-size: clamp(1.5rem,  3vw,   1.875rem); } /* 24px → 30px MAX */
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem);   } /* 20px → 24px MAX */
+h4 { font-size: clamp(1.1rem,  2vw,   1.25rem);  } /* 17px → 20px MAX */
+h5 { font-size: 1.125rem; }                         /* 18px — fixed */
+h6 { font-size: 1rem;     }                         /* 16px — fixed */
+
+/* Italic display variant — use on pull-quotes, hero sublines */
+.font-display-italic {
+  font-family: var(--font-display), Georgia, serif;
+  font-style:  italic;
+  font-weight: 300;
 }
 
-/* Minimalist Layout Helpers */
-.container-minimal {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+/* ── Paragraph & inline ──────────────────────────────────────────────────────*/
+p {
+  line-height:   1.75;
+  color:         var(--foreground);
+  margin-bottom: 0;   /* let components own spacing */
 }
 
+a {
+  color:           var(--gold);
+  text-decoration: none;
+  transition:      color 0.2s ease, opacity 0.2s ease;
+}
+a:hover { color: var(--gold-hover); }
+
+/* ── Section & Layout Helpers ────────────────────────────────────────────────
+   Use these utility classes in JSX for consistent section spacing.
+──────────────────────────────────────────────────────────────────────────── */
 .container-luxury {
-  @apply max-w-7xl mx-auto px-4 sm:px-8 md:px-12;
+  @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-16;
 }
 
-.section-minimal {
-  padding-top: 100px;
-  padding-bottom: 100px;
+/* Standard section vertical rhythm */
+.section-padding    { @apply py-20 md:py-28; }
+.section-padding-sm { @apply py-14 md:py-20; }
+.section-padding-lg { @apply py-28 md:py-36; }
+
+/* ── Divider Lines ───────────────────────────────────────────────────────────*/
+.divider-gold {
+  width: 40px;
+  height: 1px;
+  background-color: var(--gold);
+  opacity: 0.6;
+}
+.divider-subtle {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+}
+
+/* ── Section Label (eyebrow text above headings) ─────────────────────────────
+   Usage: <span className="section-label">Our Services</span>
+──────────────────────────────────────────────────────────────────────────── */
+.section-label {
+  display:        block;
+  font-family:    var(--font-sans), system-ui, sans-serif;
+  font-size:      0.6875rem;   /* 11px */
+  font-weight:    500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color:          var(--gold);
+  margin-bottom:  0.75rem;
 }
 
 @layer components {
+
+  /* ── Buttons ───────────────────────────────────────────────────────────────
+     btn-primary  → filled gold CTA
+     btn-outline  → ghost gold outline (replaces old btn-secondary)
+     btn-ghost    → text-only with arrow hover
+  ────────────────────────────────────────────────────────────────────────── */
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-primary-dark inline-block text-center;
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold-400 text-ink-950
+           px-7 py-3 rounded-sm
+           text-sm font-medium tracking-wide
+           transition-all duration-300
+           hover:bg-gold-500
+           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-ink-950;
   }
 
-  .btn-secondary {
-    @apply bg-transparent text-primary border-2 border-primary px-6 py-2.5 rounded-md font-semibold transition-all duration-300 hover:bg-primary hover:text-white inline-block text-center;
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           bg-transparent text-gold-400
+           border border-gold-400
+           px-7 py-3 rounded-sm
+           text-sm font-medium tracking-wide
+           transition-all duration-300
+           hover:bg-gold-400 hover:text-ink-950
+           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-ink-950;
   }
 
-  .card-minimal {
-    @apply bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] p-8 transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)];
+  .btn-ghost {
+    @apply inline-flex items-center gap-2
+           text-sand-200 text-sm font-medium
+           transition-all duration-200
+           hover:text-gold-400;
+  }
+
+  /* ── Cards ─────────────────────────────────────────────────────────────────
+     card         → standard dark surface card
+     card-hover   → adds lift on hover (use for clickable cards)
+     card-gold    → subtle gold border accent
+  ────────────────────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-ink-800 rounded-lg border border-ink-600
+           transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card
+           hover:bg-ink-700 hover:border-ink-500
+           hover:-translate-y-0.5;
+  }
+
+  .card-gold {
+    @apply card
+           border-gold-400/20
+           hover:border-gold-400/40;
+  }
+
+  /* ── Stat Block ─────────────────────────────────────────────────────────── */
+  .stat-number {
+    @apply font-display text-3xl font-medium text-sand-50;
+  }
+  .stat-label {
+    @apply text-xs font-medium tracking-widest uppercase text-sand-300;
+  }
+
+  /* ── Gold Accent Line ───────────────────────────────────────────────────── */
+  .gold-accent-line {
+    @apply block w-8 h-px bg-gold-400 opacity-60;
+  }
+
+  /* ── Badge / Pill ───────────────────────────────────────────────────────── */
+  .badge-gold {
+    @apply inline-block text-2xs font-medium tracking-widest uppercase
+           text-gold-400 border border-gold-400/30
+           px-3 py-1 rounded-sm bg-gold-400/5;
+  }
+
+  .badge-muted {
+    @apply inline-block text-2xs font-medium tracking-wider uppercase
+           text-sand-300 border border-ink-500
+           px-3 py-1 rounded-sm bg-ink-700;
+  }
+
+  /* ── Image Overlay Helper ───────────────────────────────────────────────── */
+  .img-overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/40 to-transparent;
+  }
+
+  /* ── WhatsApp Float Button ──────────────────────────────────────────────── */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50
+           flex items-center justify-center
+           w-12 h-12 rounded-full
+           bg-[#25D366] text-white
+           shadow-lg shadow-black/30
+           transition-transform duration-200
+           hover:scale-110;
   }
 }
 
-/* Utilities */
-.text-gold { color: var(--primary); }
-.bg-light-gray { background-color: var(--gray-light); }
+/* ── Marquee / Ticker ────────────────────────────────────────────────────────
+   Used in stats ticker / partner logo strip
+──────────────────────────────────────────────────────────────────────────── */
+.marquee-track {
+  display:   flex;
+  width:     max-content;
+  animation: marquee 35s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
 
-@layer utilities {
-  .section-padding {
-    @apply py-24;
-  }
+/* ── Gold Shimmer Text ───────────────────────────────────────────────────────
+   Usage: <span className="text-shimmer">Gold text</span>
+──────────────────────────────────────────────────────────────────────────── */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #D4AF37 0%,
+    #F4E68A 40%,
+    #D4AF37 60%,
+    #B8962E 100%
+  );
+  background-size:       200% auto;
+  -webkit-background-clip: text;
+  background-clip:         text;
+  -webkit-text-fill-color: transparent;
+  animation:             shimmer 3s ease-in-out infinite;
 }
 
+/* ── Swiper Overrides ────────────────────────────────────────────────────────
+   Keep Swiper consistent with the dark theme
+──────────────────────────────────────────────────────────────────────────── */
+.swiper-pagination-bullet {
+  background: var(--foreground-muted) !important;
+  opacity:    0.5 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--gold) !important;
+  opacity:    1 !important;
+}

@@ -26,21 +26,21 @@ export default function ContactSection() {
     }
   };
 
-  const ic = (field: string) => `w-full bg-white border border-gray-200 p-4 text-sm text-black placeholder-gray-400 focus:border-primary transition-all tracking-tight outline-none rounded-xl ${focusedField === field ? "shadow-lg border-primary" : "hover:border-primary/50"}`;
+  const ic = (field: string) => `w-full bg-ink-900 border border-ink-500 p-4 text-sm text-sand-100 placeholder-sand-500 focus:border-gold-400 transition-all tracking-tight outline-none rounded-sm ${focusedField === field ? "shadow-md border-gold-400" : "hover:border-gold-400/30"}`;
 
   return (
-    <section id="contact" className="py-20 bg-white relative overflow-hidden border-y border-gray-50">
+    <section id="contact" className="py-20 bg-ink-950 relative overflow-hidden border-y border-ink-600">
       <div className="container-luxury relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
           {/* Left Side: Testimonials (Compact) */}
           <div className="lg:col-span-5 pt-4">
             <div className="mb-10">
-              <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block">Direct Inquiry</span>
-              <h2 className="text-black text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4 leading-tight">
-                Start Your <span className="text-primary">Legacy</span>
+              <span className="section-label">Direct Inquiry</span>
+              <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl uppercase tracking-tight mb-4 leading-tight">
+                Start Your <span className="text-shimmer italic">Legacy</span>
               </h2>
-              <p className="text-gray-500 text-[13px] leading-relaxed max-w-sm">
+              <p className="text-sand-400 text-[13px] leading-relaxed max-w-sm">
                 Most luxury clients connect via WhatsApp for immediate white-glove service.
               </p>
             </div>
@@ -65,11 +65,11 @@ export default function ContactSection() {
           </div>
 
           {/* Right Side: Form */}
-          <div className="lg:col-span-7 bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-xl shadow-black/5">
+          <div className="lg:col-span-7 bg-ink-800 rounded-lg p-8 md:p-12 border border-ink-600 shadow-xl shadow-black/30">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
+                  <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">Full Name</label>
                   <input
                     type="text"
                     placeholder="Your name"
@@ -82,7 +82,7 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest ml-1">Phone Number</label>
+                  <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">Phone Number</label>
                   <input 
                     type="tel" 
                     required 
@@ -102,18 +102,18 @@ export default function ContactSection() {
                   required 
                   value={formData.eventType} 
                   onChange={(e) => setFormData({ ...formData, eventType: e.target.value })} 
-                  className={`${ic("type")} appearance-none cursor-pointer bg-white`}
+                  className={`${ic("type")} appearance-none cursor-pointer`}
                 >
-                  <option value="">Choose your occasion...</option>
-                  <option value="wedding">Royal Wedding</option>
-                  <option value="corporate">Corporate Gala</option>
-                  <option value="private">Private VIP Event</option>
-                  <option value="cultural">Cultural Activation</option>
+                  <option value="" className="bg-ink-900 text-sand-100">Choose your occasion...</option>
+                  <option value="wedding" className="bg-ink-900 text-sand-100">Royal Wedding</option>
+                  <option value="corporate" className="bg-ink-900 text-sand-100">Corporate Gala</option>
+                  <option value="private" className="bg-ink-900 text-sand-100">Private VIP Event</option>
+                  <option value="cultural" className="bg-ink-900 text-sand-100">Cultural Activation</option>
                 </select>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Vision</label>
+                <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">Your Vision</label>
                 <textarea 
                   required 
                   rows={4} 
@@ -130,18 +130,18 @@ export default function ContactSection() {
                   disabled={status === "loading"} 
                   whileHover={{ scale: 1.01 }} 
                   whileTap={{ scale: 0.99 }} 
-                  className="w-full bg-black text-white py-5 text-[10px] font-bold uppercase tracking-[0.25em] rounded-xl shadow-lg hover:bg-gray-900 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+                  className="w-full bg-gold-400 text-ink-950 py-4 text-[10px] font-bold uppercase tracking-[0.25em] rounded-sm shadow-md hover:bg-gold-500 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
                 >
                   {status === "loading" ? "Processing..." : "Submit Inquiry"}
                 </motion.button>
               </div>
 
               <AnimatePresence>
-                {status === "success" && (<motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-center gap-3 text-green-600 text-[10px] font-bold uppercase tracking-widest bg-green-50 px-6 py-4 rounded-xl border border-green-100 mt-4"><CheckCircle size={16} />Vision Received. Concierge will contact you shortly.</motion.div>)}
+                {status === "success" && (<motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-center gap-3 text-emerald-400 text-[10px] font-bold uppercase tracking-widest bg-emerald-950/20 px-6 py-4 rounded-sm border border-emerald-500/20 mt-4"><CheckCircle size={16} />Vision Received. Concierge will contact you shortly.</motion.div>)}
               </AnimatePresence>
 
-              <p className="text-center mt-6 text-gray-400 text-[9px] uppercase tracking-widest">
-                Excellence in <Link href="/privacy" className="text-black font-bold">Privacy & Security</Link>
+              <p className="text-center mt-6 text-sand-500 text-[9px] uppercase tracking-widest">
+                Excellence in <Link href="/privacy" className="text-gold-400 font-bold">Privacy & Security</Link>
               </p>
             </form>
           </div>

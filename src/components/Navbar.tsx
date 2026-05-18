@@ -2,148 +2,189 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Heart, Briefcase, Presentation, Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin } from "lucide-react";
+import {
+  Menu, X, ChevronDown, Heart, Briefcase, Presentation,
+  Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Data
+// ─────────────────────────────────────────────────────────────────────────────
+const navLinks = [
+  { name: "Home",      href: "/" },
+  { name: "About",     href: "/about" },
+  { name: "Services",  href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Locations", href: "/locations" },
+  { name: "Partners",  href: "/partners" },
+  { name: "Journal",   href: "/blog" },
+];
+
+const services = [
+  { name: "Royal Weddings",       href: "/services/weddings",          icon: Heart,        desc: "Ultra-luxury celebrations" },
+  { name: "Corporate Galas",      href: "/services/corporate-events",  icon: Briefcase,    desc: "High-stakes networking" },
+  { name: "Exhibitions & Trade",  href: "/services/exhibitions",       icon: Presentation, desc: "B2B brand showcases" },
+  { name: "Production & Venues",  href: "/services/production-venues", icon: Landmark,     desc: "Iconic space curation" },
+  { name: "Seasonal Festivals",   href: "/services/seasonal",          icon: Sparkles,     desc: "Regional cultural events" },
+  { name: "Private Events",       href: "/services",                   icon: Users,        desc: "Exclusive social gatherings" },
+];
+
+const locations = [
+  { name: "Riyadh",  href: "/locations/riyadh" },
+  { name: "Jeddah",  href: "/locations/jeddah" },
+  { name: "AlUla",   href: "/locations/alula" },
+  { name: "Dammam",  href: "/locations/dammam" },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Component
+// ─────────────────────────────────────────────────────────────────────────────
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const pathname = usePathname();
+  const [isScrolled, setIsScrolled]       = useState(false);
+  const [isOpen, setIsOpen]               = useState(false);
+  const [hoveredLink, setHoveredLink]     = useState<string | null>(null);
+  const pathname                          = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Locations", href: "/locations" },
-    { name: "Partners", href: "/partners" },
-    { name: "Journal", href: "/blog" },
-  ];
+  useEffect(() => { setIsOpen(false); }, [pathname]);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100 py-2" 
-          : "bg-white/80 backdrop-blur-lg border-b border-transparent py-3"
-      }`}
       onMouseLeave={() => setHoveredLink(null)}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+        isScrolled
+          // Scrolled: solid dark surface + subtle gold bottom border
+          ? "bg-ink-900/98 backdrop-blur-xl border-b border-ink-600 py-2"
+          // Top of page: fully transparent so hero image shows through
+          : "bg-transparent border-b border-transparent py-4"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center group">
-              <Image 
-                src="/main-logo.webp" 
-                alt="Saudi Event Management Logo" 
-                width={280} 
-                height={100}
-                className={`object-contain transition-all duration-500 ${isScrolled ? "h-12" : "h-16"} w-auto`}
-                priority
-              />
-            </Link>
-          </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6 flex-1 justify-end px-12">
+          {/* ── Logo ────────────────────────────────────────────────────────── */}
+          <Link href="/" className="flex-shrink-0 flex items-center group">
+            <Image
+              src="/main-logo.webp"
+              alt="Saudi Event Management"
+              width={280}
+              height={100}
+              priority
+              className={`object-contain w-auto transition-all duration-500 ${
+                isScrolled ? "h-10" : "h-14"
+              }`}
+            />
+          </Link>
+
+          {/* ── Desktop Links ────────────────────────────────────────────────── */}
+          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive   = pathname === link.href;
+              const hasDropdown = ["Services", "Partners", "Locations"].includes(link.name);
 
               return (
-                <div 
-                  key={link.name} 
-                  className="relative group h-full flex items-center"
+                <div
+                  key={link.name}
+                  className="relative flex items-center"
                   onMouseEnter={() => setHoveredLink(link.name)}
                 >
                   <Link
                     href={link.href}
-                    className={`relative px-2 py-1 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                      isActive || hoveredLink === link.name ? "text-black" : "text-gray-500 hover:text-black"
-                    }`}
+                    className={`relative flex items-center gap-1 px-3 py-2
+                      text-[10px] font-medium uppercase tracking-[0.15em]
+                      transition-colors duration-200 ${
+                        isActive
+                          ? "text-gold-400"
+                          : "text-sand-300 hover:text-sand-50"
+                      }`}
                   >
-                    <span className="flex items-center gap-1">
-                      {link.name}
-                      {["Services", "Partners", "Locations"].includes(link.name) && (
-                        <ChevronDown size={10} className={`transition-transform duration-300 ${hoveredLink === link.name ? "rotate-180" : ""}`} />
-                      )}
-                    </span>
-                    <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    {link.name}
+                    {hasDropdown && (
+                      <ChevronDown
+                        size={9}
+                        className={`transition-transform duration-200 ${
+                          hoveredLink === link.name ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                    {/* Active underline */}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-3 right-3 h-px bg-gold-400" />
+                    )}
                   </Link>
 
-                  {/* Mega Menu for Services */}
+                  {/* ── Services Mega Menu ─────────────────────────────────── */}
                   {link.name === "Services" && (
                     <AnimatePresence>
                       {hoveredLink === "Services" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 w-[700px] bg-white border border-gray-100 shadow-2xl rounded-xl overflow-hidden flex mt-4"
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3
+                            w-[660px] bg-ink-800 border border-ink-600
+                            rounded-lg overflow-hidden flex shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
                         >
-                          <div className="w-[280px] bg-gray-50 relative p-8 border-r border-gray-100 flex flex-col justify-between overflow-hidden">
-                            <div className="absolute inset-0 opacity-10">
-                              <Image 
-                                src="/main-logo.webp" 
-                                alt="Background Pattern" 
-                                width={300}
-                                height={200}
-                                className="object-contain p-4 scale-150 rotate-12"
-                              />
+                          {/* Left panel */}
+                          <div className="w-[220px] bg-ink-900 border-r border-ink-600
+                            p-7 flex flex-col justify-between shrink-0">
+                            <div>
+                              <span className="section-label mb-3">Our Expertise</span>
+                              <p className="font-display text-2xl font-medium text-sand-50 leading-snug">
+                                Bespoke<br />Experiences
+                              </p>
                             </div>
-                            <div className="relative z-10">
-                              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Our Expertise</span>
-                              <p className="text-black font-sans text-xl leading-tight font-bold">Bespoke<br/>Experiences</p>
-                            </div>
-                            <Link 
+                            <Link
                               href="/services"
                               onClick={() => setHoveredLink(null)}
-                              className="relative z-10 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-primary transition-colors group/all"
+                              className="flex items-center gap-2 text-[10px] font-medium
+                                uppercase tracking-widest text-sand-300
+                                hover:text-gold-400 transition-colors group/all mt-6"
                             >
-                              View All Services <ArrowRight size={12} className="group-hover/all:translate-x-1 transition-transform" />
+                              All Services
+                              <ArrowRight size={11} className="group-hover/all:translate-x-1 transition-transform" />
                             </Link>
                           </div>
-                          <div className="flex-1 p-8 grid grid-cols-2 gap-x-10 gap-y-6">
-                            {[
-                              { name: "Royal Weddings", href: "/services/weddings", icon: Heart, desc: "Ultra-luxury celebrations" },
-                              { name: "Corporate Galas", href: "/services/corporate-events", icon: Briefcase, desc: "High-stakes networking" },
-                              { name: "Exhibitions & Trade", href: "/services/exhibitions", icon: Presentation, desc: "B2B brand showcases" },
-                              { name: "Production & Venues", href: "/services/production-venues", icon: Landmark, desc: "Iconic space curation" },
-                              { name: "Seasonal Festivals", href: "/services/seasonal", icon: Sparkles, desc: "Regional cultural events" },
-                              { name: "Private Events", href: "/services", icon: Users, desc: "Exclusive social gatherings" },
-                            ].map((item) => (
-                              <Link 
-                                key={item.name} 
+
+                          {/* Services grid */}
+                          <div className="flex-1 p-7 grid grid-cols-2 gap-x-6 gap-y-5">
+                            {services.map((item) => (
+                              <Link
+                                key={item.name}
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
-                                className="group/item flex items-start gap-4 transition-all"
+                                className="flex items-start gap-3 group/item"
                               >
-                                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/item:bg-primary group-hover/item:border-primary transition-all duration-300">
-                                  <item.icon size={18} className="text-gray-400 group-hover/item:text-white transition-colors" />
+                                <div className="w-9 h-9 rounded-md flex items-center justify-center shrink-0
+                                  bg-ink-700 border border-ink-500
+                                  group-hover/item:bg-gold-400/10
+                                  group-hover/item:border-gold-400/30
+                                  transition-all duration-200">
+                                  <item.icon
+                                    size={15}
+                                    className="text-sand-400 group-hover/item:text-gold-400 transition-colors"
+                                  />
                                 </div>
-                                <div>
-                                  <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/item:text-primary transition-colors">{item.name}</span>
-                                  <span className="text-gray-400 text-[9px] font-medium leading-none block">{item.desc}</span>
+                                <div className="pt-0.5">
+                                  <span className="block text-[10px] font-medium uppercase tracking-widest
+                                    text-sand-200 group-hover/item:text-gold-400 transition-colors mb-0.5">
+                                    {item.name}
+                                  </span>
+                                  <span className="block text-[10px] text-sand-400 leading-none">
+                                    {item.desc}
+                                  </span>
                                 </div>
                               </Link>
                             ))}
@@ -153,73 +194,77 @@ export default function Navbar() {
                     </AnimatePresence>
                   )}
 
-                  {/* Dropdown for Partners */}
+                  {/* ── Partners Dropdown ──────────────────────────────────── */}
                   {link.name === "Partners" && (
                     <AnimatePresence>
                       {hoveredLink === "Partners" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute top-full left-0 w-[280px] bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden mt-4 p-2"
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-3
+                            w-[260px] bg-ink-800 border border-ink-600
+                            rounded-lg overflow-hidden p-2
+                            shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
                         >
-                          <Link 
-                            href="/partners" 
-                            className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
-                            onClick={() => setHoveredLink(null)}
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/sub:bg-primary transition-colors">
-                              <Users size={14} className="text-gray-400 group-hover/sub:text-white" />
-                            </div>
-                            <div>
-                              <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/sub:text-primary transition-colors">Partner with Us</span>
-                              <span className="text-gray-400 text-[9px] font-medium leading-none block">Overview of partnerships</span>
-                            </div>
-                          </Link>
-                          <Link 
-                            href="/partners/become-one" 
-                            className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-all group/sub"
-                            onClick={() => setHoveredLink(null)}
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center border border-gray-100 group-hover/sub:bg-primary transition-colors">
-                              <UserPlus size={14} className="text-gray-400 group-hover/sub:text-white" />
-                            </div>
-                            <div>
-                              <span className="text-black text-[11px] font-bold uppercase tracking-widest block mb-0.5 group-hover/sub:text-primary transition-colors">Become a Partner</span>
-                              <span className="text-gray-400 text-[9px] font-medium leading-none block">Join our elite ecosystem</span>
-                            </div>
-                          </Link>
+                          {[
+                            { label: "Partner with Us",  sub: "Overview of partnerships", href: "/partners",          Icon: Users    },
+                            { label: "Become a Partner", sub: "Join our elite ecosystem",  href: "/partners/become-one", Icon: UserPlus },
+                          ].map(({ label, sub, href, Icon }) => (
+                            <Link
+                              key={label}
+                              href={href}
+                              onClick={() => setHoveredLink(null)}
+                              className="flex items-start gap-3 p-3 rounded-md
+                                hover:bg-ink-700 transition-all group/sub"
+                            >
+                              <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0
+                                bg-ink-700 border border-ink-500
+                                group-hover/sub:border-gold-400/30 transition-all">
+                                <Icon size={13} className="text-sand-400 group-hover/sub:text-gold-400 transition-colors" />
+                              </div>
+                              <div className="pt-0.5">
+                                <span className="block text-[10px] font-medium uppercase tracking-widest
+                                  text-sand-200 group-hover/sub:text-gold-400 transition-colors mb-0.5">
+                                  {label}
+                                </span>
+                                <span className="block text-[10px] text-sand-400 leading-none">{sub}</span>
+                              </div>
+                            </Link>
+                          ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
                   )}
 
-                  {/* Dropdown for Locations */}
+                  {/* ── Locations Dropdown ─────────────────────────────────── */}
                   {link.name === "Locations" && (
                     <AnimatePresence>
                       {hoveredLink === "Locations" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute top-full left-0 w-[200px] bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden mt-4 p-2"
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-3
+                            w-[180px] bg-ink-800 border border-ink-600
+                            rounded-lg overflow-hidden p-2
+                            shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
                         >
-                          {[
-                            { name: "Riyadh", href: "/locations/riyadh" },
-                            { name: "Jeddah", href: "/locations/jeddah" },
-                            { name: "AlUla", href: "/locations/alula" },
-                            { name: "Dammam", href: "/locations/dammam" },
-                          ].map((city) => (
-                            <Link 
+                          {locations.map((city) => (
+                            <Link
                               key={city.name}
-                              href={city.href} 
-                              className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-xl transition-all group/sub"
+                              href={city.href}
                               onClick={() => setHoveredLink(null)}
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-md
+                                hover:bg-ink-700 transition-all group/city"
                             >
-                              <MapPin size={12} className="text-gray-300 group-hover/sub:text-primary" />
-                              <span className="text-black text-[10px] font-bold uppercase tracking-widest group-hover/sub:text-primary transition-colors">{city.name}</span>
+                              <MapPin size={11} className="text-sand-500 group-hover/city:text-gold-400 transition-colors shrink-0" />
+                              <span className="text-[10px] font-medium uppercase tracking-widest
+                                text-sand-300 group-hover/city:text-sand-50 transition-colors">
+                                {city.name}
+                              </span>
                             </Link>
                           ))}
                         </motion.div>
@@ -229,76 +274,98 @@ export default function Navbar() {
                 </div>
               );
             })}
-            </div>
+          </div>
 
-
-          {/* Premium CTA */}
-          <div className="hidden lg:flex items-center gap-6">
-            <button className="flex items-center gap-2 group">
-              <span className="text-[10px] font-bold tracking-widest text-primary">EN</span>
-              <span className="w-px h-3 bg-gray-200" />
-              <span className="text-[10px] font-bold tracking-widest text-gray-400 group-hover:text-black transition-colors">AR</span>
+          {/* ── Right: Lang + CTA ─────────────────────────────────────────── */}
+          <div className="hidden lg:flex items-center gap-5 shrink-0">
+            {/* Language toggle */}
+            <button className="flex items-center gap-2 group" aria-label="Language toggle">
+              <span className="text-[10px] font-medium tracking-widest text-gold-400">EN</span>
+              <span className="w-px h-3 bg-ink-500" />
+              <span className="text-[10px] font-medium tracking-widest text-sand-400 group-hover:text-sand-100 transition-colors">AR</span>
             </button>
-            
+
+            {/* CTA */}
             <Link
               href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white text-[10px] py-3 px-8 uppercase tracking-[0.2em] font-bold rounded-xl hover:bg-primary-dark hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30"
+              className="inline-flex items-center gap-2
+                bg-gold-400 text-ink-950
+                px-6 py-2.5 rounded-sm
+                text-[10px] font-medium uppercase tracking-[0.18em]
+                transition-all duration-200
+                hover:bg-gold-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)]"
             >
               Book Now
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-black p-2 transition-colors"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* ── Mobile Hamburger ──────────────────────────────────────────── */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-sand-100 p-2 transition-colors hover:text-gold-400"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Menu ─────────────────────────────────────────────────────── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 z-[100] lg:hidden bg-white border-b border-gray-100 overflow-hidden shadow-xl"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden absolute top-full left-0 right-0
+              bg-ink-900/98 backdrop-blur-xl
+              border-b border-ink-600 overflow-hidden"
           >
-            <div className="px-8 py-10 space-y-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-sm font-bold uppercase tracking-widest text-gray-900 hover:text-primary transition-colors"
+            <div className="px-6 py-8 space-y-1">
+              {navLinks.map((link, i) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center justify-between
+                        px-4 py-3 rounded-md
+                        text-[11px] font-medium uppercase tracking-widest
+                        transition-colors duration-150 ${
+                          isActive
+                            ? "text-gold-400 bg-gold-400/5"
+                            : "text-sand-300 hover:text-sand-50 hover:bg-ink-800"
+                        }`}
+                    >
+                      {link.name}
+                      {isActive && <span className="w-1 h-1 rounded-full bg-gold-400" />}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
+              {/* Mobile CTA */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="pt-4"
+                transition={{ delay: 0.38 }}
+                className="pt-5 border-t border-ink-600 mt-4"
               >
                 <Link
-                  href="/consultation"
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full py-4 text-xs"
+                  className="btn-primary w-full justify-center py-3.5 text-[10px]"
                 >
                   Book Consultation
                 </Link>

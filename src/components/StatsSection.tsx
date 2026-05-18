@@ -13,22 +13,22 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="py-24 bg-gray-50 relative overflow-hidden border-y border-gray-100">
+    <section className="py-24 bg-ink-900 relative overflow-hidden border-y border-ink-600">
       <div className="container-luxury relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold text-black mb-4 uppercase tracking-tight"
+            className="font-display font-medium text-2xl md:text-3xl text-sand-50 mb-4 uppercase tracking-tight"
           >
-            VISION 2030 <span className="text-primary">ALIGNMENT</span>
+            VISION 2030 <span className="text-shimmer italic">ALIGNMENT</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-gray-500 max-w-2xl mx-auto text-[13px] leading-relaxed"
+            className="text-sand-400 max-w-2xl mx-auto text-[13px] leading-relaxed"
           >
             Supporting the General Entertainment Authority (GEA) to host world-class events through world-class cultural activations.
           </motion.p>
@@ -44,12 +44,12 @@ export default function StatsSection() {
               transition={{ delay: index * 0.1 }}
               className="text-center md:text-left"
             >
-              <div className="text-3xl md:text-4xl font-bold text-black mb-3 tracking-tighter">
+              <div className="font-display text-3xl md:text-4xl font-medium text-sand-50 mb-3 tracking-tighter">
                 <span className="tabular-nums">
                   {stat.value.toLocaleString()}{stat.suffix}
                 </span>
               </div>
-              <div className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">
+              <div className="text-[10px] uppercase tracking-[0.4em] text-gold-400 font-medium">
                 {stat.label}
               </div>
             </motion.div>
