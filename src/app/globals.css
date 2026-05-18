@@ -4,70 +4,86 @@
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Saudi Event Management — Global Styles
-   Theme : Dark Luxury Corporate
+   Theme : Luxury Corporate Off-White
    Fonts : Cormorant Garamond (display) + DM Sans (body)
-───────────────────────────────────────────────────────────────────────────── */
+   Saudi Market Align: Premium Slate Muted Gold & Rich Emerald Accents
+   ───────────────────────────────────────────────────────────────────────────── */
 
 /* ── CSS Tokens ─────────────────────────────────────────────────────────────
    All values map directly to the tailwind.config.ts color scale.
    Use these var() tokens in any inline style or plain CSS.
-   For Tailwind classes, use the token names: bg-ink-950, text-gold-400, etc.
-──────────────────────────────────────────────────────────────────────────── */
+   ──────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Surfaces */
-  --background:        #08080C;   /* ink-950 — deepest page bg */
-  --surface:           #141419;   /* ink-800 — card bg */
-  --surface-raised:    #1A1A21;   /* ink-700 — elevated card / hover */
-  --border:            #22222B;   /* ink-600 — dividers */
-  --border-subtle:     #2E2E38;   /* ink-500 — very subtle dividers */
+  /* Surfaces (Off-White Luxury Theme) */
+  --background:        #F8FAFC;   /* slate-50 — Main Page Background */
+  --surface-raised:    #F1F5F9;   /* slate-100 — Secondary Section Background */
+  --surface:           #FFFFFF;   /* white — Card Surface */
+  --surface-lifted:    #E2E8F0;   /* slate-200 — Elevated Hover Card */
+  --border:            #E2E8F0;   /* slate-200 — Main Borders & Dividers */
+  --border-subtle:     #F1F5F9;   /* slate-100 — Subtle Borders */
 
-  /* Text */
-  --foreground:        #F0EFE8;   /* sand-100 — primary body text */
-  --foreground-muted:  #A8A69A;   /* sand-300 — captions, labels */
-  --foreground-faint:  #706E65;   /* sand-400 — placeholders */
-  --heading:           #FAFAF7;   /* sand-50  — headings (warm near-white) */
+  /* Typography Scales */
+  --heading:           #0F172A;   /* slate-900 — Deep Midnight Slate / Headings */
+  --foreground:        #334155;   /* slate-700 — Primary Body Text */
+  --foreground-medium:  #475569;   /* slate-600 — Secondary / Readability Copy */
+  --foreground-muted:  #64748B;   /* slate-500 — Captions & Labels */
+  --foreground-faint:  #94A3B8;   /* slate-400 — Placeholders */
+  --foreground-disabled:#CBD5E1;   /* slate-300 — Disabled state */
 
-  /* Brand */
-  --gold:              #D4AF37;   /* gold-400 — main accent */
-  --gold-hover:        #B8962E;   /* gold-500 — hover state */
-  --gold-muted:        rgba(212, 175, 55, 0.15); /* subtle tint for bg fills */
+  /* Muted Gold Accent (#C5A880) */
+  --gold-50:           #FAF7F2;
+  --gold-100:          #F3EFE6;
+  --gold-200:          #E7DEC9;
+  --gold-300:          #DBCDAE;
+  --gold:              #C5A880;   /* main accent */
+  --gold-hover:        #B0926A;   /* hover state */
+  --gold-600:          #9A7E56;
+  --gold-700:          #7F6642;
+  --gold-800:          #655032;
+  --gold-900:          #4A3B24;
+  --gold-950:          #302516;
+  --gold-muted:        rgba(197, 168, 128, 0.08);
 
-  /* Legacy aliases — keep so any component not yet migrated still works */
-  --primary:           #D4AF37;
-  --primary-dark:      #B8962E;
-  --secondary:         #2563eb;
-  --gray-light:        #1A1A21;
+  /* Deep Emerald Green Accents (Saudi Royal Market Preferred Accent) */
+  --emerald:           #0B4F30;   /* emerald-800 — Main Emerald */
+  --emerald-hover:     #064E3B;   /* emerald-900 — Hover Emerald */
+  --emerald-muted:     rgba(11, 79, 48, 0.06);
+
+  /* Legacy compatibility maps */
+  --primary:           #C5A880;
+  --primary-dark:      #B0926A;
+  --secondary:         #0B4F30;
+  --gray-light:        #F1F5F9;
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────────
-   Thin gold thumb on dark track — matches the luxury palette
-──────────────────────────────────────────────────────────────────────────── */
-::-webkit-scrollbar         { width: 5px; }
-::-webkit-scrollbar-track   { background: #08080C; }
-::-webkit-scrollbar-thumb   { background: #D4AF37; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #B8962E; }
+   Thin gold thumb on light slate track — matches the luxury palette
+   ──────────────────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: #F8FAFC; }
+::-webkit-scrollbar-thumb   { background: #C5A880; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #B0926A; }
 
 /* ── Text Selection ──────────────────────────────────────────────────────────
-   Gold tint selection — readable on dark backgrounds
-──────────────────────────────────────────────────────────────────────────── */
+   Soft gold tint selection — readable on off-white backgrounds
+   ──────────────────────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(212, 175, 55, 0.25);
-  color: #FAFAF7;
+  background: rgba(197, 168, 128, 0.2);
+  color: #0F172A;
 }
 
 /* ── Base HTML ───────────────────────────────────────────────────────────────*/
 html {
   scroll-behavior: smooth;
-  background-color: #08080C; /* prevents white flash on load */
+  background-color: #F8FAFC;
 }
 
 body {
   color:            var(--foreground);
   background-color: var(--background);
-  /* DM Sans loaded via next/font — variable injected on <html> */
   font-family:      var(--font-sans), system-ui, sans-serif;
   font-size:        1rem;        /* 16px base */
-  line-height:      1.75;        /* comfortable reading on dark bg */
+  line-height:      1.75;        /* perfect spacing for maximum legibility */
   font-weight:      400;
   overflow-x:       hidden;
   -webkit-font-smoothing:  antialiased;
@@ -76,64 +92,51 @@ body {
 
 /* ── Typography Scale ────────────────────────────────────────────────────────
    RULE: text-4xl (36px) is the HARD CEILING for any heading.
-   Cormorant Garamond looks best at weight 400–500, NOT 700.
    Headings use font-display (Cormorant Garamond).
-   Body text uses font-sans (DM Sans) — set on <body> above.
-
-   Scale (matching tailwind.config.ts fontSize):
-     h1 → max 2.25rem  (36px)  — hero / page title
-     h2 → max 1.875rem (30px)  — section headings
-     h3 → max 1.5rem   (24px)  — card titles / sub-sections
-     h4 → max 1.25rem  (20px)  — labels with emphasis
-     h5 → max 1.125rem (18px)  — small labels
-     h6 → max 1rem     (16px)  — fine print headings
-──────────────────────────────────────────────────────────────────────────── */
+   Body text uses font-sans (DM Sans).
+   ──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   color:       var(--heading);
-  font-family: var(--font-display), Georgia, serif;  /* Cormorant Garamond */
+  font-family: var(--font-display), Georgia, serif;
   line-height: 1.25;
-  font-weight: 500;      /* 500 not 700 — Cormorant looks elegant, not heavy */
-  letter-spacing: 0.01em;
-  margin-bottom: 0;      /* let components own their spacing, not global margin */
+  font-weight: 500;      /* Cormorant looks beautifully elite when lighter */
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
 }
 
-/* Responsive but CAPPED — no runaway clamp values */
-h1 { font-size: clamp(1.75rem, 3.5vw, 2.25rem);  } /* 28px → 36px MAX */
+/* Responsive and capped sizes */
+h1 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); } /* 28px → 36px MAX */
 h2 { font-size: clamp(1.5rem,  3vw,   1.875rem); } /* 24px → 30px MAX */
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem);   } /* 20px → 24px MAX */
 h4 { font-size: clamp(1.1rem,  2vw,   1.25rem);  } /* 17px → 20px MAX */
-h5 { font-size: 1.125rem; }                         /* 18px — fixed */
-h6 { font-size: 1rem;     }                         /* 16px — fixed */
+h5 { font-size: 1.125rem; }                         /* 18px */
+h6 { font-size: 1rem;     }                         /* 16px */
 
-/* Italic display variant — use on pull-quotes, hero sublines */
 .font-display-italic {
   font-family: var(--font-display), Georgia, serif;
   font-style:  italic;
   font-weight: 300;
 }
 
-/* ── Paragraph & inline ──────────────────────────────────────────────────────*/
+/* ── Paragraph & Inline Tags ──────────────────────────────────────────────────*/
 p {
   line-height:   1.75;
-  color:         var(--foreground);
-  margin-bottom: 0;   /* let components own spacing */
+  color:         var(--foreground-medium);
+  margin-bottom: 0;
 }
 
 a {
-  color:           var(--gold);
+  color:           var(--emerald);
   text-decoration: none;
   transition:      color 0.2s ease, opacity 0.2s ease;
 }
 a:hover { color: var(--gold-hover); }
 
-/* ── Section & Layout Helpers ────────────────────────────────────────────────
-   Use these utility classes in JSX for consistent section spacing.
-──────────────────────────────────────────────────────────────────────────── */
+/* ── Section Helpers ──────────────────────────────────────────────────────────*/
 .container-luxury {
   @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-16;
 }
 
-/* Standard section vertical rhythm */
 .section-padding    { @apply py-20 md:py-28; }
 .section-padding-sm { @apply py-14 md:py-20; }
 .section-padding-lg { @apply py-28 md:py-36; }
@@ -151,83 +154,73 @@ a:hover { color: var(--gold-hover); }
   background-color: var(--border);
 }
 
-/* ── Section Label (eyebrow text above headings) ─────────────────────────────
-   Usage: <span className="section-label">Our Services</span>
-──────────────────────────────────────────────────────────────────────────── */
+/* ── Section Eyebrow Label ────────────────────────────────────────────────── */
 .section-label {
   display:        block;
   font-family:    var(--font-sans), system-ui, sans-serif;
   font-size:      0.6875rem;   /* 11px */
-  font-weight:    500;
+  font-weight:    600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color:          var(--gold);
+  color:          var(--emerald); /* Saudi Emerald for high-contrast tag label */
   margin-bottom:  0.75rem;
 }
 
 @layer components {
 
-  /* ── Buttons ───────────────────────────────────────────────────────────────
-     btn-primary  → filled gold CTA
-     btn-outline  → ghost gold outline (replaces old btn-secondary)
-     btn-ghost    → text-only with arrow hover
-  ────────────────────────────────────────────────────────────────────────── */
+  /* ── Buttons (With High Contrast Deep Slate Text) ─────────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           bg-gold-400 text-ink-950
+           bg-gold-400 text-slate-900
            px-7 py-3 rounded-sm
            text-sm font-medium tracking-wide
            transition-all duration-300
-           hover:bg-gold-500
-           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-ink-950;
+           hover:bg-gold-500 hover:shadow-md
+           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-slate-50;
   }
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2
-           bg-transparent text-gold-400
-           border border-gold-400
+           bg-transparent text-emerald-800
+           border border-emerald-800
            px-7 py-3 rounded-sm
            text-sm font-medium tracking-wide
            transition-all duration-300
-           hover:bg-gold-400 hover:text-ink-950
-           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-ink-950;
+           hover:bg-emerald-800 hover:text-white
+           focus:outline-none focus:ring-2 focus:ring-emerald-800 focus:ring-offset-2 focus:ring-offset-slate-50;
   }
 
   .btn-ghost {
     @apply inline-flex items-center gap-2
-           text-sand-200 text-sm font-medium
+           text-slate-600 text-sm font-medium
            transition-all duration-200
-           hover:text-gold-400;
+           hover:text-emerald-800;
   }
 
-  /* ── Cards ─────────────────────────────────────────────────────────────────
-     card         → standard dark surface card
-     card-hover   → adds lift on hover (use for clickable cards)
-     card-gold    → subtle gold border accent
-  ────────────────────────────────────────────────────────────────────────── */
+  /* ── Cards (Crisp White with Soft Slate Borders) ───────────────────────────── */
   .card {
-    @apply bg-ink-800 rounded-lg border border-ink-600
-           transition-all duration-300;
+    @apply bg-white rounded-sm border border-slate-200/80
+           transition-all duration-300 shadow-sm;
   }
 
   .card-hover {
     @apply card
-           hover:bg-ink-700 hover:border-ink-500
+           hover:border-slate-300 hover:shadow-md
            hover:-translate-y-0.5;
   }
 
   .card-gold {
     @apply card
-           border-gold-400/20
-           hover:border-gold-400/40;
+           border-gold-400/30
+           hover:border-gold-400/60;
   }
 
   /* ── Stat Block ─────────────────────────────────────────────────────────── */
   .stat-number {
-    @apply font-display text-3xl font-medium text-sand-50;
+    @apply font-display text-3xl font-medium text-slate-900;
   }
   .stat-label {
-    @apply text-xs font-medium tracking-widest uppercase text-sand-300;
+    @apply text-xs font-semibold tracking-widest uppercase text-slate-500;
   }
 
   /* ── Gold Accent Line ───────────────────────────────────────────────────── */
@@ -237,20 +230,20 @@ a:hover { color: var(--gold-hover); }
 
   /* ── Badge / Pill ───────────────────────────────────────────────────────── */
   .badge-gold {
-    @apply inline-block text-2xs font-medium tracking-widest uppercase
-           text-gold-400 border border-gold-400/30
+    @apply inline-block text-2xs font-semibold tracking-widest uppercase
+           text-gold-700 border border-gold-400/40
            px-3 py-1 rounded-sm bg-gold-400/5;
   }
 
   .badge-muted {
-    @apply inline-block text-2xs font-medium tracking-wider uppercase
-           text-sand-300 border border-ink-500
-           px-3 py-1 rounded-sm bg-ink-700;
+    @apply inline-block text-2xs font-semibold tracking-wider uppercase
+           text-slate-600 border border-slate-200
+           px-3 py-1 rounded-sm bg-slate-100;
   }
 
   /* ── Image Overlay Helper ───────────────────────────────────────────────── */
   .img-overlay-dark {
-    @apply absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/40 to-transparent;
+    @apply absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent;
   }
 
   /* ── WhatsApp Float Button ──────────────────────────────────────────────── */
@@ -259,15 +252,13 @@ a:hover { color: var(--gold-hover); }
            flex items-center justify-center
            w-12 h-12 rounded-full
            bg-[#25D366] text-white
-           shadow-lg shadow-black/30
+           shadow-lg shadow-black/10
            transition-transform duration-200
            hover:scale-110;
   }
 }
 
-/* ── Marquee / Ticker ────────────────────────────────────────────────────────
-   Used in stats ticker / partner logo strip
-──────────────────────────────────────────────────────────────────────────── */
+/* ── Marquee / Ticker ────────────────────────────────────────────────────────*/
 .marquee-track {
   display:   flex;
   width:     max-content;
@@ -275,16 +266,14 @@ a:hover { color: var(--gold-hover); }
 }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ── Gold Shimmer Text ───────────────────────────────────────────────────────
-   Usage: <span className="text-shimmer">Gold text</span>
-──────────────────────────────────────────────────────────────────────────── */
+/* ── Gold Shimmer Text ───────────────────────────────────────────────────────*/
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #D4AF37 0%,
-    #F4E68A 40%,
-    #D4AF37 60%,
-    #B8962E 100%
+    #C5A880 0%,
+    #E7DEC9 40%,
+    #C5A880 60%,
+    #B0926A 100%
   );
   background-size:       200% auto;
   -webkit-background-clip: text;
@@ -293,14 +282,12 @@ a:hover { color: var(--gold-hover); }
   animation:             shimmer 3s ease-in-out infinite;
 }
 
-/* ── Swiper Overrides ────────────────────────────────────────────────────────
-   Keep Swiper consistent with the dark theme
-──────────────────────────────────────────────────────────────────────────── */
+/* ── Swiper Overrides ────────────────────────────────────────────────────────*/
 .swiper-pagination-bullet {
   background: var(--foreground-muted) !important;
-  opacity:    0.5 !important;
+  opacity:    0.4 !important;
 }
 .swiper-pagination-bullet-active {
-  background: var(--gold) !important;
+  background: var(--emerald) !important;
   opacity:    1 !important;
 }
