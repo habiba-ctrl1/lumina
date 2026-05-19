@@ -6,7 +6,14 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
-// Note: You can replace this placeholder link with your downloaded Pexels video link.
+// Hero slideshow images — luxury event photography
+const heroImages = [
+  { src: "/hero_bg.webp", alt: "Luxury event management in Saudi Arabia" },
+  { src: "/gallery_corporate_gala.webp", alt: "Corporate gala dinner event in Riyadh" },
+  { src: "/gallery_wedding_reception.webp", alt: "Grand wedding reception in Saudi Arabia" },
+  { src: "/gallery_charity_gala.webp", alt: "Charity gala event organized by Saudi Event Management" },
+  { src: "/corporate.webp", alt: "Corporate event planning Saudi Arabia" },
+];
 
 export default function Hero({ dict }: { dict?: any }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +24,14 @@ export default function Hero({ dict }: { dict?: any }) {
   const y       = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Background video replaces the slideshow
+  // Auto-sliding image carousel
+  const [currentSlide, setCurrentSlide] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change slide every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div
@@ -25,22 +39,32 @@ export default function Hero({ dict }: { dict?: any }) {
       ref={containerRef}
       className="relative min-h-screen w-full flex items-center justify-center bg-ink-950"
     >
-      {/* Slideshow Background */}
+      {/* Full-Screen Slideshow Background */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-people-pouring-champagne-at-a-party-10023-large.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroImages[currentSlide].src}
+              alt={heroImages[currentSlide].alt}
+              fill
+              priority={currentSlide === 0}
+              className="object-cover"
+              sizes="100vw"
+              quality={85}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Overlays — deep midnight blue for luxury legibility */}
-      <div className="absolute inset-0 z-[1] bg-slate-900/60" aria-hidden="true" />
+      {/* Overlays — dark overlay for text readability */}
+      <div className="absolute inset-0 z-[1] bg-black/55" aria-hidden="true" />
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/30" aria-hidden="true" />
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-900/30 via-transparent to-slate-900/30" aria-hidden="true" />
 
