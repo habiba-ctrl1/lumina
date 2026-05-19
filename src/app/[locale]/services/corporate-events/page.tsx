@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Building2, Users, MapPin, Target, Briefcase, Calendar } from "lucide-react";
 
 export const metadata = {
-  title: 'Corporate Event Management',
+  title: 'Corporate Event Management Saudi Arabia',
   description: 'Top-tier corporate event management in Saudi Arabia. We organize business conferences, AGM planning, team building, and corporate gala dinners in Riyadh & Jeddah.',
   keywords: 'corporate event management Saudi Arabia, شركة إدارة فعاليات الشركات, event company Riyadh, corporate events Jeddah KSA, business conference organizer Saudi Arabia, AGM planning Riyadh, team building events KSA, corporate gala dinner Saudi Arabia, seminar organizer Riyadh',
 };

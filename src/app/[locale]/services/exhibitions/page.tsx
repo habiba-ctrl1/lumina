@@ -205,8 +205,8 @@ export default function ExhibitionsPage() {
               transition={{ delay: 0.2 }}
               className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Exhibition <span className="font-bold">Management</span> <br/>
-              <span className="text-shimmer font-bold">Saudi Arabia</span>
+              Exhibition Management <span className="font-bold">Company</span> <br/>
+              <span className="text-shimmer font-bold">Riyadh</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}

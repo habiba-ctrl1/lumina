@@ -216,7 +216,7 @@ export default function WeddingsPage() {
               transition={{ delay: 0.2 }}
               className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Wedding <span className="font-bold">Planner</span> <br/>
+              Luxury Wedding <span className="font-bold">Planner</span> <br/>
               <span className="text-shimmer font-bold">Saudi Arabia</span>
             </motion.h1>
             <motion.p 

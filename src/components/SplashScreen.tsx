@@ -22,7 +22,7 @@ export default function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#041E42]"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink-950"
         >
           {/* Animated Background Pattern */}
           <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">

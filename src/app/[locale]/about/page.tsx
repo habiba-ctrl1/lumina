@@ -7,8 +7,15 @@ import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: 'About The Elite Collective',
+  title: 'Event Planning Experts Saudi Arabia',
   description: 'Discover the legacy of Saudi Event Management, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
+  keywords: [
+    "Event Planning Experts Saudi Arabia",
+    "Saudi Event Management",
+    "Event Planner KSA",
+    "Luxury Event Organizer Riyadh",
+    "Event Management Saudi Arabia"
+  ],
   alternates: { canonical: 'https://saudieventmanagement.com/about' },
 };
 
@@ -35,7 +42,7 @@ export default function AboutPage() {
             Established 2018
           </span>
           <h1 className="text-3xl md:text-5xl font-display font-medium text-slate-900 mb-6 leading-tight uppercase">
-            Curators of <span className="text-shimmer italic font-semibold">Extraordinary</span> <br /> Moments
+            Event Planning <span className="text-shimmer italic font-semibold">Experts</span> <br /> Saudi Arabia
           </h1>
           <p className="text-slate-600 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
             From Riyadh to the world, Saudi Event Management blends architectural precision with raw emotion to craft events that defy expectation.

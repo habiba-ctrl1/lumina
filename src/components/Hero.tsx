@@ -72,13 +72,13 @@ export default function Hero({ dict }: { dict?: any }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal lg:whitespace-nowrap"
+          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal"
           style={{ fontSize: "clamp(1.8rem, 5vw, 3.8rem)" }}
           aria-hidden="true"
         >
-          {dict && dict.label === "إدارة الفعاليات السعودية" ? "روائع" : "Masterpieces of"}{" "}
+          {dict && dict.label === "إدارة الفعاليات السعودية" ? "شركة تنظيم" : "Event Management"}{" "}
           <span className="text-shimmer italic">
-            {dict && dict.label === "إدارة الفعاليات السعودية" ? "الفخامة" : "Luxury"}
+            {dict && dict.label === "إدارة الفعاليات السعودية" ? "معارض ومؤتمرات في السعودية" : "Company in Saudi Arabia"}
           </span>
         </motion.p>
 
@@ -89,7 +89,7 @@ export default function Hero({ dict }: { dict?: any }) {
           transition={{ duration: 0.9, delay: 0.35 }}
           className="text-sm text-slate-200/90 max-w-lg mx-auto mb-10 leading-relaxed"
         >
-          {dict ? dict.subtitle : "Curating exquisite weddings, corporate galas, and private celebrations across Riyadh, Jeddah, Makkah, Madinah, and AlUla."}
+          {dict ? dict.subtitle : "Saudi Event Management is a leading event management company in Saudi Arabia offering corporate events, exhibitions, luxury weddings and premium brand experiences across Riyadh, Jeddah, Makkah, Madinah, and AlUla."}
         </motion.p>
 
         {/* Quick Booking Form */}

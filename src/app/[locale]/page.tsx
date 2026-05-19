@@ -6,18 +6,46 @@ import { getDictionary } from "@/lib/dictionaries";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import StatsSection from "@/components/StatsSection";
 
-export const metadata: Metadata = {
-  title: "Event Management Company in Saudi Arabia | Saudi Event Management",
-  description:
-    "Saudi Event Management is a leading event management company in Saudi Arabia. We deliver corporate events, exhibitions, luxury weddings and conferences in Riyadh, Jeddah, Makkah, and AlUla.",
-  alternates: {
-    canonical: "https://saudieventmanagement.com",
-    languages: {
-      "en-US": "https://saudieventmanagement.com",
-      "ar-SA": "https://saudieventmanagement.com/ar",
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
+  return {
+    title: isAr
+      ? "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية"
+      : "Event Management Company in Saudi Arabia",
+    description: isAr
+      ? "شركة إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات في الرياض وجدة ومكة والعلا."
+      : "Saudi Event Management is a leading event management company in Saudi Arabia. We deliver corporate events, exhibitions, luxury weddings and conferences in Riyadh, Jeddah, Makkah, and AlUla.",
+    keywords: isAr
+      ? [
+          "تنظيم معارض ومؤتمرات",
+          "شركة تنظيم معارض ومؤتمرات",
+          "شركة تنظيم فعاليات في السعودية",
+          "تنظيم فعاليات الرياض",
+          "إدارة فعاليات السعودية"
+        ]
+      : [
+          "Event Management Company in Saudi Arabia",
+          "Event Management Riyadh",
+          "Corporate Events Saudi Arabia",
+          "Exhibition Management Saudi Arabia",
+          "Luxury Event Management KSA",
+          "Conference Management Riyadh",
+        ],
+    alternates: {
+      canonical: `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}`,
+      languages: {
+        "en-US": "https://saudieventmanagement.com",
+        "ar-SA": "https://saudieventmanagement.com/ar",
+      },
     },
-  },
-};
+  };
+}
 import HowItWorks from "@/components/HowItWorks";
 import ContactSection from "@/components/ContactSection";
 import BlogPreview from "@/components/BlogPreview";
