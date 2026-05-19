@@ -92,7 +92,7 @@ export default function VendorMarketplace() {
     : vendors.filter(v => v.category === activeCategory);
 
   return (
-    <section id="vendors" className="py-24 bg-charcoal-950 relative overflow-hidden">
+    <section id="vendors" className="py-24 bg-emerald-950 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -163,7 +163,7 @@ export default function VendorMarketplace() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-charcoal-800/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5"
+              className="group bg-emerald-900/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5"
             >
               {/* Image Container */}
               <div className="relative h-56 md:h-64 w-full overflow-hidden">
@@ -175,7 +175,7 @@ export default function VendorMarketplace() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-charcoal-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
+                  <span className="px-3 py-1 bg-emerald-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
                     {vendor.specialty}
                   </span>
                 </div>

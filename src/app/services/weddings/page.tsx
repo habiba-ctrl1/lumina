@@ -358,7 +358,7 @@ export default function WeddingsPage() {
         </section>
 
         {/* Localized Arabic Focus Section */}
-        <section className="py-32 bg-charcoal-950 text-white relative">
+        <section className="py-32 bg-emerald-950 text-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
             <h2 className="text-2xl md:text-4xl font-sans mb-16 font-bold">
               نصمم <span className="text-gold-500">أجمل اللحظات</span> في المملكة

@@ -22,7 +22,7 @@ export default function RiyadhLuxurySoiree() {
             alt="Riyadh Luxury Soiree" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />

@@ -174,7 +174,7 @@ export default function ExhibitionsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-charcoal-950 text-white">
+      <main className="min-h-screen bg-emerald-950 text-white">
         <Navbar />
 
         {/* Hero Section */}
@@ -188,7 +188,7 @@ export default function ExhibitionsPage() {
               className="w-full h-full object-cover opacity-40"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/40 to-charcoal-950" />
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/40 to-emerald-950" />
           </div>
           
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -223,7 +223,7 @@ export default function ExhibitionsPage() {
             >
               <Link
                 href="/#contact"
-                className="inline-block px-12 py-5 bg-gold-500 text-charcoal-950 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-2xl"
+                className="inline-block px-12 py-5 bg-gold-500 text-emerald-950 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-2xl"
               >
                 Organize Your Expo
               </Link>
@@ -232,7 +232,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* E-E-A-T Signals & Partnerships */}
-        <section className="py-12 border-y border-white/5 bg-charcoal-900/30">
+        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-10">
               <div className="flex items-center gap-4">
@@ -257,7 +257,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Core Services Grid */}
-        <section className="py-32 bg-charcoal-900/30 relative">
+        <section className="py-32 bg-emerald-900/30 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
               <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Our Expo <span className="text-gold-500">Expertise</span></h2>
@@ -281,7 +281,7 @@ export default function ExhibitionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-charcoal-900 border border-white/5 p-10 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group"
+                  className="bg-emerald-900 border border-white/5 p-10 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group"
                 >
                   <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
                   <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
@@ -293,7 +293,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-charcoal-950 relative border-y border-white/5">
+        <section className="py-24 bg-emerald-950 relative border-y border-white/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
@@ -308,7 +308,7 @@ export default function ExhibitionsPage() {
                   { title: "Exhibition cost breakdown guides", desc: "A transparent analysis of booth construction, technology integration, and staffing costs in KSA." },
                   { title: "Venue comparison articles", desc: "An in-depth review of RICEC, RECC, and Jeddah Center for Forums & Events to choose your optimal location." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-8 bg-charcoal-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
+                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
@@ -349,7 +349,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* FAQ & HowTo Section */}
-        <section className="py-32 bg-charcoal-900 relative">
+        <section className="py-32 bg-emerald-900 relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
               <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Expo <span className="text-gold-500">Guide</span></h2>
@@ -368,7 +368,7 @@ export default function ExhibitionsPage() {
                 { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
                 { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
               ].map((faq, i) => (
-                <div key={i} className="bg-charcoal-950 p-8 rounded-2xl border border-white/5">
+                <div key={i} className="bg-emerald-950 p-8 rounded-2xl border border-white/5">
                   <h3 className="text-lg font-bold text-gold-500 mb-3">{faq.q}</h3>
                   <p className="text-gray-400 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>

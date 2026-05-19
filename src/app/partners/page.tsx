@@ -45,10 +45,10 @@ export default function PartnersPage() {
             alt="Strategic Partnerships" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-10 grayscale"
+            className="w-full h-full object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent" />
         </div>
         
         <div className="container-luxury relative z-10">
@@ -159,18 +159,16 @@ export default function PartnersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-emerald-950 text-white text-center relative overflow-hidden border-t border-emerald-900">
-        <div className="absolute inset-0 opacity-5">
-          <Image src="/hero_bg.webp" alt="Background" width={1920} height={600} className="w-full h-full object-cover" />
-        </div>
+      <section className="py-24 bg-emerald-950 text-white text-center relative overflow-hidden border-t border-emerald-900 shadow-xl">
+        <div className="absolute inset-0 opacity-[0.22] bg-[url('/hero_bg.webp')] bg-cover bg-center" />
         <div className="container-luxury relative z-10">
           <h2 className="font-display font-medium mb-8 uppercase tracking-tight text-2xl md:text-3xl">Ready to <span className="text-shimmer italic">Join Us?</span></h2>
-          <p className="text-emerald-200/80 max-w-2xl mx-auto mb-12 text-sm leading-relaxed">
+          <p className="text-slate-200 max-w-2xl mx-auto mb-12 text-sm leading-relaxed font-light">
             Whether you are a global brand or a specialized local vendor, we want to hear from you.
           </p>
           <Link 
             href="/partners/become-one" 
-            className="btn-primary hover:scale-105 transition-all font-semibold tracking-widest text-xs px-10 py-4 shadow-md bg-gold-400 text-slate-900 hover:bg-gold-500"
+            className="btn-primary hover:scale-105 transition-all font-semibold tracking-widest text-xs px-10 py-4 shadow-md bg-gold-400 text-slate-900 hover:bg-gold-500 rounded-sm"
           >
             Start Your Application
           </Link>

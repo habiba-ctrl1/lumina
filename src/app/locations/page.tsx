@@ -51,7 +51,7 @@ export default function LocationsPage() {
 
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 flex items-center justify-center border-b border-slate-200/60">
-        <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-[0.03] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-[0.22] bg-cover bg-center" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <span className="section-label">
             Global Presence

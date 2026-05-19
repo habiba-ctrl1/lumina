@@ -61,10 +61,10 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Overlays — dark charcoal (not navy blue) */}
-      <div className="absolute inset-0 z-[1] bg-ink-950/60"                                                  aria-hidden="true" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink-950/90 via-transparent to-ink-950/30" aria-hidden="true" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink-950/30 via-transparent to-ink-950/30" aria-hidden="true" />
+      {/* Overlays — deep midnight blue for luxury legibility */}
+      <div className="absolute inset-0 z-[1] bg-slate-900/60" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/30" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-900/30 via-transparent to-slate-900/30" aria-hidden="true" />
 
       {/* Content */}
       <motion.div

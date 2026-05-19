@@ -24,7 +24,7 @@ export default function MadinahSpiritualEvent() {
             alt="Madinah Spiritual Event" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-50 grayscale"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />

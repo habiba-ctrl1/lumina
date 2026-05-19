@@ -24,7 +24,7 @@ export default function NeomFutureSummitCaseStudy() {
             alt="NEOM Future Summit" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-30 grayscale"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/60 to-transparent" />

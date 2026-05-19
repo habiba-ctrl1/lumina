@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-charcoal-900 overflow-hidden">
+    <main className="min-h-screen bg-emerald-950 overflow-hidden">
       <Navbar />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">

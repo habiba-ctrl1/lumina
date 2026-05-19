@@ -115,7 +115,7 @@ export default function CorporateEventsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-charcoal-950 overflow-hidden pt-20">
+      <main className="min-h-screen bg-emerald-950 overflow-hidden pt-20">
         <Navbar />
 
         {/* Hero Section */}
@@ -129,7 +129,7 @@ export default function CorporateEventsPage() {
               className="w-full h-full object-cover opacity-30"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-950/60 to-charcoal-950" />
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/60 to-emerald-950" />
           </div>
           
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -144,7 +144,7 @@ export default function CorporateEventsPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-block px-10 py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20"
+              className="inline-block px-10 py-4 bg-gold-500 text-emerald-900 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20"
             >
               Consult Our Experts
             </Link>
@@ -152,7 +152,7 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* E-E-A-T Signals & Certifications */}
-        <section className="py-12 border-y border-white/5 bg-charcoal-900/30">
+        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
               <div className="text-center">
@@ -187,7 +187,7 @@ export default function CorporateEventsPage() {
               { icon: Calendar, title: "Seminar Organizer Riyadh", desc: "Professional seminar organization with state-of-the-art AV setups, hybrid broadcasting, and flawless execution." },
               { icon: MapPin, title: "Vision 2030 Events", desc: "Aligning your corporate narrative with Saudi Vision 2030 trends through high-impact public relations and strategic event planning." },
             ].map((service, i) => (
-              <div key={i} className="bg-charcoal-900 border border-white/5 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group">
+              <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group">
                 <service.icon size={32} className="text-gold-500 mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
                 <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
@@ -197,7 +197,7 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-charcoal-900 relative border-y border-white/5">
+        <section className="py-24 bg-emerald-900 relative border-y border-white/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
@@ -215,7 +215,7 @@ export default function CorporateEventsPage() {
                   { title: "Detailed behind-the-scenes case studies", desc: "An exclusive look at how we execute flawless executive summits at KAFD." },
                   { title: "Comparison: corporate event venues in KSA", desc: "Evaluating the best business centers, luxury hotels, and convention halls for your next summit." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-6 bg-charcoal-950 rounded-2xl hover:bg-gold-500/5 transition-colors cursor-pointer group">
+                  <div key={idx} className="p-6 bg-emerald-950 rounded-2xl hover:bg-gold-500/5 transition-colors cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
@@ -226,7 +226,7 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* FAQ Section with Schema */}
-        <section className="py-24 bg-charcoal-900/50 relative">
+        <section className="py-24 bg-emerald-900/50 relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-2xl md:text-3xl font-sans text-white mb-6 font-bold">Frequently Asked <span className="text-gold-500">Questions</span></h2>
@@ -243,7 +243,7 @@ export default function CorporateEventsPage() {
                 { q: "who does business events in Saudi Arabia", a: "Saudi Event Management does business events in Saudi Arabia, mastering everything from an intimate company function to a massive executive summit." },
                 { q: "best conference organizer Jeddah", a: "Saudi Event Management is widely regarded as the best conference organizer Jeddah, utilizing premium Red Sea venues to host spectacular business gatherings and board retreats." }
               ].map((faq, i) => (
-                <div key={i} className="bg-charcoal-900 border border-white/5 p-6 rounded-2xl">
+                <div key={i} className="bg-emerald-900 border border-white/5 p-6 rounded-2xl">
                   <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>
                   <p className="text-gray-400 font-light text-sm">{faq.a}</p>
                 </div>

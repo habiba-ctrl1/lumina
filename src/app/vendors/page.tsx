@@ -73,7 +73,7 @@ export default function VendorsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-charcoal-950 overflow-hidden pt-24">
+    <main className="min-h-screen bg-emerald-950 overflow-hidden pt-24">
       <Navbar />
 
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-white/5">
@@ -94,7 +94,7 @@ export default function VendorsPage() {
           return (
             <section key={category.id} id={category.id} className="relative">
               <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
-                <div className="w-12 h-12 rounded-full bg-charcoal-800 border border-gold-500/30 flex items-center justify-center text-gold-500">
+                <div className="w-12 h-12 rounded-full bg-emerald-900 border border-gold-500/30 flex items-center justify-center text-gold-500">
                   <category.icon size={24} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">{category.name}</h2>
@@ -102,9 +102,9 @@ export default function VendorsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {categoryVendors.map((vendor) => (
-                  <div key={vendor.id} className="group bg-charcoal-800/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5 flex flex-col">
+                  <div key={vendor.id} className="group bg-emerald-900/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5 flex flex-col">
                     <div className="relative h-64 w-full overflow-hidden">
-                      <div className="absolute inset-0 bg-charcoal-900" />
+                      <div className="absolute inset-0 bg-emerald-950" />
                       <Image src={vendor.image} alt={vendor.name} width={600} height={400} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80" />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-blue-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">{vendor.location}</span>
@@ -148,13 +148,13 @@ export default function VendorsPage() {
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-charcoal-950/90 backdrop-blur-md"
+              className="absolute inset-0 bg-emerald-950/90 backdrop-blur-md"
             />
             <motion.div 
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-lg bg-charcoal-900 border border-white/10 rounded-3xl p-8 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-lg bg-emerald-950 border border-white/10 rounded-3xl p-8 shadow-2xl overflow-hidden"
             >
               <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors">
                 <X size={24} />
@@ -179,11 +179,11 @@ export default function VendorsPage() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Your Name</label>
-                        <input required type="text" value={formData.clientName} onChange={e => setFormData({...formData, clientName: e.target.value})} className="w-full bg-charcoal-800 border border-white/5 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="Full Name" />
+                        <input required type="text" value={formData.clientName} onChange={e => setFormData({...formData, clientName: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="Full Name" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Email</label>
-                        <input required type="email" value={formData.clientEmail} onChange={e => setFormData({...formData, clientEmail: e.target.value})} className="w-full bg-charcoal-800 border border-white/5 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="email@example.com" />
+                        <input required type="email" value={formData.clientEmail} onChange={e => setFormData({...formData, clientEmail: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="email@example.com" />
                       </div>
                     </div>
 
@@ -192,14 +192,14 @@ export default function VendorsPage() {
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Event Date</label>
                         <div className="relative">
                           <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gold-500" size={16} />
-                          <input required type="date" value={formData.eventDate} onChange={e => setFormData({...formData, eventDate: e.target.value})} className="w-full bg-charcoal-800 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" />
+                          <input required type="date" value={formData.eventDate} onChange={e => setFormData({...formData, eventDate: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Guests</label>
                         <div className="relative">
                           <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-gold-500" size={16} />
-                          <input type="number" value={formData.guestCount} onChange={e => setFormData({...formData, guestCount: e.target.value})} className="w-full bg-charcoal-800 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="e.g. 150" />
+                          <input type="number" value={formData.guestCount} onChange={e => setFormData({...formData, guestCount: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="e.g. 150" />
                         </div>
                       </div>
                     </div>
@@ -208,7 +208,7 @@ export default function VendorsPage() {
                       <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Specific Requirements</label>
                       <div className="relative">
                         <MessageSquare className="absolute left-4 top-4 text-gold-500" size={16} />
-                        <textarea rows={3} value={formData.requirements} onChange={e => setFormData({...formData, requirements: e.target.value})} className="w-full bg-charcoal-800 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="Any special requests or details..." />
+                        <textarea rows={3} value={formData.requirements} onChange={e => setFormData({...formData, requirements: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl pl-12 pr-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="Any special requests or details..." />
                       </div>
                     </div>
 

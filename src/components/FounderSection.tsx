@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function FounderSection() {
   return (
-    <section className="py-24 bg-charcoal-900 relative overflow-hidden border-t border-white/5">
+    <section className="py-24 bg-emerald-950 relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[200px] pointer-events-none" />
 

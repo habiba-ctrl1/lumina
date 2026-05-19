@@ -41,7 +41,7 @@ export default function PortfolioPage() {
 
       {/* Final CTA Section */}
       <section className="py-24 bg-emerald-950 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('/hero_bg.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-[0.22] bg-[url('/hero_bg.webp')] bg-cover bg-center" />
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h2 className="font-display font-medium text-white mb-8 text-2xl md:text-4xl">Ready to Start Your <span className="text-shimmer italic font-semibold text-white">Legacy?</span></h2>
           <p className="text-slate-200 text-sm md:text-base mb-12">Let&apos;s discuss your vision and create something truly extraordinary together.</p>

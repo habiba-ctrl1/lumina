@@ -25,7 +25,7 @@ export default function RiyadhPage() {
             alt="Luxury Event Management Riyadh - Kingdom Centre Skyline" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-10 grayscale"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/60 to-slate-50" />

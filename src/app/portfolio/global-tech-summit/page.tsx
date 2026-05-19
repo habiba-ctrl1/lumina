@@ -24,7 +24,7 @@ export default function GlobalTechSummit() {
             alt="Global Tech Summit" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-20 grayscale"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />

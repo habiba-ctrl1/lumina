@@ -94,7 +94,7 @@ export default function Home() {
       <WhatsAppButton />
 
       {/* ── Navigation ───────────────────────────────────────────────────── */}
-      <Navbar />
+      <Navbar darkHero />
 
       {/* ── Sections — ordered by conversion priority ─────────────────────
           Hero          → First impression, booking form

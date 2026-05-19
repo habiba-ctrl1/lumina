@@ -313,7 +313,7 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* Arabic Heritage Content Section */}
-        <section className="py-32 bg-charcoal-950 text-white relative">
+        <section className="py-32 bg-emerald-950 text-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">

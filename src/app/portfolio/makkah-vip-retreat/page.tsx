@@ -24,7 +24,7 @@ export default function MakkahVipRetreat() {
             alt="Makkah VIP Retreat" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />

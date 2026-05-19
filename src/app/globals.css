@@ -270,10 +270,10 @@ a:hover { color: var(--gold-hover); }
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #C5A880 0%,
-    #E7DEC9 40%,
-    #C5A880 60%,
-    #B0926A 100%
+    #9A7E56 0%,
+    #C5A880 35%,
+    #9A7E56 65%,
+    #7F6642 100%
   );
   background-size:       200% auto;
   -webkit-background-clip: text;

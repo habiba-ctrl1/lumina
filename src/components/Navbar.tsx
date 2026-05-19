@@ -42,20 +42,20 @@ const locations = [
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
-export default function Navbar() {
+export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
   const [isScrolled, setIsScrolled]       = useState(false);
   const [isOpen, setIsOpen]               = useState(false);
   const [hoveredLink, setHoveredLink]     = useState<string | null>(null);
   const pathname                          = usePathname();
-
+ 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
+ 
   useEffect(() => { setIsOpen(false); }, [pathname]);
-
+ 
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -64,15 +64,15 @@ export default function Navbar() {
       onMouseLeave={() => setHoveredLink(null)}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled
-          // Scrolled: solid dark surface + subtle gold bottom border
-          ? "bg-ink-900/98 backdrop-blur-xl border-b border-ink-600 py-2"
+          // Scrolled: solid light surface + subtle slate bottom border
+          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 py-2 shadow-sm"
           // Top of page: fully transparent so hero image shows through
           : "bg-transparent border-b border-transparent py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
-
+ 
           {/* ── Logo ────────────────────────────────────────────────────────── */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <Image
@@ -86,13 +86,25 @@ export default function Navbar() {
               }`}
             />
           </Link>
-
+ 
           {/* ── Desktop Links ────────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-8">
             {navLinks.map((link) => {
               const isActive   = pathname === link.href;
               const hasDropdown = ["Services", "Partners", "Locations"].includes(link.name);
-
+              
+              // Choose legibility colors dynamically based on scrolling & hero themes
+              const textNormal = isScrolled
+                ? "text-slate-600 hover:text-slate-900"
+                : darkHero
+                  ? "text-white/80 hover:text-white"
+                  : "text-slate-600 hover:text-slate-900";
+              const textActive = isScrolled
+                ? "text-emerald-800"
+                : darkHero
+                  ? "text-gold-400"
+                  : "text-emerald-800";
+ 
               return (
                 <div
                   key={link.name}
@@ -102,11 +114,9 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={`relative flex items-center gap-1 px-3 py-2
-                      text-[10px] font-medium uppercase tracking-[0.15em]
+                      text-[10px] font-semibold uppercase tracking-[0.15em]
                       transition-colors duration-200 ${
-                        isActive
-                          ? "text-gold-400"
-                          : "text-sand-300 hover:text-sand-50"
+                        isActive ? textActive : textNormal
                       }`}
                   >
                     {link.name}
@@ -120,7 +130,9 @@ export default function Navbar() {
                     )}
                     {/* Active underline */}
                     {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-px bg-gold-400" />
+                      <span className={`absolute bottom-0 left-3 right-3 h-px ${
+                        isScrolled ? "bg-emerald-800" : darkHero ? "bg-gold-400" : "bg-emerald-800"
+                      }`} />
                     )}
                   </Link>
 
@@ -281,8 +293,14 @@ export default function Navbar() {
             {/* Language toggle */}
             <button className="flex items-center gap-2 group" aria-label="Language toggle">
               <span className="text-[10px] font-medium tracking-widest text-gold-400">EN</span>
-              <span className="w-px h-3 bg-ink-500" />
-              <span className="text-[10px] font-medium tracking-widest text-sand-400 group-hover:text-sand-100 transition-colors">AR</span>
+              <span className={`w-px h-3 ${isScrolled ? "bg-slate-300" : darkHero ? "bg-white/20" : "bg-slate-300"}`} />
+              <span className={`text-[10px] font-medium tracking-widest transition-colors ${
+                isScrolled
+                  ? "text-slate-500 group-hover:text-slate-900"
+                  : darkHero
+                    ? "text-slate-300 group-hover:text-white"
+                    : "text-slate-500 group-hover:text-slate-900"
+              }`}>AR</span>
             </button>
 
             {/* CTA */}
@@ -304,7 +322,13 @@ export default function Navbar() {
           {/* ── Mobile Hamburger ──────────────────────────────────────────── */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-sand-100 p-2 transition-colors hover:text-gold-400"
+            className={`lg:hidden p-2 transition-colors ${
+              isScrolled
+                ? "text-slate-800 hover:text-emerald-800"
+                : darkHero
+                  ? "text-white hover:text-gold-400"
+                  : "text-slate-800 hover:text-emerald-800"
+            }`}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}

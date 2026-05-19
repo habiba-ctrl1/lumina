@@ -131,7 +131,7 @@ export default function ProductionVenuesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-charcoal-950 text-white">
+      <main className="min-h-screen bg-emerald-950 text-white">
         <Navbar />
 
         {/* Hero Section */}
@@ -145,7 +145,7 @@ export default function ProductionVenuesPage() {
               className="w-full h-full object-cover opacity-50"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-charcoal-950/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-emerald-950/20" />
           </div>
           
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -180,7 +180,7 @@ export default function ProductionVenuesPage() {
             >
               <Link
                 href="/#contact"
-                className="inline-block px-12 py-5 bg-gold-500 text-charcoal-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
+                className="inline-block px-12 py-5 bg-gold-500 text-emerald-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
               >
                 Inquire for Services
               </Link>
@@ -189,7 +189,7 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* E-E-A-T & Vendor Partnerships */}
-        <section className="py-12 border-y border-white/5 bg-charcoal-900/30">
+        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-10">
               <div className="flex items-center gap-4">
@@ -214,7 +214,7 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Services Showcase */}
-        <section className="py-32 bg-charcoal-900/50">
+        <section className="py-32 bg-emerald-900/50">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               {[
@@ -247,7 +247,7 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-charcoal-950 relative border-y border-white/5">
+        <section className="py-24 bg-emerald-950 relative border-y border-white/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
@@ -265,7 +265,7 @@ export default function ProductionVenuesPage() {
                   { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
                   { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-8 bg-charcoal-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
+                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
@@ -312,14 +312,14 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Price Specification Section */}
-        <section className="py-32 bg-charcoal-900 relative">
+        <section className="py-32 bg-emerald-900 relative">
           <div className="max-w-5xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
               <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Investment <span className="text-gold-500">Guide</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-[0.4em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-white/5 bg-charcoal-950 shadow-2xl">
+            <div className="overflow-hidden rounded-3xl border border-white/5 bg-emerald-950 shadow-2xl">
               <table className="w-full text-left">
                 <thead className="bg-white/5">
                   <tr>
