@@ -62,7 +62,7 @@ export default function Footer() {
             <Link href="/" className="block mb-7">
               <Image
                 src="/main-logo.webp"
-                alt="Saudi Event Management"
+                alt="Saudi Event Management - Luxury Event Planning Company in Saudi Arabia"
                 width={220}
                 height={80}
                 className="object-contain h-12 w-auto"

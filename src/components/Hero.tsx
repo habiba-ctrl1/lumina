@@ -6,16 +6,9 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
-const backgroundImages = [
-  "/gallery_wedding_reception.webp",
-  "/gallery_corporate_gala.webp",
-  "/gallery_destination_wedding.webp",
-  "/gallery_charity_gala.webp",
-  "/gallery_vip_party.webp",
-  "/gallery_garden_party.webp",
-];
+// Note: You can replace this placeholder link with your downloaded Pexels video link.
 
-export default function Hero() {
+export default function Hero({ dict }: { dict?: any }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -24,14 +17,7 @@ export default function Hero() {
   const y       = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
+  // Background video replaces the slideshow
 
   return (
     <div
@@ -41,24 +27,16 @@ export default function Hero() {
     >
       {/* Slideshow Background */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={backgroundImages[currentImageIndex]}
-              alt={`Luxury Event Scene ${currentImageIndex + 1}`}
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-people-pouring-champagne-at-a-party-10023-large.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       {/* Overlays — deep midnight blue for luxury legibility */}
@@ -78,21 +56,31 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center mb-8"
         >
-          <span className="section-label tracking-[0.5em] !text-gold-400">Saudi Event Management</span>
+          <span className="section-label tracking-[0.5em] !text-gold-400">{dict ? dict.label : "Saudi Event Management"}</span>
           <span className="block w-8 h-px bg-gold-400/40 mx-auto mt-2" />
         </motion.div>
 
-        {/* Main heading */}
-        <motion.h1
+        {/* ── TASK 1: H1 — SEO KEYWORD ───────────────────── */}
+        <h1 className="sr-only">
+          {dict && dict.label === "إدارة الفعاليات السعودية" 
+            ? "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض" 
+            : "Event Management Company in Saudi Arabia | Saudi Event Management"}
+        </h1>
+
+        {/* Visual headline — shown on screen, not an H1 */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
           className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal lg:whitespace-nowrap"
           style={{ fontSize: "clamp(1.8rem, 5vw, 3.8rem)" }}
+          aria-hidden="true"
         >
-          Masterpieces of{" "}
-          <span className="text-shimmer italic">Luxury</span>
-        </motion.h1>
+          {dict && dict.label === "إدارة الفعاليات السعودية" ? "روائع" : "Masterpieces of"}{" "}
+          <span className="text-shimmer italic">
+            {dict && dict.label === "إدارة الفعاليات السعودية" ? "الفخامة" : "Luxury"}
+          </span>
+        </motion.p>
 
         {/* Subtitle */}
         <motion.p
@@ -101,13 +89,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.35 }}
           className="text-sm text-slate-200/90 max-w-lg mx-auto mb-10 leading-relaxed"
         >
-          Curating exquisite weddings, corporate galas, and private celebrations
-          across{" "}
-          <span className="text-white font-medium">Riyadh</span>,{" "}
-          <span className="text-white font-medium">Jeddah</span>,{" "}
-          <span className="text-white font-medium">Makkah</span>,{" "}
-          <span className="text-white font-medium">Madinah</span>, and{" "}
-          <span className="text-white font-medium">AlUla</span>.
+          {dict ? dict.subtitle : "Curating exquisite weddings, corporate galas, and private celebrations across Riyadh, Jeddah, Makkah, Madinah, and AlUla."}
         </motion.p>
 
         {/* Quick Booking Form */}
@@ -129,33 +111,31 @@ export default function Hero() {
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 items-end"
             >
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Event Type</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.eventType : "Event Type"}</label>
                 <div className="relative">
                   <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
-                    <option className="bg-ink-900">Luxury Wedding</option>
-                    <option className="bg-ink-900">Corporate Gala</option>
-                    <option className="bg-ink-900">VIP Reception</option>
-                    <option className="bg-ink-900">Private Concert</option>
+                    {(dict ? dict.types : ["Luxury Wedding", "Corporate Gala", "VIP Reception", "Private Concert"]).map((t: string) => (
+                      <option key={t} className="bg-ink-900">{t}</option>
+                    ))}
                   </select>
-                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
+                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
                 </div>
               </div>
 
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Location</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.location : "Location"}</label>
                 <div className="relative">
                   <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
-                    <option className="bg-ink-900">Riyadh</option>
-                    <option className="bg-ink-900">Jeddah</option>
-                    <option className="bg-ink-900">Makkah</option>
-                    <option className="bg-ink-900">AlUla</option>
+                    {(dict ? dict.locations : ["Riyadh", "Jeddah", "Makkah", "AlUla"]).map((l: string) => (
+                      <option key={l} className="bg-ink-900">{l}</option>
+                    ))}
                   </select>
-                  <ChevronDown size={12} className="absolute right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
+                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
                 </div>
               </div>
 
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">Preferred Date</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.date : "Preferred Date"}</label>
                 <input
                   type="date"
                   className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 [color-scheme:dark] hover:border-ink-400 transition-colors"
@@ -166,7 +146,7 @@ export default function Hero() {
                 type="submit"
                 className="w-full bg-gold-400 text-ink-950 text-[10px] font-medium uppercase tracking-[0.2em] py-2.5 rounded-md hover:bg-gold-500 transition-all duration-200 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
               >
-                Inquiry
+                {dict ? dict.inquiry : "Inquiry"}
               </button>
             </form>
 
@@ -176,7 +156,7 @@ export default function Hero() {
                 className="text-[9px] text-sand-500 hover:text-gold-400 uppercase tracking-[0.3em] font-medium flex items-center gap-3 transition-colors group"
               >
                 <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
-                Download Portfolio
+                {dict ? dict.download : "Download Portfolio"}
                 <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
               </Link>
             </div>
@@ -190,9 +170,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-wrap justify-center gap-8 md:gap-12"
         >
-          {["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"].map((label, i) => (
+          {(dict ? dict.stats : ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"]).map((label: string, i: number) => (
             <div key={i} className="flex flex-col items-center gap-1">
-              <span className="text-gold-400 text-[9px] font-medium uppercase tracking-[0.22em]">{label}</span>
+              <span className="text-gold-400 text-[9px] font-medium uppercase tracking-[0.22em] text-center">{label}</span>
               <span className="w-4 h-px bg-gold-400/25" />
             </div>
           ))}
@@ -206,7 +186,7 @@ export default function Hero() {
         transition={{ delay: 1.6, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
       >
-        <span className="text-[8px] uppercase tracking-[0.3em] text-sand-500">Scroll</span>
+        <span className="text-[8px] uppercase tracking-[0.3em] text-sand-500">{dict ? dict.scroll : "Scroll"}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

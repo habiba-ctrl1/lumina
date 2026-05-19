@@ -22,7 +22,7 @@ export default function FounderSection() {
             <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden rounded-2xl">
               <Image
                 src="/gallery_2.webp"
-                alt="Luxury Event Vision"
+                alt="Founder Habiba Asghar - Saudi Event Management Luxury Event Vision"
                 width={800}
                 height={1000}
                 className="w-full h-full object-cover"

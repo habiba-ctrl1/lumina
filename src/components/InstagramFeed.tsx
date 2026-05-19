@@ -13,15 +13,15 @@ const Instagram = ({ size = 20, className = "" }: { size?: number; className?: s
 );
 
 const posts = [
-  { id: 1, src: "/gallery_wedding_reception.webp", likes: "1.2k", comments: "45" },
-  { id: 2, src: "/gallery_corporate_gala.webp", likes: "850", comments: "22" },
-  { id: 3, src: "/gallery_destination_wedding.webp", likes: "2.1k", comments: "89" },
-  { id: 4, src: "/gallery_vip_party.webp", likes: "1.1k", comments: "31" },
-  { id: 5, src: "/gallery_charity_gala.webp", likes: "920", comments: "18" },
-  { id: 6, src: "/gallery_garden_party.webp", likes: "1.5k", comments: "52" },
-  { id: 7, src: "/wedding.webp", likes: "3.4k", comments: "120" },
-  { id: 8, src: "/corporate.webp", likes: "760", comments: "15" },
-  { id: 9, src: "/private_party.webp", likes: "1.8k", comments: "64" },
+  { id: 1, src: "/gallery_wedding_reception.webp", likes: "1.2k", comments: "45", alt: "Luxury wedding reception decoration setup Saudi Arabia" },
+  { id: 2, src: "/gallery_corporate_gala.webp", likes: "850", comments: "22", alt: "High-end corporate gala dinner stage and AV setup Riyadh" },
+  { id: 3, src: "/gallery_destination_wedding.webp", likes: "2.1k", comments: "89", alt: "Royal outdoor destination wedding decoration Jeddah" },
+  { id: 4, src: "/gallery_vip_party.webp", likes: "1.1k", comments: "31", alt: "Premium VIP private concert and party organization KSA" },
+  { id: 5, src: "/gallery_charity_gala.webp", likes: "920", comments: "18", alt: "Elite charity gala and business networking event Saudi Arabia" },
+  { id: 6, src: "/gallery_garden_party.webp", likes: "1.5k", comments: "52", alt: "Elegant outdoor social event planning and design" },
+  { id: 7, src: "/wedding.webp", likes: "3.4k", comments: "120", alt: "Bespoke bridal event design and luxury floral arches" },
+  { id: 8, src: "/corporate.webp", likes: "760", comments: "15", alt: "Modern B2B corporate conference production in Riyadh" },
+  { id: 9, src: "/private_party.webp", likes: "1.8k", comments: "64", alt: "Opulent private birthday celebration and ballroom setup" },
 ];
 
 export default function InstagramFeed() {
@@ -60,7 +60,7 @@ export default function InstagramFeed() {
             >
               <Image 
                 src={post.src} 
-                alt="Instagram post" 
+                alt={post.alt} 
                 width={400}
                 height={400}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

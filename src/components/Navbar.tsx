@@ -6,30 +6,29 @@ import {
   Menu, X, ChevronDown, Heart, Briefcase, Presentation,
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
 } from "lucide-react";
-import Link from "next/link";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Data
 // ─────────────────────────────────────────────────────────────────────────────
-const navLinks = [
-  { name: "Home",      href: "/" },
-  { name: "About",     href: "/about" },
-  { name: "Services",  href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Locations", href: "/locations" },
-  { name: "Partners",  href: "/partners" },
-  { name: "Journal",   href: "/blog" },
+const defaultNavLinks = [
+  { key: "home",      href: "/" },
+  { key: "about",     href: "/about" },
+  { key: "services",  href: "/services" },
+  { key: "portfolio", href: "/portfolio" },
+  { key: "locations", href: "/locations" },
+  { key: "contact",   href: "/contact" },
+  { key: "journal",   href: "/blog" },
 ];
 
 const services = [
-  { name: "Royal Weddings",       href: "/services/weddings",          icon: Heart,        desc: "Ultra-luxury celebrations" },
-  { name: "Corporate Galas",      href: "/services/corporate-events",  icon: Briefcase,    desc: "High-stakes networking" },
-  { name: "Exhibitions & Trade",  href: "/services/exhibitions",       icon: Presentation, desc: "B2B brand showcases" },
-  { name: "Production & Venues",  href: "/services/production-venues", icon: Landmark,     desc: "Iconic space curation" },
-  { name: "Seasonal Festivals",   href: "/services/seasonal",          icon: Sparkles,     desc: "Regional cultural events" },
-  { name: "Private Events",       href: "/services",                   icon: Users,        desc: "Exclusive social gatherings" },
+  { name: "Royal Weddings",       href: "/services/luxury-wedding-planning-saudi-arabia",          icon: Heart,        desc: "Ultra-luxury celebrations" },
+  { name: "Corporate Galas",      href: "/services/corporate-events-riyadh",          icon: Briefcase,    desc: "High-stakes networking" },
+  { name: "Exhibitions & Trade",  href: "/services/exhibition-management-saudi-arabia",icon: Presentation, desc: "B2B brand showcases" },
+  { name: "Production & Venues",  href: "/services/event-production-saudi-arabia",           icon: Landmark,     desc: "Iconic space curation" },
+  { name: "Seasonal Festivals",   href: "/services/seasonal",                         icon: Sparkles,     desc: "Regional cultural events" },
+  { name: "Private Events",       href: "/services",                                  icon: Users,        desc: "Exclusive social gatherings" },
 ];
 
 const locations = [
@@ -42,11 +41,12 @@ const locations = [
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
-export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
+export default function Navbar({ darkHero = false, dict, locale = "en" }: { darkHero?: boolean, dict?: any, locale?: string }) {
   const [isScrolled, setIsScrolled]       = useState(false);
   const [isOpen, setIsOpen]               = useState(false);
   const [hoveredLink, setHoveredLink]     = useState<string | null>(null);
   const pathname                          = usePathname();
+  const router                            = useRouter();
  
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -55,6 +55,10 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
   }, []);
  
   useEffect(() => { setIsOpen(false); }, [pathname]);
+
+  const switchLanguage = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale });
+  };
  
   return (
     <motion.nav
@@ -89,9 +93,10 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
  
           {/* ── Desktop Links ────────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-8">
-            {navLinks.map((link) => {
+            {defaultNavLinks.map((link) => {
               const isActive   = pathname === link.href;
-              const hasDropdown = ["Services", "Partners", "Locations"].includes(link.name);
+              const linkName   = dict ? dict[link.key] || link.key : link.key;
+              const hasDropdown = ["services", "partners", "locations"].includes(link.key);
               
               // Choose legibility colors dynamically based on scrolling & hero themes
               const textNormal = isScrolled
@@ -107,9 +112,9 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
  
               return (
                 <div
-                  key={link.name}
+                  key={link.key}
                   className="relative flex items-center"
-                  onMouseEnter={() => setHoveredLink(link.name)}
+                  onMouseEnter={() => setHoveredLink(link.key)}
                 >
                   <Link
                     href={link.href}
@@ -119,12 +124,12 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
                         isActive ? textActive : textNormal
                       }`}
                   >
-                    {link.name}
+                    {linkName}
                     {hasDropdown && (
                       <ChevronDown
                         size={9}
                         className={`transition-transform duration-200 ${
-                          hoveredLink === link.name ? "rotate-180" : ""
+                          hoveredLink === link.key ? "rotate-180" : ""
                         }`}
                       />
                     )}
@@ -137,9 +142,9 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
                   </Link>
 
                   {/* ── Services Mega Menu ─────────────────────────────────── */}
-                  {link.name === "Services" && (
+                  {link.key === "services" && (
                     <AnimatePresence>
-                      {hoveredLink === "Services" && (
+                      {hoveredLink === "services" && (
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -207,9 +212,9 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
                   )}
 
                   {/* ── Partners Dropdown ──────────────────────────────────── */}
-                  {link.name === "Partners" && (
+                  {link.key === "partners" && (
                     <AnimatePresence>
-                      {hoveredLink === "Partners" && (
+                      {hoveredLink === "partners" && (
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -251,9 +256,9 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
                   )}
 
                   {/* ── Locations Dropdown ─────────────────────────────────── */}
-                  {link.name === "Locations" && (
+                  {link.key === "locations" && (
                     <AnimatePresence>
-                      {hoveredLink === "Locations" && (
+                      {hoveredLink === "locations" && (
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -291,17 +296,11 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
           {/* ── Right: Lang + CTA ─────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-5 shrink-0">
             {/* Language toggle */}
-            <button className="flex items-center gap-2 group" aria-label="Language toggle">
-              <span className="text-[10px] font-medium tracking-widest text-gold-400">EN</span>
+            <div className="flex items-center gap-2 group" aria-label="Language toggle">
+              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'en' ? 'text-gold-400' : isScrolled ? 'text-slate-500 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}>EN</button>
               <span className={`w-px h-3 ${isScrolled ? "bg-slate-300" : darkHero ? "bg-white/20" : "bg-slate-300"}`} />
-              <span className={`text-[10px] font-medium tracking-widest transition-colors ${
-                isScrolled
-                  ? "text-slate-500 group-hover:text-slate-900"
-                  : darkHero
-                    ? "text-slate-300 group-hover:text-white"
-                    : "text-slate-500 group-hover:text-slate-900"
-              }`}>AR</span>
-            </button>
+              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'ar' ? 'text-gold-400' : isScrolled ? 'text-slate-500 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}>AR</button>
+            </div>
 
             {/* CTA */}
             <Link
@@ -349,11 +348,12 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
               border-b border-ink-600 overflow-hidden"
           >
             <div className="px-6 py-8 space-y-1">
-              {navLinks.map((link, i) => {
+              {defaultNavLinks.map((link, i) => {
                 const isActive = pathname === link.href;
+                const linkName = dict ? dict[link.key] || link.key : link.key;
                 return (
                   <motion.div
-                    key={link.name}
+                    key={link.key}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
@@ -370,7 +370,7 @@ export default function Navbar({ darkHero = false }: { darkHero?: boolean }) {
                             : "text-sand-300 hover:text-sand-50 hover:bg-ink-800"
                         }`}
                     >
-                      {link.name}
+                      {linkName}
                       {isActive && <span className="w-1 h-1 rounded-full bg-gold-400" />}
                     </Link>
                   </motion.div>

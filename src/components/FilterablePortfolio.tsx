@@ -8,73 +8,79 @@ import Link from "next/link";
 const portfolioItems = [
   { 
     id: 1, 
-    src: "/gallery_wedding_reception.webp", 
+    src: "/real_wedding.png", 
     title: "Al-Saud Royal Wedding", 
-    category: "Riyadh", 
+    category: "Luxury Weddings", 
     slug: "royal-riyadh-wedding",
-    client: "Royal Family Office",
+    client: "Private Royal Commission",
     date: "Dec 2024",
     guests: "800+",
-    outcome: "Architectural desert oasis build"
+    outcome: "Architectural desert oasis build",
+    alt: "Luxury royal wedding planning and setup in Riyadh Saudi Arabia"
   },
   { 
     id: 2, 
     src: "/gallery_corporate_gala.webp", 
     title: "NEOM Future Summit", 
-    category: "Riyadh", 
+    category: "Conferences", 
     slug: "neom-future-summit",
-    client: "NEOM Authority",
+    client: "Leading Saudi Giga-Project",
     date: "Nov 2024",
     guests: "250 VIPs",
-    outcome: "Zero-waste luxury production"
+    outcome: "Zero-waste luxury production",
+    alt: "Enterprise conference planning and stage setup for NEOM Saudi Arabia"
   },
   { 
     id: 3, 
     src: "/gallery_destination_wedding.webp", 
     title: "Makkah VIP Retreat", 
-    category: "Makkah", 
+    category: "Corporate Events", 
     slug: "makkah-vip-retreat",
-    client: "Private Office",
+    client: "Global Islamic Foundation",
     date: "Oct 2024",
     guests: "50",
-    outcome: "Exclusive spiritual concierge"
+    outcome: "Exclusive spiritual concierge",
+    alt: "VIP corporate retreat and spiritual concierge services in Makkah KSA"
   },
   { 
     id: 4, 
     src: "/gallery_vip_party.webp", 
     title: "Al-Rashid Annual Gala", 
-    category: "Riyadh", 
+    category: "Corporate Events", 
     slug: "riyadh-luxury-soiree",
-    client: "Al-Rashid Group",
+    client: "Premier Financial Institution",
     date: "Sept 2024",
     guests: "400",
-    outcome: "Immersive digital art gallery"
+    outcome: "Immersive digital art gallery",
+    alt: "Corporate gala event planning and luxury soiree in Riyadh Saudi Arabia"
   },
   { 
     id: 5, 
     src: "/gallery_charity_gala.webp", 
     title: "AlUla Desert Festival", 
-    category: "AlUla", 
+    category: "Exhibitions", 
     slug: "alula-desert-festival",
-    client: "Royal Commission for AlUla",
+    client: "National Tourism Authority",
     date: "Jan 2025",
     guests: "1200",
-    outcome: "UNESCO heritage site activation"
+    outcome: "UNESCO heritage site activation",
+    alt: "Cultural festival production and exhibition management in AlUla Saudi Arabia"
   },
   { 
     id: 6, 
     src: "/gallery_2.webp", 
     title: "Executive Summit Jeddah", 
-    category: "Jeddah", 
+    category: "Conferences", 
     slug: "executive-summit-jeddah",
-    client: "Ministry of Investment",
+    client: "Prominent Government Ministry",
     date: "Feb 2025",
     guests: "150",
-    outcome: "High-security diplomatic summit"
+    outcome: "High-security diplomatic summit",
+    alt: "Business conference and summit organizer services in Jeddah Saudi Arabia"
   }
 ];
 
-const categories = ["All", "Riyadh", "Jeddah", "Makkah", "AlUla"];
+const categories = ["All", "Conferences", "Exhibitions", "Corporate Events", "Luxury Weddings"];
 
 export default function FilterablePortfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -116,7 +122,7 @@ export default function FilterablePortfolio() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-10 py-3.5 text-[10px] uppercase tracking-[0.3em] transition-all duration-500 rounded-sm font-medium border ${
+              className={`px-6 md:px-8 py-3 text-[10px] uppercase tracking-[0.2em] transition-all duration-500 rounded-sm font-medium border ${
                 activeCategory === category 
                   ? "bg-gold-400 text-ink-950 border-gold-400 shadow-md" 
                   : "bg-transparent text-sand-400 border-ink-600 hover:border-gold-400 hover:text-sand-50"
@@ -143,7 +149,7 @@ export default function FilterablePortfolio() {
                 <Link href={`/portfolio/${item.slug}`} className="block w-full h-full">
                   <Image 
                     src={item.src} 
-                    alt={item.title} 
+                    alt={item.alt} 
                     width={800}
                     height={600}
                     className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 opacity-70 group-hover:opacity-100" 

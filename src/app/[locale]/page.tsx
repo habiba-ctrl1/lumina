@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import { cookies } from "next/headers";
+import { getDictionary } from "@/lib/dictionaries";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import StatsSection from "@/components/StatsSection";
+
+export const metadata: Metadata = {
+  title: "Event Management Company in Saudi Arabia | Saudi Event Management",
+  description:
+    "Saudi Event Management is a leading event management company in Saudi Arabia. We deliver corporate events, exhibitions, luxury weddings and conferences in Riyadh, Jeddah, Makkah, and AlUla.",
+  alternates: {
+    canonical: "https://saudieventmanagement.com",
+    languages: {
+      "en-US": "https://saudieventmanagement.com",
+      "ar-SA": "https://saudieventmanagement.com/ar",
+    },
+  },
+};
 import HowItWorks from "@/components/HowItWorks";
 import ContactSection from "@/components/ContactSection";
 import BlogPreview from "@/components/BlogPreview";
@@ -13,6 +29,7 @@ import FilterablePortfolio from "@/components/FilterablePortfolio";
 import PartnersSection from "@/components/PartnersSection";
 import InstagramFeed from "@/components/InstagramFeed";
 import EngagementHub from "@/components/EngagementHub";
+import Services from "@/components/Services";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Page-level schema (supplements layout.tsx global schema)
@@ -75,7 +92,11 @@ const jsonLd = {
 // ─────────────────────────────────────────────────────────────────────────────
 // Home Page
 // ─────────────────────────────────────────────────────────────────────────────
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
+  const dict = await getDictionary(locale as "en" | "ar");
+
   return (
     /*
       bg-ink-950  → deep black base (from tailwind.config)
@@ -94,7 +115,7 @@ export default function Home() {
       <WhatsAppButton />
 
       {/* ── Navigation ───────────────────────────────────────────────────── */}
-      <Navbar darkHero />
+      <Navbar darkHero dict={dict.nav} locale={locale} />
 
       {/* ── Sections — ordered by conversion priority ─────────────────────
           Hero          → First impression, booking form
@@ -110,10 +131,11 @@ export default function Home() {
           EngagementHub → Community + reviews
           Footer        → Navigation + newsletter
       ──────────────────────────────────────────────────────────────────── */}
-      <Hero />
+      <Hero dict={dict.hero} />
       <MarqueeStrip />
       <ContactSection />
       <StatsSection />
+      <Services />
       <FilterablePortfolio />
       <HowItWorks />
       <MapClient />

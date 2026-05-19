@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "book": "Book Consultation"
+  },
+  "hero": {
+    "label": "Saudi Event Management",
+    "title": "Event Management Company in",
+    "titleHighlight": "Saudi Arabia",
+    "subtitle": "Curating exquisite weddings, corporate galas, and private celebrations across Riyadh, Jeddah, Makkah, Madinah, and AlUla.",
+    "eventType": "Event Type",
+    "location": "Location",
+    "date": "Preferred Date",
+    "inquiry": "Inquiry",
+    "download": "Download Portfolio",
+    "stats": ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"],
+    "scroll": "Scroll",
+    "types": ["Luxury Wedding", "Corporate Gala", "VIP Reception", "Private Concert", "Exhibition"],
+    "locations": ["Riyadh", "Jeddah", "Makkah", "AlUla"]
+  }
+}

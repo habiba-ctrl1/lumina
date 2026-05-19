@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: 250, suffix: "+", label: "Elite Events" },
-  { value: 15, suffix: "+", label: "Years Experience" },
-  { value: 100, suffix: "%", label: "Retention Rate" },
-  { value: 120, suffix: "M+", label: "SAR Budget Managed" },
+  { value: 50, suffix: "+", label: "Events Managed" },
+  { value: 20, suffix: "+", label: "Trusted Vendors" },
+  { value: 10, suffix: "+", label: "Saudi Cities Served" },
+  { value: 100, suffix: "%", label: "Client Satisfaction" },
 ];
 
 
@@ -34,7 +34,7 @@ export default function StatsSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 divide-x divide-ink-600/30">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -42,14 +42,14 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="text-center md:text-left"
+              className="text-center px-4"
             >
-              <div className="font-display text-3xl md:text-4xl font-medium text-sand-50 mb-3 tracking-tighter">
+              <div className="font-display text-3xl md:text-5xl font-light text-sand-50 mb-3 tracking-tighter">
                 <span className="tabular-nums">
-                  {stat.value.toLocaleString()}{stat.suffix}
+                  {stat.value.toLocaleString()}<span className="text-gold-400">{stat.suffix}</span>
                 </span>
               </div>
-              <div className="text-[10px] uppercase tracking-[0.4em] text-gold-400 font-medium">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-sand-400 font-medium">
                 {stat.label}
               </div>
             </motion.div>

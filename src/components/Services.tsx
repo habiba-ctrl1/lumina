@@ -9,74 +9,50 @@ import { useRef } from "react";
 const services = [
   {
     id: 1,
-    title: "Wedding & Celebrations",
-    href: "/services/weddings",
-    description: "Opulent wedding planning specializing in grand ballroom settings and traditional royal ceremonies.",
+    title: "Wedding Event Management",
+    href: "/services/luxury-wedding-planning-saudi-arabia",
+    description: "Luxury Event Planner Saudi Arabia specializing in grand, opulent royal weddings and traditional ceremonies.",
     icon: Heart,
     starting: "From SAR 50,000",
   },
   {
     id: 2,
-    title: "Corporate Galas",
-    href: "/services/corporate-events",
-    description: "High-profile corporate summits and galas designed for executive networking and brand prestige.",
+    title: "Corporate Event Planning",
+    href: "/services/corporate-events-riyadh",
+    description: "Corporate Event Planning Saudi Arabia for business summits, AGMs, and gala dinners.",
     icon: Briefcase,
     starting: "From SAR 75,000",
   },
   {
     id: 3,
-    title: "Private Events",
-    href: "/services/private-events",
-    description: "Bespoke milestone celebrations and private gatherings in exclusive villas or desert resorts.",
-    icon: GlassWater,
-    starting: "From SAR 25,000",
+    title: "Exhibition Management",
+    href: "/services/exhibition-management-saudi-arabia",
+    description: "Exhibition Management Company organizing large-scale industry expos, trade shows, and brand launches.",
+    icon: Star,
+    starting: "From SAR 80,000",
   },
   {
     id: 4,
-    title: "Destination Events",
-    href: "/services/destination",
-    description: "Seamlessly executed luxury destination weddings and events across global hotspots.",
+    title: "Event Production Services",
+    href: "/services/event-production-saudi-arabia",
+    description: "Full-scale technical Event Production Services including light, sound, projection mapping, and custom stages.",
     icon: MapPin,
-    starting: "From SAR 100,000",
+    starting: "From SAR 60,000",
   },
   {
     id: 5,
-    title: "Floral & Décor",
-    href: "/services/floral-decor",
-    description: "Breathtaking floral installations and custom spatial design tailored to your vision.",
-    icon: Flower2,
-    starting: "From SAR 15,000",
+    title: "Conference Management",
+    href: "/services/conference-management-riyadh",
+    description: "End-to-end Conference Management Riyadh, from GEA permitting and international VIP logistics to hybrid setups.",
+    icon: Utensils,
+    starting: "From SAR 45,000",
   },
   {
     id: 6,
-    title: "Catering Curation",
-    href: "/services/catering",
-    description: "Exquisite culinary experiences featuring world-class chefs and bespoke menus.",
-    icon: Utensils,
-    starting: "From SAR 450 / Guest",
-  },
-  {
-    id: 7,
-    title: "Entertainment Booking",
-    href: "/services/entertainment",
-    description: "Exclusive access to top-tier performers, live orchestras, and cultural entertainment.",
+    title: "Saudi Event Organizer",
+    href: "/#contact",
+    description: "Bespoke seasonal festivals, sports events, and national cultural activations across the Kingdom.",
     icon: Music,
-    starting: "From SAR 20,000",
-  },
-  {
-    id: 8,
-    title: "Venue Sourcing",
-    href: "/services/venue-sourcing",
-    description: "Securing the most prestigious and exclusive palaces, resorts, and ballrooms.",
-    icon: Map,
-    starting: "From SAR 5,000 (Sourcing Fee)",
-  },
-  {
-    id: 9,
-    title: "VIP Guest Management",
-    href: "/services/vip-management",
-    description: "Impeccable concierge services, travel coordination, and on-site VIP hospitality.",
-    icon: Star,
     starting: "Custom Pricing",
   },
 ];
@@ -108,12 +84,10 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           {service.starting}
         </span>
         <Link 
-          href={`https://wa.me/966501234567?text=I%20am%20interested%20in%20the%20${encodeURIComponent(service.title)}%20service.`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={service.href}
           className="flex items-center gap-2 bg-gold-400 text-ink-950 text-[10px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-sm hover:bg-gold-500 hover:scale-105 transition-all duration-300 shadow-sm"
         >
-          <span>Book via WhatsApp</span>
+          <span>Learn More</span>
         </Link>
       </div>
     </motion.div>
