@@ -6,9 +6,9 @@ import Link from "next/link";
 import { Building2, Users, MapPin, Target, Briefcase, Calendar } from "lucide-react";
 
 export const metadata = {
-  title: 'Corporate Event Management Saudi Arabia',
-  description: 'Top-tier corporate event management in Saudi Arabia. We organize business conferences, AGM planning, team building, and corporate gala dinners in Riyadh & Jeddah.',
-  keywords: 'corporate event management Saudi Arabia, شركة إدارة فعاليات الشركات, event company Riyadh, corporate events Jeddah KSA, business conference organizer Saudi Arabia, AGM planning Riyadh, team building events KSA, corporate gala dinner Saudi Arabia, seminar organizer Riyadh',
+  title: 'Corporate Event Planning Saudi Arabia',
+  description: 'Leading corporate event planning company in Saudi Arabia. We are a top business event organizer for conferences, corporate gala planning, and annual meetings in Riyadh & Jeddah.',
+  keywords: 'Corporate Event Planning Saudi Arabia, event companies in Riyadh, conference management, business event organizer, corporate gala planning, corporate event management Saudi Arabia, AGM planning Riyadh, team building events KSA',
 };
 
 // Schema.org Structured Data
@@ -137,7 +137,7 @@ export default function CorporateEventsPage() {
               إدارة فعاليات الشركات | Corporate Excellence
             </span>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-6 leading-tight font-bold">
-              Corporate Event Management <br/><span className="text-shimmer font-bold">Saudi Arabia</span>
+              Corporate Event Planning <br/><span className="text-shimmer font-bold">Saudi Arabia</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed">
               The premier partner for <strong className="text-white">NEOM Corporate</strong>, <strong className="text-white">SABIC</strong>, and <strong className="text-white">Saudi Aramco</strong>. Elevating every <strong className="text-white">business gathering</strong>, <strong className="text-white">company function</strong>, and <strong className="text-white">enterprise event</strong> at <strong className="text-white">KAFD</strong> to world-class standards.
@@ -181,10 +181,10 @@ export default function CorporateEventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: Building2, title: "Professional Conferences", desc: "Expert professional conference organizer for Saudi Aramco and SABIC level summits. We handle end-to-end logistics and VIP attendee management." },
-              { icon: Target, title: "Executive Summits", desc: "Flawless executive summit and AGM planning at King Abdullah Financial District (KAFD), ensuring regulatory compliance and secure voting systems." },
+              { icon: Target, title: "Executive Summits", desc: "Flawless executive summit and annual business meeting planning at King Abdullah Financial District (KAFD), ensuring regulatory compliance and secure voting systems." },
               { icon: Users, title: "Board Retreats KSA", desc: "Curated board retreat KSA and team building for HRDF and government entities, designed to foster leadership and elite team cohesion across the Kingdom." },
               { icon: Briefcase, title: "Corporate Gala Dinners", desc: "Spectacular gala dinners for enterprise events and Vision 2030 initiatives, featuring world-class catering and luxury venue sourcing." },
-              { icon: Calendar, title: "Seminar Organizer Riyadh", desc: "Professional seminar organization with state-of-the-art AV setups, hybrid broadcasting, and flawless execution." },
+              { icon: Calendar, title: "Seminar Organizer Riyadh", desc: "Professional seminar organization with state-of-the-art sound and light setups, events with both in-person and online guests, and flawless execution." },
               { icon: MapPin, title: "Vision 2030 Events", desc: "Aligning your corporate narrative with Saudi Vision 2030 trends through high-impact public relations and strategic event planning." },
             ].map((service, i) => (
               <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group">

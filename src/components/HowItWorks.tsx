@@ -11,7 +11,7 @@ const steps = [
   },
   {
     icon: <CalendarCheck size={32} />,
-    title: "Bespoke Planning",
+    title: "Personalized Planning",
     desc: "Our experts craft a meticulously detailed proposal, encompassing venue selection, design, and timeline.",
   },
   {

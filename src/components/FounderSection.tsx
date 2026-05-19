@@ -56,17 +56,17 @@ export default function FounderSection() {
               The Vision
             </span>
             <h2 className="text-2xl md:text-4xl font-sans text-white mb-3 font-bold uppercase tracking-tight leading-tight">
-              Crafting <span className="text-primary font-bold">Timeless</span> Legacies
+              Crafting <span className="text-primary font-bold">Memories That</span> Last Forever
             </h2>
             <p className="text-gray-400 text-sm uppercase tracking-[0.2em] mb-8 font-semibold">
-              Bespoke Event Management
+              Personalized Event Management
             </p>
 
             <div className="space-y-6 text-gray-300 font-medium leading-relaxed">
               <p>
-                With over a decade orchestrating the world&apos;s most exclusive celebrations, 
-                our agency was founded by **Habiba Asghar** with a singular vision: to transform fleeting moments into 
-                timeless legacies of beauty and emotion.
+                With over a decade organizing and managing the world&apos;s most exclusive celebrations, 
+                our agency was founded by **Habiba Asghar** with a singular vision: to transform short, special times into 
+                memories that last forever, full of beauty and emotion.
               </p>
               <p>
                 We bring an unparalleled eye for detail and a deep understanding of what makes 

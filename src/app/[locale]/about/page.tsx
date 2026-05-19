@@ -8,13 +8,16 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
   title: 'Event Planning Experts Saudi Arabia',
-  description: 'Discover the legacy of Saudi Event Management, a premier luxury event management company crafting extraordinary experiences in KSA and beyond.',
+  description: 'Saudi Event Management is one of the best event management companies in Saudi Arabia. Our event planning experts deliver luxury weddings, corporate galas, and Vision 2030 events across KSA.',
   keywords: [
     "Event Planning Experts Saudi Arabia",
+    "Event management companies",
+    "Event management in Saudi Arabia",
+    "Best event planners in KSA",
+    "Vision 2030 events",
     "Saudi Event Management",
     "Event Planner KSA",
-    "Luxury Event Organizer Riyadh",
-    "Event Management Saudi Arabia"
+    "Luxury Event Organizer Riyadh"
   ],
   alternates: { canonical: 'https://saudieventmanagement.com/about' },
 };
@@ -45,7 +48,7 @@ export default function AboutPage() {
             Event Planning <span className="text-shimmer italic font-semibold">Experts</span> <br /> Saudi Arabia
           </h1>
           <p className="text-slate-600 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            From Riyadh to the world, Saudi Event Management blends architectural precision with raw emotion to craft events that defy expectation.
+            From Riyadh to the world, Saudi Event Management blends perfect planning and design with heartfelt emotion to craft events that go beyond expectations.
           </p>
         </div>
       </section>
@@ -65,7 +68,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-sm shadow-xl max-w-xs">
-              <p className="text-gold-600 font-display text-base mb-2 italic font-semibold">&quot;We don&apos;t just plan events; we orchestrate emotions.&quot;</p>
+              <p className="text-gold-600 font-display text-base mb-2 italic font-semibold">&quot;We don&apos;t just plan events; we organize and manage every emotion.&quot;</p>
               <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">— Habiba Asghar, Founder</p>
             </div>
           </div>
@@ -74,16 +77,16 @@ export default function AboutPage() {
             <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900 leading-tight uppercase">Crafting Unparalleled Moments</h2>
             <div className="space-y-6 text-slate-600 font-light leading-relaxed text-sm text-justify">
               <p>
-                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with an obsession for architectural precision and emotional resonance, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
+                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design that makes people feel special, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
               </p>
               <p>
-                Our philosophy is rooted in the belief that every celebration is not just an event, but a living narrative—a masterpiece in motion. We don&apos;t simply plan; we orchestrate. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with global avant-garde aesthetics. 
+                Our philosophy is rooted in the belief that every celebration is not just an event, but a story that comes to life — a beautiful experience in motion. We don&apos;t simply plan; we organize and manage every detail. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with modern and unique design. 
               </p>
               <p>
-                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong className="text-slate-900 font-semibold">Architectural Emotion</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand dignitaries or an intimate corporate retreat for world leaders, we apply the same level of rigorous detail, ensuring that every touchpoint tells a story of elegance and legacy.
+                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong className="text-slate-900 font-semibold">Design That Touches the Heart</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand important guests and VIPs or an intimate corporate retreat for world leaders, we apply the same level of careful attention to every small thing, ensuring that every part of the guest experience tells a story of elegance and legacy.
               </p>
               <p>
-                As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural activations that showcase the Kingdom&apos;s sophistication to the global stage. Our mission is to transform fleeting moments into timeless legacies that echo through generations.
+                As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural events and activities that showcase the high quality of Saudi Arabia to the global stage. Our mission is to transform short, special times into memories that last forever, echoing through generations.
               </p>
             </div>
             

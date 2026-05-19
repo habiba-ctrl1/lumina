@@ -73,7 +73,7 @@ export default function WeddingsPage() {
             "name": "Which hotels are best for weddings in Jeddah?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Jeddah boasts spectacular wedding venues. The best hotels for weddings include the Ritz-Carlton Jeddah, Park Hyatt Jeddah, and the Waldorf Astoria (Qasr Al Sharq), offering breathtaking Red Sea views and opulent ballrooms."
+              "text": "Jeddah boasts spectacular wedding venues. The best hotels for weddings include the Ritz-Carlton Jeddah, Park Hyatt Jeddah, and the Waldorf Astoria (Qasr Al Sharq), offering breathtaking Red Sea views and grand, luxurious ballrooms."
             }
           },
           {
@@ -314,7 +314,7 @@ export default function WeddingsPage() {
                 { icon: Utensils, title: "Gourmet Catering", desc: "World-class menus tailored to your cultural and personal preferences." },
                 { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
-                { icon: Gift, title: "Floral Design", desc: "Bespoke arrangements from the best wedding decoration company in Saudi Arabia." },
+                { icon: Gift, title: "Floral Design", desc: "Custom-made arrangements from the best wedding decoration company in Saudi Arabia." },
               ].map((service, i) => (
                 <div key={i} className="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 group">
                   <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-500 transition-colors">
@@ -390,10 +390,10 @@ export default function WeddingsPage() {
 
             <div className="space-y-6">
               {[
-                { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Saudi Event Management is highly rated for transforming high-profile venues like the Ritz-Carlton into bespoke masterpieces." },
+                { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Saudi Event Management is highly rated for transforming high-profile venues like the Ritz-Carlton into personalized masterpieces." },
                 { q: "How much does a Saudi wedding cost?", a: "A luxury Saudi wedding typically ranges from SAR 150,000 to upwards of SAR 1,000,000. This includes premium venue sourcing, custom floral designs, and world-class entertainment and catering." },
                 { q: "Which hotels are best for weddings in Jeddah?", a: "The Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria are among the best hotels for weddings in Jeddah. We specialize in securing these exclusive Red Sea venues with preferred rates." },
-                { q: "wedding planner near me Riyadh", a: "Saudi Event Management is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your bespoke nuptial event." },
+                { q: "wedding planner near me Riyadh", a: "Saudi Event Management is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your personalized wedding event." },
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
                 { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Saudi Event Management is frequently called the best wedding company Saudi Arabia." },
                 { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }

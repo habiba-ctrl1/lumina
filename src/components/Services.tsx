@@ -11,7 +11,7 @@ const services = [
     id: 1,
     title: "Wedding Event Management",
     href: "/services/luxury-wedding-planning-saudi-arabia",
-    description: "Luxury Event Planner Saudi Arabia specializing in grand, opulent royal weddings and traditional ceremonies.",
+    description: "Luxury Event Planner Saudi Arabia specializing in grand and luxurious royal weddings and traditional ceremonies.",
     icon: Heart,
     starting: "From SAR 50,000",
   },
@@ -35,7 +35,7 @@ const services = [
     id: 4,
     title: "Event Production Services",
     href: "/services/event-production-saudi-arabia",
-    description: "Full-scale technical Event Production Services including light, sound, projection mapping, and custom stages.",
+    description: "Full-scale technical Event Production Services including light, sound, special light and video shows on walls, and custom stages.",
     icon: MapPin,
     starting: "From SAR 60,000",
   },
@@ -43,7 +43,7 @@ const services = [
     id: 5,
     title: "Conference Management",
     href: "/services/conference-management-riyadh",
-    description: "End-to-end Conference Management Riyadh, from GEA permitting and international VIP logistics to hybrid setups.",
+    description: "End-to-end Conference Management Riyadh, from getting government event licenses and international VIP planning to events with both in-person and online guests.",
     icon: Utensils,
     starting: "From SAR 45,000",
   },
@@ -51,7 +51,7 @@ const services = [
     id: 6,
     title: "Saudi Event Organizer",
     href: "/#contact",
-    description: "Bespoke seasonal festivals, sports events, and national cultural activations across the Kingdom.",
+    description: "Custom-made seasonal festivals, sports events, and national cultural events and activities across the Kingdom.",
     icon: Music,
     starting: "Custom Pricing",
   },
@@ -115,7 +115,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="font-display font-medium text-sand-50 mb-10 text-3xl md:text-5xl uppercase tracking-tight"
           >
-            Curated <span className="text-shimmer italic">Services</span>
+            Specially Selected <span className="text-shimmer italic">Services</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}

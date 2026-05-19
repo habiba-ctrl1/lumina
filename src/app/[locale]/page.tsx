@@ -31,6 +31,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ]
       : [
           "Event Management Company in Saudi Arabia",
+          "Event management",
+          "شركات تنظيم",
+          "Event companies in Saudi Arabia",
+          "Saudi event organizer",
           "Event Management Riyadh",
           "Corporate Events Saudi Arabia",
           "Exhibition Management Saudi Arabia",
@@ -74,7 +78,7 @@ const jsonLd = {
       telephone: "+966501234567",
       priceRange: "$$$$",
       description:
-        "Saudi Arabia's premier event management agency specializing in bespoke luxury weddings and high-end corporate galas across Riyadh, Jeddah, and AlUla.",
+        "Saudi Arabia's premier event management agency specializing in custom-made luxury weddings and high-end corporate galas across Riyadh, Jeddah, and AlUla.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Olaya District",

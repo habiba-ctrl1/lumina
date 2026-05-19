@@ -82,7 +82,7 @@ export default function ConsultationPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-gold-500 text-xs uppercase tracking-[0.5em] font-bold mb-6 block"
           >
-            Bespoke Planning
+            Personalized Planning
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -305,7 +305,7 @@ export default function ConsultationPage() {
         </h2>
         <div className="prose prose-invert prose-gold max-w-none text-gray-400 font-light leading-relaxed space-y-6">
           <p>
-            A discovery session with Saudi Event Management is more than just a meeting; it is the first step in translating your abstract ideas into a tangible, world-class experience. We believe that the foundation of any successful event lies in the initial conceptualization phase. During your consultation, our senior event directors will listen to your aspirations, understand your brand or personal narrative, and begin identifying the strategic pillars that will support your event&apos;s success. This collaborative approach allows us to align our architectural precision with your emotional vision from day one.
+            A discovery session with Saudi Event Management is more than just a meeting; it is the first step in translating your abstract ideas into a tangible, world-class experience. We believe that the foundation of any successful event lies in the initial conceptualization phase. During your consultation, our senior event directors will listen to your aspirations, understand your brand or personal narrative, and begin identifying the strategic pillars that will support your event&apos;s success. This collaborative approach allows us to align our perfect planning and design with your emotional vision from day one.
           </p>
           <p>
             Our consultation process is designed to save you time and provide immediate clarity on the feasibility, scale, and potential of your project. We discuss high-level logistical considerations, venue availability in key Saudi cities, and preliminary budget frameworks that reflect your quality expectations. By engaging with our experts early in your planning journey, you gain access to a decade of industry expertise and a network of elite partners that can elevate your event from standard to extraordinary. We prioritize confidentiality and professional discretion throughout every interaction, ensuring your vision is protected while it is being refined.

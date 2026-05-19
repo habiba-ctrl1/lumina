@@ -7,7 +7,7 @@ import { Quote, Star } from "lucide-react";
 const fallbackTestimonials = [
   {
     id: 1,
-    quote: "The level of architectural precision and emotional resonance Saudi Event Management brought to our Royal Gala was staggering.",
+    quote: "The level of perfect planning and attention to detail Saudi Event Management brought to our Royal Gala was staggering.",
     author: "H.H. Princess Noura",
     role: "Cultural Initiative, Riyadh"
   },
