@@ -87,8 +87,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5"
-          style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)" }}
+          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal lg:whitespace-nowrap"
+          style={{ fontSize: "clamp(1.8rem, 5vw, 3.8rem)" }}
         >
           Masterpieces of{" "}
           <span className="text-shimmer italic">Luxury</span>
