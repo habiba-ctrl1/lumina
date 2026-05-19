@@ -78,17 +78,17 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center mb-8"
         >
-          <span className="section-label tracking-[0.5em]">Saudi Event Management</span>
+          <span className="section-label tracking-[0.5em] !text-gold-400">Saudi Event Management</span>
           <span className="block w-8 h-px bg-gold-400/40 mx-auto mt-2" />
         </motion.div>
 
-        {/* Main heading — max text-4xl (36px) per design rules */}
+        {/* Main heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="font-display font-medium text-sand-50 uppercase tracking-wide leading-[1.2] mb-5"
-          style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.25rem)" }}
+          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5"
+          style={{ fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)" }}
         >
           Masterpieces of{" "}
           <span className="text-shimmer italic">Luxury</span>
@@ -99,15 +99,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="text-sm text-sand-300 max-w-lg mx-auto mb-10 leading-relaxed"
+          className="text-sm text-slate-200/90 max-w-lg mx-auto mb-10 leading-relaxed"
         >
           Curating exquisite weddings, corporate galas, and private celebrations
           across{" "}
-          <span className="text-sand-100 font-medium">Riyadh</span>,{" "}
-          <span className="text-sand-100 font-medium">Jeddah</span>,{" "}
-          <span className="text-sand-100 font-medium">Makkah</span>,{" "}
-          <span className="text-sand-100 font-medium">Madinah</span>, and{" "}
-          <span className="text-sand-100 font-medium">AlUla</span>.
+          <span className="text-white font-medium">Riyadh</span>,{" "}
+          <span className="text-white font-medium">Jeddah</span>,{" "}
+          <span className="text-white font-medium">Makkah</span>,{" "}
+          <span className="text-white font-medium">Madinah</span>, and{" "}
+          <span className="text-white font-medium">AlUla</span>.
         </motion.p>
 
         {/* Quick Booking Form */}
