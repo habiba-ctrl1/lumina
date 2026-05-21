@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,12 +12,12 @@ import 'swiper/css/pagination';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Fonts
-// Cormorant Garamond → display/headings (--font-display)   → font-display class
+// Playfair Display → display/headings (--font-display)   → font-display class
 // DM Sans           → body/UI           (--font-sans)      → font-sans class
 // ─────────────────────────────────────────────────────────────────────────────
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
@@ -261,7 +261,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`scroll-smooth ${cormorant.variable} ${dmSans.variable}`}
+      className={`scroll-smooth ${playfair.variable} ${dmSans.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import SectionWrapper from "./SectionWrapper";
 
 const partners = [
   { name: "GEA", logo: "/partners/gea.webp", alt: "General Entertainment Authority GEA — partner of Saudi Event Management" },
@@ -16,8 +17,8 @@ const partners = [
 
 export default function PartnersSection() {
   return (
-    <section id="partners" className="py-24 bg-ink-950 overflow-hidden border-y border-ink-800 relative">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper id="partners" className="bg-ink-950 overflow-hidden relative">
+      <div className="relative z-10">
         <div className="text-center mb-16">
           <motion.div
             animate={{ 
@@ -105,6 +106,6 @@ export default function PartnersSection() {
           </motion.a>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

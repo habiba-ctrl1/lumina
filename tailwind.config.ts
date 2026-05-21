@@ -94,7 +94,7 @@ const config: Config = {
 
       // ── TYPOGRAPHY ──────────────────────────────────────────────────────────
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],      // Cormorant Garamond
+        display: ["var(--font-display)", "Georgia", "serif"],      // Playfair Display
         sans:    ["var(--font-sans)", "system-ui", "sans-serif"],  // DM Sans
         mono:    ["ui-monospace", "SFMono-Regular", "monospace"],
       },

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageSquare, CalendarCheck, GlassWater, Sparkles } from "lucide-react";
+import SectionWrapper from "./SectionWrapper";
 
 const steps = [
   {
@@ -28,8 +29,8 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="process" className="py-24 bg-ink-900 relative overflow-hidden border-y border-ink-600">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper id="process" className="bg-ink-900 relative overflow-hidden">
+      <div className="relative z-10">
         <div className="text-center mb-16">
           <motion.span
             initial={{ opacity: 0 }}
@@ -65,7 +66,7 @@ export default function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-ink-800 border border-ink-600 p-8 rounded-sm card-hover relative overflow-hidden"
+                className="bg-ink-800 p-8 rounded-sm card-hover relative overflow-hidden shadow-sm"
               >
                 <div className="absolute top-6 right-8 text-4xl font-display font-medium text-ink-700">
                   0{index + 1}
@@ -83,6 +84,6 @@ export default function HowItWorks() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -5,7 +5,7 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    Saudi Event Management — Global Styles
    Theme : Luxury Corporate Off-White
-   Fonts : Cormorant Garamond (display) + DM Sans (body)
+   Fonts : Playfair Display (display) + DM Sans (body)
    Saudi Market Align: Premium Slate Muted Gold & Rich Emerald Accents
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -92,14 +92,14 @@ body {
 
 /* ── Typography Scale ────────────────────────────────────────────────────────
    RULE: text-4xl (36px) is the HARD CEILING for any heading.
-   Headings use font-display (Cormorant Garamond).
+   Headings use font-display (Playfair Display).
    Body text uses font-sans (DM Sans).
    ──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   color:       var(--heading);
   font-family: var(--font-display), Georgia, serif;
   line-height: 1.25;
-  font-weight: 500;      /* Cormorant looks beautifully elite when lighter */
+  font-weight: 500;      /* Playfair looks beautifully elite */
   letter-spacing: -0.01em;
   margin-bottom: 0;
 }

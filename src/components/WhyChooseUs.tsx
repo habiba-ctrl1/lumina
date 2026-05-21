@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ShieldCheck, Users, Clock, Sparkles, HeartHandshake, Globe } from "lucide-react";
+import SectionWrapper from "./SectionWrapper";
 
 const reasons = [
   {
@@ -44,10 +45,10 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 bg-gray-50 relative overflow-hidden">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper className="bg-gray-50 relative overflow-hidden">
+      <div className="relative z-10">
         {/* Main Box Wrapper */}
-        <div className="border border-gray-200 bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md">
+        <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
             {/* Left Header Area */}
@@ -144,6 +145,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

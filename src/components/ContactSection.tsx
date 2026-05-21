@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, CheckCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
+import SectionWrapper from "./SectionWrapper";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: "", phone: "", eventType: "", message: "" });
@@ -29,8 +30,8 @@ export default function ContactSection() {
   const ic = (field: string) => `w-full bg-ink-900 border border-ink-500 p-4 text-sm text-sand-100 placeholder-sand-500 focus:border-gold-400 transition-all tracking-tight outline-none rounded-sm ${focusedField === field ? "shadow-md border-gold-400" : "hover:border-gold-400/30"}`;
 
   return (
-    <section id="contact" className="py-20 bg-ink-950 relative overflow-hidden border-y border-ink-600">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper id="contact" className="bg-ink-950 relative overflow-hidden">
+      <div className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
           {/* Left Side: Testimonials (Compact) */}
@@ -147,6 +148,6 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

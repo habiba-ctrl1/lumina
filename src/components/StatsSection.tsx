@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SectionWrapper from "./SectionWrapper";
 
 const stats = [
   { value: 50, suffix: "+", label: "Events Managed" },
@@ -13,8 +14,8 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="py-24 bg-ink-900 relative overflow-hidden border-y border-ink-600">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper className="bg-ink-900 relative overflow-hidden">
+      <div className="relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
@@ -56,6 +57,6 @@ export default function StatsSection() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Heart, Briefcase, GlassWater, MapPin, Flower2, Utensils, Music, Map, Star } from "lucide-react";
 import { useRef } from "react";
+import SectionWrapper from "./SectionWrapper";
 
 
 const services = [
@@ -64,9 +65,9 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-ink-900 border border-ink-600 rounded-sm p-8 flex flex-col items-start group hover:-translate-y-2.5 transition-all duration-300 ease-in-out cursor-pointer card-hover"
+      className="bg-ink-900 rounded-sm p-8 flex flex-col items-start group hover:-translate-y-2.5 transition-all duration-300 ease-in-out cursor-pointer card-hover shadow-sm"
     >
-      <div className="w-14 h-14 bg-ink-950 flex items-center justify-center rounded-sm mb-8 group-hover:bg-gold-400/10 transition-colors duration-300 border border-ink-600">
+      <div className="w-14 h-14 bg-ink-950 flex items-center justify-center rounded-sm mb-8 group-hover:bg-gold-400/10 transition-colors duration-300">
         <service.icon size={24} className="text-gold-400" />
       </div>
 
@@ -79,7 +80,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         </p>
       </div>
 
-      <div className="w-full pt-6 border-t border-ink-600 flex items-center justify-between mt-auto">
+      <div className="w-full pt-6 flex items-center justify-between mt-auto">
         <span className="text-[10px] font-bold text-sand-400 uppercase tracking-widest">
           {service.starting}
         </span>
@@ -96,8 +97,8 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-ink-950 relative border-t border-ink-600">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper className="bg-ink-950 relative" id="services">
+      <div className="relative z-10">
         {/* Section Header */}
         <div className="text-center mb-24">
           <motion.span
@@ -135,6 +136,6 @@ export default function Services() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

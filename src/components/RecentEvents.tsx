@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 
 import Link from "next/link";
+import SectionWrapper from "./SectionWrapper";
 
 const galleryItems = [
   { id: 1, src: "/gallery_wedding_reception.webp", title: "Royal Riyadh Wedding", category: "Weddings", slug: "royal-riyadh-wedding", alt: "Royal Riyadh Wedding reception design and setup Saudi Arabia" },
@@ -18,8 +19,8 @@ const galleryItems = [
 
 export default function RecentEvents({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
-    <section id="gallery" className="py-24 bg-ink-900 relative overflow-hidden border-t border-ink-600">
-      <div className="container-luxury relative z-10">
+    <SectionWrapper id="gallery" className="bg-ink-900 relative overflow-hidden">
+      <div className="relative z-10">
         {/* Header */}
         {!hideHeader ? (
           <div className="text-center mb-16">
@@ -126,6 +127,6 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
           border-radius: 4px;
         }
       `}} />
-    </section>
+    </SectionWrapper>
   );
 }
