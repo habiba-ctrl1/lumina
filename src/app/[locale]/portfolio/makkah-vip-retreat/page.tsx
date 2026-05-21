@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function MakkahVipRetreat() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function MakkahVipRetreat() {
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
+          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Private Spiritual Retreat
           </span>
-          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-6 leading-tight uppercase tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-8 leading-tight uppercase tracking-tight">
             Makkah <span className="text-primary italic">VIP Retreat</span>
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">A sanctuary of serenity and absolute luxury for distinguished guests during the holy month.</p>
@@ -45,8 +45,8 @@ export default function MakkahVipRetreat() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-gray-50 border-y border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-950 border-y border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Moon, label: "Duration", val: "10 Days" },
             { icon: Star, label: "Service", val: "Ultra-Luxury" },
@@ -69,7 +69,7 @@ export default function MakkahVipRetreat() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Vision</span></h2>
-            <p className="mb-6">
+            <p className="mb-8">
               Our client required a completely private, highly secure, and spiritually resonant environment for a high-profile delegation visiting Makkah. The objective was to blend the sanctity of the location with the world-class hospitality and logistical precision of a five-star international retreat.
             </p>
             <p>
@@ -84,14 +84,14 @@ export default function MakkahVipRetreat() {
         {/* The Execution */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-10 uppercase tracking-tight text-center">Masterful <span className="text-primary italic">Execution</span></h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               { title: "Privacy & Security", desc: "Implemented a multi-tier security protocol with discreet personnel and advanced surveillance." },
               { title: "Bespoke Dining", desc: "Private chefs providing customized menu rotations focusing on local heritage and international nutrition." },
               { title: "Logistical Flow", desc: "Seamless private transport to and from the Haram with zero-wait protocols." }
             ].map((item, i) => (
-              <div key={i} className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                <h3 className="text-black text-[10px] font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+              <div key={i} className="bg-ink-950 p-8 rounded-3xl border border-ink-600">
+                <h3 className="text-black text-[10px] font-bold uppercase tracking-widest mb-8 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-primary" /> {item.title}
                 </h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
@@ -108,7 +108,7 @@ export default function MakkahVipRetreat() {
             <p className="text-gray-300 text-lg mb-12 max-w-3xl font-light">
               The retreat was described by the delegation as the most seamless and spiritually enriching experience they had encountered. Saudi Event Management handled every complexity, allowing the guests to experience Makkah with unprecedented peace and luxury.
             </p>
-            <div className="flex items-center gap-6 border-t border-white/10 pt-10">
+            <div className="flex items-center gap-10 border-t border-white/10 pt-10">
               <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
                 <Star className="text-primary" />
               </div>
@@ -122,7 +122,7 @@ export default function MakkahVipRetreat() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gray-50 text-center">
+      <section className="py-32 bg-ink-950 text-center">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Plan Your <span className="text-primary italic">Elite Experience</span></h2>
         <Link 
           href="/#contact" 

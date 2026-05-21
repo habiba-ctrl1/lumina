@@ -64,9 +64,8 @@ export default function Hero({ dict }: { dict?: any }) {
       </div>
 
       {/* Overlays — dark overlay for text readability */}
-      <div className="absolute inset-0 z-[1] bg-black/55" aria-hidden="true" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/30" aria-hidden="true" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-900/30 via-transparent to-slate-900/30" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-black/40" aria-hidden="true" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/70 via-black/50 to-ink-950" aria-hidden="true" />
 
       {/* Content */}
       <motion.div
@@ -96,13 +95,13 @@ export default function Hero({ dict }: { dict?: any }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="font-display font-medium text-white uppercase tracking-wide leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal"
+          className="font-display font-bold text-white uppercase tracking-wider leading-[1.2] mb-5 max-w-5xl mx-auto whitespace-normal"
           style={{ fontSize: "clamp(1.8rem, 5vw, 3.8rem)" }}
           aria-hidden="true"
         >
-          {dict && dict.label === "إدارة الفعاليات السعودية" ? "شركة تنظيم" : "Event Management"}{" "}
-          <span className="text-shimmer italic">
-            {dict && dict.label === "إدارة الفعاليات السعودية" ? "معارض ومؤتمرات في السعودية" : "Company in Saudi Arabia"}
+          {dict && dict.label === "إدارة الفعاليات السعودية" ? "شركة تنظيم فعاليات في " : "Event Management Company in "}{" "}
+          <span className="text-gold-400">
+            {dict && dict.label === "إدارة الفعاليات السعودية" ? "السعودية" : "Saudi Arabia"}
           </span>
         </motion.p>
 
@@ -111,7 +110,7 @@ export default function Hero({ dict }: { dict?: any }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="text-sm text-slate-200/90 max-w-lg mx-auto mb-10 leading-relaxed"
+          className="text-sm text-sand-100 max-w-lg mx-auto mb-10 leading-relaxed"
         >
           {dict ? dict.subtitle : "Saudi Event Management is a leading event management company in Saudi Arabia offering corporate events, exhibitions, luxury weddings and premium brand experiences across Riyadh, Jeddah, Makkah, Madinah, and AlUla."}
         </motion.p>
@@ -121,9 +120,9 @@ export default function Hero({ dict }: { dict?: any }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.5 }}
-          className="max-w-2xl mx-auto mb-8"
+          className="max-w-2xl mx-auto mb-10"
         >
-          <div className="bg-ink-950/50 backdrop-blur-xl border border-ink-600/60 rounded-lg p-4 md:p-5">
+          <div className="bg-black/20 backdrop-blur-xl border border-white/10 rounded-sm p-4 md:p-5">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -135,40 +134,40 @@ export default function Hero({ dict }: { dict?: any }) {
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 items-end"
             >
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.eventType : "Event Type"}</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-white/70 ml-0.5">{dict ? dict.eventType : "Event Type"}</label>
                 <div className="relative">
-                  <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
+                  <select className="w-full bg-black/40 backdrop-blur-md border border-white/10 text-white rounded-sm px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-white/30 appearance-none cursor-pointer transition-all hover:bg-black/60">
                     {(dict ? dict.types : ["Luxury Wedding", "Corporate Gala", "VIP Reception", "Private Concert"]).map((t: string) => (
                       <option key={t} className="bg-ink-900">{t}</option>
                     ))}
                   </select>
-                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
+                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" />
                 </div>
               </div>
 
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.location : "Location"}</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-white/70 ml-0.5">{dict ? dict.location : "Location"}</label>
                 <div className="relative">
-                  <select className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 appearance-none cursor-pointer hover:border-ink-400 transition-colors">
+                  <select className="w-full bg-black/40 backdrop-blur-md border border-white/10 text-white rounded-sm px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-white/30 appearance-none cursor-pointer transition-all hover:bg-black/60">
                     {(dict ? dict.locations : ["Riyadh", "Jeddah", "Makkah", "AlUla"]).map((l: string) => (
                       <option key={l} className="bg-ink-900">{l}</option>
                     ))}
                   </select>
-                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-sand-500 pointer-events-none" />
+                  <ChevronDown size={12} className="absolute rtl:left-3 ltr:right-3 right-3 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" />
                 </div>
               </div>
 
               <div className="flex flex-col text-left gap-1.5">
-                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-sand-400 ml-0.5">{dict ? dict.date : "Preferred Date"}</label>
+                <label className="text-[9px] font-medium uppercase tracking-[0.25em] text-white/70 ml-0.5">{dict ? dict.date : "Preferred Date"}</label>
                 <input
                   type="date"
-                  className="w-full bg-ink-800/80 border border-ink-500 text-sand-200 rounded-md px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-gold-400/50 [color-scheme:dark] hover:border-ink-400 transition-colors"
+                  className="w-full bg-black/40 backdrop-blur-md border border-white/10 text-white rounded-sm px-3 py-2.5 text-[11px] font-medium focus:outline-none focus:border-white/30 [color-scheme:dark] transition-all hover:bg-black/60"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gold-400 text-ink-950 text-[10px] font-medium uppercase tracking-[0.2em] py-2.5 rounded-md hover:bg-gold-500 transition-all duration-200 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
+                className="w-full bg-white text-ink-950 text-[10px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-sm hover:scale-105 transition-all duration-300 shadow-sm"
               >
                 {dict ? dict.inquiry : "Inquiry"}
               </button>
@@ -177,11 +176,9 @@ export default function Hero({ dict }: { dict?: any }) {
             <div className="mt-4 flex justify-center">
               <Link
                 href="/#contact"
-                className="text-[9px] text-sand-500 hover:text-gold-400 uppercase tracking-[0.3em] font-medium flex items-center gap-3 transition-colors group"
+                className="px-8 py-3 border border-white/30 text-white hover:bg-white/10 uppercase tracking-[0.2em] text-[10px] font-bold rounded-sm transition-all duration-300 backdrop-blur-sm"
               >
-                <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
                 {dict ? dict.download : "Download Portfolio"}
-                <span className="w-6 h-px bg-ink-500 group-hover:bg-gold-400/40 transition-colors" />
               </Link>
             </div>
           </div>
@@ -192,7 +189,7 @@ export default function Hero({ dict }: { dict?: any }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-wrap justify-center gap-8 md:gap-12"
+          className="flex flex-wrap justify-center gap-10 md:gap-12"
         >
           {(dict ? dict.stats : ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"]).map((label: string, i: number) => (
             <div key={i} className="flex flex-col items-center gap-1">
@@ -210,12 +207,12 @@ export default function Hero({ dict }: { dict?: any }) {
         transition={{ delay: 1.6, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
       >
-        <span className="text-[8px] uppercase tracking-[0.3em] text-sand-500">{dict ? dict.scroll : "Scroll"}</span>
+        <span className="text-[8px] uppercase tracking-[0.3em] text-white/40">{dict ? dict.scroll : "Scroll"}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ChevronDown size={16} className="text-sand-500" />
+          <ChevronDown size={16} className="text-white/40" />
         </motion.div>
       </motion.div>
     </div>

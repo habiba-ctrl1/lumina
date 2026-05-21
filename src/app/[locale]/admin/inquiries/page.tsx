@@ -77,16 +77,16 @@ export default function AdminInquiries() {
 
   return (
     <div className="pb-20 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-10">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-2xl font-bold text-sand-50 tracking-tight mb-2">
             Client Inquiries
           </h1>
-          <p className="text-slate-500 font-medium">Manage and respond to event leads from your elite network.</p>
+          <p className="text-sand-300 font-medium">Manage and respond to event leads from your elite network.</p>
         </div>
         <button
           onClick={fetchInquiries}
-          className="p-3 bg-white border border-slate-200 rounded-xl text-gold-600 hover:bg-slate-50 transition-all shadow-sm flex items-center gap-2 font-bold text-xs uppercase tracking-wider disabled:opacity-50"
+          className="p-3 bg-ink-800 border border-ink-600 rounded-xl text-gold-600 hover:bg-ink-950 transition-all shadow-sm flex items-center gap-2 font-bold text-xs uppercase tracking-wider disabled:opacity-50"
           disabled={loading}
         >
           <RefreshCw size={18} className={loading ? "animate-spin" : ""} />
@@ -95,28 +95,28 @@ export default function AdminInquiries() {
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-10 shadow-sm">
-        <div className="flex flex-col lg:flex-row gap-6">
+      <div className="bg-ink-800 border border-ink-600 rounded-2xl p-6 mb-10 shadow-sm">
+        <div className="flex flex-col lg:flex-row gap-10">
           {/* Search */}
           <div className="relative flex-grow min-w-[300px]">
-            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-sand-400" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, company, or message..."
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-12 pr-4 text-slate-900 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-slate-400"
+              className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 pl-12 pr-4 text-sand-50 text-sm font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400"
             />
           </div>
 
-          <div className="flex flex-wrap gap-4 items-end">
+          <div className="flex flex-wrap gap-10 items-end">
             {/* Status Filter */}
             <div className="space-y-1.5">
-              <label className="text-[10px] text-slate-400 uppercase font-black tracking-widest px-1">Status</label>
+              <label className="text-[10px] text-sand-400 uppercase font-black tracking-widest px-1">Status</label>
               <select 
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-slate-900 text-sm font-bold focus:outline-none focus:border-gold-500 transition-all appearance-none min-w-[140px] cursor-pointer"
+                className="bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sand-50 text-sm font-bold focus:outline-none focus:border-gold-500 transition-all appearance-none min-w-[140px] cursor-pointer"
               >
                 <option value="all">All Statuses</option>
                 {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
@@ -125,11 +125,11 @@ export default function AdminInquiries() {
 
             {/* Category Filter */}
             <div className="space-y-1.5">
-              <label className="text-[10px] text-slate-400 uppercase font-black tracking-widest px-1">Category</label>
+              <label className="text-[10px] text-sand-400 uppercase font-black tracking-widest px-1">Category</label>
               <select 
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-slate-900 text-sm font-bold focus:outline-none focus:border-gold-500 transition-all appearance-none min-w-[140px] cursor-pointer"
+                className="bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sand-50 text-sm font-bold focus:outline-none focus:border-gold-500 transition-all appearance-none min-w-[140px] cursor-pointer"
               >
                 <option value="all">All Categories</option>
                 {categories.map(c => <option key={c} value={c}>{c}</option>)}
@@ -138,20 +138,20 @@ export default function AdminInquiries() {
 
             {/* Date Range */}
             <div className="space-y-1.5">
-              <label className="text-[10px] text-slate-400 uppercase font-black tracking-widest px-1">Date Range</label>
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl p-1">
+              <label className="text-[10px] text-sand-400 uppercase font-black tracking-widest px-1">Date Range</label>
+              <div className="flex items-center gap-2 bg-ink-950 border border-ink-600 rounded-xl p-1">
                 <input 
                   type="date" 
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="bg-transparent py-2 px-2 text-slate-900 text-xs font-bold focus:outline-none"
+                  className="bg-transparent py-2 px-2 text-sand-50 text-xs font-bold focus:outline-none"
                 />
-                <span className="text-slate-300">—</span>
+                <span className="text-sand-500">—</span>
                 <input 
                   type="date" 
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="bg-transparent py-2 px-2 text-slate-900 text-xs font-bold focus:outline-none"
+                  className="bg-transparent py-2 px-2 text-sand-50 text-xs font-bold focus:outline-none"
                 />
               </div>
             </div>
@@ -161,18 +161,18 @@ export default function AdminInquiries() {
 
       {/* Inquiries Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="h-80 bg-white animate-pulse rounded-3xl border border-slate-200 shadow-sm" />
+            <div key={i} className="h-80 bg-ink-800 animate-pulse rounded-3xl border border-ink-600 shadow-sm" />
           ))}
         </div>
       ) : inquiries.length === 0 ? (
-        <div className="text-center py-32 bg-white rounded-3xl border border-slate-200 shadow-sm">
-          <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Mail size={32} className="text-slate-300" />
+        <div className="text-center py-32 bg-ink-800 rounded-3xl border border-ink-600 shadow-sm">
+          <div className="w-20 h-20 bg-ink-950 rounded-full flex items-center justify-center mx-auto mb-8">
+            <Mail size={32} className="text-sand-500" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 mb-2">No Inquiries Found</h3>
-          <p className="text-slate-500 max-w-sm mx-auto font-medium">
+          <h3 className="text-xl font-bold text-sand-50 mb-2">No Inquiries Found</h3>
+          <p className="text-sand-300 max-w-sm mx-auto font-medium">
             {search || status !== 'all' || category !== 'all' 
               ? "We couldn't find any inquiries matching your current filters." 
               : "You haven't received any client inquiries yet."}
@@ -187,13 +187,13 @@ export default function AdminInquiries() {
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {inquiries.map((inquiry) => (
             <motion.div
               key={inquiry.id}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-slate-200 p-8 rounded-3xl group hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
+              className="bg-ink-800 border border-ink-600 p-8 rounded-3xl group hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
             >
               {/* Status Dropdown */}
               <div className="absolute top-6 right-6">
@@ -226,15 +226,15 @@ export default function AdminInquiries() {
                 </select>
               </div>
 
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-10 mb-8">
                 <div className="w-14 h-14 bg-gold-50 text-gold-600 rounded-2xl flex items-center justify-center border border-gold-100 shadow-sm group-hover:bg-gold-500 group-hover:text-white transition-all duration-500">
                   <User size={28} />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-900 leading-none mb-2">{inquiry.name}</h3>
+                  <h3 className="text-base font-extrabold text-sand-50 leading-none mb-2">{inquiry.name}</h3>
                   <div className="flex items-center gap-2">
                     <Briefcase size={12} className="text-gold-500" />
-                    <p className="text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <p className="text-[10px] text-sand-400 uppercase tracking-widest font-black">
                       {inquiry.eventType || 'General Inquiry'}
                     </p>
                   </div>
@@ -242,12 +242,12 @@ export default function AdminInquiries() {
               </div>
 
               <div className="space-y-4 mb-8 flex-1">
-                <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                <div className="flex items-center gap-3 text-sm font-semibold text-sand-200">
                   <Mail size={18} className="text-gold-500" />
                   <span className="truncate">{inquiry.email}</span>
                 </div>
                 {inquiry.phone && (
-                  <div className="flex items-center justify-between gap-3 text-sm font-semibold text-slate-600">
+                  <div className="flex items-center justify-between gap-3 text-sm font-semibold text-sand-200">
                     <div className="flex items-center gap-3">
                       <Phone size={18} className="text-gold-500" />
                       <span>{inquiry.phone}</span>
@@ -264,23 +264,23 @@ export default function AdminInquiries() {
                   </div>
                 )}
                 {inquiry.company && (
-                  <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                  <div className="flex items-center gap-3 text-sm font-semibold text-sand-200">
                     <Building2 size={18} className="text-gold-500" />
                     <span className="truncate">{inquiry.company}</span>
                   </div>
                 )}
-                <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+                <div className="flex items-center gap-3 text-sm font-semibold text-sand-200">
                   <Calendar size={18} className="text-gold-500" />
                   <span>{inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'TBD'}</span>
                 </div>
               </div>
 
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 mb-8 flex-grow">
-                <p className="text-slate-500 text-sm leading-relaxed font-medium line-clamp-4 italic">"{inquiry.message}"</p>
+              <div className="bg-ink-950 p-5 rounded-2xl border border-ink-500 mb-8 flex-grow">
+                <p className="text-sand-300 text-sm leading-relaxed font-medium line-clamp-4 italic">"{inquiry.message}"</p>
               </div>
 
-              <div className="mb-6 space-y-2">
-                <label className="text-[10px] text-slate-400 uppercase font-black tracking-widest px-1">Lead Allocation</label>
+              <div className="mb-8 space-y-2">
+                <label className="text-[10px] text-sand-400 uppercase font-black tracking-widest px-1">Lead Allocation</label>
                 <select 
                   value={inquiry.assignedTo || ""}
                   onChange={async (e) => {
@@ -296,7 +296,7 @@ export default function AdminInquiries() {
                       console.error("Assignment failed:", err);
                     }
                   }}
-                  className="w-full bg-white border border-slate-100 rounded-xl py-2.5 px-3 text-xs font-bold text-slate-700 focus:outline-none focus:border-gold-500 transition-all appearance-none cursor-pointer"
+                  className="w-full bg-ink-800 border border-ink-500 rounded-xl py-2.5 px-3 text-xs font-bold text-sand-100 focus:outline-none focus:border-gold-500 transition-all appearance-none cursor-pointer"
                 >
                   <option value="">Unassigned</option>
                   <option value="Admin">Admin Team</option>
@@ -306,14 +306,14 @@ export default function AdminInquiries() {
                 </select>
               </div>
 
-              <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+              <div className="flex items-center justify-between pt-6 border-t border-ink-500">
                 <div className="flex flex-col">
-                  <span className="text-[9px] text-slate-400 uppercase font-black tracking-widest mb-1">Budget Allocation</span>
-                  <span className="text-sm text-slate-900 font-extrabold">{inquiry.budget || 'To be discussed'}</span>
+                  <span className="text-[9px] text-sand-400 uppercase font-black tracking-widest mb-1">Budget Allocation</span>
+                  <span className="text-sm text-sand-50 font-extrabold">{inquiry.budget || 'To be discussed'}</span>
                 </div>
                 <button
                   onClick={() => deleteInquiry(inquiry.id)}
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-300 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-sand-500 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100"
                   title="Delete Inquiry"
                 >
                   <Trash2 size={18} />

@@ -40,7 +40,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-ink-950 flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gold-200/20 rounded-full blur-[140px]" />
@@ -53,15 +53,15 @@ export default function AdminLogin() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-lg relative z-10"
       >
-        <div className="bg-white border border-slate-200 p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 backdrop-blur-xl">
+        <div className="bg-ink-800 border border-ink-600 p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 backdrop-blur-xl">
           <div className="text-center mb-12">
             <div className="w-20 h-20 bg-gold-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-gold-500/20">
               <ShieldCheck className="text-white" size={40} />
             </div>
-            <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            <h1 className="text-4xl font-extrabold text-sand-50 tracking-tight mb-3">
               Saudi Event <span className="text-gold-500">Admin</span>
             </h1>
-            <p className="text-slate-500 font-medium">Restricted Access • Strategic Operations</p>
+            <p className="text-sand-300 font-medium">Restricted Access • Strategic Operations</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-8">
@@ -77,34 +77,34 @@ export default function AdminLogin() {
             )}
 
             <div className="space-y-3">
-              <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 ml-1">
+              <label className="text-[10px] uppercase font-black tracking-widest text-sand-400 ml-1">
                 Administrative ID
               </label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-gold-500 transition-colors" size={20} />
+                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-sand-400 group-focus-within:text-gold-500 transition-colors" size={20} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-5 pl-14 pr-6 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-slate-400"
+                  className="w-full bg-ink-950 border border-ink-600 rounded-2xl py-5 pl-14 pr-6 text-sand-50 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400"
                   placeholder="admin@saudievent.com"
                 />
               </div>
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] uppercase font-black tracking-widest text-slate-400 ml-1">
+              <label className="text-[10px] uppercase font-black tracking-widest text-sand-400 ml-1">
                 Access Credentials
               </label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-gold-500 transition-colors" size={20} />
+                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-sand-400 group-focus-within:text-gold-500 transition-colors" size={20} />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-5 pl-14 pr-6 text-slate-900 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-slate-400"
+                  className="w-full bg-ink-950 border border-ink-600 rounded-2xl py-5 pl-14 pr-6 text-sand-50 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400"
                   placeholder="••••••••••••"
                 />
               </div>
@@ -133,7 +133,7 @@ export default function AdminLogin() {
         <div className="text-center mt-12">
           <button 
             onClick={() => router.push("/")}
-            className="text-slate-400 hover:text-slate-900 font-bold text-sm transition-all flex items-center gap-2 mx-auto bg-white px-6 py-2 rounded-full border border-slate-100 shadow-sm"
+            className="text-sand-400 hover:text-sand-50 font-bold text-sm transition-all flex items-center gap-2 mx-auto bg-ink-800 px-6 py-2 rounded-full border border-ink-500 shadow-sm"
           >
             ← Exit to Public Site
           </button>

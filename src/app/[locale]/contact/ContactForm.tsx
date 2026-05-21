@@ -61,13 +61,13 @@ export default function ContactForm() {
       <div className="absolute top-0 right-0 w-32 h-32 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-8">
         <Sparkles className="text-gold-400 animate-pulse" size={16} />
         <span className="text-[10px] font-bold text-gold-400 uppercase tracking-[0.2em]">Inquiry Form</span>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Full Name */}
           <div className="space-y-2">
             <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">
@@ -103,7 +103,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Phone Number */}
           <div className="space-y-2">
             <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">

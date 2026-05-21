@@ -25,10 +25,10 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <main className="min-h-screen bg-white flex items-center justify-center">
+      <main className="min-h-screen bg-ink-800 flex items-center justify-center">
         <Navbar />
         <div className="text-center">
-          <h1 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-4">Article Not Found</h1>
+          <h1 className="text-2xl md:text-3xl font-sans font-bold text-sand-50 mb-8">Article Not Found</h1>
           <Link href="/blog" className="text-gold-600 hover:text-gold-500 text-sm uppercase tracking-wider">
             &larr; Back to Blog
           </Link>
@@ -40,28 +40,28 @@ export default function BlogPostPage() {
   const renderContent = (block: string) => {
     if (block.startsWith("### ")) {
       return (
-        <h3 className="text-lg md:text-xl font-sans font-bold text-slate-900 mt-8 mb-4 leading-tight">
+        <h3 className="text-lg md:text-xl font-sans font-bold text-sand-50 mt-8 mb-8 leading-tight">
           {block.replace("### ", "")}
         </h3>
       );
     }
     if (block.startsWith("## ")) {
       return (
-        <h2 className="text-xl md:text-2xl font-sans font-bold text-slate-900 mt-12 mb-4 leading-tight">
+        <h2 className="text-xl md:text-2xl font-sans font-bold text-sand-50 mt-12 mb-8 leading-tight">
           {block.replace("## ", "")}
         </h2>
       );
     }
     return (
       <p
-        className="text-slate-600 leading-[1.9] mb-6"
+        className="text-sand-200 leading-[1.9] mb-8"
         dangerouslySetInnerHTML={{ __html: block }}
       />
     );
   };
 
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <main className="min-h-screen bg-ink-800 overflow-hidden">
       <Navbar />
 
       {/* Hero Image */}
@@ -79,14 +79,14 @@ export default function BlogPostPage() {
                 </div>
                 Back to Collection
               </Link>
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-10 mb-8">
                  <div className="w-12 h-px bg-gold-500" />
                  <span className="text-gold-500 text-[10px] uppercase tracking-[0.4em] font-bold">{post.category}</span>
               </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold text-white leading-[1.1] mb-8 max-w-4xl opacity-100">
                 {post.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-8 text-[10px] text-gray-400 uppercase tracking-[0.25em] font-medium border-t border-white/10 pt-8">
+              <div className="flex flex-wrap items-center gap-10 text-[10px] text-gray-400 uppercase tracking-[0.25em] font-medium border-t border-white/10 pt-8">
                 <span className="flex items-center gap-2">By <span className="text-white">{post.author}</span></span>
                 <span className="flex items-center gap-2">Date <span className="text-white">{post.date}</span></span>
                 <span className="flex items-center gap-2">Read <span className="text-white">{post.readTime}</span></span>
@@ -97,14 +97,14 @@ export default function BlogPostPage() {
       </section>
 
       {/* Article Content */}
-      <section className="py-16 md:py-24">
+      <section className="py-32 md:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-12">
             {/* Main Content */}
             <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               {/* Intro */}
               <div className="border-l-2 border-gold-500/30 pl-6 mb-10">
-                <p className="text-lg text-slate-700 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: post.content[0] }} />
+                <p className="text-lg text-sand-100 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: post.content[0] }} />
               </div>
 
               {/* Body */}
@@ -115,20 +115,20 @@ export default function BlogPostPage() {
               </div>
 
               {/* Tags */}
-              <div className="mt-16 pt-8 border-t border-slate-100">
+              <div className="mt-16 pt-8 border-t border-ink-500">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="text-xs uppercase tracking-wider text-gray-500">Tags:</span>
                   {[post.category, "Luxury Events", "Inspiration"].map((tag) => (
-                    <span key={tag} className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-500 text-[10px] uppercase tracking-[0.15em]">{tag}</span>
+                    <span key={tag} className="px-3 py-1.5 bg-ink-950 border border-ink-600 text-sand-300 text-[10px] uppercase tracking-[0.15em]">{tag}</span>
                   ))}
                 </div>
               </div>
 
               {/* Share */}
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-10">
                 <span className="text-xs uppercase tracking-wider text-gray-500 flex items-center gap-2"><Share2 size={12} /> Share:</span>
                 {["Twitter", "Facebook", "LinkedIn"].map((platform) => (
-                  <button key={platform} className="px-4 py-2 border border-slate-200 text-slate-500 text-[10px] uppercase tracking-wider hover:text-gold-600 hover:border-gold-500/30 transition-all duration-300">{platform}</button>
+                  <button key={platform} className="px-4 py-2 border border-ink-600 text-sand-300 text-[10px] uppercase tracking-wider hover:text-gold-600 hover:border-gold-500/30 transition-all duration-300">{platform}</button>
                 ))}
               </div>
             </motion.article>
@@ -136,12 +136,12 @@ export default function BlogPostPage() {
             {/* Sidebar */}
             <motion.aside initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="hidden lg:block">
               <div className="sticky top-28">
-                <div className="w-px h-16 bg-gradient-to-b from-gold-500/50 to-transparent mb-6 mx-auto" />
-                <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 text-center mb-2">Written by</p>
-                <p className="text-xs text-slate-800 text-center font-medium mb-8">{post.author}</p>
-                <div className="w-px h-16 bg-gradient-to-b from-transparent via-gold-500/30 to-transparent mb-6 mx-auto" />
-                <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 text-center mb-2">Published</p>
-                <p className="text-xs text-slate-800 text-center font-medium">{post.date}</p>
+                <div className="w-px h-16 bg-gradient-to-b from-gold-500/50 to-transparent mb-8 mx-auto" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-sand-400 text-center mb-2">Written by</p>
+                <p className="text-xs text-sand-100 text-center font-medium mb-8">{post.author}</p>
+                <div className="w-px h-16 bg-gradient-to-b from-transparent via-gold-500/30 to-transparent mb-8 mx-auto" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-sand-400 text-center mb-2">Published</p>
+                <p className="text-xs text-sand-100 text-center font-medium">{post.date}</p>
               </div>
             </motion.aside>
           </div>
@@ -149,19 +149,19 @@ export default function BlogPostPage() {
       </section>
 
       {/* Prev/Next Navigation */}
-      <section className="border-t border-slate-100 bg-slate-50">
+      <section className="border-t border-ink-500 bg-ink-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {prevPost ? (
-              <Link href={`/blog/${prevPost.slug}`} className="group p-8 md:p-12 border-r border-slate-100 hover:bg-slate-100 transition-colors duration-300">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 flex items-center gap-2 mb-3"><ArrowLeft size={12} /> Previous</span>
-                <h4 className="text-sm font-sans font-bold text-slate-800 group-hover:text-gold-600 transition-colors line-clamp-2">{prevPost.title}</h4>
+              <Link href={`/blog/${prevPost.slug}`} className="group p-8 md:p-12 border-r border-ink-500 hover:bg-ink-900 transition-colors duration-300">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-sand-400 flex items-center gap-2 mb-3"><ArrowLeft size={12} /> Previous</span>
+                <h4 className="text-sm font-sans font-bold text-sand-100 group-hover:text-gold-600 transition-colors line-clamp-2">{prevPost.title}</h4>
               </Link>
-            ) : <div className="p-8 md:p-12 border-r border-slate-100" />}
+            ) : <div className="p-8 md:p-12 border-r border-ink-500" />}
             {nextPost ? (
-              <Link href={`/blog/${nextPost.slug}`} className="group p-8 md:p-12 text-right hover:bg-slate-100 transition-colors duration-300">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 flex items-center justify-end gap-2 mb-3">Next <ArrowRight size={12} /></span>
-                <h4 className="text-sm font-sans font-bold text-slate-800 group-hover:text-gold-600 transition-colors line-clamp-2">{nextPost.title}</h4>
+              <Link href={`/blog/${nextPost.slug}`} className="group p-8 md:p-12 text-right hover:bg-ink-900 transition-colors duration-300">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-sand-400 flex items-center justify-end gap-2 mb-3">Next <ArrowRight size={12} /></span>
+                <h4 className="text-sm font-sans font-bold text-sand-100 group-hover:text-gold-600 transition-colors line-clamp-2">{nextPost.title}</h4>
               </Link>
             ) : <div className="p-8 md:p-12" />}
           </div>
@@ -169,24 +169,24 @@ export default function BlogPostPage() {
       </section>
 
       {/* Related */}
-      <section className="py-20 border-t border-slate-100 bg-white">
+      <section className="py-28 border-t border-ink-500 bg-ink-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-12">
+          <div className="flex items-center gap-10 mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-gold-500/30 to-transparent" />
             <span className="text-xs uppercase tracking-[0.25em] text-gold-600 font-medium whitespace-nowrap">You May Also Like</span>
             <div className="h-px flex-1 bg-gradient-to-l from-gold-500/30 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {relatedPosts.map((rp) => (
               <Link key={rp.slug} href={`/blog/${rp.slug}`}>
-                <motion.article whileHover={{ y: -4 }} className="group flex gap-6 border border-slate-100 bg-slate-50 p-4 hover:border-gold-500/20 transition-all duration-500">
+                <motion.article whileHover={{ y: -4 }} className="group flex gap-10 border border-ink-500 bg-ink-950 p-4 hover:border-gold-500/20 transition-all duration-500">
                   <div className="relative w-32 h-32 shrink-0 overflow-hidden">
                     <Image src={rp.image} alt={rp.title} width={300} height={300} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex flex-col justify-center">
                     <span className="text-gold-500 text-[10px] uppercase tracking-[0.2em] mb-2">{rp.category}</span>
-                    <h4 className="text-sm font-sans font-bold text-slate-800 group-hover:text-gold-600 transition-colors line-clamp-2 mb-2">{rp.title}</h4>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-wider">{rp.readTime}</span>
+                    <h4 className="text-sm font-sans font-bold text-sand-100 group-hover:text-gold-600 transition-colors line-clamp-2 mb-2">{rp.title}</h4>
+                    <span className="text-[10px] text-sand-400 uppercase tracking-wider">{rp.readTime}</span>
                   </div>
                 </motion.article>
               </Link>

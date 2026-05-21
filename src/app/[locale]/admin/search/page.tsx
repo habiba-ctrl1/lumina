@@ -106,30 +106,30 @@ function SearchResultsContent() {
   return (
     <div className="pb-20 max-w-5xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+        <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
           Universal Search
         </h1>
-        <p className="text-slate-500 font-medium">
+        <p className="text-sand-300 font-medium">
           Showing results for &quot;<span className="text-gold-600 font-bold">{query}</span>&quot; across the intelligence hub.
         </p>
       </div>
 
       <div className="space-y-4">
         {loading ? (
-          <div className="py-20 flex flex-col items-center justify-center gap-4">
+          <div className="py-28 flex flex-col items-center justify-center gap-10">
             <Loader2 className="animate-spin text-gold-500" size={32} />
-            <p className="text-xs font-black uppercase tracking-[0.4em] text-slate-300">Scanning Repositories</p>
+            <p className="text-xs font-black uppercase tracking-[0.4em] text-sand-500">Scanning Repositories</p>
           </div>
         ) : results.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-[2.5rem] p-20 text-center shadow-sm">
-            <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] p-20 text-center shadow-sm">
+            <div className="w-20 h-20 bg-ink-950 rounded-full flex items-center justify-center mx-auto mb-8">
               <Search size={32} className="text-slate-200" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">No Matches Located</h3>
-            <p className="text-slate-400 font-medium max-w-xs mx-auto">We couldn't find any records matching your query. Try different keywords.</p>
+            <h3 className="text-xl font-bold text-sand-50 mb-2">No Matches Located</h3>
+            <p className="text-sand-400 font-medium max-w-xs mx-auto">We couldn't find any records matching your query. Try different keywords.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-10">
             {results.map((result, i) => (
               <motion.div
                 key={`${result.type}-${result.id}`}
@@ -139,18 +139,18 @@ function SearchResultsContent() {
               >
                 <Link 
                   href={result.href}
-                  className="bg-white border border-slate-100 rounded-3xl p-6 flex items-center justify-between hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all group"
+                  className="bg-ink-800 border border-ink-500 rounded-3xl p-6 flex items-center justify-between hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 transition-all group"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
+                  <div className="flex items-center gap-10">
+                    <div className="w-12 h-12 bg-ink-950 rounded-2xl flex items-center justify-center text-sand-400 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
                       {getTypeIcon(result.type)}
                     </div>
                     <div>
-                      <h3 className="text-sm font-black text-slate-900 mb-0.5 group-hover:text-gold-600 transition-colors uppercase tracking-tight">{result.title}</h3>
-                      <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">{result.subtitle}</p>
+                      <h3 className="text-sm font-black text-sand-50 mb-0.5 group-hover:text-gold-600 transition-colors uppercase tracking-tight">{result.title}</h3>
+                      <p className="text-[10px] text-sand-400 font-black uppercase tracking-widest">{result.subtitle}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-300 group-hover:text-gold-600 transition-all">
+                  <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-sand-500 group-hover:text-gold-600 transition-all">
                     Access Record <ArrowRight size={14} />
                   </div>
                 </Link>

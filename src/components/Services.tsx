@@ -72,7 +72,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       </div>
 
       <div className="flex-grow">
-        <h3 className="font-display font-medium text-lg text-sand-50 mb-4 uppercase tracking-tight">
+        <h3 className="font-display font-medium text-lg text-sand-50 mb-8 uppercase tracking-tight">
           {service.title}
         </h3>
         <p className="text-sand-400 text-sm leading-relaxed mb-8">

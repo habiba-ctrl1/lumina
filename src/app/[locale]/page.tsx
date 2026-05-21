@@ -134,7 +134,7 @@ export default async function Home() {
       bg-ink-950  → deep black base (from tailwind.config)
       text-sand-100 → warm near-white body text
 
-      REMOVED: bg-white — this was overriding the dark theme set in layout.tsx
+      REMOVED: bg-ink-800 — this was overriding the dark theme set in layout.tsx
     */
     <main className="min-h-screen bg-ink-950 text-sand-100">
       <script

@@ -11,7 +11,7 @@ import { ArrowLeft, CheckCircle2, GlassWater, Music, Sparkles, Camera } from "lu
 
 export default function RiyadhLuxurySoiree() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -35,7 +35,7 @@ export default function RiyadhLuxurySoiree() {
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-6 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20"
+            className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20"
           >
             Private Elite Celebration
           </motion.span>
@@ -47,8 +47,8 @@ export default function RiyadhLuxurySoiree() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border-y border-gray-100 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 md:px-16">
+      <section className="py-32 bg-ink-800 border-y border-ink-600 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8 md:px-16">
           {[
             { icon: Sparkles, label: "Theme", val: "Avant-Garde" },
             { icon: GlassWater, label: "Dining", val: "Michelin Style" },
@@ -56,7 +56,7 @@ export default function RiyadhLuxurySoiree() {
             { icon: Camera, label: "Media", val: "Private Film" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <stat.icon size={32} className="text-primary mx-auto mb-4" />
+              <stat.icon size={32} className="text-primary mx-auto mb-8" />
               <div className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">{stat.label}</div>
               <div className="text-base font-sans font-bold text-black uppercase">{stat.val}</div>
             </div>
@@ -78,7 +78,7 @@ export default function RiyadhLuxurySoiree() {
               We transformed a private estate into a multi-sensory journey, featuring kinetic art installations, holographic performances, and a dining experience that evolved with the music throughout the night.
             </p>
           </div>
-          <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-gray-50">
+          <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-ink-600">
             <Image src="/gallery_1.webp" alt="Soiree Ambience" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
@@ -90,11 +90,11 @@ export default function RiyadhLuxurySoiree() {
             { title: "Gourmet Theater", desc: "A 10-course tasting menu where each dish was introduced by a bespoke digital projection on the table." },
             { title: "Elite Privacy", desc: "Implementation of a 'No-Phone' protocol with secure digital lockers to ensure absolute privacy for VVIP guests." }
           ].map((item, i) => (
-            <div key={i} className="p-12 bg-gray-50 rounded-[3rem] border border-gray-100 hover:shadow-2xl transition-all group">
+            <div key={i} className="p-12 bg-ink-950 rounded-[3rem] border border-ink-600 hover:shadow-2xl transition-all group">
               <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
                 <CheckCircle2 size={24} className="text-white" />
               </div>
-              <h3 className="text-black text-sm font-bold uppercase tracking-widest mb-4">{item.title}</h3>
+              <h3 className="text-black text-sm font-bold uppercase tracking-widest mb-8">{item.title}</h3>
               <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
             </div>
           ))}
@@ -115,7 +115,7 @@ export default function RiyadhLuxurySoiree() {
                 <div className="text-3xl font-bold text-primary">100%</div>
                 <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-2">Privacy Maintained</div>
               </div>
-              <div className="w-px h-16 bg-white/10" />
+              <div className="w-px h-16 bg-ink-800/10" />
               <div>
                 <div className="text-3xl font-bold text-primary">VVIP</div>
                 <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-2">Guest Tier</div>
@@ -126,7 +126,7 @@ export default function RiyadhLuxurySoiree() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 text-center bg-white">
+      <section className="py-32 text-center bg-ink-800">
         <h3 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary italic">Private Masterpiece</span></h3>
         <Link 
           href="/#contact" 

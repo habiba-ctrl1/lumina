@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function AlUlaPage() {
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -35,13 +35,13 @@ export default function AlUlaPage() {
           <span className="section-label">
             Saudi Arabia&apos;s Breathtaking Destination | AlUla
           </span>
-          <h1 className="font-display font-medium text-slate-900 mb-6 leading-tight text-3xl md:text-5xl">
+          <h1 className="font-display font-medium text-sand-50 mb-8 leading-tight text-3xl md:text-5xl">
             Unforgettable <br/><span className="text-shimmer italic font-semibold">Intimate Celebrations</span>
           </h1>
-          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            Amidst ancient <span className="text-slate-900 font-semibold">UNESCO heritage</span> and ultra-luxury desert resorts, we weave stories that echo through time.
+          <p className="text-sand-200 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            Amidst ancient <span className="text-sand-50 font-semibold">UNESCO heritage</span> and ultra-luxury desert resorts, we weave stories that echo through time.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
             <Link
               href="/#contact"
               className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
@@ -59,12 +59,12 @@ export default function AlUlaPage() {
       </section>
 
       {/* City Landmarks & Expertise */}
-      <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="section-label">Exclusive Venues AlUla</span>
-            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">Ancient Landscapes, <span className="text-shimmer italic">Modern Luxury</span></h2>
-            <p className="text-slate-600 text-sm leading-relaxed mb-8">
+            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">Ancient Landscapes, <span className="text-shimmer italic">Modern Luxury</span></h2>
+            <p className="text-sand-200 text-sm leading-relaxed mb-8">
               AlUla is a living museum of human history. We specialize in creating high-end destination weddings that respect the sanctity of the landscape while providing the pinnacle of luxury service. From the sandstone canyons to the mirrored walls of Maraya, your event will be legendary.
             </p>
             <ul className="space-y-4">
@@ -74,14 +74,14 @@ export default function AlUlaPage() {
                 "Sustainable event logistics for desert environments",
                 "Luxury guest concierge for international destination travelers"
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
+                <li key={i} className="flex items-start gap-3 text-sand-200 text-sm">
                   <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200/80 shadow-md">
+          <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-ink-600 shadow-md">
             <Image src="/gallery_destination_wedding.webp" alt="AlUla Desert Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
@@ -93,7 +93,7 @@ export default function AlUlaPage() {
         </div>
 
         {/* AlUla Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-slate-200/80">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 py-12 border-y border-ink-600">
           {[
             { label: "Guest Capacity", val: "50–300" },
             { label: "Peak Season", val: "Nov–Apr" },
@@ -101,30 +101,30 @@ export default function AlUlaPage() {
             { label: "Event Style", val: "Intimate" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
-              <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
+              <div className="text-2xl md:text-3xl font-display font-medium text-sand-50 mb-2">{stat.val}</div>
+              <div className="text-xs uppercase tracking-widest text-sand-300 font-semibold">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Featured Services for AlUla */}
-      <section className="py-24 bg-slate-100/50 border-t border-b border-slate-200/50 relative">
+      <section className="py-32 bg-ink-900/50 border-t border-b border-ink-600/50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display font-medium text-slate-900 mb-6 text-2xl md:text-3xl">Signature AlUla <span className="text-shimmer italic">Experiences</span></h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-sm">Tailored solutions for the world&apos;s most ambitious destination events.</p>
+            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl">Signature AlUla <span className="text-shimmer italic">Experiences</span></h2>
+            <p className="text-sand-200 max-w-2xl mx-auto text-sm">Tailored solutions for the world&apos;s most ambitious destination events.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
              {[
                { icon: Sparkles, title: "Hegra Background Weddings", desc: "Unprecedented access to ancient heritage sites for your ceremony backdrop." },
                { icon: Trophy, title: "Desert Resort Takeovers", desc: "Full buyout management for resorts like Habitas or Banyan Tree for your guests." },
                { icon: MapPin, title: "Wadi Ashar Private Galas", desc: "Immersive dining experiences set deep within the hidden canyons of AlUla." }
              ].map((service, i) => (
                <div key={i} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300">
-                 <service.icon size={28} className="text-emerald-800 mb-6" />
-                 <h3 className="font-display font-medium text-lg text-slate-900 mb-4">{service.title}</h3>
-                 <p className="text-slate-600 text-sm leading-relaxed">{service.desc}</p>
+                 <service.icon size={28} className="text-emerald-800 mb-8" />
+                 <h3 className="font-display font-medium text-lg text-sand-50 mb-8">{service.title}</h3>
+                 <p className="text-sand-200 text-sm leading-relaxed">{service.desc}</p>
                </div>
              ))}
           </div>
@@ -132,13 +132,13 @@ export default function AlUlaPage() {
       </section>
 
       {/* Strategic Venue Partnerships */}
-      <section className="py-24 border-t border-slate-200/20 bg-slate-50">
+      <section className="py-32 border-t border-ink-600/20 bg-ink-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display font-medium text-slate-900 mb-6 text-2xl md:text-3xl font-bold">AlUla Venue <span className="text-shimmer italic">Network</span></h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-sm">We maintain direct relationships with AlUla&apos;s most exclusive management entities.</p>
+            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">AlUla Venue <span className="text-shimmer italic">Network</span></h2>
+            <p className="text-sand-200 max-w-2xl mx-auto text-sm">We maintain direct relationships with AlUla&apos;s most exclusive management entities.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               "Banyan Tree AlUla",
               "Habitas AlUla",
@@ -149,9 +149,9 @@ export default function AlUlaPage() {
               "Ashar Valley Resorts",
               "Cloud7 Residence"
             ].map((venue, i) => (
-              <div key={i} className="flex items-center gap-4 p-5 bg-white border border-slate-200/80 rounded-sm hover:border-gold-400 hover:shadow-sm transition-all shadow-2xs">
+              <div key={i} className="flex items-center gap-10 p-5 bg-ink-800 border border-ink-600 rounded-sm hover:border-gold-400 hover:shadow-sm transition-all shadow-2xs">
                 <CheckCircle2 size={18} className="text-emerald-800 shrink-0" />
-                <span className="text-slate-800 text-sm font-medium">{venue}</span>
+                <span className="text-sand-100 text-sm font-medium">{venue}</span>
               </div>
             ))}
           </div>

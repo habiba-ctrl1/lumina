@@ -34,7 +34,7 @@ export default function PartnersSection() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.5em] font-medium mb-4 block"
+              className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.5em] font-medium mb-8 block"
             >
               The Luxury Circle
             </motion.span>
@@ -42,7 +42,7 @@ export default function PartnersSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-3xl md:text-5xl font-medium text-sand-50 mb-4 uppercase tracking-tighter"
+              className="font-display text-3xl md:text-5xl font-medium text-sand-50 mb-8 uppercase tracking-tighter"
             >
               Our Trusted <span className="text-gold-400 italic font-light">Partners</span>
             </motion.h2>

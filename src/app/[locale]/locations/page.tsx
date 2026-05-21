@@ -46,20 +46,20 @@ const locations = [
 
 export default function LocationsPage() {
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 flex items-center justify-center border-b border-slate-200/60">
+      <section className="relative py-32 md:py-32 flex items-center justify-center border-b border-ink-600">
         <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-[0.22] bg-cover bg-center" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <span className="section-label">
             Global Presence
           </span>
-          <h1 className="font-display font-medium text-slate-900 mb-6 leading-tight text-3xl md:text-4xl">
+          <h1 className="font-display font-medium text-sand-50 mb-8 leading-tight text-3xl md:text-4xl">
             Our <span className="text-shimmer italic font-medium">Destinations</span>
           </h1>
-          <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sand-200 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Saudi Event Management curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
           </p>
         </div>
@@ -68,11 +68,11 @@ export default function LocationsPage() {
       <SaudiMap />
       
       {/* Descriptive SEO Section */}
-      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="font-display font-medium text-slate-900 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
+      <section className="py-28 relative max-w-4xl mx-auto px-4 text-center">
+        <h2 className="font-display font-medium text-sand-50 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
           Kingdom-wide <span className="text-shimmer italic">Excellence</span>
         </h2>
-        <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-6 font-light">
+        <div className="prose prose-slate max-w-none text-sand-200 text-sm leading-relaxed space-y-6 font-light">
           <p>
             Saudi Event Management operates at the intersection of local heritage and global luxury standards. Our presence across the Kingdom is not just about having offices; it&apos;s about our deep-rooted relationships with the finest venues, government authorities, and specialized artisans in each region. Whether you are planning a high-stakes corporate summit in the heart of Riyadh&apos;s financial district or a soulful wedding in the historic streets of Jeddah, our regional teams provide the logistical precision and cultural nuance required for world-class execution.
           </p>
@@ -83,13 +83,13 @@ export default function LocationsPage() {
       </section>
 
       {/* Locations Grid */}
-      <section className="py-16 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {locations.map((loc) => (
             <Link 
               key={loc.slug} 
               href={`/locations/${loc.slug}`}
-              className="group block relative rounded-sm overflow-hidden border border-slate-200/80 bg-white hover:border-gold-400 transition-all duration-500 shadow-sm hover:shadow-md"
+              className="group block relative rounded-sm overflow-hidden border border-ink-600 bg-ink-800 hover:border-gold-400 transition-all duration-500 shadow-sm hover:shadow-md"
             >
               <div className="relative h-80 w-full overflow-hidden">
                 <Image 
@@ -107,7 +107,7 @@ export default function LocationsPage() {
                   <span className="text-gold-400 text-xs uppercase tracking-widest">{loc.country}</span>
                 </div>
                 <h3 className="font-display font-medium text-2xl text-white mb-3">{loc.city}</h3>
-                <p className="text-slate-200 text-xs leading-relaxed mb-6 line-clamp-2">
+                <p className="text-slate-200 text-xs leading-relaxed mb-8 line-clamp-2">
                   {loc.description}
                 </p>
                 <div className="flex items-center text-white text-xs font-bold uppercase tracking-wider group-hover:text-gold-400 transition-colors">

@@ -12,7 +12,7 @@ export default function PortfolioLuxuryPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-20"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="flex items-center justify-center gap-3 mb-8">
             <Sparkles className="text-gold-500" size={24} />
             <span className="text-gold-500 uppercase tracking-[0.4em] text-xs font-black">Saudi Event Management Luxury</span>
           </div>
@@ -26,15 +26,15 @@ export default function PortfolioLuxuryPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 shadow-3xl">
-            <h2 className="text-2xl font-black text-white mb-6 tracking-tight">Our Philosophy</h2>
+          <div className="bg-ink-800/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 shadow-3xl">
+            <h2 className="text-2xl font-black text-white mb-8 tracking-tight">Our Philosophy</h2>
             <p className="text-gray-400 leading-relaxed font-medium">
               At Saudi Event Management, we believe that true luxury lies in the details. Our approach to portfolio luxury 
               is built on a foundation of precision, creativity, and unparalleled service.
             </p>
           </div>
-          <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 shadow-3xl">
-            <h2 className="text-2xl font-black text-white mb-6 tracking-tight">Bespoke Excellence</h2>
+          <div className="bg-ink-800/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 shadow-3xl">
+            <h2 className="text-2xl font-black text-white mb-8 tracking-tight">Bespoke Excellence</h2>
             <p className="text-gray-400 leading-relaxed font-medium">
               Each event is a unique canvas. We work closely with our elite clientele to ensure that every 
               element of their portfolio luxury reflects their personal style and vision.

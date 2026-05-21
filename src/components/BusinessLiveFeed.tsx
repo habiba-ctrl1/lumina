@@ -67,7 +67,7 @@ export default function BusinessLiveFeed() {
   }, []);
 
   return (
-    <section className="py-24 bg-emerald-950 overflow-hidden relative border-t border-white/5">
+    <section className="py-32 bg-emerald-950 overflow-hidden relative border-t border-white/5">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] -ml-32 -mb-32" />
@@ -82,7 +82,7 @@ export default function BusinessLiveFeed() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-px bg-gold-500/50" />
               <span className="text-xs uppercase tracking-[0.3em] text-gold-500 font-bold">Live from Saudi Event Management</span>
             </div>
@@ -117,7 +117,7 @@ export default function BusinessLiveFeed() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.2, duration: 0.6 }}
-                    className="bg-emerald-900/40 border border-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-emerald-800/60 hover:shadow-lg hover:border-gold-500/20 transition-all duration-500 group"
+                    className="bg-emerald-900/40 border border-ink-600/60 backdrop-blur-sm p-6 rounded-2xl hover:bg-emerald-800/60 hover:shadow-lg hover:border-[#3F3F46] transition-all duration-500 group"
                   >
                     <div className="flex justify-between items-start mb-3">
                       <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${

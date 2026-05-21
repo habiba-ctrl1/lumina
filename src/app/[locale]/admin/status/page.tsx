@@ -74,17 +74,17 @@ export default function StatusPage() {
 
   return (
     <div className="pb-20 max-w-5xl mx-auto">
-      <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-10">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
             Business Activity Log
           </h1>
-          <p className="text-slate-500 font-medium">A comprehensive history of all Saudi Event Management operations and milestones.</p>
+          <p className="text-sand-300 font-medium">A comprehensive history of all Saudi Event Management operations and milestones.</p>
         </div>
         <button 
           onClick={fetchLogs}
           disabled={loading}
-          className="flex items-center gap-2 px-6 py-2.5 bg-white border border-slate-200 text-slate-600 font-bold uppercase tracking-widest text-[10px] rounded-xl hover:bg-slate-50 transition-all shadow-sm disabled:opacity-50"
+          className="flex items-center gap-2 px-6 py-2.5 bg-ink-800 border border-ink-600 text-sand-200 font-bold uppercase tracking-widest text-[10px] rounded-xl hover:bg-ink-950 transition-all shadow-sm disabled:opacity-50"
         >
           <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
           Refresh Log
@@ -100,7 +100,7 @@ export default function StatusPage() {
             className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border ${
               filter === cat
                 ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                : "bg-white text-slate-400 hover:bg-slate-50 border-slate-200"
+                : "bg-ink-800 text-sand-400 hover:bg-ink-950 border-ink-600"
             }`}
           >
             {cat === "all" ? "All Activity" : cat}
@@ -108,14 +108,14 @@ export default function StatusPage() {
         ))}
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
-        <div className="flex items-center gap-3 px-8 py-6 border-b border-slate-100 bg-slate-50/50">
+      <div className="bg-ink-800 border border-ink-600 rounded-3xl shadow-sm overflow-hidden">
+        <div className="flex items-center gap-3 px-8 py-6 border-b border-ink-500 bg-ink-950/50">
           <div className="p-2 bg-gold-500 rounded-lg shadow-lg shadow-gold-500/20">
             <Activity className="text-white" size={20} />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Activity Stream</h2>
-            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{filteredLogs.length} entries recorded</p>
+            <h2 className="text-lg font-bold text-sand-50">Activity Stream</h2>
+            <p className="text-[10px] text-sand-400 font-bold uppercase tracking-widest">{filteredLogs.length} entries recorded</p>
           </div>
         </div>
 
@@ -123,16 +123,16 @@ export default function StatusPage() {
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="h-20 bg-slate-50 animate-pulse rounded-2xl border border-slate-100" />
+                <div key={i} className="h-20 bg-ink-950 animate-pulse rounded-2xl border border-ink-500" />
               ))}
             </div>
           ) : filteredLogs.length === 0 ? (
-            <div className="py-24 text-center">
-              <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <AlertCircle size={24} className="text-slate-300" />
+            <div className="py-32 text-center">
+              <div className="w-16 h-16 bg-ink-950 rounded-full flex items-center justify-center mx-auto mb-8">
+                <AlertCircle size={24} className="text-sand-500" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">No Activity Logged</h3>
-              <p className="text-slate-400 font-medium italic max-w-xs mx-auto">
+              <h3 className="text-lg font-bold text-sand-50 mb-2">No Activity Logged</h3>
+              <p className="text-sand-400 font-medium italic max-w-xs mx-auto">
                 {filter !== "all" ? "No entries match this filter." : "Actions like new leads, quote updates, and content changes will be tracked here."}
               </p>
             </div>
@@ -144,16 +144,16 @@ export default function StatusPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.03 }}
-                  className="flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl hover:border-gold-500/30 hover:shadow-md transition-all duration-300 group"
+                  className="flex items-center justify-between p-5 bg-ink-800 border border-ink-500 rounded-2xl hover:border-gold-500/30 hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="flex items-center gap-6 flex-1 min-w-0">
+                  <div className="flex items-center gap-10 flex-1 min-w-0">
                     <div className={`px-4 py-2 rounded-xl text-[9px] uppercase tracking-widest font-black flex items-center gap-2 border flex-shrink-0 ${getLabelStyle(log.action)}`}>
                       {getLabelIcon(log.action)}
                       {log.action}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-slate-900 font-bold text-sm mb-1 truncate">{log.details || log.action}</p>
-                      <div className="flex items-center gap-4 text-[10px] text-slate-400 font-bold">
+                      <p className="text-sand-50 font-bold text-sm mb-1 truncate">{log.details || log.action}</p>
+                      <div className="flex items-center gap-10 text-[10px] text-sand-400 font-bold">
                         <div className="flex items-center gap-1.5">
                           <Clock size={10} />
                           {new Date(log.createdAt).toLocaleString(undefined, { 
@@ -161,14 +161,14 @@ export default function StatusPage() {
                           })}
                         </div>
                         {log.userEmail && (
-                          <span className="text-slate-300">by {log.userEmail}</span>
+                          <span className="text-sand-500">by {log.userEmail}</span>
                         )}
                       </div>
                     </div>
                   </div>
                   <button 
                     onClick={() => handleDelete(log.id)}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-300 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100 opacity-0 group-hover:opacity-100 flex-shrink-0"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-sand-500 hover:bg-red-50 hover:text-red-500 transition-all border border-transparent hover:border-red-100 opacity-0 group-hover:opacity-100 flex-shrink-0"
                     title="Delete Entry"
                   >
                     <Trash2 size={18} />

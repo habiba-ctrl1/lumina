@@ -23,17 +23,17 @@ const config: Config = {
 
         // ── Primary Gold Accent ──────────────────────────────────────────────
         gold: {
-          50:  "var(--gold-50)",
-          100: "var(--gold-100)",
-          200: "var(--gold-200)",
-          300: "var(--gold-300)",
-          400: "var(--gold)",      // ← MAIN BRAND MUTED GOLD (#C5A880)
-          500: "var(--gold-hover)",  // ← HOVER GOLD (#B0926A)
-          600: "var(--gold-600)",
-          700: "var(--gold-700)",
-          800: "var(--gold-800)",
-          900: "var(--gold-900)",
-          950: "var(--gold-950)",
+          50:  "#FAF7F2",
+          100: "#F3EFE6",
+          200: "#E7DEC9",
+          300: "#DBCDAE",
+          400: "#C5A880",      // ← MAIN BRAND MUTED GOLD
+          500: "#B0926A",      // ← HOVER GOLD
+          600: "#9A7E56",
+          700: "#7F6642",
+          800: "#655032",
+          900: "#4A3B24",
+          950: "#302516",
         },
 
         // ── Emerald Green Accent ─────────────────────────────────────────────
@@ -53,22 +53,22 @@ const config: Config = {
 
         // ── Background Surfaces ──────────────────────────────────────────────
         ink: {
-          950: "var(--background)",      // Main background (slate-50 #F8FAFC in off-white)
-          900: "var(--surface-raised)",  // Lifted background (slate-100 #F1F5F9 in off-white)
-          800: "var(--surface)",         // Main card surface (white #FFFFFF in off-white)
-          700: "var(--surface-lifted)",  // Hover card surface (slate-200 #E2E8F0 in off-white)
-          600: "var(--border)",          // Main border color (slate-200 #E2E8F0 in off-white)
-          500: "var(--border-subtle)",   // Subtle divider color (slate-100 #F1F5F9 in off-white)
+          950: "#0B0C10",      // Main background (Deep charcoal)
+          900: "#121318",      // Lifted background (Slightly lighter dark gray)
+          800: "#181920",      // Main card surface
+          700: "#1F2029",      // Hover card surface
+          600: "#27272A",      // Main border color
+          500: "#18181B",      // Subtle divider color
         },
 
         // ── Typography Colors ────────────────────────────────────────────────
         sand: {
-          50:  "var(--heading)",            // Primary headings (#0F172A slate-900)
-          100: "var(--foreground)",         // Body text (#334155 slate-700)
-          200: "var(--foreground-medium)",  // Medium text (#475569 slate-600)
-          300: "var(--foreground-muted)",   // Muted text (#64748B slate-500)
-          400: "var(--foreground-faint)",   // Placeholders (#94A3B8 slate-400)
-          500: "var(--foreground-disabled)",// Disabled elements (#CBD5E1 slate-300)
+          50:  "#FAFAFA",            // Primary headings (zinc-50)
+          100: "#D4D4D8",            // Body text (zinc-300)
+          200: "#A1A1AA",            // Medium text (zinc-400)
+          300: "#71717A",            // Muted text (zinc-500)
+          400: "#52525B",            // Placeholders (zinc-600)
+          500: "#3F3F46",            // Disabled elements (zinc-700)
         },
 
         // ── Legacy aliases for compatibility ─────────────────────────────────

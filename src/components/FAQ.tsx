@@ -93,14 +93,14 @@ export default function FAQ() {
   const filteredFaqs = faqs.filter(faq => faq.category === activeCategory);
 
   return (
-    <section id="faq" className="py-24 bg-emerald-950 relative border-t border-white/5">
+    <section id="faq" className="py-32 bg-emerald-950 relative border-t border-white/5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <motion.span 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
             viewport={{ once: true }} 
-            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+            className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-8 block"
           >
             Inquiries
           </motion.span>
@@ -108,14 +108,14 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 20 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold uppercase tracking-tight"
+            className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold uppercase tracking-tight"
           >
             Curated <span className="text-primary font-bold">Questions</span>
           </motion.h1>
         </div>
 
         {/* Categories / Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-white/10 pb-6">
+        <div className="flex flex-wrap justify-center gap-10 mb-12 border-b border-white/10 pb-6">
           {faqCategories.map((cat) => (
             <button
               key={cat.id}
@@ -125,8 +125,8 @@ export default function FAQ() {
               }}
               className={`px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all ${
                 activeCategory === cat.id 
-                  ? "bg-gold-500 text-charcoal-900" 
-                  : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                  ? "bg-gold-500 text-sand-50" 
+                  : "bg-ink-800/5 text-gray-400 hover:bg-ink-800/10 hover:text-white"
               }`}
             >
               {cat.name}
@@ -145,7 +145,7 @@ export default function FAQ() {
               className="space-y-4"
             >
               {filteredFaqs.map((faq, index) => (
-                <div key={index} className="bg-white/5 border border-white/10 overflow-hidden">
+                <div key={index} className="bg-ink-800/5 border border-white/10 overflow-hidden">
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="w-full flex items-center justify-between p-6 text-left group transition-colors duration-300"
@@ -182,9 +182,9 @@ export default function FAQ() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-20 text-center bg-white/5 border border-white/10 p-10 rounded-sm"
+          className="mt-20 text-center bg-ink-800/5 border border-white/10 p-10 rounded-sm"
         >
-          <h3 className="text-white font-sans font-bold text-xl mb-4 uppercase tracking-tight">Still have questions?</h3>
+          <h3 className="text-white font-sans font-bold text-xl mb-8 uppercase tracking-tight">Still have questions?</h3>
           <p className="text-gray-400 text-sm font-light mb-8 max-w-lg mx-auto">
             Our priority concierge team is available 24/7 via WhatsApp for immediate white-glove assistance.
           </p>
@@ -192,7 +192,7 @@ export default function FAQ() {
             href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20have%20a%20question%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-gold-500 text-charcoal-900 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all"
+            className="inline-block bg-gold-500 text-sand-50 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-ink-800 transition-all"
           >
             Message us on WhatsApp
           </a>

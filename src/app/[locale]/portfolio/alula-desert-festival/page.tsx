@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function AlUlaDesertFestival() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -35,7 +35,7 @@ export default function AlUlaDesertFestival() {
           <Link href="/portfolio" className="inline-flex items-center text-white hover:text-primary transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-6 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
+          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
             National Cultural Activation
           </span>
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
@@ -46,8 +46,8 @@ export default function AlUlaDesertFestival() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border-y border-gray-100 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8 md:px-16">
+      <section className="py-32 bg-ink-800 border-y border-ink-600 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8 md:px-16">
           {[
             { icon: Tent, label: "Scale", val: "5,000+ Daily" },
             { icon: Sun, label: "Climate", val: "Solar Powered" },
@@ -55,7 +55,7 @@ export default function AlUlaDesertFestival() {
             { icon: Wind, label: "Nature", val: "Eco-Conscious" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <stat.icon size={32} className="text-primary mx-auto mb-4" />
+              <stat.icon size={32} className="text-primary mx-auto mb-8" />
               <div className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">{stat.label}</div>
               <div className="text-base font-sans font-bold text-black uppercase">{stat.val}</div>
             </div>
@@ -77,7 +77,7 @@ export default function AlUlaDesertFestival() {
               We worked closely with archaeologists and environmentalists to ensure that every anchor point and power line was placed with absolute care for the landscape.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-10">
             <div className="space-y-4">
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-lg">
                 <Image src="/gallery_charity_gala.webp" alt="Festival Detail 1" width={400} height={500} className="w-full h-full object-cover" />
@@ -95,7 +95,7 @@ export default function AlUlaDesertFestival() {
         </div>
 
         {/* The Execution */}
-        <div className="bg-gray-50 rounded-[4rem] p-12 md:p-24 border border-gray-100">
+        <div className="bg-ink-950 rounded-[4rem] p-12 md:p-24 border border-ink-600">
           <h2 className="text-3xl font-sans font-bold text-black mb-16 uppercase tracking-tight text-center">Operational <span className="text-primary italic">Mastery</span></h2>
           <div className="grid md:grid-cols-3 gap-12">
             {[
@@ -132,7 +132,7 @@ export default function AlUlaDesertFestival() {
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary italic">Cultural Wave</span></h2>
           <Link 
             href="/#contact" 
-            className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all rounded-xl shadow-2xl text-xs"
+            className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.3em] hover:bg-ink-800 hover:text-black transition-all rounded-xl shadow-2xl text-xs"
           >
             Start a Cultural Project
           </Link>

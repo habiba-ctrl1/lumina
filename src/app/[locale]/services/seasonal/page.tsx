@@ -134,7 +134,7 @@ export default function SeasonalEventsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-white text-charcoal-950">
+      <main className="min-h-screen bg-ink-800 text-sand-50">
         <Navbar />
 
         {/* Hero Section */}
@@ -155,7 +155,7 @@ export default function SeasonalEventsPage() {
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-6 block"
+              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
             >
               الفعاليات الموسمية والدينية | Cultural Heritage
             </motion.span>
@@ -192,15 +192,15 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* E-E-A-T & Cultural Credentials */}
-        <section className="py-16 bg-white border-y border-gray-100">
+        <section className="py-32 bg-ink-800 border-y border-ink-600">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-12">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-10">
                 <div className="w-12 h-12 rounded-full bg-gold-50 flex items-center justify-center">
                   <Award className="text-gold-600" size={24} />
                 </div>
                 <div>
-                  <p className="text-charcoal-950 font-bold text-sm tracking-widest">Heritage Certified</p>
+                  <p className="text-sand-50 font-bold text-sm tracking-widest">Heritage Certified</p>
                   <p className="text-[10px] text-gray-500 uppercase">Cultural Sensitivity Credentials</p>
                 </div>
               </div>
@@ -217,10 +217,10 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* Featured Occasions */}
-        <section className="py-32 bg-gray-50 relative">
+        <section className="py-32 bg-ink-950 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-2xl md:text-4xl font-sans text-charcoal-950 mb-6 font-bold">Honoring Our <span className="text-gold-600">Traditions</span></h2>
+              <h2 className="text-2xl md:text-4xl font-sans text-sand-50 mb-8 font-bold">Honoring Our <span className="text-gold-600">Traditions</span></h2>
               <div className="w-24 h-px bg-gold-600/30 mx-auto" />
             </div>
 
@@ -269,13 +269,13 @@ export default function SeasonalEventsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white p-12 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 group"
+                  className="bg-ink-800 p-12 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-ink-600 group"
                 >
                   <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-600 transition-colors">
                     <item.icon size={28} className="text-gold-600 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-sans font-bold text-charcoal-950 mb-4">{item.title}</h3>
-                  <p className="text-gray-500 text-sm font-light leading-relaxed mb-6">{item.desc}</p>
+                  <h3 className="text-xl font-sans font-bold text-sand-50 mb-8">{item.title}</h3>
+                  <p className="text-gray-500 text-sm font-light leading-relaxed mb-8">{item.desc}</p>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 border-b border-gold-200 pb-1">{item.linkText}</span>
                 </motion.div>
               ))}
@@ -284,26 +284,26 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-white relative border-y border-gray-100">
+        <section className="py-32 bg-ink-800 relative border-y border-ink-600">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-charcoal-950">Heritage <br/><span className="text-gold-600">Resources</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-sand-50">Heritage <br/><span className="text-gold-600">Resources</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Expert insights for planning culturally significant events across the Kingdom.</p>
-                <div className="pt-6 border-t border-gray-100">
-                  <p className="text-charcoal-950 font-bold text-sm">Saleh Al-Humaid</p>
+                <div className="pt-6 border-t border-ink-600">
+                  <p className="text-sand-50 font-bold text-sm">Saleh Al-Humaid</p>
                   <p className="text-gray-500 text-[10px] uppercase tracking-widest">Cultural Affairs Advisor</p>
                 </div>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
                 {[
                   { title: "Complete guide to Ramadan event activations in Saudi Arabia", desc: "A deep dive into Majlis design, traditional catering, and ethical engagement during the holy month." },
                   { title: "Saudi National Day event planning 2025", desc: "Preparing for the Kingdom&apos;s biggest celebration with grand-scale branding and patriotic themes." },
                   { title: "Corporate Eid celebration guide KSA", desc: "How to host inclusive and festive Eid gatherings for diverse corporate environments." },
                   { title: "Seasonal event calendar Saudi Arabia 2025", desc: "Tracking the Kingdom&apos;s transformation through Riyadh Season, religious milestones, and national days." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-8 bg-gray-50 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
-                    <h4 className="text-charcoal-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
+                  <div key={idx} className="p-8 bg-ink-950 rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
+                    <h4 className="text-sand-50 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
@@ -348,10 +348,10 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-32 bg-white relative">
+        <section className="py-32 bg-ink-800 relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-sans text-charcoal-950 font-bold">Cultural <span className="text-gold-600">Insights</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-sand-50 font-bold">Cultural <span className="text-gold-600">Insights</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-widest text-xs">Answering your questions about KSA Seasonal Events</p>
             </div>
 
@@ -365,8 +365,8 @@ export default function SeasonalEventsPage() {
                 { q: "Ramadan event company near me Saudi Arabia", a: "Saudi Event Management operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
                 { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Saudi Event Management specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
               ].map((faq, i) => (
-                <div key={i} className="bg-gray-50 p-10 rounded-2xl border border-gray-100">
-                  <h3 className="text-xl font-bold text-charcoal-950 mb-4">{faq.q}</h3>
+                <div key={i} className="bg-ink-950 p-10 rounded-2xl border border-ink-600">
+                  <h3 className="text-xl font-bold text-sand-50 mb-8">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}

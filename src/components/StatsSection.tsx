@@ -21,7 +21,7 @@ export default function StatsSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display font-medium text-2xl md:text-3xl text-sand-50 mb-4 uppercase tracking-tight"
+            className="font-display font-medium text-2xl md:text-3xl text-sand-50 mb-8 uppercase tracking-tight"
           >
             VISION 2030 <span className="text-shimmer italic">ALIGNMENT</span>
           </motion.h2>
@@ -35,7 +35,7 @@ export default function StatsSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 divide-x divide-ink-600/30">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 divide-x divide-ink-600/30">
           {stats.map((stat, index) => (
             <motion.div
               key={index}

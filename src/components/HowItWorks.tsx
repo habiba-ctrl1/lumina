@@ -44,7 +44,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display font-medium text-2xl md:text-3xl text-sand-50 mb-4 uppercase tracking-tight"
+            className="font-display font-medium text-2xl md:text-3xl text-sand-50 mb-8 uppercase tracking-tight"
           >
             How We <span className="text-shimmer italic">Work</span>
           </motion.h2>
@@ -74,7 +74,7 @@ export default function HowItWorks() {
                 <div className="text-gold-400 mb-10">
                   {step.icon}
                 </div>
-                <h3 className="font-display text-sand-50 text-base mb-6 font-medium uppercase tracking-tight">
+                <h3 className="font-display text-sand-50 text-base mb-8 font-medium uppercase tracking-tight">
                   {step.title}
                 </h3>
                 <p className="text-sand-400 text-[13px] leading-relaxed">

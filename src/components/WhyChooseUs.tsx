@@ -45,10 +45,10 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <SectionWrapper className="bg-gray-50 relative overflow-hidden">
+    <SectionWrapper className="bg-ink-950 relative overflow-hidden">
       <div className="relative z-10">
         {/* Main Box Wrapper */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md">
+        <div className="bg-ink-800 rounded-3xl p-8 md:p-12 lg:p-16 shadow-sm mx-auto w-full transition-all duration-300 hover:shadow-md border border-ink-600 hover:border-[#3F3F46]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             
             {/* Left Header Area */}
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-4 block"
+                className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-8 block"
               >
                 The Saudi Event Management Difference
               </motion.span>
@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-black text-2xl md:text-3xl mb-4 font-bold"
+                className="text-black text-2xl md:text-3xl mb-8 font-bold"
               >
                 The Saudi Event Management <span className="text-primary italic">Standard</span>
               </motion.h3>
@@ -91,10 +91,10 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 border border-gray-100 p-6 rounded-2xl shadow-sm"
+                className="bg-ink-950 border border-ink-600 p-6 rounded-2xl shadow-sm"
               >
-                <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-4">Request a Consultation</h4>
-                <p className="text-gray-500 text-xs mb-6 leading-relaxed">
+                <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-8">Request a Consultation</h4>
+                <p className="text-gray-500 text-xs mb-8 leading-relaxed">
                   Tell us about your vision and we'll craft a bespoke proposal tailored to your needs.
                 </p>
                 <div className="flex flex-col gap-3">

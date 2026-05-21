@@ -85,7 +85,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
             {galleryItems.map((item) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
                 <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer">
-                  <div className="relative w-[300px] md:w-[450px] h-[250px] md:h-[350px] rounded-sm overflow-hidden border border-ink-600 shadow-md transition-all duration-700">
+                  <div className="relative w-[300px] md:w-[450px] h-[250px] md:h-[350px] rounded-sm overflow-hidden border border-ink-600 group-hover:border-[#3F3F46] shadow-md transition-all duration-700">
                     <Image 
                       src={item.src} 
                       alt={item.alt} 

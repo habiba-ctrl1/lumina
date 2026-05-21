@@ -103,8 +103,8 @@ export default async function ServicePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-950/60 to-ink-950" />
         <div className="relative z-10 container-luxury text-center">
-          <span className="section-label mb-4 block">Services</span>
-          <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
+          <span className="section-label mb-8 block">Services</span>
+          <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
             {SERVICE.h1}
           </h1>
           <p className="text-sand-400 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
@@ -114,7 +114,7 @@ export default async function ServicePage() {
       </section>
 
       {/* Content Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-32 relative overflow-hidden">
         <div className="container-luxury max-w-4xl relative z-10">
           <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
             {SERVICE.h2}
@@ -129,7 +129,7 @@ export default async function ServicePage() {
             <h3 className="font-display font-medium text-sand-50 text-xl md:text-2xl mb-8 uppercase tracking-tight">
               Our Service Offerings Include:
             </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sand-300 font-light text-[14px]">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sand-300 font-light text-[14px]">
               {SERVICE.bulletPoints.map((point, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-gold-400 mt-1">✦</span>

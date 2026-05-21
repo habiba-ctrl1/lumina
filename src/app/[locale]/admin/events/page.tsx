@@ -95,18 +95,18 @@ export default function AdminEvents() {
 
   return (
     <div className="pb-20 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-10">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
             Gallery & Portfolio
           </h1>
-          <p className="text-slate-500 font-medium">Manage the visual narrative of Saudi Event Management experiences.</p>
+          <p className="text-sand-300 font-medium">Manage the visual narrative of Saudi Event Management experiences.</p>
         </div>
         <button
           onClick={() => setShowForm(!showForm)}
           className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg active:scale-95 ${
             showForm 
-              ? "bg-white border border-slate-200 text-slate-400 hover:text-slate-600 shadow-sm" 
+              ? "bg-ink-800 border border-ink-600 text-sand-400 hover:text-sand-200 shadow-sm" 
               : "bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/20"
           }`}
         >
@@ -126,12 +126,12 @@ export default function AdminEvents() {
           >
             <form
               onSubmit={handleAdd}
-              className="bg-white border border-slate-200 rounded-[2rem] p-8 shadow-sm space-y-6"
+              className="bg-ink-800 border border-ink-600 rounded-[2rem] p-8 shadow-sm space-y-6"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 px-1 flex items-center gap-2">
+                    <label className="text-[9px] font-black uppercase tracking-widest text-sand-400 px-1 flex items-center gap-2">
                       <LinkIcon size={12} /> Media URL
                     </label>
                     <input
@@ -140,11 +140,11 @@ export default function AdminEvents() {
                       value={form.url}
                       onChange={(e) => setForm({ ...form, url: e.target.value })}
                       placeholder="https://images.unsplash.com/..."
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm font-medium text-slate-900 focus:outline-none focus:border-gold-500 transition-all placeholder:text-slate-300 shadow-sm"
+                      className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sm font-medium text-sand-50 focus:outline-none focus:border-gold-500 transition-all placeholder:text-sand-500 shadow-sm"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 px-1 flex items-center gap-2">
+                    <label className="text-[9px] font-black uppercase tracking-widest text-sand-400 px-1 flex items-center gap-2">
                       <Info size={12} /> Asset Description (Alt)
                     </label>
                     <input
@@ -153,33 +153,33 @@ export default function AdminEvents() {
                       value={form.alt}
                       onChange={(e) => setForm({ ...form, alt: e.target.value })}
                       placeholder="e.g. Grand Ballroom Floral Decor"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm font-medium text-slate-900 focus:outline-none focus:border-gold-500 transition-all placeholder:text-slate-300 shadow-sm"
+                      className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sm font-medium text-sand-50 focus:outline-none focus:border-gold-500 transition-all placeholder:text-sand-500 shadow-sm"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-10">
                     <div className="space-y-1.5">
-                      <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 px-1">Content Type</label>
+                      <label className="text-[9px] font-black uppercase tracking-widest text-sand-400 px-1">Content Type</label>
                       <select
                         required
                         value={form.type}
                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm font-bold text-slate-900 focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
+                        className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sm font-bold text-sand-50 focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                       >
                         <option value="image">Still Image</option>
                         <option value="video">Cinematic Video</option>
                       </select>
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 px-1">Associate Event</label>
+                      <label className="text-[9px] font-black uppercase tracking-widest text-sand-400 px-1">Associate Event</label>
                       <input
                         type="text"
                         value={form.eventId}
                         onChange={(e) => setForm({ ...form, eventId: e.target.value })}
                         placeholder="Optional Event ID"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm font-bold text-slate-900 focus:outline-none focus:border-gold-500"
+                        className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sm font-bold text-sand-50 focus:outline-none focus:border-gold-500"
                       />
                     </div>
                   </div>
@@ -202,29 +202,29 @@ export default function AdminEvents() {
 
       {/* Grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="h-64 bg-white animate-pulse rounded-3xl border border-slate-200 shadow-sm" />
+            <div key={i} className="h-64 bg-ink-800 animate-pulse rounded-3xl border border-ink-600 shadow-sm" />
           ))}
         </div>
       ) : assets.length === 0 ? (
-        <div className="text-center py-32 bg-white rounded-[2.5rem] border border-slate-200 border-dashed">
-          <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <ImageIcon size={32} className="text-slate-300" />
+        <div className="text-center py-32 bg-ink-800 rounded-[2.5rem] border border-ink-600 border-dashed">
+          <div className="w-20 h-20 bg-ink-950 rounded-full flex items-center justify-center mx-auto mb-8">
+            <ImageIcon size={32} className="text-sand-500" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 mb-2">No Visual Assets Found</h3>
-          <p className="text-slate-400 font-medium max-w-sm mx-auto italic">Start building your agency's visual authority by adding your first project photo or video.</p>
+          <h3 className="text-xl font-bold text-sand-50 mb-2">No Visual Assets Found</h3>
+          <p className="text-sand-400 font-medium max-w-sm mx-auto italic">Start building your agency's visual authority by adding your first project photo or video.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {assets.map((asset) => (
             <motion.div
               key={asset.id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white border border-slate-100 rounded-3xl overflow-hidden group hover:border-gold-500/20 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500"
+              className="bg-ink-800 border border-ink-500 rounded-3xl overflow-hidden group hover:border-gold-500/20 hover:shadow-2xl hover:shadow-gold-500/5 transition-all duration-500"
             >
-              <div className="relative h-64 overflow-hidden bg-slate-50">
+              <div className="relative h-64 overflow-hidden bg-ink-950">
                 {asset.type === 'video' ? (
                   <div className="w-full h-full flex items-center justify-center bg-slate-900 text-gold-500">
                     <ImageIcon size={48} />
@@ -241,12 +241,12 @@ export default function AdminEvents() {
               </div>
               <div className="p-6 flex items-center justify-between">
                 <div className="min-w-0 flex-1 mr-4">
-                  <h3 className="text-sm font-black text-slate-900 truncate tracking-tight">{asset.alt || "Untitled Asset"}</h3>
+                  <h3 className="text-sm font-black text-sand-50 truncate tracking-tight">{asset.alt || "Untitled Asset"}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-[9px] font-bold text-gold-600 bg-gold-50 px-2 py-0.5 rounded border border-gold-100 uppercase tracking-widest">
                       {asset.event?.type || 'Portfolio'}
                     </span>
-                    <span className="text-[9px] text-slate-400 font-medium">Added {new Date(asset.createdAt).toLocaleDateString()}</span>
+                    <span className="text-[9px] text-sand-400 font-medium">Added {new Date(asset.createdAt).toLocaleDateString()}</span>
                   </div>
                 </div>
                 <button

@@ -68,8 +68,8 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
       onMouseLeave={() => setHoveredLink(null)}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled
-          // Scrolled: solid light surface + subtle slate bottom border
-          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 py-2 shadow-sm"
+          // Scrolled: solid dark surface + subtle dark bottom border
+          ? "bg-[#0B0C10]/95 backdrop-blur-xl border-b border-[var(--border)] py-2 shadow-sm"
           // Top of page: fully transparent so hero image shows through
           : "bg-transparent border-b border-transparent py-4"
       }`}
@@ -100,15 +100,11 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
               
               // Choose legibility colors dynamically based on scrolling & hero themes
               const textNormal = isScrolled
-                ? "text-slate-600 hover:text-slate-900"
+                ? "text-[var(--foreground-muted)] hover:text-[var(--heading)]"
                 : darkHero
                   ? "text-white/80 hover:text-white"
-                  : "text-slate-600 hover:text-slate-900";
-              const textActive = isScrolled
-                ? "text-emerald-800"
-                : darkHero
-                  ? "text-gold-400"
-                  : "text-emerald-800";
+                  : "text-[var(--foreground-muted)] hover:text-[var(--heading)]";
+              const textActive = "text-gold-400";
  
               return (
                 <div
@@ -135,9 +131,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                     )}
                     {/* Active underline */}
                     {isActive && (
-                      <span className={`absolute bottom-0 left-3 right-3 h-px ${
-                        isScrolled ? "bg-emerald-800" : darkHero ? "bg-gold-400" : "bg-emerald-800"
-                      }`} />
+                      <span className="absolute bottom-0 left-3 right-3 h-px bg-gold-400" />
                     )}
                   </Link>
 
@@ -297,9 +291,9 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
           <div className="hidden lg:flex items-center gap-5 shrink-0">
             {/* Language toggle */}
             <div className="flex items-center gap-2 group" aria-label="Language toggle">
-              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'en' ? 'text-gold-400' : isScrolled ? 'text-slate-500 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}>EN</button>
-              <span className={`w-px h-3 ${isScrolled ? "bg-slate-300" : darkHero ? "bg-white/20" : "bg-slate-300"}`} />
-              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'ar' ? 'text-gold-400' : isScrolled ? 'text-slate-500 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}>AR</button>
+              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'en' ? 'text-gold-400' : isScrolled ? 'text-[var(--foreground-muted)] hover:text-white' : 'text-white/70 hover:text-white'}`}>EN</button>
+              <span className={`w-px h-3 ${isScrolled ? "bg-[var(--border)]" : darkHero ? "bg-ink-800/20" : "bg-[var(--border)]"}`} />
+              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'ar' ? 'text-gold-400' : isScrolled ? 'text-[var(--foreground-muted)] hover:text-white' : 'text-white/70 hover:text-white'}`}>AR</button>
             </div>
 
             {/* CTA */}
@@ -323,10 +317,10 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 transition-colors ${
               isScrolled
-                ? "text-slate-800 hover:text-emerald-800"
+                ? "text-[var(--heading)] hover:text-gold-400"
                 : darkHero
                   ? "text-white hover:text-gold-400"
-                  : "text-slate-800 hover:text-emerald-800"
+                  : "text-[var(--heading)] hover:text-gold-400"
             }`}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >

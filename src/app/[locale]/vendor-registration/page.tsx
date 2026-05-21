@@ -61,26 +61,26 @@ export default function VendorRegistration() {
     }
   };
 
-  const inputClasses = "w-full bg-white border border-gray-100 p-5 text-sm text-black placeholder-gray-400 focus:border-primary transition-all rounded-xl outline-none shadow-sm hover:border-gray-200 focus:shadow-lg";
+  const inputClasses = "w-full bg-ink-800 border border-ink-600 p-5 text-sm text-black placeholder-gray-400 focus:border-primary transition-all rounded-xl outline-none shadow-sm hover:border-gray-200 focus:shadow-lg";
 
   return (
-    <main className="min-h-screen bg-gray-50/30">
+    <main className="min-h-screen bg-ink-950/30">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-40 pb-20 bg-white border-b border-gray-100">
+      <section className="pt-40 pb-20 bg-ink-800 border-b border-ink-600">
         <div className="container-luxury text-center">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-primary text-xs uppercase tracking-[0.5em] font-bold mb-4 block"
+            className="text-primary text-xs uppercase tracking-[0.5em] font-bold mb-8 block"
           >
             Partnership
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 uppercase tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-8 uppercase tracking-tight"
           >
             Vendor <span className="text-primary italic">Registration</span>
           </motion.h1>
@@ -97,21 +97,21 @@ export default function VendorRegistration() {
       </section>
 
       {/* Form Section */}
-      <section className="py-24">
+      <section className="py-32">
         <div className="container-luxury max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
             {/* Left Side: Info */}
             <div className="lg:col-span-4 space-y-12">
               <div>
-                <h3 className="text-black font-bold uppercase tracking-widest text-sm mb-6">Why Partner With Us?</h3>
+                <h3 className="text-black font-bold uppercase tracking-widest text-sm mb-8">Why Partner With Us?</h3>
                 <ul className="space-y-6">
                   {[
                     { title: "Elite Clientele", desc: "Gain access to high-profile corporate galas and royal weddings." },
                     { title: "Vision 2030 Projects", desc: "Collaborate on major Saudi Season events and GIGA projects." },
                     { title: "Seamless Coordination", desc: "Professional planning teams that handle all logistics." },
                   ].map((item, i) => (
-                    <li key={i} className="flex gap-4">
+                    <li key={i} className="flex gap-10">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
                       <div>
                         <h4 className="text-black text-[11px] font-bold uppercase tracking-widest mb-1">{item.title}</h4>
@@ -122,9 +122,9 @@ export default function VendorRegistration() {
                 </ul>
               </div>
 
-              <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4">Direct Support</h4>
-                <p className="text-gray-500 text-[11px] mb-6 leading-relaxed">Prefer to speak with our partnership team directly?</p>
+              <div className="bg-ink-800 p-8 rounded-2xl border border-ink-600 shadow-sm">
+                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-8">Direct Support</h4>
+                <p className="text-gray-500 text-[11px] mb-8 leading-relaxed">Prefer to speak with our partnership team directly?</p>
                 <a 
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20register%20as%20a%20vendor."
                   target="_blank"
@@ -142,10 +142,10 @@ export default function VendorRegistration() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl"
+                className="bg-ink-800 p-8 md:p-12 rounded-3xl border border-ink-600 shadow-xl"
               >
                 <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><User size={12} /> Full Name</label>
                       <input 
@@ -170,7 +170,7 @@ export default function VendorRegistration() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Phone size={12} /> WhatsApp / Phone</label>
                       <input 
@@ -195,7 +195,7 @@ export default function VendorRegistration() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Briefcase size={12} /> Service Category</label>
                       <select 
@@ -249,7 +249,7 @@ export default function VendorRegistration() {
                     />
                   </div>
 
-                  <div className="flex flex-col md:flex-row items-center gap-6 pt-6">
+                  <div className="flex flex-col md:flex-row items-center gap-10 pt-6">
                     <button 
                       type="submit" 
                       disabled={status === "loading"}

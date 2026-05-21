@@ -72,15 +72,15 @@ export default function CalendarPage() {
 
   return (
     <div className="pb-20 max-w-7xl mx-auto">
-      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
+          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
             Event Schedule
           </h1>
-          <p className="text-slate-500 font-medium">Coordinate logistics, team dispatches, and luxury event timelines.</p>
+          <p className="text-sand-300 font-medium">Coordinate logistics, team dispatches, and luxury event timelines.</p>
         </div>
         <div className="flex gap-3">
-          <button className="px-5 py-3 bg-white border border-slate-200 text-slate-600 font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-slate-50 transition-all shadow-sm flex items-center gap-2">
+          <button className="px-5 py-3 bg-ink-800 border border-ink-600 text-sand-200 font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-ink-950 transition-all shadow-sm flex items-center gap-2">
             View List
           </button>
           <button className="px-6 py-3 bg-slate-900 text-white font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 flex items-center gap-2">
@@ -90,36 +90,36 @@ export default function CalendarPage() {
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-[2.5rem] shadow-sm overflow-hidden">
+      <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] shadow-sm overflow-hidden">
         {/* Calendar Header */}
-        <div className="p-10 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
-          <div className="flex items-center gap-6">
+        <div className="p-10 border-b border-ink-500 flex items-center justify-between bg-ink-950/50">
+          <div className="flex items-center gap-10">
             <div className="p-3 bg-gold-500 rounded-2xl shadow-xl shadow-gold-500/20">
               <CalendarDays className="text-white" size={24} />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-2xl font-black text-sand-50 tracking-tight">
                 {monthNames[month]} {year}
               </h2>
-              <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Event Master Timeline</p>
+              <p className="text-xs text-sand-400 font-bold uppercase tracking-widest mt-1">Event Master Timeline</p>
             </div>
           </div>
-          <div className="flex gap-3 bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="flex gap-3 bg-ink-800 p-1.5 rounded-2xl border border-ink-600 shadow-sm">
             <button 
               onClick={() => setCurrentDate(new Date(year, month - 1, 1))}
-              className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-slate-50 transition-all text-slate-400 hover:text-slate-900"
+              className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-ink-950 transition-all text-sand-400 hover:text-sand-50"
             >
               <ChevronLeft size={22} />
             </button>
             <button 
               onClick={() => setCurrentDate(new Date())}
-              className="px-4 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-900"
+              className="px-4 text-[10px] font-black uppercase tracking-widest text-sand-300 hover:text-sand-50"
             >
               Today
             </button>
             <button 
               onClick={() => setCurrentDate(new Date(year, month + 1, 1))}
-              className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-slate-50 transition-all text-slate-400 hover:text-slate-900"
+              className="w-11 h-11 rounded-xl flex items-center justify-center hover:bg-ink-950 transition-all text-sand-400 hover:text-sand-50"
             >
               <ChevronRight size={22} />
             </button>
@@ -127,10 +127,10 @@ export default function CalendarPage() {
         </div>
 
         {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-px bg-slate-100">
+        <div className="grid grid-cols-7 gap-px bg-ink-900">
           {/* Days */}
           {days.map((day) => (
-            <div key={day} className="bg-white py-5 text-center text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] border-b border-slate-100">
+            <div key={day} className="bg-ink-800 py-5 text-center text-[10px] font-black text-sand-400 uppercase tracking-[0.25em] border-b border-ink-500">
               {day}
             </div>
           ))}
@@ -143,13 +143,13 @@ export default function CalendarPage() {
             return (
               <div 
                 key={i} 
-                className={`min-h-[160px] bg-white p-5 transition-all duration-300 relative group border-r border-b border-slate-50 ${!item.currentMonth ? 'bg-slate-50/50' : 'hover:bg-slate-50/80'}`}
+                className={`min-h-[160px] bg-ink-800 p-5 transition-all duration-300 relative group border-r border-b border-slate-50 ${!item.currentMonth ? 'bg-ink-950/50' : 'hover:bg-ink-950/80'}`}
               >
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-8">
                   <span className={`text-sm font-black transition-all ${
                     isToday 
                       ? 'w-9 h-9 flex items-center justify-center rounded-xl bg-gold-500 text-white shadow-lg shadow-gold-500/30 ring-4 ring-gold-500/10' 
-                      : !item.currentMonth ? 'text-slate-200' : 'text-slate-400 group-hover:text-slate-900'
+                      : !item.currentMonth ? 'text-slate-200' : 'text-sand-400 group-hover:text-sand-50'
                   }`}>
                     {item.date}
                   </span>

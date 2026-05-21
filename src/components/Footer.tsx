@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-6">
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
               Services
             </h4>
             <ul className="space-y-4">
@@ -115,7 +115,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-6">
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
               Company
             </h4>
             <ul className="space-y-4">
@@ -136,7 +136,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-6">
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
               Contact
             </h4>
             <ul className="space-y-4">
@@ -225,7 +225,7 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom bar ─────────────────────────────────────────────────────── */}
-        <div className="border-t border-ink-600 pt-7 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-ink-600 pt-7 flex flex-col md:flex-row justify-between items-center gap-10">
           <p className="text-[11px] uppercase tracking-widest text-sand-500">
             &copy; {new Date().getFullYear()} Saudi Event Management. All rights reserved.
           </p>

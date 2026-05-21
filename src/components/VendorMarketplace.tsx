@@ -92,7 +92,7 @@ export default function VendorMarketplace() {
     : vendors.filter(v => v.category === activeCategory);
 
   return (
-    <section id="vendors" className="py-24 bg-emerald-950 relative overflow-hidden">
+    <section id="vendors" className="py-32 bg-emerald-950 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -100,13 +100,13 @@ export default function VendorMarketplace() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-10">
           <div>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block"
+              className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-8 block"
             >
               Curated Partners
             </motion.span>
@@ -130,8 +130,8 @@ export default function VendorMarketplace() {
               onClick={() => setActiveCategory("all")}
               className={`px-6 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
                 activeCategory === "all" 
-                ? "bg-gold-500 text-charcoal-900" 
-                : "bg-white/5 text-gray-400 hover:bg-white/10"
+                ? "bg-gold-500 text-sand-50" 
+                : "bg-ink-800/5 text-gray-400 hover:bg-ink-800/10"
               }`}
             >
               All Vendors
@@ -142,8 +142,8 @@ export default function VendorMarketplace() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`flex items-center gap-2 px-6 py-2 rounded-full text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
                   activeCategory === cat.id 
-                  ? "bg-gold-500 text-charcoal-900" 
-                  : "bg-white/5 text-gray-400 hover:bg-white/10"
+                  ? "bg-gold-500 text-sand-50" 
+                  : "bg-ink-800/5 text-gray-400 hover:bg-ink-800/10"
                 }`}
               >
                 <cat.icon size={14} />
@@ -183,7 +183,7 @@ export default function VendorMarketplace() {
 
               {/* Content */}
               <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-8">
                   <div>
                     <h3 className="text-xl font-sans font-bold text-white group-hover:text-gold-400 transition-colors">
                       {vendor.name}
@@ -224,7 +224,7 @@ export default function VendorMarketplace() {
           viewport={{ once: true }}
           className="mt-20 p-12 bg-gradient-to-r from-charcoal-800 to-charcoal-700 rounded-3xl border border-gold-500/20 text-center"
         >
-          <h3 className="text-xl md:text-2xl font-sans font-bold text-white mb-4">Are you a premium vendor?</h3>
+          <h3 className="text-xl md:text-2xl font-sans font-bold text-white mb-8">Are you a premium vendor?</h3>
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
             Join the most exclusive event network in the Middle East and showcase your services to elite clientele.
           </p>

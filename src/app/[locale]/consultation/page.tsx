@@ -80,7 +80,7 @@ export default function ConsultationPage() {
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-gold-500 text-xs uppercase tracking-[0.5em] font-bold mb-6 block"
+            className="text-gold-500 text-xs uppercase tracking-[0.5em] font-bold mb-8 block"
           >
             Personalized Planning
           </motion.span>
@@ -108,11 +108,11 @@ export default function ConsultationPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Side: Info */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white/5 border border-white/10 p-8 rounded-sm">
-              <h2 className="text-white font-sans font-bold text-2xl mb-6 uppercase tracking-tight">
+            <div className="bg-ink-800/5 border border-white/10 p-8 rounded-sm">
+              <h2 className="text-white font-sans font-bold text-2xl mb-8 uppercase tracking-tight">
                 Your <span className="text-gold-500">Discovery</span> Journey
               </h2>
-              <h3 className="text-white/60 font-sans font-bold text-xs mb-6 uppercase tracking-widest">What to Expect</h3>
+              <h3 className="text-white/60 font-sans font-bold text-xs mb-8 uppercase tracking-widest">What to Expect</h3>
               <ul className="space-y-6">
                 {[
                   { icon: Zap, title: "Initial Vision Discovery", desc: "A 30-minute deep dive into your event goals and inspirations." },
@@ -124,7 +124,7 @@ export default function ConsultationPage() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex gap-4"
+                    className="flex gap-10"
                   >
                     <div className="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-500 shrink-0">
                       <item.icon size={20} />
@@ -139,7 +139,7 @@ export default function ConsultationPage() {
             </div>
 
             <div className="p-8 border border-white/5 rounded-sm">
-              <div className="flex items-center gap-4 text-gold-500 mb-4">
+              <div className="flex items-center gap-10 text-gold-500 mb-8">
                 <Clock size={20} />
                 <span className="text-xs uppercase tracking-widest font-bold">Priority Response</span>
               </div>
@@ -154,16 +154,16 @@ export default function ConsultationPage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="bg-white p-8 md:p-12 shadow-2xl"
+              className="bg-ink-800 p-8 md:p-12 shadow-2xl"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Full Name</label>
                     <input 
                       type="text" 
                       required 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -174,7 +174,7 @@ export default function ConsultationPage() {
                     <input 
                       type="email" 
                       required 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -182,12 +182,12 @@ export default function ConsultationPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone Number</label>
                     <input 
                       type="tel" 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none" 
                       placeholder="+966 50 123 4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -196,7 +196,7 @@ export default function ConsultationPage() {
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Event Type</label>
                     <select 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none appearance-none"
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none appearance-none"
                       value={formData.eventType}
                       onChange={(e) => setFormData({...formData, eventType: e.target.value})}
                     >
@@ -209,12 +209,12 @@ export default function ConsultationPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Target Date</label>
                     <input 
                       type="date" 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none" 
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none" 
                       value={formData.eventDate}
                       onChange={(e) => setFormData({...formData, eventDate: e.target.value})}
                     />
@@ -222,7 +222,7 @@ export default function ConsultationPage() {
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Estimated Budget</label>
                     <select 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none appearance-none"
+                      className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] focus:border-gold-500 transition-all outline-none appearance-none"
                       value={formData.budget}
                       onChange={(e) => setFormData({...formData, budget: e.target.value})}
                     >
@@ -239,7 +239,7 @@ export default function ConsultationPage() {
                   <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Brief Overview of your Vision</label>
                   <textarea 
                     rows={4}
-                    className="w-full bg-gray-50 border border-gray-100 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none resize-none" 
+                    className="w-full bg-ink-950 border border-ink-600 p-4 text-sm text-[#041E42] placeholder-gray-300 focus:border-gold-500 transition-all outline-none resize-none" 
                     placeholder="Tell us about the atmosphere, location, and key elements you envision..."
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -251,7 +251,7 @@ export default function ConsultationPage() {
                   disabled={status === "loading"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#041E42] text-white font-bold uppercase tracking-[0.3em] py-5 text-[11px] flex items-center justify-center gap-4 hover:bg-[#062a5c] transition-all"
+                  className="w-full bg-[#041E42] text-white font-bold uppercase tracking-[0.3em] py-5 text-[11px] flex items-center justify-center gap-10 hover:bg-[#062a5c] transition-all"
                 >
                   {status === "loading" ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -281,8 +281,8 @@ export default function ConsultationPage() {
                   )}
                 </AnimatePresence>
 
-                <div className="pt-6 border-t border-gray-100 text-center">
-                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-4">Prefer instant reply?</p>
+                <div className="pt-6 border-t border-ink-600 text-center">
+                  <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-8">Prefer instant reply?</p>
                   <a 
                     href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I'd%20like%20to%20book%20a%20consultation."
                     target="_blank"
@@ -299,7 +299,7 @@ export default function ConsultationPage() {
       </section>
 
       {/* Descriptive SEO Section */}
-      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center border-t border-white/5">
+      <section className="py-28 relative max-w-4xl mx-auto px-4 text-center border-t border-white/5">
         <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold uppercase tracking-tight">
           The Power of <span className="text-gold-500">Early Consultation</span>
         </h2>

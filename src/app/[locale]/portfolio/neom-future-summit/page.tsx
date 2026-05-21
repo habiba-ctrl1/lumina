@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function NeomFutureSummitCaseStudy() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function NeomFutureSummitCaseStudy() {
           <Link href="/portfolio" className="inline-flex items-center text-gold-500 hover:text-white transition-colors mb-8 text-sm uppercase tracking-widest font-medium">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-4 block bg-white/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
+          <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
             Corporate Case Study
           </span>
-          <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight">
             The NEOM <span className="text-shimmer font-bold">Future Summit</span>
           </h1>
           <p className="text-gray-400 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
@@ -45,8 +45,8 @@ export default function NeomFutureSummitCaseStudy() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border border-gray-100 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-800 border border-ink-600 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Globe, label: "Reach", val: "Global Investors" },
             { icon: Cpu, label: "Tech", val: "AI-Integrated" },
@@ -56,19 +56,19 @@ export default function NeomFutureSummitCaseStudy() {
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-gold-500 mx-auto mb-3" />
               <div className="text-xs uppercase tracking-widest text-gray-400 mb-1">{stat.label}</div>
-              <div className="text-lg font-sans font-bold text-slate-900">{stat.val}</div>
+              <div className="text-lg font-sans font-bold text-sand-50">{stat.val}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-600 font-light text-lg leading-relaxed space-y-16">
+      <section className="py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-sand-200 font-light text-lg leading-relaxed space-y-16">
         
         {/* The Challenge */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-6">The <span className="text-gold-500">Brief</span></h2>
-          <p className="mb-4">
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-sand-50 mb-8">The <span className="text-gold-500">Brief</span></h2>
+          <p className="mb-8">
             Saudi Event Management was commissioned by the NEOM Investment Authority to execute a two-day high-level summit for 500 global CEOs, tech pioneers, and sovereign wealth fund managers. The challenge was to create an environment that felt both hyper-futuristic and deeply hospitable, reflecting NEOM's identity as the intersection of nature and technology.
           </p>
           <p>
@@ -79,8 +79,8 @@ export default function NeomFutureSummitCaseStudy() {
         {/* The Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-6">The <span className="text-gold-500">Execution</span></h2>
-            <p className="mb-4">
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-sand-50 mb-8">The <span className="text-gold-500">Execution</span></h2>
+            <p className="mb-8">
               We designed a 360-degree immersive "Living Boardroom" featuring kinetic LED walls that responded to real-time data visualizations. Our team managed every aspect from private jet charters to bespoke biometric check-ins.
             </p>
             <ul className="space-y-3 mt-6">
@@ -92,12 +92,12 @@ export default function NeomFutureSummitCaseStudy() {
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm">
                   <CheckCircle2 size={18} className="text-gold-500 shrink-0 mt-1" />
-                  <span className="text-slate-600">{item}</span>
+                  <span className="text-sand-200">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-square rounded-3xl overflow-hidden border border-gray-100 shadow-xl">
+          <div className="relative aspect-square rounded-3xl overflow-hidden border border-ink-600 shadow-xl">
             <div className="absolute inset-0 bg-gold-500/10 animate-pulse" />
             <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" width={800} height={800} className="w-full h-full object-cover" />
           </div>
@@ -105,15 +105,15 @@ export default function NeomFutureSummitCaseStudy() {
 
         {/* The Result */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-6">The <span className="text-gold-500">Impact</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-sand-50 mb-8">The <span className="text-gold-500">Impact</span></h2>
           <p className="mb-8 text-justify">
             The summit was hailed as a benchmark for the future of international diplomacy and corporate gathering. Post-event surveys showed a 98% satisfaction rate, with over $40B in investment pledges announced during the closing gala. Saudi Event Management's ability to blend high-tech infrastructure with the warmth of Saudi hospitality was cited as the key factor in the event's success.
           </p>
           
           {/* Testimonial */}
-          <div className="bg-slate-50 border border-gray-100 p-10 rounded-3xl text-center relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-gold-500 text-4xl font-serif">&quot;</div>
-            <p className="text-xl md:text-2xl font-sans font-bold text-slate-800 mb-6 leading-snug">
+          <div className="bg-ink-950 border border-ink-600 p-10 rounded-3xl text-center relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-ink-800 px-4 text-gold-500 text-4xl font-serif">&quot;</div>
+            <p className="text-xl md:text-2xl font-sans font-bold text-sand-100 mb-8 leading-snug">
               &quot;Saudi Event Management redefined what is possible in corporate event management. They didn&apos;t just host a summit; they created a gateway to the future.&quot;
             </p>
             <div className="text-gold-500 font-medium uppercase tracking-widest text-sm">— Director of Investment, NEOM</div>
@@ -122,8 +122,8 @@ export default function NeomFutureSummitCaseStudy() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-slate-50 text-center">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-6">Host Your <span className="text-gold-500">Global Milestone</span></h2>
+      <section className="py-32 bg-ink-950 text-center">
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-sand-50 mb-8">Host Your <span className="text-gold-500">Global Milestone</span></h2>
         <Link 
           href="/#contact" 
           className="inline-block px-10 py-4 bg-black text-white font-bold uppercase tracking-widest hover:bg-gold-500 transition-colors rounded-lg shadow-xl"

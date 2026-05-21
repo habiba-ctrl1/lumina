@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RiyadhEliteMajlis() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function RiyadhEliteMajlis() {
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-primary/5 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
+          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/5 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Corporate Cultural Engagement
           </span>
-          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-6 leading-tight uppercase tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-8 leading-tight uppercase tracking-tight">
             Riyadh <span className="text-primary italic">Elite Majlis</span>
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Where tradition meets the boardroom. An exclusive environment for high-stakes networking and cultural exchange.</p>
@@ -45,8 +45,8 @@ export default function RiyadhEliteMajlis() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-800 border border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Home, label: "Setting", val: "Private Palace" },
             { icon: Users, label: "Capacity", val: "50 VVIPs" },
@@ -74,7 +74,7 @@ export default function RiyadhEliteMajlis() {
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Concept</span></h2>
-            <p className="mb-6">
+            <p className="mb-8">
               The Majlis is the heartbeat of Saudi social and political life. For this project, we were tasked with modernizing the Majlis experience for a group of international CEOs and local ministers. The goal was to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions.
             </p>
             <p>
@@ -86,14 +86,14 @@ export default function RiyadhEliteMajlis() {
         {/* The Execution */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-10 uppercase tracking-tight">Impeccable <span className="text-primary italic">Detail</span></h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {[
               { title: "Custom Furnishings", desc: "Hand-crafted Sadu weaving patterns integrated into ergonomic modern seating." },
               { title: "Sensory Branding", desc: "A custom-curated fragrance of Oud and Taif Rose designed specifically for the evening." },
               { title: "Gastronomic Journey", desc: "A 12-course tasting menu reinventing traditional Saudi flavors for a global palate." },
               { title: "Tech Integration", desc: "Hidden LED screens and directional audio that preserved the aesthetic of the space." }
             ].map((item, i) => (
-              <div key={i} className="flex gap-6 p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:bg-white hover:shadow-xl transition-all group">
+              <div key={i} className="flex gap-10 p-8 bg-ink-950 rounded-3xl border border-ink-600 hover:bg-ink-800 hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
                   <CheckCircle2 size={24} className="text-primary group-hover:text-white" />
                 </div>

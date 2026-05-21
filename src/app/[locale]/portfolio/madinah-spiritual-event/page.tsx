@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function MadinahSpiritualEvent() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function MadinahSpiritualEvent() {
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
+          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Reverence & Grace
           </span>
-          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-6 leading-tight uppercase tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-8 leading-tight uppercase tracking-tight">
             Madinah <span className="text-primary italic">Spiritual</span> Event
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Crafting moments of profound peace in the City of the Prophet. A celebration of faith, heritage, and unparalleled hospitality.</p>
@@ -45,8 +45,8 @@ export default function MadinahSpiritualEvent() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-800 border border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Moon, label: "Theme", val: "Spiritual Peace" },
             { icon: Users, label: "Attendees", val: "International" },
@@ -67,12 +67,12 @@ export default function MadinahSpiritualEvent() {
         
         {/* The Essence */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
+          <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-ink-600">
             <Image src="/gallery_charity_gala.webp" alt="Madinah Event Ambience" width={800} height={800} className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Essence</span></h2>
-            <p className="mb-6">
+            <p className="mb-8">
               Madinah demands a unique approach to event management—one that prioritizes tranquility, respect, and effortless flow. For this spiritual gathering, we were commissioned to design a space that felt like an extension of the holy city&apos;s innate serenity.
             </p>
             <p>
@@ -84,15 +84,15 @@ export default function MadinahSpiritualEvent() {
         {/* Pillars of Peace */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-12 uppercase tracking-tight">Pillars of <span className="text-primary italic">Peace</span></h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {[
               { title: "Atmospheric Design", desc: "Using acoustic dampening and scent curation to create an environment that felt separate from the outside world." },
               { title: "Cultural Narrative", desc: "Integrating traditional Madinah craftsmanship into every touchpoint, from the invitations to the furniture." },
               { title: "Seamless Flow", desc: "Logistical planning that respected prayer times and the city's unique movement patterns." },
               { title: "Personalized Service", desc: "A high staff-to-guest ratio ensuring every individual's needs were met with discretion and grace." }
             ].map((item, i) => (
-              <div key={i} className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:bg-white hover:shadow-lg transition-all">
-                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+              <div key={i} className="p-8 bg-ink-950 rounded-3xl border border-ink-600 hover:bg-ink-800 hover:shadow-lg transition-all">
+                <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-8 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-primary" /> {item.title}
                 </h4>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
@@ -107,14 +107,14 @@ export default function MadinahSpiritualEvent() {
           <p className="text-gray-400 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             The event was described by attendees as a "transformative experience." Saudi Event Management's ability to handle the complexities of the city while maintaining a profound sense of reverence and luxury established a new benchmark for spiritual events.
           </p>
-          <div className="inline-block px-8 py-4 bg-white/5 rounded-full border border-white/10">
+          <div className="inline-block px-8 py-4 bg-ink-800/5 rounded-full border border-white/10">
             <span className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">Excellence in Spiritual Hospitality</span>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 text-center bg-gray-50">
+      <section className="py-32 text-center bg-ink-950">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host a <span className="text-primary italic">Soulful Gathering</span></h2>
         <Link 
           href="/#contact" 

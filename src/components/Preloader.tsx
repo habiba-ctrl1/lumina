@@ -36,7 +36,7 @@ export default function Preloader() {
             SEM<span className="text-gold-500">.</span>
           </motion.div>
 
-          <div className="w-48 h-[1px] bg-white/10 relative overflow-hidden">
+          <div className="w-48 h-[1px] bg-ink-800/10 relative overflow-hidden">
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}

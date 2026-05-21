@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function FounderSection() {
   return (
-    <section className="py-24 bg-emerald-950 relative overflow-hidden border-t border-white/5">
+    <section className="py-32 bg-emerald-950 relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[200px] pointer-events-none" />
 
@@ -52,7 +52,7 @@ export default function FounderSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            <span className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
               The Vision
             </span>
             <h2 className="text-2xl md:text-4xl font-sans text-white mb-3 font-bold uppercase tracking-tight leading-tight">

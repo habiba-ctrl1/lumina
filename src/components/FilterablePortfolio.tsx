@@ -90,7 +90,7 @@ export default function FilterablePortfolio() {
     : portfolioItems.filter(item => item.category === activeCategory);
 
   return (
-    <section className="py-24 bg-ink-950 relative overflow-hidden">
+    <section className="py-32 bg-ink-950 relative overflow-hidden">
       <div className="container-luxury relative z-10">
         
         {/* Header */}
@@ -107,7 +107,7 @@ export default function FilterablePortfolio() {
             initial={{ opacity: 0, y: 10 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true }} 
-            className="font-display font-medium text-sand-50 text-2xl md:text-4xl mb-4 uppercase tracking-tight"
+            className="font-display font-medium text-sand-50 text-2xl md:text-4xl mb-8 uppercase tracking-tight"
           >
             Recent <span className="text-shimmer italic">Masterpieces</span>
           </motion.h2>
@@ -134,7 +134,7 @@ export default function FilterablePortfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
               <motion.div
@@ -144,7 +144,7 @@ export default function FilterablePortfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.6 }}
-                className="group relative h-[320px] overflow-hidden rounded-sm bg-ink-900 border border-ink-600"
+                className="group relative h-[320px] overflow-hidden rounded-sm bg-ink-900 border border-ink-600 hover:border-[#3F3F46] transition-all duration-300 hover:shadow-md"
               >
                 <Link href={`/portfolio/${item.slug}`} className="block w-full h-full">
                   <Image 
@@ -160,7 +160,7 @@ export default function FilterablePortfolio() {
                   
                   {/* Category Tag */}
                   <div className="absolute top-8 right-8 overflow-hidden rounded-sm">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2">
+                    <div className="bg-ink-800/10 backdrop-blur-md border border-white/20 px-5 py-2">
                        <span className="text-[9px] text-white uppercase tracking-widest font-bold">{item.category}</span>
                     </div>
                   </div>
@@ -176,7 +176,7 @@ export default function FilterablePortfolio() {
                       
                       {/* Detailed Metadata (Visible on Hover) */}
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                        <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6 mb-6">
+                        <div className="grid grid-cols-2 gap-10 border-t border-white/10 pt-6 mb-8">
                            <div>
                              <p className="text-[8px] text-sand-400 uppercase tracking-widest mb-1">Guests</p>
                              <p className="text-xs text-white font-bold">{item.guests}</p>

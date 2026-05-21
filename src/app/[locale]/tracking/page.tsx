@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function TrackingPage() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
       <LiveEventTracker />
       <Footer />

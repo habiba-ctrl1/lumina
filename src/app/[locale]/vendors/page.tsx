@@ -76,10 +76,10 @@ export default function VendorsPage() {
     <main className="min-h-screen bg-emerald-950 overflow-hidden pt-24">
       <Navbar />
 
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-white/5">
+      <section className="relative py-28 px-4 sm:px-6 lg:px-8 border-b border-white/5">
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-4 block">The Elite Collective</span>
-          <h1 className="text-3xl md:text-5xl font-sans text-white mb-6 font-bold">
+          <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-8 block">The Elite Collective</span>
+          <h1 className="text-3xl md:text-5xl font-sans text-white mb-8 font-bold">
             Vendor <span className="text-shimmer font-bold">Directory</span>
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
@@ -88,19 +88,19 @@ export default function VendorsPage() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-32">
         {categories.map((category) => {
           const categoryVendors = vendors.filter(v => v.categoryId === category.id);
           return (
             <section key={category.id} id={category.id} className="relative">
-              <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
+              <div className="flex items-center gap-10 mb-12 border-b border-white/10 pb-6">
                 <div className="w-12 h-12 rounded-full bg-emerald-900 border border-gold-500/30 flex items-center justify-center text-gold-500">
                   <category.icon size={24} />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">{category.name}</h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {categoryVendors.map((vendor) => (
                   <div key={vendor.id} className="group bg-emerald-900/40 border border-white/5 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/5 flex flex-col">
                     <div className="relative h-64 w-full overflow-hidden">
@@ -112,7 +112,7 @@ export default function VendorsPage() {
                     </div>
 
                     <div className="p-6 flex-1 flex flex-col">
-                      <div className="flex justify-between items-start mb-4">
+                      <div className="flex justify-between items-start mb-8">
                         <h3 className="text-xl font-sans font-bold text-white group-hover:text-gold-400 transition-colors">{vendor.name}</h3>
                         <div className="flex items-center gap-1 bg-gold-500/10 px-2 py-1 rounded">
                           <Star size={12} className="text-gold-500 fill-gold-500" />
@@ -120,10 +120,10 @@ export default function VendorsPage() {
                         </div>
                       </div>
 
-                      <div className="mt-auto pt-6 flex flex-col gap-4">
+                      <div className="mt-auto pt-6 flex flex-col gap-10">
                         <button 
                           onClick={() => openQuoteModal(vendor)}
-                          className="w-full py-3 bg-gold-500 text-charcoal-900 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-400 transition-all flex items-center justify-center gap-2"
+                          className="w-full py-3 bg-gold-500 text-sand-50 text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-gold-400 transition-all flex items-center justify-center gap-2"
                         >
                           Request a Quote <ArrowRight size={14} />
                         </button>
@@ -162,7 +162,7 @@ export default function VendorsPage() {
 
               {isSubmitted ? (
                 <div className="py-12 text-center">
-                  <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-500">
+                  <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-8 text-emerald-500">
                     <CheckCircle2 size={48} />
                   </div>
                   <h2 className="text-2xl font-bold text-white mb-2">Request Sent!</h2>
@@ -176,7 +176,7 @@ export default function VendorsPage() {
                   </div>
 
                   <form onSubmit={handleQuoteSubmit} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-10">
                       <div className="space-y-2">
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Your Name</label>
                         <input required type="text" value={formData.clientName} onChange={e => setFormData({...formData, clientName: e.target.value})} className="w-full bg-emerald-900/50 border border-white/5 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-500/50" placeholder="Full Name" />
@@ -187,7 +187,7 @@ export default function VendorsPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-10">
                       <div className="space-y-2">
                         <label className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Event Date</label>
                         <div className="relative">
@@ -212,7 +212,7 @@ export default function VendorsPage() {
                       </div>
                     </div>
 
-                    <button disabled={loading} type="submit" className="w-full py-4 bg-gold-500 text-charcoal-900 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10">
+                    <button disabled={loading} type="submit" className="w-full py-4 bg-gold-500 text-sand-50 font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10">
                       {loading ? "Processing..." : "Submit Quote Request"} <Send size={16} />
                     </button>
                   </form>

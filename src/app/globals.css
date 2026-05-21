@@ -14,21 +14,21 @@
    Use these var() tokens in any inline style or plain CSS.
    ──────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Surfaces (Off-White Luxury Theme) */
-  --background:        #F8FAFC;   /* slate-50 — Main Page Background */
-  --surface-raised:    #F1F5F9;   /* slate-100 — Secondary Section Background */
-  --surface:           #FFFFFF;   /* white — Card Surface */
-  --surface-lifted:    #E2E8F0;   /* slate-200 — Elevated Hover Card */
-  --border:            #E2E8F0;   /* slate-200 — Main Borders & Dividers */
-  --border-subtle:     #F1F5F9;   /* slate-100 — Subtle Borders */
+  /* Surfaces (Dark Luxury Theme - Eventana Inspired) */
+  --background:        #0B0C10;   /* Deep charcoal / near black */
+  --surface-raised:    #121318;   /* Slightly lighter dark gray */
+  --surface:           #181920;   /* Card Surface */
+  --surface-lifted:    #1F2029;   /* Elevated Hover Card */
+  --border:            #27272A;   /* zinc-800 - Main Borders & Dividers */
+  --border-subtle:     #18181B;   /* zinc-900 - Subtle Borders */
 
   /* Typography Scales */
-  --heading:           #0F172A;   /* slate-900 — Deep Midnight Slate / Headings */
-  --foreground:        #334155;   /* slate-700 — Primary Body Text */
-  --foreground-medium:  #475569;   /* slate-600 — Secondary / Readability Copy */
-  --foreground-muted:  #64748B;   /* slate-500 — Captions & Labels */
-  --foreground-faint:  #94A3B8;   /* slate-400 — Placeholders */
-  --foreground-disabled:#CBD5E1;   /* slate-300 — Disabled state */
+  --heading:           #FAFAFA;   /* zinc-50 */
+  --foreground:        #D4D4D8;   /* zinc-300 — Primary Body Text */
+  --foreground-medium: #A1A1AA;   /* zinc-400 — Secondary / Readability Copy */
+  --foreground-muted:  #71717A;   /* zinc-500 — Captions & Labels */
+  --foreground-faint:  #52525B;   /* zinc-600 — Placeholders */
+  --foreground-disabled:#3F3F46;  /* zinc-700 — Disabled state */
 
   /* Muted Gold Accent (#C5A880) */
   --gold-50:           #FAF7F2;
@@ -57,25 +57,25 @@
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────────
-   Thin gold thumb on light slate track — matches the luxury palette
+   Thin gold thumb on deep slate track
    ──────────────────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar         { width: 6px; }
-::-webkit-scrollbar-track   { background: #F8FAFC; }
+::-webkit-scrollbar-track   { background: #0B0C10; }
 ::-webkit-scrollbar-thumb   { background: #C5A880; border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: #B0926A; }
 
 /* ── Text Selection ──────────────────────────────────────────────────────────
-   Soft gold tint selection — readable on off-white backgrounds
+   Soft gold tint selection — readable on dark backgrounds
    ──────────────────────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(197, 168, 128, 0.2);
-  color: #0F172A;
+  background: rgba(197, 168, 128, 0.3);
+  color: #FAFAFA;
 }
 
 /* ── Base HTML ───────────────────────────────────────────────────────────────*/
 html {
   scroll-behavior: smooth;
-  background-color: #F8FAFC;
+  background-color: #0B0C10;
 }
 
 body {
@@ -137,9 +137,9 @@ a:hover { color: var(--gold-hover); }
   @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-16;
 }
 
-.section-padding    { @apply py-20 md:py-28; }
-.section-padding-sm { @apply py-14 md:py-20; }
-.section-padding-lg { @apply py-28 md:py-36; }
+.section-padding    { @apply py-24 md:py-32; }
+.section-padding-sm { @apply py-20 md:py-24; }
+.section-padding-lg { @apply py-32 md:py-40; }
 
 /* ── Divider Lines ───────────────────────────────────────────────────────────*/
 .divider-gold {
@@ -171,12 +171,12 @@ a:hover { color: var(--gold-hover); }
   /* ── Buttons (With High Contrast Deep Slate Text) ─────────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           bg-gold-400 text-slate-900
+           bg-gold-400 text-[#0B0C10]
            px-7 py-3 rounded-sm
            text-sm font-medium tracking-wide
            transition-all duration-300
            hover:bg-gold-500 hover:shadow-md
-           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-slate-50;
+           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-[#0B0C10];
   }
 
   .btn-outline {
@@ -197,30 +197,30 @@ a:hover { color: var(--gold-hover); }
            hover:text-emerald-800;
   }
 
-  /* ── Cards (Crisp White with Soft Slate Borders) ───────────────────────────── */
+  /* ── Cards (Dark Surface with Soft Borders) ───────────────────────────── */
   .card {
-    @apply bg-white rounded-sm border border-slate-200/80
+    @apply bg-[var(--surface)] rounded-sm border border-[#27272A]/60
            transition-all duration-300 shadow-sm;
   }
 
   .card-hover {
     @apply card
-           hover:border-slate-300 hover:shadow-md
+           hover:border-[#3F3F46] hover:shadow-md
            hover:-translate-y-0.5;
   }
 
   .card-gold {
     @apply card
-           border-gold-400/30
-           hover:border-gold-400/60;
+           border-[#C5A880]/30
+           hover:border-[#C5A880]/60;
   }
 
   /* ── Stat Block ─────────────────────────────────────────────────────────── */
   .stat-number {
-    @apply font-display text-3xl font-medium text-slate-900;
+    @apply font-display text-3xl font-medium text-[var(--heading)];
   }
   .stat-label {
-    @apply text-xs font-semibold tracking-widest uppercase text-slate-500;
+    @apply text-xs font-semibold tracking-widest uppercase text-[var(--foreground-muted)];
   }
 
   /* ── Gold Accent Line ───────────────────────────────────────────────────── */
@@ -231,8 +231,8 @@ a:hover { color: var(--gold-hover); }
   /* ── Badge / Pill ───────────────────────────────────────────────────────── */
   .badge-gold {
     @apply inline-block text-2xs font-semibold tracking-widest uppercase
-           text-gold-700 border border-gold-400/40
-           px-3 py-1 rounded-sm bg-gold-400/5;
+           text-gold-700 border border-[#C5A880]/40
+           px-3 py-1 rounded-sm bg-[#C5A880]/5;
   }
 
   .badge-muted {

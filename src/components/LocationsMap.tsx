@@ -14,15 +14,15 @@ const locations = [
 
 export default function LocationsMap() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-32 bg-ink-800 relative overflow-hidden">
       <div className="container-luxury">
         <div className="text-center mb-20">
-          <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block">Regional Coverage</span>
+          <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block">Regional Coverage</span>
           <h2 className="text-black text-3xl md:text-4xl font-bold uppercase tracking-tight">Our <span className="text-primary">Presence</span></h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm font-light mt-6">Defining luxury event management across the Kingdom&apos;s most iconic destinations.</p>
         </div>
 
-        <div className="relative aspect-[16/10] md:aspect-[21/9] w-full max-w-5xl mx-auto bg-gray-50 rounded-[3rem] border border-gray-100 overflow-hidden group">
+        <div className="relative aspect-[16/10] md:aspect-[21/9] w-full max-w-5xl mx-auto bg-ink-950 rounded-[3rem] border border-ink-600 overflow-hidden group">
           {/* Stylized Saudi Map SVG Background mockup */}
           <div className="absolute inset-0 opacity-10 pointer-events-none">
              <svg viewBox="0 0 800 600" className="w-full h-full fill-black">
@@ -47,7 +47,7 @@ export default function LocationsMap() {
                           <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
                           <div className="relative w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg group-hover/pin:scale-125 transition-transform" />
                        </div>
-                       <span className="text-[9px] font-bold uppercase tracking-widest text-black/60 group-hover/pin:text-primary transition-colors whitespace-nowrap bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-100 shadow-sm">
+                       <span className="text-[9px] font-bold uppercase tracking-widest text-black/60 group-hover/pin:text-primary transition-colors whitespace-nowrap bg-ink-800/80 backdrop-blur-sm px-3 py-1 rounded-full border border-ink-600 shadow-sm">
                          {loc.name}
                        </span>
                     </Link>
@@ -57,7 +57,7 @@ export default function LocationsMap() {
           </div>
 
           {/* Map Controls Mockup */}
-          <div className="absolute bottom-10 left-10 flex gap-4">
+          <div className="absolute bottom-10 left-10 flex gap-10">
              <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2">
                    <div className="w-2 h-2 bg-primary rounded-full" />

@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function GlobalTechSummit() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function GlobalTechSummit() {
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-primary/20 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/30">
+          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/20 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/30">
             Technology & Innovation
           </span>
-          <h1 className="text-4xl md:text-7xl font-sans font-bold text-white mb-6 leading-tight uppercase tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tight">
             Global <span className="text-primary italic">Tech</span> Summit
           </h1>
           <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">The intersection of venture capital, silicon, and Saudi Vision. A high-production benchmark for the digital age.</p>
@@ -45,8 +45,8 @@ export default function GlobalTechSummit() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border-y border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-800 border-y border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Globe, label: "Delegations", val: "40+ Countries" },
             { icon: Cpu, label: "Tech Hubs", val: "12 Interactive" },
@@ -69,14 +69,14 @@ export default function GlobalTechSummit() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Mandate</span></h2>
-            <p className="mb-6">
+            <p className="mb-8">
               Saudi Event Management was appointed to design and execute a three-day summit that would host the world&apos;s most influential tech leaders. The requirement was a "Zero-Failure" environment where infrastructure, connectivity, and hospitality merged into a single, seamless digital experience.
             </p>
             <p>
               We built a temporary smart-venue featuring biometric registration, AI-driven networking lounges, and holographic stages that allowed speakers from San Francisco to appear live in Riyadh.
             </p>
           </div>
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-ink-600">
             <Image src="/gallery_corporate_gala.webp" alt="Tech Summit Stage" width={800} height={450} className="w-full h-full object-cover" />
           </div>
         </div>
@@ -84,14 +84,14 @@ export default function GlobalTechSummit() {
         {/* The Solution */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-12 uppercase tracking-tight">Hyper-Scale <span className="text-primary italic">Production</span></h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               { title: "Smart Networking", desc: "Using NFC-enabled badges to facilitate instant contact exchange and meeting scheduling." },
               { title: "Immersive Stage", desc: "A 360-degree LED wrap-around stage providing real-time data visualizations for keynotes." },
               { title: "Hybrid Connectivity", desc: "Ultra-low latency streaming to over 1 million viewers worldwide simultaneously." }
             ].map((item, i) => (
               <div key={i} className="bg-black p-10 rounded-3xl text-white group hover:bg-primary transition-colors duration-500">
-                <h4 className="text-primary text-[10px] font-bold uppercase tracking-widest mb-4 group-hover:text-white transition-colors">{item.title}</h4>
+                <h4 className="text-primary text-[10px] font-bold uppercase tracking-widest mb-8 group-hover:text-white transition-colors">{item.title}</h4>
                 <p className="text-gray-400 text-xs leading-relaxed group-hover:text-white transition-colors">{item.desc}</p>
               </div>
             ))}
@@ -99,7 +99,7 @@ export default function GlobalTechSummit() {
         </div>
 
         {/* Result */}
-        <div className="bg-gray-50 border border-gray-100 p-12 md:p-24 rounded-[4rem] flex flex-col items-center text-center">
+        <div className="bg-ink-950 border border-ink-600 p-12 md:p-24 rounded-[4rem] flex flex-col items-center text-center">
           <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-10">
             <CheckCircle2 size={40} className="text-primary" />
           </div>
@@ -122,7 +122,7 @@ export default function GlobalTechSummit() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-white text-center">
+      <section className="py-32 bg-ink-800 text-center">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Ready to <span className="text-primary italic">Innovate?</span></h2>
         <Link 
           href="/#contact" 

@@ -205,18 +205,18 @@ export default function AdminQuotes() {
       case 'quote_sent': return 'bg-blue-50 text-blue-600 border-blue-100';
       case 'accepted': return 'bg-emerald-50 text-emerald-600 border-emerald-100';
       case 'rejected': return 'bg-red-50 text-red-600 border-red-100';
-      case 'archived': return 'bg-slate-50 text-slate-500 border-slate-100';
-      default: return 'bg-slate-50 text-slate-500 border-slate-100';
+      case 'archived': return 'bg-ink-950 text-sand-300 border-ink-500';
+      default: return 'bg-ink-950 text-sand-300 border-ink-500';
     }
   };
 
   return (
     <div className="pb-20">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-10">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">Quote Requests</h1>
-          <p className="text-slate-500 font-medium">Manage and generate luxury event proposals for your clients.</p>
+          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">Quote Requests</h1>
+          <p className="text-sand-300 font-medium">Manage and generate luxury event proposals for your clients.</p>
         </div>
         <div className="flex gap-3">
           <button
@@ -229,7 +229,7 @@ export default function AdminQuotes() {
           <button
             onClick={fetchData}
             disabled={loading}
-            className="flex items-center gap-2 px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold text-xs uppercase tracking-wider hover:bg-slate-50 transition-all shadow-sm"
+            className="flex items-center gap-2 px-5 py-3 bg-ink-800 border border-ink-600 rounded-xl text-sand-200 font-bold text-xs uppercase tracking-wider hover:bg-ink-950 transition-all shadow-sm"
           >
             <RefreshCw size={16} className={loading ? "animate-spin" : ""} />
             Refresh
@@ -238,39 +238,39 @@ export default function AdminQuotes() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div className="bg-ink-800 p-8 rounded-3xl border border-ink-600 shadow-sm flex items-center gap-10">
           <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center border border-amber-100">
             <Clock size={28} />
           </div>
           <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Pending Requests</p>
-            <h3 className="text-2xl font-black text-slate-900">{counts.pending}</h3>
+            <p className="text-[10px] font-black text-sand-400 uppercase tracking-widest mb-1">Pending Requests</p>
+            <h3 className="text-2xl font-black text-sand-50">{counts.pending}</h3>
           </div>
         </div>
-        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-6">
+        <div className="bg-ink-800 p-8 rounded-3xl border border-ink-600 shadow-sm flex items-center gap-10">
           <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center border border-blue-100">
             <TrendingUp size={28} />
           </div>
           <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Quotes Sent</p>
-            <h3 className="text-2xl font-black text-slate-900">{counts.quote_sent}</h3>
+            <p className="text-[10px] font-black text-sand-400 uppercase tracking-widest mb-1">Quotes Sent</p>
+            <h3 className="text-2xl font-black text-sand-50">{counts.quote_sent}</h3>
           </div>
         </div>
-        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-6">
+        <div className="bg-ink-800 p-8 rounded-3xl border border-ink-600 shadow-sm flex items-center gap-10">
           <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center border border-emerald-100">
             <TrendingUp size={28} />
           </div>
           <div>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Confirmed Value</p>
-            <h3 className="text-2xl font-black text-slate-900">SAR {counts.confirmedValue.toLocaleString()}</h3>
+            <p className="text-[10px] font-black text-sand-400 uppercase tracking-widest mb-1">Confirmed Value</p>
+            <h3 className="text-2xl font-black text-sand-50">SAR {counts.confirmedValue.toLocaleString()}</h3>
           </div>
         </div>
       </div>
 
       {/* Filters & Table Section */}
-      <div className="bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden">
-        <div className="px-8 py-6 border-b border-slate-100 flex flex-wrap items-center gap-4">
+      <div className="bg-ink-800 rounded-[2.5rem] border border-ink-600 shadow-sm overflow-hidden">
+        <div className="px-8 py-6 border-b border-ink-500 flex flex-wrap items-center gap-10">
           {['all', 'pending', 'quote_sent', 'accepted', 'rejected'].map((t) => (
             <button
               key={t}
@@ -278,7 +278,7 @@ export default function AdminQuotes() {
               className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                 filter === t 
                   ? "bg-slate-900 text-white shadow-lg shadow-slate-900/10" 
-                  : "bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                  : "bg-ink-950 text-sand-400 hover:bg-ink-900 hover:text-sand-200"
               }`}
             >
               {t.replace('_', ' ')}
@@ -289,19 +289,19 @@ export default function AdminQuotes() {
         <div className="overflow-x-auto">
           {loading ? (
             <div className="p-20 text-center">
-              <RefreshCw size={32} className="animate-spin text-slate-200 mx-auto mb-4" />
-              <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Accessing Secure Records...</p>
+              <RefreshCw size={32} className="animate-spin text-slate-200 mx-auto mb-8" />
+              <p className="text-xs text-sand-400 font-bold uppercase tracking-widest">Accessing Secure Records...</p>
             </div>
           ) : filteredRequests.length === 0 ? (
             <div className="p-24 text-center">
-              <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-ink-950 rounded-full flex items-center justify-center mx-auto mb-8">
                 <FileText size={32} className="text-slate-200" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">No quote requests yet</h3>
-              <p className="text-slate-500 max-w-xs mx-auto font-medium text-sm mb-8">Quote requests from your website contact forms will appear here automatically.</p>
+              <h3 className="text-lg font-bold text-sand-50 mb-2">No quote requests yet</h3>
+              <p className="text-sand-300 max-w-xs mx-auto font-medium text-sm mb-8">Quote requests from your website contact forms will appear here automatically.</p>
               <button
                 onClick={() => setIsManualModalOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-50 text-slate-900 rounded-xl font-bold text-xs uppercase tracking-widest border border-slate-200 hover:bg-slate-100 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-ink-950 text-sand-50 rounded-xl font-bold text-xs uppercase tracking-widest border border-ink-600 hover:bg-ink-900 transition-all"
               >
                 <Plus size={16} /> Add Manual Request
               </button>
@@ -309,35 +309,35 @@ export default function AdminQuotes() {
           ) : (
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-50/50">
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Client Name</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Event Type</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">City</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Date Received</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 text-center">Status</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 text-right">Actions</th>
+                <tr className="bg-ink-950/50">
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">Client Name</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">Event Type</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">City</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">Date Received</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500 text-center">Status</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredRequests.map((req) => (
-                  <tr key={req.id} className="group hover:bg-slate-50/80 transition-colors">
+                  <tr key={req.id} className="group hover:bg-ink-950/80 transition-colors">
                     <td className="px-8 py-6 border-b border-slate-50">
                       <div>
-                        <p className="text-sm font-bold text-slate-900">{req.clientName}</p>
-                        <p className="text-[11px] text-slate-400 font-medium">{req.clientPhone}</p>
+                        <p className="text-sm font-bold text-sand-50">{req.clientName}</p>
+                        <p className="text-[11px] text-sand-400 font-medium">{req.clientPhone}</p>
                       </div>
                     </td>
                     <td className="px-8 py-6 border-b border-slate-50">
-                      <span className="text-xs font-bold text-slate-600">{req.eventType}</span>
+                      <span className="text-xs font-bold text-sand-200">{req.eventType}</span>
                     </td>
                     <td className="px-8 py-6 border-b border-slate-50">
                       <div className="flex items-center gap-2">
                         <MapPin size={12} className="text-gold-500" />
-                        <span className="text-xs font-bold text-slate-600">{req.eventCity}</span>
+                        <span className="text-xs font-bold text-sand-200">{req.eventCity}</span>
                       </div>
                     </td>
                     <td className="px-8 py-6 border-b border-slate-50">
-                      <span className="text-xs font-medium text-slate-400">
+                      <span className="text-xs font-medium text-sand-400">
                         {new Date(req.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
                     </td>
@@ -350,7 +350,7 @@ export default function AdminQuotes() {
                       <div className="flex items-center justify-end gap-2">
                         <button 
                           onClick={() => { setSelectedRequest(req); setIsDetailOpen(true); }}
-                          className="p-2.5 text-slate-400 hover:text-slate-900 hover:bg-white hover:shadow-sm rounded-xl transition-all"
+                          className="p-2.5 text-sand-400 hover:text-sand-50 hover:bg-ink-800 hover:shadow-sm rounded-xl transition-all"
                           title="View Details"
                         >
                           <ChevronRight size={18} />
@@ -358,26 +358,26 @@ export default function AdminQuotes() {
                         {req.status === 'pending' && (
                           <button 
                             onClick={() => { setSelectedRequest(req); setIsQuoteModalOpen(true); }}
-                            className="p-2.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all"
+                            className="p-2.5 text-sand-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all"
                             title="Create Quote"
                           >
                             <FileText size={18} />
                           </button>
                         )}
                         <div className="relative group/menu">
-                          <button className="p-2.5 text-slate-400 hover:text-slate-900 hover:bg-white hover:shadow-sm rounded-xl transition-all">
+                          <button className="p-2.5 text-sand-400 hover:text-sand-50 hover:bg-ink-800 hover:shadow-sm rounded-xl transition-all">
                             <MoreVertical size={18} />
                           </button>
-                          <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl z-10 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all p-2">
+                          <div className="absolute right-0 top-full mt-1 w-48 bg-ink-800 border border-ink-500 rounded-2xl shadow-xl z-10 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all p-2">
                             <button 
                               onClick={() => updateStatus(req.id, 'rejected')}
-                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
+                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
                             >
                               <XCircle size={14} /> Mark Rejected
                             </button>
                             <button 
                               onClick={() => updateStatus(req.id, 'archived')}
-                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-slate-50 rounded-xl transition-colors flex items-center gap-3"
+                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-ink-950 rounded-xl transition-colors flex items-center gap-3"
                             >
                               <Archive size={14} /> Archive
                             </button>
@@ -411,35 +411,35 @@ export default function AdminQuotes() {
             <motion.aside
               initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-[90] shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-ink-800 z-[90] shadow-2xl flex flex-col"
             >
-              <div className="p-8 border-b border-slate-100 flex items-center justify-between">
-                <h2 className="text-xl font-bold text-slate-900 tracking-tight">Request Details</h2>
-                <button onClick={() => setIsDetailOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors">
-                  <X size={20} className="text-slate-400" />
+              <div className="p-8 border-b border-ink-500 flex items-center justify-between">
+                <h2 className="text-xl font-bold text-sand-50 tracking-tight">Request Details</h2>
+                <button onClick={() => setIsDetailOpen(false)} className="p-2 hover:bg-ink-950 rounded-full transition-colors">
+                  <X size={20} className="text-sand-400" />
                 </button>
               </div>
 
               <div className="flex-1 overflow-y-auto p-8 space-y-10">
                 {/* Client Info */}
                 <div className="space-y-4">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Client Profile</span>
-                  <div className="bg-slate-50 rounded-3xl p-6 space-y-4 border border-slate-100">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
+                  <span className="text-[10px] font-black text-sand-400 uppercase tracking-widest block">Client Profile</span>
+                  <div className="bg-ink-950 rounded-3xl p-6 space-y-4 border border-ink-500">
+                    <div className="flex items-center gap-10">
+                      <div className="w-12 h-12 bg-ink-800 rounded-2xl flex items-center justify-center border border-ink-500 shadow-sm">
                         <User size={20} className="text-gold-500" />
                       </div>
                       <div>
-                        <p className="text-sm font-black text-slate-900">{selectedRequest.clientName}</p>
-                        <p className="text-[11px] text-slate-400 font-medium">Source: {selectedRequest.source}</p>
+                        <p className="text-sm font-black text-sand-50">{selectedRequest.clientName}</p>
+                        <p className="text-[11px] text-sand-400 font-medium">Source: {selectedRequest.source}</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-1 gap-3 pt-2">
-                      <div className="flex items-center gap-3 text-xs font-bold text-slate-600">
-                        <Phone size={14} className="text-slate-400" /> {selectedRequest.clientPhone}
+                      <div className="flex items-center gap-3 text-xs font-bold text-sand-200">
+                        <Phone size={14} className="text-sand-400" /> {selectedRequest.clientPhone}
                       </div>
-                      <div className="flex items-center gap-3 text-xs font-bold text-slate-600">
-                        <Mail size={14} className="text-slate-400" /> {selectedRequest.clientEmail || "No email provided"}
+                      <div className="flex items-center gap-3 text-xs font-bold text-sand-200">
+                        <Mail size={14} className="text-sand-400" /> {selectedRequest.clientEmail || "No email provided"}
                       </div>
                     </div>
                   </div>
@@ -447,52 +447,52 @@ export default function AdminQuotes() {
 
                 {/* Event Details */}
                 <div className="space-y-4">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Event Intelligence</span>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
-                      <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Type</p>
-                      <p className="text-xs font-bold text-slate-900">{selectedRequest.eventType}</p>
+                  <span className="text-[10px] font-black text-sand-400 uppercase tracking-widest block">Event Intelligence</span>
+                  <div className="grid grid-cols-2 gap-10">
+                    <div className="bg-ink-950 rounded-2xl p-4 border border-ink-500">
+                      <p className="text-[9px] font-black text-sand-400 uppercase mb-1">Type</p>
+                      <p className="text-xs font-bold text-sand-50">{selectedRequest.eventType}</p>
                     </div>
-                    <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
-                      <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Location</p>
-                      <p className="text-xs font-bold text-slate-900">{selectedRequest.eventCity}</p>
+                    <div className="bg-ink-950 rounded-2xl p-4 border border-ink-500">
+                      <p className="text-[9px] font-black text-sand-400 uppercase mb-1">Location</p>
+                      <p className="text-xs font-bold text-sand-50">{selectedRequest.eventCity}</p>
                     </div>
-                    <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
-                      <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Guests</p>
-                      <p className="text-xs font-bold text-slate-900">{selectedRequest.guestCount || "---"}</p>
+                    <div className="bg-ink-950 rounded-2xl p-4 border border-ink-500">
+                      <p className="text-[9px] font-black text-sand-400 uppercase mb-1">Guests</p>
+                      <p className="text-xs font-bold text-sand-50">{selectedRequest.guestCount || "---"}</p>
                     </div>
-                    <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100">
-                      <p className="text-[9px] font-black text-slate-400 uppercase mb-1">Budget</p>
-                      <p className="text-xs font-bold text-slate-900">{selectedRequest.budgetRange || "---"}</p>
+                    <div className="bg-ink-950 rounded-2xl p-4 border border-ink-500">
+                      <p className="text-[9px] font-black text-sand-400 uppercase mb-1">Budget</p>
+                      <p className="text-xs font-bold text-sand-50">{selectedRequest.budgetRange || "---"}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Requirements */}
                 <div className="space-y-4">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Vision & Vision</span>
-                  <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 italic">
-                    <p className="text-sm text-slate-600 leading-relaxed">"{selectedRequest.requirements || "No specific requirements shared."}"</p>
+                  <span className="text-[10px] font-black text-sand-400 uppercase tracking-widest block">Vision & Vision</span>
+                  <div className="bg-ink-950 rounded-2xl p-6 border border-ink-500 italic">
+                    <p className="text-sm text-sand-200 leading-relaxed">"{selectedRequest.requirements || "No specific requirements shared."}"</p>
                   </div>
                 </div>
 
                 {/* Proposal Summary */}
                 {selectedRequest.proposals.length > 0 && (
                   <div className="space-y-4">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Active Proposal</span>
+                    <span className="text-[10px] font-black text-sand-400 uppercase tracking-widest block">Active Proposal</span>
                     <div className="bg-slate-900 rounded-3xl p-6 text-white space-y-4 shadow-xl shadow-slate-900/20">
                       <div className="flex justify-between items-center">
-                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Quote #{selectedRequest.proposals[0].quoteNumber}</p>
-                        <span className="px-3 py-1 bg-white/10 rounded-full text-[8px] font-black uppercase tracking-widest">{selectedRequest.proposals[0].status}</span>
+                        <p className="text-[9px] font-black uppercase tracking-widest text-sand-400">Quote #{selectedRequest.proposals[0].quoteNumber}</p>
+                        <span className="px-3 py-1 bg-ink-800/10 rounded-full text-[8px] font-black uppercase tracking-widest">{selectedRequest.proposals[0].status}</span>
                       </div>
                       <h4 className="text-3xl font-black text-gold-500">SAR {selectedRequest.proposals[0].totalAmount.toLocaleString()}</h4>
-                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Valid until: {new Date(selectedRequest.proposals[0].validUntil).toLocaleDateString()}</p>
+                      <p className="text-[10px] text-sand-400 font-bold uppercase tracking-widest">Valid until: {new Date(selectedRequest.proposals[0].validUntil).toLocaleDateString()}</p>
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="p-8 border-t border-slate-100 bg-slate-50 flex gap-3">
+              <div className="p-8 border-t border-ink-500 bg-ink-950 flex gap-3">
                 {selectedRequest.status === 'pending' ? (
                   <button 
                     onClick={() => { setIsDetailOpen(false); setIsQuoteModalOpen(true); }}
@@ -502,7 +502,7 @@ export default function AdminQuotes() {
                   </button>
                 ) : (
                   <button 
-                    className="flex-1 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 py-4 bg-ink-800 border border-ink-600 text-sand-50 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-ink-950 transition-all flex items-center justify-center gap-2"
                   >
                     <ExternalLink size={14} /> View Quote PDF
                   </button>
@@ -510,7 +510,7 @@ export default function AdminQuotes() {
                 <Link 
                   href={`https://wa.me/${selectedRequest.clientPhone.replace(/\D/g, '')}?text=Hi%20${selectedRequest.clientName},%20I'm%20contacting%20you%20from%20Saudi%20Event%20Management%20regarding%20your%20${selectedRequest.eventType}%20inquiry.`}
                   target="_blank"
-                  className="w-14 h-14 bg-white border border-slate-200 text-emerald-500 rounded-xl flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-100 transition-all"
+                  className="w-14 h-14 bg-ink-800 border border-ink-600 text-emerald-500 rounded-xl flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-100 transition-all"
                 >
                   <Phone size={20} />
                 </Link>
@@ -526,26 +526,26 @@ export default function AdminQuotes() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
             <motion.div 
               initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden"
+              className="bg-ink-800 w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden"
             >
-              <div className="p-10 border-b border-slate-100 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Manual Request Entry</h2>
-                <button onClick={() => setIsManualModalOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors text-slate-400"><X size={24} /></button>
+              <div className="p-10 border-b border-ink-500 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-sand-50 tracking-tight">Manual Request Entry</h2>
+                <button onClick={() => setIsManualModalOpen(false)} className="p-2 hover:bg-ink-950 rounded-full transition-colors text-sand-400"><X size={24} /></button>
               </div>
-              <form onSubmit={handleManualSubmit} className="p-10 grid grid-cols-2 gap-6">
+              <form onSubmit={handleManualSubmit} className="p-10 grid grid-cols-2 gap-10">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Client Name</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none" 
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Client Name</label>
+                  <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none" 
                     value={manualForm.clientName} onChange={e => setManualForm({...manualForm, clientName: e.target.value})} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Client Phone</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Client Phone</label>
+                  <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.clientPhone} onChange={e => setManualForm({...manualForm, clientPhone: e.target.value})} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Event Type</label>
-                  <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Event Type</label>
+                  <select required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.eventType} onChange={e => setManualForm({...manualForm, eventType: e.target.value})}>
                     <option value="">Select...</option>
                     <option value="Wedding">Wedding</option>
@@ -554,13 +554,13 @@ export default function AdminQuotes() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">City</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">City</label>
+                  <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.eventCity} onChange={e => setManualForm({...manualForm, eventCity: e.target.value})} />
                 </div>
                 <div className="col-span-2 space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Requirements & Vision</label>
-                  <textarea rows={3} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none resize-none"
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Requirements & Vision</label>
+                  <textarea rows={3} className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none resize-none"
                     value={manualForm.requirements} onChange={e => setManualForm({...manualForm, requirements: e.target.value})} />
                 </div>
                 <button type="submit" className="col-span-2 py-5 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-800 transition-all shadow-xl mt-4">
@@ -578,21 +578,21 @@ export default function AdminQuotes() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
             <motion.div 
               initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl overflow-hidden my-auto"
+              className="bg-ink-800 w-full max-w-5xl rounded-[2.5rem] shadow-2xl overflow-hidden my-auto"
             >
-              <div className="p-10 border-b border-slate-100 flex items-center justify-between">
+              <div className="p-10 border-b border-ink-500 flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Create Quotation</h2>
-                  <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Client: {selectedRequest.clientName} | {selectedRequest.eventType}</p>
+                  <h2 className="text-2xl font-bold text-sand-50 tracking-tight">Create Quotation</h2>
+                  <p className="text-xs text-sand-400 font-bold uppercase tracking-widest mt-1">Client: {selectedRequest.clientName} | {selectedRequest.eventType}</p>
                 </div>
-                <button onClick={() => setIsQuoteModalOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors text-slate-400"><X size={24} /></button>
+                <button onClick={() => setIsQuoteModalOpen(false)} className="p-2 hover:bg-ink-950 rounded-full transition-colors text-sand-400"><X size={24} /></button>
               </div>
 
               <div className="p-10 grid grid-cols-3 gap-12">
                 {/* Builder Area */}
                 <div className="col-span-2 space-y-8">
                   <div className="space-y-4">
-                    <div className="grid grid-cols-12 gap-4 px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                    <div className="grid grid-cols-12 gap-10 px-4 text-[9px] font-black text-sand-400 uppercase tracking-widest">
                       <div className="col-span-5">Service / Item</div>
                       <div className="col-span-2 text-center">Qty</div>
                       <div className="col-span-3 text-right">Unit Price</div>
@@ -601,7 +601,7 @@ export default function AdminQuotes() {
                     
                     <div className="space-y-3">
                       {quoteForm.lineItems.map((item, idx) => (
-                        <div key={idx} className="grid grid-cols-12 gap-4 items-center bg-slate-50 p-4 rounded-2xl border border-slate-100 group">
+                        <div key={idx} className="grid grid-cols-12 gap-10 items-center bg-ink-950 p-4 rounded-2xl border border-ink-500 group">
                           <div className="col-span-5">
                             <input 
                               placeholder="Description..." 
@@ -613,7 +613,7 @@ export default function AdminQuotes() {
                           <div className="col-span-2">
                             <input 
                               type="number" 
-                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-center text-xs font-bold focus:outline-none focus:border-gold-500"
+                              className="w-full bg-ink-800 border border-ink-600 rounded-lg py-2 text-center text-xs font-bold focus:outline-none focus:border-gold-500"
                               value={item.qty}
                               onChange={e => updateLineItem(idx, 'qty', parseInt(e.target.value))}
                             />
@@ -621,14 +621,14 @@ export default function AdminQuotes() {
                           <div className="col-span-3">
                             <input 
                               type="number" 
-                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-right px-3 text-xs font-bold focus:outline-none focus:border-gold-500"
+                              className="w-full bg-ink-800 border border-ink-600 rounded-lg py-2 text-right px-3 text-xs font-bold focus:outline-none focus:border-gold-500"
                               value={item.unitPrice}
                               onChange={e => updateLineItem(idx, 'unitPrice', parseFloat(e.target.value))}
                             />
                           </div>
                           <div className="col-span-2 text-right">
                             <div className="flex items-center justify-end gap-3">
-                              <span className="text-xs font-black text-slate-900">{item.total.toLocaleString()}</span>
+                              <span className="text-xs font-black text-sand-50">{item.total.toLocaleString()}</span>
                               <button onClick={() => removeLineItem(idx)} className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600 transition-all">
                                 <MinusCircle size={14} />
                               </button>
@@ -646,12 +646,12 @@ export default function AdminQuotes() {
                     </button>
                   </div>
 
-                  <div className="pt-8 border-t border-slate-100 space-y-6">
+                  <div className="pt-8 border-t border-ink-500 space-y-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Terms & Conditions</label>
+                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Terms & Conditions</label>
                       <textarea 
                         rows={4} 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs font-medium text-slate-600 focus:outline-none focus:border-gold-500 resize-none"
+                        className="w-full bg-ink-950 border border-ink-600 rounded-2xl p-4 text-xs font-medium text-sand-200 focus:outline-none focus:border-gold-500 resize-none"
                         value={quoteForm.notes}
                         onChange={e => setQuoteForm({...quoteForm, notes: e.target.value})}
                       />
@@ -662,14 +662,14 @@ export default function AdminQuotes() {
                 {/* Summary Panel */}
                 <div className="space-y-8">
                   <div className="bg-slate-900 rounded-[2rem] p-8 text-white space-y-6">
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Pricing Summary</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-sand-400">Pricing Summary</h3>
                     <div className="space-y-4">
                       <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-400">Subtotal</span>
+                        <span className="text-sand-400">Subtotal</span>
                         <span>SAR {quoteForm.lineItems.reduce((a, b) => a + b.total, 0).toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between items-center text-xs font-bold">
-                        <span className="text-slate-400">VAT (15%)</span>
+                        <span className="text-sand-400">VAT (15%)</span>
                         <span>SAR {(quoteForm.lineItems.reduce((a, b) => a + b.total, 0) * 0.15).toLocaleString()}</span>
                       </div>
                       <div className="pt-4 border-t border-white/10 flex justify-between items-end">
@@ -681,10 +681,10 @@ export default function AdminQuotes() {
 
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Valid Until</label>
+                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Valid Until</label>
                       <input 
                         type="date" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-bold focus:outline-none focus:border-gold-500"
+                        className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm font-bold focus:outline-none focus:border-gold-500"
                         value={quoteForm.validUntil}
                         onChange={e => setQuoteForm({...quoteForm, validUntil: e.target.value})}
                       />
@@ -695,12 +695,12 @@ export default function AdminQuotes() {
                     >
                       Send to Client
                     </button>
-                    <button className="w-full py-5 bg-white border border-slate-200 text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-50 transition-all flex items-center justify-center gap-3">
+                    <button className="w-full py-5 bg-ink-800 border border-ink-600 text-sand-50 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-ink-950 transition-all flex items-center justify-center gap-3">
                       <FileText size={16} /> Preview PDF
                     </button>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-4">
+                  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-10">
                     <AlertCircle size={20} className="text-blue-500 shrink-0" />
                     <p className="text-[10px] text-blue-700 font-bold leading-relaxed uppercase tracking-wider">
                       Sending this quote will automatically update the request status to "Quote Sent" and notify the client via email.

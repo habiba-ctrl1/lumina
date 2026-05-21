@@ -38,7 +38,7 @@ export default function ContactSection() {
           <div className="lg:col-span-5 pt-4">
             <div className="mb-10">
               <span className="section-label">Direct Inquiry</span>
-              <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl uppercase tracking-tight mb-4 leading-tight">
+              <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl uppercase tracking-tight mb-8 leading-tight">
                 Start Your <span className="text-shimmer italic">Legacy</span>
               </h2>
               <p className="text-sand-400 text-[13px] leading-relaxed max-w-sm">
@@ -54,7 +54,7 @@ export default function ContactSection() {
                   target="_blank" 
                   rel="noopener noreferrer"
                   whileHover={{ y: -4 }}
-                  className="flex items-center gap-4 bg-[#25D366] text-white px-8 py-5 rounded-2xl shadow-xl shadow-green-500/10 hover:shadow-green-500/20 transition-all w-fit"
+                  className="flex items-center gap-10 bg-[#25D366] text-white px-8 py-5 rounded-2xl shadow-xl shadow-green-500/10 hover:shadow-green-500/20 transition-all w-fit"
                 >
                   <MessageCircle size={20} />
                   <div className="text-left">

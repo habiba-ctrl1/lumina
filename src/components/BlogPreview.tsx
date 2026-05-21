@@ -10,15 +10,15 @@ export default function BlogPreview() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="py-24 bg-ink-950 relative border-t border-ink-600">
+    <section className="py-32 bg-ink-950 relative border-t border-ink-600">
       <div className="container-luxury relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-10">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-10 mb-8">
               <div className="w-12 h-px bg-gold-400/30" />
               <span className="section-label">Journal</span>
             </div>
-            <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl mb-4 uppercase tracking-tight">
+            <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
               Latest <span className="text-shimmer italic">Stories</span>
             </h2>
             <p className="text-sand-400 text-[13px] leading-relaxed max-w-xl">
@@ -27,7 +27,7 @@ export default function BlogPreview() {
           </div>
           <Link 
             href="/blog" 
-            className="group flex items-center gap-4 text-sand-50 text-[12px] uppercase tracking-[0.3em] font-medium border-b border-ink-600 pb-4 hover:border-gold-400 transition-all duration-500"
+            className="group flex items-center gap-10 text-sand-50 text-[12px] uppercase tracking-[0.3em] font-medium border-b border-ink-600 pb-4 hover:border-gold-400 transition-all duration-500"
           >
             Explore All Articles
             <ArrowRight size={16} className="text-gold-400 group-hover:translate-x-3 transition-transform" />
@@ -60,11 +60,11 @@ export default function BlogPreview() {
                   </div>
                 </div>
                 <div className="p-8">
-                  <div className="flex items-center gap-6 text-[10px] text-sand-400 uppercase tracking-widest mb-6">
+                  <div className="flex items-center gap-10 text-[10px] text-sand-400 uppercase tracking-widest mb-8">
                     <span className="flex items-center gap-2"><Calendar size={14} className="text-gold-400" /> {post.date}</span>
                     <span className="flex items-center gap-2"><Clock size={14} className="text-gold-400" /> {post.readTime}</span>
                   </div>
-                  <h3 className="font-display font-medium text-lg text-sand-50 mb-6 group-hover:text-gold-400 transition-colors duration-300">
+                  <h3 className="font-display font-medium text-lg text-sand-50 mb-8 group-hover:text-gold-400 transition-colors duration-300">
                     {post.title}
                   </h3>
                   <p className="text-sand-400 text-[13px] leading-relaxed mb-8 line-clamp-2">

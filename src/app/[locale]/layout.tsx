@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,18 +12,17 @@ import 'swiper/css/pagination';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Fonts
-// Playfair Display → display/headings (--font-display)   → font-display class
-// DM Sans           → body/UI           (--font-sans)      → font-sans class
+// Plus Jakarta Sans → headings/display (--font-display) → font-display class
+// Inter               → body/UI (--font-sans)        → font-sans class
 // ─────────────────────────────────────────────────────────────────────────────
-const playfair = Playfair_Display({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
@@ -261,7 +260,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`scroll-smooth ${playfair.variable} ${dmSans.variable}`}
+      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -149,10 +149,10 @@ export default async function ContactPage({ params }: PageProps) {
 
       {/* ── Hero Header ── */}
       <section className="relative z-10 pt-36 md:pt-44 pb-12 text-center container-luxury">
-        <span className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold mb-4 block animate-fade-in">
+        <span className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold mb-8 block animate-fade-in">
           {content.heroLabel}
         </span>
-        <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight leading-tight max-w-4xl mx-auto">
+        <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight leading-tight max-w-4xl mx-auto">
           {content.heroTitle} <span className="text-shimmer italic font-semibold">{content.heroTitleHighlight}</span>
         </h1>
         <p className="text-sand-400 text-xs md:text-sm max-w-xl mx-auto font-light leading-relaxed">
@@ -161,7 +161,7 @@ export default async function ContactPage({ params }: PageProps) {
       </section>
 
       {/* ── Contact Body ── */}
-      <section className="relative z-10 py-16 pb-28 container-luxury">
+      <section className="relative z-10 py-32 pb-28 container-luxury">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Contact Suite */}
@@ -173,7 +173,7 @@ export default async function ContactPage({ params }: PageProps) {
               <h3 className="font-display font-medium text-sand-50 text-lg uppercase tracking-tight mb-3">
                 {content.whatsappSub}
               </h3>
-              <p className="text-sand-400 text-[12px] leading-relaxed mb-6 font-light">
+              <p className="text-sand-400 text-[12px] leading-relaxed mb-8 font-light">
                 {content.whatsappDesc}
               </p>
               <a
@@ -197,9 +197,9 @@ export default async function ContactPage({ params }: PageProps) {
                 <span>{content.directTitle}</span>
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
                 {/* Email */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-10">
                   <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
                     <Mail size={16} />
                   </div>
@@ -212,7 +212,7 @@ export default async function ContactPage({ params }: PageProps) {
                 </div>
 
                 {/* Call */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-10">
                   <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
                     <Phone size={16} />
                   </div>
@@ -225,7 +225,7 @@ export default async function ContactPage({ params }: PageProps) {
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-10">
                   <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
                     <Clock size={16} />
                   </div>

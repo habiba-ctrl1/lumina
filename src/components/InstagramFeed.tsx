@@ -26,11 +26,11 @@ const posts = [
 
 export default function InstagramFeed() {
   return (
-    <section className="py-24 bg-gray-50/30 overflow-hidden">
+    <section className="py-32 bg-ink-950/30 overflow-hidden">
       <div className="container-luxury">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-10">
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-8">
                <Instagram className="text-primary" size={24} />
                <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold">Live from the Field</span>
             </div>
@@ -65,7 +65,7 @@ export default function InstagramFeed() {
                 height={400}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-10">
                 <div className="flex items-center gap-2 text-white">
                   <Heart size={20} fill="white" />
                   <span className="font-bold text-sm">{post.likes}</span>

@@ -10,7 +10,7 @@ export default function SectionWrapper({
   id?: string;
 }) {
   return (
-    <section id={id} className={`w-full max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24 ${className}`}>
+    <section id={id} className={`w-full max-w-7xl mx-auto px-4 py-32 md:py-32 ${className}`}>
       {children}
     </section>
   );

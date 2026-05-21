@@ -18,16 +18,16 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
       <Navbar />
       <Services />
       
       {/* Descriptive SEO Section */}
-      <section className="py-24 relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="font-display font-medium text-slate-900 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
+      <section className="py-32 relative max-w-4xl mx-auto px-4 text-center">
+        <h2 className="font-display font-medium text-sand-50 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
           Smart Event Planning & <span className="text-shimmer italic">Luxury Planning Capabilities</span>
         </h2>
-        <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-6 font-light">
+        <div className="prose prose-slate max-w-none text-sand-200 text-sm leading-relaxed space-y-6 font-light">
           <p>
             At Saudi Event Management, our event management services are defined by a commitment to perfect planning and design that makes people feel special. We do not simply manage events; we create experiences that leave a lasting impact on your guests and stakeholders. Our comprehensive suite of services covers every aspect of event management, from initial site inspections and finding and booking the right venue in major Saudi cities like Riyadh and Jeddah to the final planning and coordination. We aim for perfection without mistakes, ensuring that every sound and light detail is perfect, every guest interaction is seamless, and every cultural detail is respected.
           </p>

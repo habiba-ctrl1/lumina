@@ -92,10 +92,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="flex flex-col items-center gap-6">
+      <div className="min-h-screen bg-ink-800 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-10">
           <div className="w-12 h-12 border-2 border-gold-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300">Synchronizing Vault</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-sand-500">Synchronizing Vault</span>
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!authenticated) return null;
 
   return (
-    <div className="min-h-screen bg-slate-50/50 flex font-sans selection:bg-gold-500/10 selection:text-gold-600">
+    <div className="min-h-screen bg-ink-950/50 flex font-sans selection:bg-gold-500/10 selection:text-gold-600">
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div 
@@ -114,22 +114,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-[70] w-80 bg-white border-r border-slate-200/60 flex flex-col transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${sidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full lg:translate-x-0"}`}>
-        <div className="p-10 border-b border-slate-100/60">
-          <Link href="/admin/dashboard" className="flex items-center gap-4 group">
+      <aside className={`fixed lg:static inset-y-0 left-0 z-[70] w-80 bg-ink-800 border-r border-ink-600 flex flex-col transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${sidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full lg:translate-x-0"}`}>
+        <div className="p-10 border-b border-ink-500/60">
+          <Link href="/admin/dashboard" className="flex items-center gap-10 group">
             <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center shadow-2xl shadow-slate-900/20 group-hover:bg-gold-500 transition-all duration-500 transform group-hover:rotate-6">
               <Sparkles className="text-gold-500 group-hover:text-white transition-colors" size={24} />
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-black text-slate-900 tracking-tighter leading-none uppercase">Saudi Event</span>
+              <span className="text-base font-black text-sand-50 tracking-tighter leading-none uppercase">Saudi Event</span>
               <span className="text-[9px] text-gold-600 font-black uppercase tracking-[0.3em] mt-1.5 opacity-80">Intelligence Hub</span>
             </div>
           </Link>
         </div>
 
         <nav className="flex-1 p-8 space-y-2 overflow-y-auto custom-scrollbar">
-          <div className="mb-6 px-4">
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-300">Management Suite</span>
+          <div className="mb-8 px-4">
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-sand-500">Management Suite</span>
           </div>
           {navItems.map((item) => {
             const isActive = pathname === item.href;
@@ -141,13 +141,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 className={`flex items-center group relative px-5 py-4 rounded-2xl text-[12px] font-bold transition-all duration-300 ${
                   isActive
                     ? "bg-slate-900 text-white shadow-2xl shadow-slate-900/20"
-                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                    : "text-sand-300 hover:text-sand-50 hover:bg-ink-950"
                 }`}
               >
-                <item.icon size={18} className={`transition-colors duration-300 ${isActive ? "text-gold-500" : "text-slate-400 group-hover:text-slate-900"}`} />
+                <item.icon size={18} className={`transition-colors duration-300 ${isActive ? "text-gold-500" : "text-sand-400 group-hover:text-sand-50"}`} />
                 <span className="ml-4 tracking-tight">{item.label}</span>
                 {item.href === "/admin/quotes" && pendingQuoteCount > 0 && (
-                  <span className="ml-2 px-2 py-0.5 bg-gold-500 text-slate-900 text-[10px] font-black rounded-full">
+                  <span className="ml-2 px-2 py-0.5 bg-gold-500 text-sand-50 text-[10px] font-black rounded-full">
                     {pendingQuoteCount}
                   </span>
                 )}
@@ -164,10 +164,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           })}
         </nav>
 
-        <div className="p-8 border-t border-slate-100/60 bg-slate-50/50">
+        <div className="p-8 border-t border-ink-500/60 bg-ink-950/50">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-4 px-5 py-4 rounded-2xl text-[13px] font-black uppercase tracking-widest text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all duration-300 w-full group"
+            className="flex items-center gap-10 px-5 py-4 rounded-2xl text-[13px] font-black uppercase tracking-widest text-sand-400 hover:text-red-500 hover:bg-red-50 transition-all duration-300 w-full group"
           >
             <LogOut size={18} className="transition-transform group-hover:-translate-x-1" />
             Logout Session
@@ -178,11 +178,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen min-w-0">
         {/* Top Bar */}
-        <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60 px-8 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+        <header className="sticky top-0 z-50 bg-ink-800/70 backdrop-blur-xl border-b border-ink-600 px-8 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center bg-slate-50 hover:bg-slate-100 rounded-xl text-slate-600 transition-all"
+              className="lg:hidden w-10 h-10 flex items-center justify-center bg-ink-950 hover:bg-ink-900 rounded-xl text-sand-200 transition-all"
             >
               <Menu size={20} />
             </button>
@@ -192,28 +192,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 const q = (e.currentTarget.elements.namedItem('q') as HTMLInputElement).value;
                 if (q.trim()) router.push(`/admin/search?q=${encodeURIComponent(q)}`);
               }}
-              className="hidden md:flex items-center gap-3 px-5 py-2.5 bg-slate-50 rounded-2xl border border-slate-100 group transition-all focus-within:ring-4 focus-within:ring-gold-500/5 focus-within:border-gold-500/20"
+              className="hidden md:flex items-center gap-3 px-5 py-2.5 bg-ink-950 rounded-2xl border border-ink-500 group transition-all focus-within:ring-4 focus-within:ring-gold-500/5 focus-within:border-gold-500/20"
             >
-              <Search size={16} className="text-slate-300 group-focus-within:text-gold-500 transition-colors" />
+              <Search size={16} className="text-sand-500 group-focus-within:text-gold-500 transition-colors" />
               <input 
                 name="q"
                 type="text" 
                 placeholder="Universal Search..." 
-                className="bg-transparent border-none text-[12px] font-bold text-slate-900 placeholder:text-slate-400 focus:outline-none w-48"
+                className="bg-transparent border-none text-[12px] font-bold text-sand-50 placeholder:text-sand-400 focus:outline-none w-48"
               />
             </form>
           </div>
           
-          <div className="flex items-center gap-6">
-            <button className="w-11 h-11 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-2xl transition-all relative">
+          <div className="flex items-center gap-10">
+            <button className="w-11 h-11 flex items-center justify-center text-sand-400 hover:text-sand-50 hover:bg-ink-950 rounded-2xl transition-all relative">
               <Bell size={20} />
               <span className="absolute top-3.5 right-3.5 w-2 h-2 bg-gold-500 rounded-full border-2 border-white shadow-sm" />
             </button>
-            <div className="h-8 w-px bg-slate-100" />
-            <div className="flex items-center gap-4 group cursor-pointer">
+            <div className="h-8 w-px bg-ink-900" />
+            <div className="flex items-center gap-10 group cursor-pointer">
               <div className="text-right hidden sm:block">
-                <p className="text-[12px] font-black text-slate-900 leading-none">Administrator</p>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">SAUDI EVENT HQ</p>
+                <p className="text-[12px] font-black text-sand-50 leading-none">Administrator</p>
+                <p className="text-[10px] text-sand-400 font-bold uppercase tracking-widest mt-1">SAUDI EVENT HQ</p>
               </div>
               <div className="w-11 h-11 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-gold-500 font-black text-[12px] shadow-xl shadow-slate-900/10 group-hover:scale-105 transition-all">
                 SE

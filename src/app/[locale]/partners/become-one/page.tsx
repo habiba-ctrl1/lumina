@@ -62,19 +62,19 @@ export default function BecomeOne() {
     }
   };
 
-  const inputClasses = "w-full bg-slate-50 border border-slate-200/80 py-3 px-4 text-xs text-slate-800 placeholder-slate-400 focus:border-gold-400 focus:bg-white transition-all rounded-sm outline-none hover:border-slate-300 shadow-sm";
+  const inputClasses = "w-full bg-ink-950 border border-ink-600 py-3 px-4 text-xs text-sand-100 placeholder-slate-400 focus:border-gold-400 focus:bg-ink-800 transition-all rounded-sm outline-none hover:border-ink-500 shadow-sm";
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-ink-950">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-slate-100/50 border-b border-slate-200/50">
+      <section className="pt-32 pb-16 bg-ink-900/50 border-b border-ink-600/50">
         <div className="container-luxury text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-14 h-14 bg-emerald-50 rounded-sm flex items-center justify-center mx-auto mb-6 border border-emerald-800/10"
+            className="w-14 h-14 bg-emerald-50 rounded-sm flex items-center justify-center mx-auto mb-8 border border-emerald-800/10"
           >
             <Handshake size={28} className="text-emerald-800" />
           </motion.div>
@@ -88,7 +88,7 @@ export default function BecomeOne() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display font-medium text-slate-900 mb-4 uppercase tracking-tight text-2xl md:text-3xl lg:text-4xl"
+            className="font-display font-medium text-sand-50 mb-8 uppercase tracking-tight text-2xl md:text-3xl lg:text-4xl"
           >
             Strategic <span className="text-shimmer italic">Alliance</span> Application
           </motion.h1>
@@ -96,7 +96,7 @@ export default function BecomeOne() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-600 max-w-xl mx-auto text-xs md:text-sm leading-relaxed"
+            className="text-sand-200 max-w-xl mx-auto text-xs md:text-sm leading-relaxed"
           >
             Join an elite ecosystem of innovators and creators. We look for partners who share our commitment to 
             absolute perfection and cultural resonance.
@@ -105,17 +105,17 @@ export default function BecomeOne() {
       </section>
 
       {/* Form Section */}
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-ink-950">
         <div className="container-luxury max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left Side: Info */}
             <div className="lg:col-span-4 space-y-10">
               <div>
-                <h2 className="font-display font-medium text-slate-900 mb-6 leading-tight text-xl">
+                <h2 className="font-display font-medium text-sand-50 mb-8 leading-tight text-xl">
                   Why Partner with <span className="text-shimmer italic">Saudi Event Management</span>
                 </h2>
-                <h3 className="text-slate-500 font-bold uppercase tracking-widest text-[9px] mb-4">Partnership Value</h3>
+                <h3 className="text-sand-300 font-bold uppercase tracking-widest text-[9px] mb-8">Partnership Value</h3>
                 <ul className="space-y-6">
                   {[
                     { title: "Joint Innovation", desc: "Collaborate on groundbreaking event concepts and technologies." },
@@ -125,8 +125,8 @@ export default function BecomeOne() {
                     <li key={i} className="flex gap-3">
                       <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0 shadow-sm" />
                       <div>
-                        <h4 className="text-slate-900 text-[10px] font-bold uppercase tracking-widest mb-1">{item.title}</h4>
-                        <p className="text-slate-600 text-[10px] leading-relaxed">{item.desc}</p>
+                        <h4 className="text-sand-50 text-[10px] font-bold uppercase tracking-widest mb-1">{item.title}</h4>
+                        <p className="text-sand-200 text-[10px] leading-relaxed">{item.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -136,12 +136,12 @@ export default function BecomeOne() {
               <div className="bg-emerald-950 p-8 rounded-sm text-white shadow-md border border-emerald-900 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gold-400/10 rounded-full blur-2xl -mr-12 -mt-12" />
                 <h4 className="text-gold-400 text-[10px] font-bold uppercase tracking-widest mb-3">Direct Inquiry</h4>
-                <p className="text-emerald-200/80 text-[10px] mb-6 leading-relaxed">For high-level strategic inquiries or government relations, please contact us via WhatsApp.</p>
+                <p className="text-emerald-200/80 text-[10px] mb-8 leading-relaxed">For high-level strategic inquiries or government relations, please contact us via WhatsApp.</p>
                 <a 
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20discuss%20a%20strategic%20partnership."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-gold-400 text-slate-900 py-3 rounded-sm text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gold-500 transition-all"
+                  className="w-full bg-gold-400 text-sand-50 py-3 rounded-sm text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gold-500 transition-all"
                 >
                   <MessageCircle size={14} /> Partner Hotline
                 </a>
@@ -157,9 +157,9 @@ export default function BecomeOne() {
                 className="card p-6 md:p-8 hover:shadow-md"
               >
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><User size={10} /> Principal Contact</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><User size={10} /> Principal Contact</label>
                       <input 
                         type="text" 
                         required 
@@ -170,7 +170,7 @@ export default function BecomeOne() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><Mail size={10} /> Professional Email</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Mail size={10} /> Professional Email</label>
                       <input 
                         type="email" 
                         required 
@@ -182,9 +182,9 @@ export default function BecomeOne() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><Phone size={10} /> Contact Number</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Phone size={10} /> Contact Number</label>
                       <input 
                         type="tel" 
                         required 
@@ -195,7 +195,7 @@ export default function BecomeOne() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><Building2 size={10} /> Organization Name</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Building2 size={10} /> Organization Name</label>
                       <input 
                         type="text" 
                         required 
@@ -207,9 +207,9 @@ export default function BecomeOne() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><Briefcase size={10} /> Partnership Tier</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Briefcase size={10} /> Partnership Tier</label>
                       <select 
                         required 
                         className={`${inputClasses} appearance-none cursor-pointer`}
@@ -225,7 +225,7 @@ export default function BecomeOne() {
                       </select>
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><MapPin size={10} /> Headquarters</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><MapPin size={10} /> Headquarters</label>
                       <input 
                         type="text" 
                         required 
@@ -238,7 +238,7 @@ export default function BecomeOne() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2"><LinkIcon size={10} /> Corporate Website</label>
+                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><LinkIcon size={10} /> Corporate Website</label>
                     <input 
                       type="url" 
                       className={inputClasses} 
@@ -249,7 +249,7 @@ export default function BecomeOne() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest ml-1">Partnership Vision</label>
+                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">Partnership Vision</label>
                     <textarea 
                       required
                       rows={2} 
@@ -260,15 +260,15 @@ export default function BecomeOne() {
                     />
                   </div>
 
-                  <div className="flex flex-col md:flex-row items-center gap-4 pt-4">
+                  <div className="flex flex-col md:flex-row items-center gap-10 pt-4">
                     <button 
                       type="submit" 
                       disabled={status === "loading"}
-                      className="btn-primary font-semibold tracking-widest text-xs px-10 py-4 shadow-sm bg-gold-400 text-slate-900 hover:bg-gold-500 rounded-sm w-full md:w-auto"
+                      className="btn-primary font-semibold tracking-widest text-xs px-10 py-4 shadow-sm bg-gold-400 text-sand-50 hover:bg-gold-500 rounded-sm w-full md:w-auto"
                     >
                       {status === "loading" ? "Validating..." : "Submit Proposal"}
                     </button>
-                    <p className="text-[9px] text-slate-400 uppercase tracking-widest font-semibold">Agreement required to <Link href="/terms" className="text-emerald-800 hover:underline">partnership terms</Link>.</p>
+                    <p className="text-[9px] text-sand-400 uppercase tracking-widest font-semibold">Agreement required to <Link href="/terms" className="text-emerald-800 hover:underline">partnership terms</Link>.</p>
                   </div>
 
                   <AnimatePresence>
@@ -291,11 +291,11 @@ export default function BecomeOne() {
       </section>
 
       {/* Descriptive SEO Section */}
-      <section className="py-20 relative max-w-4xl mx-auto px-4 text-center border-t border-slate-200/80 bg-slate-50">
-        <h2 className="font-display font-medium text-slate-900 mb-8 leading-tight text-xl md:text-2xl">
+      <section className="py-28 relative max-w-4xl mx-auto px-4 text-center border-t border-ink-600 bg-ink-950">
+        <h2 className="font-display font-medium text-sand-50 mb-8 leading-tight text-xl md:text-2xl">
           The Partnership <span className="text-shimmer italic">Ecosystem</span>
         </h2>
-        <div className="prose prose-gray max-w-none text-slate-600 text-sm leading-relaxed space-y-6">
+        <div className="prose prose-gray max-w-none text-sand-200 text-sm leading-relaxed space-y-6">
           <p>
             Becoming a partner with Saudi Event Management means joining an elite collective dedicated to redefining the luxury and corporate event landscape in the Kingdom. We believe that extraordinary events are the result of synergistic collaborations between the industry&apos;s most talented professionals. Our partnership ecosystem is designed to foster mutual growth, knowledge sharing, and the joint execution of high-stakes projects across Riyadh, Jeddah, AlUla, and beyond. We value partners who bring specialized expertise, whether in cutting-edge AV technology, traditional Saudi craftsmanship, bespoke catering, or architectural venue management.
           </p>

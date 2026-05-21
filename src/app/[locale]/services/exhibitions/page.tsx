@@ -195,7 +195,7 @@ export default function ExhibitionsPage() {
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-6 block"
+              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
             >
               المعارض والملتقيات | Exhibition Excellence
             </motion.span>
@@ -235,7 +235,7 @@ export default function ExhibitionsPage() {
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-10">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-10">
                 <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
                   <Award className="text-gold-500" size={24} />
                 </div>
@@ -244,7 +244,7 @@ export default function ExhibitionsPage() {
                   <p className="text-[10px] text-gray-500 uppercase">Venue Logistics & Support</p>
                 </div>
               </div>
-              <div className="flex items-center gap-8 grayscale opacity-50">
+              <div className="flex items-center gap-10 grayscale opacity-50">
                 <span className="text-xs font-bold tracking-tighter">INDEX SAUDI</span>
                 <span className="text-xs font-bold tracking-tighter">SAUDI AGRICULTURE</span>
                 <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
@@ -260,7 +260,7 @@ export default function ExhibitionsPage() {
         <section className="py-32 bg-emerald-900/30 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Our Expo <span className="text-gold-500">Expertise</span></h2>
+              <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Expo <span className="text-gold-500">Expertise</span></h2>
               <div className="w-24 h-px bg-gold-500/50 mx-auto" />
             </div>
 
@@ -284,7 +284,7 @@ export default function ExhibitionsPage() {
                   className="bg-emerald-900 border border-white/5 p-10 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group"
                 >
                   <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
+                  <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
@@ -293,7 +293,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-emerald-950 relative border-y border-white/5">
+        <section className="py-32 bg-emerald-950 relative border-y border-white/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
@@ -301,7 +301,7 @@ export default function ExhibitionsPage() {
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
                 <Link href="/blog" className="inline-block text-gold-500 text-xs font-bold uppercase tracking-widest border-b border-gold-500 pb-1">View All Guides</Link>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
                 {[
                   { title: "Annual Saudi exhibition calendar", desc: "Stay ahead with our comprehensive timeline of the Kingdom's most critical trade shows and B2B summits." },
                   { title: "Exhibitor success stories", desc: "Discover how our clients maximize ROI and secure high-value leads at competitive venues." },
@@ -319,7 +319,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Localized Arabic Section */}
-        <section className="py-32 bg-white text-charcoal-950 relative overflow-hidden">
+        <section className="py-32 bg-ink-800 text-sand-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -328,9 +328,9 @@ export default function ExhibitionsPage() {
                   الريادة في <br/><span className="text-gold-600">تنظيم المعارض</span>
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  تعتبر لومينا أفضل <strong className="text-charcoal-950">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-charcoal-950">مركز الرياض للمعارض والمؤتمرات</strong>.
+                  تعتبر لومينا أفضل <strong className="text-sand-50">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-sand-50">مركز الرياض للمعارض والمؤتمرات</strong>.
                 </p>
-                <div className="flex gap-6 pt-4">
+                <div className="flex gap-10 pt-4">
                   <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">إدارة المعارض</div>
                   <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">تصميم الأجنحة</div>
                 </div>

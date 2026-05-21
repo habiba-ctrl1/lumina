@@ -15,26 +15,26 @@ export default function EngagementHub() {
   };
 
   return (
-    <section className="py-24 bg-gray-50/50 relative overflow-hidden">
+    <section className="py-32 bg-ink-950/50 relative overflow-hidden">
       <div className="container-luxury max-w-4xl">
         <div className="text-center mb-16">
-           <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block">Client Community</span>
+           <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block">Client Community</span>
            <h2 className="text-black text-2xl md:text-3xl font-bold uppercase tracking-tight">Connect <span className="text-primary">& Share</span></h2>
         </div>
 
-        <div className="bg-white rounded-[2.5rem] shadow-xl shadow-black/5 border border-gray-100 overflow-hidden">
+        <div className="bg-ink-800 rounded-[2.5rem] shadow-xl shadow-black/5 border border-ink-600 overflow-hidden">
           {/* Tabs */}
-          <div className="flex border-b border-gray-100">
+          <div className="flex border-b border-ink-600">
             <button 
               onClick={() => setActiveTab("question")}
-              className={`flex-1 py-6 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest font-bold transition-all ${activeTab === "question" ? "bg-black text-white" : "text-gray-400 hover:text-black bg-white"}`}
+              className={`flex-1 py-6 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest font-bold transition-all ${activeTab === "question" ? "bg-black text-white" : "text-gray-400 hover:text-black bg-ink-800"}`}
             >
               <MessageSquare size={16} />
               Ask a Question
             </button>
             <button 
               onClick={() => setActiveTab("review")}
-              className={`flex-1 py-6 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest font-bold transition-all ${activeTab === "review" ? "bg-black text-white" : "text-gray-400 hover:text-black bg-white"}`}
+              className={`flex-1 py-6 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest font-bold transition-all ${activeTab === "review" ? "bg-black text-white" : "text-gray-400 hover:text-black bg-ink-800"}`}
             >
               <Star size={16} />
               Submit Review
@@ -50,7 +50,7 @@ export default function EngagementHub() {
                   animate={{ opacity: 1, y: 0 }}
                   className="py-12 text-center"
                 >
-                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
                     <CheckCircle size={32} />
                   </div>
                   <h3 className="text-xl font-bold text-black mb-2 uppercase tracking-tight">Received With Thanks</h3>
@@ -65,20 +65,20 @@ export default function EngagementHub() {
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
                       <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Your Name</label>
-                      <input type="text" required className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all" placeholder="Enter name" />
+                      <input type="text" required className="w-full bg-ink-950 border border-ink-600 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all" placeholder="Enter name" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
-                      <input type="email" required className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all" placeholder="your@email.com" />
+                      <input type="email" required className="w-full bg-ink-950 border border-ink-600 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all" placeholder="your@email.com" />
                     </div>
                   </div>
 
                   {activeTab === "review" && (
                     <div className="space-y-2 text-center py-4">
-                      <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block mb-4">Your Rating</label>
+                      <label className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block mb-8">Your Rating</label>
                       <div className="flex justify-center gap-2">
                         {[1, 2, 3, 4, 5].map((s) => (
                           <Star key={s} size={24} className="text-primary cursor-pointer hover:scale-125 transition-transform" fill="#D4AF37" />
@@ -94,7 +94,7 @@ export default function EngagementHub() {
                     <textarea 
                       required 
                       rows={4} 
-                      className="w-full bg-gray-50 border border-gray-100 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all resize-none" 
+                      className="w-full bg-ink-950 border border-ink-600 p-4 rounded-xl text-sm outline-none focus:border-primary transition-all resize-none" 
                       placeholder={activeTab === "question" ? "How can we help you plan your legacy?" : "Describe your event masterpiece..."}
                     />
                   </div>

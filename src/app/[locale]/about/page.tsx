@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
       <Navbar />
       
       {/* Hero Section */}
@@ -41,24 +41,24 @@ export default function AboutPage() {
         </div>
         
         <div className="relative z-10 text-center px-4">
-          <span className="text-gold-600 text-xs uppercase tracking-[0.5em] font-semibold mb-4 block">
+          <span className="text-gold-600 text-xs uppercase tracking-[0.5em] font-semibold mb-8 block">
             Established 2018
           </span>
-          <h1 className="text-3xl md:text-5xl font-display font-medium text-slate-900 mb-6 leading-tight uppercase">
+          <h1 className="text-3xl md:text-5xl font-display font-medium text-sand-50 mb-8 leading-tight uppercase">
             Event Planning <span className="text-shimmer italic font-semibold">Experts</span> <br /> Saudi Arabia
           </h1>
-          <p className="text-slate-600 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sand-200 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
             From Riyadh to the world, Saudi Event Management blends perfect planning and design with heartfelt emotion to craft events that go beyond expectations.
           </p>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative group">
             <div className="absolute -inset-4 bg-gold-500/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="relative h-[600px] rounded-sm overflow-hidden border border-slate-200/80 shadow-md">
+            <div className="relative h-[600px] rounded-sm overflow-hidden border border-ink-600 shadow-md">
               <Image 
                 src="/gallery_2.webp" 
                 alt="Luxury Event Vision" 
@@ -67,15 +67,15 @@ export default function AboutPage() {
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-white border border-gold-500/30 p-8 rounded-sm shadow-xl max-w-xs">
+            <div className="absolute -bottom-6 -right-6 bg-ink-800 border border-gold-500/30 p-8 rounded-sm shadow-xl max-w-xs">
               <p className="text-gold-600 font-display text-base mb-2 italic font-semibold">&quot;We don&apos;t just plan events; we organize and manage every emotion.&quot;</p>
-              <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">— Habiba Asghar, Founder</p>
+              <p className="text-sand-300 text-[10px] uppercase tracking-widest font-bold">— Habiba Asghar, Founder</p>
             </div>
           </div>
 
           <div className="space-y-8">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900 leading-tight uppercase">Crafting Unparalleled Moments</h2>
-            <div className="space-y-6 text-slate-600 font-light leading-relaxed text-sm text-justify">
+            <h2 className="text-2xl md:text-3xl font-display font-medium text-sand-50 leading-tight uppercase">Crafting Unparalleled Moments</h2>
+            <div className="space-y-6 text-sand-200 font-light leading-relaxed text-sm text-justify">
               <p>
                 Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design that makes people feel special, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
               </p>
@@ -83,30 +83,30 @@ export default function AboutPage() {
                 Our philosophy is rooted in the belief that every celebration is not just an event, but a story that comes to life — a beautiful experience in motion. We don&apos;t simply plan; we organize and manage every detail. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with modern and unique design. 
               </p>
               <p>
-                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong className="text-slate-900 font-semibold">Design That Touches the Heart</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand important guests and VIPs or an intimate corporate retreat for world leaders, we apply the same level of careful attention to every small thing, ensuring that every part of the guest experience tells a story of elegance and legacy.
+                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong className="text-sand-50 font-semibold">Design That Touches the Heart</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand important guests and VIPs or an intimate corporate retreat for world leaders, we apply the same level of careful attention to every small thing, ensuring that every part of the guest experience tells a story of elegance and legacy.
               </p>
               <p>
                 As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural events and activities that showcase the high quality of Saudi Arabia to the global stage. Our mission is to transform short, special times into memories that last forever, echoing through generations.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-6 pt-8">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-white rounded-sm text-gold-600 border border-slate-200/80 shadow-sm">
+            <div className="grid grid-cols-2 gap-10 pt-8">
+              <div className="flex items-start gap-10">
+                <div className="p-3 bg-ink-800 rounded-sm text-gold-600 border border-ink-600 shadow-sm">
                   <Award size={24} />
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-semibold text-xs uppercase tracking-wider mb-1">Award Winning</h3>
-                  <p className="text-slate-500 text-[10px]">Voted Best Luxury Planner 2024</p>
+                  <h3 className="text-sand-50 font-semibold text-xs uppercase tracking-wider mb-1">Award Winning</h3>
+                  <p className="text-sand-300 text-[10px]">Voted Best Luxury Planner 2024</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-white rounded-sm text-gold-600 border border-slate-200/80 shadow-sm">
+              <div className="flex items-start gap-10">
+                <div className="p-3 bg-ink-800 rounded-sm text-gold-600 border border-ink-600 shadow-sm">
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-semibold text-xs uppercase tracking-wider mb-1">Global Presence</h3>
-                  <p className="text-slate-500 text-[10px]">Operations in KSA, UAE, & PK</p>
+                  <h3 className="text-sand-50 font-semibold text-xs uppercase tracking-wider mb-1">Global Presence</h3>
+                  <p className="text-sand-300 text-[10px]">Operations in KSA, UAE, & PK</p>
                 </div>
               </div>
             </div>
@@ -115,23 +115,23 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-white relative border-y border-slate-200/60">
+      <section className="py-32 bg-ink-800 relative border-y border-ink-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-6 uppercase tracking-tight">Our Core Values</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-medium text-sand-50 mb-8 uppercase tracking-tight">Our Core Values</h2>
             <div className="w-16 h-px bg-gold-400/50 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               { icon: Sparkles, title: "Artistry", desc: "Every detail is curated with artistic intent, from floral geometry to ambient lighting." },
               { icon: Users, title: "Discretion", desc: "We provide absolute privacy for our high-profile and celebrity clientele." },
               { icon: Award, title: "Excellence", desc: "We settle for nothing less than extraordinary in every aspect of execution." },
             ].map((value, i) => (
-              <div key={i} className="bg-slate-50 border border-slate-200/60 p-8 rounded-sm hover:border-gold-400 transition-all duration-500 group hover:shadow-md">
-                <value.icon size={32} className="text-gold-600 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-display font-medium text-slate-900 mb-4 uppercase">{value.title}</h3>
-                <p className="text-slate-600 text-xs font-light leading-relaxed">{value.desc}</p>
+              <div key={i} className="bg-ink-950 border border-ink-600 p-8 rounded-sm hover:border-gold-400 transition-all duration-500 group hover:shadow-md">
+                <value.icon size={32} className="text-gold-600 mb-8 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-display font-medium text-sand-50 mb-8 uppercase">{value.title}</h3>
+                <p className="text-sand-200 text-xs font-light leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -139,11 +139,11 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4">
+      <section className="py-32 px-4">
         <div className="bg-emerald-950 border border-emerald-900 rounded-sm p-12 md:p-20 text-center relative overflow-hidden max-w-7xl mx-auto shadow-xl">
           <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-[0.22] bg-cover bg-center" />
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-white mb-6 uppercase tracking-tight">Ready to create Magic?</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-medium text-white mb-8 uppercase tracking-tight">Ready to create Magic?</h2>
             <p className="text-slate-200 max-w-2xl mx-auto mb-10 text-sm font-light">
               Let us transform your vision into an extraordinary reality. Connect with our principal planners today.
             </p>

@@ -133,10 +133,10 @@ export default function CorporateEventsPage() {
           </div>
           
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-4 block">
+            <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
               إدارة فعاليات الشركات | Corporate Excellence
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-6 leading-tight font-bold">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
               Corporate Event Planning <br/><span className="text-shimmer font-bold">Saudi Arabia</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed">
@@ -163,7 +163,7 @@ export default function CorporateEventsPage() {
                 <span className="text-white font-bold block text-lg tracking-widest">MPI</span>
                 <span className="text-[10px] text-gray-500 uppercase">Professional Planners</span>
               </div>
-              <div className="h-8 w-px bg-white/10 hidden md:block" />
+              <div className="h-8 w-px bg-ink-800/10 hidden md:block" />
               <div className="text-sm text-gray-400 font-light ">
                 &quot;Trusted by HRDF and major Saudi Vision 2030 initiatives for over 12 years.&quot;
               </div>
@@ -172,13 +172,13 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* Core Services */}
-        <section className="py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-sans text-white mb-6 font-bold">Our Corporate <span className="text-shimmer font-bold">Services</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Corporate <span className="text-shimmer font-bold">Services</span></h2>
             <div className="w-16 h-px bg-gold-500/50 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               { icon: Building2, title: "Professional Conferences", desc: "Expert professional conference organizer for Saudi Aramco and SABIC level summits. We handle end-to-end logistics and VIP attendee management." },
               { icon: Target, title: "Executive Summits", desc: "Flawless executive summit and annual business meeting planning at King Abdullah Financial District (KAFD), ensuring regulatory compliance and secure voting systems." },
@@ -188,8 +188,8 @@ export default function CorporateEventsPage() {
               { icon: MapPin, title: "Vision 2030 Events", desc: "Aligning your corporate narrative with Saudi Vision 2030 trends through high-impact public relations and strategic event planning." },
             ].map((service, i) => (
               <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group">
-                <service.icon size={32} className="text-gold-500 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-sans font-bold text-white mb-4">{service.title}</h3>
+                <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
                 <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
               </div>
             ))}
@@ -197,7 +197,7 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-24 bg-emerald-900 relative border-y border-white/5">
+        <section className="py-32 bg-emerald-900 relative border-y border-white/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
@@ -208,7 +208,7 @@ export default function CorporateEventsPage() {
                   <p className="text-gray-500 text-[10px] uppercase tracking-widest">CEO & Executive Event Director</p>
                 </div>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
                 {[
                   { title: "Industry awards & rankings: Saudi Event Management named top event company", desc: "Recognized for excellence in corporate event management across Riyadh and Jeddah." },
                   { title: "Partnership announcements with Saudi entities", desc: "Strategic alignments with the GEA, Ministry of Culture, and Vision 2030 initiatives." },
@@ -226,10 +226,10 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* FAQ Section with Schema */}
-        <section className="py-24 bg-emerald-900/50 relative">
+        <section className="py-32 bg-emerald-900/50 relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-sans text-white mb-6 font-bold">Frequently Asked <span className="text-gold-500">Questions</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold">Frequently Asked <span className="text-gold-500">Questions</span></h2>
               <div className="w-16 h-px bg-gold-500/50 mx-auto" />
             </div>
 

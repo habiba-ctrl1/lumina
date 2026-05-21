@@ -66,14 +66,14 @@ export default function SaudiMap() {
         .lbl { fill: #c9a428; font-size: 8px; letter-spacing: 0.1em; pointer-events: none; font-family: sans-serif; font-weight: 600; }
       `}</style>
 
-      <div className="text-center mb-4">
+      <div className="text-center mb-8">
         <p className="text-[#D4AF37] text-[10px] tracking-[0.35em] font-sans mb-2 uppercase">Our Presence Across the Kingdom</p>
         <h2 className="text-[#f0e6cc] text-lg md:text-xl font-normal tracking-wide">
           Crafting <span className="italic text-[#D4AF37]">Masterpieces</span> in Every Corner of Saudi Arabia
         </h2>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start max-w-3xl mx-auto relative">
+      <div className="flex flex-col lg:flex-row gap-10 items-start max-w-3xl mx-auto relative">
         {/* Left Sidebar */}
         <div className="w-full lg:w-44 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-2 z-20">
           {(Object.keys(CITY_DATA) as CityKey[]).map((id) => (

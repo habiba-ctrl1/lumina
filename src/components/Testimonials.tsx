@@ -36,7 +36,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div className="relative bg-gray-50 rounded-[2rem] p-8 md:p-10 border border-gray-100 overflow-hidden shadow-sm">
+    <div className="relative bg-ink-950 rounded-[2rem] p-8 md:p-10 border border-ink-600/60 hover:border-[#3F3F46] transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
       <Quote className="text-primary/10 absolute top-6 right-8" size={48} />
       
       <AnimatePresence mode="wait">
@@ -47,13 +47,13 @@ export default function Testimonials() {
           exit={{ opacity: 0, y: -10 }}
           className="relative z-10"
         >
-          <div className="flex gap-1 mb-6">
+          <div className="flex gap-1 mb-8">
             {[1,2,3,4,5].map(i => <Star key={i} size={12} className="text-primary fill-primary" />)}
           </div>
           <p className="text-black text-[15px] italic leading-relaxed mb-8 font-medium">
             &quot;{fallbackTestimonials[current].quote}&quot;
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-10">
             <div className="w-10 h-px bg-primary/30" />
             <div>
               <p className="text-[10px] font-bold text-black uppercase tracking-widest">{fallbackTestimonials[current].author}</p>

@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function ExecutiveSummitJeddah() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -34,10 +34,10 @@ export default function ExecutiveSummitJeddah() {
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-4 block bg-white/50 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
+          <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-ink-800/50 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Coastal Corporate Strategy
           </span>
-          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-6 leading-tight uppercase tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-8 leading-tight uppercase tracking-tight">
             Executive <span className="text-primary italic">Summit</span> Jeddah
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Blending the maritime heritage of the Red Sea with the future of Saudi industry. An elite gathering at the edge of the world.</p>
@@ -45,8 +45,8 @@ export default function ExecutiveSummitJeddah() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-16 bg-white border border-gray-100 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+      <section className="py-32 bg-ink-800 border border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Ship, label: "Venue", val: "Private Yacht Club" },
             { icon: Building, label: "Scale", val: "C-Suite Exclusive" },
@@ -72,7 +72,7 @@ export default function ExecutiveSummitJeddah() {
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Coastal <span className="text-primary italic">Elegance</span></h2>
-            <p className="mb-6">
+            <p className="mb-8">
               For the Jeddah Executive Summit, we curated an environment that leveraged the city&apos;s unique relationship with the Red Sea. The challenge was to create a space that felt expansive and inspiring, yet secure and private enough for sensitive policy discussions.
             </p>
             <p>
@@ -84,14 +84,14 @@ export default function ExecutiveSummitJeddah() {
         {/* Operational Pillars */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-12 uppercase tracking-tight text-center">Summit <span className="text-primary italic">Pillars</span></h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               { title: "White-Glove Concierge", desc: "End-to-end travel and stay management for international CEOs, including private jet terminal handling." },
               { title: "Bespoke Environment", desc: "Custom-designed furniture using sustainable materials that reflected the Red Sea's coral ecosystems." },
               { title: "Security Excellence", desc: "A seamless, 'invisible' security net that protected VIPs while maintaining a relaxed atmosphere." }
             ].map((item, i) => (
-              <div key={i} className="p-10 bg-gray-50 rounded-3xl border border-gray-100 hover:border-primary transition-all group">
-                <h3 className="text-black text-xs font-bold uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+              <div key={i} className="p-10 bg-ink-950 rounded-3xl border border-ink-600 hover:border-primary transition-all group">
+                <h3 className="text-black text-xs font-bold uppercase tracking-widest mb-8 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -103,13 +103,13 @@ export default function ExecutiveSummitJeddah() {
           <p className="text-xl md:text-3xl font-sans font-light italic mb-10 leading-relaxed">
             "The executive summit in Jeddah was a masterclass in balance. Saudi Event Management delivered professional precision with the soul of a coastal retreat."
           </p>
-          <div className="w-12 h-px bg-primary mx-auto mb-6" />
+          <div className="w-12 h-px bg-primary mx-auto mb-8" />
           <p className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">CEO, Global Logistics Forum</p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gray-50 text-center">
+      <section className="py-32 bg-ink-950 text-center">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Elevate Your <span className="text-primary italic">Corporate Voice</span></h2>
         <Link 
           href="/#contact" 

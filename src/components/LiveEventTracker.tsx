@@ -27,7 +27,7 @@ export default function LiveEventTracker() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <section id="tracking" className="py-24 bg-[#F8F9FA] relative overflow-hidden">
+    <section id="tracking" className="py-32 bg-[#F8F9FA] relative overflow-hidden">
       {/* Ambient backgrounds */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
       
@@ -53,8 +53,8 @@ export default function LiveEventTracker() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Dashboard Card */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white border border-gray-100 rounded-sm p-10 shadow-sm">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+            <div className="bg-ink-800 border border-ink-600 rounded-sm p-10 shadow-sm">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-10">
                 <div>
                   <h3 className="text-xl font-sans font-bold text-[#041E42] mb-2">The Royal Wedding Reception</h3>
                   <p className="text-gray-500 flex items-center gap-2 text-sm font-light">
@@ -104,18 +104,18 @@ export default function LiveEventTracker() {
                 </div>
 
                 <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-12 w-full">
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-gray-100">
-                    <Users className="text-champagne-500 mb-4" size={24} />
+                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
+                    <Users className="text-champagne-500 mb-8" size={24} />
                     <div className="text-xl font-sans font-bold text-[#041E42]">850</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Guests</div>
                   </div>
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-gray-100">
-                    <Zap className="text-sage-500 mb-4" size={24} />
+                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
+                    <Zap className="text-sage-500 mb-8" size={24} />
                     <div className="text-2xl font-display font-bold text-[#041E42]">Online</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">AV Systems</div>
                   </div>
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-gray-100">
-                    <Clock className="text-plum-700 mb-4" size={24} />
+                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
+                    <Clock className="text-plum-700 mb-8" size={24} />
                     <div className="text-2xl font-display font-bold text-[#041E42]">On-Time</div>
                     <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Schedule</div>
                   </div>
@@ -124,7 +124,7 @@ export default function LiveEventTracker() {
             </div>
 
             {/* Live Updates */}
-            <div className="bg-white border border-gray-100 p-8 rounded-sm">
+            <div className="bg-ink-800 border border-ink-600 p-8 rounded-sm">
               <h4 className="text-[#041E42] text-[10px] font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-sage-500 animate-pulse" />
                 Latest Strategic Updates
@@ -134,7 +134,7 @@ export default function LiveEventTracker() {
                   { text: "Catering team has finalized the appetizers station. Temperature checks verified.", time: "2 minutes ago", team: "Ops Team", color: "bg-sage-500" },
                   { text: "Orchestra sound check successfully completed in the Main Atrium.", time: "15 minutes ago", team: "Tech Team", color: "bg-champagne-500" }
                 ].map((update, i) => (
-                  <div key={i} className="flex gap-6 group">
+                  <div key={i} className="flex gap-10 group">
                     <div className={`w-1 h-12 ${update.color} rounded-full transition-transform group-hover:scale-y-110`} />
                     <div>
                       <p className="text-[#041E42] text-sm leading-relaxed mb-2">{update.text}</p>
@@ -147,14 +147,14 @@ export default function LiveEventTracker() {
           </div>
 
           {/* Timeline */}
-          <div className="bg-white border border-gray-100 rounded-sm p-10 shadow-sm h-fit">
+          <div className="bg-ink-800 border border-ink-600 rounded-sm p-10 shadow-sm h-fit">
             <h3 className="text-xl font-display text-[#041E42] mb-10">Event Timeline</h3>
             <div className="space-y-8 relative">
               <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gray-100" />
 
               {eventMilestones.map((milestone) => (
                 <div key={milestone.id} className="relative pl-12 group">
-                  <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 bg-white flex items-center justify-center z-10 transition-all duration-500 ${
+                  <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 bg-ink-800 flex items-center justify-center z-10 transition-all duration-500 ${
                     milestone.status === 'completed' ? 'border-sage-500 text-sage-500' : 
                     milestone.status === 'in-progress' ? 'border-champagne-500 text-champagne-500' : 'border-gray-200 text-gray-300'
                   }`}>
@@ -182,7 +182,7 @@ export default function LiveEventTracker() {
               ))}
             </div>
 
-            <button className="w-full mt-12 py-5 border border-gray-100 hover:border-champagne-500/50 text-gray-400 hover:text-[#041E42] transition-all duration-500 rounded-sm text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 group">
+            <button className="w-full mt-12 py-5 border border-ink-600 hover:border-champagne-500/50 text-gray-400 hover:text-[#041E42] transition-all duration-500 rounded-sm text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 group">
               <AlertCircle size={14} className="group-hover:text-champagne-500" />
               Direct Support Line
             </button>
