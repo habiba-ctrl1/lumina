@@ -33,30 +33,35 @@ const SERVICE = {
   details: "We integrate advanced registration systems, VIP lounge designs, high-end sound engineering, and stage production to ensure your conference is executed flawlessly."
 };
 
-export const metadata: Metadata = {
-  title: SERVICE.titleTag,
-  description: SERVICE.metaDescription,
-  alternates: {
-    canonical: SERVICE.canonicalUrl,
-    languages: {
-      "en-US": SERVICE.canonicalUrl,
-      "ar-SA": `https://saudieventmanagement.com/ar/services/${SERVICE.slug}`,
-    },
-  },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const currentCanonical = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/conferences`;
+
+  return {
     title: SERVICE.titleTag,
     description: SERVICE.metaDescription,
-    url: SERVICE.canonicalUrl,
-    images: [
-      {
-        url: SERVICE.heroImage,
-        width: 1200,
-        height: 630,
-        alt: SERVICE.heroImageAlt,
+    alternates: {
+      canonical: currentCanonical,
+      languages: {
+        "en-US": "https://saudieventmanagement.com/services/conferences",
+        "ar-SA": "https://saudieventmanagement.com/ar/services/conferences",
       },
-    ],
-  },
-};
+    },
+    openGraph: {
+      title: SERVICE.titleTag,
+      description: SERVICE.metaDescription,
+      url: currentCanonical,
+      images: [
+        {
+          url: SERVICE.heroImage,
+          width: 1200,
+          height: 630,
+          alt: SERVICE.heroImageAlt,
+        },
+      ],
+    },
+  };
+}
 
 const serviceSchema = {
   "@context": "https://schema.org",
