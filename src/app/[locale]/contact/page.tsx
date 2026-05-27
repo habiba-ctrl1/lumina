@@ -123,7 +123,7 @@ export default async function ContactPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-ink-950 text-sand-100 overflow-hidden relative">
+    <main className="min-h-screen bg-slate-50 text-slate-900 overflow-hidden relative">
       <ScrollProgress />
       <WhatsAppButton />
       <Navbar dict={dict.nav} locale={locale} />
@@ -134,104 +134,103 @@ export default async function ContactPage({ params }: PageProps) {
       />
 
       {/* ── Background Aesthetics ── */}
-      <div className="absolute top-0 left-0 w-full h-[65vh] pointer-events-none overflow-hidden z-0">
+      <div className="absolute top-0 left-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0">
         <Image
           src="/hero_bg.webp"
           alt="Luxury Backdrop"
           fill
           priority
-          className="object-cover opacity-[0.12] scale-105"
+          className="object-cover opacity-30 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-950/60 to-ink-950" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-[150px]" />
+        <div className="absolute inset-0 bg-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/80 to-slate-50" />
       </div>
 
       {/* ── Hero Header ── */}
-      <section className="relative z-10 pt-36 md:pt-44 pb-12 text-center container-luxury">
-        <span className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.4em] font-semibold mb-8 block animate-fade-in">
+      <section className="relative z-10 pt-36 md:pt-44 pb-12 text-center max-w-7xl mx-auto px-6">
+        <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold mb-6 block animate-fade-in">
           {content.heroLabel}
         </span>
-        <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight leading-tight max-w-4xl mx-auto">
-          {content.heroTitle} <span className="text-shimmer italic font-semibold">{content.heroTitleHighlight}</span>
+        <h1 className="font-display font-bold text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight leading-tight max-w-4xl mx-auto">
+          {content.heroTitle} <span className="text-[var(--primary)] font-bold">{content.heroTitleHighlight}</span>
         </h1>
-        <p className="text-sand-400 text-xs md:text-sm max-w-xl mx-auto font-light leading-relaxed">
+        <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
           {content.heroSubtitle}
         </p>
       </section>
 
       {/* ── Contact Body ── */}
-      <section className="relative z-10 py-32 pb-28 container-luxury">
+      <section className="relative z-10 py-20 pb-28 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Contact Suite */}
           <div className="lg:col-span-5 space-y-12">
             
             {/* WhatsApp Concierge Badge */}
-            <div className="bg-ink-900/40 border border-ink-600 rounded-xl p-6 md:p-8 hover:border-gold-400/30 transition-all duration-300 shadow-xl group">
-              <span className="text-[9px] font-bold text-[#25D366] uppercase tracking-widest block mb-2">{content.whatsappTitle}</span>
-              <h3 className="font-display font-medium text-sand-50 text-lg uppercase tracking-tight mb-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-6 md:p-8 hover:border-[#25D366] transition-all duration-300 shadow-sm hover:shadow-lg group">
+              <span className="text-[10px] font-bold text-[#25D366] uppercase tracking-widest block mb-3">{content.whatsappTitle}</span>
+              <h3 className="font-display font-bold text-slate-900 text-xl uppercase tracking-tight mb-4">
                 {content.whatsappSub}
               </h3>
-              <p className="text-sand-400 text-[12px] leading-relaxed mb-8 font-light">
+              <p className="text-slate-600 text-[13px] leading-relaxed mb-8">
                 {content.whatsappDesc}
               </p>
               <a
                 href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-4.5 rounded-lg shadow-xl shadow-green-500/10 hover:shadow-green-500/25 transition-all text-xs font-bold uppercase tracking-wider"
+                className="flex items-center justify-between bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-4 rounded-md shadow-md transition-all text-[11px] font-bold uppercase tracking-wider"
               >
                 <div className="flex items-center gap-3">
                   <MessageCircle size={18} />
                   <span>Start Live Chat</span>
                 </div>
-                <span className="text-[10px] opacity-75">→</span>
+                <span className="text-xs">→</span>
               </a>
             </div>
 
             {/* Direct Information */}
-            <div className="space-y-6">
-              <h3 className="font-display font-medium text-sand-50 text-base uppercase tracking-wider border-b border-ink-600 pb-3 flex items-center gap-2">
-                <Sparkles size={14} className="text-gold-400" />
+            <div className="space-y-8 bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm">
+              <h3 className="font-display font-bold text-slate-900 text-lg uppercase tracking-wider border-b border-slate-100 pb-4 flex items-center gap-3">
+                <Sparkles size={16} className="text-[var(--primary)]" />
                 <span>{content.directTitle}</span>
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
+              <div className="grid grid-cols-1 gap-8">
                 {/* Email */}
-                <div className="flex items-start gap-10">
-                  <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
-                    <Mail size={16} />
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-sand-500 font-bold uppercase tracking-widest mb-1">{content.emailLabel}</span>
-                    <a href="mailto:hello@saudieventmanagement.com" className="text-sand-200 text-[13px] hover:text-gold-400 transition-colors font-medium">
+                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.emailLabel}</span>
+                    <a href="mailto:hello@saudieventmanagement.com" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
                       hello@saudieventmanagement.com
                     </a>
                   </div>
                 </div>
 
                 {/* Call */}
-                <div className="flex items-start gap-10">
-                  <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
-                    <Phone size={16} />
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                    <Phone size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-sand-500 font-bold uppercase tracking-widest mb-1">{content.callLabel}</span>
-                    <a href="tel:+966501234567" className="text-sand-200 text-[13px] hover:text-gold-400 transition-colors font-medium">
+                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.callLabel}</span>
+                    <a href="tel:+966501234567" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
                       +966 50 123 4567
                     </a>
                   </div>
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-10">
-                  <div className="w-10 h-10 bg-ink-900 border border-ink-600 rounded-md flex items-center justify-center shrink-0 text-gold-400">
-                    <Clock size={16} />
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                    <Clock size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-sand-500 font-bold uppercase tracking-widest mb-1">{content.hoursLabel}</span>
-                    <span className="text-sand-200 text-[13px] font-medium leading-relaxed block">
+                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.hoursLabel}</span>
+                    <span className="text-slate-700 text-[13px] leading-relaxed block">
                       {content.hoursValue}
                     </span>
                   </div>
@@ -241,28 +240,28 @@ export default async function ContactPage({ params }: PageProps) {
 
             {/* Regional Offices */}
             <div className="space-y-6 pt-4">
-              <h3 className="font-display font-medium text-sand-50 text-base uppercase tracking-wider border-b border-ink-600 pb-3 flex items-center gap-2">
-                <MapPin size={14} className="text-gold-400" />
+              <h3 className="font-display font-bold text-slate-900 text-lg uppercase tracking-wider pb-2 flex items-center gap-3">
+                <MapPin size={16} className="text-[var(--primary)]" />
                 <span>{content.officesTitle}</span>
               </h3>
 
               <div className="space-y-6">
                 {/* Riyadh */}
-                <div className="relative pl-6 border-l-2 border-gold-400/20 hover:border-gold-400 transition-colors">
-                  <span className="block text-[11px] font-bold text-sand-100 uppercase tracking-widest mb-1">{content.riyadhTitle}</span>
-                  <span className="block text-sand-400 text-[12px] font-light leading-relaxed">{content.riyadhAddress}</span>
+                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.riyadhTitle}</span>
+                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.riyadhAddress}</span>
                 </div>
 
                 {/* Jeddah */}
-                <div className="relative pl-6 border-l-2 border-gold-400/20 hover:border-gold-400 transition-colors">
-                  <span className="block text-[11px] font-bold text-sand-100 uppercase tracking-widest mb-1">{content.jeddahTitle}</span>
-                  <span className="block text-sand-400 text-[12px] font-light leading-relaxed">{content.jeddahAddress}</span>
+                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.jeddahTitle}</span>
+                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.jeddahAddress}</span>
                 </div>
 
                 {/* AlUla */}
-                <div className="relative pl-6 border-l-2 border-gold-400/20 hover:border-gold-400 transition-colors">
-                  <span className="block text-[11px] font-bold text-sand-100 uppercase tracking-widest mb-1">{content.alulaTitle}</span>
-                  <span className="block text-sand-400 text-[12px] font-light leading-relaxed">{content.alulaAddress}</span>
+                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.alulaTitle}</span>
+                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.alulaAddress}</span>
                 </div>
               </div>
             </div>

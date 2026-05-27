@@ -152,7 +152,7 @@ export default function ProductionVenuesPage() {
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
+              className="text-[var(--primary)] text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
             >
               خدمات الفعاليات والأماكن | Production Mastery
             </motion.span>
@@ -162,8 +162,8 @@ export default function ProductionVenuesPage() {
               transition={{ delay: 0.2 }}
               className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
-              Exquisite <span className="font-bold text-gold-500">Services</span> <br/>
-              & <span className="text-shimmer font-bold">Elite Venues</span>
+              Exquisite <span className="font-bold text-[var(--primary)]">Services</span> <br/>
+              & <span className="text-[var(--primary)] font-bold">Elite Venues</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
@@ -180,7 +180,7 @@ export default function ProductionVenuesPage() {
             >
               <Link
                 href="/#contact"
-                className="inline-block px-12 py-5 bg-gold-500 text-emerald-950 font-bold uppercase tracking-widest hover:bg-ink-800 transition-all shadow-2xl"
+                className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
               >
                 Inquire for Services
               </Link>
@@ -193,8 +193,8 @@ export default function ProductionVenuesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-10">
               <div className="flex items-center gap-10">
-                <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
-                  <Star className="text-gold-500" size={24} />
+                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
+                  <Star className="text-[var(--primary)]" size={24} />
                 </div>
                 <div>
                   <p className="text-white font-bold text-sm tracking-widest">ISO 9001 Certified</p>
@@ -206,7 +206,7 @@ export default function ProductionVenuesPage() {
                 <span>JW MARRIOTT</span>
                 <span>RITZ-CARLTON</span>
               </div>
-              <div className="text-xs text-gold-500 font-bold  tracking-widest uppercase border-l border-white/10 pl-8">
+              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase border-l border-white/10 pl-8">
                 &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
               </div>
             </div>
@@ -235,8 +235,8 @@ export default function ProductionVenuesPage() {
                   transition={{ delay: i * 0.1 }}
                   className="group"
                 >
-                  <div className="w-14 h-14 bg-ink-800/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-gold-500/10 group-hover:border-gold-500/50 transition-all duration-500">
-                    <service.icon size={24} className="text-gold-500" />
+                  <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[var(--primary)]/10 group-hover:border-[var(--primary)]/50 transition-all duration-500">
+                    <service.icon size={24} className="text-[var(--primary)]" />
                   </div>
                   <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
@@ -251,7 +251,7 @@ export default function ProductionVenuesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">Production <br/><span className="text-gold-500">Hub</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-white">Production <br/><span className="text-[var(--primary)]">Hub</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
                 <div className="pt-6 border-t border-white/10">
                   <p className="text-white font-bold text-sm">Fahad Al-Sulaiman</p>
@@ -265,8 +265,8 @@ export default function ProductionVenuesPage() {
                   { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
                   { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
+                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
@@ -276,23 +276,23 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Localized Arabic Content */}
-        <section className="py-32 bg-ink-800 text-sand-50 relative overflow-hidden">
+        <section className="py-32 bg-white text-slate-900 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
-                <h2 className="text-2xl md:text-4xl font-sans text-sand-50 font-bold">
-                  خدمات <br/><span className="text-gold-600">عالمية المستوى</span>
+                <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">
+                  خدمات <br/><span className="text-[var(--primary)]">عالمية المستوى</span>
                 </h2>
                 <div className="space-y-6">
-                  <div className="p-8 bg-ink-950 border-l-4 border-gold-500">
+                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">أماكن فعاليات الرياض</h4>
                     <p className="text-gray-600 text-sm">نقدم أفضل خيارات القاعات والمساحات الخارجية الفاخرة التي تناسب تطلعاتكم.</p>
                   </div>
-                  <div className="p-8 bg-ink-950 border-l-4 border-gold-500">
+                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">شركة إنتاج صوت وصورة الرياض</h4>
                     <p className="text-gray-600 text-sm">أحدث التقنيات في الصوت والإضاءة والشاشات لضمان تجربة بصرية مذهلة.</p>
                   </div>
-                  <div className="p-8 bg-ink-950 border-l-4 border-gold-500">
+                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">تصميم وديكور فعاليات جدة</h4>
                     <p className="text-gray-600 text-sm">نبتكر تصاميم وديكورات تعكس هوية الفعالية وتضيف لمسة من الأناقة.</p>
                   </div>
@@ -315,17 +315,17 @@ export default function ProductionVenuesPage() {
         <section className="py-32 bg-emerald-900 relative">
           <div className="max-w-5xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Investment <span className="text-gold-500">Guide</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Investment <span className="text-[var(--primary)]">Guide</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-[0.4em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
             </div>
 
             <div className="overflow-hidden rounded-3xl border border-white/5 bg-emerald-950 shadow-2xl">
               <table className="w-full text-left">
-                <thead className="bg-ink-800/5">
+                <thead className="bg-white/5">
                   <tr>
-                    <th className="px-8 py-6 text-gold-500 uppercase tracking-widest text-xs font-bold">Service Category</th>
-                    <th className="px-8 py-6 text-gold-500 uppercase tracking-widest text-xs font-bold">Starting Investment</th>
-                    <th className="px-8 py-6 text-gold-500 uppercase tracking-widest text-xs font-bold">Key Inclusions</th>
+                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Service Category</th>
+                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Starting Investment</th>
+                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Key Inclusions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
@@ -336,9 +336,9 @@ export default function ProductionVenuesPage() {
                     { category: "Venue Rental", price: "SAR 50,000", inclusions: "Location, Security, Basic Setup" },
                     { category: "Event Media", price: "SAR 8,500", inclusions: "Photography, Cinematic Highlights" },
                   ].map((row, i) => (
-                    <tr key={i} className="hover:bg-ink-800/[0.02] transition-colors">
+                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
                       <td className="px-8 py-6 text-white font-medium">{row.category}</td>
-                      <td className="px-8 py-6 text-gold-500 font-bold">{row.price}</td>
+                      <td className="px-8 py-6 text-[var(--primary)] font-bold">{row.price}</td>
                       <td className="px-8 py-6 text-gray-500 text-sm font-light">{row.inclusions}</td>
                     </tr>
                   ))}
@@ -349,9 +349,9 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-32 bg-ink-800 text-sand-50">
+        <section className="py-32 bg-white text-slate-900">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <h2 className="text-2xl md:text-3xl font-sans mb-16 text-center font-bold">Service <span className="text-gold-600">Queries</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans mb-16 text-center font-bold">Service <span className="text-[var(--primary)]">Queries</span></h2>
             <div className="space-y-6">
               {[
                 { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Saudi Event Management provides complete technical specifications tailored to your venue." },
@@ -363,7 +363,7 @@ export default function ProductionVenuesPage() {
                 { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
                 { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Saudi Event Management provides localized, concert-grade AV production and technical support wherever your event takes place." }
               ].map((faq, i) => (
-                <div key={i} className="border-b border-ink-600 pb-8">
+                <div key={i} className="border-b border-slate-200 pb-8">
                   <h3 className="text-xl font-bold mb-8">{faq.q}</h3>
                   <p className="text-gray-500 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>

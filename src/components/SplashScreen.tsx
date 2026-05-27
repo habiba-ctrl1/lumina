@@ -22,25 +22,25 @@ export default function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-ink-950"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
         >
-          {/* Animated Background Pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
-             <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+             <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(var(--primary) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
           </div>
 
           <div className="relative">
-            {/* Outer Glow */}
+            {/* Outer Glow - Teal tint */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1.2, opacity: 0.3 }}
+              animate={{ scale: 1.2, opacity: 0.08 }}
               transition={{ 
                 duration: 2, 
                 repeat: Infinity, 
                 repeatType: "reverse",
                 ease: "easeInOut" 
               }}
-              className="absolute inset-0 bg-primary/20 rounded-full blur-3xl"
+              className="absolute inset-0 bg-[var(--primary)] rounded-full blur-3xl"
             />
 
             {/* Logo */}
@@ -58,13 +58,13 @@ export default function SplashScreen() {
                 alt="Saudi Event Management" 
                 width={500} 
                 height={200}
-                className="object-contain"
+                className="object-contain grayscale brightness-0"
                 priority
               />
               
               {/* Progress Line */}
               <motion.div 
-                className="w-full h-[1px] bg-primary/30 mt-8 relative overflow-hidden"
+                className="w-full h-[1px] bg-slate-200 mt-8 relative overflow-hidden"
               >
                 <motion.div 
                   initial={{ x: "-100%" }}
@@ -74,7 +74,7 @@ export default function SplashScreen() {
                     ease: "linear",
                     repeat: 0
                   }}
-                  className="absolute inset-0 bg-primary"
+                  className="absolute inset-0 bg-[var(--primary)]"
                 />
               </motion.div>
             </motion.div>
@@ -87,7 +87,7 @@ export default function SplashScreen() {
             transition={{ delay: 0.8, duration: 1 }}
             className="absolute bottom-20 left-0 right-0 text-center"
           >
-            <span className="text-primary text-[10px] uppercase tracking-[0.8em] font-bold">
+            <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.8em] font-bold">
               Architectural Emotion
             </span>
           </motion.div>

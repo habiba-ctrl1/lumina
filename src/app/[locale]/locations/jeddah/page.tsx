@@ -12,9 +12,41 @@ export const metadata = {
   alternates: { canonical: 'https://saudieventmanagement.com/locations/jeddah' },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "Saudi Event Management Jeddah",
+      "image": "https://saudieventmanagement.com/gallery_corporate_gala.webp",
+      "description": "Exquisite event planning in Jeddah. Specialists in Red Sea coastal weddings, corporate summits in the financial district, and luxury private parties.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jeddah",
+        "addressRegion": "Makkah Province",
+        "addressCountry": "SA"
+      },
+      "areaServed": ["Jeddah", "Red Sea Coast", "Makkah"],
+      "telephone": "+966501234567"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://saudieventmanagement.com/locations" },
+        { "@type": "ListItem", "position": 3, "name": "Jeddah", "item": "https://saudieventmanagement.com/locations/jeddah" }
+      ]
+    }
+  ]
+};
+
 export default function JeddahPage() {
   return (
-    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -35,11 +67,11 @@ export default function JeddahPage() {
           <span className="section-label">
             The Bride of the Red Sea | Jeddah
           </span>
-          <h1 className="font-display font-medium text-sand-50 mb-8 leading-tight text-3xl md:text-5xl">
-            Coastal Elegance & <br/><span className="text-shimmer italic font-semibold">Bespoke Galas</span>
+          <h1 className="font-display font-medium text-slate-900 mb-8 leading-tight text-3xl md:text-5xl">
+            Coastal Elegance & <br/><span className="text-[var(--primary)]  font-semibold">Bespoke Galas</span>
           </h1>
-          <p className="text-sand-200 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            From the mesmerizing spray of <span className="text-sand-50 font-semibold">King Fahd&apos;s Fountain</span> to the historic soul of <span className="text-sand-50 font-semibold">Al-Balad</span>, we design events that breathe with the spirit of Jeddah.
+          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            From the mesmerizing spray of <span className="text-slate-900 font-semibold">King Fahd&apos;s Fountain</span> to the historic soul of <span className="text-slate-900 font-semibold">Al-Balad</span>, we design events that breathe with the spirit of Jeddah.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
             <Link
@@ -61,33 +93,33 @@ export default function JeddahPage() {
       {/* City Landmarks & Expertise */}
       <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-ink-600 shadow-md">
+          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_garden_party.webp" alt="Al-Balad Jeddah Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-sm">
-                 <p className="text-white text-sm font-display italic font-light">&quot;Where the heritage of the past meets the luxury of the future.&quot;</p>
+                 <p className="text-white text-sm font-display  font-light">&quot;Where the heritage of the past meets the luxury of the future.&quot;</p>
                </div>
             </div>
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">Event Venues Jeddah</span>
-            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">Red Sea <span className="text-shimmer italic">Grandeur</span></h2>
-            <p className="text-sand-200 text-sm leading-relaxed mb-8">
+            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">Red Sea <span className="text-[var(--primary)] ">Grandeur</span></h2>
+            <p className="text-slate-600 text-sm leading-relaxed mb-8">
               Jeddah&apos;s vibrant energy is matched only by its stunning coastal backdrop. We excel in planning high-end waterfront weddings on the <span className="text-slate-950 font-semibold">Jeddah Corniche</span> and intimate, soulful gatherings within the coral-stone walls of <span className="text-slate-950 font-semibold">Al-Balad</span>. Our team understands the unique rhythm of the Hijaz region.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
               {[
-                { icon: Waves, title: "Waterfront Galas", text: "Luxury yacht parties and seaside ballroom celebrations." },
-                { icon: Building, title: "Historic Heritage", text: "Exclusive events in Al-Balad's meticulously restored mansions." },
-                { icon: Anchor, title: "Yacht Concierge", text: "Bespoke private celebrations on the Red Sea's elite vessels." },
-                { icon: Camera, title: "Cinematic Vibe", text: "Leveraging Jeddah's unique golden hour for perfect events." }
+                { icon: Waves, title: "Waterfront Weddings & Galas", text: "Luxury seaside ballroom celebrations and elite weddings.", href: "/services/luxury-weddings-jeddah" },
+                { icon: Building, title: "Historic Heritage Events", text: "Exclusive events in Al-Balad's meticulously restored mansions.", href: "/services/cultural-events" },
+                { icon: Anchor, title: "Yacht Concierge", text: "Bespoke private celebrations on the Red Sea's elite vessels.", href: "/services/luxury-vip-events" },
+                { icon: Camera, title: "Cinematic Event Production", text: "Leveraging Jeddah's unique golden hour for perfect events.", href: "/services/event-production" }
               ].map((item, i) => (
-                <div key={i} className="flex flex-col gap-2 p-4 bg-ink-800 border border-ink-500 rounded-sm shadow-2xs">
+                <Link key={i} href={item.href} className="flex flex-col gap-2 p-4 bg-white border border-slate-300 rounded-sm shadow-2xs hover:-translate-y-1 hover:border-emerald-500 transition-all">
                   <item.icon size={20} className="text-emerald-800" />
-                  <h3 className="font-display font-medium text-sand-50 text-sm">{item.title}</h3>
-                  <p className="text-sand-300 text-xs leading-relaxed">{item.text}</p>
-                </div>
+                  <h3 className="font-display font-medium text-slate-900 text-sm">{item.title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{item.text}</p>
+                </Link>
               ))}
             </div>
           </div>
@@ -96,10 +128,10 @@ export default function JeddahPage() {
 
       {/* Descriptive SEO Section */}
       <section className="py-28 relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="font-display font-medium text-sand-50 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
-          The Jeddah <span className="text-shimmer italic">Experience</span>
+        <h2 className="font-display font-medium text-slate-900 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
+          The Jeddah <span className="text-[var(--primary)] ">Experience</span>
         </h2>
-        <div className="prose prose-slate max-w-none text-sand-200 text-sm leading-relaxed space-y-6 font-light">
+        <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-6 font-light">
           <p>
             As the spiritual gateway to the Holy Cities and a vibrant hub for global trade, Jeddah offers a unique canvas for luxury events. Our Jeddah-based team specializes in navigating the city&apos;s diverse micro-environments, from the sleek, modern architecture of the Obhur coastline to the historic, coral-stone mansions of Al-Balad. We maintain close partnerships with the city&apos;s most prestigious five-star hotels and private estates, ensuring that our clients have access to the most exclusive venues available.
           </p>
@@ -110,7 +142,7 @@ export default function JeddahPage() {
       </section>
 
       {/* Jeddah Stats */}
-      <section className="py-32 bg-ink-900/50 border-t border-b border-ink-600/50 relative">
+      <section className="py-32 bg-slate-50/50 border-t border-b border-slate-200/50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
@@ -120,8 +152,8 @@ export default function JeddahPage() {
               { label: "Logistics Fleet", val: "Premium" }
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-display font-medium text-sand-50 mb-2">{stat.val}</div>
-                <div className="text-xs uppercase tracking-widest text-sand-300 font-semibold">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
+                <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>

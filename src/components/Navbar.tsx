@@ -23,11 +23,12 @@ const defaultNavLinks = [
 ];
 
 const services = [
-  { name: "Royal Weddings",       href: "/services/luxury-wedding-planning-saudi-arabia",          icon: Heart,        desc: "Ultra-luxury celebrations" },
-  { name: "Corporate Galas",      href: "/services/corporate-events-riyadh",          icon: Briefcase,    desc: "High-stakes networking" },
-  { name: "Exhibitions & Trade",  href: "/services/exhibition-management-saudi-arabia",icon: Presentation, desc: "B2B brand showcases" },
-  { name: "Production & Venues",  href: "/services/event-production-saudi-arabia",           icon: Landmark,     desc: "Iconic space curation" },
-  { name: "Seasonal Festivals",   href: "/services/seasonal",                         icon: Sparkles,     desc: "Regional cultural events" },
+  { name: "Royal Weddings",       href: "/services/weddings",          icon: Heart,        desc: "Ultra-luxury celebrations" },
+  { name: "Corporate Galas",      href: "/services/corporate-events",          icon: Briefcase,    desc: "High-stakes networking" },
+  { name: "Exhibitions & Trade",  href: "/services/exhibitions",icon: Presentation, desc: "B2B brand showcases" },
+  { name: "Event Production",  href: "/services/event-production",           icon: Landmark,     desc: "Technical execution & design" },
+  { name: "Cultural & Seasonal",   href: "/services/cultural-events",                         icon: Sparkles,     desc: "Regional cultural events" },
+  { name: "Luxury & VIP",   href: "/services/luxury-vip-events",                         icon: Sparkles,     desc: "Exclusive private events" },
   { name: "Private Events",       href: "/services",                                  icon: Users,        desc: "Exclusive social gatherings" },
 ];
 
@@ -49,7 +50,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
   const router                            = useRouter();
  
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -68,10 +69,8 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
       onMouseLeave={() => setHoveredLink(null)}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled
-          // Scrolled: solid dark surface + subtle dark bottom border
-          ? "bg-[#0B0C10]/95 backdrop-blur-xl border-b border-[var(--border)] py-2 shadow-sm"
-          // Top of page: fully transparent so hero image shows through
-          : "bg-transparent border-b border-transparent py-4"
+          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 py-3 shadow-sm"
+          : "bg-white border-b border-slate-100 py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -88,6 +87,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
               className={`object-contain w-auto transition-all duration-500 ${
                 isScrolled ? "h-10" : "h-14"
               }`}
+              style={{ filter: "brightness(0) invert(0)" }} // Ensure dark logo on white background
             />
           </Link>
  
@@ -98,13 +98,8 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
               const linkName   = dict ? dict[link.key] || link.key : link.key;
               const hasDropdown = ["services", "partners", "locations"].includes(link.key);
               
-              // Choose legibility colors dynamically based on scrolling & hero themes
-              const textNormal = isScrolled
-                ? "text-[var(--foreground-muted)] hover:text-[var(--heading)]"
-                : darkHero
-                  ? "text-white/80 hover:text-white"
-                  : "text-[var(--foreground-muted)] hover:text-[var(--heading)]";
-              const textActive = "text-gold-400";
+              const textNormal = "text-slate-600 hover:text-slate-900";
+              const textActive = "text-[var(--primary)]";
  
               return (
                 <div
@@ -114,8 +109,8 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                 >
                   <Link
                     href={link.href}
-                    className={`relative flex items-center gap-1 px-3 py-2
-                      text-[10px] font-semibold uppercase tracking-[0.15em]
+                    className={`relative flex items-center gap-1 px-4 py-2
+                      text-[10px] font-bold uppercase tracking-widest
                       transition-colors duration-200 ${
                         isActive ? textActive : textNormal
                       }`}
@@ -123,7 +118,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                     {linkName}
                     {hasDropdown && (
                       <ChevronDown
-                        size={9}
+                        size={10}
                         className={`transition-transform duration-200 ${
                           hoveredLink === link.key ? "rotate-180" : ""
                         }`}
@@ -131,7 +126,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                     )}
                     {/* Active underline */}
                     {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-px bg-gold-400" />
+                      <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-[var(--primary)]" />
                     )}
                   </Link>
 
@@ -144,56 +139,56 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3
-                            w-[660px] bg-ink-800 border border-ink-600
-                            rounded-lg overflow-hidden flex shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4
+                            w-[720px] bg-white border border-slate-200
+                            rounded-xl overflow-hidden flex shadow-2xl"
                         >
                           {/* Left panel */}
-                          <div className="w-[220px] bg-ink-900 border-r border-ink-600
-                            p-7 flex flex-col justify-between shrink-0">
+                          <div className="w-[240px] bg-slate-50 border-r border-slate-200
+                            p-8 flex flex-col justify-between shrink-0">
                             <div>
-                              <span className="section-label mb-3">Our Expertise</span>
-                              <p className="font-display text-2xl font-medium text-sand-50 leading-snug">
-                                Bespoke<br />Experiences
+                              <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-4 block">Our Expertise</span>
+                              <p className="font-display text-2xl font-bold text-slate-900 leading-snug">
+                                Premium<br />Corporate<br />Events
                               </p>
                             </div>
                             <Link
                               href="/services"
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-center gap-2 text-[10px] font-medium
-                                uppercase tracking-widest text-sand-300
-                                hover:text-gold-400 transition-colors group/all mt-6"
+                              className="flex items-center gap-2 text-[10px] font-bold
+                                uppercase tracking-widest text-[var(--primary)]
+                                hover:text-[var(--primary-dark)] transition-colors group/all mt-6"
                             >
                               All Services
-                              <ArrowRight size={11} className="group-hover/all:translate-x-1 transition-transform" />
+                              <ArrowRight size={14} className="group-hover/all:translate-x-1 transition-transform" />
                             </Link>
                           </div>
 
                           {/* Services grid */}
-                          <div className="flex-1 p-7 grid grid-cols-2 gap-x-6 gap-y-5">
+                          <div className="flex-1 p-8 grid grid-cols-2 gap-x-8 gap-y-6">
                             {services.map((item) => (
                               <Link
                                 key={item.name}
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
-                                className="flex items-start gap-3 group/item"
+                                className="flex items-start gap-4 group/item"
                               >
-                                <div className="w-9 h-9 rounded-md flex items-center justify-center shrink-0
-                                  bg-ink-700 border border-ink-500
-                                  group-hover/item:bg-gold-400/10
-                                  group-hover/item:border-gold-400/30
-                                  transition-all duration-200">
+                                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0
+                                  bg-slate-50 border border-slate-200
+                                  group-hover/item:bg-teal-50
+                                  group-hover/item:border-teal-100
+                                  transition-all duration-300">
                                   <item.icon
-                                    size={15}
-                                    className="text-sand-400 group-hover/item:text-gold-400 transition-colors"
+                                    size={18}
+                                    className="text-slate-400 group-hover/item:text-[var(--primary)] transition-colors"
                                   />
                                 </div>
                                 <div className="pt-0.5">
-                                  <span className="block text-[10px] font-medium uppercase tracking-widest
-                                    text-sand-200 group-hover/item:text-gold-400 transition-colors mb-0.5">
+                                  <span className="block text-[11px] font-bold uppercase tracking-widest
+                                    text-slate-900 group-hover/item:text-[var(--primary)] transition-colors mb-1">
                                     {item.name}
                                   </span>
-                                  <span className="block text-[10px] text-sand-400 leading-none">
+                                  <span className="block text-[11px] text-slate-500 leading-snug">
                                     {item.desc}
                                   </span>
                                 </div>
@@ -214,10 +209,10 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-3
-                            w-[260px] bg-ink-800 border border-ink-600
-                            rounded-lg overflow-hidden p-2
-                            shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
+                          className="absolute top-full left-0 mt-4
+                            w-[280px] bg-white border border-slate-200
+                            rounded-xl overflow-hidden p-3
+                            shadow-2xl"
                         >
                           {[
                             { label: "Partner with Us",  sub: "Overview of partnerships", href: "/partners",          Icon: Users    },
@@ -227,20 +222,20 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                               key={label}
                               href={href}
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-start gap-3 p-3 rounded-md
-                                hover:bg-ink-700 transition-all group/sub"
+                              className="flex items-start gap-4 p-3 rounded-lg
+                                hover:bg-slate-50 transition-all group/sub"
                             >
-                              <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0
-                                bg-ink-700 border border-ink-500
-                                group-hover/sub:border-gold-400/30 transition-all">
-                                <Icon size={13} className="text-sand-400 group-hover/sub:text-gold-400 transition-colors" />
+                              <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0
+                                bg-white border border-slate-200
+                                group-hover/sub:border-[var(--primary)] transition-all">
+                                <Icon size={18} className="text-slate-400 group-hover/sub:text-[var(--primary)] transition-colors" />
                               </div>
                               <div className="pt-0.5">
-                                <span className="block text-[10px] font-medium uppercase tracking-widest
-                                  text-sand-200 group-hover/sub:text-gold-400 transition-colors mb-0.5">
+                                <span className="block text-[10px] font-bold uppercase tracking-widest
+                                  text-slate-900 group-hover/sub:text-[var(--primary)] transition-colors mb-1">
                                   {label}
                                 </span>
-                                <span className="block text-[10px] text-sand-400 leading-none">{sub}</span>
+                                <span className="block text-[11px] text-slate-500 leading-snug">{sub}</span>
                               </div>
                             </Link>
                           ))}
@@ -258,22 +253,22 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-3
-                            w-[180px] bg-ink-800 border border-ink-600
-                            rounded-lg overflow-hidden p-2
-                            shadow-[0_24px_48px_rgba(0,0,0,0.6)]"
+                          className="absolute top-full left-0 mt-4
+                            w-[200px] bg-white border border-slate-200
+                            rounded-xl overflow-hidden p-3
+                            shadow-2xl"
                         >
                           {locations.map((city) => (
                             <Link
                               key={city.name}
                               href={city.href}
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-center gap-3 px-3 py-2.5 rounded-md
-                                hover:bg-ink-700 transition-all group/city"
+                              className="flex items-center gap-3 px-4 py-3 rounded-lg
+                                hover:bg-slate-50 transition-all group/city"
                             >
-                              <MapPin size={11} className="text-sand-500 group-hover/city:text-gold-400 transition-colors shrink-0" />
-                              <span className="text-[10px] font-medium uppercase tracking-widest
-                                text-sand-300 group-hover/city:text-sand-50 transition-colors">
+                              <MapPin size={14} className="text-slate-400 group-hover/city:text-[var(--primary)] transition-colors shrink-0" />
+                              <span className="text-[10px] font-bold uppercase tracking-widest
+                                text-slate-600 group-hover/city:text-slate-900 transition-colors">
                                 {city.name}
                               </span>
                             </Link>
@@ -286,49 +281,43 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
               );
             })}
           </div>
-
+ 
           {/* ── Right: Lang + CTA ─────────────────────────────────────────── */}
-          <div className="hidden lg:flex items-center gap-5 shrink-0">
+          <div className="hidden lg:flex items-center gap-6 shrink-0">
             {/* Language toggle */}
             <div className="flex items-center gap-2 group" aria-label="Language toggle">
-              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'en' ? 'text-gold-400' : isScrolled ? 'text-[var(--foreground-muted)] hover:text-white' : 'text-white/70 hover:text-white'}`}>EN</button>
-              <span className={`w-px h-3 ${isScrolled ? "bg-[var(--border)]" : darkHero ? "bg-ink-800/20" : "bg-[var(--border)]"}`} />
-              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-medium tracking-widest transition-colors ${locale === 'ar' ? 'text-gold-400' : isScrolled ? 'text-[var(--foreground-muted)] hover:text-white' : 'text-white/70 hover:text-white'}`}>AR</button>
+              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-bold tracking-widest transition-colors ${locale === 'en' ? 'text-[var(--primary)]' : 'text-slate-400 hover:text-slate-900'}`}>EN</button>
+              <span className="w-[1px] h-3 bg-slate-300" />
+              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-bold tracking-widest transition-colors ${locale === 'ar' ? 'text-[var(--primary)]' : 'text-slate-400 hover:text-slate-900'}`}>AR</button>
             </div>
-
+ 
             {/* CTA */}
             <Link
               href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2
-                bg-gold-400 text-ink-950
-                px-6 py-2.5 rounded-sm
-                text-[10px] font-medium uppercase tracking-[0.18em]
-                transition-all duration-200
-                hover:bg-gold-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)]"
+                bg-[var(--primary)] text-white
+                px-6 py-3 rounded-md
+                text-[10px] font-bold uppercase tracking-widest
+                transition-all duration-300
+                hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5"
             >
-              Book Now
+              Book Consultation
             </Link>
           </div>
-
+ 
           {/* ── Mobile Hamburger ──────────────────────────────────────────── */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 transition-colors ${
-              isScrolled
-                ? "text-[var(--heading)] hover:text-gold-400"
-                : darkHero
-                  ? "text-white hover:text-gold-400"
-                  : "text-[var(--heading)] hover:text-gold-400"
-            }`}
+            className="lg:hidden p-2 text-slate-900 hover:text-[var(--primary)] transition-colors"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
-
+ 
       {/* ── Mobile Menu ─────────────────────────────────────────────────────── */}
       <AnimatePresence>
         {isOpen && (
@@ -338,10 +327,10 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden absolute top-full left-0 right-0
-              bg-ink-900/98 backdrop-blur-xl
-              border-b border-ink-600 overflow-hidden"
+              bg-white/95 backdrop-blur-xl
+              border-b border-slate-200 overflow-hidden shadow-xl"
           >
-            <div className="px-6 py-8 space-y-1">
+            <div className="px-6 py-8 space-y-2">
               {defaultNavLinks.map((link, i) => {
                 const isActive = pathname === link.href;
                 const linkName = dict ? dict[link.key] || link.key : link.key;
@@ -356,34 +345,34 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                       href={link.href}
                       onClick={() => setIsOpen(false)}
                       className={`flex items-center justify-between
-                        px-4 py-3 rounded-md
-                        text-[11px] font-medium uppercase tracking-widest
+                        px-4 py-4 rounded-lg
+                        text-[11px] font-bold uppercase tracking-widest
                         transition-colors duration-150 ${
                           isActive
-                            ? "text-gold-400 bg-gold-400/5"
-                            : "text-sand-300 hover:text-sand-50 hover:bg-ink-800"
+                            ? "text-[var(--primary)] bg-teal-50"
+                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                         }`}
                     >
                       {linkName}
-                      {isActive && <span className="w-1 h-1 rounded-full bg-gold-400" />}
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />}
                     </Link>
                   </motion.div>
                 );
               })}
-
+ 
               {/* Mobile CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.38 }}
-                className="pt-5 border-t border-ink-600 mt-4"
+                className="pt-6 border-t border-slate-100 mt-6"
               >
                 <Link
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full justify-center py-3.5 text-[10px]"
+                  className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-4 rounded-md text-[11px] font-bold uppercase tracking-widest"
                 >
                   Book Consultation
                 </Link>

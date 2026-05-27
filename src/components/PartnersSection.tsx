@@ -1,110 +1,151 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Quote } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 
 const partners = [
-  { name: "GEA", logo: "/partners/gea.webp", alt: "General Entertainment Authority GEA — partner of Saudi Event Management" },
-  { name: "NEOM", logo: "/partners/neom.webp", alt: "NEOM Saudi Arabia — partner of Saudi Event Management company" },
-  { name: "Vision 2030", logo: "/partners/vision2030.webp", alt: "Saudi Vision 2030 partner of Saudi Event Management" },
-  { name: "Ministry of Culture", logo: "/partners/moc.webp", alt: "Saudi Ministry of Culture partner event management company" },
-  { name: "Riyadh Season", logo: "/partners/riyadh_season.svg", alt: "Riyadh Season partner of Saudi Event Management" },
-  { name: "Red Sea Global", logo: "/partners/red_sea.svg", alt: "Red Sea Global partner of Saudi Event Management" },
-  { name: "Diriyah Gate", logo: "/partners/diriyah.svg", alt: "Diriyah Gate partner of Saudi Event Management" },
-  { name: "Saudia", logo: "/partners/saudia.svg", alt: "Saudia partner of Saudi Event Management" },
+  { name: "GEA", logo: "/partners/gea.webp", alt: "General Entertainment Authority" },
+  { name: "NEOM", logo: "/partners/neom.webp", alt: "NEOM" },
+  { name: "Vision 2030", logo: "/partners/vision2030.webp", alt: "Vision 2030" },
+  { name: "Ministry of Culture", logo: "/partners/moc.webp", alt: "Ministry of Culture" },
+  { name: "Riyadh Season", logo: "/partners/riyadh_season.svg", alt: "Riyadh Season" },
+  { name: "Red Sea Global", logo: "/partners/red_sea.svg", alt: "Red Sea Global" },
+  { name: "Diriyah Gate", logo: "/partners/diriyah.svg", alt: "Diriyah Gate" },
+  { name: "Saudia", logo: "/partners/saudia.svg", alt: "Saudia" },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    quote: "The level of precision and corporate understanding Saudi Event Management brought to our Global Summit was unmatched. They delivered a flawless execution.",
+    author: "Khalid Al-Mansour",
+    role: "Director of Strategic Partnerships",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    id: 2,
+    quote: "Our annual gala was elevated to an international standard. From AV production to VIP protocol, every detail was handled with absolute professionalism.",
+    author: "Sarah Abdullah",
+    role: "Head of Corporate Communications",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    id: 3,
+    quote: "A true partner in event production. They transformed our vision into a tangible, immersive experience that impressed all our international stakeholders.",
+    author: "Fahad Al-Rashid",
+    role: "Chief Executive Officer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
+  }
 ];
 
 export default function PartnersSection() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <SectionWrapper id="partners" className="bg-ink-950 overflow-hidden relative">
-      <div className="relative z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            animate={{ 
-              y: [0, -5, 0],
-            }}
-            transition={{ 
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gold-400 text-[10px] md:text-xs uppercase tracking-[0.5em] font-medium mb-8 block"
-            >
-              The Luxury Circle
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-display text-3xl md:text-5xl font-medium text-sand-50 mb-8 uppercase tracking-tighter"
-            >
-              Our Trusted <span className="text-gold-400 italic font-light">Partners</span>
-            </motion.h2>
-          </motion.div>
-          <p className="text-sand-400 max-w-2xl mx-auto text-[13px] leading-relaxed">
-            Collaborating with the world's most prestigious brands and suppliers to deliver excellence beyond expectations.
-          </p>
-        </div>
+    <SectionWrapper id="clients" className="bg-white relative overflow-hidden">
+      <div className="relative z-10 py-10">
+        
+        {/* Partner Logos Marquee */}
+        <div className="mb-24">
+          <div className="text-center mb-10">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+              Trusted by the Kingdom's Leading Entities
+            </span>
+          </div>
+          
+          <div className="relative group overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
-        {/* Infinite Scroll Carousel */}
-        <div className="relative group mt-20">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-ink-950 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-ink-950 to-transparent z-10" />
-
-          <div className="flex overflow-hidden">
-            <motion.div 
-              className="flex gap-12 py-10"
-              animate={{
-                x: [0, -1920], // Adjust based on content width
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-              style={{ width: "fit-content" }}
-            >
-              {/* Double the array for seamless loop */}
-              {[...partners, ...partners, ...partners].map((partner, index) => (
-                <div
-                  key={index}
-                  className="group relative w-[140px] h-[80px] flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 ease-in-out cursor-pointer scale-90 hover:scale-105"
-                >
-                  <div className="relative w-full h-full p-4">
+            <div className="flex overflow-hidden">
+              <motion.div 
+                className="flex gap-16 md:gap-24 items-center"
+                animate={{ x: [0, -1920] }}
+                transition={{
+                  x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" },
+                }}
+                style={{ width: "fit-content" }}
+              >
+                {[...partners, ...partners, ...partners].map((partner, index) => (
+                  <div key={index} className="w-[120px] md:w-[150px] shrink-0 opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
                     <Image
                       src={partner.logo}
                       alt={partner.alt}
-                      width={180}
-                      height={80}
-                      unoptimized
-                      className="w-full h-full object-contain opacity-30 group-hover:opacity-100 transition-all duration-500 filter brightness-0 invert group-hover:invert-0 group-hover:brightness-100"
+                      width={150}
+                      height={60}
+                      className="w-full object-contain"
                     />
                   </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </div>
-        
-        <div className="mt-20 text-center">
-          <motion.a
-            href="/partners/become-one"
-            whileHover={{ scale: 1.05 }}
-            className="text-[10px] font-medium uppercase tracking-[0.3em] text-sand-500 hover:text-gold-400 transition-colors border-b border-ink-800 hover:border-gold-400/50 pb-1"
-          >
-            Become a Partner &rarr;
-          </motion.a>
+
+        {/* Testimonials */}
+        <div className="max-w-4xl mx-auto text-center mt-24">
+          <Quote className="text-[var(--primary)] mx-auto mb-8 opacity-20" size={64} />
+          
+          <div className="h-[280px] md:h-[200px] relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 flex flex-col items-center justify-center"
+              >
+                <p className="font-display text-slate-900 text-xl md:text-2xl lg:text-3xl leading-relaxed mb-10 font-medium">
+                  "{testimonials[current].quote}"
+                </p>
+                
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-100 shadow-sm">
+                    <Image 
+                      src={testimonials[current].image} 
+                      alt={testimonials[current].author}
+                      width={48}
+                      height={48}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest">
+                      {testimonials[current].author}
+                    </h4>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-wider">
+                      {testimonials[current].role}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-12">
+            {testimonials.map((_, i) => (
+              <button 
+                key={i} 
+                onClick={() => setCurrent(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-8 bg-[var(--primary)]" : "w-2 bg-slate-200"}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
+
       </div>
     </SectionWrapper>
   );

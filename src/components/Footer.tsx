@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 
-// ── Inline SVG social icons (no extra dependency) ────────────────────────────
 const Instagram = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -27,7 +26,7 @@ const socialLinks = [
   { icon: Linkedin,  label: "LinkedIn",  url: "https://linkedin.com/company/saudieventmanagement" },
 ];
 
-const serviceLinks = ["Royal Weddings", "Corporate Events", "Elite Birthdays", "Destination"];
+const serviceLinks = ["Corporate Events", "Exhibition Management", "Conference Management", "Event Production"];
 
 const companyLinks = [
   { name: "About Us",     href: "/about" },
@@ -38,26 +37,11 @@ const companyLinks = [
   { name: "Book Session", href: "/consultation" },
 ];
 
-const partnerNames = [
-  "General Entertainment Authority", "Ministry of Culture",
-  "Saudi Tourism Authority", "Vision 2030", "NEOM",
-  "Diriyah Gate", "Red Sea Global", "Riyadh Season", "Saudi Seasons",
-];
-
-// ─────────────────────────────────────────────────────────────────────────────
 export default function Footer() {
   return (
-    <footer className="bg-ink-900 border-t border-ink-600 relative">
-
-      {/* ── Subtle top gold line ─────────────────────────────────────────────── */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-gold-400/30 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
-
-        {/* ── Main grid ────────────────────────────────────────────────────────── */}
+    <footer className="bg-slate-50 border-t border-slate-200 relative pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-
-          {/* Brand col */}
           <div className="lg:col-span-2">
             <Link href="/" className="block mb-7">
               <Image
@@ -66,14 +50,13 @@ export default function Footer() {
                 width={220}
                 height={80}
                 className="object-contain h-12 w-auto"
+                style={{ filter: "brightness(0) invert(0)" }}
               />
             </Link>
-            <p className="text-sand-300 text-sm leading-relaxed mb-7 max-w-xs">
-              Crafting extraordinary experiences and timeless memories through
-              unparalleled luxury event management across the Middle East.
+            <p className="text-slate-500 text-sm leading-relaxed mb-7 max-w-xs">
+              Crafting extraordinary corporate experiences and seamless events through unparalleled management across the Kingdom of Saudi Arabia.
             </p>
-            {/* Social icons */}
-            <div className="flex gap-2.5">
+            <div className="flex gap-3">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -81,20 +64,19 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 flex items-center justify-center rounded-md
-                    border border-ink-500 text-sand-400
-                    hover:border-gold-400/40 hover:text-gold-400
-                    transition-all duration-200"
+                  className="w-10 h-10 flex items-center justify-center rounded-lg
+                    border border-slate-200 text-slate-400 bg-white shadow-sm
+                    hover:border-[var(--primary)] hover:text-[var(--primary)]
+                    transition-all duration-300"
                 >
-                  <s.icon size={16} />
+                  <s.icon size={18} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
               Services
             </h4>
             <ul className="space-y-4">
@@ -102,10 +84,10 @@ export default function Footer() {
                 <li key={item}>
                   <Link
                     href="/services"
-                    className="flex items-center gap-2 text-sm text-sand-400
-                      hover:text-gold-400 transition-colors group"
+                    className="flex items-center gap-2 text-sm text-slate-500
+                      hover:text-[var(--primary)] transition-colors group"
                   >
-                    <span className="w-0 h-px bg-gold-400 group-hover:w-3 transition-all duration-300" />
+                    <span className="w-0 h-[2px] bg-[var(--primary)] group-hover:w-3 transition-all duration-300" />
                     {item}
                   </Link>
                 </li>
@@ -113,9 +95,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
               Company
             </h4>
             <ul className="space-y-4">
@@ -123,10 +104,10 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="flex items-center gap-2 text-sm text-sand-400
-                      hover:text-gold-400 transition-colors group"
+                    className="flex items-center gap-2 text-sm text-slate-500
+                      hover:text-[var(--primary)] transition-colors group"
                   >
-                    <span className="w-0 h-px bg-gold-400 group-hover:w-3 transition-all duration-300" />
+                    <span className="w-0 h-[2px] bg-[var(--primary)] group-hover:w-3 transition-all duration-300" />
                     {item.name}
                   </Link>
                 </li>
@@ -134,69 +115,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.2em] text-sand-300 mb-8">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
               Contact
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin size={14} className="text-gold-400 mt-0.5 shrink-0" />
-                <span className="text-sm text-sand-400">Riyadh, Jeddah, AlUla & Dammam</span>
+                <MapPin size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                <span className="text-sm text-slate-500">Riyadh, Jeddah, AlUla & Dammam</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={14} className="text-gold-400 shrink-0" />
-                <span className="text-sm text-sand-400">+966 50 123 4567</span>
+                <Phone size={16} className="text-[var(--primary)] shrink-0" />
+                <span className="text-sm text-slate-500">+966 50 123 4567</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={14} className="text-gold-400 shrink-0" />
-                <span className="text-sm text-sand-400">hello@saudieventmanagement.com</span>
+                <Mail size={16} className="text-[var(--primary)] shrink-0" />
+                <span className="text-sm text-slate-500">hello@saudieventmanagement.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* ── Partners strip ─────────────────────────────────────────────────── */}
-        <div className="border-y border-ink-600 py-12 mb-12">
-          <div className="text-center mb-8">
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.25em] text-sand-400 mb-3">
-              Our Trusted Partners & Vendors
-            </h4>
-            <Link
-              href="/partners"
-              className="text-[10px] font-medium uppercase tracking-widest
-                text-gold-400 border-b border-gold-400/30
-                hover:border-gold-400 transition-colors pb-0.5"
-            >
-              Partner With Us
-            </Link>
-          </div>
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-            {partnerNames.map((name) => (
-              <span
-                key={name}
-                className="text-[9px] font-medium tracking-[0.18em] uppercase text-sand-500"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Newsletter ─────────────────────────────────────────────────────── */}
-        <div className="bg-ink-800 border border-ink-600 rounded-lg p-8 md:p-12 mb-16 relative overflow-hidden">
-          {/* Decorative gold glow */}
-          <div
-            className="absolute top-0 right-0 w-48 h-48 rounded-full -mr-24 -mt-24 pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)" }}
-            aria-hidden="true"
-          />
+        <div className="bg-white border border-slate-200 rounded-xl p-8 md:p-12 mb-16 relative overflow-hidden shadow-sm">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="section-label mb-3">Inner Circle</span>
-              <h3 className="font-display text-2xl font-medium text-sand-50 mb-3">Stay Inspired</h3>
-              <p className="text-sand-400 text-sm leading-relaxed">
-                Exclusive event insights, luxury trends, and a first look at our
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-4 block">Newsletter</span>
+              <h3 className="font-display text-2xl font-bold text-slate-900 mb-3 tracking-tight">Stay Inspired</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Exclusive corporate event insights, luxury trends, and a first look at our
                 latest masterpieces — delivered to your inbox.
               </p>
             </div>
@@ -208,33 +154,31 @@ export default function Footer() {
                 type="email"
                 placeholder="Your email address"
                 required
-                className="flex-1 bg-ink-700 border border-ink-500 text-sand-100
-                  px-4 py-3 rounded-md text-sm
-                  placeholder:text-sand-500
-                  focus:outline-none focus:border-gold-400/50
+                className="flex-1 bg-slate-50 border border-slate-200 text-slate-900
+                  px-4 py-4 rounded-md text-sm
+                  placeholder:text-slate-400
+                  focus:outline-none focus:border-[var(--primary)] focus:bg-white
                   transition-colors"
               />
               <button
                 type="submit"
-                className="btn-primary shrink-0 py-3 text-[10px]"
+                className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all whitespace-nowrap"
               >
-                Join the Circle
+                Subscribe
               </button>
             </form>
           </div>
         </div>
 
-        {/* ── Bottom bar ─────────────────────────────────────────────────────── */}
-        <div className="border-t border-ink-600 pt-7 flex flex-col md:flex-row justify-between items-center gap-10">
-          <p className="text-[11px] uppercase tracking-widest text-sand-500">
+        <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold">
             &copy; {new Date().getFullYear()} Saudi Event Management. All rights reserved.
           </p>
-          <div className="flex gap-7">
-            <Link href="/privacy" className="text-[11px] uppercase tracking-widest text-sand-500 hover:text-gold-400 transition-colors">Privacy</Link>
-            <Link href="/terms"   className="text-[11px] uppercase tracking-widest text-sand-500 hover:text-gold-400 transition-colors">Terms</Link>
+          <div className="flex gap-8">
+            <Link href="/privacy" className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">Privacy</Link>
+            <Link href="/terms"   className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">Terms</Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

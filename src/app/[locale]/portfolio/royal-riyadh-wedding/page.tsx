@@ -31,20 +31,20 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-gold-500 hover:text-white transition-colors mb-8 text-sm uppercase tracking-widest font-medium">
+          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-sm uppercase tracking-widest font-medium">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
+          <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
             Case Study
           </span>
           <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight">
-            The Royal <span className="text-shimmer font-bold">Riyadh Wedding</span>
+            The Royal <span className="text-[var(--primary)] font-bold">Riyadh Wedding</span>
           </h1>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-ink-800/5 border-y border-white/10 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl backdrop-blur-xl">
+      <section className="py-32 bg-white/5 border-y border-white/10 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl backdrop-blur-xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: MapPin, label: "Location", val: "Diriyah, Riyadh" },
@@ -53,8 +53,8 @@ export default function RoyalRiyadhWeddingCaseStudy() {
             { icon: CheckCircle2, label: "Services", val: "Full Production" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <stat.icon size={24} className="text-gold-500 mx-auto mb-3" />
-              <div className="text-xs uppercase tracking-widest text-gray-400 mb-1">{stat.label}</div>
+              <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
+              <div className="text-xs uppercase tracking-widest text-slate-600 mb-1">{stat.label}</div>
               <div className="text-lg font-sans font-bold text-white">{stat.val}</div>
             </div>
           ))}
@@ -66,7 +66,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         
         {/* The Challenge */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-gold-500">Challenge</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-[var(--primary)]">Challenge</span></h2>
           <p className="mb-8">
             Our esteemed clients desired a celebration that honored deep-rooted Saudi traditions while introducing avant-garde design elements. The sheer scale of the event—hosting over 1,200 VIP guests, dignitaries, and royalty over a three-day period in historical Diriyah—required meticulous logistical planning, flawless execution, and absolute discretion.
           </p>
@@ -78,7 +78,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         {/* The Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-gold-500">Solution</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-[var(--primary)]">Solution</span></h2>
             <p className="mb-8">
               Saudi Event Management deployed a team of 400 specialists, including international floral designers, lighting architects, and hospitality experts. We engineered a custom 5,000-square-meter glass marquee that provided panoramic views of the Najdi architecture while maintaining a pristine interior environment.
             </p>
@@ -90,7 +90,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
                 "Michelin-star culinary partnerships"
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm">
-                  <CheckCircle2 size={18} className="text-gold-500 shrink-0 mt-1" />
+                  <CheckCircle2 size={18} className="text-[var(--primary)] shrink-0 mt-1" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -103,28 +103,28 @@ export default function RoyalRiyadhWeddingCaseStudy() {
 
         {/* The Result */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-gold-500">Result</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">The <span className="text-[var(--primary)]">Result</span></h2>
           <p className="mb-8">
             The event was widely regarded as a masterpiece of modern luxury, setting a new benchmark for high-society weddings in the Kingdom. Guest satisfaction was unprecedented, and the seamless integration of technology and tradition left a lasting impression.
           </p>
           
           {/* Testimonial */}
-          <div className="bg-ink-800/5 border border-white/10 p-10 rounded-3xl text-center relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1e2653] px-4 text-gold-500 text-4xl font-serif">&quot;</div>
+          <div className="bg-white/5 border border-white/10 p-10 rounded-3xl text-center relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1e2653] px-4 text-[var(--primary)] text-4xl font-serif">&quot;</div>
             <p className="text-xl md:text-2xl font-sans font-bold text-white mb-8 leading-snug">
               &quot;Saudi Event Management did not just plan a wedding; they crafted a legacy. Their attention to detail and unwavering pursuit of perfection allowed us to be fully present in the most important moment of our lives.&quot;
             </p>
-            <div className="text-gold-500 font-medium uppercase tracking-widest text-sm">— The Bride & Groom</div>
+            <div className="text-[var(--primary)] font-medium uppercase tracking-widest text-sm">— The Bride & Groom</div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-ink-800/5 text-center">
-        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">Envision Your <span className="text-gold-500">Masterpiece</span></h3>
+      <section className="py-32 bg-white/5 text-center">
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">Envision Your <span className="text-[var(--primary)]">Masterpiece</span></h3>
         <Link 
           href="/#contact" 
-          className="inline-block px-10 py-4 bg-gold-500 text-[#1e2653] font-bold uppercase tracking-widest hover:bg-ink-800 transition-colors"
+          className="inline-block px-10 py-4 bg-[var(--primary)] text-[#1e2653] font-bold uppercase tracking-widest hover:bg-white transition-colors"
         >
           Book a Consultation
         </Link>

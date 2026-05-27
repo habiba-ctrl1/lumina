@@ -11,7 +11,7 @@ import { ArrowLeft, CheckCircle2, GlassWater, Music, Sparkles, Camera } from "lu
 
 export default function RiyadhLuxurySoiree() {
   return (
-    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -35,19 +35,19 @@ export default function RiyadhLuxurySoiree() {
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20"
+            className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20"
           >
             Private Elite Celebration
           </motion.span>
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
-            Riyadh <span className="text-primary italic">Luxury</span> Soiree
+            Riyadh <span className="text-primary ">Luxury</span> Soiree
           </h1>
-          <p className="text-gray-400 text-xl font-light max-w-2xl mx-auto leading-relaxed">Redefining the boundaries of private entertainment. A night of avant-garde design and sensory wonder.</p>
+          <p className="text-slate-600 text-xl font-light max-w-2xl mx-auto leading-relaxed">Redefining the boundaries of private entertainment. A night of avant-garde design and sensory wonder.</p>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-ink-800 border-y border-ink-600 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
+      <section className="py-32 bg-white border-y border-slate-200 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8 md:px-16">
           {[
             { icon: Sparkles, label: "Theme", val: "Avant-Garde" },
@@ -57,7 +57,7 @@ export default function RiyadhLuxurySoiree() {
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <stat.icon size={32} className="text-primary mx-auto mb-8" />
-              <div className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">{stat.label}</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-600 mb-2 font-bold">{stat.label}</div>
               <div className="text-base font-sans font-bold text-black uppercase">{stat.val}</div>
             </div>
           ))}
@@ -70,7 +70,7 @@ export default function RiyadhLuxurySoiree() {
         {/* The Brief */}
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Ambition</span></h2>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary ">Ambition</span></h2>
             <p className="mb-8">
               A private client sought to host a soiree that would be remembered as a cultural milestone in Riyadh's social calendar. The requirement was to transcend traditional luxury and enter the realm of the "immersive masterpiece."
             </p>
@@ -78,7 +78,7 @@ export default function RiyadhLuxurySoiree() {
               We transformed a private estate into a multi-sensory journey, featuring kinetic art installations, holographic performances, and a dining experience that evolved with the music throughout the night.
             </p>
           </div>
-          <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-ink-600">
+          <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-slate-200">
             <Image src="/gallery_1.webp" alt="Soiree Ambience" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function RiyadhLuxurySoiree() {
             { title: "Gourmet Theater", desc: "A 10-course tasting menu where each dish was introduced by a bespoke digital projection on the table." },
             { title: "Elite Privacy", desc: "Implementation of a 'No-Phone' protocol with secure digital lockers to ensure absolute privacy for VVIP guests." }
           ].map((item, i) => (
-            <div key={i} className="p-12 bg-ink-950 rounded-[3rem] border border-ink-600 hover:shadow-2xl transition-all group">
+            <div key={i} className="p-12 bg-white rounded-[3rem] border border-slate-200 hover:shadow-2xl transition-all group">
               <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
                 <CheckCircle2 size={24} className="text-white" />
               </div>
@@ -106,8 +106,8 @@ export default function RiyadhLuxurySoiree() {
             <Image src="/hero_bg.webp" alt="Background" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary italic">Wonder</span></h3>
-            <p className="text-gray-400 text-xl max-w-3xl mx-auto font-light leading-relaxed mb-16">
+            <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary ">Wonder</span></h3>
+            <p className="text-slate-600 text-xl max-w-3xl mx-auto font-light leading-relaxed mb-16">
               The soiree set a new standard for private celebrations in the Kingdom. It was not just a party; it was an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world.
             </p>
             <div className="flex justify-center gap-16">
@@ -115,7 +115,7 @@ export default function RiyadhLuxurySoiree() {
                 <div className="text-3xl font-bold text-primary">100%</div>
                 <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-2">Privacy Maintained</div>
               </div>
-              <div className="w-px h-16 bg-ink-800/10" />
+              <div className="w-px h-16 bg-white/10" />
               <div>
                 <div className="text-3xl font-bold text-primary">VVIP</div>
                 <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mt-2">Guest Tier</div>
@@ -126,8 +126,8 @@ export default function RiyadhLuxurySoiree() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 text-center bg-ink-800">
-        <h3 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary italic">Private Masterpiece</span></h3>
+      <section className="py-32 text-center bg-white">
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary ">Private Masterpiece</span></h3>
         <Link 
           href="/#contact" 
           className="inline-block px-12 py-6 bg-black text-white font-bold uppercase tracking-[0.2em] hover:bg-primary transition-all rounded-xl shadow-2xl text-xs"

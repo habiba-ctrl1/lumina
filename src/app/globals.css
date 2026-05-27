@@ -1,34 +1,36 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────────────────────
    Saudi Event Management — Global Styles
-   Theme : Luxury Corporate Off-White
+   Theme : Premium International Corporate (Light Mode)
    Fonts : Playfair Display (display) + DM Sans (body)
-   Saudi Market Align: Premium Slate Muted Gold & Rich Emerald Accents
+   Saudi Market Align: Clean Light Canvas with Elite Emerald & Corporate Gold Accents
    ───────────────────────────────────────────────────────────────────────────── */
-
 /* ── CSS Tokens ─────────────────────────────────────────────────────────────
-   All values map directly to the tailwind.config.ts color scale.
-   Use these var() tokens in any inline style or plain CSS.
+   Converted from Dark Theme to Modern Luxury Corporate Light Theme.
+   This automatically shifts the colors while keeping layout logic intact.
    ──────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Surfaces (Dark Luxury Theme - Eventana Inspired) */
-  --background:        #0B0C10;   /* Deep charcoal / near black */
-  --surface-raised:    #121318;   /* Slightly lighter dark gray */
-  --surface:           #181920;   /* Card Surface */
-  --surface-lifted:    #1F2029;   /* Elevated Hover Card */
-  --border:            #27272A;   /* zinc-800 - Main Borders & Dividers */
-  --border-subtle:     #18181B;   /* zinc-900 - Subtle Borders */
+  /* Surfaces (Premium Light Corporate Theme - Eventana Inspired) */
+  --background:       #FFFFFF;   /* Pure White Main Canvas */
+  --surface-raised:   #F9FAFB;   /* slate-50 - Extremely soft light gray */
+  --surface:          #F3F4F6;   /* slate-100 - Card Surface */
+  --surface-lifted:   #E5E7EB;   /* slate-200 - Elevated Hover Card */
+  --border:           #E4E4E7;   /* zinc-200 - Main Borders & Dividers */
+  --border-subtle:    #F4F4F5;   /* zinc-100 - Subtle Borders */
 
-  /* Typography Scales */
-  --heading:           #FAFAFA;   /* zinc-50 */
-  --foreground:        #D4D4D8;   /* zinc-300 — Primary Body Text */
-  --foreground-medium: #A1A1AA;   /* zinc-400 — Secondary / Readability Copy */
-  --foreground-muted:  #71717A;   /* zinc-500 — Captions & Labels */
-  --foreground-faint:  #52525B;   /* zinc-600 — Placeholders */
-  --foreground-disabled:#3F3F46;  /* zinc-700 — Disabled state */
+  /* Typography Scales (High-Contrast Dark Typography on White Background) */
+  --heading:          #111827;   /* zinc-900 — Deep Graphite Black for Headings */
+  --foreground:       #374151;   /* slate-700 — Primary Body Text */
+  --foreground-medium: #4B5563;   /* slate-600 — Secondary / Readability Copy */
+  --foreground-muted:  #6B7280;   /* slate-500 — Captions & Labels */
+  --foreground-faint:  #9CA3AF;   /* slate-400 — Placeholders */
+  --foreground-disabled:#D1D5DB;  /* slate-300 — Disabled state */
 
   /* Muted Gold Accent (#C5A880) */
   --gold-50:           #FAF7F2;
@@ -44,44 +46,44 @@
   --gold-950:          #302516;
   --gold-muted:        rgba(197, 168, 128, 0.08);
 
-  /* Deep Emerald Green Accents (Saudi Royal Market Preferred Accent) */
-  --emerald:           #0B4F30;   /* emerald-800 — Main Emerald */
-  --emerald-hover:     #064E3B;   /* emerald-900 — Hover Emerald */
-  --emerald-muted:     rgba(11, 79, 48, 0.06);
+  /* Deep Emerald Green Accents (Saudi Royal Market Preferred Corporate Accent) */
+  --emerald:           #0D9488;   /* teal-600 — Main Premium Corporate Accent */
+  --emerald-hover:     #0F766E;   /* teal-700 — Hover State */
+  --emerald-muted:     rgba(13, 148, 136, 0.06);
 
   /* Legacy compatibility maps */
-  --primary:           #C5A880;
-  --primary-dark:      #B0926A;
-  --secondary:         #0B4F30;
-  --gray-light:        #F1F5F9;
+  --primary:           #0D9488;   /* Swapped to Teal for primary corporate actions */
+  --primary-dark:      #0F766E;
+  --secondary:         #C5A880;   /* Gold becomes beautiful secondary accent */
+  --gray-light:        #F8FAFC;
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────────
-   Thin gold thumb on deep slate track
+   Clean teal thumb on soft slate track
    ──────────────────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar         { width: 6px; }
-::-webkit-scrollbar-track   { background: #0B0C10; }
-::-webkit-scrollbar-thumb   { background: #C5A880; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #B0926A; }
+::-webkit-scrollbar-track   { background: #F9FAFB; }
+::-webkit-scrollbar-thumb   { background: #0D9488; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #0F766E; }
 
 /* ── Text Selection ──────────────────────────────────────────────────────────
-   Soft gold tint selection — readable on dark backgrounds
+   Soft teal tint selection — readable on light backgrounds
    ──────────────────────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(197, 168, 128, 0.3);
-  color: #FAFAFA;
+  background: rgba(13, 148, 136, 0.15);
+  color: #111827;
 }
 
 /* ── Base HTML ───────────────────────────────────────────────────────────────*/
 html {
   scroll-behavior: smooth;
-  background-color: #0B0C10;
+  background-color: #FFFFFF;
 }
 
 body {
-  color:            var(--foreground);
-  background-color: var(--background);
-  font-family:      var(--font-sans), system-ui, sans-serif;
+  color:            var(--foreground) !important;
+  background-color: var(--background) !important;
+  font-family:      'DM Sans', system-ui, sans-serif !important;
   font-size:        1rem;        /* 16px base */
   line-height:      1.75;        /* perfect spacing for maximum legibility */
   font-weight:      400;
@@ -91,37 +93,37 @@ body {
 }
 
 /* ── Typography Scale ────────────────────────────────────────────────────────
-   RULE: text-4xl (36px) is the HARD CEILING for any heading.
    Headings use font-display (Playfair Display).
    Body text uses font-sans (DM Sans).
    ──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  color:       var(--heading);
-  font-family: var(--font-display), Georgia, serif;
+  color:       var(--heading) !important;
+  font-family: 'Playfair Display', Georgia, serif !important;
   line-height: 1.25;
-  font-weight: 500;      /* Playfair looks beautifully elite */
+  font-weight: 600 !important;      /* Premium high-end corporate weight */
   letter-spacing: -0.01em;
   margin-bottom: 0;
 }
 
 /* Responsive and capped sizes */
-h1 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); } /* 28px → 36px MAX */
-h2 { font-size: clamp(1.5rem,  3vw,   1.875rem); } /* 24px → 30px MAX */
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem);   } /* 20px → 24px MAX */
-h4 { font-size: clamp(1.1rem,  2vw,   1.25rem);  } /* 17px → 20px MAX */
-h5 { font-size: 1.125rem; }                         /* 18px */
-h6 { font-size: 1rem;     }                         /* 16px */
+h1 { font-size: clamp(1.75rem, 3.5vw, 2.25rem) !important; } /* 28px → 36px MAX */
+h2 { font-size: clamp(1.5rem,  3vw,   1.875rem) !important; } /* 24px → 30px MAX */
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem) !important;   } /* 20px → 24px MAX */
+h4 { font-size: clamp(1.1rem,  2vw,   1.25rem) !important;  } /* 17px → 20px MAX */
+h5 { font-size: 1.125rem !important; }                         /* 18px */
+h6 { font-size: 1rem !important;     }                         /* 16px */
 
 .font-display-italic {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif !important;
   font-style:  italic;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ── Paragraph & Inline Tags ──────────────────────────────────────────────────*/
 p {
   line-height:   1.75;
-  color:         var(--foreground-medium);
+  color:         var(--foreground-medium) !important;
+  font-family:   'DM Sans', sans-serif !important;
   margin-bottom: 0;
 }
 
@@ -130,7 +132,7 @@ a {
   text-decoration: none;
   transition:      color 0.2s ease, opacity 0.2s ease;
 }
-a:hover { color: var(--gold-hover); }
+a:hover { color: var(--emerald-hover); }
 
 /* ── Section Helpers ──────────────────────────────────────────────────────────*/
 .container-luxury {
@@ -146,7 +148,7 @@ a:hover { color: var(--gold-hover); }
   width: 40px;
   height: 1px;
   background-color: var(--gold);
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .divider-subtle {
   width: 100%;
@@ -157,93 +159,93 @@ a:hover { color: var(--gold-hover); }
 /* ── Section Eyebrow Label ────────────────────────────────────────────────── */
 .section-label {
   display:        block;
-  font-family:    var(--font-sans), system-ui, sans-serif;
+  font-family:    'DM Sans', system-ui, sans-serif !important;
   font-size:      0.6875rem;   /* 11px */
   font-weight:    600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color:          var(--emerald); /* Saudi Emerald for high-contrast tag label */
+  color:          var(--emerald); /* Saudi Emerald/Teal for high-contrast tag label */
   margin-bottom:  0.75rem;
 }
 
 @layer components {
 
-  /* ── Buttons (With High Contrast Deep Slate Text) ─────────────────────────── */
+  /* ── Premium Buttons (With Perfect Corporate Colors) ─────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           bg-gold-400 text-[#0B0C10]
-           px-7 py-3 rounded-sm
+           bg-teal-600 text-white
+           px-7 py-3 rounded-md
            text-sm font-medium tracking-wide
            transition-all duration-300
-           hover:bg-gold-500 hover:shadow-md
-           focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-[#0B0C10];
+           hover:bg-teal-700 hover:shadow-md
+           focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
   }
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2
-           bg-transparent text-emerald-800
-           border border-emerald-800
-           px-7 py-3 rounded-sm
+           bg-transparent text-teal-600
+           border border-teal-600
+           px-7 py-3 rounded-md
            text-sm font-medium tracking-wide
            transition-all duration-300
-           hover:bg-emerald-800 hover:text-white
-           focus:outline-none focus:ring-2 focus:ring-emerald-800 focus:ring-offset-2 focus:ring-offset-slate-50;
+           hover:bg-teal-50
+           focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
   }
 
   .btn-ghost {
     @apply inline-flex items-center gap-2
            text-slate-600 text-sm font-medium
            transition-all duration-200
-           hover:text-emerald-800;
+           hover:text-teal-600;
   }
 
-  /* ── Cards (Dark Surface with Soft Borders) ───────────────────────────── */
+  /* ── Cards (Sophisticated Light Surface with Premium Borders) ─────────────── */
   .card {
-    @apply bg-[var(--surface)] rounded-sm border border-[#27272A]/60
+    @apply bg-white rounded-md border border-zinc-200
            transition-all duration-300 shadow-sm;
   }
 
   .card-hover {
     @apply card
-           hover:border-[#3F3F46] hover:shadow-md
+           hover:border-teal-600/40 hover:shadow-lg
            hover:-translate-y-0.5;
   }
 
   .card-gold {
     @apply card
-           border-[#C5A880]/30
-           hover:border-[#C5A880]/60;
+           border-[#C5A880]/40
+           hover:border-teal-600/60;
   }
 
   /* ── Stat Block ─────────────────────────────────────────────────────────── */
   .stat-number {
-    @apply font-display text-3xl font-medium text-[var(--heading)];
+    @apply font-display text-3xl font-semibold text-teal-600;
   }
   .stat-label {
-    @apply text-xs font-semibold tracking-widest uppercase text-[var(--foreground-muted)];
+    @apply text-xs font-semibold tracking-widest uppercase text-slate-500;
   }
 
   /* ── Gold Accent Line ───────────────────────────────────────────────────── */
   .gold-accent-line {
-    @apply block w-8 h-px bg-gold-400 opacity-60;
+    @apply block w-8 h-px bg-gold-600 opacity-80;
   }
 
   /* ── Badge / Pill ───────────────────────────────────────────────────────── */
   .badge-gold {
     @apply inline-block text-2xs font-semibold tracking-widest uppercase
-           text-gold-700 border border-[#C5A880]/40
+           text-gold-700 border border-[#C5A880]/60
            px-3 py-1 rounded-sm bg-[#C5A880]/5;
   }
 
   .badge-muted {
     @apply inline-block text-2xs font-semibold tracking-wider uppercase
            text-slate-600 border border-slate-200
-           px-3 py-1 rounded-sm bg-slate-100;
+           px-3 py-1 rounded-sm bg-slate-50;
   }
 
-  /* ── Image Overlay Helper ───────────────────────────────────────────────── */
+  /* ── Image Overlay Helper (Soft light dim for readable typography overlay) ── */
   .img-overlay-dark {
-    @apply absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent;
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent;
   }
 
   /* ── WhatsApp Float Button ──────────────────────────────────────────────── */
@@ -266,25 +268,14 @@ a:hover { color: var(--gold-hover); }
 }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ── Gold Shimmer Text ───────────────────────────────────────────────────────*/
+/* ── Premium Corporate Text Gradients ────────────────────────────────────────*/
 .text-shimmer {
-  background: linear-gradient(
-    90deg,
-    #9A7E56 0%,
-    #C5A880 35%,
-    #9A7E56 65%,
-    #7F6642 100%
-  );
-  background-size:       200% auto;
-  -webkit-background-clip: text;
-  background-clip:         text;
-  -webkit-text-fill-color: transparent;
-  animation:             shimmer 3s ease-in-out infinite;
+  color: #0D9488; /* Solid, premium execution for corporate crisp text rendering */
 }
 
 /* ── Swiper Overrides ────────────────────────────────────────────────────────*/
 .swiper-pagination-bullet {
-  background: var(--foreground-muted) !important;
+  background: #9CA3AF !important;
   opacity:    0.4 !important;
 }
 .swiper-pagination-bullet-active {

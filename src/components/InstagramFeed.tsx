@@ -26,15 +26,15 @@ const posts = [
 
 export default function InstagramFeed() {
   return (
-    <section className="py-32 bg-ink-950/30 overflow-hidden">
-      <div className="container-luxury">
+    <section className="bg-white relative py-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-10">
           <div>
-            <div className="flex items-center gap-3 mb-8">
-               <Instagram className="text-primary" size={24} />
-               <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold">Live from the Field</span>
+            <div className="flex items-center gap-4 mb-6">
+               <Instagram className="text-[var(--primary)]" size={24} />
+               <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Live from the Field</span>
             </div>
-            <h2 className="text-black text-2xl md:text-3xl font-bold uppercase tracking-tight">Social <span className="text-primary">Narrative</span></h2>
+            <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold uppercase tracking-tight">Social <span className="text-[var(--primary)]">Narrative</span></h2>
           </div>
           <motion.a 
             href="https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" 
@@ -42,7 +42,7 @@ export default function InstagramFeed() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-black text-white px-10 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-gray-900 transition-all shadow-lg flex items-center gap-3"
+            className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all flex items-center gap-3"
           >
             Follow @SaudiEventManagement
           </motion.a>
@@ -55,8 +55,8 @@ export default function InstagramFeed() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative aspect-square group cursor-pointer overflow-hidden rounded-2xl"
+              transition={{ delay: i * 0.05 }}
+              className="relative aspect-square group cursor-pointer overflow-hidden rounded-xl"
             >
               <Image 
                 src={post.src} 
@@ -65,13 +65,13 @@ export default function InstagramFeed() {
                 height={400}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-10">
+              <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6 rounded-xl">
                 <div className="flex items-center gap-2 text-white">
-                  <Heart size={20} fill="white" />
+                  <Heart size={18} fill="white" />
                   <span className="font-bold text-sm">{post.likes}</span>
                 </div>
                 <div className="flex items-center gap-2 text-white">
-                  <MessageCircle size={20} fill="white" />
+                  <MessageCircle size={18} fill="white" />
                   <span className="font-bold text-sm">{post.comments}</span>
                 </div>
               </div>

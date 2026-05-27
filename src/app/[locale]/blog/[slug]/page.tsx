@@ -60,8 +60,37 @@ export default function BlogPostPage() {
     );
   };
 
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": `https://saudieventmanagement.com${post.image}`,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Saudi Event Management",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://saudieventmanagement.com/logo.png"
+      }
+    },
+    "datePublished": post.date,
+    "description": post.excerpt,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://saudieventmanagement.com/blog/${post.slug}`
+    }
+  };
+
   return (
     <main className="min-h-screen bg-ink-800 overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
       <Navbar />
 
       {/* Hero Image */}

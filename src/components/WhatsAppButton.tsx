@@ -33,10 +33,10 @@ export default function WhatsAppButton() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
-            className="absolute right-20 top-1/2 -translate-y-1/2 bg-ink-800 text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-ink-600 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
+            className="absolute right-20 top-1/2 -translate-y-1/2 bg-white text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-slate-200 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
           >
             Chat with us
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-ink-800 rotate-45 border-r border-t border-ink-600" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-200" />
           </motion.div>
         )}
       </AnimatePresence>

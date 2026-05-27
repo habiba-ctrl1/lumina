@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Saudi Event Management — Tailwind Config
-// Theme: Dynamic Luxury Corporate (Variables for Off-White / Dark)
+// Theme: Premium International Corporate (Deep Navy / White / Luxurious Gold)
 // ─────────────────────────────────────────────────────────────────────────────
 
 const config: Config = {

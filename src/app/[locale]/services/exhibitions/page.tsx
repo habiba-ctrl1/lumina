@@ -195,7 +195,7 @@ export default function ExhibitionsPage() {
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-gold-500 text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
+              className="text-[var(--primary)] text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
             >
               المعارض والملتقيات | Exhibition Excellence
             </motion.span>
@@ -206,13 +206,13 @@ export default function ExhibitionsPage() {
               className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
             >
               Exhibition Management <span className="font-bold">Company</span> <br/>
-              <span className="text-shimmer font-bold">Riyadh</span>
+              <span className="text-[var(--primary)] font-bold">Riyadh</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-slate-600 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               The premier <strong className="text-white">trade show organizer Saudi Arabia</strong>. Partnering with <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence for any <strong className="text-white">trade exhibition</strong> or <strong className="text-white">product showcase event</strong> and helping international brands effortlessly <strong className="text-white">book exhibition space KSA</strong>.
             </motion.p>
@@ -223,7 +223,7 @@ export default function ExhibitionsPage() {
             >
               <Link
                 href="/#contact"
-                className="inline-block px-12 py-5 bg-gold-500 text-emerald-950 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-2xl"
+                className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
               >
                 Organize Your Expo
               </Link>
@@ -236,8 +236,8 @@ export default function ExhibitionsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-10">
               <div className="flex items-center gap-10">
-                <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
-                  <Award className="text-gold-500" size={24} />
+                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
+                  <Award className="text-[var(--primary)]" size={24} />
                 </div>
                 <div>
                   <p className="text-white font-bold text-sm tracking-widest">Official RECC Partner</p>
@@ -249,7 +249,7 @@ export default function ExhibitionsPage() {
                 <span className="text-xs font-bold tracking-tighter">SAUDI AGRICULTURE</span>
                 <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
               </div>
-              <div className="text-xs text-gold-500 font-bold  tracking-widest uppercase">
+              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase">
                 &quot;Award-Winning Exhibition Design 2024&quot;
               </div>
             </div>
@@ -260,8 +260,8 @@ export default function ExhibitionsPage() {
         <section className="py-32 bg-emerald-900/30 relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Expo <span className="text-gold-500">Expertise</span></h2>
-              <div className="w-24 h-px bg-gold-500/50 mx-auto" />
+              <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Expo <span className="text-[var(--primary)]">Expertise</span></h2>
+              <div className="w-24 h-px bg-[var(--primary)]/50 mx-auto" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -281,9 +281,9 @@ export default function ExhibitionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-emerald-900 border border-white/5 p-10 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group"
+                  className="bg-emerald-900 border border-white/5 p-10 rounded-3xl hover:border-[var(--primary)]/30 transition-all duration-500 group"
                 >
-                  <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
+                  <service.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
                   <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
                   <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
                 </motion.div>
@@ -297,9 +297,9 @@ export default function ExhibitionsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">Exhibitor <br/><span className="text-gold-500">Insights</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-white">Exhibitor <br/><span className="text-[var(--primary)]">Insights</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
-                <Link href="/blog" className="inline-block text-gold-500 text-xs font-bold uppercase tracking-widest border-b border-gold-500 pb-1">View All Guides</Link>
+                <Link href="/blog" className="inline-block text-[var(--primary)] text-xs font-bold uppercase tracking-widest border-b border-[var(--primary)] pb-1">View All Guides</Link>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
                 {[
@@ -308,8 +308,8 @@ export default function ExhibitionsPage() {
                   { title: "Exhibition cost breakdown guides", desc: "A transparent analysis of booth construction, technology integration, and staffing costs in KSA." },
                   { title: "Venue comparison articles", desc: "An in-depth review of RICEC, RECC, and Jeddah Center for Forums & Events to choose your optimal location." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-gold-500/5 transition-all cursor-pointer group">
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
+                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
@@ -319,16 +319,16 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Localized Arabic Section */}
-        <section className="py-32 bg-ink-800 text-sand-50 relative overflow-hidden">
+        <section className="py-32 bg-white text-slate-900 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
                 <h2 className="text-2xl md:text-4xl font-sans leading-tight font-bold">
-                  الريادة في <br/><span className="text-gold-600">تنظيم المعارض</span>
+                  الريادة في <br/><span className="text-[var(--primary)]">تنظيم المعارض</span>
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  تعتبر لومينا أفضل <strong className="text-sand-50">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-sand-50">مركز الرياض للمعارض والمؤتمرات</strong>.
+                  تعتبر لومينا أفضل <strong className="text-slate-900">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-slate-900">مركز الرياض للمعارض والمؤتمرات</strong>.
                 </p>
                 <div className="flex gap-10 pt-4">
                   <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">إدارة المعارض</div>
@@ -352,7 +352,7 @@ export default function ExhibitionsPage() {
         <section className="py-32 bg-emerald-900 relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Expo <span className="text-gold-500">Guide</span></h2>
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Expo <span className="text-[var(--primary)]">Guide</span></h2>
               <p className="text-gray-500 mt-4 uppercase tracking-widest text-xs">Everything you need to know about Saudi Trade Shows</p>
             </div>
 
@@ -369,8 +369,8 @@ export default function ExhibitionsPage() {
                 { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
               ].map((faq, i) => (
                 <div key={i} className="bg-emerald-950 p-8 rounded-2xl border border-white/5">
-                  <h3 className="text-lg font-bold text-gold-500 mb-3">{faq.q}</h3>
-                  <p className="text-gray-400 font-light text-sm leading-relaxed">{faq.a}</p>
+                  <h3 className="text-lg font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
+                  <p className="text-slate-600 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>

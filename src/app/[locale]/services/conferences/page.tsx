@@ -8,29 +8,29 @@ import { cookies } from "next/headers";
 import { getDictionary } from "@/lib/dictionaries";
 
 const SERVICE = {
-  slug: "luxury-wedding-planning-saudi-arabia",
-  titleTag: "Luxury Wedding Planner in Saudi Arabia | Saudi Event Management",
+  slug: "conference-management-riyadh",
+  titleTag: "Conference Management Services in Riyadh | Saudi Event Management",
   metaDescription:
-    "Premier luxury wedding planner in Saudi Arabia. We design bespoke, opulent destination weddings and royal receptions in Riyadh, Jeddah, and AlUla.",
-  h1: "Luxury Wedding Planner in Saudi Arabia",
-  h2: "Curating Royal Weddings & Timeless Receptions",
-  canonicalUrl: "https://saudieventmanagement.com/services/luxury-wedding-planning-saudi-arabia",
-  heroImage: "/real_wedding.png",
+    "Expert conference management services in Riyadh. We manage B2B summits, scientific conferences, stage production, registration, and guest logistics.",
+  h1: "Conference Management Services in Riyadh",
+  h2: "World-Class Conference Organization & Production",
+  canonicalUrl: "https://saudieventmanagement.com/services/conferences",
+  heroImage: "/gallery_2.webp",
   heroImageAlt:
-    "Opulent wedding reception decoration setup in Riyadh Saudi Arabia",
-  schemaServiceName: "Luxury Wedding Planning in Saudi Arabia",
+    "Corporate conference stage setup and AV production in Riyadh Saudi Arabia",
+  schemaServiceName: "Conference Management in Riyadh",
   schemaDescription:
-    "Bespoke wedding planning and luxury reception production in Saudi Arabia, catering to royal weddings and destination celebrations.",
+    "End-to-end conference management services in Riyadh, Saudi Arabia, including speaker management, registrations, and audio-visual setups.",
   bulletPoints: [
-    "Royal wedding venue design and production",
-    "Bespoke floral design and art direction",
-    "Elite guest hospitality and concierge",
-    "Exclusive destination wedding planning KSA",
-    "Ballroom transformations and lighting design",
-    "Fine dining catering and entertainment sourcing"
+    "B2B summit planning and registration setups",
+    "Stage production and audio-visual curation",
+    "Speaker coordination and guest reception",
+    "Hybrid and digital streaming services",
+    "Simultaneous translation and sound engineering",
+    "Post-event media coverage and distribution"
   ],
-  introduction: "As the leading luxury wedding planner in Saudi Arabia, we turn couples' dreams into spectacular architectural masterpieces of beauty.",
-  details: "We specialize in royal wedding planning, destination receptions in AlUla, and high-end ballroom setups, ensuring absolute privacy, discretion, and unmatched luxury."
+  introduction: "Saudi Event Management is the trusted partner for state-level and business conferences in Riyadh, offering reliable technical and guest management.",
+  details: "We integrate advanced registration systems, VIP lounge designs, high-end sound engineering, and stage production to ensure your conference is executed flawlessly."
 };
 
 export const metadata: Metadata = {
@@ -82,7 +82,7 @@ export default async function ServicePage() {
   const dict = await getDictionary(locale as "en" | "ar");
 
   return (
-    <main className="min-h-screen bg-ink-950 text-sand-100">
+    <main className="min-h-screen bg-white text-slate-800">
       <ScrollProgress />
       <WhatsAppButton />
       <Navbar dict={dict.nav} locale={locale} />
@@ -93,7 +93,7 @@ export default async function ServicePage() {
       />
 
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-ink-600">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-slate-200">
         <Image
           src={SERVICE.heroImage}
           alt={SERVICE.heroImageAlt}
@@ -101,14 +101,14 @@ export default async function ServicePage() {
           priority
           className="object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-950/60 to-ink-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white" />
         <div className="relative z-10 container-luxury text-center">
-          <span className="section-label mb-8 block">Services</span>
-          <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
+          <span className="text-[var(--primary)] font-bold uppercase tracking-[0.2em] text-[10px] mb-8 block">Services</span>
+          <h1 className="font-display font-medium text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
             {SERVICE.h1}
           </h1>
-          <p className="text-sand-400 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            Delivering world-class luxury weddings across Riyadh, Jeddah, and the entire Kingdom of Saudi Arabia.
+          <p className="text-slate-500 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+            Delivering world-class corporate events across Riyadh, Jeddah, and the entire Kingdom of Saudi Arabia.
           </p>
         </div>
       </section>
@@ -116,23 +116,23 @@ export default async function ServicePage() {
       {/* Content Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="container-luxury max-w-4xl relative z-10">
-          <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
+          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
             {SERVICE.h2}
           </h2>
-          <div className="prose prose-invert max-w-none text-sand-300 font-light text-[15px] leading-relaxed space-y-6">
+          <div className="prose  max-w-none text-slate-500 font-light text-[15px] leading-relaxed space-y-6">
             <p>{SERVICE.introduction}</p>
             <p>{SERVICE.details}</p>
           </div>
 
           {/* What We Offer */}
-          <div className="mt-16 pt-16 border-t border-ink-600">
-            <h3 className="font-display font-medium text-sand-50 text-xl md:text-2xl mb-8 uppercase tracking-tight">
+          <div className="mt-16 pt-16 border-t border-slate-200">
+            <h3 className="font-display font-medium text-slate-900 text-xl md:text-2xl mb-8 uppercase tracking-tight">
               Our Service Offerings Include:
             </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sand-300 font-light text-[14px]">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-500 font-light text-[14px]">
               {SERVICE.bulletPoints.map((point, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-gold-400 mt-1">✦</span>
+                  <span className="text-[var(--primary)] mt-1">✦</span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -140,12 +140,12 @@ export default async function ServicePage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 pt-12 border-t border-ink-600 flex justify-center">
+          <div className="mt-16 pt-12 border-t border-slate-200 flex justify-center">
             <a
               href="https://wa.me/966501234567"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-gold-400 text-ink-950 font-medium uppercase tracking-[0.2em] text-[11px] rounded-sm hover:bg-gold-300 transition-colors shadow-lg"
+              className="px-8 py-4 bg-[var(--primary)] text-white font-medium uppercase tracking-[0.2em] text-[11px] rounded-sm hover:bg-[var(--primary-dark)] transition-colors shadow-lg"
             >
               Request a Consultation
             </a>

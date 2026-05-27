@@ -13,19 +13,19 @@ const items = [
 
 export default function MarqueeStrip() {
   return (
-    <div className="relative py-8 bg-ink-800 border-y border-ink-600 overflow-hidden">
+    <div className="relative py-8 bg-slate-50 border-y border-slate-200 overflow-hidden">
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
       <div className="flex animate-marquee">
         {[...items, ...items].map((item, i) => (
           <div key={i} className="flex items-center gap-10 mx-12 shrink-0">
-            <item.icon size={16} className="text-primary" />
-            <span className="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+            <item.icon size={16} className="text-[var(--primary)]" />
+            <span className="text-slate-600 text-[11px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
               {item.text}
             </span>
-            <span className="text-primary/20 ml-8 text-xs">✦</span>
+            <span className="text-[var(--primary)]/20 ml-8 text-xs">✦</span>
           </div>
         ))}
       </div>

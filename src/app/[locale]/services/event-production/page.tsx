@@ -8,29 +8,29 @@ import { cookies } from "next/headers";
 import { getDictionary } from "@/lib/dictionaries";
 
 const SERVICE = {
-  slug: "exhibition-management-saudi-arabia",
-  titleTag: "Exhibition Management Company in Saudi Arabia | Saudi Event Management",
+  slug: "event-production-saudi-arabia",
+  titleTag: "Event Production Company in Saudi Arabia | Saudi Event Management",
   metaDescription:
-    "Leading exhibition management company in Saudi Arabia offering custom booth design, setup, AV production, and full exhibition coordination services.",
-  h1: "Exhibition Management Company in Saudi Arabia",
-  h2: "Bespoke Exhibition Management & Booth Production",
-  canonicalUrl: "https://saudieventmanagement.com/services/exhibition-management-saudi-arabia",
-  heroImage: "/gallery_charity_gala.webp",
+    "Top event production company in Saudi Arabia. We provide sound system rentals, custom stage design, lighting production, and AV installation.",
+  h1: "Event Production Company in Saudi Arabia",
+  h2: "High-End Stage, Lighting & Sound Production",
+  canonicalUrl: "https://saudieventmanagement.com/services/event-production",
+  heroImage: "/gallery_vip_party.webp",
   heroImageAlt:
-    "Exhibition stand setup and event planning in Riyadh Saudi Arabia",
-  schemaServiceName: "Exhibition Management in Saudi Arabia",
+    "Event production stage lighting and AV system setup Saudi Arabia",
+  schemaServiceName: "Event Production in Saudi Arabia",
   schemaDescription:
-    "Premier exhibition setup and booth coordination company in Saudi Arabia, offering state-of-the-art stage build and design services.",
+    "Bespoke event production services including custom stage fabrication, high-performance sound setups, and grand venue mapping.",
   bulletPoints: [
-    "Custom exhibition stand design and build KSA",
-    "Shell scheme build and spatial planning",
-    "Interactive digital display and AV integration",
-    "On-site coordination and safety compliance",
-    "Multinational corporate booth planning",
-    "Jeddah and Riyadh exhibition center setup"
+    "Custom stage fabrication and design",
+    "High-performance sound and acoustics",
+    "Intellectual lighting design and lasers",
+    "LED screens and projection mapping KSA",
+    "Structural engineering and safety audits",
+    "On-site AV team and technician support"
   ],
-  introduction: "We are a premier exhibition management company in Saudi Arabia, designing immersive pavilions and high-quality stands that capture attention.",
-  details: "From layout design to AV integration and structural fabrication, our team delivers exhibition stands that align with international standards and your corporate branding."
+  introduction: "We are a technical powerhouse, recognized as a leading event production company in Saudi Arabia for premium experiential setups.",
+  details: "Our technicians use state-of-the-art acoustics, high-resolution LED layouts, projection mapping, and intelligent lighting designs to transform venues."
 };
 
 export const metadata: Metadata = {
@@ -82,7 +82,7 @@ export default async function ServicePage() {
   const dict = await getDictionary(locale as "en" | "ar");
 
   return (
-    <main className="min-h-screen bg-ink-950 text-sand-100">
+    <main className="min-h-screen bg-white text-slate-800">
       <ScrollProgress />
       <WhatsAppButton />
       <Navbar dict={dict.nav} locale={locale} />
@@ -93,7 +93,7 @@ export default async function ServicePage() {
       />
 
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-ink-600">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-slate-200">
         <Image
           src={SERVICE.heroImage}
           alt={SERVICE.heroImageAlt}
@@ -101,14 +101,14 @@ export default async function ServicePage() {
           priority
           className="object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-950/60 to-ink-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white" />
         <div className="relative z-10 container-luxury text-center">
-          <span className="section-label mb-8 block">Services</span>
-          <h1 className="font-display font-medium text-sand-50 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
+          <span className="text-[var(--primary)] font-bold uppercase tracking-[0.2em] text-[10px] mb-8 block">Services</span>
+          <h1 className="font-display font-medium text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
             {SERVICE.h1}
           </h1>
-          <p className="text-sand-400 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            Delivering world-class corporate events across Riyadh, Jeddah, and the entire Kingdom of Saudi Arabia.
+          <p className="text-slate-500 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+            Delivering world-class event production across Riyadh, Jeddah, and the entire Kingdom of Saudi Arabia.
           </p>
         </div>
       </section>
@@ -116,23 +116,23 @@ export default async function ServicePage() {
       {/* Content Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="container-luxury max-w-4xl relative z-10">
-          <h2 className="font-display font-medium text-sand-50 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
+          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
             {SERVICE.h2}
           </h2>
-          <div className="prose prose-invert max-w-none text-sand-300 font-light text-[15px] leading-relaxed space-y-6">
+          <div className="prose  max-w-none text-slate-500 font-light text-[15px] leading-relaxed space-y-6">
             <p>{SERVICE.introduction}</p>
             <p>{SERVICE.details}</p>
           </div>
 
           {/* What We Offer */}
-          <div className="mt-16 pt-16 border-t border-ink-600">
-            <h3 className="font-display font-medium text-sand-50 text-xl md:text-2xl mb-8 uppercase tracking-tight">
+          <div className="mt-16 pt-16 border-t border-slate-200">
+            <h3 className="font-display font-medium text-slate-900 text-xl md:text-2xl mb-8 uppercase tracking-tight">
               Our Service Offerings Include:
             </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sand-300 font-light text-[14px]">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-500 font-light text-[14px]">
               {SERVICE.bulletPoints.map((point, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-gold-400 mt-1">✦</span>
+                  <span className="text-[var(--primary)] mt-1">✦</span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -140,12 +140,12 @@ export default async function ServicePage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 pt-12 border-t border-ink-600 flex justify-center">
+          <div className="mt-16 pt-12 border-t border-slate-200 flex justify-center">
             <a
               href="https://wa.me/966501234567"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-gold-400 text-ink-950 font-medium uppercase tracking-[0.2em] text-[11px] rounded-sm hover:bg-gold-300 transition-colors shadow-lg"
+              className="px-8 py-4 bg-[var(--primary)] text-white font-medium uppercase tracking-[0.2em] text-[11px] rounded-sm hover:bg-[var(--primary-dark)] transition-colors shadow-lg"
             >
               Request a Consultation
             </a>

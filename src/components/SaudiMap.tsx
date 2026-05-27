@@ -51,38 +51,41 @@ export default function SaudiMap() {
   }, [activeCity]);
 
   return (
-    <div className="bg-[#03030a] py-6 px-4 md:px-8 font-serif select-none overflow-hidden">
+    <div className="bg-slate-50 py-20 px-4 md:px-8 font-sans select-none overflow-hidden relative">
       <style jsx global>{`
         @keyframes rp { 0% { r: 7; stroke-opacity: 0.8; } 100% { r: 18; stroke-opacity: 0; } }
         @keyframes rp2 { 0% { r: 7; stroke-opacity: 0.6; } 100% { r: 26; stroke-opacity: 0; } }
         @keyframes dd { from { stroke-dashoffset: 28; } to { stroke-dashoffset: 0; } }
         @keyframes ddr { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 28; } }
-        .ra { fill: none; stroke: #D4AF37; stroke-width: 0.9; stroke-opacity: 0.28; stroke-dasharray: 3 6; animation: dd 3.5s linear infinite; }
-        .rar { fill: none; stroke: #D4AF37; stroke-width: 0.9; stroke-opacity: 0.28; stroke-dasharray: 3 6; animation: ddr 4.2s linear infinite; }
-        .lp1 { fill: none; stroke: #D4AF37; stroke-width: 1; animation: rp 2.2s ease-out infinite; }
-        .lp2 { fill: none; stroke: #D4AF37; stroke-width: 1; animation: rp2 2.2s ease-out infinite; animation-delay: 0.9s; }
-        .dot circle.d { fill: #D4AF37; transition: r 0.2s; }
+        .ra { fill: none; stroke: var(--primary); stroke-width: 0.9; stroke-opacity: 0.5; stroke-dasharray: 3 6; animation: dd 3.5s linear infinite; }
+        .rar { fill: none; stroke: var(--primary); stroke-width: 0.9; stroke-opacity: 0.5; stroke-dasharray: 3 6; animation: ddr 4.2s linear infinite; }
+        .lp1 { fill: none; stroke: var(--primary); stroke-width: 1; animation: rp 2.2s ease-out infinite; }
+        .lp2 { fill: none; stroke: var(--primary); stroke-width: 1; animation: rp2 2.2s ease-out infinite; animation-delay: 0.9s; }
+        .dot circle.d { fill: var(--primary); transition: r 0.2s; }
         .dot:hover circle.d { r: 7; }
-        .lbl { fill: #c9a428; font-size: 8px; letter-spacing: 0.1em; pointer-events: none; font-family: sans-serif; font-weight: 600; }
+        .lbl { fill: #4B5563; font-size: 8px; letter-spacing: 0.1em; pointer-events: none; font-family: sans-serif; font-weight: 700; }
       `}</style>
 
-      <div className="text-center mb-8">
-        <p className="text-[#D4AF37] text-[10px] tracking-[0.35em] font-sans mb-2 uppercase">Our Presence Across the Kingdom</p>
-        <h2 className="text-[#f0e6cc] text-lg md:text-xl font-normal tracking-wide">
-          Crafting <span className="italic text-[#D4AF37]">Masterpieces</span> in Every Corner of Saudi Arabia
+      <div className="text-center mb-16">
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <span className="w-12 h-[2px] bg-[var(--primary)]" />
+          <p className="text-[var(--primary)] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">Our Presence Across the Kingdom</p>
+        </div>
+        <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold tracking-tight uppercase">
+          Crafting <span className="text-[var(--primary)]">Masterpieces</span> in Every Corner of Saudi Arabia
         </h2>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 items-start max-w-3xl mx-auto relative">
+      <div className="flex flex-col lg:flex-row gap-10 items-start max-w-4xl mx-auto relative z-10">
         {/* Left Sidebar */}
-        <div className="w-full lg:w-44 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-2 z-20">
+        <div className="w-full lg:w-48 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-3 z-20">
           {(Object.keys(CITY_DATA) as CityKey[]).map((id) => (
             <div 
               key={id}
               onClick={() => updatePopPos(id)}
-              className={`bg-[#070710] border rounded-lg p-1.5 cursor-pointer transition-all duration-300 ${activeCity === id ? 'border-[#D4AF37] bg-[#0c0c1a]' : 'border-[#1c1c2e] hover:border-[#D4AF37]/50'}`}
+              className={`bg-white border rounded-lg p-3 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${activeCity === id ? 'border-[var(--primary)] bg-teal-50 shadow-md' : 'border-slate-200 hover:border-slate-300'}`}
             >
-              <div className="text-[9px] font-bold text-[#D4AF37] tracking-[0.1em] font-sans text-center">{CITY_DATA[id].n}</div>
+              <div className={`text-[10px] font-bold tracking-widest text-center uppercase ${activeCity === id ? 'text-[var(--primary)]' : 'text-slate-600'}`}>{CITY_DATA[id].n}</div>
             </div>
           ))}
         </div>
@@ -92,7 +95,7 @@ export default function SaudiMap() {
           <svg 
             ref={svgRef}
             viewBox="0 0 950 780" 
-            className="w-full h-auto block"
+            className="w-full h-auto block drop-shadow-xl"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -104,19 +107,12 @@ export default function SaudiMap() {
                 <feGaussianBlur stdDeviation="9" result="b"/>
                 <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
-              <radialGradient id="bg-grad" cx="50%" cy="50%" r="60%">
-                <stop offset="0%" stopColor="#0e0e22" stopOpacity="1"/>
-                <stop offset="100%" stopColor="#03030a" stopOpacity="1"/>
-              </radialGradient>
             </defs>
-
-            {/* Background */}
-            <rect width="950" height="780" fill="url(#bg-grad)" rx="10"/>
 
             {/* Saudi Arabia Outline */}
             <path 
               d="M 38,151 C 55,100 70,60 79,43 L 190,43 C 220,43 270,58 317,78 C 370,100 440,115 495,130 C 515,155 530,175 535,195 L 554,208 C 575,222 608,230 634,281 C 650,305 662,315 666,325 L 674,390 L 686,411 C 730,430 800,442 833,455 L 853,477 C 830,520 780,565 713,606 C 680,640 655,658 634,671 L 535,692 C 490,705 440,712 396,714 L 348,701 C 340,697 338,694 336,692 L 316,670 C 305,650 300,638 296,627 C 285,605 278,592 276,584 C 268,562 262,550 258,541 C 240,510 228,503 218,498 C 205,488 190,470 178,455 C 160,430 148,418 138,411 C 122,390 112,375 118,368 C 105,348 95,335 99,325 C 88,303 72,290 79,281 C 68,258 52,248 59,238 C 45,215 35,202 40,195 C 32,172 30,160 36,151 Z"
-              fill="#0b0b1e" stroke="#D4AF37" strokeWidth="0.8" strokeOpacity="0.4"
+              fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="2"
             />
 
             {/* Routes */}
@@ -151,40 +147,27 @@ export default function SaudiMap() {
                 initial={{ opacity: 0, scale: 0.9, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                className="absolute bg-[#09091a] border border-[#D4AF37] rounded-xl p-4 min-w-[170px] z-30 pointer-events-auto shadow-2xl"
+                className="absolute bg-white border border-slate-200 rounded-xl p-5 min-w-[200px] z-30 pointer-events-auto shadow-2xl"
                 style={{ 
                   left: popPos.left, 
                   top: popPos.top,
                 }}
               >
-                <div className="text-[11px] font-bold text-[#D4AF37] tracking-[0.14em] font-sans mb-1">{CITY_DATA[activeCity].n}</div>
-                <div className="text-[8px] text-[#55556a] tracking-[0.08em] font-sans mb-2 uppercase">{CITY_DATA[activeCity].s}</div>
-                <div className="text-[9px] text-[#999] font-sans mb-3">Events delivered: <b className="text-[#D4AF37]">{CITY_DATA[activeCity].e}</b></div>
+                <div className="text-[12px] font-bold text-[var(--primary)] tracking-[0.14em] uppercase mb-1">{CITY_DATA[activeCity].n}</div>
+                <div className="text-[9px] font-bold text-slate-400 tracking-[0.08em] uppercase mb-4">{CITY_DATA[activeCity].s}</div>
+                <div className="text-[10px] text-slate-600 mb-4 font-medium uppercase tracking-widest border-t border-slate-100 pt-3">Events delivered: <b className="text-[var(--primary)] ml-1">{CITY_DATA[activeCity].e}</b></div>
                 <button 
                   onClick={() => router.push(`/locations/${CITY_DATA[activeCity].slug}`)}
-                  className="w-full text-[8px] text-[#D4AF37] border border-[#D4AF37] rounded-md py-2 text-center tracking-[0.1em] font-sans hover:bg-[#D4AF37]/10 transition-colors uppercase"
+                  className="w-full text-[9px] text-white bg-[var(--primary)] rounded-md py-2.5 text-center tracking-widest font-bold hover:bg-[var(--primary-dark)] transition-all uppercase shadow-sm"
                 >
                   Explore Events →
                 </button>
                 {/* Arrow */}
-                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-2 bg-[#D4AF37]" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }} />
+                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-2 bg-white border-b border-r border-slate-200" style={{ transform: 'rotate(45deg)' }} />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-      </div>
-
-      {/* Bottom Pills (Mobile optimized) */}
-      <div className="flex flex-wrap justify-center gap-1.5 mt-6">
-        {(Object.keys(CITY_DATA) as CityKey[]).map((id) => (
-          <button
-            key={id}
-            onClick={() => updatePopPos(id)}
-            className={`text-[8px] md:text-[9px] tracking-[0.13em] px-4 py-2 rounded-full border transition-all uppercase font-sans ${activeCity === id ? 'border-[#D4AF37] text-[#D4AF37] bg-[#D4AF37]/10' : 'border-[#1a1a28] text-gray-500 hover:text-[#D4AF37]'}`}
-          >
-            {CITY_DATA[id].n}
-          </button>
-        ))}
       </div>
     </div>
   );

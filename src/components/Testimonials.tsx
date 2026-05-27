@@ -36,8 +36,8 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div className="relative bg-ink-950 rounded-[2rem] p-8 md:p-10 border border-ink-600/60 hover:border-[#3F3F46] transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
-      <Quote className="text-primary/10 absolute top-6 right-8" size={48} />
+    <div className="relative bg-white rounded-2xl p-8 md:p-10 border border-slate-200 hover:border-[var(--primary)] transition-all duration-300 overflow-hidden shadow-sm hover:shadow-lg">
+      <Quote className="text-[var(--primary)]/15 absolute top-6 right-8" size={48} />
       
       <AnimatePresence mode="wait">
         <motion.div
@@ -47,28 +47,28 @@ export default function Testimonials() {
           exit={{ opacity: 0, y: -10 }}
           className="relative z-10"
         >
-          <div className="flex gap-1 mb-8">
-            {[1,2,3,4,5].map(i => <Star key={i} size={12} className="text-primary fill-primary" />)}
+          <div className="flex gap-1 mb-6">
+            {[1,2,3,4,5].map(i => <Star key={i} size={14} className="text-[var(--primary)] fill-[var(--primary)]" />)}
           </div>
-          <p className="text-black text-[15px] italic leading-relaxed mb-8 font-medium">
+          <p className="text-slate-700 text-base leading-relaxed mb-8 font-medium">
             &quot;{fallbackTestimonials[current].quote}&quot;
           </p>
-          <div className="flex items-center gap-10">
-            <div className="w-10 h-px bg-primary/30" />
+          <div className="flex items-center gap-6">
+            <div className="w-10 h-[2px] bg-[var(--primary)]/30" />
             <div>
-              <p className="text-[10px] font-bold text-black uppercase tracking-widest">{fallbackTestimonials[current].author}</p>
-              <p className="text-[8px] text-gray-400 uppercase tracking-wider mt-0.5">{fallbackTestimonials[current].role}</p>
+              <p className="text-[11px] font-bold text-slate-900 uppercase tracking-widest">{fallbackTestimonials[current].author}</p>
+              <p className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">{fallbackTestimonials[current].role}</p>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex gap-1.5 mt-8">
+      <div className="flex gap-2 mt-8">
         {fallbackTestimonials.map((_, i) => (
           <button 
             key={i} 
             onClick={() => setCurrent(i)}
-            className={`h-0.5 rounded-full transition-all duration-500 ${i === current ? "w-6 bg-primary" : "w-1.5 bg-gray-200"}`}
+            className={`h-1 rounded-full transition-all duration-500 ${i === current ? "w-8 bg-[var(--primary)]" : "w-2 bg-slate-200"}`}
           />
         ))}
       </div>

@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function AlUlaDesertFestival() {
   return (
-    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -35,18 +35,18 @@ export default function AlUlaDesertFestival() {
           <Link href="/portfolio" className="inline-flex items-center text-white hover:text-primary transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
           </Link>
-          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-ink-800/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
+          <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
             National Cultural Activation
           </span>
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
-            AlUla <span className="text-primary italic">Desert</span> Festival
+            AlUla <span className="text-primary ">Desert</span> Festival
           </h1>
           <p className="text-gray-200 text-xl font-light max-w-2xl mx-auto leading-relaxed">Harmonizing ancient history with avant-garde production in the heart of the Saudi desert.</p>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-ink-800 border-y border-ink-600 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
+      <section className="py-32 bg-white border-y border-slate-200 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8 md:px-16">
           {[
             { icon: Tent, label: "Scale", val: "5,000+ Daily" },
@@ -56,7 +56,7 @@ export default function AlUlaDesertFestival() {
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <stat.icon size={32} className="text-primary mx-auto mb-8" />
-              <div className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">{stat.label}</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-600 mb-2 font-bold">{stat.label}</div>
               <div className="text-base font-sans font-bold text-black uppercase">{stat.val}</div>
             </div>
           ))}
@@ -69,7 +69,7 @@ export default function AlUlaDesertFestival() {
         {/* The Challenge */}
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Ambition</span></h2>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary ">Ambition</span></h2>
             <p className="mb-8">
               AlUla is a place of immense geological and historical significance. Our mandate was to create a festival that celebrated this heritage without leaving a trace on the environment. The project required the deployment of significant infrastructure—stages, seating, catering hubs, and lighting—in a remote desert location with limited existing facilities.
             </p>
@@ -95,8 +95,8 @@ export default function AlUlaDesertFestival() {
         </div>
 
         {/* The Execution */}
-        <div className="bg-ink-950 rounded-[4rem] p-12 md:p-24 border border-ink-600">
-          <h2 className="text-3xl font-sans font-bold text-black mb-16 uppercase tracking-tight text-center">Operational <span className="text-primary italic">Mastery</span></h2>
+        <div className="bg-white rounded-[4rem] p-12 md:p-24 border border-slate-200">
+          <h2 className="text-3xl font-sans font-bold text-black mb-16 uppercase tracking-tight text-center">Operational <span className="text-primary ">Mastery</span></h2>
           <div className="grid md:grid-cols-3 gap-12">
             {[
               { title: "Kinetic Architecture", desc: "Stages that mirrored the natural rock formations of AlUla, using reflective materials to blend into the horizon." },
@@ -115,7 +115,7 @@ export default function AlUlaDesertFestival() {
         </div>
 
         {/* Quote */}
-        <div className="max-w-4xl mx-auto text-center italic">
+        <div className="max-w-4xl mx-auto text-center ">
           <p className="text-2xl md:text-4xl font-sans text-black mb-10 leading-snug">
             "Saudi Event Management didn't just build a festival; they created a bridge between the ancient past and a sustainable future."
           </p>
@@ -129,10 +129,10 @@ export default function AlUlaDesertFestival() {
           <Image src="/gallery_1.webp" alt="Desert" width={1920} height={1080} className="w-full h-full object-cover" />
         </div>
         <div className="relative z-10">
-          <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary italic">Cultural Wave</span></h2>
+          <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary ">Cultural Wave</span></h2>
           <Link 
             href="/#contact" 
-            className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.3em] hover:bg-ink-800 hover:text-black transition-all rounded-xl shadow-2xl text-xs"
+            className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all rounded-xl shadow-2xl text-xs"
           >
             Start a Cultural Project
           </Link>

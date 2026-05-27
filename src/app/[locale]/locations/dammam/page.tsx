@@ -12,9 +12,41 @@ export const metadata = {
   alternates: { canonical: 'https://saudieventmanagement.com/locations/dammam' },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "Saudi Event Management Dammam",
+      "image": "https://saudieventmanagement.com/gallery_vip_party.webp",
+      "description": "Premier event management in Dammam and the Eastern Province. Specializing in high-profile corporate galas and industrial summits.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dammam",
+        "addressRegion": "Eastern Province",
+        "addressCountry": "SA"
+      },
+      "areaServed": ["Dammam", "Al-Khobar", "Dhahran"],
+      "telephone": "+966501234567"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://saudieventmanagement.com/locations" },
+        { "@type": "ListItem", "position": 3, "name": "Dammam", "item": "https://saudieventmanagement.com/locations/dammam" }
+      ]
+    }
+  ]
+};
+
 export default function DammamPage() {
   return (
-    <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -35,11 +67,11 @@ export default function DammamPage() {
           <span className="section-label">
             The Eastern Province Gateway to Luxury | Dammam
           </span>
-          <h1 className="font-display font-medium text-sand-50 mb-8 leading-tight text-3xl md:text-5xl">
-            Elite Corporate & <br/><span className="text-shimmer italic font-semibold">Coastal Celebrations</span>
+          <h1 className="font-display font-medium text-slate-900 mb-8 leading-tight text-3xl md:text-5xl">
+            Elite Corporate & <br/><span className="text-[var(--primary)]  font-semibold">Coastal Celebrations</span>
           </h1>
-          <p className="text-sand-200 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            From <span className="text-sand-50 font-semibold">Aramco-tier</span> corporate summits to spectacular family weddings along the shimmering <span className="text-sand-50 font-semibold">Arabian Gulf coast</span>.
+          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            From <span className="text-slate-900 font-semibold">Aramco-tier</span> corporate summits to spectacular family weddings along the shimmering <span className="text-slate-900 font-semibold">Arabian Gulf coast</span>.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
             <Link
@@ -63,8 +95,8 @@ export default function DammamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="section-label">Eastern Province Venues</span>
-            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">Gulf Coast Sophistication, <span className="text-shimmer italic">Unmatched Logistics</span></h2>
-            <p className="text-sand-200 text-sm leading-relaxed mb-8">
+            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">Gulf Coast Sophistication, <span className="text-[var(--primary)] ">Unmatched Logistics</span></h2>
+            <p className="text-slate-600 text-sm leading-relaxed mb-8">
               Dammam and Al-Khobar represent the industrial and coastal heart of the Kingdom. We specialize in managing complex logistics for large-scale corporate events and the region&apos;s most prestigious family celebrations, ensuring every detail reflects the high standards of the Eastern Province.
             </p>
             <ul className="space-y-4">
@@ -74,26 +106,26 @@ export default function DammamPage() {
                 "Coastal wedding specialists for Gulf waterfront celebrations",
                 "Full-service logistics for cross-region VIP guest management"
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sand-200 text-sm">
+                <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-ink-600 shadow-md">
+          <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
                <div className="glass p-6 rounded-sm">
-                 <p className="text-white text-sm font-display italic font-light">&quot;Excellence on the Arabian Gulf.&quot;</p>
+                 <p className="text-white text-sm font-display  font-light">&quot;Excellence on the Arabian Gulf.&quot;</p>
                </div>
             </div>
           </div>
         </div>
 
         {/* Dammam Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 py-12 border-y border-ink-600">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 py-12 border-y border-slate-200">
           {[
             { label: "Guest Capacity", val: "100–800" },
             { label: "Peak Season", val: "Nov–Mar" },
@@ -101,19 +133,19 @@ export default function DammamPage() {
             { label: "Coastal Venues", val: "25+" }
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-2xl md:text-3xl font-display font-medium text-sand-50 mb-2">{stat.val}</div>
-              <div className="text-xs uppercase tracking-widest text-sand-300 font-semibold">{stat.label}</div>
+              <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
+              <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Featured Services for Dammam */}
-      <section className="py-32 bg-ink-900/50 border-t border-b border-ink-600/50 relative">
+      <section className="py-32 bg-slate-50/50 border-t border-b border-slate-200/50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">Signature Eastern <span className="text-shimmer italic">Services</span></h2>
-            <p className="text-sand-200 max-w-2xl mx-auto text-sm">Custom solutions for the region&apos;s dynamic corporate and family landscape.</p>
+            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">Signature Eastern <span className="text-[var(--primary)] ">Services</span></h2>
+            <p className="text-slate-600 max-w-2xl mx-auto text-sm">Custom solutions for the region&apos;s dynamic corporate and family landscape.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
              {[
@@ -123,8 +155,8 @@ export default function DammamPage() {
              ].map((service, i) => (
                <div key={i} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300">
                  <service.icon size={28} className="text-emerald-800 mb-8" />
-                 <h3 className="font-display font-medium text-lg text-sand-50 mb-8">{service.title}</h3>
-                 <p className="text-sand-200 text-sm leading-relaxed">{service.desc}</p>
+                 <h3 className="font-display font-medium text-lg text-slate-900 mb-8">{service.title}</h3>
+                 <p className="text-slate-600 text-sm leading-relaxed">{service.desc}</p>
                </div>
              ))}
           </div>
@@ -132,11 +164,11 @@ export default function DammamPage() {
       </section>
 
       {/* Strategic Venue Partnerships */}
-      <section className="py-32 border-t border-ink-600/20 bg-ink-950">
+      <section className="py-32 border-t border-slate-200/20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display font-medium text-sand-50 mb-8 text-2xl md:text-3xl font-bold">Eastern Province <span className="text-shimmer italic">Partnerships</span></h2>
-            <p className="text-sand-200 max-w-2xl mx-auto text-sm">Exclusive access to the region&apos;s most prestigious hotels and coastal venues.</p>
+            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">Eastern Province <span className="text-[var(--primary)] ">Partnerships</span></h2>
+            <p className="text-slate-600 max-w-2xl mx-auto text-sm">Exclusive access to the region&apos;s most prestigious hotels and coastal venues.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
@@ -149,9 +181,9 @@ export default function DammamPage() {
               "Dhahran Expo Center",
               "Sunset Beach Resort"
             ].map((venue, i) => (
-              <div key={i} className="flex items-center gap-10 p-5 bg-ink-800 border border-ink-600 rounded-sm hover:border-gold-400 hover:shadow-sm transition-all shadow-2xs">
+              <div key={i} className="flex items-center gap-10 p-5 bg-white border border-slate-200 rounded-sm hover:border-[var(--primary)] hover:shadow-sm transition-all shadow-2xs">
                 <CheckCircle2 size={18} className="text-emerald-800 shrink-0" />
-                <span className="text-sand-100 text-sm font-medium">{venue}</span>
+                <span className="text-slate-800 text-sm font-medium">{venue}</span>
               </div>
             ))}
           </div>

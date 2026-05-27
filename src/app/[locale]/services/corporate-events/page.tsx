@@ -133,18 +133,18 @@ export default function CorporateEventsPage() {
           </div>
           
           <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span className="text-gold-500 text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
+            <span className="text-[var(--primary)] text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
               إدارة فعاليات الشركات | Corporate Excellence
             </span>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
-              Corporate Event Planning <br/><span className="text-shimmer font-bold">Saudi Arabia</span>
+              Corporate Event Planning <br/><span className="text-[var(--primary)] font-bold">Saudi Arabia</span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed">
-              The premier partner for <strong className="text-white">NEOM Corporate</strong>, <strong className="text-white">SABIC</strong>, and <strong className="text-white">Saudi Aramco</strong>. Elevating every <strong className="text-white">business gathering</strong>, <strong className="text-white">company function</strong>, and <strong className="text-white">enterprise event</strong> at <strong className="text-white">KAFD</strong> to world-class standards.
+            <p className="text-slate-600 text-lg md:text-xl mb-8 leading-relaxed">
+              <strong className="text-white">Saudi Event Management</strong> is a premier <strong className="text-white">corporate event planning company</strong> based in <strong className="text-white">Riyadh, Saudi Arabia</strong>. With over a decade of experience, we specialize in organizing <strong className="text-white">executive summits, AGMs, and gala dinners</strong> for entities like NEOM, SABIC, and Saudi Aramco across <strong className="text-white">Riyadh, Jeddah, and the Eastern Province</strong>.
             </p>
             <Link
               href="/#contact"
-              className="inline-block px-10 py-4 bg-gold-500 text-emerald-900 font-bold uppercase tracking-widest hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20"
+              className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-lg shadow-gold-500/20"
             >
               Consult Our Experts
             </Link>
@@ -163,8 +163,8 @@ export default function CorporateEventsPage() {
                 <span className="text-white font-bold block text-lg tracking-widest">MPI</span>
                 <span className="text-[10px] text-gray-500 uppercase">Professional Planners</span>
               </div>
-              <div className="h-8 w-px bg-ink-800/10 hidden md:block" />
-              <div className="text-sm text-gray-400 font-light ">
+              <div className="h-8 w-px bg-white/10 hidden md:block" />
+              <div className="text-sm text-slate-600 font-light ">
                 &quot;Trusted by HRDF and major Saudi Vision 2030 initiatives for over 12 years.&quot;
               </div>
             </div>
@@ -174,8 +174,8 @@ export default function CorporateEventsPage() {
         {/* Core Services */}
         <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Corporate <span className="text-shimmer font-bold">Services</span></h2>
-            <div className="w-16 h-px bg-gold-500/50 mx-auto" />
+            <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Corporate <span className="text-[var(--primary)] font-bold">Services</span></h2>
+            <div className="w-16 h-px bg-[var(--primary)]/50 mx-auto" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -187,10 +187,10 @@ export default function CorporateEventsPage() {
               { icon: Calendar, title: "Seminar Organizer Riyadh", desc: "Professional seminar organization with state-of-the-art sound and light setups, events with both in-person and online guests, and flawless execution." },
               { icon: MapPin, title: "Vision 2030 Events", desc: "Aligning your corporate narrative with Saudi Vision 2030 trends through high-impact public relations and strategic event planning." },
             ].map((service, i) => (
-              <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-gold-500/30 transition-all duration-500 group">
-                <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
+              <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-[var(--primary)]/30 transition-all duration-500 group">
+                <service.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{service.desc}</p>
+                <p className="text-slate-600 text-sm font-light leading-relaxed">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -201,7 +201,7 @@ export default function CorporateEventsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">Business <br/><span className="text-gold-500">Intelligence</span></h3>
+                <h3 className="text-2xl font-sans font-bold text-white">Business <br/><span className="text-[var(--primary)]">Intelligence</span></h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">Insights from our Event Director on navigating the complex landscape of corporate gatherings in the Kingdom.</p>
                 <div className="pt-6 border-t border-white/10">
                   <p className="text-white font-bold text-sm">Omar Al-Farsi</p>
@@ -215,8 +215,8 @@ export default function CorporateEventsPage() {
                   { title: "Detailed behind-the-scenes case studies", desc: "An exclusive look at how we execute flawless executive summits at KAFD." },
                   { title: "Comparison: corporate event venues in KSA", desc: "Evaluating the best business centers, luxury hotels, and convention halls for your next summit." }
                 ].map((post, idx) => (
-                  <div key={idx} className="p-6 bg-emerald-950 rounded-2xl hover:bg-gold-500/5 transition-colors cursor-pointer group">
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-500 transition-colors">{post.title}</h4>
+                  <div key={idx} className="p-6 bg-emerald-950 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group">
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
@@ -229,8 +229,8 @@ export default function CorporateEventsPage() {
         <section className="py-32 bg-emerald-900/50 relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold">Frequently Asked <span className="text-gold-500">Questions</span></h2>
-              <div className="w-16 h-px bg-gold-500/50 mx-auto" />
+              <h2 className="text-2xl md:text-3xl font-sans text-white mb-8 font-bold">Frequently Asked <span className="text-[var(--primary)]">Questions</span></h2>
+              <div className="w-16 h-px bg-[var(--primary)]/50 mx-auto" />
             </div>
 
             <div className="space-y-6">
@@ -245,7 +245,7 @@ export default function CorporateEventsPage() {
               ].map((faq, i) => (
                 <div key={i} className="bg-emerald-900 border border-white/5 p-6 rounded-2xl">
                   <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>
-                  <p className="text-gray-400 font-light text-sm">{faq.a}</p>
+                  <p className="text-slate-600 font-light text-sm">{faq.a}</p>
                 </div>
               ))}
             </div>

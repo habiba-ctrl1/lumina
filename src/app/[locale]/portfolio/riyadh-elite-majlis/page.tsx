@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RiyadhEliteMajlis() {
   return (
-    <main className="min-h-screen bg-ink-800 overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
 
       {/* Hero Section */}
@@ -38,14 +38,14 @@ export default function RiyadhEliteMajlis() {
             Corporate Cultural Engagement
           </span>
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-black mb-8 leading-tight uppercase tracking-tight">
-            Riyadh <span className="text-primary italic">Elite Majlis</span>
+            Riyadh <span className="text-primary ">Elite Majlis</span>
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Where tradition meets the boardroom. An exclusive environment for high-stakes networking and cultural exchange.</p>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-ink-800 border border-ink-600 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+      <section className="py-32 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Home, label: "Setting", val: "Private Palace" },
@@ -55,7 +55,7 @@ export default function RiyadhEliteMajlis() {
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
-              <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1 font-bold">{stat.label}</div>
+              <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
               <div className="text-sm font-sans font-bold text-black uppercase">{stat.val}</div>
             </div>
           ))}
@@ -73,7 +73,7 @@ export default function RiyadhEliteMajlis() {
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary italic">Concept</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">The <span className="text-primary ">Concept</span></h2>
             <p className="mb-8">
               The Majlis is the heartbeat of Saudi social and political life. For this project, we were tasked with modernizing the Majlis experience for a group of international CEOs and local ministers. The goal was to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions.
             </p>
@@ -85,7 +85,7 @@ export default function RiyadhEliteMajlis() {
 
         {/* The Execution */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-10 uppercase tracking-tight">Impeccable <span className="text-primary italic">Detail</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-10 uppercase tracking-tight">Impeccable <span className="text-primary ">Detail</span></h2>
           <div className="grid md:grid-cols-2 gap-10">
             {[
               { title: "Custom Furnishings", desc: "Hand-crafted Sadu weaving patterns integrated into ergonomic modern seating." },
@@ -93,7 +93,7 @@ export default function RiyadhEliteMajlis() {
               { title: "Gastronomic Journey", desc: "A 12-course tasting menu reinventing traditional Saudi flavors for a global palate." },
               { title: "Tech Integration", desc: "Hidden LED screens and directional audio that preserved the aesthetic of the space." }
             ].map((item, i) => (
-              <div key={i} className="flex gap-10 p-8 bg-ink-950 rounded-3xl border border-ink-600 hover:bg-ink-800 hover:shadow-xl transition-all group">
+              <div key={i} className="flex gap-10 p-8 bg-white rounded-3xl border border-slate-200 hover:bg-white hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
                   <CheckCircle2 size={24} className="text-primary group-hover:text-white" />
                 </div>
@@ -112,8 +112,8 @@ export default function RiyadhEliteMajlis() {
             <Image src="/hero_bg.webp" alt="Pattern" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-primary italic">Legacy</span></h2>
-            <p className="text-gray-400 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-primary ">Legacy</span></h2>
+            <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               The event resulted in three major cross-border partnerships being signed on-site. The relaxed yet professional atmosphere of the Elite Majlis provided the perfect catalyst for high-trust negotiations.
             </p>
             <div className="inline-block px-8 py-4 border border-primary/30 rounded-full">
@@ -125,7 +125,7 @@ export default function RiyadhEliteMajlis() {
 
       {/* CTA */}
       <section className="py-32 text-center">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary italic">Signature Gathering</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Host Your <span className="text-primary ">Signature Gathering</span></h2>
         <Link 
           href="/#contact" 
           className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.2em] hover:bg-black transition-all rounded-xl shadow-2xl text-xs"

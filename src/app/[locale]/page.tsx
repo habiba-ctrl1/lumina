@@ -136,7 +136,7 @@ export default async function Home() {
 
       REMOVED: bg-ink-800 — this was overriding the dark theme set in layout.tsx
     */
-    <main className="min-h-screen bg-ink-950 text-sand-100">
+    <main className="min-h-screen bg-white text-slate-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

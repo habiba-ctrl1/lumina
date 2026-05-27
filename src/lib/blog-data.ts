@@ -34,6 +34,7 @@ export const blogPosts: BlogPost[] = [
     author: "Saudi Event Management Editorial",
     featured: true,
     content: [
+      "**TL;DR / Executive Summary:** Luxury event planning in 2026 requires prioritizing vision over budget, selecting character-rich venues, designing multi-sensory experiences, and treating catering as entertainment. The most memorable events are meticulously curated emotional journeys that build to peak moments while integrating technology invisibly.",
       "Planning a luxury event is an art form that requires meticulous attention to detail, creative vision, and flawless execution. Whether you&apos;re organizing an intimate dinner for 20 or a grand gala for 500, the principles of exceptional event planning remain the same. Here&apos;s our comprehensive guide to creating an event that leaves lasting impressions.",
 
       "## 1. Define Your Vision Before the Budget",
@@ -76,6 +77,7 @@ export const blogPosts: BlogPost[] = [
     author: "Saudi Event Management Editorial",
     featured: true,
     content: [
+      "**TL;DR / Executive Summary:** The dominant luxury event color palettes for 2026 include Sage Green & Champagne Gold for organic luxury, Dusty Rose & Burgundy for sophisticated romance, Terracotta & Warm Neutrals for earthy elegance, and Deep Plum & Midnight Blue for theatrical drama. Planners should follow the 60-30-10 color rule and thoughtfully integrate modern metallics like brushed brass and rose gold.",
       "Color is the silent language of events. Before a single word is spoken or a note of music played, color sets the emotional tone for your entire celebration. The trending palettes of 2026 reflect a world seeking both tranquility and boldness &mdash; a beautiful contradiction that creates visually stunning events.",
 
       "## Sage Green &amp; Champagne Gold",
@@ -274,4 +276,80 @@ export const blogPosts: BlogPost[] = [
       "Great tablescaping tells a story. Every element &mdash; from the linen to the glassware to the last sprig of rosemary &mdash; should contribute to a cohesive narrative. Study your favorite table designs, collect inspiration, and don&apos;t be afraid to experiment. The most beautiful tables are those that reflect genuine thought and care, creating a space where guests feel both pampered and perfectly at home.",
     ],
   },
+  {
+    slug: "luxury-wedding-cost-saudi-arabia-guide",
+    title: "How Much Does a Luxury Wedding Cost in Saudi Arabia?",
+    excerpt: "A comprehensive cost breakdown for planning a luxury wedding in Riyadh, Jeddah, and AlUla — venues, decor, catering, and VIP services.",
+    category: "Weddings",
+    image: "/gallery_wedding_reception.webp",
+    date: "May 15, 2026",
+    readTime: "12 min read",
+    author: "Habiba Asghar",
+    featured: true,
+    content: [
+      "Planning a luxury wedding in Saudi Arabia requires navigating a complex landscape of premium vendors, exclusive venues, and high-end logistical requirements.",
+      "## Venue and Infrastructure: SAR 150,000 - SAR 800,000+",
+      "Renting a premium ballroom at The Ritz-Carlton Riyadh or Four Seasons might start at SAR 150,000 to SAR 300,000. Custom-built structural tents on private estates can cost upwards of SAR 800,000.",
+      "## Floral and Event Design: SAR 200,000 - SAR 1,000,000+",
+      "Suspended floral ceilings, imported Dutch blooms, and custom-fabricated staging require massive investment. Standard luxury floral starts around SAR 200,000.",
+      "## Food and Beverage: SAR 800 - SAR 2,500+ per person",
+      "For 500 guests at SAR 1,500 per head, catering alone costs SAR 750,000. Custom wedding cakes range from SAR 15,000 to SAR 50,000.",
+      "## Production, AV, and Lighting: SAR 100,000 - SAR 400,000",
+      "Professional rigging, intelligent lighting design, LED screens, and concert-grade audio systems are mandatory for luxury weddings.",
+      "### The Bottom Line",
+      "A luxury wedding in Saudi Arabia is a monumental production. Partnering with an experienced event management firm ensures your budget is allocated strategically."
+    ]
+  },
+  {
+    slug: "top-corporate-event-venues-riyadh",
+    title: "Top 10 Corporate Event Venues in Riyadh for 2026",
+    excerpt: "Discover the most prestigious corporate event venues in Riyadh, from KAFD to the historic majesty of Diriyah.",
+    category: "Corporate",
+    image: "/gallery_2.webp",
+    date: "May 10, 2026",
+    readTime: "8 min read",
+    author: "Saudi Event Management Editorial",
+    featured: false,
+    content: [
+      "As Riyadh cements its position as the business hub of the Middle East, the demand for world-class corporate event venues has never been higher.",
+      "## 1. King Abdullah Financial District (KAFD) Conference Center",
+      "The crown jewel of Riyadh's corporate landscape with state-of-the-art technology and striking modern architecture.",
+      "## 2. The Ritz-Carlton, Riyadh",
+      "Synonymous with luxury and protocol, the venue of choice for government-level conferences and elite corporate galas.",
+      "## 3. Four Seasons Hotel Riyadh at Kingdom Centre",
+      "Located in the iconic Kingdom Centre with prestige and central accessibility.",
+      "## 4. Diriyah Gate Venues",
+      "Blend modern business with Saudi heritage overlooking the UNESCO World Heritage site of At-Turaif.",
+      "## 5. Fairmont Riyadh",
+      "A dedicated convention center with advanced AV capabilities, ideal for multi-day exhibitions.",
+      "### Partnering for Success",
+      "At Saudi Event Management, we manage the entire venue sourcing and contract process for corporate clients."
+    ]
+  },
+  {
+    slug: "state-of-mice-industry-saudi-arabia-2026",
+    title: "The State of the MICE Industry in Saudi Arabia 2026",
+    excerpt: "An exclusive analysis of Saudi Arabia's MICE sector — growth metrics, emerging venues, and the impact of Vision 2030.",
+    category: "Corporate",
+    image: "/gallery_2.webp",
+    date: "May 25, 2026",
+    readTime: "15 min read",
+    author: "Habiba Asghar",
+    featured: true,
+    content: [
+      "Saudi Arabia's transformation into a global MICE powerhouse is accelerating under Vision 2030.",
+      "## 1. Explosive Growth in MICE Tourism",
+      "In 2026, Saudi Arabia is projected to host over 400 major international exhibitions and conferences, a 30% increase from 2024.",
+      "## 2. Infrastructure: The Rise of Super-Venues",
+      "The expansion of RICEC and KAFD venues have set new global standards for technological integration.",
+      "## 3. The Bleisure Trend in KSA",
+      "International delegates are extending corporate trips to experience AlUla, Diriyah, and the Red Sea Project.",
+      "## 4. Sustainability as a Requirement",
+      "Major government-backed events now require strict environmental compliance from production companies.",
+      "## 5. Technology: AI and Seamless Integration",
+      "From facial recognition for VIP check-ins to AI-driven B2B matchmaking apps, technology is the backbone of modern Saudi events.",
+      "### Conclusion",
+      "The MICE Industry in Saudi Arabia in 2026 is characterized by aggressive expansion, technological superiority, and deep commitment to cultural heritage."
+    ]
+  }
 ];
