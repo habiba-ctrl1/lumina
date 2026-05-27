@@ -17,9 +17,21 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
-  return (
     <main className="min-h-screen bg-white text-slate-900 overflow-hidden pt-20">
       <Navbar />
+      
+      {/* ── Page Header (H1) ── */}
+      <section className="bg-slate-50 pt-24 pb-16 border-b border-slate-100">
+        <div className="container mx-auto px-6 lg:px-8 text-center max-w-4xl">
+          <h1 className="font-display font-bold text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight">
+            Event Management <span className="text-[var(--primary)]">Services</span> in Saudi Arabia
+          </h1>
+          <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            From high-stakes corporate summits to breathtaking luxury weddings, discover our comprehensive suite of event management capabilities.
+          </p>
+        </div>
+      </section>
+
       <Services />
       
       {/* Descriptive SEO Section */}
