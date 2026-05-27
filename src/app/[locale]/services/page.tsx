@@ -17,6 +17,7 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  return (
     <main className="min-h-screen bg-white text-slate-900 overflow-hidden pt-20">
       <Navbar />
       
