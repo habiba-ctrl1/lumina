@@ -24,6 +24,8 @@ export const blogCategories = [
 export const blogPosts: BlogPost[] = [
   {
     slug: "ultimate-guide-luxury-event-planning",
+    metaTitle: "Ultimate Guide to Luxury Event Planning in Saudi Arabia",
+    metaDescription: "Discover the insider secrets top event planners use to create seamless, unforgettable luxury experiences in Riyadh and Jeddah.",
     title: "The Ultimate Luxury Event Planning Guide",
     excerpt:
       "From venue selection to the final toast, discover the insider secrets that top event planners use to create seamless, unforgettable luxury experiences.",
@@ -63,10 +65,19 @@ export const blogPosts: BlogPost[] = [
 
       "### The Bottom Line",
       "A truly luxury event is one where every element has been considered, every detail intentional, and every guest feels valued. It&apos;s not about spending the most money &mdash; it&apos;s about spending it wisely on the details that matter most. Start planning early, trust your creative instincts, and never compromise on the things your guests will touch, taste, and remember.",
-    ],
+    ,
+      "## Frequently Asked Questions (FAQs)",
+      "### Q: What is the most important element of luxury event planning?",
+      "A: The most important element is defining a clear emotional vision before setting the budget. It ensures every riyal is spent on elements that contribute to the overall guest experience.",
+      "### Q: How early should I start planning a luxury event?",
+      "A: For large-scale galas or weddings, 8-12 months is recommended to secure premium venues and top-tier vendors in Saudi Arabia.",
+      "## Ready to Plan Your Luxury Event?",
+      "Looking for a premium partner to bring your vision to life? Check out our [Luxury Event Services](/services/luxury-vip-events) and let Saudi Event Management handle every detail with flawless execution. Contact us today!"],
   },
   {
     slug: "trending-colors-2026-event-palette",
+    metaTitle: "2026 Event Color Trends: The Defining Palette for Luxury Events",
+    metaDescription: "Explore the stunning color trends dominating luxury events this year in Saudi Arabia, from Sage Green to Deep Plum.",
     title: "2026 Event Color Trends: The Defining Palette",
     excerpt:
       "Discover the stunning color trends dominating luxury events this year &mdash; from ethereal sage greens to bold terracotta and sophisticated deep plums.",
@@ -107,6 +118,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "show-stopping-decor-ideas-events",
+    metaTitle: "10 Show-Stopping Event Decor Ideas in Saudi Arabia",
+    metaDescription: "Transform any venue with these avant-garde decor concepts blending artistry, innovation, and pure luxury for Saudi events.",
     title: "10 Show-Stopping Event Decor Ideas",
     excerpt:
       "Transform any venue into a breathtaking experience with these avant-garde decor concepts that blend artistry, innovation, and pure luxury.",
@@ -155,6 +168,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "destination-wedding-planning-guide",
+    metaTitle: "Planning a Dream Destination Wedding in Saudi Arabia & Beyond",
+    metaDescription: "Everything you need to know about planning a luxury destination wedding that exceeds every expectation.",
     title: "Planning a Dream Destination Wedding",
     excerpt:
       "From selecting the perfect overseas locale to managing guest logistics, here&apos;s everything you need to know about planning a destination wedding that exceeds every expectation.",
@@ -194,6 +209,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "elevating-corporate-events-guide",
+    metaTitle: "Elevating Corporate Events: A Guide to Premium Brand Experiences",
+    metaDescription: "Learn how to transform standard corporate gatherings into premium brand experiences that inspire teams and impress clients.",
     title: "Elevating Corporate Events",
     excerpt:
       "Learn how to transform standard corporate gatherings into premium brand experiences that inspire teams, impress clients, and drive real business results.",
@@ -236,6 +253,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "art-of-tablescaping-guide",
+    metaTitle: "The Art of Tablescaping for Luxury Events",
+    metaDescription: "Master the art of luxurious table design with expert tips on layering textures, linens, and centerpieces for Saudi events.",
     title: "The Art of Tablescaping",
     excerpt:
       "Master the art of luxurious table design with expert tips on layering textures, choosing linens, and creating centerpieces that make every seat the best seat in the house.",

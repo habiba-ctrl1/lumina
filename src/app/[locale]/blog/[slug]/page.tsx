@@ -52,10 +52,16 @@ export default function BlogPostPage() {
         </h2>
       );
     }
+    // Simple markdown link parser: [Text](url) -> <a href="url" class="text-gold-500 hover:text-gold-400 underline">Text</a>
+    const parsedBlock = block.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2" class="text-gold-500 hover:text-gold-400 underline">$1</a>'
+    );
+
     return (
       <p
         className="text-sand-200 leading-[1.9] mb-8"
-        dangerouslySetInnerHTML={{ __html: block }}
+        dangerouslySetInnerHTML={{ __html: parsedBlock }}
       />
     );
   };
