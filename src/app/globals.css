@@ -1,5 +1,5 @@
 /* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -47,15 +47,15 @@
   --gold-muted:        rgba(197, 168, 128, 0.08);
 
   /* Deep Emerald Green Accents (Saudi Royal Market Preferred Corporate Accent) */
-  --emerald:           #0D9488;   /* teal-600 — Main Premium Corporate Accent */
-  --emerald-hover:     #0F766E;   /* teal-700 — Hover State */
-  --emerald-muted:     rgba(13, 148, 136, 0.06);
+  --emerald:           #064E3B;   /* Deep Forest Green — Main Premium Corporate Accent */
+  --emerald-hover:     #022C22;   /* Darker Forest Green — Hover State */
+  --emerald-muted:     rgba(6, 78, 59, 0.06);
 
   /* Legacy compatibility maps */
-  --primary:           #0D9488;   /* Swapped to Teal for primary corporate actions */
-  --primary-dark:      #0F766E;
+  --primary:           #064E3B;   /* Swapped to Deep Green for primary corporate actions */
+  --primary-dark:      #022C22;
   --secondary:         #C5A880;   /* Gold becomes beautiful secondary accent */
-  --gray-light:        #F8FAFC;
+  --gray-light:        #FAF7F2;   /* Swapped to Sand/Beige for soft backgrounds */
 }
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────────
@@ -83,7 +83,7 @@ html {
 body {
   color:            var(--foreground) !important;
   background-color: var(--background) !important;
-  font-family:      'DM Sans', system-ui, sans-serif !important;
+  font-family:      'Montserrat', 'Tajawal', system-ui, sans-serif !important;
   font-size:        1rem;        /* 16px base */
   line-height:      1.75;        /* perfect spacing for maximum legibility */
   font-weight:      400;
@@ -93,12 +93,12 @@ body {
 }
 
 /* ── Typography Scale ────────────────────────────────────────────────────────
-   Headings use font-display (Playfair Display).
-   Body text uses font-sans (DM Sans).
+   Headings use font-display (Playfair Display / Amiri).
+   Body text uses font-sans (Montserrat / Tajawal).
    ──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   color:       var(--heading) !important;
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Playfair Display', 'Amiri', Georgia, serif !important;
   line-height: 1.25;
   font-weight: 600 !important;      /* Premium high-end corporate weight */
   letter-spacing: -0.01em;
@@ -114,7 +114,7 @@ h5 { font-size: 1.125rem !important; }                         /* 18px */
 h6 { font-size: 1rem !important;     }                         /* 16px */
 
 .font-display-italic {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Playfair Display', 'Amiri', Georgia, serif !important;
   font-style:  italic;
   font-weight: 400;
 }
@@ -123,7 +123,7 @@ h6 { font-size: 1rem !important;     }                         /* 16px */
 p {
   line-height:   1.75;
   color:         var(--foreground-medium) !important;
-  font-family:   'DM Sans', sans-serif !important;
+  font-family:   'Montserrat', 'Tajawal', sans-serif !important;
   margin-bottom: 0;
 }
 
@@ -159,7 +159,7 @@ a:hover { color: var(--emerald-hover); }
 /* ── Section Eyebrow Label ────────────────────────────────────────────────── */
 .section-label {
   display:        block;
-  font-family:    'DM Sans', system-ui, sans-serif !important;
+  font-family:    'Montserrat', 'Tajawal', system-ui, sans-serif !important;
   font-size:      0.6875rem;   /* 11px */
   font-weight:    600;
   letter-spacing: 0.18em;
