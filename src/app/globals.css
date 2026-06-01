@@ -97,7 +97,7 @@ body {
    Body text uses font-sans (Montserrat / Tajawal).
    ──────────────────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  color:       var(--heading) !important;
+  color:       var(--heading);
   font-family: 'Playfair Display', 'Amiri', Georgia, serif !important;
   line-height: 1.25;
   font-weight: 600 !important;      /* Premium high-end corporate weight */
@@ -122,7 +122,7 @@ h6 { font-size: 1rem !important;     }                         /* 16px */
 /* ── Paragraph & Inline Tags ──────────────────────────────────────────────────*/
 p {
   line-height:   1.75;
-  color:         var(--foreground-medium) !important;
+  color:         var(--foreground-medium);
   font-family:   'Montserrat', 'Tajawal', sans-serif !important;
   margin-bottom: 0;
 }

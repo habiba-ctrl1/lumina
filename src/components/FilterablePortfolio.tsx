@@ -173,8 +173,8 @@ export default function FilterablePortfolio() {
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
                     <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-6 h-[2px] bg-[var(--primary)]" />
-                        <span className="text-[var(--primary)] text-[9px] uppercase tracking-widest font-bold bg-white/10 px-2 py-0.5 rounded-sm backdrop-blur-sm">{item.client}</span>
+                        <div className="w-6 h-[2px] bg-[var(--gold)]" />
+                        <span className="text-[var(--gold)] text-[9px] uppercase tracking-widest font-bold bg-white/10 px-2 py-0.5 rounded-sm backdrop-blur-sm">{item.client}</span>
                       </div>
                       <h3 className="font-display text-2xl text-white mb-2 font-bold tracking-tight">{item.title}</h3>
                       
