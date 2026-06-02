@@ -94,7 +94,7 @@ export default function Hero({ dict }: { dict?: any }) {
                 target="_blank"
                 className="bg-[var(--primary)] text-white px-8 py-3.5 rounded-md font-medium text-sm transition-all hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5 uppercase tracking-widest"
               >
-                {dict ? dict.inquiry || "احجز استشارة" : "Book Consultation"}
+                {dict ? dict.inquiry || "طلب تسعيرة" : "Request a Quote"}
               </Link>
               <Link
                 href="/portfolio"

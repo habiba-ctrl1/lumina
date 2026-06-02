@@ -40,71 +40,71 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-ink-950 flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gold-200/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] bg-gold-300/10 rounded-full blur-[140px]" />
+    <div className="min-h-screen bg-[#0a0f1a] flex items-center justify-center p-6 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/[0.04] rounded-full blur-[120px]" />
       </div>
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-lg relative z-10"
+        className="w-full max-w-md relative z-10"
       >
-        <div className="bg-ink-800 border border-ink-600 p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 backdrop-blur-xl">
-          <div className="text-center mb-12">
-            <div className="w-20 h-20 bg-gold-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-gold-500/20">
-              <ShieldCheck className="text-white" size={40} />
+        <div className="bg-[#0d1321] border border-white/[0.08] p-10 rounded-2xl shadow-2xl">
+          {/* Header */}
+          <div className="text-center mb-10">
+            <div className="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto mb-6">
+              <ShieldCheck className="text-amber-500" size={28} />
             </div>
-            <h1 className="text-4xl font-extrabold text-sand-50 tracking-tight mb-3">
-              Saudi Event <span className="text-gold-500">Admin</span>
+            <h1 className="text-2xl font-bold text-white tracking-tight mb-2">
+              Admin Access
             </h1>
-            <p className="text-sand-300 font-medium">Restricted Access • Strategic Operations</p>
+            <p className="text-slate-500 text-sm">Sign in to manage Saudi Event Management</p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-8">
+          <form onSubmit={handleLogin} className="space-y-5">
             {error && (
               <motion.div 
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="p-4 bg-red-50 border border-red-100 text-red-600 text-sm font-bold rounded-2xl flex items-center gap-3"
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-lg flex items-center gap-2"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <div className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
                 {error}
               </motion.div>
             )}
 
-            <div className="space-y-3">
-              <label className="text-[10px] uppercase font-black tracking-widest text-sand-400 ml-1">
-                Administrative ID
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-400 ml-0.5">
+                Email Address
               </label>
               <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-sand-400 group-focus-within:text-gold-500 transition-colors" size={20} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full bg-ink-950 border border-ink-600 rounded-2xl py-5 pl-14 pr-6 text-sand-50 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400"
+                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
                   placeholder="admin@saudievent.com"
                 />
               </div>
             </div>
 
-            <div className="space-y-3">
-              <label className="text-[10px] uppercase font-black tracking-widest text-sand-400 ml-1">
-                Access Credentials
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-400 ml-0.5">
+                Password
               </label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-sand-400 group-focus-within:text-gold-500 transition-colors" size={20} />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full bg-ink-950 border border-ink-600 rounded-2xl py-5 pl-14 pr-6 text-sand-50 font-bold focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400"
+                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
                   placeholder="••••••••••••"
                 />
               </div>
@@ -113,33 +113,32 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-black py-5 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 mt-6 shadow-xl shadow-slate-900/10 transform active:scale-[0.98]"
+              className="w-full bg-amber-500 hover:bg-amber-400 disabled:bg-slate-700 disabled:text-slate-500 disabled:cursor-not-allowed text-black font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 mt-2 text-sm active:scale-[0.98]"
             >
               {loading ? (
                 <>
-                  <Loader2 className="animate-spin" size={24} />
-                  Authenticating...
+                  <Loader2 className="animate-spin" size={18} />
+                  Signing in…
                 </>
               ) : (
                 <>
-                  Authorize & Enter
-                  <ArrowRight size={20} />
+                  Sign In
+                  <ArrowRight size={16} />
                 </>
               )}
             </button>
           </form>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-6">
           <button 
             onClick={() => router.push("/")}
-            className="text-sand-400 hover:text-sand-50 font-bold text-sm transition-all flex items-center gap-2 mx-auto bg-ink-800 px-6 py-2 rounded-full border border-ink-500 shadow-sm"
+            className="text-slate-500 hover:text-slate-300 text-sm transition-all"
           >
-            ← Exit to Public Site
+            ← Back to website
           </button>
         </div>
       </motion.div>
     </div>
   );
 }
-

@@ -303,7 +303,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                 transition-all duration-300
                 hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5"
             >
-              Book Consultation
+              Request a Quote
             </Link>
           </div>
  
@@ -374,7 +374,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-4 rounded-md text-[11px] font-bold uppercase tracking-widest"
                 >
-                  Book Consultation
+                  Request a Quote
                 </Link>
               </motion.div>
             </div>
