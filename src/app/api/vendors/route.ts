@@ -51,6 +51,13 @@ export async function POST(request: Request) {
         category: body.category,
         services: body.services,
         contactInfo: body.contactInfo,
+        city: body.city || null,
+        email: body.email || null,
+        phone: body.phone || null,
+        whatsapp: body.whatsapp || null,
+        portfolio: body.portfolio || null,
+        pricing: body.pricing || null,
+        availability: body.availability || "Available",
         rating: body.rating ? parseFloat(body.rating) : 5.0,
       }
     });

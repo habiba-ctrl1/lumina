@@ -23,6 +23,8 @@ model Client {
   phone       String?
   company     String?
   status      String   @default("Active") // VIP, Active, Corporate, Lead
+  notes       String?
+  totalSpend  Float    @default(0)
   events      Event[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -36,6 +38,7 @@ model Event {
   location     String?
   type         String   @default("General") // Wedding, Corporate, Private, Culture
   status       String   @default("Inquiry") // Inquiry, Quoted, Booked, Completed, Cancelled
+  timeline     String   @default("Planning") // Planning, Vendor Selection, Proposal, Confirmation, Execution, Completed
   guestCount   String?
   budget       String?
   client       Client?  @relation(fields: [clientId], references: [id])
@@ -48,16 +51,23 @@ model Event {
 }
 
 model Vendor {
-  id          String   @id @default(uuid())
-  name        String
-  category    String   // Photography, Catering, Venue, etc.
-  services    String?
-  contactInfo String?
-  rating      Float    @default(5.0)
-  events      Event[]  @relation("EventVendors")
-  quotes      Quote[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String   @id @default(uuid())
+  name         String
+  category     String   // Photography, Catering, Venue, Decor, Lighting, Entertainment, Furniture, AV Equipment, Luxury Cars
+  services     String?
+  contactInfo  String?
+  city         String?
+  email        String?
+  phone        String?
+  whatsapp     String?
+  portfolio    String?  // URL
+  pricing      String?  // JSON string or description
+  availability String?  // Available, Booked, Seasonal
+  rating       Float    @default(5.0)
+  events       Event[]  @relation("EventVendors")
+  quotes       Quote[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Quote {
@@ -93,18 +103,38 @@ model Inquiry {
   updatedAt   DateTime @updatedAt
 }
 
-model BlogPost {
+model Lead {
   id          String   @id @default(uuid())
-  title       String
-  slug        String   @unique
-  content     String
-  category    String?
-  author      String?
-  readTime    String?  @default("5 min read")
-  publishedAt DateTime?
-  media       MediaAsset[]
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  eventType   String?
+  budget      String?
+  eventDate   String?
+  source      String?  @default("website") // website, referral, social, direct
+  status      String   @default("New") // New, Contacted, Proposal Sent, Negotiation, Won, Lost
+  notes       String?
+  assignedTo  String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model BlogPost {
+  id            String   @id @default(uuid())
+  title         String
+  slug          String   @unique
+  content       String
+  category      String?
+  author        String?
+  readTime      String?  @default("5 min read")
+  metaTitle     String?
+  metaDesc      String?
+  seoScore      Int?     @default(0)
+  publishedAt   DateTime?
+  media         MediaAsset[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Testimonial {
@@ -112,6 +142,9 @@ model Testimonial {
   quote     String
   author    String
   role      String?
+  company   String?
+  eventType String?
+  photo     String?
   rating    Int      @default(5)
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -149,6 +182,7 @@ model ActivityLog {
   userEmail String?
   createdAt DateTime @default(now())
 }
+
 model QuoteRequest {
   id           String   @id @default(uuid())
   clientName   String
@@ -182,4 +216,27 @@ model Proposal {
   status       String   @default("draft") // draft | sent | accepted | rejected | expired
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+}
+
+model FinancialRecord {
+  id          String   @id @default(uuid())
+  type        String   // revenue, expense, vendor_payment
+  category    String?  // Event Revenue, Vendor Payment, Marketing, Operations
+  amount      Float
+  description String?
+  reference   String?  // Event ID or Vendor ID
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Communication {
+  id          String   @id @default(uuid())
+  type        String   // whatsapp, email, sms, call, note
+  direction   String   @default("outbound") // inbound, outbound
+  subject     String?
+  content     String?
+  contactName String?
+  contactRef  String?  // Client or Lead ID
+  createdAt   DateTime @default(now())
 }

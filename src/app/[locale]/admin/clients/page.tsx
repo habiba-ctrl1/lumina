@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, TrendingUp } from "lucide-react";
+import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, TrendingUp, Star, Award, Building } from "lucide-react";
 import { motion } from "framer-motion";
 
 type Client = {
@@ -42,64 +42,72 @@ export default function ClientsPage() {
   };
 
   return (
-    <div className="pb-20 max-w-7xl mx-auto">
-      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+    <div className="pb-16 max-w-[1440px] mx-auto text-slate-800">
+      {/* Header Section */}
+      <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight mb-1">
             Client CRM
           </h1>
-          <p className="text-sand-300 font-medium">Manage and segment your high-net-worth network.</p>
+          <p className="text-slate-500 text-sm">Manage and segment your high-net-worth network.</p>
         </div>
-        <button className="px-6 py-3 bg-slate-900 text-white font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 flex items-center gap-2">
-          <UserPlus size={16} className="text-gold-500" />
+        <button className="px-4 py-2 bg-slate-900 text-white font-semibold tracking-wide text-xs rounded-xl hover:bg-slate-800 transition-all shadow-sm flex items-center gap-1.5 active:scale-95">
+          <UserPlus size={15} />
           Add Client
         </button>
       </div>
 
       {/* Stats Quick View */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-        <div className="bg-ink-800 p-6 rounded-3xl border border-ink-600 shadow-sm">
-          <p className="text-[10px] text-sand-400 font-black uppercase tracking-widest mb-2">Total Clients</p>
-          <div className="flex items-end justify-between">
-            <h3 className="text-2xl font-black text-sand-50">{clients.length}</h3>
-            <div className="text-emerald-500 flex items-center gap-1 text-xs font-bold">
-              <TrendingUp size={14} /> +12%
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+          <div>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Total Clients</p>
+            <h3 className="text-xl font-bold text-slate-800">{clients.length}</h3>
+          </div>
+          <div className="text-teal-600 bg-teal-50 px-2 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold">
+            <TrendingUp size={12} /> +12%
           </div>
         </div>
-        <div className="bg-ink-800 p-6 rounded-3xl border border-ink-600 shadow-sm">
-          <p className="text-[10px] text-sand-400 font-black uppercase tracking-widest mb-2">VIP Network</p>
-          <div className="flex items-end justify-between">
-            <h3 className="text-2xl font-black text-sand-50">{clients.filter(c => c.status === 'VIP').length}</h3>
-            <div className="text-gold-500 font-black text-[10px] uppercase tracking-widest">Elite</div>
+        
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+          <div>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">VIP Network</p>
+            <h3 className="text-xl font-bold text-slate-800">{clients.filter(c => c.status === 'VIP').length}</h3>
+          </div>
+          <div className="text-amber-600 bg-amber-50 px-2 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold">
+            <Award size={12} /> HNW Network
           </div>
         </div>
-        <div className="bg-ink-800 p-6 rounded-3xl border border-ink-600 shadow-sm">
-          <p className="text-[10px] text-sand-400 font-black uppercase tracking-widest mb-2">Corporate Partners</p>
-          <div className="flex items-end justify-between">
-            <h3 className="text-2xl font-black text-sand-50">{clients.filter(c => c.status === 'Corporate').length}</h3>
-            <div className="text-blue-500 font-black text-[10px] uppercase tracking-widest">Growth</div>
+
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+          <div>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Corporate Partners</p>
+            <h3 className="text-xl font-bold text-slate-800">{clients.filter(c => c.status === 'Corporate').length}</h3>
+          </div>
+          <div className="text-blue-600 bg-blue-50 px-2 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold">
+            <Building size={12} /> B2B Segment
           </div>
         </div>
       </div>
 
-      <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] shadow-sm overflow-hidden">
-        <div className="p-8 border-b border-ink-500 flex flex-col sm:flex-row gap-10 items-center justify-between bg-ink-950/50">
-          <div className="relative w-full sm:w-[400px]">
-            <Search className="absolute start-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
+      <div className="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
+        {/* Filters Panel */}
+        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-50/50">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" size={14} />
             <input 
               type="text" 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, email, or company..." 
-              className="w-full bg-ink-800 border border-ink-600 rounded-2xl ps-12 pe-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
-          <div className="flex gap-3 w-full sm:w-auto">
+          <div className="flex gap-2 w-full sm:w-auto">
             <select 
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="flex-1 sm:flex-none px-4 py-3 bg-ink-800 border border-ink-600 rounded-2xl text-sm font-bold text-sand-200 focus:outline-none focus:border-gold-500 transition-all appearance-none cursor-pointer min-w-[140px]"
+              className="w-full sm:w-auto px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer min-w-[130px]"
             >
               <option value="all">All Statuses</option>
               <option value="VIP">VIP</option>
@@ -110,79 +118,80 @@ export default function ClientsPage() {
           </div>
         </div>
 
+        {/* Clients Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-start border-collapse">
             <thead>
-              <tr className="border-b border-ink-500 text-[10px] uppercase tracking-[0.2em] text-sand-400 font-black">
-                <th className="px-8 py-6">Client Identity</th>
-                <th className="px-8 py-6">Connection</th>
-                <th className="px-8 py-6">Status</th>
-                <th className="px-8 py-6">Engagement</th>
-                <th className="px-8 py-6 text-end">Actions</th>
+              <tr className="border-b border-slate-100 text-[10px] uppercase tracking-wider text-slate-400 font-bold bg-slate-50/50">
+                <th className="px-6 py-3.5 text-start font-semibold">Client Identity</th>
+                <th className="px-6 py-3.5 text-start font-semibold">Contact Info</th>
+                <th className="px-6 py-3.5 text-start font-semibold">Status</th>
+                <th className="px-6 py-3.5 text-start font-semibold">Engagement</th>
+                <th className="px-6 py-3.5 text-end font-semibold">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-50">
+            <tbody className="divide-y divide-slate-100">
               {loading ? (
                 [1, 2, 3].map((i: any) => (
                   <tr key={i} className="animate-pulse">
-                    <td colSpan={5} className="px-8 py-8"><div className="h-8 bg-ink-950 rounded-xl" /></td>
+                    <td colSpan={5} className="px-6 py-6"><div className="h-6 bg-slate-50 rounded-xl" /></td>
                   </tr>
                 ))
               ) : clients.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-8 py-28 text-center text-sand-400 font-bold uppercase tracking-widest text-xs">No clients found matching your search.</td>
+                  <td colSpan={5} className="px-6 py-12 text-center text-slate-400 font-medium text-xs">No clients found matching your search.</td>
                 </tr>
               ) : (
                 clients.map((client: any, i: number) => (
                   <motion.tr 
                     key={client.id}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="hover:bg-ink-950/50 transition-all group"
+                    transition={{ delay: i * 0.03 }}
+                    className="hover:bg-slate-50/50 transition-all group"
                   >
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-10">
-                        <div className="w-12 h-12 rounded-2xl bg-gold-50 border border-gold-100 flex items-center justify-center text-gold-600 font-black text-lg shadow-sm">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold text-sm shadow-sm">
                           {client.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-sand-50 font-black text-sm tracking-tight">{client.name}</p>
-                          <p className="text-[10px] text-sand-400 font-bold uppercase tracking-wider mt-0.5">{client.company || 'Private Client'}</p>
+                          <p className="text-slate-800 font-semibold text-xs tracking-tight">{client.name}</p>
+                          <p className="text-[10px] text-slate-450 font-semibold uppercase tracking-wide mt-0.5">{client.company || 'Private Client'}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="space-y-1.5">
-                        <p className="text-xs text-sand-200 font-semibold flex items-center gap-2 group-hover:text-gold-600 transition-colors">
-                          <Mail size={14} className="text-gold-500" /> {client.email}
+                    <td className="px-6 py-4">
+                      <div className="space-y-0.5">
+                        <p className="text-xs text-slate-700 font-semibold flex items-center gap-1.5 hover:text-teal-600 transition-colors">
+                          <Mail size={12} className="text-slate-400" /> {client.email}
                         </p>
                         {client.phone && (
-                          <p className="text-xs text-sand-300 font-medium flex items-center gap-2">
-                            <Phone size={14} className="text-sand-400" /> {client.phone}
+                          <p className="text-xs text-slate-500 font-medium flex items-center gap-1.5">
+                            <Phone size={12} className="text-slate-400" /> {client.phone}
                           </p>
                         )}
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <span className={`px-3 py-1 text-[9px] uppercase tracking-[0.15em] font-black rounded-full border ${
+                    <td className="px-6 py-4">
+                      <span className={`px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold rounded-md border ${
                         client.status === 'VIP' ? 'bg-amber-50 text-amber-600 border-amber-100' :
                         client.status === 'Corporate' ? 'bg-blue-50 text-blue-600 border-blue-100' :
-                        client.status === 'Lead' ? 'bg-ink-950 text-sand-300 border-ink-500' :
-                        'bg-emerald-50 text-emerald-600 border-emerald-100'
+                        client.status === 'Lead' ? 'bg-slate-100 text-slate-600 border-slate-200' :
+                        'bg-teal-50 text-teal-600 border-teal-100'
                       }`}>
                         {client.status}
                       </span>
                     </td>
-                    <td className="px-8 py-6">
+                    <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="text-sm text-sand-50 font-black">{client._count?.events || 0}</span>
-                        <span className="text-[10px] text-sand-400 font-bold uppercase tracking-wider">Events Managed</span>
+                        <span className="text-xs text-slate-800 font-bold">{client._count?.events || 0}</span>
+                        <span className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Events Managed</span>
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-end">
-                      <button className="w-10 h-10 flex items-center justify-center text-sand-500 hover:bg-ink-800 hover:text-sand-50 hover:shadow-md rounded-xl transition-all border border-transparent hover:border-ink-500">
-                        <MoreVertical size={20} />
+                    <td className="px-6 py-4 text-end">
+                      <button className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-50 rounded-lg transition-all">
+                        <MoreVertical size={16} />
                       </button>
                     </td>
                   </motion.tr>

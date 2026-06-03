@@ -39,120 +39,122 @@ export default function AdminBlogPage() {
   };
 
   return (
-    <div className="pb-20 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-12">
+    <div className="pb-16 max-w-[1440px] mx-auto text-slate-800">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-sand-50 tracking-tight mb-2">
-            Blog Management
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight mb-1">
+            Blog & Articles CMS
           </h1>
-          <p className="text-sand-300 font-medium">Manage your lifestyle articles and event planning tips.</p>
+          <p className="text-sm text-slate-500 font-medium">Manage lifestyle publications, SEO optimizations, and event planning resources.</p>
         </div>
-        <button className="px-6 py-3 bg-slate-900 text-white font-bold uppercase tracking-widest text-[10px] rounded-2xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 flex items-center gap-2">
-          <Plus size={16} className="text-gold-500" /> 
+        <button className="px-4 py-2 bg-slate-900 text-white font-semibold tracking-wide text-xs rounded-xl hover:bg-slate-800 transition-all shadow-sm flex items-center gap-1.5 active:scale-95">
+          <Plus size={15} /> 
           Create New Post
         </button>
       </div>
 
-      <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] shadow-sm overflow-hidden">
-        <div className="p-8 border-b border-ink-500 flex flex-col sm:flex-row gap-10 items-center justify-between bg-ink-950/50">
-          <div className="relative w-full sm:w-[400px]">
-            <Search className="absolute start-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
+      <div className="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
+        {/* Filters Bar */}
+        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-50/50">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" size={14} />
             <input 
               type="text" 
               placeholder="Search articles..." 
-              className="w-full bg-ink-800 border border-ink-600 rounded-2xl ps-12 pe-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
-          <button className="flex items-center gap-2 px-5 py-3 bg-ink-800 border border-ink-600 rounded-2xl text-[10px] font-black uppercase tracking-widest text-sand-300 hover:text-sand-50 transition-all shadow-sm">
-            <Filter size={16} /> Filters
+          <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all shadow-sm">
+            <Filter size={14} /> Filters
           </button>
         </div>
 
+        {/* Blog Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-start border-collapse">
             <thead>
-              <tr className="border-b border-ink-500 text-[10px] uppercase tracking-[0.25em] text-sand-400 font-black">
-                <th className="px-8 py-6">Article</th>
-                <th className="px-8 py-6">Category</th>
-                <th className="px-8 py-6">Status</th>
-                <th className="px-8 py-6 text-end">Actions</th>
+              <tr className="border-b border-slate-100 text-[10px] uppercase tracking-wider text-slate-400 font-bold bg-slate-50/50">
+                <th className="px-6 py-3.5 text-start font-semibold">Article Details</th>
+                <th className="px-6 py-3.5 text-start font-semibold">Category</th>
+                <th className="px-6 py-3.5 text-start font-semibold">Status</th>
+                <th className="px-6 py-3.5 text-end font-semibold">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-50">
+            <tbody className="divide-y divide-slate-100">
               {loading ? (
                 [1, 2, 3].map((i: any) => (
                   <tr key={i} className="animate-pulse">
-                    <td colSpan={4} className="px-8 py-8"><div className="h-12 bg-ink-950 rounded-xl" /></td>
+                    <td colSpan={4} className="px-6 py-6"><div className="h-10 bg-slate-50 rounded-xl" /></td>
                   </tr>
                 ))
               ) : posts.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-8 py-28 text-center">
-                    <FileText size={40} className="mx-auto text-slate-100 mb-8" />
-                    <p className="text-sand-400 font-bold uppercase tracking-widest text-xs">No articles found in your library.</p>
+                  <td colSpan={4} className="px-6 py-12 text-center">
+                    <FileText size={22} className="mx-auto text-slate-400 mb-3" />
+                    <p className="text-slate-400 font-medium text-xs">No articles found in your library.</p>
                   </td>
                 </tr>
               ) : (
                 posts.map((post: any, i: number) => (
                   <motion.tr 
                     key={post.id}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="hover:bg-ink-950/50 transition-colors group"
+                    transition={{ delay: i * 0.03 }}
+                    className="hover:bg-slate-50/50 transition-all group"
                   >
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-5">
-                        <div className="relative w-16 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-ink-500 shadow-sm bg-ink-950 flex items-center justify-center">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-14 h-10 rounded-lg overflow-hidden flex-shrink-0 border border-slate-200 shadow-sm bg-slate-50 flex items-center justify-center">
                           {post.media && post.media[0] ? (
-                            <Image src={post.media[0].url} alt={post.title} width={100} height={80} className="w-full h-full object-cover" />
+                            <Image src={post.media[0].url} alt={post.title} width={80} height={60} className="w-full h-full object-cover" />
                           ) : (
-                            <FileText size={20} className="text-sand-500" />
+                            <FileText size={16} className="text-slate-400" />
                           )}
                         </div>
                         <div>
-                          <p className="text-sm font-black text-sand-50 line-clamp-1 tracking-tight">{post.title}</p>
-                          <p className="text-[10px] text-sand-400 font-bold uppercase tracking-widest mt-1">/{post.slug}</p>
+                          <p className="text-xs font-bold text-slate-800 line-clamp-1 tracking-tight">{post.title}</p>
+                          <p className="text-[9px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">/{post.slug}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <span className="px-3 py-1 rounded-full bg-gold-50 border border-gold-100 text-[9px] uppercase tracking-widest font-black text-gold-600">
+                    <td className="px-6 py-4">
+                      <span className="px-2 py-0.5 rounded-md bg-teal-50 border border-teal-105 text-[9px] uppercase tracking-wider font-bold text-teal-700">
                         {post.category}
                       </span>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="flex flex-col gap-1">
-                        <div className="flex items-center gap-2">
-                          <div className={`w-2 h-2 rounded-full ${post.published ? 'bg-emerald-500' : 'bg-slate-300'}`} />
-                          <span className="text-[10px] font-black uppercase tracking-widest text-sand-300">
+                    <td className="px-6 py-4">
+                      <div className="flex flex-col gap-0.5">
+                        <div className="flex items-center gap-1.5">
+                          <div className={`w-1.5 h-1.5 rounded-full ${post.published ? 'bg-emerald-500' : 'bg-slate-300'}`} />
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
                             {post.published ? 'Published' : 'Draft'}
                           </span>
                         </div>
                         {post.readTime && (
-                          <div className="flex items-center gap-1.5 text-sand-400">
+                          <div className="flex items-center gap-1 text-slate-400 text-[9px] font-semibold">
                             <Clock size={10} />
-                            <span className="text-[9px] font-bold uppercase tracking-wider">{post.readTime}</span>
+                            <span>{post.readTime}</span>
                           </div>
                         )}
                       </div>
                     </td>
-                    <td className="px-8 py-6">
-                      <div className="flex items-center justify-end gap-3">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center justify-end gap-1.5">
                         <Link 
                           href={`/blog/${post.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-ink-950 text-sand-400 hover:text-sand-50 hover:bg-ink-800 hover:shadow-md transition-all border border-transparent hover:border-ink-500"
+                          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-450 hover:text-slate-700 hover:bg-slate-50"
                           title="View Publicly"
                         >
-                          <ExternalLink size={18} />
+                          <ExternalLink size={14} />
                         </Link>
                         <button 
-                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-ink-950 text-sand-400 hover:text-gold-600 hover:bg-gold-50 hover:shadow-md transition-all border border-transparent hover:border-gold-100"
+                          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-455 hover:text-teal-600 hover:bg-teal-50"
                           title="Edit Article"
                         >
-                          <Edit3 size={18} />
+                          <Edit3 size={14} />
                         </button>
                       </div>
                     </td>
