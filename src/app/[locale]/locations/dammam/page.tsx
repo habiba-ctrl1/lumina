@@ -105,7 +105,7 @@ export default function DammamPage() {
                 "Specialized event management for major industrial and energy entities",
                 "Coastal wedding specialists for Gulf waterfront celebrations",
                 "Full-service logistics for cross-region VIP guest management"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0" />
                   <span>{item}</span>
@@ -116,7 +116,7 @@ export default function DammamPage() {
           <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">
                  <p className="text-white text-sm font-display  font-light">&quot;Excellence on the Arabian Gulf.&quot;</p>
                </div>
@@ -131,7 +131,7 @@ export default function DammamPage() {
             { label: "Peak Season", val: "Nov–Mar" },
             { label: "Corporate Galas", val: "80+" },
             { label: "Coastal Venues", val: "25+" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
               <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
@@ -152,7 +152,7 @@ export default function DammamPage() {
                { icon: Briefcase, title: "Aramco-Tier Summits", desc: "Setting the standard for executive conferences and high-profile corporate galas." },
                { icon: Building2, title: "Coastal Family Weddings", desc: "Spectacular celebrations set against the backdrop of the Arabian Gulf." },
                { icon: MapPin, title: "Dhahran Private Events", desc: "Bespoke management for exclusive private gatherings in the Dhahran community." }
-             ].map((service, i) => (
+             ].map((service: any, i: number) => (
                <div key={i} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300">
                  <service.icon size={28} className="text-emerald-800 mb-8" />
                  <h3 className="font-display font-medium text-lg text-slate-900 mb-8">{service.title}</h3>
@@ -180,7 +180,7 @@ export default function DammamPage() {
               "Kempinski Al Othman",
               "Dhahran Expo Center",
               "Sunset Beach Resort"
-            ].map((venue, i) => (
+            ].map((venue: any, i: number) => (
               <div key={i} className="flex items-center gap-10 p-5 bg-white border border-slate-200 rounded-sm hover:border-[var(--primary)] hover:shadow-sm transition-all shadow-2xs">
                 <CheckCircle2 size={18} className="text-emerald-800 shrink-0" />
                 <span className="text-slate-800 text-sm font-medium">{venue}</span>

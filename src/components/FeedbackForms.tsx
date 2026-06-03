@@ -35,7 +35,7 @@ export default function FeedbackForms() {
 
         <div className="bg-ink-800 rounded-[2rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-ink-600 relative overflow-hidden">
           {/* Decorative element */}
-          <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full" />
+          <div className="absolute top-0 end-0 w-24 h-24 bg-primary/5 rounded-bs-full" />
           
           <div className="relative z-10">
             {activeTab === "question" ? (
@@ -50,16 +50,16 @@ export default function FeedbackForms() {
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Name</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Your Name</label>
                       <input type="text" className="w-full bg-ink-800 border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all uppercase tracking-widest" placeholder="Enter your name" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Email Address</label>
                       <input type="email" className="w-full bg-ink-800 border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all uppercase tracking-widest" placeholder="Enter your email" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Question</label>
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Your Question</label>
                     <textarea rows={4} className="w-full bg-ink-800 border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all resize-none uppercase tracking-widest" placeholder="What would you like to know?"></textarea>
                   </div>
                   <button className="bg-primary text-white px-10 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-primary-hover transition-all shadow-lg shadow-primary/20">
@@ -79,13 +79,13 @@ export default function FeedbackForms() {
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Client Name</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Client Name</label>
                       <input type="text" className="w-full bg-ink-800 border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all uppercase tracking-widest" placeholder="Enter your name" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Rating</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Rating</label>
                       <div className="flex gap-2 py-3">
-                        {[1,2,3,4,5].map((star) => (
+                        {[1,2,3,4,5].map((star: any) => (
                           <button key={star} type="button" className="text-gray-200 hover:text-primary transition-colors">
                             <Star size={24} fill="currentColor" />
                           </button>
@@ -94,7 +94,7 @@ export default function FeedbackForms() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Your Review</label>
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Your Review</label>
                     <textarea rows={4} className="w-full bg-ink-800 border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all resize-none uppercase tracking-widest" placeholder="Tell us about your event experience..."></textarea>
                   </div>
                   <button className="bg-black text-white px-10 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 hover:bg-gray-900 transition-all shadow-xl">

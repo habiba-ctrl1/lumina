@@ -32,7 +32,7 @@ export default function MadinahSpiritualEvent() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Reverence & Grace
@@ -52,7 +52,7 @@ export default function MadinahSpiritualEvent() {
             { icon: Users, label: "Attendees", val: "International" },
             { icon: Heart, label: "Experience", val: "Deeply Personal" },
             { icon: MapPin, label: "Location", val: "Madinah Al-Munawwarah" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -90,7 +90,7 @@ export default function MadinahSpiritualEvent() {
               { title: "Cultural Narrative", desc: "Integrating traditional Madinah craftsmanship into every touchpoint, from the invitations to the furniture." },
               { title: "Seamless Flow", desc: "Logistical planning that respected prayer times and the city's unique movement patterns." },
               { title: "Personalized Service", desc: "A high staff-to-guest ratio ensuring every individual's needs were met with discretion and grace." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="p-8 bg-white rounded-3xl border border-slate-200 hover:bg-white hover:shadow-lg transition-all">
                 <h4 className="text-black text-xs font-bold uppercase tracking-widest mb-8 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-primary" /> {item.title}

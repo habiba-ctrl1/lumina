@@ -32,7 +32,7 @@ export default function ExecutiveSummitJeddah() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/50 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Coastal Corporate Strategy
@@ -52,7 +52,7 @@ export default function ExecutiveSummitJeddah() {
             { icon: Building, label: "Scale", val: "C-Suite Exclusive" },
             { icon: Waves, label: "Setting", val: "Red Sea Front" },
             { icon: Anchor, label: "Theme", val: "Maritime Future" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -89,7 +89,7 @@ export default function ExecutiveSummitJeddah() {
               { title: "White-Glove Concierge", desc: "End-to-end travel and stay management for international CEOs, including private jet terminal handling." },
               { title: "Bespoke Environment", desc: "Custom-designed furniture using sustainable materials that reflected the Red Sea's coral ecosystems." },
               { title: "Security Excellence", desc: "A seamless, 'invisible' security net that protected VIPs while maintaining a relaxed atmosphere." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="p-10 bg-white rounded-3xl border border-slate-200 hover:border-primary transition-all group">
                 <h3 className="text-black text-xs font-bold uppercase tracking-widest mb-8 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-gray-500 font-light leading-relaxed">{item.desc}</p>

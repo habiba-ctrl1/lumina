@@ -30,7 +30,7 @@ export default function RiyadhLuxurySoiree() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -54,7 +54,7 @@ export default function RiyadhLuxurySoiree() {
             { icon: GlassWater, label: "Dining", val: "Michelin Style" },
             { icon: Music, label: "Sound", val: "Live Orchestra" },
             { icon: Camera, label: "Media", val: "Private Film" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={32} className="text-primary mx-auto mb-8" />
               <div className="text-[10px] uppercase tracking-[0.2em] text-slate-600 mb-2 font-bold">{stat.label}</div>
@@ -89,7 +89,7 @@ export default function RiyadhLuxurySoiree() {
             { title: "Kinetic Decor", desc: "Ceiling installations that moved in sync with the live orchestra, creating a 'living' environment." },
             { title: "Gourmet Theater", desc: "A 10-course tasting menu where each dish was introduced by a bespoke digital projection on the table." },
             { title: "Elite Privacy", desc: "Implementation of a 'No-Phone' protocol with secure digital lockers to ensure absolute privacy for VVIP guests." }
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <div key={i} className="p-12 bg-white rounded-[3rem] border border-slate-200 hover:shadow-2xl transition-all group">
               <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
                 <CheckCircle2 size={24} className="text-white" />
@@ -102,7 +102,7 @@ export default function RiyadhLuxurySoiree() {
 
         {/* Impact */}
         <div className="bg-black text-white p-12 md:p-32 rounded-[5rem] text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-0 start-0 w-full h-full opacity-30">
             <Image src="/hero_bg.webp" alt="Background" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">

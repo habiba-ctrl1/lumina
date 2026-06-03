@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const WhatsAppIcon = ({ size = 28, className = "" }: { size?: number; className?: string }) => (
   <svg 
@@ -17,6 +18,7 @@ const WhatsAppIcon = ({ size = 28, className = "" }: { size?: number; className?
 );
 
 export default function WhatsAppButton() {
+  const t = useTranslations("whatsapp");
   const [isHovered, setIsHovered] = useState(false);
   const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.";
 
@@ -25,7 +27,7 @@ export default function WhatsAppButton() {
       initial={{ opacity: 0, scale: 0, x: 20 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ delay: 3.5, duration: 0.8, ease: "easeOut" }}
-      className="fixed bottom-8 right-8 z-[120]"
+      className="fixed bottom-8 end-8 z-[120]"
     >
       <AnimatePresence>
         {isHovered && (
@@ -33,10 +35,10 @@ export default function WhatsAppButton() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
-            className="absolute right-20 top-1/2 -translate-y-1/2 bg-white text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-slate-200 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
+            className="absolute end-20 top-1/2 -translate-y-1/2 bg-white text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-slate-200 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
           >
-            Chat with us
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-200" />
+            {t("chatWithUs")}
+            <div className="absolute end-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-200" />
           </motion.div>
         )}
       </AnimatePresence>

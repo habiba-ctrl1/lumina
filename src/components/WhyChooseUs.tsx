@@ -4,46 +4,27 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ShieldCheck, Users, Clock, Sparkles, HeartHandshake, Globe } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
-const reasons = [
-  {
-    icon: <ShieldCheck size={28} />,
-    title: "Stress-Free Execution",
-    desc: "We handle every detail from logistics to last-minute changes, so you can be fully present in the moment.",
-  },
-  {
-    icon: <Users size={28} />,
-    title: "Elite Vendor Network",
-    desc: "Access our curated network of 200+ premium vendors — florists, caterers, photographers — all vetted for excellence.",
-  },
-  {
-    icon: <Clock size={28} />,
-    title: "Timeline Mastery",
-    desc: "Our military-precise timeline management ensures zero delays. Every second of your event flows seamlessly.",
-  },
-  {
-    icon: <Sparkles size={28} />,
-    title: "Bespoke Design",
-    desc: "No templates. Every element is custom-designed to reflect your unique personality, story, and aesthetic vision.",
-  },
-  {
-    icon: <HeartHandshake size={28} />,
-    title: "Dedicated Concierge",
-    desc: "One dedicated planner handles your entire event. You&apos;ll never be passed between teams or departments.",
-  },
-  {
-    icon: <Globe size={28} />,
-    title: "Global Reach",
-    desc: "From royal palaces in Riyadh to GIGA projects in NEOM — we execute flawlessly across AlUla and the Red Sea.",
-  },
-  {
-    icon: <Sparkles size={28} />,
-    title: "Vision 2030 Alignment",
-    desc: "Supporting the General Entertainment Authority (GEA) and Saudi Seasons through world-class cultural activations.",
-  },
+const iconMap = [
+  <ShieldCheck size={28} />,
+  <Users size={28} />,
+  <Clock size={28} />,
+  <Sparkles size={28} />,
+  <HeartHandshake size={28} />,
+  <Globe size={28} />,
+  <Sparkles size={28} />
 ];
 
 export default function WhyChooseUs() {
+  const t = useTranslations("whyChooseUs");
+  
+  const reasons = t.raw("reasons").map((reason: any, i: number) => ({
+    icon: iconMap[i],
+    title: reason.title,
+    desc: reason.desc
+  }));
+
   return (
     <SectionWrapper className="bg-ink-950 relative overflow-hidden">
       <div className="relative z-10">
@@ -59,7 +40,7 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 className="text-primary text-xs uppercase tracking-[0.4em] font-bold mb-8 block"
               >
-                The Saudi Event Management Difference
+                {t("label")}
               </motion.span>
               <motion.h3
                 initial={{ opacity: 0, y: 10 }}
@@ -67,7 +48,7 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 className="text-black text-2xl md:text-3xl mb-8 font-bold"
               >
-                The Saudi Event Management <span className="text-primary italic">Standard</span>
+                {t("title")} <span className="text-primary italic">{t("titleHighlight")}</span>
               </motion.h3>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -76,7 +57,7 @@ export default function WhyChooseUs() {
                 transition={{ delay: 0.2 }}
                 className="text-gray-500 text-[13px] leading-relaxed mb-8 max-w-sm"
               >
-                Absolute perfection for your grandest visions.
+                {t("subtitle")}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0 }}
@@ -93,9 +74,9 @@ export default function WhyChooseUs() {
                 viewport={{ once: true }}
                 className="bg-ink-950 border border-ink-600 p-6 rounded-2xl shadow-sm"
               >
-                <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-8">Request a Consultation</h4>
+                <h4 className="text-black text-sm font-bold uppercase tracking-widest mb-8">{t("requestConsultation")}</h4>
                 <p className="text-gray-500 text-xs mb-8 leading-relaxed">
-                  Tell us about your vision and we'll craft a bespoke proposal tailored to your needs.
+                  {t("consultationDesc")}
                 </p>
                 <div className="flex flex-col gap-3">
                   <Link 
@@ -104,13 +85,13 @@ export default function WhyChooseUs() {
                     rel="noopener noreferrer"
                     className="w-full bg-[#25D366] text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all"
                   >
-                    Chat on WhatsApp
+                    {t("chatWhatsApp")}
                   </Link>
                   <Link 
                     href="/contact"
                     className="w-full bg-primary text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-primary-hover transition-all"
                   >
-                    Submit Inquiry
+                    {t("submitInquiry")}
                   </Link>
                 </div>
               </motion.div>
@@ -119,7 +100,7 @@ export default function WhyChooseUs() {
             {/* Right Grid of Reasons */}
             <div className="lg:col-span-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
-                {reasons.map((reason, index) => (
+                {reasons.map((reason: any, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}

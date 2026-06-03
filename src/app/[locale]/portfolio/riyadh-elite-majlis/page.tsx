@@ -32,7 +32,7 @@ export default function RiyadhEliteMajlis() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/5 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Corporate Cultural Engagement
@@ -52,7 +52,7 @@ export default function RiyadhEliteMajlis() {
             { icon: Users, label: "Capacity", val: "50 VVIPs" },
             { icon: Coffee, label: "Catering", val: "Heritage Fusion" },
             { icon: Shield, label: "Privacy", val: "Total Blackout" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -92,7 +92,7 @@ export default function RiyadhEliteMajlis() {
               { title: "Sensory Branding", desc: "A custom-curated fragrance of Oud and Taif Rose designed specifically for the evening." },
               { title: "Gastronomic Journey", desc: "A 12-course tasting menu reinventing traditional Saudi flavors for a global palate." },
               { title: "Tech Integration", desc: "Hidden LED screens and directional audio that preserved the aesthetic of the space." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="flex gap-10 p-8 bg-white rounded-3xl border border-slate-200 hover:bg-white hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
                   <CheckCircle2 size={24} className="text-primary group-hover:text-white" />

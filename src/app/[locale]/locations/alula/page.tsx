@@ -105,7 +105,7 @@ export default function AlUlaPage() {
                 "Historical backdrops near Hegra for exclusive gatherings",
                 "Sustainable event logistics for desert environments",
                 "Luxury guest concierge for international destination travelers"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0" />
                   <span>{item}</span>
@@ -116,7 +116,7 @@ export default function AlUlaPage() {
           <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_destination_wedding.webp" alt="AlUla Desert Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">
                  <p className="text-white text-sm font-display  font-light">&quot;Where history meets the future of luxury.&quot;</p>
                </div>
@@ -131,7 +131,7 @@ export default function AlUlaPage() {
             { label: "Peak Season", val: "Nov–Apr" },
             { label: "Elite Resorts", val: "5+" },
             { label: "Event Style", val: "Intimate" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
               <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
@@ -152,7 +152,7 @@ export default function AlUlaPage() {
                { icon: Sparkles, title: "Hegra Heritage Weddings", desc: "Unprecedented access to ancient heritage sites for your ceremony backdrop.", href: "/services/destination-events" },
                { icon: Trophy, title: "Desert Resort Takeovers", desc: "Full buyout management for resorts like Habitas or Banyan Tree for your guests.", href: "/services/luxury-vip-events" },
                { icon: MapPin, title: "AlUla Event Production", desc: "Immersive staging and technical design set deep within the hidden canyons.", href: "/services/event-production-alula" }
-             ].map((service, i) => (
+             ].map((service: any, i: number) => (
                <Link key={i} href={service.href} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300 block border border-transparent hover:border-emerald-500">
                  <service.icon size={28} className="text-emerald-800 mb-8" />
                  <h3 className="font-display font-medium text-lg text-slate-900 mb-8">{service.title}</h3>
@@ -180,7 +180,7 @@ export default function AlUlaPage() {
               "Old Town AlUla",
               "Ashar Valley Resorts",
               "Cloud7 Residence"
-            ].map((venue, i) => (
+            ].map((venue: any, i: number) => (
               <div key={i} className="flex items-center gap-10 p-5 bg-white border border-slate-200 rounded-sm hover:border-[var(--primary)] hover:shadow-sm transition-all shadow-2xs">
                 <CheckCircle2 size={18} className="text-emerald-800 shrink-0" />
                 <span className="text-slate-800 text-sm font-medium">{venue}</span>

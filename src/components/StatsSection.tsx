@@ -2,15 +2,17 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
 const stats = [
-  { value: 50, suffix: "+", label: "Events Managed" },
-  { value: 20, suffix: "+", label: "Trusted Vendors" },
-  { value: 10, suffix: "+", label: "Saudi Cities Served" },
-  { value: 100, suffix: "%", label: "Client Satisfaction" },
+  { value: 50, suffix: "+", label: "events_managed" },
+  { value: 20, suffix: "+", label: "trusted_vendors" },
+  { value: 10, suffix: "+", label: "saudi_cities_served" },
+  { value: 100, suffix: "%", label: "client_satisfaction" },
 ];
 
 export default function StatsSection() {
+  const t = useTranslations("stats");
   return (
     <SectionWrapper className="bg-[var(--primary)] relative overflow-hidden text-white py-20">
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -21,7 +23,7 @@ export default function StatsSection() {
             viewport={{ once: true }}
             className="font-display font-bold text-3xl md:text-4xl mb-6 uppercase tracking-tight text-white"
           >
-            VISION 2030 ALIGNMENT
+            {t("title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -29,12 +31,12 @@ export default function StatsSection() {
             viewport={{ once: true }}
             className="text-teal-50 max-w-2xl mx-auto text-base leading-relaxed"
           >
-            Supporting the General Entertainment Authority (GEA) to host world-class events through world-class cultural activations.
+            {t("subtitle")}
           </motion.p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 divide-x divide-white/20">
-          {stats.map((stat, index) => (
+          {stats.map((stat: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}

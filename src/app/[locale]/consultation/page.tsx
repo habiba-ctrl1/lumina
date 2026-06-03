@@ -119,7 +119,7 @@ export default function ConsultationPage() {
                   { icon: Zap, title: "Initial Vision Discovery", desc: "A 30-minute deep dive into your event goals and inspirations." },
                   { icon: Sparkles, title: "Creative Possibilities", desc: "Early conceptual ideas tailored to your unique style." },
                   { icon: ShieldCheck, title: "Strategic Roadmap", desc: "Transparent timeline and initial budget considerations." }
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <motion.li 
                     key={i}
                     initial={{ opacity: 0, x: -20 }}

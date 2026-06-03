@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
 const partners = [
   { name: "GEA", logo: "/partners/gea.webp", alt: "General Entertainment Authority" },
@@ -16,32 +17,9 @@ const partners = [
   { name: "Diriyah Gate", logo: "/partners/diriyah.svg", alt: "Diriyah Gate" },
   { name: "Saudia", logo: "/partners/saudia.svg", alt: "Saudia" },
 ];
-
-const testimonials = [
-  {
-    id: 1,
-    quote: "The level of precision and corporate understanding Saudi Event Management brought to our Global Summit was unmatched. They delivered a flawless execution.",
-    author: "Khalid Al-Mansour",
-    role: "Director of Strategic Partnerships",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
-  },
-  {
-    id: 2,
-    quote: "Our annual gala was elevated to an international standard. From AV production to VIP protocol, every detail was handled with absolute professionalism.",
-    author: "Sarah Abdullah",
-    role: "Head of Corporate Communications",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
-  },
-  {
-    id: 3,
-    quote: "A true partner in event production. They transformed our vision into a tangible, immersive experience that impressed all our international stakeholders.",
-    author: "Fahad Al-Rashid",
-    role: "Chief Executive Officer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
-  }
-];
-
 export default function PartnersSection() {
+  const t = useTranslations("partners");
+  const testimonials = t.raw("testimonials");
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -59,13 +37,13 @@ export default function PartnersSection() {
         <div className="mb-24">
           <div className="text-center mb-10">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-              Trusted by the Kingdom's Leading Entities
+              {t("trustedBy")}
             </span>
           </div>
           
           <div className="relative group overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+            <div className="absolute start-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute end-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
             <div className="flex overflow-hidden">
               <motion.div 
@@ -76,7 +54,7 @@ export default function PartnersSection() {
                 }}
                 style={{ width: "fit-content" }}
               >
-                {[...partners, ...partners, ...partners].map((partner, index) => (
+                {[...partners, ...partners, ...partners].map((partner: any, index: number) => (
                   <div key={index} className="w-[120px] md:w-[150px] shrink-0 opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
                     <Image
                       src={partner.logo}
@@ -113,7 +91,7 @@ export default function PartnersSection() {
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-100 shadow-sm">
                     <Image 
-                      src={testimonials[current].image} 
+                      src={testimonials[current].image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"} 
                       alt={testimonials[current].author}
                       width={48}
                       height={48}
@@ -135,7 +113,7 @@ export default function PartnersSection() {
 
           {/* Dots Indicator */}
           <div className="flex justify-center gap-2 mt-12">
-            {testimonials.map((_, i) => (
+            {testimonials.map((_: any, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setCurrent(i)}

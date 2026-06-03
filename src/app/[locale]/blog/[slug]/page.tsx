@@ -105,7 +105,7 @@ export default function BlogPostPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 z-10">
+        <div className="absolute bottom-0 start-0 end-0 z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <Link href="/blog" className="inline-flex items-center gap-3 text-gold-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-8 group hover:text-white transition-all duration-500">
@@ -138,13 +138,13 @@ export default function BlogPostPage() {
             {/* Main Content */}
             <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               {/* Intro */}
-              <div className="border-l-2 border-gold-500/30 pl-6 mb-10">
+              <div className="border-s-2 border-gold-500/30 ps-6 mb-10">
                 <p className="text-lg text-sand-100 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: post.content[0] }} />
               </div>
 
               {/* Body */}
               <div className="prose-custom">
-                {post.content.slice(1).map((block, i) => (
+                {post.content.slice(1).map((block: any, i: number) => (
                   <div key={i}>{renderContent(block)}</div>
                 ))}
               </div>
@@ -153,7 +153,7 @@ export default function BlogPostPage() {
               <div className="mt-16 pt-8 border-t border-ink-500">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="text-xs uppercase tracking-wider text-gray-500">Tags:</span>
-                  {[post.category, "Luxury Events", "Inspiration"].map((tag) => (
+                  {[post.category, "Luxury Events", "Inspiration"].map((tag: any) => (
                     <span key={tag} className="px-3 py-1.5 bg-ink-950 border border-ink-600 text-sand-300 text-[10px] uppercase tracking-[0.15em]">{tag}</span>
                   ))}
                 </div>
@@ -162,7 +162,7 @@ export default function BlogPostPage() {
               {/* Share */}
               <div className="mt-8 flex items-center gap-10">
                 <span className="text-xs uppercase tracking-wider text-gray-500 flex items-center gap-2"><Share2 size={12} /> Share:</span>
-                {["Twitter", "Facebook", "LinkedIn"].map((platform) => (
+                {["Twitter", "Facebook", "LinkedIn"].map((platform: any) => (
                   <button key={platform} className="px-4 py-2 border border-ink-600 text-sand-300 text-[10px] uppercase tracking-wider hover:text-gold-600 hover:border-gold-500/30 transition-all duration-300">{platform}</button>
                 ))}
               </div>
@@ -194,7 +194,7 @@ export default function BlogPostPage() {
               </Link>
             ) : <div className="p-8 md:p-12 border-r border-ink-500" />}
             {nextPost ? (
-              <Link href={`/blog/${nextPost.slug}`} className="group p-8 md:p-12 text-right hover:bg-ink-900 transition-colors duration-300">
+              <Link href={`/blog/${nextPost.slug}`} className="group p-8 md:p-12 text-end hover:bg-ink-900 transition-colors duration-300">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-sand-400 flex items-center justify-end gap-2 mb-3">Next <ArrowRight size={12} /></span>
                 <h4 className="text-sm font-sans font-bold text-sand-100 group-hover:text-gold-600 transition-colors line-clamp-2">{nextPost.title}</h4>
               </Link>
@@ -212,7 +212,7 @@ export default function BlogPostPage() {
             <div className="h-px flex-1 bg-gradient-to-l from-gold-500/30 to-transparent" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {relatedPosts.map((rp) => (
+            {relatedPosts.map((rp: any) => (
               <Link key={rp.slug} href={`/blog/${rp.slug}`}>
                 <motion.article whileHover={{ y: -4 }} className="group flex gap-10 border border-ink-500 bg-ink-950 p-4 hover:border-gold-500/20 transition-all duration-500">
                   <div className="relative w-32 h-32 shrink-0 overflow-hidden">

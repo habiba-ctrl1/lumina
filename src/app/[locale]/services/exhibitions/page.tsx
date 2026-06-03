@@ -274,7 +274,7 @@ export default function ExhibitionsPage() {
                 { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
                 { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions like Index Saudi." },
                 { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC Riyadh." },
-              ].map((service, i) => (
+              ].map((service: any, i: number) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -307,7 +307,7 @@ export default function ExhibitionsPage() {
                   { title: "Exhibitor success stories", desc: "Discover how our clients maximize ROI and secure high-value leads at competitive venues." },
                   { title: "Exhibition cost breakdown guides", desc: "A transparent analysis of booth construction, technology integration, and staffing costs in KSA." },
                   { title: "Venue comparison articles", desc: "An in-depth review of RICEC, RECC, and Jeddah Center for Forums & Events to choose your optimal location." }
-                ].map((post, idx) => (
+                ].map((post: any, idx: number) => (
                   <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
@@ -320,7 +320,7 @@ export default function ExhibitionsPage() {
 
         {/* Localized Arabic Section */}
         <section className="py-32 bg-white text-slate-900 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
+          <div className="absolute top-0 end-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
@@ -367,7 +367,7 @@ export default function ExhibitionsPage() {
                 { q: "trade show organizer near me Riyadh", a: "Saudi Event Management is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
                 { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
                 { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-emerald-950 p-8 rounded-2xl border border-white/5">
                   <h3 className="text-lg font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
                   <p className="text-slate-600 font-light text-sm leading-relaxed">{faq.a}</p>

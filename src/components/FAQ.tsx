@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const faqCategories = [
   { id: "general", name: "General" },
@@ -85,12 +86,13 @@ const faqs = [
     answer: "Yes, our comprehensive service includes complete vendor management, leveraging our exclusive network to ensure every element meets our rigorous standards."
   }
 ];
-
 export default function FAQ() {
+  const t = useTranslations("faq");
+  const faqs = t.raw("items");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("general");
 
-  const filteredFaqs = faqs.filter(faq => faq.category === activeCategory);
+  const filteredFaqs = faqs.filter((faq: any) => faq.category === activeCategory);
 
   return (
     <section id="faq" className="py-32 bg-emerald-950 relative border-t border-white/5">
@@ -102,7 +104,7 @@ export default function FAQ() {
             viewport={{ once: true }} 
             className="text-gold-500 text-xs uppercase tracking-[0.4em] font-medium mb-8 block"
           >
-            Inquiries
+            {t("label")}
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
@@ -110,13 +112,13 @@ export default function FAQ() {
             viewport={{ once: true }} 
             className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold uppercase tracking-tight"
           >
-            Curated <span className="text-primary font-bold">Questions</span>
+            {t("title")} <span className="text-primary font-bold">{t("titleHighlight")}</span>
           </motion.h1>
         </div>
 
         {/* Categories / Tabs */}
         <div className="flex flex-wrap justify-center gap-10 mb-12 border-b border-white/10 pb-6">
-          {faqCategories.map((cat) => (
+          {faqCategories.map((cat: any) => (
             <button
               key={cat.id}
               onClick={() => {
@@ -129,7 +131,7 @@ export default function FAQ() {
                   : "bg-ink-800/5 text-gray-400 hover:bg-ink-800/10 hover:text-white"
               }`}
             >
-              {cat.name}
+              {t(`categories.${cat.id}` as any)}
             </button>
           ))}
         </div>
@@ -144,16 +146,16 @@ export default function FAQ() {
               transition={{ duration: 0.3 }}
               className="space-y-4"
             >
-              {filteredFaqs.map((faq, index) => (
+              {filteredFaqs.map((faq: any, index: number) => (
                 <div key={index} className="bg-ink-800/5 border border-white/10 overflow-hidden">
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between p-6 text-left group transition-colors duration-300"
+                    className="w-full flex items-center justify-between p-6 text-start group transition-colors duration-300"
                   >
                     <span className={`text-sm md:text-base font-sans font-semibold transition-colors ${openIndex === index ? 'text-gold-500' : 'text-gray-300 group-hover:text-white'}`}>
                       {faq.question}
                     </span>
-                    <span className="ml-6 flex-shrink-0 text-gold-500">
+                    <span className="ms-6 flex-shrink-0 text-gold-500">
                       {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
                     </span>
                   </button>
@@ -166,7 +168,7 @@ export default function FAQ() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
-                        <p className="px-6 pb-6 text-gray-400 font-light text-sm leading-relaxed pr-12 border-t border-white/5 pt-4">
+                        <p className="px-6 pb-6 text-gray-400 font-light text-sm leading-relaxed pe-12 border-t border-white/5 pt-4">
                           {faq.answer}
                         </p>
                       </motion.div>
@@ -184,9 +186,9 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           className="mt-20 text-center bg-ink-800/5 border border-white/10 p-10 rounded-sm"
         >
-          <h3 className="text-white font-sans font-bold text-xl mb-8 uppercase tracking-tight">Still have questions?</h3>
+          <h3 className="text-white font-sans font-bold text-xl mb-8 uppercase tracking-tight">{t("stillHaveQuestions")}</h3>
           <p className="text-gray-400 text-sm font-light mb-8 max-w-lg mx-auto">
-            Our priority concierge team is available 24/7 via WhatsApp for immediate white-glove assistance.
+            {t("conciergeDesc")}
           </p>
           <a 
             href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20have%20a%20question%20about%20your%20services."
@@ -194,7 +196,7 @@ export default function FAQ() {
             rel="noopener noreferrer"
             className="inline-block bg-gold-500 text-sand-50 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-ink-800 transition-all"
           >
-            Message us on WhatsApp
+            {t("messageWhatsApp")}
           </a>
         </motion.div>
       </div>

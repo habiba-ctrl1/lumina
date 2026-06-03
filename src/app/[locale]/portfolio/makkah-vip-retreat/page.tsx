@@ -32,7 +32,7 @@ export default function MakkahVipRetreat() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-black transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-black text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/20">
             Private Spiritual Retreat
@@ -52,7 +52,7 @@ export default function MakkahVipRetreat() {
             { icon: Star, label: "Service", val: "Ultra-Luxury" },
             { icon: Users, label: "Guests", val: "VIP Delegation" },
             { icon: MapPin, label: "Venue", val: "Exclusive Villa" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -89,7 +89,7 @@ export default function MakkahVipRetreat() {
               { title: "Privacy & Security", desc: "Implemented a multi-tier security protocol with discreet personnel and advanced surveillance." },
               { title: "Bespoke Dining", desc: "Private chefs providing customized menu rotations focusing on local heritage and international nutrition." },
               { title: "Logistical Flow", desc: "Seamless private transport to and from the Haram with zero-wait protocols." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="bg-white p-8 rounded-3xl border border-slate-200">
                 <h3 className="text-black text-[10px] font-bold uppercase tracking-widest mb-8 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-primary" /> {item.title}
@@ -102,7 +102,7 @@ export default function MakkahVipRetreat() {
 
         {/* Impact */}
         <div className="bg-black text-white p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 end-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-8 uppercase tracking-tight">The <span className="text-primary ">Result</span></h2>
             <p className="text-gray-300 text-lg mb-12 max-w-3xl font-light">

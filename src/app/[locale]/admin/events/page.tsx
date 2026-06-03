@@ -203,7 +203,7 @@ export default function AdminEvents() {
       {/* Grid */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {[1, 2, 3, 4, 5, 6].map((i: any) => (
             <div key={i} className="h-64 bg-ink-800 animate-pulse rounded-3xl border border-ink-600 shadow-sm" />
           ))}
         </div>
@@ -217,7 +217,7 @@ export default function AdminEvents() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {assets.map((asset) => (
+          {assets.map((asset: any) => (
             <motion.div
               key={asset.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -228,7 +228,7 @@ export default function AdminEvents() {
                 {asset.type === 'video' ? (
                   <div className="w-full h-full flex items-center justify-center bg-slate-900 text-gold-500">
                     <ImageIcon size={48} />
-                    <span className="absolute bottom-4 left-4 text-[10px] font-black uppercase tracking-widest bg-black/40 px-2 py-1 rounded text-white">Video Asset</span>
+                    <span className="absolute bottom-4 start-4 text-[10px] font-black uppercase tracking-widest bg-black/40 px-2 py-1 rounded text-white">Video Asset</span>
                   </div>
                 ) : (
                   <img
@@ -240,7 +240,7 @@ export default function AdminEvents() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="p-6 flex items-center justify-between">
-                <div className="min-w-0 flex-1 mr-4">
+                <div className="min-w-0 flex-1 me-4">
                   <h3 className="text-sm font-black text-sand-50 truncate tracking-tight">{asset.alt || "Untitled Asset"}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-[9px] font-bold text-gold-600 bg-gold-50 px-2 py-0.5 rounded border border-gold-100 uppercase tracking-widest">

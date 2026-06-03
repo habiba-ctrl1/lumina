@@ -56,11 +56,11 @@ export default function AdminBlogPage() {
       <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] shadow-sm overflow-hidden">
         <div className="p-8 border-b border-ink-500 flex flex-col sm:flex-row gap-10 items-center justify-between bg-ink-950/50">
           <div className="relative w-full sm:w-[400px]">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
+            <Search className="absolute start-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
             <input 
               type="text" 
               placeholder="Search articles..." 
-              className="w-full bg-ink-800 border border-ink-600 rounded-2xl pl-12 pr-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
+              className="w-full bg-ink-800 border border-ink-600 rounded-2xl ps-12 pe-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
             />
           </div>
           <button className="flex items-center gap-2 px-5 py-3 bg-ink-800 border border-ink-600 rounded-2xl text-[10px] font-black uppercase tracking-widest text-sand-300 hover:text-sand-50 transition-all shadow-sm">
@@ -69,18 +69,18 @@ export default function AdminBlogPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-start border-collapse">
             <thead>
               <tr className="border-b border-ink-500 text-[10px] uppercase tracking-[0.25em] text-sand-400 font-black">
                 <th className="px-8 py-6">Article</th>
                 <th className="px-8 py-6">Category</th>
                 <th className="px-8 py-6">Status</th>
-                <th className="px-8 py-6 text-right">Actions</th>
+                <th className="px-8 py-6 text-end">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {loading ? (
-                [1, 2, 3].map(i => (
+                [1, 2, 3].map((i: any) => (
                   <tr key={i} className="animate-pulse">
                     <td colSpan={4} className="px-8 py-8"><div className="h-12 bg-ink-950 rounded-xl" /></td>
                   </tr>
@@ -93,7 +93,7 @@ export default function AdminBlogPage() {
                   </td>
                 </tr>
               ) : (
-                posts.map((post, i) => (
+                posts.map((post: any, i: number) => (
                   <motion.tr 
                     key={post.id}
                     initial={{ opacity: 0, y: 10 }}

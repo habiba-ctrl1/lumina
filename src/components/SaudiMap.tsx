@@ -79,7 +79,7 @@ export default function SaudiMap() {
       <div className="flex flex-col lg:flex-row gap-10 items-start max-w-4xl mx-auto relative z-10">
         {/* Left Sidebar */}
         <div className="w-full lg:w-48 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-3 z-20">
-          {(Object.keys(CITY_DATA) as CityKey[]).map((id) => (
+          {(Object.keys(CITY_DATA) as CityKey[]).map((id: CityKey) => (
             <div 
               key={id}
               onClick={() => updatePopPos(id)}
@@ -127,7 +127,7 @@ export default function SaudiMap() {
             <path className="ra" d="M 638,284 Q 430,240 220,365"/>
 
             {/* City Dots */}
-            {(Object.keys(CITY_DATA) as CityKey[]).map((id) => {
+            {(Object.keys(CITY_DATA) as CityKey[]).map((id: CityKey) => {
               const city = CITY_DATA[id];
               return (
                 <g key={id} className="dot" onClick={() => updatePopPos(id)}>
@@ -155,7 +155,7 @@ export default function SaudiMap() {
               >
                 <div className="text-[12px] font-bold text-[var(--primary)] tracking-[0.14em] uppercase mb-1">{CITY_DATA[activeCity].n}</div>
                 <div className="text-[9px] font-bold text-slate-400 tracking-[0.08em] uppercase mb-4">{CITY_DATA[activeCity].s}</div>
-                <div className="text-[10px] text-slate-600 mb-4 font-medium uppercase tracking-widest border-t border-slate-100 pt-3">Events delivered: <b className="text-[var(--primary)] ml-1">{CITY_DATA[activeCity].e}</b></div>
+                <div className="text-[10px] text-slate-600 mb-4 font-medium uppercase tracking-widest border-t border-slate-100 pt-3">Events delivered: <b className="text-[var(--primary)] ms-1">{CITY_DATA[activeCity].e}</b></div>
                 <button 
                   onClick={() => router.push(`/locations/${CITY_DATA[activeCity].slug}`)}
                   className="w-full text-[9px] text-white bg-[var(--primary)] rounded-md py-2.5 text-center tracking-widest font-bold hover:bg-[var(--primary-dark)] transition-all uppercase shadow-sm"
@@ -163,7 +163,7 @@ export default function SaudiMap() {
                   Explore Events →
                 </button>
                 {/* Arrow */}
-                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-2 bg-white border-b border-r border-slate-200" style={{ transform: 'rotate(45deg)' }} />
+                <div className="absolute -bottom-1.5 start-1/2 -translate-x-1/2 w-3 h-2 bg-white border-b border-r border-slate-200" style={{ transform: 'rotate(45deg)' }} />
               </motion.div>
             )}
           </AnimatePresence>

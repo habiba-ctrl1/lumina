@@ -43,7 +43,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-[#0a0f1a] flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/[0.04] rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/[0.04] rounded-full blur-[120px]" />
       </div>
 
       <motion.div 
@@ -77,34 +77,34 @@ export default function AdminLogin() {
             )}
 
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-slate-400 ml-0.5">
+              <label className="text-xs font-medium text-slate-400 ms-0.5">
                 Email Address
               </label>
               <div className="relative group">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
+                <Mail className="absolute start-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
+                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 ps-10 pe-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
                   placeholder="admin@saudievent.com"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-medium text-slate-400 ml-0.5">
+              <label className="text-xs font-medium text-slate-400 ms-0.5">
                 Password
               </label>
               <div className="relative group">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
+                <Lock className="absolute start-3.5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-500 transition-colors" size={16} />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
+                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg py-3 ps-10 pe-4 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500/40 transition-all placeholder:text-slate-600"
                   placeholder="••••••••••••"
                 />
               </div>

@@ -105,7 +105,7 @@ export default function RiyadhPage() {
                 "Logistics management for grand scales near King Abdullah Financial District (KAFD)",
                 "Bespoke decor inspired by Najdi architecture and modern minimalism",
                 "World-class catering partnerships with Riyadh's elite chefs"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0" />
                   <span>{item}</span>
@@ -116,7 +116,7 @@ export default function RiyadhPage() {
           <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_charity_gala.webp" alt="Kingdom Centre Riyadh Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">
                  <p className="text-white text-sm font-display  font-light">&quot;Creating masterpieces in the heart of the Kingdom.&quot;</p>
                </div>
@@ -131,7 +131,7 @@ export default function RiyadhPage() {
             { label: "Elite Venues", val: "45+" },
             { label: "Expert Planners", val: "12" },
             { label: "Guest Concierge", val: "24/7" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
               <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
@@ -152,7 +152,7 @@ export default function RiyadhPage() {
                 { icon: Building2, title: "KAFD Corporate Summits", desc: "Professional management for executive conferences and brand launches in the financial district.", href: "/services/corporate-events-riyadh" },
                 { icon: Trophy, title: "Diriyah Heritage Galas", desc: "Combining historical majesty with modern luxury for unforgettable evening celebrations.", href: "/services/cultural-events" },
                 { icon: MapPin, title: "Private Riyadh Villas", desc: "Transforming exclusive residential estates into bespoke party venues with full concierge.", href: "/services/luxury-vip-events" }
-              ].map((service, i) => (
+              ].map((service: any, i: number) => (
                 <Link key={i} href={service.href} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300 block">
                   <service.icon size={28} className="text-emerald-800 mb-8" />
                   <h3 className="font-display font-medium text-lg text-slate-900 mb-8">{service.title}</h3>
@@ -177,7 +177,7 @@ export default function RiyadhPage() {
                 {[
                   { name: "Fahad Al-Saud", role: "Riyadh Managing Director", desc: "15+ years in KSA luxury events." },
                   { name: "Layla Mansour", role: "Head of Design", desc: "Specializing in Najdi-modern fusion." }
-                ].map((member, i) => (
+                ].map((member: any, i: number) => (
                   <div key={i} className="flex gap-10 p-5 bg-white border border-slate-300 rounded-sm shadow-2xs">
                     <div className="w-12 h-12 bg-white border border-slate-200 rounded-full flex items-center justify-center text-emerald-800 shrink-0">
                       <User size={20} />
@@ -230,7 +230,7 @@ export default function RiyadhPage() {
               "Tuwaiq Palace",
               "Fairmont Riyadh",
               "KAFD Conference Center"
-            ].map((venue, i) => (
+            ].map((venue: any, i: number) => (
               <div key={i} className="flex items-center gap-10 p-5 bg-white border border-slate-200 rounded-sm hover:border-[var(--primary)] hover:shadow-sm transition-all shadow-2xs">
                 <CheckCircle2 size={18} className="text-emerald-800 shrink-0" />
                 <span className="text-slate-800 text-sm font-medium">{venue}</span>

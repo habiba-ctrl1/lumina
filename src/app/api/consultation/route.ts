@@ -72,7 +72,7 @@ export async function POST(request: Request) {
         // Admin Notification
         await resend.emails.send({
           from: 'Saudi Event Management <onboarding@resend.dev>',
-          to: ['hello@saudieventmanagement.com'],
+          to: ['infosaudieventmanagement@gmail.com'],
           subject: `Consultation Requested: ${name}`,
           html: `
             <div style="font-family: sans-serif; padding: 30px; border: 1px solid #f0f0f0; border-radius: 20px;">

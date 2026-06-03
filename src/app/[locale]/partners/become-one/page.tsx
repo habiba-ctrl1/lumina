@@ -121,7 +121,7 @@ export default function BecomeOne() {
                     { title: "Joint Innovation", desc: "Collaborate on groundbreaking event concepts and technologies." },
                     { title: "Market Leadership", desc: "Position your brand at the center of Saudi's event revolution." },
                     { title: "Resource Sharing", desc: "Access our world-class infrastructure and planning expertise." },
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex gap-3">
                       <div className="w-1.5 h-1.5 bg-emerald-800 rounded-full mt-1.5 shrink-0 shadow-sm" />
                       <div>
@@ -134,7 +134,7 @@ export default function BecomeOne() {
               </div>
 
               <div className="bg-emerald-950 p-8 rounded-sm text-white shadow-md border border-emerald-900 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gold-400/10 rounded-full blur-2xl -mr-12 -mt-12" />
+                <div className="absolute top-0 end-0 w-24 h-24 bg-gold-400/10 rounded-full blur-2xl -me-12 -mt-12" />
                 <h4 className="text-gold-400 text-[10px] font-bold uppercase tracking-widest mb-3">Direct Inquiry</h4>
                 <p className="text-emerald-200/80 text-[10px] mb-8 leading-relaxed">For high-level strategic inquiries or government relations, please contact us via WhatsApp.</p>
                 <a 
@@ -159,7 +159,7 @@ export default function BecomeOne() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><User size={10} /> Principal Contact</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><User size={10} /> Principal Contact</label>
                       <input 
                         type="text" 
                         required 
@@ -170,7 +170,7 @@ export default function BecomeOne() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Mail size={10} /> Professional Email</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><Mail size={10} /> Professional Email</label>
                       <input 
                         type="email" 
                         required 
@@ -184,7 +184,7 @@ export default function BecomeOne() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Phone size={10} /> Contact Number</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><Phone size={10} /> Contact Number</label>
                       <input 
                         type="tel" 
                         required 
@@ -195,7 +195,7 @@ export default function BecomeOne() {
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Building2 size={10} /> Organization Name</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><Building2 size={10} /> Organization Name</label>
                       <input 
                         type="text" 
                         required 
@@ -209,7 +209,7 @@ export default function BecomeOne() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><Briefcase size={10} /> Partnership Tier</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><Briefcase size={10} /> Partnership Tier</label>
                       <select 
                         required 
                         className={`${inputClasses} appearance-none cursor-pointer`}
@@ -225,7 +225,7 @@ export default function BecomeOne() {
                       </select>
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><MapPin size={10} /> Headquarters</label>
+                      <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><MapPin size={10} /> Headquarters</label>
                       <input 
                         type="text" 
                         required 
@@ -238,7 +238,7 @@ export default function BecomeOne() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1 flex items-center gap-2"><LinkIcon size={10} /> Corporate Website</label>
+                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1 flex items-center gap-2"><LinkIcon size={10} /> Corporate Website</label>
                     <input 
                       type="url" 
                       className={inputClasses} 
@@ -249,7 +249,7 @@ export default function BecomeOne() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ml-1">Partnership Vision</label>
+                    <label className="text-[9px] font-bold text-sand-300 uppercase tracking-widest ms-1">Partnership Vision</label>
                     <textarea 
                       required
                       rows={2} 

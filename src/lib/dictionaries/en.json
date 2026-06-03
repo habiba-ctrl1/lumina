@@ -1,25 +1,419 @@
 {
   "nav": {
     "home": "Home",
-    "portfolio": "Portfolio",
-    "services": "Services",
     "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "locations": "Locations",
     "contact": "Contact",
-    "book": "Book Consultation"
+    "journal": "Journal",
+    "book": "Book Consultation",
+    "requestQuote": "Request a Quote",
+    "ourExpertise": "Our Expertise",
+    "premiumCorporateEvents": "Premium\nCorporate\nEvents",
+    "allServices": "All Services",
+    "partnerWithUs": "Partner with Us",
+    "partnerWithUsSub": "Overview of partnerships",
+    "becomePartner": "Become a Partner",
+    "becomePartnerSub": "Join our elite ecosystem"
+  },
+  "navServices": {
+    "royalWeddings": "Royal Weddings",
+    "royalWeddingsDesc": "Ultra-luxury celebrations",
+    "corporateGalas": "Corporate Galas",
+    "corporateGalasDesc": "High-stakes networking",
+    "exhibitionsTrade": "Exhibitions & Trade",
+    "exhibitionsTradeDesc": "B2B brand showcases",
+    "eventProduction": "Event Production",
+    "eventProductionDesc": "Technical execution & design",
+    "culturalSeasonal": "Cultural & Seasonal",
+    "culturalSeasonalDesc": "Regional cultural events",
+    "luxuryVip": "Luxury & VIP",
+    "luxuryVipDesc": "Exclusive private events",
+    "privateEvents": "Private Events",
+    "privateEventsDesc": "Exclusive social gatherings"
+  },
+  "navLocations": {
+    "riyadh": "Riyadh",
+    "jeddah": "Jeddah",
+    "alula": "AlUla",
+    "dammam": "Dammam"
   },
   "hero": {
     "label": "Saudi Event Management",
     "title": "Event Management Company in",
     "titleHighlight": "Saudi Arabia",
     "subtitle": "Saudi Event Management is a luxury event planner headquartered in Riyadh, Saudi Arabia. Since 2010, the company has executed over 250 elite events, specializing in royal weddings, corporate galas, and exhibition management across Jeddah, AlUla, and Dammam.",
-    "eventType": "Event Type",
-    "location": "Location",
-    "date": "Preferred Date",
-    "inquiry": "Inquiry",
-    "download": "Download Portfolio",
+    "requestQuote": "Request a Quote",
+    "viewPortfolio": "View Portfolio",
     "stats": ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"],
-    "scroll": "Scroll",
-    "types": ["Luxury Wedding", "Corporate Gala", "VIP Reception", "Private Concert", "Exhibition"],
-    "locations": ["Riyadh", "Jeddah", "Makkah", "AlUla"]
+    "yearsOf": "Years of",
+    "excellence": "Excellence",
+    "h1En": "Event Management Company  Saudi Arabia | Saudi Event Management",
+    "h1Ar": "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض"
+  },
+  "marquee": {
+    "items": [
+      "250+ Elite Events",
+      "100% Client Satisfaction",
+      "Middle East Events Winner 2024",
+      "Luxury Certified",
+      "Vision 2030 Partner",
+      "Premium Partners"
+    ]
+  },
+  "services": {
+    "label": "Capabilities",
+    "title": "Specially Selected",
+    "titleHighlight": "Services",
+    "subtitle": "From royal weddings to corporate summits, we deliver unparalleled excellence across every category of event management.",
+    "learnMore": "Learn More",
+    "items": [
+      {
+        "title": "Wedding Event Management",
+        "description": "Luxury Event Planner Saudi Arabia specializing in grand and luxurious royal weddings and traditional ceremonies.",
+        "starting": "From SAR 50,000"
+      },
+      {
+        "title": "Corporate Event Planning",
+        "description": "Corporate Event Planning Saudi Arabia for business summits, AGMs, and gala dinners.",
+        "starting": "From SAR 75,000"
+      },
+      {
+        "title": "Exhibition Management",
+        "description": "Exhibition Management Company organizing large-scale industry expos, trade shows, and brand launches.",
+        "starting": "From SAR 80,000"
+      },
+      {
+        "title": "Event Production Services",
+        "description": "Full-scale technical Event Production Services including light, sound, special light and video shows on walls, and custom stages.",
+        "starting": "From SAR 60,000"
+      },
+      {
+        "title": "Conference Management",
+        "description": "End-to-end Conference Management Riyadh, from getting government event licenses and international VIP planning to events with both in-person and online guests.",
+        "starting": "From SAR 45,000"
+      },
+      {
+        "title": "Cultural & Seasonal Events",
+        "description": "Custom-made seasonal festivals, sports events, and national cultural events and activities across the Kingdom.",
+        "starting": "Custom Pricing"
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "label": "The Saudi Event Management Difference",
+    "title": "The Saudi Event Management",
+    "titleHighlight": "Standard",
+    "subtitle": "Absolute perfection for your grandest visions.",
+    "requestConsultation": "Request a Consultation",
+    "consultationDesc": "Tell us about your vision and we'll craft a bespoke proposal tailored to your needs.",
+    "chatWhatsApp": "Chat on WhatsApp",
+    "submitInquiry": "Submit Inquiry",
+    "reasons": [
+      {
+        "title": "Stress-Free Execution",
+        "desc": "We handle every detail from logistics to last-minute changes, so you can be fully present in the moment."
+      },
+      {
+        "title": "Elite Vendor Network",
+        "desc": "Access our curated network of 200+ premium vendors — florists, caterers, photographers — all vetted for excellence."
+      },
+      {
+        "title": "Timeline Mastery",
+        "desc": "Our military-precise timeline management ensures zero delays. Every second of your event flows seamlessly."
+      },
+      {
+        "title": "Bespoke Design",
+        "desc": "No templates. Every element is custom-designed to reflect your unique personality, story, and aesthetic vision."
+      },
+      {
+        "title": "Dedicated Concierge",
+        "desc": "One dedicated planner handles your entire event. You'll never be passed between teams or departments."
+      },
+      {
+        "title": "Global Reach",
+        "desc": "From royal palaces in Riyadh to GIGA projects in NEOM — we execute flawlessly across AlUla and the Red Sea."
+      },
+      {
+        "title": "Vision 2030 Alignment",
+        "desc": "Supporting the General Entertainment Authority (GEA) and Saudi Seasons through world-class cultural activations."
+      }
+    ]
+  },
+  "howItWorks": {
+    "label": "Our Methodology",
+    "title": "A Seamless",
+    "titleHighlight": "Process",
+    "subtitle": "We follow a structured, internationally recognized project management framework to deliver flawless events.",
+    "stepPrefix": "Step",
+    "steps": [
+      {
+        "title": "Consultation & Briefing",
+        "desc": "We align with your corporate objectives, budget, and vision to establish a solid foundation for the event."
+      },
+      {
+        "title": "Design & Concept",
+        "desc": "Our creative team develops tailored themes, 3D venue layouts, and branding integration."
+      },
+      {
+        "title": "Logistics & Planning",
+        "desc": "We secure premium vendors, manage VIP protocols, and orchestrate a minute-by-minute execution plan."
+      },
+      {
+        "title": "Flawless Execution",
+        "desc": "On-site management ensures a seamless experience, leaving a lasting impression on your guests."
+      }
+    ]
+  },
+  "stats": {
+    "title": "VISION 2030 ALIGNMENT",
+    "subtitle": "Supporting the General Entertainment Authority (GEA) to host world-class events through world-class cultural activations.",
+    "items": [
+      { "value": 50, "suffix": "+", "label": "Events Managed" },
+      { "value": 20, "suffix": "+", "label": "Trusted Vendors" },
+      { "value": 10, "suffix": "+", "label": "Saudi Cities Served" },
+      { "value": 100, "suffix": "%", "label": "Client Satisfaction" }
+    ]
+  },
+  "portfolio": {
+    "label": "Portfolio of Excellence",
+    "title": "Recent",
+    "titleHighlight": "Masterpieces",
+    "subtitle": "From royal weddings to high-stakes corporate summits, explore our gallery of meticulously crafted events.",
+    "guests": "Guests",
+    "date": "Date",
+    "categories": {
+      "all": "All",
+      "conferences": "Conferences",
+      "exhibitions": "Exhibitions",
+      "corporateEvents": "Corporate Events",
+      "luxuryWeddings": "Luxury Weddings"
+    }
+  },
+  "testimonials": {
+    "items": [
+      {
+        "quote": "The level of perfect planning and attention to detail Saudi Event Management brought to our Royal Gala was staggering.",
+        "author": "H.H. Princess Noura",
+        "role": "Cultural Initiative, Riyadh"
+      },
+      {
+        "quote": "For our NEOM executive summit, we needed a partner who understood high-stakes logistics. They delivered a masterclass.",
+        "author": "Khalid Al-Mansour",
+        "role": "Strategic Partnerships"
+      },
+      {
+        "quote": "The Red Sea wedding they designed for us was a dream brought to life. Every detail was executed to perfection.",
+        "author": "Sarah & Ahmed",
+        "role": "Wedding Clients, Jeddah"
+      }
+    ]
+  },
+  "partners": {
+    "trustedBy": "Trusted by the Kingdom's Leading Entities",
+    "testimonials": [
+      {
+        "quote": "The level of precision and corporate understanding Saudi Event Management brought to our Global Summit was unmatched. They delivered a flawless execution.",
+        "author": "Khalid Al-Mansour",
+        "role": "Director of Strategic Partnerships"
+      },
+      {
+        "quote": "Our annual gala was elevated to an international standard. From AV production to VIP protocol, every detail was handled with absolute professionalism.",
+        "author": "Sarah Abdullah",
+        "role": "Head of Corporate Communications"
+      },
+      {
+        "quote": "A true partner in event production. They transformed our vision into a tangible, immersive experience that impressed all our international stakeholders.",
+        "author": "Fahad Al-Rashid",
+        "role": "Chief Executive Officer"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Whether you're planning a high-profile corporate summit or an exclusive private gala, our expert team is ready to turn your vision into reality.",
+    "headquarters": "Headquarters",
+    "headquartersAddress": "Olaya District, King Fahd Road\nRiyadh, Kingdom of Saudi Arabia",
+    "directLine": "Direct Line",
+    "hours": "Mon-Thu 9am-6pm AST",
+    "emailInquiries": "Email Inquiries",
+    "formTitle": "Request a Proposal",
+    "fullName": "Full Name *",
+    "corporateEmail": "Corporate Email *",
+    "eventType": "Event Type",
+    "eventDetails": "Event Details",
+    "selectOption": "Select an option",
+    "corporateConference": "Corporate Conference / Summit",
+    "corporateGala": "Corporate Gala Dinner",
+    "exhibitionTrade": "Exhibition / Trade Show",
+    "luxuryWedding": "Luxury Wedding",
+    "otherEvent": "Other Exclusive Event",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "john@company.com",
+    "detailsPlaceholder": "Tell us about your estimated guest count, preferred dates, and specific requirements...",
+    "sendMessage": "Send Message"
+  },
+  "blog": {
+    "label": "Journal",
+    "title": "Latest",
+    "titleHighlight": "Stories",
+    "subtitle": "Explore our curated collection of event planning wisdom, industry insights, and trending aesthetics.",
+    "exploreAll": "Explore All Articles",
+    "readArticle": "Read Article"
+  },
+  "instagram": {
+    "label": "Live from the Field",
+    "title": "Social",
+    "titleHighlight": "Narrative",
+    "follow": "Follow @SaudiEventManagement"
+  },
+  "engagement": {
+    "label": "Client Community",
+    "title": "Connect",
+    "titleHighlight": "& Share",
+    "askQuestion": "Ask a Question",
+    "submitReview": "Submit Review",
+    "yourName": "Your Name",
+    "emailAddress": "Email Address",
+    "yourRating": "Your Rating",
+    "yourQuestion": "Your Question",
+    "yourExperience": "Your Experience",
+    "questionPlaceholder": "How can we help you plan your event?",
+    "experiencePlaceholder": "Describe your event experience...",
+    "postQuestion": "Post Question",
+    "publishReview": "Publish Review",
+    "receivedThanks": "Received With Thanks",
+    "processingEntry": "Our concierge team will process your entry shortly.",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "john@company.com"
+  },
+  "footer": {
+    "description": "Crafting extraordinary corporate experiences and seamless events through unparalleled management across the Kingdom of Saudi Arabia.",
+    "servicesTitle": "Services",
+    "serviceLinks": ["Corporate Events", "Exhibition Management", "Conference Management", "Event Production"],
+    "companyTitle": "Company",
+    "companyLinks": {
+      "aboutUs": "About Us",
+      "portfolio": "Portfolio",
+      "journal": "Journal",
+      "locations": "Locations",
+      "faq": "FAQ",
+      "bookSession": "Book Session"
+    },
+    "contactTitle": "Contact",
+    "contactAddress": "Riyadh, Jeddah, AlUla & Dammam",
+    "newsletterLabel": "Newsletter",
+    "newsletterTitle": "Stay Inspired",
+    "newsletterDesc": "Exclusive corporate event insights, luxury trends, and a first look at our latest masterpieces — delivered to your inbox.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "copyright": "Saudi Event Management. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "faq": {
+    "label": "Inquiries",
+    "title": "Curated",
+    "titleHighlight": "Questions",
+    "categories": {
+      "general": "General",
+      "pricing": "Booking & Pricing",
+      "logistics": "Services & Logistics"
+    },
+    "stillHaveQuestions": "Still have questions?",
+    "conciergeDesc": "Our priority concierge team is available 24/7 via WhatsApp for immediate white-glove assistance.",
+    "messageWhatsApp": "Message us on WhatsApp",
+    "items": [
+      {
+        "category": "general",
+        "question": "Do you handle events outside Saudi Arabia?",
+        "answer": "Yes. We operate in UAE, Qatar, and internationally for destination events. Our Riyadh and Jeddah teams coordinate global logistics for seamless execution across borders."
+      },
+      {
+        "category": "general",
+        "question": "What cities do you operate in?",
+        "answer": "We have a strong operational presence across the Kingdom, including Riyadh, Jeddah, AlUla, Dammam, Makkah, and Madinah. We also travel internationally for bespoke projects."
+      },
+      {
+        "category": "general",
+        "question": "How far in advance should we book your services?",
+        "answer": "For luxury weddings and large-scale corporate galas, we recommend booking 9 to 12 months in advance. For exclusive private parties, 3 to 6 months is typically sufficient."
+      },
+      {
+        "category": "general",
+        "question": "Do you offer destination event planning?",
+        "answer": "Absolutely. We specialize in curating breathtaking destination weddings and events globally, managing all travel arrangements and local vendor sourcing."
+      },
+      {
+        "category": "general",
+        "question": "What types of events do you specialize in?",
+        "answer": "We specialize in luxury weddings, corporate summits, cultural activations, private VIP celebrations, and high-end seasonal events."
+      },
+      {
+        "category": "pricing",
+        "question": "What is your minimum event budget?",
+        "answer": "Our events start from SAR 25,000 for intimate private gatherings. For royal weddings and large corporate galas, budgets typically range from SAR 200,000 to SAR 2M+."
+      },
+      {
+        "category": "pricing",
+        "question": "How do I get a quote?",
+        "answer": "Submit your inquiry through our 'Book Now' form or contact us via WhatsApp. We typically provide a detailed initial proposal within 24 hours."
+      },
+      {
+        "category": "pricing",
+        "question": "What is your cancellation policy?",
+        "answer": "Each contract outlines specific terms based on the event scale. Generally, initial deposits are non-refundable within 30 days of the scheduled event date."
+      },
+      {
+        "category": "pricing",
+        "question": "Is 15% VAT included in your prices?",
+        "answer": "All prices are quoted exclusive of 15% Saudi VAT. A valid VAT registration number is provided on all official invoices."
+      },
+      {
+        "category": "logistics",
+        "question": "Do you manage vendor contracts?",
+        "answer": "Absolutely. We handle all vendor negotiations, contracts, payments, and on-day coordination so you don't have to manage multiple touchpoints."
+      },
+      {
+        "category": "logistics",
+        "question": "Can you handle high-profile and VIP events?",
+        "answer": "Yes. We specialize in absolute discretion for royal families, government officials, and celebrity clients. NDAs are standard for all our elite projects."
+      },
+      {
+        "category": "logistics",
+        "question": "Do you offer day-of coordination only?",
+        "answer": "We offer full-service planning, partial planning, and dedicated day-of coordination packages to suit your specific involvement level."
+      },
+      {
+        "category": "logistics",
+        "question": "Can you arrange entertainment and performers?",
+        "answer": "Yes. We have exclusive access to top Saudi and international performers, live orchestras, cultural acts, and world-class stage productions."
+      },
+      {
+        "category": "logistics",
+        "question": "Do you handle all vendor communications?",
+        "answer": "Yes, our comprehensive service includes complete vendor management, leveraging our exclusive network to ensure every element meets our rigorous standards."
+      }
+    ]
+  },
+  "founder": {
+    "label": "The Vision",
+    "title": "Crafting",
+    "titleHighlight": "Memories That",
+    "titleEnd": "Last Forever",
+    "subtitle": "Personalized Event Management",
+    "bio1": "With over a decade organizing and managing the world's most exclusive celebrations, our agency was founded by **Habiba Asghar** with a singular vision: to transform short, special times into memories that last forever, full of beauty and emotion.",
+    "bio2": "We bring an unparalleled eye for detail and a deep understanding of what makes an event truly unforgettable. Every celebration is treated as a unique work of art.",
+    "bio3": "Our philosophy is simple — every detail should feel intentional, effortlessly beautiful and deeply resonant with our clients' vision.",
+    "yearsOfExcellence": "Years of Excellence",
+    "stats": [
+      { "number": "500+", "label": "Events Crafted" },
+      { "number": "15+", "label": "Countries Served" },
+      { "number": "100%", "label": "Client Satisfaction" }
+    ]
+  },
+  "whatsapp": {
+    "chatWithUs": "Chat with us"
   }
 }

@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useTranslations } from "next-intl";
+
 const slideshowImages = [
   "/hero_bg.webp",
   "/gallery_wedding_reception.webp",
@@ -12,7 +14,8 @@ const slideshowImages = [
   "/corporate.webp"
 ];
 
-export default function Hero({ dict }: { dict?: any }) {
+export default function Hero() {
+  const t = useTranslations("hero");
   const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
@@ -52,9 +55,7 @@ export default function Hero({ dict }: { dict?: any }) {
 
       {/* ── TASK 1: H1 — SEO KEYWORD ───────────────────── */}
       <h1 className="sr-only">
-        {dict && dict.label === "إدارة الفعاليات السعودية" 
-          ? "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض" 
-          : "Event Management Company  Saudi Arabia | Saudi Event Management"}
+        {t("h1En")}
       </h1>
 
       <div className="container relative z-10 mx-auto px-6 lg:px-8">
@@ -70,22 +71,22 @@ export default function Hero({ dict }: { dict?: any }) {
             <div className="mb-6 inline-flex items-center gap-2">
               <span className="w-8 h-[2px] bg-[var(--primary)]" />
               <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
-                {dict ? dict.label : "Saudi Event Management"}
+                {t("label")}
               </span>
             </div>
 
             {/* Visual headline */}
             <div className="font-display font-bold text-slate-900 leading-[1.1] mb-6 text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight" aria-hidden="true">
               <div className="mb-2">
-                {dict && dict.label === "إدارة الفعاليات السعودية" ? "شركة تنظيم فعاليات في" : "Event Management Company in"}
+                {t("title")}
               </div>
               <div className="text-[var(--primary)] font-bold">
-                {dict && dict.label === "إدارة الفعاليات السعودية" ? "السعودية" : "Saudi Arabia"}
+                {t("titleHighlight")}
               </div>
             </div>
 
             <p className="text-base md:text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-              {dict ? dict.subtitle : "Saudi Event Management is a leading event management company in Saudi Arabia offering corporate events, exhibitions, luxury weddings and premium brand experiences across Riyadh, Jeddah, Makkah, Madinah, and AlUla."}
+              {t("subtitle")}
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -94,19 +95,19 @@ export default function Hero({ dict }: { dict?: any }) {
                 target="_blank"
                 className="bg-[var(--primary)] text-white px-8 py-3.5 rounded-md font-medium text-sm transition-all hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5 uppercase tracking-widest"
               >
-                {dict ? dict.inquiry || "طلب تسعيرة" : "Request a Quote"}
+                {t("requestQuote")}
               </Link>
               <Link
                 href="/portfolio"
                 className="bg-transparent border border-slate-300 text-slate-700 px-8 py-3.5 rounded-md font-medium text-sm transition-all hover:border-slate-400 hover:bg-slate-50 uppercase tracking-widest"
               >
-                {dict ? "أعمالنا" : "View Portfolio"}
+                {t("viewPortfolio")}
               </Link>
             </div>
 
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center gap-6 md:gap-8 mt-12">
-              {(dict ? dict.stats || ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"] : ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"]).map((label: string, i: number) => (
+              {t.raw("stats").map((label: string, i: number) => (
                 <div key={i} className="flex flex-col gap-1">
                   <span className="text-[var(--primary)] text-[9px] font-bold uppercase tracking-[0.22em]">{label}</span>
                   <span className="w-8 h-[2px] bg-[var(--primary)]/20" />
@@ -124,7 +125,7 @@ export default function Hero({ dict }: { dict?: any }) {
             className="relative h-[500px] lg:h-[600px] w-full hidden md:block"
           >
             {/* Main Image Slideshow */}
-            <div className="absolute top-0 right-0 w-4/5 h-4/5 rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
+            <div className="absolute top-0 end-0 w-4/5 h-4/5 rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
               <AnimatePresence mode="popLayout">
                 <motion.div
                   key={currentIdx}
@@ -151,7 +152,7 @@ export default function Hero({ dict }: { dict?: any }) {
               initial={{ y: 20 }}
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute bottom-0 left-0 w-3/5 h-3/5 rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-slate-100"
+              className="absolute bottom-0 start-0 w-3/5 h-3/5 rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-slate-100"
             >
               <Image
                 src="/gallery_corporate_gala.webp"
@@ -167,14 +168,14 @@ export default function Hero({ dict }: { dict?: any }) {
               initial={{ scale: 0.9 }}
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-xl shadow-xl border border-slate-100 flex items-center gap-4"
+              className="absolute top-1/2 start-0 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-xl shadow-xl border border-slate-100 flex items-center gap-4"
             >
               <div className="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center">
                 <span className="text-[var(--primary)] font-bold text-xl">10+</span>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-slate-900 uppercase tracking-wider">Years of</p>
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Excellence</p>
+                <p className="text-[10px] font-bold text-slate-900 uppercase tracking-wider">{t("yearsOf")}</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest">{t("excellence")}</p>
               </div>
             </motion.div>
           </motion.div>

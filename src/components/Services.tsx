@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Heart, Briefcase, Star, MapPin, Utensils, Music, ArrowRight, MessageCircle } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
 const services = [
   {
     id: 1,
-    title: "Wedding Event Management",
+    titleKey: "Wedding Event Management",
     href: "/services/weddings",
     description: "Luxury Event Planner Saudi Arabia specializing in grand and luxurious royal weddings and traditional ceremonies.",
     icon: Heart,
@@ -56,7 +57,8 @@ const services = [
   },
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+function ServiceCard({ service, index, t }: { service: typeof services[0]; index: number; t: any }) {
+  const itemKey = index;
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -71,13 +73,13 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
       <div className="flex-grow">
         <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-3 block">
-          {service.starting}
+          {t(`items.${itemKey}.starting`)}
         </span>
         <h3 className="font-display font-bold text-xl text-slate-900 mb-4 tracking-tight group-hover:text-[var(--primary)] transition-colors">
-          {service.title}
+          {t(`items.${itemKey}.title`)}
         </h3>
         <p className="text-slate-600 text-sm leading-relaxed mb-8">
-          {service.description}
+          {t(`items.${itemKey}.description`)}
         </p>
       </div>
 
@@ -86,15 +88,15 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           href={service.href}
           className="flex items-center gap-2 text-[var(--primary)] text-[11px] font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-300"
         >
-          <span>Learn More</span>
+          <span>{t("learnMore")}</span>
           <ArrowRight size={14} />
         </Link>
         <a 
-          href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.title)}%20services.`}
+          href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.title || "")}%20services.`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-8 h-8 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110"
-          title={`Contact us about ${service.title} via WhatsApp`}
+          title={`Contact us about ${service.title || ""} via WhatsApp`}
         >
           <MessageCircle size={14} fill="white" />
         </a>
@@ -104,6 +106,8 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 }
 
 export default function Services() {
+  const t = useTranslations("services");
+  
   return (
     <SectionWrapper className="bg-slate-50 relative" id="services">
       <div className="relative z-10 py-10">
@@ -117,7 +121,7 @@ export default function Services() {
           >
             <span className="w-12 h-[2px] bg-[var(--primary)]" />
             <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
-              Capabilities
+              {t("label")}
             </span>
           </motion.div>
           
@@ -128,7 +132,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="font-display font-bold text-slate-900 mb-6 text-3xl md:text-4xl lg:text-5xl tracking-tight uppercase"
           >
-            Specially Selected <span className="text-[var(--primary)] font-bold">Services</span>
+            {t("title")} <span className="text-[var(--primary)] font-bold">{t("titleHighlight")}</span>
           </motion.h2>
           
           <motion.p
@@ -137,15 +141,14 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-slate-600 text-base leading-relaxed"
           >
-            From royal weddings to corporate summits, we deliver unparalleled excellence 
-            across every category of event management.
+            {t("subtitle")}
           </motion.p>
         </div>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+          {services.map((service: any, index: number) => (
+            <ServiceCard key={service.id} service={service} index={index} t={t} />
           ))}
         </div>
       </div>

@@ -130,7 +130,7 @@ function SearchResultsContent() {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-10">
-            {results.map((result, i) => (
+            {results.map((result: any, i: number) => (
               <motion.div
                 key={`${result.type}-${result.id}`}
                 initial={{ opacity: 0, x: -10 }}

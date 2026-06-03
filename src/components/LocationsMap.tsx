@@ -32,7 +32,7 @@ export default function LocationsMap() {
 
           <div className="absolute inset-0 p-8 flex flex-col justify-center items-center">
              <div className="relative w-full h-full max-w-2xl mx-auto">
-                {locations.map((loc, i) => (
+                {locations.map((loc: any, i: number) => (
                   <motion.div
                     key={loc.name}
                     initial={{ opacity: 0, scale: 0 }}
@@ -57,7 +57,7 @@ export default function LocationsMap() {
           </div>
 
           {/* Map Controls Mockup */}
-          <div className="absolute bottom-10 left-10 flex gap-10">
+          <div className="absolute bottom-10 start-10 flex gap-10">
              <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2">
                    <div className="w-2 h-2 bg-gold-400 rounded-full" />

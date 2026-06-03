@@ -96,7 +96,7 @@ export default function JeddahPage() {
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image src="/gallery_garden_party.webp" alt="Al-Balad Jeddah Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8">
+            <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">
                  <p className="text-white text-sm font-display  font-light">&quot;Where the heritage of the past meets the luxury of the future.&quot;</p>
                </div>
@@ -114,7 +114,7 @@ export default function JeddahPage() {
                 { icon: Building, title: "Historic Heritage Events", text: "Exclusive events in Al-Balad's meticulously restored mansions.", href: "/services/cultural-events" },
                 { icon: Anchor, title: "Yacht Concierge", text: "Bespoke private celebrations on the Red Sea's elite vessels.", href: "/services/luxury-vip-events" },
                 { icon: Camera, title: "Cinematic Event Production", text: "Leveraging Jeddah's unique golden hour for perfect events.", href: "/services/event-production" }
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <Link key={i} href={item.href} className="flex flex-col gap-2 p-4 bg-white border border-slate-300 rounded-sm shadow-2xs hover:-translate-y-1 hover:border-emerald-500 transition-all">
                   <item.icon size={20} className="text-emerald-800" />
                   <h3 className="font-display font-medium text-slate-900 text-sm">{item.title}</h3>
@@ -150,7 +150,7 @@ export default function JeddahPage() {
               { label: "Waterfront Venues", val: "30+" },
               { label: "Hijazi Experts", val: "8" },
               { label: "Logistics Fleet", val: "Premium" }
-            ].map((stat, i) => (
+            ].map((stat: any, i: number) => (
               <div key={i}>
                 <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
                 <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>

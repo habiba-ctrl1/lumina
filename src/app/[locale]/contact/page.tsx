@@ -74,7 +74,7 @@ export default async function ContactPage({ params }: PageProps) {
     "name": "Saudi Event Management",
     "image": "https://saudieventmanagement.com/hero_bg.webp",
     "telephone": "+966501234567",
-    "email": "hello@saudieventmanagement.com",
+    "email": "infosaudieventmanagement@gmail.com",
     "url": "https://saudieventmanagement.com",
     "address": {
       "@type": "PostalAddress",
@@ -126,7 +126,7 @@ export default async function ContactPage({ params }: PageProps) {
     <main className="min-h-screen bg-slate-50 text-slate-900 overflow-hidden relative">
       <ScrollProgress />
       <WhatsAppButton />
-      <Navbar dict={dict.nav} locale={locale} />
+      <Navbar locale={locale} />
 
       <script
         type="application/ld+json"
@@ -134,7 +134,7 @@ export default async function ContactPage({ params }: PageProps) {
       />
 
       {/* ── Background Aesthetics ── */}
-      <div className="absolute top-0 left-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0">
+      <div className="absolute top-0 start-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0">
         <Image
           src="/hero_bg.webp"
           alt="Luxury Backdrop"
@@ -204,8 +204,8 @@ export default async function ContactPage({ params }: PageProps) {
                   </div>
                   <div>
                     <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.emailLabel}</span>
-                    <a href="mailto:hello@saudieventmanagement.com" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
-                      hello@saudieventmanagement.com
+                    <a href="mailto:infosaudieventmanagement@gmail.com" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
+                      infosaudieventmanagement@gmail.com
                     </a>
                   </div>
                 </div>
@@ -247,19 +247,19 @@ export default async function ContactPage({ params }: PageProps) {
 
               <div className="space-y-6">
                 {/* Riyadh */}
-                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
                   <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.riyadhTitle}</span>
                   <span className="block text-slate-600 text-[13px] leading-relaxed">{content.riyadhAddress}</span>
                 </div>
 
                 {/* Jeddah */}
-                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
                   <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.jeddahTitle}</span>
                   <span className="block text-slate-600 text-[13px] leading-relaxed">{content.jeddahAddress}</span>
                 </div>
 
                 {/* AlUla */}
-                <div className="relative pl-6 border-l-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
+                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
                   <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.alulaTitle}</span>
                   <span className="block text-slate-600 text-[13px] leading-relaxed">{content.alulaAddress}</span>
                 </div>

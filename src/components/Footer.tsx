@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const Instagram = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -38,6 +39,7 @@ const companyLinks = [
 ];
 
 export default function Footer() {
+  const t = useTranslations("footer");
   return (
     <footer className="bg-slate-50 border-t border-slate-200 relative pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
@@ -54,10 +56,10 @@ export default function Footer() {
               />
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed mb-7 max-w-xs">
-              Crafting extraordinary corporate experiences and seamless events through unparalleled management across the Kingdom of Saudi Arabia.
+              {t("description")}
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((s) => (
+              {socialLinks.map((s: any) => (
                 <a
                   key={s.label}
                   href={s.url}
@@ -77,10 +79,10 @@ export default function Footer() {
 
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
-              Services
+              {t("servicesTitle")}
             </h4>
             <ul className="space-y-4">
-              {serviceLinks.map((item) => (
+              {t.raw("serviceLinks").map((item: string) => (
                 <li key={item}>
                   <Link
                     href="/services"
@@ -97,10 +99,17 @@ export default function Footer() {
 
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
-              Company
+              {t("companyTitle")}
             </h4>
             <ul className="space-y-4">
-              {companyLinks.map((item) => (
+              {[
+                { name: t("companyLinks.aboutUs"), href: "/about" },
+                { name: t("companyLinks.portfolio"), href: "/portfolio" },
+                { name: t("companyLinks.journal"), href: "/blog" },
+                { name: t("companyLinks.locations"), href: "/locations" },
+                { name: t("companyLinks.faq"), href: "/faq" },
+                { name: t("companyLinks.bookSession"), href: "/consultation" },
+              ].map((item: any) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -117,12 +126,12 @@ export default function Footer() {
 
           <div>
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
-              Contact
+              {t("contactTitle")}
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
-                <span className="text-sm text-slate-500">Riyadh, Jeddah, AlUla & Dammam</span>
+                <span className="text-sm text-slate-500">{t("contactAddress")}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[var(--primary)] shrink-0" />
@@ -130,7 +139,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[var(--primary)] shrink-0" />
-                <span className="text-sm text-slate-500">hello@saudieventmanagement.com</span>
+                <span className="text-sm text-slate-500">infosaudieventmanagement@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -139,11 +148,10 @@ export default function Footer() {
         <div className="bg-white border border-slate-200 rounded-xl p-8 md:p-12 mb-16 relative overflow-hidden shadow-sm">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-4 block">Newsletter</span>
-              <h3 className="font-display text-2xl font-bold text-slate-900 mb-3 tracking-tight">Stay Inspired</h3>
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-4 block">{t("newsletterLabel")}</span>
+              <h3 className="font-display text-2xl font-bold text-slate-900 mb-3 tracking-tight">{t("newsletterTitle")}</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Exclusive corporate event insights, luxury trends, and a first look at our
-                latest masterpieces — delivered to your inbox.
+                {t("newsletterDesc")}
               </p>
             </div>
             <form
@@ -152,7 +160,7 @@ export default function Footer() {
             >
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={t("emailPlaceholder")}
                 required
                 className="flex-1 bg-slate-50 border border-slate-200 text-slate-900
                   px-4 py-4 rounded-md text-sm
@@ -164,7 +172,7 @@ export default function Footer() {
                 type="submit"
                 className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all whitespace-nowrap"
               >
-                Subscribe
+                {t("subscribe")}
               </button>
             </form>
           </div>
@@ -172,11 +180,11 @@ export default function Footer() {
 
         <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold">
-            &copy; {new Date().getFullYear()} Saudi Event Management. All rights reserved.
+            &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">Privacy</Link>
-            <Link href="/terms"   className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">Terms</Link>
+            <Link href="/privacy" className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">{t("privacy")}</Link>
+            <Link href="/terms"   className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">{t("terms")}</Link>
           </div>
         </div>
       </div>

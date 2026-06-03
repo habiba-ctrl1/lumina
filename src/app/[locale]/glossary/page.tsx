@@ -63,7 +63,7 @@ const jsonLd = {
       "name": "Saudi Event Industry Glossary & Terminology",
       "description": "The definitive glossary of event management terminology in Saudi Arabia."
     },
-    ...glossaryTerms.map(item => ({
+    ...glossaryTerms.map((item: any) => ({
       "@type": "DefinedTerm",
       "name": item.term,
       "description": item.definition,
@@ -103,7 +103,7 @@ export default function GlossaryPage() {
         {/* Dictionary Grid */}
         <section className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {glossaryTerms.map((item, index) => (
+            {glossaryTerms.map((item: any, index: number) => (
               <div key={index} className="bg-white p-8 border border-slate-200 rounded-sm shadow-sm hover:shadow-md hover:border-gold-400/50 transition-all">
                 <h2 className="text-xl font-display font-bold text-ink-950 mb-4">{item.term}</h2>
                 <div className="w-8 h-px bg-gold-400 mb-4" />

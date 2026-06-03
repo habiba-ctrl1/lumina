@@ -8,10 +8,12 @@ import {
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Data
 // ─────────────────────────────────────────────────────────────────────────────
+// Note: The labels are now fetched via useTranslations inside the component
 const defaultNavLinks = [
   { key: "home",      href: "/" },
   { key: "about",     href: "/about" },
@@ -23,13 +25,13 @@ const defaultNavLinks = [
 ];
 
 const services = [
-  { name: "Royal Weddings",       href: "/services/weddings",          icon: Heart,        desc: "Ultra-luxury celebrations" },
-  { name: "Corporate Galas",      href: "/services/corporate-events",          icon: Briefcase,    desc: "High-stakes networking" },
-  { name: "Exhibitions & Trade",  href: "/services/exhibitions",icon: Presentation, desc: "B2B brand showcases" },
-  { name: "Event Production",  href: "/services/event-production",           icon: Landmark,     desc: "Technical execution & design" },
-  { name: "Cultural & Seasonal",   href: "/services/cultural-events",                         icon: Sparkles,     desc: "Regional cultural events" },
-  { name: "Luxury & VIP",   href: "/services/luxury-vip-events",                         icon: Sparkles,     desc: "Exclusive private events" },
-  { name: "Private Events",       href: "/services",                                  icon: Users,        desc: "Exclusive social gatherings" },
+  { key: "royalWeddings",       href: "/services/weddings",          icon: Heart },
+  { key: "corporateGalas",      href: "/services/corporate-events",          icon: Briefcase },
+  { key: "exhibitionsTrade",  href: "/services/exhibitions",icon: Presentation },
+  { key: "eventProduction",  href: "/services/event-production",           icon: Landmark },
+  { key: "culturalSeasonal",   href: "/services/cultural-events",                         icon: Sparkles },
+  { key: "luxuryVip",   href: "/services/luxury-vip-events",                         icon: Sparkles },
+  { key: "privateEvents",       href: "/services",                                  icon: Users },
 ];
 
 const locations = [
@@ -42,12 +44,15 @@ const locations = [
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
-export default function Navbar({ darkHero = false, dict, locale = "en" }: { darkHero?: boolean, dict?: any, locale?: string }) {
+export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?: boolean, locale?: string }) {
   const [isScrolled, setIsScrolled]       = useState(false);
   const [isOpen, setIsOpen]               = useState(false);
   const [hoveredLink, setHoveredLink]     = useState<string | null>(null);
   const pathname                          = usePathname();
   const router                            = useRouter();
+  const tNav = useTranslations("nav");
+  const tServices = useTranslations("navServices");
+  const tLocs = useTranslations("navLocations");
  
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -67,7 +72,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
       onMouseLeave={() => setHoveredLink(null)}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+      className={`fixed top-0 start-0 end-0 z-[100] transition-all duration-500 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 py-3 shadow-sm"
           : "bg-white border-b border-slate-100 py-5"
@@ -93,9 +98,9 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
  
           {/* ── Desktop Links ────────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-8">
-            {defaultNavLinks.map((link) => {
+            {defaultNavLinks.map((link: any) => {
               const isActive   = pathname === link.href;
-              const linkName   = dict ? dict[link.key] || link.key : link.key;
+              const linkName   = tNav(link.key as any);
               const hasDropdown = ["services", "partners", "locations"].includes(link.key);
               
               const textNormal = "text-slate-600 hover:text-slate-900";
@@ -126,7 +131,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                     )}
                     {/* Active underline */}
                     {isActive && (
-                      <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-[var(--primary)]" />
+                      <span className="absolute bottom-0 start-4 end-4 h-[2px] bg-[var(--primary)]" />
                     )}
                   </Link>
 
@@ -139,7 +144,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-4
+                          className="absolute top-full start-1/2 -translate-x-1/2 mt-4
                             w-[720px] bg-white border border-slate-200
                             rounded-xl overflow-hidden flex shadow-2xl"
                         >
@@ -147,9 +152,9 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           <div className="w-[240px] bg-slate-50 border-r border-slate-200
                             p-8 flex flex-col justify-between shrink-0">
                             <div>
-                              <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-4 block">Our Expertise</span>
-                              <p className="font-display text-2xl font-bold text-slate-900 leading-snug">
-                                Premium<br />Corporate<br />Events
+                              <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-4 block">{tNav("ourExpertise")}</span>
+                              <p className="font-display text-2xl font-bold text-slate-900 leading-snug whitespace-pre-line">
+                                {tNav("premiumCorporateEvents")}
                               </p>
                             </div>
                             <Link
@@ -159,16 +164,16 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                                 uppercase tracking-widest text-[var(--primary)]
                                 hover:text-[var(--primary-dark)] transition-colors group/all mt-6"
                             >
-                              All Services
+                              {tNav("allServices")}
                               <ArrowRight size={14} className="group-hover/all:translate-x-1 transition-transform" />
                             </Link>
                           </div>
 
                           {/* Services grid */}
                           <div className="flex-1 p-8 grid grid-cols-2 gap-x-8 gap-y-6">
-                            {services.map((item) => (
+                            {services.map((item: any) => (
                               <Link
-                                key={item.name}
+                                key={item.key}
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
                                 className="flex items-start gap-4 group/item"
@@ -186,10 +191,10 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                                 <div className="pt-0.5">
                                   <span className="block text-[11px] font-bold uppercase tracking-widest
                                     text-slate-900 group-hover/item:text-[var(--primary)] transition-colors mb-1">
-                                    {item.name}
+                                    {tServices(item.key as any)}
                                   </span>
                                   <span className="block text-[11px] text-slate-500 leading-snug">
-                                    {item.desc}
+                                    {tServices(`${item.key}Desc` as any)}
                                   </span>
                                 </div>
                               </Link>
@@ -209,14 +214,14 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-4
+                          className="absolute top-full start-0 mt-4
                             w-[280px] bg-white border border-slate-200
                             rounded-xl overflow-hidden p-3
                             shadow-2xl"
                         >
                           {[
-                            { label: "Partner with Us",  sub: "Overview of partnerships", href: "/partners",          Icon: Users    },
-                            { label: "Become a Partner", sub: "Join our elite ecosystem",  href: "/partners/become-one", Icon: UserPlus },
+                            { label: tNav("partnerWithUs"),  sub: tNav("partnerWithUsSub"), href: "/partners",          Icon: Users    },
+                            { label: tNav("becomePartner"), sub: tNav("becomePartnerSub"),  href: "/partners/become-one", Icon: UserPlus },
                           ].map(({ label, sub, href, Icon }) => (
                             <Link
                               key={label}
@@ -253,12 +258,12 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-4
+                          className="absolute top-full start-0 mt-4
                             w-[200px] bg-white border border-slate-200
                             rounded-xl overflow-hidden p-3
                             shadow-2xl"
                         >
-                          {locations.map((city) => (
+                          {locations.map((city: any) => (
                             <Link
                               key={city.name}
                               href={city.href}
@@ -269,7 +274,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                               <MapPin size={14} className="text-slate-400 group-hover/city:text-[var(--primary)] transition-colors shrink-0" />
                               <span className="text-[10px] font-bold uppercase tracking-widest
                                 text-slate-600 group-hover/city:text-slate-900 transition-colors">
-                                {city.name}
+                                {tLocs(city.name.toLowerCase() as any)}
                               </span>
                             </Link>
                           ))}
@@ -303,7 +308,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                 transition-all duration-300
                 hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5"
             >
-              Request a Quote
+              {tNav("requestQuote")}
             </Link>
           </div>
  
@@ -326,14 +331,14 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden absolute top-full left-0 right-0
+            className="lg:hidden absolute top-full start-0 end-0
               bg-white/95 backdrop-blur-xl
               border-b border-slate-200 overflow-hidden shadow-xl"
           >
             <div className="px-6 py-8 space-y-2">
-              {defaultNavLinks.map((link, i) => {
+              {defaultNavLinks.map((link: any, i: number) => {
                 const isActive = pathname === link.href;
-                const linkName = dict ? dict[link.key] || link.key : link.key;
+                const linkName = tNav(link.key as any);
                 return (
                   <motion.div
                     key={link.key}
@@ -374,7 +379,7 @@ export default function Navbar({ darkHero = false, dict, locale = "en" }: { dark
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-4 rounded-md text-[11px] font-bold uppercase tracking-widest"
                 >
-                  Request a Quote
+                  {tNav("requestQuote")}
                 </Link>
               </motion.div>
             </div>

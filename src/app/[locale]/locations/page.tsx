@@ -87,7 +87,7 @@ export default function LocationsPage() {
       {/* Locations Grid */}
       <section className="py-20 relative max-w-7xl mx-auto px-6 pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {locations.map((loc) => (
+          {locations.map((loc: any) => (
             <Link 
               key={loc.slug} 
               href={`/locations/${loc.slug}`}
@@ -103,7 +103,7 @@ export default function LocationsPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute bottom-0 start-0 end-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex items-center gap-2 mb-3">
                   <MapPin size={16} className="text-[var(--primary)]" />
                   <span className="text-white text-[10px] font-bold uppercase tracking-widest">{loc.country}</span>
@@ -113,7 +113,7 @@ export default function LocationsPage() {
                   {loc.description}
                 </p>
                 <div className="flex items-center text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest">
-                  Explore Location <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  Explore Location <ArrowRight size={16} className="ms-2 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </Link>

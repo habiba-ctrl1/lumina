@@ -44,8 +44,8 @@ export default function VerticalDots() {
   };
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-10">
-      {sections.map((section) => (
+    <div className="fixed end-8 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-10">
+      {sections.map((section: any) => (
         <div
           key={section.id}
           className="relative flex items-center justify-end"
@@ -58,7 +58,7 @@ export default function VerticalDots() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
-                className="absolute right-8 text-[10px] uppercase tracking-[0.2em] text-[#041E42] font-bold bg-ink-800 px-3 py-1 border border-ink-600 shadow-sm"
+                className="absolute end-8 text-[10px] uppercase tracking-[0.2em] text-[#041E42] font-bold bg-ink-800 px-3 py-1 border border-ink-600 shadow-sm"
               >
                 {section.label}
               </motion.span>

@@ -315,7 +315,7 @@ export default function WeddingsPage() {
                 { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
                 { icon: Gift, title: "Floral Design", desc: "Custom-made arrangements from the best wedding decoration company in Saudi Arabia." },
-              ].map((service, i) => (
+              ].map((service: any, i: number) => (
                 <div key={i} className="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-200 group">
                   <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--primary)] transition-colors">
                     <service.icon size={28} className="text-[var(--primary)] group-hover:text-white transition-colors" />
@@ -346,7 +346,7 @@ export default function WeddingsPage() {
                   { title: "Price guide for Saudi weddings 2025", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
                   { title: "Wedding vendor directory Saudi Arabia", desc: "Our exclusive network of the Kingdom's finest caterers, designers, and entertainers." },
                   { title: "Saudi wedding trends 2025", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
-                ].map((post, idx) => (
+                ].map((post: any, idx: number) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-normal leading-relaxed">{post.desc}</p>
@@ -397,7 +397,7 @@ export default function WeddingsPage() {
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
                 { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Saudi Event Management is frequently called the best wedding company Saudi Arabia." },
                 { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200">
                   <h3 className="text-lg font-bold text-slate-900 mb-3">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>

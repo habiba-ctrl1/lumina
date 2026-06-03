@@ -26,7 +26,7 @@ export default function SplashScreen() {
         >
           {/* Subtle Background Pattern */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
-             <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(var(--primary) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+             <div className="absolute top-0 start-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(var(--primary) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
           </div>
 
           <div className="relative">
@@ -85,7 +85,7 @@ export default function SplashScreen() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="absolute bottom-20 left-0 right-0 text-center"
+            className="absolute bottom-20 start-0 end-0 text-center"
           >
             <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.8em] font-bold">
               Architectural Emotion

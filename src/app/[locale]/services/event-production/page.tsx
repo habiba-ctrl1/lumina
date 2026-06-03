@@ -90,7 +90,7 @@ export default async function ServicePage() {
     <main className="min-h-screen bg-white text-slate-800">
       <ScrollProgress />
       <WhatsAppButton />
-      <Navbar dict={dict.nav} locale={locale} />
+      <Navbar locale={locale} />
 
       <script
         type="application/ld+json"
@@ -135,7 +135,7 @@ export default async function ServicePage() {
               Our Service Offerings Include:
             </h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-500 font-light text-[14px]">
-              {SERVICE.bulletPoints.map((point, index) => (
+              {SERVICE.bulletPoints.map((point: any, index: number) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-[var(--primary)] mt-1">✦</span>
                   <span>{point}</span>

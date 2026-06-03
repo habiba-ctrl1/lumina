@@ -206,7 +206,7 @@ export default function ProductionVenuesPage() {
                 <span>JW MARRIOTT</span>
                 <span>RITZ-CARLTON</span>
               </div>
-              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase border-l border-white/10 pl-8">
+              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase border-l border-white/10 ps-8">
                 &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
               </div>
             </div>
@@ -226,7 +226,7 @@ export default function ProductionVenuesPage() {
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
                 { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
                 { icon: Star, title: "Elite Hospitality", desc: "VIP guest management, concierge services, and flawless event logistics KSA at Ritz-Carlton venues." },
-              ].map((service, i) => (
+              ].map((service: any, i: number) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -264,7 +264,7 @@ export default function ProductionVenuesPage() {
                   { title: "Top event venues in Riyadh 2025", desc: "An exclusive look at KAICC, Ritz-Carlton, and the future of venue spaces in KAFD." },
                   { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
                   { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
-                ].map((post, idx) => (
+                ].map((post: any, idx: number) => (
                   <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
@@ -284,15 +284,15 @@ export default function ProductionVenuesPage() {
                   خدمات <br/><span className="text-[var(--primary)]">عالمية المستوى</span>
                 </h2>
                 <div className="space-y-6">
-                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
+                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">أماكن فعاليات الرياض</h4>
                     <p className="text-gray-600 text-sm">نقدم أفضل خيارات القاعات والمساحات الخارجية الفاخرة التي تناسب تطلعاتكم.</p>
                   </div>
-                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
+                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">شركة إنتاج صوت وصورة الرياض</h4>
                     <p className="text-gray-600 text-sm">أحدث التقنيات في الصوت والإضاءة والشاشات لضمان تجربة بصرية مذهلة.</p>
                   </div>
-                  <div className="p-8 bg-white border-l-4 border-[var(--primary)]">
+                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
                     <h4 className="text-xl font-bold mb-2">تصميم وديكور فعاليات جدة</h4>
                     <p className="text-gray-600 text-sm">نبتكر تصاميم وديكورات تعكس هوية الفعالية وتضيف لمسة من الأناقة.</p>
                   </div>
@@ -320,7 +320,7 @@ export default function ProductionVenuesPage() {
             </div>
 
             <div className="overflow-hidden rounded-3xl border border-white/5 bg-emerald-950 shadow-2xl">
-              <table className="w-full text-left">
+              <table className="w-full text-start">
                 <thead className="bg-white/5">
                   <tr>
                     <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Service Category</th>
@@ -335,7 +335,7 @@ export default function ProductionVenuesPage() {
                     { category: "Luxury Catering", price: "SAR 450 / Guest", inclusions: "Live Stations, Staffing, Silverware" },
                     { category: "Venue Rental", price: "SAR 50,000", inclusions: "Location, Security, Basic Setup" },
                     { category: "Event Media", price: "SAR 8,500", inclusions: "Photography, Cinematic Highlights" },
-                  ].map((row, i) => (
+                  ].map((row: any, i: number) => (
                     <tr key={i} className="hover:bg-white/[0.02] transition-colors">
                       <td className="px-8 py-6 text-white font-medium">{row.category}</td>
                       <td className="px-8 py-6 text-[var(--primary)] font-bold">{row.price}</td>
@@ -362,7 +362,7 @@ export default function ProductionVenuesPage() {
                 { q: "event venue near me Riyadh", a: "Saudi Event Management operates locally in Riyadh, granting you immediate, exclusive access to the city's most sought-after palaces, hotels, and exhibition centers." },
                 { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
                 { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Saudi Event Management provides localized, concert-grade AV production and technical support wherever your event takes place." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="border-b border-slate-200 pb-8">
                   <h3 className="text-xl font-bold mb-8">{faq.q}</h3>
                   <p className="text-gray-500 font-light text-sm leading-relaxed">{faq.a}</p>

@@ -96,7 +96,7 @@ export default function AboutPage() {
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-white border border-[var(--primary)]/30 p-8 rounded-sm shadow-xl max-w-xs">
+            <div className="absolute -bottom-6 -end-6 bg-white border border-[var(--primary)]/30 p-8 rounded-sm shadow-xl max-w-xs">
               <p className="text-[var(--primary)] font-display text-base mb-2  font-semibold">&quot;We don&apos;t just plan events; we organize and manage every emotion.&quot;</p>
               <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">— Habiba Asghar, Founder</p>
             </div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
               { icon: Sparkles, title: "Artistry", desc: "Every detail is curated with artistic intent, from floral geometry to ambient lighting." },
               { icon: Users, title: "Discretion", desc: "We provide absolute privacy for our high-profile and celebrity clientele." },
               { icon: Award, title: "Excellence", desc: "We settle for nothing less than extraordinary in every aspect of execution." },
-            ].map((value, i) => (
+            ].map((value: any, i: number) => (
               <div key={i} className="bg-white border border-slate-200 p-8 rounded-sm hover:border-[var(--primary)] transition-all duration-500 group hover:shadow-md">
                 <value.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
                 <h3 className="text-lg font-display font-medium text-slate-900 mb-8 uppercase">{value.title}</h3>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Heart, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const Instagram = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -25,6 +26,7 @@ const posts = [
 ];
 
 export default function InstagramFeed() {
+  const t = useTranslations("instagram");
   return (
     <section className="bg-white relative py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -32,9 +34,9 @@ export default function InstagramFeed() {
           <div>
             <div className="flex items-center gap-4 mb-6">
                <Instagram className="text-[var(--primary)]" size={24} />
-               <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Live from the Field</span>
+               <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">{t("label")}</span>
             </div>
-            <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold uppercase tracking-tight">Social <span className="text-[var(--primary)]">Narrative</span></h2>
+            <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold uppercase tracking-tight">{t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span></h2>
           </div>
           <motion.a 
             href="https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" 
@@ -44,12 +46,12 @@ export default function InstagramFeed() {
             whileTap={{ scale: 0.95 }}
             className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all flex items-center gap-3"
           >
-            Follow @SaudiEventManagement
+            {t("follow")}
           </motion.a>
         </div>
 
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-          {posts.map((post, i) => (
+          {posts.map((post: any, i: number) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, scale: 0.9 }}

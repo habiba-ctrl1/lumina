@@ -123,7 +123,7 @@ export default function LuxuryVIPEventsPage() {
               { icon: Star, title: "Exclusive Launches", desc: "High-impact, invite-only brand launches for luxury automotive, haute couture, and premium jewelry brands." },
               { icon: Music, title: "Private Concerts", desc: "Securing A-list international and regional artists for intimate, private performances with world-class technical production." },
               { icon: Shield, title: "VIP Protocol & Security", desc: "Expert management of diplomatic protocols, close-protection security coordination, and secure transportation." },
-            ].map((service, i) => (
+            ].map((service: any, i: number) => (
               <div key={i} className="bg-ink-900/50 border border-white/5 p-8 rounded-sm hover:border-gold-400/30 transition-all duration-500 group">
                 <service.icon size={32} className="text-gold-400 mb-8 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-display text-white mb-6 uppercase tracking-wider">{service.title}</h3>
@@ -145,7 +145,7 @@ export default function LuxuryVIPEventsPage() {
                 { q: "How do you ensure confidentiality for VIP and Royal family events?", a: "We operate under strict Non-Disclosure Agreements (NDAs). Our elite staff undergoes rigorous vetting, and we implement stringent access controls and digital security measures to ensure absolute privacy for our VIP clients." },
                 { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes, through our global talent agency networks, we broker and manage private appearances by A-list international musicians, speakers, and performers, handling all rider requirements, private aviation, and technical production." },
                 { q: "Do you provide close protection and security for VIP events?", a: "We coordinate with top-tier private security firms and government protocols to provide seamless close protection, secure perimeters, and discreet crowd management for all HNWI and diplomatic events." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-ink-950 p-8 border border-white/5 rounded-sm">
                   <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>
                   <p className="text-sand-400 font-light text-sm">{faq.a}</p>

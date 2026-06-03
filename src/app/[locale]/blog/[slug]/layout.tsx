@@ -9,14 +9,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
   
   return {
-    title: post.metaTitle || post.title,
-    description: post.metaDescription || post.excerpt,
+    title: (post as any).metaTitle || post.title,
+    description: (post as any).metaDescription || post.excerpt,
     alternates: {
       canonical: `https://saudieventmanagement.com/blog/${slug}`,
     },
     openGraph: {
-      title: post.metaTitle || post.title,
-      description: post.metaDescription || post.excerpt,
+      title: (post as any).metaTitle || post.title,
+      description: (post as any).metaDescription || post.excerpt,
       images: [post.image],
     }
   };

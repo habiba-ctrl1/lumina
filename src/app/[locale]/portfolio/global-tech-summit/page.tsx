@@ -32,7 +32,7 @@ export default function GlobalTechSummit() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-primary/20 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-primary/30">
             Technology & Innovation
@@ -52,7 +52,7 @@ export default function GlobalTechSummit() {
             { icon: Cpu, label: "Tech Hubs", val: "12 Interactive" },
             { icon: Network, label: "Broadcasting", val: "Global Live" },
             { icon: Zap, label: "Production", val: "8K Immersive" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -89,7 +89,7 @@ export default function GlobalTechSummit() {
               { title: "Smart Networking", desc: "Using NFC-enabled badges to facilitate instant contact exchange and meeting scheduling." },
               { title: "Immersive Stage", desc: "A 360-degree LED wrap-around stage providing real-time data visualizations for keynotes." },
               { title: "Hybrid Connectivity", desc: "Ultra-low latency streaming to over 1 million viewers worldwide simultaneously." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="bg-black p-10 rounded-3xl text-white group hover:bg-primary transition-colors duration-500">
                 <h4 className="text-primary text-[10px] font-bold uppercase tracking-widest mb-8 group-hover:text-white transition-colors">{item.title}</h4>
                 <p className="text-slate-600 text-xs leading-relaxed group-hover:text-white transition-colors">{item.desc}</p>

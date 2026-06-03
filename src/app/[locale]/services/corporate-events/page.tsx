@@ -186,7 +186,7 @@ export default function CorporateEventsPage() {
               { icon: Briefcase, title: "Corporate Gala Dinners", desc: "Spectacular gala dinners for enterprise events and Vision 2030 initiatives, featuring world-class catering and luxury venue sourcing." },
               { icon: Calendar, title: "Seminar Organizer Riyadh", desc: "Professional seminar organization with state-of-the-art sound and light setups, events with both in-person and online guests, and flawless execution." },
               { icon: MapPin, title: "Vision 2030 Events", desc: "Aligning your corporate narrative with Saudi Vision 2030 trends through high-impact public relations and strategic event planning." },
-            ].map((service, i) => (
+            ].map((service: any, i: number) => (
               <div key={i} className="bg-emerald-900 border border-white/5 p-8 rounded-3xl hover:border-[var(--primary)]/30 transition-all duration-500 group">
                 <service.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
@@ -214,7 +214,7 @@ export default function CorporateEventsPage() {
                   { title: "Partnership announcements with Saudi entities", desc: "Strategic alignments with the GEA, Ministry of Culture, and Vision 2030 initiatives." },
                   { title: "Detailed behind-the-scenes case studies", desc: "An exclusive look at how we execute flawless executive summits at KAFD." },
                   { title: "Comparison: corporate event venues in KSA", desc: "Evaluating the best business centers, luxury hotels, and convention halls for your next summit." }
-                ].map((post, idx) => (
+                ].map((post: any, idx: number) => (
                   <div key={idx} className="p-6 bg-emerald-950 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group">
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
@@ -242,7 +242,7 @@ export default function CorporateEventsPage() {
                 { q: "find a corporate event company near me in Riyadh", a: "Saudi Event Management is centrally located in Riyadh, providing immediate, high-end support for any local enterprise event or professional conference." },
                 { q: "who does business events in Saudi Arabia", a: "Saudi Event Management does business events in Saudi Arabia, mastering everything from an intimate company function to a massive executive summit." },
                 { q: "best conference organizer Jeddah", a: "Saudi Event Management is widely regarded as the best conference organizer Jeddah, utilizing premium Red Sea venues to host spectacular business gatherings and board retreats." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-emerald-900 border border-white/5 p-6 rounded-2xl">
                   <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>
                   <p className="text-slate-600 font-light text-sm">{faq.a}</p>

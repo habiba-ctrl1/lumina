@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import SectionWrapper from "./SectionWrapper";
+import { useTranslations } from "next-intl";
 
 const portfolioItems = [
   { 
@@ -81,14 +82,15 @@ const portfolioItems = [
   }
 ];
 
-const categories = ["All", "Conferences", "Exhibitions", "Corporate Events", "Luxury Weddings"];
+const categories = ["all", "conferences", "exhibitions", "corporateEvents", "luxuryWeddings"];
 
 export default function FilterablePortfolio() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const t = useTranslations("portfolio");
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredItems = activeCategory === "All" 
+  const filteredItems = activeCategory === "all" 
     ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
+    : portfolioItems.filter(item => item.category === t(`categories.${activeCategory}` as any) || item.category.toLowerCase().replace(/ /g, '') === activeCategory.toLowerCase());
 
   return (
     <SectionWrapper className="bg-slate-50 relative overflow-hidden">
@@ -104,7 +106,7 @@ export default function FilterablePortfolio() {
           >
             <span className="w-12 h-[2px] bg-[var(--primary)]" />
             <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
-              Portfolio of Excellence
+              {t("label")}
             </span>
           </motion.div>
           <motion.h2
@@ -113,16 +115,16 @@ export default function FilterablePortfolio() {
             viewport={{ once: true }}
             className="font-display font-bold text-slate-900 text-3xl md:text-4xl lg:text-5xl mb-6 tracking-tight"
           >
-            Recent <span className="text-[var(--primary)] font-bold">Masterpieces</span>
+            {t("title")} <span className="text-[var(--primary)] font-bold">{t("titleHighlight")}</span>
           </motion.h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed">
-            From royal weddings to high-stakes corporate summits, explore our gallery of meticulously crafted events.
+            {t("subtitle")}
           </p>
         </div>
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {categories.map((category) => (
+          {categories.map((category: any) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -132,7 +134,7 @@ export default function FilterablePortfolio() {
                   : "bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-900"
               }`}
             >
-              {category}
+              {t(`categories.${category}` as any)}
             </button>
           ))}
         </div>
@@ -140,7 +142,7 @@ export default function FilterablePortfolio() {
         {/* Portfolio Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item: any) => (
               <motion.div
                 key={item.id}
                 layout
@@ -163,9 +165,14 @@ export default function FilterablePortfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                   
                   {/* Category Tag */}
-                  <div className="absolute top-6 right-6">
+                  <div className="absolute top-6 end-6">
                     <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
-                       <span className="text-[9px] text-[var(--primary)] uppercase tracking-widest font-bold">{item.category}</span>
+                       <span className="text-[9px] text-[var(--primary)] uppercase tracking-widest font-bold">
+                        {(() => {
+                           const catKey = Object.keys(t.raw("categories")).find(k => t(`categories.${k}`) === item.category || k.toLowerCase() === item.category.toLowerCase().replace(/ /g, ''));
+                           return catKey ? t(`categories.${catKey}` as any) : item.category;
+                        })()}
+                       </span>
                     </div>
                   </div>
 
@@ -182,11 +189,11 @@ export default function FilterablePortfolio() {
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-4">
                         <div className="grid grid-cols-2 gap-4 border-t border-white/20 pt-4 mb-4">
                            <div>
-                             <p className="text-[9px] text-slate-300 uppercase tracking-widest mb-1">Guests</p>
+                             <p className="text-[9px] text-slate-300 uppercase tracking-widest mb-1">{t("guests")}</p>
                              <p className="text-sm text-white font-bold">{item.guests}</p>
                            </div>
                            <div>
-                             <p className="text-[9px] text-slate-300 uppercase tracking-widest mb-1">Date</p>
+                             <p className="text-[9px] text-slate-300 uppercase tracking-widest mb-1">{t("date")}</p>
                              <p className="text-sm text-white font-bold">{item.date}</p>
                            </div>
                         </div>

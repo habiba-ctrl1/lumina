@@ -130,7 +130,7 @@ export default function AdminTestimonials() {
                   <div className="space-y-1.5">
                     <label className="text-[9px] font-black uppercase tracking-widest text-sand-400 px-1">Rating</label>
                     <div className="flex gap-2 bg-ink-950 p-3 rounded-xl border border-ink-600 w-fit">
-                      {[1, 2, 3, 4, 5].map((star) => (
+                      {[1, 2, 3, 4, 5].map((star: any) => (
                         <button key={star} type="button" onClick={() => setForm({ ...form, rating: star })} className="transition-all transform hover:scale-110">
                           <Star size={18} className={star <= form.rating ? "text-gold-500 fill-gold-500" : "text-slate-200"} />
                         </button>
@@ -168,7 +168,7 @@ export default function AdminTestimonials() {
       {/* Testimonials List */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {[1, 2, 3, 4].map((i) => (
+          {[1, 2, 3, 4].map((i: any) => (
             <div key={i} className="h-64 bg-ink-800 animate-pulse rounded-[2rem] border border-ink-600 shadow-sm" />
           ))}
         </div>
@@ -182,7 +182,7 @@ export default function AdminTestimonials() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {testimonials.map((t, i) => (
+          {testimonials.map((t: any, i: number) => (
             <motion.div
               key={t.id}
               initial={{ opacity: 0, y: 20 }}
@@ -192,7 +192,7 @@ export default function AdminTestimonials() {
             >
               <div className="flex-1 mb-8">
                 <div className="flex gap-1 mb-8">
-                  {Array.from({ length: 5 }).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_: any, i: number) => (
                     <Star key={i} size={16} className={i < t.rating ? "text-gold-500 fill-gold-500" : "text-slate-100"} />
                   ))}
                 </div>

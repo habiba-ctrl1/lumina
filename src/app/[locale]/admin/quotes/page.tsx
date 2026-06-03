@@ -271,7 +271,7 @@ export default function AdminQuotes() {
       {/* Filters & Table Section */}
       <div className="bg-ink-800 rounded-[2.5rem] border border-ink-600 shadow-sm overflow-hidden">
         <div className="px-8 py-6 border-b border-ink-500 flex flex-wrap items-center gap-10">
-          {['all', 'pending', 'quote_sent', 'accepted', 'rejected'].map((t) => (
+          {['all', 'pending', 'quote_sent', 'accepted', 'rejected'].map((t: any) => (
             <button
               key={t}
               onClick={() => setFilter(t)}
@@ -307,7 +307,7 @@ export default function AdminQuotes() {
               </button>
             </div>
           ) : (
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-start border-collapse">
               <thead>
                 <tr className="bg-ink-950/50">
                   <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">Client Name</th>
@@ -315,11 +315,11 @@ export default function AdminQuotes() {
                   <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">City</th>
                   <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500">Date Received</th>
                   <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500 text-center">Status</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500 text-right">Actions</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-sand-400 uppercase tracking-widest border-b border-ink-500 text-end">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredRequests.map((req) => (
+                {filteredRequests.map((req: any) => (
                   <tr key={req.id} className="group hover:bg-ink-950/80 transition-colors">
                     <td className="px-8 py-6 border-b border-slate-50">
                       <div>
@@ -346,7 +346,7 @@ export default function AdminQuotes() {
                         {req.status.replace('_', ' ')}
                       </span>
                     </td>
-                    <td className="px-8 py-6 border-b border-slate-50 text-right">
+                    <td className="px-8 py-6 border-b border-slate-50 text-end">
                       <div className="flex items-center justify-end gap-2">
                         <button 
                           onClick={() => { setSelectedRequest(req); setIsDetailOpen(true); }}
@@ -368,22 +368,22 @@ export default function AdminQuotes() {
                           <button className="p-2.5 text-sand-400 hover:text-sand-50 hover:bg-ink-800 hover:shadow-sm rounded-xl transition-all">
                             <MoreVertical size={18} />
                           </button>
-                          <div className="absolute right-0 top-full mt-1 w-48 bg-ink-800 border border-ink-500 rounded-2xl shadow-xl z-10 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all p-2">
+                          <div className="absolute end-0 top-full mt-1 w-48 bg-ink-800 border border-ink-500 rounded-2xl shadow-xl z-10 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all p-2">
                             <button 
                               onClick={() => updateStatus(req.id, 'rejected')}
-                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
+                              className="w-full text-start px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
                             >
                               <XCircle size={14} /> Mark Rejected
                             </button>
                             <button 
                               onClick={() => updateStatus(req.id, 'archived')}
-                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-ink-950 rounded-xl transition-colors flex items-center gap-3"
+                              className="w-full text-start px-4 py-2.5 text-xs font-bold text-sand-200 hover:bg-ink-950 rounded-xl transition-colors flex items-center gap-3"
                             >
                               <Archive size={14} /> Archive
                             </button>
                             <button 
                               onClick={() => deleteRequest(req.id)}
-                              className="w-full text-left px-4 py-2.5 text-xs font-bold text-red-400 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
+                              className="w-full text-start px-4 py-2.5 text-xs font-bold text-red-400 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
                             >
                               <Trash2 size={14} /> Delete Permanent
                             </button>
@@ -411,7 +411,7 @@ export default function AdminQuotes() {
             <motion.aside
               initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-ink-800 z-[90] shadow-2xl flex flex-col"
+              className="fixed top-0 end-0 bottom-0 w-full max-w-md bg-ink-800 z-[90] shadow-2xl flex flex-col"
             >
               <div className="p-8 border-b border-ink-500 flex items-center justify-between">
                 <h2 className="text-xl font-bold text-sand-50 tracking-tight">Request Details</h2>
@@ -534,17 +534,17 @@ export default function AdminQuotes() {
               </div>
               <form onSubmit={handleManualSubmit} className="p-10 grid grid-cols-2 gap-10">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Client Name</label>
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Client Name</label>
                   <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none" 
                     value={manualForm.clientName} onChange={e => setManualForm({...manualForm, clientName: e.target.value})} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Client Phone</label>
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Client Phone</label>
                   <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.clientPhone} onChange={e => setManualForm({...manualForm, clientPhone: e.target.value})} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Event Type</label>
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Event Type</label>
                   <select required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.eventType} onChange={e => setManualForm({...manualForm, eventType: e.target.value})}>
                     <option value="">Select...</option>
@@ -554,12 +554,12 @@ export default function AdminQuotes() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">City</label>
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">City</label>
                   <input required className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none"
                     value={manualForm.eventCity} onChange={e => setManualForm({...manualForm, eventCity: e.target.value})} />
                 </div>
                 <div className="col-span-2 space-y-2">
-                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Requirements & Vision</label>
+                  <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Requirements & Vision</label>
                   <textarea rows={3} className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm focus:border-gold-500 focus:outline-none resize-none"
                     value={manualForm.requirements} onChange={e => setManualForm({...manualForm, requirements: e.target.value})} />
                 </div>
@@ -595,12 +595,12 @@ export default function AdminQuotes() {
                     <div className="grid grid-cols-12 gap-10 px-4 text-[9px] font-black text-sand-400 uppercase tracking-widest">
                       <div className="col-span-5">Service / Item</div>
                       <div className="col-span-2 text-center">Qty</div>
-                      <div className="col-span-3 text-right">Unit Price</div>
-                      <div className="col-span-2 text-right">Total</div>
+                      <div className="col-span-3 text-end">Unit Price</div>
+                      <div className="col-span-2 text-end">Total</div>
                     </div>
                     
                     <div className="space-y-3">
-                      {quoteForm.lineItems.map((item, idx) => (
+                      {quoteForm.lineItems.map((item: any, idx: number) => (
                         <div key={idx} className="grid grid-cols-12 gap-10 items-center bg-ink-950 p-4 rounded-2xl border border-ink-500 group">
                           <div className="col-span-5">
                             <input 
@@ -621,12 +621,12 @@ export default function AdminQuotes() {
                           <div className="col-span-3">
                             <input 
                               type="number" 
-                              className="w-full bg-ink-800 border border-ink-600 rounded-lg py-2 text-right px-3 text-xs font-bold focus:outline-none focus:border-gold-500"
+                              className="w-full bg-ink-800 border border-ink-600 rounded-lg py-2 text-end px-3 text-xs font-bold focus:outline-none focus:border-gold-500"
                               value={item.unitPrice}
                               onChange={e => updateLineItem(idx, 'unitPrice', parseFloat(e.target.value))}
                             />
                           </div>
-                          <div className="col-span-2 text-right">
+                          <div className="col-span-2 text-end">
                             <div className="flex items-center justify-end gap-3">
                               <span className="text-xs font-black text-sand-50">{item.total.toLocaleString()}</span>
                               <button onClick={() => removeLineItem(idx)} className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600 transition-all">
@@ -640,7 +640,7 @@ export default function AdminQuotes() {
 
                     <button 
                       onClick={addLineItem}
-                      className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gold-600 hover:text-gold-700 transition-colors ml-4"
+                      className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gold-600 hover:text-gold-700 transition-colors ms-4"
                     >
                       <PlusCircle size={14} /> Add Line Item
                     </button>
@@ -648,7 +648,7 @@ export default function AdminQuotes() {
 
                   <div className="pt-8 border-t border-ink-500 space-y-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Terms & Conditions</label>
+                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Terms & Conditions</label>
                       <textarea 
                         rows={4} 
                         className="w-full bg-ink-950 border border-ink-600 rounded-2xl p-4 text-xs font-medium text-sand-200 focus:outline-none focus:border-gold-500 resize-none"
@@ -681,7 +681,7 @@ export default function AdminQuotes() {
 
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ml-1">Valid Until</label>
+                      <label className="text-[10px] font-black text-sand-400 uppercase tracking-widest ms-1">Valid Until</label>
                       <input 
                         type="date" 
                         className="w-full bg-ink-950 border border-ink-600 rounded-xl p-4 text-sm font-bold focus:outline-none focus:border-gold-500"

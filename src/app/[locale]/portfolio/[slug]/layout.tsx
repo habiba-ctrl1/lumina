@@ -5,7 +5,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const title = params.slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const title = params.slug.split('-').map((word: any) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
   return {
     title: title,

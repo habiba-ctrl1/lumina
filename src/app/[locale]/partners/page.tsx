@@ -91,7 +91,7 @@ export default function PartnersPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {tiers.map((tier, i) => (
+            {tiers.map((tier: any, i: number) => (
               <div key={i} className="card p-8 group hover:-translate-y-2 hover:shadow-md transition-all duration-300">
                 <div className="w-14 h-14 bg-ink-950 flex items-center justify-center rounded-sm mb-8 group-hover:bg-emerald-800 transition-colors duration-300 border border-ink-600">
                   <tier.icon size={24} className="text-emerald-800 group-hover:text-white transition-colors duration-300" />
@@ -99,7 +99,7 @@ export default function PartnersPage() {
                 <h3 className="font-display font-medium text-lg text-sand-50 mb-8 uppercase tracking-tight">{tier.title}</h3>
                 <p className="text-sand-200 text-sm leading-relaxed mb-8">{tier.desc}</p>
                 <ul className="space-y-4 mb-10">
-                  {tier.features.map((feature, idx) => (
+                  {tier.features.map((feature: any, idx: number) => (
                     <li key={idx} className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-widest text-sand-300">
                       <div className="w-1 h-1 bg-emerald-800 rounded-full" />
                       {feature}
@@ -117,7 +117,7 @@ export default function PartnersPage() {
         <div className="container-luxury">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-50/20 rounded-full blur-3xl" />
+              <div className="absolute -top-10 -start-10 w-40 h-40 bg-emerald-50/20 rounded-full blur-3xl" />
               <h2 className="font-display font-medium text-sand-50 mb-8 uppercase tracking-tight leading-tight text-2xl md:text-3xl">
                 Aligned with <br/>
                 <span className="text-shimmer italic">Vision 2030</span>
@@ -130,7 +130,7 @@ export default function PartnersPage() {
                   { title: "Empowering Local Talent", val: "70%" },
                   { title: "National Event Contribution", val: "150+" },
                   { title: "Strategic Government Alliances", val: "12+" }
-                ].map((stat, i) => (
+                ].map((stat: any, i: number) => (
                   <div key={i} className="flex items-center justify-between border-b border-ink-600 pb-4">
                     <span className="text-xs font-bold uppercase tracking-widest text-sand-100">{stat.title}</span>
                     <span className="text-xl font-display font-medium text-emerald-800">{stat.val}</span>
@@ -147,7 +147,7 @@ export default function PartnersPage() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-              <div className="absolute bottom-12 left-12 right-12">
+              <div className="absolute bottom-12 start-12 end-12">
                 <Handshake size={48} className="text-white mb-8" />
                 <p className="text-white text-2xl font-display font-light leading-tight">
                   "Together, we are not just planning events; we are building the legacy of a nation."

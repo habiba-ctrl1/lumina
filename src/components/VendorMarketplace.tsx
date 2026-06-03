@@ -95,7 +95,7 @@ export default function VendorMarketplace() {
     <section id="vendors" className="py-32 bg-emerald-950 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute top-0 start-0 w-full h-full" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -136,7 +136,7 @@ export default function VendorMarketplace() {
             >
               All Vendors
             </button>
-            {categories.map((cat) => (
+            {categories.map((cat: any) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
@@ -155,7 +155,7 @@ export default function VendorMarketplace() {
 
         {/* Vendor Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {filteredVendors.map((vendor, index) => (
+          {filteredVendors.map((vendor: any, index: number) => (
             <motion.div
               layout
               key={vendor.id}
@@ -174,7 +174,7 @@ export default function VendorMarketplace() {
                   height={400}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 start-4">
                   <span className="px-3 py-1 bg-emerald-950/80 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gold-500 uppercase tracking-widest font-bold">
                     {vendor.specialty}
                   </span>

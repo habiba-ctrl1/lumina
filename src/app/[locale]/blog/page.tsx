@@ -48,7 +48,7 @@ export default function BlogPage() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap gap-3 mt-12">
-            {blogCategories.map((cat) => (
+            {blogCategories.map((cat: any) => (
               <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 border rounded-md shadow-sm ${activeCategory === cat ? "bg-[var(--primary)] text-white border-[var(--primary)]" : "border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 bg-white"}`}>
                 {cat}
               </button>
@@ -62,17 +62,17 @@ export default function BlogPage() {
         <section className="py-20 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.4 }} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {featuredPosts.map((post, idx) => (
+              {featuredPosts.map((post: any, idx: number) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`}>
                   <motion.article initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 + idx * 0.15 }} onMouseEnter={() => setHoveredPost(post.slug)} onMouseLeave={() => setHoveredPost(null)} className="group relative h-[480px] overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl rounded-xl transition-all duration-500">
                     <div className="absolute inset-0">
                       <Image src={post.image} alt={post.title} width={800} height={480} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80" />
                     </div>
-                    <div className="absolute top-6 left-6 z-10">
+                    <div className="absolute top-6 start-6 z-10">
                       <span className="px-4 py-1.5 bg-white text-[var(--primary)] text-[10px] uppercase tracking-widest font-bold rounded-full shadow-md">Featured</span>
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
+                    <div className="absolute bottom-0 start-0 end-0 p-8 z-10">
                       <span className="text-[var(--primary)] text-[11px] uppercase tracking-[0.2em] font-bold bg-white/90 backdrop-blur-md px-3 py-1 rounded-sm mb-4 inline-block">{post.category}</span>
                       <h3 className="text-xl md:text-3xl font-display font-bold text-white mb-4 group-hover:text-teal-100 transition-colors duration-300 leading-tight">{post.title}</h3>
                       <p className="text-slate-200 text-sm font-light line-clamp-2 mb-8 leading-relaxed">{post.excerpt}</p>
@@ -80,7 +80,7 @@ export default function BlogPage() {
                         <span className="flex items-center gap-2"><Calendar size={14} className="text-[var(--primary)]" /> {post.date}</span>
                         <span className="flex items-center gap-2"><Clock size={14} className="text-[var(--primary)]" /> {post.readTime}</span>
                       </div>
-                      <motion.div className="absolute bottom-8 right-8" animate={{ x: hoveredPost === post.slug ? 0 : -10, opacity: hoveredPost === post.slug ? 1 : 0 }} transition={{ duration: 0.3 }}>
+                      <motion.div className="absolute bottom-8 end-8" animate={{ x: hoveredPost === post.slug ? 0 : -10, opacity: hoveredPost === post.slug ? 1 : 0 }} transition={{ duration: 0.3 }}>
                         <div className="w-12 h-12 flex items-center justify-center text-white bg-[var(--primary)] shadow-md rounded-full"><ArrowRight size={18} /></div>
                       </motion.div>
                     </div>
@@ -102,7 +102,7 @@ export default function BlogPage() {
             </div>
             {/* Category selection refined */}
             <div className="flex flex-wrap gap-x-8 gap-y-4 border-b border-slate-200 pb-4">
-              {blogCategories.map((cat) => (
+              {blogCategories.map((cat: any) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
@@ -114,7 +114,7 @@ export default function BlogPage() {
                 >
                   {cat}
                   {activeCategory === cat && (
-                    <motion.div layoutId="catUnderline" className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[var(--primary)]" />
+                    <motion.div layoutId="catUnderline" className="absolute bottom-[-1px] start-0 end-0 h-[2px] bg-[var(--primary)]" />
                   )}
                 </button>
               ))}
@@ -129,7 +129,7 @@ export default function BlogPage() {
               exit={{ opacity: 0 }}
               className="grid grid-cols-1 md:grid-cols-12 gap-y-16 gap-x-12"
             >
-              {filteredPosts.map((post, idx) => {
+              {filteredPosts.map((post: any, idx: number) => {
                 // Create an asymmetrical layout pattern
                 const isLarge = idx % 5 === 0;
                 const colSpan = isLarge ? "md:col-span-8" : "md:col-span-4";
@@ -156,7 +156,7 @@ export default function BlogPage() {
                         <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500" />
                         
                         {/* Elegant floating category */}
-                        <div className="absolute top-4 right-4">
+                        <div className="absolute top-4 end-4">
                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--primary)] bg-white px-3 py-1.5 border border-slate-200 rounded-full shadow-sm">
                              {post.category}
                            </span>

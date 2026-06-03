@@ -9,6 +9,8 @@ export interface BlogPost {
   author: string;
   featured: boolean;
   content: string[];
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export const blogCategories = [
@@ -65,7 +67,7 @@ export const blogPosts: BlogPost[] = [
 
       "### The Bottom Line",
       "A truly luxury event is one where every element has been considered, every detail intentional, and every guest feels valued. It&apos;s not about spending the most money &mdash; it&apos;s about spending it wisely on the details that matter most. Start planning early, trust your creative instincts, and never compromise on the things your guests will touch, taste, and remember.",
-    ,
+
       "## Frequently Asked Questions (FAQs)",
       "### Q: What is the most important element of luxury event planning?",
       "A: The most important element is defining a clear emotional vision before setting the budget. It ensures every riyal is spent on elements that contribute to the overall guest experience.",

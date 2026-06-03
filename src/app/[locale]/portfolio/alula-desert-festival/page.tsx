@@ -33,7 +33,7 @@ export default function AlUlaDesertFestival() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <Link href="/portfolio" className="inline-flex items-center text-white hover:text-primary transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
             National Cultural Activation
@@ -53,7 +53,7 @@ export default function AlUlaDesertFestival() {
             { icon: Sun, label: "Climate", val: "Solar Powered" },
             { icon: Camera, label: "Impact", val: "Global Press" },
             { icon: Wind, label: "Nature", val: "Eco-Conscious" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={32} className="text-primary mx-auto mb-8" />
               <div className="text-[10px] uppercase tracking-[0.2em] text-slate-600 mb-2 font-bold">{stat.label}</div>
@@ -102,7 +102,7 @@ export default function AlUlaDesertFestival() {
               { title: "Kinetic Architecture", desc: "Stages that mirrored the natural rock formations of AlUla, using reflective materials to blend into the horizon." },
               { title: "Off-Grid Power", desc: "A 100% sustainable energy grid powered by a temporary solar farm and hydrogen generators." },
               { title: "Immersive Narrative", desc: "Using projection mapping on ancient cliffs to tell the story of the Incense Route to a global audience." }
-            ].map((item, i) => (
+            ].map((item: any, i: number) => (
               <div key={i} className="text-center space-y-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <span className="text-primary font-bold text-xl">{i+1}</span>

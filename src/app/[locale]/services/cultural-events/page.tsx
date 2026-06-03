@@ -262,7 +262,7 @@ export default function SeasonalEventsPage() {
                   desc: "Contributing to the Kingdom&apos;s most ambitious entertainment season with unique annual celebration planning and flawless execution.",
                   linkText: "Season Activations"
                 },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -301,7 +301,7 @@ export default function SeasonalEventsPage() {
                   { title: "Saudi National Day event planning 2025", desc: "Preparing for the Kingdom&apos;s biggest celebration with grand-scale branding and patriotic themes." },
                   { title: "Corporate Eid celebration guide KSA", desc: "How to host inclusive and festive Eid gatherings for diverse corporate environments." },
                   { title: "Seasonal event calendar Saudi Arabia 2025", desc: "Tracking the Kingdom&apos;s transformation through Riyadh Season, religious milestones, and national days." }
-                ].map((post, idx) => (
+                ].map((post: any, idx: number) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
@@ -335,8 +335,8 @@ export default function SeasonalEventsPage() {
                     { title: "احتفالات اليوم الوطني السعودي", desc: "تنظيم فعاليات وطنية كبرى تعزز روح الانتماء والفخر بالوطن." },
                     { title: "فعاليات العيد الرياض", desc: "إدارة احتفالات العيد للشركات والعائلات بأعلى معايير الرفاهية." },
                     { title: "فعاليات يوم التأسيس السعودي", desc: "تسليط الضوء على الإرث التاريخي للمملكة من خلال فعاليات تراثية مبتكرة." },
-                  ].map((local, idx) => (
-                    <div key={idx} className="border-r-2 border-[var(--primary)] pr-6">
+                  ].map((local: any, idx: number) => (
+                    <div key={idx} className="border-e-2 border-[var(--primary)] pe-6">
                       <h4 className="text-xl font-bold mb-2">{local.title}</h4>
                       <p className="text-slate-600 text-sm font-light">{local.desc}</p>
                     </div>
@@ -364,7 +364,7 @@ export default function SeasonalEventsPage() {
                 { q: "What is special about Saudi Founding Day celebrations?", a: "It's a time to celebrate traditional 'Najdi' and regional Saudi heritage. Our events emphasize traditional hospitality, crafts, and historical storytelling." },
                 { q: "Ramadan event company near me Saudi Arabia", a: "Saudi Event Management operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
                 { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Saudi Event Management specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-white p-10 rounded-2xl border border-slate-200">
                   <h3 className="text-xl font-bold text-slate-900 mb-8">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>

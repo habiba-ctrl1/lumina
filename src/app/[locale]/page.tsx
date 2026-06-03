@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { cookies } from "next/headers";
-import { getDictionary } from "@/lib/dictionaries";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import StatsSection from "@/components/StatsSection";
 
@@ -127,7 +126,6 @@ const jsonLd = {
 export default async function Home() {
   const cookieStore = await cookies();
   const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
-  const dict = await getDictionary(locale as "en" | "ar");
 
   return (
     /*
@@ -147,7 +145,7 @@ export default async function Home() {
       <WhatsAppButton />
 
       {/* ── Navigation ───────────────────────────────────────────────────── */}
-      <Navbar darkHero dict={dict.nav} locale={locale} />
+      <Navbar darkHero locale={locale} />
 
       {/* ── Sections — ordered by conversion priority ─────────────────────
           Hero          → First impression, booking form
@@ -163,7 +161,7 @@ export default async function Home() {
           EngagementHub → Community + reviews
           Footer        → Navigation + newsletter
       ──────────────────────────────────────────────────────────────────── */}
-      <Hero dict={dict.hero} />
+      <Hero />
       <MarqueeStrip />
       <ContactSection />
       <StatsSection />

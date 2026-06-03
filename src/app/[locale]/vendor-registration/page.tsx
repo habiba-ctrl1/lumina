@@ -110,7 +110,7 @@ export default function VendorRegistration() {
                     { title: "Elite Clientele", desc: "Gain access to high-profile corporate galas and royal weddings." },
                     { title: "Vision 2030 Projects", desc: "Collaborate on major Saudi Season events and GIGA projects." },
                     { title: "Seamless Coordination", desc: "Professional planning teams that handle all logistics." },
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex gap-10">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
                       <div>
@@ -147,7 +147,7 @@ export default function VendorRegistration() {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><User size={12} /> Full Name</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><User size={12} /> Full Name</label>
                       <input 
                         type="text" 
                         required 
@@ -158,7 +158,7 @@ export default function VendorRegistration() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Mail size={12} /> Email Address</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><Mail size={12} /> Email Address</label>
                       <input 
                         type="email" 
                         required 
@@ -172,7 +172,7 @@ export default function VendorRegistration() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Phone size={12} /> WhatsApp / Phone</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><Phone size={12} /> WhatsApp / Phone</label>
                       <input 
                         type="tel" 
                         required 
@@ -183,7 +183,7 @@ export default function VendorRegistration() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Building2 size={12} /> Business Name</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><Building2 size={12} /> Business Name</label>
                       <input 
                         type="text" 
                         required 
@@ -197,7 +197,7 @@ export default function VendorRegistration() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><Briefcase size={12} /> Service Category</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><Briefcase size={12} /> Service Category</label>
                       <select 
                         required 
                         className={`${inputClasses} appearance-none cursor-pointer`}
@@ -215,7 +215,7 @@ export default function VendorRegistration() {
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><MapPin size={12} /> Primary City</label>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><MapPin size={12} /> Primary City</label>
                       <input 
                         type="text" 
                         required 
@@ -228,7 +228,7 @@ export default function VendorRegistration() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1 flex items-center gap-2"><LinkIcon size={12} /> Portfolio / Website Link</label>
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1 flex items-center gap-2"><LinkIcon size={12} /> Portfolio / Website Link</label>
                     <input 
                       type="url" 
                       className={inputClasses} 
@@ -239,7 +239,7 @@ export default function VendorRegistration() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Tell us about your services</label>
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ms-1">Tell us about your services</label>
                     <textarea 
                       rows={4} 
                       className={`${inputClasses} resize-none`} 

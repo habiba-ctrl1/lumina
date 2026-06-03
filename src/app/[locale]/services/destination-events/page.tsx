@@ -122,7 +122,7 @@ export default function DestinationEventsPage() {
               { icon: Map, title: "Diriyah Heritage", desc: "Immersive cultural events in the historic mud-brick city of Diriyah, blending Saudi tradition with modern luxury." },
               { icon: Tent, title: "Desert Glamping", desc: "Bespoke desert safari and luxury glamping experiences, complete with traditional dining and stargazing." },
               { icon: Palmtree, title: "Jeddah Waterfront", desc: "High-end corporate and social events taking advantage of the vibrant Jeddah Corniche and waterfront venues." },
-            ].map((service, i) => (
+            ].map((service: any, i: number) => (
               <div key={i} className="bg-white border border-slate-200 p-8 rounded-sm hover:border-gold-400/50 hover:shadow-xl transition-all duration-500 group">
                 <service.icon size={32} className="text-gold-500 mb-8 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-display text-ink-950 mb-6 uppercase tracking-wider">{service.title}</h3>
@@ -144,7 +144,7 @@ export default function DestinationEventsPage() {
                 { q: "Do you handle travel logistics for destination events in Saudi Arabia?", a: "Yes, we offer complete end-to-end logistics including charter flights, VIP ground transportation, and luxury accommodation buyouts at resorts in AlUla, NEOM, and the Red Sea." },
                 { q: "Can you build event infrastructure in remote desert locations?", a: "Absolutely. Our production team specializes in remote event logistics, bringing in climate-controlled structural tents, power generation, and luxury amenities to pristine desert environments while ensuring zero environmental impact." },
                 { q: "How far in advance should we plan a destination event in AlUla?", a: "For major events and weddings in AlUla, we recommend starting the planning process 6 to 12 months in advance to secure the best dates at high-demand luxury resorts and heritage venues." }
-              ].map((faq, i) => (
+              ].map((faq: any, i: number) => (
                 <div key={i} className="bg-slate-50 p-8 border border-slate-200 rounded-sm">
                   <h3 className="text-lg font-medium text-ink-950 mb-3">{faq.q}</h3>
                   <p className="text-slate-600 font-light text-sm">{faq.a}</p>

@@ -124,7 +124,7 @@ const organizationSchema = {
   description:
     "Premier event management company in Saudi Arabia specializing in corporate events, exhibitions, luxury weddings, conferences, and event production across Riyadh, Jeddah, and AlUla.",
   telephone: "+966501234567",
-  email: "hello@saudieventmanagement.com",
+  email: "infosaudieventmanagement@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Riyadh",

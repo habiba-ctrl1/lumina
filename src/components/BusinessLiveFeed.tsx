@@ -69,8 +69,8 @@ export default function BusinessLiveFeed() {
   return (
     <section className="py-32 bg-emerald-950 overflow-hidden relative border-t border-white/5">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -mr-48 -mt-48" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] -ml-32 -mb-32" />
+      <div className="absolute top-0 end-0 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -me-48 -mt-48" />
+      <div className="absolute bottom-0 start-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[100px] -ms-32 -mb-32" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -106,11 +106,11 @@ export default function BusinessLiveFeed() {
             <div className="absolute inset-0 bg-gold-500/5 blur-[80px] rounded-full" />
             <div className="relative space-y-8">
               {loading ? (
-                [1, 2, 3].map((i) => (
+                [1, 2, 3].map((i: any) => (
                   <div key={i} className="h-32 bg-emerald-900/50 border border-white/5 rounded-2xl animate-pulse" />
                 ))
               ) : updates.length > 0 ? (
-                updates.map((update, i) => (
+                updates.map((update: any, i: number) => (
                   <motion.div
                     key={update.id}
                     initial={{ opacity: 0, y: 20 }}

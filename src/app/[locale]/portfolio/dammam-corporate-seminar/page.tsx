@@ -32,7 +32,7 @@ export default function DammamCorporateSeminar() {
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <Link href="/portfolio" className="inline-flex items-center text-white hover:text-primary transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="mr-2" /> Back to Portfolio
+            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-white/20">
             Industrial & Energy Sector
@@ -52,7 +52,7 @@ export default function DammamCorporateSeminar() {
             { icon: Briefcase, label: "Guests", val: "800+ Executives" },
             { icon: BarChart, label: "Engagement", val: "High Impact" },
             { icon: ShieldCheck, label: "Protocol", val: "Strict Safety" }
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-primary mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
@@ -88,7 +88,7 @@ export default function DammamCorporateSeminar() {
             { title: "Technical Integration", desc: "Live translation services for 6 languages and instant polling technology for real-time audience engagement." },
             { title: "Catering Logsitics", desc: "High-volume, high-quality catering that met strict dietary and timing requirements of the energy industry." },
             { title: "Post-Event Reporting", desc: "Detailed engagement analytics and feedback reports delivered to the client within 24 hours." }
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <div key={i} className="bg-white p-10 rounded-3xl border border-slate-200 flex gap-10">
               <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
                 <CheckCircle2 size={20} className="text-primary" />

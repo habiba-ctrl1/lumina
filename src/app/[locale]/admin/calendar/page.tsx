@@ -129,14 +129,14 @@ export default function CalendarPage() {
         {/* Calendar Grid */}
         <div className="grid grid-cols-7 gap-px bg-ink-900">
           {/* Days */}
-          {days.map((day) => (
+          {days.map((day: any) => (
             <div key={day} className="bg-ink-800 py-5 text-center text-[10px] font-black text-sand-400 uppercase tracking-[0.25em] border-b border-ink-500">
               {day}
             </div>
           ))}
 
           {/* Dates */}
-          {calendarDates.map((item, i) => {
+          {calendarDates.map((item: any, i: number) => {
             const dateEvents = item.date ? getEventsForDate(item.date) : [];
             const isToday = item.date && new Date().getDate() === item.date && new Date().getMonth() === month && new Date().getFullYear() === year;
 
@@ -155,7 +155,7 @@ export default function CalendarPage() {
                   </span>
                   {dateEvents.length > 0 && (
                     <div className="flex gap-1">
-                      {dateEvents.slice(0, 3).map((_, idx) => (
+                      {dateEvents.slice(0, 3).map((_: any, idx: number) => (
                         <div key={idx} className="w-1.5 h-1.5 rounded-full bg-gold-500" />
                       ))}
                     </div>
@@ -163,7 +163,7 @@ export default function CalendarPage() {
                 </div>
 
                 <div className="space-y-2.5">
-                  {dateEvents.map((event) => (
+                  {dateEvents.map((event: any) => (
                     <motion.div
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}

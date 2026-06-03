@@ -85,7 +85,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
             modules={[EffectCoverflow, Pagination, Autoplay]}
             className="w-full pt-10 pb-20"
           >
-            {galleryItems.map((item) => (
+            {galleryItems.map((item: any) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
                 <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer">
                   <div className="relative w-[300px] md:w-[450px] h-[250px] md:h-[350px] rounded-xl overflow-hidden border border-slate-200 group-hover:border-[var(--primary)] shadow-md hover:shadow-xl transition-all duration-700">
@@ -100,7 +100,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
                     
                     {/* Content - Always visible with white text on dark overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <div className="absolute bottom-0 start-0 end-0 p-8">
                       <p className="text-[10px] text-teal-300 uppercase tracking-[0.4em] font-bold mb-2">{item.category}</p>
                       <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">{item.title}</h3>
                       <div className="w-10 h-0.5 bg-[var(--primary)] mt-3" />

@@ -29,7 +29,7 @@ export default function LiveEventTracker() {
   return (
     <section id="tracking" className="py-32 bg-[#F8F9FA] relative overflow-hidden">
       {/* Ambient backgrounds */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 end-0 w-[600px] h-[600px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
@@ -61,7 +61,7 @@ export default function LiveEventTracker() {
                     <MapPin size={16} className="text-champagne-500" /> Riyadh International Ballroom
                   </p>
                 </div>
-                <div className="md:text-right">
+                <div className="md:text-end">
                   <div className="text-[#041E42] font-sans text-3xl font-bold tracking-tighter">
                     {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                   </div>
@@ -133,7 +133,7 @@ export default function LiveEventTracker() {
                 {[
                   { text: "Catering team has finalized the appetizers station. Temperature checks verified.", time: "2 minutes ago", team: "Ops Team", color: "bg-sage-500" },
                   { text: "Orchestra sound check successfully completed in the Main Atrium.", time: "15 minutes ago", team: "Tech Team", color: "bg-champagne-500" }
-                ].map((update, i) => (
+                ].map((update: any, i: number) => (
                   <div key={i} className="flex gap-10 group">
                     <div className={`w-1 h-12 ${update.color} rounded-full transition-transform group-hover:scale-y-110`} />
                     <div>
@@ -152,9 +152,9 @@ export default function LiveEventTracker() {
             <div className="space-y-8 relative">
               <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gray-100" />
 
-              {eventMilestones.map((milestone) => (
-                <div key={milestone.id} className="relative pl-12 group">
-                  <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 bg-ink-800 flex items-center justify-center z-10 transition-all duration-500 ${
+              {eventMilestones.map((milestone: any) => (
+                <div key={milestone.id} className="relative ps-12 group">
+                  <div className={`absolute start-0 top-1 w-6 h-6 rounded-full border-2 bg-ink-800 flex items-center justify-center z-10 transition-all duration-500 ${
                     milestone.status === 'completed' ? 'border-sage-500 text-sage-500' : 
                     milestone.status === 'in-progress' ? 'border-champagne-500 text-champagne-500' : 'border-gray-200 text-gray-300'
                   }`}>

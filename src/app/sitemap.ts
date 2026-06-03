@@ -4,7 +4,7 @@ import { blogPosts } from '@/lib/blog-data';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://saudieventmanagement.com";
 
-  const blogEntries = blogPosts.map((post) => ({
+  const blogEntries = blogPosts.map((post: any) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms'
   ];
 
-  const staticEntries = staticPages.map((route) => ({
+  const staticEntries = staticPages.map((route: any) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: (route === '' || route === '/blog' ? 'weekly' : 'monthly') as 'weekly' | 'monthly',

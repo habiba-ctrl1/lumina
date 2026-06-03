@@ -86,13 +86,13 @@ export default function ClientsPage() {
       <div className="bg-ink-800 border border-ink-600 rounded-[2.5rem] shadow-sm overflow-hidden">
         <div className="p-8 border-b border-ink-500 flex flex-col sm:flex-row gap-10 items-center justify-between bg-ink-950/50">
           <div className="relative w-full sm:w-[400px]">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
+            <Search className="absolute start-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
             <input 
               type="text" 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, email, or company..." 
-              className="w-full bg-ink-800 border border-ink-600 rounded-2xl pl-12 pr-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
+              className="w-full bg-ink-800 border border-ink-600 rounded-2xl ps-12 pe-4 py-3 text-sm text-sand-50 font-medium focus:outline-none focus:ring-4 focus:ring-gold-500/5 focus:border-gold-500 transition-all placeholder:text-sand-400"
             />
           </div>
           <div className="flex gap-3 w-full sm:w-auto">
@@ -111,19 +111,19 @@ export default function ClientsPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-start border-collapse">
             <thead>
               <tr className="border-b border-ink-500 text-[10px] uppercase tracking-[0.2em] text-sand-400 font-black">
                 <th className="px-8 py-6">Client Identity</th>
                 <th className="px-8 py-6">Connection</th>
                 <th className="px-8 py-6">Status</th>
                 <th className="px-8 py-6">Engagement</th>
-                <th className="px-8 py-6 text-right">Actions</th>
+                <th className="px-8 py-6 text-end">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {loading ? (
-                [1, 2, 3].map(i => (
+                [1, 2, 3].map((i: any) => (
                   <tr key={i} className="animate-pulse">
                     <td colSpan={5} className="px-8 py-8"><div className="h-8 bg-ink-950 rounded-xl" /></td>
                   </tr>
@@ -133,7 +133,7 @@ export default function ClientsPage() {
                   <td colSpan={5} className="px-8 py-28 text-center text-sand-400 font-bold uppercase tracking-widest text-xs">No clients found matching your search.</td>
                 </tr>
               ) : (
-                clients.map((client, i) => (
+                clients.map((client: any, i: number) => (
                   <motion.tr 
                     key={client.id}
                     initial={{ opacity: 0, y: 10 }}
@@ -180,7 +180,7 @@ export default function ClientsPage() {
                         <span className="text-[10px] text-sand-400 font-bold uppercase tracking-wider">Events Managed</span>
                       </div>
                     </td>
-                    <td className="px-8 py-6 text-right">
+                    <td className="px-8 py-6 text-end">
                       <button className="w-10 h-10 flex items-center justify-center text-sand-500 hover:bg-ink-800 hover:text-sand-50 hover:shadow-md rounded-xl transition-all border border-transparent hover:border-ink-500">
                         <MoreVertical size={20} />
                       </button>

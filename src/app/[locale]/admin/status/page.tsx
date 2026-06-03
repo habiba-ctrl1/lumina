@@ -93,7 +93,7 @@ export default function StatusPage() {
 
       {/* Filter Bar */}
       <div className="flex flex-wrap gap-2 mb-8">
-        {categories.map((cat) => (
+        {categories.map((cat: any) => (
           <button
             key={cat}
             onClick={() => setFilter(cat)}
@@ -122,7 +122,7 @@ export default function StatusPage() {
         <div className="p-8">
           {loading ? (
             <div className="space-y-4">
-              {[1, 2, 3, 4, 5].map(i => (
+              {[1, 2, 3, 4, 5].map((i: any) => (
                 <div key={i} className="h-20 bg-ink-950 animate-pulse rounded-2xl border border-ink-500" />
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function StatusPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {filteredLogs.map((log, i) => (
+              {filteredLogs.map((log: any, i: number) => (
                 <motion.div 
                   key={log.id}
                   initial={{ opacity: 0, y: 10 }}

@@ -35,7 +35,7 @@ export default function BlogPreview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {latestPosts.map((post, i) => (
+          {latestPosts.map((post: any, i: number) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function BlogPreview() {
                     height={400}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
                   />
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-4 start-4">
                     <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md text-[var(--primary)] text-[10px] uppercase tracking-widest font-bold rounded-full shadow-sm">
                       {post.category}
                     </span>

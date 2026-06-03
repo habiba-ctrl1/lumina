@@ -106,13 +106,13 @@ export default function VendorsPage() {
         {/* Filters Bar */}
         <div className="p-8 border-b border-ink-500 flex flex-col lg:flex-row gap-10 items-end bg-ink-950/30">
           <div className="relative flex-grow w-full lg:w-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
+            <Search className="absolute start-4 top-1/2 -translate-y-1/2 text-sand-400" size={18} />
             <input 
               type="text" 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by vendor name or services..." 
-              className="w-full bg-ink-800 border border-ink-600 rounded-2xl pl-12 pr-4 py-3 text-sm font-medium text-sand-50 focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400 shadow-sm"
+              className="w-full bg-ink-800 border border-ink-600 rounded-2xl ps-12 pe-4 py-3 text-sm font-medium text-sand-50 focus:outline-none focus:ring-4 focus:ring-gold-500/10 focus:border-gold-500 transition-all placeholder:text-sand-400 shadow-sm"
             />
           </div>
           
@@ -125,7 +125,7 @@ export default function VendorsPage() {
                 className="bg-ink-800 border border-ink-600 rounded-2xl px-4 py-3 text-xs font-bold text-sand-50 focus:outline-none focus:border-gold-500 min-w-[140px] appearance-none cursor-pointer shadow-sm"
               >
                 <option value="all">All Categories</option>
-                {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                {categories.map((c: any) => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
 
@@ -143,7 +143,7 @@ export default function VendorsPage() {
         <div className="p-10">
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {[1, 2, 3].map((i) => (
+              {[1, 2, 3].map((i: any) => (
                 <div key={i} className="h-64 bg-ink-950 animate-pulse rounded-3xl border border-ink-500" />
               ))}
             </div>
@@ -164,7 +164,7 @@ export default function VendorsPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {vendors.map((vendor, i) => (
+              {vendors.map((vendor: any, i: number) => (
                 <motion.div
                   key={vendor.id}
                   initial={{ opacity: 0, y: 15 }}
@@ -222,7 +222,7 @@ export default function VendorsPage() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-full md:w-[550px] bg-ink-800 border-l border-ink-600 z-[101] shadow-2xl flex flex-col"
+              className="fixed inset-y-0 end-0 w-full md:w-[550px] bg-ink-800 border-l border-ink-600 z-[101] shadow-2xl flex flex-col"
             >
               <div className="p-8 border-b border-ink-500 flex items-center justify-between bg-ink-950/30">
                 <div className="flex items-center gap-10">
@@ -267,7 +267,7 @@ export default function VendorsPage() {
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full bg-ink-950 border border-ink-600 rounded-xl py-3 px-4 text-sm font-bold text-sand-50 focus:outline-none focus:border-gold-500 appearance-none cursor-pointer"
                       >
-                        {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                        {categories.map((c: any) => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
                     <div className="space-y-2">

@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Briefcase } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
+  const t = useTranslations("contact");
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const inputClass = (field: string) => `
@@ -30,10 +32,10 @@ export default function ContactSection() {
             <div className="mb-10">
               <span className="w-12 h-[2px] bg-[var(--primary)] inline-block mb-6" />
               <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
-                Get in Touch
+                {t("title")}
               </h2>
               <p className="text-slate-600 text-base leading-relaxed">
-                Whether you're planning a high-profile corporate summit or an exclusive private gala, our expert team is ready to turn your vision into reality.
+                {t("subtitle")}
               </p>
             </div>
 
@@ -44,11 +46,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900 mb-2">
-                    Headquarters
+                    {t("headquarters")}
                   </h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    Olaya District, King Fahd Road<br />
-                    Riyadh, Kingdom of Saudi Arabia
+                  <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
+                    {t("headquartersAddress")}
                   </p>
                 </div>
               </div>
@@ -59,11 +60,11 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900 mb-2">
-                    Direct Line
+                    {t("directLine")}
                   </h4>
                   <p className="text-slate-600 text-sm">
                     +966 50 123 4567<br />
-                    <span className="text-slate-400 text-xs mt-1 block">Mon-Thu 9am-6pm AST</span>
+                    <span className="text-slate-400 text-xs mt-1 block">{t("hours")}</span>
                   </p>
                 </div>
               </div>
@@ -74,10 +75,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-[11px] font-bold uppercase tracking-widest text-slate-900 mb-2">
-                    Email Inquiries
+                    {t("emailInquiries")}
                   </h4>
                   <p className="text-slate-600 text-sm">
-                    hello@saudieventmanagement.com
+                    infosaudieventmanagement@gmail.com
                   </p>
                 </div>
               </div>
@@ -93,19 +94,19 @@ export default function ContactSection() {
           >
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl shadow-black/5 border border-slate-100">
               <h3 className="font-display text-2xl font-bold text-slate-900 mb-8">
-                Request a Proposal
+                {t("formTitle")}
               </h3>
               
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
-                      Full Name *
+                      {t("fullName")}
                     </label>
                     <input 
                       type="text" 
                       required
-                      placeholder="John Doe"
+                      placeholder={t("namePlaceholder")}
                       className={inputClass("name")}
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField(null)}
@@ -113,12 +114,12 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
-                      Corporate Email *
+                      {t("corporateEmail")}
                     </label>
                     <input 
                       type="email" 
                       required
-                      placeholder="john@company.com"
+                      placeholder={t("emailPlaceholder")}
                       className={inputClass("email")}
                       onFocus={() => setFocusedField("email")}
                       onBlur={() => setFocusedField(null)}
@@ -128,7 +129,7 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
-                    Event Type
+                    {t("eventType")}
                   </label>
                   <div className="relative">
                     <select 
@@ -137,24 +138,24 @@ export default function ContactSection() {
                       onFocus={() => setFocusedField("type")}
                       onBlur={() => setFocusedField(null)}
                     >
-                      <option value="" disabled>Select an option</option>
-                      <option value="corporate">Corporate Conference / Summit</option>
-                      <option value="gala">Corporate Gala Dinner</option>
-                      <option value="exhibition">Exhibition / Trade Show</option>
-                      <option value="wedding">Luxury Wedding</option>
-                      <option value="other">Other Exclusive Event</option>
+                      <option value="" disabled>{t("selectOption")}</option>
+                      <option value="corporate">{t("corporateConference")}</option>
+                      <option value="gala">{t("corporateGala")}</option>
+                      <option value="exhibition">{t("exhibitionTrade")}</option>
+                      <option value="wedding">{t("luxuryWedding")}</option>
+                      <option value="other">{t("otherEvent")}</option>
                     </select>
-                    <Briefcase size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                    <Briefcase size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
-                    Event Details
+                    {t("eventDetails")}
                   </label>
                   <textarea 
                     rows={4}
-                    placeholder="Tell us about your estimated guest count, preferred dates, and specific requirements..."
+                    placeholder={t("detailsPlaceholder")}
                     className={`${inputClass("message")} resize-none`}
                     onFocus={() => setFocusedField("message")}
                     onBlur={() => setFocusedField(null)}
@@ -165,7 +166,7 @@ export default function ContactSection() {
                   type="submit"
                   className="w-full bg-[var(--primary)] text-white py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-[var(--primary-dark)] hover:shadow-lg flex items-center justify-center gap-2 group"
                 >
-                  <span>Send Message</span>
+                  <span>{t("sendMessage")}</span>
                   <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
