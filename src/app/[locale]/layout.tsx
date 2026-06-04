@@ -222,16 +222,7 @@ const websiteSchema = {
   publisher: {
     "@id": "https://saudieventmanagement.com/#organization",
   },
-  inLanguage: ["en-US", "ar-SA"],
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate:
-        "https://saudieventmanagement.com/search?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
-  },
+  inLanguage: ["en-US", "ar-SA"]
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
