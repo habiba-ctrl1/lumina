@@ -273,7 +273,7 @@ export default async function RootLayout({
         antialiased → smoother font rendering on dark backgrounds
       */}
       <body
-        className="font-sans antialiased bg-ink-950 text-sand-100"
+        className="font-sans antialiased"
         suppressHydrationWarning
       >
         {/* Analytics */}

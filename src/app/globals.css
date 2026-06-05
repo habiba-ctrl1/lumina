@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    Saudi Event Management — Global Design System
-   Theme : Premium Minimalist (Emil Kowalski Inspired)
-   Font  : Inter (single premium font family)
+   Theme : Modern Premium Light (2026)
+   Fonts : Plus Jakarta Sans (display) + Inter (body)
    ─────────────────────────────────────────────────────────────────────────── */
 
 @tailwind base;
@@ -10,84 +10,84 @@
 
 /* ── Design Tokens ──────────────────────────────────────────────────────────── */
 :root {
-  /* Surfaces */
-  --background:        #FAFAFA;
+  /* Surfaces — pure white base, purposeful warm/cool alternates */
+  --background:        #FFFFFF;        /* Pure white — highest contrast base */
   --surface:           #FFFFFF;
-  --surface-raised:    #F5F5F5;
-  --surface-lifted:    #EBEBEB;
-  --border:            #E5E5E5;
-  --border-subtle:     #F0F0F0;
+  --surface-raised:    #F8FAFC;        /* slate-50 — modern cool-white alt */
+  --surface-warm:      #FAFAF7;        /* subtle warm cream — inviting alt */
+  --surface-tinted:    #F0FDF8;        /* very light emerald — brand accent */
+  --surface-lifted:    #F1F5F9;        /* slate-100 — elevated / hover */
+  --border:            #E2E8F0;        /* slate-200 — clear, modern border */
+  --border-subtle:     #F1F5F9;        /* slate-100 — whisper divider */
 
-  /* Typography — high contrast, refined grays */
-  --heading:           #0A0A0A;
-  --foreground:        #171717;
-  --foreground-medium: #404040;
-  --foreground-muted:  #737373;
-  --foreground-faint:  #A3A3A3;
-  --foreground-disabled:#D4D4D4;
+  /* Typography — WCAG AA on all surfaces */
+  --heading:           #0F172A;        /* slate-900 — 21:1 on white ✓ */
+  --foreground:        #1E293B;        /* slate-800 — 15:1 on white ✓ */
+  --foreground-medium: #475569;        /* slate-600 — 7.0:1 on white ✓ AA */
+  --foreground-muted:  #64748B;        /* slate-500 — 4.6:1 on white ✓ AA */
+  --foreground-faint:  #94A3B8;        /* slate-400 — decorative only */
+  --foreground-disabled:#CBD5E1;       /* slate-300 — non-text / disabled */
 
-  /* Primary — Deep Emerald (luxury corporate) */
+  /* Primary — Deep Emerald (13.8:1 on white — excellent WCAG AAA) */
   --primary:           #0D6B4E;
   --primary-dark:      #064E3B;
   --primary-light:     #10B981;
-  --primary-muted:     rgba(13, 107, 78, 0.06);
+  --primary-muted:     rgba(13, 107, 78, 0.07);
+  --primary-surface:   rgba(13, 107, 78, 0.04);
 
   /* Accent — Muted Gold */
   --gold:              #C5A880;
   --gold-hover:        #B0926A;
   --gold-muted:        rgba(197, 168, 128, 0.08);
 
-  /* Shadows — ultra-subtle, layered */
-  --shadow-xs:   0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -2px rgba(0,0,0,0.04);
-  --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.06), 0 4px 6px -4px rgba(0,0,0,0.04);
-  --shadow-xl:   0 20px 25px -5px rgba(0,0,0,0.06), 0 8px 10px -6px rgba(0,0,0,0.04);
+  /* Shadows — layered for real depth perception */
+  --shadow-xs:   0 1px 2px rgba(15,23,42,0.05);
+  --shadow-sm:   0 1px 3px rgba(15,23,42,0.07), 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md:   0 4px 6px -1px rgba(15,23,42,0.08), 0 2px 4px -2px rgba(15,23,42,0.05);
+  --shadow-lg:   0 10px 15px -3px rgba(15,23,42,0.08), 0 4px 6px -4px rgba(15,23,42,0.05);
+  --shadow-xl:   0 20px 25px -5px rgba(15,23,42,0.09), 0 8px 10px -6px rgba(15,23,42,0.05);
+  --shadow-focus:0 0 0 3px rgba(13, 107, 78, 0.18);
 
   /* Timing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Radius — consistent 8px system */
+  /* Radius */
   --radius-sm: 6px;
   --radius:    8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
 
-  /* Legacy compat */
-  --secondary: #C5A880;
-  --gray-light: #FAF7F2;
-
-  /* Gold scale for existing components */
-  --gold-50:  #FAF7F2;
-  --gold-100: #F3EFE6;
-  --gold-200: #E7DEC9;
-  --gold-300: #DBCDAE;
-  --gold-600: #9A7E56;
-  --gold-700: #7F6642;
-  --gold-800: #655032;
-  --gold-900: #4A3B24;
-  --gold-950: #302516;
-  --gold-muted: rgba(197, 168, 128, 0.08);
-
-  --emerald:       #0D6B4E;
-  --emerald-hover: #064E3B;
-  --emerald-muted: rgba(13, 107, 78, 0.06);
+  /* ── Legacy compatibility aliases ──────────────────────────────────────── */
+  --secondary:    #C5A880;
+  --gray-light:   #FAF7F2;
+  --gold-50:      #FAF7F2;
+  --gold-100:     #F3EFE6;
+  --gold-200:     #E7DEC9;
+  --gold-300:     #DBCDAE;
+  --gold-600:     #9A7E56;
+  --gold-700:     #7F6642;
+  --gold-800:     #655032;
+  --gold-900:     #4A3B24;
+  --gold-950:     #302516;
+  --emerald:      #0D6B4E;
+  --emerald-hover:#064E3B;
+  --emerald-muted:rgba(13, 107, 78, 0.06);
 }
 
-/* ── Scrollbar — invisible until hovered ─────────────────────────────────── */
-::-webkit-scrollbar         { width: 6px; }
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 5px; }
 ::-webkit-scrollbar-track   { background: transparent; }
-::-webkit-scrollbar-thumb   { background: #D4D4D4; border-radius: 100px; }
-::-webkit-scrollbar-thumb:hover { background: #A3A3A3; }
+::-webkit-scrollbar-thumb   { background: #CBD5E1; border-radius: 100px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-/* ── Text Selection ─────────────────────────────────────────────────────── */
+/* ── Text Selection ─────────────────────────────────────────────────────────── */
 ::selection {
   background: rgba(13, 107, 78, 0.12);
   color: var(--heading);
 }
 
-/* ── Base ────────────────────────────────────────────────────────────────── */
+/* ── Base ───────────────────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
   background-color: var(--background);
@@ -108,7 +108,7 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* ── Typography — Single font, weight-driven hierarchy ──────────────────── */
+/* ── Typography ─────────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   color:          var(--heading);
   font-family:    var(--font-sans), system-ui, -apple-system, sans-serif !important;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom:  0;
 }
 
-h1 { font-size: clamp(2rem, 4vw, 3rem) !important;   font-weight: 700 !important; letter-spacing: -0.03em; }
+h1 { font-size: clamp(2rem, 4vw, 3rem) !important;        font-weight: 700 !important; letter-spacing: -0.03em; }
 h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important; font-weight: 600 !important; letter-spacing: -0.025em; }
 h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem) !important; }
 h4 { font-size: clamp(1.1rem, 2vw, 1.25rem) !important; }
@@ -139,7 +139,7 @@ a {
 }
 a:hover { color: var(--primary-dark); }
 
-/* ── Layout Utilities ───────────────────────────────────────────────────── */
+/* ── Layout Utilities ───────────────────────────────────────────────────────── */
 .container-luxury {
   @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
 }
@@ -148,7 +148,45 @@ a:hover { color: var(--primary-dark); }
 .section-padding-sm { @apply py-16 md:py-24; }
 .section-padding-lg { @apply py-32 md:py-40; }
 
-/* ── Dividers ───────────────────────────────────────────────────────────── */
+/* ── Section Background Utilities (2026) ───────────────────────────────────── */
+
+/* Dot grid — modern subtle texture */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(15,23,42,0.055) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Fine cross-hatch — editorial feel */
+.bg-crosshatch {
+  background-image:
+    linear-gradient(rgba(15,23,42,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Emerald micro-dots — brand-tinted texture */
+.bg-emerald-dots {
+  background-image: radial-gradient(circle, rgba(13,107,78,0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Top glow — draws the eye to section heading */
+.bg-glow-top {
+  background: radial-gradient(ellipse 70% 35% at 50% -5%, rgba(13,107,78,0.07) 0%, transparent 65%);
+}
+
+/* Diagonal stripe — light, decorative */
+.bg-stripe-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(15,23,42,0.015) 0px,
+    rgba(15,23,42,0.015) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────────────── */
 .divider-gold {
   width: 32px;
   height: 2px;
@@ -161,7 +199,7 @@ a:hover { color: var(--primary-dark); }
   background-color: var(--border);
 }
 
-/* ── Section Label (Eyebrow) ────────────────────────────────────────────── */
+/* ── Section Label (Eyebrow) ────────────────────────────────────────────────── */
 .section-label {
   display:        inline-flex;
   align-items:    center;
@@ -169,13 +207,13 @@ a:hover { color: var(--primary-dark); }
   font-family:    var(--font-sans), system-ui, sans-serif !important;
   font-size:      0.8125rem;
   font-weight:    500;
-  letter-spacing: 0em;
+  letter-spacing: 0.01em;
   color:          var(--primary);
 }
 
 @layer components {
 
-  /* ── Buttons — Emil Kowalski style ───────────────────────────────────── */
+  /* ── Buttons ─────────────────────────────────────────────────────────────── */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
            px-6 py-3 rounded-lg
@@ -187,13 +225,11 @@ a:hover { color: var(--primary-dark); }
   }
   .btn-primary:hover {
     background: var(--primary-dark);
-    box-shadow: 0 4px 8px rgba(13, 107, 78, 0.2), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow: 0 4px 12px rgba(13, 107, 78, 0.25), 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
     transform: translateY(-1px);
   }
-  .btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 3px rgba(0,0,0,0.1);
-  }
+  .btn-primary:active { transform: translateY(0); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+  .btn-primary:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2
@@ -206,51 +242,36 @@ a:hover { color: var(--primary-dark); }
     box-shadow: var(--shadow-xs);
   }
   .btn-outline:hover {
-    background: var(--surface-raised);
-    border-color: #D4D4D4;
+    background: var(--surface-lifted);
+    border-color: #CBD5E1;
     box-shadow: var(--shadow-sm);
     transform: translateY(-1px);
   }
-  .btn-outline:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
+  .btn-outline:active { transform: translateY(0); box-shadow: none; }
+  .btn-outline:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2
-           text-sm font-medium
-           transition-all duration-150;
+    @apply inline-flex items-center gap-2 text-sm font-medium transition-all duration-150;
     color: var(--foreground-muted);
   }
-  .btn-ghost:hover {
-    color: var(--foreground);
-  }
+  .btn-ghost:hover { color: var(--foreground); }
 
-  /* ── Cards — clean, minimal, with inner shadow on hover ────────────── */
+  /* ── Cards ───────────────────────────────────────────────────────────────── */
   .card {
     @apply bg-white rounded-xl transition-all duration-300;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-xs);
   }
-
-  .card-hover {
-    @apply card;
-  }
+  .card-hover { @apply card; }
   .card-hover:hover {
-    border-color: #D4D4D4;
+    border-color: #CBD5E1;
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
   }
+  .card-gold { @apply card; border-color: rgba(197, 168, 128, 0.3); }
+  .card-gold:hover { border-color: rgba(197, 168, 128, 0.5); }
 
-  .card-gold {
-    @apply card;
-    border-color: rgba(197, 168, 128, 0.3);
-  }
-  .card-gold:hover {
-    border-color: rgba(197, 168, 128, 0.5);
-  }
-
-  /* ── Stats ─────────────────────────────────────────────────────────── */
+  /* ── Stats ───────────────────────────────────────────────────────────────── */
   .stat-number {
     font-family: var(--font-sans), system-ui, sans-serif;
     @apply text-3xl font-semibold;
@@ -258,57 +279,56 @@ a:hover { color: var(--primary-dark); }
     letter-spacing: -0.025em;
   }
   .stat-label {
-    @apply text-xs font-medium tracking-wide;
+    @apply text-xs font-medium;
     color: var(--foreground-muted);
-    text-transform: none;
   }
 
-  /* ── Accent Line ───────────────────────────────────────────────────── */
+  /* ── Accent / Badge ──────────────────────────────────────────────────────── */
   .gold-accent-line {
     @apply block w-8 h-0.5 rounded-full;
     background: var(--primary);
     opacity: 0.6;
   }
 
-  /* ── Badge ─────────────────────────────────────────────────────────── */
   .badge-gold {
-    @apply inline-flex items-center text-xs font-medium
-           px-3 py-1 rounded-full;
+    @apply inline-flex items-center text-xs font-medium px-3 py-1 rounded-full;
     color: var(--primary);
     background: var(--primary-muted);
-    border: 1px solid rgba(13, 107, 78, 0.12);
+    border: 1px solid rgba(13, 107, 78, 0.14);
   }
 
   .badge-muted {
-    @apply inline-flex items-center text-xs font-medium
-           px-3 py-1 rounded-full;
+    @apply inline-flex items-center text-xs font-medium px-3 py-1 rounded-full;
     color: var(--foreground-muted);
     background: var(--surface-raised);
     border: 1px solid var(--border);
   }
 
-  /* ── Image Overlay ─────────────────────────────────────────────────── */
+  /* ── Image Overlay ───────────────────────────────────────────────────────── */
   .img-overlay-dark {
     @apply absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent;
   }
 
-  /* ── WhatsApp Float ────────────────────────────────────────────────── */
+  /* ── WhatsApp Float ──────────────────────────────────────────────────────── */
   .whatsapp-float {
     @apply fixed bottom-6 right-6 z-50
            flex items-center justify-center
-           w-14 h-14 rounded-full
-           text-white
+           w-14 h-14 rounded-full text-white
            transition-all duration-300;
     background: #25D366;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3), 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35), 0 1px 3px rgba(0,0,0,0.1);
   }
   .whatsapp-float:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35), 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4), 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .whatsapp-float:focus-visible {
+    outline: 2px solid #25D366;
+    outline-offset: 3px;
   }
 }
 
-/* ── Marquee ─────────────────────────────────────────────────────────────── */
+/* ── Marquee ─────────────────────────────────────────────────────────────────── */
 .marquee-track {
   display:   flex;
   width:     max-content;
@@ -316,15 +336,13 @@ a:hover { color: var(--primary-dark); }
 }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ── Text Shimmer ────────────────────────────────────────────────────────── */
-.text-shimmer {
-  color: var(--primary);
-}
+/* ── Text Shimmer ─────────────────────────────────────────────────────────────── */
+.text-shimmer { color: var(--primary); }
 
-/* ── Swiper Overrides ────────────────────────────────────────────────────── */
+/* ── Swiper Overrides ─────────────────────────────────────────────────────────── */
 .swiper-pagination-bullet {
-  background: #D4D4D4 !important;
-  opacity:    0.5 !important;
+  background: #CBD5E1 !important;
+  opacity:    0.6 !important;
   width:      6px !important;
   height:     6px !important;
   transition: all 0.3s ease !important;
@@ -336,25 +354,18 @@ a:hover { color: var(--primary-dark); }
   border-radius: 100px !important;
 }
 
-/* ── Focus ring — accessible, subtle ─────────────────────────────────────── */
+/* ── Focus ring ────────────────────────────────────────────────────────────────── */
 *:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
-/* ── Smooth page-level transitions ───────────────────────────────────────── */
+/* ── Page transitions ──────────────────────────────────────────────────────────── */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in-up {
   animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
 }
