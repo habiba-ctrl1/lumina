@@ -22,7 +22,7 @@ export default function HowItWorks() {
   }));
 
   return (
-    <SectionWrapper id="process" className="bg-white relative overflow-hidden">
+    <SectionWrapper id="process" className="bg-[var(--surface-raised)] bg-crosshatch relative overflow-hidden">
       <div className="relative z-10 py-10">
         {/* Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
@@ -62,8 +62,8 @@ export default function HowItWorks() {
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting Line */}
-          <div className="hidden lg:block absolute top-[40px] left-[12%] right-[12%] h-px bg-neutral-200 z-0">
+          {/* Connecting Line — sits behind the step number badges */}
+          <div className="hidden lg:block absolute top-[20px] left-[12%] right-[12%] h-px bg-neutral-200 z-0">
             <motion.div 
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -83,24 +83,23 @@ export default function HowItWorks() {
                   transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col items-center text-center group"
                 >
+                  {/* Step Number Badge */}
+                  <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center mb-4 shadow-md shadow-emerald-200">
+                    <span className="text-white text-[13px] font-bold">0{index + 1}</span>
+                  </div>
+
                   {/* Step Icon Circle */}
-                  <div className="w-20 h-20 bg-white border border-neutral-200 rounded-2xl flex items-center justify-center mb-6 group-hover:border-[var(--primary)]/30 group-hover:bg-emerald-50/50 transition-all duration-300 relative"
-                    style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
-                  >
-                    <div className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors duration-300">
+                  <div className="w-16 h-16 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-100 group-hover:border-emerald-200 transition-all duration-300 relative">
+                    <div className="text-[var(--primary)]">
                       {step.icon}
                     </div>
                   </div>
-                  
+
                   {/* Content Card */}
-                  <div className="bg-white border border-neutral-200/80 rounded-xl p-6 w-full flex-grow relative transition-all duration-300 group-hover:border-neutral-300"
+                  <div className="bg-white border border-neutral-200/80 rounded-xl p-6 w-full flex-grow relative transition-all duration-300 group-hover:border-[var(--primary)]/20 group-hover:shadow-md"
                     style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
                   >
-                    {/* Step Number */}
-                    <div className="absolute -top-3 start-1/2 -translate-x-1/2 bg-[var(--background)] text-neutral-400 text-[11px] font-medium px-3 py-1 rounded-full border border-neutral-200 group-hover:bg-emerald-50 group-hover:text-[var(--primary)] group-hover:border-emerald-100 transition-all duration-300">
-                      {t("stepPrefix")} 0{index + 1}
-                    </div>
-                    <h3 className="text-neutral-900 text-[16px] mb-3 font-semibold mt-2" style={{ letterSpacing: "-0.01em" }}>
+                    <h3 className="text-neutral-900 text-[16px] mb-3 font-semibold" style={{ letterSpacing: "-0.01em" }}>
                       {step.title}
                     </h3>
                     <p className="text-neutral-500 text-[14px] leading-relaxed">

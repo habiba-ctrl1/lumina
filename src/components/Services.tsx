@@ -65,18 +65,21 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative bg-white rounded-xl p-8 flex flex-col items-start border border-neutral-200/80 transition-all duration-300 hover:border-neutral-300"
+      className="group relative bg-white rounded-xl p-8 flex flex-col items-start border border-neutral-200/80 transition-all duration-300 hover:border-[var(--primary)]/30 overflow-hidden"
       style={{
         boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
       }}
       whileHover={{
         y: -4,
-        boxShadow: "0 12px 24px -4px rgba(0,0,0,0.06), 0 4px 8px -2px rgba(0,0,0,0.03)",
+        boxShadow: "0 16px 32px -6px rgba(0,0,0,0.08), 0 4px 8px -2px rgba(0,0,0,0.04)",
       }}
     >
+      {/* Top accent line */}
+      <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-[var(--primary)] to-emerald-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-xl" />
+
       {/* Icon */}
-      <div className="w-12 h-12 bg-neutral-50 flex items-center justify-center rounded-xl mb-6 border border-neutral-100 group-hover:bg-emerald-50 group-hover:border-emerald-100 transition-all duration-300">
-        <service.icon size={22} className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors duration-300" />
+      <div className="w-12 h-12 bg-emerald-50 flex items-center justify-center rounded-xl mb-6 border border-emerald-100 group-hover:bg-emerald-100 group-hover:border-emerald-200 transition-all duration-300">
+        <service.icon size={22} className="text-[var(--primary)]" />
       </div>
 
       <div className="flex-grow">
@@ -124,7 +127,7 @@ export default function Services() {
   const t = useTranslations("services");
   
   return (
-    <SectionWrapper className="bg-[var(--background)] relative" id="services">
+    <SectionWrapper className="bg-neutral-50/60 relative" id="services">
       <div className="relative z-10 py-10">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">

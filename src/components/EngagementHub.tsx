@@ -17,7 +17,7 @@ export default function EngagementHub() {
   };
 
   return (
-    <section className="bg-neutral-50 relative py-20 overflow-hidden">
+    <section className="bg-[var(--surface-tinted)] bg-emerald-dots relative py-20 overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <div className="flex flex-col items-center gap-4 mb-6">

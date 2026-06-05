@@ -139,8 +139,8 @@ export default function Footer() {
         </div>
 
         {/* Newsletter */}
-        <div className="bg-neutral-50 border border-neutral-200/80 rounded-2xl p-8 md:p-10 mb-12 relative overflow-hidden"
-          style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}
+        <div className="bg-[var(--surface-tinted)] border border-[var(--border)] rounded-2xl p-8 md:p-10 mb-12 relative overflow-hidden"
+          style={{ boxShadow: "0 1px 3px rgba(13,107,78,0.04), 0 4px 16px rgba(13,107,78,0.03)" }}
         >
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -183,12 +183,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-neutral-200/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[13px] font-medium text-neutral-400">
+          <p className="text-[13px] font-medium text-neutral-500">
             &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-[13px] font-medium text-neutral-400 hover:text-neutral-900 transition-colors">{t("privacy")}</Link>
-            <Link href="/terms"   className="text-[13px] font-medium text-neutral-400 hover:text-neutral-900 transition-colors">{t("terms")}</Link>
+            <Link href="/privacy" className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors">{t("privacy")}</Link>
+            <Link href="/terms"   className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors">{t("terms")}</Link>
           </div>
         </div>
       </div>

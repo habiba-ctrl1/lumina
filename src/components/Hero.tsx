@@ -50,7 +50,7 @@ export default function Hero() {
           <motion.div
             key={currentIdx}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.08 }}
+            animate={{ opacity: 0.22 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0"
@@ -67,10 +67,29 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--background)] via-[var(--background)]/95 to-[var(--background)]/80" />
       </div>
 
+      {/* ── Decorative gradient blobs ── */}
+      <div className="absolute top-20 right-1/4 w-96 h-96 bg-emerald-100/30 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute bottom-20 left-10 w-64 h-64 bg-emerald-50/40 rounded-full blur-2xl pointer-events-none z-0" />
+
       {/* ── H1 — SEO ── */}
       <h1 className="sr-only">
         {t("h1En")}
       </h1>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] text-neutral-400 font-medium tracking-[0.2em] uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          className="w-px h-8 bg-gradient-to-b from-neutral-400 to-transparent"
+        />
+      </motion.div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 w-full pt-32 pb-20">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">

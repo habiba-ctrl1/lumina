@@ -18,7 +18,7 @@ export default function ContactSection() {
   `;
 
   return (
-    <SectionWrapper id="contact" className="bg-[var(--surface-raised)] relative overflow-hidden">
+    <SectionWrapper id="contact" className="bg-[var(--surface-warm)] bg-dot-grid relative overflow-hidden">
       <div className="relative z-10 py-10 max-w-6xl mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           

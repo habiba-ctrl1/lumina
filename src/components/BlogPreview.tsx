@@ -10,7 +10,7 @@ export default function BlogPreview() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="bg-white relative py-24 border-t border-neutral-100">
+    <section className="bg-[var(--surface-raised)] bg-crosshatch relative py-24 border-t border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-8">

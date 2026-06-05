@@ -57,7 +57,7 @@ export default function FilterablePortfolio() {
     : portfolioItems.filter(item => item.category === t(`categories.${activeCategory}` as any) || item.category.toLowerCase().replace(/ /g, '') === activeCategory.toLowerCase());
 
   return (
-    <SectionWrapper className="bg-[var(--surface-raised)] relative overflow-hidden">
+    <SectionWrapper className="bg-white relative overflow-hidden">
       <div className="relative z-10 py-10">
         
         {/* Header */}

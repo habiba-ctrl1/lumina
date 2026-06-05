@@ -31,7 +31,7 @@ export default function PartnersSection() {
   }, [testimonials.length]);
 
   return (
-    <SectionWrapper id="clients" className="bg-white relative overflow-hidden">
+    <SectionWrapper id="clients" className="bg-[var(--surface-tinted)] bg-emerald-dots relative overflow-hidden">
       <div className="relative z-10 py-10">
         
         {/* Partner Logos Marquee */}

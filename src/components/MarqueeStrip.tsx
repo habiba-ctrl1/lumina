@@ -13,7 +13,7 @@ export default function MarqueeStrip() {
   }));
 
   return (
-    <div className="relative py-6 bg-[var(--surface-raised)] border-y border-neutral-200/60 overflow-hidden">
+    <div className="relative py-5 bg-[var(--surface-raised)] border-y border-[var(--border)] overflow-hidden bg-glow-top">
       {/* Fade edges */}
       <div className="absolute start-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--surface-raised)] to-transparent z-10" />
       <div className="absolute end-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--surface-raised)] to-transparent z-10" />
