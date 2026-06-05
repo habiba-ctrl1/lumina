@@ -44,7 +44,7 @@ export default function VerticalDots() {
   };
 
   return (
-    <div className="fixed end-8 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-10">
+    <div className="fixed end-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-6">
       {sections.map((section: any) => (
         <div
           key={section.id}
@@ -55,10 +55,12 @@ export default function VerticalDots() {
           <AnimatePresence>
             {hoveredSection === section.id && (
               <motion.span
-                initial={{ opacity: 0, x: 10 }}
+                initial={{ opacity: 0, x: 6 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                className="absolute end-8 text-[10px] uppercase tracking-[0.2em] text-[#041E42] font-bold bg-ink-800 px-3 py-1 border border-ink-600 shadow-sm"
+                exit={{ opacity: 0, x: 6 }}
+                transition={{ duration: 0.12 }}
+                className="absolute end-6 text-[12px] text-neutral-600 font-medium bg-white px-3 py-1.5 border border-neutral-200/80 rounded-lg whitespace-nowrap"
+                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
               >
                 {section.label}
               </motion.span>
@@ -72,16 +74,17 @@ export default function VerticalDots() {
           >
             <motion.div
               animate={{
-                scale: activeSection === section.id ? 1.5 : 1,
-                backgroundColor: activeSection === section.id ? "#D4AF37" : "rgba(4, 30, 66, 0.2)",
+                scale: activeSection === section.id ? 1.3 : 1,
+                backgroundColor: activeSection === section.id ? "var(--primary)" : "rgba(163, 163, 163, 0.3)",
               }}
-              className="w-2.5 h-2.5 rounded-full transition-colors group-hover:bg-[#041E42]/40"
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="w-2 h-2 rounded-full group-hover:bg-neutral-400/60"
             />
             {activeSection === section.id && (
               <motion.div
                 layoutId="active-dot-outline"
-                className="absolute -inset-1.5 border border-champagne-500 rounded-full"
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="absolute -inset-1.5 border border-[var(--primary)]/30 rounded-full"
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
           </button>

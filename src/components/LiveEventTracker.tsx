@@ -27,118 +27,115 @@ export default function LiveEventTracker() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <section id="tracking" className="py-32 bg-[#F8F9FA] relative overflow-hidden">
-      {/* Ambient backgrounds */}
-      <div className="absolute top-0 end-0 w-[600px] h-[600px] bg-champagne-500/5 rounded-full blur-[150px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+    <section id="tracking" className="py-24 bg-[var(--surface-raised)] relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-champagne-500/10 border border-champagne-500/20 text-champagne-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-8"
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-[var(--primary)] text-[12px] font-medium mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-champagne-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
             Live Event Operations
           </motion.div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-[#041E42] mb-8">
-            Real-Time <span className="text-plum-700 font-semibold italic">Execution</span> Tracking
+          <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.025em" }}>
+            Real-Time <span className="text-[var(--primary)]">Execution</span> Tracking
           </h2>
-          <p className="text-gray-500 max-w-3xl mx-auto text-lg font-light leading-relaxed">
+          <p className="text-neutral-500 max-w-2xl mx-auto text-[16px] leading-relaxed">
             Monitor every detail of your elite event as it happens. Our military-precise tracking system 
             ensures absolute transparency and flawless coordination for the most discerning hosts.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Dashboard Card */}
-          <div className="lg:col-span-2 space-y-8">
-            <div className="bg-ink-800 border border-ink-600 rounded-sm p-10 shadow-sm">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-10">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white border border-neutral-200/80 rounded-2xl p-8" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
                 <div>
-                  <h3 className="text-xl font-sans font-bold text-[#041E42] mb-2">The Royal Wedding Reception</h3>
-                  <p className="text-gray-500 flex items-center gap-2 text-sm font-light">
-                    <MapPin size={16} className="text-champagne-500" /> Riyadh International Ballroom
+                  <h3 className="text-lg font-semibold text-neutral-900 mb-1.5" style={{ letterSpacing: "-0.01em" }}>The Royal Wedding Reception</h3>
+                  <p className="text-neutral-500 flex items-center gap-2 text-[13px] font-medium">
+                    <MapPin size={14} className="text-[var(--primary)]" /> Riyadh International Ballroom
                   </p>
                 </div>
                 <div className="md:text-end">
-                  <div className="text-[#041E42] font-sans text-3xl font-bold tracking-tighter">
+                  <div className="text-neutral-900 text-2xl font-semibold" style={{ letterSpacing: "-0.02em" }}>
                     {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                   </div>
-                  <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] mt-2 font-medium">Local Event Time</p>
+                  <p className="text-neutral-400 text-[11px] font-medium mt-1">Local Event Time</p>
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center gap-16 mb-12">
+              <div className="flex flex-col md:flex-row items-center gap-10 mb-8">
                 {/* Circular Progress */}
-                <div className="relative w-48 h-48 flex items-center justify-center">
+                <div className="relative w-40 h-40 flex items-center justify-center shrink-0">
                   <svg className="w-full h-full transform -rotate-90">
                     <circle
-                      cx="96"
-                      cy="96"
+                      cx="80"
+                      cy="80"
                       r={radius}
                       stroke="currentColor"
-                      strokeWidth="12"
+                      strokeWidth="10"
                       fill="transparent"
-                      className="text-gray-100"
+                      className="text-neutral-100"
                     />
                     <motion.circle
-                      cx="96"
-                      cy="96"
+                      cx="80"
+                      cy="80"
                       r={radius}
                       stroke="currentColor"
-                      strokeWidth="12"
+                      strokeWidth="10"
                       fill="transparent"
                       strokeDasharray={circumference}
                       initial={{ strokeDashoffset: circumference }}
                       whileInView={{ strokeDashoffset }}
                       transition={{ duration: 2, ease: "easeOut" }}
-                      className="text-champagne-500"
+                      className="text-[var(--primary)]"
                       strokeLinecap="round"
                     />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-3xl font-sans font-bold text-[#041E42]">85%</span>
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold mt-1">Ready</span>
+                    <span className="text-2xl font-bold text-neutral-900" style={{ letterSpacing: "-0.02em" }}>85%</span>
+                    <span className="text-[11px] text-neutral-400 font-medium mt-0.5">Ready</span>
                   </div>
                 </div>
 
-                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-12 w-full">
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
-                    <Users className="text-champagne-500 mb-8" size={24} />
-                    <div className="text-xl font-sans font-bold text-[#041E42]">850</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Guests</div>
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                  <div className="p-5 bg-neutral-50 rounded-xl border border-neutral-100">
+                    <Users className="text-[var(--primary)] mb-4" size={20} />
+                    <div className="text-lg font-semibold text-neutral-900" style={{ letterSpacing: "-0.01em" }}>850</div>
+                    <div className="text-[12px] text-neutral-500 font-medium mt-0.5">Guests</div>
                   </div>
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
-                    <Zap className="text-sage-500 mb-8" size={24} />
-                    <div className="text-2xl font-display font-bold text-[#041E42]">Online</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">AV Systems</div>
+                  <div className="p-5 bg-neutral-50 rounded-xl border border-neutral-100">
+                    <Zap className="text-emerald-500 mb-4" size={20} />
+                    <div className="text-lg font-semibold text-neutral-900" style={{ letterSpacing: "-0.01em" }}>Online</div>
+                    <div className="text-[12px] text-neutral-500 font-medium mt-0.5">AV Systems</div>
                   </div>
-                  <div className="p-6 bg-[#F8F9FA] rounded-sm border border-ink-600">
-                    <Clock className="text-plum-700 mb-8" size={24} />
-                    <div className="text-2xl font-display font-bold text-[#041E42]">On-Time</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Schedule</div>
+                  <div className="p-5 bg-neutral-50 rounded-xl border border-neutral-100">
+                    <Clock className="text-emerald-500 mb-4" size={20} />
+                    <div className="text-lg font-semibold text-neutral-900" style={{ letterSpacing: "-0.01em" }}>On-Time</div>
+                    <div className="text-[12px] text-neutral-500 font-medium mt-0.5">Schedule</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Live Updates */}
-            <div className="bg-ink-800 border border-ink-600 p-8 rounded-sm">
-              <h4 className="text-[#041E42] text-[10px] font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-sage-500 animate-pulse" />
+            <div className="bg-white border border-neutral-200/80 p-8 rounded-2xl" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
+              <h4 className="text-neutral-900 text-[13px] font-semibold mb-6 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Latest Strategic Updates
               </h4>
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {[
-                  { text: "Catering team has finalized the appetizers station. Temperature checks verified.", time: "2 minutes ago", team: "Ops Team", color: "bg-sage-500" },
-                  { text: "Orchestra sound check successfully completed in the Main Atrium.", time: "15 minutes ago", team: "Tech Team", color: "bg-champagne-500" }
+                  { text: "Catering team has finalized the appetizers station. Temperature checks verified.", time: "2 minutes ago", team: "Ops Team", color: "bg-emerald-500" },
+                  { text: "Orchestra sound check successfully completed in the Main Atrium.", time: "15 minutes ago", team: "Tech Team", color: "bg-neutral-300" }
                 ].map((update: any, i: number) => (
-                  <div key={i} className="flex gap-10 group">
-                    <div className={`w-1 h-12 ${update.color} rounded-full transition-transform group-hover:scale-y-110`} />
+                  <div key={i} className="flex gap-4 group">
+                    <div className={`w-1 h-auto ${update.color} rounded-full transition-transform group-hover:scale-y-110`} />
                     <div>
-                      <p className="text-[#041E42] text-sm leading-relaxed mb-2">{update.text}</p>
-                      <span className="text-[10px] text-gray-400 uppercase tracking-wider font-medium">{update.time} • {update.team}</span>
+                      <p className="text-neutral-700 text-[14px] leading-relaxed mb-1">{update.text}</p>
+                      <span className="text-[12px] text-neutral-400 font-medium">{update.time} • {update.team}</span>
                     </div>
                   </div>
                 ))}
@@ -147,34 +144,34 @@ export default function LiveEventTracker() {
           </div>
 
           {/* Timeline */}
-          <div className="bg-ink-800 border border-ink-600 rounded-sm p-10 shadow-sm h-fit">
-            <h3 className="text-xl font-display text-[#041E42] mb-10">Event Timeline</h3>
-            <div className="space-y-8 relative">
-              <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gray-100" />
+          <div className="bg-white border border-neutral-200/80 rounded-2xl p-8 h-fit" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
+            <h3 className="text-lg font-semibold text-neutral-900 mb-8" style={{ letterSpacing: "-0.01em" }}>Event Timeline</h3>
+            <div className="space-y-6 relative">
+              <div className="absolute left-[11px] top-2 bottom-2 w-px bg-neutral-200" />
 
               {eventMilestones.map((milestone: any) => (
-                <div key={milestone.id} className="relative ps-12 group">
-                  <div className={`absolute start-0 top-1 w-6 h-6 rounded-full border-2 bg-ink-800 flex items-center justify-center z-10 transition-all duration-500 ${
-                    milestone.status === 'completed' ? 'border-sage-500 text-sage-500' : 
-                    milestone.status === 'in-progress' ? 'border-champagne-500 text-champagne-500' : 'border-gray-200 text-gray-300'
+                <div key={milestone.id} className="relative ps-10 group">
+                  <div className={`absolute start-0 top-1 w-6 h-6 rounded-full border bg-white flex items-center justify-center z-10 transition-all duration-300 ${
+                    milestone.status === 'completed' ? 'border-emerald-500 text-emerald-500' : 
+                    milestone.status === 'in-progress' ? 'border-[var(--primary)] text-[var(--primary)] shadow-[0_0_0_4px_rgba(13,107,78,0.1)]' : 'border-neutral-200 text-neutral-300'
                   }`}>
-                    {milestone.status === 'completed' ? <CheckCircle2 size={12} /> : 
+                    {milestone.status === 'completed' ? <CheckCircle2 size={12} strokeWidth={3} /> : 
                      milestone.status === 'in-progress' ? <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}><Circle size={8} fill="currentColor" /></motion.div> : <Circle size={8} />}
                   </div>
 
                   <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className={`text-[10px] font-bold uppercase tracking-widest ${
-                        milestone.status === 'completed' ? 'text-sage-500' : 
-                        milestone.status === 'in-progress' ? 'text-champagne-500' : 'text-gray-400'
+                    <div className="flex justify-between items-center mb-1">
+                      <span className={`text-[12px] font-semibold ${
+                        milestone.status === 'completed' ? 'text-emerald-500' : 
+                        milestone.status === 'in-progress' ? 'text-[var(--primary)]' : 'text-neutral-400'
                       }`}>
                         {milestone.time}
                       </span>
                       {milestone.status === 'in-progress' && (
-                        <span className="px-2 py-0.5 bg-champagne-500/10 text-champagne-500 rounded text-[8px] font-bold animate-pulse">ACTIVE</span>
+                        <span className="px-2 py-0.5 bg-emerald-50 text-[var(--primary)] rounded text-[10px] font-semibold animate-pulse">ACTIVE</span>
                       )}
                     </div>
-                    <p className={`text-sm font-medium transition-colors ${milestone.status === 'pending' ? 'text-gray-400' : 'text-[#041E42]'}`}>
+                    <p className={`text-[13px] font-medium transition-colors ${milestone.status === 'pending' ? 'text-neutral-400' : 'text-neutral-800'}`}>
                       {milestone.task}
                     </p>
                   </div>
@@ -182,8 +179,8 @@ export default function LiveEventTracker() {
               ))}
             </div>
 
-            <button className="w-full mt-12 py-5 border border-ink-600 hover:border-champagne-500/50 text-gray-400 hover:text-[#041E42] transition-all duration-500 rounded-sm text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-3 group">
-              <AlertCircle size={14} className="group-hover:text-champagne-500" />
+            <button className="w-full mt-8 py-3.5 bg-neutral-50 hover:bg-neutral-100 text-neutral-600 transition-colors duration-200 rounded-xl text-[13px] font-medium flex items-center justify-center gap-2">
+              <AlertCircle size={16} />
               Direct Support Line
             </button>
           </div>

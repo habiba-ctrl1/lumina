@@ -61,32 +61,44 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
   const itemKey = index;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white rounded-xl p-8 md:p-10 flex flex-col items-start group hover:-translate-y-2 transition-all duration-300 ease-in-out border border-slate-200 shadow-sm hover:shadow-xl"
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative bg-white rounded-xl p-8 flex flex-col items-start border border-neutral-200/80 transition-all duration-300 hover:border-neutral-300"
+      style={{
+        boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+      }}
+      whileHover={{
+        y: -4,
+        boxShadow: "0 12px 24px -4px rgba(0,0,0,0.06), 0 4px 8px -2px rgba(0,0,0,0.03)",
+      }}
     >
-      <div className="w-14 h-14 bg-slate-50 flex items-center justify-center rounded-lg mb-8 group-hover:bg-teal-50 transition-colors duration-300">
-        <service.icon size={26} className="text-slate-400 group-hover:text-[var(--primary)] transition-colors duration-300" />
+      {/* Icon */}
+      <div className="w-12 h-12 bg-neutral-50 flex items-center justify-center rounded-xl mb-6 border border-neutral-100 group-hover:bg-emerald-50 group-hover:border-emerald-100 transition-all duration-300">
+        <service.icon size={22} className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors duration-300" />
       </div>
 
       <div className="flex-grow">
-        <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-3 block">
+        {/* Starting price */}
+        <span className="text-[12px] font-medium text-[var(--primary)] mb-3 block">
           {t(`items.${itemKey}.starting`)}
         </span>
-        <h3 className="font-display font-bold text-xl text-slate-900 mb-4 tracking-tight group-hover:text-[var(--primary)] transition-colors">
+        {/* Title */}
+        <h3 className="text-lg text-neutral-900 mb-3 font-semibold group-hover:text-[var(--primary)] transition-colors duration-200" style={{ letterSpacing: "-0.02em" }}>
           {t(`items.${itemKey}.title`)}
         </h3>
-        <p className="text-slate-600 text-sm leading-relaxed mb-8">
+        {/* Description */}
+        <p className="text-neutral-500 text-[14px] leading-relaxed mb-6">
           {t(`items.${itemKey}.description`)}
         </p>
       </div>
 
-      <div className="w-full mt-auto pt-6 border-t border-slate-100 flex items-center justify-between gap-4">
+      {/* Footer */}
+      <div className="w-full mt-auto pt-5 border-t border-neutral-100 flex items-center justify-between gap-4">
         <Link 
           href={service.href}
-          className="flex items-center gap-2 text-[var(--primary)] text-[11px] font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-300"
+          className="flex items-center gap-2 text-[var(--primary)] text-[13px] font-medium group-hover:gap-3 transition-all duration-200"
         >
           <span>{t("learnMore")}</span>
           <ArrowRight size={14} />
@@ -95,7 +107,10 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
           href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.title || "")}%20services.`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-8 h-8 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110"
+          className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:scale-110"
+          style={{
+            boxShadow: "0 2px 6px rgba(37, 211, 102, 0.25)",
+          }}
           title={`Contact us about ${service.title || ""} via WhatsApp`}
         >
           <MessageCircle size={14} fill="white" />
@@ -109,44 +124,47 @@ export default function Services() {
   const t = useTranslations("services");
   
   return (
-    <SectionWrapper className="bg-slate-50 relative" id="services">
+    <SectionWrapper className="bg-[var(--background)] relative" id="services">
       <div className="relative z-10 py-10">
         {/* Section Header */}
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-3 mb-6"
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center gap-4 mb-6"
           >
-            <span className="w-12 h-[2px] bg-[var(--primary)]" />
-            <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
+            <span className="section-label">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
               {t("label")}
             </span>
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-display font-bold text-slate-900 mb-6 text-3xl md:text-4xl lg:text-5xl tracking-tight uppercase"
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="text-neutral-900 mb-5 text-3xl md:text-4xl font-semibold"
+            style={{ letterSpacing: "-0.025em" }}
           >
-            {t("title")} <span className="text-[var(--primary)] font-bold">{t("titleHighlight")}</span>
+            {t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span>
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-slate-600 text-base leading-relaxed"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-neutral-500 text-[16px] leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
         </div>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service: any, index: number) => (
             <ServiceCard key={service.id} service={service} index={index} t={t} />
           ))}

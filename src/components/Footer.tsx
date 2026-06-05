@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const Instagram = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
@@ -27,38 +27,29 @@ const socialLinks = [
   { icon: Linkedin,  label: "LinkedIn",  url: "https://linkedin.com/company/saudieventmanagement" },
 ];
 
-const serviceLinks = ["Corporate Events", "Exhibition Management", "Conference Management", "Event Production"];
-
-const companyLinks = [
-  { name: "About Us",     href: "/about" },
-  { name: "Portfolio",    href: "/portfolio" },
-  { name: "Journal",      href: "/blog" },
-  { name: "Locations",    href: "/locations" },
-  { name: "FAQ",          href: "/faq" },
-  { name: "Book Session", href: "/consultation" },
-];
-
 export default function Footer() {
   const t = useTranslations("footer");
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 relative pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-white border-t border-neutral-200/80 relative pt-20 pb-10">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="block mb-7">
+            <Link href="/" className="block mb-6">
               <Image
                 src="/main-logo.webp"
                 alt="Saudi Event Management - Luxury Event Planning Company in Saudi Arabia"
-                width={220}
-                height={80}
-                className="object-contain h-12 w-auto"
+                width={200}
+                height={70}
+                className="object-contain h-10 w-auto"
                 style={{ filter: "brightness(0) invert(0)" }}
               />
             </Link>
-            <p className="text-slate-500 text-sm leading-relaxed mb-7 max-w-xs">
+            <p className="text-neutral-500 text-[14px] leading-relaxed mb-6 max-w-sm font-medium">
               {t("description")}
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {socialLinks.map((s: any) => (
                 <a
                   key={s.label}
@@ -66,30 +57,31 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-lg
-                    border border-slate-200 text-slate-400 bg-white shadow-sm
-                    hover:border-[var(--primary)] hover:text-[var(--primary)]
-                    transition-all duration-300"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl
+                    border border-neutral-200/80 text-neutral-500 bg-white
+                    hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-emerald-50/50
+                    transition-all duration-200"
+                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
                 >
-                  <s.icon size={18} />
+                  <s.icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
+          {/* Services */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
+            <h4 className="text-[14px] font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.01em" }}>
               {t("servicesTitle")}
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {t.raw("serviceLinks").map((item: string) => (
                 <li key={item}>
                   <Link
                     href="/services"
-                    className="flex items-center gap-2 text-sm text-slate-500
-                      hover:text-[var(--primary)] transition-colors group"
+                    className="text-[14px] text-neutral-500 font-medium
+                      hover:text-[var(--primary)] transition-colors duration-200"
                   >
-                    <span className="w-0 h-[2px] bg-[var(--primary)] group-hover:w-3 transition-all duration-300" />
                     {item}
                   </Link>
                 </li>
@@ -97,11 +89,12 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
+            <h4 className="text-[14px] font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.01em" }}>
               {t("companyTitle")}
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {[
                 { name: t("companyLinks.aboutUs"), href: "/about" },
                 { name: t("companyLinks.portfolio"), href: "/portfolio" },
@@ -113,10 +106,9 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="flex items-center gap-2 text-sm text-slate-500
-                      hover:text-[var(--primary)] transition-colors group"
+                    className="text-[14px] text-neutral-500 font-medium
+                      hover:text-[var(--primary)] transition-colors duration-200"
                   >
-                    <span className="w-0 h-[2px] bg-[var(--primary)] group-hover:w-3 transition-all duration-300" />
                     {item.name}
                   </Link>
                 </li>
@@ -124,33 +116,40 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-900 mb-6">
+            <h4 className="text-[14px] font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.01em" }}>
               {t("contactTitle")}
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
-                <span className="text-sm text-slate-500">{t("contactAddress")}</span>
+                <span className="text-[14px] text-neutral-500 font-medium">{t("contactAddress")}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[var(--primary)] shrink-0" />
-                <span className="text-sm text-slate-500">+966 50 123 4567</span>
+                <span className="text-[14px] text-neutral-500 font-medium">+966 50 123 4567</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[var(--primary)] shrink-0" />
-                <span className="text-sm text-slate-500">infosaudieventmanagement@gmail.com</span>
+                <span className="text-[14px] text-neutral-500 font-medium">infosaudieventmanagement@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-8 md:p-12 mb-16 relative overflow-hidden shadow-sm">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* Newsletter */}
+        <div className="bg-neutral-50 border border-neutral-200/80 rounded-2xl p-8 md:p-10 mb-12 relative overflow-hidden"
+          style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}
+        >
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-4 block">{t("newsletterLabel")}</span>
-              <h3 className="font-display text-2xl font-bold text-slate-900 mb-3 tracking-tight">{t("newsletterTitle")}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <span className="section-label mb-3 block">
+                <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+                {t("newsletterLabel")}
+              </span>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-2" style={{ letterSpacing: "-0.02em" }}>{t("newsletterTitle")}</h3>
+              <p className="text-neutral-500 text-[14px] leading-relaxed">
                 {t("newsletterDesc")}
               </p>
             </div>
@@ -162,29 +161,34 @@ export default function Footer() {
                 type="email"
                 placeholder={t("emailPlaceholder")}
                 required
-                className="flex-1 bg-slate-50 border border-slate-200 text-slate-900
-                  px-4 py-4 rounded-md text-sm
-                  placeholder:text-slate-400
-                  focus:outline-none focus:border-[var(--primary)] focus:bg-white
-                  transition-colors"
+                className="flex-1 bg-white border border-neutral-200/80 text-neutral-900
+                  px-4 py-3.5 rounded-xl text-[14px]
+                  placeholder:text-neutral-400
+                  focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10
+                  transition-all duration-200 shadow-sm"
               />
               <button
                 type="submit"
-                className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[11px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all whitespace-nowrap"
+                className="bg-[var(--primary)] text-white px-6 py-3.5 rounded-xl text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all duration-200 whitespace-nowrap inline-flex items-center gap-2"
+                style={{
+                  boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
+                }}
               >
                 {t("subscribe")}
+                <ArrowRight size={14} />
               </button>
             </form>
           </div>
         </div>
 
-        <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold">
+        {/* Bottom Bar */}
+        <div className="border-t border-neutral-200/80 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[13px] font-medium text-neutral-400">
             &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
-          <div className="flex gap-8">
-            <Link href="/privacy" className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">{t("privacy")}</Link>
-            <Link href="/terms"   className="text-[11px] uppercase tracking-widest text-slate-400 font-bold hover:text-[var(--primary)] transition-colors">{t("terms")}</Link>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="text-[13px] font-medium text-neutral-400 hover:text-neutral-900 transition-colors">{t("privacy")}</Link>
+            <Link href="/terms"   className="text-[13px] font-medium text-neutral-400 hover:text-neutral-900 transition-colors">{t("terms")}</Link>
           </div>
         </div>
       </div>

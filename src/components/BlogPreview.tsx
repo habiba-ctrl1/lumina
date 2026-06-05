@@ -10,68 +10,82 @@ export default function BlogPreview() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="bg-white relative py-20 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-10">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-[var(--primary)]" />
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">Journal</span>
+    <section className="bg-white relative py-24 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-8">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="section-label">
+                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+                Journal
+              </span>
             </div>
-            <h2 className="font-display font-bold text-slate-900 text-3xl md:text-4xl mb-6 uppercase tracking-tight">
+            <h2 className="text-neutral-900 text-3xl md:text-4xl mb-4 font-semibold" style={{ letterSpacing: "-0.025em" }}>
               Latest <span className="text-[var(--primary)]">Stories</span>
             </h2>
-            <p className="text-slate-600 text-base leading-relaxed max-w-xl">
+            <p className="text-neutral-500 text-[16px] leading-relaxed max-w-lg">
               Explore our curated collection of event planning wisdom, industry insights, and trending aesthetics.
             </p>
           </div>
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-3 border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 rounded-md py-3 px-6 uppercase tracking-widest font-bold transition-all duration-300 text-[11px]"
+            className="inline-flex items-center gap-2 border border-neutral-200 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 hover:border-neutral-300 rounded-xl py-3 px-5 font-medium transition-all duration-200 text-[14px] group"
+            style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
           >
             Explore All Articles
-            <ArrowRight size={16} className="text-slate-700 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {latestPosts.map((post: any, i: number) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                className="group bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
+                transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="group bg-white border border-neutral-200/80 rounded-xl overflow-hidden transition-all duration-300 hover:border-neutral-300"
+                style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 12px 24px -4px rgba(0,0,0,0.06), 0 4px 8px -2px rgba(0,0,0,0.03)",
+                }}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <Image 
                     src={post.image} 
                     alt={post.title} 
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
-                  <div className="absolute top-4 start-4">
-                    <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md text-[var(--primary)] text-[10px] uppercase tracking-widest font-bold rounded-full shadow-sm">
+                  <div className="absolute top-3 start-3">
+                    <span className="px-3 py-1.5 bg-white/90 backdrop-blur-md text-[var(--primary)] text-[12px] font-medium rounded-lg"
+                      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.08)" }}
+                    >
                       {post.category}
                     </span>
                   </div>
                 </div>
-                <div className="p-8">
-                  <div className="flex items-center gap-6 text-[10px] text-slate-500 uppercase tracking-widest mb-6">
-                    <span className="flex items-center gap-2"><Calendar size={14} className="text-[var(--primary)]" /> {post.date}</span>
-                    <span className="flex items-center gap-2"><Clock size={14} className="text-[var(--primary)]" /> {post.readTime}</span>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-[12px] text-neutral-400 mb-4">
+                    <span className="flex items-center gap-1.5"><Calendar size={13} /> {post.date}</span>
+                    <span className="flex items-center gap-1.5"><Clock size={13} /> {post.readTime}</span>
                   </div>
-                  <h3 className="font-display font-bold text-xl text-slate-900 mb-4 group-hover:text-[var(--primary)] transition-colors duration-300">
+                  <h3 className="text-[17px] text-neutral-900 mb-3 font-semibold group-hover:text-[var(--primary)] transition-colors duration-200 line-clamp-2" style={{ letterSpacing: "-0.01em", lineHeight: 1.4 }}>
                     {post.title}
                   </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 line-clamp-2">
+                  <p className="text-neutral-500 text-[14px] leading-relaxed mb-5 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="mt-auto flex items-center gap-2 text-[var(--primary)] text-[11px] uppercase tracking-widest font-bold transition-all">
-                    Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="flex items-center gap-2 text-[var(--primary)] text-[13px] font-medium group-hover:gap-3 transition-all duration-200">
+                    Read Article <ArrowRight size={14} />
                   </div>
                 </div>
               </motion.article>

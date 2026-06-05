@@ -6,10 +6,10 @@ import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 
 const iconMap = [
-  <MessageSquare size={24} />,
-  <PenTool size={24} />,
-  <LayoutTemplate size={24} />,
-  <Sparkles size={24} />
+  <MessageSquare size={20} />,
+  <PenTool size={20} />,
+  <LayoutTemplate size={20} />,
+  <Sparkles size={20} />
 ];
 
 export default function HowItWorks() {
@@ -24,78 +24,86 @@ export default function HowItWorks() {
   return (
     <SectionWrapper id="process" className="bg-white relative overflow-hidden">
       <div className="relative z-10 py-10">
-        <div className="text-center mb-24 max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-3 mb-6"
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center gap-4 mb-6"
           >
-            <span className="w-12 h-[2px] bg-[var(--primary)]" />
-            <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
+            <span className="section-label">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
               {t("label")}
             </span>
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display font-bold text-slate-900 text-3xl md:text-4xl lg:text-5xl mb-6 tracking-tight"
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold"
+            style={{ letterSpacing: "-0.025em" }}
           >
-            {t("title")} <span className="text-[var(--primary)] font-bold">{t("titleHighlight")}</span>
+            {t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-slate-600 text-base leading-relaxed"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-neutral-500 text-[16px] leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
         </div>
 
-        {/* Timeline Flow */}
+        {/* Steps */}
         <div className="relative">
-          {/* Connecting Line (Hidden on Mobile) */}
-          <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[2px] bg-slate-100 z-0">
+          {/* Connecting Line */}
+          <div className="hidden lg:block absolute top-[40px] left-[12%] right-[12%] h-px bg-neutral-200 z-0">
             <motion.div 
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="h-full bg-[var(--primary)] origin-start"
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="h-full bg-[var(--primary)]/30 origin-start"
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
             {steps.map((step: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col items-center text-center group"
                 >
-                  {/* Step Number Indicator */}
-                  <div className="w-24 h-24 bg-white border-4 border-slate-50 rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-[var(--primary)] group-hover:shadow-lg transition-all duration-300 relative">
-                    <div className="absolute inset-2 bg-slate-50 rounded-full flex items-center justify-center group-hover:bg-[var(--primary)] transition-colors duration-300">
-                      <div className="text-slate-400 group-hover:text-white transition-colors duration-300">
-                        {step.icon}
-                      </div>
+                  {/* Step Icon Circle */}
+                  <div className="w-20 h-20 bg-white border border-neutral-200 rounded-2xl flex items-center justify-center mb-6 group-hover:border-[var(--primary)]/30 group-hover:bg-emerald-50/50 transition-all duration-300 relative"
+                    style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+                  >
+                    <div className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors duration-300">
+                      {step.icon}
                     </div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="bg-white border border-slate-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 w-full flex-grow relative">
-                    <div className="absolute -top-4 start-1/2 -translate-x-1/2 bg-slate-100 text-slate-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
+                  {/* Content Card */}
+                  <div className="bg-white border border-neutral-200/80 rounded-xl p-6 w-full flex-grow relative transition-all duration-300 group-hover:border-neutral-300"
+                    style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
+                  >
+                    {/* Step Number */}
+                    <div className="absolute -top-3 start-1/2 -translate-x-1/2 bg-[var(--background)] text-neutral-400 text-[11px] font-medium px-3 py-1 rounded-full border border-neutral-200 group-hover:bg-emerald-50 group-hover:text-[var(--primary)] group-hover:border-emerald-100 transition-all duration-300">
                       {t("stepPrefix")} 0{index + 1}
                     </div>
-                    <h3 className="font-display text-slate-900 text-lg mb-4 font-bold tracking-tight mt-2">
+                    <h3 className="text-neutral-900 text-[16px] mb-3 font-semibold mt-2" style={{ letterSpacing: "-0.01em" }}>
                       {step.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-neutral-500 text-[14px] leading-relaxed">
                       {step.desc}
                     </p>
                   </div>

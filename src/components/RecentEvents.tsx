@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
-
 import Link from "next/link";
 import SectionWrapper from "./SectionWrapper";
 
@@ -19,35 +18,38 @@ const galleryItems = [
 
 export default function RecentEvents({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
-    <SectionWrapper id="gallery" className="bg-slate-50 relative overflow-hidden">
+    <SectionWrapper id="gallery" className="bg-[var(--surface-raised)] relative overflow-hidden">
       <div className="relative z-10">
         {/* Header */}
         {!hideHeader ? (
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
             <motion.div 
-              initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1 }} 
+              initial={{ opacity: 0, y: 8 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
-              className="flex flex-col items-center gap-3 mb-6"
+              className="flex flex-col items-center gap-4 mb-6"
             >
-              <span className="w-12 h-[2px] bg-[var(--primary)]" />
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">
+              <span className="section-label">
+                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
                 Portfolio
               </span>
             </motion.div>
             <motion.h2 
-              initial={{ opacity: 0, y: 10 }} 
+              initial={{ opacity: 0, y: 8 }} 
               whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
-              className="font-display font-bold text-2xl md:text-3xl text-slate-900 mb-6 uppercase tracking-tight"
+              transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold"
+              style={{ letterSpacing: "-0.025em" }}
             >
-              Recent <span className="text-[var(--primary)] font-bold">Masterpieces</span>
+              Recent <span className="text-[var(--primary)]">Masterpieces</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0 }} 
               whileInView={{ opacity: 1 }} 
               viewport={{ once: true }} 
-              className="text-slate-600 max-w-2xl mx-auto text-sm leading-relaxed"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-neutral-500 text-[16px] leading-relaxed"
             >
               Explore our most spectacular luxury events in this immersive curated gallery.
             </motion.p>
@@ -58,11 +60,11 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
 
         {/* 3D Coverflow Gallery */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="w-full pb-16"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full pb-10"
         >
           <Swiper
             effect={'coverflow'}
@@ -71,39 +73,43 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
             slidesPerView={'auto'}
             loop={true}
             autoplay={{
-              delay: 4000,
+              delay: 5000,
               disableOnInteraction: false,
             }}
             coverflowEffect={{
-              rotate: 15,
+              rotate: 5,
               stretch: 0,
-              depth: 100,
+              depth: 80,
               modifier: 1,
               slideShadows: false,
             }}
             pagination={{ clickable: true }}
             modules={[EffectCoverflow, Pagination, Autoplay]}
-            className="w-full pt-10 pb-20"
+            className="w-full pt-6 pb-20"
           >
             {galleryItems.map((item: any) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
                 <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer">
-                  <div className="relative w-[300px] md:w-[450px] h-[250px] md:h-[350px] rounded-xl overflow-hidden border border-slate-200 group-hover:border-[var(--primary)] shadow-md hover:shadow-xl transition-all duration-700">
+                  <div className="relative w-[290px] md:w-[420px] h-[240px] md:h-[320px] rounded-2xl overflow-hidden border border-neutral-200/80 transition-all duration-500"
+                    style={{
+                      boxShadow: "0 4px 12px -2px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03)",
+                    }}
+                  >
                     <Image 
                       src={item.src} 
                       alt={item.alt} 
                       width={600}
                       height={400}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                     />
                     {/* Gradient Overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-neutral-950/10 to-transparent" />
                     
-                    {/* Content - Always visible with white text on dark overlay */}
-                    <div className="absolute bottom-0 start-0 end-0 p-8">
-                      <p className="text-[10px] text-teal-300 uppercase tracking-[0.4em] font-bold mb-2">{item.category}</p>
-                      <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2">{item.title}</h3>
-                      <div className="w-10 h-0.5 bg-[var(--primary)] mt-3" />
+                    {/* Content */}
+                    <div className="absolute bottom-0 start-0 end-0 p-6 z-10">
+                      <p className="text-[12px] text-emerald-400 font-semibold mb-1" style={{ letterSpacing: "0.05em" }}>{item.category}</p>
+                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight" style={{ letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <div className="w-8 h-0.5 bg-[var(--primary)] mt-3 rounded-full opacity-80" />
                     </div>
                   </div>
                 </Link>
@@ -116,18 +122,17 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
       {/* Custom Styles for Swiper Pagination */}
       <style dangerouslySetInnerHTML={{__html: `
         .swiper-pagination-bullet {
-          background: #CBD5E1;
-          border: 1px solid #94A3B8;
-          width: 8px;
-          height: 8px;
+          background: #D4D4D4;
+          width: 6px;
+          height: 6px;
           transition: all 0.3s ease;
-          opacity: 1;
+          opacity: 0.5;
         }
         .swiper-pagination-bullet-active {
           background: var(--primary);
-          border-color: var(--primary);
-          width: 24px;
-          border-radius: 4px;
+          opacity: 1;
+          width: 20px;
+          border-radius: 100px;
         }
       `}} />
     </SectionWrapper>

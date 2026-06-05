@@ -17,6 +17,7 @@ const partners = [
   { name: "Diriyah Gate", logo: "/partners/diriyah.svg", alt: "Diriyah Gate" },
   { name: "Saudia", logo: "/partners/saudia.svg", alt: "Saudia" },
 ];
+
 export default function PartnersSection() {
   const t = useTranslations("partners");
   const testimonials = t.raw("testimonials");
@@ -27,7 +28,7 @@ export default function PartnersSection() {
       setCurrent((prev) => (prev + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
   return (
     <SectionWrapper id="clients" className="bg-white relative overflow-hidden">
@@ -36,32 +37,33 @@ export default function PartnersSection() {
         {/* Partner Logos Marquee */}
         <div className="mb-24">
           <div className="text-center mb-10">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            <span className="section-label justify-center">
+              <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
               {t("trustedBy")}
             </span>
           </div>
           
           <div className="relative group overflow-hidden">
-            <div className="absolute start-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute end-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+            <div className="absolute start-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute end-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
 
             <div className="flex overflow-hidden">
               <motion.div 
                 className="flex gap-16 md:gap-24 items-center"
                 animate={{ x: [0, -1920] }}
                 transition={{
-                  x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" },
+                  x: { repeat: Infinity, repeatType: "loop", duration: 35, ease: "linear" },
                 }}
                 style={{ width: "fit-content" }}
               >
                 {[...partners, ...partners, ...partners].map((partner: any, index: number) => (
-                  <div key={index} className="w-[120px] md:w-[150px] shrink-0 opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
+                  <div key={index} className="w-[110px] md:w-[130px] shrink-0 opacity-40 hover:opacity-90 grayscale hover:grayscale-0 transition-all duration-300">
                     <Image
                       src={partner.logo}
                       alt={partner.alt}
-                      width={150}
-                      height={60}
-                      className="w-full object-contain"
+                      width={130}
+                      height={50}
+                      className="w-full object-contain h-12"
                     />
                   </div>
                 ))}
@@ -71,38 +73,38 @@ export default function PartnersSection() {
         </div>
 
         {/* Testimonials */}
-        <div className="max-w-4xl mx-auto text-center mt-24">
-          <Quote className="text-[var(--primary)] mx-auto mb-8 opacity-20" size={64} />
+        <div className="max-w-3xl mx-auto text-center mt-24">
+          <Quote className="text-[var(--primary)] mx-auto mb-6 opacity-10 pointer-events-none" size={48} />
           
-          <div className="h-[280px] md:h-[200px] relative">
+          <div className="h-[260px] md:h-[180px] relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, y: 12, filter: "blur(2px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -12, filter: "blur(2px)" }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0 flex flex-col items-center justify-center"
               >
-                <p className="font-display text-slate-900 text-xl md:text-2xl lg:text-3xl leading-relaxed mb-10 font-medium">
-                  "{testimonials[current].quote}"
+                <p className="text-neutral-900 text-lg md:text-xl leading-relaxed mb-8 font-medium italic" style={{ letterSpacing: "-0.01e" }}>
+                  &quot;{testimonials[current].quote}&quot;
                 </p>
                 
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-100 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-neutral-200/80 shadow-sm shrink-0">
                     <Image 
                       src={testimonials[current].image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"} 
                       alt={testimonials[current].author}
-                      width={48}
-                      height={48}
+                      width={40}
+                      height={40}
                       className="object-cover w-full h-full"
                     />
                   </div>
-                  <div>
-                    <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-widest">
+                  <div className="text-start">
+                    <h4 className="text-[13px] font-semibold text-neutral-900">
                       {testimonials[current].author}
                     </h4>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider">
+                    <span className="text-[12px] text-neutral-400 mt-0.5 block">
                       {testimonials[current].role}
                     </span>
                   </div>
@@ -112,12 +114,12 @@ export default function PartnersSection() {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-12">
+          <div className="flex justify-center gap-1.5 mt-8">
             {testimonials.map((_: any, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setCurrent(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-8 bg-[var(--primary)]" : "w-2 bg-slate-200"}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-[var(--primary)]" : "w-1.5 bg-neutral-200"}`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}

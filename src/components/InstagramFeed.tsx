@@ -29,52 +29,53 @@ export default function InstagramFeed() {
   const t = useTranslations("instagram");
   return (
     <section className="bg-white relative py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-10">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-14 gap-8">
           <div>
-            <div className="flex items-center gap-4 mb-6">
-               <Instagram className="text-[var(--primary)]" size={24} />
-               <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">{t("label")}</span>
+            <div className="flex items-center gap-3 mb-5">
+               <Instagram className="text-[var(--primary)]" size={20} />
+               <span className="text-[var(--primary)] text-[12px] font-medium tracking-wide">{t("label")}</span>
             </div>
-            <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold uppercase tracking-tight">{t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span></h2>
+            <h2 className="text-neutral-900 text-3xl md:text-4xl font-semibold" style={{ letterSpacing: "-0.025em" }}>{t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span></h2>
           </div>
           <motion.a 
             href="https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" 
             target="_blank" 
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[var(--primary)] text-white px-8 py-4 rounded-md text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] hover:shadow-lg transition-all flex items-center gap-3"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-[var(--primary)] text-white px-6 py-3 rounded-xl text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all flex items-center gap-2"
+            style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" }}
           >
             {t("follow")}
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {posts.map((post: any, i: number) => (
             <motion.div
               key={post.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="relative aspect-square group cursor-pointer overflow-hidden rounded-xl"
+              transition={{ delay: i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-square group cursor-pointer overflow-hidden rounded-xl border border-neutral-100"
             >
               <Image 
                 src={post.src} 
                 alt={post.alt} 
                 width={400}
                 height={400}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6 rounded-xl">
-                <div className="flex items-center gap-2 text-white">
-                  <Heart size={18} fill="white" />
-                  <span className="font-bold text-sm">{post.likes}</span>
+              <div className="absolute inset-0 bg-neutral-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-5 rounded-xl">
+                <div className="flex items-center gap-1.5 text-white">
+                  <Heart size={16} fill="white" />
+                  <span className="font-semibold text-[13px]">{post.likes}</span>
                 </div>
-                <div className="flex items-center gap-2 text-white">
-                  <MessageCircle size={18} fill="white" />
-                  <span className="font-bold text-sm">{post.comments}</span>
+                <div className="flex items-center gap-1.5 text-white">
+                  <MessageCircle size={16} fill="white" />
+                  <span className="font-semibold text-[13px]">{post.comments}</span>
                 </div>
               </div>
             </motion.div>

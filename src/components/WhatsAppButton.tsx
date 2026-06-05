@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-const WhatsAppIcon = ({ size = 28, className = "" }: { size?: number; className?: string }) => (
+const WhatsAppIcon = ({ size = 24, className = "" }: { size?: number; className?: string }) => (
   <svg 
     viewBox="0 0 24 24" 
     width={size} 
@@ -24,28 +24,26 @@ export default function WhatsAppButton() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0, x: 20 }}
-      animate={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ delay: 3.5, duration: 0.8, ease: "easeOut" }}
-      className="fixed bottom-8 end-8 z-[120]"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 3, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
+      className="fixed bottom-6 end-6 z-[120]"
     >
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 10 }}
-            className="absolute end-20 top-1/2 -translate-y-1/2 bg-white text-[#25D366] text-[11px] uppercase tracking-[0.1em] font-bold px-6 py-3 border border-slate-200 shadow-xl rounded-xl whitespace-nowrap pointer-events-none"
+            initial={{ opacity: 0, x: 8, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 8, scale: 0.95 }}
+            transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute end-16 top-1/2 -translate-y-1/2 bg-white text-neutral-800 text-[13px] font-medium px-4 py-2.5 border border-neutral-200/80 rounded-xl whitespace-nowrap pointer-events-none"
+            style={{ boxShadow: "0 4px 12px -2px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04)" }}
           >
             {t("chatWithUs")}
-            <div className="absolute end-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-200" />
+            <div className="absolute end-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-white rotate-45 border-r border-t border-neutral-200/80" />
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Pulse Rings */}
-      <div className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />
-      <div className="absolute inset-0 rounded-full bg-[#25D366]/20 animate-pulse pointer-events-none" />
 
       {/* Button */}
       <a
@@ -54,10 +52,13 @@ export default function WhatsAppButton() {
         rel="noopener noreferrer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative flex items-center justify-center w-16 h-16 bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.3)] transition-all duration-300 hover:scale-110 hover:shadow-[0_15px_40px_rgba(37,211,102,0.4)] rounded-full group"
+        className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full transition-all duration-200 hover:scale-105"
+        style={{
+          boxShadow: "0 4px 12px rgba(37,211,102,0.3), 0 1px 3px rgba(0,0,0,0.1)",
+        }}
         aria-label="Contact us on WhatsApp"
       >
-        <WhatsAppIcon className="relative z-10 transition-transform duration-500" />
+        <WhatsAppIcon className="relative z-10" />
       </a>
     </motion.div>
   );

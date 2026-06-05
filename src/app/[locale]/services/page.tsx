@@ -2,8 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
-import IslamicPattern from "@/components/IslamicPattern";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: 'Event Management Services Saudi Arabia',
@@ -20,19 +19,27 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900 overflow-hidden pt-20 relative">
+    <main className="min-h-screen bg-[var(--background)] text-neutral-900 overflow-hidden">
+      <ScrollProgress />
       <Navbar />
       
       {/* ── Page Header (H1) ── */}
-      <section className="bg-sand-50 pt-24 pb-16 border-b border-slate-100 relative overflow-hidden">
-        <IslamicPattern opacity={0.04} className="text-gold-900" />
-        
+      <section className="bg-[var(--surface-raised)] pt-32 pb-24 md:pt-48 md:pb-32 border-b border-neutral-200/80 relative overflow-hidden">
+        {/* Subtle decorative glow */}
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+
         <div className="container mx-auto px-6 lg:px-8 text-center max-w-4xl relative z-10">
-          <h1 className="font-display font-bold text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight">
-            Event Management <span className="text-[var(--emerald)]">Services</span> in Saudi Arabia
+          <div className="flex flex-col items-center justify-center gap-4 mb-6">
+            <span className="section-label bg-white border border-neutral-200/80">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              Our Expertise
+            </span>
+          </div>
+          <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
+            Event Management <br /> <span className="text-[var(--primary)]">Services</span> in Saudi Arabia
           </h1>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            From high-stakes corporate summits to breathtaking luxury weddings, discover our comprehensive suite of event management capabilities.
+          <p className="text-neutral-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            From high-stakes corporate summits to breathtaking luxury weddings, discover our comprehensive suite of elite event management capabilities.
           </p>
         </div>
       </section>
@@ -40,11 +47,11 @@ export default function ServicesPage() {
       <Services />
       
       {/* Descriptive SEO Section */}
-      <section className="py-32 relative max-w-4xl mx-auto px-4 text-center">
-        <h2 className="font-display font-bold text-slate-900 mb-8 uppercase tracking-tight text-2xl md:text-3xl">
-          Smart Event Planning & <span className="text-[var(--primary)] font-bold">Luxury Planning Capabilities</span>
+      <section className="py-24 md:py-32 relative max-w-4xl mx-auto px-6 text-center border-t border-neutral-100">
+        <h2 className="font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl" style={{ letterSpacing: "-0.025em" }}>
+          Smart Event Planning & <span className="text-[var(--primary)]">Luxury Capabilities</span>
         </h2>
-        <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-6">
+        <div className="prose prose-slate max-w-none text-neutral-500 text-[15px] leading-relaxed space-y-6">
           <p>
             At Saudi Event Management, our event management services are defined by a commitment to perfect planning and design that makes people feel special. We do not simply manage events; we create experiences that leave a lasting impact on your guests and stakeholders. Our comprehensive suite of services covers every aspect of event management, from initial site inspections and finding and booking the right venue in major Saudi cities like Riyadh and Jeddah to the final planning and coordination. We aim for perfection without mistakes, ensuring that every sound and light detail is perfect, every guest interaction is seamless, and every cultural detail is respected.
           </p>

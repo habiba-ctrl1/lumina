@@ -41,6 +41,41 @@ const locations = [
   { name: "Dammam",  href: "/locations/dammam" },
 ];
 
+// Spring physics for Emil Kowalski-style motion
+const springTransition = {
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 30,
+  mass: 0.8,
+};
+
+const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    y: 8,
+    scale: 0.96,
+    filter: "blur(4px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      ...springTransition,
+      stiffness: 500,
+      damping: 35,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: 4,
+    scale: 0.98,
+    filter: "blur(2px)",
+    transition: { duration: 0.15, ease: "easeOut" as const },
+  },
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
 // ─────────────────────────────────────────────────────────────────────────────
@@ -68,17 +103,20 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
  
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       onMouseLeave={() => setHoveredLink(null)}
       className={`fixed top-0 start-0 end-0 z-[100] transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 py-3 shadow-sm"
-          : "bg-white border-b border-slate-100 py-5"
+          ? "bg-white/80 backdrop-blur-xl border-b border-neutral-200/60 py-3"
+          : "bg-white/50 backdrop-blur-md py-4"
       }`}
+      style={{
+        WebkitBackdropFilter: "blur(16px)",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
  
           {/* ── Logo ────────────────────────────────────────────────────────── */}
@@ -90,21 +128,18 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
               height={100}
               priority
               className={`object-contain w-auto transition-all duration-500 ${
-                isScrolled ? "h-10" : "h-14"
+                isScrolled ? "h-9" : "h-12"
               }`}
-              style={{ filter: "brightness(0) invert(0)" }} // Ensure dark logo on white background
+              style={{ filter: "brightness(0) invert(0)" }}
             />
           </Link>
  
           {/* ── Desktop Links ────────────────────────────────────────────────── */}
-          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-8">
+          <div className="hidden lg:flex items-center gap-0.5 flex-1 justify-center px-8">
             {defaultNavLinks.map((link: any) => {
               const isActive   = pathname === link.href;
               const linkName   = tNav(link.key as any);
               const hasDropdown = ["services", "partners", "locations"].includes(link.key);
-              
-              const textNormal = "text-slate-600 hover:text-slate-900";
-              const textActive = "text-[var(--primary)]";
  
               return (
                 <div
@@ -114,24 +149,30 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                 >
                   <Link
                     href={link.href}
-                    className={`relative flex items-center gap-1 px-4 py-2
-                      text-[10px] font-bold uppercase tracking-widest
-                      transition-colors duration-200 ${
-                        isActive ? textActive : textNormal
+                    className={`relative flex items-center gap-1.5 px-3.5 py-2
+                      text-[13px] font-medium
+                      transition-colors duration-150 rounded-lg ${
+                        isActive 
+                          ? "text-neutral-900" 
+                          : "text-neutral-500 hover:text-neutral-900"
                       }`}
                   >
                     {linkName}
                     {hasDropdown && (
                       <ChevronDown
-                        size={10}
+                        size={12}
                         className={`transition-transform duration-200 ${
                           hoveredLink === link.key ? "rotate-180" : ""
                         }`}
                       />
                     )}
-                    {/* Active underline */}
+                    {/* Active indicator — subtle dot */}
                     {isActive && (
-                      <span className="absolute bottom-0 start-4 end-4 h-[2px] bg-[var(--primary)]" />
+                      <motion.span 
+                        layoutId="nav-active-indicator"
+                        className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--primary)]"
+                        transition={springTransition}
+                      />
                     )}
                   </Link>
 
@@ -140,28 +181,31 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     <AnimatePresence>
                       {hoveredLink === "services" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full start-1/2 -translate-x-1/2 mt-4
-                            w-[720px] bg-white border border-slate-200
-                            rounded-xl overflow-hidden flex shadow-2xl"
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          className="absolute top-full start-1/2 -translate-x-1/2 mt-3
+                            w-[680px] bg-white/95 backdrop-blur-xl border border-neutral-200/80
+                            rounded-xl overflow-hidden flex"
+                          style={{
+                            boxShadow: "0 16px 48px -8px rgba(0,0,0,0.1), 0 4px 8px -2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02)",
+                          }}
                         >
                           {/* Left panel */}
-                          <div className="w-[240px] bg-slate-50 border-r border-slate-200
-                            p-8 flex flex-col justify-between shrink-0">
+                          <div className="w-[220px] bg-neutral-50/80 border-r border-neutral-100
+                            p-7 flex flex-col justify-between shrink-0">
                             <div>
-                              <span className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-4 block">{tNav("ourExpertise")}</span>
-                              <p className="font-display text-2xl font-bold text-slate-900 leading-snug whitespace-pre-line">
+                              <span className="text-[11px] font-medium text-[var(--primary)] mb-4 block">{tNav("ourExpertise")}</span>
+                              <p className="text-xl font-semibold text-neutral-900 leading-snug whitespace-pre-line" style={{ letterSpacing: "-0.02em" }}>
                                 {tNav("premiumCorporateEvents")}
                               </p>
                             </div>
                             <Link
                               href="/services"
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-center gap-2 text-[10px] font-bold
-                                uppercase tracking-widest text-[var(--primary)]
+                              className="flex items-center gap-2 text-[13px] font-medium
+                                text-[var(--primary)]
                                 hover:text-[var(--primary-dark)] transition-colors group/all mt-6"
                             >
                               {tNav("allServices")}
@@ -170,30 +214,30 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                           </div>
 
                           {/* Services grid */}
-                          <div className="flex-1 p-8 grid grid-cols-2 gap-x-8 gap-y-6">
+                          <div className="flex-1 p-6 grid grid-cols-2 gap-x-6 gap-y-1">
                             {services.map((item: any) => (
                               <Link
                                 key={item.key}
                                 href={item.href}
                                 onClick={() => setHoveredLink(null)}
-                                className="flex items-start gap-4 group/item"
+                                className="flex items-start gap-3.5 group/item rounded-lg p-3 -mx-3 transition-colors duration-150 hover:bg-neutral-50"
                               >
-                                <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0
-                                  bg-slate-50 border border-slate-200
-                                  group-hover/item:bg-teal-50
-                                  group-hover/item:border-teal-100
-                                  transition-all duration-300">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0
+                                  bg-neutral-100/80 border border-neutral-200/60
+                                  group-hover/item:bg-emerald-50
+                                  group-hover/item:border-emerald-100
+                                  transition-all duration-200">
                                   <item.icon
-                                    size={18}
-                                    className="text-slate-400 group-hover/item:text-[var(--primary)] transition-colors"
+                                    size={16}
+                                    className="text-neutral-400 group-hover/item:text-[var(--primary)] transition-colors"
                                   />
                                 </div>
                                 <div className="pt-0.5">
-                                  <span className="block text-[11px] font-bold uppercase tracking-widest
-                                    text-slate-900 group-hover/item:text-[var(--primary)] transition-colors mb-1">
+                                  <span className="block text-[13px] font-medium
+                                    text-neutral-900 group-hover/item:text-[var(--primary)] transition-colors mb-0.5">
                                     {tServices(item.key as any)}
                                   </span>
-                                  <span className="block text-[11px] text-slate-500 leading-snug">
+                                  <span className="block text-[12px] text-neutral-400 leading-snug">
                                     {tServices(`${item.key}Desc` as any)}
                                   </span>
                                 </div>
@@ -210,14 +254,16 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     <AnimatePresence>
                       {hoveredLink === "partners" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full start-0 mt-4
-                            w-[280px] bg-white border border-slate-200
-                            rounded-xl overflow-hidden p-3
-                            shadow-2xl"
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          className="absolute top-full start-0 mt-3
+                            w-[260px] bg-white/95 backdrop-blur-xl border border-neutral-200/80
+                            rounded-xl overflow-hidden p-2"
+                          style={{
+                            boxShadow: "0 16px 48px -8px rgba(0,0,0,0.1), 0 4px 8px -2px rgba(0,0,0,0.04)",
+                          }}
                         >
                           {[
                             { label: tNav("partnerWithUs"),  sub: tNav("partnerWithUsSub"), href: "/partners",          Icon: Users    },
@@ -227,20 +273,20 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                               key={label}
                               href={href}
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-start gap-4 p-3 rounded-lg
-                                hover:bg-slate-50 transition-all group/sub"
+                              className="flex items-start gap-3.5 p-3 rounded-lg
+                                hover:bg-neutral-50 transition-all duration-150 group/sub"
                             >
-                              <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0
-                                bg-white border border-slate-200
-                                group-hover/sub:border-[var(--primary)] transition-all">
-                                <Icon size={18} className="text-slate-400 group-hover/sub:text-[var(--primary)] transition-colors" />
+                              <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0
+                                bg-neutral-100/80 border border-neutral-200/60
+                                group-hover/sub:border-[var(--primary)]/30 transition-all">
+                                <Icon size={16} className="text-neutral-400 group-hover/sub:text-[var(--primary)] transition-colors" />
                               </div>
                               <div className="pt-0.5">
-                                <span className="block text-[10px] font-bold uppercase tracking-widest
-                                  text-slate-900 group-hover/sub:text-[var(--primary)] transition-colors mb-1">
+                                <span className="block text-[13px] font-medium
+                                  text-neutral-900 group-hover/sub:text-[var(--primary)] transition-colors mb-0.5">
                                   {label}
                                 </span>
-                                <span className="block text-[11px] text-slate-500 leading-snug">{sub}</span>
+                                <span className="block text-[12px] text-neutral-400 leading-snug">{sub}</span>
                               </div>
                             </Link>
                           ))}
@@ -254,26 +300,28 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     <AnimatePresence>
                       {hoveredLink === "locations" && (
                         <motion.div
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full start-0 mt-4
-                            w-[200px] bg-white border border-slate-200
-                            rounded-xl overflow-hidden p-3
-                            shadow-2xl"
+                          variants={dropdownVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          className="absolute top-full start-0 mt-3
+                            w-[200px] bg-white/95 backdrop-blur-xl border border-neutral-200/80
+                            rounded-xl overflow-hidden p-2"
+                          style={{
+                            boxShadow: "0 16px 48px -8px rgba(0,0,0,0.1), 0 4px 8px -2px rgba(0,0,0,0.04)",
+                          }}
                         >
                           {locations.map((city: any) => (
                             <Link
                               key={city.name}
                               href={city.href}
                               onClick={() => setHoveredLink(null)}
-                              className="flex items-center gap-3 px-4 py-3 rounded-lg
-                                hover:bg-slate-50 transition-all group/city"
+                              className="flex items-center gap-3 px-3 py-2.5 rounded-lg
+                                hover:bg-neutral-50 transition-all duration-150 group/city"
                             >
-                              <MapPin size={14} className="text-slate-400 group-hover/city:text-[var(--primary)] transition-colors shrink-0" />
-                              <span className="text-[10px] font-bold uppercase tracking-widest
-                                text-slate-600 group-hover/city:text-slate-900 transition-colors">
+                              <MapPin size={14} className="text-neutral-400 group-hover/city:text-[var(--primary)] transition-colors shrink-0" />
+                              <span className="text-[13px] font-medium
+                                text-neutral-600 group-hover/city:text-neutral-900 transition-colors">
                                 {tLocs(city.name.toLowerCase() as any)}
                               </span>
                             </Link>
@@ -288,12 +336,29 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
           </div>
  
           {/* ── Right: Lang + CTA ─────────────────────────────────────────── */}
-          <div className="hidden lg:flex items-center gap-6 shrink-0">
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             {/* Language toggle */}
-            <div className="flex items-center gap-2 group" aria-label="Language toggle">
-              <button onClick={() => switchLanguage('en')} className={`text-[10px] font-bold tracking-widest transition-colors ${locale === 'en' ? 'text-[var(--primary)]' : 'text-slate-400 hover:text-slate-900'}`}>EN</button>
-              <span className="w-[1px] h-3 bg-slate-300" />
-              <button onClick={() => switchLanguage('ar')} className={`text-[10px] font-bold tracking-widest transition-colors ${locale === 'ar' ? 'text-[var(--primary)]' : 'text-slate-400 hover:text-slate-900'}`}>AR</button>
+            <div className="flex items-center rounded-lg border border-neutral-200/60 bg-neutral-50/50 p-0.5" aria-label="Language toggle">
+              <button 
+                onClick={() => switchLanguage('en')} 
+                className={`text-[12px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${
+                  locale === 'en' 
+                    ? 'bg-white text-neutral-900 shadow-sm' 
+                    : 'text-neutral-400 hover:text-neutral-600'
+                }`}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => switchLanguage('ar')} 
+                className={`text-[12px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${
+                  locale === 'ar' 
+                    ? 'bg-white text-neutral-900 shadow-sm' 
+                    : 'text-neutral-400 hover:text-neutral-600'
+                }`}
+              >
+                AR
+              </button>
             </div>
  
             {/* CTA */}
@@ -303,10 +368,13 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2
                 bg-[var(--primary)] text-white
-                px-6 py-3 rounded-md
-                text-[10px] font-bold uppercase tracking-widest
-                transition-all duration-300
-                hover:bg-[var(--primary-dark)] hover:shadow-lg hover:-translate-y-0.5"
+                px-5 py-2.5 rounded-lg
+                text-[13px] font-medium
+                transition-all duration-200
+                hover:bg-[var(--primary-dark)]"
+              style={{
+                boxShadow: "0 1px 2px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.1)",
+              }}
             >
               {tNav("requestQuote")}
             </Link>
@@ -315,10 +383,20 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
           {/* ── Mobile Hamburger ──────────────────────────────────────────── */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-slate-900 hover:text-[var(--primary)] transition-colors"
+            className="lg:hidden p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <X size={22} />
+                </motion.div>
+              ) : (
+                <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                  <Menu size={22} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </div>
@@ -330,12 +408,15 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden absolute top-full start-0 end-0
               bg-white/95 backdrop-blur-xl
-              border-b border-slate-200 overflow-hidden shadow-xl"
+              border-b border-neutral-200/60 overflow-hidden"
+            style={{
+              boxShadow: "0 16px 48px -8px rgba(0,0,0,0.08)",
+            }}
           >
-            <div className="px-6 py-8 space-y-2">
+            <div className="px-6 py-6 space-y-1">
               {defaultNavLinks.map((link: any, i: number) => {
                 const isActive = pathname === link.href;
                 const linkName = tNav(link.key as any);
@@ -344,18 +425,18 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     key={link.key}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.04, ...springTransition }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
                       className={`flex items-center justify-between
-                        px-4 py-4 rounded-lg
-                        text-[11px] font-bold uppercase tracking-widest
+                        px-4 py-3 rounded-lg
+                        text-[14px] font-medium
                         transition-colors duration-150 ${
                           isActive
-                            ? "text-[var(--primary)] bg-teal-50"
-                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                            ? "text-[var(--primary)] bg-emerald-50/50"
+                            : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
                         }`}
                     >
                       {linkName}
@@ -369,15 +450,18 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.38 }}
-                className="pt-6 border-t border-slate-100 mt-6"
+                transition={{ delay: 0.3, ...springTransition }}
+                className="pt-4 border-t border-neutral-100 mt-4"
               >
                 <Link
                   href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-4 rounded-md text-[11px] font-bold uppercase tracking-widest"
+                  className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-3.5 rounded-lg text-[14px] font-medium"
+                  style={{
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
+                  }}
                 >
                   {tNav("requestQuote")}
                 </Link>

@@ -51,7 +51,7 @@ export default function SaudiMap() {
   }, [activeCity]);
 
   return (
-    <div className="bg-slate-50 py-20 px-4 md:px-8 font-sans select-none overflow-hidden relative">
+    <div className="bg-[var(--surface-raised)] py-20 px-6 font-sans select-none overflow-hidden relative border-t border-neutral-100">
       <style jsx global>{`
         @keyframes rp { 0% { r: 7; stroke-opacity: 0.8; } 100% { r: 18; stroke-opacity: 0; } }
         @keyframes rp2 { 0% { r: 7; stroke-opacity: 0.6; } 100% { r: 26; stroke-opacity: 0; } }
@@ -63,29 +63,31 @@ export default function SaudiMap() {
         .lp2 { fill: none; stroke: var(--primary); stroke-width: 1; animation: rp2 2.2s ease-out infinite; animation-delay: 0.9s; }
         .dot circle.d { fill: var(--primary); transition: r 0.2s; }
         .dot:hover circle.d { r: 7; }
-        .lbl { fill: #4B5563; font-size: 8px; letter-spacing: 0.1em; pointer-events: none; font-family: sans-serif; font-weight: 700; }
+        .lbl { fill: #4B5563; font-size: 8px; letter-spacing: 0.1em; pointer-events: none; font-family: sans-serif; font-weight: 600; }
       `}</style>
 
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 max-w-2xl mx-auto">
         <div className="flex flex-col items-center gap-4 mb-6">
-          <span className="w-12 h-[2px] bg-[var(--primary)]" />
-          <p className="text-[var(--primary)] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">Our Presence Across the Kingdom</p>
+          <span className="section-label">
+            <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+            Our Presence Across the Kingdom
+          </span>
         </div>
-        <h2 className="font-display text-slate-900 text-3xl md:text-4xl font-bold tracking-tight uppercase">
+        <h2 className="text-neutral-900 text-3xl md:text-4xl font-semibold" style={{ letterSpacing: "-0.025em" }}>
           Crafting <span className="text-[var(--primary)]">Masterpieces</span> in Every Corner of Saudi Arabia
         </h2>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 items-start max-w-4xl mx-auto relative z-10">
+      <div className="flex flex-col lg:flex-row gap-12 items-start max-w-5xl mx-auto relative z-10">
         {/* Left Sidebar */}
         <div className="w-full lg:w-48 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-3 z-20">
           {(Object.keys(CITY_DATA) as CityKey[]).map((id: CityKey) => (
             <div 
               key={id}
               onClick={() => updatePopPos(id)}
-              className={`bg-white border rounded-lg p-3 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${activeCity === id ? 'border-[var(--primary)] bg-teal-50 shadow-md' : 'border-slate-200 hover:border-slate-300'}`}
+              className={`bg-white border rounded-xl p-3 cursor-pointer transition-all duration-300 ${activeCity === id ? 'border-[var(--primary)] bg-emerald-50/50 shadow-[0_2px_8px_rgba(13,107,78,0.15)]' : 'border-neutral-200/80 hover:border-neutral-300 shadow-[0_1px_2px_rgba(0,0,0,0.03)]'}`}
             >
-              <div className={`text-[10px] font-bold tracking-widest text-center uppercase ${activeCity === id ? 'text-[var(--primary)]' : 'text-slate-600'}`}>{CITY_DATA[id].n}</div>
+              <div className={`text-[11px] font-semibold tracking-widest text-center uppercase ${activeCity === id ? 'text-[var(--primary)]' : 'text-neutral-500'}`}>{CITY_DATA[id].n}</div>
             </div>
           ))}
         </div>
@@ -95,7 +97,8 @@ export default function SaudiMap() {
           <svg 
             ref={svgRef}
             viewBox="0 0 950 780" 
-            className="w-full h-auto block drop-shadow-xl"
+            className="w-full h-auto block"
+            style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.05))" }}
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -130,11 +133,11 @@ export default function SaudiMap() {
             {(Object.keys(CITY_DATA) as CityKey[]).map((id: CityKey) => {
               const city = CITY_DATA[id];
               return (
-                <g key={id} className="dot" onClick={() => updatePopPos(id)}>
+                <g key={id} className="dot cursor-pointer" onClick={() => updatePopPos(id)}>
                   <circle className="lp1" cx={city.svgX} cy={city.svgY} r="7"/>
                   <circle className="lp2" cx={city.svgX} cy={city.svgY} r="7"/>
                   <circle className="d" cx={city.svgX} cy={city.svgY} r="5" filter="url(#ggg)"/>
-                  <text className="lbl" x={city.svgX + 10} y={city.svgY - 6}>{city.n}</text>
+                  <text className="lbl" x={city.svgX + 12} y={city.svgY + 3}>{city.n}</text>
                 </g>
               );
             })}
@@ -144,26 +147,28 @@ export default function SaudiMap() {
           <AnimatePresence>
             {activeCity && (
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                initial={{ opacity: 0, scale: 0.95, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                className="absolute bg-white border border-slate-200 rounded-xl p-5 min-w-[200px] z-30 pointer-events-auto shadow-2xl"
+                exit={{ opacity: 0, scale: 0.95, y: 8 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute bg-white border border-neutral-200/80 rounded-2xl p-5 min-w-[200px] z-30 pointer-events-auto"
                 style={{ 
                   left: popPos.left, 
                   top: popPos.top,
+                  boxShadow: "0 12px 24px -4px rgba(0,0,0,0.08), 0 4px 8px -2px rgba(0,0,0,0.04)"
                 }}
               >
-                <div className="text-[12px] font-bold text-[var(--primary)] tracking-[0.14em] uppercase mb-1">{CITY_DATA[activeCity].n}</div>
-                <div className="text-[9px] font-bold text-slate-400 tracking-[0.08em] uppercase mb-4">{CITY_DATA[activeCity].s}</div>
-                <div className="text-[10px] text-slate-600 mb-4 font-medium uppercase tracking-widest border-t border-slate-100 pt-3">Events delivered: <b className="text-[var(--primary)] ms-1">{CITY_DATA[activeCity].e}</b></div>
+                <div className="text-[13px] font-bold text-neutral-900 tracking-wider uppercase mb-1">{CITY_DATA[activeCity].n}</div>
+                <div className="text-[10px] font-medium text-emerald-500 tracking-wider uppercase mb-3">{CITY_DATA[activeCity].s}</div>
+                <div className="text-[11px] text-neutral-500 mb-4 font-medium uppercase tracking-widest border-t border-neutral-100 pt-3 flex items-center justify-between">Events <b className="text-[var(--primary)] ms-1">{CITY_DATA[activeCity].e}</b></div>
                 <button 
                   onClick={() => router.push(`/locations/${CITY_DATA[activeCity].slug}`)}
-                  className="w-full text-[9px] text-white bg-[var(--primary)] rounded-md py-2.5 text-center tracking-widest font-bold hover:bg-[var(--primary-dark)] transition-all uppercase shadow-sm"
+                  className="w-full text-[11px] text-white bg-[var(--primary)] rounded-lg py-2.5 text-center font-medium hover:bg-[var(--primary-dark)] transition-all"
                 >
                   Explore Events →
                 </button>
                 {/* Arrow */}
-                <div className="absolute -bottom-1.5 start-1/2 -translate-x-1/2 w-3 h-2 bg-white border-b border-r border-slate-200" style={{ transform: 'rotate(45deg)' }} />
+                <div className="absolute -bottom-1.5 start-1/2 -translate-x-1/2 w-3 h-3 bg-white border-b border-r border-neutral-200/80" style={{ transform: 'rotate(45deg)' }} />
               </motion.div>
             )}
           </AnimatePresence>

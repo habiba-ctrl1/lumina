@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Award, Users, MapPin, Sparkles } from "lucide-react";
+import { Award, Users, MapPin, Sparkles, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: 'Event Planning Experts Saudi Arabia',
@@ -49,45 +50,49 @@ const jsonLd = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-white text-neutral-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ScrollProgress />
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center pt-20">
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[var(--surface-raised)] border-b border-neutral-200/80">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/hero_bg.webp" 
             alt="Luxury Event Backdrop" 
             width={1920}
             height={1080}
-            className="w-full h-full object-cover opacity-[0.25]"
+            className="w-full h-full object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/70 via-slate-50/50 to-slate-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--surface-raised)]/50 to-[var(--surface-raised)]" />
         </div>
         
-        <div className="relative z-10 text-center px-4">
-          <span className="text-[var(--primary)] text-xs uppercase tracking-[0.5em] font-semibold mb-8 block">
-            Established 2018
-          </span>
-          <h1 className="text-3xl md:text-5xl font-display font-medium text-slate-900 mb-8 leading-tight uppercase">
-            Event Planning <span className="text-[var(--primary)]  font-semibold">Experts</span> <br /> Saudi Arabia
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div className="flex flex-col items-center justify-center gap-4 mb-6">
+            <span className="section-label bg-white border border-neutral-200/80">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              Established 2018
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-8" style={{ letterSpacing: "-0.025em" }}>
+            Event Planning <span className="text-[var(--primary)]">Experts</span> <br /> in Saudi Arabia
           </h1>
-          <p className="text-slate-600 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            From Riyadh to the world, Saudi Event Management blends perfect planning and design with heartfelt emotion to craft events that go beyond expectations.
+          <p className="text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations.
           </p>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="relative group">
-            <div className="absolute -inset-4 bg-[var(--primary)]/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="relative h-[600px] rounded-sm overflow-hidden border border-slate-200 shadow-md">
+            <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="relative h-[600px] rounded-3xl overflow-hidden border border-neutral-200/80 bg-neutral-100 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.05)]">
               <Image 
                 src="/gallery_2.webp" 
                 alt="Luxury Event Vision" 
@@ -96,46 +101,63 @@ export default function AboutPage() {
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
-            <div className="absolute -bottom-6 -end-6 bg-white border border-[var(--primary)]/30 p-8 rounded-sm shadow-xl max-w-xs">
-              <p className="text-[var(--primary)] font-display text-base mb-2  font-semibold">&quot;We don&apos;t just plan events; we organize and manage every emotion.&quot;</p>
-              <p className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">— Habiba Asghar, Founder</p>
+            
+            {/* Floating Quote Card */}
+            <div className="absolute -bottom-8 -end-8 md:-end-12 bg-white/95 backdrop-blur-md border border-neutral-200/80 p-8 rounded-2xl shadow-[0_12px_40px_-12px_rgba(0,0,0,0.1)] max-w-xs transition-transform duration-500 group-hover:-translate-y-2">
+              <div className="w-8 h-8 bg-emerald-50 rounded-full flex items-center justify-center mb-4 text-[var(--primary)]">
+                <Sparkles size={16} />
+              </div>
+              <p className="text-neutral-800 font-medium text-[15px] leading-relaxed mb-4" style={{ letterSpacing: "-0.01em" }}>
+                "We don't just plan events; we organize and manage every emotion, curating masterpieces."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-neutral-100 overflow-hidden">
+                  <Image src="/gallery_corporate_gala.webp" width={40} height={40} alt="Habiba Asghar" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p className="text-neutral-900 font-semibold text-[13px]">Habiba Asghar</p>
+                  <p className="text-neutral-500 text-[11px] font-medium uppercase tracking-wider">Founder & CEO</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900 leading-tight uppercase">Crafting Unparalleled Moments</h2>
-            <div className="space-y-6 text-slate-600 font-light leading-relaxed text-sm text-justify">
+          <div className="space-y-8 mt-12 lg:mt-0 lg:ps-8">
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900" style={{ letterSpacing: "-0.025em" }}>
+              Crafting <span className="text-[var(--primary)]">Unparalleled</span> Moments
+            </h2>
+            <div className="space-y-6 text-neutral-500 text-[15px] leading-relaxed">
               <p>
-                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design that makes people feel special, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
+                Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
               </p>
               <p>
-                Our philosophy is rooted in the belief that every celebration is not just an event, but a story that comes to life — a beautiful experience in motion. We don&apos;t simply plan; we organize and manage every detail. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team blends local heritage with modern and unique design. 
+                Our philosophy is rooted in the belief that every celebration is not just an event, but a story that comes to life. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team seamlessly blends authentic local heritage with modern, minimalist design aesthetics.
               </p>
               <p>
-                At the heart of the &apos;Saudi Event Management Philosophy&apos; is the concept of <strong className="text-slate-900 font-semibold">Design That Touches the Heart</strong>. We believe that space, light, and geometry must work in absolute harmony with the human experience. Whether it&apos;s a royal wedding hosting a thousand important guests and VIPs or an intimate corporate retreat for world leaders, we apply the same level of careful attention to every small thing, ensuring that every part of the guest experience tells a story of elegance and legacy.
+                At the heart of our methodology is the concept of <strong className="text-neutral-900 font-semibold">Design That Touches the Heart</strong>. Whether orchestrating a royal wedding hosting a thousand VIPs or an intimate corporate retreat for world leaders, we apply the same level of obsessive attention to every microscopic detail.
               </p>
               <p>
-                As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural events and activities that showcase the high quality of Saudi Arabia to the global stage. Our mission is to transform short, special times into memories that last forever, echoing through generations.
+                As Saudi Arabia marches toward Vision 2030, our agency stands at the forefront of this cultural revolution. We are committed to supporting the General Entertainment Authority (GEA) by delivering world-class cultural activations that showcase the exceptional quality of Saudi Arabia to the global stage.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-10 pt-8">
-              <div className="flex items-start gap-10">
-                <div className="p-3 bg-white rounded-sm text-[var(--primary)] border border-slate-200 shadow-sm">
-                  <Award size={24} />
+            <div className="grid grid-cols-2 gap-6 pt-8 border-t border-neutral-100">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 flex items-center justify-center bg-emerald-50 rounded-xl text-[var(--primary)] border border-emerald-100/50 shrink-0">
+                  <Award size={20} />
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-semibold text-xs uppercase tracking-wider mb-1">Award Winning</h3>
-                  <p className="text-slate-500 text-[10px]">Voted Best Luxury Planner 2024</p>
+                  <h3 className="text-neutral-900 font-semibold text-[14px] mb-1" style={{ letterSpacing: "-0.01em" }}>Award Winning</h3>
+                  <p className="text-neutral-500 text-[13px] leading-snug">Voted Best Luxury Planner in the GCC 2024</p>
                 </div>
               </div>
-              <div className="flex items-start gap-10">
-                <div className="p-3 bg-white rounded-sm text-[var(--primary)] border border-slate-200 shadow-sm">
-                  <MapPin size={24} />
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 flex items-center justify-center bg-emerald-50 rounded-xl text-[var(--primary)] border border-emerald-100/50 shrink-0">
+                  <MapPin size={20} />
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-semibold text-xs uppercase tracking-wider mb-1">Global Presence</h3>
-                  <p className="text-slate-500 text-[10px]">Operations in KSA, UAE, & PK</p>
+                  <h3 className="text-neutral-900 font-semibold text-[14px] mb-1" style={{ letterSpacing: "-0.01em" }}>Global Standard</h3>
+                  <p className="text-neutral-500 text-[13px] leading-snug">Premium operations across KSA & GCC</p>
                 </div>
               </div>
             </div>
@@ -144,23 +166,25 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-32 bg-white relative border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 md:py-32 bg-[var(--surface-raised)] border-y border-neutral-200/80">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-8 uppercase tracking-tight">Our Core Values</h2>
-            <div className="w-16 h-px bg-[var(--primary)]/50 mx-auto" />
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-6" style={{ letterSpacing: "-0.025em" }}>Our Core <span className="text-[var(--primary)]">Values</span></h2>
+            <p className="text-neutral-500 text-[16px] max-w-2xl mx-auto leading-relaxed">The principles that guide our every decision and shape every masterpiece we create.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Sparkles, title: "Artistry", desc: "Every detail is curated with artistic intent, from floral geometry to ambient lighting." },
-              { icon: Users, title: "Discretion", desc: "We provide absolute privacy for our high-profile and celebrity clientele." },
-              { icon: Award, title: "Excellence", desc: "We settle for nothing less than extraordinary in every aspect of execution." },
+              { icon: Sparkles, title: "Artistry", desc: "Every detail is curated with artistic intent, from architectural floral geometry to immersive ambient lighting." },
+              { icon: Users, title: "Discretion", desc: "We provide absolute privacy and seamless security protocols for our high-profile and celebrity clientele." },
+              { icon: Award, title: "Excellence", desc: "We settle for nothing less than extraordinary in every aspect of planning, production, and execution." },
             ].map((value: any, i: number) => (
-              <div key={i} className="bg-white border border-slate-200 p-8 rounded-sm hover:border-[var(--primary)] transition-all duration-500 group hover:shadow-md">
-                <value.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-display font-medium text-slate-900 mb-8 uppercase">{value.title}</h3>
-                <p className="text-slate-600 text-xs font-light leading-relaxed">{value.desc}</p>
+              <div key={i} className="bg-white border border-neutral-200/80 p-8 md:p-10 rounded-2xl hover:border-neutral-300 transition-all duration-300 group shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.06)]">
+                <div className="w-14 h-14 bg-neutral-50 border border-neutral-100 rounded-xl flex items-center justify-center mb-8 group-hover:bg-emerald-50 group-hover:border-emerald-100 transition-colors duration-300">
+                  <value.icon size={24} className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors duration-300" />
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-4" style={{ letterSpacing: "-0.01em" }}>{value.title}</h3>
+                <p className="text-neutral-500 text-[14px] leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -168,19 +192,22 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-4">
-        <div className="bg-emerald-950 border border-emerald-900 rounded-sm p-12 md:p-20 text-center relative overflow-hidden max-w-7xl mx-auto shadow-xl">
-          <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-[0.22] bg-cover bg-center" />
+      <section className="py-24 md:py-32 px-6">
+        <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden max-w-6xl mx-auto shadow-2xl">
+          <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-10 bg-cover bg-center" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+          
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-display font-medium text-white mb-8 uppercase tracking-tight">Ready to create Magic?</h2>
-            <p className="text-slate-200 max-w-2xl mx-auto mb-10 text-sm font-light">
-              Let us transform your vision into an extraordinary reality. Connect with our principal planners today.
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to create <span className="text-emerald-400">Magic?</span></h2>
+            <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
+              Let us transform your vision into an extraordinary reality. Connect with our principal planners today to begin your journey.
             </p>
             <Link 
               href="/#contact" 
-              className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-wider hover:bg-[var(--primary)] transition-colors rounded-sm text-xs shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
             >
               Book a Consultation
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>

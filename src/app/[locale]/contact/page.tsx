@@ -8,16 +8,10 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { getDictionary } from "@/lib/dictionaries";
 import ContactForm from "./ContactForm";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Type Definitions
-// ─────────────────────────────────────────────────────────────────────────────
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Dynamic SEO Metadata
-// ─────────────────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const isAr = locale === "ar";
@@ -58,15 +52,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Contact Page
-// ─────────────────────────────────────────────────────────────────────────────
 export default async function ContactPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale as "en" | "ar");
   const isAr = locale === "ar";
 
-  // Page-level Schema
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -93,37 +83,36 @@ export default async function ContactPage({ params }: PageProps) {
     },
   };
 
-  // Localized Content Map
   const content = {
-    heroLabel: isAr ? "ابدأ إرثك اليوم" : "START YOUR LEGACY TODAY",
-    heroTitle: isAr ? "دعنا ننحت" : "CONTACT EVENT MANAGEMENT",
-    heroTitleHighlight: isAr ? "تحفتك الفنية" : "COMPANY SAUDI ARABIA",
+    heroLabel: isAr ? "ابدأ إرثك اليوم" : "Start Your Legacy Today",
+    heroTitle: isAr ? "دعنا ننحت" : "Contact Event Management",
+    heroTitleHighlight: isAr ? "تحفتك الفنية" : "Company Saudi Arabia",
     heroSubtitle: isAr
       ? "تواصل مع كبار مخططينا ومنسقينا لتجسيد رؤيتك الاستثنائية إلى واقع ملموس يعبر عن الفخامة والتميز."
       : "Connect with our principal planners and curators to bring your extraordinary event vision to life in absolute elegance.",
-    whatsappTitle: isAr ? "استجابة فورية" : "INSTANT RESPONSE",
-    whatsappSub: isAr ? "الكونسيرج عبر الواتساب" : "WHATSAPP CONCIERGE",
+    whatsappTitle: isAr ? "استجابة فورية" : "Instant Response",
+    whatsappSub: isAr ? "الكونسيرج عبر الواتساب" : "WhatsApp Concierge",
     whatsappDesc: isAr
       ? "تواصل مباشرة مع مديري التخطيط للحصول على خدمة كبار الشخصيات الراقية والمباشرة."
       : "Connect directly with our planning directors for an immediate white-glove event booking experience.",
-    directTitle: isAr ? "اتصال مباشر" : "DIRECT CONTACT",
-    emailLabel: isAr ? "بريدنا الإلكتروني" : "EMAIL US",
-    callLabel: isAr ? "اتصل بنا" : "CALL US",
-    hoursLabel: isAr ? "ساعات العمل" : "OPERATING HOURS",
+    directTitle: isAr ? "اتصال مباشر" : "Direct Contact",
+    emailLabel: isAr ? "بريدنا الإلكتروني" : "Email Us",
+    callLabel: isAr ? "اتصل بنا" : "Call Us",
+    hoursLabel: isAr ? "ساعات العمل" : "Operating Hours",
     hoursValue: isAr
       ? "يومياً: 9:00 صباحاً - 10:00 مساءً (بتوقيت المملكة العربية السعودية)"
       : "Daily: 9:00 AM - 10:00 PM (KSA Time)",
-    officesTitle: isAr ? "مكاتبنا الإقليمية" : "REGIONAL OFFICES",
-    riyadhTitle: isAr ? "المقر الرئيسي - الرياض" : "RIYADH HEADQUARTERS",
+    officesTitle: isAr ? "مكاتبنا الإقليمية" : "Regional Offices",
+    riyadhTitle: isAr ? "المقر الرئيسي - الرياض" : "Riyadh Headquarters",
     riyadhAddress: isAr ? "حي العليا، الرياض، المملكة العربية السعودية" : "Olaya District, Riyadh, Kingdom of Saudi Arabia",
-    jeddahTitle: isAr ? "فرع جدة" : "JEDDAH BRANCH",
+    jeddahTitle: isAr ? "فرع جدة" : "Jeddah Branch",
     jeddahAddress: isAr ? "طريق الملك عبدالعزيز، جدة، المملكة العربية السعودية" : "King Abdulaziz Road, Jeddah, KSA",
-    alulaTitle: isAr ? "جناح العلا" : "ALULA PAVILION",
+    alulaTitle: isAr ? "جناح العلا" : "AlUla Pavilion",
     alulaAddress: isAr ? "وادي عشار، العلا، المملكة العربية السعودية" : "Ashar Valley, AlUla, KSA",
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 overflow-hidden relative">
+    <main className="min-h-screen bg-[var(--background)] text-neutral-900 overflow-hidden relative border-t border-neutral-100">
       <ScrollProgress />
       <WhatsAppButton />
       <Navbar locale={locale} />
@@ -134,103 +123,98 @@ export default async function ContactPage({ params }: PageProps) {
       />
 
       {/* ── Background Aesthetics ── */}
-      <div className="absolute top-0 start-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0">
-        <Image
-          src="/hero_bg.webp"
-          alt="Luxury Backdrop"
-          fill
-          priority
-          className="object-cover opacity-30 scale-105"
-        />
-        <div className="absolute inset-0 bg-white/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/80 to-slate-50" />
+      <div className="absolute top-0 start-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0 bg-[var(--surface-raised)] border-b border-neutral-200/80">
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px]" />
       </div>
 
       {/* ── Hero Header ── */}
       <section className="relative z-10 pt-36 md:pt-44 pb-12 text-center max-w-7xl mx-auto px-6">
-        <span className="text-[var(--primary)] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold mb-6 block animate-fade-in">
-          {content.heroLabel}
-        </span>
-        <h1 className="font-display font-bold text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-6 uppercase tracking-tight leading-tight max-w-4xl mx-auto">
-          {content.heroTitle} <span className="text-[var(--primary)] font-bold">{content.heroTitleHighlight}</span>
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <span className="section-label bg-white border border-neutral-200/80">
+            <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+            {content.heroLabel}
+          </span>
+        </div>
+        <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight max-w-4xl mx-auto" style={{ letterSpacing: "-0.025em" }}>
+          {content.heroTitle} <br /><span className="text-[var(--primary)]">{content.heroTitleHighlight}</span>
         </h1>
-        <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+        <p className="text-neutral-500 text-[16px] max-w-xl mx-auto leading-relaxed">
           {content.heroSubtitle}
         </p>
       </section>
 
       {/* ── Contact Body ── */}
-      <section className="relative z-10 py-20 pb-28 max-w-7xl mx-auto px-6">
+      <section className="relative z-10 py-16 pb-28 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Contact Suite */}
-          <div className="lg:col-span-5 space-y-12">
+          <div className="lg:col-span-5 space-y-8">
             
             {/* WhatsApp Concierge Badge */}
-            <div className="bg-white border border-slate-200 rounded-xl p-6 md:p-8 hover:border-[#25D366] transition-all duration-300 shadow-sm hover:shadow-lg group">
-              <span className="text-[10px] font-bold text-[#25D366] uppercase tracking-widest block mb-3">{content.whatsappTitle}</span>
-              <h3 className="font-display font-bold text-slate-900 text-xl uppercase tracking-tight mb-4">
+            <div className="bg-white border border-neutral-200/80 rounded-2xl p-8 hover:border-[#25D366] transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_24px_-4px_rgba(37,211,102,0.15)] group">
+              <span className="text-[12px] font-semibold text-[#25D366] tracking-wider block mb-2">{content.whatsappTitle}</span>
+              <h3 className="font-semibold text-neutral-900 text-xl mb-3" style={{ letterSpacing: "-0.01em" }}>
                 {content.whatsappSub}
               </h3>
-              <p className="text-slate-600 text-[13px] leading-relaxed mb-8">
+              <p className="text-neutral-500 text-[14px] leading-relaxed mb-8">
                 {content.whatsappDesc}
               </p>
               <a
                 href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-4 rounded-md shadow-md transition-all text-[11px] font-bold uppercase tracking-wider"
+                className="flex items-center justify-between bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-4 rounded-xl shadow-[0_2px_8px_rgba(37,211,102,0.2)] transition-all text-[14px] font-medium"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <MessageCircle size={18} />
                   <span>Start Live Chat</span>
                 </div>
-                <span className="text-xs">→</span>
+                <span>→</span>
               </a>
             </div>
 
             {/* Direct Information */}
-            <div className="space-y-8 bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm">
-              <h3 className="font-display font-bold text-slate-900 text-lg uppercase tracking-wider border-b border-slate-100 pb-4 flex items-center gap-3">
-                <Sparkles size={16} className="text-[var(--primary)]" />
+            <div className="space-y-8 bg-white p-8 rounded-2xl border border-neutral-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+              <h3 className="font-semibold text-neutral-900 text-lg border-b border-neutral-100 pb-4 flex items-center gap-2" style={{ letterSpacing: "-0.01em" }}>
+                <Sparkles size={18} className="text-[var(--primary)]" />
                 <span>{content.directTitle}</span>
               </h3>
 
-              <div className="grid grid-cols-1 gap-8">
+              <div className="grid grid-cols-1 gap-6">
                 {/* Email */}
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-neutral-50 border border-neutral-100 rounded-xl flex items-center justify-center shrink-0 text-[var(--primary)]">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.emailLabel}</span>
-                    <a href="mailto:infosaudieventmanagement@gmail.com" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
+                    <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.emailLabel}</span>
+                    <a href="mailto:infosaudieventmanagement@gmail.com" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
                       infosaudieventmanagement@gmail.com
                     </a>
                   </div>
                 </div>
 
                 {/* Call */}
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-neutral-50 border border-neutral-100 rounded-xl flex items-center justify-center shrink-0 text-[var(--primary)]">
                     <Phone size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.callLabel}</span>
-                    <a href="tel:+966501234567" className="text-slate-900 text-sm hover:text-[var(--primary)] transition-colors font-bold">
+                    <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.callLabel}</span>
+                    <a href="tel:+966501234567" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
                       +966 50 123 4567
                     </a>
                   </div>
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-center shrink-0 text-[var(--primary)]">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-neutral-50 border border-neutral-100 rounded-xl flex items-center justify-center shrink-0 text-[var(--primary)]">
                     <Clock size={18} />
                   </div>
                   <div>
-                    <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">{content.hoursLabel}</span>
-                    <span className="text-slate-700 text-[13px] leading-relaxed block">
+                    <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.hoursLabel}</span>
+                    <span className="text-neutral-700 text-[14px] font-medium leading-relaxed block">
                       {content.hoursValue}
                     </span>
                   </div>
@@ -239,29 +223,24 @@ export default async function ContactPage({ params }: PageProps) {
             </div>
 
             {/* Regional Offices */}
-            <div className="space-y-6 pt-4">
-              <h3 className="font-display font-bold text-slate-900 text-lg uppercase tracking-wider pb-2 flex items-center gap-3">
-                <MapPin size={16} className="text-[var(--primary)]" />
+            <div className="space-y-6 bg-white p-8 rounded-2xl border border-neutral-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+              <h3 className="font-semibold text-neutral-900 text-lg pb-4 border-b border-neutral-100 flex items-center gap-2" style={{ letterSpacing: "-0.01em" }}>
+                <MapPin size={18} className="text-[var(--primary)]" />
                 <span>{content.officesTitle}</span>
               </h3>
 
               <div className="space-y-6">
-                {/* Riyadh */}
-                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
-                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.riyadhTitle}</span>
-                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.riyadhAddress}</span>
+                <div className="relative ps-4 border-s-2 border-emerald-100 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[14px] font-semibold text-neutral-900 mb-1">{content.riyadhTitle}</span>
+                  <span className="block text-neutral-500 text-[13px] leading-relaxed">{content.riyadhAddress}</span>
                 </div>
-
-                {/* Jeddah */}
-                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
-                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.jeddahTitle}</span>
-                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.jeddahAddress}</span>
+                <div className="relative ps-4 border-s-2 border-emerald-100 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[14px] font-semibold text-neutral-900 mb-1">{content.jeddahTitle}</span>
+                  <span className="block text-neutral-500 text-[13px] leading-relaxed">{content.jeddahAddress}</span>
                 </div>
-
-                {/* AlUla */}
-                <div className="relative ps-6 border-s-2 border-slate-200 hover:border-[var(--primary)] transition-colors">
-                  <span className="block text-[11px] font-bold text-slate-900 uppercase tracking-widest mb-2">{content.alulaTitle}</span>
-                  <span className="block text-slate-600 text-[13px] leading-relaxed">{content.alulaAddress}</span>
+                <div className="relative ps-4 border-s-2 border-emerald-100 hover:border-[var(--primary)] transition-colors">
+                  <span className="block text-[14px] font-semibold text-neutral-900 mb-1">{content.alulaTitle}</span>
+                  <span className="block text-neutral-500 text-[13px] leading-relaxed">{content.alulaAddress}</span>
                 </div>
               </div>
             </div>

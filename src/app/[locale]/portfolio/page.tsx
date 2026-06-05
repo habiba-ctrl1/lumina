@@ -7,6 +7,7 @@ import StatsSection from "@/components/StatsSection";
 import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: 'Luxury Event Portfolio',
@@ -16,18 +17,23 @@ export const metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900 overflow-hidden">
+    <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
+      <ScrollProgress />
       <Navbar />
       
-      {/* Hero Carousel (Teaser) */}
-      <div className="pt-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Header */}
+      <div className="pt-32 pb-16 bg-[var(--surface-raised)] border-b border-neutral-200/80">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <div className="flex flex-col items-center gap-4 mb-6">
-              <span className="w-12 h-[2px] bg-[var(--primary)]" />
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">Curated Excellence</span>
+              <span className="section-label bg-white border border-neutral-200/80">
+                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+                Curated Excellence
+              </span>
             </div>
-            <h1 className="font-display font-bold text-slate-900 text-3xl md:text-5xl uppercase tracking-tight">Portfolio <span className="text-[var(--primary)] font-bold">Showcase</span></h1>
+            <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl" style={{ letterSpacing: "-0.025em" }}>
+              Portfolio <span className="text-[var(--primary)]">Showcase</span>
+            </h1>
           </div>
         </div>
         <RecentEvents hideHeader={true} />
@@ -37,24 +43,32 @@ export default function PortfolioPage() {
       <StatsSection />
 
       {/* Main Filterable Grid */}
-      <FilterablePortfolio />
+      <div className="bg-white">
+        <FilterablePortfolio />
+      </div>
 
       {/* Testimonials (Social Proof) */}
       <Testimonials />
 
       {/* Final CTA Section */}
-      <section className="py-32 bg-[var(--primary)] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.22] bg-[url('/hero_bg.webp')] bg-cover bg-center" />
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="font-display font-bold text-white mb-8 text-2xl md:text-4xl uppercase tracking-tight">Ready to Start Your <span className="font-bold text-teal-200">Legacy?</span></h2>
-          <p className="text-slate-200 text-sm md:text-base mb-12">Let&apos;s discuss your vision and create something truly extraordinary together.</p>
-          <Link 
-            href="/#contact"
-            className="inline-flex items-center gap-3 bg-white text-[var(--primary)] hover:bg-slate-50 px-8 py-4 text-[11px] font-bold uppercase tracking-widest transition-all shadow-sm rounded-md"
-          >
-            <span>Book Your Discovery Call</span>
-            <ArrowRight size={16} />
-          </Link>
+      <section className="py-24 md:py-32 px-6">
+        <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden max-w-6xl mx-auto shadow-2xl">
+          <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-10 bg-cover bg-center" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Start Your <span className="text-emerald-400">Legacy?</span></h2>
+            <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
+              Let&apos;s discuss your vision and create something truly extraordinary together.
+            </p>
+            <Link 
+              href="/#contact" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
+            >
+              Book Your Discovery Call
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 

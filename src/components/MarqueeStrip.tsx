@@ -1,7 +1,6 @@
 "use client";
 
 import { Crown, Heart, Star, Gem, Award, Sparkles } from "lucide-react";
-
 import { useTranslations } from "next-intl";
 
 const iconMap = [Crown, Heart, Star, Gem, Award, Sparkles];
@@ -14,19 +13,19 @@ export default function MarqueeStrip() {
   }));
 
   return (
-    <div className="relative py-8 bg-slate-50 border-y border-slate-200 overflow-hidden">
+    <div className="relative py-6 bg-[var(--surface-raised)] border-y border-neutral-200/60 overflow-hidden">
       {/* Fade edges */}
-      <div className="absolute start-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10" />
-      <div className="absolute end-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10" />
+      <div className="absolute start-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--surface-raised)] to-transparent z-10" />
+      <div className="absolute end-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--surface-raised)] to-transparent z-10" />
 
       <div className="flex animate-marquee">
         {[...items, ...items].map((item: any, i: number) => (
-          <div key={i} className="flex items-center gap-10 mx-12 shrink-0">
-            <item.icon size={16} className="text-[var(--primary)]" />
-            <span className="text-slate-600 text-[11px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+          <div key={i} className="flex items-center gap-8 mx-10 shrink-0">
+            <item.icon size={14} className="text-[var(--primary)] opacity-50" />
+            <span className="text-neutral-500 text-[12px] font-medium whitespace-nowrap" style={{ letterSpacing: "0.08em" }}>
               {item.text}
             </span>
-            <span className="text-[var(--primary)]/20 ms-8 text-xs">✦</span>
+            <span className="text-neutral-300 ms-6 text-[10px]">✦</span>
           </div>
         ))}
       </div>

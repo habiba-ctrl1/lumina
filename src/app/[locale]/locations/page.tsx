@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
 import SaudiMap from "@/components/SaudiMap";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: 'Our Locations',
@@ -46,22 +47,25 @@ const locations = [
 
 export default function LocationsPage() {
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-[var(--background)] text-neutral-900 overflow-hidden relative border-t border-neutral-100">
+      <ScrollProgress />
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative py-32 md:py-40 flex items-center justify-center bg-slate-50 border-b border-slate-200">
-        <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-30 bg-cover bg-center" />
-        <div className="absolute inset-0 bg-white/60" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center bg-[var(--surface-raised)] border-b border-neutral-200/80 overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <div className="flex flex-col items-center gap-4 mb-6">
-            <span className="w-12 h-[2px] bg-[var(--primary)]" />
-            <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--primary)]">Global Presence</span>
+            <span className="section-label bg-white border border-neutral-200/80">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              Global Presence
+            </span>
           </div>
-          <h1 className="font-display font-bold text-slate-900 mb-6 leading-tight text-4xl md:text-5xl uppercase tracking-tight">
-            Our <span className="text-[var(--primary)] font-bold">Destinations</span>
+          <h1 className="font-semibold text-neutral-900 mb-6 leading-tight text-4xl md:text-5xl lg:text-6xl" style={{ letterSpacing: "-0.025em" }}>
+            Our <span className="text-[var(--primary)]">Destinations</span>
           </h1>
-          <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-500 text-[16px] md:text-lg max-w-2xl mx-auto leading-relaxed">
             Saudi Event Management curates extraordinary experiences across premier locations. Select a destination to explore our local expertise and exclusive venues.
           </p>
         </div>
@@ -70,11 +74,11 @@ export default function LocationsPage() {
       <SaudiMap />
       
       {/* Descriptive SEO Section */}
-      <section className="py-28 relative max-w-4xl mx-auto px-6 text-center">
-        <h2 className="font-display font-bold text-slate-900 mb-8 uppercase tracking-tight text-3xl">
+      <section className="py-24 md:py-32 relative max-w-4xl mx-auto px-6 text-center border-t border-neutral-100">
+        <h2 className="font-semibold text-neutral-900 mb-8 text-3xl" style={{ letterSpacing: "-0.025em" }}>
           Kingdom-wide <span className="text-[var(--primary)]">Excellence</span>
         </h2>
-        <div className="prose prose-slate max-w-none text-slate-600 text-sm md:text-base leading-relaxed space-y-6">
+        <div className="prose prose-slate max-w-none text-neutral-500 text-[15px] leading-relaxed space-y-6 text-justify sm:text-center">
           <p>
             Saudi Event Management operates at the intersection of local heritage and global luxury standards. Our presence across the Kingdom is not just about having offices; it&apos;s about our deep-rooted relationships with the finest venues, government authorities, and specialized artisans in each region. Whether you are planning a high-stakes corporate summit in the heart of Riyadh&apos;s financial district or a soulful wedding in the historic streets of Jeddah, our regional teams provide the logistical precision and cultural nuance required for world-class execution.
           </p>
@@ -85,15 +89,15 @@ export default function LocationsPage() {
       </section>
 
       {/* Locations Grid */}
-      <section className="py-20 relative max-w-7xl mx-auto px-6 pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <section className="py-24 relative max-w-7xl mx-auto px-6 pb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {locations.map((loc: any) => (
             <Link 
               key={loc.slug} 
               href={`/locations/${loc.slug}`}
-              className="group block relative rounded-xl overflow-hidden border border-slate-200 bg-white hover:border-[var(--primary)] transition-all duration-500 shadow-sm hover:shadow-xl"
+              className="group block relative rounded-3xl overflow-hidden border border-neutral-200/80 bg-white hover:border-neutral-300 transition-all duration-500 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.06)]"
             >
-              <div className="relative h-80 w-full overflow-hidden bg-slate-100">
+              <div className="relative h-80 w-full overflow-hidden bg-neutral-100">
                 <Image 
                   src={loc.image} 
                   alt={loc.city} 
@@ -101,19 +105,19 @@ export default function LocationsPage() {
                   height={600}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-900/30 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500" />
               </div>
               <div className="absolute bottom-0 start-0 end-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex items-center gap-2 mb-3">
                   <MapPin size={16} className="text-[var(--primary)]" />
-                  <span className="text-white text-[10px] font-bold uppercase tracking-widest">{loc.country}</span>
+                  <span className="text-white/80 text-[12px] font-medium tracking-wider">{loc.country}</span>
                 </div>
-                <h3 className="font-display font-bold text-3xl text-white mb-4 uppercase tracking-tight">{loc.city}</h3>
-                <p className="text-white/90 text-sm leading-relaxed mb-6 line-clamp-2">
+                <h3 className="font-semibold text-3xl text-white mb-3" style={{ letterSpacing: "-0.01em" }}>{loc.city}</h3>
+                <p className="text-neutral-300 text-[14px] leading-relaxed mb-6 line-clamp-2">
                   {loc.description}
                 </p>
-                <div className="flex items-center text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest">
-                  Explore Location <ArrowRight size={16} className="ms-2 group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center text-[var(--primary)] text-[13px] font-medium group-hover:gap-3 transition-all duration-300">
+                  Explore Location <ArrowRight size={15} className="ms-2" />
                 </div>
               </div>
             </Link>
