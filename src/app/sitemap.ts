@@ -11,29 +11,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const staticPages = [
-    '',
-    '/about',
-    '/services',
-    '/portfolio',
-    '/faq',
-    '/vendors',
-    '/testimonials',
-    '/blog',
-    '/tracking',
-    '/privacy',
-    '/terms'
+  const staticPages: { route: string; freq: 'weekly' | 'monthly'; priority: number }[] = [
+    // ── Core pages ──────────────────────────────────────────────────────────
+    { route: '',                   freq: 'weekly',  priority: 1.0 },
+    { route: '/about',             freq: 'monthly', priority: 0.8 },
+    { route: '/services',          freq: 'weekly',  priority: 0.9 },
+    { route: '/portfolio',         freq: 'monthly', priority: 0.8 },
+    { route: '/portfolio-luxury',  freq: 'monthly', priority: 0.7 },
+    { route: '/blog',              freq: 'weekly',  priority: 0.8 },
+    { route: '/contact',           freq: 'monthly', priority: 0.8 },
+    { route: '/consultation',      freq: 'monthly', priority: 0.7 },
+
+    // ── Service sub-pages ────────────────────────────────────────────────────
+    { route: '/services/weddings',          freq: 'monthly', priority: 0.8 },
+    { route: '/services/corporate-events',  freq: 'monthly', priority: 0.8 },
+    { route: '/services/exhibitions',       freq: 'monthly', priority: 0.8 },
+    { route: '/services/conferences',       freq: 'monthly', priority: 0.7 },
+    { route: '/services/event-production',  freq: 'monthly', priority: 0.7 },
+    { route: '/services/cultural-events',   freq: 'monthly', priority: 0.7 },
+    { route: '/services/luxury-vip-events', freq: 'monthly', priority: 0.7 },
+
+    // ── Locations ────────────────────────────────────────────────────────────
+    { route: '/locations',          freq: 'monthly', priority: 0.7 },
+    { route: '/locations/riyadh',   freq: 'monthly', priority: 0.7 },
+    { route: '/locations/jeddah',   freq: 'monthly', priority: 0.7 },
+    { route: '/locations/alula',    freq: 'monthly', priority: 0.7 },
+    { route: '/locations/dammam',   freq: 'monthly', priority: 0.6 },
+
+    // ── Supporting pages ─────────────────────────────────────────────────────
+    { route: '/vendors',            freq: 'monthly', priority: 0.6 },
+    { route: '/vendor-registration',freq: 'monthly', priority: 0.6 },
+    { route: '/partners',           freq: 'monthly', priority: 0.6 },
+    { route: '/testimonials',       freq: 'monthly', priority: 0.6 },
+    { route: '/faq',                freq: 'monthly', priority: 0.6 },
+    { route: '/glossary',           freq: 'monthly', priority: 0.5 },
+    { route: '/tracking',           freq: 'monthly', priority: 0.4 },
+    { route: '/privacy',            freq: 'monthly', priority: 0.3 },
+    { route: '/terms',              freq: 'monthly', priority: 0.3 },
   ];
 
-  const staticEntries = staticPages.map((route: any) => ({
+  const staticEntries = staticPages.map(({ route, freq, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: (route === '' || route === '/blog' ? 'weekly' : 'monthly') as 'weekly' | 'monthly',
-    priority: route === '' ? 1 : (route === '/blog' || route === '/services' || route === '/portfolio' ? 0.8 : 0.6),
+    changeFrequency: freq,
+    priority,
   }));
 
-  return [
-    ...staticEntries,
-    ...blogEntries,
-  ];
+  return [...staticEntries, ...blogEntries];
 }
