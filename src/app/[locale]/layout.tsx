@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,12 +12,14 @@ import 'swiper/css/pagination';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Fonts
-// Plus Jakarta Sans → headings/display (--font-display) → font-display class
-// Inter               → body/UI (--font-sans)        → font-sans class
+// Plus Jakarta Sans → headings/display  (--font-display)
+// Inter             → body/UI           (--font-sans)
+// Playfair Display  → luxury serif      (--font-serif)  — used in city names,
+//                                        editorial headings, hero overlay text
 // ─────────────────────────────────────────────────────────────────────────────
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
@@ -26,6 +28,14 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -246,7 +256,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable}`}
+      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <head>

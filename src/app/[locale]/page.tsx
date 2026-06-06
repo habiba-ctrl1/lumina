@@ -61,6 +61,8 @@ import PartnersSection from "@/components/PartnersSection";
 import InstagramFeed from "@/components/InstagramFeed";
 import EngagementHub from "@/components/EngagementHub";
 import Services from "@/components/Services";
+import GeoDefinitionBlock from "@/components/GeoDefinitionBlock";
+import CityPresence from "@/components/CityPresence";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Page-level schema (supplements layout.tsx global schema)
@@ -117,6 +119,49 @@ const jsonLd = {
       publisher: { "@id": "https://saudieventmanagement.com/#organization" },
       inLanguage: "en-US",
     },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What areas in KSA do you serve?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Saudi Event Management provides premium event services across Riyadh, Jeddah, Dammam, and AlUla, specializing in corporate, government, and luxury private events."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Why choose Saudi Event Management?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We are Saudi Arabia's premier event management agency with a network of over 200 premium vendors and a track record of producing over 500 successful luxury and corporate events."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      serviceType: "Corporate Event Planning",
+      provider: {
+        "@id": "https://saudieventmanagement.com/#organization"
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Saudi Arabia"
+      }
+    },
+    {
+      "@type": "Service",
+      serviceType: "Luxury Wedding Production",
+      provider: {
+        "@id": "https://saudieventmanagement.com/#organization"
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Saudi Arabia"
+      }
+    }
   ],
 };
 
@@ -162,12 +207,14 @@ export default async function Home() {
           Footer        → Navigation + newsletter
       ──────────────────────────────────────────────────────────────────── */}
       <Hero />
+      <GeoDefinitionBlock />
       <MarqueeStrip />
       <ContactSection />
       <StatsSection />
       <Services />
       <FilterablePortfolio />
       <HowItWorks />
+      <CityPresence />
       <MapClient />
       <BlogPreview />
       <PartnersSection />

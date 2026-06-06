@@ -120,6 +120,69 @@
       }
     ]
   },
+  "cityPresence": {
+    "label": "Our Presence",
+    "title": "Across the",
+    "titleHighlight": "Kingdom",
+    "subtitle": "On-the-ground teams in every major Saudi city — with local vendor networks, GEA compliance, and deep knowledge of each region's event landscape.",
+    "exploreBtn": "Explore Events in",
+    "cities": [
+      {
+        "id": "riyadh",
+        "name": "Riyadh",
+        "badge": "Capital Headquarters",
+        "title": "Corporate & Government Events Hub",
+        "description": "Our founding city and primary operational base. From King Abdullah Financial District (KAFD) boardroom summits and Riyadh Season mega-activations to Olaya District gala dinners — we are embedded in the capital's most prestigious event ecosystem and trusted by government ministries, royal commissions, and Fortune 500 corporate delegations.",
+        "tags": ["KAFD", "Riyadh Season", "Olaya District", "Government Events"],
+        "stat": "150+ events managed"
+      },
+      {
+        "id": "jeddah",
+        "name": "Jeddah",
+        "badge": "Coastal Hub",
+        "title": "Red Sea Luxury & Cultural Events",
+        "description": "Jeddah's vibrant waterfront and cosmopolitan character make it Saudi Arabia's premier destination for luxury weddings, international trade exhibitions at Jeddah Exhibition & Convention Centre (JECC), and Red Sea Global-aligned sustainable event productions. We manage every aspect from Corniche waterfront galas to upscale Tahlia Street corporate receptions.",
+        "tags": ["JECC", "Red Sea Global", "Corniche", "Al-Balad"],
+        "stat": "80+ events managed"
+      },
+      {
+        "id": "alula",
+        "name": "AlUla",
+        "badge": "Heritage Destination",
+        "title": "UNESCO Heritage & Desert Luxury",
+        "description": "As a Royal Commission for AlUla (RCU) preferred event partner, we produce destination weddings, executive retreats, and cultural activations across Hegra, Sharaan Nature Reserve, and the iconic Maraya concert hall — Saudi Arabia's most breathtaking and internationally recognised event canvas, aligned with Vision 2030 tourism targets.",
+        "tags": ["Maraya", "RCU", "Hegra", "Sharaan"],
+        "stat": "40+ events managed"
+      },
+      {
+        "id": "makkah",
+        "name": "Makkah",
+        "badge": "Spiritual Capital",
+        "title": "VIP Spiritual & Ceremonial Events",
+        "description": "With absolute discretion and deep cultural understanding, we manage exclusive private gatherings, premium Hajj and Umrah season hospitality programmes, and high-value ceremonial receptions for government bodies, royal households, and international VIP delegations visiting the Holy City under Ministry of Hajj guidelines.",
+        "tags": ["VIP Hospitality", "Ministry of Hajj", "Private Delegations"],
+        "stat": "30+ events managed"
+      },
+      {
+        "id": "madinah",
+        "name": "Madinah",
+        "badge": "Sacred City",
+        "title": "Heritage & Cultural Activations",
+        "description": "Specialising in culturally respectful event production aligned with Madinah's spiritual and historical significance — bespoke heritage activations, intimate high-net-worth gatherings, and Vision 2030 religious tourism programming designed to connect international visitors with the profound legacy of the Prophet's City.",
+        "tags": ["Heritage Tourism", "Vision 2030", "Cultural Events"],
+        "stat": "20+ events managed"
+      },
+      {
+        "id": "dammam",
+        "name": "Dammam",
+        "badge": "Eastern Province",
+        "title": "Industrial, Energy & Corporate Expos",
+        "description": "The Eastern Province is Saudi Arabia's industrial and energy heartland. We organise Saudi Aramco supplier conferences, SABIC industry expos, and high-stakes corporate events at Dhahran Expo and across the Jubail Industrial City and Khobar business ecosystems — serving the Kingdom's most strategically important commercial region.",
+        "tags": ["Dhahran Expo", "Saudi Aramco", "Jubail IC"],
+        "stat": "35+ events managed"
+      }
+    ]
+  },
   "whyChooseUs": {
     "label": "The Saudi Event Management Difference",
     "title": "The Saudi Event Management",
