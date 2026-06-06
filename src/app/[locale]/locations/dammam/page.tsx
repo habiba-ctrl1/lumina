@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -49,46 +50,22 @@ export default function DammamPage() {
       />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/gallery_vip_party.webp" 
-            alt="Luxury Event Management Dammam - Eastern Province Skyline" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/60 to-slate-50" />
+      <InternalPageHero
+        title="Elite Corporate &"
+        titleHighlight="Coastal Celebrations"
+        subtitle="From Aramco-tier corporate summits to spectacular family weddings along the shimmering Arabian Gulf coast — the Eastern Province's premier event partner."
+        backgroundImage="/alkhobar_corporate_people.webp"
+        imageAlt="Corporate event professionals in Eastern Province Saudi Arabia"
+        badge="The Eastern Province Gateway to Luxury | Dammam"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations", href: "/locations" }, { label: "Dammam" }]}
+        minHeight="large"
+      />
+      <div className="bg-white border-b border-neutral-100 py-6">
+        <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/contact" className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm">Request a Proposal</Link>
+          <Link href="/portfolio" className="btn-outline hover:scale-105 transition-all rounded-sm">Explore Our Work</Link>
         </div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <span className="section-label">
-            The Eastern Province Gateway to Luxury | Dammam
-          </span>
-          <h1 className="font-display font-medium text-slate-900 mb-8 leading-tight text-3xl md:text-5xl">
-            Elite Corporate & <br/><span className="text-[var(--primary)]  font-semibold">Coastal Celebrations</span>
-          </h1>
-          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            From <span className="text-slate-900 font-semibold">Aramco-tier</span> corporate summits to spectacular family weddings along the shimmering <span className="text-slate-900 font-semibold">Arabian Gulf coast</span>.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-            <Link
-              href="/#contact"
-              className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
-            >
-              Request a Proposal
-            </Link>
-            <Link
-              href="/portfolio"
-              className="btn-outline hover:scale-105 transition-all rounded-sm"
-            >
-              Explore Our Work
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* City Landmarks & Expertise */}
       <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

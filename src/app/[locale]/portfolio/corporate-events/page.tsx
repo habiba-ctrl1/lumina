@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
@@ -63,23 +64,19 @@ export default function CorporateEventsPortfolio() {
       <ScrollProgress />
       <Navbar />
       
-      {/* Hero Section */}
-      <div className="pt-32 pb-20 bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="flex flex-col items-center gap-4 mb-6">
-            <span className="section-label bg-white border border-neutral-200/80">
-              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Corporate Portfolio
-            </span>
-          </div>
-          <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Corporate & <span className="text-[var(--primary)]">Executive</span> Summits
-          </h1>
-          <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            From high-stakes board meetings to massive international trade shows, we provide military-grade logistics and unparalleled production quality for the corporate sector.
-          </p>
-        </div>
-      </div>
+      <InternalPageHero
+        title="Corporate Events Portfolio"
+        subtitle="From high-stakes board meetings to massive international trade shows, we provide military-grade logistics and unparalleled production quality for the corporate sector."
+        backgroundImage="/riyadh_summit_people.webp"
+        imageAlt="Corporate event management Saudi Arabia portfolio"
+        badge="Corporate Events Portfolio"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/portfolio" },
+          { label: "Corporate Events" },
+        ]}
+        minHeight="standard"
+      />
 
       {/* NLP / GEO Methodology Block */}
       <section className="py-24 bg-white border-b border-neutral-100">

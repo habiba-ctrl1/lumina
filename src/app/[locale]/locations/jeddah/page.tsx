@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -49,46 +50,23 @@ export default function JeddahPage() {
       />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/gallery_corporate_gala.webp" 
-            alt="Luxury Event Management Jeddah - Red Sea Coastline" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/60 to-slate-50" />
-        </div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <span className="section-label">
-            The Bride of the Red Sea | Jeddah
-          </span>
-          <h1 className="font-display font-medium text-slate-900 mb-8 leading-tight text-3xl md:text-5xl">
-            Coastal Elegance & <br/><span className="text-[var(--primary)]  font-semibold">Bespoke Galas</span>
-          </h1>
-          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            From the mesmerizing spray of <span className="text-slate-900 font-semibold">King Fahd&apos;s Fountain</span> to the historic soul of <span className="text-slate-900 font-semibold">Al-Balad</span>, we design events that breathe with the spirit of Jeddah.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-            <Link
-              href="/#contact"
-              className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
-            >
-              Consult Our Jeddah Team
+      <InternalPageHero
+        title="Coastal Elegance &"
+        titleHighlight="Bespoke Galas"
+        subtitle="From the mesmerizing spray of King Fahd's Fountain to the historic soul of Al-Balad, we design events that breathe with the cosmopolitan spirit of Jeddah."
+        backgroundImage="/jeddah_luxury_people.webp"
+        imageAlt="Elegant guests at a luxury event in Jeddah Saudi Arabia"
+        badge="The Bride of the Red Sea | Jeddah"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations", href: "/locations" }, { label: "Jeddah" }]}
+        minHeight="large"
+      />
+      <div className="bg-white border-b border-neutral-100 py-6">
+        <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/contact" className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm">Consult Our Jeddah Team</Link>
+          <Link href="/portfolio" className="btn-outline hover:scale-105 transition-all rounded-sm">Jeddah Portfolio
             </Link>
-            <Link
-              href="/portfolio"
-              className="btn-outline hover:scale-105 transition-all rounded-sm"
-            >
-              Jeddah Portfolio
-            </Link>
-          </div>
         </div>
-      </section>
+      </div>
 
       {/* City Landmarks & Expertise */}
       <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

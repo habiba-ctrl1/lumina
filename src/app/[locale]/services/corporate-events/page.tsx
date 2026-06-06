@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -118,30 +119,22 @@ export default function CorporateEventsPage() {
       <main className="min-h-screen bg-emerald-950 overflow-hidden pt-20">
         <Navbar />
 
-        {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/corporate.webp" 
-              alt="Corporate event management Saudi Arabia - Business conference" 
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-30"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/60 to-emerald-950" />
-          </div>
-          
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span className="text-[var(--primary)] text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
-              إدارة فعاليات الشركات | Corporate Excellence
-            </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
-              Corporate Event Planning <br/><span className="text-[var(--primary)] font-bold">Saudi Arabia</span>
-            </h1>
-            <p className="text-slate-600 text-lg md:text-xl mb-8 leading-relaxed">
-              <strong className="text-white">Saudi Event Management</strong> is a premier <strong className="text-white">corporate event planning company</strong> based in <strong className="text-white">Riyadh, Saudi Arabia</strong>. With over a decade of experience, we specialize in organizing <strong className="text-white">executive summits, AGMs, and gala dinners</strong> for entities like NEOM, SABIC, and Saudi Aramco across <strong className="text-white">Riyadh, Jeddah, and the Eastern Province</strong>.
-            </p>
+        <InternalPageHero
+          title="Corporate Event Management"
+          titleHighlight="in Saudi Arabia"
+          subtitle="Premier corporate event planning company in Riyadh — executive summits, AGMs, and gala dinners for entities like NEOM, SABIC, and Saudi Aramco across the Kingdom."
+          backgroundImage="/alkhobar_corporate_people.webp"
+          imageAlt="Corporate event management Saudi Arabia"
+          badge="Corporate Events"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Corporate Events" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/#contact"
               className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-lg shadow-gold-500/20"
@@ -149,7 +142,7 @@ export default function CorporateEventsPage() {
               Consult Our Experts
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* E-E-A-T Signals & Certifications */}
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -220,37 +220,22 @@ export default function ConferencesPage() {
         <WhatsAppButton />
         <Navbar />
 
-        {/* ── Hero ── */}
-        <section className="relative h-[75vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/gallery_2.webp"
-              alt="Conference management company Riyadh Saudi Arabia"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-30"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/60 to-emerald-950" />
-          </div>
-
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <span className="text-[var(--primary)] text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
-              إدارة المؤتمرات | Conference Excellence
-            </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
-              Conference Management <br />
-              <span className="text-[var(--primary)]">Services in Riyadh</span>
-            </h1>
-            <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
-              <strong className="text-white">Saudi Event Management</strong> is a leading{" "}
-              <strong className="text-white">Professional Conference Organiser (PCO)</strong> in{" "}
-              <strong className="text-white">Saudi Arabia</strong>. We have managed{" "}
-              <strong className="text-white">government summits, B2B conferences, and scientific congresses</strong>{" "}
-              for entities including <strong className="text-white">Saudi Aramco, HRDF, and SABIC</strong>{" "}
-              at venues such as the <strong className="text-white">KAFD Conference Center</strong> and{" "}
-              <strong className="text-white">KAICC Riyadh</strong>.
-            </p>
+        <InternalPageHero
+          title="Conference Management"
+          titleHighlight="Saudi Arabia"
+          subtitle="Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for entities including Saudi Aramco, HRDF, and SABIC."
+          backgroundImage="/riyadh_summit_people.webp"
+          imageAlt="Conference management company Riyadh Saudi Arabia"
+          badge="Conferences & Summits"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Conferences" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/#contact"
               className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg"
@@ -258,7 +243,7 @@ export default function ConferencesPage() {
               Request a PCO Proposal
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* ── EEAT Credentials ── */}
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">

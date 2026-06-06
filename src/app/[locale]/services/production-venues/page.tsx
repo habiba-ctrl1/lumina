@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -134,59 +135,30 @@ export default function ProductionVenuesPage() {
       <main className="min-h-screen bg-emerald-950 text-white">
         <Navbar />
 
-        {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/gallery_wedding_reception.webp" 
-              alt="Event services Saudi Arabia - Event venue Riyadh" 
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-50"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-emerald-950/20" />
+        <InternalPageHero
+          title="Production Venues"
+          titleHighlight="Saudi Arabia"
+          subtitle="Exclusive access to KAICC, RECC, and King Abdullah Economic City — delivering comprehensive event venue sourcing, AV production, and full-service event logistics across the Kingdom."
+          backgroundImage="/neom_summit_people.webp"
+          imageAlt="Event services Saudi Arabia — production venues and elite event spaces"
+          badge="Venues & Production"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Production Venues" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/#contact"
+              className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
+            >
+              Inquire for Services
+            </Link>
           </div>
-          
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[var(--primary)] text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
-            >
-              خدمات الفعاليات والأماكن | Production Mastery
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
-            >
-              Exquisite <span className="font-bold text-[var(--primary)]">Services</span> <br/>
-              & <span className="text-[var(--primary)] font-bold">Elite Venues</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              Exclusive access to <strong className="text-white">KAICC</strong>, <strong className="text-white">RECC</strong>, and the prestigious <strong className="text-white">King Abdullah Economic City (KAEC)</strong>. We streamline your <strong className="text-white">event venue rental Riyadh</strong> and <strong className="text-white">venue sourcing Saudi Arabia</strong> processes. Delivering comprehensive <strong className="text-white">production services events Saudi</strong>, from <strong className="text-white">audio visual production events</strong> to complex <strong className="text-white">event logistics KSA</strong>.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Link
-                href="/#contact"
-                className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
-              >
-                Inquire for Services
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        </div>
 
         {/* E-E-A-T & Vendor Partnerships */}
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">

@@ -100,25 +100,39 @@ export default function BlogPostPage() {
       <Navbar />
 
       {/* Hero Image */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden bg-black">
-        <Image src={post.image} alt={post.title} width={1920} height={1080} className="w-full h-full object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
+      <section className="relative min-h-[65vh] md:min-h-[75vh] overflow-hidden bg-black">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 7, ease: "easeOut" }}
+        >
+          <Image src={post.image} alt={post.title} fill priority sizes="100vw" className="object-cover" />
+        </motion.div>
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.20) 40%, rgba(0,0,0,0.72) 100%)" }}
+        />
 
         <div className="absolute bottom-0 start-0 end-0 z-10">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <Link href="/blog" className="inline-flex items-center gap-3 text-gold-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-8 group hover:text-white transition-all duration-500">
-                <div className="w-8 h-8 rounded-full border border-gold-500/30 flex items-center justify-center group-hover:border-white transition-colors">
-                  <ArrowLeft size={12} />
-                </div>
-                Back to Collection
-              </Link>
-              <div className="flex items-center gap-10 mb-8">
-                 <div className="w-12 h-px bg-gold-500" />
-                 <span className="text-gold-500 text-[10px] uppercase tracking-[0.4em] font-bold">{post.category}</span>
+          <div className="max-w-4xl mx-auto px-6 pb-14 md:pb-20">
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
+              {/* Breadcrumb */}
+              <nav className="flex items-center gap-2 text-[11px] font-medium text-white/50 mb-6">
+                <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
+                <span className="text-white/25">/</span>
+                <Link href="/blog" className="hover:text-white/80 transition-colors">Journal</Link>
+                <span className="text-white/25">/</span>
+                <span className="text-white/75">{post.category}</span>
+              </nav>
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-10 h-px bg-[#E5A100]" />
+                <span className="text-[#E5A100] text-[10px] uppercase tracking-[0.35em] font-bold">{post.category}</span>
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans font-bold text-white leading-[1.1] mb-8 max-w-4xl opacity-100">
+              <h1
+                className="text-3xl md:text-5xl lg:text-[3.2rem] font-bold text-white leading-[1.06] mb-6 max-w-3xl"
+                style={{ letterSpacing: "-0.03em", textShadow: "0 2px 20px rgba(0,0,0,0.25)" }}
+              >
                 {post.title}
               </h1>
               <div className="flex flex-wrap items-center gap-10 text-[10px] text-gray-400 uppercase tracking-[0.25em] font-medium border-t border-white/10 pt-8">

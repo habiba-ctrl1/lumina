@@ -6,6 +6,7 @@ import { ArrowRight, Clock, Calendar, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -27,50 +28,37 @@ export default function BlogPage() {
       <ScrollProgress />
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-24 overflow-hidden bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/hero_bg.webp" 
-            alt="Luxury Event Backdrop" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--surface-raised)]/50 to-[var(--surface-raised)]" />
-        </div>
+      <InternalPageHero
+        title="Inspire Your"
+        titleHighlight="Next Event"
+        subtitle="Event planning tips, trending color palettes, decor inspiration, and lifestyle insights curated by our luxury event experts."
+        backgroundImage="/neom_summit_people.webp"
+        imageAlt="Modern event industry professionals at a Saudi Arabia summit"
+        badge="The Saudi Event Management Journal"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Journal & Lifestyle" }]}
+        minHeight="standard"
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex justify-center items-center gap-2 text-[12px] font-medium text-neutral-400 mb-6">
-            <Link href="/" className="hover:text-[var(--primary)] transition-colors">Home</Link>
-            <span className="text-neutral-300">/</span>
-            <span className="text-neutral-900">Journal & Lifestyle</span>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="max-w-3xl mx-auto">
-            <div className="flex flex-col items-center justify-center gap-4 mb-6">
-              <span className="section-label mb-3 inline-flex items-center gap-2">
-                <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-60" />
-                The Saudi Event Management Journal
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-6" style={{ letterSpacing: "-0.025em" }}>
-              Inspire Your <span className="text-[var(--primary)]">Next Event</span>
-            </h1>
-            <p className="text-neutral-500 text-[16px] md:text-lg leading-relaxed max-w-2xl mx-auto">
-              Event planning tips, trending color palettes, decor inspiration, and lifestyle insights curated by our luxury event experts.
-            </p>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex flex-wrap justify-center gap-3 mt-12">
+      {/* Category filter bar */}
+      <div className="bg-white border-b border-neutral-100 py-5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap justify-center gap-3">
             {blogCategories.map((cat: any) => (
-              <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-5 py-2.5 text-[13px] font-medium transition-all duration-300 rounded-xl border ${activeCategory === cat ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-[0_2px_8px_rgba(13,107,78,0.2)]" : "border-neutral-200/80 text-neutral-500 hover:text-neutral-900 hover:border-neutral-300 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.02)]"}`}>
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 text-[13px] font-medium transition-all duration-300 rounded-xl border ${
+                  activeCategory === cat
+                    ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-[0_2px_8px_rgba(13,107,78,0.2)]"
+                    : "border-neutral-200/80 text-neutral-500 hover:text-neutral-900 hover:border-neutral-300 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
+                }`}
+              >
                 {cat}
               </button>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Featured */}
       {activeCategory === "All" && (

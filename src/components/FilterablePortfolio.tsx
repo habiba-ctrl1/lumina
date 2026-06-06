@@ -8,42 +8,60 @@ import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 
 const portfolioItems = [
-  { 
-    id: 1, src: "/real_wedding.png", title: "Al-Saud Royal Wedding", category: "Luxury Weddings", 
+  {
+    id: 1, src: "/luxury_wedding_couple_guests.webp", title: "Al-Saud Royal Wedding", category: "Luxury Weddings",
     slug: "royal-riyadh-wedding", client: "Private Royal Commission", date: "Dec 2024",
     guests: "800+", outcome: "Architectural desert oasis build",
-    alt: "Luxury royal wedding planning and setup in Riyadh Saudi Arabia"
+    alt: "Luxury royal wedding guests celebrating in a grand Saudi Arabia wedding hall"
   },
-  { 
-    id: 2, src: "/gallery_corporate_gala.webp", title: "NEOM Future Summit", category: "Conferences", 
+  {
+    id: 2, src: "/neom_summit_people.webp", title: "NEOM Future Summit", category: "Conferences",
     slug: "neom-future-summit", client: "Leading Saudi Giga-Project", date: "Nov 2024",
     guests: "250 VIPs", outcome: "Zero-waste luxury production",
-    alt: "Enterprise conference planning and stage setup for NEOM Saudi Arabia"
+    alt: "VIPs and speakers at a high-tech NEOM summit stage in Saudi Arabia"
   },
-  { 
-    id: 3, src: "/gallery_destination_wedding.webp", title: "Makkah VIP Retreat", category: "Corporate Events", 
+  {
+    id: 3, src: "/majlis_gathering_people.webp", title: "Makkah VIP Retreat", category: "Corporate Events",
     slug: "makkah-vip-retreat", client: "Global Islamic Foundation", date: "Oct 2024",
     guests: "50", outcome: "Exclusive spiritual concierge",
-    alt: "VIP corporate retreat and spiritual concierge services in Makkah KSA"
+    alt: "Men in traditional attire networking at a luxury Majlis gathering Saudi Arabia"
   },
-  { 
-    id: 4, src: "/gallery_vip_party.webp", title: "Al-Rashid Annual Gala", category: "Corporate Events", 
-    slug: "riyadh-luxury-soiree", client: "Premier Financial Institution", date: "Sept 2024",
-    guests: "400", outcome: "Immersive digital art gallery",
-    alt: "Corporate gala event planning and luxury soiree in Riyadh Saudi Arabia"
+  {
+    id: 4, src: "/riyadh_summit_people.webp", title: "Riyadh Government Summit", category: "Conferences",
+    slug: "riyadh-government-summit", client: "Premier Government Ministry", date: "Sept 2024",
+    guests: "1,200+", outcome: "Immersive multi-screen production",
+    alt: "Large audience and immersive screens at a high-level government summit in Riyadh Saudi Arabia"
   },
-  { 
-    id: 5, src: "/gallery_charity_gala.webp", title: "AlUla Desert Festival", category: "Exhibitions", 
+  {
+    id: 5, src: "/alula_gala_people.webp", title: "AlUla Heritage Gala", category: "Exhibitions",
     slug: "alula-desert-festival", client: "National Tourism Authority", date: "Jan 2025",
-    guests: "1200", outcome: "UNESCO heritage site activation",
-    alt: "Cultural festival production and exhibition management in AlUla Saudi Arabia"
+    guests: "600", outcome: "UNESCO heritage site activation",
+    alt: "Guests in formal wear at a desert heritage gala event in AlUla Saudi Arabia"
   },
-  { 
-    id: 6, src: "/gallery_2.webp", title: "Executive Summit Jeddah", category: "Conferences", 
+  {
+    id: 6, src: "/jeddah_luxury_people.webp", title: "Jeddah Executive Soiree", category: "Corporate Events",
     slug: "executive-summit-jeddah", client: "Prominent Government Ministry", date: "Feb 2025",
-    guests: "150", outcome: "High-security diplomatic summit",
-    alt: "Business conference and summit organizer services in Jeddah Saudi Arabia"
-  }
+    guests: "300", outcome: "High-security diplomatic summit",
+    alt: "Elegant guests networking at a high-end luxury hotel event in Jeddah Saudi Arabia"
+  },
+  {
+    id: 7, src: "/jeddah_beach_wedding_setup.webp", title: "Jeddah Seaside Wedding", category: "Luxury Weddings",
+    slug: "jeddah-beach-wedding", client: "Private Family Commission", date: "Mar 2025",
+    guests: "450", outcome: "Luxury Red Sea coastal production",
+    alt: "Luxurious seaside wedding setup with guests on the Red Sea coast in Jeddah"
+  },
+  {
+    id: 8, src: "/alkhobar_corporate_people.webp", title: "Al Khobar Corporate Retreat", category: "Corporate Events",
+    slug: "alkhobar-corporate-retreat", client: "Saudi Aramco Subsidiary", date: "Apr 2025",
+    guests: "120", outcome: "Executive team building & branding",
+    alt: "Professional corporate team at a branded Eastern Province event in Al Khobar Saudi Arabia"
+  },
+  {
+    id: 9, src: "/wedding_hall_grand_entrance.webp", title: "Grand Wedding Ceremony", category: "Luxury Weddings",
+    slug: "grand-wedding-ceremony", client: "Private Royal Commission", date: "May 2025",
+    guests: "600+", outcome: "Traditional VIP entrance protocol",
+    alt: "Traditional male wedding entrance with VIP guests in a grand Saudi Arabia wedding hall"
+  },
 ];
 
 const categories = ["all", "conferences", "exhibitions", "corporateEvents", "luxuryWeddings"];

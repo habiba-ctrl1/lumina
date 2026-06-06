@@ -1,243 +1,391 @@
-"use client";
-
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  Utensils, Tv2, Flower2, Camera, Music2, Car, Building2, Tent,
+  Printer, Lightbulb, ShieldCheck, MoreHorizontal, Star, Clock,
+  TrendingUp, BadgeCheck, Globe, MapPin, ChevronRight, MessageCircle,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Image from "next/image";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Camera, Cake, Flower2, Star, ArrowRight, X, Calendar, Users, MessageSquare, Send, CheckCircle2 } from "lucide-react";
 import ScrollProgress from "@/components/ScrollProgress";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import VendorForm from "./VendorForm";
 
-const categories = [
-  { id: "photography", name: "Professional Photography", icon: Camera },
-  { id: "cakes", name: "Luxury Wedding Cakes", icon: Cake },
-  { id: "floral", name: "Floral Design", icon: Flower2 },
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export const metadata: Metadata = {
+  title: "Become a Vendor — Saudi Event Management",
+  description:
+    "Join Saudi Arabia's premier event vendor network. Partner with Saudi Event Management for royal weddings, corporate summits, and Vision 2030 events across Riyadh, Jeddah, and AlUla.",
+  keywords: [
+    "event vendor Saudi Arabia",
+    "vendor registration KSA",
+    "event supplier Riyadh",
+    "Saudi Event Management vendor",
+    "vendor partnership Saudi Arabia",
+    "event industry supplier KSA",
+  ],
+  openGraph: {
+    title: "Become a Vendor — Saudi Event Management",
+    description:
+      "Partner with Saudi Arabia's leading luxury event management company.",
+    url: "https://saudieventmanagement.com/vendors",
+  },
+  alternates: {
+    canonical: "https://saudieventmanagement.com/vendors",
+  },
+};
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const STATS = [
+  { value: "200+", label: "Active Vendors" },
+  { value: "250+", label: "Events Yearly" },
+  { value: "SAR 50M+", label: "Vendor Payouts" },
 ];
 
-const vendors = [
-  { id: 1, categoryId: "photography", name: "Al-Majid Studios", image: "/wedding.webp", rating: 5.0, reviews: 124, location: "Riyadh, KSA" },
-  { id: 2, categoryId: "photography", name: "Elite Vision PK", image: "/gallery_1.webp", rating: 4.9, reviews: 45, location: "Islamabad, PK" },
-  { id: 3, categoryId: "cakes", name: "The Golden Whisk", image: "/gallery_wedding_reception.webp", rating: 4.9, reviews: 89, location: "Riyadh, KSA" },
-  { id: 4, categoryId: "cakes", name: "Velvet Sugar", image: "/gallery_corporate_gala.webp", rating: 5.0, reviews: 32, location: "Karachi, PK" },
-  { id: 5, categoryId: "floral", name: "Sapphire Blooms", image: "/gallery_destination_wedding.webp", rating: 5.0, reviews: 56, location: "Jeddah, KSA" },
-  { id: 6, categoryId: "floral", name: "Oasis Petals", image: "/gallery_garden_party.webp", rating: 4.8, reviews: 78, location: "Jeddah, KSA" },
+const CATEGORIES = [
+  { icon: Utensils,       label: "Catering & F&B" },
+  { icon: Tv2,            label: "AV & Production" },
+  { icon: Flower2,        label: "Floral & Décor" },
+  { icon: Camera,         label: "Photography & Videography" },
+  { icon: Music2,         label: "Entertainment" },
+  { icon: Car,            label: "VIP Transport" },
+  { icon: Building2,      label: "Venues & Spaces" },
+  { icon: Tent,           label: "Tents & Structures" },
+  { icon: Printer,        label: "Print & Branding" },
+  { icon: Lightbulb,      label: "Lighting Design" },
+  { icon: ShieldCheck,    label: "Security & Protocol" },
+  { icon: MoreHorizontal, label: "Other Services" },
 ];
 
-export default function VendorsPage() {
-  const [selectedVendor, setSelectedVendor] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+const BENEFITS = [
+  {
+    icon: Star,
+    title: "Premium Event Access",
+    desc: "Gain exposure to royal weddings, government summits, and Vision 2030 flagship events — the most prestigious engagements in the Kingdom.",
+  },
+  {
+    icon: Clock,
+    title: "Guaranteed On-Time Payments",
+    desc: "Structured invoicing cycles and prompt settlements. No chasing invoices — our finance team runs a disciplined vendor payment process.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Long-Term Partnership",
+    desc: "Preferred vendor status with early project briefings, priority selection, and co-branding opportunities on major events.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "GEA Compliance Support",
+    desc: "We assist partners in navigating Ministry of Culture and General Entertainment Authority permit requirements for compliant event delivery.",
+  },
+  {
+    icon: Globe,
+    title: "Brand Credibility",
+    desc: "Carry the Saudi Event Management partnership badge — a recognised mark of excellence in the Kingdom's luxury event sector.",
+  },
+  {
+    icon: MapPin,
+    title: "Multi-City Opportunities",
+    desc: "Work across Riyadh, Jeddah, Dammam, AlUla, Makkah, and Madinah — expanding your footprint across Saudi Arabia's key markets.",
+  },
+];
 
-  const [formData, setFormData] = useState({
-    clientName: "",
-    clientEmail: "",
-    eventDate: "",
-    guestCount: "",
-    requirements: ""
-  });
+const STEPS = [
+  {
+    num: "01",
+    title: "Submit Application",
+    desc: "Complete the registration form with your company details and service portfolio.",
+  },
+  {
+    num: "02",
+    title: "Review & Screening",
+    desc: "Our partnerships team evaluates each application within 5 business days.",
+  },
+  {
+    num: "03",
+    title: "Briefing Call",
+    desc: "A dedicated account manager schedules an onboarding call to align on scope and expectations.",
+  },
+  {
+    num: "04",
+    title: "Partner Activation",
+    desc: "Receive your vendor ID, be added to our preferred vendor directory, and start receiving event briefs.",
+  },
+];
 
-  const openQuoteModal = (vendor: any) => {
-    setSelectedVendor(vendor);
-    setIsModalOpen(true);
-    setIsSubmitted(false);
-  };
+// ─── Page ────────────────────────────────────────────────────────────────────
 
-  const handleQuoteSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    try {
-      const response = await fetch('/api/quotes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          vendorId: selectedVendor.id,
-          vendorName: selectedVendor.name,
-          ...formData
-        })
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setTimeout(() => {
-          setIsModalOpen(false);
-          setFormData({ clientName: "", clientEmail: "", eventDate: "", guestCount: "", requirements: "" });
-        }, 3000);
-      }
-    } catch (error) {
-      console.error("Quote request failed:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputClass = "w-full bg-neutral-50 border border-neutral-200/80 px-4 py-3.5 text-[14px] text-neutral-900 placeholder-neutral-400 focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary)]/10 transition-all outline-none rounded-xl";
+export default async function VendorsPage({ params }: PageProps) {
+  const { locale } = await params;
 
   return (
-    <main className="min-h-screen bg-[var(--background)] overflow-hidden">
+    <main className="min-h-screen bg-white text-neutral-900 overflow-hidden">
       <ScrollProgress />
-      <Navbar />
+      <WhatsAppButton />
+      <Navbar locale={locale} />
 
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-24 px-6 bg-[var(--surface-raised)] border-b border-neutral-200/80 overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="flex flex-col items-center gap-4 mb-6">
-            <span className="section-label bg-white border border-neutral-200/80">
-              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              The Elite Collective
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Vendor <span className="text-[var(--primary)]">Directory</span>
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="relative bg-[var(--primary)] overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+        <div className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full bg-white/5 pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[320px] h-[320px] rounded-full bg-white/[0.03] pointer-events-none" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center justify-center gap-1.5 text-[12px] text-white/50 mb-8">
+            <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
+            <ChevronRight size={12} />
+            <span className="text-white/70">Vendor Partnership</span>
+          </nav>
+
+          <span className="inline-block text-[12px] font-semibold tracking-[0.12em] uppercase text-emerald-300 mb-5">
+            Vendor Partnership Programme
+          </span>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-3xl mx-auto"
+            style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
+          >
+            Join the Kingdom&apos;s Elite Event Network
           </h1>
-          <p className="text-neutral-500 max-w-2xl mx-auto text-[16px] md:text-lg leading-relaxed">
-            Browse our handpicked selection of the most prestigious event partners.
+          <p className="text-white/70 text-[16px] md:text-lg leading-relaxed max-w-2xl mx-auto mb-12">
+            Partner with Saudi Arabia&apos;s leading luxury event management company and gain access to royal commissions, Fortune 500 delegations, and Vision 2030 flagship projects.
           </p>
+
+          {/* Stats row */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-16 bg-white/10 border border-white/20 rounded-2xl px-10 py-6 backdrop-blur-sm mb-10">
+            {STATS.map((s, i) => (
+              <div key={i} className="text-center">
+                <div
+                  className="text-2xl md:text-3xl font-bold text-white"
+                  style={{ letterSpacing: "-0.02em" }}
+                >
+                  {s.value}
+                </div>
+                <div className="text-[13px] text-white/60 mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <a
+              href="#vendor-form"
+              className="inline-flex items-center gap-2 bg-white text-[var(--primary)] font-semibold px-8 py-4 rounded-xl text-[15px] hover:bg-neutral-50 transition-all duration-200"
+              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.15)" }}
+            >
+              Apply Now
+              <ChevronRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
-        {categories.map((category: any) => {
-          const categoryVendors = vendors.filter(v => v.categoryId === category.id);
-          return (
-            <section key={category.id} id={category.id} className="relative">
-              <div className="flex items-center gap-6 mb-12 border-b border-neutral-100 pb-6">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[var(--primary)]">
-                  <category.icon size={24} />
-                </div>
-                <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900" style={{ letterSpacing: "-0.02em" }}>{category.name}</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {categoryVendors.map((vendor: any) => (
-                  <div key={vendor.id} className="group bg-white border border-neutral-200/80 rounded-3xl overflow-hidden hover:border-neutral-300 transition-all duration-500 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.06)] flex flex-col">
-                    <div className="relative h-64 w-full overflow-hidden bg-neutral-100">
-                      <Image src={vendor.image} alt={vendor.name} width={600} height={400} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                      <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-transparent transition-colors duration-500" />
-                      <div className="absolute top-4 start-4">
-                        <span className="px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-lg text-[11px] text-[var(--primary)] font-medium shadow-sm">{vendor.location}</span>
-                      </div>
-                    </div>
-
-                    <div className="p-8 flex-1 flex flex-col">
-                      <div className="flex justify-between items-start mb-6">
-                        <h3 className="text-xl font-semibold text-neutral-900 group-hover:text-[var(--primary)] transition-colors" style={{ letterSpacing: "-0.01em" }}>{vendor.name}</h3>
-                        <div className="flex items-center gap-1.5 bg-neutral-50 border border-neutral-100 px-2 py-1 rounded-lg">
-                          <Star size={12} className="text-[var(--primary)] fill-[var(--primary)]" />
-                          <span className="text-neutral-700 text-[12px] font-semibold">{vendor.rating}</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-auto pt-6 flex flex-col gap-6">
-                        <button 
-                          onClick={() => openQuoteModal(vendor)}
-                          className="w-full py-3.5 bg-[var(--primary)] text-white text-[13px] font-medium rounded-xl hover:bg-[var(--primary-dark)] transition-all flex items-center justify-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]"
-                        >
-                          Request a Quote <ArrowRight size={14} />
-                        </button>
-                        <div className="flex items-center justify-between border-t border-neutral-100 pt-4">
-                          <span className="text-neutral-500 text-[12px] font-medium">{vendor.reviews} Verified Reviews</span>
-                          <span className="text-[var(--primary)] text-[12px] font-medium cursor-pointer hover:text-[var(--primary-dark)]">View Portfolio</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-
-      {/* Quote Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-neutral-900/60 backdrop-blur-md"
-            />
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0, y: 10 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 10 }}
-              className="relative w-full max-w-lg bg-white rounded-3xl p-8 shadow-2xl overflow-hidden"
+      {/* ── Vendor Categories ─────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-neutral-50/60">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="section-label mb-3 block">
+              <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40 inline-block mr-2" />
+              We Work With
+            </span>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-neutral-900"
+              style={{ letterSpacing: "-0.02em" }}
             >
-              <button onClick={() => setIsModalOpen(false)} className="absolute top-6 end-6 text-neutral-400 hover:text-neutral-600 transition-colors bg-neutral-50 p-2 rounded-full">
-                <X size={20} />
-              </button>
-
-              {isSubmitted ? (
-                <div className="py-12 text-center">
-                  <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-[var(--primary)]">
-                    <CheckCircle2 size={40} />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-neutral-900 mb-3" style={{ letterSpacing: "-0.01em" }}>Request Sent!</h2>
-                  <p className="text-neutral-500 text-[15px] leading-relaxed">The vendor and Saudi Event Management admin have been notified. You will receive a quote shortly.</p>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-8">
-                    <span className="section-label mb-3">
-                      <span className="w-3 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-                      Quotation For
-                    </span>
-                    <h2 className="text-3xl font-semibold text-neutral-900" style={{ letterSpacing: "-0.025em" }}>{selectedVendor?.name}</h2>
-                  </div>
-
-                  <form onSubmit={handleQuoteSubmit} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-5">
-                      <div className="space-y-1.5">
-                        <label className="text-[12px] text-neutral-500 font-medium">Your Name</label>
-                        <input required type="text" value={formData.clientName} onChange={e => setFormData({...formData, clientName: e.target.value})} className={inputClass} placeholder="Full Name" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[12px] text-neutral-500 font-medium">Email</label>
-                        <input required type="email" value={formData.clientEmail} onChange={e => setFormData({...formData, clientEmail: e.target.value})} className={inputClass} placeholder="email@example.com" />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-5">
-                      <div className="space-y-1.5">
-                        <label className="text-[12px] text-neutral-500 font-medium">Event Date</label>
-                        <div className="relative">
-                          <Calendar className="absolute start-4 top-1/2 -translate-y-1/2 text-neutral-400" size={16} />
-                          <input required type="date" value={formData.eventDate} onChange={e => setFormData({...formData, eventDate: e.target.value})} className={`${inputClass} ps-11`} />
-                        </div>
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[12px] text-neutral-500 font-medium">Guests</label>
-                        <div className="relative">
-                          <Users className="absolute start-4 top-1/2 -translate-y-1/2 text-neutral-400" size={16} />
-                          <input type="number" value={formData.guestCount} onChange={e => setFormData({...formData, guestCount: e.target.value})} className={`${inputClass} ps-11`} placeholder="e.g. 150" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-[12px] text-neutral-500 font-medium">Specific Requirements</label>
-                      <div className="relative">
-                        <MessageSquare className="absolute start-4 top-4 text-neutral-400" size={16} />
-                        <textarea rows={3} value={formData.requirements} onChange={e => setFormData({...formData, requirements: e.target.value})} className={`${inputClass} ps-11 resize-none`} placeholder="Any special requests or details..." />
-                      </div>
-                    </div>
-
-                    <button disabled={loading} type="submit" className="w-full py-4 bg-[var(--primary)] text-white font-medium text-[14px] rounded-xl hover:bg-[var(--primary-dark)] transition-all flex items-center justify-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] mt-2">
-                      {loading ? "Processing..." : "Submit Quote Request"} <Send size={15} />
-                    </button>
-                  </form>
-                </>
-              )}
-            </motion.div>
+              Vendor Categories We Source
+            </h2>
+            <p className="text-neutral-500 text-[15px] mt-4 max-w-xl mx-auto leading-relaxed">
+              From world-class catering to state-of-the-art AV production — our vendor network spans every discipline required to deliver extraordinary events.
+            </p>
           </div>
-        )}
-      </AnimatePresence>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {CATEGORIES.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="bg-white border border-neutral-200/80 rounded-2xl p-5 flex flex-col items-center text-center gap-3 hover:border-[var(--primary)]/40 hover:shadow-[0_4px_16px_rgba(13,107,78,0.08)] transition-all duration-200 group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center group-hover:bg-emerald-50 group-hover:border-emerald-100 transition-all duration-200">
+                  <Icon
+                    size={20}
+                    className="text-neutral-400 group-hover:text-[var(--primary)] transition-colors"
+                  />
+                </div>
+                <span className="text-[13px] font-medium text-neutral-700 leading-snug">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why Partner ──────────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="section-label mb-3 block">
+              <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40 inline-block mr-2" />
+              Partnership Benefits
+            </span>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-neutral-900"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Why Partner With Us
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BENEFITS.map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                className="bg-white border border-neutral-200/80 rounded-2xl p-7 hover:shadow-[0_8px_32px_rgba(13,107,78,0.07)] hover:border-[var(--primary)]/30 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-all duration-300">
+                  <Icon
+                    size={20}
+                    className="text-[var(--primary)] group-hover:text-white transition-colors duration-300"
+                  />
+                </div>
+                <h3
+                  className="text-[15px] font-semibold text-neutral-900 mb-2"
+                  style={{ letterSpacing: "-0.01em" }}
+                >
+                  {title}
+                </h3>
+                <p className="text-neutral-500 text-[14px] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Registration Form ─────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-neutral-50/60">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+            {/* Left info column */}
+            <div className="lg:col-span-4">
+              <span className="section-label mb-3 block">
+                <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40 inline-block mr-2" />
+                Apply Now
+              </span>
+              <h2
+                className="text-3xl font-bold text-neutral-900 mb-5"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                Register Your Company
+              </h2>
+              <p className="text-neutral-500 text-[15px] leading-relaxed mb-8">
+                Complete the form to begin your application to Saudi Event Management&apos;s curated vendor network. Our partnerships team reviews every submission personally.
+              </p>
+
+              <ul className="space-y-4">
+                {[
+                  "Application reviewed within 5 business days",
+                  "Dedicated account manager assigned on approval",
+                  "No onboarding fees — zero cost to apply",
+                  "First event brief sent within 30 days of activation",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-[14px] text-neutral-600"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                        <path
+                          d="M1 4L3.5 6.5L9 1"
+                          stroke="#0D6B4E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right form column */}
+            <div className="lg:col-span-8">
+              <VendorForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Onboarding Steps ─────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="section-label mb-3 block">
+              <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40 inline-block mr-2" />
+              Onboarding
+            </span>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-neutral-900"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              From Application to Activation
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STEPS.map((step, i) => (
+              <div key={step.num} className="relative">
+                {i < STEPS.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(50%+36px)] right-[-36px] h-px bg-neutral-200" />
+                )}
+                <div className="bg-white border border-neutral-200/80 rounded-2xl p-7">
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-5">
+                    <span className="text-white text-[15px] font-bold">{step.num}</span>
+                  </div>
+                  <h3
+                    className="text-[15px] font-semibold text-neutral-900 mb-2"
+                    style={{ letterSpacing: "-0.01em" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="text-neutral-500 text-[14px] leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WhatsApp CTA ──────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-20 bg-neutral-50/60 border-t border-neutral-200/80">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <h3
+            className="text-xl font-semibold text-neutral-900 mb-2"
+            style={{ letterSpacing: "-0.01em" }}
+          >
+            Prefer to connect directly?
+          </h3>
+          <p className="text-neutral-500 text-[15px] mb-8">
+            Our partnerships team is available on WhatsApp for a quick conversation before you apply.
+          </p>
+          <a
+            href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20becoming%20a%20vendor%20partner."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-4 rounded-xl text-[15px] font-medium transition-all duration-200"
+            style={{ boxShadow: "0 4px 16px rgba(37,211,102,0.25)" }}
+          >
+            <MessageCircle size={20} />
+            Chat with Partnerships Team
+          </a>
+        </div>
+      </section>
 
       <Footer />
-      <WhatsAppButton />
     </main>
   );
 }

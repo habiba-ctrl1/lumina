@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -229,25 +230,23 @@ export default function ServicesPage() {
       <ScrollProgress />
       <Navbar />
 
-      {/* ── Page Header ── */}
-      <section className="bg-[var(--surface-raised)] pt-32 pb-24 md:pt-48 md:pb-32 border-b border-neutral-200/80 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="container mx-auto px-6 lg:px-8 text-center max-w-4xl relative z-10">
-          <div className="flex flex-col items-center justify-center gap-4 mb-6">
-            <span className="section-label bg-white border border-neutral-200/80">
-              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Our Expertise
-            </span>
-          </div>
-          <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Event Management{" "}
-            <span className="text-[var(--primary)]">Services</span> in Saudi Arabia
-          </h1>
-          <p className="text-neutral-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            From high-stakes corporate summits to breathtaking luxury weddings — discover our comprehensive suite of elite event management capabilities across the Kingdom.
-          </p>
-        </div>
-      </section>
+      <InternalPageHero
+        title="Event Management Services"
+        titleHighlight="in Saudi Arabia"
+        subtitle="From high-stakes corporate summits to breathtaking luxury weddings — discover our comprehensive suite of elite event management capabilities across the Kingdom."
+        backgroundImage="/riyadh_summit_people.webp"
+        imageAlt="Large audience at a premium corporate summit event in Saudi Arabia"
+        badge="Our Expertise"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
+        enableParallax
+        disableZoom
+        minHeight="large"
+        trustElements={[
+          { value: "500+", label: "Events Managed" },
+          { value: "50+", label: "Trusted Vendors Across Saudi Arabia" },
+          { value: "24 Hours", label: "Quote Response" },
+        ]}
+      />
 
       {/* ── Services Component ── */}
       <Services />

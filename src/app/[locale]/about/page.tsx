@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Award, Users, MapPin, Sparkles, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -104,34 +105,17 @@ export default function AboutPage() {
       <ScrollProgress />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/hero_bg.webp" 
-            alt="Luxury Event Backdrop" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--surface-raised)]/50 to-[var(--surface-raised)]" />
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <div className="flex flex-col items-center justify-center gap-4 mb-6">
-            <span className="section-label bg-white border border-neutral-200/80">
-              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Established 2018
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-8" style={{ letterSpacing: "-0.025em" }}>
-            Event Planning <span className="text-[var(--primary)]">Experts</span> <br /> in Saudi Arabia
-          </h1>
-          <p className="text-neutral-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations.
-          </p>
-        </div>
-      </section>
+      <InternalPageHero
+        title="Event Planning Experts"
+        titleHighlight="in Saudi Arabia"
+        subtitle="From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations."
+        backgroundImage="/hero_bg.webp"
+        imageAlt="Professional luxury event setup with guests in Saudi Arabia"
+        badge="Established 2018"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+        enableParallax
+        minHeight="large"
+      />
 
       {/* Story Section */}
       <section className="py-24 md:py-32 px-6 max-w-7xl mx-auto">

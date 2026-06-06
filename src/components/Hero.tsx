@@ -1,23 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-
-// ── Slideshow images ────────────────────────────────────────────────────────
-const SLIDES = [
-  { src: "/hero_bg.webp",                    alt: "Luxury event management Saudi Arabia" },
-  { src: "/gallery_wedding_reception.webp",  alt: "Wedding reception event"              },
-  { src: "/gallery_destination_wedding.webp",alt: "Destination wedding AlUla"            },
-  { src: "/corporate.webp",                  alt: "Corporate event Riyadh"               },
-  { src: "/gallery_corporate_gala.webp",     alt: "Corporate gala Saudi Arabia"          },
-];
-
-const SLIDE_DURATION = 6000; // ms
 
 // ── Input micro-interaction helpers ─────────────────────────────────────────
 const focusStyle  = { border: "1px solid rgba(245,158,11,0.55)", background: "rgba(255,255,255,0.10)" };
@@ -30,23 +18,13 @@ export default function Hero() {
   const params = useParams();
   const isRtl  = (params?.locale as string) === "ar";
 
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const [form, setForm]             = useState({ name: "", email: "", eventType: "" });
-  const [status, setStatus]         = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [form, setForm]     = useState({ name: "", email: "", eventType: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // Scroll parallax — background moves at ~20% of scroll speed
+  // Scroll parallax — video moves at ~20% of scroll speed
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -180]);
-
-  // Auto-advance slideshow
-  useEffect(() => {
-    const id = setInterval(
-      () => setCurrentIdx((p) => (p + 1) % SLIDES.length),
-      SLIDE_DURATION
-    );
-    return () => clearInterval(id);
-  }, []);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, -160]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,10 +49,10 @@ export default function Hero() {
     }
   };
 
-  const stats         = t.raw("stats") as string[];
-  const eventTypes    = t.raw("formEventTypes") as string[];
-  const contentAlign  = isRtl ? "items-end text-right" : "items-start text-left";
-  const rowReverse    = isRtl ? "flex-row-reverse" : "";
+  const stats        = t.raw("stats") as string[];
+  const eventTypes   = t.raw("formEventTypes") as string[];
+  const contentAlign = isRtl ? "items-end text-right" : "items-start text-left";
+  const rowReverse   = isRtl ? "flex-row-reverse" : "";
 
   return (
     <div ref={heroRef} id="home" className="relative min-h-screen w-full flex overflow-hidden">
@@ -82,52 +60,51 @@ export default function Hero() {
       <h1 className="sr-only">{t("h1En")}</h1>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          BACKGROUND — Parallax Ken Burns slideshow
-          Image layer moves at ~20% scroll speed; overlays stay fixed.
-          Extended 200px top+bottom so parallax movement never shows a gap.
+          BACKGROUND — Parallax video
+          Video layer moves at ~20% scroll speed. Extended 160px top+bottom
+          so parallax movement never shows a gap at edges.
       ══════════════════════════════════════════════════════════════════════ */}
-
-      {/* Parallax image layer */}
       <motion.div
+        aria-hidden
         className="absolute left-0 right-0 z-0"
-        style={{ top: -200, bottom: -200, y: bgY }}
+        style={{ top: -160, bottom: -160, y: bgY }}
       >
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            key={currentIdx}
-            initial={{ opacity: 0, scale: 1.07 }}
-            animate={{ opacity: 1, scale: 1.0  }}
-            exit={{    opacity: 0, scale: 1.02  }}
-            transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={SLIDES[currentIdx].src}
-              alt={SLIDES[currentIdx].alt}
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority={currentIdx === 0}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/luxury_wedding_couple_guests.webp"
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4"  type="video/mp4"  />
+          <source src="/hero-video.webm" type="video/webm" />
+        </video>
       </motion.div>
 
-      {/* Fixed overlay layer — stays locked to viewport during scroll */}
+      {/* ══════════════════════════════════════════════════════════════════════
+          OVERLAY STACK — lighter to let the video breathe,
+          fading to white at the bottom to merge with the light-theme site.
+      ══════════════════════════════════════════════════════════════════════ */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Primary dark gradient — heavier on left/right for text legibility */}
+        {/* Side gradient — readable on text side, nearly transparent on video side */}
         <div
           className="absolute inset-0"
           style={{
             background: isRtl
-              ? "linear-gradient(250deg, rgba(5,8,15,0.88) 0%, rgba(5,8,15,0.58) 52%, rgba(5,8,15,0.28) 100%)"
-              : "linear-gradient(110deg, rgba(5,8,15,0.88) 0%, rgba(5,8,15,0.58) 52%, rgba(5,8,15,0.28) 100%)",
+              ? "linear-gradient(250deg, rgba(2,8,14,0.80) 0%, rgba(4,8,16,0.46) 50%, rgba(6,10,18,0.12) 100%)"
+              : "linear-gradient(115deg, rgba(2,8,14,0.80) 0%, rgba(4,8,16,0.46) 50%, rgba(6,10,18,0.12) 100%)",
           }}
         />
-        {/* Bottom vignette */}
-        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
-        {/* Top vignette (nav legibility) */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
+        {/* Top vignette — nav legibility */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/40 to-transparent" />
+        {/* Bottom fade-to-white — blends seamlessly into the light site below */}
+        <div
+          className="absolute bottom-0 inset-x-0 h-64"
+          style={{
+            background: "linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.65) 35%, rgba(255,255,255,0) 100%)",
+          }}
+        />
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -135,7 +112,7 @@ export default function Hero() {
       ══════════════════════════════════════════════════════════════════════ */}
       <div
         className={`relative z-20 w-full flex flex-col lg:flex-row ${rowReverse} items-center
-                    min-h-screen px-6 md:px-12 xl:px-20 pt-28 pb-20 gap-10 lg:gap-14`}
+                    min-h-screen px-6 md:px-12 xl:px-20 pt-28 pb-32 gap-10 lg:gap-14`}
       >
         {/* ── LEFT / MAIN — Text content ──────────────────────────────────── */}
         <div className={`flex-1 flex flex-col justify-center ${contentAlign} min-w-0`}>
@@ -180,7 +157,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[14px] md:text-[15px] text-white/55 leading-relaxed max-w-[460px] mb-10"
+            className="text-[14px] md:text-[15px] text-white/60 leading-relaxed max-w-[460px] mb-10"
           >
             {t("subtitle")}
           </motion.p>
@@ -254,11 +231,11 @@ export default function Hero() {
           <div
             className="rounded-2xl p-7 md:p-8"
             style={{
-              background:          "rgba(7, 9, 17, 0.75)",
-              backdropFilter:      "blur(28px)",
-              WebkitBackdropFilter:"blur(28px)",
-              border:              "1px solid rgba(255,255,255,0.09)",
-              boxShadow:           "0 28px 72px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05)",
+              background:           "rgba(7, 9, 17, 0.75)",
+              backdropFilter:       "blur(28px)",
+              WebkitBackdropFilter: "blur(28px)",
+              border:               "1px solid rgba(255,255,255,0.09)",
+              boxShadow:            "0 28px 72px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05)",
             }}
           >
             {/* ── Success state ── */}
@@ -366,9 +343,9 @@ export default function Hero() {
                     className="mt-1 w-full py-3.5 rounded-xl font-bold text-[13px] text-white
                                transition-opacity duration-200 disabled:opacity-60"
                     style={{
-                      background:   "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
-                      boxShadow:    "0 4px 22px rgba(245,158,11,0.30), inset 0 1px 0 rgba(255,255,255,0.14)",
-                      letterSpacing:"0.06em",
+                      background:    "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+                      boxShadow:     "0 4px 22px rgba(245,158,11,0.30), inset 0 1px 0 rgba(255,255,255,0.14)",
+                      letterSpacing: "0.06em",
                     }}
                   >
                     {status === "loading" ? t("formSubmitting") : t("formSubmit") + " →"}
@@ -393,10 +370,10 @@ export default function Hero() {
             transition={{ delay: 1.05, duration: 0.8 }}
             className="hidden lg:flex items-center justify-around mt-4 px-5 py-3.5 rounded-xl"
             style={{
-              background:          "rgba(255,255,255,0.05)",
-              border:              "1px solid rgba(255,255,255,0.08)",
-              backdropFilter:      "blur(16px)",
-              WebkitBackdropFilter:"blur(16px)",
+              background:           "rgba(255,255,255,0.05)",
+              border:               "1px solid rgba(255,255,255,0.08)",
+              backdropFilter:       "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
             }}
           >
             {[
@@ -415,26 +392,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Slide dot indicators ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIdx(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className={`h-[3px] rounded-full transition-all duration-500 ${
-              i === currentIdx ? "w-8 bg-amber-400" : "w-2.5 bg-white/28 hover:bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
-
       {/* ── Scroll cue — bottom right ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.0, duration: 1 }}
-        className="absolute bottom-8 right-8 z-30 hidden lg:flex items-center gap-2.5"
+        className="absolute bottom-10 right-8 z-30 hidden lg:flex items-center gap-2.5"
       >
         <motion.span
           animate={{ scaleX: [0.5, 1.3, 0.5] }}

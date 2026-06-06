@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -177,59 +178,30 @@ export default function ExhibitionsPage() {
       <main className="min-h-screen bg-emerald-950 text-white">
         <Navbar />
 
-        {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/blog_corporate_events.webp" 
-              alt="Exhibition management Saudi Arabia - Trade show organizer Riyadh" 
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-40"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/40 to-emerald-950" />
+        <InternalPageHero
+          title="Exhibition Management"
+          titleHighlight="Saudi Arabia"
+          subtitle="Premier trade show organizer and exhibition management company in Saudi Arabia — partnering with Saudi Expo 2030, GITEX Saudi Arabia, and Big 5 Saudi for world-class presence at every expo."
+          backgroundImage="/alkhobar_corporate_people.webp"
+          imageAlt="Exhibition management Saudi Arabia — trade show organizer Riyadh"
+          badge="Exhibitions & Expos"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Exhibitions" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/#contact"
+              className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
+            >
+              Organize Your Expo
+            </Link>
           </div>
-          
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[var(--primary)] text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
-            >
-              المعارض والملتقيات | Exhibition Excellence
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
-            >
-              Exhibition Management <span className="font-bold">Company</span> <br/>
-              <span className="text-[var(--primary)] font-bold">Riyadh</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-slate-600 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              The premier <strong className="text-white">trade show organizer Saudi Arabia</strong>. Partnering with <strong className="text-white">Saudi Expo 2030</strong>, <strong className="text-white">GITEX Saudi Arabia</strong>, and <strong className="text-white">Big 5 Saudi</strong>. Mastering grand-scale presence for any <strong className="text-white">trade exhibition</strong> or <strong className="text-white">product showcase event</strong> and helping international brands effortlessly <strong className="text-white">book exhibition space KSA</strong>.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Link
-                href="/#contact"
-                className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
-              >
-                Organize Your Expo
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        </div>
 
         {/* E-E-A-T Signals & Partnerships */}
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">

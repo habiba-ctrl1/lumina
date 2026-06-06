@@ -102,6 +102,7 @@ export default function Footer() {
                 { name: t("companyLinks.locations"), href: "/locations" },
                 { name: t("companyLinks.faq"), href: "/faq" },
                 { name: t("companyLinks.bookSession"), href: "/consultation" },
+                { name: "Become a Vendor", href: "/vendors" },
                 { name: "Testimonials", href: "/testimonials" },
                 { name: "Glossary", href: "/glossary" },
                 { name: "Editorial Policy", href: "/editorial-policy" },

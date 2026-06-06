@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -219,38 +220,22 @@ export default function EventProductionPage() {
         <WhatsAppButton />
         <Navbar />
 
-        {/* ── Hero ── */}
-        <section className="relative h-[75vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/gallery_vip_party.webp"
-              alt="Event production company Saudi Arabia — stage and AV production"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-30"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/60 to-emerald-950" />
-          </div>
-
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <span className="text-[var(--primary)] text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
-              الإنتاج التقني | Technical Mastery
-            </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
-              Event Production Company <br />
-              <span className="text-[var(--primary)]">Saudi Arabia</span>
-            </h1>
-            <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
-              <strong className="text-white">Saudi Event Management</strong> is a technical powerhouse
-              recognized as the leading{" "}
-              <strong className="text-white">event production company in Saudi Arabia</strong>. From{" "}
-              <strong className="text-white">custom stage fabrication</strong> and{" "}
-              <strong className="text-white">concert-grade sound systems</strong> to{" "}
-              <strong className="text-white">LED projection mapping</strong> and{" "}
-              <strong className="text-white">National Day show productions</strong> — we transform
-              any venue into an extraordinary experience.
-            </p>
+        <InternalPageHero
+          title="Event Production Services"
+          titleHighlight="Saudi Arabia"
+          subtitle="Technical powerhouse for custom stage fabrication, concert-grade sound systems, LED projection mapping, and National Day show productions — transforming any venue into an extraordinary experience."
+          backgroundImage="/riyadh_luxury_reception_people.webp"
+          imageAlt="Event production company Saudi Arabia — stage and AV production"
+          badge="Event Production"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Event Production" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/#contact"
               className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg"
@@ -258,7 +243,7 @@ export default function EventProductionPage() {
               Get a Production Quote
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* ── EEAT Credentials ── */}
         <section className="py-12 border-y border-white/5 bg-emerald-900/30">

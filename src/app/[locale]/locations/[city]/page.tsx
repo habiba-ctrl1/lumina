@@ -1,9 +1,21 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import InternalPageHero from "@/components/InternalPageHero";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, Building, Calendar, ArrowRight } from "lucide-react";
+
+// City-specific hero images
+const CITY_IMAGES: Record<string, string> = {
+  neom:    "/neom_summit_people.webp",
+  khobar:  "/alkhobar_corporate_people.webp",
+  makkah:  "/majlis_gathering_people.webp",
+  madinah: "/gallery_garden_party.webp",
+  taif:    "/gallery_destination_wedding.webp",
+  abha:    "/alula_gala_people.webp",
+};
+const DEFAULT_CITY_IMAGE = "/riyadh_summit_people.webp";
 
 // Tier 2 Programmatic Cities Data
 const pseoCities: Record<string, { name: string, region: string, description: string, specialty: string }> = {
@@ -80,34 +92,29 @@ export default function DynamicLocationPage({ params }: { params: { city: string
     "url": `https://saudieventmanagement.com/locations/${params.city.toLowerCase()}`
   };
 
+  const heroImage = CITY_IMAGES[params.city.toLowerCase()] ?? DEFAULT_CITY_IMAGE;
+
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden pt-20">
+    <main className="min-h-screen bg-[var(--background)] overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar darkHero={false} />
+      <Navbar />
 
-      {/* Hero Section */}
-      <section className="bg-ink-950 py-32 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero_bg.webp')] opacity-30 bg-cover bg-center" />
-        <div className="absolute inset-0 bg-ink-950/60" />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold-400/10 border border-gold-400/20 rounded-full mb-8">
-            <MapPin size={16} className="text-gold-400" />
-            <span className="text-gold-400 text-[10px] font-bold uppercase tracking-widest">{cityData.region}</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-6 uppercase tracking-tight">
-            Event Management in <span className="text-gold-400">{cityData.name}</span>
-          </h1>
-          <p className="text-sand-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed mb-10">
-            {cityData.description}
-          </p>
-          <Link href="/contact" className="inline-flex px-8 py-4 bg-gold-500 text-ink-950 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-sm">
-            Plan Your Event in {cityData.name}
-          </Link>
-        </div>
-      </section>
+      <InternalPageHero
+        title={`Event Management in ${cityData.name}`}
+        subtitle={cityData.description}
+        backgroundImage={heroImage}
+        imageAlt={`Event management in ${cityData.name}, ${cityData.region}, Saudi Arabia`}
+        badge={cityData.region}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Locations", href: "/locations" },
+          { label: cityData.name },
+        ]}
+        minHeight="large"
+      />
 
       {/* Specialty Section */}
       <section className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

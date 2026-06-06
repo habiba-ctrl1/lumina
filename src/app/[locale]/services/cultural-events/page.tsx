@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -137,59 +138,30 @@ export default function SeasonalEventsPage() {
       <main className="min-h-screen bg-white text-slate-900">
         <Navbar />
 
-        {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/private_party.webp" 
-              alt="Ramadan events Saudi Arabia - Saudi National Day event organizer" 
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/50" />
+        <InternalPageHero
+          title="Cultural Event Management"
+          titleHighlight="in Saudi Arabia"
+          subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering luxury cultural experiences across Riyadh, Jeddah, and beyond."
+          backgroundImage="/majlis_gathering_people.webp"
+          imageAlt="Cultural events Saudi Arabia — Ramadan and National Day organizer"
+          badge="Cultural Events | التراث السعودي"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Cultural Events" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/#contact"
+              className="inline-block px-12 py-5 bg-[var(--primary-dark)] text-white font-bold uppercase tracking-widest hover:bg-gold-700 transition-all shadow-2xl"
+            >
+              Plan Your Celebration
+            </Link>
           </div>
-          
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[var(--primary)] text-sm uppercase tracking-[0.6em] font-bold mb-8 block"
-            >
-              الفعاليات الموسمية والدينية | Cultural Heritage
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
-            >
-              Seasonal <span className="text-[var(--primary)] font-bold">& Religious</span> <br/>
-              Events KSA
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-200 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              The Kingdom&apos;s leading <strong className="text-white">National Day event organizer Riyadh</strong> and <strong className="text-white">Eid celebration company Saudi Arabia</strong>. Providing exceptional <strong className="text-white">religious celebration management</strong> and <strong className="text-white">annual celebration planning</strong>. Preserving heritage and delivering luxury experiences as your preferred <strong className="text-white">Ramadan event planner KSA</strong> for all <strong className="text-white">Islamic seasonal events</strong>.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Link
-                href="/#contact"
-                className="inline-block px-12 py-5 bg-[var(--primary-dark)] text-white font-bold uppercase tracking-widest hover:bg-gold-700 transition-all shadow-2xl"
-              >
-                Plan Your Celebration
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        </div>
 
         {/* E-E-A-T & Cultural Credentials */}
         <section className="py-32 bg-white border-y border-slate-200">

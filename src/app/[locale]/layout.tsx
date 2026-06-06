@@ -154,11 +154,15 @@ const organizationSchema = {
     },
     {
       "@type": "City",
-      name: "AlUla",
+      name: "Al Khobar",
     },
     {
       "@type": "City",
       name: "Makkah",
+    },
+    {
+      "@type": "City",
+      name: "AlUla",
     },
     {
       "@type": "Country",

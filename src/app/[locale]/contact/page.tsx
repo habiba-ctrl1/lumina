@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin, Mail, Phone, Clock, MessageCircle, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -122,26 +123,16 @@ export default async function ContactPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
 
-      {/* ── Background Aesthetics ── */}
-      <div className="absolute top-0 start-0 w-full h-[55vh] pointer-events-none overflow-hidden z-0 bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px]" />
-      </div>
-
-      {/* ── Hero Header ── */}
-      <section className="relative z-10 pt-36 md:pt-44 pb-12 text-center max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center gap-4 mb-6">
-          <span className="section-label bg-white border border-neutral-200/80">
-            <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-            {content.heroLabel}
-          </span>
-        </div>
-        <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight max-w-4xl mx-auto" style={{ letterSpacing: "-0.025em" }}>
-          {content.heroTitle} <br /><span className="text-[var(--primary)]">{content.heroTitleHighlight}</span>
-        </h1>
-        <p className="text-neutral-500 text-[16px] max-w-xl mx-auto leading-relaxed">
-          {content.heroSubtitle}
-        </p>
-      </section>
+      <InternalPageHero
+        title={content.heroTitle}
+        titleHighlight={content.heroTitleHighlight}
+        subtitle={content.heroSubtitle}
+        backgroundImage="/corporate.webp"
+        imageAlt="Elegant guests at a luxury event consultation in Saudi Arabia"
+        badge={content.heroLabel}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        minHeight="standard"
+      />
 
       {/* ── Contact Body ── */}
       <section className="relative z-10 py-16 pb-28 max-w-7xl mx-auto px-6">

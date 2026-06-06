@@ -20,6 +20,7 @@ const defaultNavLinks = [
   { key: "services",  href: "/services" },
   { key: "portfolio", href: "/portfolio" },
   { key: "locations", href: "/locations" },
+  { key: "vendors",   href: "/vendors" },
   { key: "contact",   href: "/contact" },
   { key: "journal",   href: "/blog" },
 ];

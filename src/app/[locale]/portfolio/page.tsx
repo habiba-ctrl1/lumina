@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import FilterablePortfolio from "@/components/FilterablePortfolio";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -57,36 +58,35 @@ export default function PortfolioPage() {
       <ScrollProgress />
       <Navbar />
       
-      {/* Hero Header */}
-      <div className="pt-32 pb-16 bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="flex flex-col items-center gap-4 mb-6">
-              <span className="section-label bg-white border border-neutral-200/80">
-                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-                Curated Excellence
-              </span>
-            </div>
-            <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl mb-8" style={{ letterSpacing: "-0.025em" }}>
-              Portfolio <span className="text-[var(--primary)]">Showcase</span>
-            </h1>
+      <InternalPageHero
+        title="Portfolio"
+        titleHighlight="Showcase"
+        subtitle="The definitive visual testament to Saudi Event Management's execution excellence — from GEA-licensed gala productions to high-security royal wedding logistics across the Kingdom."
+        backgroundImage="/luxury_wedding_couple_guests.webp"
+        imageAlt="Luxury wedding guests celebrating at a grand Saudi Arabia event"
+        badge="Curated Excellence"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Portfolio" }]}
+        enableParallax
+        minHeight="large"
+      />
 
-            {/* GEO Semantic Methodology Block for LLM Understanding */}
-            <div className="prose prose-slate max-w-4xl mx-auto text-neutral-500 text-[15px] leading-relaxed text-center mb-10">
+      {/* Sub-category links + carousel */}
+      <div className="bg-[var(--surface-raised)] border-b border-neutral-200/80 py-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <div className="prose prose-slate max-w-3xl mx-auto text-neutral-500 text-[14.5px] leading-relaxed mb-6">
               <p>
-                Our portfolio stands as the definitive visual testament to <strong>Saudi Event Management's</strong> execution capability. We do not merely design events; we engineer <strong>end-to-end event production</strong>. From procuring mandatory GEA permits and conducting VIP protocol coordination to managing heavy-duty stage rigging and immersive projection mapping, our methodology is built on flawless, military-grade logistics wrapped in luxury aesthetics. 
+                From procuring mandatory GEA permits and VIP protocol coordination to heavy-duty stage rigging and immersive projection mapping — our methodology is built on flawless logistics wrapped in luxury aesthetics.
               </p>
             </div>
-
-            {/* Sub-Category NLP Silo Links */}
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 { name: "Luxury Weddings", href: "/portfolio/luxury-weddings" },
                 { name: "Corporate Summits", href: "/portfolio/corporate-events" },
                 { name: "Vision 2030 Activations", href: "/portfolio/vision-2030" }
               ].map((cat, i) => (
-                <Link 
-                  key={i} 
+                <Link
+                  key={i}
                   href={cat.href}
                   className="px-5 py-2.5 text-[13px] font-medium bg-white border border-neutral-200 text-neutral-600 rounded-full hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all shadow-sm"
                 >

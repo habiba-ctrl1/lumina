@@ -63,6 +63,7 @@ import EngagementHub from "@/components/EngagementHub";
 import Services from "@/components/Services";
 import GeoDefinitionBlock from "@/components/GeoDefinitionBlock";
 import CityPresence from "@/components/CityPresence";
+import VendorCTA from "@/components/VendorCTA";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Page-level schema (supplements layout.tsx global schema)
@@ -220,6 +221,7 @@ export default async function Home() {
       <PartnersSection />
       <InstagramFeed />
       <EngagementHub />
+      <VendorCTA />
       <Footer />
     </main>
   );

@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -49,46 +50,22 @@ export default function RiyadhPage() {
       />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/hero_bg.webp" 
-            alt="Luxury Event Management Riyadh - Kingdom Centre Skyline" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/60 to-slate-50" />
+      <InternalPageHero
+        title="Elevating Riyadh's Most"
+        titleHighlight="Iconic Celebrations"
+        subtitle="From the soaring heights of the Kingdom Centre to the majestic heritage of Diriyah, we curate experiences that define the Riyadh skyline."
+        backgroundImage="/riyadh_summit_people.webp"
+        imageAlt="Luxury event management in Riyadh Saudi Arabia — premium conference production"
+        badge="The Capital of Luxury | Riyadh"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations", href: "/locations" }, { label: "Riyadh" }]}
+        minHeight="large"
+      />
+      <div className="bg-white border-b border-neutral-100 py-6">
+        <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/contact" className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm">Request a Proposal</Link>
+          <Link href="/portfolio" className="btn-outline hover:scale-105 transition-all rounded-sm">View Our Riyadh Work</Link>
         </div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <span className="section-label">
-            The Capital of Luxury | Riyadh
-          </span>
-          <h1 className="font-display font-medium text-slate-900 mb-8 leading-tight text-3xl md:text-5xl">
-            Elevating Riyadh&apos;s Most <br/><span className="text-[var(--primary)]  font-semibold">Iconic Celebrations</span>
-          </h1>
-          <p className="text-slate-600 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            From the soaring heights of the <span className="text-slate-900 font-semibold">Kingdom Centre</span> to the majestic heritage of <span className="text-slate-900 font-semibold">Diriyah</span>, we curate experiences that define the Riyadh skyline.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
-            <Link
-              href="/#contact"
-              className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
-            >
-              Request a Proposal
-            </Link>
-            <Link
-              href="/portfolio"
-              className="btn-outline hover:scale-105 transition-all rounded-sm"
-            >
-              View Our Riyadh Work
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* City Landmarks & Expertise */}
       <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

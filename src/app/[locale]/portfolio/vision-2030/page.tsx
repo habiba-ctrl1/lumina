@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
@@ -57,23 +58,19 @@ export default function Vision2030Portfolio() {
       <ScrollProgress />
       <Navbar />
       
-      {/* Hero Section */}
-      <div className="pt-32 pb-20 bg-[var(--surface-raised)] border-b border-neutral-200/80">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="flex flex-col items-center gap-4 mb-6">
-            <span className="section-label bg-white border border-neutral-200/80">
-              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Cultural Portfolio
-            </span>
-          </div>
-          <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Vision 2030 <span className="text-[var(--primary)]">Activations</span>
-          </h1>
-          <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Supporting the Kingdom's cultural renaissance by executing mega-events, heritage festivals, and tourism initiatives with flawless precision.
-          </p>
-        </div>
-      </div>
+      <InternalPageHero
+        title="Vision 2030 Event Portfolio"
+        subtitle="Supporting the Kingdom's cultural renaissance by executing mega-events, heritage festivals, and tourism initiatives with flawless precision."
+        backgroundImage="/neom_summit_people.webp"
+        imageAlt="Vision 2030 cultural activations Saudi Arabia portfolio"
+        badge="Vision 2030 Activations"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/portfolio" },
+          { label: "Vision 2030" },
+        ]}
+        minHeight="standard"
+      />
 
       {/* NLP / GEO Methodology Block */}
       <section className="py-24 bg-white border-b border-neutral-100">

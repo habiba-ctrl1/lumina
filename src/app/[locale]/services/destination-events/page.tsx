@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -195,37 +196,22 @@ export default function DestinationEventsPage() {
       <main className="min-h-screen bg-sand-50 text-ink-950 overflow-hidden pt-20">
         <Navbar darkHero={false} />
 
-        {/* ── Hero ── */}
-        <section className="relative h-[75vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/hero_bg.webp"
-              alt="Destination events Saudi Arabia — AlUla, NEOM, Red Sea"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-90"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/50 to-ink-950" />
-          </div>
-
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span className="text-gold-400 text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
-              الفعاليات الوجهاتية | Iconic Locations
-            </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-display text-white mb-8 leading-tight font-bold">
-              Destination Events <br />
-              <span className="text-gold-400 italic">Saudi Arabia</span>
-            </h1>
-            <p className="text-sand-200 text-lg md:text-xl mb-10 leading-relaxed font-light">
-              <strong className="text-white">Saudi Event Management</strong> is a specialist in{" "}
-              <strong className="text-white">destination event planning</strong> across the Kingdom&apos;s most
-              breathtaking landscapes. We execute seamless logistics and extraordinary experiences in{" "}
-              <strong className="text-white">AlUla</strong>,{" "}
-              <strong className="text-white">NEOM</strong>,{" "}
-              <strong className="text-white">the Red Sea</strong>, and{" "}
-              <strong className="text-white">Diriyah</strong>.
-            </p>
+        <InternalPageHero
+          title="Destination Event Planning"
+          titleHighlight="in Saudi Arabia"
+          subtitle="Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
+          backgroundImage="/alula_gala_people.webp"
+          imageAlt="Destination events Saudi Arabia — AlUla, NEOM, Red Sea"
+          badge="Destination Events"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Destination Events" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/#contact"
               className="inline-block px-10 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-lg"
@@ -233,7 +219,7 @@ export default function DestinationEventsPage() {
               Explore Destinations
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* ── EEAT Credentials ── */}
         <section className="py-10 bg-ink-900 border-b border-white/5">

@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -188,59 +189,30 @@ export default function WeddingsPage() {
       <main className="min-h-screen bg-white">
         <Navbar />
 
-        {/* Hero Section */}
-        <section className="relative h-[85vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/wedding.webp" 
-              alt="Luxury wedding planner Saudi Arabia - Riyadh Wedding" 
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/40" />
+        <InternalPageHero
+          title="Luxury Wedding Planner"
+          titleHighlight="Saudi Arabia"
+          subtitle="Elite luxury wedding planning in Riyadh and Jeddah — royal weddings, traditional Nikah ceremonies, and VIP receptions at the Kingdom's most prestigious venues."
+          backgroundImage="/luxury_wedding_couple_guests.webp"
+          imageAlt="Luxury wedding planner Saudi Arabia"
+          badge="حفلات الزفاف | Luxury Weddings"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Weddings" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/#contact"
+              className="inline-block px-12 py-5 bg-[var(--primary)] text-slate-900 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
+            >
+              Start Planning Your Dream
+            </Link>
           </div>
-          
-          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[var(--primary)] text-sm uppercase tracking-[0.5em] font-bold mb-8 block"
-            >
-              حفلات الزفاف والمناسبات | Social Elegance
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold"
-            >
-              Luxury Wedding <span className="font-bold">Planner</span> <br/>
-              <span className="text-[var(--primary)] font-bold">Saudi Arabia</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-200 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
-            >
-              <strong className="text-white">Saudi Event Management</strong> is an elite <strong className="text-white">luxury wedding planner</strong> operating in <strong className="text-white">Riyadh and Jeddah, Saudi Arabia</strong>. Since our founding, we have designed and executed over 100 <strong className="text-white">royal weddings, traditional Nikah ceremonies, and VIP receptions</strong> at premium venues like The Ritz-Carlton and Four Seasons.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Link
-                href="/#contact"
-                className="inline-block px-12 py-5 bg-[var(--primary)] text-slate-900 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
-              >
-                Start Planning Your Dream
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        </div>
 
         {/* Introduction Section */}
         <section className="py-32 bg-white relative">

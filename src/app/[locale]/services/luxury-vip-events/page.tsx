@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -176,37 +177,22 @@ export default function LuxuryVIPEventsPage() {
       <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
         <Navbar />
 
-        {/* ── Hero ── */}
-        <section className="relative h-[75vh] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/gallery_charity_gala.webp"
-              alt="Luxury VIP event planning Saudi Arabia — royal and HNWI experiences"
-              width={1920}
-              height={1080}
-              className="w-full h-full object-cover opacity-40"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink-950/80 via-ink-950/60 to-ink-950" />
-          </div>
-
-          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span className="text-gold-400 text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
-              فعاليات كبار الشخصيات | Luxury & VIP Experiences
-            </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-display text-white mb-8 leading-tight font-bold">
-              Exclusive VIP Events <br />
-              <span className="text-gold-400 italic">Saudi Arabia</span>
-            </h1>
-            <p className="text-sand-300 text-lg md:text-xl mb-10 leading-relaxed font-light">
-              <strong className="text-white">Saudi Event Management</strong> is the leading{" "}
-              <strong className="text-white">luxury event planner</strong> for{" "}
-              <strong className="text-white">VIPs, Royal Families, and High-Net-Worth Individuals</strong>{" "}
-              in Saudi Arabia. We design strictly confidential, ultra-luxury experiences — from{" "}
-              <strong className="text-white">private concerts and yacht parties</strong> to{" "}
-              <strong className="text-white">bespoke desert events in AlUla</strong> and{" "}
-              <strong className="text-white">exclusive brand launches</strong>.
-            </p>
+        <InternalPageHero
+          title="Luxury VIP Event Management"
+          titleHighlight="Saudi Arabia"
+          subtitle="The leading luxury event planner for VIPs, Royal Families, and High-Net-Worth Individuals — strictly confidential, ultra-luxury experiences from private concerts and yacht parties to bespoke desert events in AlUla."
+          backgroundImage="/jeddah_luxury_people.webp"
+          imageAlt="Luxury VIP event planning Saudi Arabia — royal and HNWI experiences"
+          badge="VIP & Luxury Events"
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Luxury VIP Events" },
+          ]}
+          minHeight="large"
+        />
+        <div className="bg-white border-b border-neutral-100 py-6">
+          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/#contact"
               className="inline-block px-10 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-lg"
@@ -214,7 +200,7 @@ export default function LuxuryVIPEventsPage() {
               Request Private Consultation
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* ── EEAT Credentials ── */}
         <section className="py-10 border-y border-white/5 bg-ink-900/50">
