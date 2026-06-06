@@ -88,20 +88,30 @@ export default function FilterablePortfolio() {
           </p>
         </div>
 
-        {/* Filters */}
+        {/* Filters — layoutId animated sliding pill */}
         <div className="flex flex-wrap justify-center gap-2 mb-14">
           {categories.map((category: any) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 text-[13px] font-medium rounded-lg transition-all duration-200 border ${
-                activeCategory === category 
-                  ? "bg-[var(--primary)] text-white border-[var(--primary)]" 
-                  : "bg-white text-neutral-500 border-neutral-200 hover:border-neutral-300 hover:text-neutral-900"
+              className={`relative px-5 py-2.5 text-[13px] font-medium rounded-lg border overflow-hidden transition-colors duration-200 ${
+                activeCategory === category
+                  ? "border-[var(--primary)]"
+                  : "bg-white border-neutral-200 text-neutral-500 hover:border-neutral-300 hover:text-neutral-700"
               }`}
-              style={activeCategory === category ? { boxShadow: "0 2px 8px rgba(13, 107, 78, 0.2)" } : { boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
+              style={activeCategory !== category ? { boxShadow: "0 1px 2px rgba(0,0,0,0.04)" } : {}}
             >
-              {t(`categories.${category}` as any)}
+              {activeCategory === category && (
+                <motion.span
+                  layoutId="portfolio-tab-pill"
+                  className="absolute inset-0 bg-[var(--primary)]"
+                  transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                  style={{ boxShadow: "0 2px 8px rgba(13,107,78,0.22)" }}
+                />
+              )}
+              <span className={`relative z-10 ${activeCategory === category ? "text-white" : ""}`}>
+                {t(`categories.${category}` as any)}
+              </span>
             </button>
           ))}
         </div>

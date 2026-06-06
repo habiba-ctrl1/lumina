@@ -83,38 +83,38 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
       </div>
 
       <div className="flex-grow">
-        {/* Starting price */}
-        <span className="text-[12px] font-medium text-[var(--primary)] mb-3 block">
+        {/* Investment badge — premium gold micro-badge */}
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.12em] uppercase border border-[var(--gold)]/50 bg-[var(--gold-muted)] text-[var(--gold-hover)] px-3 py-1.5 rounded-md mb-5">
           {t(`items.${itemKey}.starting`)}
         </span>
         {/* Title */}
-        <h3 className="text-lg text-neutral-900 mb-3 font-semibold group-hover:text-[var(--primary)] transition-colors duration-200" style={{ letterSpacing: "-0.02em" }}>
+        <h3 className="text-[17px] text-neutral-900 mb-3 font-semibold group-hover:text-[var(--primary)] transition-colors duration-200" style={{ letterSpacing: "-0.02em", lineHeight: 1.35 }}>
           {t(`items.${itemKey}.title`)}
         </h3>
         {/* Description */}
-        <p className="text-neutral-500 text-[14px] leading-relaxed mb-6">
+        <p className="text-neutral-500 text-[13.5px] leading-relaxed mb-6">
           {t(`items.${itemKey}.description`)}
         </p>
       </div>
 
       {/* Footer */}
       <div className="w-full mt-auto pt-5 border-t border-neutral-100 flex items-center justify-between gap-4">
-        <Link 
+        <Link
           href={service.href}
-          className="flex items-center gap-2 text-[var(--primary)] text-[13px] font-medium group-hover:gap-3 transition-all duration-200"
+          className="flex items-center gap-1.5 text-[var(--primary)] text-[13px] font-semibold group-hover:gap-2.5 transition-all duration-200"
         >
-          <span>{t("learnMore")}</span>
-          <ArrowRight size={14} />
+          <span className="border-b border-[var(--primary)]/30 group-hover:border-[var(--primary)] pb-px transition-colors">
+            {t(`items.${itemKey}.cta`)}
+          </span>
+          <ArrowRight size={13} />
         </Link>
-        <a 
-          href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.title || "")}%20services.`}
+        <a
+          href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(t(`items.${itemKey}.title`))}%20services.`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:scale-110"
-          style={{
-            boxShadow: "0 2px 6px rgba(37, 211, 102, 0.25)",
-          }}
-          title={`Contact us about ${service.title || ""} via WhatsApp`}
+          style={{ boxShadow: "0 2px 6px rgba(37, 211, 102, 0.25)" }}
+          aria-label={`WhatsApp enquiry for ${t(`items.${itemKey}.title`)}`}
         >
           <MessageCircle size={14} fill="white" />
         </a>

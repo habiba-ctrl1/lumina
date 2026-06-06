@@ -50,7 +50,20 @@
     "yearsOf": "Years of",
     "excellence": "Excellence",
     "h1En": "Event Management Company  Saudi Arabia | Saudi Event Management",
-    "h1Ar": "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض"
+    "h1Ar": "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض",
+    "formLabel": "Free Consultation",
+    "formTitle": "Get a Free Quote",
+    "formResponseTime": "Guaranteed Response Within 90 Minutes",
+    "formName": "Your Name",
+    "formEmail": "Email Address",
+    "formEventTypePlaceholder": "Event Type",
+    "formEventTypes": ["Wedding", "Corporate Event", "Exhibition", "Conference", "Gala / VIP Event", "Government Event", "Other"],
+    "formSubmit": "Get a Free Quote",
+    "formSubmitting": "Sending…",
+    "formSuccess": "Request Received",
+    "formSuccessMsg": "Our team will contact you within 90 minutes to discuss your event vision.",
+    "formError": "Something went wrong. Please try again.",
+    "formDisclaimer": "No commitment · 100% confidential"
   },
   "marquee": {
     "items": [
@@ -71,33 +84,39 @@
     "items": [
       {
         "title": "Wedding Event Management",
-        "description": "Luxury Event Planner Saudi Arabia specializing in grand and luxurious royal weddings and traditional ceremonies.",
-        "starting": "From SAR 50,000"
+        "description": "Saudi Arabia's foremost luxury wedding planner — crafting royal weddings, traditional Saudi ceremonies, and destination celebrations fully licensed by the General Entertainment Authority (GEA) and compliant with Ministry of Culture guidelines.",
+        "starting": "From SAR 50,000",
+        "cta": "Explore Luxury Wedding Planning in Riyadh"
       },
       {
         "title": "Corporate Event Planning",
-        "description": "Corporate Event Planning Saudi Arabia for business summits, AGMs, and gala dinners.",
-        "starting": "From SAR 75,000"
+        "description": "End-to-end corporate event management for Vision 2030-aligned business summits, AGMs, and gala dinners. We manage GEA permits, VIP protocols, and international delegation logistics across Riyadh's KAFD and Olaya District.",
+        "starting": "From SAR 75,000",
+        "cta": "View Corporate Event Management Services"
       },
       {
         "title": "Exhibition Management",
-        "description": "Exhibition Management Company organizing large-scale industry expos, trade shows, and brand launches.",
-        "starting": "From SAR 80,000"
+        "description": "Full-service exhibition management at Riyadh Front, KAFD, and Jeddah Exhibition & Convention Centre. Spatial 3D booth design, multi-brand pavilion builds, and GEA-compliant show management for trade fairs and product launches.",
+        "starting": "From SAR 80,000",
+        "cta": "Discover Exhibition Management Solutions"
       },
       {
         "title": "Event Production Services",
-        "description": "Full-scale technical Event Production Services including light, sound, special light and video shows on walls, and custom stages.",
-        "starting": "From SAR 60,000"
+        "description": "State-of-the-art AV infrastructure: LED wall systems, custom stage builds, 3D projection mapping, and dynamic lighting — aligned with NEOM-inspired immersive event standards for audiences from 50 to 5,000+.",
+        "starting": "From SAR 60,000",
+        "cta": "Explore Full-Scale Event Production"
       },
       {
         "title": "Conference Management",
-        "description": "End-to-end Conference Management Riyadh, from getting government event licenses and international VIP planning to events with both in-person and online guests.",
-        "starting": "From SAR 45,000"
+        "description": "Comprehensive conference management across the Kingdom — GEA permit procurement, international VIP logistics, simultaneous translation, and hybrid digital-physical delivery. Trusted by government ministries, Saudi Aramco, and NEOM teams.",
+        "starting": "From SAR 45,000",
+        "cta": "View Conference & Summit Management"
       },
       {
         "title": "Cultural & Seasonal Events",
-        "description": "Custom-made seasonal festivals, sports events, and national cultural events and activities across the Kingdom.",
-        "starting": "Custom Pricing"
+        "description": "Bespoke Saudi seasonal activations, Riyadh Season extensions, and Vision 2030 cultural programming — GEA-sanctioned festivals and regional heritage events that connect global audiences with authentic Saudi identity.",
+        "starting": "Custom Pricing",
+        "cta": "Explore Cultural Event Activations"
       }
     ]
   },
@@ -314,6 +333,7 @@
   },
   "faq": {
     "label": "Inquiries",
+    "tabLabel": "FAQ",
     "title": "Curated",
     "titleHighlight": "Questions",
     "categories": {
