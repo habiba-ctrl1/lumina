@@ -5,14 +5,75 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
-  title: 'Frequently Asked Questions',
-  description: 'Frequently asked questions about our event management services.',
+  title: 'Frequently Asked Questions | Saudi Event Management',
+  description: 'Get answers to common questions about luxury event planning in Saudi Arabia. Learn about pricing, booking, logistics, and services from Saudi Event Management.',
+  keywords: [
+    "Event Management FAQ Saudi Arabia",
+    "How much does event planning cost in KSA",
+    "Wedding planner questions Riyadh",
+    "Corporate event booking Saudi Arabia",
+    "Saudi Event Management FAQ"
+  ],
   alternates: { canonical: 'https://saudieventmanagement.com/faq' },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does luxury event planning cost in Saudi Arabia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Luxury event planning in Saudi Arabia typically ranges from SAR 75,000 for boutique corporate events to several million riyals for grand royal weddings. Saudi Event Management provides tailored proposals based on your specific requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What cities does Saudi Event Management serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We operate across Riyadh, Jeddah, Dammam, AlUla, NEOM, Makkah, Madinah, Taif, Al Khobar, and Abha — covering the entire Kingdom of Saudi Arabia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle government and Vision 2030 events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Saudi Event Management has deep experience with government events, GEA-permitted activations, and Saudi Vision 2030 initiatives. We work with government ministries and major corporations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far in advance should I book an event planner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For luxury weddings and large-scale corporate events, we recommend booking at least 6 to 12 months in advance. However, our rapid-deployment team can also manage urgent events with shorter timelines."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://saudieventmanagement.com/faq" }
+      ]
+    }
+  ]
 };
 
 export default function FAQPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <ScrollProgress />
       <Navbar />
       

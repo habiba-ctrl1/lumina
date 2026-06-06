@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Star, Flag, Gift, Landmark, Award } from "lucide-react";
+import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SeasonalEventsPage() {
@@ -369,6 +369,31 @@ export default function SeasonalEventsPage() {
                   <h3 className="text-xl font-bold text-slate-900 mb-8">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { title: "Luxury Weddings", slug: "weddings", desc: "Bespoke social celebrations including traditional Saudi ceremonies." },
+                { title: "Corporate Events", slug: "corporate-events", desc: "National Day corporate galas and Vision 2030 event initiatives." },
+                { title: "Destination Events", slug: "destination-events", desc: "AlUla, Diriyah, and heritage destination events across the Kingdom." },
+                { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Private HNWI and royal family cultural celebrations." },
+              ].map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${rel.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
+                >
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                </Link>
               ))}
             </div>
           </div>

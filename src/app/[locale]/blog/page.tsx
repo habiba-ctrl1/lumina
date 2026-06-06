@@ -49,9 +49,9 @@ export default function BlogPage() {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="max-w-3xl mx-auto">
             <div className="flex flex-col items-center justify-center gap-4 mb-6">
-              <span className="section-label bg-white border border-neutral-200/80">
-                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-                The Lumina Journal
+              <span className="section-label mb-3 inline-flex items-center gap-2">
+                <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-60" />
+                The Saudi Event Management Journal
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 mb-6" style={{ letterSpacing: "-0.025em" }}>

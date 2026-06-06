@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award } from "lucide-react";
+import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ExhibitionsPage() {
@@ -328,7 +328,7 @@ export default function ExhibitionsPage() {
                   الريادة في <br/><span className="text-[var(--primary)]">تنظيم المعارض</span>
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  تعتبر لومينا أفضل <strong className="text-slate-900">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-slate-900">مركز الرياض للمعارض والمؤتمرات</strong>.
+                  تعتبر إدارة الفعاليات السعودية أفضل <strong className="text-slate-900">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-slate-900">مركز الرياض للمعارض والمؤتمرات</strong>.
                 </p>
                 <div className="flex gap-10 pt-4">
                   <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">إدارة المعارض</div>
@@ -372,6 +372,31 @@ export default function ExhibitionsPage() {
                   <h3 className="text-lg font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
                   <p className="text-slate-600 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-emerald-950 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { title: "Conference Management", slug: "conferences", desc: "B2B summit planning, PCO services, and hybrid conference management." },
+                { title: "Corporate Events", slug: "corporate-events", desc: "Executive summits, galas, and corporate event management in KSA." },
+                { title: "Event Production", slug: "event-production", desc: "Stage, AV, lighting, and technical production for large-scale expos." },
+                { title: "Event Services & Venues", slug: "production-venues", desc: "Venue sourcing, catering, and decoration for trade shows." },
+              ].map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${rel.slug}`}
+                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                >
+                  <h4 className="text-white font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                </Link>
               ))}
             </div>
           </div>

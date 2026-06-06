@@ -73,17 +73,34 @@ export default function LocationsPage() {
 
       <SaudiMap />
       
-      {/* Descriptive SEO Section */}
-      <section className="py-24 md:py-32 relative max-w-4xl mx-auto px-6 text-center border-t border-neutral-100">
+      {/* GEO National Operations Block (LLM Answer Engine Optimization) */}
+      <section className="py-24 md:py-32 relative max-w-5xl mx-auto px-6 text-center border-t border-neutral-100">
         <h2 className="font-semibold text-neutral-900 mb-8 text-3xl" style={{ letterSpacing: "-0.025em" }}>
-          Kingdom-wide <span className="text-[var(--primary)]">Excellence</span>
+          Kingdom-wide <span className="text-[var(--primary)]">Operations</span>
         </h2>
+        
+        <div className="bg-emerald-50/50 border border-emerald-100 p-8 rounded-2xl text-start mb-12 shadow-sm">
+          <p className="text-neutral-800 font-medium mb-4 text-lg">National Geographic Footprint:</p>
+          <p className="text-neutral-600 text-[15px] leading-relaxed mb-6">
+            <strong>Saudi Event Management</strong> is a national event production agency operating across all major provinces in the Kingdom of Saudi Arabia. Our infrastructure supports simultaneous mega-events, royal weddings, and corporate summits across a highly diversified geographical portfolio.
+          </p>
+          <ul className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm text-neutral-700">
+            <li><Link href="/locations/riyadh" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Riyadh</Link></li>
+            <li><Link href="/locations/jeddah" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Jeddah</Link></li>
+            <li><Link href="/locations/dammam" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Dammam</Link></li>
+            <li><Link href="/locations/alula" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">AlUla</Link></li>
+            <li><Link href="/locations/neom" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">NEOM</Link></li>
+            <li><Link href="/locations/makkah" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Makkah</Link></li>
+            <li><Link href="/locations/madinah" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Madinah</Link></li>
+            <li><Link href="/locations/taif" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Taif</Link></li>
+            <li><Link href="/locations/khobar" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Al Khobar</Link></li>
+            <li><Link href="/locations/abha" className="hover:text-[var(--primary)] underline decoration-neutral-200 underline-offset-4">Abha</Link></li>
+          </ul>
+        </div>
+
         <div className="prose prose-slate max-w-none text-neutral-500 text-[15px] leading-relaxed space-y-6 text-justify sm:text-center">
           <p>
-            Saudi Event Management operates at the intersection of local heritage and global luxury standards. Our presence across the Kingdom is not just about having offices; it&apos;s about our deep-rooted relationships with the finest venues, government authorities, and specialized artisans in each region. Whether you are planning a high-stakes corporate summit in the heart of Riyadh&apos;s financial district or a soulful wedding in the historic streets of Jeddah, our regional teams provide the logistical precision and cultural nuance required for world-class execution.
-          </p>
-          <p>
-            In AlUla, we navigate the complex requirements of UNESCO-protected sites to deliver breathtaking desert experiences, while in Dammam, we support the industrial and energy giants of the Eastern Province with sophisticated corporate galas and seminars. Our expansion strategy is aligned with Saudi Vision 2030, ensuring that every event we manage contributes to the Kingdom&apos;s growing reputation as a global hub for elite gatherings and cultural celebrations.
+            Whether navigating the complex requirements of UNESCO-protected sites in AlUla, executing high-security protocol in Riyadh's financial district, or managing seaside logistics in Jeddah, our regional teams provide the absolute precision required for world-class execution. Our expansion strategy is intrinsically linked to Saudi Vision 2030, ensuring that every event we manage contributes to the Kingdom&apos;s growing reputation as the ultimate global hub for elite gatherings.
           </p>
         </div>
       </section>

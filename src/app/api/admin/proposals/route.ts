@@ -67,7 +67,7 @@ export async function POST(request: Request) {
       data: {
         action: 'Quote Created',
         details: `Proposal ${quoteNumber} registered for SAR ${totalAmount}`,
-        userEmail: 'admin@lumina.sa'
+        userEmail: 'admin@saudieventmanagement.com'
       }
     });
 

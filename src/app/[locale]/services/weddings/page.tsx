@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Stars, MapPin, Sparkles, Utensils, Music, Camera, Gift } from "lucide-react";
+import { Heart, Stars, MapPin, Sparkles, Utensils, Music, Camera, Gift, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Metadata cannot be exported from a client component in Next.js 13+ app dir
@@ -402,6 +402,31 @@ export default function WeddingsPage() {
                   <h3 className="text-lg font-bold text-slate-900 mb-3">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { title: "Destination Events", slug: "destination-events", desc: "Destination weddings in AlUla, NEOM, and the Red Sea coast." },
+                { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Royal and HNWI event experiences with absolute discretion." },
+                { title: "Cultural & Religious Events", slug: "cultural-events", desc: "Ramadan, Eid, and National Day celebrations across the Kingdom." },
+                { title: "Event Production", slug: "event-production", desc: "Stage, AV, lighting, and floral production for any wedding scale." },
+              ].map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${rel.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
+                >
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                </Link>
               ))}
             </div>
           </div>

@@ -55,7 +55,13 @@ export default function EngagementHub() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <motion.div
+        className="max-w-4xl mx-auto px-6 relative z-10"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
 
         {/* Section header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
@@ -286,7 +292,7 @@ export default function EngagementHub() {
           </div>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

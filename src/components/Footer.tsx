@@ -102,6 +102,9 @@ export default function Footer() {
                 { name: t("companyLinks.locations"), href: "/locations" },
                 { name: t("companyLinks.faq"), href: "/faq" },
                 { name: t("companyLinks.bookSession"), href: "/consultation" },
+                { name: "Testimonials", href: "/testimonials" },
+                { name: "Glossary", href: "/glossary" },
+                { name: "Editorial Policy", href: "/editorial-policy" },
               ].map((item: any) => (
                 <li key={item.name}>
                   <Link
@@ -189,6 +192,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link href="/privacy" className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors">{t("privacy")}</Link>
             <Link href="/terms"   className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors">{t("terms")}</Link>
+            <Link href="/editorial-policy" className="text-[13px] font-medium text-neutral-500 hover:text-neutral-900 transition-colors">Editorial Policy</Link>
           </div>
         </div>
       </div>

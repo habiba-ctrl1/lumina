@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
-import { Speaker, Camera, Utensils, PenTool, Lightbulb, Map, Zap, Star } from "lucide-react";
+import { Speaker, Camera, Utensils, PenTool, Lightbulb, Map, Zap, Star, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ProductionVenuesPage() {
@@ -367,6 +367,31 @@ export default function ProductionVenuesPage() {
                   <h3 className="text-xl font-bold mb-8">{faq.q}</h3>
                   <p className="text-gray-500 font-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { title: "Event Production", slug: "event-production", desc: "Dedicated technical production — stage, AV, lighting, and LED." },
+                { title: "Conference Management", slug: "conferences", desc: "Full PCO services integrating AV and catering for seamless delivery." },
+                { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with in-house production." },
+                { title: "Exhibitions & Trade Shows", slug: "exhibitions", desc: "Venue sourcing and AV production for B2B expos and trade shows." },
+              ].map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${rel.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
+                >
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                </Link>
               ))}
             </div>
           </div>

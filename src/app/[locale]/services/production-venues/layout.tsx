@@ -1,19 +1,51 @@
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/production-venues`;
 
   return {
-    title: 'Production & Venue Management',
-    description: 'Full-service event management in Saudi Arabia. Premium event venues in Riyadh, AV production, stage design, luxury catering, and event decoration in KSA.',
-    keywords: 'event services Saudi Arabia, خدمات الفعاليات السعودية, event venue Riyadh, أماكن فعاليات الرياض, AV production company Riyadh, event catering Saudi Arabia, stage design company KSA, event decoration Jeddah, event photography Saudi Arabia, event lighting Riyadh, full service event management company Saudi Arabia, best AV production company for events in Riyadh, event catering prices Saudi Arabia 2025, outdoor event venue rental Riyadh, event stage design and build KSA, شركة إنتاج صوت وصورة الرياض, خدمات تموين الفعاليات السعودية, تصميم وديكور فعاليات جدة, تصوير فعاليات الرياض',
+    title: "Event Services & Venues Saudi Arabia | AV, Catering, Staging & Decoration",
+    description:
+      "Full-service event management in Saudi Arabia — premium venue sourcing in Riyadh, ISO-certified AV production, luxury catering, stage design, event decoration, and media production. Tier-1 vendor for KSA's top venues.",
+    keywords: [
+      "Event services Saudi Arabia",
+      "Event venue Riyadh",
+      "AV production company Riyadh",
+      "Event catering Saudi Arabia",
+      "Stage design KSA",
+      "Event decoration Jeddah",
+      "Luxury catering events Saudi Arabia",
+      "Event venue rental Riyadh",
+      "شركة إنتاج صوت وصورة الرياض",
+      "أماكن فعاليات الرياض",
+      "تصميم وديكور فعاليات جدة",
+      "تموين فعاليات السعودية",
+    ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': 'https://saudieventmanagement.com/services/production-venues',
-        'ar-SA': 'https://saudieventmanagement.com/ar/services/production-venues',
+        "en-US": "https://saudieventmanagement.com/services/production-venues",
+        "ar-SA": "https://saudieventmanagement.com/ar/services/production-venues",
       },
+    },
+    openGraph: {
+      title: "Event Services & Venues Saudi Arabia | Saudi Event Management",
+      description:
+        "Full-service event management — premium venue sourcing, ISO-certified AV production, luxury catering, stage design, and event decoration across Saudi Arabia.",
+      url: canonicalUrl,
+      images: [
+        {
+          url: "/gallery_wedding_reception.webp",
+          width: 1200,
+          height: 630,
+          alt: "Event Services and Venues Saudi Arabia",
+        },
+      ],
     },
   };
 }

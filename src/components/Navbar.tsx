@@ -109,11 +109,11 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
       onMouseLeave={() => setHoveredLink(null)}
       className={`fixed top-0 start-0 end-0 z-[100] transition-all duration-500 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-neutral-200/60 py-3"
-          : "bg-white/50 backdrop-blur-md py-4"
+          ? "bg-white/85 backdrop-blur-xl border-b border-neutral-200/60 py-3"
+          : "bg-transparent py-5"
       }`}
       style={{
-        WebkitBackdropFilter: "blur(16px)",
+        WebkitBackdropFilter: isScrolled ? "blur(20px)" : "none",
       }}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -130,7 +130,7 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
               className={`object-contain w-auto transition-all duration-500 ${
                 isScrolled ? "h-9" : "h-12"
               }`}
-              style={{ filter: "brightness(0) invert(0)" }}
+              style={{ filter: isScrolled ? "brightness(0) invert(0)" : "brightness(0) invert(1)" }}
             />
           </Link>
  
@@ -152,9 +152,9 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     className={`relative flex items-center gap-1.5 px-3.5 py-2
                       text-[13px] font-medium
                       transition-colors duration-150 rounded-lg ${
-                        isActive 
-                          ? "text-neutral-900" 
-                          : "text-neutral-500 hover:text-neutral-900"
+                        isScrolled
+                          ? isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900"
+                          : isActive ? "text-white"        : "text-white/70 hover:text-white"
                       }`}
                   >
                     {linkName}
@@ -170,7 +170,7 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                     {isActive && (
                       <motion.span 
                         layoutId="nav-active-indicator"
-                        className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--primary)]"
+                        className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${isScrolled ? "bg-[var(--primary)]" : "bg-white"}`}
                         transition={springTransition}
                       />
                     )}
@@ -338,23 +338,30 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
           {/* ── Right: Lang + CTA ─────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-4 shrink-0">
             {/* Language toggle */}
-            <div className="flex items-center rounded-lg border border-neutral-200/60 bg-neutral-50/50 p-0.5" aria-label="Language toggle">
-              <button 
-                onClick={() => switchLanguage('en')} 
+            <div
+              className={`flex items-center rounded-lg p-0.5 transition-all duration-300 ${
+                isScrolled
+                  ? "border border-neutral-200/60 bg-neutral-50/50"
+                  : "border border-white/20 bg-white/10"
+              }`}
+              aria-label="Language toggle"
+            >
+              <button
+                onClick={() => switchLanguage('en')}
                 className={`text-[12px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${
-                  locale === 'en' 
-                    ? 'bg-white text-neutral-900 shadow-sm' 
-                    : 'text-neutral-400 hover:text-neutral-600'
+                  locale === 'en'
+                    ? isScrolled ? 'bg-white text-neutral-900 shadow-sm' : 'bg-white/20 text-white'
+                    : isScrolled ? 'text-neutral-400 hover:text-neutral-600' : 'text-white/55 hover:text-white'
                 }`}
               >
                 EN
               </button>
-              <button 
-                onClick={() => switchLanguage('ar')} 
+              <button
+                onClick={() => switchLanguage('ar')}
                 className={`text-[12px] font-medium px-3 py-1.5 rounded-md transition-all duration-200 ${
-                  locale === 'ar' 
-                    ? 'bg-white text-neutral-900 shadow-sm' 
-                    : 'text-neutral-400 hover:text-neutral-600'
+                  locale === 'ar'
+                    ? isScrolled ? 'bg-white text-neutral-900 shadow-sm' : 'bg-white/20 text-white'
+                    : isScrolled ? 'text-neutral-400 hover:text-neutral-600' : 'text-white/55 hover:text-white'
                 }`}
               >
                 AR
@@ -367,13 +374,11 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2
-                bg-[var(--primary)] text-white
-                px-5 py-2.5 rounded-lg
-                text-[13px] font-medium
-                transition-all duration-200
-                hover:bg-[var(--primary-dark)]"
+                text-white px-5 py-2.5 rounded-lg
+                text-[13px] font-medium transition-opacity duration-200 hover:opacity-90"
               style={{
-                boxShadow: "0 1px 2px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.1)",
+                background:  "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+                boxShadow:   "0 4px 16px rgba(245,158,11,0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
               }}
             >
               {tNav("requestQuote")}
@@ -383,7 +388,11 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
           {/* ── Mobile Hamburger ──────────────────────────────────────────── */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all"
+            className={`lg:hidden p-2.5 rounded-lg transition-all ${
+              isScrolled
+                ? "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
+                : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait">
@@ -458,9 +467,10 @@ export default function Navbar({ darkHero = false, locale = "en" }: { darkHero?:
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center w-full bg-[var(--primary)] text-white py-3.5 rounded-lg text-[14px] font-medium"
+                  className="flex items-center justify-center w-full text-white py-3.5 rounded-lg text-[14px] font-medium"
                   style={{
-                    boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
+                    background: "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+                    boxShadow:  "0 4px 16px rgba(245,158,11,0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
                   }}
                 >
                   {tNav("requestQuote")}

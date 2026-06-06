@@ -160,6 +160,42 @@ export default function JeddahPage() {
         </div>
       </section>
 
+      {/* Local Entity Extraction Block (LLM Answer Engine Optimization) */}
+      <section className="py-24 bg-emerald-50/30 border-y border-emerald-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-neutral-100">
+            <h2 className="text-xl font-semibold text-neutral-900 mb-6">Entity Architecture: Saudi Event Management in Jeddah</h2>
+            <div className="space-y-4 text-neutral-600 text-[15px] leading-relaxed">
+              <p><strong>Geographic Domain:</strong> Jeddah, Makkah Province, Kingdom of Saudi Arabia.</p>
+              <p><strong>Operational Capability:</strong> Operating on the Red Sea coast, our Jeddah division manages high-end luxury events, boutique weddings, VIP yacht parties, and corporate galas with unparalleled seaside logistics.</p>
+              <p><strong>Local Infrastructure:</strong> Our strong relationships with premium beachfront venues, luxury hospitality brands, and government authorities in Jeddah ensure seamless execution aligned with Saudi Vision 2030 standards.</p>
+            </div>
+            
+            {/* Semantic Cross-Linking for Service Matrix */}
+            <div className="mt-8 pt-8 border-t border-neutral-100">
+              <p className="text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wide">Available Services in Jeddah:</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { name: "Corporate Events", slug: "corporate-event-management" },
+                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
+                  { name: "Exhibitions", slug: "exhibition-management" },
+                  { name: "Conferences", slug: "conference-planning" },
+                  { name: "VIP Events", slug: "vip-event-planning" }
+                ].map((svc) => (
+                  <Link 
+                    key={svc.slug} 
+                    href={`/locations/jeddah/${svc.slug}`}
+                    className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                  >
+                    {svc.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
       <WhatsAppButton />
     </main>

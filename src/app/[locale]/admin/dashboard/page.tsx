@@ -52,7 +52,7 @@ export default function AdminDashboard() {
     setMounted(true);
     fetchData();
     // Load tasks from LocalStorage
-    const saved = localStorage.getItem("lumina_dashboard_tasks");
+    const saved = localStorage.getItem("saudieventmanagement_dashboard_tasks");
     if (saved) {
       try {
         setTasks(JSON.parse(saved));
@@ -67,13 +67,13 @@ export default function AdminDashboard() {
         { id: "3", text: "Select decorator partners for VIP gala", completed: false }
       ];
       setTasks(defaultTasks);
-      localStorage.setItem("lumina_dashboard_tasks", JSON.stringify(defaultTasks));
+      localStorage.setItem("saudieventmanagement_dashboard_tasks", JSON.stringify(defaultTasks));
     }
   }, []);
 
   const saveTasks = (newTasks: Task[]) => {
     setTasks(newTasks);
-    localStorage.setItem("lumina_dashboard_tasks", JSON.stringify(newTasks));
+    localStorage.setItem("saudieventmanagement_dashboard_tasks", JSON.stringify(newTasks));
   };
 
   const handleAddTask = (e: React.FormEvent) => {

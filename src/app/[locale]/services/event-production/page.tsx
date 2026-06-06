@@ -1,164 +1,487 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { cookies } from "next/headers";
-import { getDictionary } from "@/lib/dictionaries";
+import {
+  Zap, Music, Monitor, Camera, Layers, PenTool,
+  Cpu, Lightbulb, ChevronRight, Award,
+} from "lucide-react";
 
-const SERVICE = {
-  slug: "event-production-saudi-arabia",
-  titleTag: "Event Production Company in Saudi Arabia | Saudi Event Management",
-  metaDescription:
-    "Top event production company in Saudi Arabia. We provide sound system rentals, custom stage design, lighting production, and AV installation.",
-  h1: "Event Production Company in Saudi Arabia",
-  h2: "High-End Stage, Lighting & Sound Production",
-  canonicalUrl: "https://saudieventmanagement.com/services/event-production",
-  heroImage: "/gallery_vip_party.webp",
-  heroImageAlt:
-    "Event production stage lighting and AV system setup Saudi Arabia",
-  schemaServiceName: "Event Production in Saudi Arabia",
-  schemaDescription:
-    "Bespoke event production services including custom stage fabrication, high-performance sound setups, and grand venue mapping.",
-  bulletPoints: [
-    "Custom stage fabrication and design",
-    "High-performance sound and acoustics",
-    "Intellectual lighting design and lasers",
-    "LED screens and projection mapping KSA",
-    "Structural engineering and safety audits",
-    "On-site AV team and technician support"
-  ],
-  introduction: "We are a technical powerhouse, recognized as a leading event production company in Saudi Arabia for premium experiential setups.",
-  details: "Our technicians use state-of-the-art acoustics, high-resolution LED layouts, projection mapping, and intelligent lighting designs to transform venues."
-};
-
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
-  const currentCanonical = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/event-production`;
+  const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/event-production`;
 
   return {
-    title: SERVICE.titleTag,
-    description: SERVICE.metaDescription,
+    title: "Event Production Company Saudi Arabia | Stage, Sound & Lighting Riyadh",
+    description:
+      "Premier event production company in Saudi Arabia. Custom stage fabrication, concert-grade sound engineering, intelligent lighting design, LED & projection mapping for corporate and luxury events in Riyadh & Jeddah.",
+    keywords: [
+      "Event production company Saudi Arabia",
+      "Stage design Riyadh",
+      "AV production KSA",
+      "Sound system rental Riyadh",
+      "LED projection mapping Saudi Arabia",
+      "Lighting design events Riyadh",
+      "Event production Jeddah",
+      "إنتاج فعاليات الرياض",
+      "شركة إنتاج أحداث السعودية",
+    ],
     alternates: {
-      canonical: currentCanonical,
+      canonical: canonicalUrl,
       languages: {
         "en-US": "https://saudieventmanagement.com/services/event-production",
         "ar-SA": "https://saudieventmanagement.com/ar/services/event-production",
       },
     },
     openGraph: {
-      title: SERVICE.titleTag,
-      description: SERVICE.metaDescription,
-      url: currentCanonical,
-      images: [
-        {
-          url: SERVICE.heroImage,
-          width: 1200,
-          height: 630,
-          alt: SERVICE.heroImageAlt,
-        },
-      ],
+      title: "Event Production Company Saudi Arabia | Saudi Event Management",
+      description:
+        "Custom stage design, concert-grade AV, intelligent lighting, and immersive projection mapping for events across Saudi Arabia.",
+      url: canonicalUrl,
+      images: [{ url: "/gallery_vip_party.webp", width: 1200, height: 630, alt: "Event Production Saudi Arabia" }],
     },
   };
 }
 
-const serviceSchema = {
+const services = [
+  {
+    icon: Layers,
+    title: "Stage Design & Fabrication",
+    desc: "Custom architectural stage builds from 10m to 100m wide — bespoke structures, multi-level platforms, and scenic set fabrication using structural steel, acrylic, and timber.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Intelligent Lighting Design",
+    desc: "Dynamic RGBW moving-head fixtures, atmospheric haze, architectural wash, gobo projection, and pixel-mapped LED strips creating immersive environments at any scale.",
+  },
+  {
+    icon: Music,
+    title: "Concert-Grade Sound Engineering",
+    desc: "Line-array speaker systems, RF wireless management, acoustic room tuning, in-ear monitor systems, and professional FOH and monitor mixing for flawless clarity.",
+  },
+  {
+    icon: Monitor,
+    title: "LED & Projection Mapping",
+    desc: "Ultra-high-resolution LED walls, curved and cylindrical LED installations, 3D architectural projection mapping, and real-time generative content for immersive experiences.",
+  },
+  {
+    icon: Zap,
+    title: "Power & Structural Rigging",
+    desc: "Site-rated generator supply, clean power distribution systems, certified structural rigging, point load calculations, and roof truss engineering.",
+  },
+  {
+    icon: Camera,
+    title: "Live Content & Broadcasting",
+    desc: "Multi-camera live switching, broadcast-quality graphics playback, real-time video compositing, IMAG screens, and simultaneous streaming infrastructure.",
+  },
+  {
+    icon: PenTool,
+    title: "Themed Environment Design",
+    desc: "Custom scenic elements, bespoke floral installations, branded experiential design, entrance activation builds, and full-scale themed decor concepts.",
+  },
+  {
+    icon: Cpu,
+    title: "Specialist Crew & Management",
+    desc: "Expert on-site technical directors, stage managers, riggers, AV operators, lighting programmers, and RF coordinators — certified and experienced in KSA environments.",
+  },
+];
+
+const priceGuide = [
+  { category: "AV Production (full-day event)", from: "SAR 18,000", inclusions: "Sound, screens, lighting, 2 techs" },
+  { category: "Stage Design & Build", from: "SAR 35,000", inclusions: "3D render, fabrication, install, strike" },
+  { category: "LED Wall Rental", from: "SAR 12,000", inclusions: "P2.6 pixel pitch, rigging, operator" },
+  { category: "Projection Mapping", from: "SAR 25,000", inclusions: "Content creation, mapping, show operation" },
+  { category: "Lighting Design Package", from: "SAR 15,000", inclusions: "Intelligent fixtures, programmer, dimmer racks" },
+  { category: "Live Broadcast Setup", from: "SAR 20,000", inclusions: "Cameras, vision mixer, graphics, stream" },
+];
+
+const resources = [
+  {
+    title: "AV production guide for Saudi events: choosing the right system",
+    desc: "Line-array vs. point source, P2.6 vs. P3.9 LED, and projection vs. LED — a technical buying guide.",
+  },
+  {
+    title: "Top event venues in Riyadh 2025: AV specs and capacities",
+    desc: "KAFD, Ritz-Carlton, and KAICC compared for technical rigging loads and AV infrastructure.",
+  },
+  {
+    title: "Event decoration trends in Saudi Arabia 2025",
+    desc: "Futuristic minimalism, Najdi geometric motifs, and immersive 360° environments dominate the market.",
+  },
+  {
+    title: "How to brief an event production company in Saudi Arabia",
+    desc: "What information you need to share — and what questions to ask — before signing a production contract.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is event production?",
+    a: "Event production encompasses all the technical elements that bring an event to life: stage design, sound engineering, lighting, visual displays (LED and projection), structural rigging, power supply, and live broadcasting. Saudi Event Management provides all disciplines in-house for seamless co-ordination.",
+  },
+  {
+    q: "How much does event production cost in Saudi Arabia?",
+    a: "Event production costs in Saudi Arabia vary significantly by scale and complexity. A single-day corporate event AV package starts from around SAR 18,000. A full-scale stage fabrication and production for a 1,000-person gala or concert may range from SAR 150,000 to SAR 500,000+. Contact us for a detailed itemised quote.",
+  },
+  {
+    q: "Can you provide sound systems for outdoor events in Saudi Arabia?",
+    a: "Yes. We supply weather-rated line-array systems, delay towers, and subwoofer arrays designed for outdoor environments, including desert locations in AlUla and beachfront venues along the Red Sea. All systems include on-site sound engineers and RF co-ordination.",
+  },
+  {
+    q: "Can you handle projection mapping at AlUla or Diriyah heritage sites?",
+    a: "Yes. Saudi Event Management has delivered projection mapping activations at heritage venues. We work closely with Royal Commission for AlUla (RCU) and Diriyah Gate Development Authority (DGDA) for site permissions and zero-impact production protocols.",
+  },
+  {
+    q: "Do you work on National Day and Riyadh Season shows?",
+    a: "Yes. We have contributed to National Day (September 23) and Riyadh Season productions, providing stage fabrication, LED walls, intelligent lighting, and full AV production for large-scale public events and brand activations.",
+  },
+  {
+    q: "What is the largest stage you have built in Saudi Arabia?",
+    a: "Our largest stage builds have included main stages spanning 60 metres wide for concert-scale productions. Our fabrication team uses certified structural steel and provides full engineering drawings and load calculations for venue approval.",
+  },
+  {
+    q: "event production company near me Riyadh",
+    a: "Saudi Event Management's production warehouse and team are based in Riyadh, making us the ideal choice for any event production requirement in the capital — from a corporate theatre setup to a concert-scale festival production.",
+  },
+  {
+    q: "sound system rental Riyadh",
+    a: "We provide concert-grade sound system rental in Riyadh including line-array systems (L-Acoustics, d&b audiotechnik), wireless microphone packages, in-ear monitor systems, and full AV operator support for events of any size.",
+  },
+  {
+    q: "How far in advance should I book an event production company?",
+    a: "For complex productions with custom stage builds, we recommend 8–12 weeks' lead time minimum. For standard AV packages, 3–4 weeks is usually sufficient. For large-scale concerts or National Day activations, 3–6 months is ideal to allow for design, permitting, and fabrication.",
+  },
+];
+
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: SERVICE.schemaServiceName,
-  description: SERVICE.schemaDescription,
-  provider: {
-    "@type": "Organization",
-    name: "Saudi Event Management",
-    url: "https://saudieventmanagement.com",
-  },
-  areaServed: {
-    "@type": "Country",
-    name: "Saudi Arabia",
-  },
-  serviceType: "Event Management",
-  url: SERVICE.canonicalUrl,
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Event Production Company Saudi Arabia",
+      "description":
+        "Bespoke event production services including custom stage fabrication, concert-grade sound systems, intelligent lighting design, and 360° LED projection mapping across Saudi Arabia.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Saudi Event Management",
+        "url": "https://saudieventmanagement.com",
+      },
+      "areaServed": ["Riyadh", "Jeddah", "Dammam", "AlUla", "Saudi Arabia"],
+      "serviceType": "Event Production",
+      "url": "https://saudieventmanagement.com/services/event-production",
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to book event production services in Saudi Arabia",
+      "step": [
+        { "@type": "HowToStep", "text": "Define your event scale, expected guest count, venue, and key technical requirements." },
+        { "@type": "HowToStep", "text": "Share your event brief with Saudi Event Management for a technical rider and itemised quote." },
+        { "@type": "HowToStep", "text": "Approve 3D stage renders and technical drawings. Confirm rigging loads with the venue." },
+        { "@type": "HowToStep", "text": "Our fabrication team begins stage construction. AV equipment is pre-rigged and tested in our warehouse." },
+        { "@type": "HowToStep", "text": "On-site build, full technical rehearsal, show day execution, and post-event de-rig." },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
+        { "@type": "ListItem", "position": 3, "name": "Event Production", "item": "https://saudieventmanagement.com/services/event-production" },
+      ],
+    },
+  ],
 };
 
-export default async function ServicePage() {
-  const cookieStore = await cookies();
-  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
-  const dict = await getDictionary(locale as "en" | "ar");
-
+export default function EventProductionPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-800">
-      <ScrollProgress />
-      <WhatsAppButton />
-      <Navbar locale={locale} />
-
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <main className="min-h-screen bg-emerald-950 overflow-hidden pt-20">
+        <ScrollProgress />
+        <WhatsAppButton />
+        <Navbar />
 
-      {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden border-b border-slate-200">
-        <Image
-          src={SERVICE.heroImage}
-          alt={SERVICE.heroImageAlt}
-          fill
-          priority
-          className="object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-white" />
-        <div className="relative z-10 container-luxury text-center">
-          <span className="text-[var(--primary)] font-bold uppercase tracking-[0.2em] text-[10px] mb-8 block">Services</span>
-          <h1 className="font-display font-medium text-slate-900 text-3xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-tight max-w-4xl mx-auto leading-tight">
-            {SERVICE.h1}
-          </h1>
-          <p className="text-slate-500 text-[14px] md:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            Delivering world-class event production across Riyadh, Jeddah, and the entire Kingdom of Saudi Arabia.
-          </p>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="container-luxury max-w-4xl relative z-10">
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mb-8 uppercase tracking-tight">
-            {SERVICE.h2}
-          </h2>
-          <div className="prose  max-w-none text-slate-500 font-light text-[15px] leading-relaxed space-y-6">
-            <p>{SERVICE.introduction}</p>
-            <p>{SERVICE.details}</p>
+        {/* ── Hero ── */}
+        <section className="relative h-[75vh] flex items-center justify-center">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/gallery_vip_party.webp"
+              alt="Event production company Saudi Arabia — stage and AV production"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover opacity-30"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/80 via-emerald-950/60 to-emerald-950" />
           </div>
 
-          {/* What We Offer */}
-          <div className="mt-16 pt-16 border-t border-slate-200">
-            <h3 className="font-display font-medium text-slate-900 text-xl md:text-2xl mb-8 uppercase tracking-tight">
-              Our Service Offerings Include:
-            </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-500 font-light text-[14px]">
-              {SERVICE.bulletPoints.map((point: any, index: number) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="text-[var(--primary)] mt-1">✦</span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-16 pt-12 border-t border-slate-200 flex justify-center">
-            <a
-              href="https://wa.me/966501234567"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-[var(--primary)] text-white font-medium uppercase tracking-[0.2em] text-[11px] rounded-sm hover:bg-[var(--primary-dark)] transition-colors shadow-lg"
+          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <span className="text-[var(--primary)] text-xs uppercase tracking-[0.4em] font-bold mb-8 block">
+              الإنتاج التقني | Technical Mastery
+            </span>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-sans text-white mb-8 leading-tight font-bold">
+              Event Production Company <br />
+              <span className="text-[var(--primary)]">Saudi Arabia</span>
+            </h1>
+            <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
+              <strong className="text-white">Saudi Event Management</strong> is a technical powerhouse
+              recognized as the leading{" "}
+              <strong className="text-white">event production company in Saudi Arabia</strong>. From{" "}
+              <strong className="text-white">custom stage fabrication</strong> and{" "}
+              <strong className="text-white">concert-grade sound systems</strong> to{" "}
+              <strong className="text-white">LED projection mapping</strong> and{" "}
+              <strong className="text-white">National Day show productions</strong> — we transform
+              any venue into an extraordinary experience.
+            </p>
+            <Link
+              href="/#contact"
+              className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg"
             >
-              Request a Consultation
-            </a>
+              Get a Production Quote
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </main>
+        {/* ── EEAT Credentials ── */}
+        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex flex-wrap justify-center items-center gap-12">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
+                  <Award className="text-[var(--primary)]" size={24} />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm tracking-widest">ISO 9001 Certified</p>
+                  <p className="text-[10px] text-gray-500 uppercase">Technical Production Standards</p>
+                </div>
+              </div>
+              <div className="flex gap-10 grayscale opacity-50 text-[10px] font-bold tracking-widest text-white">
+                <span>L-ACOUSTICS</span>
+                <span>ROBE LIGHTING</span>
+                <span>SAMSUNG LED</span>
+              </div>
+              <div className="text-xs text-[var(--primary)] font-bold tracking-widest uppercase">
+                &quot;Technical Partner — Riyadh Season Activations&quot;
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Services Grid ── */}
+        <section className="py-32 relative max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-4xl font-sans text-white font-bold">
+              Production <span className="text-[var(--primary)]">Capabilities</span>
+            </h2>
+            <div className="w-16 h-px bg-[var(--primary)]/50 mx-auto mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((s, i) => (
+              <div
+                key={i}
+                className="bg-emerald-900 border border-white/5 p-8 rounded-2xl hover:border-[var(--primary)]/30 transition-all duration-500 group"
+              >
+                <s.icon
+                  size={32}
+                  className="text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform"
+                />
+                <h3 className="text-lg font-bold text-white mb-4">{s.title}</h3>
+                <p className="text-slate-500 text-sm font-light leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Price Guide ── */}
+        <section className="py-32 bg-emerald-900/40 border-y border-white/5">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">
+                Investment <span className="text-[var(--primary)]">Guide</span>
+              </h2>
+              <p className="text-gray-500 mt-3 text-xs uppercase tracking-widest">
+                Indicative 2025 production rates — Saudi Arabia
+              </p>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-white/5 bg-emerald-950 shadow-2xl">
+              <table className="w-full">
+                <thead className="bg-white/5">
+                  <tr>
+                    <th className="px-6 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-left">Service</th>
+                    <th className="px-6 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-left">Starting From</th>
+                    <th className="px-6 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-left hidden md:table-cell">Key Inclusions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {priceGuide.map((row, i) => (
+                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="px-6 py-5 text-white font-medium text-sm">{row.category}</td>
+                      <td className="px-6 py-5 text-[var(--primary)] font-bold text-sm">{row.from}</td>
+                      <td className="px-6 py-5 text-gray-500 text-xs hidden md:table-cell">{row.inclusions}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Topical Authority Section ── */}
+        <section className="py-32 bg-emerald-950 border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              <div className="lg:col-span-1 space-y-6">
+                <h3 className="text-2xl font-sans font-bold text-white">
+                  Production <br />
+                  <span className="text-[var(--primary)]">Knowledge Hub</span>
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  Technical guides for event producers, venue operators, and brand teams planning events in the Kingdom.
+                </p>
+                <Link href="/blog" className="inline-block text-[var(--primary)] text-xs font-bold uppercase tracking-widest border-b border-[var(--primary)] pb-1">
+                  View All Articles
+                </Link>
+                <div className="pt-6 border-t border-white/10">
+                  <p className="text-white font-bold text-sm">Fahad Al-Sulaiman</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Head of Technical Production</p>
+                </div>
+              </div>
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {resources.map((r, i) => (
+                  <div
+                    key={i}
+                    className="p-6 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group"
+                  >
+                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
+                      {r.title}
+                    </h4>
+                    <p className="text-gray-500 text-xs leading-relaxed">{r.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Arabic Section ── */}
+        <section className="py-32 bg-white text-slate-900">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8">
+                <h2 className="text-2xl md:text-4xl font-sans font-bold leading-tight">
+                  التميز في <br />
+                  <span className="text-[var(--primary)]">الإنتاج التقني</span>
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  نُعدّ إدارة الفعاليات السعودية من الشركات الرائدة في{" "}
+                  <strong>إنتاج الفعاليات التقني في المملكة العربية السعودية</strong>. نقدم خدمات
+                  تصميم وتركيب المسارح، وهندسة الصوت عالي الجودة، والإضاءة الاحترافية، وإسقاط الصور
+                  على الأبنية، لكل أنواع الفعاليات من المؤتمرات الحكومية إلى الحفلات الموسيقية
+                  الكبرى.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { ar: "شركة إنتاج صوت وصورة الرياض", en: "AV Production Company Riyadh" },
+                    { ar: "تصميم مسارح الفعاليات السعودية", en: "Stage Design Saudi Arabia" },
+                    { ar: "تأجير إضاءة فعاليات جدة", en: "Event Lighting Rental Jeddah" },
+                    { ar: "إسقاط الصور على المباني KSA", en: "Projection Mapping KSA" },
+                  ].map((item) => (
+                    <div key={item.en} className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                      <span className="w-2 h-2 rounded-full bg-[var(--primary)] shrink-0" />
+                      <span className="text-[var(--primary)] font-bold text-sm">{item.ar}</span>
+                      <span className="text-gray-400 text-xs">— {item.en}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/gallery_corporate_gala.webp"
+                  alt="شركة إنتاج فعاليات السعودية - تصميم مسارح وإنتاج صوت وصورة"
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ Section ── */}
+        <section className="py-32 bg-emerald-900/50">
+          <div className="max-w-4xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">
+                Event Production <span className="text-[var(--primary)]">FAQ</span>
+              </h2>
+              <p className="text-gray-500 mt-3 text-xs uppercase tracking-widest">
+                Technical questions answered by our production experts
+              </p>
+            </div>
+
+            <div className="space-y-5">
+              {faqs.map((faq, i) => (
+                <div key={i} className="bg-emerald-950 border border-white/5 p-6 rounded-2xl">
+                  <h3 className="text-base font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-emerald-950 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">
+              Related Services
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with our production team embedded." },
+                { title: "Conference Management", slug: "conferences", desc: "PCO services integrating our AV production division for seamless delivery." },
+                { title: "Event Services & Venues", slug: "production-venues", desc: "Venue sourcing, catering, decoration, and full hospitality management." },
+              ].map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/services/${rel.slug}`}
+                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                >
+                  <h4 className="text-white font-bold mb-2 group-hover:text-[var(--primary)] transition-colors">
+                    {rel.title}
+                  </h4>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">
+                    Learn More <ChevronRight size={12} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </main>
+    </>
   );
 }

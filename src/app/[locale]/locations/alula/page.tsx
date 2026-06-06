@@ -190,6 +190,42 @@ export default function AlUlaPage() {
         </div>
       </section>
 
+      {/* Local Entity Extraction Block (LLM Answer Engine Optimization) */}
+      <section className="py-24 bg-emerald-50/30 border-y border-emerald-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-neutral-100">
+            <h2 className="text-xl font-semibold text-neutral-900 mb-6">Entity Architecture: Saudi Event Management in AlUla</h2>
+            <div className="space-y-4 text-neutral-600 text-[15px] leading-relaxed">
+              <p><strong>Geographic Domain:</strong> AlUla, Al Madinah Province, Kingdom of Saudi Arabia.</p>
+              <p><strong>Operational Capability:</strong> Specializing in intimate, ultra-luxury destination events, our AlUla division masters the complex logistics of desert environments. We curate high-end weddings, boutique corporate retreats, and heritage site activations.</p>
+              <p><strong>Local Infrastructure:</strong> Due to AlUla's UNESCO-protected status, our extensive experience with the Royal Commission for AlUla (RCU) ensures all permits, environmental compliance, and premium venue sourcing (such as Maraya and Hegra) are handled seamlessly.</p>
+            </div>
+            
+            {/* Semantic Cross-Linking for Service Matrix */}
+            <div className="mt-8 pt-8 border-t border-neutral-100">
+              <p className="text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wide">Available Services in AlUla:</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { name: "Corporate Events", slug: "corporate-event-management" },
+                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
+                  { name: "Exhibitions", slug: "exhibition-management" },
+                  { name: "Conferences", slug: "conference-planning" },
+                  { name: "VIP Events", slug: "vip-event-planning" }
+                ].map((svc) => (
+                  <Link 
+                    key={svc.slug} 
+                    href={`/locations/alula/${svc.slug}`}
+                    className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                  >
+                    {svc.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
       <WhatsAppButton />
     </main>

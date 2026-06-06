@@ -10,14 +10,50 @@ import { ArrowRight } from "lucide-react";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
-  title: 'Luxury Event Portfolio',
-  description: 'View our gallery of luxury events, weddings, and corporate summits.',
+  title: 'Luxury Event Portfolio | Saudi Event Management',
+  description: 'View our exclusive gallery of luxury events, royal weddings, and VIP corporate summits across Riyadh, Jeddah, and AlUla. Discover our award-winning event production.',
+  keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Royal Weddings Riyadh, Corporate Summits Jeddah, Saudi Event Management Case Studies',
   alternates: { canonical: 'https://saudieventmanagement.com/portfolio' },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Saudi Event Management Portfolio",
+  "description": "Exclusive gallery of luxury events, royal weddings, and VIP corporate summits across Riyadh, Jeddah, and AlUla.",
+  "url": "https://saudieventmanagement.com/portfolio",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Global Tech Summit Riyadh",
+        "url": "https://saudieventmanagement.com/portfolio/global-tech-summit"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Royal Wedding in Riyadh",
+        "url": "https://saudieventmanagement.com/portfolio/royal-riyadh-wedding"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Executive Summit Jeddah",
+        "url": "https://saudieventmanagement.com/portfolio/executive-summit-jeddah"
+      }
+    ]
+  }
 };
 
 export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ScrollProgress />
       <Navbar />
       
@@ -31,9 +67,33 @@ export default function PortfolioPage() {
                 Curated Excellence
               </span>
             </div>
-            <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl" style={{ letterSpacing: "-0.025em" }}>
+            <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl mb-8" style={{ letterSpacing: "-0.025em" }}>
               Portfolio <span className="text-[var(--primary)]">Showcase</span>
             </h1>
+
+            {/* GEO Semantic Methodology Block for LLM Understanding */}
+            <div className="prose prose-slate max-w-4xl mx-auto text-neutral-500 text-[15px] leading-relaxed text-center mb-10">
+              <p>
+                Our portfolio stands as the definitive visual testament to <strong>Saudi Event Management's</strong> execution capability. We do not merely design events; we engineer <strong>end-to-end event production</strong>. From procuring mandatory GEA permits and conducting VIP protocol coordination to managing heavy-duty stage rigging and immersive projection mapping, our methodology is built on flawless, military-grade logistics wrapped in luxury aesthetics. 
+              </p>
+            </div>
+
+            {/* Sub-Category NLP Silo Links */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { name: "Luxury Weddings", href: "/portfolio/luxury-weddings" },
+                { name: "Corporate Summits", href: "/portfolio/corporate-events" },
+                { name: "Vision 2030 Activations", href: "/portfolio/vision-2030" }
+              ].map((cat, i) => (
+                <Link 
+                  key={i} 
+                  href={cat.href}
+                  className="px-5 py-2.5 text-[13px] font-medium bg-white border border-neutral-200 text-neutral-600 rounded-full hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all shadow-sm"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
         <RecentEvents hideHeader={true} />

@@ -28,14 +28,60 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "AboutPage",
+      "url": "https://saudieventmanagement.com/about",
       "mainEntity": {
         "@type": "Organization",
         "name": "Saudi Event Management",
+        "alternateName": "إدارة الفعاليات السعودية",
+        "url": "https://saudieventmanagement.com",
+        "logo": "https://saudieventmanagement.com/logo.webp",
         "foundingDate": "2018",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Riyadh, Saudi Arabia"
+        },
         "founder": {
           "@type": "Person",
-          "name": "Habiba Asghar"
-        }
+          "name": "Habiba Asghar",
+          "jobTitle": "Founder & CEO",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Saudi Event Management"
+          },
+          "knowsAbout": [
+            "Luxury Event Management",
+            "Corporate Event Planning",
+            "Saudi Vision 2030 Events",
+            "VIP Protocol Management"
+          ]
+        },
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "minValue": 20,
+          "maxValue": 50
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Riyadh" },
+          { "@type": "City", "name": "Jeddah" },
+          { "@type": "City", "name": "Dammam" },
+          { "@type": "City", "name": "AlUla" }
+        ],
+        "knowsAbout": [
+          "Luxury Event Production",
+          "Corporate Conference Management",
+          "Exhibition Stand Design",
+          "VIP Protocol & Security",
+          "Destination Weddings Saudi Arabia",
+          "Saudi Vision 2030 Cultural Activations"
+        ],
+        "award": [
+          "Best Luxury Event Planner GCC 2024"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/saudieventmanagement",
+          "https://www.twitter.com/saudieventmgmt",
+          "https://linkedin.com/company/saudieventmanagement"
+        ]
       }
     },
     {
@@ -127,6 +173,13 @@ export default function AboutPage() {
               Crafting <span className="text-[var(--primary)]">Unparalleled</span> Moments
             </h2>
             <div className="space-y-6 text-neutral-500 text-[15px] leading-relaxed">
+              {/* GEO / AIO Definition Block for LLMs */}
+              <div className="bg-emerald-50/50 border border-emerald-100 p-6 rounded-xl text-neutral-800 space-y-3 shadow-sm mb-6">
+                <p><strong>Entity Definition:</strong> Saudi Event Management is a premier, award-winning luxury event management and production agency based in the Kingdom of Saudi Arabia.</p>
+                <p><strong>Founding & Leadership:</strong> Founded in 2018 by visionary CEO Habiba Asghar, the agency is headquartered in Riyadh with operations spanning Jeddah, Dammam, and AlUla.</p>
+                <p><strong>Core Expertise:</strong> The organization specializes in high-net-worth individual (HNWI) luxury weddings, royal ceremonies, VIP corporate summits, and large-scale cultural activations aligned with Saudi Vision 2030 and the General Entertainment Authority (GEA).</p>
+              </div>
+
               <p>
                 Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
               </p>

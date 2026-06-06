@@ -7,7 +7,7 @@ import { generateAutomatedQuote } from '@/lib/quote-engine';
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API || 're_missing_key');
+    const resend = new Resend(process.env.RESEND_API_KEY || 're_missing_key');
     const body = await request.json();
     const { 
       name, email, phone, company, eventType, budget, 
@@ -129,10 +129,10 @@ export async function POST(request: Request) {
           email
         );
 
-        if (process.env.RESEND_API && process.env.RESEND_API !== 'missing-key') {
+        if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'missing-key') {
           // Admin Notification
           await resend.emails.send({
-            from: 'Saudi Event Management <onboarding@resend.dev>',
+            from: 'Saudi Event Management <info@saudieventmanagement.com>',
             to: ['infosaudieventmanagement@gmail.com'],
             subject: `New Lead: ${name} (Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()})`,
             html: `
@@ -152,18 +152,45 @@ export async function POST(request: Request) {
 
           // User Confirmation
           await resend.emails.send({
-            from: 'Saudi Event Management <onboarding@resend.dev>',
+            from: 'Saudi Event Management <info@saudieventmanagement.com>',
             to: [email],
             subject: 'Your Luxury Event Projection - Saudi Event Management',
             html: `
-              <div style="font-family: sans-serif; padding: 30px; line-height: 1.6;">
-                <h2 style="color: #c5a059;">Building Your Vision</h2>
-                <p>Dear ${name},</p>
-                <p>Thank you for choosing Saudi Event Management. Based on your initial inquiry for a <strong>${eventType}</strong>, our intelligence system has generated a preliminary projection to help you start planning.</p>
+              <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px;">
+                <!-- Logo Header -->
+                <div style="text-align: center; margin-bottom: 40px;">
+                  <h1 style="color: #000000; font-size: 22px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin: 0;">Saudi Event Management</h1>
+                  <div style="width: 40px; height: 2px; background-color: #c5a059; margin: 20px auto 0;"></div>
+                </div>
+
+                <!-- Content -->
+                <h2 style="color: #1a1a1a; font-size: 20px; font-weight: 400; margin-bottom: 24px;">Dear ${name},</h2>
                 
-                <div style="border-left: 4px solid #c5a059; padding-left: 20px; margin: 25px 0;">
-                  <p style="font-size: 18px; margin: 0;">Projected Investment: <strong>SAR ${inquiry.estimate?.totalAmount.toLocaleString()}*</strong></p>
-                  <p style="font-size: 12px; color: #999; margin-top: 5px;">*This is an automated estimate for initial planning. Final pricing will be customized by your dedicated consultant.</p>
+                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 24px;">
+                  Thank you for reaching out to <strong>Saudi Event Management</strong>. We have successfully received your inquiry regarding your upcoming <strong>${eventType}</strong>.
+                </p>
+
+                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 24px;">
+                  At Saudi Event Management, we specialize in curating unparalleled luxury experiences across the Kingdom—from the majestic landscapes of AlUla to the bustling financial districts of Riyadh. Our executive team is currently reviewing the details of your request to ensure we assign the most specialized consultant to your portfolio.
+                </p>
+
+                <!-- Highlight Box -->
+                <div style="background-color: #faf9f7; border-left: 4px solid #c5a059; padding: 24px; margin: 32px 0;">
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">Preliminary Projection</p>
+                  <p style="font-size: 20px; color: #1a1a1a; margin: 0; font-weight: 500;">SAR ${inquiry.estimate?.totalAmount.toLocaleString()}*</p>
+                  <p style="font-size: 12px; color: #888; margin: 12px 0 0 0; line-height: 1.5;">*This is an automated baseline projection based on your initial parameters. Your dedicated consultant will provide a fully customized, detailed proposal.</p>
+                </div>
+
+                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 32px;">
+                  A member of our senior concierge team will be in touch with you within the next <strong>90 minutes</strong> to discuss your vision in detail and outline the exact next steps to bring your event to life.
+                </p>
+
+                <!-- Sign-off -->
+                <div style="border-top: 1px solid #eaeaea; padding-top: 32px; margin-top: 32px;">
+                  <p style="color: #1a1a1a; font-size: 15px; margin: 0 0 4px 0;">With warm regards,</p>
+                  <p style="color: #c5a059; font-size: 16px; font-weight: 500; margin: 0 0 16px 0;">The Executive Team</p>
+                  <p style="color: #888; font-size: 12px; margin: 0;">Saudi Event Management</p>
+                  <p style="color: #888; font-size: 12px; margin: 4px 0 0 0;"><a href="https://saudieventmanagement.com" style="color: #c5a059; text-decoration: none;">saudieventmanagement.com</a> | Riyadh, Kingdom of Saudi Arabia</p>
                 </div>
               </div>
             `,

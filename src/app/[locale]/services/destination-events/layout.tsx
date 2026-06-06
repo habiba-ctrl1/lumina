@@ -1,13 +1,29 @@
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/destination-events`;
 
   return {
-    title: "Destination Event Planning Saudi Arabia | Saudi Event Management",
+    title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
     description:
-      "Luxury destination event planning across Saudi Arabia's most iconic locations — AlUla, NEOM, Red Sea, and the Empty Quarter. Bespoke experiences in extraordinary settings.",
+      "Plan breathtaking destination events across Saudi Arabia's most iconic landscapes. Desert glamping in AlUla, futuristic summits in NEOM, luxury yacht events on the Red Sea, and heritage events in Diriyah.",
+    keywords: [
+      "Destination events Saudi Arabia",
+      "AlUla event planning",
+      "NEOM event management",
+      "Red Sea destination events",
+      "Desert glamping events KSA",
+      "Diriyah heritage events",
+      "Luxury destination wedding Saudi Arabia",
+      "Corporate retreat AlUla NEOM",
+      "فعاليات وجهة السعودية",
+      "تنظيم فعاليات العُلا ونيوم",
+    ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -16,14 +32,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: "Destination Event Planning Saudi Arabia | Saudi Event Management",
+      title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
       description:
-        "Luxury destination event planning across Saudi Arabia's most iconic locations.",
+        "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea coastal, and Diriyah heritage city.",
       url: canonicalUrl,
+      images: [
+        {
+          url: "/hero_bg.webp",
+          width: 1200,
+          height: 630,
+          alt: "Destination Events Saudi Arabia AlUla NEOM Red Sea",
+        },
+      ],
     },
   };
 }
 
-export default function DestinationEventsLayout({ children }: { children: React.ReactNode }) {
+export default function DestinationEventsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <>{children}</>;
 }

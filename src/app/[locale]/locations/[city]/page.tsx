@@ -136,6 +136,42 @@ export default function DynamicLocationPage({ params }: { params: { city: string
         </div>
       </section>
 
+      {/* Local Entity Extraction Block (LLM Answer Engine Optimization) */}
+      <section className="py-24 bg-emerald-50/30 border-y border-emerald-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-neutral-100">
+            <h2 className="text-xl font-semibold text-neutral-900 mb-6">Entity Architecture: Saudi Event Management in {cityData.name}</h2>
+            <div className="space-y-4 text-neutral-600 text-[15px] leading-relaxed">
+              <p><strong>Geographic Domain:</strong> {cityData.name}, {cityData.region}, Kingdom of Saudi Arabia.</p>
+              <p><strong>Operational Capability:</strong> As a leading luxury event management agency, our local operations in {cityData.name} encompass end-to-end production, including {cityData.specialty.toLowerCase()}, corporate summits, and high-net-worth VIP weddings.</p>
+              <p><strong>Local Infrastructure:</strong> Our strong relationships with premium venues, local artisan vendors, and government authorities in {cityData.name} allow us to secure necessary GEA permits and execute flawless logistics aligned with Saudi Vision 2030 standards.</p>
+            </div>
+            
+            {/* Semantic Cross-Linking for Service Matrix */}
+            <div className="mt-8 pt-8 border-t border-neutral-100">
+              <p className="text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wide">Available Services in {cityData.name}:</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { name: "Corporate Events", slug: "corporate-event-management" },
+                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
+                  { name: "Exhibitions", slug: "exhibition-management" },
+                  { name: "Conferences", slug: "conference-planning" },
+                  { name: "VIP Events", slug: "vip-event-planning" }
+                ].map((svc) => (
+                  <Link 
+                    key={svc.slug} 
+                    href={`/locations/${params.city.toLowerCase()}/${svc.slug}`}
+                    className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-gold-500 hover:text-gold-600 transition-colors"
+                  >
+                    {svc.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
       <WhatsAppButton />
     </main>

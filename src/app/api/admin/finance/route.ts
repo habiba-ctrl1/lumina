@@ -48,7 +48,7 @@ export async function POST(request: Request) {
       data: {
         action: 'Financial Record',
         details: `Created ${type} entry in ${category || 'General'} of SAR ${amount}`,
-        userEmail: 'admin@lumina.sa'
+        userEmail: 'admin@saudieventmanagement.com'
       }
     });
 

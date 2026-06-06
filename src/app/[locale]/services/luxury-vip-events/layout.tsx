@@ -1,13 +1,29 @@
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/luxury-vip-events`;
 
   return {
-    title: "Luxury VIP Event Management Saudi Arabia | Saudi Event Management",
+    title: "Luxury VIP Event Planning Saudi Arabia | Royal & HNWI Experiences",
     description:
-      "Ultra-exclusive VIP event management in Saudi Arabia. Private galas, royal celebrations, high-net-worth experiences, and bespoke luxury entertainment.",
+      "Exclusive luxury event planning and VIP concierge services in Riyadh, Jeddah, and AlUla. Specialists in private parties, royal family events, HNWI experiences, desert glamping, and luxury yacht events.",
+    keywords: [
+      "VIP event planning Saudi Arabia",
+      "Luxury events Riyadh",
+      "Private party planner Jeddah",
+      "Royal family event management KSA",
+      "HNWI event concierge Saudi Arabia",
+      "Luxury yacht events Red Sea",
+      "Exclusive launch events KSA",
+      "AlUla private event planner",
+      "فعاليات كبار الشخصيات السعودية",
+      "مخطط فعاليات خاصة الرياض",
+    ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -16,14 +32,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: "Luxury VIP Event Management Saudi Arabia | Saudi Event Management",
+      title: "Luxury VIP Event Planning Saudi Arabia | Saudi Event Management",
       description:
-        "Ultra-exclusive VIP event management in Saudi Arabia. Private galas, royal celebrations, and bespoke luxury entertainment.",
+        "Ultra-discreet luxury event planning for royal families, HNWIs, and diplomatic guests across Saudi Arabia — private concerts, yacht events, and bespoke desert experiences.",
       url: canonicalUrl,
+      images: [
+        {
+          url: "/gallery_charity_gala.webp",
+          width: 1200,
+          height: 630,
+          alt: "Luxury VIP Events Saudi Arabia",
+        },
+      ],
     },
   };
 }
 
-export default function LuxuryVipEventsLayout({ children }: { children: React.ReactNode }) {
+export default function LuxuryVipEventsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <>{children}</>;
 }

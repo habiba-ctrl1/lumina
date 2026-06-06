@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog & Lifestyle Journal",
-  description:
-    "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights from the Saudi Event Management editorial team.",
-  openGraph: {
-    title: "Blog & Lifestyle Journal",
-    description:
-      "Explore event planning tips, trending color palettes, decor ideas, and luxury lifestyle insights.",
-    url: "/blog",
-    siteName: "Saudi Event Management",
-    type: "website",
-  },
-  alternates: { canonical: "https://saudieventmanagement.com/blog" },
+  title: "Event Planning Insights & News | Saudi Event Management Blog",
+  description: "Discover expert event planning tips, industry news, and insights into luxury weddings and corporate events in Saudi Arabia from Saudi Event Management.",
+  keywords: [
+    "Saudi Event Management Blog",
+    "Event Planning Tips KSA",
+    "Luxury Wedding Trends Saudi Arabia",
+    "Corporate Event Ideas Riyadh",
+    "Event Industry News KSA"
+  ],
 };
 
 export default function BlogLayout({
@@ -20,5 +17,29 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Saudi Event Management Blog",
+    "description": "Discover expert event planning tips, industry news, and insights into luxury weddings and corporate events in Saudi Arabia.",
+    "url": "https://saudieventmanagement.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Saudi Event Management",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://saudieventmanagement.com/logo.webp"
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

@@ -1,19 +1,50 @@
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/exhibitions`;
 
   return {
-    title: 'Exhibition Management Company Riyadh',
-    description: 'Premier exhibition management in Saudi Arabia. Expert trade show organizer in Riyadh and expo management in KSA. High-end exhibition stand builder and booth design.',
-    keywords: 'exhibition management Saudi Arabia, إدارة المعارض التجارية السعودية, trade show organizer Riyadh, expo management KSA, product showcase Saudi Arabia, trade fair organizer Jeddah, expo booth design KSA, exhibition stand builder Saudi Arabia, B2B expo planner Riyadh, best exhibition management company in Saudi Arabia 2025, how to set up a trade show booth in Riyadh, cost of exhibition space at RECC Riyadh, international expo organizer Saudi Arabia, شركة إدارة معارض الرياض, تنظيم معارض تجارية جدة, مركز الرياض للمعارض والمؤتمرات',
+    title: "Exhibition Management Company Riyadh | Trade Show Organizer Saudi Arabia",
+    description:
+      "Premier exhibition management company in Saudi Arabia. Expert trade show organizer in Riyadh — expo booth design, stand building, B2B matchmaking, and complete exhibition logistics at RICEC and RECC.",
+    keywords: [
+      "Exhibition management Saudi Arabia",
+      "Trade show organizer Riyadh",
+      "Expo booth design KSA",
+      "Exhibition stand builder Saudi Arabia",
+      "B2B expo planner Riyadh",
+      "Trade fair organizer Jeddah",
+      "RICEC RECC exhibition management",
+      "Saudi Expo 2030",
+      "إدارة المعارض التجارية السعودية",
+      "شركة إدارة معارض الرياض",
+      "تنظيم معارض تجارية جدة",
+    ],
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': 'https://saudieventmanagement.com/services/exhibitions',
-        'ar-SA': 'https://saudieventmanagement.com/ar/services/exhibitions',
+        "en-US": "https://saudieventmanagement.com/services/exhibitions",
+        "ar-SA": "https://saudieventmanagement.com/ar/services/exhibitions",
       },
+    },
+    openGraph: {
+      title: "Exhibition Management Company Riyadh | Saudi Event Management",
+      description:
+        "Premier exhibition management in Saudi Arabia — trade show organizing, booth design, stand building, and B2B expo management at RICEC, RECC, and major Saudi venues.",
+      url: canonicalUrl,
+      images: [
+        {
+          url: "/blog_corporate_events.webp",
+          width: 1200,
+          height: 630,
+          alt: "Exhibition Management Company Saudi Arabia",
+        },
+      ],
     },
   };
 }
