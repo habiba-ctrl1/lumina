@@ -8,23 +8,23 @@ import { MapPin, ArrowRight, BarChart3 } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 
-// Images re-use existing gallery assets — each maps to a Saudi city atmosphere
+// Location-matched images for each city tab
 const CITY_IMAGES = [
-  "/corporate.webp",                    // Riyadh — corporate skyline feel
-  "/gallery_wedding_reception.webp",    // Jeddah — elegant coastal event
-  "/gallery_destination_wedding.webp",  // AlUla  — desert luxury
-  "/gallery_charity_gala.webp",         // Makkah — formal/ceremonial gala
-  "/gallery_garden_party.webp",         // Madinah — serene garden atmosphere
-  "/gallery_corporate_gala.webp",       // Dammam  — corporate expo gala
+  "/riyadh_summit_people.webp",         // Riyadh  — large corporate summit audience
+  "/jeddah_luxury_people.webp",         // Jeddah  — luxury hotel soiree guests
+  "/alula_gala_people.webp",            // AlUla   — formal desert gala heritage setting
+  "/majlis_gathering_people.webp",      // Makkah  — traditional VIP majlis gathering
+  "/wedding_hall_grand_entrance.webp",  // Madinah — grand ceremonial hall entrance
+  "/alkhobar_corporate_people.webp",    // Dammam  — Eastern Province corporate team
 ];
 
-// Dedicated location pages where they exist, /locations otherwise
+// Dedicated location pages for each city
 const CITY_HREFS = [
   "/locations/riyadh",
   "/locations/jeddah",
   "/locations/alula",
-  "/locations",
-  "/locations",
+  "/locations/makkah",
+  "/locations/madinah",
   "/locations/dammam",
 ];
 

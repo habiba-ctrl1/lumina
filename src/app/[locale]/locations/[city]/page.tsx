@@ -17,6 +17,11 @@ const CITY_IMAGES: Record<string, string> = {
 };
 const DEFAULT_CITY_IMAGE = "/riyadh_summit_people.webp";
 
+// City-specific hero videos (image used as poster while video loads)
+const CITY_VIDEOS: Record<string, string> = {
+  makkah: "/makkah.mp4",
+};
+
 // Tier 2 Programmatic Cities Data
 const pseoCities: Record<string, { name: string, region: string, description: string, specialty: string }> = {
   neom: {
@@ -92,7 +97,9 @@ export default function DynamicLocationPage({ params }: { params: { city: string
     "url": `https://saudieventmanagement.com/locations/${params.city.toLowerCase()}`
   };
 
-  const heroImage = CITY_IMAGES[params.city.toLowerCase()] ?? DEFAULT_CITY_IMAGE;
+  const cityKey   = params.city.toLowerCase();
+  const heroImage = CITY_IMAGES[cityKey] ?? DEFAULT_CITY_IMAGE;
+  const heroVideo = CITY_VIDEOS[cityKey];
 
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden">
@@ -106,6 +113,7 @@ export default function DynamicLocationPage({ params }: { params: { city: string
         title={`Event Management in ${cityData.name}`}
         subtitle={cityData.description}
         backgroundImage={heroImage}
+        backgroundVideo={heroVideo}
         imageAlt={`Event management in ${cityData.name}, ${cityData.region}, Saudi Arabia`}
         badge={cityData.region}
         breadcrumbs={[
