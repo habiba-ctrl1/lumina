@@ -66,20 +66,24 @@ export default function Hero() {
       ══════════════════════════════════════════════════════════════════════ */}
       <motion.div
         aria-hidden
-        className="absolute left-0 right-0 z-0"
+        className="absolute left-0 right-0 z-0 overflow-hidden"
         style={{ top: -160, bottom: -160, y: bgY }}
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/luxury_wedding_couple_guests.webp"
-          className="w-full h-full object-cover"
-        >
-          <source src="/hero-video1.mp4"  type="video/mp4"  />
-          <source src="/hero-video.webm" type="video/webm" />
-        </video>
+        <iframe
+          src="https://www.youtube.com/embed/qWWgVl8KHF4?autoplay=1&mute=1&loop=1&playlist=qWWgVl8KHF4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          allow="autoplay; encrypted-media"
+          className="pointer-events-none"
+          style={{ 
+            width: "100vw", 
+            height: "56.25vw", 
+            minHeight: "100%", 
+            minWidth: "177.77vh", 
+            position: "absolute", 
+            top: "50%", 
+            left: "50%", 
+            transform: "translate(-50%, -50%)" 
+          }}
+        />
       </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════════════
