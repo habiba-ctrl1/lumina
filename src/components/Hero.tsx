@@ -77,7 +77,7 @@ export default function Hero() {
           poster="/luxury_wedding_couple_guests.webp"
           className="w-full h-full object-cover"
         >
-          <source src="/hero-video.mp4"  type="video/mp4"  />
+          <source src="/hero-video1.mp4"  type="video/mp4"  />
           <source src="/hero-video.webm" type="video/webm" />
         </video>
       </motion.div>
