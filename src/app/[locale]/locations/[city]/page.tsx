@@ -404,9 +404,7 @@ interface PageProps {
   params: Promise<{ locale: string; city: string }>;
 }
 
-export async function generateStaticParams() {
-  return Object.keys(pseoCities).map((city) => ({ city }));
-}
+
 
 export async function generateMetadata({ params }: PageProps) {
   const { city } = await params;

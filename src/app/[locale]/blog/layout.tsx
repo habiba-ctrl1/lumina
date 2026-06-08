@@ -1,16 +1,36 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Event Planning Insights & News | Saudi Event Management Blog",
-  description: "Discover expert event planning tips, industry news, and insights into luxury weddings and corporate events in Saudi Arabia from Saudi Event Management.",
-  keywords: [
-    "Saudi Event Management Blog",
-    "Event Planning Tips KSA",
-    "Luxury Wedding Trends Saudi Arabia",
-    "Corporate Event Ideas Riyadh",
-    "Event Industry News KSA"
-  ],
-};
+const BASE = "https://saudieventmanagement.com";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const canonical = locale === "en" ? `${BASE}/blog` : `${BASE}/ar/blog`;
+
+  return {
+    title: "Event Planning Insights & News | Saudi Event Management Blog",
+    description:
+      "Discover expert event planning tips, industry news, and insights into luxury weddings and corporate events in Saudi Arabia from Saudi Event Management.",
+    keywords: [
+      "Saudi Event Management Blog",
+      "Event Planning Tips KSA",
+      "Luxury Wedding Trends Saudi Arabia",
+      "Corporate Event Ideas Riyadh",
+      "Event Industry News KSA",
+    ],
+    alternates: {
+      canonical,
+      languages: {
+        en: `${BASE}/blog`,
+        ar: `${BASE}/ar/blog`,
+        "x-default": `${BASE}/blog`,
+      },
+    },
+  };
+}
 
 export default function BlogLayout({
   children,

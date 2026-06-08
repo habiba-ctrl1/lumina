@@ -1,0 +1,44 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#EDD47A"/>
+      <stop offset="40%"  stop-color="#C49A2A"/>
+      <stop offset="75%"  stop-color="#A07820"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="goldCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F5E09A"/>
+      <stop offset="100%" stop-color="#C49A2A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark premium background – rounded square (app-icon shape) -->
+  <rect width="32" height="32" rx="7" fill="#0D0D0D"/>
+
+  <!-- Outer hairline diamond outline -->
+  <polygon
+    points="16,2 30,16 16,30 2,16"
+    fill="none"
+    stroke="#C49A2A"
+    stroke-width="0.6"
+    opacity="0.55"
+  />
+
+  <!-- Main filled gold diamond -->
+  <polygon
+    points="16,5 27,16 16,27 5,16"
+    fill="url(#goldSheen)"
+  />
+
+  <!-- Dark inner cutout diamond -->
+  <polygon
+    points="16,9 23,16 16,23 9,16"
+    fill="#0D0D0D"
+  />
+
+  <!-- Center gold diamond – the brightest point -->
+  <polygon
+    points="16,12.5 19.5,16 16,19.5 12.5,16"
+    fill="url(#goldCenter)"
+  />
+</svg>

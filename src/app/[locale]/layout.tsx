@@ -109,10 +109,17 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://saudieventmanagement.com",
-  },
   applicationName: "Saudi Event Management",
+  // NOTE: No site-wide alternates.canonical here — each page/layout sets its own
+  // canonical and hreflang to avoid bleeding the homepage URL to every route.
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/icon.svg",
+    apple: { url: "/icon.png", sizes: "180x180", type: "image/png" },
+  },
 };
 
 import CustomCursor from "@/components/CustomCursor";
