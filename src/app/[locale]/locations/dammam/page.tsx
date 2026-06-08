@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -19,7 +19,7 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "name": "Saudi Event Management Dammam",
-      "image": "https://saudieventmanagement.com/gallery_vip_party.webp",
+      "image": "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
       "description": "Premier event management in Dammam and the Eastern Province. Specializing in high-profile corporate galas and industrial summits.",
       "address": {
         "@type": "PostalAddress",
@@ -91,7 +91,7 @@ export default function DammamPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
-            <Image src="/gallery_vip_party.webp" alt="Dammam Coastal Event" width={800} height={1000} className="w-full h-full object-cover" />
+            <Image src="/alkhobar_corporate_people.webp" alt="Dammam Coastal Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">

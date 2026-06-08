@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -91,7 +91,7 @@ export default function RiyadhPage() {
             </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
-            <Image src="/gallery_charity_gala.webp" alt="Kingdom Centre Riyadh Event" width={800} height={1000} className="w-full h-full object-cover" />
+            <Image src="/riyadh_luxury_reception_people.webp" alt="Kingdom Centre Riyadh Event" width={800} height={1000} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
                <div className="glass p-6 rounded-sm">
@@ -171,10 +171,10 @@ export default function RiyadhPage() {
             <div className="lg:w-1/2 grid grid-cols-2 gap-10">
               <div className="space-y-4">
                 <div className="h-64 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
-                  <Image src="/gallery_wedding_reception.webp" alt="Team at work" width={600} height={400} className="w-full h-full object-cover" />
+                  <Image src="/luxury_wedding_couple_guests.webp" alt="Team at work" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
                 <div className="h-48 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
-                  <Image src="/gallery_corporate_gala.webp" alt="Event planning" width={600} height={400} className="w-full h-full object-cover" />
+                  <Image src="/riyadh_summit_people.webp" alt="Event planning" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
@@ -182,7 +182,7 @@ export default function RiyadhPage() {
                   <Image src="/gallery_destination_wedding.webp" alt="Venue sourcing" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
                 <div className="h-64 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
-                  <Image src="/wedding.webp" alt="Riyadh office" width={600} height={400} className="w-full h-full object-cover" />
+                  <Image src="/wedding_hall_grand_entrance.webp" alt="Riyadh office" width={600} height={400} className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>

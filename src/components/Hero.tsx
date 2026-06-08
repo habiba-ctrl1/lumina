@@ -69,9 +69,11 @@ export default function Hero() {
         className="absolute left-0 right-0 z-0 overflow-hidden"
         style={{ top: -160, bottom: -160, y: bgY }}
       >
-        <iframe
-          src="https://www.youtube.com/embed/qWWgVl8KHF4?autoplay=1&mute=1&loop=1&playlist=qWWgVl8KHF4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          allow="autoplay; encrypted-media"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="pointer-events-none"
           style={{ 
             width: "100vw", 
@@ -81,9 +83,12 @@ export default function Hero() {
             position: "absolute", 
             top: "50%", 
             left: "50%", 
-            transform: "translate(-50%, -50%)" 
+            transform: "translate(-50%, -50%)",
+            objectFit: "cover",
           }}
-        />
+        >
+          <source src="/hero-video2.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════════════
