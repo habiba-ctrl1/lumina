@@ -77,8 +77,20 @@ export default function FAQPage() {
       <ScrollProgress />
       <Navbar />
       
-      {/* Spacer for navbar */}
-      <div className="pt-24 md:pt-32" />
+      {/* Page Header with H1 */}
+      <section className="pt-32 md:pt-40 pb-16 md:pb-20 bg-neutral-900 text-center px-6">
+        <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-1.5 text-[12px] font-medium text-neutral-500 mb-6">
+          <a href="/" className="hover:text-neutral-300 transition-colors">Home</a>
+          <span className="text-neutral-700 select-none">/</span>
+          <span className="text-neutral-300">FAQ</span>
+        </nav>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5" style={{ letterSpacing: "-0.03em" }}>
+          Frequently Asked <span className="text-emerald-400">Questions</span>
+        </h1>
+        <p className="text-neutral-400 text-[15px] md:text-[16px] leading-relaxed max-w-xl mx-auto">
+          Everything you need to know about luxury event planning in Saudi Arabia — from pricing and booking to logistics and cultural protocol.
+        </p>
+      </section>
       
       <FAQ />
       
