@@ -87,7 +87,7 @@ export default function Hero() {
             objectFit: "cover",
           }}
         >
-          <source src="/hero-video2.mp4" type="video/mp4" />
+          <source src="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4" type="video/mp4" />
         </video>
       </motion.div>
 
