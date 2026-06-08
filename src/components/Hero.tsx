@@ -87,6 +87,7 @@ export default function Hero() {
             objectFit: "cover",
           }}
         >
+          <source src="/hero-video1.mp4" type="video/mp4" />
           <source src="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4" type="video/mp4" />
         </video>
       </motion.div>
@@ -96,17 +97,17 @@ export default function Hero() {
           fading to white at the bottom to merge with the light-theme site.
       ══════════════════════════════════════════════════════════════════════ */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Side gradient — readable on text side, nearly transparent on video side */}
+        {/* Side gradient — text-side darker for legibility, video-side nearly open */}
         <div
           className="absolute inset-0"
           style={{
             background: isRtl
-              ? "linear-gradient(250deg, rgba(2,8,14,0.80) 0%, rgba(4,8,16,0.46) 50%, rgba(6,10,18,0.12) 100%)"
-              : "linear-gradient(115deg, rgba(2,8,14,0.80) 0%, rgba(4,8,16,0.46) 50%, rgba(6,10,18,0.12) 100%)",
+              ? "linear-gradient(250deg, rgba(2,8,14,0.68) 0%, rgba(4,8,16,0.25) 50%, rgba(6,10,18,0.00) 100%)"
+              : "linear-gradient(115deg, rgba(2,8,14,0.68) 0%, rgba(4,8,16,0.25) 50%, rgba(6,10,18,0.00) 100%)",
           }}
         />
         {/* Top vignette — nav legibility */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/40 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/25 to-transparent" />
         {/* Bottom fade-to-white — blends seamlessly into the light site below */}
         <div
           className="absolute bottom-0 inset-x-0 h-64"

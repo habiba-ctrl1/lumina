@@ -234,8 +234,8 @@ export default function ServicesPage() {
         title="Event Management Services"
         titleHighlight="in Saudi Arabia"
         subtitle="From high-stakes corporate summits to breathtaking luxury weddings — discover our comprehensive suite of elite event management capabilities across the Kingdom."
-        backgroundImage="/riyadh_summit_people.webp"
-        imageAlt="Large audience at a premium corporate summit event in Saudi Arabia"
+        backgroundImage="/wedding_stage_backdrop_decor.webp"
+        imageAlt="Luxury wedding stage backdrop decor at a premium event in Saudi Arabia"
         badge="Our Expertise"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         enableParallax

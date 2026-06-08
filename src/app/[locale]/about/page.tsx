@@ -109,7 +109,7 @@ export default function AboutPage() {
         title="Event Planning Experts"
         titleHighlight="in Saudi Arabia"
         subtitle="From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations."
-        backgroundImage="/hero_bg.webp"
+        backgroundImage="/riyadh_summit_people.webp"
         imageAlt="Professional luxury event setup with guests in Saudi Arabia"
         badge="Established 2018"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}

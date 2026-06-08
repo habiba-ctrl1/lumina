@@ -224,8 +224,8 @@ export default function EventProductionPage() {
           title="Event Production Services"
           titleHighlight="Saudi Arabia"
           subtitle="Technical powerhouse for custom stage fabrication, concert-grade sound systems, LED projection mapping, and National Day show productions — transforming any venue into an extraordinary experience."
-          backgroundImage="/riyadh_luxury_reception_people.webp"
-          imageAlt="Event production company Saudi Arabia — stage and AV production"
+          backgroundImage="/riyadh_summit_people.webp"
+          imageAlt="Grand event production setup inside luxury chandelier ballroom in Saudi Arabia"
           badge="Event Production"
           breadcrumbs={[
             { label: "Home", href: "/" },

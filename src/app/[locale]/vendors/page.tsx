@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Utensils, Tv2, Flower2, Camera, Music2, Car, Building2, Tent,
   Printer, Lightbulb, ShieldCheck, MoreHorizontal, Star, Clock,
@@ -129,7 +130,16 @@ export default async function VendorsPage({ params }: PageProps) {
       <Navbar locale={locale} />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative bg-[var(--primary)] overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+      <section className="relative bg-neutral-950 overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+        {/* Background image */}
+        <Image
+  src="/alkhobar_corporate_people.webp"
+  alt="Premium event vendor partnership opportunity at luxury Saudi Arabia gala"
+  fill
+  className="object-cover opacity-40"
+  sizes="100vw"
+  priority
+/>
         <div className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full bg-white/5 pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-[320px] h-[320px] rounded-full bg-white/[0.03] pointer-events-none" />
 

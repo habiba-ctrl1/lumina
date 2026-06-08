@@ -218,14 +218,37 @@ export default function WeddingsPage() {
         <section className="py-32 bg-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                <Image 
-                  src="/gallery_wedding_reception.webp" 
-                  alt="Luxury wedding decoration company Saudi Arabia prices" 
-                  width={800}
-                  height={1000}
-                  className="w-full h-full object-cover"
-                />
+              {/* Three-image wedding showcase mosaic */}
+              <div className="flex flex-col gap-4">
+                <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src="/wedding_stage_backdrop_decor.webp"
+                    alt="Elegant wedding stage backdrop with white arches neon sign and floral decor Saudi Arabia"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="/gallery_wedding_reception.webp"
+                      alt="Luxury wedding reception hall decoration by Saudi Event Management"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+                  </div>
+                  <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
+                    <Image
+                      src="/luxury_wedding_table_setting.webp"
+                      alt="Premium gold-rimmed wedding table setting with crystal glasses and floral centrepiece"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="space-y-8">
                 <h2 className="text-2xl md:text-4xl font-sans text-slate-900 leading-tight font-bold">

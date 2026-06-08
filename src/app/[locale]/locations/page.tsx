@@ -144,9 +144,7 @@ export default function LocationsPage() {
         title="Event Management Across"
         titleHighlight="Saudi Arabia"
         subtitle="On-the-ground teams in Riyadh, Jeddah, Al Khobar, Dammam, and Makkah — the Kingdom's five highest-demand event markets, each with a dedicated local vendor network and GEA compliance expertise."
-        backgroundImage="/riyadh_luxury_reception_people.webp"
-        backgroundVideo="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4"
-        imageAlt="Premium event setup with guests in Saudi Arabia"
+        backgroundImage="/riyadh-hero.webp"
         badge="Kingdom-Wide Operations"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
         minHeight="large"
