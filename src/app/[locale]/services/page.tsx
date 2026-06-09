@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import Link from "next/link";
 import {
-  Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight,
+  Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -50,6 +50,14 @@ const serviceCategories = [
     arabic: "حفلات الزفاف",
     desc: "Bespoke luxury wedding planning across Riyadh, Jeddah, and Dammam — from royal Nikah ceremonies to contemporary receptions at premier venues.",
     tags: ["Wedding Planner Riyadh", "Social Events", "Bridal Management"],
+  },
+  {
+    icon: Gem,
+    slug: "royal-weddings",
+    title: "Royal Weddings",
+    arabic: "الأعراس الملكية",
+    desc: "Ceremonial excellence for the Kingdom's most distinguished families — Nikah, Walima, Zaffa, Laylat al-Henna, and Milka across Riyadh, Jeddah, AlUla, and NEOM.",
+    tags: ["Royal Protocol", "Nikah & Walima", "VIP Guest Management"],
   },
   {
     icon: Building2,

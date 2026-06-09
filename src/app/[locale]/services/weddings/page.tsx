@@ -408,9 +408,9 @@ export default function WeddingsPage() {
             <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Related Services</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
+                { title: "Royal Weddings", slug: "royal-weddings", desc: "Nikah, Walima, Zaffa, and Laylat al-Henna — ceremonial excellence for distinguished Saudi families." },
                 { title: "Destination Events", slug: "destination-events", desc: "Destination weddings in AlUla, NEOM, and the Red Sea coast." },
                 { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Royal and HNWI event experiences with absolute discretion." },
-                { title: "Cultural & Religious Events", slug: "cultural-events", desc: "Ramadan, Eid, and National Day celebrations across the Kingdom." },
                 { title: "Event Production", slug: "event-production", desc: "Stage, AV, lighting, and floral production for any wedding scale." },
               ].map((rel) => (
                 <Link
