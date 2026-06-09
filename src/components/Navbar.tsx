@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, ChevronDown, Heart, Briefcase, Presentation,
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
+  Trophy, TrendingUp, ImageIcon, Building2, Info, Handshake,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
@@ -49,6 +50,21 @@ const locations = [
   { key: "abha",    name: "Abha",      href: "/locations/abha",    region: "Aseer Province",      badge: ""       },
   { key: "diriyah", name: "Diriyah",   href: "/locations/diriyah", region: "Riyadh Province",     badge: "UNESCO" },
   { key: "tabuk",   name: "Tabuk",     href: "/locations/tabuk",   region: "Tabuk Province",      badge: ""       },
+];
+
+const portfolioItems = [
+  { key: "luxuryWeddings",  label: "Luxury Weddings",    href: "/portfolio/luxury-weddings",  icon: Heart,      desc: "Royal ceremonies & bridal events"     },
+  { key: "corporateEvents", label: "Corporate Events",   href: "/portfolio/corporate-events", icon: Briefcase,  desc: "Summits, galas & brand activations"   },
+  { key: "vision2030",      label: "Vision 2030",        href: "/portfolio/vision-2030",      icon: TrendingUp, desc: "Giga-project & government showcases"  },
+  { key: "allPortfolio",    label: "View All Projects",  href: "/portfolio",                  icon: ImageIcon,  desc: "Browse the full portfolio gallery"    },
+];
+
+const aboutItems = [
+  { label: "About Us",           href: "/about",                    icon: Info,       desc: "Our story, mission & values"          },
+  { label: "Our Team",           href: "/about/our-team",           icon: Users,      desc: "Meet the people behind every event"   },
+  { label: "Awards & Accolades", href: "/about/awards-accolades",   icon: Trophy,     desc: "Recognition & industry milestones"    },
+  { label: "Partner With Us",    href: "/vendors",                  icon: Handshake,  desc: "Join our vendor & partner network"    },
+  { label: "Careers",            href: "/about/careers",            icon: Building2,  desc: "Grow with Saudi Event Management"     },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -177,7 +193,7 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
             <div className="hidden lg:flex items-center gap-0.5 flex-1 justify-center px-8">
               {defaultNavLinks.map((link) => {
                 const isActive    = pathname === link.href;
-                const hasDropdown = ["services", "locations", "partners"].includes(link.key);
+                const hasDropdown = ["services", "locations", "portfolio", "about", "partners"].includes(link.key);
                 const isHovered   = hoveredLink === link.key;
 
                 return (
@@ -298,6 +314,78 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
                                 <div className="pt-0.5">
                                   <span className="block text-[13px] font-medium text-neutral-900 group-hover/sub:text-[var(--primary)] transition-colors mb-0.5">{label}</span>
                                   <span className="block text-[11.5px] text-neutral-400 leading-snug">{sub}</span>
+                                </div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
+
+                    {/* ── Portfolio dropdown ───────────────────────────── */}
+                    {link.key === "portfolio" && (
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.div
+                            variants={dropdownVariants}
+                            initial="hidden" animate="visible" exit="exit"
+                            onMouseEnter={onDropdownEnter}
+                            onMouseLeave={onDropdownLeave}
+                            className="absolute top-[calc(100%+10px)] w-[300px] bg-white/97 backdrop-blur-xl border border-neutral-200/80 rounded-xl overflow-hidden p-2"
+                            style={{
+                              left: "50%", transform: "translateX(-50%)",
+                              boxShadow: "0 20px 60px -12px rgba(0,0,0,0.12), 0 4px 8px -2px rgba(0,0,0,0.04)",
+                            }}
+                          >
+                            {portfolioItems.map((item) => (
+                              <Link
+                                key={item.key}
+                                href={item.href}
+                                onClick={closeDropdown}
+                                className="group/p flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 transition-colors duration-150"
+                              >
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-neutral-100/80 border border-neutral-200/60 group-hover/p:bg-emerald-50 group-hover/p:border-emerald-100 transition-all duration-200">
+                                  <item.icon size={15} className="text-neutral-400 group-hover/p:text-[var(--primary)] transition-colors" />
+                                </div>
+                                <div className="pt-0.5">
+                                  <span className="block text-[13px] font-medium text-neutral-900 group-hover/p:text-[var(--primary)] transition-colors mb-0.5">{item.label}</span>
+                                  <span className="block text-[11.5px] text-neutral-400 leading-snug">{item.desc}</span>
+                                </div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
+
+                    {/* ── About dropdown ────────────────────────────────── */}
+                    {link.key === "about" && (
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.div
+                            variants={dropdownVariants}
+                            initial="hidden" animate="visible" exit="exit"
+                            onMouseEnter={onDropdownEnter}
+                            onMouseLeave={onDropdownLeave}
+                            className="absolute top-[calc(100%+10px)] w-[300px] bg-white/97 backdrop-blur-xl border border-neutral-200/80 rounded-xl overflow-hidden p-2"
+                            style={{
+                              left: "50%", transform: "translateX(-50%)",
+                              boxShadow: "0 20px 60px -12px rgba(0,0,0,0.12), 0 4px 8px -2px rgba(0,0,0,0.04)",
+                            }}
+                          >
+                            {aboutItems.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={closeDropdown}
+                                className="group/a flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 transition-colors duration-150"
+                              >
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-neutral-100/80 border border-neutral-200/60 group-hover/a:bg-emerald-50 group-hover/a:border-emerald-100 transition-all duration-200">
+                                  <item.icon size={15} className="text-neutral-400 group-hover/a:text-[var(--primary)] transition-colors" />
+                                </div>
+                                <div className="pt-0.5">
+                                  <span className="block text-[13px] font-medium text-neutral-900 group-hover/a:text-[var(--primary)] transition-colors mb-0.5">{item.label}</span>
+                                  <span className="block text-[11.5px] text-neutral-400 leading-snug">{item.desc}</span>
                                 </div>
                               </Link>
                             ))}
@@ -519,7 +607,7 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
                     {defaultNavLinks.map((link, i) => {
                       const isActive    = pathname === link.href;
                       const linkName    = tNav(link.key as any);
-                      const hasChildren = link.key === "services" || link.key === "locations";
+                      const hasChildren = ["services", "locations", "portfolio", "about"].includes(link.key);
                       const isExpanded  = mobileExpanded === link.key;
 
                       return (
@@ -584,6 +672,30 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
                                                 {city.badge}
                                               </span>
                                             )}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                      {link.key === "portfolio" && portfolioItems.map((item) => (
+                                        <li key={item.key}>
+                                          <Link
+                                            href={item.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-medium text-neutral-600 hover:text-[var(--primary)] hover:bg-neutral-50 transition-all"
+                                          >
+                                            <item.icon size={14} className="text-neutral-400 shrink-0" />
+                                            {item.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                      {link.key === "about" && aboutItems.map((item) => (
+                                        <li key={item.href}>
+                                          <Link
+                                            href={item.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-medium text-neutral-600 hover:text-[var(--primary)] hover:bg-neutral-50 transition-all"
+                                          >
+                                            <item.icon size={14} className="text-neutral-400 shrink-0" />
+                                            {item.label}
                                           </Link>
                                         </li>
                                       ))}
