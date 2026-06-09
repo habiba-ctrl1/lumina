@@ -38,7 +38,15 @@
     "riyadh": "Riyadh",
     "jeddah": "Jeddah",
     "alula": "AlUla",
-    "dammam": "Dammam"
+    "dammam": "Dammam",
+    "makkah": "Makkah",
+    "madinah": "Madinah",
+    "khobar": "Al Khobar",
+    "neom": "NEOM",
+    "taif": "Taif",
+    "abha": "Abha",
+    "diriyah": "Diriyah",
+    "tabuk": "Tabuk"
   },
   "hero": {
     "label": "Saudi Event Management",

@@ -11,7 +11,7 @@ const faqCategories = [
   { id: "logistics", name: "Services & Logistics" }
 ];
 
-export default function FAQ() {
+export default function FAQ({ showHeader = true }: { showHeader?: boolean }) {
   const t = useTranslations("faq");
   const faqs = t.raw("items");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -20,29 +20,31 @@ export default function FAQ() {
   const filteredFaqs = faqs.filter((faq: any) => faq.category === activeCategory);
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-neutral-900 relative">
+    <section id="faq" className={`bg-neutral-900 relative ${showHeader ? "py-24 md:py-32" : "pt-12 pb-24 md:pb-32"}`}>
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.span 
-            initial={{ opacity: 0 }} 
-            whileInView={{ opacity: 1 }} 
-            viewport={{ once: true }} 
-            className="text-emerald-400 text-[13px] font-medium mb-6 block"
-          >
-            {t("label")}
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 12 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl md:text-3xl text-white mb-6 font-semibold"
-            style={{ letterSpacing: "-0.025em" }}
-          >
-            {t("title")} <span className="text-emerald-400">{t("titleHighlight")}</span>
-          </motion.h2>
-        </div>
+        {/* Header — hidden when the parent page already provides an h1 */}
+        {showHeader && (
+          <div className="text-center mb-12">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-emerald-400 text-[13px] font-medium mb-6 block"
+            >
+              {t("label")}
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="text-2xl md:text-3xl text-white mb-6 font-semibold"
+              style={{ letterSpacing: "-0.025em" }}
+            >
+              {t("title")} <span className="text-emerald-400">{t("titleHighlight")}</span>
+            </motion.h2>
+          </div>
+        )}
 
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">

@@ -9,24 +9,25 @@ import SaudiMap from "@/components/SaudiMap";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
-  title: "Event Management Locations — Riyadh, Jeddah, Al Khobar & Makkah",
+  title: "Event Management Locations Across Saudi Arabia — 12 Cities | Saudi Event Management",
   description:
-    "Saudi Event Management operates across Saudi Arabia's highest-demand event cities — Riyadh, Jeddah, Al Khobar (Eastern Province), and Makkah. From Giga-summit production to luxury Majlis gatherings, our on-the-ground teams deliver flawless execution Kingdom-wide.",
+    "Saudi Event Management operates across 12 cities in Saudi Arabia — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. On-the-ground teams, GEA-compliant execution, and local venue relationships Kingdom-wide.",
   keywords: [
+    "event management Saudi Arabia",
     "event management Riyadh",
     "event management Jeddah",
-    "event management Al Khobar",
-    "event management Eastern Province",
     "event management Makkah",
-    "event management Saudi Arabia",
-    "corporate events Riyadh",
-    "luxury events Jeddah",
-    "Saudi Aramco corporate events",
-    "Giga project event management",
+    "event management Dammam",
+    "event management AlUla",
+    "event management Madinah",
+    "event management Al Khobar",
+    "event management NEOM",
+    "event management Taif",
+    "event management Abha",
+    "event management Diriyah",
+    "event management Tabuk",
     "Vision 2030 events",
     "Saudi event company locations",
-    "private Majlis event Saudi Arabia",
-    "VIP hospitality Makkah",
   ],
   alternates: { canonical: "https://saudieventmanagement.com/locations" },
 };
@@ -143,14 +144,14 @@ export default function LocationsPage() {
       <InternalPageHero
         title="Event Management Across"
         titleHighlight="Saudi Arabia"
-        subtitle="On-the-ground teams in Riyadh, Jeddah, Al Khobar, Dammam, and Makkah — the Kingdom's five highest-demand event markets, each with a dedicated local vendor network and GEA compliance expertise."
+        subtitle="On-the-ground teams across 12 Saudi cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. Dedicated local vendor networks and GEA compliance expertise in every market."
         backgroundImage="/riyadh-hero.webp"
         badge="Kingdom-Wide Operations"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
         minHeight="large"
         trustElements={[
-          { value: "5", label: "Primary Cities" },
-          { value: "10+", label: "Saudi Regions Served" },
+          { value: "12", label: "Cities Covered" },
+          { value: "13+", label: "Saudi Regions Served" },
           { value: "300+", label: "Events Delivered" },
           { value: "100%", label: "GEA Compliant" },
         ]}
@@ -171,10 +172,10 @@ export default function LocationsPage() {
               style={{ letterSpacing: "-0.025em" }}
             >
               Why We Focus on{" "}
-              <span className="text-[var(--primary)]">These Five Cities</span>
+              <span className="text-[var(--primary)]">These Primary Cities</span>
             </h2>
             <p className="text-neutral-500 text-[15px] max-w-2xl mx-auto leading-relaxed">
-              Based on 2026 market trends, Saudi Arabia&apos;s highest lead-generation comes from densely populated urban hubs. Riyadh, Jeddah, Al Khobar, Dammam, and Makkah collectively generate the greatest volume of consistent, high-budget events.
+              Based on 2026 market trends, Saudi Arabia&apos;s highest lead-generation comes from densely populated urban hubs. Riyadh, Jeddah, Al Khobar, Dammam, and Makkah collectively generate the greatest volume of consistent, high-budget events — with NEOM, AlUla, and the mountain cities as high-growth emerging markets.
             </p>
           </div>
 
@@ -332,7 +333,7 @@ export default function LocationsPage() {
               className="text-3xl md:text-4xl font-semibold text-neutral-900"
               style={{ letterSpacing: "-0.025em" }}
             >
-              Four Cities. One Standard of{" "}
+              Primary Markets. One Standard of{" "}
               <span className="text-[var(--primary)]">Excellence.</span>
             </h2>
           </div>
@@ -427,22 +428,24 @@ export default function LocationsPage() {
           </div>
 
           <div className="bg-emerald-50/60 border border-emerald-100 p-8 rounded-2xl mb-10 shadow-sm">
-            <p className="text-neutral-700 font-semibold mb-3 text-[15px]">National Geographic Footprint:</p>
+            <p className="text-neutral-700 font-semibold mb-3 text-[15px]">National Geographic Footprint — 12 Cities:</p>
             <p className="text-neutral-600 text-[14.5px] leading-relaxed mb-6">
-              <strong>Saudi Event Management</strong> is a national event production agency operating across all major provinces of the Kingdom. Our infrastructure supports simultaneous mega-events, royal weddings, and corporate summits across a highly diversified geographic portfolio. While our primary volume markets are Riyadh, Jeddah, Al Khobar, and Makkah — we maintain strong operational capabilities across every region listed below.
+              <strong>Saudi Event Management</strong> is a national event production agency operating across all major provinces of the Kingdom. Our infrastructure supports simultaneous mega-events, royal weddings, and corporate summits across a highly diversified geographic portfolio — from Riyadh&apos;s giga-summits to AlUla&apos;s UNESCO heritage galas and NEOM&apos;s innovation conferences.
             </p>
-            <ul className="grid grid-cols-2 md:grid-cols-5 gap-3 text-[13.5px] text-neutral-600">
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 text-[13.5px] text-neutral-600">
               {[
-                { name: "Riyadh", slug: "riyadh" },
-                { name: "Jeddah", slug: "jeddah" },
-                { name: "Al Khobar", slug: "dammam" },
-                { name: "Dammam", slug: "dammam" },
-                { name: "AlUla", slug: "alula" },
-                { name: "Makkah", slug: "makkah" },
-                { name: "Madinah", slug: "madinah" },
-                { name: "NEOM", slug: "neom" },
-                { name: "Taif", slug: "taif" },
-                { name: "Abha", slug: "abha" },
+                { name: "Riyadh",    slug: "riyadh"  },
+                { name: "Jeddah",    slug: "jeddah"  },
+                { name: "Makkah",    slug: "makkah"  },
+                { name: "Dammam",    slug: "dammam"  },
+                { name: "AlUla",     slug: "alula"   },
+                { name: "Madinah",   slug: "madinah" },
+                { name: "Al Khobar", slug: "khobar"  },
+                { name: "NEOM",      slug: "neom"    },
+                { name: "Taif",      slug: "taif"    },
+                { name: "Abha",      slug: "abha"    },
+                { name: "Diriyah",   slug: "diriyah" },
+                { name: "Tabuk",     slug: "tabuk"   },
               ].map((city) => (
                 <li key={city.name}>
                   <Link
