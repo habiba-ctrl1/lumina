@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description:
         "Comprehensive event management services across Saudi Arabia. Luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences.",
       url: path,
-      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
+      images: [{ url: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2000", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
     },
   };
 }

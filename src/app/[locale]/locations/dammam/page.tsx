@@ -393,7 +393,7 @@ export default function DammamPage() {
         title="Elite Corporate &"
         titleHighlight="Coastal Celebrations"
         subtitle="From Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay — the Eastern Province's premier event management company."
-        backgroundImage="/alkhobar_corporate_people.webp"
+        backgroundImage="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=2000"
         imageAlt="Corporate event management in Dammam and Al-Khobar Eastern Province Saudi Arabia"
         badge="Saudi Arabia's Energy Capital | Eastern Province"
         breadcrumbs={[
@@ -442,7 +442,7 @@ export default function DammamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
             <Image
-              src="/alkhobar_corporate_people.webp"
+              src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=2000"
               alt="Corporate professionals at an energy sector event in Dammam Al-Khobar Eastern Province"
               width={800}
               height={1000}

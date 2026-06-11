@@ -9,6 +9,7 @@ import {
   Star, Briefcase, Sparkles, Users, Mountain, Landmark, Globe,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { getCityImage } from "@/lib/image-utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface VenueData {
@@ -936,18 +937,7 @@ const pseoCities: Record<string, CityData> = {
   },
 };
 
-// ─── Hero images ──────────────────────────────────────────────────────────────
-const CITY_IMAGES: Record<string, string> = {
-  neom:    "/neom_summit_people.webp",
-  khobar:  "/alkhobar_corporate_people.webp",
-  madinah: "/gallery_garden_party.webp",
-  taif:    "/gallery_destination_wedding.webp",
-  abha:    "/alula_gala_people.webp",
-  diriyah: "/gallery_charity_gala.webp",
-  tabuk:   "/hero_bg.webp",
-};
-const DEFAULT_IMAGE = "/riyadh_summit_people.webp";
-
+// ─── Removed hardcoded images ──────────────────────────────────────────────────
 interface PageProps {
   params: Promise<{ locale: string; city: string }>;
 }
@@ -957,7 +947,7 @@ export async function generateMetadata({ params }: PageProps) {
   const { locale, city } = await params;
   const d = pseoCities[city?.toLowerCase()];
   if (!d) return {};
-  const heroImg = CITY_IMAGES[city.toLowerCase()] ?? DEFAULT_IMAGE;
+  const heroImg = getCityImage(city);
   const base = "https://saudieventmanagement.com";
   const canonical = `${base}${locale === "en" ? "" : "/ar"}/locations/${city.toLowerCase()}`;
   return {
@@ -1004,7 +994,7 @@ export default async function DynamicLocationPage({ params }: PageProps) {
   if (!d) notFound();
 
   const canonicalUrl = `https://saudieventmanagement.com/locations/${cityKey}`;
-  const heroImage = CITY_IMAGES[cityKey] ?? DEFAULT_IMAGE;
+  const heroImage = getCityImage(cityKey);
 
   const jsonLd = {
     "@context": "https://schema.org",

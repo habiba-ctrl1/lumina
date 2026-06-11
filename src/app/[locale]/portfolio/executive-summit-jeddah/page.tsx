@@ -27,8 +27,8 @@ export default function ExecutiveSummitJeddah() {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-blue-50">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
-            alt="Jeddah Executive Summit" 
+            src="/executive_summit_panel.webp"
+            alt="Executive summit panel discussion in Jeddah, Saudi Arabia"
             width={1920}
             height={1080}
             className="w-full h-full object-cover opacity-80"

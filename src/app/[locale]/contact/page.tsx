@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `https://saudieventmanagement.com/${locale === "en" ? "" : "ar/"}contact`,
       images: [
         {
-          url: "/hero_bg.webp",
+          url: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=2000",
           width: 1200,
           height: 630,
           alt: "Contact Saudi Event Management — Curators of Extraordinary Events",
@@ -63,7 +63,7 @@ export default async function ContactPage({ params }: PageProps) {
     "@type": "LocalBusiness",
     "@id": "https://saudieventmanagement.com/#organization",
     "name": "Saudi Event Management",
-    "image": "https://saudieventmanagement.com/hero_bg.webp",
+    "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=2000",
     "telephone": "+966501234567",
     "email": "infosaudieventmanagement@gmail.com",
     "url": "https://saudieventmanagement.com",

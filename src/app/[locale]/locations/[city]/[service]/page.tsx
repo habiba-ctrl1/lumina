@@ -4,24 +4,25 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, ArrowRight, CheckCircle2, Building2, ChevronRight } from "lucide-react";
+import { getCityServiceImage } from "@/lib/image-utils";
 
 // ─── City Matrix ──────────────────────────────────────────────────────────────
 const cities: Record<
   string,
-  { name: string; nameAr: string; region: string; heroImage: string }
+  { name: string; nameAr: string; region: string }
 > = {
-  riyadh:  { name: "Riyadh",    nameAr: "الرياض",           region: "Riyadh Province",      heroImage: "/riyadh_summit_people.webp" },
-  jeddah:  { name: "Jeddah",    nameAr: "جدة",               region: "Makkah Province",      heroImage: "/gallery_destination_wedding.webp" },
-  dammam:  { name: "Dammam",    nameAr: "الدمام",            region: "Eastern Province",     heroImage: "/gallery_corporate_gala.webp" },
-  alula:   { name: "AlUla",     nameAr: "العُلا",            region: "Al Madinah Province",  heroImage: "/alula_gala_people.webp" },
-  neom:    { name: "NEOM",      nameAr: "نيوم",              region: "Tabuk Province",       heroImage: "/neom_summit_people.webp" },
-  khobar:  { name: "Al Khobar", nameAr: "الخبر",             region: "Eastern Province",     heroImage: "/alkhobar_corporate_people.webp" },
-  makkah:  { name: "Makkah",    nameAr: "مكة المكرمة",       region: "Makkah Province",      heroImage: "/majlis_gathering_people.webp" },
-  madinah: { name: "Madinah",   nameAr: "المدينة المنورة",   region: "Al Madinah Province",  heroImage: "/gallery_garden_party.webp" },
-  taif:    { name: "Taif",      nameAr: "الطائف",            region: "Makkah Province",      heroImage: "/gallery_destination_wedding.webp" },
-  abha:    { name: "Abha",      nameAr: "أبها",              region: "Aseer Province",       heroImage: "/alula_gala_people.webp" },
-  diriyah: { name: "Diriyah",   nameAr: "الدرعية",           region: "Riyadh Province",      heroImage: "/gallery_charity_gala.webp" },
-  tabuk:   { name: "Tabuk",     nameAr: "تبوك",              region: "Tabuk Province",       heroImage: "/hero_bg.webp" },
+  riyadh:  { name: "Riyadh",    nameAr: "الرياض",           region: "Riyadh Province"      },
+  jeddah:  { name: "Jeddah",    nameAr: "جدة",               region: "Makkah Province"      },
+  dammam:  { name: "Dammam",    nameAr: "الدمام",            region: "Eastern Province"     },
+  alula:   { name: "AlUla",     nameAr: "العُلا",            region: "Al Madinah Province"  },
+  neom:    { name: "NEOM",      nameAr: "نيوم",              region: "Tabuk Province"       },
+  khobar:  { name: "Al Khobar", nameAr: "الخبر",             region: "Eastern Province"     },
+  makkah:  { name: "Makkah",    nameAr: "مكة المكرمة",       region: "Makkah Province"      },
+  madinah: { name: "Madinah",   nameAr: "المدينة المنورة",   region: "Al Madinah Province"  },
+  taif:    { name: "Taif",      nameAr: "الطائف",            region: "Makkah Province"      },
+  abha:    { name: "Abha",      nameAr: "أبها",              region: "Aseer Province"       },
+  diriyah: { name: "Diriyah",   nameAr: "الدرعية",           region: "Riyadh Province"      },
+  tabuk:   { name: "Tabuk",     nameAr: "تبوك",              region: "Tabuk Province"       },
 };
 
 // ─── Service Matrix ───────────────────────────────────────────────────────────
@@ -222,7 +223,7 @@ export async function generateMetadata({ params }: PageProps) {
       title: `${serviceData.name} in ${cityData.name} | Saudi Event Management`,
       description: `Premium ${serviceData.name.toLowerCase()} in ${cityData.name}. ${serviceData.description}`,
       url: canonicalUrl,
-      images: [{ url: cityData.heroImage, width: 1200, height: 630, alt: `${serviceData.name} ${cityData.name} Saudi Arabia` }],
+      images: [{ url: getCityServiceImage(city, service), width: 1200, height: 630, alt: `${serviceData.name} ${cityData.name} Saudi Arabia` }],
     },
   };
 }
@@ -290,7 +291,7 @@ export default async function CityServicePage({ params }: PageProps) {
       <section className="bg-ink-950 py-28 md:py-36 px-4 text-center relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('${cityData.heroImage}')` }}
+          style={{ backgroundImage: `url('${getCityServiceImage(city, service)}')` }}
         />
         <div className="absolute inset-0 bg-ink-950/70" />
         <div className="relative z-10 max-w-4xl mx-auto">

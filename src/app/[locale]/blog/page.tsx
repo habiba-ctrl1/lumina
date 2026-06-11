@@ -181,7 +181,7 @@ export default function BlogPage() {
                         </p>
 
                         <div className="mt-auto flex items-center gap-2 text-[var(--primary)] text-[13px] font-medium group-hover:gap-3 transition-all duration-200">
-                           Read Discovery
+                           Read Article
                            <ArrowRight size={14} />
                         </div>
                       </div>
@@ -210,7 +210,7 @@ export default function BlogPage() {
           <h2 className="font-semibold text-neutral-900 mb-6 text-3xl md:text-4xl" style={{ letterSpacing: "-0.025em" }}>
             Let&apos;s Bring Your <span className="text-[var(--primary)]">Vision</span> to Life
           </h2>
-          <p className="text-neutral-500 text-[15px] md:text-base mb-10 max-w-2xl mx-auto leading-relaxed">Our team of luxury event experts is ready to transform your ideas into unforgettable experiences.</p>
+          <p className="text-neutral-500 text-[15px] md:text-base mb-10 max-w-2xl mx-auto leading-relaxed">Our event team is ready to deliver exceptional results across Saudi Arabia — from corporate summits in Riyadh to destination events in AlUla.</p>
           <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--primary)] text-white text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all duration-300 shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] rounded-xl">
             Book a Discovery Call <ArrowRight size={16} />
           </Link>

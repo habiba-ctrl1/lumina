@@ -27,7 +27,7 @@ export default function AlkhobarCorporateRetreat() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/alkhobar_corporate_people.webp"
+            src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2000"
             alt="Al Khobar Corporate Retreat"
             width={1920}
             height={1080}
@@ -124,7 +124,7 @@ export default function AlkhobarCorporateRetreat() {
         {/* Impact */}
         <div className="bg-gray-900 text-white p-12 md:p-24 rounded-[4rem] text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <Image src="/alkhobar_corporate_people.webp" alt="Corporate retreat" width={1920} height={1080} className="w-full h-full object-cover" />
+            <Image src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2000" alt="Corporate retreat" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">

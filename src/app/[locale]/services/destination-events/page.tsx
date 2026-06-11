@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description:
         "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
       url: path,
-      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
+      images: [{ url: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
     },
   };
 }
@@ -153,7 +153,7 @@ const destinations = [
   {
     name: "AlUla",
     arabic: "العُلا",
-    image: "/hero_bg.webp",
+    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000",
     highlight: "Maraya Hall & Hegra UNESCO Site",
     tags: ["Heritage Events", "Desert Glamping", "Luxury Weddings"],
     desc: "Saudi Arabia's most spectacular destination — 200,000-year-old landscape, ancient Nabataean cities, and the world-famous Maraya mirrored concert hall.",

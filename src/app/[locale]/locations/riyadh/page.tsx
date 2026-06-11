@@ -419,8 +419,8 @@ export default function RiyadhPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Elevating Riyadh's Most"
-        titleHighlight="Iconic Events"
+        title="Event Management in "
+        titleHighlight="Riyadh"
         subtitle="From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
         backgroundImage="/riyadh_summit_people.webp"
         imageAlt="Corporate event management in Riyadh Saudi Arabia — premium conference production at KAFD"

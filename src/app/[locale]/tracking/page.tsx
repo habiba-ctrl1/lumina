@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export const metadata = {
   title: 'Live Event Tracking',
   description: 'Track the progress and execution of your luxury event in real-time.',
+  robots: { index: false, follow: false },
 };
 
 export default function TrackingPage() {

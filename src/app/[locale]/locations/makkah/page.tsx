@@ -411,8 +411,8 @@ export default function MakkahPage() {
         title="Event Management in"
         titleHighlight="Makkah Al-Mukarramah"
         subtitle="Corporate conferences, halal exhibitions, luxury Islamic weddings, and Haj corporate hospitality — delivered across Makkah's finest venues by a fully Muslim-staffed team. Permitted by Amanah Makkah and RCMC."
-        backgroundImage="/gallery_corporate_gala.webp"
-        imageAlt="Corporate event management in Makkah Al-Mukarramah Saudi Arabia"
+        backgroundImage="/makkah_kaaba_heritage.webp"
+        imageAlt="Masjid al-Haram and the Kaaba at sunset in Makkah Al-Mukarramah, Saudi Arabia"
         badge="Islam's Holiest City | Makkah Al-Mukarramah"
         breadcrumbs={[
           { label: "Home", href: "/" },

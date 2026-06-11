@@ -436,7 +436,7 @@ export default function CorporateEventsPage() {
           title="Corporate Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="End-to-end corporate event planning for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's premier five-star venues."
-          backgroundImage="/alkhobar_corporate_people.webp"
+          backgroundImage="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=2000"
           imageAlt="Corporate event management Saudi Arabia — executive summit at KAFD Riyadh"
           badge="فعاليات الشركات | Corporate Events"
           breadcrumbs={[

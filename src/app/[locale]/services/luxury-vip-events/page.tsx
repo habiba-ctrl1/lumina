@@ -185,8 +185,8 @@ export default function LuxuryVIPEventsPage() {
           title="Luxury VIP Event Management"
           titleHighlight="Saudi Arabia"
           subtitle="The leading luxury event planner for VIPs, Royal Families, and High-Net-Worth Individuals — strictly confidential, ultra-luxury experiences from private concerts and yacht parties to bespoke desert events in AlUla."
-          backgroundImage="/jeddah_luxury_people.webp"
-          imageAlt="Luxury VIP event planning Saudi Arabia — royal and HNWI experiences"
+          backgroundImage="/luxury_vip_table_setting.webp"
+          imageAlt="Luxury VIP event planning Saudi Arabia — bespoke fine-dining table setting"
           badge="VIP & Luxury Events"
           breadcrumbs={[
             { label: "Home", href: "/" },

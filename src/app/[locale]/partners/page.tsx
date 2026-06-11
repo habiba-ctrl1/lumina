@@ -50,7 +50,7 @@ export default function PartnersPage() {
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center items-center overflow-hidden bg-[var(--surface-raised)] border-b border-neutral-200/80">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
+            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2000" 
             alt="Strategic Partnerships" 
             width={1920}
             height={1080}
