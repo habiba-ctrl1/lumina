@@ -4,12 +4,19 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Briefcase, Send } from "lucide-react";
 
-export const metadata = {
-  title: 'Careers | Saudi Event Management Jobs',
-  description: 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.',
-  keywords: 'Event management jobs Saudi Arabia, Careers in event planning Riyadh, Hiring event producers KSA, Saudi Event Management jobs',
-  alternates: { canonical: 'https://saudieventmanagement.com/about/careers' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Careers | Saudi Event Management Jobs',
+    description: 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.',
+    keywords: 'Event management jobs Saudi Arabia, Careers in event planning Riyadh, Hiring event producers KSA, Saudi Event Management jobs',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/about/careers`,
+      languages: { "en-US": `${base}/about/careers`, "ar-SA": `${base}/ar/about/careers` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

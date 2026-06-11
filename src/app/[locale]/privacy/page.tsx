@@ -4,11 +4,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-export const metadata = {
-  title: 'Privacy Policy',
-  description: 'Privacy policy for Saudi Event Management website and services.',
-  alternates: { canonical: 'https://saudieventmanagement.com/privacy' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Privacy Policy',
+    description: 'Privacy policy for Saudi Event Management website and services.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/privacy`,
+      languages: { "en-US": `${base}/privacy`, "ar-SA": `${base}/ar/privacy` },
+    },
+  };
+}
 
 export default function PrivacyPolicyPage() {
   return (

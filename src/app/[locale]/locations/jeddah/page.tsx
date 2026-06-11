@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -6,38 +7,49 @@ import Image from "next/image";
 import Link from "next/link";
 import { Anchor, Waves, Camera, Building, MapPin, Calendar, Users, Star, ChevronRight } from "lucide-react";
 
-export const metadata = {
-  title: "Event Management Company in Jeddah | Saudi Event Management",
-  description:
-    "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
-  keywords:
-    "event management company Jeddah, corporate event organizer Jeddah, luxury wedding planner Jeddah, conference management Jeddah, event planning services Jeddah Saudi Arabia, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
-  alternates: { canonical: "https://saudieventmanagement.com/locations/jeddah" },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations/jeddah`;
+  return {
     title: "Event Management Company in Jeddah | Saudi Event Management",
     description:
-      "Jeddah's premier event planning company — corporate conferences, luxury weddings, and brand activations across the Red Sea coast.",
-    url: "https://saudieventmanagement.com/locations/jeddah",
-    siteName: "Saudi Event Management",
-    images: [
-      {
-        url: "https://saudieventmanagement.com/jeddah_luxury_people.webp",
-        width: 1200,
-        height: 630,
-        alt: "Luxury event management in Jeddah Saudi Arabia",
+      "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
+    keywords:
+      "event management company Jeddah, corporate event organizer Jeddah, luxury wedding planner Jeddah, conference management Jeddah, event planning services Jeddah Saudi Arabia, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations/jeddah`,
+        "ar-SA": `${base}/ar/locations/jeddah`,
       },
-    ],
-    locale: "en_SA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Event Management Company in Jeddah | Saudi Event Management",
-    description:
-      "Jeddah's premier event planning company for corporate events, luxury weddings & brand activations.",
-    images: ["https://saudieventmanagement.com/jeddah_luxury_people.webp"],
-  },
-};
+    },
+    openGraph: {
+      title: "Event Management Company in Jeddah | Saudi Event Management",
+      description:
+        "Jeddah's premier event planning company — corporate conferences, luxury weddings, and brand activations across the Red Sea coast.",
+      url: path,
+      siteName: "Saudi Event Management",
+      images: [
+        {
+          url: "https://saudieventmanagement.com/jeddah_luxury_people.webp",
+          width: 1200,
+          height: 630,
+          alt: "Luxury event management in Jeddah Saudi Arabia",
+        },
+      ],
+      locale: "en_SA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Event Management Company in Jeddah | Saudi Event Management",
+      description:
+        "Jeddah's premier event planning company for corporate events, luxury weddings & brand activations.",
+      images: ["https://saudieventmanagement.com/jeddah_luxury_people.webp"],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

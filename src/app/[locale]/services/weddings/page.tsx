@@ -131,7 +131,9 @@ export default function WeddingsPage() {
     {
       "@type": "Event",
       "name": "Grand Saudi Wedding Showcase 2025",
+      "eventStatus": "https://schema.org/EventScheduled",
       "startDate": "2025-10-15T19:00",
+      "endDate": "2025-10-15T23:00",
       "location": {
         "@type": "Place",
         "name": "The Ritz-Carlton, Riyadh",
@@ -146,6 +148,19 @@ export default function WeddingsPage() {
       },
       "image": "https://saudieventmanagement.com/wedding.webp",
       "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
+      "organizer": {
+        "@type": "Organization",
+        "name": "Saudi Event Management",
+        "url": "https://saudieventmanagement.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "Wedding Planning Consultation",
+        "price": "0",
+        "priceCurrency": "SAR",
+        "url": "https://saudieventmanagement.com/contact",
+        "availability": "https://schema.org/InStock"
+      },
       "performer": {
         "@type": "Organization",
         "name": "Saudi Event Management"

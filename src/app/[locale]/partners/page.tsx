@@ -6,11 +6,18 @@ import Link from "next/link";
 import { Handshake, Award, Target, Users, ArrowRight } from "lucide-react";
 import ScrollProgress from "@/components/ScrollProgress";
 
-export const metadata = {
-  title: 'Strategic Partnerships',
-  description: "Join Saudi Arabia's premier event management network. We collaborate with world-class brands and suppliers to deliver extraordinary luxury experiences.",
-  alternates: { canonical: 'https://saudieventmanagement.com/partners' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Strategic Partnerships',
+    description: "Join Saudi Arabia's premier event management network. We collaborate with world-class brands and suppliers to deliver extraordinary luxury experiences.",
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/partners`,
+      languages: { "en-US": `${base}/partners`, "ar-SA": `${base}/ar/partners` },
+    },
+  };
+}
 
 export default function PartnersPage() {
   const tiers = [

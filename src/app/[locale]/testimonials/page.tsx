@@ -6,17 +6,24 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Link from "next/link";
 import { ArrowRight, Star, Quote, Shield } from "lucide-react";
 
-export const metadata = {
-  title: 'Client Testimonials & Reviews | Saudi Event Management',
-  description: 'Read verified reviews and testimonials from clients who trusted Saudi Event Management for luxury weddings, corporate events, and VIP experiences across Riyadh and Jeddah.',
-  keywords: [
-    "Saudi Event Management Reviews",
-    "Event Planner Testimonials KSA",
-    "Best Event Company Reviews Riyadh",
-    "Luxury Wedding Reviews Saudi Arabia"
-  ],
-  alternates: { canonical: 'https://saudieventmanagement.com/testimonials' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Client Testimonials & Reviews | Saudi Event Management',
+    description: 'Read verified reviews and testimonials from clients who trusted Saudi Event Management for luxury weddings, corporate events, and VIP experiences across Riyadh and Jeddah.',
+    keywords: [
+      "Saudi Event Management Reviews",
+      "Event Planner Testimonials KSA",
+      "Best Event Company Reviews Riyadh",
+      "Luxury Wedding Reviews Saudi Arabia"
+    ],
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/testimonials`,
+      languages: { "en-US": `${base}/testimonials`, "ar-SA": `${base}/ar/testimonials` },
+    },
+  };
+}
 
 const reviewsJsonLd = {
   "@context": "https://schema.org",
@@ -36,19 +43,19 @@ const reviewsJsonLd = {
         {
           "@type": "Review",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Al Faisal Group" },
+          "author": { "@type": "Organization", "name": "Al Faisal Group" },
           "reviewBody": "Saudi Event Management orchestrated our 500-guest corporate gala flawlessly. Every detail from VIP protocol to the AV production was executed with military precision."
         },
         {
           "@type": "Review",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Princess Noura Foundation" },
+          "author": { "@type": "Organization", "name": "Princess Noura Foundation" },
           "reviewBody": "The level of discretion and artistry for our private charity event was unmatched. Truly the best event planners in Saudi Arabia."
         },
         {
           "@type": "Review",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "SABIC Executive Events" },
+          "author": { "@type": "Organization", "name": "SABIC Executive Events" },
           "reviewBody": "From initial concept to on-ground execution at KAFD, their corporate event team is the most professional in the Kingdom."
         }
       ]

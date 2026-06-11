@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Heart, Moon, Users, MapPin } from "lucide-react";
 
-export const metadata = {
-  title: 'Madinah Spiritual Event',
-  description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/madinah-spiritual-event' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Madinah Spiritual Event',
+    description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/madinah-spiritual-event`,
+      languages: { "en-US": `${base}/portfolio/madinah-spiritual-event`, "ar-SA": `${base}/ar/portfolio/madinah-spiritual-event` },
+    },
+  };
+}
 
 export default function MadinahSpiritualEvent() {
   return (

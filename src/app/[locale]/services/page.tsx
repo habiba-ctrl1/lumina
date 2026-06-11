@@ -10,37 +10,42 @@ import {
   Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Event Management Services Saudi Arabia | Luxury & Corporate Events",
-  description:
-    "Comprehensive event management services across Saudi Arabia — luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences in Riyadh, Jeddah, Dammam & AlUla.",
-  keywords: [
-    "Event Management Services Saudi Arabia",
-    "Corporate event planning Saudi Arabia",
-    "Exhibition management company Riyadh",
-    "Luxury wedding planner Saudi Arabia",
-    "Conference management Riyadh",
-    "Destination events AlUla NEOM",
-    "VIP event planning KSA",
-    "Cultural events Saudi Arabia",
-    "Event production company Riyadh",
-    "شركة تنظيم فعاليات السعودية",
-  ],
-  alternates: {
-    canonical: "https://saudieventmanagement.com/services",
-    languages: {
-      "en-US": "https://saudieventmanagement.com/services",
-      "ar-SA": "https://saudieventmanagement.com/ar/services",
-    },
-  },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/services`;
+  return {
     title: "Event Management Services Saudi Arabia | Luxury & Corporate Events",
     description:
-      "Comprehensive event management services across Saudi Arabia. Luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences.",
-    url: "https://saudieventmanagement.com/services",
-    images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
-  },
-};
+      "Comprehensive event management services across Saudi Arabia — luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences in Riyadh, Jeddah, Dammam & AlUla.",
+    keywords: [
+      "Event Management Services Saudi Arabia",
+      "Corporate event planning Saudi Arabia",
+      "Exhibition management company Riyadh",
+      "Luxury wedding planner Saudi Arabia",
+      "Conference management Riyadh",
+      "Destination events AlUla NEOM",
+      "VIP event planning KSA",
+      "Cultural events Saudi Arabia",
+      "Event production company Riyadh",
+      "شركة تنظيم فعاليات السعودية",
+    ],
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/services`,
+        "ar-SA": `${base}/ar/services`,
+      },
+    },
+    openGraph: {
+      title: "Event Management Services Saudi Arabia | Luxury & Corporate Events",
+      description:
+        "Comprehensive event management services across Saudi Arabia. Luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences.",
+      url: path,
+      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
+    },
+  };
+}
 
 const serviceCategories = [
   {

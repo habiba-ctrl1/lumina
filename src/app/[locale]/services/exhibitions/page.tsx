@@ -16,6 +16,7 @@ export default function ExhibitionsPage() {
       {
         "@type": "ExhibitionEvent",
         "name": "Global Trade Expo 2025 Riyadh",
+        "eventStatus": "https://schema.org/EventScheduled",
         "startDate": "2025-11-20T09:00",
         "endDate": "2025-11-22T18:00",
         "location": {
@@ -33,6 +34,14 @@ export default function ExhibitionsPage() {
           "@type": "Organization",
           "name": "Saudi Event Management",
           "url": "https://saudieventmanagement.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "name": "Exhibition Space Inquiry",
+          "price": "0",
+          "priceCurrency": "SAR",
+          "url": "https://saudieventmanagement.com/contact",
+          "availability": "https://schema.org/InStock"
         }
       },
       {

@@ -7,12 +7,19 @@ import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 import { ArrowRight, Briefcase, Building2, Presentation } from "lucide-react";
 
-export const metadata = {
-  title: 'Corporate Event Management Saudi Arabia | Executive Summits',
-  description: 'Elite corporate event management in Saudi Arabia. We specialize in executive summits, AGMs, trade shows, and B2B matchmaking across Riyadh, Jeddah, and the GCC.',
-  keywords: 'Corporate event management Saudi Arabia, Executive summits Riyadh, AGM planner KSA, B2B event management Jeddah, Trade show organizer',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/corporate-events' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Corporate Event Management Saudi Arabia | Executive Summits',
+    description: 'Elite corporate event management in Saudi Arabia. We specialize in executive summits, AGMs, trade shows, and B2B matchmaking across Riyadh, Jeddah, and the GCC.',
+    keywords: 'Corporate event management Saudi Arabia, Executive summits Riyadh, AGM planner KSA, B2B event management Jeddah, Trade show organizer',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/corporate-events`,
+      languages: { "en-US": `${base}/portfolio/corporate-events`, "ar-SA": `${base}/ar/portfolio/corporate-events` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

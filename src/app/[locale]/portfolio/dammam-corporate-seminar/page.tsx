@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Briefcase, BarChart, ShieldCheck, Factory } from "lucide-react";
 
-export const metadata = {
-  title: 'Dammam Corporate Seminar',
-  description: 'Executing a massive industrial and corporate seminar in Dammam, the heart of Saudi industry, by Saudi Event Management.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/dammam-corporate-seminar' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Dammam Corporate Seminar',
+    description: 'Executing a massive industrial and corporate seminar in Dammam, the heart of Saudi industry, by Saudi Event Management.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/dammam-corporate-seminar`,
+      languages: { "en-US": `${base}/portfolio/dammam-corporate-seminar`, "ar-SA": `${base}/ar/portfolio/dammam-corporate-seminar` },
+    },
+  };
+}
 
 export default function DammamCorporateSeminar() {
   return (

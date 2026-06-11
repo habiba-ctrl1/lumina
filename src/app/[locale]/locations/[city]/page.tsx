@@ -954,25 +954,27 @@ interface PageProps {
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps) {
-  const { city } = await params;
+  const { locale, city } = await params;
   const d = pseoCities[city?.toLowerCase()];
   if (!d) return {};
   const heroImg = CITY_IMAGES[city.toLowerCase()] ?? DEFAULT_IMAGE;
+  const base = "https://saudieventmanagement.com";
+  const canonical = `${base}${locale === "en" ? "" : "/ar"}/locations/${city.toLowerCase()}`;
   return {
     title: `Event Management in ${d.name} | Saudi Event Management`,
     description: d.description,
     keywords: `event management ${d.name}, luxury events ${d.name}, corporate events ${d.name}, wedding planner ${d.name}, ${d.nameAr}, Saudi Event Management`,
     alternates: {
-      canonical: `https://saudieventmanagement.com/locations/${city.toLowerCase()}`,
+      canonical,
       languages: {
-        "en-SA": `https://saudieventmanagement.com/locations/${city.toLowerCase()}`,
-        "ar-SA": `https://saudieventmanagement.com/ar/locations/${city.toLowerCase()}`,
+        "en-SA": `${base}/locations/${city.toLowerCase()}`,
+        "ar-SA": `${base}/ar/locations/${city.toLowerCase()}`,
       },
     },
     openGraph: {
       title: `Event Management in ${d.name} | Saudi Event Management`,
       description: d.description,
-      url: `https://saudieventmanagement.com/locations/${city.toLowerCase()}`,
+      url: canonical,
       siteName: "Saudi Event Management",
       images: [{ url: `https://saudieventmanagement.com${heroImg}`, width: 1200, height: 630, alt: `Event management in ${d.name}, Saudi Arabia` }],
       locale: "en_SA",

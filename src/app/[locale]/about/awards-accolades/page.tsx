@@ -4,12 +4,19 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Award, Star } from "lucide-react";
 
-export const metadata = {
-  title: 'Awards & Accolades | Saudi Event Management',
-  description: 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.',
-  keywords: 'Award winning event planner Saudi Arabia, Best event management company Riyadh, Luxury event awards KSA',
-  alternates: { canonical: 'https://saudieventmanagement.com/about/awards-accolades' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Awards & Accolades | Saudi Event Management',
+    description: 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.',
+    keywords: 'Award winning event planner Saudi Arabia, Best event management company Riyadh, Luxury event awards KSA',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/about/awards-accolades`,
+      languages: { "en-US": `${base}/about/awards-accolades`, "ar-SA": `${base}/ar/about/awards-accolades` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

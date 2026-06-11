@@ -16,28 +16,32 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export const metadata: Metadata = {
-  title: "Become a Vendor — Saudi Event Management",
-  description:
-    "Join Saudi Arabia's premier event vendor network. Partner with Saudi Event Management for royal weddings, corporate summits, and Vision 2030 events across Riyadh, Jeddah, and AlUla.",
-  keywords: [
-    "event vendor Saudi Arabia",
-    "vendor registration KSA",
-    "event supplier Riyadh",
-    "Saudi Event Management vendor",
-    "vendor partnership Saudi Arabia",
-    "event industry supplier KSA",
-  ],
-  openGraph: {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
     title: "Become a Vendor — Saudi Event Management",
     description:
-      "Partner with Saudi Arabia's leading luxury event management company.",
-    url: "https://saudieventmanagement.com/vendors",
-  },
-  alternates: {
-    canonical: "https://saudieventmanagement.com/vendors",
-  },
-};
+      "Join Saudi Arabia's premier event vendor network. Partner with Saudi Event Management for royal weddings, corporate summits, and Vision 2030 events across Riyadh, Jeddah, and AlUla.",
+    keywords: [
+      "event vendor Saudi Arabia",
+      "vendor registration KSA",
+      "event supplier Riyadh",
+      "Saudi Event Management vendor",
+      "vendor partnership Saudi Arabia",
+      "event industry supplier KSA",
+    ],
+    openGraph: {
+      title: "Become a Vendor — Saudi Event Management",
+      description: "Partner with Saudi Arabia's leading luxury event management company.",
+      url: `${base}${locale === "en" ? "" : "/ar"}/vendors`,
+    },
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/vendors`,
+      languages: { "en-US": `${base}/vendors`, "ar-SA": `${base}/ar/vendors` },
+    },
+  };
+}
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -16,38 +17,49 @@ import {
   User,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Event Management Company in Riyadh | Saudi Event Management",
-  description:
-    "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
-  keywords:
-    "event management company Riyadh, corporate event organizer Riyadh, conference management Riyadh RICEC, luxury wedding planner Riyadh, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
-  alternates: { canonical: "https://saudieventmanagement.com/locations/riyadh" },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations/riyadh`;
+  return {
     title: "Event Management Company in Riyadh | Saudi Event Management",
     description:
-      "Riyadh's premier event management company — corporate conferences, government summits, exhibitions at RICEC, and luxury weddings at Four Seasons & Ritz-Carlton.",
-    url: "https://saudieventmanagement.com/locations/riyadh",
-    siteName: "Saudi Event Management",
-    images: [
-      {
-        url: "https://saudieventmanagement.com/riyadh_summit_people.webp",
-        width: 1200,
-        height: 630,
-        alt: "Corporate event management in Riyadh Saudi Arabia",
+      "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
+    keywords:
+      "event management company Riyadh, corporate event organizer Riyadh, conference management Riyadh RICEC, luxury wedding planner Riyadh, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations/riyadh`,
+        "ar-SA": `${base}/ar/locations/riyadh`,
       },
-    ],
-    locale: "en_SA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Event Management Company in Riyadh | Saudi Event Management",
-    description:
-      "Riyadh's premier event management company for corporate conferences, exhibitions, luxury weddings & Vision 2030 brand activations.",
-    images: ["https://saudieventmanagement.com/riyadh_summit_people.webp"],
-  },
-};
+    },
+    openGraph: {
+      title: "Event Management Company in Riyadh | Saudi Event Management",
+      description:
+        "Riyadh's premier event management company — corporate conferences, government summits, exhibitions at RICEC, and luxury weddings at Four Seasons & Ritz-Carlton.",
+      url: path,
+      siteName: "Saudi Event Management",
+      images: [
+        {
+          url: "https://saudieventmanagement.com/riyadh_summit_people.webp",
+          width: 1200,
+          height: 630,
+          alt: "Corporate event management in Riyadh Saudi Arabia",
+        },
+      ],
+      locale: "en_SA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Event Management Company in Riyadh | Saudi Event Management",
+      description:
+        "Riyadh's premier event management company for corporate conferences, exhibitions, luxury weddings & Vision 2030 brand activations.",
+      images: ["https://saudieventmanagement.com/riyadh_summit_people.webp"],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -7,12 +7,19 @@ import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Compass, Landmark, ShieldCheck } from "lucide-react";
 
-export const metadata = {
-  title: 'Vision 2030 & Cultural Events Management KSA',
-  description: 'Specialized in government-level cultural activations, Riyadh Season events, and heritage tourism festivals in AlUla. Full GEA permit management.',
-  keywords: 'Saudi Vision 2030 events, Riyadh Season event management, AlUla festival planner, GEA event permits KSA, Government event management Saudi Arabia',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/vision-2030' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Vision 2030 & Cultural Events Management KSA',
+    description: 'Specialized in government-level cultural activations, Riyadh Season events, and heritage tourism festivals in AlUla. Full GEA permit management.',
+    keywords: 'Saudi Vision 2030 events, Riyadh Season event management, AlUla festival planner, GEA event permits KSA, Government event management Saudi Arabia',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/vision-2030`,
+      languages: { "en-US": `${base}/portfolio/vision-2030`, "ar-SA": `${base}/ar/portfolio/vision-2030` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

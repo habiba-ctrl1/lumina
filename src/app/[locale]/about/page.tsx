@@ -8,21 +8,28 @@ import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
-export const metadata = {
-  title: 'Event Planning Experts Saudi Arabia',
-  description: 'Saudi Event Management is one of the best event management companies in Saudi Arabia. Our event planning experts deliver luxury weddings, corporate galas, and Vision 2030 events across KSA.',
-  keywords: [
-    "Event Planning Experts Saudi Arabia",
-    "Event management companies",
-    "Event management in Saudi Arabia",
-    "Best event planners in KSA",
-    "Vision 2030 events",
-    "Saudi Event Management",
-    "Event Planner KSA",
-    "Luxury Event Organizer Riyadh"
-  ],
-  alternates: { canonical: 'https://saudieventmanagement.com/about' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Event Planning Experts Saudi Arabia',
+    description: 'Saudi Event Management is one of the best event management companies in Saudi Arabia. Our event planning experts deliver luxury weddings, corporate galas, and Vision 2030 events across KSA.',
+    keywords: [
+      "Event Planning Experts Saudi Arabia",
+      "Event management companies",
+      "Event management in Saudi Arabia",
+      "Best event planners in KSA",
+      "Vision 2030 events",
+      "Saudi Event Management",
+      "Event Planner KSA",
+      "Luxury Event Organizer Riyadh"
+    ],
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/about`,
+      languages: { "en-US": `${base}/about`, "ar-SA": `${base}/ar/about` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

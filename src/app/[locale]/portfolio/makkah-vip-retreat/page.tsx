@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Moon, Star, MapPin, Users } from "lucide-react";
 
-export const metadata = {
-  title: 'Makkah VIP Retreat Case Study',
-  description: 'Bespoke event management for spiritual and high-profile retreats in the Holy City of Makkah.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/makkah-vip-retreat' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Makkah VIP Retreat Case Study',
+    description: 'Bespoke event management for spiritual and high-profile retreats in the Holy City of Makkah.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/makkah-vip-retreat`,
+      languages: { "en-US": `${base}/portfolio/makkah-vip-retreat`, "ar-SA": `${base}/ar/portfolio/makkah-vip-retreat` },
+    },
+  };
+}
 
 export default function MakkahVipRetreat() {
   return (

@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Shield, Users, Coffee, Home } from "lucide-react";
 
-export const metadata = {
-  title: 'Riyadh Elite Majlis Case Study',
-  description: 'Exquisite Majlis gathering in Riyadh, showcasing Najdi heritage with ultra-modern luxury.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/riyadh-elite-majlis' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Riyadh Elite Majlis Case Study',
+    description: 'Exquisite Majlis gathering in Riyadh, showcasing Najdi heritage with ultra-modern luxury.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/riyadh-elite-majlis`,
+      languages: { "en-US": `${base}/portfolio/riyadh-elite-majlis`, "ar-SA": `${base}/ar/portfolio/riyadh-elite-majlis` },
+    },
+  };
+}
 
 export default function RiyadhEliteMajlis() {
   return (

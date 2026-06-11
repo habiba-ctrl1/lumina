@@ -7,37 +7,42 @@ import Link from "next/link";
 import { Map, Tent, Anchor, Mountain, Compass, Trees, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
-  description:
-    "Plan breathtaking destination events in Saudi Arabia. From desert glamping and ancient heritage experiences in AlUla, to luxury yacht events on the Red Sea and futuristic summits in NEOM.",
-  keywords: [
-    "Destination events Saudi Arabia",
-    "AlUla event planning",
-    "NEOM event management",
-    "Red Sea destination events",
-    "Desert safari events KSA",
-    "Diriyah heritage events",
-    "Luxury glamping Saudi Arabia",
-    "Corporate retreat AlUla",
-    "فعاليات وجهة السعودية",
-    "تنظيم فعاليات العُلا",
-  ],
-  alternates: {
-    canonical: "https://saudieventmanagement.com/services/destination-events",
-    languages: {
-      "en-US": "https://saudieventmanagement.com/services/destination-events",
-      "ar-SA": "https://saudieventmanagement.com/ar/services/destination-events",
-    },
-  },
-  openGraph: {
-    title: "Destination Events Saudi Arabia | AlUla, NEOM & Red Sea",
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/services/destination-events`;
+  return {
+    title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
     description:
-      "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
-    url: "https://saudieventmanagement.com/services/destination-events",
-    images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
-  },
-};
+      "Plan breathtaking destination events in Saudi Arabia. From desert glamping and ancient heritage experiences in AlUla, to luxury yacht events on the Red Sea and futuristic summits in NEOM.",
+    keywords: [
+      "Destination events Saudi Arabia",
+      "AlUla event planning",
+      "NEOM event management",
+      "Red Sea destination events",
+      "Desert safari events KSA",
+      "Diriyah heritage events",
+      "Luxury glamping Saudi Arabia",
+      "Corporate retreat AlUla",
+      "فعاليات وجهة السعودية",
+      "تنظيم فعاليات العُلا",
+    ],
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/services/destination-events`,
+        "ar-SA": `${base}/ar/services/destination-events`,
+      },
+    },
+    openGraph: {
+      title: "Destination Events Saudi Arabia | AlUla, NEOM & Red Sea",
+      description:
+        "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
+      url: path,
+      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

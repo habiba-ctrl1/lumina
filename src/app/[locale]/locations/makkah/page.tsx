@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -15,40 +16,49 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
-  description:
-    "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
-  keywords:
-    "event management Makkah, corporate events Makkah Al-Mukarramah, conference organizer Makkah, Hilton Makkah Convention Hotel, Fairmont Makkah wedding, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
-  alternates: {
-    canonical: "https://saudieventmanagement.com/locations/makkah",
-  },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations/makkah`;
+  return {
     title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
     description:
-      "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only operations. RCMC and Amanah Makkah permitted.",
-    url: "https://saudieventmanagement.com/locations/makkah",
-    siteName: "Saudi Event Management",
-    images: [
-      {
-        url: "https://saudieventmanagement.com/gallery_corporate_gala.webp",
-        width: 1200,
-        height: 630,
-        alt: "Corporate event management in Makkah Al-Mukarramah Saudi Arabia",
+      "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
+    keywords:
+      "event management Makkah, corporate events Makkah Al-Mukarramah, conference organizer Makkah, Hilton Makkah Convention Hotel, Fairmont Makkah wedding, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations/makkah`,
+        "ar-SA": `${base}/ar/locations/makkah`,
       },
-    ],
-    locale: "en_SA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
-    description:
-      "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah. Muslim-only staffing. RCMC permitted.",
-    images: ["https://saudieventmanagement.com/gallery_corporate_gala.webp"],
-  },
-};
+    },
+    openGraph: {
+      title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
+      description:
+        "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only operations. RCMC and Amanah Makkah permitted.",
+      url: path,
+      siteName: "Saudi Event Management",
+      images: [
+        {
+          url: "https://saudieventmanagement.com/gallery_corporate_gala.webp",
+          width: 1200,
+          height: 630,
+          alt: "Corporate event management in Makkah Al-Mukarramah Saudi Arabia",
+        },
+      ],
+      locale: "en_SA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
+      description:
+        "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah. Muslim-only staffing. RCMC permitted.",
+      images: ["https://saudieventmanagement.com/gallery_corporate_gala.webp"],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

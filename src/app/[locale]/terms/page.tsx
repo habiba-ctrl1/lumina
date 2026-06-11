@@ -4,11 +4,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-export const metadata = {
-  title: 'Terms & Conditions',
-  description: 'Our terms and conditions for luxury event management services.',
-  alternates: { canonical: 'https://saudieventmanagement.com/terms' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Terms & Conditions',
+    description: 'Our terms and conditions for luxury event management services.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/terms`,
+      languages: { "en-US": `${base}/terms`, "ar-SA": `${base}/ar/terms` },
+    },
+  };
+}
 
 export default function TermsPage() {
   return (

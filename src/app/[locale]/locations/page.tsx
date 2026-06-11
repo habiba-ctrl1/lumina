@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -8,29 +9,40 @@ import { MapPin, ArrowRight, TrendingUp, Building2, Star } from "lucide-react";
 import SaudiMap from "@/components/SaudiMap";
 import ScrollProgress from "@/components/ScrollProgress";
 
-export const metadata = {
-  title: "Event Management Locations Across Saudi Arabia — 12 Cities | Saudi Event Management",
-  description:
-    "Saudi Event Management operates across 12 cities in Saudi Arabia — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. On-the-ground teams, GEA-compliant execution, and local venue relationships Kingdom-wide.",
-  keywords: [
-    "event management Saudi Arabia",
-    "event management Riyadh",
-    "event management Jeddah",
-    "event management Makkah",
-    "event management Dammam",
-    "event management AlUla",
-    "event management Madinah",
-    "event management Al Khobar",
-    "event management NEOM",
-    "event management Taif",
-    "event management Abha",
-    "event management Diriyah",
-    "event management Tabuk",
-    "Vision 2030 events",
-    "Saudi event company locations",
-  ],
-  alternates: { canonical: "https://saudieventmanagement.com/locations" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations`;
+  return {
+    title: "Event Management Locations Across Saudi Arabia — 12 Cities | Saudi Event Management",
+    description:
+      "Saudi Event Management operates across 12 cities in Saudi Arabia — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. On-the-ground teams, GEA-compliant execution, and local venue relationships Kingdom-wide.",
+    keywords: [
+      "event management Saudi Arabia",
+      "event management Riyadh",
+      "event management Jeddah",
+      "event management Makkah",
+      "event management Dammam",
+      "event management AlUla",
+      "event management Madinah",
+      "event management Al Khobar",
+      "event management NEOM",
+      "event management Taif",
+      "event management Abha",
+      "event management Diriyah",
+      "event management Tabuk",
+      "Vision 2030 events",
+      "Saudi event company locations",
+    ],
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations`,
+        "ar-SA": `${base}/ar/locations`,
+      },
+    },
+  };
+}
 
 // ── Featured city cards — ordered by lead-gen volume (2026 market strategy) ──
 const locations = [

@@ -5,11 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Tent, Sun, Camera, Wind } from "lucide-react";
 
-export const metadata = {
-  title: 'AlUla Desert Festival Case Study',
-  description: 'A breathtaking cultural festival in the ancient desert of AlUla, executed by Saudi Event Management.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/alula-desert-festival' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'AlUla Desert Festival Case Study',
+    description: 'A breathtaking cultural festival in the ancient desert of AlUla, executed by Saudi Event Management.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/alula-desert-festival`,
+      languages: {
+        "en-US": `${base}/portfolio/alula-desert-festival`,
+        "ar-SA": `${base}/ar/portfolio/alula-desert-festival`,
+      },
+    },
+  };
+}
 
 export default function AlUlaDesertFestival() {
   return (

@@ -206,11 +206,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { name } = await params;
+  const { locale, name } = await params;
   const profile = TEAM_PROFILES[name];
   if (!profile) return {};
 
-  const canonicalUrl = `https://saudieventmanagement.com/about/our-team/${name}`;
+  const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/about/our-team/${name}`;
   return {
     title: `${profile.name} — ${profile.role} | Saudi Event Management`,
     description: `${profile.name} is ${profile.role} at Saudi Event Management with ${profile.yearsExperience} years of experience in ${profile.specialisms.slice(0, 3).join(", ")}.`,

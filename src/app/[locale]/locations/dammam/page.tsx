@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -16,38 +17,49 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Event Management Company in Dammam & Eastern Province | Saudi Event Management",
-  description:
-    "Saudi Event Management is the Eastern Province's premier event company. Corporate conferences at DCEC & Sheraton Dammam, energy sector events near Saudi Aramco Dhahran, luxury weddings at Kempinski Al Khobar & Half Moon Bay. Cross-border Dammam–Bahrain event management.",
-  keywords:
-    "event management Dammam, corporate events Dammam Eastern Province, Saudi Aramco event management Dhahran, conference organizer Al-Khobar, Kempinski Al Khobar wedding, Half Moon Bay events, oil gas conference Saudi Arabia, DCEC Dammam Convention Center, تنظيم فعاليات الدمام",
-  alternates: { canonical: "https://saudieventmanagement.com/locations/dammam" },
-  openGraph: {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations/dammam`;
+  return {
     title: "Event Management Company in Dammam & Eastern Province | Saudi Event Management",
     description:
-      "Eastern Province's premier event company — energy sector conferences, corporate events near Saudi Aramco, Gulf waterfront weddings and cross-border Dammam–Bahrain MICE.",
-    url: "https://saudieventmanagement.com/locations/dammam",
-    siteName: "Saudi Event Management",
-    images: [
-      {
-        url: "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
-        width: 1200,
-        height: 630,
-        alt: "Corporate event management in Dammam Eastern Province Saudi Arabia",
+      "Saudi Event Management is the Eastern Province's premier event company. Corporate conferences at DCEC & Sheraton Dammam, energy sector events near Saudi Aramco Dhahran, luxury weddings at Kempinski Al Khobar & Half Moon Bay. Cross-border Dammam–Bahrain event management.",
+    keywords:
+      "event management Dammam, corporate events Dammam Eastern Province, Saudi Aramco event management Dhahran, conference organizer Al-Khobar, Kempinski Al Khobar wedding, Half Moon Bay events, oil gas conference Saudi Arabia, DCEC Dammam Convention Center, تنظيم فعاليات الدمام",
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations/dammam`,
+        "ar-SA": `${base}/ar/locations/dammam`,
       },
-    ],
-    locale: "en_SA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Event Management in Dammam & Eastern Province | Saudi Event Management",
-    description:
-      "Energy sector conferences, corporate events, Gulf waterfront weddings & cross-border Bahrain MICE in Dammam.",
-    images: ["https://saudieventmanagement.com/alkhobar_corporate_people.webp"],
-  },
-};
+    },
+    openGraph: {
+      title: "Event Management Company in Dammam & Eastern Province | Saudi Event Management",
+      description:
+        "Eastern Province's premier event company — energy sector conferences, corporate events near Saudi Aramco, Gulf waterfront weddings and cross-border Dammam–Bahrain MICE.",
+      url: path,
+      siteName: "Saudi Event Management",
+      images: [
+        {
+          url: "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
+          width: 1200,
+          height: 630,
+          alt: "Corporate event management in Dammam Eastern Province Saudi Arabia",
+        },
+      ],
+      locale: "en_SA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Event Management in Dammam & Eastern Province | Saudi Event Management",
+      description:
+        "Energy sector conferences, corporate events, Gulf waterfront weddings & cross-border Bahrain MICE in Dammam.",
+      images: ["https://saudieventmanagement.com/alkhobar_corporate_people.webp"],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

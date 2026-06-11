@@ -38,6 +38,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/locations/alula',    freq: 'monthly', priority: 0.7 },
     { route: '/locations/dammam',   freq: 'monthly', priority: 0.6 },
 
+    // ── Portfolio case studies ────────────────────────────────────────────────
+    { route: '/portfolio/luxury-weddings',            freq: 'monthly', priority: 0.7 },
+    { route: '/portfolio/corporate-events',           freq: 'monthly', priority: 0.7 },
+    { route: '/portfolio/vision-2030',                freq: 'monthly', priority: 0.7 },
+    { route: '/portfolio/royal-riyadh-wedding',       freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/riyadh-elite-majlis',        freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/riyadh-luxury-soiree',       freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/neom-future-summit',         freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/executive-summit-jeddah',    freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/global-tech-summit',         freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/dammam-corporate-seminar',   freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/alula-desert-festival',      freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/makkah-vip-retreat',         freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/madinah-spiritual-event',    freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/riyadh-government-summit',   freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/jeddah-beach-wedding',       freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/alkhobar-corporate-retreat', freq: 'monthly', priority: 0.6 },
+    { route: '/portfolio/grand-wedding-ceremony',     freq: 'monthly', priority: 0.6 },
+
     // ── Supporting pages ─────────────────────────────────────────────────────
     { route: '/vendors',            freq: 'monthly', priority: 0.6 },
     { route: '/vendor-registration',freq: 'monthly', priority: 0.6 },

@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Building, Ship, Anchor, Waves } from "lucide-react";
 
-export const metadata = {
-  title: 'Executive Summit Jeddah Case Study',
-  description: 'A high-level executive summit held in the coastal city of Jeddah, featuring coastal elegance and corporate precision by Saudi Event Management.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/executive-summit-jeddah' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Executive Summit Jeddah Case Study',
+    description: 'A high-level executive summit held in the coastal city of Jeddah, featuring coastal elegance and corporate precision by Saudi Event Management.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/executive-summit-jeddah`,
+      languages: { "en-US": `${base}/portfolio/executive-summit-jeddah`, "ar-SA": `${base}/ar/portfolio/executive-summit-jeddah` },
+    },
+  };
+}
 
 export default function ExecutiveSummitJeddah() {
   return (

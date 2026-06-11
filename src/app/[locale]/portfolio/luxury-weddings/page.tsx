@@ -7,12 +7,19 @@ import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Crown, Heart, Sparkles, Flower2 } from "lucide-react";
 
-export const metadata = {
-  title: 'Luxury Wedding Planners Saudi Arabia | Royal Weddings',
-  description: 'Saudi Event Management crafts the most exclusive luxury weddings and royal ceremonies in Riyadh, Jeddah, and AlUla. Complete VIP bridal services and kosha design.',
-  keywords: 'Luxury wedding planners Riyadh, Royal weddings Saudi Arabia, VIP wedding organizer KSA, Kosha design Riyadh, Destination weddings AlUla',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/luxury-weddings' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Luxury Wedding Planners Saudi Arabia | Royal Weddings',
+    description: 'Saudi Event Management crafts the most exclusive luxury weddings and royal ceremonies in Riyadh, Jeddah, and AlUla. Complete VIP bridal services and kosha design.',
+    keywords: 'Luxury wedding planners Riyadh, Royal weddings Saudi Arabia, VIP wedding organizer KSA, Kosha design Riyadh, Destination weddings AlUla',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/luxury-weddings`,
+      languages: { "en-US": `${base}/portfolio/luxury-weddings`, "ar-SA": `${base}/ar/portfolio/luxury-weddings` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -4,12 +4,19 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
 
-export const metadata = {
-  title: 'Our Executive Team | Saudi Event Management',
-  description: 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.',
-  keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
-  alternates: { canonical: 'https://saudieventmanagement.com/about/our-team' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Our Executive Team | Saudi Event Management',
+    description: 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.',
+    keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/about/our-team`,
+      languages: { "en-US": `${base}/about/our-team`, "ar-SA": `${base}/ar/about/our-team` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

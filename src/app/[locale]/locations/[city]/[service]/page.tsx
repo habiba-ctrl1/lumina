@@ -195,12 +195,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { city, service } = await params;
+  const { locale, city, service } = await params;
   const cityData = cities[city];
   const serviceData = services[service];
   if (!cityData || !serviceData) return {};
 
-  const canonicalUrl = `https://saudieventmanagement.com/locations/${city}/${service}`;
+  const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/locations/${city}/${service}`;
   return {
     title: `${serviceData.name} in ${cityData.name} | Saudi Event Management`,
     description: `Saudi Event Management delivers premium ${serviceData.name.toLowerCase()} in ${cityData.name}, ${cityData.region}. ${serviceData.description}`,

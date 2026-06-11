@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Globe, Cpu, Zap, Building2 } from "lucide-react";
 
-export const metadata = {
-  title: 'NEOM Future Summit Case Study',
-  description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/neom-future-summit' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'NEOM Future Summit Case Study',
+    description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/neom-future-summit`,
+      languages: { "en-US": `${base}/portfolio/neom-future-summit`, "ar-SA": `${base}/ar/portfolio/neom-future-summit` },
+    },
+  };
+}
 
 export default function NeomFutureSummitCaseStudy() {
   return (

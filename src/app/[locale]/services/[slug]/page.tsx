@@ -689,13 +689,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const data = PSEO_DATA[slug];
   if (!data) return {};
 
-  const canonicalUrl = `https://saudieventmanagement.com/services/${slug}`;
+  const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/${slug}`;
 
   return {
     title: data.titleTag,

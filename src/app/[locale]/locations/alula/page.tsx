@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -16,38 +17,49 @@ import {
   Camera,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events | Saudi Event Management",
-  description:
-    "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
-  keywords:
-    "event management AlUla, destination wedding AlUla Saudi Arabia, Maraya Concert Hall events, Banyan Tree AlUla wedding, Habitas AlUla corporate retreat, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla, Winter at Tantora, luxury brand activation AlUla",
-  alternates: { canonical: "https://saudieventmanagement.com/locations/alula" },
-  openGraph: {
-    title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  const path = `${base}${locale === "en" ? "" : "/ar"}/locations/alula`;
+  return {
+    title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events | Saudi Event Management",
     description:
-      "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
-    url: "https://saudieventmanagement.com/locations/alula",
-    siteName: "Saudi Event Management",
-    images: [
-      {
-        url: "https://saudieventmanagement.com/alula_gala_people.webp",
-        width: 1200,
-        height: 630,
-        alt: "Luxury heritage event in AlUla Saudi Arabia — Ashar Valley gala",
+      "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
+    keywords:
+      "event management AlUla, destination wedding AlUla Saudi Arabia, Maraya Concert Hall events, Banyan Tree AlUla wedding, Habitas AlUla corporate retreat, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla, Winter at Tantora, luxury brand activation AlUla",
+    alternates: {
+      canonical: path,
+      languages: {
+        "en-US": `${base}/locations/alula`,
+        "ar-SA": `${base}/ar/locations/alula`,
       },
-    ],
-    locale: "en_SA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
-    description:
-      "Ultra-luxury destination weddings, corporate retreats & heritage activations. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
-    images: ["https://saudieventmanagement.com/alula_gala_people.webp"],
-  },
-};
+    },
+    openGraph: {
+      title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
+      description:
+        "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
+      url: path,
+      siteName: "Saudi Event Management",
+      images: [
+        {
+          url: "https://saudieventmanagement.com/alula_gala_people.webp",
+          width: 1200,
+          height: 630,
+          alt: "Luxury heritage event in AlUla Saudi Arabia — Ashar Valley gala",
+        },
+      ],
+      locale: "en_SA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
+      description:
+        "Ultra-luxury destination weddings, corporate retreats & heritage activations. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
+      images: ["https://saudieventmanagement.com/alula_gala_people.webp"],
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

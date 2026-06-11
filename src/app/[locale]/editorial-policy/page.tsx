@@ -5,11 +5,18 @@ import ScrollProgress from "@/components/ScrollProgress";
 import { Shield, CheckCircle2, BookOpen, Users, Award, Eye } from "lucide-react";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Editorial Policy & Standards of Excellence | Saudi Event Management",
-  description: "Learn about Saudi Event Management's commitment to quality, transparency, and editorial integrity. Our standards ensure every event and piece of content meets the highest benchmarks.",
-  alternates: { canonical: "https://saudieventmanagement.com/editorial-policy" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: "Editorial Policy & Standards of Excellence | Saudi Event Management",
+    description: "Learn about Saudi Event Management's commitment to quality, transparency, and editorial integrity. Our standards ensure every event and piece of content meets the highest benchmarks.",
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/editorial-policy`,
+      languages: { "en-US": `${base}/editorial-policy`, "ar-SA": `${base}/ar/editorial-policy` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

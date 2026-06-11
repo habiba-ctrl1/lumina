@@ -5,19 +5,25 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const title = slug.split('-').map((word: any) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const base = "https://saudieventmanagement.com";
+  const canonical = `${base}${locale === "en" ? "" : "/ar"}/portfolio/${slug}`;
 
   return {
     title: `${title} | Saudi Event Management`,
     description: `Detailed case study of the ${title} project by Saudi Event Management.`,
     alternates: {
-      canonical: `https://saudieventmanagement.com/portfolio/${slug}`,
+      canonical,
+      languages: {
+        "en-US": `${base}/portfolio/${slug}`,
+        "ar-SA": `${base}/ar/portfolio/${slug}`,
+      },
     },
     openGraph: {
       title: title,
       description: `Detailed case study of the ${title} project.`,
-      url: `/portfolio/${slug}`,
+      url: canonical,
     },
   };
 }

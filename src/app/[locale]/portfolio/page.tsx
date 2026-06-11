@@ -10,12 +10,19 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollProgress from "@/components/ScrollProgress";
 
-export const metadata = {
-  title: 'Luxury Event Portfolio | Saudi Event Management',
-  description: 'View our exclusive gallery of luxury events, royal weddings, and VIP corporate summits across Riyadh, Jeddah, and AlUla. Discover our award-winning event production.',
-  keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Royal Weddings Riyadh, Corporate Summits Jeddah, Saudi Event Management Case Studies',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Luxury Event Portfolio | Saudi Event Management',
+    description: 'View our exclusive gallery of luxury events, royal weddings, and VIP corporate summits across Riyadh, Jeddah, and AlUla. Discover our award-winning event production.',
+    keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Royal Weddings Riyadh, Corporate Summits Jeddah, Saudi Event Management Case Studies',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio`,
+      languages: { "en-US": `${base}/portfolio`, "ar-SA": `${base}/ar/portfolio` },
+    },
+  };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

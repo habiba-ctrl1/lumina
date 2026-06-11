@@ -4,29 +4,30 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 
-export const metadata = {
-  title: 'Saudi Event Industry Glossary | MICE, GEA, Wedding & Production Terms',
-  description: 'The definitive A-Z glossary of luxury event management, MICE, technical production, and cultural terminology in Saudi Arabia — with links to related services.',
-  keywords: [
-    'Saudi event glossary',
-    'MICE terminology Saudi Arabia',
-    'GEA permit meaning',
-    'PCO event management definition',
-    'Zaffah meaning Saudi wedding',
-    'event production terms KSA',
-    'Nikah ceremony definition',
-    'Majlis event setup',
-    'hybrid event meaning',
-    'Vision 2030 events glossary',
-  ],
-  alternates: {
-    canonical: 'https://saudieventmanagement.com/glossary',
-    languages: {
-      'en-US': 'https://saudieventmanagement.com/glossary',
-      'ar-SA': 'https://saudieventmanagement.com/ar/glossary',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Saudi Event Industry Glossary | MICE, GEA, Wedding & Production Terms',
+    description: 'The definitive A-Z glossary of luxury event management, MICE, technical production, and cultural terminology in Saudi Arabia — with links to related services.',
+    keywords: [
+      'Saudi event glossary',
+      'MICE terminology Saudi Arabia',
+      'GEA permit meaning',
+      'PCO event management definition',
+      'Zaffah meaning Saudi wedding',
+      'event production terms KSA',
+      'Nikah ceremony definition',
+      'Majlis event setup',
+      'hybrid event meaning',
+      'Vision 2030 events glossary',
+    ],
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/glossary`,
+      languages: { 'en-US': `${base}/glossary`, 'ar-SA': `${base}/ar/glossary` },
     },
-  },
-};
+  };
+}
 
 interface GlossaryTerm {
   term: string;

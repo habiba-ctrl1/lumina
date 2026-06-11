@@ -5,11 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Cpu, Globe, Zap, Network } from "lucide-react";
 
-export const metadata = {
-  title: 'Global Tech Summit',
-  description: 'Executing a massive international technology summit in Saudi Arabia with cutting-edge production by Saudi Event Management.',
-  alternates: { canonical: 'https://saudieventmanagement.com/portfolio/global-tech-summit' },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const base = "https://saudieventmanagement.com";
+  return {
+    title: 'Global Tech Summit',
+    description: 'Executing a massive international technology summit in Saudi Arabia with cutting-edge production by Saudi Event Management.',
+    alternates: {
+      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/global-tech-summit`,
+      languages: { "en-US": `${base}/portfolio/global-tech-summit`, "ar-SA": `${base}/ar/portfolio/global-tech-summit` },
+    },
+  };
+}
 
 export default function GlobalTechSummit() {
   return (
