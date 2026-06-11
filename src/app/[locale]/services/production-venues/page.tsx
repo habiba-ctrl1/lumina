@@ -369,6 +369,32 @@ export default function ProductionVenuesPage() {
           </div>
         </section>
 
+        {/* ── From Our Blog ── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Venue & Production Resources</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "Event Production Cost Guide Saudi Arabia 2026", slug: "event-production-cost-guide-saudi-arabia-2026", desc: "2026 pricing guide for AV, stage, LED walls, lighting rigs, and projection mapping in Riyadh and Jeddah." },
+                { title: "Best Corporate Event Venues in Riyadh 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "Rank-ordered guide to Riyadh's top corporate event venues — capacity, AV specs, and booking timelines." },
+                { title: "The Future of Event Production in Saudi Arabia", slug: "future-event-production-saudi-arabia-technology-sustainability", desc: "How event production in Saudi Arabia is evolving with cutting-edge technology and sustainable practices." },
+                { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and RCU permits." },
+              ].map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
+                >
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Production Guide</span>
+                  <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Footer />
         <WhatsAppButton />
       </main>

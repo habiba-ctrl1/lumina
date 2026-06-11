@@ -383,6 +383,53 @@ export default function ExhibitionsPage() {
           </div>
         </section>
 
+        {/* ── Exhibition Locations ── */}
+        <section className="py-16 bg-emerald-900/20 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-widest">Exhibition Management by City</h3>
+            <p className="text-white/40 text-xs mb-8">Full-service exhibition management at RICEC, JCFE, DCEC, and all major Saudi convention centres.</p>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { name: "Exhibition Management Riyadh (RICEC)", href: "/locations/riyadh" },
+                { name: "Exhibition Management Jeddah (JCFE)", href: "/locations/jeddah" },
+                { name: "Exhibition Management Dammam", href: "/locations/dammam" },
+              ].map((loc) => (
+                <Link
+                  key={loc.href}
+                  href={loc.href}
+                  className="px-5 py-2.5 bg-emerald-900 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                >
+                  {loc.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── MICE Industry Insights ── */}
+        <section className="py-20 bg-emerald-950 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">MICE Industry Resources</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { title: "MICE Tourism Saudi Arabia 2026: The Complete Industry Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Market size, key exhibition venues, and how to plan a MICE event in Saudi Arabia." },
+                { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Explosive growth in exhibitions and conferences — the numbers and what they mean for exhibitors." },
+              ].map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                >
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Industry Guide</span>
+                  <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Footer />
         <WhatsAppButton />
       </main>

@@ -133,6 +133,27 @@ export default function AlUlaDesertFestival() {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h3 className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/services/destination-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Destination Event Management
+            </Link>
+            <Link href="/services/cultural-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Cultural &amp; Heritage Events
+            </Link>
+            <Link href="/services/event-production" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Event Production
+            </Link>
+            <Link href="/locations/alula" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Events in AlUla
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-32 bg-black text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -140,8 +161,8 @@ export default function AlUlaDesertFestival() {
         </div>
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary ">Cultural Wave</span></h2>
-          <Link 
-            href="/#contact" 
+          <Link
+            href="/contact"
             className="inline-block px-12 py-6 bg-primary text-white font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all rounded-xl shadow-2xl text-xs"
           >
             Start a Cultural Project

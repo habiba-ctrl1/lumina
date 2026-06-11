@@ -881,6 +881,59 @@ export default function CorporateEventsPage() {
           </div>
         </section>
 
+        {/* ── CORPORATE EVENTS BY CITY ── */}
+        <section className="py-16 bg-emerald-950 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-widest">Corporate Events by City</h3>
+            <p className="text-white/40 text-xs mb-8">End-to-end corporate event management across Saudi Arabia&apos;s major business cities.</p>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { name: "Corporate Events Riyadh", href: "/locations/riyadh" },
+                { name: "Corporate Events Jeddah", href: "/locations/jeddah" },
+                { name: "Corporate Events Dammam", href: "/locations/dammam" },
+                { name: "Events in AlUla", href: "/locations/alula" },
+                { name: "Events in Makkah", href: "/locations/makkah" },
+              ].map((loc) => (
+                <Link
+                  key={loc.href}
+                  href={loc.href}
+                  className="px-5 py-2.5 bg-emerald-900 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                >
+                  {loc.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FROM OUR BLOG ── */}
+        <section className="py-20 bg-emerald-900/20 border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-sm font-bold text-white mb-8 uppercase tracking-widest">Corporate Event Insights</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Exclusive analysis of Saudi Arabia's MICE sector under Vision 2030 — growth metrics, emerging venues, and GEA impact." },
+                { title: "Best Corporate Event Venues in Riyadh 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "Rank-ordered guide to Riyadh's top corporate event venues — capacity, AV specs, and booking timelines." },
+                { title: "MICE Tourism Saudi Arabia 2026: The Complete Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Everything you need to know about Saudi Arabia's booming MICE industry and Vision 2030 strategy." },
+                { title: "Corporate Event Excellence in Riyadh & Jeddah", slug: "corporate-event-excellence-riyadh-jeddah", desc: "Learn how expert corporate event planning can drive business success and foster strong networking experiences." },
+                { title: "How to Get a GEA Event Permit in Saudi Arabia", slug: "gea-event-permit-guide-saudi-arabia", desc: "Step-by-step guide to obtaining a GEA entertainment permit — requirements, costs, timelines, and common mistakes." },
+                { title: "VIP Executive Retreats in NEOM: A 2026 Guide", slug: "vip-executive-retreats-neom-2026", desc: "Strategies for hosting unforgettable VIP executive retreats in NEOM's cutting-edge developments." },
+              ].map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-emerald-900 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary)]/40 transition-all"
+                >
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Corporate Insight</span>
+                  <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
+                  <p className="text-white/40 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Footer />
         <WhatsAppButton />
       </main>

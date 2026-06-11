@@ -165,10 +165,10 @@ const geoHighlights = [
 ];
 
 const resources = [
-  { title: "The Saudi VIP event planning guide: venues, protocols & NDAs", desc: "How to navigate privacy, security, and protocol for high-profile private events in the Kingdom." },
-  { title: "Luxury event trends in Saudi Arabia 2025", desc: "From ultra-luxury desert glamping to superyacht experiences — what HNWI clients are requesting." },
-  { title: "How to book international artists for private events in Saudi Arabia", desc: "Talent rider requirements, GEA permits, visa facilitation, and fee expectations." },
-  { title: "Saudi Arabia's finest venues for ultra-luxury private events", desc: "An exclusive guide to palace estates, heritage sites, and bespoke desert venues." },
+  { title: "AlUla Events Guide: Maraya, Hegra & Desert Experience Planning", desc: "How to access Maraya for private events, plan Hegra heritage dinners, and navigate RCU permits.", href: "/blog/alula-events-guide-maraya-hegra-desert" },
+  { title: "The Golden Thread: Weaving Luxury Lifestyle into Saudi Arabia's Top-tier Events", desc: "From bespoke concierge services to invitation-only galas — the Saudi VIP lifestyle guide.", href: "/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events" },
+  { title: "VIP Executive Retreats in NEOM: A 2026 Guide", desc: "Strategies for hosting unforgettable VIP executive retreats in NEOM's cutting-edge developments.", href: "/blog/vip-executive-retreats-neom-2026" },
+  { title: "Best Corporate Event Venues in Riyadh 2026", desc: "An exclusive guide to the Kingdom's premier venues — KAFD, Ritz-Carlton, and five-star hotel ballrooms.", href: "/blog/best-corporate-event-venues-riyadh-2026" },
 ];
 
 export default function LuxuryVIPEventsPage() {
@@ -288,15 +288,16 @@ export default function LuxuryVIPEventsPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {resources.map((r, i) => (
-                  <div
+                  <Link
                     key={i}
-                    className="p-6 bg-ink-900 rounded-sm hover:bg-gold-400/5 transition-colors cursor-pointer group border border-white/5"
+                    href={r.href}
+                    className="p-6 bg-ink-900 rounded-sm hover:bg-gold-400/5 transition-colors cursor-pointer group border border-white/5 block"
                   >
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-400 transition-colors">
                       {r.title}
                     </h4>
                     <p className="text-sand-500 text-xs leading-relaxed">{r.desc}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -126,11 +126,32 @@ export default function RoyalRiyadhWeddingCaseStudy() {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-20 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h3 className="text-sm font-bold text-white/60 mb-8 uppercase tracking-widest">Related Services</h3>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/services/weddings" className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+              Luxury Wedding Planning
+            </Link>
+            <Link href="/services/royal-weddings" className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+              Royal Weddings & Ceremonies
+            </Link>
+            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+              Luxury & VIP Events
+            </Link>
+            <Link href="/locations/riyadh" className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+              Events in Riyadh
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-32 bg-white/5 text-center">
         <h3 className="text-2xl md:text-3xl font-sans font-bold text-white mb-8">Envision Your <span className="text-[var(--primary)]">Masterpiece</span></h3>
-        <Link 
-          href="/#contact" 
+        <Link
+          href="/contact"
           className="inline-block px-10 py-4 bg-[var(--primary)] text-[#1e2653] font-bold uppercase tracking-widest hover:bg-white transition-colors"
         >
           Book a Consultation

@@ -105,20 +105,24 @@ const priceGuide = [
 
 const resources = [
   {
-    title: "AV production guide for Saudi events: choosing the right system",
-    desc: "Line-array vs. point source, P2.6 vs. P3.9 LED, and projection vs. LED — a technical buying guide.",
+    title: "Event Production Cost Guide Saudi Arabia 2026",
+    desc: "Transparent pricing for AV systems, stage design, LED walls, lighting rigs, and projection mapping.",
+    href: "/blog/event-production-cost-guide-saudi-arabia-2026",
   },
   {
-    title: "Top event venues in Riyadh 2025: AV specs and capacities",
-    desc: "KAFD, Ritz-Carlton, and KAICC compared for technical rigging loads and AV infrastructure.",
+    title: "Best Corporate Event Venues in Riyadh 2026",
+    desc: "KAFD Conference Center, Ritz-Carlton, and Four Seasons compared for AV specs and booking timelines.",
+    href: "/blog/best-corporate-event-venues-riyadh-2026",
   },
   {
-    title: "Event decoration trends in Saudi Arabia 2025",
-    desc: "Futuristic minimalism, Najdi geometric motifs, and immersive 360° environments dominate the market.",
+    title: "2026 Event Decor Trends Redefining Saudi Arabia",
+    desc: "Futuristic minimalism, cultural fusion, and immersive 360° environments dominating the Saudi market.",
+    href: "/blog/2026-exceptional-event-decor-trends-saudi-arabia",
   },
   {
-    title: "How to brief an event production company in Saudi Arabia",
-    desc: "What information you need to share — and what questions to ask — before signing a production contract.",
+    title: "The Future of Event Production in Saudi Arabia",
+    desc: "How cutting-edge technology and sustainable practices are transforming event production under Vision 2030.",
+    href: "/blog/future-event-production-saudi-arabia-technology-sustainability",
   },
 ];
 
@@ -353,15 +357,16 @@ export default function EventProductionPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {resources.map((r, i) => (
-                  <div
+                  <Link
                     key={i}
-                    className="p-6 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group"
+                    href={r.href}
+                    className="p-6 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group block"
                   >
                     <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
                       {r.title}
                     </h4>
                     <p className="text-gray-500 text-xs leading-relaxed">{r.desc}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -75,14 +75,23 @@ export default function Footer() {
               {t("servicesTitle")}
             </h4>
             <ul className="space-y-3">
-              {t.raw("serviceLinks").map((item: string) => (
-                <li key={item}>
+              {[
+                { name: "Corporate Events", href: "/services/corporate-events" },
+                { name: "Exhibition Management", href: "/services/exhibitions" },
+                { name: "Conference Management", href: "/services/conferences" },
+                { name: "Weddings & Celebrations", href: "/services/weddings" },
+                { name: "Event Production", href: "/services/event-production" },
+                { name: "Luxury VIP Events", href: "/services/luxury-vip-events" },
+                { name: "Destination Events", href: "/services/destination-events" },
+                { name: "Cultural Events", href: "/services/cultural-events" },
+              ].map((item) => (
+                <li key={item.href}>
                   <Link
-                    href="/services"
+                    href={item.href}
                     className="text-[14px] text-neutral-500 font-medium
                       hover:text-[var(--primary)] transition-colors duration-200"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

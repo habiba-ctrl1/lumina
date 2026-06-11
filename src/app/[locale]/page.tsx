@@ -64,6 +64,8 @@ import Services from "@/components/Services";
 import GeoDefinitionBlock from "@/components/GeoDefinitionBlock";
 import CityPresence from "@/components/CityPresence";
 import VendorCTA from "@/components/VendorCTA";
+import Link from "next/link";
+import { blogPosts } from "@/lib/blog-data";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Page-level schema (supplements layout.tsx global schema)
@@ -241,6 +243,37 @@ export default async function Home() {
       <CityPresence />
       <MapClient />
       <BlogPreview />
+
+      {/* ── All Articles Index — ensures every blog post is linked from homepage ── */}
+      <section className="bg-white border-t border-neutral-100 py-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-xl font-semibold text-neutral-900" style={{ letterSpacing: "-0.02em" }}>
+              All <span className="text-[var(--primary)]">Articles</span>
+            </h2>
+            <Link href="/blog" className="text-[13px] font-medium text-[var(--primary)] hover:underline">
+              View all →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex items-start gap-3 p-4 rounded-xl border border-neutral-100 hover:border-[var(--primary)]/30 hover:bg-neutral-50 transition-all"
+              >
+                <span className="mt-0.5 shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--primary)] opacity-60" />
+                <div className="min-w-0">
+                  <p className="text-[12px] font-semibold text-[var(--primary)] uppercase tracking-wider mb-1">{post.category}</p>
+                  <p className="text-[13px] font-medium text-neutral-800 group-hover:text-[var(--primary)] transition-colors leading-snug line-clamp-2">{post.title}</p>
+                  <p className="text-[11px] text-neutral-400 mt-1">{post.readTime}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <PartnersSection />
       <InstagramFeed />
       <EngagementHub />

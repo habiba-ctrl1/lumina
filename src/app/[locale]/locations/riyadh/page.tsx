@@ -938,6 +938,31 @@ export default function RiyadhPage() {
 
             <div className="mt-6 pt-6 border-t border-neutral-100">
               <p className="text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wide">
+                Explore Service Pages:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {[
+                  { name: "Corporate Event Management", href: "/services/corporate-events" },
+                  { name: "Conference Management", href: "/services/conferences" },
+                  { name: "Exhibition Management", href: "/services/exhibitions" },
+                  { name: "Luxury Wedding Planning", href: "/services/weddings" },
+                  { name: "Luxury & VIP Events", href: "/services/luxury-vip-events" },
+                  { name: "Event Production", href: "/services/event-production" },
+                ].map((svc) => (
+                  <Link
+                    key={svc.href}
+                    href={svc.href}
+                    className="px-4 py-3 bg-neutral-50 border border-neutral-200 rounded text-xs font-semibold text-neutral-700 hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-white transition-colors flex items-center justify-between group"
+                  >
+                    {svc.name}
+                    <ChevronRight size={12} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-neutral-100">
+              <p className="text-sm font-semibold text-neutral-900 mb-4 uppercase tracking-wide">
                 Other Locations:
               </p>
               <div className="flex flex-wrap gap-3">

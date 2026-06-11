@@ -185,10 +185,10 @@ const destinations = [
 ];
 
 const resources = [
-  { title: "Complete guide to event planning in AlUla: venues, permits & seasons", desc: "Everything you need to know to plan a flawless event in Saudi Arabia's most spectacular destination." },
-  { title: "NEOM event planning guide: facilities, access & opportunities 2025", desc: "Navigating permits, accommodation, and production logistics inside Saudi Arabia's giga-project." },
-  { title: "Saudi Arabia destination event cost guide: budgeting for remote events", desc: "Transparent breakdown of transport, infrastructure, accommodation, and production costs." },
-  { title: "Best seasons for outdoor events in Saudi Arabia", desc: "When to plan desert events, coastal retreats, and outdoor activations to avoid extreme heat." },
+  { title: "AlUla Events Guide: Maraya, Hegra & Desert Experience Planning", desc: "Everything you need to know to plan a flawless event in Saudi Arabia's most spectacular destination.", href: "/blog/alula-events-guide-maraya-hegra-desert" },
+  { title: "VIP Executive Retreats in NEOM: A 2026 Guide", desc: "Navigating permits, accommodation, and production logistics inside Saudi Arabia's giga-project.", href: "/blog/vip-executive-retreats-neom-2026" },
+  { title: "Event Production Cost Guide Saudi Arabia 2026", desc: "Transparent breakdown of transport, infrastructure, accommodation, and production costs.", href: "/blog/event-production-cost-guide-saudi-arabia-2026" },
+  { title: "Destination Weddings in AlUla & The Red Sea", desc: "Crafting breathtaking desert ceremonies and Red Sea beachfront weddings in Saudi Arabia.", href: "/blog/destination-weddings-alula-red-sea" },
 ];
 
 export default function DestinationEventsPage() {
@@ -331,13 +331,14 @@ export default function DestinationEventsPage() {
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {resources.map((r, i) => (
-                  <div
+                  <Link
                     key={i}
-                    className="p-6 bg-sand-50 border border-slate-200 rounded-sm hover:bg-gold-50 transition-colors cursor-pointer group"
+                    href={r.href}
+                    className="p-6 bg-sand-50 border border-slate-200 rounded-sm hover:bg-gold-50 transition-colors cursor-pointer group block"
                   >
                     <h4 className="text-ink-950 font-bold text-sm mb-3 group-hover:text-gold-600 transition-colors">{r.title}</h4>
                     <p className="text-slate-500 text-xs leading-relaxed">{r.desc}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

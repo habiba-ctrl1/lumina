@@ -442,6 +442,59 @@ export default function WeddingsPage() {
           </div>
         </section>
 
+        {/* ── Wedding Planning Locations ── */}
+        <section className="py-16 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-2 uppercase tracking-widest">Where We Plan Weddings</h3>
+            <p className="text-gray-500 text-sm mb-8">Luxury wedding planning services available across Saudi Arabia&apos;s premier destinations.</p>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { name: "Wedding Planner Riyadh", href: "/locations/riyadh" },
+                { name: "Wedding Planner Jeddah", href: "/locations/jeddah" },
+                { name: "Wedding Planner Dammam", href: "/locations/dammam" },
+                { name: "Destination Weddings AlUla", href: "/locations/alula" },
+                { name: "Weddings Makkah", href: "/locations/makkah" },
+              ].map((loc) => (
+                <Link
+                  key={loc.href}
+                  href={loc.href}
+                  className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                >
+                  {loc.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── From Our Blog ── */}
+        <section className="py-20 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Wedding Planning Resources</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "How Much Does a Wedding Cost in Saudi Arabia? (2026 Guide)", slug: "exceptional-wedding-cost-saudi-arabia-guide", desc: "A comprehensive data-driven cost breakdown comparing Riyadh vs AlUla luxury weddings." },
+                { title: "Why Saudi Arabia is the New Global Destination for Weddings", slug: "destination-wedding-planning-guide", desc: "From AlUla to NEOM, discover why Vision 2030 has transformed Saudi Arabia into the ultimate wedding destination." },
+                { title: "Destination Weddings in AlUla & The Red Sea", slug: "destination-weddings-alula-red-sea", desc: "Crafting breathtaking desert ceremonies and Red Sea beachfront weddings in Saudi Arabia." },
+                { title: "Best Wedding Venues in Jeddah 2026", slug: "best-wedding-venues-jeddah-2026", desc: "The complete guide to Jeddah's best wedding venues — waterfront ceremony spaces and exceptional hotel ballrooms." },
+                { title: "Crafting Unforgettable Royal Weddings in Saudi Arabia", slug: "crafting-unforgettable-royal-weddings-saudi-arabia", desc: "Explore the essence of a royal Saudi wedding and how Vision 2030 is shaping grand celebrations." },
+                { title: "2026 Event Color Trends: The Defining Palette", slug: "trending-colors-2026-event-palette", desc: "Discover the stunning color trends dominating events in 2026 — from AlUla sands to Red Sea blues." },
+              ].map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
+                >
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Wedding Guide</span>
+                  <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Footer />
         <WhatsAppButton />
       </main>

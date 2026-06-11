@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"src\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -First 5)"
+    ]
+  }
+}

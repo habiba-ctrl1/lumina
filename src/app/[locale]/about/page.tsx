@@ -235,6 +235,34 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* About Sub-pages */}
+      <section className="py-16 bg-white border-t border-neutral-200/80">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-8" style={{ letterSpacing: "-0.02em" }}>
+            Explore <span className="text-[var(--primary)]">Our Company</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "Our Team", desc: "Meet the expert event planners and creatives behind every Saudi Event Management masterpiece.", href: "/about/our-team", icon: "👥" },
+              { title: "Awards & Accolades", desc: "Celebrating our recognition as Saudi Arabia's leading luxury event management company.", href: "/about/awards-accolades", icon: "🏆" },
+              { title: "Careers", desc: "Join Saudi Arabia's premier event management team. Explore opportunities across Riyadh, Jeddah, and AlUla.", href: "/about/careers", icon: "💼" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex gap-4 p-6 rounded-2xl border border-neutral-200/80 hover:border-[var(--primary)]/40 hover:shadow-md transition-all bg-white"
+              >
+                <span className="text-2xl shrink-0">{item.icon}</span>
+                <div>
+                  <h3 className="font-semibold text-neutral-900 text-[15px] mb-1 group-hover:text-[var(--primary)] transition-colors">{item.title}</h3>
+                  <p className="text-neutral-500 text-[13px] leading-relaxed">{item.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 md:py-32 px-6">
         <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden max-w-6xl mx-auto shadow-2xl">

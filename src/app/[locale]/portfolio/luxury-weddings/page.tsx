@@ -125,6 +125,24 @@ export default function LuxuryWeddingsPortfolio() {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <h3 className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/services/weddings" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Luxury Wedding Planning
+            </Link>
+            <Link href="/services/royal-weddings" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Royal Weddings &amp; Ceremonies
+            </Link>
+            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+              Luxury &amp; VIP Events
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
       <WhatsAppButton />
     </main>
