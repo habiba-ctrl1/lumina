@@ -142,8 +142,8 @@ export default function SeasonalEventsPage() {
           title="Cultural Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering luxury cultural experiences across Riyadh, Jeddah, and beyond."
-          backgroundImage="/makkah_kaaba_heritage.webp"
-          imageAlt="Makkah heritage at sunset — cultural and Saudi heritage events organizer"
+          backgroundImage="/majlis_gathering_people.webp"
+          imageAlt="Cultural events Saudi Arabia — Ramadan and National Day organizer"
           badge="Cultural Events | التراث السعودي"
           breadcrumbs={[
             { label: "Home", href: "/" },

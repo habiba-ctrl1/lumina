@@ -9,12 +9,6 @@ export function getCityImage(city: string): string {
   if (c === 'alula') {
     return 'https://images.unsplash.com/photo-1627914856002-861c296684aa?auto=format&fit=crop&q=80&w=2000'; // AlUla desert/heritage
   }
-  if (c === 'madinah' || c === 'medina') {
-    return '/madinah_prophets_mosque.webp'; // Al-Masjid an-Nabawi, Madinah
-  }
-  if (c === 'makkah' || c === 'mecca') {
-    return '/makkah_kaaba_heritage.webp'; // Masjid al-Haram, Makkah
-  }
   if (c === 'dammam' || c === 'alkhobar' || c === 'khobar') {
     return 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=2000'; // Corporate hub / eastern province
   }

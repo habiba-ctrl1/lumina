@@ -2,9 +2,9 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Image from "next/image";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
-import { Star, Crown, Gem, MapPin, Music, Shield, ChevronRight } from "lucide-react";
+import { Star, Crown, Gem, MapPin, Music, Shield, ChevronRight, CheckCircle2, Phone } from "lucide-react";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -171,6 +171,18 @@ const resources = [
   { title: "Best Corporate Event Venues in Riyadh 2026", desc: "An exclusive guide to the Kingdom's premier venues — KAFD, Ritz-Carlton, and five-star hotel ballrooms.", href: "/blog/best-corporate-event-venues-riyadh-2026" },
 ];
 
+const faqs = [
+  { q: "How do you ensure confidentiality for VIP and Royal family events?", a: "We operate under strict Non-Disclosure Agreements (NDAs). Our elite staff undergoes rigorous background vetting and digital security training. We implement stringent access controls, encrypted communications, and secure perimeter management." },
+  { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes. Through our global talent agency networks, we negotiate and manage private appearances by A-list international musicians and performers, handling all rider requirements, private aviation, and technical production." },
+  { q: "Do you provide close protection and security for VIP events?", a: "We co-ordinate with top-tier private security firms and government protocol offices for seamless close-protection, secure perimeter management, motorcade co-ordination, and discreet crowd management." },
+  { q: "What venues do you use for luxury VIP events in Saudi Arabia?", a: "We secure exclusive access to Saudi Arabia's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons, Rosewood Jeddah, Maraya Concert Hall in AlUla, and bespoke private estates across the Kingdom." },
+  { q: "Can you organise ultra-luxury desert experiences in AlUla?", a: "Yes. AlUla is one of our signature VIP destinations. We design private desert dinners, glamping experiences, and heritage site activations in full collaboration with the Royal Commission for AlUla (RCU) for site access and zero-impact operations." },
+  { q: "Do you offer event planning for HNWI private residences?", a: "Yes. We regularly plan and execute private events at royal palaces, luxury compounds, and private estates across the Kingdom — bringing our full production capability directly to the client's private property." },
+  { q: "What is the most exclusive experience you can offer?", a: "Our most exclusive offerings include private concerts with international artists at custom-built stages in AlUla's Hejaz mountains, superyacht events along the Red Sea coastline, and invitation-only brand unveilings with bespoke 360° immersive environments." },
+  { q: "luxury event planner near me Riyadh", a: "Saudi Event Management's VIP division is headquartered in Riyadh, providing white-glove event planning services for high-profile clients across the capital with immediate on-site availability." },
+  { q: "VIP concierge service Saudi Arabia", a: "Our VIP concierge services cover every detail — private chef arrangements, luxury fleet transportation, helicopter transfers, hotel suite buyouts, bespoke gifting, and a 24/7 dedicated event manager for every VIP guest." },
+];
+
 export default function LuxuryVIPEventsPage() {
   return (
     <>
@@ -178,15 +190,15 @@ export default function LuxuryVIPEventsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-ink-950 overflow-hidden pt-20">
+      <main className="min-h-screen bg-white overflow-hidden">
         <Navbar />
 
         <InternalPageHero
           title="Luxury VIP Event Management"
           titleHighlight="Saudi Arabia"
           subtitle="The leading luxury event planner for VIPs, Royal Families, and High-Net-Worth Individuals — strictly confidential, ultra-luxury experiences from private concerts and yacht parties to bespoke desert events in AlUla."
-          backgroundImage="/luxury_vip_table_setting.webp"
-          imageAlt="Luxury VIP event planning Saudi Arabia — bespoke fine-dining table setting"
+          backgroundImage="/jeddah_luxury_people.webp"
+          imageAlt="Luxury VIP event planning Saudi Arabia — royal and HNWI experiences"
           badge="VIP & Luxury Events"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -194,109 +206,193 @@ export default function LuxuryVIPEventsPage() {
             { label: "Luxury VIP Events" },
           ]}
           minHeight="large"
+          trustElements={[
+            { value: "100%", label: "Confidential · NDA Protected" },
+            { value: "24/7", label: "Dedicated VIP Concierge" },
+            { value: "A-List", label: "International Talent Access" },
+          ]}
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* ── CTA BAR ── */}
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-10 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-lg"
+              href="#private-consultation"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-gold-700 text-white font-semibold uppercase tracking-widest hover:bg-gold-800 transition-all shadow-[0_4px_14px_rgba(127,102,66,0.3)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Request Private Consultation
             </Link>
+            <a
+              href="https://wa.me/966501234567?text=Hi%2C%20I%27d%20like%20a%20private%20VIP%20event%20consultation."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-gold-700 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Discreet WhatsApp
+            </a>
           </div>
         </div>
 
-        {/* ── EEAT Credentials ── */}
-        <section className="py-10 border-y border-white/5 bg-ink-900/50">
+        {/* ── Credentials Bar ── */}
+        <section className="py-9 border-b border-neutral-200/80 bg-[var(--surface-warm)]">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-              <span className="text-white text-xs font-bold tracking-widest">RITZ-CARLTON</span>
-              <span className="text-white text-xs font-bold tracking-widest">FOUR SEASONS</span>
-              <span className="text-white text-xs font-bold tracking-widest">ROSEWOOD JEDDAH</span>
-              <span className="text-white text-xs font-bold tracking-widest">MARAYA — ALULA</span>
-              <span className="text-white text-xs font-bold tracking-widest">RCU PARTNER</span>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 text-[11px] font-bold tracking-[0.18em] text-neutral-400">
+              <span className="hover:text-gold-700 transition-colors">RITZ-CARLTON</span>
+              <span className="hover:text-gold-700 transition-colors">FOUR SEASONS</span>
+              <span className="hover:text-gold-700 transition-colors">ROSEWOOD JEDDAH</span>
+              <span className="hover:text-gold-700 transition-colors">MARAYA — ALULA</span>
+              <span className="hover:text-gold-700 transition-colors">RCU PARTNER</span>
             </div>
           </div>
         </section>
 
         {/* ── Services Grid ── */}
-        <section className="py-32 relative max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-display text-white mb-4">
-              Bespoke <span className="text-gold-400 italic">Experiences</span>
-            </h2>
-            <div className="w-16 h-px bg-gold-400/50 mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className="bg-ink-900/50 border border-white/5 p-8 rounded-sm hover:border-gold-400/30 transition-all duration-500 group"
-              >
-                <s.icon size={32} className="text-gold-400 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-display text-white mb-4 uppercase tracking-wider">{s.title}</h3>
-                <p className="text-sand-400 text-sm font-light leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── GEO Highlights ── */}
-        <section className="py-32 bg-ink-900 border-y border-white/5">
+        <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-4xl font-display text-white mb-4">
-                Iconic <span className="text-gold-400 italic">Destinations</span>
+              <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700 mb-4">
+                <span className="w-5 h-px bg-gold-400" /> The VIP Division
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Bespoke <span className="text-gold-700">experiences</span>
               </h2>
-              <p className="text-sand-400 text-sm max-w-2xl mx-auto">
-                Each location in the Kingdom presents a unique canvas for ultra-luxury experiences.
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+                Discreet, white-glove planning for the Kingdom&apos;s most discerning clients — every detail
+                anticipated, every confidence kept.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {geoHighlights.map((geo, i) => (
-                <div key={i} className="border border-white/5 rounded-sm p-6 hover:border-gold-400/20 transition-all">
-                  <span className="text-[10px] text-gold-400 uppercase tracking-widest font-bold block mb-3">{geo.tag}</span>
-                  <h3 className="text-white font-bold text-lg mb-3">{geo.location}</h3>
-                  <p className="text-sand-500 text-xs leading-relaxed">{geo.desc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.map((s, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-neutral-200/80 p-8 rounded-2xl hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.18)] transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center mb-5 group-hover:bg-gold-700 transition-colors">
+                    <s.icon size={22} className="text-gold-700 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900 mb-3">{s.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ── GEO Highlights ── */}
+        <section className="py-24 md:py-28 bg-[var(--surface-warm)] border-y border-gold-200/60">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700 mb-4">
+                <span className="w-5 h-px bg-gold-400" /> Where We Create
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Iconic <span className="text-gold-700">destinations</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 text-sm max-w-2xl mx-auto">
+                Each location in the Kingdom presents a unique canvas for ultra-luxury experiences.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {geoHighlights.map((geo, i) => (
+                <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-7 hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all">
+                  <span className="text-[10px] text-gold-700 uppercase tracking-widest font-bold block mb-3">{geo.tag}</span>
+                  <h3 className="text-neutral-900 font-bold text-lg mb-3">{geo.location}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{geo.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRIVATE CONSULTATION / LEAD FORM (exclusive obsidian band) ── */}
+        <section id="private-consultation" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #131310 0%, #1c1a14 55%, #2a251a 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-gold-400/[0.06] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-gold-400/[0.04] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-gold-300">
+                  <span className="w-6 h-px bg-gold-400" /> By Invitation · Strictly Private
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Begin a confidential<br />
+                  <span className="text-gold-300">conversation.</span>
+                </h2>
+                <p className="text-white/65 text-base leading-relaxed max-w-md">
+                  Share a few discreet details and the Director of our VIP Division will personally reach out
+                  within two hours. Every enquiry is protected under NDA from first contact.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "NDA-protected from the very first message",
+                    "Dedicated 24/7 VIP event director",
+                    "Exclusive access to Maraya, Ritz-Carlton & private estates",
+                    "A-list talent, private aviation & close protection",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-gold-300 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-3 border-t border-white/10">
+                  <p className="text-white font-bold text-sm">H.H. Protocol Affairs Team</p>
+                  <p className="text-white/40 text-[10px] uppercase tracking-widest">Diplomatic &amp; VIP Events Division</p>
+                </div>
+              </div>
+              <ServiceLeadForm
+                source="luxury_vip_events_page"
+                defaultEventType="Luxury & VIP Event"
+                eyebrow="Private Enquiry"
+                heading="Request a private consultation"
+                subheading="Confidential and discreet. The Director of our VIP Division will respond personally within 2 hours."
+                submitLabel="Request Private Consultation"
+                eventTypeOptions={[
+                  "Royal Family Event",
+                  "HNWI Private Celebration",
+                  "Private Concert",
+                  "Yacht / Desert Experience",
+                  "Exclusive Brand Launch",
+                  "Diplomatic / Protocol Event",
+                  "Other",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* ── Topical Authority Section ── */}
-        <section className="py-32 bg-ink-950 border-b border-white/5">
+        <section className="py-24 md:py-28 bg-white border-b border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-display font-bold text-white">
-                  VIP Planning <br />
-                  <span className="text-gold-400 italic">Resources</span>
-                </h3>
-                <p className="text-sand-500 text-sm leading-relaxed">
-                  Insider knowledge for the Kingdom's most discerning event clients.
+                <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700">
+                  <span className="w-5 h-px bg-gold-400" /> Insider Knowledge
+                </span>
+                <h2 className="text-2xl font-bold text-neutral-900">
+                  VIP planning <br />
+                  <span className="text-gold-700">resources</span>
+                </h2>
+                <p className="text-neutral-500 text-sm leading-relaxed">
+                  Insider knowledge for the Kingdom&apos;s most discerning event clients.
                 </p>
-                <Link href="/blog" className="inline-block text-gold-400 text-xs font-bold uppercase tracking-widest border-b border-gold-400 pb-1">
+                <Link href="/blog" className="inline-block text-gold-700 text-xs font-bold uppercase tracking-widest border-b border-gold-400 pb-1">
                   View All Guides
                 </Link>
-                <div className="pt-6 border-t border-white/10">
-                  <p className="text-white font-bold text-sm">H.H. Protocol Affairs Team</p>
-                  <p className="text-sand-500 text-[10px] uppercase tracking-widest">Diplomatic & VIP Events Division</p>
-                </div>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {resources.map((r, i) => (
                   <Link
                     key={i}
                     href={r.href}
-                    className="p-6 bg-ink-900 rounded-sm hover:bg-gold-400/5 transition-colors cursor-pointer group border border-white/5 block"
+                    className="p-6 bg-[var(--surface-warm)] border border-gold-200/50 rounded-2xl hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all cursor-pointer group block"
                   >
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-gold-400 transition-colors">
+                    <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-gold-700 transition-colors">
                       {r.title}
-                    </h4>
-                    <p className="text-sand-500 text-xs leading-relaxed">{r.desc}</p>
+                    </h3>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{r.desc}</p>
                   </Link>
                 ))}
               </div>
@@ -305,21 +401,21 @@ export default function LuxuryVIPEventsPage() {
         </section>
 
         {/* ── Arabic Section ── */}
-        <section className="py-32 bg-ink-900 border-b border-white/5">
+        <section className="py-24 md:py-28 bg-[var(--surface-warm)] border-b border-gold-200/60">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-2xl md:text-4xl font-display text-white mb-16">
-              تجارب <span className="text-gold-400 italic">لا تُنسى</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-16">
+              تجارب <span className="text-gold-700">لا تُنسى</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { ar: "مخطط فعاليات كبار الشخصيات الرياض", en: "VIP Event Planner Riyadh", desc: "خدمات تنظيم فعاليات خاصة بأعلى معايير الفخامة والخصوصية في العاصمة." },
                 { ar: "فعاليات فاخرة العُلا والبحر الأحمر", en: "Luxury Events AlUla & Red Sea", desc: "تجارب فريدة من نوعها في أجمل وجهات المملكة الطبيعية والتراثية." },
                 { ar: "خدمة كونسيرج خاصة السعودية", en: "Private Concierge Service KSA", desc: "رعاية شاملة لكل تفصيل في حفلاتكم الخاصة بسرية ودقة مطلقة." },
               ].map((item) => (
-                <div key={item.en} className="border border-white/5 rounded-sm p-8 hover:border-gold-400/20 transition-all">
-                  <h3 className="text-gold-400 font-bold text-xl mb-3">{item.ar}</h3>
-                  <p className="text-sand-500 text-xs mb-4">{item.en}</p>
-                  <p className="text-sand-600 text-sm leading-relaxed">{item.desc}</p>
+                <div key={item.en} className="bg-white border border-neutral-200/80 rounded-2xl p-8 hover:border-gold-400 transition-all">
+                  <h3 className="text-gold-700 font-bold text-xl mb-3">{item.ar}</h3>
+                  <p className="text-neutral-400 text-xs mb-4">{item.en}</p>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -327,29 +423,19 @@ export default function LuxuryVIPEventsPage() {
         </section>
 
         {/* ── FAQ Section ── */}
-        <section className="py-32 bg-ink-950 border-b border-white/5">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-display text-white mb-4">
-                VIP Events <span className="text-gold-400 italic">FAQ</span>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                VIP events <span className="text-gold-700">FAQ</span>
               </h2>
-              <div className="w-12 h-px bg-gold-400/50 mx-auto" />
+              <div className="w-12 h-px bg-gold-400 mx-auto mt-4" />
             </div>
-            <div className="space-y-6">
-              {[
-                { q: "How do you ensure confidentiality for VIP and Royal family events?", a: "We operate under strict Non-Disclosure Agreements (NDAs). Our elite staff undergoes rigorous background vetting and digital security training. We implement stringent access controls, encrypted communications, and secure perimeter management." },
-                { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes. Through our global talent agency networks, we negotiate and manage private appearances by A-list international musicians and performers, handling all rider requirements, private aviation, and technical production." },
-                { q: "Do you provide close protection and security for VIP events?", a: "We co-ordinate with top-tier private security firms and government protocol offices for seamless close-protection, secure perimeter management, motorcade co-ordination, and discreet crowd management." },
-                { q: "What venues do you use for luxury VIP events in Saudi Arabia?", a: "We secure exclusive access to Saudi Arabia's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons, Rosewood Jeddah, Maraya Concert Hall in AlUla, and bespoke private estates across the Kingdom." },
-                { q: "Can you organise ultra-luxury desert experiences in AlUla?", a: "Yes. AlUla is one of our signature VIP destinations. We design private desert dinners, glamping experiences, and heritage site activations in full collaboration with the Royal Commission for AlUla (RCU) for site access and zero-impact operations." },
-                { q: "Do you offer event planning for HNWI private residences?", a: "Yes. We regularly plan and execute private events at royal palaces, luxury compounds, and private estates across the Kingdom — bringing our full production capability directly to the client's private property." },
-                { q: "What is the most exclusive experience you can offer?", a: "Our most exclusive offerings include private concerts with international artists at custom-built stages in AlUla's Hejaz mountains, superyacht events along the Red Sea coastline, and invitation-only brand unveilings with bespoke 360° immersive environments." },
-                { q: "luxury event planner near me Riyadh", a: "Saudi Event Management's VIP division is headquartered in Riyadh, providing white-glove event planning services for high-profile clients across the capital with immediate on-site availability." },
-                { q: "VIP concierge service Saudi Arabia", a: "Our VIP concierge services cover every detail — private chef arrangements, luxury fleet transportation, helicopter transfers, hotel suite buyouts, bespoke gifting, and a 24/7 dedicated event manager for every VIP guest." },
-              ].map((faq, i) => (
-                <div key={i} className="bg-ink-950 p-8 border border-white/5 rounded-sm">
-                  <h3 className="text-lg font-medium text-white mb-3">{faq.q}</h3>
-                  <p className="text-sand-400 font-light text-sm leading-relaxed">{faq.a}</p>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div key={i} className="bg-[var(--surface-warm)] border border-gold-200/50 p-7 rounded-2xl">
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -357,11 +443,11 @@ export default function LuxuryVIPEventsPage() {
         </section>
 
         {/* ── Related Services ── */}
-        <section className="py-20 bg-ink-950 border-t border-white/5">
+        <section className="py-20 bg-[var(--surface-warm)] border-t border-gold-200/60">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">
               Related Services
-            </h3>
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { title: "Destination Events", slug: "destination-events", desc: "AlUla, NEOM, Red Sea coastal — breathtaking locations for extraordinary events." },
@@ -371,11 +457,11 @@ export default function LuxuryVIPEventsPage() {
                 <Link
                   key={rel.slug}
                   href={`/services/${rel.slug}`}
-                  className="group bg-ink-900 border border-white/5 rounded-sm p-6 hover:border-gold-400/30 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all"
                 >
-                  <h4 className="text-white font-bold mb-2 group-hover:text-gold-400 transition-colors">{rel.title}</h4>
-                  <p className="text-sand-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
-                  <span className="text-gold-400 text-xs font-bold flex items-center gap-1">
+                  <h3 className="text-neutral-900 font-bold mb-2 group-hover:text-gold-700 transition-colors">{rel.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <span className="text-gold-700 text-xs font-bold flex items-center gap-1">
                     Learn More <ChevronRight size={12} />
                   </span>
                 </Link>

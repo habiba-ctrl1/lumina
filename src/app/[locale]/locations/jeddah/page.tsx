@@ -371,8 +371,8 @@ export default function JeddahPage() {
         title="Coastal Elegance &"
         titleHighlight="Bespoke Galas"
         subtitle="From King Fahd Fountain to the coral-stone mansions of Al-Balad — Jeddah's premier event management company delivering luxury corporate events, weddings, and brand activations across the Red Sea coast."
-        backgroundImage="/jeddah_corniche_skyline.webp"
-        imageAlt="Jeddah Corniche skyline along the Red Sea coast, Saudi Arabia"
+        backgroundImage="/jeddah_luxury_people.webp"
+        imageAlt="Elegant guests at a luxury event in Jeddah Saudi Arabia"
         badge="The Bride of the Red Sea | Jeddah"
         breadcrumbs={[
           { label: "Home", href: "/" },
