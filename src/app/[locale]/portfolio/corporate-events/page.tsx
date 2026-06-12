@@ -74,7 +74,7 @@ export default function CorporateEventsPortfolio() {
       <InternalPageHero
         title="Corporate Events Portfolio"
         subtitle="From high-stakes board meetings to massive international trade shows, we provide military-grade logistics and unparalleled production quality for the corporate sector."
-        backgroundImage="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=2000"
+        backgroundImage="/riyadh_summit_people.webp"
         imageAlt="Corporate event management Saudi Arabia portfolio"
         badge="Corporate Events Portfolio"
         breadcrumbs={[

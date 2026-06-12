@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
 import {
   Building2,
@@ -18,6 +19,7 @@ import {
   Shield,
   Award,
   Layers,
+  Phone,
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -428,7 +430,7 @@ export default function CorporateEventsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-emerald-950 overflow-hidden">
+      <main className="min-h-screen bg-white overflow-hidden">
         <Navbar />
 
         {/* ── HERO ── */}
@@ -436,7 +438,7 @@ export default function CorporateEventsPage() {
           title="Corporate Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="End-to-end corporate event planning for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's premier five-star venues."
-          backgroundImage="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=2000"
+          backgroundImage="/alkhobar_corporate_people.webp"
           imageAlt="Corporate event management Saudi Arabia — executive summit at KAFD Riyadh"
           badge="فعاليات الشركات | Corporate Events"
           breadcrumbs={[
@@ -453,44 +455,44 @@ export default function CorporateEventsPage() {
         />
 
         {/* ── CTA BAR ── */}
-        <div className="bg-emerald-900 border-b border-white/10 py-6">
+        <div className="bg-white border-b border-neutral-200/80 py-6">
           <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/consultation"
-              className="inline-block px-10 py-4 bg-[var(--primary)] text-slate-900 font-bold uppercase tracking-widest hover:opacity-90 transition-all shadow-lg text-sm"
+              href="#proposal"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Request a Corporate Proposal
             </Link>
-            <Link
-              href="/contact"
-              className="inline-block px-10 py-4 border border-white/20 text-white font-semibold uppercase tracking-widest hover:border-[var(--primary)] transition-all text-sm"
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
-              Speak to Our Team
-            </Link>
+              <Phone size={15} /> Speak to Our Team
+            </a>
           </div>
         </div>
 
         {/* ── TRUST / CREDENTIALS BAR ── */}
-        <section className="py-10 border-b border-white/10 bg-emerald-900/40">
+        <section className="py-9 border-b border-neutral-200/80 bg-neutral-50/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-3">
                 <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">IAPCO</span>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest">Affiliated Member</span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Affiliated Member</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">MPI</span>
-                <span className="text-[10px] text-white/40 uppercase tracking-widest">Meeting Professionals</span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Meeting Professionals</span>
               </div>
-              <div className="h-8 w-px bg-white/10 hidden md:block" />
-              <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-white/30">
+              <div className="h-8 w-px bg-neutral-200 hidden md:block" />
+              <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-neutral-400">
                 <span>SAUDI ARAMCO</span>
                 <span>SABIC</span>
                 <span>HRDF</span>
                 <span>PIF</span>
                 <span>NEOM</span>
               </div>
-              <div className="text-xs text-white/40 font-light italic">
+              <div className="text-xs text-neutral-500 font-light italic">
                 &quot;Trusted partner for Vision 2030 corporate events since 2012.&quot;
               </div>
             </div>
@@ -498,42 +500,43 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── SEMANTIC INTRODUCTION ── */}
-        <section className="py-28 bg-emerald-950">
+        <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
               <div className="space-y-7">
-                <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold">
+                <span className="section-label">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                   Saudi Arabia&apos;s Premier Corporate Event Architects
                 </span>
-                <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight" style={{ letterSpacing: "-0.02em" }}>
                   From AGM to Grand Gala —<br />
-                  <span className="text-[var(--primary)]">Flawless. Every Time.</span>
-                </h1>
-                <div className="space-y-5 text-white/60 text-base leading-relaxed font-light">
+                  <span className="text-[var(--primary)]">flawless, every time.</span>
+                </h2>
+                <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
                   <p>
-                    For over 15 years, <strong className="text-white">Saudi Event Management</strong> has
-                    been the operational backbone behind the Kingdom's most consequential corporate
+                    For over 15 years, <strong className="text-neutral-900">Saudi Event Management</strong> has
+                    been the operational backbone behind the Kingdom&apos;s most consequential corporate
                     gatherings — from{" "}
-                    <strong className="text-white">Annual General Meetings</strong> for listed Saudi
+                    <strong className="text-neutral-900">Annual General Meetings</strong> for listed Saudi
                     companies, to 5,000-delegate summits at the{" "}
-                    <strong className="text-white">King Abdullah Financial District (KAFD)</strong> and
+                    <strong className="text-neutral-900">King Abdullah Financial District (KAFD)</strong> and
                     Riyadh International Convention and Exhibition Center{" "}
-                    <strong className="text-white">(RICEC)</strong>.
+                    <strong className="text-neutral-900">(RICEC)</strong>.
                   </p>
                   <p>
-                    Our clients include <strong className="text-white">Saudi Aramco</strong>,{" "}
-                    <strong className="text-white">SABIC</strong>,{" "}
-                    <strong className="text-white">HRDF</strong>,{" "}
-                    <strong className="text-white">PIF</strong>, and a growing roster of giga-project
-                    developers including <strong className="text-white">NEOM</strong>,{" "}
-                    <strong className="text-white">Red Sea Project</strong>, and{" "}
-                    <strong className="text-white">Diriyah Gate Development Authority</strong> — all of
+                    Our clients include <strong className="text-neutral-900">Saudi Aramco</strong>,{" "}
+                    <strong className="text-neutral-900">SABIC</strong>,{" "}
+                    <strong className="text-neutral-900">HRDF</strong>,{" "}
+                    <strong className="text-neutral-900">PIF</strong>, and a growing roster of giga-project
+                    developers including <strong className="text-neutral-900">NEOM</strong>,{" "}
+                    <strong className="text-neutral-900">Red Sea Project</strong>, and{" "}
+                    <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — all of
                     whom demand zero margin for error, full bilingual capability, and alignment with{" "}
-                    <strong className="text-white">Saudi Vision 2030</strong> objectives.
+                    <strong className="text-neutral-900">Saudi Vision 2030</strong> objectives.
                   </p>
                   <p>
                     As a fully accredited{" "}
-                    <strong className="text-white">Professional Conference Organizer (PCO)</strong>{" "}
+                    <strong className="text-neutral-900">Professional Conference Organizer (PCO)</strong>{" "}
                     affiliated with IAPCO and MPI, we manage the complete event lifecycle — from GEA
                     permit acquisition and venue negotiation through to post-event analytics and media
                     distribution — under one unified, accountable team.
@@ -541,7 +544,7 @@ export default function CorporateEventsPage() {
                 </div>
               </div>
               {/* Stats column */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-5">
                 {[
                   { value: "500+", label: "Corporate Events Delivered" },
                   { value: "15+", label: "Years in Saudi Market" },
@@ -552,10 +555,10 @@ export default function CorporateEventsPage() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="bg-emerald-900 border border-white/10 rounded-2xl p-6 text-center hover:border-[var(--primary)]/30 transition-colors"
+                    className="bg-white border border-neutral-200/80 rounded-2xl p-6 text-center shadow-[0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] hover:border-[var(--primary)]/30 transition-all"
                   >
                     <div className="text-2xl font-bold text-[var(--primary)] mb-1">{stat.value}</div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest leading-tight">{stat.label}</div>
+                    <div className="text-[10px] text-neutral-500 uppercase tracking-widest leading-tight">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -564,16 +567,17 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── EVENT TYPES GRID ── */}
-        <section className="py-28 bg-emerald-900/30 border-y border-white/10">
+        <section className="py-24 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 Event Type Expertise
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Every Corporate Format. <span className="text-[var(--primary)]">Mastered.</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Every corporate format. <span className="text-[var(--primary)]">Mastered.</span>
               </h2>
-              <p className="text-white/50 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
                 Eight distinct corporate event disciplines — each led by a specialist team with deep
                 Saudi-market experience and a vetted vendor network.
               </p>
@@ -582,18 +586,18 @@ export default function CorporateEventsPage() {
               {eventTypes.map((et, i) => (
                 <div
                   key={i}
-                  className="bg-emerald-900 border border-white/10 p-7 rounded-2xl hover:border-[var(--primary)]/40 transition-all group"
+                  className="bg-white border border-neutral-200/80 p-7 rounded-2xl hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
-                    <et.icon size={22} className="text-[var(--primary)] group-hover:text-slate-900 transition-colors" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
+                    <et.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
                   </div>
                   <div className="mb-1">
-                    <span className="text-[10px] text-white/30 uppercase tracking-widest">{et.arabic}</span>
+                    <span className="text-[10px] text-neutral-400 uppercase tracking-widest">{et.arabic}</span>
                   </div>
-                  <h3 className="font-bold text-white text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
+                  <h3 className="font-bold text-neutral-900 text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
                     {et.title}
                   </h3>
-                  <p className="text-white/50 text-xs leading-relaxed">{et.desc}</p>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{et.desc}</p>
                 </div>
               ))}
             </div>
@@ -601,35 +605,36 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── VENUE CLUSTER ── */}
-        <section className="py-28 bg-emerald-950">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 Venue Authority
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Top Corporate Event Venues <span className="text-[var(--primary)]">in Saudi Arabia</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Top corporate event venues <span className="text-[var(--primary)]">in Saudi Arabia</span>
               </h2>
-              <p className="text-white/50 mt-4 max-w-2xl mx-auto text-sm">
-                Preferred-partner access to the Kingdom's premier convention centres, KAFD facilities, and
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
+                Preferred-partner access to the Kingdom&apos;s premier convention centres, KAFD facilities, and
                 five-star business hotels — with negotiated rates and priority booking.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {venueCity.map((v) => (
-                <div key={v.city} className="bg-emerald-900 border border-white/10 rounded-2xl p-8">
+                <div key={v.city} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8">
                   <div className="flex items-start justify-between mb-5">
                     <div>
-                      <h3 className="text-xl font-bold text-white">{v.city}</h3>
-                      <span className="text-sm text-white/40">{v.arabic}</span>
+                      <h3 className="text-xl font-bold text-neutral-900">{v.city}</h3>
+                      <span className="text-sm text-neutral-400">{v.arabic}</span>
                     </div>
-                    <span className="text-[10px] bg-[var(--primary)]/10 text-[var(--primary)] px-3 py-1 rounded-full uppercase tracking-wider font-semibold whitespace-nowrap">
+                    <span className="text-[10px] bg-emerald-50 text-[var(--primary)] border border-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider font-semibold whitespace-nowrap">
                       {v.tag}
                     </span>
                   </div>
                   <ul className="space-y-3">
                     {v.venues.map((venue, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-white/60">
+                      <li key={i} className="flex items-start gap-2 text-sm text-neutral-600">
                         <CheckCircle2 size={14} className="text-[var(--primary)] mt-0.5 flex-shrink-0" />
                         {venue}
                       </li>
@@ -642,16 +647,17 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── CAPABILITIES GRID ── */}
-        <section className="py-28 bg-emerald-900/30 border-y border-white/10">
+        <section className="py-24 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 In-House Capabilities
               </span>
-              <h2 className="text-3xl font-bold text-white">
-                One Team. Complete <span className="text-[var(--primary)]">Accountability.</span>
+              <h2 className="text-3xl font-bold text-neutral-900">
+                One team. Complete <span className="text-[var(--primary)]">accountability.</span>
               </h2>
-              <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm">
+              <p className="text-neutral-500 mt-4 max-w-xl mx-auto text-sm">
                 All capabilities owned in-house — no multi-vendor friction, no accountability gaps.
               </p>
             </div>
@@ -659,13 +665,13 @@ export default function CorporateEventsPage() {
               {capabilities.map((cap, i) => (
                 <div
                   key={i}
-                  className="bg-emerald-900 border border-white/10 p-7 rounded-2xl hover:border-[var(--primary)]/30 transition-all group"
+                  className="bg-white border border-neutral-200/80 p-7 rounded-2xl hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
-                    <cap.icon size={22} className="text-[var(--primary)] group-hover:text-slate-900 transition-colors" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
+                    <cap.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-bold text-white text-sm mb-3">{cap.title}</h3>
-                  <p className="text-white/50 text-xs leading-relaxed">{cap.desc}</p>
+                  <h3 className="font-bold text-neutral-900 text-sm mb-3">{cap.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{cap.desc}</p>
                 </div>
               ))}
             </div>
@@ -673,57 +679,125 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── HOW WE WORK ── */}
-        <section className="py-28 bg-emerald-950">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 Our Process
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                How We Plan a <span className="text-[var(--primary)]">Corporate Event</span> in Saudi Arabia
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                How we plan a <span className="text-[var(--primary)]">corporate event</span> in Saudi Arabia
               </h2>
-              <p className="text-white/50 mt-4 max-w-2xl mx-auto text-sm">
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
                 A six-stage methodology refined across 500+ corporate events — from initial brief to
                 post-event ROI reporting.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {planningSteps.map((s, i) => (
-                <div key={i} className="bg-emerald-900 border border-white/10 rounded-2xl p-8 hover:border-[var(--primary)]/30 transition-all">
-                  <div className="text-4xl font-bold text-[var(--primary)]/20 mb-4">{s.step}</div>
-                  <h3 className="font-bold text-white text-base mb-3">{s.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{s.desc}</p>
+                <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8 hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all">
+                  <div className="text-4xl font-bold text-[var(--primary)]/25 mb-4">{s.step}</div>
+                  <h3 className="font-bold text-neutral-900 text-base mb-3">{s.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ── LEAD FORM / PROPOSAL ── */}
+        <section id="proposal" className="py-24 md:py-28 bg-[#06302296] relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Request a Proposal
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Let&apos;s build your next<br />
+                  <span className="text-[#C5A880]">flagship corporate event.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  Share your brief and a senior consultant will return a tailored, itemised proposal within
+                  two business hours — venues, production, budget, and a clear delivery timeline.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Dedicated PCO-certified account director",
+                    "Preferred-partner venue rates at KAFD, RICEC & 5-star hotels",
+                    "Full GEA permit & compliance handled in-house",
+                    "Transparent, itemised pricing — no hidden fees",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <a
+                    href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20a%20corporate%20event."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                  >
+                    <Phone size={15} /> Or message us on WhatsApp
+                  </a>
+                </div>
+              </div>
+              <ServiceLeadForm
+                source="corporate_events_page"
+                defaultEventType="Corporate Summit / Conference"
+                eyebrow="Corporate Proposal"
+                heading="Request a corporate proposal"
+                subheading="A senior consultant will respond within 2 hours with a tailored plan and indicative budget."
+                submitLabel="Request My Proposal"
+                eventTypeOptions={[
+                  "Annual General Meeting (AGM)",
+                  "Executive Summit / Conference",
+                  "Gala Dinner & Awards",
+                  "Product Launch / Brand Activation",
+                  "Hybrid Conference",
+                  "Board Retreat",
+                  "Vision 2030 Activation",
+                  "Town Hall / All-Hands",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* ── VISION 2030 ENTITY SECTION ── */}
-        <section className="py-28 bg-emerald-900/40 border-y border-white/10">
+        <section className="py-24 md:py-28 bg-[var(--surface-tinted)] border-y border-emerald-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
-                <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold">Vision 2030 Alignment</span>
-                <h2 className="text-3xl font-bold text-white leading-tight">
-                  Corporate Events at the <br />
-                  <span className="text-[var(--primary)]">Heart of the Kingdom&apos;s Transformation</span>
+                <span className="section-label">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                  Vision 2030 Alignment
+                </span>
+                <h2 className="text-3xl font-bold text-neutral-900 leading-tight">
+                  Corporate events at the <br />
+                  <span className="text-[var(--primary)]">heart of the Kingdom&apos;s transformation</span>
                 </h2>
-                <div className="space-y-4 text-white/60 text-sm leading-relaxed font-light">
+                <div className="space-y-4 text-neutral-600 text-sm leading-relaxed">
                   <p>
                     Saudi Vision 2030 has created the most dynamic corporate events landscape in the
                     region. From the{" "}
-                    <strong className="text-white">Future Investment Initiative (FII) Forum</strong> and
+                    <strong className="text-neutral-900">Future Investment Initiative (FII) Forum</strong> and
                     LEAP Technology Conference to{" "}
-                    <strong className="text-white">Cityscape Saudi Arabia</strong> and{" "}
-                    <strong className="text-white">Black Hat MEA</strong>, the Kingdom now hosts global
+                    <strong className="text-neutral-900">Cityscape Saudi Arabia</strong> and{" "}
+                    <strong className="text-neutral-900">Black Hat MEA</strong>, the Kingdom now hosts global
                     calibre events that demand global-standard management.
                   </p>
                   <p>
                     Saudi Event Management is deeply embedded in the Vision 2030 ecosystem — partnering
-                    with the <strong className="text-white">General Entertainment Authority (GEA)</strong>,{" "}
-                    <strong className="text-white">Ministry of Culture</strong>, and{" "}
-                    <strong className="text-white">Saudi Tourism Authority</strong> to deliver events
+                    with the <strong className="text-neutral-900">General Entertainment Authority (GEA)</strong>,{" "}
+                    <strong className="text-neutral-900">Ministry of Culture</strong>, and{" "}
+                    <strong className="text-neutral-900">Saudi Tourism Authority</strong> to deliver events
                     that advance the Kingdom&apos;s National Transformation Program objectives.
                   </p>
                 </div>
@@ -737,9 +811,9 @@ export default function CorporateEventsPage() {
                   { label: "Saudi Agri & Food Expo", desc: "Agricultural industry showcase" },
                   { label: "Giga-Project Forums", desc: "NEOM · Red Sea · Diriyah · Qiddiya" },
                 ].map((item, i) => (
-                  <div key={i} className="bg-emerald-900 border border-white/10 rounded-xl p-5 hover:border-[var(--primary)]/30 transition-colors">
+                  <div key={i} className="bg-white border border-neutral-200/80 rounded-xl p-5 hover:border-[var(--primary)]/30 hover:shadow-[0_6px_20px_rgba(13,107,78,0.07)] transition-all">
                     <p className="text-[var(--primary)] font-bold text-xs mb-1">{item.label}</p>
-                    <p className="text-white/40 text-[11px] leading-relaxed">{item.desc}</p>
+                    <p className="text-neutral-500 text-[11px] leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -748,13 +822,13 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── ARABIC AUTHORITY SECTION ── */}
-        <section className="py-28 bg-emerald-950">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-4">
                 رائدون في <span className="text-[var(--primary)]">إدارة الفعاليات المؤسسية</span> بالمملكة
               </h2>
-              <p className="text-white/50 text-sm max-w-2xl mx-auto">
+              <p className="text-neutral-500 text-sm max-w-2xl mx-auto">
                 سعودي إيفنت مانجمنت — الشركة الأولى في تنظيم الفعاليات المؤسسية لكبرى المؤسسات السعودية
               </p>
             </div>
@@ -765,20 +839,20 @@ export default function CorporateEventsPage() {
                 { ar: "فعاليات رؤية 2030", en: "Vision 2030 Events", desc: "شراكات استراتيجية مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة لتنفيذ فعاليات رؤية 2030." },
                 { ar: "منظم مؤتمرات احترافي", en: "PCO Saudi Arabia", desc: "خدمات المنظم المحترف للمؤتمرات — تسجيل المشاركين والترجمة الفورية وإدارة المتحدثين والإنتاج التقني." },
               ].map((item) => (
-                <div key={item.en} className="bg-emerald-900 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-colors">
+                <div key={item.en} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-colors">
                   <h3 className="text-[var(--primary)] font-bold text-sm mb-1">{item.ar}</h3>
-                  <p className="text-white/30 text-xs uppercase tracking-wider mb-3">{item.en}</p>
-                  <p className="text-white/50 text-xs leading-relaxed">{item.desc}</p>
+                  <p className="text-neutral-400 text-xs uppercase tracking-wider mb-3">{item.en}</p>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
 
             {/* Deep Arabic prose */}
-            <div className="mt-10 bg-white/5 rounded-2xl p-8 text-right" dir="rtl">
-              <h3 className="text-xl font-bold text-white mb-4">
+            <div className="mt-10 bg-[var(--surface-tinted)] border border-emerald-100 rounded-2xl p-8 text-right" dir="rtl">
+              <h3 className="text-xl font-bold text-neutral-900 mb-4">
                 خبرة <span className="text-[var(--primary)]">15 عاماً</span> في إدارة الفعاليات المؤسسية
               </h3>
-              <p className="text-white/50 text-sm leading-loose">
+              <p className="text-neutral-600 text-sm leading-loose">
                 نحن في سعودي إيفنت مانجمنت نقدم خدمات متكاملة لإدارة الفعاليات المؤسسية في المملكة العربية
                 السعودية — من الاجتماعات السنوية للمساهمين وحفلات الجوائز والقمم التنفيذية إلى المؤتمرات الهجينة
                 وإطلاق المنتجات وتنشيط العلامات التجارية. نحن شركاء موثوقون لأرامكو السعودية وسابك وصندوق
@@ -789,14 +863,15 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── E-E-A-T: EXPERT TEAM ── */}
-        <section className="py-28 bg-emerald-900/30 border-y border-white/10">
+        <section className="py-24 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 Experience · Expertise · Authoritativeness · Trust
               </span>
-              <h2 className="text-3xl font-bold text-white">
-                Our Corporate Events <span className="text-[var(--primary)]">Expert Team</span>
+              <h2 className="text-3xl font-bold text-neutral-900">
+                Our corporate events <span className="text-[var(--primary)]">expert team</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -820,14 +895,14 @@ export default function CorporateEventsPage() {
                   bio: "AV and stage production specialist with a portfolio spanning KAFD Conference Center and RICEC. Expert in broadcast-grade streaming, LED wall systems, and lighting design for 1,000+ capacity events.",
                 },
               ].map((m, i) => (
-                <div key={i} className="bg-emerald-900 border border-white/10 rounded-2xl p-8">
-                  <div className="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-5">
+                <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-8 shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
+                  <div className="w-14 h-14 bg-emerald-50 border border-emerald-100 rounded-full flex items-center justify-center mb-5">
                     <Users size={24} className="text-[var(--primary)]" />
                   </div>
-                  <h3 className="font-bold text-white text-base">{m.name}</h3>
+                  <h3 className="font-bold text-neutral-900 text-base">{m.name}</h3>
                   <p className="text-[var(--primary)] text-xs font-semibold uppercase tracking-wide mt-1 mb-1">{m.title}</p>
-                  <p className="text-white/30 text-xs mb-4">{m.arabic}</p>
-                  <p className="text-white/50 text-sm leading-relaxed">{m.bio}</p>
+                  <p className="text-neutral-400 text-xs mb-4">{m.arabic}</p>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{m.bio}</p>
                 </div>
               ))}
             </div>
@@ -835,21 +910,21 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── FAQ ── */}
-        <section className="py-28 bg-emerald-950">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Corporate Events <span className="text-[var(--primary)]">FAQs</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Corporate events <span className="text-[var(--primary)]">FAQs</span>
               </h2>
-              <p className="text-white/50 mt-4 text-sm">
+              <p className="text-neutral-500 mt-4 text-sm">
                 Authoritative answers to the most common questions about corporate event management in Saudi Arabia.
               </p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="bg-emerald-900 border border-white/10 rounded-2xl p-7">
-                  <h3 className="font-bold text-white text-base mb-3">{faq.q}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <h3 className="font-bold text-neutral-900 text-base mb-3">{faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -857,9 +932,9 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── RELATED SERVICES ── */}
-        <section className="py-20 bg-emerald-900/30 border-t border-white/10">
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-white mb-8 uppercase tracking-widest">Related Services</h3>
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Related Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { title: "Conference Management", slug: "conferences", desc: "Full PCO services, hybrid streaming, speaker management for 50–5,000 delegates." },
@@ -870,10 +945,10 @@ export default function CorporateEventsPage() {
                 <Link
                   key={rel.slug}
                   href={`/services/${rel.slug}`}
-                  className="group bg-emerald-900 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary)]/40 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
-                  <h4 className="text-white font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
-                  <p className="text-white/40 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <h3 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Explore <ChevronRight size={12} /></span>
                 </Link>
               ))}
@@ -882,10 +957,10 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── CORPORATE EVENTS BY CITY ── */}
-        <section className="py-16 bg-emerald-950 border-t border-white/5">
+        <section className="py-16 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-widest">Corporate Events by City</h3>
-            <p className="text-white/40 text-xs mb-8">End-to-end corporate event management across Saudi Arabia&apos;s major business cities.</p>
+            <h2 className="text-sm font-bold text-neutral-900 mb-2 uppercase tracking-widest">Corporate Events by City</h2>
+            <p className="text-neutral-400 text-xs mb-8">End-to-end corporate event management across Saudi Arabia&apos;s major business cities.</p>
             <div className="flex flex-wrap gap-3">
               {[
                 { name: "Corporate Events Riyadh", href: "/locations/riyadh" },
@@ -897,7 +972,7 @@ export default function CorporateEventsPage() {
                 <Link
                   key={loc.href}
                   href={loc.href}
-                  className="px-5 py-2.5 bg-emerald-900 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                  className="px-5 py-2.5 bg-neutral-50 border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                 >
                   {loc.name}
                 </Link>
@@ -907,9 +982,9 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── FROM OUR BLOG ── */}
-        <section className="py-20 bg-emerald-900/20 border-t border-white/5">
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-white mb-8 uppercase tracking-widest">Corporate Event Insights</h3>
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Corporate Event Insights</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Exclusive analysis of Saudi Arabia's MICE sector under Vision 2030 — growth metrics, emerging venues, and GEA impact." },
@@ -922,11 +997,11 @@ export default function CorporateEventsPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-emerald-900 border border-white/10 rounded-2xl p-6 hover:border-[var(--primary)]/40 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
                   <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Corporate Insight</span>
-                  <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
-                  <p className="text-white/40 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
                 </Link>
               ))}

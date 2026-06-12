@@ -27,7 +27,7 @@ export default function ExecutiveSummitJeddah() {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-blue-50">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&q=80&w=2000"
+            src="/hero_bg.webp"
             alt="Jeddah Executive Summit"
             width={1920}
             height={1080}

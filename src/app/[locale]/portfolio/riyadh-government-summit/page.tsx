@@ -27,7 +27,7 @@ export default function RiyadhGovernmentSummit() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&q=80&w=2000"
+            src="/riyadh_summit_people.webp"
             alt="Riyadh Government Summit"
             width={1920}
             height={1080}
@@ -124,7 +124,7 @@ export default function RiyadhGovernmentSummit() {
         {/* Impact */}
         <div className="bg-gray-900 text-white p-12 md:p-24 rounded-[4rem] text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <Image src="https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&q=80&w=2000" alt="Summit" width={1920} height={1080} className="w-full h-full object-cover" />
+            <Image src="/riyadh_summit_people.webp" alt="Summit" width={1920} height={1080} className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">

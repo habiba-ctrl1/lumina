@@ -74,7 +74,7 @@ const locations = [
     city: "Al Khobar",
     badge: "Eastern Province Hub",
     country: "Saudi Arabia",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=2000",
+    image: "/alkhobar_corporate_people.webp",
     slug: "khobar",
     focus: "Private Majlis & Corporate Retreats",
     description:

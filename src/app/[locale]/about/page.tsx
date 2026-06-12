@@ -116,7 +116,7 @@ export default function AboutPage() {
         title="Event Planning Experts"
         titleHighlight="in Saudi Arabia"
         subtitle="From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations."
-        backgroundImage="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2000"
+        backgroundImage="/riyadh_summit_people.webp"
         imageAlt="Professional luxury event setup with guests in Saudi Arabia"
         badge="Established 2018"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
@@ -131,7 +131,7 @@ export default function AboutPage() {
             <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             <div className="relative h-[600px] rounded-3xl overflow-hidden border border-neutral-200/80 bg-neutral-100 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.05)]">
               <Image 
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2000" 
+                src="/gallery_2.webp" 
                 alt="Luxury Event Vision" 
                 width={800}
                 height={1200}

@@ -38,7 +38,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=2000",
+          url: "/hero_bg.webp",
           width: 1200,
           height: 630,
           alt: "Destination Events Saudi Arabia AlUla NEOM Red Sea",

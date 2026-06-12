@@ -27,7 +27,7 @@ export default function NeomFutureSummitCaseStudy() {
       <section className="relative h-[70vh] flex items-center justify-center bg-black">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2000" 
+            src="/hero_bg.webp" 
             alt="NEOM Future Summit" 
             width={1920}
             height={1080}
