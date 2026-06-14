@@ -14,23 +14,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations`;
   return {
-    title: "Event Management Locations Across Saudi Arabia — 12 Cities | Saudi Event Management",
+    title: "Event Management Company Across Saudi Arabia | 12 Cities",
     description:
-      "Saudi Event Management operates across 12 cities in Saudi Arabia — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. On-the-ground teams, GEA-compliant execution, and local venue relationships Kingdom-wide.",
+      "Looking for an event management company in Saudi Arabia? We have on-the-ground event planners in 12 cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk — with local venue relationships and GEA-compliant execution Kingdom-wide.",
     keywords: [
-      "event management Saudi Arabia",
-      "event management Riyadh",
-      "event management Jeddah",
-      "event management Makkah",
-      "event management Dammam",
+      "event management company Saudi Arabia",
+      "event planner Saudi Arabia",
+      "event management company in Riyadh",
+      "event planner in Jeddah",
+      "corporate event organizer Saudi Arabia",
+      "wedding planner Saudi Arabia",
+      "event management company in Dammam",
       "event management AlUla",
       "event management Madinah",
       "event management Al Khobar",
       "event management NEOM",
-      "event management Taif",
-      "event management Abha",
-      "event management Diriyah",
-      "event management Tabuk",
       "Vision 2030 events",
       "Saudi event company locations",
     ],
@@ -67,7 +65,7 @@ const locations = [
     focus: "Luxury Soirees & Global Expos",
     description:
       "Saudi Arabia's cosmopolitan gateway to the world. Jeddah's vibrant waterfront and international character attract luxury seaside weddings, global brand exhibitions at JECC, and avant-garde corporate galas that push creative boundaries — making it our premier showcase for innovative event design.",
-    tags: ["JECC", "Red Sea Global", "Corniche", "International Expos"],
+    tags: ["JCEC", "Red Sea Global", "Corniche", "International Expos"],
     stat: "80+ events",
   },
   {
@@ -160,6 +158,7 @@ export default function LocationsPage() {
         backgroundImage="/riyadh-hero.webp"
         badge="Kingdom-Wide Operations"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
+        enableParallax
         minHeight="large"
         trustElements={[
           { value: "12", label: "Cities Covered" },
@@ -183,11 +182,11 @@ export default function LocationsPage() {
               className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-4"
               style={{ letterSpacing: "-0.025em" }}
             >
-              Why We Focus on{" "}
-              <span className="text-[var(--primary)]">These Primary Cities</span>
+              Find an Event Planner in{" "}
+              <span className="text-[var(--primary)]">Your City</span>
             </h2>
             <p className="text-neutral-500 text-[15px] max-w-2xl mx-auto leading-relaxed">
-              Based on 2026 market trends, Saudi Arabia&apos;s highest lead-generation comes from densely populated urban hubs. Riyadh, Jeddah, Al Khobar, Dammam, and Makkah collectively generate the greatest volume of consistent, high-budget events — with NEOM, AlUla, and the mountain cities as high-growth emerging markets.
+              Whether you need an event management company in Riyadh for a corporate summit, a wedding planner in Jeddah, or a destination event team in AlUla, each city below has its own dedicated planners, venue partnerships, and local permit expertise. Choose your location to see venues, services, and seasonal planning guidance.
             </p>
           </div>
 
@@ -476,8 +475,70 @@ export default function LocationsPage() {
               Saudi Event Management&apos;s expansion strategy is intrinsically linked to <strong className="text-neutral-700">Saudi Vision 2030</strong>, ensuring every event we manage contributes to the Kingdom&apos;s growing reputation as the global hub for elite gatherings. Whether navigating GEA permit requirements for large-scale entertainment activations, executing high-security protocol for government summits in Riyadh&apos;s financial district, managing seamless international logistics in Jeddah, or providing culturally sensitive VIP concierge in Makkah — our regional teams deliver absolute precision.
             </p>
             <p>
-              Our strategic focus on the <strong className="text-neutral-700">Eastern Province (Al Khobar, Dammam, Dhahran)</strong> reflects a deliberate market insight: the presence of Saudi Aramco, SABIC, and the broader industrial ecosystem creates year-round demand for professional event production that most event agencies do not adequately serve. We do.
+              Across the <strong className="text-neutral-700">Eastern Province (Al Khobar, Dammam, Dhahran)</strong>, the presence of Saudi Aramco, SABIC, and the broader industrial ecosystem creates year-round demand for professional event production — a market our regional teams know intimately.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Explore Services & Get in Touch ─────────────────────────────────── */}
+      <section className="py-20 md:py-28 border-t border-neutral-100 bg-[var(--surface-raised)]">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="section-label justify-center mb-4 flex">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              What We Do
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-4" style={{ letterSpacing: "-0.025em" }}>
+              Our <span className="text-[var(--primary)]">Event Services</span>
+            </h2>
+            <p className="text-neutral-500 text-[15px] max-w-2xl mx-auto leading-relaxed">
+              Every city team delivers our full range of services. Explore what we offer, then{" "}
+              <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">talk to our team</Link>{" "}
+              or{" "}
+              <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {[
+              { name: "Corporate Event Management", href: "/services/corporate-events" },
+              { name: "Conference Management", href: "/services/conferences" },
+              { name: "Exhibition Management", href: "/services/exhibitions" },
+              { name: "Wedding Planning", href: "/services/weddings" },
+              { name: "Luxury & VIP Events", href: "/services/luxury-vip-events" },
+              { name: "Destination Events", href: "/services/destination-events" },
+              { name: "Event Production", href: "/services/event-production" },
+            ].map((svc) => (
+              <Link
+                key={svc.href}
+                href={svc.href}
+                className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-sm font-medium text-neutral-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+              >
+                {svc.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/services" className="btn-outline hover:scale-105 transition-all rounded-sm">
+              View All Services
+            </Link>
+            <Link href="/portfolio" className="btn-outline hover:scale-105 transition-all rounded-sm">
+              See Our Work
+            </Link>
+            <Link href="/contact" className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm">
+              Request a Proposal
+            </Link>
+            <a
+              href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-sm bg-[#25D366] text-white text-sm font-semibold hover:scale-105 transition-transform"
+              style={{ boxShadow: "0 6px 18px rgba(37,211,102,0.30), inset 0 1px 0 rgba(255,255,255,0.18)" }}
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
       </section>

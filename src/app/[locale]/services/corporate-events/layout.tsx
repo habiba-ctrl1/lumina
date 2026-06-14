@@ -55,7 +55,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${base}/alkhobar_corporate_people.webp`,
+          url: `${base}/services/alkhobar_corporate_people.webp`,
           width: 1200,
           height: 630,
           alt: "Corporate Event Management Saudi Arabia — Executive Summit at KAFD Riyadh",
@@ -67,7 +67,7 @@ export async function generateMetadata({
       title: "Corporate Event Management Saudi Arabia | Saudi Event Management",
       description:
         "AGMs, executive summits, gala dinners, and Vision 2030 activations — managed end-to-end across the Kingdom.",
-      images: [`${base}/alkhobar_corporate_people.webp`],
+      images: [`${base}/services/alkhobar_corporate_people.webp`],
     },
     robots: {
       index: true,

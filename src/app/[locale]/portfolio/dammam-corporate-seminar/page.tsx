@@ -29,9 +29,9 @@ export default function DammamCorporateSeminar() {
           <Image 
             src="/hero_bg.webp" 
             alt="Dammam Corporate Seminar" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/50" />
@@ -70,7 +70,7 @@ export default function DammamCorporateSeminar() {
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
         
         {/* Industrial Precision */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -109,7 +109,7 @@ export default function DammamCorporateSeminar() {
         </div>
 
         {/* Conclusion */}
-        <div className="bg-primary text-white p-12 md:p-24 rounded-[4rem] text-center relative overflow-hidden">
+        <div className="bg-primary text-white p-12 md:p-24 rounded-3xl text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
           <h2 className="text-2xl md:text-3xl font-sans font-bold mb-8 uppercase tracking-tight">Fueling <span className="">Connections</span></h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto font-light leading-relaxed">
@@ -140,7 +140,7 @@ export default function DammamCorporateSeminar() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 text-center">
+      <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Scale Your <span className="text-primary ">Industrial Presence</span></h2>
         <Link
           href="/contact"

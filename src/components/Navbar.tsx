@@ -6,6 +6,7 @@ import {
   Menu, X, ChevronDown, Heart, Briefcase, Presentation,
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
   Trophy, TrendingUp, ImageIcon, Building2, Info, Handshake,
+  Crown, Mic, Gem,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
@@ -26,13 +27,16 @@ const defaultNavLinks = [
 ];
 
 const services = [
-  { key: "royalWeddings",    href: "/services/weddings",          icon: Heart },
-  { key: "corporateGalas",   href: "/services/corporate-events",  icon: Briefcase },
-  { key: "exhibitionsTrade", href: "/services/exhibitions",       icon: Presentation },
-  { key: "eventProduction",  href: "/services/event-production",  icon: Landmark },
-  { key: "culturalSeasonal", href: "/services/cultural-events",   icon: Sparkles },
-  { key: "luxuryVip",        href: "/services/luxury-vip-events", icon: Sparkles },
-  { key: "privateEvents",    href: "/services",                   icon: Users },
+  { key: "weddings",          href: "/services/weddings",          icon: Heart },
+  { key: "royalWeddings",     href: "/services/royal-weddings",    icon: Crown },
+  { key: "corporateGalas",    href: "/services/corporate-events",  icon: Briefcase },
+  { key: "conferences",       href: "/services/conferences",       icon: Mic },
+  { key: "exhibitionsTrade",  href: "/services/exhibitions",       icon: Presentation },
+  { key: "culturalSeasonal",  href: "/services/cultural-events",   icon: Sparkles },
+  { key: "luxuryVip",         href: "/services/luxury-vip-events", icon: Gem },
+  { key: "destinationEvents", href: "/services/destination-events",icon: MapPin },
+  { key: "eventProduction",   href: "/services/event-production",  icon: Landmark },
+  { key: "productionVenues",  href: "/services/production-venues", icon: Building2 },
 ];
 
 const locations = [
@@ -146,6 +150,52 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
   };
 
   const closeDropdown = () => setHoveredLink(null);
+
+  // ── Location grouping (reduces scanning, surfaces primary markets first) ────
+  const primaryLocations  = locations.slice(0, 5);
+  const extendedLocations = locations.slice(5);
+
+  const renderCityLink = (city: (typeof locations)[number]) => (
+    <Link
+      key={city.key}
+      href={city.href}
+      onClick={closeDropdown}
+      className="group/city flex items-start gap-2.5 px-3 py-2.5 rounded-lg hover:bg-neutral-50 transition-colors duration-150"
+    >
+      <MapPin size={13} className="text-neutral-300 group-hover/city:text-[var(--primary)] transition-colors shrink-0 mt-0.5" />
+      <div className="min-w-0">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[13px] font-medium text-neutral-800 group-hover/city:text-[var(--primary)] transition-colors leading-tight">
+            {city.name}
+          </span>
+          {city.badge && (
+            <span className="text-[9px] font-bold tracking-wider uppercase text-emerald-600 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-full leading-none">
+              {city.badge}
+            </span>
+          )}
+        </div>
+        <span className="block text-[11px] text-neutral-400 mt-0.5 leading-tight">{city.region}</span>
+      </div>
+    </Link>
+  );
+
+  const renderMobileCityLink = (city: (typeof locations)[number]) => (
+    <li key={city.key}>
+      <Link
+        href={city.href}
+        onClick={() => setIsOpen(false)}
+        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-medium text-neutral-600 hover:text-[var(--primary)] hover:bg-neutral-50 transition-all"
+      >
+        <MapPin size={14} className="text-neutral-400 shrink-0" />
+        <span>{city.name}</span>
+        {city.badge && (
+          <span className="ms-auto text-[9px] font-bold tracking-wider uppercase text-emerald-600 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-full">
+            {city.badge}
+          </span>
+        )}
+      </Link>
+    </li>
+  );
 
   // ── Language switch ───────────────────────────────────────────────────────
   const switchLanguage = (lang: string) => {
@@ -433,31 +483,20 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
                               </Link>
                             </div>
 
-                            {/* Cities grid — 2 columns */}
-                            <div className="flex-1 p-5 grid grid-cols-2 gap-x-4 gap-y-0.5 content-start">
-                              {locations.map((city) => (
-                                <Link
-                                  key={city.key}
-                                  href={city.href}
-                                  onClick={closeDropdown}
-                                  className="group/city flex items-start gap-2.5 px-3 py-2.5 rounded-lg hover:bg-neutral-50 transition-colors duration-150"
-                                >
-                                  <MapPin size={13} className="text-neutral-300 group-hover/city:text-[var(--primary)] transition-colors shrink-0 mt-0.5" />
-                                  <div className="min-w-0">
-                                    <div className="flex items-center gap-1.5 flex-wrap">
-                                      <span className="text-[13px] font-medium text-neutral-800 group-hover/city:text-[var(--primary)] transition-colors leading-tight">
-                                        {city.name}
-                                      </span>
-                                      {city.badge && (
-                                        <span className="text-[9px] font-bold tracking-wider uppercase text-emerald-600 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-full leading-none">
-                                          {city.badge}
-                                        </span>
-                                      )}
-                                    </div>
-                                    <span className="block text-[11px] text-neutral-400 mt-0.5 leading-tight">{city.region}</span>
-                                  </div>
-                                </Link>
-                              ))}
+                            {/* Cities — grouped: primary markets first, then extended coverage */}
+                            <div className="flex-1 p-5">
+                              <span className="block px-3 text-[10px] font-bold tracking-[0.12em] uppercase text-neutral-400 mb-1">
+                                Primary Markets
+                              </span>
+                              <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 content-start">
+                                {primaryLocations.map(renderCityLink)}
+                              </div>
+                              <span className="block px-3 mt-3 pt-3 border-t border-neutral-100 text-[10px] font-bold tracking-[0.12em] uppercase text-neutral-400 mb-1">
+                                Extended Coverage
+                              </span>
+                              <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 content-start">
+                                {extendedLocations.map(renderCityLink)}
+                              </div>
                             </div>
                           </motion.div>
                         )}
@@ -658,23 +697,29 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
                                           </Link>
                                         </li>
                                       ))}
-                                      {link.key === "locations" && locations.map((city) => (
-                                        <li key={city.key}>
-                                          <Link
-                                            href={city.href}
-                                            onClick={() => setIsOpen(false)}
-                                            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-medium text-neutral-600 hover:text-[var(--primary)] hover:bg-neutral-50 transition-all"
-                                          >
-                                            <MapPin size={14} className="text-neutral-400 shrink-0" />
-                                            <span>{city.name}</span>
-                                            {city.badge && (
-                                              <span className="ms-auto text-[9px] font-bold tracking-wider uppercase text-emerald-600 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-full">
-                                                {city.badge}
-                                              </span>
-                                            )}
-                                          </Link>
-                                        </li>
-                                      ))}
+                                      {link.key === "locations" && (
+                                        <>
+                                          <li>
+                                            <Link
+                                              href="/locations"
+                                              onClick={() => setIsOpen(false)}
+                                              className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-semibold text-[var(--primary)] hover:bg-emerald-50/70 transition-all"
+                                            >
+                                              <MapPin size={14} className="shrink-0" />
+                                              <span>All Locations</span>
+                                              <ArrowRight size={13} className="ms-auto" />
+                                            </Link>
+                                          </li>
+                                          <li className="px-4 pt-2 pb-1">
+                                            <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-neutral-400">Primary Markets</span>
+                                          </li>
+                                          {primaryLocations.map(renderMobileCityLink)}
+                                          <li className="px-4 pt-3 pb-1 mt-1 border-t border-neutral-100">
+                                            <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-neutral-400">Extended Coverage</span>
+                                          </li>
+                                          {extendedLocations.map(renderMobileCityLink)}
+                                        </>
+                                      )}
                                       {link.key === "portfolio" && portfolioItems.map((item) => (
                                         <li key={item.key}>
                                           <Link

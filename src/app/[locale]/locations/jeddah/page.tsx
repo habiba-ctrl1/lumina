@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import Image from "next/image";
 import Link from "next/link";
 import { Anchor, Waves, Camera, Building, MapPin, Calendar, Users, Star, ChevronRight } from "lucide-react";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description:
       "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
     keywords:
-      "event management company Jeddah, corporate event organizer Jeddah, luxury wedding planner Jeddah, conference management Jeddah, event planning services Jeddah Saudi Arabia, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
+      "event management company in Jeddah, event planner in Jeddah, corporate event organizer in Jeddah, wedding planner in Jeddah, conference management Jeddah, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
     alternates: {
       canonical: path,
       languages: {
@@ -111,7 +112,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Brand Activation Jeddah",
-              "url": "https://saudieventmanagement.com/locations/jeddah/brand-activation",
+              "url": "https://saudieventmanagement.com/services/event-production",
             },
           },
           {
@@ -224,9 +225,9 @@ const venues = [
   },
   {
     name: "Four Seasons Hotel Jeddah",
-    abbr: "at Kingdom Centre",
+    abbr: "Corniche Waterfront",
     capacity: "Up to 1,200",
-    district: "Al-Zahra District",
+    district: "Al-Shati / Corniche",
     type: "Luxury Weddings & Galas",
     description:
       "Overlooking the Red Sea and King Fahd Fountain, offering world-class ballrooms and banquet facilities — the benchmark for luxury weddings and corporate galas in Jeddah.",
@@ -292,7 +293,7 @@ const services = [
     icon: Camera,
     title: "Brand Activations",
     text: "High-impact brand experiences on the Jeddah Corniche and King Abdullah Sports City during Jeddah Season and national events.",
-    href: "/locations/jeddah/brand-activation",
+    href: "/services/event-production",
   },
   {
     icon: Users,
@@ -304,7 +305,7 @@ const services = [
     icon: Star,
     title: "Gala Dinners & Award Ceremonies",
     text: "Turnkey production of gala dinners, award nights, and VIP receptions at Jeddah's finest ballrooms and heritage mansions.",
-    href: "/locations/jeddah/gala-dinners",
+    href: "/services/corporate-events",
   },
 ];
 
@@ -368,11 +369,11 @@ export default function JeddahPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Coastal Elegance &"
-        titleHighlight="Bespoke Galas"
-        subtitle="From King Fahd Fountain to the coral-stone mansions of Al-Balad — Jeddah's premier event management company delivering luxury corporate events, weddings, and brand activations across the Red Sea coast."
+        title="Event Management Company in "
+        titleHighlight="Jeddah"
+        subtitle="Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
         backgroundImage="/jeddah_luxury_people.webp"
-        imageAlt="Elegant guests at a luxury event in Jeddah Saudi Arabia"
+        imageAlt="Event management company in Jeddah Saudi Arabia — elegant guests at a Red Sea event"
         badge="The Bride of the Red Sea | Jeddah"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -536,6 +537,8 @@ export default function JeddahPage() {
           </div>
         </div>
       </section>
+
+      <LocationCTA city="Jeddah" />
 
       {/* Top Venues in Jeddah — Entity Map Section */}
       <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -760,6 +763,14 @@ export default function JeddahPage() {
                 clients aligns directly with Saudi <strong>Vision 2030</strong>{" "}
                 targets for tourism and business event growth.
               </p>
+              <p>
+                Looking for an event planner in Jeddah or a wedding planner for a
+                Red Sea celebration?{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">Contact our Jeddah team</Link>{" "}
+                or{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
+                to begin planning your event.
+              </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-neutral-100">
@@ -768,13 +779,11 @@ export default function JeddahPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Events", slug: "corporate-event-management" },
-                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
-                  { name: "Exhibitions", slug: "exhibition-management" },
-                  { name: "Conferences", slug: "conference-planning" },
-                  { name: "Brand Activations", slug: "brand-activation" },
-                  { name: "Gala Dinners", slug: "gala-dinners" },
-                  { name: "VIP Events", slug: "vip-event-planning" },
+                  { name: "Corporate Event Management in Jeddah", slug: "corporate-event-management" },
+                  { name: "Wedding Planner in Jeddah", slug: "luxury-wedding-planning" },
+                  { name: "Exhibition Management in Jeddah", slug: "exhibition-management" },
+                  { name: "Conference Organizer in Jeddah", slug: "conference-planning" },
+                  { name: "VIP Event Planning in Jeddah", slug: "vip-event-planning" },
                 ].map((svc) => (
                   <Link
                     key={svc.slug}

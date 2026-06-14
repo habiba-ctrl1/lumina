@@ -52,7 +52,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${base}/wedding_stage_backdrop_decor.webp`,
+          url: `${base}/services/wedding_stage_backdrop_decor.webp`,
           width: 1200,
           height: 630,
           alt: "Royal Wedding Planner Saudi Arabia — Luxury Ceremonial Design by Saudi Event Management",
@@ -64,7 +64,7 @@ export async function generateMetadata({
       title: "Royal Wedding Planner Saudi Arabia | Saudi Event Management",
       description:
         "Saudi Arabia's premier royal wedding architects — Nikah, Walima, Zaffa, palace venues, VIP protocol.",
-      images: [`${base}/wedding_stage_backdrop_decor.webp`],
+      images: [`${base}/services/wedding_stage_backdrop_decor.webp`],
     },
     robots: {
       index: true,

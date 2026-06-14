@@ -40,7 +40,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/gallery_wedding_reception.webp",
+          url: "/services/gallery_wedding_reception.webp",
           width: 1200,
           height: 630,
           alt: "Event Services and Venues Saudi Arabia",

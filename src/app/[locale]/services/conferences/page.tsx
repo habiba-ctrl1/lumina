@@ -5,9 +5,10 @@ import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import {
-  Mic, Users, Monitor, Globe, Headphones, Video,
-  ClipboardList, Shield, ChevronRight, Award,
+  Mic, Users, Monitor, Headphones, Video,
+  ClipboardList, Shield, ChevronRight, Award, Phone, CheckCircle2,
 } from "lucide-react";
 
 export async function generateMetadata({
@@ -45,7 +46,7 @@ export async function generateMetadata({
       description:
         "Premier conference management in Riyadh and across Saudi Arabia — B2B summits, hybrid streaming, VIP protocol, and full AV production.",
       url: canonicalUrl,
-      images: [{ url: "/gallery_2.webp", width: 1200, height: 630, alt: "Conference Management Riyadh" }],
+      images: [{ url: "/services/gallery_2.webp", width: 1200, height: 630, alt: "Conference Management Riyadh" }],
     },
   };
 }
@@ -215,7 +216,7 @@ export default function ConferencesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-emerald-950 overflow-hidden pt-20">
+      <main className="min-h-screen bg-white">
         <ScrollProgress />
         <WhatsAppButton />
         <Navbar />
@@ -224,8 +225,9 @@ export default function ConferencesPage() {
           title="Conference Management"
           titleHighlight="Saudi Arabia"
           subtitle="Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for entities including Saudi Aramco, HRDF, and SABIC."
-          backgroundImage="/riyadh_summit_people.webp"
+          backgroundImage="/services/riyadh_summit_people.webp"
           imageAlt="Conference management company Riyadh Saudi Arabia"
+          enableParallax
           badge="Conferences & Summits"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -233,38 +235,52 @@ export default function ConferencesPage() {
             { label: "Conferences" },
           ]}
           minHeight="large"
+          trustElements={[
+            { value: "200+", label: "Conferences Delivered" },
+            { value: "50K+", label: "Delegates Managed" },
+            { value: "IAPCO", label: "Aligned PCO Standards" },
+          ]}
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* ── CTA BAR ── */}
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-10 py-4 bg-[var(--primary)] text-emerald-900 font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg"
+              href="#pco-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Request a PCO Proposal
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Speak to a Conference Director
+            </a>
           </div>
         </div>
 
         {/* ── EEAT Credentials ── */}
-        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
+        <section className="py-9 border-b border-neutral-200/80 bg-neutral-50/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-wrap justify-center items-center gap-12">
+            <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
-                  <Award className="text-[var(--primary)]" size={24} />
+                <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-sm tracking-widest">IAPCO-Aligned</p>
-                  <p className="text-[10px] text-gray-500 uppercase">PCO Best Practices</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">IAPCO-Aligned PCO</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Best-Practice Conference Standards</p>
                 </div>
               </div>
-              <div className="flex gap-10 grayscale opacity-50 text-[10px] font-bold tracking-widest text-white">
+              <div className="h-8 w-px bg-neutral-200 hidden md:block" />
+              <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold tracking-widest text-neutral-400">
                 <span>SAUDI ARAMCO</span>
                 <span>HRDF</span>
                 <span>SABIC</span>
                 <span>KAFD</span>
               </div>
-              <div className="text-xs text-[var(--primary)] font-bold tracking-widest uppercase">
+              <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
                 &quot;Trusted PCO for Vision 2030 Summits&quot;
               </div>
             </div>
@@ -272,61 +288,133 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── Services Grid ── */}
-        <section className="py-32 relative max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-sans text-white font-bold">
-              Our Conference <span className="text-[var(--primary)]">Capabilities</span>
-            </h2>
-            <div className="w-16 h-px bg-[var(--primary)]/50 mx-auto mt-6" />
-          </div>
+        <section className="py-24 md:py-28 bg-white bg-glow-top">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Full-Service Conference Management
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Our conference <span className="text-[var(--primary)]">capabilities</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+                From delegate registration and speaker management to hybrid streaming and VIP protocol —
+                a single accountable team for summits of 50 to 5,000+ delegates.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className="bg-emerald-900 border border-white/5 p-8 rounded-2xl hover:border-[var(--primary)]/30 transition-all duration-500 group"
-              >
-                <s.icon
-                  size={32}
-                  className="text-[var(--primary)] mb-6 group-hover:scale-110 transition-transform"
-                />
-                <h3 className="text-lg font-bold text-white mb-4">{s.title}</h3>
-                <p className="text-slate-500 text-sm font-light leading-relaxed">{s.desc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {services.map((s, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-neutral-200/80 p-7 rounded-2xl hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
+                    <s.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{s.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── LEAD FORM / PCO ENQUIRY ── */}
+        <section id="pco-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Request a PCO Proposal
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Plan a flawless summit.<br />
+                  <span className="text-[#C5A880]">From 50 to 5,000+ delegates.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  Share your delegate count, dates, and objectives. Our conference team returns a venue
+                  shortlist, technical plan, and an itemised PCO quote within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Venue sourcing at KAFD, KAICC & Al Faisaliah",
+                    "Delegate registration, badging & analytics",
+                    "Hybrid streaming & simultaneous translation",
+                    "VIP, ministerial & diplomatic protocol",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20organise%20a%20conference%20in%20Saudi%20Arabia."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
               </div>
-            ))}
+              <ServiceLeadForm
+                source="conferences_page"
+                defaultEventType="Corporate Summit / Conference"
+                eyebrow="Conference Enquiry"
+                heading="Plan your conference or summit"
+                subheading="Our PCO team will respond within 2 hours with a venue shortlist and an itemised quote."
+                submitLabel="Request Conference Proposal"
+                eventTypeOptions={[
+                  "B2B / Commercial Summit",
+                  "Government / Ministerial Conference",
+                  "Scientific / Medical Congress",
+                  "Hybrid / Virtual Conference",
+                  "Awards & Gala Conference",
+                  "Other",
+                ]}
+              />
+            </div>
           </div>
         </section>
 
         {/* ── Topical Authority Section ── */}
-        <section className="py-32 bg-emerald-900/40 border-y border-white/5">
+        <section className="py-24 md:py-28 bg-white border-b border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">
-                  Conference <br />
-                  <span className="text-[var(--primary)]">Intelligence</span>
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <span className="section-label">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                  Conference Intelligence
+                </span>
+                <h2 className="text-2xl font-bold text-neutral-900">
+                  Planning <br />
+                  <span className="text-[var(--primary)]">resources</span>
+                </h2>
+                <p className="text-neutral-500 text-sm leading-relaxed">
                   Expert resources for navigating the conference and summit landscape in the Kingdom.
                 </p>
                 <Link href="/blog" className="inline-block text-[var(--primary)] text-xs font-bold uppercase tracking-widest border-b border-[var(--primary)] pb-1">
                   View All Articles
                 </Link>
-                <div className="pt-6 border-t border-white/10">
-                  <p className="text-white font-bold text-sm">Dr. Nadia Al-Rashidi</p>
-                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Conference Strategy Director</p>
+                <div className="pt-6 border-t border-neutral-200">
+                  <p className="text-neutral-900 font-bold text-sm">Dr. Nadia Al-Rashidi</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">Conference Strategy Director</p>
                 </div>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {resources.map((r, i) => (
                   <div
                     key={i}
-                    className="p-6 bg-emerald-950 rounded-2xl hover:bg-[var(--primary)]/5 transition-colors cursor-pointer group"
+                    className="p-6 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all cursor-pointer group"
                   >
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
+                    <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
                       {r.title}
-                    </h4>
-                    <p className="text-gray-500 text-xs leading-relaxed">{r.desc}</p>
+                    </h3>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{r.desc}</p>
                   </div>
                 ))}
               </div>
@@ -335,17 +423,17 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── Arabic Section ── */}
-        <section className="py-32 bg-white text-slate-900">
+        <section className="py-24 md:py-28 bg-[var(--surface-tinted)] border-b border-emerald-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
-                <h2 className="text-2xl md:text-4xl font-sans font-bold leading-tight">
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight text-neutral-900">
                   الريادة في <br />
                   <span className="text-[var(--primary)]">إدارة المؤتمرات</span>
                 </h2>
-                <p className="text-gray-600 text-lg leading-relaxed">
+                <p className="text-neutral-600 text-lg leading-relaxed">
                   تُعدّ إدارة الفعاليات السعودية من أبرز{" "}
-                  <strong>شركات إدارة المؤتمرات في الرياض</strong>، حيث نقدم حلولاً شاملة
+                  <strong className="text-neutral-900">شركات إدارة المؤتمرات في الرياض</strong>، حيث نقدم حلولاً شاملة
                   لتنظيم المؤتمرات الحكومية والتجارية والعلمية. نتولى جميع جوانب التخطيط من
                   إدارة المتحدثين وأنظمة التسجيل إلى الإنتاج التقني المتكامل.
                 </p>
@@ -357,7 +445,7 @@ export default function ConferencesPage() {
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="text-3xl font-bold text-[var(--primary)]">{stat.value}</p>
-                      <p className="text-xs text-gray-500 mt-1">{stat.label}</p>
+                      <p className="text-xs text-neutral-500 mt-1">{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -369,9 +457,9 @@ export default function ConferencesPage() {
                   { ar: "مؤتمرات الأعمال السعودية", en: "B2B Summits KSA" },
                   { ar: "خدمات المؤتمرات الهجينة", en: "Hybrid Conference Services" },
                 ].map((item) => (
-                  <div key={item.en} className="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                  <div key={item.en} className="bg-white border border-neutral-200/80 rounded-xl p-5">
                     <p className="text-[var(--primary)] font-bold text-sm mb-1">{item.ar}</p>
-                    <p className="text-gray-500 text-xs">{item.en}</p>
+                    <p className="text-neutral-500 text-xs">{item.en}</p>
                   </div>
                 ))}
               </div>
@@ -380,34 +468,93 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── FAQ Section ── */}
-        <section className="py-32 bg-emerald-900/50">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">
-                Conference Management <span className="text-[var(--primary)]">FAQ</span>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Conference management <span className="text-[var(--primary)]">FAQ</span>
               </h2>
-              <p className="text-gray-500 mt-3 text-xs uppercase tracking-widest">
+              <p className="text-neutral-500 mt-4 text-xs uppercase tracking-widest">
                 Everything you need to know about organising a conference in Saudi Arabia
               </p>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="bg-emerald-950 border border-white/5 p-6 rounded-2xl">
-                  <h3 className="text-base font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 p-7 rounded-2xl">
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Related Services ── */}
-        <section className="py-20 bg-emerald-950 border-t border-white/5">
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Conference challenges — <span className="text-[var(--primary)]">solved with experience</span></h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">Large-scale conferences in Saudi Arabia raise predictable operational risks. Here is how our PCO team plans around the ones organisers ask about most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Multi-track scheduling & delegate flow", s: "Parallel sessions, networking breaks, and prayer times are sequenced into one master agenda with clear wayfinding, so a 1,000+ delegate audience always knows where to be." },
+                { c: "Simultaneous Arabic–English interpretation", s: "ISO-standard interpreter booths, vetted subject-matter interpreters, and tested audio feeds let bilingual delegates and dignitaries follow every session without lag." },
+                { c: "Speaker & VIP protocol logistics", s: "Briefing packs, green-room scheduling, rehearsal slots, and dignitary protocol keep ministers, keynote speakers, and panelists on time and on message." },
+                { c: "Hybrid & remote participation", s: "Broadcast-grade streaming, live Q&A, and on-demand archives extend reach to global delegates without compromising the in-room experience." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Conferences & Summits — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Global Tech Summit", slug: "global-tech-summit", desc: "A multi-day technology conference with main-stage production, hybrid streaming, and delegate management." },
+                { title: "Executive Summit Jeddah", slug: "executive-summit-jeddah", desc: "A senior executive summit by the Red Sea with full PCO services and VIP protocol." },
+                { title: "Riyadh Government Summit", slug: "riyadh-government-summit", desc: "A ministerial-level summit with simultaneous interpretation and government protocol." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+                  <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
+              <div>
+                <h3 className="text-neutral-900 font-bold text-lg">Planning a conference or summit?</h3>
+                <p className="text-neutral-500 text-sm mt-1">Book a free consultation or speak with our PCO team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/corporate-events" className="text-[var(--primary)] font-semibold hover:underline">corporate event management</Link>.</p>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">
               Related Services
-            </h3>
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { title: "Corporate Events", slug: "corporate-events", desc: "AGMs, gala dinners, and executive retreats for Saudi corporates." },
@@ -417,12 +564,12 @@ export default function ConferencesPage() {
                 <Link
                   key={rel.slug}
                   href={`/services/${rel.slug}`}
-                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
-                  <h4 className="text-white font-bold mb-2 group-hover:text-[var(--primary)] transition-colors">
+                  <h3 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">
                     {rel.title}
-                  </h4>
-                  <p className="text-slate-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  </h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">
                     Learn More <ChevronRight size={12} />
                   </span>
@@ -433,10 +580,10 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── Conference Locations ── */}
-        <section className="py-16 bg-emerald-900/20 border-t border-white/5">
+        <section className="py-16 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-widest">Conference Management by City</h3>
-            <p className="text-white/40 text-xs mb-8">PCO services and conference management across Saudi Arabia&apos;s major convention cities.</p>
+            <h2 className="text-sm font-bold text-neutral-900 mb-2 uppercase tracking-widest">Conference Management by City</h2>
+            <p className="text-neutral-400 text-xs mb-8">PCO services and conference management across Saudi Arabia&apos;s major convention cities.</p>
             <div className="flex flex-wrap gap-3">
               {[
                 { name: "Conference Management Riyadh", href: "/locations/riyadh" },
@@ -446,7 +593,7 @@ export default function ConferencesPage() {
                 <Link
                   key={loc.href}
                   href={loc.href}
-                  className="px-5 py-2.5 bg-emerald-900 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                  className="px-5 py-2.5 bg-neutral-50 border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                 >
                   {loc.name}
                 </Link>
@@ -456,9 +603,9 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── Conference Insights ── */}
-        <section className="py-20 bg-emerald-950 border-t border-white/5">
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">Conference Planning Resources</h3>
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Conference Planning Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { title: "MICE Tourism Saudi Arabia 2026: The Complete Industry Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Everything you need to know about Saudi Arabia's booming MICE industry — market size, key venues, and Vision 2030 strategy." },
@@ -467,11 +614,11 @@ export default function ConferencesPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
                   <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Industry Insight</span>
-                  <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">
                     Read Article <ChevronRight size={12} />
                   </span>

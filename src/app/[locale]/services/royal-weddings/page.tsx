@@ -49,7 +49,7 @@ const jsonLd = {
         "@type": "LocalBusiness",
         "@id": "https://saudieventmanagement.com#organization",
         name: "Saudi Event Management",
-        image: "https://saudieventmanagement.com/wedding_stage_backdrop_decor.webp",
+        image: "https://saudieventmanagement.com/services/wedding_stage_backdrop_decor.webp",
         url: "https://saudieventmanagement.com",
         telephone: "+966501234567",
         address: {
@@ -597,7 +597,7 @@ export default function RoyalWeddingsPage() {
           title="Royal Wedding Planners"
           titleHighlight="Saudi Arabia"
           subtitle="Bespoke royal wedding architecture for the Kingdom's most distinguished families — Nikah, Walima, Zaffa, Laylat al-Henna, and Milka ceremonies crafted to perfection at the finest palace venues in Riyadh, Jeddah, AlUla, and NEOM."
-          backgroundImage="/wedding_stage_backdrop_decor.webp"
+          backgroundImage="/services/wedding_stage_backdrop_decor.webp"
           imageAlt="Royal wedding ceremony Saudi Arabia — grand ballroom with floral arches and gold details"
           badge="حفلات الأعراس الملكية | Royal Weddings"
           breadcrumbs={[
@@ -619,7 +619,7 @@ export default function RoyalWeddingsPage() {
           <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/consultation"
-              className="inline-block px-10 py-4 bg-[var(--primary)] text-slate-900 font-bold uppercase tracking-widest hover:opacity-90 transition-all shadow-lg text-sm"
+              className="inline-block px-10 py-4 bg-[var(--primary)] text-white font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-sm"
             >
               Begin Your Royal Consultation
             </Link>
@@ -640,7 +640,7 @@ export default function RoyalWeddingsPage() {
               <div className="flex flex-col gap-4">
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/gallery_wedding_reception.webp"
+                    src="/services/gallery_wedding_reception.webp"
                     alt="Royal wedding reception hall — grand chandeliers, gold décor, Riyadh five-star venue"
                     fill
                     className="object-cover"
@@ -651,7 +651,7 @@ export default function RoyalWeddingsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/luxury_wedding_table_setting.webp"
+                      src="/services/luxury_wedding_table_setting.webp"
                       alt="Royal wedding table setting — gold-rimmed china, crystal glasses, and fresh floral centrepiece"
                       fill
                       className="object-cover"
@@ -660,7 +660,7 @@ export default function RoyalWeddingsPage() {
                   </div>
                   <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/luxury_wedding_couple_guests.webp"
+                      src="/services/luxury_wedding_couple_guests.webp"
                       alt="Royal wedding guests at a luxury Saudi ceremony — traditional dress and formal setting"
                       fill
                       className="object-cover"
@@ -675,10 +675,10 @@ export default function RoyalWeddingsPage() {
                 <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold">
                   Saudi Arabia&apos;s Premier Royal Wedding Architects
                 </span>
-                <h1 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-                  Every Royal Ceremony. <br />
-                  <span className="text-[var(--primary)]">Every Sacred Tradition.</span>
-                </h1>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+                  A royal wedding planner who honours <br />
+                  <span className="text-[var(--primary)]">every ceremony, every sacred tradition</span>
+                </h2>
                 <div className="space-y-5 text-gray-600 text-base leading-relaxed font-light">
                   <p>
                     A <strong className="text-slate-900">royal wedding in Saudi Arabia</strong> is not a
@@ -938,9 +938,9 @@ export default function RoyalWeddingsPage() {
                   </ul>
                   <Link
                     href="/consultation"
-                    className={`mt-8 block text-center py-3 px-6 font-bold text-sm uppercase tracking-widest transition-all ${
+                    className={`mt-8 block text-center py-3 px-6 font-bold text-sm uppercase tracking-widest transition-all rounded-lg ${
                       pkg.highlight
-                        ? "bg-[var(--primary)] text-slate-900 hover:opacity-90"
+                        ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)]"
                         : "border border-slate-200 text-slate-900 hover:border-[var(--primary)]/40 hover:bg-neutral-50"
                     }`}
                   >
@@ -1062,6 +1062,38 @@ export default function RoyalWeddingsPage() {
           </div>
         </section>
 
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                Royal wedding challenges — <span className="text-[var(--primary)]">solved with experience</span>
+              </h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
+                A multi-day royal celebration carries protocol, privacy, and logistical demands that few teams have managed at scale. Here is how we handle the ones distinguished families raise most.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Multi-day ceremony continuity", s: "Milka, Laylat al-Henna, Nikah, Zaffa, and Walima are run from one master timeline with a single accountable director — so styling, catering, and guest flow stay consistent across every day." },
+                { c: "Royal protocol & VIP guest management", s: "Seating hierarchy, motorcade arrivals, dedicated majlis areas, and discreet handling of senior dignitaries are planned with experienced protocol staff who understand Saudi ceremonial expectations." },
+                { c: "Privacy, discretion & security", s: "Strict NDAs, vetted crew, controlled media access, women-only zones, and close-protection liaison keep the celebration private for high-profile families." },
+                { c: "Large-guest logistics (up to 3,000)", s: "Parallel kitchens, phased service, traffic and parking plans, and back-of-house redundancy ensure a 3,000-guest Walima feels as effortless as an intimate Nikah." },
+              ].map((item) => (
+                <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <h3 className="font-bold text-slate-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── INTERNAL LINKING ── */}
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -1106,6 +1138,27 @@ export default function RoyalWeddingsPage() {
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED ROYAL WEDDINGS & CONSULTATION ── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Featured Celebrations From Our Portfolio</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Royal Riyadh Wedding", slug: "royal-riyadh-wedding", desc: "A multi-day ceremonial wedding for a distinguished Riyadh family — Nikah, Zaffa, and a grand Walima." },
+                { title: "Grand Wedding Ceremony", slug: "grand-wedding-ceremony", desc: "A palace-scale celebration with bespoke Kosha, royal protocol, and cinematic media production." },
+                { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "Discreet VIP hospitality and ceremonial hosting for a high-profile family gathering." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <p className="text-gray-500 text-sm">See our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or <Link href="/consultation" className="text-[var(--primary)] font-semibold hover:underline">book a private royal wedding consultation</Link>.</p>
           </div>
         </section>
 

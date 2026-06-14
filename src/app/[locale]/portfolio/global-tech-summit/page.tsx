@@ -29,9 +29,9 @@ export default function GlobalTechSummit() {
           <Image 
             src="/hero_bg.webp" 
             alt="Global Tech Summit" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -70,7 +70,7 @@ export default function GlobalTechSummit() {
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
         
         {/* The Brief */}
         <div className="grid md:grid-cols-2 gap-16 items-center">

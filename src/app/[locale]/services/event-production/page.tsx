@@ -47,7 +47,7 @@ export async function generateMetadata({
       description:
         "Custom stage design, concert-grade AV, intelligent lighting, and immersive projection mapping for events across Saudi Arabia.",
       url: canonicalUrl,
-      images: [{ url: "/gallery_vip_party.webp", width: 1200, height: 630, alt: "Event Production Saudi Arabia" }],
+      images: [{ url: "/services/event_production_stage_riyadh.webp", width: 1200, height: 630, alt: "Event production company Saudi Arabia — concert-grade stage, LED wall and lighting at a Riyadh event" }],
     },
   };
 }
@@ -229,8 +229,9 @@ export default function EventProductionPage() {
           title="Event Production Services"
           titleHighlight="Saudi Arabia"
           subtitle="Technical powerhouse for custom stage fabrication, concert-grade sound systems, LED projection mapping, and National Day show productions — transforming any venue into an extraordinary experience."
-          backgroundImage="/riyadh_summit_people.webp"
-          imageAlt="Grand event production setup inside luxury chandelier ballroom in Saudi Arabia"
+          backgroundImage="/services/event_production_stage_riyadh.webp"
+          imageAlt="Event production company Saudi Arabia — concert-grade stage, LED video wall and lighting rig at a Riyadh event"
+          enableParallax
           badge="Event Production"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -501,8 +502,8 @@ export default function EventProductionPage() {
               </div>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
                 <Image
-                  src="/gallery_corporate_gala.webp"
-                  alt="شركة إنتاج فعاليات السعودية - تصميم مسارح وإنتاج صوت وصورة"
+                  src="/services/riyadh_summit_people.webp"
+                  alt="شركة إنتاج فعاليات السعودية - تصميم مسارح وإنتاج صوت وصورة وشاشات LED"
                   width={800}
                   height={600}
                   className="w-full h-full object-cover"
@@ -532,6 +533,65 @@ export default function EventProductionPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Production</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Production challenges — <span className="text-[var(--primary)]">solved with experience</span></h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">Live production leaves no room for error. Here is how our technical team plans around the failure points that matter most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Venue power & rigging limits", s: "Site surveys, generator power, and certified rigging ensure a venue's electrical and structural limits never cap the show you have designed." },
+                { c: "Tight load-in & changeover windows", s: "Modular staging, labelled cable looms, and a rehearsed crew call sheet let us build, test, and strike inside fixed venue windows." },
+                { c: "Reliability for live, one-take moments", s: "Redundant audio, backup media servers, and spare kit on standby protect keynotes, product reveals, and live broadcasts from single points of failure." },
+                { c: "Creative ambition vs. budget & physics", s: "Our designers prototype and value-engineer concepts so the wow moment is achievable, on-budget, and safe to deliver." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Production In Action — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Global Tech Summit", slug: "global-tech-summit", desc: "Main-stage AV, LED walls, and multi-camera live switching for a major technology conference." },
+                { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "Off-grid staging, power, and lighting for a large-scale desert heritage festival." },
+                { title: "Riyadh Government Summit", slug: "riyadh-government-summit", desc: "Broadcast-grade production and stage design for a ministerial-level summit." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+                  <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
+              <div>
+                <h3 className="text-neutral-900 font-bold text-lg">Planning a production?</h3>
+                <p className="text-neutral-500 text-sm mt-1">Book a free consultation or speak with our production team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or see our <Link href="/services/production-venues" className="text-[var(--primary)] font-semibold hover:underline">event services & venues</Link>.</p>
           </div>
         </section>
 

@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 
@@ -172,16 +172,44 @@ export default function Hero() {
             {t("subtitle")}
           </motion.p>
 
-          {/* Portfolio CTA */}
+          {/* CTA cluster — Free Consultation + WhatsApp + Portfolio */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.6 }}
-            className={`flex items-center gap-4 ${rowReverse} mb-12`}
+            className={`flex flex-wrap items-center gap-3 ${rowReverse} mb-12`}
           >
+            {/* Primary — Free Consultation */}
+            <Link
+              href="/consultation"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[13px] font-bold text-ink-950 transition-transform duration-200 hover:scale-[1.02]"
+              style={{
+                background: "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+                boxShadow: "0 4px 22px rgba(245,158,11,0.32), inset 0 1px 0 rgba(255,255,255,0.18)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {isRtl ? "استشارة مجانية" : "Free Consultation"}
+              <ArrowRight size={14} className={isRtl ? "rotate-180" : ""} />
+            </Link>
+
+            {/* Secondary — WhatsApp */}
+            <a
+              href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20my%20event."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[13px] font-semibold text-white transition-all duration-200 hover:scale-[1.02]"
+              style={{ background: "rgba(37,211,102,0.16)", border: "1px solid rgba(37,211,102,0.55)" }}
+              aria-label={isRtl ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
+            >
+              <MessageCircle size={15} className="text-[#25D366]" fill="#25D366" />
+              {isRtl ? "واتساب" : "WhatsApp Us"}
+            </a>
+
+            {/* Tertiary — Portfolio */}
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-white/65 hover:text-white transition-colors group"
+              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-white/65 hover:text-white transition-colors group ms-1"
             >
               <span className="border-b border-white/25 group-hover:border-white pb-px transition-colors">
                 {t("viewPortfolio")}
@@ -387,8 +415,8 @@ export default function Hero() {
             }}
           >
             {[
-              { num: "250+", label: isRtl ? "فعالية نخبوية" : "Elite Events" },
-              { num: "10+",  label: isRtl ? "سنة خبرة"     : "Years"        },
+              { num: "250+", label: isRtl ? "فعالية منفذة" : "Events Delivered" },
+              { num: "15+",  label: isRtl ? "سنة خبرة"     : "Years"        },
               { num: "4.9★", label: isRtl ? "تقييم"         : "Rating"       },
             ].map((s, i) => (
               <div key={i} className="text-center">

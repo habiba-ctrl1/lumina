@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/dammam`;
   return {
-    title: "Event Management Company in Dammam & Eastern Province | Saudi Event Management",
+    title: "Event Management Company in Dammam & Eastern Province",
     description:
-      "Saudi Event Management is the Eastern Province's premier event company. Corporate conferences at DCEC & Sheraton Dammam, energy sector events near Saudi Aramco Dhahran, luxury weddings at Kempinski Al Khobar & Half Moon Bay. Cross-border Dammam–Bahrain event management.",
+      "Your event management company in Dammam and the Eastern Province. Corporate conferences at DCEC & Sheraton Dammam, energy sector events near Saudi Aramco Dhahran, weddings at Kempinski Al Khobar & Half Moon Bay, and cross-border Dammam–Bahrain event management.",
     keywords:
-      "event management Dammam, corporate events Dammam Eastern Province, Saudi Aramco event management Dhahran, conference organizer Al-Khobar, Kempinski Al Khobar wedding, Half Moon Bay events, oil gas conference Saudi Arabia, DCEC Dammam Convention Center, تنظيم فعاليات الدمام",
+      "event management company in Dammam, event planner in Dammam, corporate event organizer in Dammam, wedding planner in Dammam, conference organizer Al-Khobar, Saudi Aramco event management Dhahran, Half Moon Bay events, DCEC Dammam Convention Center, تنظيم فعاليات الدمام",
     alternates: {
       canonical: path,
       languages: {
@@ -390,11 +391,11 @@ export default function DammamPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Elite Corporate &"
-        titleHighlight="Coastal Celebrations"
-        subtitle="From Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay — the Eastern Province's premier event management company."
+        title="Event Management Company in "
+        titleHighlight="Dammam"
+        subtitle="Elite corporate events and coastal celebrations — from Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay. Your event planner across the Eastern Province."
         backgroundImage="/alkhobar_corporate_people.webp"
-        imageAlt="Corporate event management in Dammam and Al-Khobar Eastern Province Saudi Arabia"
+        imageAlt="Event management company in Dammam and Al-Khobar Eastern Province Saudi Arabia"
         badge="Saudi Arabia's Energy Capital | Eastern Province"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -538,6 +539,8 @@ export default function DammamPage() {
           </div>
         </div>
       </section>
+
+      <LocationCTA city="Dammam" />
 
       {/* Venues Section */}
       <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -784,6 +787,13 @@ export default function DammamPage() {
                 industrial exhibitions — the most specialized B2B event portfolio
                 in Saudi Arabia.
               </p>
+              <p>
+                Need a corporate event organizer in Dammam or a wedding planner
+                for a Gulf-coast celebration?{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">Contact our Eastern Province team</Link>{" "}
+                or{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>.
+              </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-neutral-100">
@@ -792,12 +802,12 @@ export default function DammamPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Events", slug: "corporate-event-management" },
+                  { name: "Corporate Event Management in Dammam", slug: "corporate-event-management" },
                   { name: "Energy Sector Events", slug: "corporate-event-management" },
-                  { name: "Exhibitions", slug: "exhibition-management" },
-                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
-                  { name: "Outdoor Events", slug: "luxury-wedding-planning" },
-                  { name: "Cross-Border Events", slug: "corporate-event-management" },
+                  { name: "Exhibition Management in Dammam", slug: "exhibition-management" },
+                  { name: "Wedding Planner in Dammam", slug: "luxury-wedding-planning" },
+                  { name: "Outdoor & Coastal Events", slug: "luxury-wedding-planning" },
+                  { name: "Cross-Border Bahrain Events", slug: "corporate-event-management" },
                 ].map((svc) => (
                   <Link
                     key={svc.name}

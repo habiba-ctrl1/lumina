@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Stars, MapPin, Sparkles, Utensils, Music, Camera, Gift, ChevronRight } from "lucide-react";
+import { Heart, Stars, MapPin, Sparkles, Utensils, Music, Camera, Gift, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Metadata cannot be exported from a client component in Next.js 13+ app dir
@@ -27,7 +28,7 @@ export default function WeddingsPage() {
         "provider": {
           "@type": "LocalBusiness",
           "name": "Saudi Event Management",
-          "image": "https://saudieventmanagement.com/wedding.webp",
+          "image": "https://saudieventmanagement.com/services/wedding.webp",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Riyadh",
@@ -146,7 +147,7 @@ export default function WeddingsPage() {
           "addressCountry": "SA"
         }
       },
-      "image": "https://saudieventmanagement.com/wedding.webp",
+      "image": "https://saudieventmanagement.com/services/wedding.webp",
       "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
       "organizer": {
         "@type": "Organization",
@@ -205,10 +206,10 @@ export default function WeddingsPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Luxury Wedding Planner"
+          title="Wedding Planner"
           titleHighlight="Saudi Arabia"
-          subtitle="Elite luxury wedding planning in Riyadh and Jeddah — royal weddings, traditional Nikah ceremonies, and VIP receptions at the Kingdom's most prestigious venues."
-          backgroundImage="/luxury_wedding_couple_guests.webp"
+          subtitle="Expert wedding planning in Riyadh, Jeddah, and Dammam — from traditional Nikah and Milka ceremonies to Henna nights and grand receptions at the Kingdom's most sought-after venues."
+          backgroundImage="/services/luxury_wedding_couple_guests.webp"
           imageAlt="Luxury wedding planner Saudi Arabia"
           badge="حفلات الزفاف | Luxury Weddings"
           breadcrumbs={[
@@ -218,14 +219,20 @@ export default function WeddingsPage() {
           ]}
           minHeight="large"
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-12 py-5 bg-[var(--primary)] text-slate-900 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
+              href="#wedding-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Start Planning Your Dream
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Speak to a Wedding Planner
+            </a>
           </div>
         </div>
 
@@ -237,7 +244,7 @@ export default function WeddingsPage() {
               <div className="flex flex-col gap-4">
                 <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/wedding_stage_backdrop_decor.webp"
+                    src="/services/wedding_stage_backdrop_decor.webp"
                     alt="Elegant wedding stage backdrop with white arches neon sign and floral decor Saudi Arabia"
                     fill
                     className="object-cover"
@@ -247,7 +254,7 @@ export default function WeddingsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/gallery_wedding_reception.webp"
+                      src="/services/gallery_wedding_reception.webp"
                       alt="Luxury wedding reception hall decoration by Saudi Event Management"
                       fill
                       className="object-cover"
@@ -256,7 +263,7 @@ export default function WeddingsPage() {
                   </div>
                   <div className="relative aspect-square rounded-xl overflow-hidden shadow-md">
                     <Image
-                      src="/luxury_wedding_table_setting.webp"
+                      src="/services/luxury_wedding_table_setting.webp"
                       alt="Premium gold-rimmed wedding table setting with crystal glasses and floral centrepiece"
                       fill
                       className="object-cover"
@@ -390,6 +397,120 @@ export default function WeddingsPage() {
           </div>
         </section>
 
+        {/* ── WEDDING PLANNING PROCESS ── */}
+        <section className="py-32 bg-slate-50 border-y border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Our Process</span>
+              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">How we plan your <span className="text-[var(--primary)]">wedding</span> in Saudi Arabia</h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">A clear five-stage journey refined over 15 years of weddings across Riyadh, Jeddah, and AlUla — built around Saudi family traditions and modern celebration.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {[
+                { step: "01", title: "Consultation & Vision", desc: "We listen to the couple and families, then define guest count, budget, and the balance of tradition and contemporary style you want." },
+                { step: "02", title: "Venue & Date", desc: "Curated shortlist and site visits across Riyadh, Jeddah, and Dammam — peak-season dates locked early to secure your preferred ballroom." },
+                { step: "03", title: "Design & Styling", desc: "Stage, Kosha, floral, lighting, catering menus, and Zaffa — presented as a complete moodboard before a riyal is committed." },
+                { step: "04", title: "Coordination & Permits", desc: "Vendor management, gender-segregated logistics where required, and any GEA or municipality permits handled end-to-end by your planner." },
+                { step: "05", title: "Wedding Day Delivery", desc: "A dedicated on-day team runs the timeline minute-by-minute so the couple and families simply enjoy the celebration." },
+              ].map((s) => (
+                <div key={s.step} className="bg-white border border-slate-200 rounded-2xl p-6">
+                  <div className="text-3xl font-bold text-[var(--primary)]/25 mb-3">{s.step}</div>
+                  <h3 className="font-bold text-slate-900 text-sm mb-2">{s.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Planning</span>
+              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">Common wedding challenges — <span className="text-[var(--primary)]">and how we solve them</span></h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Saudi weddings carry unique logistical and cultural considerations. Here is how our team handles the ones couples ask about most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Peak-season venue scarcity", s: "Riyadh and Jeddah ballrooms book 6–12 months ahead for the autumn and post-Ramadan seasons. Preferred-partner access lets us secure dates early so you never compromise on the venue." },
+                { c: "Balancing two families' expectations", s: "We act as a neutral coordinator between families, presenting clear options and a single approved plan — protecting relationships while keeping decisions moving." },
+                { c: "Gender-segregated logistics", s: "Separate entrances, parallel service flows, women-only photography zones, and discreet staffing are designed into the floor plan from day one, not improvised on the night." },
+                { c: "Vendor reliability & budget creep", s: "A vetted vendor network with written scopes and a transparent, itemised budget means no last-minute surprises or hidden costs as the date approaches." },
+              ].map((item) => (
+                <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <h3 className="font-bold text-slate-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── LEAD FORM / WEDDING ENQUIRY ── */}
+        <section id="wedding-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Begin Your Wedding Journey
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Your dream wedding,<br />
+                  <span className="text-[#C5A880]">planned to perfection.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  Share your vision, preferred dates, and city. Our senior wedding planner returns a
+                  tailored concept, venue shortlist, and a transparent quote within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Bespoke concept, styling & floral design",
+                    "Preferred venues — Ritz-Carlton, Four Seasons & more",
+                    "Full coordination for Nikah, Milka & reception",
+                    "Discreet planning with complete confidentiality",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20luxury%20wedding."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
+              </div>
+              <ServiceLeadForm
+                source="weddings_page"
+                defaultEventType="Luxury Wedding"
+                eyebrow="Wedding Enquiry"
+                heading="Plan your luxury wedding"
+                subheading="Our senior wedding planner will respond within 2 hours with a tailored concept and quote."
+                submitLabel="Request Wedding Consultation"
+                eventTypeOptions={[
+                  "Full Wedding Planning",
+                  "Nikah / Milka Ceremony",
+                  "Wedding Reception",
+                  "Destination Wedding",
+                  "Engagement / Henna Night",
+                  "Other",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-32 bg-white relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
@@ -439,6 +560,37 @@ export default function WeddingsPage() {
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED WEDDING PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Featured Weddings From Our Portfolio</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Royal Riyadh Wedding", slug: "royal-riyadh-wedding", desc: "A multi-day ceremonial wedding for a distinguished Riyadh family — Nikah, Zaffa, and a grand Walima reception." },
+                { title: "Jeddah Beach Wedding", slug: "jeddah-beach-wedding", desc: "A Red Sea waterfront celebration blending coastal styling with traditional Hejazi hospitality." },
+                { title: "Grand Wedding Ceremony", slug: "grand-wedding-ceremony", desc: "A full-scale ballroom wedding with bespoke Kosha, floral design, and cinematic media production." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
+              <div>
+                <h3 className="text-slate-900 font-bold text-lg">Ready to start planning?</h3>
+                <p className="text-gray-500 text-sm mt-1">Book a free consultation or speak directly with our wedding team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-gray-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore our <Link href="/services/royal-weddings" className="text-[var(--primary)] font-semibold hover:underline">royal wedding planning</Link> service.</p>
           </div>
         </section>
 

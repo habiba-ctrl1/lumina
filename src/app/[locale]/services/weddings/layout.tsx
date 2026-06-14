@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description:
         "Bespoke luxury wedding planning and social event management services across Riyadh, Jeddah, and Dammam.",
       url: canonicalUrl,
-      images: [{ url: "/wedding.webp", width: 1200, height: 630, alt: "Luxury Wedding Planning Saudi Arabia" }],
+      images: [{ url: "/services/wedding.webp", width: 1200, height: 630, alt: "Luxury Wedding Planning Saudi Arabia" }],
     },
   };
 }

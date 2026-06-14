@@ -53,7 +53,7 @@ const jsonLd = {
         "@type": "LocalBusiness",
         "@id": "https://saudieventmanagement.com#organization",
         name: "Saudi Event Management",
-        image: "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
+        image: "https://saudieventmanagement.com/services/alkhobar_corporate_people.webp",
         url: "https://saudieventmanagement.com",
         telephone: "+966501234567",
         address: {
@@ -438,7 +438,7 @@ export default function CorporateEventsPage() {
           title="Corporate Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="End-to-end corporate event planning for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's premier five-star venues."
-          backgroundImage="/alkhobar_corporate_people.webp"
+          backgroundImage="/services/alkhobar_corporate_people.webp"
           imageAlt="Corporate event management Saudi Arabia — executive summit at KAFD Riyadh"
           badge="فعاليات الشركات | Corporate Events"
           breadcrumbs={[
@@ -928,6 +928,72 @@ export default function CorporateEventsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Real-World Considerations
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Corporate event challenges — <span className="text-[var(--primary)]">solved with experience</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
+                High-stakes corporate events in Saudi Arabia carry predictable risks. Here is how our team plans around the ones organisers raise most.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Securing flagship venues on short notice", s: "KAFD and five-star ballrooms book months out. Preferred-partner access and held-date options keep premium venues available even on compressed timelines." },
+                { c: "GEA permits & multi-authority compliance", s: "Entertainment licenses, municipality approvals, and civil-defense clearances are sequenced early and managed in-house, so approvals never threaten the event date." },
+                { c: "Bilingual delegates & dignitary protocol", s: "Simultaneous Arabic–English interpretation, protocol seating, and motorcade coordination keep ministers and international delegates fully served." },
+                { c: "Hybrid reach without in-room compromise", s: "Broadcast-grade streaming and interactive platforms extend the audience globally while the live experience stays first-class." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Corporate Events — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Riyadh Government Summit", slug: "riyadh-government-summit", desc: "A ministerial-level summit with VIP protocol, interpretation, and broadcast production." },
+                { title: "Executive Summit Jeddah", slug: "executive-summit-jeddah", desc: "A senior executive summit by the Red Sea with full PCO services and hospitality." },
+                { title: "Global Tech Summit", slug: "global-tech-summit", desc: "A multi-day technology conference with main-stage production and delegate management." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+                  <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
+              <div>
+                <h3 className="text-neutral-900 font-bold text-lg">Planning a corporate event?</h3>
+                <p className="text-neutral-500 text-sm mt-1">Book a free consultation or request a proposal — a senior consultant replies within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/conferences" className="text-[var(--primary)] font-semibold hover:underline">conference management</Link>.</p>
           </div>
         </section>
 

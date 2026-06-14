@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description:
       "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
     keywords:
-      "event management company Riyadh, corporate event organizer Riyadh, conference management Riyadh RICEC, luxury wedding planner Riyadh, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
+      "event management company in Riyadh, event planner in Riyadh, corporate event organizer in Riyadh, wedding planner in Riyadh, conference management Riyadh RICEC, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
     alternates: {
       canonical: path,
       languages: {
@@ -133,7 +134,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Brand Activation Riyadh Season",
-              "url": "https://saudieventmanagement.com/locations/riyadh/brand-activation",
+              "url": "https://saudieventmanagement.com/services/event-production",
             },
           },
         ],
@@ -349,13 +350,13 @@ const services = [
     icon: Users,
     title: "Brand Activations — Riyadh Season",
     text: "GEA-licensed brand activations at Boulevard Riyadh City, Riyadh Front, and MDL Beast zones during Riyadh Season and national celebrations.",
-    href: "/locations/riyadh/brand-activation",
+    href: "/services/event-production",
   },
   {
     icon: Calendar,
     title: "Gala Dinners & Award Ceremonies",
     text: "Turnkey production of corporate gala dinners, award nights, and Diriyah heritage galas combining Najdi architecture with contemporary luxury.",
-    href: "/locations/riyadh/gala-dinners",
+    href: "/services/corporate-events",
   },
 ];
 
@@ -587,6 +588,8 @@ export default function RiyadhPage() {
           </div>
         </div>
       </section>
+
+      <LocationCTA city="Riyadh" />
 
       {/* Top Venues in Riyadh */}
       <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -909,6 +912,15 @@ export default function RiyadhPage() {
                 infrastructure continues to expand — positioning our Riyadh
                 team for the largest event market in MENA.
               </p>
+              <p>
+                Whether you need a corporate event organizer in Riyadh, a
+                wedding planner for a celebration at the Ritz-Carlton, or a
+                full exhibition team at RICEC,{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our Riyadh team</Link>{" "}
+                or{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
+                to start planning.
+              </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-neutral-100">
@@ -917,13 +929,12 @@ export default function RiyadhPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Events", slug: "corporate-event-management" },
-                  { name: "Exhibitions", slug: "exhibition-management" },
-                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
-                  { name: "Brand Activations", slug: "brand-activation" },
-                  { name: "Gala Dinners", slug: "gala-dinners" },
+                  { name: "Corporate Event Management in Riyadh", slug: "corporate-event-management" },
+                  { name: "Exhibition Management in Riyadh", slug: "exhibition-management" },
+                  { name: "Wedding Planner in Riyadh", slug: "luxury-wedding-planning" },
+                  { name: "Conference Organizer in Riyadh", slug: "conference-planning" },
+                  { name: "VIP Event Planning in Riyadh", slug: "vip-event-planning" },
                   { name: "Government Events", slug: "corporate-event-management" },
-                  { name: "Conference Planning", slug: "conference-planning" },
                 ].map((svc) => (
                   <Link
                     key={svc.slug}

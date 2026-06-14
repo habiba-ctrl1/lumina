@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import InternalPageHero from "@/components/InternalPageHero";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -951,13 +952,13 @@ export async function generateMetadata({ params }: PageProps) {
   const base = "https://saudieventmanagement.com";
   const canonical = `${base}${locale === "en" ? "" : "/ar"}/locations/${city.toLowerCase()}`;
   return {
-    title: `Event Management in ${d.name} | Saudi Event Management`,
+    title: `Event Management Company in ${d.name} | Saudi Event Management`,
     description: d.description,
-    keywords: `event management ${d.name}, luxury events ${d.name}, corporate events ${d.name}, wedding planner ${d.name}, ${d.nameAr}, Saudi Event Management`,
+    keywords: `event management company in ${d.name}, event planner in ${d.name}, corporate event organizer in ${d.name}, wedding planner in ${d.name}, ${d.nameAr}, Saudi Event Management`,
     alternates: {
       canonical,
       languages: {
-        "en-SA": `${base}/locations/${city.toLowerCase()}`,
+        "en-US": `${base}/locations/${city.toLowerCase()}`,
         "ar-SA": `${base}/ar/locations/${city.toLowerCase()}`,
       },
     },
@@ -1144,6 +1145,8 @@ export default async function DynamicLocationPage({ params }: PageProps) {
         </div>
       </section>
 
+      <LocationCTA city={d.name} />
+
       {/* Venue Cards */}
       <section className="py-20 bg-slate-50/60 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1255,6 +1258,12 @@ export default async function DynamicLocationPage({ params }: PageProps) {
               </p>
               <p>
                 Our {d.name} team holds preferred relationships with the city&apos;s premier venues, local vendors, and governing authorities — ensuring GEA-compliant execution fully aligned with Saudi Vision 2030&apos;s event industry transformation goals.
+              </p>
+              <p>
+                Looking for an event management company in {d.name}?{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">Contact our team</Link>,{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>, or browse our{" "}
+                <Link href="/portfolio" className="text-[var(--primary)] underline underline-offset-4 font-medium">event portfolio</Link>.
               </p>
             </div>
             <div className="mt-8 pt-6 border-t border-neutral-100">

@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path \"src\" -ErrorAction SilentlyContinue)",
-      "Bash(Select-Object -First 5)"
+      "Bash(Select-Object -First 5)",
+      "Read(//tmp/imgcheck/**)",
+      "Read(//c/tmp/imgcheck/**)",
+      "Bash(curl -s -L \"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=60&w=600\" -o \"_imgcheck/about.jpg\")",
+      "Bash(node scripts/restore_2eedc7c_images.js)",
+      "Bash(git reset *)",
+      "Bash(git commit -q -m 'revert: restore all page images to 2eedc7c local assets, remove injected stock photos *)",
+      "Bash(git push *)"
     ]
   }
 }

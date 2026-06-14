@@ -29,9 +29,9 @@ export default function NeomFutureSummitCaseStudy() {
           <Image 
             src="/hero_bg.webp" 
             alt="NEOM Future Summit" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -47,7 +47,7 @@ export default function NeomFutureSummitCaseStudy() {
           <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight">
             The NEOM <span className="text-[var(--primary)] font-bold">Future Summit</span>
           </h1>
-          <p className="text-slate-600 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
+          <p className="text-slate-300 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
         </div>
       </section>
 
@@ -106,7 +106,7 @@ export default function NeomFutureSummitCaseStudy() {
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
             <div className="absolute inset-0 bg-[var(--primary)]/10 animate-pulse" />
-            <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" width={800} height={800} className="w-full h-full object-cover" />
+            <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </div>
         </div>
 

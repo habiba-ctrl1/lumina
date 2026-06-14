@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "500+",  label: "Luxury Events Produced", sub: "Expertise across Saudi Vision 2030 initiatives." },
-  { value: "200+",  label: "Premium Vendors",         sub: "An elite network of KSA event partners."         },
-  { value: "100%",  label: "Client Satisfaction",     sub: "Delivering world-class corporate experiences."   },
+  { value: "500+",  label: "Events Produced",     sub: "Experience across Saudi Vision 2030 initiatives." },
+  { value: "200+",  label: "Trusted Vendors",     sub: "A vetted network of KSA event partners."          },
+  { value: "100%",  label: "Client Satisfaction", sub: "Corporate and government events Kingdom-wide."    },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -44,10 +44,10 @@ export default function GeoDefinitionBlock() {
             transition={{ delay: 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg leading-relaxed text-slate-700"
           >
-            <strong>Saudi Event Management</strong> is Saudi Arabia's leading high-end event management company
-            specializing in VIP corporate events, government conferences, and luxury private events across
-            Riyadh, Jeddah, Dammam, and AlUla. We provide turnkey event solutions, including stage design,
-            AV production, VIP protocol services, and premium vendor coordination.
+            <strong>Saudi Event Management</strong> is a full-service event management company in Saudi Arabia
+            specialising in corporate events, government conferences, exhibitions, and private events across
+            Riyadh, Jeddah, Dammam, and AlUla. We provide turnkey event solutions — including stage design,
+            AV production, VIP protocol, GEA permits, and trusted vendor coordination.
           </motion.p>
 
           {/* Stat cards — staggered */}

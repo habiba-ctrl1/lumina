@@ -59,7 +59,7 @@ const services: Record<
         a: "For large-scale corporate events and galas, we recommend booking 3–6 months in advance. For government-aligned events or those requiring GEA entertainment permits, allow 6–9 months for full compliance planning.",
       },
       {
-        q: "corporate event management company near me",
+        q: "Do you have a corporate event organizer in my city?",
         a: "Saudi Event Management operates across all major Saudi cities with dedicated regional teams in Riyadh, Jeddah, Dammam, and AlUla — providing immediate, on-the-ground support for any corporate event requirement.",
       },
     ],
@@ -87,8 +87,8 @@ const services: Record<
         a: "Luxury weddings in Saudi Arabia typically range from SAR 150,000 to SAR 2,000,000+ depending on guest count, venue, and production level. Our senior consultants provide bespoke proposals tailored to your exact vision and requirements.",
       },
       {
-        q: "luxury wedding planner near me",
-        a: "Saudi Event Management has dedicated bridal consultants in Riyadh, Jeddah, and Dammam available for in-person consultations, venue tours, and bespoke wedding planning from concept through to your perfect day.",
+        q: "Can I meet a wedding planner in person before booking?",
+        a: "Yes. Saudi Event Management has dedicated bridal consultants in Riyadh, Jeddah, and Dammam available for in-person consultations, venue tours, and bespoke wedding planning from concept through to your perfect day.",
       },
     ],
   },
@@ -115,7 +115,7 @@ const services: Record<
         a: "Yes. Our in-house design and fabrication team builds fully custom exhibition stands for trade shows across Saudi Arabia, including at RICEC Riyadh, RECC, and the Jeddah Center for Forums and Events.",
       },
       {
-        q: "exhibition management company near me",
+        q: "Do you have exhibition specialists in my city?",
         a: "Saudi Event Management has exhibition specialists across Riyadh, Jeddah, and Dammam providing rapid-response booth design, stand building, and full trade show management for any exhibition venue in Saudi Arabia.",
       },
     ],
@@ -143,7 +143,7 @@ const services: Record<
         a: "Yes. Our technical production team provides complete hybrid conference solutions including professional broadcast-quality streaming, interactive audience engagement platforms, and multilingual interpretation for remote delegates.",
       },
       {
-        q: "conference organizer near me",
+        q: "Do you provide a local conference organizer in Saudi cities?",
         a: "Saudi Event Management is a leading professional conference organizer in Saudi Arabia with dedicated teams in Riyadh, Jeddah, and Dammam providing full-service PCO management for any conference scale.",
       },
     ],
@@ -171,7 +171,7 @@ const services: Record<
         a: "Yes. We coordinate close-protection security with licensed Saudi security firms for all high-profile VIP events, managing secure perimeters, guest screening, and emergency protocols in collaboration with relevant authorities.",
       },
       {
-        q: "luxury VIP event planner near me",
+        q: "How do I arrange a private VIP event consultation?",
         a: "Saudi Event Management's VIP division operates with complete discretion across Riyadh, Jeddah, AlUla, and NEOM — providing private consultation and bespoke planning for the Kingdom's most exclusive events.",
       },
     ],
@@ -378,6 +378,17 @@ export default async function CityServicePage({ params }: PageProps) {
                 </p>
                 <p>
                   As Saudi Arabia evolves under Vision 2030, {cityData.name} is emerging as a premier destination for elite gatherings. We leverage our extensive network of local venues, premium vendors, and government relationships to ensure seamless execution for every client.
+                </p>
+                <p>
+                  Explore all{" "}
+                  <Link href={`/locations/${city}`} className="text-[var(--primary)] underline underline-offset-4 font-medium">
+                    event management services in {cityData.name}
+                  </Link>
+                  , or{" "}
+                  <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our team</Link>{" "}
+                  and{" "}
+                  <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
+                  to start planning.
                 </p>
               </div>
             </div>

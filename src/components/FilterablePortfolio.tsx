@@ -21,10 +21,10 @@ const portfolioItems = [
     alt: "VIPs and speakers at a high-tech NEOM summit stage in Saudi Arabia"
   },
   {
-    id: 3, src: "/majlis_gathering_people.webp", title: "Makkah VIP Retreat", category: "Corporate Events",
-    slug: "makkah-vip-retreat", client: "Global Islamic Foundation", date: "Oct 2024",
-    guests: "50", outcome: "Exclusive spiritual concierge",
-    alt: "Men in traditional attire networking at a luxury Majlis gathering Saudi Arabia"
+    id: 3, src: "/event_production_stage_riyadh.webp", title: "Riyadh Stage Production", category: "Event Production",
+    slug: "makkah-vip-retreat", client: "Riyadh Season Headliner", date: "Oct 2024",
+    guests: "5,000+", outcome: "Custom LED stage & show production",
+    alt: "Concert-grade stage, LED video wall and lighting production at a Riyadh event in Saudi Arabia"
   },
   {
     id: 4, src: "/riyadh_summit_people.webp", title: "Riyadh Government Summit", category: "Conferences",
@@ -33,10 +33,10 @@ const portfolioItems = [
     alt: "Large audience and immersive screens at a high-level government summit in Riyadh Saudi Arabia"
   },
   {
-    id: 5, src: "/alula_gala_people.webp", title: "AlUla Heritage Gala", category: "Exhibitions",
-    slug: "alula-desert-festival", client: "National Tourism Authority", date: "Jan 2025",
-    guests: "600", outcome: "UNESCO heritage site activation",
-    alt: "Guests in formal wear at a desert heritage gala event in AlUla Saudi Arabia"
+    id: 5, src: "/exhibition_hall_riyadh.webp", title: "Riyadh Expo Pavilion", category: "Exhibitions",
+    slug: "alula-desert-festival", client: "National Exhibitions Authority", date: "Jan 2025",
+    guests: "600", outcome: "Multi-brand pavilion & stand build",
+    alt: "Exhibition hall with trade-show booths and brand stands at a Riyadh expo in Saudi Arabia"
   },
   {
     id: 6, src: "/jeddah_luxury_people.webp", title: "Jeddah Executive Soiree", category: "Corporate Events",
@@ -64,7 +64,7 @@ const portfolioItems = [
   },
 ];
 
-const categories = ["all", "conferences", "exhibitions", "corporateEvents", "luxuryWeddings"];
+const categories = ["all", "conferences", "exhibitions", "eventProduction", "corporateEvents", "luxuryWeddings"];
 
 export default function FilterablePortfolio() {
   const t = useTranslations("portfolio");

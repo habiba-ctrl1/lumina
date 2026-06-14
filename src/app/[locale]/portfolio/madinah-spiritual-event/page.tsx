@@ -29,9 +29,9 @@ export default function MadinahSpiritualEvent() {
           <Image 
             src="/locations/riyadh-hero.webp" 
             alt="Madinah Spiritual Event" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
@@ -52,7 +52,7 @@ export default function MadinahSpiritualEvent() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
+      <section className="py-16 md:py-20 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Moon, label: "Theme", val: "Spiritual Peace" },
@@ -70,7 +70,7 @@ export default function MadinahSpiritualEvent() {
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
         
         {/* The Essence */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -109,7 +109,7 @@ export default function MadinahSpiritualEvent() {
         </div>
 
         {/* Conclusion */}
-        <div className="bg-black text-white p-12 md:p-24 rounded-[4rem] text-center">
+        <div className="bg-black text-white p-12 md:p-24 rounded-3xl text-center">
           <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">A <span className="text-primary ">Profound</span> Impact</h2>
           <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             The event was described by attendees as a "transformative experience." Saudi Event Management's ability to handle the complexities of the city while maintaining a profound sense of reverence and luxury established a new benchmark for spiritual events.

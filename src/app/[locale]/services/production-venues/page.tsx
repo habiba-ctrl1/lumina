@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Speaker, Camera, Utensils, PenTool, Lightbulb, Map, Zap, Star, ChevronRight } from "lucide-react";
+import { Speaker, Camera, Utensils, PenTool, Lightbulb, Map, Zap, Star, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ProductionVenuesPage() {
@@ -132,53 +133,67 @@ export default function ProductionVenuesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-emerald-950 text-white">
+      <main className="min-h-screen bg-white">
         <Navbar />
 
         <InternalPageHero
-          title="Production Venues"
+          title="Event Services & Venue Sourcing"
           titleHighlight="Saudi Arabia"
-          subtitle="Exclusive access to KAICC, RECC, and King Abdullah Economic City — delivering comprehensive event venue sourcing, AV production, and full-service event logistics across the Kingdom."
-          backgroundImage="/neom_summit_people.webp"
+          subtitle="Venue sourcing, AV production, staging, catering, and media under one roof — with access to KAICC, RECC, and leading event venues across Riyadh, Jeddah, and the Kingdom."
+          backgroundImage="/services/neom_summit_people.webp"
           imageAlt="Event services Saudi Arabia — production venues and elite event spaces"
           badge="Venues & Production"
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Services", href: "/services" },
-            { label: "Production Venues" },
+            { label: "Event Services & Venues" },
           ]}
           minHeight="large"
+          trustElements={[
+            { value: "ISO 9001", label: "Certified Quality Partners" },
+            { value: "4.9/5", label: "From 156 Client Reviews" },
+            { value: "Tier-1", label: "Vendor Status in KSA" },
+          ]}
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* ── CTA BAR ── */}
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
+              href="#services-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Inquire for Services
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Request a Venue Walkthrough
+            </a>
           </div>
         </div>
 
         {/* E-E-A-T & Vendor Partnerships */}
-        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
+        <section className="py-9 border-b border-neutral-200/80 bg-neutral-50/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-wrap justify-between items-center gap-10">
-              <div className="flex items-center gap-10">
-                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
-                  <Star className="text-[var(--primary)]" size={24} />
+            <div className="flex flex-wrap justify-between items-center gap-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <Star className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-sm tracking-widest">ISO 9001 Certified</p>
-                  <p className="text-[10px] text-gray-500 uppercase">Quality Management Partners</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">ISO 9001 Certified</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Quality Management Partners</p>
                 </div>
               </div>
-              <div className="flex items-center gap-10 grayscale opacity-50 text-[10px] font-bold tracking-[0.2em]">
+              <div className="h-8 w-px bg-neutral-200 hidden md:block" />
+              <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold tracking-widest text-neutral-400">
                 <span>MADINAT AL FAISALIAH</span>
                 <span>JW MARRIOTT</span>
                 <span>RITZ-CARLTON</span>
               </div>
-              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase border-l border-white/10 ps-8">
+              <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
                 &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
               </div>
             </div>
@@ -186,9 +201,22 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Services Showcase */}
-        <section className="py-32 bg-emerald-900/50">
+        <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="text-center mb-16">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Full-Service Event Production
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Our production <span className="text-[var(--primary)]">services</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+                Venue sourcing, AV, staging, catering and media — a single in-house team for every
+                technical and hospitality element of your event.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
                 { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
@@ -197,21 +225,21 @@ export default function ProductionVenuesPage() {
                 { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah, providing robust event infrastructure and utilizing 2025 KSA design trends." },
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
                 { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
-                { icon: Star, title: "Elite Hospitality", desc: "VIP guest management, concierge services, and flawless event logistics KSA at Ritz-Carlton venues." },
+                { icon: Star, title: "VIP Hospitality", desc: "VIP guest management, concierge services, and dependable event logistics across KSA at Ritz-Carlton and other leading venues." },
               ].map((service: any, i: number) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group"
+                  transition={{ delay: (i % 4) * 0.08 }}
+                  className="bg-white border border-neutral-200/80 p-7 rounded-2xl hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all duration-300 group"
                 >
-                  <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[var(--primary)]/10 group-hover:border-[var(--primary)]/50 transition-all duration-500">
-                    <service.icon size={24} className="text-[var(--primary)]" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
+                    <service.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
-                  <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{service.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -219,27 +247,31 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Topical Authority Content Section */}
-        <section className="py-32 bg-emerald-950 relative border-y border-white/5">
+        <section className="py-24 md:py-28 bg-white border-b border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">Production <br/><span className="text-[var(--primary)]">Hub</span></h3>
-                <p className="text-gray-500 text-sm font-light leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
-                <div className="pt-6 border-t border-white/10">
-                  <p className="text-white font-bold text-sm">Fahad Al-Sulaiman</p>
-                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Head of Production</p>
+                <span className="section-label">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                  Production Hub
+                </span>
+                <h2 className="text-2xl font-bold text-neutral-900">Technical <br/><span className="text-[var(--primary)]">guides</span></h2>
+                <p className="text-neutral-500 text-sm leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
+                <div className="pt-6 border-t border-neutral-200">
+                  <p className="text-neutral-900 font-bold text-sm">Fahad Al-Sulaiman</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">Head of Production</p>
                 </div>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   { title: "Complete guide to event services in Saudi Arabia", desc: "From AV technical riders to catering licenses: navigating the KSA service landscape." },
                   { title: "Top event venues in Riyadh 2025", desc: "An exclusive look at KAICC, Ritz-Carlton, and the future of venue spaces in KAFD." },
                   { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
                   { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
                 ].map((post: any, idx: number) => (
-                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
-                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                  <div key={idx} className="p-6 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all cursor-pointer group">
+                    <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h3>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
               </div>
@@ -248,32 +280,32 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* Localized Arabic Content */}
-        <section className="py-32 bg-white text-slate-900 relative overflow-hidden">
+        <section className="py-24 md:py-28 bg-[var(--surface-tinted)] border-b border-emerald-100 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
-                <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">
+                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
                   خدمات <br/><span className="text-[var(--primary)]">عالمية المستوى</span>
                 </h2>
-                <div className="space-y-6">
-                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
-                    <h4 className="text-xl font-bold mb-2">أماكن فعاليات الرياض</h4>
-                    <p className="text-gray-600 text-sm">نقدم أفضل خيارات القاعات والمساحات الخارجية الفاخرة التي تناسب تطلعاتكم.</p>
+                <div className="space-y-5">
+                  <div className="p-6 bg-white border-s-4 border-[var(--primary)] rounded-e-xl shadow-[0_4px_20px_rgba(15,23,42,0.04)]">
+                    <h3 className="text-lg font-bold mb-2 text-neutral-900">أماكن فعاليات الرياض</h3>
+                    <p className="text-neutral-600 text-sm">نقدم أفضل خيارات القاعات والمساحات الخارجية الفاخرة التي تناسب تطلعاتكم.</p>
                   </div>
-                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
-                    <h4 className="text-xl font-bold mb-2">شركة إنتاج صوت وصورة الرياض</h4>
-                    <p className="text-gray-600 text-sm">أحدث التقنيات في الصوت والإضاءة والشاشات لضمان تجربة بصرية مذهلة.</p>
+                  <div className="p-6 bg-white border-s-4 border-[var(--primary)] rounded-e-xl shadow-[0_4px_20px_rgba(15,23,42,0.04)]">
+                    <h3 className="text-lg font-bold mb-2 text-neutral-900">شركة إنتاج صوت وصورة الرياض</h3>
+                    <p className="text-neutral-600 text-sm">أحدث التقنيات في الصوت والإضاءة والشاشات لضمان تجربة بصرية مذهلة.</p>
                   </div>
-                  <div className="p-8 bg-white border-s-4 border-[var(--primary)]">
-                    <h4 className="text-xl font-bold mb-2">تصميم وديكور فعاليات جدة</h4>
-                    <p className="text-gray-600 text-sm">نبتكر تصاميم وديكورات تعكس هوية الفعالية وتضيف لمسة من الأناقة.</p>
+                  <div className="p-6 bg-white border-s-4 border-[var(--primary)] rounded-e-xl shadow-[0_4px_20px_rgba(15,23,42,0.04)]">
+                    <h3 className="text-lg font-bold mb-2 text-neutral-900">تصميم وديكور فعاليات جدة</h3>
+                    <p className="text-neutral-600 text-sm">نبتكر تصاميم وديكورات تعكس هوية الفعالية وتضيف لمسة من الأناقة.</p>
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                <Image 
-                  src="/gallery_corporate_gala.webp" 
-                  alt="خدمات الفعاليات السعودية - أماكن فعاليات الرياض" 
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
+                <Image
+                  src="/services/gallery_corporate_gala.webp"
+                  alt="خدمات الفعاليات السعودية - أماكن فعاليات الرياض"
                   width={800}
                   height={1000}
                   className="w-full h-full object-cover"
@@ -283,24 +315,85 @@ export default function ProductionVenuesPage() {
           </div>
         </section>
 
+        {/* ── LEAD FORM / SERVICES ENQUIRY ── */}
+        <section id="services-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Request a Service Quote
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  One team for venue, <br />
+                  <span className="text-[#C5A880]">AV, catering &amp; production.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  Tell us your venue, guest count, and technical needs. Our production team returns a
+                  recommended venue, equipment plan, and an itemised quote within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Exclusive venue access — KAICC, RECC & KAEC",
+                    "Concert-grade AV, staging & lighting",
+                    "Five-star catering & VIP hospitality",
+                    "Cinematic media production & coverage",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20quote%20for%20event%20production%20and%20venue%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
+              </div>
+              <ServiceLeadForm
+                source="production_venues_page"
+                defaultEventType="Event Production / Technical"
+                eyebrow="Services Enquiry"
+                heading="Request your service quote"
+                subheading="Our production team will respond within 2 hours with a venue and technical plan."
+                submitLabel="Request Service Quote"
+                eventTypeOptions={[
+                  "Venue Sourcing & Rental",
+                  "AV & Technical Production",
+                  "Stage Design & Build",
+                  "Luxury Catering",
+                  "Lighting & Decor",
+                  "Full-Service Package",
+                  "Other",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Price Specification Section */}
-        <section className="py-32 bg-emerald-900 relative">
+        <section className="py-24 md:py-28 bg-neutral-50/70 border-b border-neutral-200/70">
           <div className="max-w-5xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Investment <span className="text-[var(--primary)]">Guide</span></h2>
-              <p className="text-gray-500 mt-4 uppercase tracking-[0.4em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Investment <span className="text-[var(--primary)]">guide</span></h2>
+              <p className="text-neutral-400 mt-4 uppercase tracking-[0.3em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-white/5 bg-emerald-950 shadow-2xl">
-              <table className="w-full text-start">
-                <thead className="bg-white/5">
+            <div className="overflow-x-auto rounded-3xl border border-neutral-200/80 bg-white shadow-[0_8px_40px_rgba(15,23,42,0.06)]">
+              <table className="w-full text-start min-w-[560px]">
+                <thead className="bg-neutral-50">
                   <tr>
-                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Service Category</th>
-                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Starting Investment</th>
-                    <th className="px-8 py-6 text-[var(--primary)] uppercase tracking-widest text-xs font-bold">Key Inclusions</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Service Category</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Starting Investment</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Key Inclusions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5">
+                <tbody className="divide-y divide-neutral-100">
                   {[
                     { category: "AV Production", price: "SAR 15,000", inclusions: "Audio, Lighting, Technical Crew" },
                     { category: "Stage Design & Build", price: "SAR 35,000", inclusions: "3D Renders, Fabrication, Install" },
@@ -308,10 +401,10 @@ export default function ProductionVenuesPage() {
                     { category: "Venue Rental", price: "SAR 50,000", inclusions: "Location, Security, Basic Setup" },
                     { category: "Event Media", price: "SAR 8,500", inclusions: "Photography, Cinematic Highlights" },
                   ].map((row: any, i: number) => (
-                    <tr key={i} className="hover:bg-white/[0.02] transition-colors">
-                      <td className="px-8 py-6 text-white font-medium">{row.category}</td>
-                      <td className="px-8 py-6 text-[var(--primary)] font-bold">{row.price}</td>
-                      <td className="px-8 py-6 text-gray-500 text-sm font-light">{row.inclusions}</td>
+                    <tr key={i} className="hover:bg-neutral-50/80 transition-colors">
+                      <td className="px-8 py-5 text-neutral-900 font-semibold">{row.category}</td>
+                      <td className="px-8 py-5 text-[var(--primary)] font-bold">{row.price}</td>
+                      <td className="px-8 py-5 text-neutral-500 text-sm">{row.inclusions}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -321,10 +414,10 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-32 bg-white text-slate-900">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <h2 className="text-2xl md:text-3xl font-sans mb-16 text-center font-bold">Service <span className="text-[var(--primary)]">Queries</span></h2>
-            <div className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center text-neutral-900">Service <span className="text-[var(--primary)]">queries</span></h2>
+            <div className="space-y-4">
               {[
                 { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Saudi Event Management provides complete technical specifications tailored to your venue." },
                 { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We hold exclusive partnerships with elite culinary teams, including executive chefs at the Rosewood Jeddah. We can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
@@ -335,9 +428,44 @@ export default function ProductionVenuesPage() {
                 { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
                 { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Saudi Event Management provides localized, concert-grade AV production and technical support wherever your event takes place." }
               ].map((faq: any, i: number) => (
-                <div key={i} className="border-b border-slate-200 pb-8">
-                  <h3 className="text-xl font-bold mb-8">{faq.q}</h3>
-                  <p className="text-gray-500 font-light text-sm leading-relaxed">{faq.a}</p>
+                <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 p-7 rounded-2xl">
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Real-World Production
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Production challenges — <span className="text-[var(--primary)]">and how we solve them</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
+                Delivering technical production across hotels, convention centres, and remote desert venues raises recurring problems. Here is how our team plans around them.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Venue power & rigging limits", s: "Many ballrooms and heritage sites were never built for concert-grade loads. We conduct a technical site survey early, then spec generators, clean power distribution, and certified rigging so the venue's limits never cap the production." },
+                { c: "Tight load-in and changeover windows", s: "When a venue hosts back-to-back events, set-up time is brutal. Pre-built modular staging, labelled cable looms, and a rehearsed crew call sheet let us load in, test, and strike inside the window." },
+                { c: "Multi-vendor accountability gaps", s: "AV, catering, décor, and venue teams pointing fingers is the classic failure mode. With every discipline owned in-house under one production director, there is a single point of accountability." },
+                { c: "Remote-venue logistics (AlUla, desert)", s: "Off-grid sites need power, climate control, and redundancy. We plan silent generators, battery backup, and spare-kit contingencies so a desert gala runs as reliably as a five-star ballroom." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -366,6 +494,37 @@ export default function ProductionVenuesPage() {
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Production In Action — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Global Tech Summit", slug: "global-tech-summit", desc: "Main-stage AV, LED walls, and live switching for a multi-day technology conference." },
+                { title: "Executive Summit Jeddah", slug: "executive-summit-jeddah", desc: "Full ballroom production, staging, and hospitality for a senior executive gathering." },
+                { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "Off-grid staging, power, and lighting for a large-scale desert heritage event." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
+              <div>
+                <h3 className="text-slate-900 font-bold text-lg">Need a venue and production plan?</h3>
+                <p className="text-gray-500 text-sm mt-1">Book a free consultation or request a venue walkthrough — our production team replies within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-gray-500 text-sm mt-6">Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link> or our dedicated <Link href="/services/event-production" className="text-[var(--primary)] font-semibold hover:underline">event production service</Link>.</p>
           </div>
         </section>
 

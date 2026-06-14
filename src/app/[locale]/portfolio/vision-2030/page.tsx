@@ -5,7 +5,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollProgress from "@/components/ScrollProgress";
-import { Compass, Landmark, ShieldCheck } from "lucide-react";
+import { Compass, Landmark, ShieldCheck, ArrowRight } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -138,6 +138,28 @@ export default function Vision2030Portfolio() {
             </Link>
             <Link href="/services/event-production" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
               Event Production
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-24 px-6">
+        <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden max-w-6xl mx-auto shadow-2xl">
+          <div className="absolute inset-0 bg-[url('/neom_summit_people.webp')] opacity-10 bg-cover bg-center" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Define the <span className="text-emerald-400">Future?</span></h2>
+            <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
+              We partner with government bodies and global brands to execute Vision 2030's most ambitious projects.
+            </p>
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] group"
+            >
+              Consult with Our Team
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>

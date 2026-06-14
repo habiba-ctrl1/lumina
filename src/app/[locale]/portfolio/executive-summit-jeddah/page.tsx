@@ -29,9 +29,9 @@ export default function ExecutiveSummitJeddah() {
           <Image 
             src="/hero_bg.webp"
             alt="Jeddah Executive Summit"
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
@@ -52,7 +52,7 @@ export default function ExecutiveSummitJeddah() {
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+      <section className="py-16 md:py-20 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Ship, label: "Venue", val: "Private Yacht Club" },
@@ -70,7 +70,7 @@ export default function ExecutiveSummitJeddah() {
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
         
         {/* Coastal Elegance */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -106,7 +106,7 @@ export default function ExecutiveSummitJeddah() {
         </div>
 
         {/* Testimonial */}
-        <div className="bg-black text-white p-12 md:p-24 rounded-[4rem] text-center">
+        <div className="bg-black text-white p-12 md:p-24 rounded-3xl text-center">
           <p className="text-xl md:text-3xl font-sans font-light  mb-10 leading-relaxed">
             "The executive summit in Jeddah was a masterclass in balance. Saudi Event Management delivered professional precision with the soul of a coastal retreat."
           </p>

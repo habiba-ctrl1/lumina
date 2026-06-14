@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,17 +54,31 @@ export default function InternalPageHero({
 }: InternalPageHeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
 
+  // Performance-safe parallax: only active on desktop pointers and when the
+  // user has NOT requested reduced motion. Defaults off (SSR-safe) so mobile
+  // never pays the scroll-listener / layout cost and there is no hydration shift.
+  const [parallaxOn, setParallaxOn] = useState(false);
+  useEffect(() => {
+    if (!enableParallax) return;
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setParallaxOn(desktop.matches && !reduce.matches);
+    update();
+    desktop.addEventListener("change", update);
+    reduce.addEventListener("change", update);
+    return () => {
+      desktop.removeEventListener("change", update);
+      reduce.removeEventListener("change", update);
+    };
+  }, [enableParallax]);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // parallax: image moves up at 40% scroll speed
-  const bgY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, enableParallax ? -130 : 0]
-  );
+  // parallax: image moves up at ~40% scroll speed (desktop only)
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, -130]);
 
   const centered = align === "center";
 
@@ -78,7 +92,7 @@ export default function InternalPageHero({
         aria-hidden
         className="absolute left-0 right-0 z-0"
         style={
-          enableParallax
+          parallaxOn
             ? { top: -120, bottom: -120, y: bgY }
             : { top: 0, bottom: 0 }
         }

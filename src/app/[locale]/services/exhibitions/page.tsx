@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award, ChevronRight } from "lucide-react";
+import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award, ChevronRight, CheckCircle2, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ExhibitionsPage() {
@@ -47,7 +48,7 @@ export default function ExhibitionsPage() {
       {
         "@type": "LocalBusiness",
         "name": "Saudi Event Management Exhibition Management",
-        "image": "https://saudieventmanagement.com/corporate.webp",
+        "image": "https://saudieventmanagement.com/services/corporate.webp",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Riyadh",
@@ -178,21 +179,45 @@ export default function ExhibitionsPage() {
     ]
   };
 
+  const expoServices = [
+    { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level industry expos with international delegations." },
+    { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and massive business fair pavilions." },
+    { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030, creating breathtaking exhibition pavilion Saudi structures." },
+    { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
+    { icon: Monitor, title: "Digital Showcase", desc: "High-impact commercial display event and product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
+    { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
+    { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions like Index Saudi." },
+    { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC Riyadh." },
+  ];
+
+  const faqs = [
+    { q: "What are the major exhibitions in Saudi Arabia?", a: "Major exhibitions include LEAP, Big 5 Construct, and Index Saudi. We provide premium booth design and management for international brands at these high-profile events." },
+    { q: "Who manages trade shows in Riyadh?", a: "Saudi Event Management is a leading trade show organizer Saudi Arabia, acting as the primary liaison between exhibitors and venues like RICEC and RECC for flawless execution." },
+    { q: "When is the next big expo in Saudi Arabia?", a: "The exhibition calendar is dynamic, with peak seasons in Q1 and Q4. Contact us for our detailed 'Annual Saudi exhibition calendar' and strategic planning timelines." },
+    { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Saudi Event Management provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
+    { q: "What are the upcoming major exhibitions in Saudi Arabia in 2025?", a: "2025 features LEAP, Saudi Agriculture, Index Saudi, and major summits aligned with Vision 2030. We can align your brand with the most relevant B2B opportunities." },
+    { q: "How to design an exhibition booth for a Saudi audience?", a: "It requires balancing modern technology with cultural nuances, such as private Majlis meeting areas. Our exhibition stand design Riyadh team excels at creating culturally resonant, high-impact pavilions." },
+    { q: "trade show organizer near me Riyadh", a: "Saudi Event Management is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
+    { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
+    { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." },
+  ];
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-emerald-950 text-white">
+      <main className="min-h-screen bg-white">
         <Navbar />
 
         <InternalPageHero
           title="Exhibition Management"
           titleHighlight="Saudi Arabia"
           subtitle="Premier trade show organizer and exhibition management company in Saudi Arabia — partnering with Saudi Expo 2030, GITEX Saudi Arabia, and Big 5 Saudi for world-class presence at every expo."
-          backgroundImage="/gallery_corporate_gala.webp"
-          imageAlt="Exhibition management and trade show production in Saudi Arabia"
+          backgroundImage="/services/exhibition_hall_riyadh.webp"
+          imageAlt="Exhibition management company Saudi Arabia — trade show booths and brand stands at a Riyadh expo hall"
+          enableParallax
           badge="Exhibitions & Expos"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -200,37 +225,51 @@ export default function ExhibitionsPage() {
             { label: "Exhibitions" },
           ]}
           minHeight="large"
+          trustElements={[
+            { value: "RECC", label: "Official Partner Network" },
+            { value: "100+", label: "Pavilions Delivered" },
+            { value: "Award", label: "Winning Booth Design 2024" },
+          ]}
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* ── CTA BAR ── */}
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-12 py-5 bg-[var(--primary)] text-emerald-950 font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-all shadow-2xl"
+              href="#expo-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Organize Your Expo
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Book Exhibition Space
+            </a>
           </div>
         </div>
 
         {/* E-E-A-T Signals & Partnerships */}
-        <section className="py-12 border-y border-white/5 bg-emerald-900/30">
+        <section className="py-9 border-b border-neutral-200/80 bg-neutral-50/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex flex-wrap justify-between items-center gap-10">
-              <div className="flex items-center gap-10">
-                <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
-                  <Award className="text-[var(--primary)]" size={24} />
+            <div className="flex flex-wrap justify-between items-center gap-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-sm tracking-widest">Official RECC Partner</p>
-                  <p className="text-[10px] text-gray-500 uppercase">Venue Logistics & Support</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">Official RECC Partner</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Venue Logistics &amp; Support</p>
                 </div>
               </div>
-              <div className="flex items-center gap-10 grayscale opacity-50">
-                <span className="text-xs font-bold tracking-tighter">INDEX SAUDI</span>
-                <span className="text-xs font-bold tracking-tighter">SAUDI AGRICULTURE</span>
-                <span className="text-xs font-bold tracking-tighter">ADIPEC</span>
+              <div className="h-8 w-px bg-neutral-200 hidden md:block" />
+              <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold tracking-widest text-neutral-400">
+                <span>INDEX SAUDI</span>
+                <span>SAUDI AGRICULTURE</span>
+                <span>ADIPEC</span>
               </div>
-              <div className="text-xs text-[var(--primary)] font-bold  tracking-widest uppercase">
+              <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
                 &quot;Award-Winning Exhibition Design 2024&quot;
               </div>
             </div>
@@ -238,60 +277,126 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Core Services Grid */}
-        <section className="py-32 bg-emerald-900/30 relative">
+        <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-24">
-              <h2 className="text-2xl md:text-4xl font-sans text-white mb-8 font-bold">Our Expo <span className="text-[var(--primary)]">Expertise</span></h2>
-              <div className="w-24 h-px bg-[var(--primary)]/50 mx-auto" />
+            <div className="text-center mb-16">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Full-Service Expo Management
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+                Our expo <span className="text-[var(--primary)]">expertise</span>
+              </h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+                From concept and stand build to B2B matchmaking and lead capture — we deliver standout brand
+                presence at the Kingdom&apos;s most competitive trade shows.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-              {[
-                { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level industry expos with international delegations." },
-                { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and massive business fair pavilions." },
-                { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030, creating breathtaking exhibition pavilion Saudi structures." },
-                { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
-                { icon: Monitor, title: "Digital Showcase", desc: "High-impact commercial display event and product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
-                { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
-                { icon: Lightbulb, title: "Creative Strategy", desc: "Developing unique concepts to ensure your brand stands out in competitive exhibitions like Index Saudi." },
-                { icon: TrendingUp, title: "Visitor Engagement", desc: "Proven strategies to maximize footfall and lead conversion at major venues like RECC Riyadh." },
-              ].map((service: any, i: number) => (
-                <motion.div 
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {expoServices.map((service, i) => (
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-emerald-900 border border-white/5 p-10 rounded-3xl hover:border-[var(--primary)]/30 transition-all duration-500 group"
+                  transition={{ delay: (i % 4) * 0.08 }}
+                  className="bg-white border border-neutral-200/80 p-7 rounded-2xl hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all duration-300 group"
                 >
-                  <service.icon size={32} className="text-[var(--primary)] mb-8 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-sans font-bold text-white mb-8">{service.title}</h3>
-                  <p className="text-gray-500 text-sm font-light leading-relaxed">{service.desc}</p>
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
+                    <service.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{service.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{service.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ── LEAD FORM / EXPO ENQUIRY ── */}
+        <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Reserve Your Presence
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Secure premium space.<br />
+                  <span className="text-[#C5A880]">Stand out at every expo.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  Tell us which show you&apos;re targeting and our exhibitions team returns a stand concept,
+                  space options at RICEC or RECC, and an itemised build quote within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Priority space booking at RICEC, RECC & JCFE",
+                    "Custom 3D stand design & turnkey build",
+                    "On-site logistics, AV & lead-capture tech",
+                    "B2B matchmaking to maximise qualified leads",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20exhibit%20at%20a%20Saudi%20trade%20show."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
+              </div>
+              <ServiceLeadForm
+                source="exhibitions_page"
+                defaultEventType="Exhibition / Trade Show"
+                eyebrow="Exhibition Enquiry"
+                heading="Plan your exhibition presence"
+                subheading="Our exhibitions team will respond within 2 hours with stand options and an itemised quote."
+                submitLabel="Request Exhibition Proposal"
+                eventTypeOptions={[
+                  "Custom Stand Design & Build",
+                  "Exhibition Space Booking",
+                  "Full Trade Show Management",
+                  "International Pavilion",
+                  "B2B Matchmaking",
+                  "Other",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Topical Authority Content Section */}
-        <section className="py-32 bg-emerald-950 relative border-y border-white/5">
+        <section className="py-24 md:py-28 bg-white border-b border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-white">Exhibitor <br/><span className="text-[var(--primary)]">Insights</span></h3>
-                <p className="text-gray-500 text-sm font-light leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
+                <span className="section-label">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                  Exhibitor Resources
+                </span>
+                <h2 className="text-2xl font-bold text-neutral-900">Exhibitor <br /><span className="text-[var(--primary)]">insights</span></h2>
+                <p className="text-neutral-500 text-sm leading-relaxed">Strategic resources for maximizing your presence at the Kingdom&apos;s most prestigious trade shows.</p>
                 <Link href="/blog" className="inline-block text-[var(--primary)] text-xs font-bold uppercase tracking-widest border-b border-[var(--primary)] pb-1">View All Guides</Link>
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   { title: "Annual Saudi exhibition calendar", desc: "Stay ahead with our comprehensive timeline of the Kingdom's most critical trade shows and B2B summits." },
                   { title: "Exhibitor success stories", desc: "Discover how our clients maximize ROI and secure high-value leads at competitive venues." },
                   { title: "Exhibition cost breakdown guides", desc: "A transparent analysis of booth construction, technology integration, and staffing costs in KSA." },
                   { title: "Venue comparison articles", desc: "An in-depth review of RICEC, RECC, and Jeddah Center for Forums & Events to choose your optimal location." }
-                ].map((post: any, idx: number) => (
-                  <div key={idx} className="p-8 bg-emerald-900 rounded-2xl hover:bg-[var(--primary)]/5 transition-all cursor-pointer group">
-                    <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
-                    <p className="text-gray-500 text-[11px] font-light leading-relaxed">{post.desc}</p>
+                ].map((post, idx) => (
+                  <div key={idx} className="p-6 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all cursor-pointer group">
+                    <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h3>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{post.desc}</p>
                   </div>
                 ))}
               </div>
@@ -300,26 +405,25 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* Localized Arabic Section */}
-        <section className="py-32 bg-white text-slate-900 relative overflow-hidden">
-          <div className="absolute top-0 end-0 w-1/3 h-full bg-gold-50/50 -skew-x-12 translate-x-1/2" />
+        <section className="py-24 md:py-28 bg-[var(--surface-tinted)] border-b border-emerald-100 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
-                <h2 className="text-2xl md:text-4xl font-sans leading-tight font-bold">
-                  الريادة في <br/><span className="text-[var(--primary)]">تنظيم المعارض</span>
+                <h2 className="text-3xl md:text-4xl leading-tight font-bold text-neutral-900">
+                  الريادة في <br /><span className="text-[var(--primary)]">تنظيم المعارض</span>
                 </h2>
-                <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  تعتبر إدارة الفعاليات السعودية أفضل <strong className="text-slate-900">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-slate-900">مركز الرياض للمعارض والمؤتمرات</strong>.
+                <p className="text-neutral-600 text-lg leading-relaxed">
+                  تعتبر إدارة الفعاليات السعودية أفضل <strong className="text-neutral-900">شركة إدارة معارض في الرياض</strong>، حيث نقدم حلولاً متكاملة لتنظيم المعارض التجارية في جدة والدمام. نحن نركز على الابتكار في التصميم والتميز في التنفيذ لضمان نجاح مشاركتكم في <strong className="text-neutral-900">مركز الرياض للمعارض والمؤتمرات</strong>.
                 </p>
-                <div className="flex gap-10 pt-4">
-                  <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">إدارة المعارض</div>
-                  <div className="px-6 py-3 border border-gold-200 rounded-full text-sm font-bold text-gold-700">تصميم الأجنحة</div>
+                <div className="flex gap-6 pt-2">
+                  <div className="px-6 py-3 border border-gold-300 bg-gold-50 rounded-full text-sm font-bold text-gold-700">إدارة المعارض</div>
+                  <div className="px-6 py-3 border border-gold-300 bg-gold-50 rounded-full text-sm font-bold text-gold-700">تصميم الأجنحة</div>
                 </div>
               </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                <Image 
-                  src="/gallery_corporate_gala.webp" 
-                  alt="مركز الرياض للمعارض والمؤتمرات - تنظيم معارض" 
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
+                <Image
+                  src="/services/exhibition_hall_riyadh.webp"
+                  alt="مركز الرياض للمعارض والمؤتمرات - أجنحة عرض وتنظيم معارض تجارية في السعودية"
                   width={800}
                   height={500}
                   className="w-full h-full object-cover"
@@ -330,38 +434,87 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* FAQ & HowTo Section */}
-        <section className="py-32 bg-emerald-900 relative">
+        <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-20">
-              <h2 className="text-2xl md:text-3xl font-sans text-white font-bold">Expo <span className="text-[var(--primary)]">Guide</span></h2>
-              <p className="text-gray-500 mt-4 uppercase tracking-widest text-xs">Everything you need to know about Saudi Trade Shows</p>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Expo <span className="text-[var(--primary)]">guide</span></h2>
+              <p className="text-neutral-500 mt-4 uppercase tracking-widest text-xs">Everything you need to know about Saudi trade shows</p>
             </div>
 
-            <div className="space-y-6">
-              {[
-                { q: "What are the major exhibitions in Saudi Arabia?", a: "Major exhibitions include LEAP, Big 5 Construct, and Index Saudi. We provide premium booth design and management for international brands at these high-profile events." },
-                { q: "Who manages trade shows in Riyadh?", a: "Saudi Event Management is a leading trade show organizer Saudi Arabia, acting as the primary liaison between exhibitors and venues like RICEC and RECC for flawless execution." },
-                { q: "When is the next big expo in Saudi Arabia?", a: "The exhibition calendar is dynamic, with peak seasons in Q1 and Q4. Contact us for our detailed 'Annual Saudi exhibition calendar' and strategic planning timelines." },
-                { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Saudi Event Management provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
-                { q: "What are the upcoming major exhibitions in Saudi Arabia in 2025?", a: "2025 features LEAP, Saudi Agriculture, Index Saudi, and major summits aligned with Vision 2030. We can align your brand with the most relevant B2B opportunities." },
-                { q: "How to design an exhibition booth for a Saudi audience?", a: "It requires balancing modern technology with cultural nuances, such as private Majlis meeting areas. Our exhibition stand design Riyadh team excels at creating culturally resonant, high-impact pavilions." },
-                { q: "trade show organizer near me Riyadh", a: "Saudi Event Management is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
-                { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
-                { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." }
-              ].map((faq: any, i: number) => (
-                <div key={i} className="bg-emerald-950 p-8 rounded-2xl border border-white/5">
-                  <h3 className="text-lg font-bold text-[var(--primary)] mb-3">{faq.q}</h3>
-                  <p className="text-slate-600 font-light text-sm leading-relaxed">{faq.a}</p>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 p-7 rounded-2xl">
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Related Services ── */}
-        <section className="py-20 bg-emerald-950 border-t border-white/5">
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Exhibition challenges — <span className="text-[var(--primary)]">solved with experience</span></h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">Trade-show success in Saudi Arabia is won or lost in the operational detail. Here is how our exhibition team handles the risks exhibitors face most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Tight build & teardown windows at RICEC/RECC", s: "Move-in slots are fixed and shared with dozens of exhibitors. Pre-fabricated modular stands and a sequenced build schedule get your stand show-ready before doors open." },
+                { c: "Customs & freight for international exhibits", s: "We coordinate temporary import, freight forwarding, and on-site handling so overseas exhibits clear customs and arrive on the stand without last-minute delays." },
+                { c: "Standing out on a crowded show floor", s: "Sightline-driven stand design, double-decker options, and integrated lighting and AV pull footfall toward your brand instead of past it." },
+                { c: "Turning footfall into qualified leads", s: "Digital lead-capture, B2B matchmaking, and post-show reporting convert visitor traffic into a measurable, follow-up-ready pipeline." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Exhibitions & Expos — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Vision 2030 Showcase", slug: "vision-2030", desc: "A large-format exhibition and brand showcase aligned with Vision 2030 themes." },
+                { title: "Global Tech Summit", slug: "global-tech-summit", desc: "Exhibitor pavilions and B2B matchmaking integrated into a major technology event." },
+                { title: "Dammam Corporate Seminar", slug: "dammam-corporate-seminar", desc: "An Eastern Province industry showcase with custom stands and delegate management." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+                  <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8">
+              <div>
+                <h3 className="text-neutral-900 font-bold text-lg">Exhibiting at a Saudi expo?</h3>
+                <p className="text-neutral-500 text-sm mt-1">Book a free consultation or speak with our exhibition team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/conferences" className="text-[var(--primary)] font-semibold hover:underline">conference management</Link>.</p>
+          </div>
+        </section>
+
+        {/* ── Related Services ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Related Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { title: "Conference Management", slug: "conferences", desc: "B2B summit planning, PCO services, and hybrid conference management." },
@@ -372,10 +525,10 @@ export default function ExhibitionsPage() {
                 <Link
                   key={rel.slug}
                   href={`/services/${rel.slug}`}
-                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
-                  <h4 className="text-white font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
-                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
+                  <h3 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
                 </Link>
               ))}
@@ -384,10 +537,10 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* ── Exhibition Locations ── */}
-        <section className="py-16 bg-emerald-900/20 border-t border-white/5">
+        <section className="py-16 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-widest">Exhibition Management by City</h3>
-            <p className="text-white/40 text-xs mb-8">Full-service exhibition management at RICEC, JCFE, DCEC, and all major Saudi convention centres.</p>
+            <h2 className="text-sm font-bold text-neutral-900 mb-2 uppercase tracking-widest">Exhibition Management by City</h2>
+            <p className="text-neutral-400 text-xs mb-8">Full-service exhibition management at RICEC, JCFE, DCEC, and all major Saudi convention centres.</p>
             <div className="flex flex-wrap gap-3">
               {[
                 { name: "Exhibition Management Riyadh (RICEC)", href: "/locations/riyadh" },
@@ -397,7 +550,7 @@ export default function ExhibitionsPage() {
                 <Link
                   key={loc.href}
                   href={loc.href}
-                  className="px-5 py-2.5 bg-emerald-900 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+                  className="px-5 py-2.5 bg-neutral-50 border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                 >
                   {loc.name}
                 </Link>
@@ -407,9 +560,9 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* ── MICE Industry Insights ── */}
-        <section className="py-20 bg-emerald-950 border-t border-white/5">
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-white mb-8 uppercase tracking-widest">MICE Industry Resources</h3>
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">MICE Industry Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { title: "MICE Tourism Saudi Arabia 2026: The Complete Industry Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Market size, key exhibition venues, and how to plan a MICE event in Saudi Arabia." },
@@ -418,11 +571,11 @@ export default function ExhibitionsPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-emerald-900 border border-white/5 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-all"
+                  className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
                   <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Industry Guide</span>
-                  <h4 className="text-white font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
-                  <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
+                  <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
                 </Link>
               ))}

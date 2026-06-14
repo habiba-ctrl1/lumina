@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Luxury VIP Event Planning Saudi Arabia | Saudi Event Management",
       description: "Ultra-discreet luxury event planning for royal families, HNWIs, and diplomatic guests across Saudi Arabia.",
       url: path,
-      images: [{ url: "/gallery_charity_gala.webp", width: 1200, height: 630, alt: "Luxury VIP Events Saudi Arabia" }],
+      images: [{ url: "/services/gallery_charity_gala.webp", width: 1200, height: 630, alt: "Luxury VIP Events Saudi Arabia" }],
     },
   };
 }
@@ -53,7 +53,7 @@ const jsonLd = {
       "provider": {
         "@type": "LocalBusiness",
         "name": "Saudi Event Management",
-        "image": "https://www.saudieventmanagement.com/gallery_charity_gala.webp",
+        "image": "https://www.saudieventmanagement.com/services/gallery_charity_gala.webp",
         "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
         "telephone": "+966501234567",
       },
@@ -197,8 +197,8 @@ export default function LuxuryVIPEventsPage() {
           title="Luxury VIP Event Management"
           titleHighlight="Saudi Arabia"
           subtitle="The leading luxury event planner for VIPs, Royal Families, and High-Net-Worth Individuals — strictly confidential, ultra-luxury experiences from private concerts and yacht parties to bespoke desert events in AlUla."
-          backgroundImage="/jeddah_luxury_people.webp"
-          imageAlt="Luxury VIP event planning Saudi Arabia — royal and HNWI experiences"
+          backgroundImage="/services/vip_private_event_saudi.webp"
+          imageAlt="Luxury VIP event planning Saudi Arabia — private majlis reception with Arabic coffee service for royal and HNWI guests"
           badge="VIP & Luxury Events"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -439,6 +439,65 @@ export default function LuxuryVIPEventsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">VIP event challenges — <span className="text-[var(--primary)]">handled with discretion</span></h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">Private events for royal families and high-net-worth clients demand a different standard. Here is how our team manages the considerations that matter most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Absolute privacy & discretion", s: "Strict NDAs, vetted crew, controlled media, and need-to-know guest lists protect high-profile clients before, during, and after the event." },
+                { c: "Security & close-protection coordination", s: "We liaise with private security and authorities on motorcades, access control, and secure perimeters — without making guests feel policed." },
+                { c: "Last-minute, bespoke requests", s: "A dedicated concierge and a deep vendor network make rare requests — private performers, charter logistics, rare provisions — happen quietly and quickly." },
+                { c: "Flawless, no-rehearsal execution", s: "Senior planners and built-in contingencies mean a one-off private event runs perfectly the first time, because there is no second take." },
+              ].map((item) => (
+                <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-neutral-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Private Events — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Riyadh Luxury Soirée", slug: "riyadh-luxury-soiree", desc: "An invitation-only private soirée with bespoke styling and complete discretion." },
+                { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "A discreet VIP retreat with concierge hospitality and close-protection coordination." },
+                { title: "Riyadh Elite Majlis", slug: "riyadh-elite-majlis", desc: "An exclusive majlis gathering blending traditional hospitality with private-event polish." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+                  <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
+              <div>
+                <h3 className="text-neutral-900 font-bold text-lg">Planning a private VIP event?</h3>
+                <p className="text-neutral-500 text-sm mt-1">Arrange a confidential consultation or speak with our private events team — we reply discreetly within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Private Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-neutral-500 text-sm mt-6">Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or discover our <Link href="/services/destination-events" className="text-[var(--primary)] font-semibold hover:underline">destination events</Link> service.</p>
           </div>
         </section>
 

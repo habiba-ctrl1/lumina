@@ -93,7 +93,7 @@ export default function PartnersSection() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden border border-neutral-200/80 shadow-sm shrink-0">
                     <Image 
-                      src={testimonials[current].image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"} 
+                      src={testimonials[current].image || "/riyadh_luxury_reception_people.webp"}
                       alt={testimonials[current].author}
                       width={40}
                       height={40}

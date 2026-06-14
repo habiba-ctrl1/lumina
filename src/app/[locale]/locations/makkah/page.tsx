@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description:
       "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
     keywords:
-      "event management Makkah, corporate events Makkah Al-Mukarramah, conference organizer Makkah, Hilton Makkah Convention Hotel, Fairmont Makkah wedding, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
+      "event management company in Makkah, event planner in Makkah, corporate event organizer in Makkah, wedding planner in Makkah, conference organizer Makkah, Hilton Makkah Convention Hotel, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
     alternates: {
       canonical: path,
       languages: {
@@ -586,6 +587,8 @@ export default function MakkahPage() {
         </div>
       </section>
 
+      <LocationCTA city="Makkah" />
+
       {/* Venues Section */}
       <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
@@ -873,6 +876,13 @@ export default function MakkahPage() {
                 <strong>Vision 2030</strong>&apos;s religious tourism growth
                 target of SAR 150 billion.
               </p>
+              <p>
+                For a corporate event organizer in Makkah, a wedding planner, or
+                a Haj hospitality programme,{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our Makkah team</Link>{" "}
+                or{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>.
+              </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-neutral-100">
@@ -881,10 +891,10 @@ export default function MakkahPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Events", slug: "corporate-event-management" },
-                  { name: "Luxury Weddings", slug: "luxury-wedding-planning" },
-                  { name: "Halal Exhibitions", slug: "exhibition-management" },
-                  { name: "Haj Hospitality", slug: "corporate-event-management" },
+                  { name: "Corporate Event Management in Makkah", slug: "corporate-event-management" },
+                  { name: "Wedding Planner in Makkah", slug: "luxury-wedding-planning" },
+                  { name: "Halal Exhibition Management", slug: "exhibition-management" },
+                  { name: "Haj Corporate Hospitality", slug: "corporate-event-management" },
                   { name: "Ramadan Programs", slug: "corporate-event-management" },
                   { name: "Government Events", slug: "corporate-event-management" },
                 ].map((svc) => (

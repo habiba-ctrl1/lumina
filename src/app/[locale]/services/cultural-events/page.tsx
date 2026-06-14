@@ -4,9 +4,10 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight } from "lucide-react";
+import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function SeasonalEventsPage() {
@@ -142,7 +143,7 @@ export default function SeasonalEventsPage() {
           title="Cultural Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering luxury cultural experiences across Riyadh, Jeddah, and beyond."
-          backgroundImage="/majlis_gathering_people.webp"
+          backgroundImage="/services/majlis_gathering_people.webp"
           imageAlt="Cultural events Saudi Arabia — Ramadan and National Day organizer"
           badge="Cultural Events | التراث السعودي"
           breadcrumbs={[
@@ -152,14 +153,20 @@ export default function SeasonalEventsPage() {
           ]}
           minHeight="large"
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-12 py-5 bg-[var(--primary-dark)] text-white font-bold uppercase tracking-widest hover:bg-gold-700 transition-all shadow-2xl"
+              href="#celebration-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Plan Your Celebration
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Talk to Our Events Team
+            </a>
           </div>
         </div>
 
@@ -290,8 +297,8 @@ export default function SeasonalEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/gallery_1.webp" 
-                  alt="احتفالات اليوم الوطني السعودي - فعاليات رمضان الرياض" 
+                  src="/services/saudi_gala_table_alcohol_free.webp"
+                  alt="احتفالات اليوم الوطني السعودي وفعاليات رمضان - تجهيز طاولة ضيافة فاخرة بطابع سعودي"
                   width={800}
                   height={800}
                   className="w-full h-full object-cover"
@@ -315,6 +322,66 @@ export default function SeasonalEventsPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── LEAD FORM / CELEBRATION ENQUIRY ── */}
+        <section id="celebration-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
+                  <span className="w-6 h-px bg-[#C5A880]" /> Plan Your Celebration
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Honour every tradition.<br />
+                  <span className="text-[#C5A880]">Celebrate in style.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-md">
+                  From Ramadan iftars and National Day galas to Founding Day festivals — tell us your
+                  occasion and our team returns a concept and itemised quote within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Authentic Ramadan, Eid & National Day programming",
+                    "GEA permits & municipality approvals handled",
+                    "Cultural staging, lighting & live entertainment",
+                    "Bilingual hospitality for guests & dignitaries",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20cultural%20or%20national%20event."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
+              </div>
+              <ServiceLeadForm
+                source="cultural_events_page"
+                defaultEventType="Cultural / National Event"
+                eyebrow="Celebration Enquiry"
+                heading="Plan your cultural event"
+                subheading="Our events team will respond within 2 hours with a concept and itemised quote."
+                submitLabel="Request Event Proposal"
+                eventTypeOptions={[
+                  "Ramadan Iftar / Suhoor",
+                  "Eid Celebration",
+                  "National Day / Founding Day",
+                  "Cultural Festival",
+                  "Government / Community Event",
+                  "Other",
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -370,6 +437,65 @@ export default function SeasonalEventsPage() {
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Cultural event challenges — <span className="text-[var(--primary)]">solved with experience</span></h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Seasonal and cultural events carry tight timelines and deep traditions. Here is how our team handles the considerations clients raise most.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Compressed Ramadan & seasonal lead times", s: "Iftar and Suhoor venues book out fast. We lock dates and catering early so your Ramadan activation isn't squeezed out of the best spaces." },
+                { c: "Authenticity across regions (Najdi vs Hejazi)", s: "Programming, décor, and hospitality are tailored to local heritage — Najdi majlis traditions in Riyadh, Hejazi customs in Jeddah — never a generic template." },
+                { c: "GEA & seasonal entertainment permits", s: "National Day, Founding Day, and Riyadh Season activations need GEA and municipality approvals on tight timelines, all handled in-house." },
+                { c: "Family, corporate & public audiences together", s: "Crowd flow, segregated areas where required, and family-appropriate programming are planned so every audience feels welcome and safe." },
+              ].map((item) => (
+                <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <h3 className="font-bold text-slate-900 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Cultural Events — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Riyadh Elite Majlis", slug: "riyadh-elite-majlis", desc: "A traditional Najdi majlis gathering with authentic hospitality and heritage styling." },
+                { title: "Madinah Spiritual Event", slug: "madinah-spiritual-event", desc: "A respectful, large-scale religious gathering with careful crowd and protocol management." },
+                { title: "Vision 2030 Showcase", slug: "vision-2030", desc: "A national-themed cultural activation aligned with Vision 2030 storytelling." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                  <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
+              <div>
+                <h3 className="text-slate-900 font-bold text-lg">Planning a cultural or seasonal event?</h3>
+                <p className="text-gray-500 text-sm mt-1">Book a free consultation or speak with our cultural events team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-gray-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/destination-events" className="text-[var(--primary)] font-semibold hover:underline">destination events</Link>.</p>
           </div>
         </section>
 

@@ -38,7 +38,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/private_party.webp",
+          url: "/services/private_party.webp",
           width: 1200,
           height: 630,
           alt: "Cultural and Religious Events Saudi Arabia",

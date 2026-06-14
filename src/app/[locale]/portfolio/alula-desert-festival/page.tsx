@@ -157,7 +157,7 @@ export default function AlUlaDesertFestival() {
       {/* CTA */}
       <section className="py-32 bg-black text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/gallery_1.webp" alt="Desert" width={1920} height={1080} className="w-full h-full object-cover" />
+          <Image src="/gallery_1.webp" alt="Desert" fill sizes="100vw" className="object-cover" />
         </div>
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-primary ">Cultural Wave</span></h2>

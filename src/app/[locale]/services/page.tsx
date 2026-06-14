@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/services`;
   return {
-    title: "Event Management Services Saudi Arabia | Luxury & Corporate Events",
+    title: "Event Management Services Saudi Arabia | Corporate, Weddings & Exhibitions",
     description:
       "Comprehensive event management services across Saudi Arabia — luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences in Riyadh, Jeddah, Dammam & AlUla.",
     keywords: [
@@ -38,11 +38,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: "Event Management Services Saudi Arabia | Luxury & Corporate Events",
+      title: "Event Management Services Saudi Arabia | Corporate, Weddings & Exhibitions",
       description:
-        "Comprehensive event management services across Saudi Arabia. Luxury weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences.",
+        "Comprehensive event management services across Saudi Arabia — weddings, corporate summits, exhibitions, conferences, destination events & VIP experiences.",
       url: path,
-      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
+      images: [{ url: "/services/hero_bg.webp", width: 1200, height: 630, alt: "Event Management Services Saudi Arabia" }],
     },
   };
 }
@@ -181,7 +181,7 @@ const jsonLd = {
       "@type": "Organization",
       "name": "Saudi Event Management",
       "url": "https://saudieventmanagement.com",
-      "logo": "https://saudieventmanagement.com/logo.png",
+      "logo": "https://saudieventmanagement.com/services/logo.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Riyadh",
@@ -246,8 +246,8 @@ export default function ServicesPage() {
       <InternalPageHero
         title="Event Management Services"
         titleHighlight="in Saudi Arabia"
-        subtitle="From high-stakes corporate summits to breathtaking luxury weddings — discover our comprehensive suite of elite event management capabilities across the Kingdom."
-        backgroundImage="/wedding_stage_backdrop_decor.webp"
+        subtitle="From high-stakes corporate summits to grand weddings — explore our full suite of event management services across Riyadh, Jeddah, Dammam, AlUla, and the wider Kingdom."
+        backgroundImage="/services/wedding_stage_backdrop_decor.webp"
         imageAlt="Luxury wedding stage backdrop decor at a premium event in Saudi Arabia"
         badge="Our Expertise"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}

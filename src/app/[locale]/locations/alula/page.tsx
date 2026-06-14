@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LocationCTA from "@/components/LocationCTA";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,11 +23,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/alula`;
   return {
-    title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events | Saudi Event Management",
+    title: "Event Management & Destination Weddings in AlUla",
     description:
-      "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
+      "Your event planner in AlUla for destination weddings, corporate retreats, and heritage events. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
     keywords:
-      "event management AlUla, destination wedding AlUla Saudi Arabia, Maraya Concert Hall events, Banyan Tree AlUla wedding, Habitas AlUla corporate retreat, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla, Winter at Tantora, luxury brand activation AlUla",
+      "event management company in AlUla, destination wedding planner AlUla, event planner in AlUla, corporate retreat AlUla, Maraya Concert Hall events, Banyan Tree AlUla wedding, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla",
     alternates: {
       canonical: path,
       languages: {
@@ -98,7 +99,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Destination Wedding Planning AlUla",
-              "url": "https://saudieventmanagement.com/locations/alula/destination-weddings",
+              "url": "https://saudieventmanagement.com/services/destination-events",
             },
           },
           {
@@ -106,7 +107,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Corporate Retreat Management AlUla",
-              "url": "https://saudieventmanagement.com/locations/alula/corporate-retreats",
+              "url": "https://saudieventmanagement.com/services/corporate-events",
             },
           },
           {
@@ -114,7 +115,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Heritage Cultural Event Production AlUla",
-              "url": "https://saudieventmanagement.com/locations/alula/heritage-events",
+              "url": "https://saudieventmanagement.com/services/cultural-events",
             },
           },
           {
@@ -122,7 +123,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Luxury Brand Activation AlUla",
-              "url": "https://saudieventmanagement.com/locations/alula/heritage-events",
+              "url": "https://saudieventmanagement.com/services/event-production",
             },
           },
           {
@@ -130,7 +131,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Maraya Concert Hall Event Production",
-              "url": "https://saudieventmanagement.com/locations/alula/heritage-events",
+              "url": "https://saudieventmanagement.com/services/event-production",
             },
           },
         ],
@@ -262,7 +263,7 @@ const venues = [
     district: "Ashar Valley",
     type: "Destination Weddings & Executive Retreats",
     description:
-      "Ultra-luxury desert resort nestled in the Ashar Valley sandstone landscape. The Eastern Province's benchmark for intimate destination weddings and executive corporate retreat buyouts, with dedicated event production infrastructure.",
+      "Ultra-luxury desert resort nestled in the Ashar Valley sandstone landscape. AlUla's benchmark for intimate destination weddings and executive corporate retreat buyouts, with dedicated event production infrastructure.",
   },
   {
     name: "Habitas AlUla",
@@ -307,37 +308,37 @@ const services = [
     icon: Star,
     title: "Destination Weddings",
     text: "Full-service destination wedding planning at Banyan Tree, Habitas, and heritage sites including Hegra and Elephant Rock. RCU permit management included.",
-    href: "/locations/alula/destination-weddings",
+    href: "/services/destination-events",
   },
   {
     icon: Users,
     title: "Corporate Retreats & Executive Off-Sites",
     text: "Full resort buyout corporate programs at Habitas and Banyan Tree AlUla — leadership off-sites, strategy retreats, and incentive travel in the world's greatest living museum.",
-    href: "/locations/alula/corporate-retreats",
+    href: "/services/corporate-events",
   },
   {
     icon: Sparkles,
     title: "Luxury Brand Activations",
     text: "RCU-approved luxury brand activations at Maraya, Ashar Valley, and Hegra-adjacent landscapes. Fashion, automotive, jewelry, and hospitality brand productions.",
-    href: "/locations/alula/heritage-events",
+    href: "/services/event-production",
   },
   {
     icon: Mountain,
     title: "Heritage Cultural Events",
     text: "Private heritage site dinners among Nabataean tombs at Hegra, sunset ceremonies at Elephant Rock, and cultural galas at Maraya Concert Hall.",
-    href: "/locations/alula/heritage-events",
+    href: "/services/cultural-events",
   },
   {
     icon: Camera,
     title: "Maraya Concert Hall Production",
     text: "Corporate gala dinners, award ceremonies, and brand launches at the world's largest mirrored building — full technical production and RCU coordination.",
-    href: "/locations/alula/heritage-events",
+    href: "/services/event-production",
   },
   {
     icon: MapPin,
     title: "Winter at Tantora Integration",
     text: "Corporate sponsorship event management and brand hospitality programs integrated into AlUla's flagship annual cultural festival.",
-    href: "/locations/alula/heritage-events",
+    href: "/services/cultural-events",
   },
 ];
 
@@ -401,11 +402,11 @@ export default function AlUlaPage() {
       <Navbar />
 
       <InternalPageHero
-        title="The World's Greatest"
-        titleHighlight="Living Museum"
-        subtitle="Ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla — from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
+        title="Event Management & Destination Weddings in "
+        titleHighlight="AlUla"
+        subtitle="In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
         backgroundImage="/alula_gala_people.webp"
-        imageAlt="Luxury heritage gala event in AlUla Saudi Arabia — guests at Ashar Valley venue"
+        imageAlt="Event management and destination weddings in AlUla Saudi Arabia — guests at Ashar Valley venue"
         badge="Saudi Arabia's UNESCO Destination | AlUla"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -549,6 +550,8 @@ export default function AlUlaPage() {
           </div>
         </div>
       </section>
+
+      <LocationCTA city="AlUla" />
 
       {/* Venues Section */}
       <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -818,6 +821,15 @@ export default function AlUlaPage() {
                 will make it one of the world&apos;s most cited luxury event
                 destinations by 2030.
               </p>
+              <p>
+                Planning a destination wedding in AlUla or a corporate retreat at
+                Banyan Tree or Habitas?{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">Contact our AlUla team</Link>{" "}
+                or{" "}
+                <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
+                — and explore our{" "}
+                <Link href="/portfolio" className="text-[var(--primary)] underline underline-offset-4 font-medium">destination event portfolio</Link>.
+              </p>
             </div>
 
             <div className="mt-8 pt-8 border-t border-neutral-100">
@@ -826,16 +838,16 @@ export default function AlUlaPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Destination Weddings", slug: "destination-weddings" },
-                  { name: "Corporate Retreats", slug: "corporate-retreats" },
-                  { name: "Heritage Events", slug: "heritage-events" },
-                  { name: "Brand Activations", slug: "heritage-events" },
-                  { name: "Maraya Productions", slug: "heritage-events" },
-                  { name: "Resort Buyouts", slug: "corporate-retreats" },
+                  { name: "Destination Wedding Planner in AlUla", href: "/services/destination-events" },
+                  { name: "Corporate Retreats", href: "/services/corporate-events" },
+                  { name: "Heritage & Cultural Events", href: "/services/cultural-events" },
+                  { name: "Brand Activations", href: "/services/event-production" },
+                  { name: "Maraya Productions", href: "/services/event-production" },
+                  { name: "Luxury & VIP Events", href: "/services/luxury-vip-events" },
                 ].map((svc) => (
                   <Link
                     key={svc.name}
-                    href={`/locations/alula/${svc.slug}`}
+                    href={svc.href}
                     className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                   >
                     {svc.name}

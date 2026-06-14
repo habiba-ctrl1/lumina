@@ -20,9 +20,9 @@ export default function RiyadhLuxurySoiree() {
           <Image 
             src="/hero_bg.webp" 
             alt="Riyadh Luxury Soiree" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
@@ -103,7 +103,7 @@ export default function RiyadhLuxurySoiree() {
         {/* Impact */}
         <div className="bg-black text-white p-12 md:p-32 rounded-[5rem] text-center relative overflow-hidden">
           <div className="absolute top-0 start-0 w-full h-full opacity-30">
-            <Image src="/hero_bg.webp" alt="Background" width={1920} height={1080} className="w-full h-full object-cover" />
+            <Image src="/hero_bg.webp" alt="Background" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
             <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-primary ">Wonder</span></h3>

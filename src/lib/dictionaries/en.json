@@ -32,7 +32,15 @@
     "luxuryVip": "Luxury & VIP",
     "luxuryVipDesc": "Exclusive private events",
     "privateEvents": "Private Events",
-    "privateEventsDesc": "Exclusive social gatherings"
+    "privateEventsDesc": "Exclusive social gatherings",
+    "weddings": "Weddings",
+    "weddingsDesc": "Traditional & contemporary ceremonies",
+    "conferences": "Conferences",
+    "conferencesDesc": "Summits, PCO & hybrid events",
+    "destinationEvents": "Destination Events",
+    "destinationEventsDesc": "AlUla, NEOM & the Red Sea",
+    "productionVenues": "Services & Venues",
+    "productionVenuesDesc": "Venue sourcing, AV & catering"
   },
   "navLocations": {
     "riyadh": "Riyadh",
@@ -52,13 +60,13 @@
     "label": "Saudi Event Management",
     "title": "Event Management Company in",
     "titleHighlight": "Saudi Arabia",
-    "subtitle": "Saudi Event Management is a luxury event planner headquartered in Riyadh, Saudi Arabia. Since 2010, the company has executed over 250 elite events, specializing in royal weddings, corporate galas, and exhibition management across Jeddah, AlUla, and Dammam.",
+    "subtitle": "Saudi Event Management is a full-service event management company headquartered in Riyadh, Saudi Arabia. Since 2010 we have delivered 250+ corporate events, conferences, exhibitions and weddings across Riyadh, Jeddah, Dammam and AlUla — with in-house production, GEA permits and bilingual project teams.",
     "requestQuote": "Request a Quote",
     "viewPortfolio": "View Portfolio",
-    "stats": ["250+ Elite Events", "100% Retention", "Saudi Business Awards 2025"],
+    "stats": ["250+ Events Delivered", "100% Client Retention", "Saudi Business Awards 2025"],
     "yearsOf": "Years of",
     "excellence": "Excellence",
-    "h1En": "Event Management Company  Saudi Arabia | Saudi Event Management",
+    "h1En": "Event Management Company in Saudi Arabia — Corporate Events, Conferences, Exhibitions & Weddings in Riyadh & Jeddah",
     "h1Ar": "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض",
     "formLabel": "Free Consultation",
     "formTitle": "Get a Free Quote",
@@ -85,17 +93,17 @@
     ]
   },
   "services": {
-    "label": "Capabilities",
-    "title": "Specially Selected",
-    "titleHighlight": "Services",
-    "subtitle": "From royal weddings to corporate summits, we deliver unparalleled excellence across every category of event management.",
+    "label": "Our Services",
+    "title": "Event Management",
+    "titleHighlight": "Services in Saudi Arabia",
+    "subtitle": "From corporate events and conferences to exhibitions, weddings and event production, our Saudi event management team delivers every category end-to-end — across Riyadh, Jeddah, Dammam and AlUla.",
     "learnMore": "Learn More",
     "items": [
       {
         "title": "Wedding Event Management",
-        "description": "Saudi Arabia's foremost luxury wedding planner — crafting royal weddings, traditional Saudi ceremonies, and destination celebrations fully licensed by the General Entertainment Authority (GEA) and compliant with Ministry of Culture guidelines.",
+        "description": "Saudi Arabia's specialist wedding planning team — crafting royal weddings, traditional Saudi ceremonies, and destination celebrations fully licensed by the General Entertainment Authority (GEA) and compliant with Ministry of Culture guidelines.",
         "starting": "From SAR 50,000",
-        "cta": "Explore Luxury Wedding Planning in Riyadh"
+        "cta": "Explore Wedding Planning in Riyadh"
       },
       {
         "title": "Corporate Event Planning",
@@ -278,6 +286,7 @@
       "all": "All",
       "conferences": "Conferences",
       "exhibitions": "Exhibitions",
+      "eventProduction": "Event Production",
       "corporateEvents": "Corporate Events",
       "luxuryWeddings": "Luxury Weddings"
     }

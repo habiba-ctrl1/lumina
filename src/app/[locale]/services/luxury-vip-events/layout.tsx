@@ -38,7 +38,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/gallery_charity_gala.webp",
+          url: "/services/vip_private_event_saudi.webp",
           width: 1200,
           height: 630,
           alt: "Luxury VIP Events Saudi Arabia",

@@ -29,9 +29,9 @@ export default function GrandWeddingCeremony() {
           <Image
             src="/wedding_hall_grand_entrance.webp"
             alt="Grand Wedding Ceremony"
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover opacity-80"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-80"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
@@ -56,7 +56,7 @@ export default function GrandWeddingCeremony() {
       </section>
 
       {/* Stats */}
-      <section className="py-32 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+      <section className="py-16 md:py-20 bg-white border border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Users, label: "Guests", val: "600+" },
@@ -74,7 +74,7 @@ export default function GrandWeddingCeremony() {
       </section>
 
       {/* Content */}
-      <section className="py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
 
         {/* Concept */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -122,15 +122,15 @@ export default function GrandWeddingCeremony() {
         </div>
 
         {/* Impact */}
-        <div className="bg-gray-900 text-white p-12 md:p-24 rounded-[4rem] text-center relative overflow-hidden">
+        <div className="bg-gray-900 text-white p-12 md:p-24 rounded-3xl text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <Image src="/wedding_hall_grand_entrance.webp" alt="Grand wedding" width={1920} height={1080} className="w-full h-full object-cover" />
+            <Image src="/wedding_hall_grand_entrance.webp" alt="Grand wedding" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">
               The <span className="text-primary">Legacy</span>
             </h2>
-            <p className="text-slate-400 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-slate-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               The family described the event as "a memory that will live for generations." The ceremonial film was later screened at a private family reunion of over 200 members. Saudi Event Management was retained immediately for the next family occasion.
             </p>
             <div className="inline-block px-8 py-4 border border-primary/30 rounded-full">
@@ -162,7 +162,7 @@ export default function GrandWeddingCeremony() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 text-center">
+      <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">
           Plan Your <span className="text-primary">Grand Celebration</span>
         </h2>

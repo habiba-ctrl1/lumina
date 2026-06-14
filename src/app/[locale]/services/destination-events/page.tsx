@@ -2,9 +2,10 @@ import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Map, Tent, Anchor, Mountain, Compass, Trees, ChevronRight } from "lucide-react";
+import { Map, Tent, Anchor, Mountain, Compass, Trees, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description:
         "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
       url: path,
-      images: [{ url: "/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
+      images: [{ url: "/services/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
     },
   };
 }
@@ -153,7 +154,7 @@ const destinations = [
   {
     name: "AlUla",
     arabic: "العُلا",
-    image: "/hero_bg.webp",
+    image: "/services/hero_bg.webp",
     highlight: "Maraya Hall & Hegra UNESCO Site",
     tags: ["Heritage Events", "Desert Glamping", "Luxury Weddings"],
     desc: "Saudi Arabia's most spectacular destination — 200,000-year-old landscape, ancient Nabataean cities, and the world-famous Maraya mirrored concert hall.",
@@ -161,7 +162,7 @@ const destinations = [
   {
     name: "NEOM",
     arabic: "نيوم",
-    image: "/gallery_corporate_gala.webp",
+    image: "/services/gallery_corporate_gala.webp",
     highlight: "The Line & Sindalah Island",
     tags: ["Innovation Summits", "Corporate Retreats", "Brand Activations"],
     desc: "The $500B giga-project offering unparalleled backdrop for forward-thinking corporate events, technology conferences, and visionary brand experiences.",
@@ -169,7 +170,7 @@ const destinations = [
   {
     name: "Red Sea",
     arabic: "البحر الأحمر",
-    image: "/gallery_wedding_reception.webp",
+    image: "/services/gallery_wedding_reception.webp",
     highlight: "Yacht Charters & Coastal Resorts",
     tags: ["Yacht Events", "Beachfront Galas", "Coastal Retreats"],
     desc: "Pristine turquoise waters, untouched coral reefs, and world-class beach resorts — perfect for luxury yacht events and exclusive coastal celebrations.",
@@ -177,7 +178,7 @@ const destinations = [
   {
     name: "Diriyah",
     arabic: "الدرعية",
-    image: "/private_party.webp",
+    image: "/services/private_party.webp",
     highlight: "At-Turaif UNESCO District",
     tags: ["Heritage Events", "National Day", "Cultural Activations"],
     desc: "The birthplace of the Kingdom — UNESCO-listed mud-brick architecture providing an authentically Saudi backdrop for cultural events and immersive heritage experiences.",
@@ -205,8 +206,9 @@ export default function DestinationEventsPage() {
           title="Destination Event Planning"
           titleHighlight="in Saudi Arabia"
           subtitle="Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
-          backgroundImage="/alula_gala_people.webp"
+          backgroundImage="/services/alula_gala_people.webp"
           imageAlt="Destination events Saudi Arabia — AlUla, NEOM, Red Sea"
+          enableParallax
           badge="Destination Events"
           breadcrumbs={[
             { label: "Home", href: "/" },
@@ -215,14 +217,20 @@ export default function DestinationEventsPage() {
           ]}
           minHeight="large"
         />
-        <div className="bg-white border-b border-neutral-100 py-6">
-          <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="bg-white border-b border-neutral-200/80 py-6">
+          <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="inline-block px-10 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-lg"
+              href="#destination-enquiry"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-[0_4px_14px_rgba(197,168,128,0.35)] rounded-xl text-[13px] w-full sm:w-auto"
             >
               Explore Destinations
             </Link>
+            <a
+              href="tel:+966501234567"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-300 text-ink-900 font-semibold uppercase tracking-widest hover:border-gold-500 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"
+            >
+              <Phone size={15} /> Plan a Site Visit
+            </a>
           </div>
         </div>
 
@@ -380,13 +388,73 @@ export default function DestinationEventsPage() {
               </div>
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
                 <Image
-                  src="/gallery_1.webp"
-                  alt="فعاليات وجهة السعودية - العُلا والبحر الأحمر ونيوم"
+                  src="/services/saudi_gala_table_alcohol_free.webp"
+                  alt="فعاليات الوجهات في السعودية - تجهيز عشاء فاخر بطابع سعودي في العُلا والبحر الأحمر"
                   width={800}
                   height={600}
                   className="w-full h-full object-cover"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── LEAD FORM / DESTINATION ENQUIRY ── */}
+        <section id="destination-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0B0C10 0%, #181920 55%, #0B0C10 100%)" }}>
+          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-gold-400/[0.06] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-gold-400/[0.04] pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="text-white space-y-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-gold-400">
+                  <span className="w-6 h-px bg-gold-400" /> Begin Your Destination Event
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                  Extraordinary events in<br />
+                  <span className="text-gold-400">the Kingdom&apos;s wonders.</span>
+                </h2>
+                <p className="text-white/65 text-base leading-relaxed max-w-md">
+                  Tell us your dream destination — AlUla, NEOM, the Red Sea or Diriyah — and our team
+                  returns a concept, logistics plan, and tailored proposal within two hours.
+                </p>
+                <ul className="space-y-3.5 pt-2">
+                  {[
+                    "Exclusive access to AlUla, NEOM & Red Sea venues",
+                    "End-to-end guest travel & accommodation logistics",
+                    "RCU & RCN permits and on-site infrastructure",
+                    "Bespoke production in remote desert & coastal sites",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
+                      <CheckCircle2 size={18} className="text-gold-400 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20destination%20event%20in%20Saudi%20Arabia."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-gold-400 hover:text-gold-400 transition-colors"
+                >
+                  <Phone size={15} /> Or message us on WhatsApp
+                </a>
+              </div>
+              <ServiceLeadForm
+                source="destination_events_page"
+                defaultEventType="Destination Event"
+                eyebrow="Destination Enquiry"
+                heading="Plan your destination event"
+                subheading="Our destination team will respond within 2 hours with a concept and logistics plan."
+                submitLabel="Request Destination Proposal"
+                eventTypeOptions={[
+                  "AlUla Event",
+                  "NEOM Summit / Retreat",
+                  "Red Sea Coastal Event",
+                  "Diriyah Heritage Event",
+                  "Desert Glamping / Wedding",
+                  "Other",
+                ]}
+              />
             </div>
           </div>
         </section>
@@ -417,6 +485,65 @@ export default function DestinationEventsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── COMMON CHALLENGES & SOLUTIONS ── */}
+        <section className="py-24 md:py-28 bg-white border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-16">
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink-950">Destination challenges — <span className="text-[var(--primary)]">solved on the ground</span></h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Events in AlUla, NEOM, and the Red Sea reward ambition but punish poor logistics. Here is how our team delivers five-star standards far from the city.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { c: "Remote-site logistics & guest access", s: "Charter flights, road transfers, and resort buyouts in AlUla and NEOM are coordinated end-to-end so guests arrive effortlessly and on schedule." },
+                { c: "RCU & heritage-site permits", s: "Events at Hegra, Dadan, and other protected sites require Royal Commission for AlUla approvals and zero-impact protocols, which we manage directly." },
+                { c: "Power, climate & off-grid infrastructure", s: "Silent generators, climate control, and built-from-scratch infrastructure bring five-star reliability to the desert and coastline." },
+                { c: "Guest comfort in extreme environments", s: "Heat management, shade, hydration, and weather contingencies keep guests comfortable across hot desert days and cool nights." },
+              ].map((item) => (
+                <div key={item.c} className="bg-sand-50 border border-slate-200 rounded-2xl p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <h3 className="font-bold text-ink-950 text-base mt-1 mb-3">{item.c}</h3>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.s}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURED PROJECTS & CONSULTATION ── */}
+        <section className="py-20 bg-sand-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h3 className="text-lg font-bold text-ink-950 mb-8 uppercase tracking-widest">Destination Events — Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "A large-scale desert festival with full logistics, staging, and RCU-compliant production." },
+                { title: "NEOM Future Summit", slug: "neom-future-summit", desc: "A forward-looking corporate summit hosted inside the NEOM development." },
+                { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "A bespoke VIP retreat with end-to-end travel, accommodation, and hosting." },
+              ].map((p) => (
+                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+                  <h4 className="text-ink-950 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
+              <div>
+                <h3 className="text-ink-950 font-bold text-lg">Planning a destination event?</h3>
+                <p className="text-gray-500 text-sm mt-1">Book a free consultation or speak with our destination team — we typically reply within two hours.</p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
+                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+              </div>
+            </div>
+            <p className="text-gray-500 text-sm mt-6">See our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore events in <Link href="/locations/alula" className="text-[var(--primary)] font-semibold hover:underline">AlUla</Link>.</p>
           </div>
         </section>
 
