@@ -431,6 +431,7 @@ export default function RiyadhPage() {
           { label: "Locations", href: "/locations" },
           { label: "Riyadh" },
         ]}
+        enableParallax
         minHeight="large"
       />
 
@@ -453,7 +454,7 @@ export default function RiyadhPage() {
       </div>
 
       {/* Riyadh at a Glance — Entity Density Strip */}
-      <section className="py-10 bg-slate-950 border-b border-slate-800">
+      <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {[
@@ -465,10 +466,10 @@ export default function RiyadhPage() {
               { label: "Expo 2030 Host", val: "Riyadh" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
-                <span className="text-lg md:text-xl font-display font-semibold text-white">
+                <span className="text-2xl font-semibold text-neutral-900" style={{ letterSpacing: "-0.025em" }}>
                   {item.val}
                 </span>
-                <span className="text-xs uppercase tracking-widest text-slate-400">
+                <span className="text-[11px] uppercase tracking-widest text-neutral-500">
                   {item.label}
                 </span>
               </div>
@@ -804,14 +805,14 @@ export default function RiyadhPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">
+          <span className="section-label justify-center flex mb-4">
             Riyadh Event Management Authority
           </span>
-          <h2 className="font-display font-medium text-white text-2xl md:text-3xl mt-4 mb-12">
+          <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mt-2 mb-12" style={{ letterSpacing: "-0.025em" }}>
             Why Corporations Choose{" "}
-            <span className="text-emerald-400">Saudi Event Management</span> in
+            <span className="text-[var(--primary)]">Saudi Event Management</span> in
             Riyadh
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -831,12 +832,13 @@ export default function RiyadhPage() {
             ].map((card, i) => (
               <div
                 key={i}
-                className="p-6 bg-slate-900 border border-slate-800 rounded-sm"
+                className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm"
+                style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
               >
-                <h3 className="font-display font-semibold text-white text-sm mb-3">
+                <h3 className="font-semibold text-neutral-900 text-sm mb-3">
                   {card.title}
                 </h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{card.body}</p>
+                <p className="text-neutral-600 text-xs leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
