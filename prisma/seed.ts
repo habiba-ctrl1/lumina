@@ -10,10 +10,10 @@ async function main() {
 
   // Seed Events
   const events = [
-    { src: "/gallery_1.png", alt: "Luxury Table Setting", className: "col-span-1 row-span-2 h-[600px]" },
-    { src: "/gallery_2.png", alt: "Outdoor Event Night", className: "col-span-1 row-span-1 h-[288px]" },
-    { src: "/wedding.png", alt: "Luxury Wedding", className: "col-span-1 row-span-1 h-[288px]" },
-    { src: "/corporate.png", alt: "Corporate Gala", className: "col-span-2 row-span-1 h-[400px]" },
+    { src: "/gallery_1.webp", alt: "Luxury Table Setting", className: "col-span-1 row-span-2 h-[600px]" },
+    { src: "/gallery_2.webp", alt: "Outdoor Event Night", className: "col-span-1 row-span-1 h-[288px]" },
+    { src: "/wedding.webp", alt: "Luxury Wedding", className: "col-span-1 row-span-1 h-[288px]" },
+    { src: "/corporate.webp", alt: "Corporate Gala", className: "col-span-2 row-span-1 h-[400px]" },
   ]
 
   for (const event of events) {
