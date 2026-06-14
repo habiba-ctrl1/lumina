@@ -33,13 +33,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/jeddah_luxury_people.webp",
+          url: "https://saudieventmanagement.com/jeddah-og.webp",
           width: 1200,
           height: 630,
-          alt: "Luxury event management in Jeddah Saudi Arabia",
+          alt: "Event management company in Jeddah, Saudi Arabia — Red Sea coast",
         },
       ],
-      locale: "en_SA",
+      locale: "en_US",
       type: "website",
     },
     twitter: {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management Company in Jeddah | Saudi Event Management",
       description:
         "Jeddah's premier event planning company for corporate events, luxury weddings & brand activations.",
-      images: ["https://saudieventmanagement.com/jeddah_luxury_people.webp"],
+      images: ["https://saudieventmanagement.com/jeddah-og.webp"],
     },
   };
 }
@@ -59,7 +59,7 @@ const jsonLd = {
       "@type": ["LocalBusiness", "EventPlanner"],
       "name": "Saudi Event Management — Jeddah",
       "url": "https://saudieventmanagement.com/locations/jeddah",
-      "image": "https://saudieventmanagement.com/jeddah_luxury_people.webp",
+      "image": "https://saudieventmanagement.com/jeddah_season_corporate.webp",
       "description":
         "Saudi Event Management is Jeddah's premier event planning company, specializing in corporate conferences, luxury weddings, brand activations, and gala dinners across Jeddah's finest venues including the Jeddah Convention & Exhibition Center, Four Seasons Hotel Jeddah, Rosewood Jeddah, and the Corniche waterfront.",
       "address": {
@@ -372,8 +372,8 @@ export default function JeddahPage() {
         title="Event Management Company in "
         titleHighlight="Jeddah"
         subtitle="Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
-        backgroundImage="/jeddah_luxury_people.webp"
-        imageAlt="Event management company in Jeddah Saudi Arabia — elegant guests at a Red Sea event"
+        backgroundImage="/jeddah_season_corporate.webp"
+        imageAlt="Event management company in Jeddah Saudi Arabia — corporate event on the Red Sea coast"
         badge="The Bride of the Red Sea | Jeddah"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -439,7 +439,7 @@ export default function JeddahPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
-              <div className="glass p-6 rounded-sm">
+              <div className="glass p-6 rounded-2xl">
                 <p className="text-white text-sm font-display font-light">
                   &quot;Where Red Sea grandeur meets Hijazi hospitality — Jeddah
                   sets the standard for luxury events in Saudi Arabia.&quot;
@@ -451,7 +451,7 @@ export default function JeddahPage() {
             <span className="section-label">
               Why Jeddah for Events
             </span>
-            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">
                 Premier Event City
@@ -567,7 +567,7 @@ export default function JeddahPage() {
                   </h3>
                   <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2.5 py-1 rounded-md font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
