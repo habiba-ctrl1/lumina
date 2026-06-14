@@ -1205,7 +1205,7 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">{d.name} Event Authority</span>
           <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-12">

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/makkah`;
   return {
-    title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
+    title: "Event Management in Makkah | Saudi Event Management",
     description:
       "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
     keywords:
@@ -42,13 +42,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/gallery_corporate_gala.webp",
+          url: "https://saudieventmanagement.com/makkah-og.webp",
           width: 1200,
           height: 630,
-          alt: "Corporate event management in Makkah Al-Mukarramah Saudi Arabia",
+          alt: "Makkah Al-Mukarramah cityscape — event management in the holy city, Saudi Arabia",
         },
       ],
-      locale: "en_SA",
+      locale: "en_US",
       type: "website",
     },
     twitter: {
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
       description:
         "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah. Muslim-only staffing. RCMC permitted.",
-      images: ["https://saudieventmanagement.com/gallery_corporate_gala.webp"],
+      images: ["https://saudieventmanagement.com/makkah-og.webp"],
     },
   };
 }
@@ -72,7 +72,7 @@ const jsonLd = {
       "description":
         "Saudi Event Management provides full-service event management in Makkah Al-Mukarramah, including corporate conferences at the Hilton Makkah Convention Hotel, luxury weddings at Fairmont and Raffles Makkah, halal exhibitions, and Haj corporate hospitality. All operations are Muslim-staffed and permitted by Amanah Makkah and the Royal Commission for Makkah City and Holy Sites (RCMC).",
       "image":
-        "https://saudieventmanagement.com/gallery_corporate_gala.webp",
+        "https://saudieventmanagement.com/makkah-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Makkah Al-Mukarramah",
@@ -412,8 +412,8 @@ export default function MakkahPage() {
         title="Event Management in"
         titleHighlight="Makkah Al-Mukarramah"
         subtitle="Corporate conferences, halal exhibitions, luxury Islamic weddings, and Haj corporate hospitality — delivered across Makkah's finest venues by a fully Muslim-staffed team. Permitted by Amanah Makkah and RCMC."
-        backgroundImage="/gallery_corporate_gala.webp"
-        imageAlt="Corporate event management in Makkah Al-Mukarramah Saudi Arabia"
+        backgroundImage="/makkah-hero.webp"
+        imageAlt="Makkah Al-Mukarramah cityscape — event management in the holy city, Saudi Arabia"
         badge="Islam's Holiest City | Makkah Al-Mukarramah"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -486,19 +486,19 @@ export default function MakkahPage() {
       </section>
 
       {/* Why Makkah — Authority Section */}
-      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/gallery_corporate_gala.webp"
-              alt="Corporate gala event management in Makkah Al-Mukarramah Saudi Arabia"
+              src="/makkah-hero.webp"
+              alt="Makkah Al-Mukarramah — premium event management in the holy city, Saudi Arabia"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
-              <div className="glass p-6 rounded-sm">
+              <div className="glass p-6 rounded-2xl">
                 <p className="text-white text-sm font-display font-light">
                   &quot;Makkah is not just a location — it is the world&apos;s most
                   significant destination. Every event here carries spiritual
@@ -509,7 +509,7 @@ export default function MakkahPage() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">Why Makkah for Events</span>
-            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
               The World&apos;s Most{" "}
               <span className="text-[var(--primary)]">
                 Distinctive Event City
@@ -590,7 +590,7 @@ export default function MakkahPage() {
       <LocationCTA city="Makkah" />
 
       {/* Venues Section */}
-      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
           <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
@@ -616,7 +616,7 @@ export default function MakkahPage() {
                   </h3>
                   <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2.5 py-1 rounded-md font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
@@ -773,7 +773,7 @@ export default function MakkahPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">
             Makkah Event Management Authority
@@ -891,12 +891,11 @@ export default function MakkahPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Event Management in Makkah", slug: "corporate-event-management" },
+                  { name: "Corporate & Haj Hospitality in Makkah", slug: "corporate-event-management" },
                   { name: "Wedding Planner in Makkah", slug: "luxury-wedding-planning" },
                   { name: "Halal Exhibition Management", slug: "exhibition-management" },
-                  { name: "Haj Corporate Hospitality", slug: "corporate-event-management" },
-                  { name: "Ramadan Programs", slug: "corporate-event-management" },
-                  { name: "Government Events", slug: "corporate-event-management" },
+                  { name: "Conference Organizer in Makkah", slug: "conference-planning" },
+                  { name: "VIP Event Planning in Makkah", slug: "vip-event-planning" },
                 ].map((svc) => (
                   <Link
                     key={svc.slug}

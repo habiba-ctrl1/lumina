@@ -439,7 +439,7 @@ export default function DammamPage() {
       </section>
 
       {/* Why Dammam Section */}
-      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
@@ -543,7 +543,7 @@ export default function DammamPage() {
       <LocationCTA city="Dammam" />
 
       {/* Venues Section */}
-      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
           <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
@@ -696,7 +696,7 @@ export default function DammamPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">
             Eastern Province Event Authority
