@@ -5,9 +5,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/weddings`;
 
   return {
-    title: "Luxury Wedding Planning Saudi Arabia | Saudi Event Management",
+    title: "Wedding Planning Services Saudi Arabia | Saudi Event Management",
     description:
-      "Bespoke luxury wedding planning and social event management services across Riyadh, Jeddah, and Dammam. Saudi Arabia's premier wedding event planner.",
+      "Professional wedding planning services across Riyadh, Jeddah, and Dammam — Nikah and Milka ceremonies, Henna nights, and grand receptions. Saudi Arabia's trusted wedding planning team.",
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: "Luxury Wedding Planning Saudi Arabia | Saudi Event Management",
+      title: "Wedding Planning Services Saudi Arabia | Saudi Event Management",
       description:
         "Bespoke luxury wedding planning and social event management services across Riyadh, Jeddah, and Dammam.",
       url: canonicalUrl,

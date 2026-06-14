@@ -388,7 +388,7 @@ export default function DestinationEventsPage() {
               </div>
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-2xl">
                 <Image
-                  src="/services/saudi_gala_table_alcohol_free.webp"
+                  src="/services/gala_decor_saudi.webp"
                   alt="فعاليات الوجهات في السعودية - تجهيز عشاء فاخر بطابع سعودي في العُلا والبحر الأحمر"
                   width={800}
                   height={600}

@@ -142,10 +142,11 @@ export default function SeasonalEventsPage() {
         <InternalPageHero
           title="Cultural Event Management"
           titleHighlight="in Saudi Arabia"
-          subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering luxury cultural experiences across Riyadh, Jeddah, and beyond."
+          subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering authentic cultural experiences across Riyadh, Jeddah, and beyond."
           backgroundImage="/services/majlis_gathering_people.webp"
           imageAlt="Cultural events Saudi Arabia — Ramadan and National Day organizer"
           badge="Cultural Events | التراث السعودي"
+          enableParallax
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Services", href: "/services" },
@@ -297,7 +298,7 @@ export default function SeasonalEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="/services/saudi_gala_table_alcohol_free.webp"
+                  src="/services/gala_decor_saudi.webp"
                   alt="احتفالات اليوم الوطني السعودي وفعاليات رمضان - تجهيز طاولة ضيافة فاخرة بطابع سعودي"
                   width={800}
                   height={800}

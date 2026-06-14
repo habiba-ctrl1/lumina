@@ -12,9 +12,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/services/luxury-vip-events`;
   return {
-    title: "Luxury VIP Event Planning Saudi Arabia | Royal & HNWI Experiences",
+    title: "VIP Event Management Saudi Arabia | Private & Corporate Events",
     description:
-      "Exclusive luxury event planning and VIP concierge services in Riyadh, Jeddah, and AlUla. We specialise in private parties, royal family events, HNWI experiences, and ultra-luxury desert and yacht events.",
+      "VIP event management and private concierge services in Riyadh, Jeddah, and AlUla. We specialise in private parties, royal family events, government delegations, and bespoke desert and yacht events.",
     keywords: [
       "VIP event planning Saudi Arabia",
       "Luxury events Riyadh",
@@ -34,10 +34,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: "Luxury VIP Event Planning Saudi Arabia | Saudi Event Management",
-      description: "Ultra-discreet luxury event planning for royal families, HNWIs, and diplomatic guests across Saudi Arabia.",
+      title: "VIP Event Management Saudi Arabia | Saudi Event Management",
+      description: "Discreet VIP event management for royal families, government delegations, and private clients across Saudi Arabia.",
       url: path,
-      images: [{ url: "/services/gallery_charity_gala.webp", width: 1200, height: 630, alt: "Luxury VIP Events Saudi Arabia" }],
+      images: [{ url: "/services/luxury_vip_majlis.webp", width: 1200, height: 630, alt: "VIP and private event management Saudi Arabia" }],
     },
   };
 }
@@ -194,12 +194,13 @@ export default function LuxuryVIPEventsPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Luxury VIP Event Management"
+          title="VIP & Private Event Management"
           titleHighlight="Saudi Arabia"
-          subtitle="The leading luxury event planner for VIPs, Royal Families, and High-Net-Worth Individuals — strictly confidential, ultra-luxury experiences from private concerts and yacht parties to bespoke desert events in AlUla."
-          backgroundImage="/services/vip_private_event_saudi.webp"
-          imageAlt="Luxury VIP event planning Saudi Arabia — private majlis reception with Arabic coffee service for royal and HNWI guests"
-          badge="VIP & Luxury Events"
+          subtitle="A specialist VIP event management team for royal families, government delegations, and private clients — discreet, white-glove experiences from private concerts and yacht events to bespoke desert gatherings in AlUla."
+          backgroundImage="/services/luxury_vip_majlis.webp"
+          imageAlt="VIP and private event management Saudi Arabia — private majlis reception with Arabic coffee service"
+          badge="VIP & Private Events"
+          enableParallax
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Services", href: "/services" },

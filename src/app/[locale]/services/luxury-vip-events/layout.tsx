@@ -9,7 +9,7 @@ export async function generateMetadata({
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/luxury-vip-events`;
 
   return {
-    title: "Luxury VIP Event Planning Saudi Arabia | Royal & HNWI Experiences",
+    title: "VIP Event Management Saudi Arabia | Private & Corporate Events",
     description:
       "Exclusive luxury event planning and VIP concierge services in Riyadh, Jeddah, and AlUla. Specialists in private parties, royal family events, HNWI experiences, desert glamping, and luxury yacht events.",
     keywords: [
@@ -32,13 +32,13 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: "Luxury VIP Event Planning Saudi Arabia | Saudi Event Management",
+      title: "VIP Event Management Saudi Arabia | Saudi Event Management",
       description:
         "Ultra-discreet luxury event planning for royal families, HNWIs, and diplomatic guests across Saudi Arabia — private concerts, yacht events, and bespoke desert experiences.",
       url: canonicalUrl,
       images: [
         {
-          url: "/services/vip_private_event_saudi.webp",
+          url: "/services/luxury_vip_majlis.webp",
           width: 1200,
           height: 630,
           alt: "Luxury VIP Events Saudi Arabia",

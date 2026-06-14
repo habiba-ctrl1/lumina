@@ -210,8 +210,9 @@ export default function WeddingsPage() {
           titleHighlight="Saudi Arabia"
           subtitle="Expert wedding planning in Riyadh, Jeddah, and Dammam — from traditional Nikah and Milka ceremonies to Henna nights and grand receptions at the Kingdom's most sought-after venues."
           backgroundImage="/services/luxury_wedding_couple_guests.webp"
-          imageAlt="Luxury wedding planner Saudi Arabia"
-          badge="حفلات الزفاف | Luxury Weddings"
+          imageAlt="Wedding planner Saudi Arabia — Nikah ceremony and reception"
+          badge="حفلات الزفاف | Wedding Planning"
+          enableParallax
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Services", href: "/services" },
