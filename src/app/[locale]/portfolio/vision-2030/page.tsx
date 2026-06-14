@@ -58,7 +58,10 @@ const jsonLd = {
   ]
 };
 
-export default function Vision2030Portfolio() {
+export default async function Vision2030Portfolio({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -139,6 +142,32 @@ export default function Vision2030Portfolio() {
             <Link href="/services/event-production" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
               Event Production
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 bg-neutral-50 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "دعم مبادرات رؤية السعودية 2030 من خلال الفعاليات الاستثنائية" : "Supporting Saudi Vision 2030 Initiatives Through Extraordinary Events"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed max-w-4xl space-y-4">
+            <p>
+              {isAr
+                ? "في إطار التحول الوطني الذي تشهده المملكة العربية السعودية، تقف إدارة الفعاليات السعودية في طليعة الشركات الداعمة لأهداف رؤية السعودية 2030. نحن نفخر بشراكاتنا الاستراتيجية مع الهيئات الحكومية والمؤسسات الكبرى لتنفيذ فعاليات ثقافية وترفيهية وسياحية تعزز من مكانة المملكة على الخارطة العالمية وتبرز غنى تراثها الثقافي والتاريخي."
+                : "Amidst the national transformation sweeping the Kingdom of Saudi Arabia, Saudi Event Management stands at the forefront of companies supporting the ambitious goals of Saudi Vision 2030. We take immense pride in our strategic partnerships with government entities and major organizations to execute cultural, entertainment, and tourism events that elevate the Kingdom's position on the global stage while highlighting its rich cultural and historical heritage."}
+            </p>
+            <p>
+              {isAr
+                ? "لقد قمنا بنجاح بإدارة مشاريع ضخمة وحساسة ضمن مواسم الترفيه السعودية، بما في ذلك موسم الرياض، وفعاليات العلا الثقافية، ومشاريع نيوم المستقبلية. يمتلك فريقنا فهماً عميقاً وشاملاً لمتطلبات وتصاريح الهيئة العامة للترفيه (GEA)، مما يضمن الامتثال التام لأعلى معايير السلامة والجودة واللوجستيات في جميع فعالياتنا."
+                : "We have successfully managed massive and highly sensitive projects within the Saudi entertainment seasons, including Riyadh Season, AlUla cultural festivals, and futuristic NEOM mega-projects. Our dedicated team possesses a deep and comprehensive understanding of the General Entertainment Authority (GEA) requirements and event permits, ensuring absolute compliance with the highest standards of safety, quality, and logistics across all our activations."}
+            </p>
+            <p>
+              {isAr
+                ? "سواء كان الحدث إطلاق مشروع عملاق، أو مهرجان تراثي في قلب المواقع التاريخية، أو قمة تكنولوجية تستشرف المستقبل، فإننا نلتزم بتقديم تجارب غامرة تدفع عجلة التنمية وتلهم الأجيال القادمة. نحن نؤمن بأن كل فعالية هي خطوة نحو بناء مستقبل مشرق، ونسعى دائماً لترك إرث يعكس طموحات القيادة الرشيدة للمملكة."
+                : "Whether the event is a mega-project launch, a heritage festival in the heart of historical UNESCO sites, or a technology summit looking toward the future, we are committed to delivering immersive experiences that drive development and inspire future generations. We believe that every event is a step toward building a brighter future, and we consistently strive to leave a legacy that reflects the visionary ambitions of the Kingdom's leadership."}
+            </p>
           </div>
         </div>
       </section>

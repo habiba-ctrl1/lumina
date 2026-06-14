@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus, Minus, MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -16,8 +16,6 @@ export default function FAQ({ showHeader = true }: { showHeader?: boolean }) {
   const faqs = t.raw("items");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState("general");
-
-  const filteredFaqs = faqs.filter((faq: any) => faq.category === activeCategory);
 
   return (
     <section id="faq" className={`bg-neutral-900 relative ${showHeader ? "py-24 md:py-32" : "pt-12 pb-24 md:pb-32"}`}>
@@ -66,49 +64,55 @@ export default function FAQ({ showHeader = true }: { showHeader?: boolean }) {
           ))}
         </div>
 
-        {/* FAQ Items */}
+        {/*
+          FAQ Items — every question and answer for ALL categories is rendered
+          into the DOM so the full content is present in the server HTML and
+          crawlable (and matches the FAQPage schema). Inactive categories are
+          hidden with CSS rather than unmounted, and each answer stays mounted
+          while collapsed via an animated height so the answer text is always
+          in the HTML.
+        */}
         <div className="space-y-2">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-2"
-            >
-              {filteredFaqs.map((faq: any, index: number) => (
-                <div key={index} className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl overflow-hidden transition-colors duration-200 hover:border-neutral-600/50">
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between p-5 text-start group"
-                  >
-                    <span className={`text-[15px] font-medium transition-colors ${openIndex === index ? 'text-emerald-400' : 'text-neutral-300 group-hover:text-white'}`}>
-                      {faq.question}
-                    </span>
-                    <span className="ms-4 flex-shrink-0 text-neutral-500">
-                      {openIndex === index ? <Minus size={16} /> : <Plus size={16} />}
-                    </span>
-                  </button>
-                  
-                  <AnimatePresence>
-                    {openIndex === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        <p className="px-5 pb-5 text-neutral-400 text-[14px] leading-relaxed pe-10 border-t border-neutral-700/30 pt-4">
-                          {faq.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          {faqs.map((faq: any, index: number) => {
+            const isOpen = openIndex === index;
+            const isVisible = faq.category === activeCategory;
+            return (
+              <div
+                key={index}
+                hidden={!isVisible}
+                className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl overflow-hidden transition-colors duration-200 hover:border-neutral-600/50"
+              >
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-question-${index}`}
+                  className="w-full flex items-center justify-between p-5 text-start group"
+                >
+                  <span className={`text-[15px] font-medium transition-colors ${isOpen ? 'text-emerald-400' : 'text-neutral-300 group-hover:text-white'}`}>
+                    {faq.question}
+                  </span>
+                  <span className="ms-4 flex-shrink-0 text-neutral-500">
+                    {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                  </span>
+                </button>
+
+                <motion.div
+                  id={`faq-answer-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ overflow: "hidden" }}
+                >
+                  <p className="px-5 pb-5 text-neutral-400 text-[14px] leading-relaxed pe-10 border-t border-neutral-700/30 pt-4">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
 
         {/* WhatsApp CTA */}

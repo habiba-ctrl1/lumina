@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
+import { getDictionary } from "@/lib/dictionaries";
 
 const BASE = "https://saudieventmanagement.com";
 
@@ -47,56 +48,43 @@ export async function generateMetadata({
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Structured data
+//
+// The FAQPage schema is generated from the SAME dictionary data the <FAQ />
+// component renders, so the structured data always matches the visible
+// questions and answers (a hard requirement of Google's FAQ guidelines).
+// Both the FAQ content and the breadcrumb are localised per route.
 // ─────────────────────────────────────────────────────────────────────────────
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        {
+type FaqItem = { category: string; question: string; answer: string };
+
+function buildFaqJsonLd(locale: string, items: FaqItem[]) {
+  const isAr = locale === "ar";
+  const prefix = isAr ? "/ar" : "";
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        inLanguage: isAr ? "ar" : "en",
+        mainEntity: items.map((item) => ({
           "@type": "Question",
-          name: "How much does luxury event planning cost in Saudi Arabia?",
+          name: item.question,
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Luxury event planning in Saudi Arabia typically ranges from SAR 75,000 for boutique corporate events to several million riyals for grand royal weddings. Saudi Event Management provides tailored proposals based on your specific requirements.",
+            text: item.answer,
           },
-        },
-        {
-          "@type": "Question",
-          name: "What cities does Saudi Event Management serve?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "We operate across Riyadh, Jeddah, Dammam, AlUla, NEOM, Makkah, Madinah, Taif, Al Khobar, and Abha — covering the entire Kingdom of Saudi Arabia.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Do you handle government and Vision 2030 events?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes, Saudi Event Management has deep experience with government events, GEA-permitted activations, and Saudi Vision 2030 initiatives. We work with government ministries and major corporations.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How far in advance should I book an event planner?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "For luxury weddings and large-scale corporate events, we recommend booking at least 6 to 12 months in advance. However, our rapid-deployment team can also manage urgent events with shorter timelines.",
-          },
-        },
-      ],
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home",  item: BASE },
-        { "@type": "ListItem", position: 2, name: "FAQ",   item: `${BASE}/faq` },
-      ],
-    },
-  ],
-};
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: isAr ? "الرئيسية" : "Home", item: `${BASE}${prefix}` },
+          { "@type": "ListItem", position: 2, name: isAr ? "الأسئلة الشائعة" : "FAQ", item: `${BASE}${prefix}/faq` },
+        ],
+      },
+    ],
+  };
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Page
@@ -108,6 +96,10 @@ export default async function FAQPage({
 }) {
   const { locale } = await params;
   const isAr = locale === "ar";
+
+  const dict = await getDictionary(isAr ? "ar" : "en");
+  const faqItems = (dict?.faq?.items ?? []) as FaqItem[];
+  const faqJsonLd = buildFaqJsonLd(locale, faqItems);
 
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden">

@@ -5,22 +5,111 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Users, Calendar, MapPin } from "lucide-react";
 
+const BASE = "https://saudieventmanagement.com";
+const OG_IMAGE = `${BASE}/royal_wedding_saudi.webp`;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
+  const isAr = locale === "ar";
+  const canonical = `${BASE}${isAr ? "/ar" : ""}/portfolio/royal-riyadh-wedding`;
+
+  const title = isAr
+    ? "حفل زفاف ملكي في الرياض — دراسة حالة | إدارة الفعاليات السعودية"
+    : "Royal Riyadh Wedding Case Study — Luxury Wedding Planning in Diriyah | Saudi Event Management";
+  const description = isAr
+    ? "كيف نظمت إدارة الفعاليات السعودية حفل زفاف ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية التاريخية بالرياض — يجمع بين التراث والفخامة العصرية."
+    : "An inside look into how Saudi Event Management orchestrated a magnificent royal wedding for 1,200+ guests over 3 days in historic Diriyah, Riyadh — blending Saudi tradition with modern luxury.";
+
   return {
-    title: 'Royal Riyadh Wedding Case Study',
-    description: 'An inside look into how Saudi Event Management orchestrated a magnificent Royal Wedding in Riyadh, blending tradition with modern luxury.',
+    title,
+    description,
+    keywords: isAr
+      ? ["زفاف ملكي الرياض", "تنظيم حفلات الزفاف الفاخرة", "حفل زفاف الدرعية", "دراسة حالة فعالية"]
+      : [
+          "Royal wedding Riyadh",
+          "Luxury wedding planning Diriyah",
+          "Saudi royal wedding case study",
+          "Luxury event management Saudi Arabia",
+        ],
     alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/royal-riyadh-wedding`,
-      languages: { "en-US": `${base}/portfolio/royal-riyadh-wedding`, "ar-SA": `${base}/ar/portfolio/royal-riyadh-wedding` },
+      canonical,
+      languages: {
+        "en-US": `${BASE}/portfolio/royal-riyadh-wedding`,
+        "ar-SA": `${BASE}/ar/portfolio/royal-riyadh-wedding`,
+        "x-default": `${BASE}/portfolio/royal-riyadh-wedding`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: canonical,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Royal wedding in Diriyah, Riyadh by Saudi Event Management" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [OG_IMAGE],
     },
   };
 }
 
-export default function RoyalRiyadhWeddingCaseStudy() {
+// ─────────────────────────────────────────────────────────────────────────────
+// Structured data — Article + Breadcrumb, locale-aware
+// ─────────────────────────────────────────────────────────────────────────────
+function buildJsonLd(locale: string) {
+  const isAr = locale === "ar";
+  const prefix = isAr ? "/ar" : "";
+  const url = `${BASE}${prefix}/portfolio/royal-riyadh-wedding`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: isAr ? "حفل زفاف ملكي في الرياض — دراسة حالة" : "The Royal Riyadh Wedding — Case Study",
+        description: isAr
+          ? "دراسة حالة لحفل زفاف ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية، الرياض."
+          : "A case study of a luxury royal wedding for 1,200+ guests over 3 days in Diriyah, Riyadh.",
+        image: OG_IMAGE,
+        inLanguage: isAr ? "ar" : "en",
+        author: { "@type": "Organization", name: "Saudi Event Management" },
+        publisher: {
+          "@type": "Organization",
+          name: "Saudi Event Management",
+          logo: { "@type": "ImageObject", url: `${BASE}/logo.webp` },
+        },
+        mainEntityOfPage: url,
+        url,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: isAr ? "الرئيسية" : "Home", item: `${BASE}${prefix}` },
+          { "@type": "ListItem", position: 2, name: isAr ? "أعمالنا" : "Portfolio", item: `${BASE}${prefix}/portfolio` },
+          { "@type": "ListItem", position: 3, name: isAr ? "حفل زفاف ملكي في الرياض" : "Royal Riyadh Wedding", item: url },
+        ],
+      },
+    ],
+  };
+}
+
+export default async function RoyalRiyadhWeddingCaseStudy({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const jsonLd = buildJsonLd(locale);
+
   return (
     <main className="min-h-screen bg-[#1e2653] overflow-hidden pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -61,7 +150,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
           ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
-              <div className="text-xs uppercase tracking-widest text-slate-600 mb-1">{stat.label}</div>
+              <div className="text-xs uppercase tracking-widest text-slate-300 mb-1">{stat.label}</div>
               <div className="text-lg font-sans font-bold text-white">{stat.val}</div>
             </div>
           ))}
@@ -104,7 +193,7 @@ export default function RoyalRiyadhWeddingCaseStudy() {
             </ul>
           </div>
           <div className="relative aspect-square rounded-3xl overflow-hidden">
-            <Image src="/locations/riyadh-hero.webp" alt="Construction and Details" width={800} height={800} className="w-full h-full object-cover" />
+            <Image src="/wedding_stage_backdrop_decor.webp" alt="Custom glass marquee, floral staging and kinetic lighting at the Diriyah royal wedding" width={800} height={800} className="w-full h-full object-cover" />
           </div>
         </div>
 

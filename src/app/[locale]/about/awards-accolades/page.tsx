@@ -38,7 +38,10 @@ const jsonLd = {
   ]
 };
 
-export default function AwardsPage() {
+export default async function AwardsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -94,6 +97,32 @@ export default function AwardsPage() {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="bg-neutral-50 py-16 border-b border-neutral-200">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "التميز في التخطيط والتنفيذ" : "Excellence in Event Planning and Execution"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed space-y-4">
+            <p>
+              {isAr
+                ? "على مدار السنوات الماضية، أثبتت إدارة الفعاليات السعودية قدرتها الاستثنائية على تصميم وتنفيذ فعاليات تتجاوز المعايير العالمية. حصولنا على هذه الجوائز المرموقة ليس سوى انعكاس لالتزامنا الراسخ بالجودة، والابتكار، وتقديم خدمات ترقى إلى مستوى تطلعات عملائنا من الشخصيات المرموقة والشركات الكبرى."
+                : "Over the years, Saudi Event Management has proven its exceptional ability to design and execute events that transcend global standards. Winning these prestigious awards is a reflection of our unwavering commitment to quality, innovation, and delivering services that meet the high expectations of our distinguished clients and major corporate partners."}
+            </p>
+            <p>
+              {isAr
+                ? "نحن نؤمن بأن كل فعالية هي لوحة فنية تحتاج إلى اهتمام دقيق بكل تفصيلة، بدءاً من التصميم الأولي وحتى التنفيذ النهائي. فريقنا المتمرس من مصممي الفعاليات والمخططين الاستراتيجيين يعمل بشغف لضمان تجربة لا تُنسى تعكس التراث السعودي الأصيل برؤية عصرية متوافقة مع رؤية السعودية 2030."
+                : "We believe that every event is a masterpiece requiring meticulous attention to every detail, from initial concept to final execution. Our experienced team of event designers and strategic planners work passionately to ensure an unforgettable experience that reflects authentic Saudi heritage with a modern vision, aligned perfectly with Saudi Vision 2030."}
+            </p>
+            <p>
+              {isAr
+                ? "إن تكريمنا في قطاع إدارة الفعاليات الفاخرة، سواء في تنظيم المؤتمرات، أو حفلات الزفاف الملكية، أو المعارض الدولية، يدفعنا للاستمرار في تقديم الأفضل وتوسيع آفاق الإبداع في كل مشروع نتولى إدارته في الرياض، وجدة، والعلا، ومختلف مناطق المملكة."
+                : "Our recognition in the luxury event management sector—whether in organizing corporate conferences, royal weddings, or international exhibitions—drives us to continue delivering the best and expanding the horizons of creativity in every project we manage across Riyadh, Jeddah, AlUla, and throughout the Kingdom."}
+            </p>
           </div>
         </div>
       </section>

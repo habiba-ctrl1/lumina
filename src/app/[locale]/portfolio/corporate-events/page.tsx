@@ -64,7 +64,10 @@ const jsonLd = {
   ]
 };
 
-export default function CorporateEventsPortfolio() {
+export default async function CorporateEventsPortfolio({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -128,6 +131,32 @@ export default function CorporateEventsPortfolio() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 bg-neutral-50 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "التميز في إدارة فعاليات الشركات في المملكة العربية السعودية" : "Excellence in Corporate Event Management in Saudi Arabia"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed max-w-4xl space-y-4">
+            <p>
+              {isAr
+                ? "تعد إدارة الفعاليات السعودية الشريك الاستراتيجي الأول لتنظيم وإدارة فعاليات الشركات الكبرى، المؤتمرات التنفيذية، والمعارض الدولية في المملكة العربية السعودية. نحن نتفهم تماماً أن فعاليات الشركات ليست مجرد تجمعات، بل هي منصات حيوية لتعزيز العلامات التجارية، وتوسيع شبكات الأعمال، وعقد الشراكات الاستراتيجية."
+                : "Saudi Event Management is the premier strategic partner for organizing and managing large-scale corporate events, executive summits, and international exhibitions across Saudi Arabia. We fully understand that corporate events are not merely gatherings, but vital platforms for brand enhancement, business networking, and forging strategic partnerships."}
+            </p>
+            <p>
+              {isAr
+                ? "سواء كنتم تخططون لعقد اجتماع لمجلس الإدارة في الرياض، أو قمة عالمية في جدة، أو ملتقى استثماري في الدمام، فإن فريقنا المكون من خبراء ومنتجين يعمل بتفانٍ لضمان تنفيذ لا تشوبه شائبة. نحن نوفر حلولاً شاملة تتضمن إدارة اللوجستيات المعقدة، تأمين المتحدثين، تخطيط البروتوكول الحكومي والرسمي، وتوفير أحدث التقنيات السمعية والبصرية."
+                : "Whether you are planning a board meeting in Riyadh, a global summit in Jeddah, or an investment forum in Dammam, our team of dedicated experts and producers works tirelessly to ensure flawless execution. We provide comprehensive solutions that include complex logistics management, speaker procurement, official government protocol planning, and the provision of cutting-edge audiovisual technologies."}
+            </p>
+            <p>
+              {isAr
+                ? "بصفتنا وكالة رائدة تتماشى مع رؤية السعودية 2030، نحرص على تقديم فعاليات مبتكرة ومستدامة تعكس المكانة الاقتصادية المتنامية للمملكة على الساحة العالمية. نحن نضع نجاح أعمالكم في صميم أهدافنا، لتقديم تجارب استثنائية ترتقي بمكانة مؤسستكم أمام شركائكم وعملائكم."
+                : "As a leading agency aligned with Saudi Vision 2030, we are committed to delivering innovative and sustainable events that reflect the Kingdom's growing economic prominence on the global stage. We place your business success at the core of our objectives, delivering extraordinary experiences that elevate your organization's standing among partners and clients."}
+            </p>
           </div>
         </div>
       </section>

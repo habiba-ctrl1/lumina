@@ -246,6 +246,32 @@ export default async function ContactPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* SEO Content Section */}
+      <section className="bg-neutral-50 py-16 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "شريكك الاستراتيجي في إدارة الفعاليات الفاخرة" : "Your Strategic Partner in Luxury Event Management"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed max-w-4xl space-y-4">
+            <p>
+              {isAr
+                ? "تعتبر إدارة الفعاليات السعودية الخيار الأول للتخطيط الاستراتيجي وإدارة الفعاليات الفاخرة في جميع أنحاء المملكة. سواء كنت تتطلع إلى استضافة قمة أعمال رفيعة المستوى في الرياض، أو حفل زفاف أسطوري في جدة، أو مهرجان ثقافي في العلا، فإن فريقنا المتخصص يقدم حلولاً متكاملة تتجاوز التوقعات."
+                : "Saudi Event Management stands as the premier choice for strategic planning and luxury event execution across the Kingdom. Whether you are looking to host a high-profile corporate summit in Riyadh, a royal wedding in Jeddah, or an exclusive cultural festival in AlUla, our dedicated team provides end-to-end solutions that exceed expectations."}
+            </p>
+            <p>
+              {isAr
+                ? "نحن ندمج بين البروتوكولات الدقيقة، والتصميم المبتكر، والتنفيذ الخالي من العيوب لضمان نجاح فعاليتك. يلتزم خبراؤنا بتقديم تجارب لا تُنسى تعكس رؤية السعودية 2030، مع التركيز على الاستدامة، التكنولوجيا المتقدمة، وأعلى معايير الضيافة العالمية."
+                : "We integrate precise protocol management, innovative design architecture, and flawless execution to ensure the absolute success of your event. Our experts are committed to delivering unforgettable experiences that reflect the ambitious goals of Saudi Vision 2030, with a strong focus on sustainability, advanced event technology, and the highest standards of global hospitality."}
+            </p>
+            <p>
+              {isAr
+                ? "من خلال شبكتنا الواسعة من الموردين الاستراتيجيين والمواقع الحصرية، نضمن لك فعالية مصممة خصيصاً لتناسب احتياجاتك، مع الاهتمام بأدق التفاصيل من البداية وحتى النهاية. تواصل معنا اليوم لبدء التخطيط لفعاليتك القادمة."
+                : "Through our extensive network of strategic vendors and exclusive venues, we guarantee an event uniquely tailored to your needs, with meticulous attention to detail from concept to completion. Contact us today to begin planning your next extraordinary event."}
+            </p>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

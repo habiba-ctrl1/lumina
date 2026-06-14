@@ -58,7 +58,10 @@ const jsonLd = {
   ]
 };
 
-export default function LuxuryWeddingsPortfolio() {
+export default async function LuxuryWeddingsPortfolio({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -139,6 +142,32 @@ export default function LuxuryWeddingsPortfolio() {
             <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
               Luxury &amp; VIP Events
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 bg-neutral-50 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "التخطيط لحفلات الزفاف الملكية في السعودية" : "Planning Royal Weddings in Saudi Arabia"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed max-w-4xl space-y-4">
+            <p>
+              {isAr
+                ? "تتخصص إدارة الفعاليات السعودية في تحويل الأحلام إلى حقيقة من خلال تنظيم حفلات زفاف فاخرة وملكية في أرقى المواقع في المملكة. نحن نقدم خدمات تصميم حفلات الزفاف بالكامل، بدءاً من ابتكار مفهوم الكوشة الفريد، وتنسيق الأزهار، وتصميم الإضاءة الاحترافية، وحتى إدارة بروتوكولات كبار الشخصيات والضيوف."
+                : "Saudi Event Management specializes in turning dreams into reality by organizing luxury and royal weddings at the most prestigious venues across the Kingdom. We provide comprehensive wedding design services, from creating unique kosha concepts and exquisite floral arrangements to professional lighting design and VIP guest protocol management."}
+            </p>
+            <p>
+              {isAr
+                ? "سواء كنت تخطط لإقامة حفل زفاف أسطوري في إحدى قاعات الرياض الكبرى، أو حفل زفاف على شواطئ جدة الساحرة، أو تجربة زفاف استثنائية في صحراء العلا، فإن خبرائنا يضمنون لك تجربة لا تشوبها شائبة. نحن ندرك أهمية الخصوصية التامة والاهتمام بأدق التفاصيل في حفلات الزفاف الملكية، ولهذا نتعاون مع نخبة من المصممين والموردين لضمان أعلى مستويات الفخامة."
+                : "Whether you are planning a legendary wedding in one of Riyadh's grand ballrooms, a glamorous beachfront celebration in Jeddah, or an extraordinary destination wedding in the sweeping deserts of AlUla, our experts guarantee a flawless experience. We understand the paramount importance of absolute privacy and meticulous attention to detail in royal weddings, which is why we collaborate with elite designers and premium vendors to ensure unparalleled luxury."}
+            </p>
+            <p>
+              {isAr
+                ? "دائمًا ما نبقى على اطلاع بأحدث اتجاهات حفلات الزفاف العالمية، مع الحفاظ على اللمسة الثقافية السعودية الأصيلة. التزامنا بالتفوق جعلنا الوجهة الأولى للباحثين عن الرقي والتميز في عالم تنظيم حفلات الزفاف، حيث نعكس في كل فعالية قيم رؤية السعودية 2030."
+                : "We stay consistently updated with the latest global wedding trends while preserving the authentic Saudi cultural touch. Our unwavering commitment to excellence has made us the ultimate destination for those seeking sophistication and distinction in the world of wedding planning, reflecting the ambitious values of Saudi Vision 2030 in every celebration we curate."}
+            </p>
           </div>
         </div>
       </section>

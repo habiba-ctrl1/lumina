@@ -46,7 +46,10 @@ const jsonLd = {
   ]
 };
 
-export default function OurTeamPage() {
+export default async function OurTeamPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -93,6 +96,32 @@ export default function OurTeamPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="bg-neutral-50 py-16 border-t border-neutral-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
+            {isAr ? "الخبرة والاحترافية وراء كل فعالية ناجحة" : "The Expertise and Professionalism Behind Every Successful Event"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed space-y-4">
+            <p>
+              {isAr
+                ? "يضم فريق إدارة الفعاليات السعودية نخبة من أبرز العقول الاستراتيجية والإبداعية في مجال تنظيم الفعاليات على مستوى منطقة الشرق الأوسط. نحن نؤمن بأن نجاح أي مشروع يعتمد بشكل أساسي على شغف وكفاءة الأفراد الذين يقفون وراءه، ولذلك حرصنا على بناء فريق متكامل يجمع بين الفهم العميق للثقافة السعودية الأصيلة والخبرة العالمية في تطبيق أحدث المعايير الدولية."
+                : "The Saudi Event Management team comprises some of the most prominent strategic and creative minds in the event planning industry across the Middle East. We believe that the success of any project depends fundamentally on the passion and competence of the individuals behind it, which is why we have built an integrated team combining a deep understanding of authentic Saudi culture with global expertise in applying the latest international standards."}
+            </p>
+            <p>
+              {isAr
+                ? "بقيادة المديرة التنفيذية حبيبة أصغر، يعمل فريقنا بتناغم تام لتنفيذ مشاريع تتنوع بين المؤتمرات الحكومية رفيعة المستوى، وحفلات الزفاف الفاخرة، والمعارض الدولية في الرياض وجدة والعلا. يضم الفريق خبراء في البروتوكول، ومهندسين متخصصين في تقنيات الصوت والإضاءة، ومصممين فنيين يكرسون جهودهم لضمان تجربة سلسة، آمنة، ومثالية لكل ضيف."
+                : "Led by CEO Habiba Asghar, our team works in perfect harmony to execute projects ranging from high-level government conferences and luxury weddings to international exhibitions in Riyadh, Jeddah, and AlUla. The team includes protocol experts, specialized AV engineers, and artistic designers dedicated to ensuring a seamless, secure, and flawless experience for every guest."}
+            </p>
+            <p>
+              {isAr
+                ? "نحن نلتزم بالارتقاء بقطاع الفعاليات في المملكة، مستلهمين أهداف رؤية السعودية 2030 لتحويل كل حدث إلى منصة للإبداع والابتكار. عندما تختار إدارة الفعاليات السعودية، فإنك تعتمد على شركاء استراتيجيين يضعون نجاحك في صميم أولوياتهم، لضمان ترك انطباع دائم يفوق التوقعات."
+                : "We are committed to elevating the events sector in the Kingdom, inspired by the goals of Saudi Vision 2030 to transform every event into a platform for creativity and innovation. When you choose Saudi Event Management, you are relying on strategic partners who place your success at the core of their priorities, ensuring a lasting impression that exceeds all expectations."}
+            </p>
           </div>
         </div>
       </section>

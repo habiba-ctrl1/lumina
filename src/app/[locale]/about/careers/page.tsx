@@ -38,7 +38,10 @@ const jsonLd = {
   ]
 };
 
-export default function CareersPage() {
+export default async function CareersPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -84,6 +87,32 @@ export default function CareersPage() {
             >
               Email Resume <Send size={14} />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="bg-neutral-50 py-16 border-b border-neutral-200">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-4 text-center md:text-left">
+            {isAr ? "لماذا الانضمام إلى فريق إدارة الفعاليات السعودية؟" : "Why Join Saudi Event Management?"}
+          </h2>
+          <div className="text-neutral-600 text-[15px] leading-relaxed space-y-4">
+            <p>
+              {isAr
+                ? "في إدارة الفعاليات السعودية، نحن لا نكتفي بتقديم وظائف؛ بل نبني مسارات مهنية طموحة في واحد من أسرع القطاعات نمواً وتأثيراً في المملكة العربية السعودية. بفضل مشاريعنا الرائدة التي تشمل تنظيم المؤتمرات الدولية، وتخطيط حفلات الزفاف الملكية، وإدارة الفعاليات الحكومية، نوفر لخبراء ومحترفي الفعاليات بيئة عمل مليئة بالتحديات والفرص الاستثنائية التي تساهم في تطوير مهاراتهم."
+                : "At Saudi Event Management, we do not just offer jobs; we build ambitious career paths in one of the fastest-growing and most impactful sectors in Saudi Arabia. Thanks to our pioneering projects—ranging from organizing international conferences and planning royal weddings to managing large-scale government events—we provide event professionals with a dynamic work environment full of exceptional challenges and opportunities for skill development."}
+            </p>
+            <p>
+              {isAr
+                ? "بينما نمضي قدماً لتحقيق أهداف رؤية السعودية 2030، يركز التزامنا على تمكين المواهب المحلية واستقطاب الخبرات العالمية. سواء كنت تعمل كمنسق للفعاليات، أو مدير إنتاج وتقنيات صوتية ومرئية، أو خبير في بروتوكول كبار الشخصيات، فإن دورك معنا سيكون محورياً في خلق تجارب فاخرة ولا تُنسى لعملائنا وضيوفهم المرموقين."
+                : "As we move forward to achieve the ambitious goals of Saudi Vision 2030, our commitment focuses on empowering local talent while attracting world-class expertise. Whether you work as an event coordinator, an AV production manager, or a VIP protocol specialist, your role with us will be central to creating luxurious and unforgettable experiences for our clients and their distinguished guests."}
+            </p>
+            <p>
+              {isAr
+                ? "نحن نؤمن بأهمية العمل الجماعي، الإبداع، والابتكار. انضم إلينا لتكون جزءاً من فريق يصنع المستقبل ويترك بصمة واضحة في قطاع الفعاليات في كل من الرياض، جدة، العلا، وجميع مناطق المملكة. نحن نقدم برامج تدريبية متطورة، وبيئة عمل محفزة تكافئ التميز."
+                : "We strongly believe in the importance of teamwork, creativity, and constant innovation. Join us to be part of a team that shapes the future and leaves a lasting mark on the events sector across Riyadh, Jeddah, AlUla, and the entire Kingdom. We offer advanced training programs, competitive benefits, and a stimulating work environment that rewards excellence."}
+            </p>
           </div>
         </div>
       </section>
