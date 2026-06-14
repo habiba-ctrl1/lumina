@@ -59,7 +59,7 @@ const jsonLd = {
       "@type": ["LocalBusiness", "EventPlanner"],
       "name": "Saudi Event Management — Jeddah",
       "url": "https://saudieventmanagement.com/locations/jeddah",
-      "image": "https://saudieventmanagement.com/jeddah_season_corporate.webp",
+      "image": "https://saudieventmanagement.com/jeddah-hero.webp",
       "description":
         "Saudi Event Management is Jeddah's premier event planning company, specializing in corporate conferences, luxury weddings, brand activations, and gala dinners across Jeddah's finest venues including the Jeddah Convention & Exhibition Center, Four Seasons Hotel Jeddah, Rosewood Jeddah, and the Corniche waterfront.",
       "address": {
@@ -141,6 +141,7 @@ const jsonLd = {
         "Jeddah Art Week",
         "Saudi Vision 2030 events",
       ],
+      "sameAs": "https://en.wikipedia.org/wiki/Jeddah",
     },
     {
       "@type": "FAQPage",
@@ -372,8 +373,8 @@ export default function JeddahPage() {
         title="Event Management Company in "
         titleHighlight="Jeddah"
         subtitle="Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
-        backgroundImage="/jeddah_season_corporate.webp"
-        imageAlt="Event management company in Jeddah Saudi Arabia — corporate event on the Red Sea coast"
+        backgroundImage="/jeddah-hero.webp"
+        imageAlt="Jeddah, Saudi Arabia — event management company on the Red Sea coast"
         badge="The Bride of the Red Sea | Jeddah"
         breadcrumbs={[
           { label: "Home", href: "/" },
