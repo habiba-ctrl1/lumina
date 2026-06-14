@@ -429,7 +429,7 @@ export default function AlUlaPage() {
       </div>
 
       {/* At a Glance Strip */}
-      <section className="py-10 bg-slate-950 border-b border-slate-800">
+      <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {[
@@ -441,8 +441,8 @@ export default function AlUlaPage() {
               { label: "Event Style", val: "Ultra-Luxury" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
-                <span className="text-lg md:text-xl font-display font-semibold text-white">{item.val}</span>
-                <span className="text-xs uppercase tracking-widest text-slate-400">{item.label}</span>
+                <span className="text-lg md:text-xl font-display font-semibold text-neutral-900">{item.val}</span>
+                <span className="text-xs uppercase tracking-widest text-neutral-500">{item.label}</span>
               </div>
             ))}
           </div>
@@ -450,9 +450,9 @@ export default function AlUlaPage() {
       </section>
 
       {/* Why AlUla — Authority + Landscape Section */}
-      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
+          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
               src="/gallery_destination_wedding.webp"
               alt="Luxury destination wedding at AlUla Saudi Arabia — heritage sandstone landscape"
@@ -472,11 +472,11 @@ export default function AlUlaPage() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">The AlUla Difference</span>
-            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
               Ancient Landscapes,{" "}
               <span className="text-[var(--primary)]">Modern Luxury</span>
             </h2>
-            <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-4 mb-8">
+            <div className="prose prose-slate max-w-none text-neutral-600 text-sm leading-relaxed space-y-4 mb-8">
               <p>
                 AlUla is Saudi Arabia&apos;s most extraordinary destination —
                 a 200,000-year-old landscape of sandstone canyons, palm oases,
@@ -507,8 +507,8 @@ export default function AlUlaPage() {
                 "Full resort buyout management — Banyan Tree & Habitas AlUla",
                 "Exclusive Elephant Rock (Jabal Al-Fil) sunset ceremony access",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                  <CheckCircle2 size={16} className="text-emerald-700 mt-0.5 shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
+                  <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -518,15 +518,15 @@ export default function AlUlaPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Services in AlUla</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               What We Deliver{" "}
               <span className="text-[var(--primary)]">in AlUla</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               From Maraya gala production to private Hegra dinners at dusk —
               every AlUla event we manage is a once-in-a-lifetime experience
               engineered to that standard.
@@ -537,12 +537,12 @@ export default function AlUlaPage() {
               <Link
                 key={i}
                 href={item.href}
-                className="group flex flex-col gap-3 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-500 hover:-translate-y-1 transition-all"
+                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
               >
-                <item.icon size={22} className="text-emerald-800" />
-                <h3 className="font-display font-semibold text-slate-900 text-sm">{item.title}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed flex-1">{item.text}</p>
-                <span className="text-xs text-emerald-700 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                <item.icon size={22} className="text-[var(--primary)]" />
+                <h3 className="font-display font-semibold text-neutral-900 text-sm">{item.title}</h3>
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">{item.text}</p>
+                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                   Learn more <ChevronRight size={12} />
                 </span>
               </Link>
@@ -554,14 +554,14 @@ export default function AlUlaPage() {
       <LocationCTA city="AlUla" />
 
       {/* Venues Section */}
-      <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             AlUla&apos;s{" "}
             <span className="text-[var(--primary)]">Extraordinary Venues</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             From Maraya&apos;s mirrored Guinness Record walls to the UNESCO
             tombs of Hegra — AlUla&apos;s event venues exist nowhere else
             on earth.
@@ -571,24 +571,24 @@ export default function AlUlaPage() {
           {venues.map((venue, i) => (
             <div
               key={i}
-              className="flex flex-col p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 hover:shadow-md transition-all"
+              className="flex flex-col p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-semibold text-slate-900 text-sm leading-snug">{venue.name}</h3>
-                  <span className="text-xs text-slate-400">{venue.abbr}</span>
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">{venue.name}</h3>
+                  <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
               <div className="flex items-center gap-1 mb-3">
-                <MapPin size={11} className="text-slate-400" />
-                <span className="text-xs text-slate-400">{venue.district}</span>
+                <MapPin size={11} className="text-neutral-400" />
+                <span className="text-xs text-neutral-400">{venue.district}</span>
               </div>
-              <p className="text-slate-500 text-xs leading-relaxed flex-1">{venue.description}</p>
-              <div className="mt-4 pt-4 border-t border-slate-100">
-                <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">{venue.type}</span>
+              <p className="text-neutral-500 text-xs leading-relaxed flex-1">{venue.description}</p>
+              <div className="mt-4 pt-4 border-t border-neutral-100">
+                <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">{venue.type}</span>
               </div>
             </div>
           ))}
@@ -596,7 +596,7 @@ export default function AlUlaPage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-24 bg-slate-50/50 border-t border-b border-slate-200/50">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-b border-neutral-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
@@ -606,8 +606,8 @@ export default function AlUlaPage() {
               { label: "UNESCO Heritage Events", val: "Specialist" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
-                <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-display font-medium text-neutral-900 mb-2">{stat.val}</div>
+                <div className="text-xs uppercase tracking-widest text-neutral-500 font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -615,17 +615,17 @@ export default function AlUlaPage() {
       </section>
 
       {/* RCU Permit Section — Critical Moat Content */}
-      <section className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>
             <span className="section-label">Navigating AlUla</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4 mb-6">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-6">
               The RCU Permit Process —{" "}
               <span className="text-[var(--primary)]">
                 Why It Matters
               </span>
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed mb-6">
+            <p className="text-neutral-600 text-sm leading-relaxed mb-6">
               The <strong>Royal Commission for AlUla (RCU)</strong> is the
               sole governing authority for every event in AlUla — from private
               weddings to international brand activations. Unlike every other
@@ -634,7 +634,7 @@ export default function AlUlaPage() {
               distinct tracks for commercial events, cultural programming,
               heritage site access, and sustainability compliance.
             </p>
-            <p className="text-slate-600 text-sm leading-relaxed mb-8">
+            <p className="text-neutral-600 text-sm leading-relaxed mb-8">
               Working with an event partner that already holds RCU relationships
               is not optional — it is the difference between an event that
               happens and one that doesn&apos;t. Saudi Event Management has
@@ -671,14 +671,14 @@ export default function AlUlaPage() {
                 scope: "All events — waste management, ecological footprint, and desert conservation protocols",
               },
             ].map((item, i) => (
-              <div key={i} className="p-5 bg-white border border-slate-200 rounded-sm shadow-sm">
+              <div key={i} className="p-5 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-display font-semibold text-slate-900 text-sm">{item.track}</h3>
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm">{item.track}</h3>
                   <span className="text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium ml-2 whitespace-nowrap">
                     {item.timeline}
                   </span>
                 </div>
-                <p className="text-slate-500 text-xs leading-relaxed">{item.scope}</p>
+                <p className="text-neutral-500 text-xs leading-relaxed">{item.scope}</p>
               </div>
             ))}
           </div>
@@ -686,15 +686,15 @@ export default function AlUlaPage() {
       </section>
 
       {/* Event Calendar */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Planning Your Event</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               AlUla Event{" "}
               <span className="text-[var(--primary)]">Season Calendar</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               AlUla&apos;s event season is the most compressed in Saudi Arabia.
               Banyan Tree and Habitas book out 9–12 months ahead for the
               November–April peak. Plan accordingly.
@@ -702,25 +702,25 @@ export default function AlUlaPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {eventCalendar.map((row, i) => (
-              <div key={i} className="flex gap-4 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 transition-all">
-                <Calendar size={20} className="text-emerald-800 mt-0.5 shrink-0" />
+              <div key={i} className="flex gap-4 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 transition-all">
+                <Calendar size={20} className="text-[var(--primary)] mt-0.5 shrink-0" />
                 <div>
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="font-display font-semibold text-slate-900 text-sm">{row.period}</span>
+                    <span className="font-display font-semibold text-neutral-900 text-sm">{row.period}</span>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                       row.demand === "Peak"
                         ? "bg-red-50 text-red-700 border border-red-200"
                         : row.demand === "Very High"
                           ? "bg-orange-50 text-orange-700 border border-orange-200"
                           : row.demand === "Low"
-                            ? "bg-slate-100 text-slate-500 border border-slate-200"
-                            : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                            ? "bg-[var(--surface-raised)] text-neutral-500 border border-neutral-200/80"
+                            : "bg-emerald-50 text-[var(--primary)] border border-emerald-200"
                     }`}>
                       {row.demand} Demand
                     </span>
                   </div>
-                  <p className="text-xs font-semibold text-slate-600 mb-1">{row.season}</p>
-                  <p className="text-xs text-slate-500 leading-relaxed">{row.events}</p>
+                  <p className="text-xs font-semibold text-neutral-600 mb-1">{row.season}</p>
+                  <p className="text-xs text-neutral-500 leading-relaxed">{row.events}</p>
                 </div>
               </div>
             ))}
@@ -729,14 +729,14 @@ export default function AlUlaPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">
             AlUla Event Authority
           </span>
-          <h2 className="font-display font-medium text-white text-2xl md:text-3xl mt-4 mb-12">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-12">
             Why the World&apos;s Most Discerning Clients Choose{" "}
-            <span className="text-emerald-400">Saudi Event Management</span> in AlUla
+            <span className="text-[var(--primary)]">Saudi Event Management</span> in AlUla
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
@@ -753,9 +753,9 @@ export default function AlUlaPage() {
                 body: "International destination guests, private jet coordination at AlUla Airport (ULH), desert climate logistics, and sustainable event infrastructure — the full operational complexity of AlUla, solved.",
               },
             ].map((card, i) => (
-              <div key={i} className="p-6 bg-slate-900 border border-slate-800 rounded-sm">
-                <h3 className="font-display font-semibold text-white text-sm mb-3">{card.title}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{card.body}</p>
+              <div key={i} className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{card.title}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
@@ -763,20 +763,20 @@ export default function AlUlaPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Common Questions</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Event Management in AlUla —{" "}
             <span className="text-[var(--primary)]">FAQ</span>
           </h2>
         </div>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-slate-200 rounded-sm overflow-hidden">
+            <div key={i} className="border border-neutral-200/80 rounded-2xl overflow-hidden">
               <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-sm mb-3">{faq.q}</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">{faq.a}</p>
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{faq.q}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}

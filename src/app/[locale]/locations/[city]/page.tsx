@@ -984,8 +984,8 @@ export async function generateMetadata({ params }: PageProps) {
 const demandClass = (d: string) =>
   d === "Peak" ? "bg-red-50 text-red-700 border-red-200"
   : d === "Very High" ? "bg-orange-50 text-orange-700 border-orange-200"
-  : d === "Low" ? "bg-slate-100 text-slate-500 border-slate-200"
-  : "bg-emerald-50 text-emerald-700 border-emerald-200";
+  : d === "Low" ? "bg-[var(--surface-raised)] text-neutral-500 border-neutral-200/80"
+  : "bg-emerald-50 text-[var(--primary)] border-emerald-200";
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function DynamicLocationPage({ params }: PageProps) {
@@ -1089,13 +1089,13 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </div>
 
       {/* At-a-Glance Strip */}
-      <section className="py-10 bg-slate-950 border-b border-slate-800">
+      <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {d.glance.map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
-                <span className="text-lg md:text-xl font-display font-semibold text-white">{item.val}</span>
-                <span className="text-xs uppercase tracking-widest text-slate-400">{item.label}</span>
+                <span className="text-lg md:text-xl font-display font-semibold text-neutral-900">{item.val}</span>
+                <span className="text-xs uppercase tracking-widest text-neutral-500">{item.label}</span>
               </div>
             ))}
           </div>
@@ -1103,18 +1103,18 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* Intro Section */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <span className="section-label">Our Expertise in {d.name}</span>
-            <h2 className="font-display font-bold text-slate-900 mb-6 text-2xl md:text-3xl mt-4">{d.specialty}</h2>
-            <p className="text-slate-600 text-sm leading-relaxed mb-5">{d.intro}</p>
-            <p className="text-slate-600 text-sm leading-relaxed mb-8">{d.details}</p>
+            <h2 className="font-display font-bold text-neutral-900 mb-6 text-2xl md:text-3xl mt-4">{d.specialty}</h2>
+            <p className="text-neutral-600 text-sm leading-relaxed mb-5">{d.intro}</p>
+            <p className="text-neutral-600 text-sm leading-relaxed mb-8">{d.details}</p>
             <div className="grid grid-cols-2 gap-4">
               {d.stats.map((s, i) => (
-                <div key={i} className="text-center p-5 bg-slate-50 border border-slate-200 rounded-sm">
-                  <div className="text-2xl font-display font-bold text-slate-900 mb-1">{s.val}</div>
-                  <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{s.label}</div>
+                <div key={i} className="text-center p-5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-sm">
+                  <div className="text-2xl font-display font-bold text-neutral-900 mb-1">{s.val}</div>
+                  <div className="text-xs uppercase tracking-widest text-neutral-500 font-semibold">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -1122,22 +1122,22 @@ export default async function DynamicLocationPage({ params }: PageProps) {
 
           {/* Services Grid */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-900 mb-6">Services in {d.name}</h3>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-900 mb-6">Services in {d.name}</h3>
             <div className="space-y-3">
               {d.services.map((svc, i) => (
                 <Link
                   key={i}
                   href={`/services/${svc.slug}`}
-                  className="group flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-sm hover:border-emerald-400 hover:-translate-y-0.5 transition-all"
+                  className="group flex items-start gap-4 p-4 bg-white border border-neutral-200/80 rounded-sm hover:border-emerald-400 hover:-translate-y-0.5 transition-all"
                 >
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-emerald-50 border border-emerald-100 group-hover:bg-emerald-100 transition-all">
-                    <svc.icon size={16} className="text-emerald-700" />
+                    <svc.icon size={16} className="text-[var(--primary)]" />
                   </div>
                   <div>
-                    <span className="block text-sm font-semibold text-slate-900 group-hover:text-emerald-800 transition-colors mb-0.5">{svc.name}</span>
-                    <span className="block text-xs text-slate-500 leading-relaxed">{svc.desc}</span>
+                    <span className="block text-sm font-semibold text-neutral-900 group-hover:text-[var(--primary)] transition-colors mb-0.5">{svc.name}</span>
+                    <span className="block text-xs text-neutral-500 leading-relaxed">{svc.desc}</span>
                   </div>
-                  <ChevronRight size={14} className="text-slate-300 group-hover:text-emerald-500 shrink-0 mt-1 ms-auto transition-colors" />
+                  <ChevronRight size={14} className="text-neutral-300 group-hover:text-emerald-500 shrink-0 mt-1 ms-auto transition-colors" />
                 </Link>
               ))}
             </div>
@@ -1148,28 +1148,28 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       <LocationCTA city={d.name} />
 
       {/* Venue Cards */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="section-label">Venue Network</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               Premier Venues in <span className="text-[var(--primary)]">{d.name}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {d.venues.map((v, i) => (
-              <div key={i} className="flex flex-col p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 hover:shadow-md transition-all">
+              <div key={i} className="flex flex-col p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-display font-semibold text-slate-900 text-sm leading-snug pe-2">{v.name}</h3>
-                  <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap shrink-0">{v.capacity}</span>
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug pe-2">{v.name}</h3>
+                  <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap shrink-0">{v.capacity}</span>
                 </div>
                 <div className="flex items-center gap-1 mb-3">
-                  <MapPin size={11} className="text-slate-400" />
-                  <span className="text-xs text-slate-400">{v.district}</span>
+                  <MapPin size={11} className="text-neutral-400" />
+                  <span className="text-xs text-neutral-400">{v.district}</span>
                 </div>
-                <p className="text-slate-500 text-xs leading-relaxed flex-1">{v.desc}</p>
-                <div className="mt-4 pt-4 border-t border-slate-100">
-                  <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">{v.type}</span>
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">{v.desc}</p>
+                <div className="mt-4 pt-4 border-t border-neutral-100">
+                  <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">{v.type}</span>
                 </div>
               </div>
             ))}
@@ -1178,26 +1178,26 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* Event Calendar */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="section-label">Planning Your Event</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             {d.name} Event <span className="text-[var(--primary)]">Season Calendar</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {d.eventCalendar.map((row, i) => (
-            <div key={i} className="flex gap-4 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 transition-all">
-              <Calendar size={20} className="text-emerald-800 mt-0.5 shrink-0" />
+            <div key={i} className="flex gap-4 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 transition-all">
+              <Calendar size={20} className="text-[var(--primary)] mt-0.5 shrink-0" />
               <div>
                 <div className="flex items-center gap-3 mb-1 flex-wrap">
-                  <span className="font-display font-semibold text-slate-900 text-sm">{row.period}</span>
+                  <span className="font-display font-semibold text-neutral-900 text-sm">{row.period}</span>
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${demandClass(row.demand)}`}>
                     {row.demand} Demand
                   </span>
                 </div>
-                <p className="text-xs font-semibold text-slate-600 mb-1">{row.season}</p>
-                <p className="text-xs text-slate-500 leading-relaxed">{row.events}</p>
+                <p className="text-xs font-semibold text-neutral-600 mb-1">{row.season}</p>
+                <p className="text-xs text-neutral-500 leading-relaxed">{row.events}</p>
               </div>
             </div>
           ))}
@@ -1205,17 +1205,17 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">{d.name} Event Authority</span>
-          <h2 className="font-display font-medium text-white text-2xl md:text-3xl mt-4 mb-12">
-            Why Saudi Event Management in <span className="text-emerald-400">{d.name}</span>
+          <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">{d.name} Event Authority</span>
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-12">
+            Why Saudi Event Management in <span className="text-[var(--primary)]">{d.name}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {d.geoCitation.map((card, i) => (
-              <div key={i} className="p-6 bg-slate-900 border border-slate-800 rounded-sm">
-                <h3 className="font-display font-semibold text-white text-sm mb-3">{card.title}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{card.body}</p>
+              <div key={i} className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{card.title}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
@@ -1223,19 +1223,19 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Common Questions</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Event Management in {d.name} — <span className="text-[var(--primary)]">FAQ</span>
           </h2>
         </div>
         <div className="space-y-4">
           {d.faqs.map((faq, i) => (
-            <div key={i} className="border border-slate-200 rounded-sm overflow-hidden">
+            <div key={i} className="border border-neutral-200/80 rounded-2xl overflow-hidden">
               <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-sm mb-3">{faq.q}</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">{faq.a}</p>
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{faq.q}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}
@@ -1247,7 +1247,7 @@ export default async function DynamicLocationPage({ params }: PageProps) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-neutral-100">
             <div className="flex items-start gap-4 mb-6">
-              <Building className="text-emerald-700 shrink-0 mt-1" size={24} />
+              <Building className="text-[var(--primary)] shrink-0 mt-1" size={24} />
               <h2 className="text-xl font-semibold text-neutral-900">
                 Event Management in {d.name} ({d.nameAr}), Saudi Arabia
               </h2>
@@ -1282,9 +1282,9 @@ export default async function DynamicLocationPage({ params }: PageProps) {
       </section>
 
       {/* Cross-city links */}
-      <section className="py-16 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Also serving</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6">Also serving</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
               { name: "Riyadh",    href: "/locations/riyadh"  },
@@ -1299,12 +1299,12 @@ export default async function DynamicLocationPage({ params }: PageProps) {
               .slice(0, 5)
               .map((c) => (
                 <Link key={c.href} href={c.href}
-                  className="inline-flex items-center gap-1 px-5 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+                  className="inline-flex items-center gap-1 px-5 py-2 bg-white border border-neutral-200/80 rounded-full text-xs font-semibold text-neutral-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
                   <MapPin size={10} /> {c.name}
                 </Link>
               ))}
             <Link href="/locations"
-              className="inline-flex items-center gap-1 px-5 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+              className="inline-flex items-center gap-1 px-5 py-2 bg-white border border-neutral-200/80 rounded-full text-xs font-semibold text-neutral-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
               All Locations <ChevronRight size={10} />
             </Link>
           </div>

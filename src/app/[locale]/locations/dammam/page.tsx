@@ -418,7 +418,7 @@ export default function DammamPage() {
       </div>
 
       {/* At a Glance Strip */}
-      <section className="py-10 bg-slate-950 border-b border-slate-800">
+      <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {[
@@ -430,8 +430,8 @@ export default function DammamPage() {
               { label: "Gulf Venues", val: "25+" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
-                <span className="text-lg md:text-xl font-display font-semibold text-white">{item.val}</span>
-                <span className="text-xs uppercase tracking-widest text-slate-400">{item.label}</span>
+                <span className="text-lg md:text-xl font-display font-semibold text-neutral-900">{item.val}</span>
+                <span className="text-xs uppercase tracking-widest text-neutral-500">{item.label}</span>
               </div>
             ))}
           </div>
@@ -439,9 +439,9 @@ export default function DammamPage() {
       </section>
 
       {/* Why Dammam Section */}
-      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
+          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
               src="/alkhobar_corporate_people.webp"
               alt="Corporate professionals at an energy sector event in Dammam Al-Khobar Eastern Province"
@@ -460,11 +460,11 @@ export default function DammamPage() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">Why Dammam & Eastern Province</span>
-            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">Energy Event Capital</span>
             </h2>
-            <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-4 mb-8">
+            <div className="prose prose-slate max-w-none text-neutral-600 text-sm leading-relaxed space-y-4 mb-8">
               <p>
                 The Eastern Province is home to{" "}
                 <strong>Saudi Aramco</strong> — the world&apos;s most
@@ -497,8 +497,8 @@ export default function DammamPage() {
                 "King Fahd Causeway cross-border Dammam–Bahrain management",
                 "Half Moon Bay & Al-Khobar Corniche outdoor event specialists",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                  <CheckCircle2 size={16} className="text-emerald-700 mt-0.5 shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
+                  <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -508,15 +508,15 @@ export default function DammamPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Services in Dammam</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               Event Management Services in{" "}
               <span className="text-[var(--primary)]">Dammam & Al-Khobar</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               From Aramco-tier energy conferences to Gulf waterfront weddings and
               cross-border Bahrain MICE — the full Eastern Province event spectrum.
             </p>
@@ -526,12 +526,12 @@ export default function DammamPage() {
               <Link
                 key={i}
                 href={item.href}
-                className="group flex flex-col gap-3 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-500 hover:-translate-y-1 transition-all"
+                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
               >
-                <item.icon size={22} className="text-emerald-800" />
-                <h3 className="font-display font-semibold text-slate-900 text-sm">{item.title}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed flex-1">{item.text}</p>
-                <span className="text-xs text-emerald-700 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                <item.icon size={22} className="text-[var(--primary)]" />
+                <h3 className="font-display font-semibold text-neutral-900 text-sm">{item.title}</h3>
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">{item.text}</p>
+                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                   Learn more <ChevronRight size={12} />
                 </span>
               </Link>
@@ -543,14 +543,14 @@ export default function DammamPage() {
       <LocationCTA city="Dammam" />
 
       {/* Venues Section */}
-      <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Top Event Venues in{" "}
             <span className="text-[var(--primary)]">Dammam & Al-Khobar</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             From DCEC exhibitions to Half Moon Bay beach weddings — our Eastern
             Province venue network spans every event category and scale.
           </p>
@@ -559,24 +559,24 @@ export default function DammamPage() {
           {venues.map((venue, i) => (
             <div
               key={i}
-              className="flex flex-col p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 hover:shadow-md transition-all"
+              className="flex flex-col p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-semibold text-slate-900 text-sm leading-snug">{venue.name}</h3>
-                  <span className="text-xs text-slate-400">{venue.abbr}</span>
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">{venue.name}</h3>
+                  <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
               <div className="flex items-center gap-1 mb-3">
-                <MapPin size={11} className="text-slate-400" />
-                <span className="text-xs text-slate-400">{venue.district}</span>
+                <MapPin size={11} className="text-neutral-400" />
+                <span className="text-xs text-neutral-400">{venue.district}</span>
               </div>
-              <p className="text-slate-500 text-xs leading-relaxed flex-1">{venue.description}</p>
-              <div className="mt-4 pt-4 border-t border-slate-100">
-                <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">{venue.type}</span>
+              <p className="text-neutral-500 text-xs leading-relaxed flex-1">{venue.description}</p>
+              <div className="mt-4 pt-4 border-t border-neutral-100">
+                <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">{venue.type}</span>
               </div>
             </div>
           ))}
@@ -584,7 +584,7 @@ export default function DammamPage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-24 bg-slate-50/50 border-t border-b border-slate-200/50">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-b border-neutral-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
@@ -594,8 +594,8 @@ export default function DammamPage() {
               { label: "Cross-Border Events", val: "Dammam + Bahrain" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">{stat.val}</div>
-                <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-display font-medium text-neutral-900 mb-2">{stat.val}</div>
+                <div className="text-xs uppercase tracking-widest text-neutral-500 font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -603,14 +603,14 @@ export default function DammamPage() {
       </section>
 
       {/* Event Calendar */}
-      <section className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Planning Your Event</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Eastern Province{" "}
             <span className="text-[var(--primary)]">Event Calendar</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             Dammam&apos;s corporate event calendar is anchored by the Aramco
             conference cycle in Q1. Outdoor and coastal venues book 4–6 months
             ahead during the October–March peak season.
@@ -618,23 +618,23 @@ export default function DammamPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {eventCalendar.map((row, i) => (
-            <div key={i} className="flex gap-4 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 transition-all">
-              <Calendar size={20} className="text-emerald-800 mt-0.5 shrink-0" />
+            <div key={i} className="flex gap-4 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 transition-all">
+              <Calendar size={20} className="text-[var(--primary)] mt-0.5 shrink-0" />
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="font-display font-semibold text-slate-900 text-sm">{row.period}</span>
+                  <span className="font-display font-semibold text-neutral-900 text-sm">{row.period}</span>
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                     row.demand === "Peak"
                       ? "bg-red-50 text-red-700 border border-red-200"
                       : row.demand === "Very High"
                         ? "bg-orange-50 text-orange-700 border border-orange-200"
-                        : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                        : "bg-emerald-50 text-[var(--primary)] border border-emerald-200"
                   }`}>
                     {row.demand} Demand
                   </span>
                 </div>
-                <p className="text-xs font-semibold text-slate-600 mb-1">{row.season}</p>
-                <p className="text-xs text-slate-500 leading-relaxed">{row.events}</p>
+                <p className="text-xs font-semibold text-neutral-600 mb-1">{row.season}</p>
+                <p className="text-xs text-neutral-500 leading-relaxed">{row.events}</p>
               </div>
             </div>
           ))}
@@ -642,16 +642,16 @@ export default function DammamPage() {
       </section>
 
       {/* Cross-Border Moat Section */}
-      <section className="py-20 bg-slate-50/50 border-t border-slate-200">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <span className="section-label">Unique Capability</span>
-              <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4 mb-6">
+              <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-6">
                 The Dammam–Bahrain{" "}
                 <span className="text-[var(--primary)]">Event Corridor</span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+              <p className="text-neutral-600 text-sm leading-relaxed mb-6">
                 The <strong>King Fahd Causeway</strong> connects Dammam to
                 Bahrain in 30 minutes — creating the Gulf&apos;s only land-based
                 cross-border event corridor. Saudi Event Management is the only
@@ -671,8 +671,8 @@ export default function DammamPage() {
                   "BIECC coordination for overflow exhibition capacity",
                   "Bahrain airport access for international delegates",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                    <CheckCircle2 size={16} className="text-emerald-700 mt-0.5 shrink-0" />
+                  <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -685,9 +685,9 @@ export default function DammamPage() {
                 { city: "Dhahran", venues: "Aramco Exhibition Center, KFUPM, Le Méridien" },
                 { city: "Bahrain (via Causeway)", venues: "BIECC, Gulf Hotel, Ritz-Carlton Bahrain" },
               ].map((node, i) => (
-                <div key={i} className="p-4 bg-white border border-slate-200 rounded-sm shadow-sm">
-                  <p className="font-display font-semibold text-slate-900 text-xs mb-2">{node.city}</p>
-                  <p className="text-slate-500 text-xs leading-relaxed">{node.venues}</p>
+                <div key={i} className="p-4 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
+                  <p className="font-display font-semibold text-neutral-900 text-xs mb-2">{node.city}</p>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{node.venues}</p>
                 </div>
               ))}
             </div>
@@ -696,14 +696,14 @@ export default function DammamPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">
             Eastern Province Event Authority
           </span>
-          <h2 className="font-display font-medium text-white text-2xl md:text-3xl mt-4 mb-12">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-12">
             Why the Energy Sector Chooses{" "}
-            <span className="text-emerald-400">Saudi Event Management</span> in
+            <span className="text-[var(--primary)]">Saudi Event Management</span> in
             Dammam
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -721,9 +721,9 @@ export default function DammamPage() {
                 body: "Dammam, Al-Khobar, Dhahran, Jubail Industrial City, Al-Ahsa UNESCO district, and Half Moon Bay — our Eastern Province network is the most comprehensive of any event management company in the region.",
               },
             ].map((card, i) => (
-              <div key={i} className="p-6 bg-slate-900 border border-slate-800 rounded-sm">
-                <h3 className="font-display font-semibold text-white text-sm mb-3">{card.title}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{card.body}</p>
+              <div key={i} className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{card.title}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
@@ -731,20 +731,20 @@ export default function DammamPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Common Questions</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Event Management in Dammam —{" "}
             <span className="text-[var(--primary)]">FAQ</span>
           </h2>
         </div>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-slate-200 rounded-sm overflow-hidden">
+            <div key={i} className="border border-neutral-200/80 rounded-2xl overflow-hidden">
               <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-sm mb-3">{faq.q}</h3>
-                <p className="text-slate-600 text-xs leading-relaxed">{faq.a}</p>
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">{faq.q}</h3>
+                <p className="text-neutral-600 text-xs leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}

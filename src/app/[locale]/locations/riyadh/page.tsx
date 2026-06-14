@@ -479,15 +479,15 @@ export default function RiyadhPage() {
       </section>
 
       {/* Why Riyadh — Authority Section */}
-      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="section-label">Why Riyadh for Events</span>
-            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">Corporate Event Capital</span>
             </h2>
-            <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-4 mb-8">
+            <div className="prose prose-slate max-w-none text-neutral-600 text-sm leading-relaxed space-y-4 mb-8">
               <p>
                 Riyadh concentrates Saudi Arabia&apos;s political authority,
                 financial infrastructure, and Vision 2030 decision-making in one
@@ -524,14 +524,14 @@ export default function RiyadhPage() {
                 "Diplomatic Quarter clearance for KAICC government events",
                 "Diriyah Gate Development Authority (DGDA) approved partner",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
-                  <CheckCircle2 size={16} className="text-emerald-700 mt-0.5 shrink-0" />
+                <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
+                  <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
               src="/riyadh_summit_people.webp"
               alt="Corporate conference management at KAFD Riyadh Saudi Arabia"
@@ -553,15 +553,15 @@ export default function RiyadhPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Services in Riyadh</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               Full-Service Event Management{" "}
               <span className="text-[var(--primary)]">in Riyadh</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               From RICEC mega-exhibitions to intimate Diplomatic Quarter dinners
               — our Riyadh team covers every event format with Vision 2030
               compliance built in.
@@ -572,16 +572,16 @@ export default function RiyadhPage() {
               <Link
                 key={i}
                 href={item.href}
-                className="group flex flex-col gap-3 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-500 hover:-translate-y-1 transition-all"
+                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
               >
-                <item.icon size={22} className="text-emerald-800" />
-                <h3 className="font-display font-semibold text-slate-900 text-sm">
+                <item.icon size={22} className="text-[var(--primary)]" />
+                <h3 className="font-display font-semibold text-neutral-900 text-sm">
                   {item.title}
                 </h3>
-                <p className="text-slate-500 text-xs leading-relaxed flex-1">
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">
                   {item.text}
                 </p>
-                <span className="text-xs text-emerald-700 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                   Learn more <ChevronRight size={12} />
                 </span>
               </Link>
@@ -593,14 +593,14 @@ export default function RiyadhPage() {
       <LocationCTA city="Riyadh" />
 
       {/* Top Venues in Riyadh */}
-      <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Top Event Venues in{" "}
             <span className="text-[var(--primary)]">Riyadh</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             From RICEC — Saudi Arabia&apos;s largest exhibition centre — to the
             Ritz-Carlton&apos;s Diplomatic Quarter ballrooms, our Riyadh venue
             network covers every event scale and category.
@@ -610,28 +610,28 @@ export default function RiyadhPage() {
           {venues.map((venue, i) => (
             <div
               key={i}
-              className="flex flex-col p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 hover:shadow-md transition-all"
+              className="flex flex-col p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-semibold text-slate-900 text-sm leading-snug">
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">
                     {venue.name}
                   </h3>
-                  <span className="text-xs text-slate-400">{venue.abbr}</span>
+                  <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
               <div className="flex items-center gap-1 mb-3">
-                <MapPin size={11} className="text-slate-400" />
-                <span className="text-xs text-slate-400">{venue.district}</span>
+                <MapPin size={11} className="text-neutral-400" />
+                <span className="text-xs text-neutral-400">{venue.district}</span>
               </div>
-              <p className="text-slate-500 text-xs leading-relaxed flex-1">
+              <p className="text-neutral-500 text-xs leading-relaxed flex-1">
                 {venue.description}
               </p>
-              <div className="mt-4 pt-4 border-t border-slate-100">
-                <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">
+              <div className="mt-4 pt-4 border-t border-neutral-100">
+                <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">
                   {venue.type}
                 </span>
               </div>
@@ -641,7 +641,7 @@ export default function RiyadhPage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-24 bg-slate-50/50 border-t border-b border-slate-200/50">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-b border-neutral-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
@@ -651,10 +651,10 @@ export default function RiyadhPage() {
               { label: "Avg. Guest Satisfaction", val: "99%" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">
+                <div className="text-2xl md:text-3xl font-display font-medium text-neutral-900 mb-2">
                   {stat.val}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">
+                <div className="text-xs uppercase tracking-widest text-neutral-500 font-semibold">
                   {stat.label}
                 </div>
               </div>
@@ -664,14 +664,14 @@ export default function RiyadhPage() {
       </section>
 
       {/* Event Calendar */}
-      <section className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Planning Your Event</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Riyadh Event{" "}
             <span className="text-[var(--primary)]">Season Calendar</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             Riyadh&apos;s event calendar is the densest in Saudi Arabia.
             Venue availability at RICEC and KAFD fills 6–12 months in advance
             during peak conference season.
@@ -681,12 +681,12 @@ export default function RiyadhPage() {
           {eventCalendar.map((row, i) => (
             <div
               key={i}
-              className="flex gap-4 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 transition-all"
+              className="flex gap-4 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 transition-all"
             >
-              <Calendar size={20} className="text-emerald-800 mt-0.5 shrink-0" />
+              <Calendar size={20} className="text-[var(--primary)] mt-0.5 shrink-0" />
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="font-display font-semibold text-slate-900 text-sm">
+                  <span className="font-display font-semibold text-neutral-900 text-sm">
                     {row.period}
                   </span>
                   <span
@@ -695,14 +695,14 @@ export default function RiyadhPage() {
                         ? "bg-red-50 text-red-700 border border-red-200"
                         : row.demand === "Very High"
                           ? "bg-orange-50 text-orange-700 border border-orange-200"
-                          : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                          : "bg-emerald-50 text-[var(--primary)] border border-emerald-200"
                     }`}
                   >
                     {row.demand} Demand
                   </span>
                 </div>
-                <p className="text-xs font-semibold text-slate-600 mb-1">{row.season}</p>
-                <p className="text-xs text-slate-500 leading-relaxed">{row.events}</p>
+                <p className="text-xs font-semibold text-neutral-600 mb-1">{row.season}</p>
+                <p className="text-xs text-neutral-500 leading-relaxed">{row.events}</p>
               </div>
             </div>
           ))}
@@ -710,16 +710,16 @@ export default function RiyadhPage() {
       </section>
 
       {/* Team Section — E-E-A-T Signal */}
-      <section className="py-32 relative overflow-hidden bg-white border-t border-slate-100">
+      <section className="py-20 md:py-20 md:py-28 relative overflow-hidden bg-white border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
               <span className="section-label">Riyadh Leadership</span>
-              <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">
+              <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
                 Our Riyadh{" "}
                 <span className="text-[var(--primary)]">Event Specialists</span>
               </h2>
-              <p className="text-slate-600 text-sm leading-relaxed mb-8">
+              <p className="text-neutral-600 text-sm leading-relaxed mb-8">
                 Our Riyadh team combines deep knowledge of Saudi corporate
                 protocol, government event compliance, and the cultural
                 precision required to operate at the highest levels of the
@@ -740,19 +740,19 @@ export default function RiyadhPage() {
                 ].map((member, i) => (
                   <div
                     key={i}
-                    className="flex gap-4 p-5 bg-white border border-slate-300 rounded-sm shadow-2xs"
+                    className="flex gap-4 p-5 bg-white border border-neutral-200/80 rounded-2xl shadow-2xs"
                   >
-                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-full flex items-center justify-center text-emerald-800 shrink-0">
+                    <div className="w-12 h-12 bg-white border border-neutral-200/80 rounded-full flex items-center justify-center text-[var(--primary)] shrink-0">
                       <User size={20} />
                     </div>
                     <div>
-                      <h3 className="text-slate-900 font-medium mb-1 font-display text-sm">
+                      <h3 className="text-neutral-900 font-medium mb-1 font-display text-sm">
                         {member.name}
                       </h3>
                       <p className="text-[var(--primary)] text-[10px] uppercase tracking-wider mb-2 font-semibold">
                         {member.role}
                       </p>
-                      <p className="text-slate-500 text-xs font-light">{member.desc}</p>
+                      <p className="text-neutral-500 text-xs font-light">{member.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -760,7 +760,7 @@ export default function RiyadhPage() {
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="h-64 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
+                <div className="h-64 relative rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm">
                   <Image
                     src="/luxury_wedding_couple_guests.webp"
                     alt="Luxury wedding guests at premium event in Riyadh Saudi Arabia"
@@ -769,7 +769,7 @@ export default function RiyadhPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="h-48 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
+                <div className="h-48 relative rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm">
                   <Image
                     src="/riyadh_summit_people.webp"
                     alt="Corporate summit event production Riyadh KAFD"
@@ -780,7 +780,7 @@ export default function RiyadhPage() {
                 </div>
               </div>
               <div className="space-y-4 pt-8">
-                <div className="h-48 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
+                <div className="h-48 relative rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm">
                   <Image
                     src="/gallery_destination_wedding.webp"
                     alt="Destination wedding venue Riyadh Saudi Arabia luxury event"
@@ -789,7 +789,7 @@ export default function RiyadhPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="h-64 relative rounded-sm overflow-hidden border border-slate-200 shadow-sm">
+                <div className="h-64 relative rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm">
                   <Image
                     src="/wedding_hall_grand_entrance.webp"
                     alt="Grand wedding hall entrance decoration Riyadh luxury venue"
@@ -805,7 +805,7 @@ export default function RiyadhPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
+      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="section-label justify-center flex mb-4">
             Riyadh Event Management Authority
@@ -846,10 +846,10 @@ export default function RiyadhPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Common Questions</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Event Management in Riyadh —{" "}
             <span className="text-[var(--primary)]">FAQ</span>
           </h2>
@@ -858,13 +858,13 @@ export default function RiyadhPage() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="border border-slate-200 rounded-sm overflow-hidden"
+              className="border border-neutral-200/80 rounded-2xl overflow-hidden"
             >
               <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-sm mb-3">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">
                   {faq.q}
                 </h3>
-                <p className="text-slate-600 text-xs leading-relaxed">{faq.a}</p>
+                <p className="text-neutral-600 text-xs leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}

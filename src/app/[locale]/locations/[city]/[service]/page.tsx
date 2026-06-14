@@ -288,7 +288,7 @@ export default async function CityServicePage({ params }: PageProps) {
       <Navbar darkHero={true} />
 
       {/* Hero */}
-      <section className="bg-ink-950 py-28 md:py-36 px-4 text-center relative overflow-hidden">
+      <section className="bg-ink-950 py-20 md:py-28 md:py-36 px-4 text-center relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url('${getCityServiceImage(city, service)}')` }}
@@ -312,7 +312,7 @@ export default async function CityServicePage({ params }: PageProps) {
           </p>
           <Link
             href="/contact"
-            className="inline-flex px-8 py-4 bg-gold-500 text-ink-950 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-sm"
+            className="inline-flex px-8 py-4 bg-gold-500 text-neutral-900 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 rounded-sm"
           >
             Plan Your {cityData.name} Event
           </Link>
@@ -320,26 +320,26 @@ export default async function CityServicePage({ params }: PageProps) {
       </section>
 
       {/* Breadcrumb */}
-      <nav className="bg-slate-50 border-b border-slate-200 py-3 px-6">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-slate-500 flex-wrap">
-          <Link href="/" className="hover:text-slate-900 transition-colors">Home</Link>
+      <nav className="bg-[var(--surface-raised)] border-b border-neutral-200/80 py-3 px-6">
+        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-neutral-500 flex-wrap">
+          <Link href="/" className="hover:text-neutral-900 transition-colors">Home</Link>
           <ChevronRight size={10} />
-          <Link href="/locations" className="hover:text-slate-900 transition-colors">Locations</Link>
+          <Link href="/locations" className="hover:text-neutral-900 transition-colors">Locations</Link>
           <ChevronRight size={10} />
-          <Link href={`/locations/${city}`} className="hover:text-slate-900 transition-colors">{cityData.name}</Link>
+          <Link href={`/locations/${city}`} className="hover:text-neutral-900 transition-colors">{cityData.name}</Link>
           <ChevronRight size={10} />
-          <span className="text-slate-900 font-medium">{serviceData.name}</span>
+          <span className="text-neutral-900 font-medium">{serviceData.name}</span>
         </div>
       </nav>
 
       {/* Features */}
-      <section className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-ink-950 mb-4">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-neutral-900 mb-4">
             What We Deliver in <span className="text-[var(--primary)]">{cityData.name}</span>
           </h2>
           <div className="w-10 h-1 bg-gold-400 mx-auto mb-5" />
-          <p className="text-slate-600 max-w-2xl mx-auto text-sm leading-relaxed">
+          <p className="text-neutral-600 max-w-2xl mx-auto text-sm leading-relaxed">
             Our {cityData.name}-based team brings local expertise and global production standards to every{" "}
             {serviceData.name.toLowerCase()} project.
           </p>
@@ -348,12 +348,12 @@ export default async function CityServicePage({ params }: PageProps) {
           {serviceData.features.map((feature, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 p-6 bg-slate-50 border border-slate-200 rounded-sm hover:border-gold-400/50 transition-all"
+              className="flex items-start gap-4 p-6 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-2xl hover:border-[var(--primary)]/30 transition-all"
             >
-              <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
+              <CheckCircle2 size={18} className="text-[var(--primary)] shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-bold text-ink-950 text-sm mb-1">{feature}</h3>
-                <p className="text-slate-500 text-xs">
+                <h3 className="font-bold text-neutral-900 text-sm mb-1">{feature}</h3>
+                <p className="text-neutral-500 text-xs">
                   Professional {feature.toLowerCase()} tailored for {cityData.name}.
                 </p>
               </div>
@@ -363,15 +363,15 @@ export default async function CityServicePage({ params }: PageProps) {
       </section>
 
       {/* GEO Definition Block */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-20 bg-[var(--surface-raised)] border-y border-neutral-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-5">
             <Building2 className="text-gold-500 shrink-0 mt-1" size={26} />
             <div>
-              <h2 className="text-xl font-display font-bold text-ink-950 mb-4 uppercase tracking-tight">
+              <h2 className="text-xl font-display font-bold text-neutral-900 mb-4 uppercase tracking-tight">
                 Why Choose Us for {serviceData.name} in {cityData.name}?
               </h2>
-              <div className="space-y-4 text-slate-600 text-sm leading-relaxed">
+              <div className="space-y-4 text-neutral-600 text-sm leading-relaxed">
                 <p>
                   Saudi Event Management is the trusted partner for {serviceData.name.toLowerCase()} in{" "}
                   {cityData.name}, {cityData.region}. Our dedicated regional team combines deep local knowledge with world-class production standards.
@@ -397,16 +397,16 @@ export default async function CityServicePage({ params }: PageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-white border-t border-slate-200">
+      <section className="py-20 md:py-28 bg-white border-t border-neutral-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-ink-950 mb-10 uppercase tracking-wide">
+          <h2 className="text-xl font-bold text-neutral-900 mb-10 uppercase tracking-wide">
             {serviceData.name} in {cityData.name} — FAQ
           </h2>
           <div className="space-y-5">
             {serviceData.faqs.map((faq, i) => (
-              <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <h3 className="font-semibold text-slate-900 mb-3 text-sm">{faq.q}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{faq.a}</p>
+              <div key={i} className="bg-[var(--surface-raised)] border border-neutral-200/80 rounded-xl p-6">
+                <h3 className="font-semibold text-neutral-900 mb-3 text-sm">{faq.q}</h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -414,9 +414,9 @@ export default async function CityServicePage({ params }: PageProps) {
       </section>
 
       {/* Related Services */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">
+          <h2 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">
             More Services in {cityData.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -424,28 +424,28 @@ export default async function CityServicePage({ params }: PageProps) {
               <Link
                 key={key}
                 href={`/locations/${city}/${key}`}
-                className="group bg-white border border-slate-200 rounded-xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all"
+                className="group bg-white border border-neutral-200/80 rounded-xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all"
               >
-                <h4 className="text-slate-900 font-bold text-sm mb-2 group-hover:text-[var(--primary)] transition-colors">
+                <h4 className="text-neutral-900 font-bold text-sm mb-2 group-hover:text-[var(--primary)] transition-colors">
                   {svc.name}
                 </h4>
-                <p className="text-slate-500 text-xs mb-4 leading-relaxed">{svc.description}</p>
+                <p className="text-neutral-500 text-xs mb-4 leading-relaxed">{svc.description}</p>
                 <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">
                   Explore <ArrowRight size={11} />
                 </span>
               </Link>
             ))}
           </div>
-          <div className="mt-8 pt-6 border-t border-slate-200 flex items-center gap-4">
+          <div className="mt-8 pt-6 border-t border-neutral-200/80 flex items-center gap-4">
             <Link
               href={`/locations/${city}`}
-              className="text-sm text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors"
+              className="text-sm text-neutral-500 hover:text-neutral-900 flex items-center gap-1 transition-colors"
             >
               <ChevronRight size={12} className="rotate-180" /> All {cityData.name} services
             </Link>
             <Link
               href={`/services/${serviceData.parentSlug}`}
-              className="text-sm text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors"
+              className="text-sm text-neutral-500 hover:text-neutral-900 flex items-center gap-1 transition-colors"
             >
               {serviceData.name} overview <ChevronRight size={12} />
             </Link>

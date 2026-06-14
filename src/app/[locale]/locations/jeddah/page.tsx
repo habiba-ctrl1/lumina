@@ -402,7 +402,7 @@ export default function JeddahPage() {
       </div>
 
       {/* Jeddah at a Glance — Entity Density Strip */}
-      <section className="py-10 bg-slate-950 border-b border-slate-800">
+      <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {[
@@ -414,10 +414,10 @@ export default function JeddahPage() {
               { label: "Region", val: "Western KSA" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
-                <span className="text-lg md:text-xl font-display font-semibold text-white">
+                <span className="text-lg md:text-xl font-display font-semibold text-neutral-900">
                   {item.val}
                 </span>
-                <span className="text-xs uppercase tracking-widest text-slate-400">
+                <span className="text-xs uppercase tracking-widest text-neutral-500">
                   {item.label}
                 </span>
               </div>
@@ -427,9 +427,9 @@ export default function JeddahPage() {
       </section>
 
       {/* Why Jeddah — Authority Section */}
-      <section className="py-32 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-sm overflow-hidden border border-slate-200 shadow-md">
+          <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
               src="/jeddah_beach_wedding_setup.webp"
               alt="Luxury waterfront event setup on the Jeddah Corniche Red Sea"
@@ -451,13 +451,13 @@ export default function JeddahPage() {
             <span className="section-label">
               Why Jeddah for Events
             </span>
-            <h2 className="font-display font-medium text-slate-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">
                 Premier Event City
               </span>
             </h2>
-            <div className="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-4 mb-8">
+            <div className="prose prose-slate max-w-none text-neutral-600 text-sm leading-relaxed space-y-4 mb-8">
               <p>
                 Jeddah is Saudi Arabia&apos;s gateway to the world — a Red Sea
                 cosmopolitan hub combining UNESCO-listed heritage in{" "}
@@ -485,13 +485,13 @@ export default function JeddahPage() {
                 <Link
                   key={i}
                   href={item.href}
-                  className="flex flex-col gap-2 p-4 bg-white border border-slate-300 rounded-sm shadow-2xs hover:-translate-y-1 hover:border-emerald-500 transition-all"
+                  className="flex flex-col gap-2 p-4 bg-white border border-neutral-200/80 rounded-2xl shadow-2xs hover:-translate-y-1 hover:border-[var(--primary)]/40 transition-all"
                 >
-                  <item.icon size={20} className="text-emerald-800" />
-                  <h3 className="font-display font-medium text-slate-900 text-sm">
+                  <item.icon size={20} className="text-[var(--primary)]" />
+                  <h3 className="font-display font-medium text-neutral-900 text-sm">
                     {item.title}
                   </h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">
+                  <p className="text-neutral-500 text-xs leading-relaxed">
                     {item.text}
                   </p>
                 </Link>
@@ -502,15 +502,15 @@ export default function JeddahPage() {
       </section>
 
       {/* Full Services Grid */}
-      <section className="py-20 bg-slate-50/60 border-t border-slate-100">
+      <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Services in Jeddah</span>
-            <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               End-to-End Event Management{" "}
               <span className="text-[var(--primary)]">in Jeddah</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               From JCEC conferences to Red Sea yacht celebrations — our Jeddah
               team delivers every event format with precision and cultural fluency.
             </p>
@@ -520,16 +520,16 @@ export default function JeddahPage() {
               <Link
                 key={i}
                 href={item.href}
-                className="group flex flex-col gap-3 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-500 hover:-translate-y-1 transition-all"
+                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
               >
-                <item.icon size={22} className="text-emerald-800" />
-                <h3 className="font-display font-semibold text-slate-900 text-sm">
+                <item.icon size={22} className="text-[var(--primary)]" />
+                <h3 className="font-display font-semibold text-neutral-900 text-sm">
                   {item.title}
                 </h3>
-                <p className="text-slate-500 text-xs leading-relaxed flex-1">
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">
                   {item.text}
                 </p>
-                <span className="text-xs text-emerald-700 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                   Learn more <ChevronRight size={12} />
                 </span>
               </Link>
@@ -541,14 +541,14 @@ export default function JeddahPage() {
       <LocationCTA city="Jeddah" />
 
       {/* Top Venues in Jeddah — Entity Map Section */}
-      <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Top Event Venues in{" "}
             <span className="text-[var(--primary)]">Jeddah</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             Preferred partnerships with Jeddah&apos;s most prestigious event
             venues — from the Jeddah Convention &amp; Exhibition Center to
             the Obhur Creek waterfront.
@@ -558,28 +558,28 @@ export default function JeddahPage() {
           {venues.map((venue, i) => (
             <div
               key={i}
-              className="flex flex-col p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 hover:shadow-md transition-all"
+              className="flex flex-col p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-semibold text-slate-900 text-sm leading-snug">
+                  <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">
                     {venue.name}
                   </h3>
-                  <span className="text-xs text-slate-400">{venue.abbr}</span>
+                  <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
               <div className="flex items-center gap-1 mb-3">
-                <MapPin size={11} className="text-slate-400" />
-                <span className="text-xs text-slate-400">{venue.district}</span>
+                <MapPin size={11} className="text-neutral-400" />
+                <span className="text-xs text-neutral-400">{venue.district}</span>
               </div>
-              <p className="text-slate-500 text-xs leading-relaxed flex-1">
+              <p className="text-neutral-500 text-xs leading-relaxed flex-1">
                 {venue.description}
               </p>
-              <div className="mt-4 pt-4 border-t border-slate-100">
-                <span className="text-xs font-medium text-slate-600 uppercase tracking-wide">
+              <div className="mt-4 pt-4 border-t border-neutral-100">
+                <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">
                   {venue.type}
                 </span>
               </div>
@@ -589,7 +589,7 @@ export default function JeddahPage() {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-24 bg-slate-50/50 border-t border-b border-slate-200/50">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-b border-neutral-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
@@ -599,10 +599,10 @@ export default function JeddahPage() {
               { label: "Avg. Guest Satisfaction", val: "98%" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-display font-medium text-slate-900 mb-2">
+                <div className="text-2xl md:text-3xl font-display font-medium text-neutral-900 mb-2">
                   {stat.val}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold">
+                <div className="text-xs uppercase tracking-widest text-neutral-500 font-semibold">
                   {stat.label}
                 </div>
               </div>
@@ -612,14 +612,14 @@ export default function JeddahPage() {
       </section>
 
       {/* Jeddah Event Calendar */}
-      <section className="py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Planning Your Event</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Jeddah Event{" "}
             <span className="text-[var(--primary)]">Season Calendar</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             Understanding Jeddah&apos;s event seasons is critical for venue
             availability, outdoor suitability, and cultural alignment.
           </p>
@@ -628,14 +628,14 @@ export default function JeddahPage() {
           {eventCalendar.map((row, i) => (
             <div
               key={i}
-              className="flex gap-4 p-6 bg-white border border-slate-200 rounded-sm shadow-sm hover:border-emerald-300 transition-all"
+              className="flex gap-4 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/30 transition-all"
             >
               <div className="flex-shrink-0">
-                <Calendar size={20} className="text-emerald-800 mt-0.5" />
+                <Calendar size={20} className="text-[var(--primary)] mt-0.5" />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="font-display font-semibold text-slate-900 text-sm">
+                  <span className="font-display font-semibold text-neutral-900 text-sm">
                     {row.period}
                   </span>
                   <span
@@ -644,16 +644,16 @@ export default function JeddahPage() {
                         ? "bg-red-50 text-red-700 border border-red-200"
                         : row.demand === "Very High"
                           ? "bg-orange-50 text-orange-700 border border-orange-200"
-                          : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                          : "bg-emerald-50 text-[var(--primary)] border border-emerald-200"
                     }`}
                   >
                     {row.demand} Demand
                   </span>
                 </div>
-                <p className="text-xs font-semibold text-slate-600 mb-1">
+                <p className="text-xs font-semibold text-neutral-600 mb-1">
                   {row.season}
                 </p>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-neutral-500 leading-relaxed">
                   {row.events}
                 </p>
               </div>
@@ -663,14 +663,14 @@ export default function JeddahPage() {
       </section>
 
       {/* GEO Citation Block — Direct Answer Patterns for LLMs */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold">
+          <span className="text-xs uppercase tracking-widest text-[var(--primary)] font-semibold">
             Jeddah Event Management Expertise
           </span>
-          <h2 className="font-display font-medium text-white text-2xl md:text-3xl mt-4 mb-12">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-12">
             Why Brands &amp; Families Choose{" "}
-            <span className="text-emerald-400">Saudi Event Management</span> in
+            <span className="text-[var(--primary)]">Saudi Event Management</span> in
             Jeddah
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -690,12 +690,12 @@ export default function JeddahPage() {
             ].map((card, i) => (
               <div
                 key={i}
-                className="p-6 bg-slate-900 border border-slate-800 rounded-sm"
+                className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm"
               >
-                <h3 className="font-display font-semibold text-white text-sm mb-3">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">
                   {card.title}
                 </h3>
-                <p className="text-slate-400 text-xs leading-relaxed">
+                <p className="text-neutral-600 text-xs leading-relaxed">
                   {card.body}
                 </p>
               </div>
@@ -705,10 +705,10 @@ export default function JeddahPage() {
       </section>
 
       {/* FAQ Section — LLM Citation Engine */}
-      <section className="py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Common Questions</span>
-          <h2 className="font-display font-medium text-slate-900 text-2xl md:text-3xl mt-4">
+          <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
             Event Management in Jeddah —{" "}
             <span className="text-[var(--primary)]">FAQ</span>
           </h2>
@@ -717,13 +717,13 @@ export default function JeddahPage() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="border border-slate-200 rounded-sm overflow-hidden"
+              className="border border-neutral-200/80 rounded-2xl overflow-hidden"
             >
               <div className="p-6">
-                <h3 className="font-display font-semibold text-slate-900 text-sm mb-3">
+                <h3 className="font-display font-semibold text-neutral-900 text-sm mb-3">
                   {faq.q}
                 </h3>
-                <p className="text-slate-600 text-xs leading-relaxed">{faq.a}</p>
+                <p className="text-neutral-600 text-xs leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}
