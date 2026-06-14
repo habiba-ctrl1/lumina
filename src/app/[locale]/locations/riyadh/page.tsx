@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/riyadh_summit_people.webp",
+          url: "https://saudieventmanagement.com/riyadh-og.webp",
           width: 1200,
           height: 630,
           alt: "Corporate event management in Riyadh Saudi Arabia",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management Company in Riyadh | Saudi Event Management",
       description:
         "Riyadh's premier event management company for corporate conferences, exhibitions, luxury weddings & Vision 2030 brand activations.",
-      images: ["https://saudieventmanagement.com/riyadh_summit_people.webp"],
+      images: ["https://saudieventmanagement.com/riyadh-og.webp"],
     },
   };
 }
@@ -74,7 +74,7 @@ const jsonLd = {
       "description":
         "Saudi Event Management is Riyadh's premier event planning company, specializing in corporate conferences, government summits, exhibitions at RICEC, luxury weddings at Four Seasons and Ritz-Carlton, and Vision 2030-aligned brand activations across KAFD, Diriyah, and the Diplomatic Quarter.",
       "image":
-        "https://saudieventmanagement.com/riyadh_summit_people.webp",
+        "https://saudieventmanagement.com/riyadh-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Riyadh",
@@ -423,8 +423,8 @@ export default function RiyadhPage() {
         title="Event Management in "
         titleHighlight="Riyadh"
         subtitle="From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
-        backgroundImage="/riyadh_summit_people.webp"
-        imageAlt="Corporate event management in Riyadh Saudi Arabia — premium conference production at KAFD"
+        backgroundImage="/riyadh-hero.webp"
+        imageAlt="Riyadh city skyline — event management company in Riyadh, Saudi Arabia"
         badge="Saudi Arabia's Capital | Riyadh"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -479,11 +479,11 @@ export default function RiyadhPage() {
       </section>
 
       {/* Why Riyadh — Authority Section */}
-      <section className="py-20 md:py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <span className="section-label">Why Riyadh for Events</span>
-            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">Corporate Event Capital</span>
             </h2>
@@ -493,21 +493,30 @@ export default function RiyadhPage() {
                 financial infrastructure, and Vision 2030 decision-making in one
                 city. The{" "}
                 <strong>
-                  Riyadh International Convention &amp; Exhibition Center
-                  (RICEC)
+                  <Link href="/locations/riyadh/exhibition-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                    Riyadh International Convention &amp; Exhibition Center
+                    (RICEC)
+                  </Link>
                 </strong>{" "}
                 — with 200,000+ sqm and 30,000 capacity — hosts the world&apos;s
                 top MENA events including <strong>LEAP</strong>,{" "}
                 <strong>World Defense Show</strong>, and{" "}
                 <strong>Cityscape Saudi</strong>. The{" "}
-                <strong>King Abdullah Financial District (KAFD)</strong> and its
+                <strong>
+                  <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                    King Abdullah Financial District (KAFD)
+                  </Link>
+                </strong>{" "}
+                and its
                 conference centre serve as the nerve centre of every investment
                 forum and fintech summit.
               </p>
               <p>
                 For government-level events, the{" "}
                 <strong>
-                  King Abdulaziz International Conference Center (KAICC)
+                  <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                    King Abdulaziz International Conference Center (KAICC)
+                  </Link>
                 </strong>{" "}
                 in the Diplomatic Quarter handles ministerial summits and the{" "}
                 <strong>Future Investment Initiative (FII)</strong>. Saudi Event
@@ -533,15 +542,15 @@ export default function RiyadhPage() {
           </div>
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/riyadh_summit_people.webp"
-              alt="Corporate conference management at KAFD Riyadh Saudi Arabia"
+              src="/diriyah_event_venues.webp"
+              alt="Heritage gala and corporate conference event venue in Diriyah Riyadh"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
-              <div className="glass p-6 rounded-sm">
+              <div className="glass p-6 rounded-2xl">
                 <p className="text-white text-sm font-display font-light">
                   &quot;Riyadh demands the highest standard. We deliver it — from RICEC
                   exhibitions to Diriyah heritage galas.&quot;
@@ -593,7 +602,7 @@ export default function RiyadhPage() {
       <LocationCTA city="Riyadh" />
 
       {/* Top Venues in Riyadh */}
-      <section className="py-20 md:py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="section-label">Venue Network</span>
           <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
@@ -619,7 +628,7 @@ export default function RiyadhPage() {
                   </h3>
                   <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2.5 py-1 rounded-md font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
@@ -710,12 +719,12 @@ export default function RiyadhPage() {
       </section>
 
       {/* Team Section — E-E-A-T Signal */}
-      <section className="py-20 md:py-20 md:py-28 relative overflow-hidden bg-white border-t border-neutral-100">
+      <section className="py-20 md:py-28 relative overflow-hidden bg-white border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
               <span className="section-label">Riyadh Leadership</span>
-              <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+              <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
                 Our Riyadh{" "}
                 <span className="text-[var(--primary)]">Event Specialists</span>
               </h2>
@@ -805,7 +814,7 @@ export default function RiyadhPage() {
       </section>
 
       {/* GEO Citation Block */}
-      <section className="py-20 md:py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
+      <section className="py-20 md:py-28 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="section-label justify-center flex mb-4">
             Riyadh Event Management Authority
@@ -915,9 +924,19 @@ export default function RiyadhPage() {
                 team for the largest event market in MENA.
               </p>
               <p>
-                Whether you need a corporate event organizer in Riyadh, a
-                wedding planner for a celebration at the Ritz-Carlton, or a
-                full exhibition team at RICEC,{" "}
+                Whether you need a{" "}
+                <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  corporate event organizer in Riyadh
+                </Link>
+                , a{" "}
+                <Link href="/locations/riyadh/luxury-wedding-planning" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  wedding planner
+                </Link>{" "}
+                for a celebration at the Ritz-Carlton, or a full{" "}
+                <Link href="/locations/riyadh/exhibition-management" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  exhibition team
+                </Link>{" "}
+                at RICEC,{" "}
                 <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our Riyadh team</Link>{" "}
                 or{" "}
                 <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
@@ -931,12 +950,11 @@ export default function RiyadhPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Event Management in Riyadh", slug: "corporate-event-management" },
+                  { name: "Corporate & Government Events in Riyadh", slug: "corporate-event-management" },
                   { name: "Exhibition Management in Riyadh", slug: "exhibition-management" },
                   { name: "Wedding Planner in Riyadh", slug: "luxury-wedding-planning" },
                   { name: "Conference Organizer in Riyadh", slug: "conference-planning" },
                   { name: "VIP Event Planning in Riyadh", slug: "vip-event-planning" },
-                  { name: "Government Events", slug: "corporate-event-management" },
                 ].map((svc) => (
                   <Link
                     key={svc.slug}
