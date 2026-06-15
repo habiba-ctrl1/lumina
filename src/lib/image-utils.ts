@@ -16,9 +16,9 @@ const CITY_IMAGES: Record<string, string> = {
   makkah:  "/majlis_gathering_people.webp",
   madinah: "/madinah-hero.webp",
   taif:    "/taif-hero.webp",
-  abha:    "/alula_gala_people.webp",
-  diriyah: "/gallery_charity_gala.webp",
-  tabuk:   "/hero_bg.webp",
+  abha:    "/abha-hero.webp",
+  diriyah: "/diriyah-hero.webp",
+  tabuk:   "/tabuk-hero.webp",
 };
 
 // Matches the per-city heroImage map from locations/[city]/[service]/page.tsx @ 2eedc7c
@@ -33,9 +33,9 @@ const CITY_SERVICE_IMAGES: Record<string, string> = {
   makkah:  "/majlis_gathering_people.webp",
   madinah: "/madinah-hero.webp",
   taif:    "/taif-hero.webp",
-  abha:    "/alula_gala_people.webp",
-  diriyah: "/gallery_charity_gala.webp",
-  tabuk:   "/hero_bg.webp",
+  abha:    "/abha-hero.webp",
+  diriyah: "/diriyah-hero.webp",
+  tabuk:   "/tabuk-hero.webp",
 };
 
 export function getCityImage(city: string): string {
