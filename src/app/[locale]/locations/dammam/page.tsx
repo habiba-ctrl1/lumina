@@ -72,7 +72,7 @@ const jsonLd = {
       "url": "https://saudieventmanagement.com/locations/dammam",
       "description":
         "Saudi Event Management is the Eastern Province's premier event management company, specializing in corporate conferences at the Dammam Convention & Exhibition Center (DCEC), energy sector events near Saudi Aramco Dhahran, luxury weddings at Kempinski Al Othman Hotel and Half Moon Bay, and cross-border event management via the King Fahd Causeway corridor.",
-      "image": "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
+      "image": "https://saudieventmanagement.com/dammam-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dammam",
@@ -394,8 +394,8 @@ export default function DammamPage() {
         title="Event Management Company in "
         titleHighlight="Dammam"
         subtitle="Elite corporate events and coastal celebrations — from Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay. Your event planner across the Eastern Province."
-        backgroundImage="/alkhobar_corporate_people.webp"
-        imageAlt="Event management company in Dammam and Al-Khobar Eastern Province Saudi Arabia"
+        backgroundImage="/dammam-hero.webp"
+        imageAlt="Dammam waterfront cityscape — event management company in Dammam, Eastern Province Saudi Arabia"
         badge="Saudi Arabia's Energy Capital | Eastern Province"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -443,8 +443,8 @@ export default function DammamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/gallery_corporate_gala.webp"
-              alt="Luxury corporate gala dinner managed in Al-Khobar, Eastern Province Saudi Arabia"
+              src="/alkhobar_corporate_people.webp"
+              alt="Corporate professionals at an energy-sector event in Al-Khobar, Eastern Province Saudi Arabia"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
