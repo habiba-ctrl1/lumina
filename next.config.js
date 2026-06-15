@@ -3,6 +3,8 @@ const withNextIntl = require('next-intl/plugin')('./src/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 2678400, // 31 days — cache optimized images longer
     remotePatterns: [
       {
         protocol: 'https',
