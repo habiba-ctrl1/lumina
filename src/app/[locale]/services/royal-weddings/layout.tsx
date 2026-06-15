@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { robotsForRoute } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -66,13 +67,9 @@ export async function generateMetadata({
         "Saudi Arabia's premier royal wedding architects — Nikah, Walima, Zaffa, palace venues, VIP protocol.",
       images: [`${base}/services/wedding_stage_backdrop_decor.webp`],
     },
-    robots: {
-      index: true,
-      follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
+    // Route-aware: Arabic stays `noindex, follow` until this route is added to
+    // TRANSLATED_AR_ROUTES in @/lib/seo. Matches the X-Robots-Tag header.
+    robots: robotsForRoute(locale, "/services/royal-weddings"),
   };
 }
 

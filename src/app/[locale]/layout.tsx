@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { robotsForRootLayout } from "@/lib/seo";
 import "../globals.css";
 import Script from "next/script";
 import 'swiper/css';
@@ -40,9 +41,13 @@ const playfair = Playfair_Display({
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Metadata (unchanged — already well structured)
+// Metadata
+// `robots` is intentionally omitted from this base object — it is set per-locale
+// in generateMetadata() below via robotsForRootLayout(): English inherits an
+// indexable directive, while Arabic indexability is decided per-route by the
+// X-Robots-Tag header in middleware (see @/lib/seo).
 // ─────────────────────────────────────────────────────────────────────────────
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: {
     default:
       "Event Management Company in Saudi Arabia | Saudi Event Management",
@@ -98,17 +103,6 @@ export const metadata: Metadata = {
       "Premier event management company in Saudi Arabia. Corporate events, exhibitions, luxury weddings & conferences.",
     images: ["https://saudieventmanagement.com/hero_bg.webp"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   applicationName: "Saudi Event Management",
   // NOTE: No site-wide alternates.canonical here — each page/layout sets its own
   // canonical and hreflang to avoid bleeding the homepage URL to every route.
@@ -121,6 +115,22 @@ export const metadata: Metadata = {
     apple: { url: "/icon.png", sizes: "180x180", type: "image/png" },
   },
 };
+
+// Per-locale metadata. English routes inherit an `index, follow` directive here.
+// Arabic routes emit NO `<meta robots>` from this layout — their indexability is
+// decided per-route by the `X-Robots-Tag` header set in middleware (see @/lib/seo),
+// so a translated `/ar` route is never forced to `noindex` by inheritance.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    ...baseMetadata,
+    robots: robotsForRootLayout(locale),
+  };
+}
 
 import CustomCursor from "@/components/CustomCursor";
 import SplashScreen from "@/components/SplashScreen";

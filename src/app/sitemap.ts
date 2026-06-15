@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/blog-data';
+import { isArabicRouteInSitemap, isArabicPath, stripLocalePrefix } from '@/lib/seo';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://saudieventmanagement.com";
 
@@ -191,7 +192,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  return [
+  const allEntries = [
     ...staticEntries,
     ...locationCityEntries,
     ...primaryCityServiceEntries,
@@ -200,4 +201,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogEntriesEN,
     ...blogEntriesAR,
   ];
+
+  // TEMPORARY: Arabic (/ar/*) routes are included PER ROUTE — only those whose
+  // Arabic content is complete (listed in TRANSLATED_AR_ROUTES in @/lib/seo).
+  // Untranslated Arabic routes are excluded here and carry `noindex, follow`.
+  // Non-Arabic (English) routes are always kept.
+  return allEntries.filter((entry) => {
+    const path = entry.url.slice(BASE.length) || '/';
+    if (!isArabicPath(path)) return true;
+    return isArabicRouteInSitemap(stripLocalePrefix(path));
+  });
 }
