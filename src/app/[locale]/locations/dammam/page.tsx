@@ -443,8 +443,8 @@ export default function DammamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/alkhobar_corporate_people.webp"
-              alt="Corporate professionals at an energy-sector event in Al-Khobar, Eastern Province Saudi Arabia"
+              src="/luxury_lifestyle_event_saudi.webp"
+              alt="Elegant luxury event on the Arabian Gulf coast — premium event management in Dammam & Al-Khobar, Eastern Province"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
