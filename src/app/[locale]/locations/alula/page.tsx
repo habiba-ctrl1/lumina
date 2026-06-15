@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/alula-og.webp",
+          url: "https://saudieventmanagement.com/locations/alula-og.webp",
           width: 1200,
           height: 630,
           alt: "Luxury heritage event in AlUla Saudi Arabia — Ashar Valley gala",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
       description:
         "Ultra-luxury destination weddings, corporate retreats & heritage activations. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
-      images: ["https://saudieventmanagement.com/alula-og.webp"],
+      images: ["https://saudieventmanagement.com/locations/alula-og.webp"],
     },
   };
 }
@@ -72,7 +72,7 @@ const jsonLd = {
       "url": "https://saudieventmanagement.com/locations/alula",
       "description":
         "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla, Saudi Arabia. We hold RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas AlUla, Hegra UNESCO World Heritage Site, and Ashar Valley. All events are managed in full compliance with Royal Commission for AlUla (RCU) regulations.",
-      "image": "https://saudieventmanagement.com/alula-hero.webp",
+      "image": "https://saudieventmanagement.com/locations/alula-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "AlUla",
@@ -405,7 +405,7 @@ export default function AlUlaPage() {
         title="Event Management & Destination Weddings in "
         titleHighlight="AlUla"
         subtitle="In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
-        backgroundImage="/alula-hero.webp"
+        backgroundImage="/locations/alula-hero.webp"
         imageAlt="AlUla heritage landscape — event management and destination weddings in AlUla, Saudi Arabia"
         badge="Saudi Arabia's UNESCO Destination | AlUla"
         breadcrumbs={[

@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/dammam-coast-og.webp",
+          url: "https://saudieventmanagement.com/locations/dammam-coast-og.webp",
           width: 1200,
           height: 630,
           alt: "Corporate event management in Dammam, Eastern Province, Saudi Arabia",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in Dammam & Eastern Province | Saudi Event Management",
       description:
         "Energy sector conferences, corporate events, Gulf waterfront weddings & cross-border Bahrain MICE in Dammam.",
-      images: ["https://saudieventmanagement.com/dammam-coast-og.webp"],
+      images: ["https://saudieventmanagement.com/locations/dammam-coast-og.webp"],
     },
   };
 }
@@ -72,7 +72,7 @@ const jsonLd = {
       "url": "https://saudieventmanagement.com/locations/dammam",
       "description":
         "Saudi Event Management is the Eastern Province's premier event management company, specializing in corporate conferences at the Dammam Convention & Exhibition Center (DCEC), energy sector events near Saudi Aramco Dhahran, luxury weddings at Kempinski Al Othman Hotel and Half Moon Bay, and cross-border event management via the King Fahd Causeway corridor.",
-      "image": "https://saudieventmanagement.com/dammam-coast.webp",
+      "image": "https://saudieventmanagement.com/locations/dammam-coast.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dammam",
@@ -394,7 +394,7 @@ export default function DammamPage() {
         title="Event Management Company in "
         titleHighlight="Dammam"
         subtitle="Elite corporate events and coastal celebrations — from Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay. Your event planner across the Eastern Province."
-        backgroundImage="/dammam-coast.webp"
+        backgroundImage="/locations/dammam-coast.webp"
         imageAlt="Dammam waterfront cityscape — event management company in Dammam, Eastern Province Saudi Arabia"
         badge="Saudi Arabia's Energy Capital | Eastern Province"
         breadcrumbs={[

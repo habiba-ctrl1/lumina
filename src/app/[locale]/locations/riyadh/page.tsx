@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/riyadh-og.webp",
+          url: "https://saudieventmanagement.com/locations/riyadh-og.webp",
           width: 1200,
           height: 630,
           alt: "Corporate event management in Riyadh Saudi Arabia",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management Company in Riyadh | Saudi Event Management",
       description:
         "Riyadh's premier event management company for corporate conferences, exhibitions, luxury weddings & Vision 2030 brand activations.",
-      images: ["https://saudieventmanagement.com/riyadh-og.webp"],
+      images: ["https://saudieventmanagement.com/locations/riyadh-og.webp"],
     },
   };
 }
@@ -74,7 +74,7 @@ const jsonLd = {
       "description":
         "Saudi Event Management is Riyadh's premier event planning company, specializing in corporate conferences, government summits, exhibitions at RICEC, luxury weddings at Four Seasons and Ritz-Carlton, and Vision 2030-aligned brand activations across KAFD, Diriyah, and the Diplomatic Quarter.",
       "image":
-        "https://saudieventmanagement.com/riyadh-hero.webp",
+        "https://saudieventmanagement.com/locations/riyadh-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Riyadh",
@@ -423,7 +423,7 @@ export default function RiyadhPage() {
         title="Event Management in "
         titleHighlight="Riyadh"
         subtitle="From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
-        backgroundImage="/riyadh-hero.webp"
+        backgroundImage="/locations/riyadh-hero.webp"
         imageAlt="Riyadh city skyline — event management company in Riyadh, Saudi Arabia"
         badge="Saudi Arabia's Capital | Riyadh"
         breadcrumbs={[

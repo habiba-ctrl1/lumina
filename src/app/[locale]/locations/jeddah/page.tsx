@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/jeddah-og.webp",
+          url: "https://saudieventmanagement.com/locations/jeddah-og.webp",
           width: 1200,
           height: 630,
           alt: "Event management company in Jeddah, Saudi Arabia — Red Sea coast",
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management Company in Jeddah | Saudi Event Management",
       description:
         "Jeddah's premier event planning company for corporate events, luxury weddings & brand activations.",
-      images: ["https://saudieventmanagement.com/jeddah-og.webp"],
+      images: ["https://saudieventmanagement.com/locations/jeddah-og.webp"],
     },
   };
 }
@@ -59,7 +59,7 @@ const jsonLd = {
       "@type": ["LocalBusiness", "EventPlanner"],
       "name": "Saudi Event Management — Jeddah",
       "url": "https://saudieventmanagement.com/locations/jeddah",
-      "image": "https://saudieventmanagement.com/jeddah-hero.webp",
+      "image": "https://saudieventmanagement.com/locations/jeddah-hero.webp",
       "description":
         "Saudi Event Management is Jeddah's premier event planning company, specializing in corporate conferences, luxury weddings, brand activations, and gala dinners across Jeddah's finest venues including the Jeddah Convention & Exhibition Center, Four Seasons Hotel Jeddah, Rosewood Jeddah, and the Corniche waterfront.",
       "address": {
@@ -373,7 +373,7 @@ export default function JeddahPage() {
         title="Event Management Company in "
         titleHighlight="Jeddah"
         subtitle="Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
-        backgroundImage="/jeddah-hero.webp"
+        backgroundImage="/locations/jeddah-hero.webp"
         imageAlt="Jeddah, Saudi Arabia — event management company on the Red Sea coast"
         badge="The Bride of the Red Sea | Jeddah"
         breadcrumbs={[

@@ -155,7 +155,7 @@ export default function LocationsPage() {
         title="Event Management Across"
         titleHighlight="Saudi Arabia"
         subtitle="On-the-ground teams across 12 Saudi cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. Dedicated local vendor networks and GEA compliance expertise in every market."
-        backgroundImage="/riyadh-hero.webp"
+        backgroundImage="/locations/riyadh-hero.webp"
         badge="Kingdom-Wide Operations"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
         enableParallax

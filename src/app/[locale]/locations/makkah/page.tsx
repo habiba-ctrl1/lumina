@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/makkah-og.webp",
+          url: "https://saudieventmanagement.com/locations/makkah-og.webp",
           width: 1200,
           height: 630,
           alt: "Makkah Al-Mukarramah cityscape — event management in the holy city, Saudi Arabia",
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
       description:
         "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah. Muslim-only staffing. RCMC permitted.",
-      images: ["https://saudieventmanagement.com/makkah-og.webp"],
+      images: ["https://saudieventmanagement.com/locations/makkah-og.webp"],
     },
   };
 }
@@ -72,7 +72,7 @@ const jsonLd = {
       "description":
         "Saudi Event Management provides full-service event management in Makkah Al-Mukarramah, including corporate conferences at the Hilton Makkah Convention Hotel, luxury weddings at Fairmont and Raffles Makkah, halal exhibitions, and Haj corporate hospitality. All operations are Muslim-staffed and permitted by Amanah Makkah and the Royal Commission for Makkah City and Holy Sites (RCMC).",
       "image":
-        "https://saudieventmanagement.com/makkah-hero.webp",
+        "https://saudieventmanagement.com/locations/makkah-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Makkah Al-Mukarramah",
@@ -412,7 +412,7 @@ export default function MakkahPage() {
         title="Event Management in"
         titleHighlight="Makkah Al-Mukarramah"
         subtitle="Corporate conferences, halal exhibitions, luxury Islamic weddings, and Haj corporate hospitality — delivered across Makkah's finest venues by a fully Muslim-staffed team. Permitted by Amanah Makkah and RCMC."
-        backgroundImage="/makkah-hero.webp"
+        backgroundImage="/locations/makkah-hero.webp"
         imageAlt="Makkah Al-Mukarramah cityscape — event management in the holy city, Saudi Arabia"
         badge="Islam's Holiest City | Makkah Al-Mukarramah"
         breadcrumbs={[
@@ -490,7 +490,7 @@ export default function MakkahPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/makkah-hero.webp"
+              src="/locations/makkah-hero.webp"
               alt="Makkah Al-Mukarramah — premium event management in the holy city, Saudi Arabia"
               width={800}
               height={1000}
