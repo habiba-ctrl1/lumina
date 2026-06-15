@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/alula_gala_people.webp",
+          url: "https://saudieventmanagement.com/alula-og.webp",
           width: 1200,
           height: 630,
           alt: "Luxury heritage event in AlUla Saudi Arabia — Ashar Valley gala",
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
       description:
         "Ultra-luxury destination weddings, corporate retreats & heritage activations. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
-      images: ["https://saudieventmanagement.com/alula_gala_people.webp"],
+      images: ["https://saudieventmanagement.com/alula-og.webp"],
     },
   };
 }
@@ -72,7 +72,7 @@ const jsonLd = {
       "url": "https://saudieventmanagement.com/locations/alula",
       "description":
         "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla, Saudi Arabia. We hold RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas AlUla, Hegra UNESCO World Heritage Site, and Ashar Valley. All events are managed in full compliance with Royal Commission for AlUla (RCU) regulations.",
-      "image": "https://saudieventmanagement.com/alula_gala_people.webp",
+      "image": "https://saudieventmanagement.com/alula-hero.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "AlUla",
@@ -405,8 +405,8 @@ export default function AlUlaPage() {
         title="Event Management & Destination Weddings in "
         titleHighlight="AlUla"
         subtitle="In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
-        backgroundImage="/alula_gala_people.webp"
-        imageAlt="Event management and destination weddings in AlUla Saudi Arabia — guests at Ashar Valley venue"
+        backgroundImage="/alula-hero.webp"
+        imageAlt="AlUla heritage landscape — event management and destination weddings in AlUla, Saudi Arabia"
         badge="Saudi Arabia's UNESCO Destination | AlUla"
         breadcrumbs={[
           { label: "Home", href: "/" },
@@ -454,15 +454,15 @@ export default function AlUlaPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/gallery_destination_wedding.webp"
-              alt="Luxury destination wedding at AlUla Saudi Arabia — heritage sandstone landscape"
+              src="/alula_maraya_hegra_guide.webp"
+              alt="Maraya Concert Hall and Hegra Nabataean heritage in AlUla — where events transform into history"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
-              <div className="glass p-6 rounded-sm">
+              <div className="glass p-6 rounded-2xl">
                 <p className="text-white text-sm font-display font-light">
                   &quot;There is nowhere on earth like this. AlUla doesn&apos;t
                   host events — it transforms them into history.&quot;
@@ -472,7 +472,7 @@ export default function AlUlaPage() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">The AlUla Difference</span>
-            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
               Ancient Landscapes,{" "}
               <span className="text-[var(--primary)]">Modern Luxury</span>
             </h2>
