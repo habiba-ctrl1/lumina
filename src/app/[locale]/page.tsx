@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { hreflangAlternates } from "@/lib/seo";
+import { hreflangAlternates, robotsForRoute } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import { cookies } from "next/headers";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import StatsSection from "@/components/StatsSection";
 
@@ -45,6 +44,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}`,
       languages: hreflangAlternates("/"),
     },
+    // index,follow on EN and the (now-translated) /ar homepage; matches middleware.
+    robots: robotsForRoute(locale, "/"),
   };
 }
 import HowItWorks from "@/components/HowItWorks";
@@ -393,9 +394,10 @@ const jsonLd = {
 // ─────────────────────────────────────────────────────────────────────────────
 // Home Page
 // ─────────────────────────────────────────────────────────────────────────────
-export default async function Home() {
-  const cookieStore = await cookies();
-  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
+export default async function Home({ params }: PageProps) {
+  // Locale comes from the route segment (the single source of truth) — not a
+  // cookie, which can desync from the URL and breaks static rendering.
+  const { locale } = await params;
 
   return (
     /*

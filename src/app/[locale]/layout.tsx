@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Playfair_Display, Cairo } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -37,6 +37,15 @@ const playfair = Playfair_Display({
   weight: ["400", "700", "900"],
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+// Cairo → Arabic body + headings (--font-arabic). The Latin display/serif fonts
+// above carry no Arabic glyphs, so RTL pages map onto this via globals.css.
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-arabic",
   display: "swap",
 });
 
@@ -277,7 +286,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable} ${playfair.variable}`}
+      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable} ${playfair.variable} ${cairo.variable}`}
       suppressHydrationWarning
     >
       <head>

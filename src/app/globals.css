@@ -369,3 +369,59 @@ a:hover { color: var(--primary-dark); }
 .animate-fade-in-up {
   animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   Arabic / RTL
+   The Latin display/serif/sans fonts carry NO Arabic glyphs, so Arabic pages must
+   be mapped onto the Arabic webfont (Cairo → --font-arabic, loaded in layout.tsx).
+   Most layout mirroring is handled automatically by `dir="rtl"` (flexbox/grid
+   honour direction); the rules below cover what `dir` alone does not.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Arabic typography ──────────────────────────────────────────────────────── */
+[lang="ar"] body,
+[dir="rtl"] body {
+  font-family: var(--font-arabic), "Segoe UI", Tahoma, sans-serif !important;
+  /* Arabic reads better with looser leading and without Latin's negative tracking */
+  letter-spacing: 0 !important;
+  line-height: 1.8;
+}
+
+/* The base layer pins headings/paragraphs to --font-sans with !important, so the
+   Arabic font has to be re-asserted with equal weight + higher specificity. */
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3,
+[lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6,
+[lang="ar"] p,  [lang="ar"] a,  [lang="ar"] li,
+[lang="ar"] span, [lang="ar"] button, [lang="ar"] label,
+[lang="ar"] input, [lang="ar"] textarea, [lang="ar"] select,
+[lang="ar"] .font-display, [lang="ar"] .font-serif, [lang="ar"] .font-sans {
+  font-family: var(--font-arabic), "Segoe UI", Tahoma, sans-serif !important;
+}
+
+/* Latin's tight heading tracking hurts Arabic legibility — relax it */
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3,
+[lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6 {
+  letter-spacing: 0 !important;
+  line-height: 1.4;
+}
+
+/* ── RTL directional fixes ──────────────────────────────────────────────────── */
+/* Mirror directional arrow/chevron icons so CTAs point the right way in RTL.
+   (lucide-react emits a `lucide-arrow-right`-style class on every icon.) */
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-chevron-left,
+[dir="rtl"] .lucide-chevrons-right,
+[dir="rtl"] .lucide-chevrons-left,
+[dir="rtl"] .lucide-move-right,
+[dir="rtl"] .lucide-arrow-up-right {
+  transform: scaleX(-1);
+}
+
+/* Keep phone numbers, emails and other LTR runs readable inside RTL text */
+[dir="rtl"] [dir="ltr"],
+[dir="rtl"] .ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

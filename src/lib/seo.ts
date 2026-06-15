@@ -46,8 +46,22 @@ export const AR_INDEXABLE = false;
  *   "/blog/destination-wedding-planning-guide",
  */
 export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
-  // ── No Arabic routes are fully translated yet. Add paths here as content ships.
+  "/", // Homepage — Arabic content complete.
 ]);
+
+/**
+ * Route SUBTREES whose Arabic content is complete. A prefix matches the path
+ * itself AND every descendant, so dynamic routes (`/blog/[slug]`,
+ * `/locations/[city]/[service]`, etc.) are covered without enumerating each one.
+ *
+ * NEVER add `"/"` here — that would flip the entire site. Use exact entries in
+ * `TRANSLATED_AR_ROUTES` for single pages, prefixes here for whole sections.
+ */
+export const TRANSLATED_AR_ROUTE_PREFIXES: readonly string[] = [
+  "/locations", // /locations index + every /locations/[city] and /locations/[city]/[service].
+  // NOTE: /blog, /services, /portfolio are still PENDING — do not add until their
+  // Arabic content is complete.
+];
 
 /** Canonical site origin, no trailing slash. */
 export const SITE_URL = (
@@ -92,7 +106,11 @@ export function isArabicPath(pathname: string): boolean {
  */
 export function isArabicRouteIndexable(canonicalPath: string): boolean {
   if (AR_INDEXABLE) return true;
-  return TRANSLATED_AR_ROUTES.has(normalizePath(canonicalPath));
+  const path = normalizePath(canonicalPath);
+  if (TRANSLATED_AR_ROUTES.has(path)) return true;
+  return TRANSLATED_AR_ROUTE_PREFIXES.some(
+    (prefix) => path === prefix || path.startsWith(prefix + "/"),
+  );
 }
 
 /** Sitemap inclusion mirrors indexability — kept as a named alias for readability. */

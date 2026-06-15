@@ -82,12 +82,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   /* ── Location city×service pages (primary cities: all services) ─────────── */
   const primaryCityServiceEntries = primaryCities.flatMap((city) =>
-    locationServices.map((service) => ({
-      url: `${BASE}/locations/${city}/${service}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.65,
-    }))
+    locationServices.flatMap((service) => [
+      {
+        url: `${BASE}/locations/${city}/${service}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.65,
+      },
+      {
+        url: `${BASE}/ar/locations/${city}/${service}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.55,
+      },
+    ])
   );
 
   /* ── PSEO service×city pages at /services/[slug] ────────────────────────── */
@@ -100,12 +108,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   /* ── Location city×service pages (secondary cities: top 2 services only) ── */
   const secondaryCityServiceEntries = secondaryCities.flatMap((city) =>
-    ["corporate-event-management", "luxury-wedding-planning"].map((service) => ({
-      url: `${BASE}/locations/${city}/${service}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.55,
-    }))
+    ["corporate-event-management", "luxury-wedding-planning"].flatMap((service) => [
+      {
+        url: `${BASE}/locations/${city}/${service}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.55,
+      },
+      {
+        url: `${BASE}/ar/locations/${city}/${service}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.5,
+      },
+    ])
   );
 
   /* ── Static pages ────────────────────────────────────────────────────────── */
@@ -126,6 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/ar/services',          freq: 'weekly',  priority: 0.8  },
     { route: '/ar/contact',           freq: 'monthly', priority: 0.7  },
     { route: '/ar/blog',              freq: 'weekly',  priority: 0.7  },
+    { route: '/ar/locations',         freq: 'monthly', priority: 0.65 },
 
     // ── Service sub-pages (English) ────────────────────────────────────────────
     { route: '/services/corporate-events',    freq: 'monthly', priority: 0.85 },
