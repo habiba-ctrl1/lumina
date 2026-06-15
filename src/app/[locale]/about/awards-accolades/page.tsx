@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Award winning event planner Saudi Arabia, Best event management company Riyadh, Luxury event awards KSA',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/awards-accolades`,
-      languages: { "en-US": `${base}/about/awards-accolades`, "ar-SA": `${base}/ar/about/awards-accolades` },
+      languages: hreflangAlternates("/about/awards-accolades"),
     },
   };
 }

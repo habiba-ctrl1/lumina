@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import LocationCTA from "@/components/LocationCTA";
@@ -957,10 +958,7 @@ export async function generateMetadata({ params }: PageProps) {
     keywords: `event management company in ${d.name}, event planner in ${d.name}, corporate event organizer in ${d.name}, wedding planner in ${d.name}, ${d.nameAr}, Saudi Event Management`,
     alternates: {
       canonical,
-      languages: {
-        "en-US": `${base}/locations/${city.toLowerCase()}`,
-        "ar-SA": `${base}/ar/locations/${city.toLowerCase()}`,
-      },
+      languages: hreflangAlternates(`/locations/${city.toLowerCase()}`),
     },
     openGraph: {
       title: `Event Management in ${d.name} | Saudi Event Management`,

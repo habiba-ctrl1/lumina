@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -15,10 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `Detailed case study of the ${title} project by Saudi Event Management.`,
     alternates: {
       canonical,
-      languages: {
-        "en-US": `${base}/portfolio/${slug}`,
-        "ar-SA": `${base}/ar/portfolio/${slug}`,
-      },
+      languages: hreflangAlternates(`/portfolio/${slug}`),
     },
     openGraph: {
       title: title,

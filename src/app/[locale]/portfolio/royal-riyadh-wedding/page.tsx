@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -37,11 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ],
     alternates: {
       canonical,
-      languages: {
-        "en-US": `${BASE}/portfolio/royal-riyadh-wedding`,
-        "ar-SA": `${BASE}/ar/portfolio/royal-riyadh-wedding`,
-        "x-default": `${BASE}/portfolio/royal-riyadh-wedding`,
-      },
+      languages: hreflangAlternates("/portfolio/royal-riyadh-wedding"),
     },
     openGraph: {
       type: "article",

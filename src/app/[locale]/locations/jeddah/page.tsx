@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -20,10 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "event management company in Jeddah, event planner in Jeddah, corporate event organizer in Jeddah, wedding planner in Jeddah, conference management Jeddah, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations/jeddah`,
-        "ar-SA": `${base}/ar/locations/jeddah`,
-      },
+      languages: hreflangAlternates("/locations/jeddah"),
     },
     openGraph: {
       title: "Event Management Company in Jeddah | Saudi Event Management",

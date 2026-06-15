@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Saudi Vision 2030 events, Riyadh Season event management, AlUla festival planner, GEA event permits KSA, Government event management Saudi Arabia',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/vision-2030`,
-      languages: { "en-US": `${base}/portfolio/vision-2030`, "ar-SA": `${base}/ar/portfolio/vision-2030` },
+      languages: hreflangAlternates("/portfolio/vision-2030"),
     },
   };
 }

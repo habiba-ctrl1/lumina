@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Large-scale government summit in Riyadh for 1,200+ delegates — immersive multi-screen production, VIP protocol, and end-to-end technical management by Saudi Event Management.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/riyadh-government-summit`,
-      languages: { "en-US": `${base}/portfolio/riyadh-government-summit`, "ar-SA": `${base}/ar/portfolio/riyadh-government-summit` },
+      languages: hreflangAlternates("/portfolio/riyadh-government-summit"),
     },
   };
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 
 const BASE = "https://saudieventmanagement.com";
 
@@ -23,11 +24,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical,
-      languages: {
-        en: `${BASE}/blog`,
-        ar: `${BASE}/ar/blog`,
-        "x-default": `${BASE}/blog`,
-      },
+      languages: hreflangAlternates("/blog"),
     },
   };
 }

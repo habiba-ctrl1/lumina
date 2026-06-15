@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/neom-future-summit`,
-      languages: { "en-US": `${base}/portfolio/neom-future-summit`, "ar-SA": `${base}/ar/portfolio/neom-future-summit` },
+      languages: hreflangAlternates("/portfolio/neom-future-summit"),
     },
   };
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -32,10 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/services`,
-        "ar-SA": `${base}/ar/services`,
-      },
+      languages: hreflangAlternates("/services"),
     },
     openGraph: {
       title: "Event Management Services Saudi Arabia | Corporate, Weddings & Exhibitions",

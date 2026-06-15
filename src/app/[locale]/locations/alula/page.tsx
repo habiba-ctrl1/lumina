@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -30,10 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "event management company in AlUla, destination wedding planner AlUla, event planner in AlUla, corporate retreat AlUla, Maraya Concert Hall events, Banyan Tree AlUla wedding, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla",
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations/alula`,
-        "ar-SA": `${base}/ar/locations/alula`,
-      },
+      languages: hreflangAlternates("/locations/alula"),
     },
     openGraph: {
       title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",

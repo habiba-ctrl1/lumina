@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -36,10 +37,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/services/conferences",
-        "ar-SA": "https://saudieventmanagement.com/ar/services/conferences",
-      },
+      languages: hreflangAlternates("/services/conferences"),
     },
     openGraph: {
       title: "Conference Management Services Riyadh | Saudi Event Management",

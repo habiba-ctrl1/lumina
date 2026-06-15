@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -216,10 +217,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `${profile.name} is ${profile.role} at Saudi Event Management with ${profile.yearsExperience} years of experience in ${profile.specialisms.slice(0, 3).join(", ")}.`,
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": canonicalUrl,
-        "ar-SA": `https://saudieventmanagement.com/ar/about/our-team/${name}`,
-      },
+      languages: hreflangAlternates(`/about/our-team/${name}`),
     },
     openGraph: {
       title: `${profile.name} — ${profile.role}`,

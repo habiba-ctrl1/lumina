@@ -1,4 +1,5 @@
 import { blogPosts } from "@/lib/blog-data";
+import { hreflangAlternates } from "@/lib/seo";
 
 const BASE = "https://saudieventmanagement.com";
 
@@ -17,11 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: (post as any).metaDescription || post.excerpt,
     alternates: {
       canonical,
-      languages: {
-        en: `${BASE}/blog/${slug}`,
-        ar: `${BASE}/ar/blog/${slug}`,
-        "x-default": `${BASE}/blog/${slug}`,
-      },
+      languages: hreflangAlternates(`/blog/${slug}`),
     },
     openGraph: {
       title: (post as any).metaTitle || post.title,

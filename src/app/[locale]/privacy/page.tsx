@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { hreflangAlternates } from "@/lib/seo";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Privacy policy for Saudi Event Management website and services.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/privacy`,
-      languages: { "en-US": `${base}/privacy`, "ar-SA": `${base}/ar/privacy` },
+      languages: hreflangAlternates("/privacy"),
     },
   };
 }

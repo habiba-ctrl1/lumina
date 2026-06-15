@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { cookies } from "next/headers";
@@ -42,10 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ],
     alternates: {
       canonical: `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}`,
-      languages: {
-        "en-US": "https://saudieventmanagement.com",
-        "ar-SA": "https://saudieventmanagement.com/ar",
-      },
+      languages: hreflangAlternates("/"),
     },
   };
 }

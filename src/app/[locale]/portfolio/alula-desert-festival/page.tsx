@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,10 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'A breathtaking cultural festival in the ancient desert of AlUla, executed by Saudi Event Management.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/alula-desert-festival`,
-      languages: {
-        "en-US": `${base}/portfolio/alula-desert-festival`,
-        "ar-SA": `${base}/ar/portfolio/alula-desert-festival`,
-      },
+      languages: hreflangAlternates("/portfolio/alula-desert-festival"),
     },
   };
 }

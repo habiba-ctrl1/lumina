@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
@@ -214,10 +215,7 @@ export async function generateMetadata({ params }: PageProps) {
     ],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": canonicalUrl,
-        "ar-SA": `https://saudieventmanagement.com/ar/locations/${city}/${service}`,
-      },
+      languages: hreflangAlternates(`/locations/${city}/${service}`),
     },
     openGraph: {
       title: `${serviceData.name} in ${cityData.name} | Saudi Event Management`,

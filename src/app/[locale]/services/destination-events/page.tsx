@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -30,10 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/services/destination-events`,
-        "ar-SA": `${base}/ar/services/destination-events`,
-      },
+      languages: hreflangAlternates("/services/destination-events"),
     },
     openGraph: {
       title: "Destination Events Saudi Arabia | AlUla, NEOM & Red Sea",

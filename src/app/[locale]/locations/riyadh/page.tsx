@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -30,10 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "event management company in Riyadh, event planner in Riyadh, corporate event organizer in Riyadh, wedding planner in Riyadh, conference management Riyadh RICEC, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations/riyadh`,
-        "ar-SA": `${base}/ar/locations/riyadh`,
-      },
+      languages: hreflangAlternates("/locations/riyadh"),
     },
     openGraph: {
       title: "Event Management Company in Riyadh | Saudi Event Management",

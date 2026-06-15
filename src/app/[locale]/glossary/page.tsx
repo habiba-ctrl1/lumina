@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Link from "next/link";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/glossary`,
-      languages: { 'en-US': `${base}/glossary`, 'ar-SA': `${base}/ar/glossary` },
+      languages: hreflangAlternates("/glossary"),
     },
   };
 }

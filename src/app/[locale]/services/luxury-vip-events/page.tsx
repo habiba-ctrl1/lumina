@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -28,10 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/services/luxury-vip-events`,
-        "ar-SA": `${base}/ar/services/luxury-vip-events`,
-      },
+      languages: hreflangAlternates("/services/luxury-vip-events"),
     },
     openGraph: {
       title: "VIP Event Management Saudi Arabia | Saudi Event Management",

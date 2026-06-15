@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import FilterablePortfolio from "@/components/FilterablePortfolio";
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Royal Weddings Riyadh, Corporate Summits Jeddah, Saudi Event Management Case Studies',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio`,
-      languages: { "en-US": `${base}/portfolio`, "ar-SA": `${base}/ar/portfolio` },
+      languages: hreflangAlternates("/portfolio"),
     },
   };
 }

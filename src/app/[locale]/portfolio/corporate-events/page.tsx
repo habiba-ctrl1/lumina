@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Corporate event management Saudi Arabia, Executive summits Riyadh, AGM planner KSA, B2B event management Jeddah, Trade show organizer',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/corporate-events`,
-      languages: { "en-US": `${base}/portfolio/corporate-events`, "ar-SA": `${base}/ar/portfolio/corporate-events` },
+      languages: hreflangAlternates("/portfolio/corporate-events"),
     },
   };
 }

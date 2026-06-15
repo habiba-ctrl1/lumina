@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Exquisite Majlis gathering in Riyadh, showcasing Najdi heritage with ultra-modern luxury.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/riyadh-elite-majlis`,
-      languages: { "en-US": `${base}/portfolio/riyadh-elite-majlis`, "ar-SA": `${base}/ar/portfolio/riyadh-elite-majlis` },
+      languages: hreflangAlternates("/portfolio/riyadh-elite-majlis"),
     },
   };
 }

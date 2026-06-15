@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Executive team-building retreat for a Saudi Aramco subsidiary in Al Khobar — 120 senior leaders, immersive branding, and strategic engagement managed by Saudi Event Management.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/alkhobar-corporate-retreat`,
-      languages: { "en-US": `${base}/portfolio/alkhobar-corporate-retreat`, "ar-SA": `${base}/ar/portfolio/alkhobar-corporate-retreat` },
+      languages: hreflangAlternates("/portfolio/alkhobar-corporate-retreat"),
     },
   };
 }

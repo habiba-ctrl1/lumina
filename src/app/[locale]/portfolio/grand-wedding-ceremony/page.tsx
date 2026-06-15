@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Traditional Saudi grand wedding ceremony for 600+ guests — VIP Zaffa entrance protocol, palatial ballroom production, and full-service luxury coordination by Saudi Event Management.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/grand-wedding-ceremony`,
-      languages: { "en-US": `${base}/portfolio/grand-wedding-ceremony`, "ar-SA": `${base}/ar/portfolio/grand-wedding-ceremony` },
+      languages: hreflangAlternates("/portfolio/grand-wedding-ceremony"),
     },
   };
 }

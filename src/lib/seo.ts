@@ -49,6 +49,11 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   // ── No Arabic routes are fully translated yet. Add paths here as content ships.
 ]);
 
+/** Canonical site origin, no trailing slash. */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://saudieventmanagement.com"
+).replace(/\/+$/, "");
+
 /* ─────────────────────────────────────────────────────────────────────────────
    Path helpers
    ───────────────────────────────────────────────────────────────────────────── */
@@ -92,6 +97,42 @@ export function isArabicRouteIndexable(canonicalPath: string): boolean {
 
 /** Sitemap inclusion mirrors indexability — kept as a named alias for readability. */
 export const isArabicRouteInSitemap = isArabicRouteIndexable;
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   hreflang (conditional, reciprocal)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Builds the `alternates.languages` map for a route, for use in a page's metadata.
+ *
+ * hreflang annotations must be **reciprocal** — every version of a page lists all
+ * versions, and all of them must be indexable. Because untranslated Arabic routes
+ * are `noindex`, we only emit the EN↔AR pair once the route's Arabic content is
+ * complete (i.e. it is listed in `TRANSLATED_AR_ROUTES`):
+ *
+ *   • Route NOT translated → returns `undefined`. No hreflang is emitted, so an
+ *     English page advertises no Arabic alternate, and the (noindex) Arabic page
+ *     advertises no English relationship.
+ *   • Route translated      → returns `{ en-US, ar-SA, x-default → en }`. Identical
+ *     on both the English and Arabic versions, as hreflang requires.
+ *
+ * The map is locale-independent on purpose: pass the canonical (locale-agnostic)
+ * path and use the SAME result on both the `/x` and `/ar/x` pages.
+ *
+ * To make a future route emit hreflang, add its path to `TRANSLATED_AR_ROUTES`.
+ * Nothing else needs to change.
+ */
+export function hreflangAlternates(
+  canonicalPath: string,
+): Record<string, string> | undefined {
+  const path = normalizePath(canonicalPath);
+  if (!isArabicRouteIndexable(path)) return undefined;
+
+  const suffix = path === "/" ? "" : path;
+  const enUrl = `${SITE_URL}${suffix}`;
+  const arUrl = `${SITE_URL}/ar${suffix}`;
+  return { "en-US": enUrl, "ar-SA": arUrl, "x-default": enUrl };
+}
 
 /**
  * For middleware: returns `true` only for Arabic routes whose content is NOT yet

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Image from "next/image";
 import { MapPin, Mail, Phone, Clock, MessageCircle, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -32,10 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : ["Contact Event Management Company Saudi Arabia", "Saudi Event Management", "Event Planner KSA"],
     alternates: {
       canonical: `https://saudieventmanagement.com/${locale === "en" ? "" : "ar/"}contact`,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/contact",
-        "ar-SA": "https://saudieventmanagement.com/ar/contact",
-      },
+      languages: hreflangAlternates("/contact"),
     },
     openGraph: {
       title,

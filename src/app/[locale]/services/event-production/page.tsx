@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -37,10 +38,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/services/event-production",
-        "ar-SA": "https://saudieventmanagement.com/ar/services/event-production",
-      },
+      languages: hreflangAlternates("/services/event-production"),
     },
     openGraph: {
       title: "Event Production Company Saudi Arabia | Saudi Event Management",

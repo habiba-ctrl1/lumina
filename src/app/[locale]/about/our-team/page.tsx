@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/our-team`,
-      languages: { "en-US": `${base}/about/our-team`, "ar-SA": `${base}/ar/about/our-team` },
+      languages: hreflangAlternates("/about/our-team"),
     },
   };
 }

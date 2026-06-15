@@ -5,6 +5,7 @@ import FAQ from "@/components/FAQ";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 import { getDictionary } from "@/lib/dictionaries";
+import { hreflangAlternates } from "@/lib/seo";
 
 const BASE = "https://saudieventmanagement.com";
 
@@ -37,11 +38,7 @@ export async function generateMetadata({
         ],
     alternates: {
       canonical: `${BASE}${locale === "en" ? "" : "/ar"}/faq`,
-      languages: {
-        en: `${BASE}/faq`,
-        ar: `${BASE}/ar/faq`,
-        "x-default": `${BASE}/faq`,
-      },
+      languages: hreflangAlternates("/faq"),
     },
   };
 }

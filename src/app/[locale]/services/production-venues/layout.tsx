@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -28,10 +29,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/services/production-venues",
-        "ar-SA": "https://saudieventmanagement.com/ar/services/production-venues",
-      },
+      languages: hreflangAlternates("/services/production-venues"),
     },
     openGraph: {
       title: "Event Services & Venues Saudi Arabia | Saudi Event Management",

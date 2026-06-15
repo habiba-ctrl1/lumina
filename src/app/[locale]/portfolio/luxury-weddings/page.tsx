@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Luxury wedding planners Riyadh, Royal weddings Saudi Arabia, VIP wedding organizer KSA, Kosha design Riyadh, Destination weddings AlUla',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/luxury-weddings`,
-      languages: { "en-US": `${base}/portfolio/luxury-weddings`, "ar-SA": `${base}/ar/portfolio/luxury-weddings` },
+      languages: hreflangAlternates("/portfolio/luxury-weddings"),
     },
   };
 }

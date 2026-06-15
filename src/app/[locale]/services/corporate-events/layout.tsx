@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { robotsForRoute } from "@/lib/seo";
+import { robotsForRoute, hreflangAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -42,10 +42,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical,
-      languages: {
-        "en-US": `${base}/services/corporate-events`,
-        "ar-SA": `${base}/ar/services/corporate-events`,
-      },
+      languages: hreflangAlternates("/services/corporate-events"),
     },
     openGraph: {
       title:

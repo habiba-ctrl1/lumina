@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -34,10 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations`,
-        "ar-SA": `${base}/ar/locations`,
-      },
+      languages: hreflangAlternates("/locations"),
     },
   };
 }

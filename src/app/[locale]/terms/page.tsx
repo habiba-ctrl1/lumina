@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { hreflangAlternates } from "@/lib/seo";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Our terms and conditions for luxury event management services.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/terms`,
-      languages: { "en-US": `${base}/terms`, "ar-SA": `${base}/ar/terms` },
+      languages: hreflangAlternates("/terms"),
     },
   };
 }

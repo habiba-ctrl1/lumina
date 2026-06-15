@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/madinah-spiritual-event`,
-      languages: { "en-US": `${base}/portfolio/madinah-spiritual-event`, "ar-SA": `${base}/ar/portfolio/madinah-spiritual-event` },
+      languages: hreflangAlternates("/portfolio/madinah-spiritual-event"),
     },
   };
 }

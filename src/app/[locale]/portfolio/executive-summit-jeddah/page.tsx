@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'A high-level executive summit held in the coastal city of Jeddah, featuring coastal elegance and corporate precision by Saudi Event Management.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/executive-summit-jeddah`,
-      languages: { "en-US": `${base}/portfolio/executive-summit-jeddah`, "ar-SA": `${base}/ar/portfolio/executive-summit-jeddah` },
+      languages: hreflangAlternates("/portfolio/executive-summit-jeddah"),
     },
   };
 }

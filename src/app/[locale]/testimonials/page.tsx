@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/testimonials`,
-      languages: { "en-US": `${base}/testimonials`, "ar-SA": `${base}/ar/testimonials` },
+      languages: hreflangAlternates("/testimonials"),
     },
   };
 }

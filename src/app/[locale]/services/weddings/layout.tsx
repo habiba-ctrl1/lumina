@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -10,10 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "Professional wedding planning services across Riyadh, Jeddah, and Dammam — Nikah and Milka ceremonies, Henna nights, and grand receptions. Saudi Arabia's trusted wedding planning team.",
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/services/weddings",
-        "ar-SA": "https://saudieventmanagement.com/ar/services/weddings",
-      },
+      languages: hreflangAlternates("/services/weddings"),
     },
     openGraph: {
       title: "Wedding Planning Services Saudi Arabia | Saudi Event Management",

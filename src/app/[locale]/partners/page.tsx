@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Join Saudi Arabia's premier event management network. We collaborate with world-class brands and suppliers to deliver extraordinary luxury experiences.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/partners`,
-      languages: { "en-US": `${base}/partners`, "ar-SA": `${base}/ar/partners` },
+      languages: hreflangAlternates("/partners"),
     },
   };
 }

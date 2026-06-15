@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Executing a massive international technology summit in Saudi Arabia with cutting-edge production by Saudi Event Management.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/global-tech-summit`,
-      languages: { "en-US": `${base}/portfolio/global-tech-summit`, "ar-SA": `${base}/ar/portfolio/global-tech-summit` },
+      languages: hreflangAlternates("/portfolio/global-tech-summit"),
     },
   };
 }

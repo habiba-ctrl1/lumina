@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Bespoke event management for spiritual and high-profile retreats in the Holy City of Makkah.',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/makkah-vip-retreat`,
-      languages: { "en-US": `${base}/portfolio/makkah-vip-retreat`, "ar-SA": `${base}/ar/portfolio/makkah-vip-retreat` },
+      languages: hreflangAlternates("/portfolio/makkah-vip-retreat"),
     },
   };
 }

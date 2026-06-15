@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -29,10 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "event management company in Makkah, event planner in Makkah, corporate event organizer in Makkah, wedding planner in Makkah, conference organizer Makkah, Hilton Makkah Convention Hotel, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations/makkah`,
-        "ar-SA": `${base}/ar/locations/makkah`,
-      },
+      languages: hreflangAlternates("/locations/makkah"),
     },
     openGraph: {
       title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",

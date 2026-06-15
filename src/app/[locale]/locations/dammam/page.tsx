@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -30,10 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "event management company in Dammam, event planner in Dammam, corporate event organizer in Dammam, wedding planner in Dammam, conference organizer Al-Khobar, Saudi Aramco event management Dhahran, Half Moon Bay events, DCEC Dammam Convention Center, تنظيم فعاليات الدمام",
     alternates: {
       canonical: path,
-      languages: {
-        "en-US": `${base}/locations/dammam`,
-        "ar-SA": `${base}/ar/locations/dammam`,
-      },
+      languages: hreflangAlternates("/locations/dammam"),
     },
     openGraph: {
       title: "Event Management Company in Dammam & Eastern Province | Saudi Event Management",

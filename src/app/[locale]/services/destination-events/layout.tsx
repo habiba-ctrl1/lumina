@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -26,10 +27,7 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        "en-US": "https://saudieventmanagement.com/services/destination-events",
-        "ar-SA": "https://saudieventmanagement.com/ar/services/destination-events",
-      },
+      languages: hreflangAlternates("/services/destination-events"),
     },
     openGraph: {
       title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",

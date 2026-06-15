@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Learn about Saudi Event Management's commitment to quality, transparency, and editorial integrity. Our standards ensure every event and piece of content meets the highest benchmarks.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/editorial-policy`,
-      languages: { "en-US": `${base}/editorial-policy`, "ar-SA": `${base}/ar/editorial-policy` },
+      languages: hreflangAlternates("/editorial-policy"),
     },
   };
 }

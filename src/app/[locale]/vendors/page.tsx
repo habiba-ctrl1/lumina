@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/vendors`,
-      languages: { "en-US": `${base}/vendors`, "ar-SA": `${base}/ar/vendors` },
+      languages: hreflangAlternates("/vendors"),
     },
   };
 }

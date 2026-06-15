@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { hreflangAlternates } from "@/lib/seo";
 import Image from "next/image";
 import { Award, Users, MapPin, Sparkles, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about`,
-      languages: { "en-US": `${base}/about`, "ar-SA": `${base}/ar/about` },
+      languages: hreflangAlternates("/about"),
     },
   };
 }

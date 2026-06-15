@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Luxury coastal wedding production on the Red Sea in Jeddah — 450 guests, bespoke beachfront design, and full-service luxury coordination by Saudi Event Management.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/jeddah-beach-wedding`,
-      languages: { "en-US": `${base}/portfolio/jeddah-beach-wedding`, "ar-SA": `${base}/ar/portfolio/jeddah-beach-wedding` },
+      languages: hreflangAlternates("/portfolio/jeddah-beach-wedding"),
     },
   };
 }

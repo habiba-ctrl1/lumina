@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: 'Event management jobs Saudi Arabia, Careers in event planning Riyadh, Hiring event producers KSA, Saudi Event Management jobs',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/careers`,
-      languages: { "en-US": `${base}/about/careers`, "ar-SA": `${base}/ar/about/careers` },
+      languages: hreflangAlternates("/about/careers"),
     },
   };
 }
