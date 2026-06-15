@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           alt: "Corporate event management in Riyadh Saudi Arabia",
         },
       ],
-      locale: "en_SA",
+      locale: "en_US",
       type: "website",
     },
     twitter: {

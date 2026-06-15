@@ -43,13 +43,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: "Saudi Event Management",
       images: [
         {
-          url: "https://saudieventmanagement.com/alkhobar_corporate_people.webp",
+          url: "https://saudieventmanagement.com/dammam-og.webp",
           width: 1200,
           height: 630,
-          alt: "Corporate event management in Dammam Eastern Province Saudi Arabia",
+          alt: "Corporate event management in Dammam, Eastern Province, Saudi Arabia",
         },
       ],
-      locale: "en_SA",
+      locale: "en_US",
       type: "website",
     },
     twitter: {
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: "Event Management in Dammam & Eastern Province | Saudi Event Management",
       description:
         "Energy sector conferences, corporate events, Gulf waterfront weddings & cross-border Bahrain MICE in Dammam.",
-      images: ["https://saudieventmanagement.com/alkhobar_corporate_people.webp"],
+      images: ["https://saudieventmanagement.com/dammam-og.webp"],
     },
   };
 }
@@ -443,15 +443,15 @@ export default function DammamPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div className="order-2 lg:order-1 relative aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md">
             <Image
-              src="/alkhobar_corporate_people.webp"
-              alt="Corporate professionals at an energy sector event in Dammam Al-Khobar Eastern Province"
+              src="/gallery_corporate_gala.webp"
+              alt="Luxury corporate gala dinner managed in Al-Khobar, Eastern Province Saudi Arabia"
               width={800}
               height={1000}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <div className="absolute bottom-8 start-8 end-8">
-              <div className="glass p-6 rounded-sm">
+              <div className="glass p-6 rounded-2xl">
                 <p className="text-white text-sm font-display font-light">
                   &quot;Where the world&apos;s energy capital meets Arabian Gulf elegance — the Eastern Province demands a different standard of event management.&quot;
                 </p>
@@ -460,7 +460,7 @@ export default function DammamPage() {
           </div>
           <div className="order-1 lg:order-2">
             <span className="section-label">Why Dammam & Eastern Province</span>
-            <h2 className="font-display font-medium text-neutral-900 mb-8 text-2xl md:text-3xl font-bold">
+            <h2 className="font-display font-semibold text-neutral-900 mb-8 text-2xl md:text-3xl">
               Saudi Arabia&apos;s{" "}
               <span className="text-[var(--primary)]">Energy Event Capital</span>
             </h2>
@@ -566,7 +566,7 @@ export default function DammamPage() {
                   <h3 className="font-display font-semibold text-neutral-900 text-sm leading-snug">{venue.name}</h3>
                   <span className="text-xs text-neutral-400">{venue.abbr}</span>
                 </div>
-                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2 py-1 rounded-sm font-medium whitespace-nowrap ml-2">
+                <span className="text-xs bg-emerald-50 text-[var(--primary)] border border-emerald-200 px-2.5 py-1 rounded-md font-medium whitespace-nowrap ml-2">
                   {venue.capacity}
                 </span>
               </div>
@@ -802,15 +802,14 @@ export default function DammamPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate Event Management in Dammam", slug: "corporate-event-management" },
-                  { name: "Energy Sector Events", slug: "corporate-event-management" },
+                  { name: "Corporate & Energy Sector Events in Dammam", slug: "corporate-event-management" },
                   { name: "Exhibition Management in Dammam", slug: "exhibition-management" },
                   { name: "Wedding Planner in Dammam", slug: "luxury-wedding-planning" },
-                  { name: "Outdoor & Coastal Events", slug: "luxury-wedding-planning" },
-                  { name: "Cross-Border Bahrain Events", slug: "corporate-event-management" },
+                  { name: "Conference Organizer in Dammam", slug: "conference-planning" },
+                  { name: "VIP Event Planning in Dammam", slug: "vip-event-planning" },
                 ].map((svc) => (
                   <Link
-                    key={svc.name}
+                    key={svc.slug}
                     href={`/locations/dammam/${svc.slug}`}
                     className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                   >
