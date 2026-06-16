@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 const Instagram = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -29,6 +30,32 @@ const socialLinks = [
 
 export default function Footer() {
   const t = useTranslations("footer");
+
+  // Newsletter signup → /api/newsletter (emails the subscriber a welcome + notifies admin).
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+      if (!res.ok) throw new Error("Subscription failed");
+      setNewsletterStatus("success");
+      setNewsletterEmail("");
+      setTimeout(() => setNewsletterStatus("idle"), 6000);
+    } catch (err) {
+      console.error(err);
+      setNewsletterStatus("error");
+      setTimeout(() => setNewsletterStatus("idle"), 5000);
+    }
+  };
+
   return (
     <footer className="bg-white border-t border-neutral-200/80 relative pt-20 pb-10">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -169,31 +196,46 @@ export default function Footer() {
                 {t("newsletterDesc")}
               </p>
             </div>
-            <form
-              className="flex flex-col sm:flex-row gap-3"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                type="email"
-                placeholder={t("emailPlaceholder")}
-                required
-                className="flex-1 bg-white border border-neutral-200/80 text-neutral-900
-                  px-4 py-3.5 rounded-xl text-[14px]
-                  placeholder:text-neutral-400
-                  focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10
-                  transition-all duration-200 shadow-sm"
-              />
-              <button
-                type="submit"
-                className="bg-[var(--primary)] text-white px-6 py-3.5 rounded-xl text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all duration-200 whitespace-nowrap inline-flex items-center gap-2"
-                style={{
-                  boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
-                }}
+            <div>
+              <form
+                className="flex flex-col sm:flex-row gap-3"
+                onSubmit={handleNewsletterSubmit}
               >
-                {t("subscribe")}
-                <ArrowRight size={14} />
-              </button>
-            </form>
+                <input
+                  type="email"
+                  placeholder={t("emailPlaceholder")}
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="flex-1 bg-white border border-neutral-200/80 text-neutral-900
+                    px-4 py-3.5 rounded-xl text-[14px]
+                    placeholder:text-neutral-400
+                    focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/10
+                    transition-all duration-200 shadow-sm"
+                />
+                <button
+                  type="submit"
+                  disabled={newsletterStatus === "loading"}
+                  className="bg-[var(--primary)] text-white px-6 py-3.5 rounded-xl text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all duration-200 whitespace-nowrap inline-flex items-center justify-center gap-2 disabled:opacity-60"
+                  style={{
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
+                  }}
+                >
+                  {newsletterStatus === "loading" ? "Subscribing…" : t("subscribe")}
+                  {newsletterStatus !== "loading" && <ArrowRight size={14} />}
+                </button>
+              </form>
+              {newsletterStatus === "success" && (
+                <p className="mt-3 text-[13px] font-medium text-emerald-700">
+                  You're subscribed — check your inbox for a welcome email.
+                </p>
+              )}
+              {newsletterStatus === "error" && (
+                <p className="mt-3 text-[13px] font-medium text-rose-600">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </div>
           </div>
         </div>
 

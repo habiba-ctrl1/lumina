@@ -223,7 +223,7 @@ export default function ConferencesPage() {
           title="Conference Management"
           titleHighlight="Saudi Arabia"
           subtitle="Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for entities including Saudi Aramco, HRDF, and SABIC."
-          backgroundImage="/services/premium_conference_management_hero.png"
+          backgroundImage="/services/premium_conference_management_hero.webp"
           imageAlt="Large-scale international conference in Saudi Arabia with massive LED stage"
           enableParallax
           badge="Conferences & Summits"

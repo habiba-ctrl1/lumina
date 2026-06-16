@@ -215,7 +215,7 @@ export default function ExhibitionsPage() {
           title="Exhibition Management"
           titleHighlight="Saudi Arabia"
           subtitle="Premier trade show organizer and exhibition management company in Saudi Arabia — partnering with Saudi Expo 2030, GITEX Saudi Arabia, and Big 5 Saudi for world-class presence at every expo."
-          backgroundImage="/services/premium_exhibition_hero.png"
+          backgroundImage="/services/premium_exhibition_hero.webp"
           imageAlt="Large-scale international trade show and exhibition in Saudi Arabia with custom booths"
           enableParallax
           badge="Exhibitions & Expos"

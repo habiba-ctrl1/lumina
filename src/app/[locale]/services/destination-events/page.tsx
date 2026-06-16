@@ -204,7 +204,7 @@ export default function DestinationEventsPage() {
           title="Destination Event Planning"
           titleHighlight="in Saudi Arabia"
           subtitle="Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
-          backgroundImage="/services/premium_destination_event_hero.png"
+          backgroundImage="/services/premium_destination_event_hero.webp"
           imageAlt="Luxury destination event in AlUla Saudi Arabia with desert mountains and dining setup"
           enableParallax
           badge="Destination Events"

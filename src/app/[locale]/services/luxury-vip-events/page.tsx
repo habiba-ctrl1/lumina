@@ -195,7 +195,7 @@ export default function LuxuryVIPEventsPage() {
           title="VIP & Private Event Management"
           titleHighlight="Saudi Arabia"
           subtitle="A specialist VIP event management team for royal families, government delegations, and private clients — discreet, white-glove experiences from private concerts and yacht events to bespoke desert gatherings in AlUla."
-          backgroundImage="/services/premium_luxury_vip_hero.png"
+          backgroundImage="/services/premium_luxury_vip_hero.webp"
           imageAlt="Exclusive luxury private VIP event in Saudi Arabia at night"
           badge="VIP & Private Events"
           enableParallax

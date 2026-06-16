@@ -21,6 +21,8 @@ export default function EngagementHub() {
   const [submitted, setSubmitted]   = useState(false);
   const [rating, setRating]         = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+  const [review, setReview]         = useState({ name: "", email: "", experience: "" });
+  const [reviewError, setReviewError] = useState(false);
 
   const allFaqItems   = tFaq.raw("items") as any[];
   const homepageFaqs  = HOMEPAGE_FAQ_INDICES.map((i) => allFaqItems[i]).filter(Boolean);
@@ -36,10 +38,31 @@ export default function EngagementHub() {
     })),
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setReviewError(false);
+    try {
+      const res = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          quote: review.experience,
+          author: review.name,
+          role: "Verified Client",
+          rating: rating || 5,
+          email: review.email,
+        }),
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      setSubmitted(true);
+      setReview({ name: "", email: "", experience: "" });
+      setRating(0);
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      console.error(err);
+      setReviewError(true);
+      setTimeout(() => setReviewError(false), 4000);
+    }
   };
 
   const tabs: { id: Tab; label: string; icon: typeof HelpCircle }[] = [
@@ -226,6 +249,8 @@ export default function EngagementHub() {
                       <input
                         type="text"
                         required
+                        value={review.name}
+                        onChange={(e) => setReview((p) => ({ ...p, name: e.target.value }))}
                         placeholder={t("namePlaceholder")}
                         className="w-full bg-neutral-50 border border-neutral-200/80 p-3.5 rounded-xl text-[14px] outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary)]/10 transition-all text-neutral-900 placeholder:text-neutral-400"
                       />
@@ -235,6 +260,8 @@ export default function EngagementHub() {
                       <input
                         type="email"
                         required
+                        value={review.email}
+                        onChange={(e) => setReview((p) => ({ ...p, email: e.target.value }))}
                         placeholder={t("emailPlaceholder")}
                         className="w-full bg-neutral-50 border border-neutral-200/80 p-3.5 rounded-xl text-[14px] outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary)]/10 transition-all text-neutral-900 placeholder:text-neutral-400"
                       />
@@ -272,6 +299,8 @@ export default function EngagementHub() {
                     <textarea
                       required
                       rows={4}
+                      value={review.experience}
+                      onChange={(e) => setReview((p) => ({ ...p, experience: e.target.value }))}
                       placeholder={t("experiencePlaceholder")}
                       className="w-full bg-neutral-50 border border-neutral-200/80 p-3.5 rounded-xl text-[14px] outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary)]/10 transition-all resize-none text-neutral-900 placeholder:text-neutral-400"
                     />
@@ -285,6 +314,12 @@ export default function EngagementHub() {
                     <Send size={15} className="group-hover:translate-x-0.5 transition-transform" />
                     {t("publishReview")}
                   </button>
+
+                  {reviewError && (
+                    <p className="text-center text-[13px] text-rose-600 font-medium">
+                      Something went wrong submitting your review. Please try again.
+                    </p>
+                  )}
                 </motion.form>
               )}
 

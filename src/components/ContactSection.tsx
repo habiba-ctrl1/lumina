@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Briefcase } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send, Briefcase, CheckCircle, AlertCircle } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
@@ -9,6 +9,32 @@ import { useTranslations } from "next-intl";
 export default function ContactSection() {
   const t = useTranslations("contact");
   const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  // Controlled form state + submission status, wired to /api/contact
+  // (saves the inquiry to the CRM and emails both the team and the customer).
+  const [form, setForm] = useState({ name: "", email: "", eventType: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, source: "homepage_contact_section" }),
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      setStatus("success");
+      setForm({ name: "", email: "", eventType: "", message: "" });
+      setTimeout(() => setStatus("idle"), 6000);
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
 
   const inputClass = (field: string) => `
     w-full bg-neutral-50 border border-neutral-200/80 p-4 text-[14px] text-neutral-900 
@@ -110,16 +136,18 @@ export default function ContactSection() {
                 {t("formTitle")}
               </h3>
               
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="fullName" className="block text-[13px] font-medium text-neutral-500 mb-2">
                       {t("fullName")}
                     </label>
-                    <input 
+                    <input
                       id="fullName"
-                      type="text" 
+                      type="text"
                       required
+                      value={form.name}
+                      onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
                       placeholder={t("namePlaceholder")}
                       className={inputClass("name")}
                       onFocus={() => setFocusedField("name")}
@@ -130,10 +158,12 @@ export default function ContactSection() {
                     <label htmlFor="corporateEmail" className="block text-[13px] font-medium text-neutral-500 mb-2">
                       {t("corporateEmail")}
                     </label>
-                    <input 
+                    <input
                       id="corporateEmail"
-                      type="email" 
+                      type="email"
                       required
+                      value={form.email}
+                      onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
                       placeholder={t("emailPlaceholder")}
                       className={inputClass("email")}
                       onFocus={() => setFocusedField("email")}
@@ -147,9 +177,10 @@ export default function ContactSection() {
                     {t("eventType")}
                   </label>
                   <div className="relative">
-                    <select 
+                    <select
                       id="eventType"
-                      defaultValue=""
+                      value={form.eventType}
+                      onChange={(e) => setForm((p) => ({ ...p, eventType: e.target.value }))}
                       className={`${inputClass("type")} appearance-none cursor-pointer pr-10`}
                       onFocus={() => setFocusedField("type")}
                       onBlur={() => setFocusedField(null)}
@@ -169,9 +200,12 @@ export default function ContactSection() {
                   <label htmlFor="eventDetails" className="block text-[13px] font-medium text-neutral-500 mb-2">
                     {t("eventDetails")}
                   </label>
-                  <textarea 
+                  <textarea
                     id="eventDetails"
                     rows={4}
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
                     placeholder={t("detailsPlaceholder")}
                     className={`${inputClass("message")} resize-none`}
                     onFocus={() => setFocusedField("message")}
@@ -179,16 +213,54 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <button 
+                <button
                   type="submit"
-                  className="w-full bg-[var(--primary)] text-white py-4 rounded-xl text-[14px] font-medium transition-all duration-200 hover:bg-[var(--primary-dark)] flex items-center justify-center gap-2 group"
+                  disabled={status === "loading"}
+                  className="w-full bg-[var(--primary)] text-white py-4 rounded-xl text-[14px] font-medium transition-all duration-200 hover:bg-[var(--primary-dark)] disabled:opacity-60 flex items-center justify-center gap-2 group"
                   style={{
                     boxShadow: "0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)",
                   }}
                 >
-                  <span>{t("sendMessage")}</span>
-                  <Send size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                  {status === "loading" ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      <span>Sending…</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>{t("sendMessage")}</span>
+                      <Send size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                    </>
+                  )}
                 </button>
+
+                <AnimatePresence>
+                  {status === "success" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3 text-emerald-700 text-[13px] font-medium bg-emerald-50 px-5 py-4 rounded-xl border border-emerald-100"
+                    >
+                      <CheckCircle size={18} className="shrink-0 text-emerald-600" />
+                      <span>Thank you — your inquiry has been received. A confirmation email is on its way and our team will reach out shortly.</span>
+                    </motion.div>
+                  )}
+                  {status === "error" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3 text-rose-700 text-[13px] font-medium bg-rose-50 px-5 py-4 rounded-xl border border-rose-100"
+                    >
+                      <AlertCircle size={18} className="shrink-0 text-rose-600" />
+                      <span>Something went wrong. Please try again or email us directly.</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </form>
             </div>
           </motion.div>
