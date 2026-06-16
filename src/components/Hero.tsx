@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react";
@@ -25,6 +25,17 @@ export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], [0, -160]);
+
+  // Only load the background showreel on desktop. Mobile shows the WebP poster
+  // instead — the MP4 is never fetched, protecting LCP and mobile data.
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,8 +67,6 @@ export default function Hero() {
 
   return (
     <div ref={heroRef} id="home" className="relative min-h-screen w-full flex overflow-hidden">
-      {/* ── SEO H1 ── */}
-      <h1 className="sr-only">{t("h1En")}</h1>
 
       {/* ══════════════════════════════════════════════════════════════════════
           BACKGROUND — Parallax video
@@ -69,28 +78,51 @@ export default function Hero() {
         className="absolute left-0 right-0 z-0 overflow-hidden"
         style={{ top: -160, bottom: -160, y: bgY }}
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/hero_bg.webp"
-          className="pointer-events-none"
-          style={{ 
-            width: "100vw", 
-            height: "56.25vw", 
-            minHeight: "100%", 
-            minWidth: "177.77vh", 
-            position: "absolute", 
-            top: "50%", 
-            left: "50%", 
-            transform: "translate(-50%, -50%)",
-            objectFit: "cover",
-          }}
-        >
-          <source src="/hero-video1.mp4" type="video/mp4" />
-          <source src="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4" type="video/mp4" />
-        </video>
+        {isDesktop ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster="/hero_bg.webp"
+            className="pointer-events-none"
+            style={{
+              width: "100vw",
+              height: "56.25vw",
+              minHeight: "100%",
+              minWidth: "177.77vh",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              objectFit: "cover",
+            }}
+          >
+            <source src="/hero-video1.mp4" type="video/mp4" />
+            <source src="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          /* Mobile / SSR: lightweight WebP poster — MP4 never downloaded */
+          <img
+            src="/hero_bg.webp"
+            alt=""
+            aria-hidden
+            fetchPriority="high"
+            className="pointer-events-none"
+            style={{
+              width: "100vw",
+              height: "56.25vw",
+              minHeight: "100%",
+              minWidth: "177.77vh",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              objectFit: "cover",
+            }}
+          />
+        )}
       </motion.div>
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -142,26 +174,25 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline — mixed weight editorial */}
-          <motion.div
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="mb-6"
-            aria-hidden="true"
           >
-            <p
-              className="leading-[1.05] text-[2.3rem] md:text-[3.1rem] lg:text-[3.6rem] font-light text-white/70"
+            <span
+              className="block leading-[1.05] text-[2.3rem] md:text-[3.1rem] lg:text-[3.6rem] font-light text-white/70"
               style={{ letterSpacing: "-0.025em" }}
             >
               {t("title")}
-            </p>
-            <p
-              className="leading-[1.05] text-[2.3rem] md:text-[3.1rem] lg:text-[3.6rem] font-black text-white"
+            </span>
+            <span
+              className="block leading-[1.05] text-[2.3rem] md:text-[3.1rem] lg:text-[3.6rem] font-black text-white"
               style={{ letterSpacing: "-0.04em" }}
             >
               {t("titleHighlight")}
-            </p>
-          </motion.div>
+            </span>
+          </motion.h1>
 
           {/* Subtitle */}
           <motion.p
