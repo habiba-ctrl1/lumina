@@ -8,14 +8,15 @@ import { MapPin, ArrowRight, BarChart3 } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 
-// Location-matched images for each city tab
+// Real, city-specific hero images (same assets used on each location page) —
+// keeps the homepage city showcase authentic instead of generic event stock.
 const CITY_IMAGES = [
-  "/riyadh_summit_people.webp",         // Riyadh  — large corporate summit audience
-  "/jeddah_luxury_people.webp",         // Jeddah  — luxury hotel soiree guests
-  "/alula_gala_people.webp",            // AlUla   — formal desert gala heritage setting
-  "/majlis_gathering_people.webp",      // Makkah  — traditional VIP majlis gathering
-  "/wedding_hall_grand_entrance.webp",  // Madinah — grand ceremonial hall entrance
-  "/alkhobar_corporate_people.webp",    // Dammam  — Eastern Province corporate team
+  "/locations/riyadh-hero.webp",   // Riyadh  — real Riyadh skyline/venue
+  "/locations/jeddah-hero.webp",   // Jeddah  — Red Sea / Corniche
+  "/locations/alula-hero.webp",    // AlUla   — heritage desert event
+  "/locations/makkah-hero.webp",   // Makkah  — Makkah cityscape
+  "/locations/madinah-hero.webp",  // Madinah — real Madinah
+  "/locations/dammam-coast.webp",  // Dammam  — Gulf coast
 ];
 
 // Dedicated location pages for each city
