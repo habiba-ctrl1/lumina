@@ -140,9 +140,10 @@ export default function ProductionVenuesPage() {
           title="Event Services & Venue Sourcing"
           titleHighlight="Saudi Arabia"
           subtitle="Venue sourcing, AV production, staging, catering, and media under one roof — with access to KAICC, RECC, and leading event venues across Riyadh, Jeddah, and the Kingdom."
-          backgroundImage="/services/neom_summit_people.webp"
+          backgroundImage="/services/saudi_gala_table_alcohol_free.webp"
           imageAlt="Event services Saudi Arabia — production venues and elite event spaces"
           badge="Venues & Production"
+          enableParallax
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Services", href: "/services" },
@@ -200,6 +201,21 @@ export default function ProductionVenuesPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/wedding_hall_grand_entrance.webp')" }} aria-label="Venues showcase">
+          <div aria-hidden className="absolute inset-0 bg-neutral-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Premier Venues</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Elite Services</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Premier Venues</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Elite Services</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Premier Venues</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Elite Services</span>
+            </div>
+          </div>
+        </section>
+
         {/* Services Showcase */}
         <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -208,12 +224,12 @@ export default function ProductionVenuesPage() {
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
                 Full-Service Event Production
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
                 Our production <span className="text-[var(--primary)]">services</span>
               </h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
                 Venue sourcing, AV, staging, catering and media — a single in-house team for every
-                technical and hospitality element of your event.
+                technical and hospitality element of your event. From <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">executive corporate summits</Link> to securing elite locations for <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP private events</Link>, we offer exclusive access to Saudi Arabia&apos;s premier spaces.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -316,9 +332,8 @@ export default function ProductionVenuesPage() {
         </section>
 
         {/* ── LEAD FORM / SERVICES ENQUIRY ── */}
-        <section id="services-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="services-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/luxury_vip_majlis.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

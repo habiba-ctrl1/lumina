@@ -223,8 +223,8 @@ export default function ConferencesPage() {
           title="Conference Management"
           titleHighlight="Saudi Arabia"
           subtitle="Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for entities including Saudi Aramco, HRDF, and SABIC."
-          backgroundImage="/services/riyadh_summit_people.webp"
-          imageAlt="Conference management company Riyadh Saudi Arabia"
+          backgroundImage="/services/premium_conference_management_hero.png"
+          imageAlt="Large-scale international conference in Saudi Arabia with massive LED stage"
           enableParallax
           badge="Conferences & Summits"
           breadcrumbs={[
@@ -285,20 +285,35 @@ export default function ConferencesPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }} aria-label="Conference visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Conference Mastery</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Conference Mastery</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Conference Mastery</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+            </div>
+          </div>
+        </section>
+
         {/* ── Services Grid ── */}
         <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Full-Service Conference Management
+                Saudi Arabia&apos;s Premier PCO
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Our conference <span className="text-[var(--primary)]">capabilities</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                Elevating Conference Management <br className="hidden md:block" />
+                <span className="text-[var(--primary)]">in Saudi Arabia</span>
               </h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                From delegate registration and speaker management to hybrid streaming and VIP protocol —
-                a single accountable team for summits of 50 to 5,000+ delegates.
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed">
+                As a fully integrated Professional Conference Organiser (PCO), we provide end-to-end management for government summits and commercial congresses. From venue sourcing at <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Riyadh&apos;s KAFD</Link> to <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-semibold">Vision 2030</Link> alignments, our team ensures every delegate experiences world-class operational excellence.
               </p>
             </div>
 
@@ -320,9 +335,8 @@ export default function ConferencesPage() {
         </section>
 
         {/* ── LEAD FORM / PCO ENQUIRY ── */}
-        <section id="pco-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="pco-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_2.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

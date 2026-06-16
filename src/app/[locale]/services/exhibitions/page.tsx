@@ -215,8 +215,8 @@ export default function ExhibitionsPage() {
           title="Exhibition Management"
           titleHighlight="Saudi Arabia"
           subtitle="Premier trade show organizer and exhibition management company in Saudi Arabia — partnering with Saudi Expo 2030, GITEX Saudi Arabia, and Big 5 Saudi for world-class presence at every expo."
-          backgroundImage="/services/exhibition_hall_riyadh.webp"
-          imageAlt="Exhibition management company Saudi Arabia — trade show booths and brand stands at a Riyadh expo hall"
+          backgroundImage="/services/premium_exhibition_hero.png"
+          imageAlt="Large-scale international trade show and exhibition in Saudi Arabia with custom booths"
           enableParallax
           badge="Exhibitions & Expos"
           breadcrumbs={[
@@ -276,20 +276,35 @@ export default function ExhibitionsPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/gallery_2.webp')" }} aria-label="Exhibition visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Exhibition Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Exhibition Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Exhibition Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+            </div>
+          </div>
+        </section>
+
         {/* Core Services Grid */}
         <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Full-Service Expo Management
+                Saudi Arabia&apos;s Premier Trade Show Organizer
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Our expo <span className="text-[var(--primary)]">expertise</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                Elevating Exhibition Management <br className="hidden md:block" />
+                <span className="text-[var(--primary)]">in Saudi Arabia</span>
               </h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                From concept and stand build to B2B matchmaking and lead capture — we deliver standout brand
-                presence at the Kingdom&apos;s most competitive trade shows.
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed">
+                As a fully integrated exhibition management company, we provide end-to-end services for B2B trade shows and international pavilions. From securing premium floor space at <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Riyadh&apos;s RICEC</Link> to breathtaking <Link href="/services/event-production" className="text-[var(--primary)] hover:underline font-semibold">custom booth design</Link> and <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-semibold">Vision 2030</Link> alignments, our team ensures your brand commands attention.
               </p>
             </div>
 
@@ -315,9 +330,8 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* ── LEAD FORM / EXPO ENQUIRY ── */}
-        <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

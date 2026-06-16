@@ -288,19 +288,34 @@ export default function EventProductionPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/riyadh_summit_people.webp')" }} aria-label="Event production showcase">
+          <div aria-hidden className="absolute inset-0 bg-neutral-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Technical Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Stage Engineering</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Technical Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Stage Engineering</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Technical Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #10b981' }}>Stage Engineering</span>
+            </div>
+          </div>
+        </section>
+
         {/* ── Services Grid ── */}
         <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                In-House Capabilities
+                Saudi Arabia&apos;s Leading Technical Production
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Production <span className="text-[var(--primary)]">capabilities</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                In-House Production <span className="text-[var(--primary)]">Capabilities</span>
               </h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                Every technical discipline under one roof — from structural stage fabrication to broadcast-grade live streaming.
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+                As a premier technical partner for <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-semibold">Vision 2030</Link> events, we maintain every technical discipline under one roof — from structural stage fabrication to broadcast-grade live streaming. Whether supporting <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-semibold">large-scale conferences in Riyadh</Link> or executing complex AV setups for <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">remote desert festivals in AlUla</Link>, we guarantee flawless execution.
               </p>
             </div>
 
@@ -364,9 +379,8 @@ export default function EventProductionPage() {
         </section>
 
         {/* ── LEAD FORM / QUOTE ── */}
-        <section id="quote" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="quote" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_corporate_gala.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

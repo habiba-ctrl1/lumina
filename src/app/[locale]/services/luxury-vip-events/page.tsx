@@ -195,8 +195,8 @@ export default function LuxuryVIPEventsPage() {
           title="VIP & Private Event Management"
           titleHighlight="Saudi Arabia"
           subtitle="A specialist VIP event management team for royal families, government delegations, and private clients — discreet, white-glove experiences from private concerts and yacht events to bespoke desert gatherings in AlUla."
-          backgroundImage="/services/luxury_vip_majlis.webp"
-          imageAlt="VIP and private event management Saudi Arabia — private majlis reception with Arabic coffee service"
+          backgroundImage="/services/premium_luxury_vip_hero.png"
+          imageAlt="Exclusive luxury private VIP event in Saudi Arabia at night"
           badge="VIP & Private Events"
           enableParallax
           breadcrumbs={[
@@ -245,6 +245,21 @@ export default function LuxuryVIPEventsPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/gallery_charity_gala.webp')" }} aria-label="Luxury event visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-[#131310]/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-gold-300 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Absolute Discretion</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #fcd34d' }}>Bespoke Luxury</span>
+              <span className="text-gold-300 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Absolute Discretion</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #fcd34d' }}>Bespoke Luxury</span>
+              <span className="text-gold-300 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Absolute Discretion</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #fcd34d' }}>Bespoke Luxury</span>
+            </div>
+          </div>
+        </section>
+
         {/* ── Services Grid ── */}
         <section className="py-24 md:py-28 bg-white bg-glow-top">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -252,12 +267,12 @@ export default function LuxuryVIPEventsPage() {
               <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700 mb-4">
                 <span className="w-5 h-px bg-gold-400" /> The VIP Division
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Bespoke <span className="text-gold-700">experiences</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                Curating Bespoke <br className="hidden md:block" />
+                <span className="text-gold-700">VIP Experiences</span>
               </h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                Discreet, white-glove planning for the Kingdom&apos;s most discerning clients — every detail
-                anticipated, every confidence kept.
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed">
+                As Saudi Arabia&apos;s premier luxury concierge and VIP event planner, we deliver discreet, white-glove planning for the Kingdom&apos;s most discerning clients. From private royal gatherings and <Link href="/services/destination-events" className="text-gold-700 hover:underline font-semibold">desert retreats in AlUla</Link> to securing exclusive venues in <Link href="/locations/riyadh" className="text-gold-700 hover:underline font-semibold">Riyadh&apos;s Diplomatic Quarter</Link>, every detail is anticipated, and every confidence is strictly kept.
               </p>
             </div>
 
@@ -306,8 +321,8 @@ export default function LuxuryVIPEventsPage() {
         </section>
 
         {/* ── PRIVATE CONSULTATION / LEAD FORM (exclusive obsidian band) ── */}
-        <section id="private-consultation" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #131310 0%, #1c1a14 55%, #2a251a 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-gold-400/[0.06] pointer-events-none" />
+        <section id="private-consultation" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/luxury_vip_majlis.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(19,19,16,0.95) 0%, rgba(28,26,20,0.92) 55%, rgba(42,37,26,0.95) 100%)" }} />
           <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-gold-400/[0.04] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

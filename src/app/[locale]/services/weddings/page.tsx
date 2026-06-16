@@ -274,11 +274,15 @@ export default function WeddingsPage() {
                 </div>
               </div>
               <div className="space-y-8">
-                <h2 className="text-2xl md:text-4xl font-sans text-slate-900 leading-tight font-bold">
+                <span className="section-label mb-4 flex">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                  Saudi Arabia&apos;s Premier Wedding Planner
+                </span>
+                <h2 className="text-3xl md:text-5xl font-sans text-slate-900 leading-tight font-bold">
                   Crafting the Best <br/><span className="text-[var(--primary)]">Wedding Experience</span> in Riyadh
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <strong className="text-slate-900">Ritz-Carlton Riyadh</strong>, <strong className="text-slate-900">Four Seasons</strong>, and the iconic <strong className="text-slate-900">Al-Khayala</strong> venues.
+                  As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
                 </p>
                 <div className="grid grid-cols-2 gap-10 pt-8">
                   <div>
@@ -311,6 +315,21 @@ export default function WeddingsPage() {
               <div className="text-sm text-gray-500 font-light ">
                 &quot;Award-winning planning excellence for the Kingdom&apos;s elite.&quot;
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/luxury_wedding_table_setting.webp')" }} aria-label="Wedding visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Bespoke Elegance</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #C5A880' }}>Royal Celebrations</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Bespoke Elegance</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #C5A880' }}>Royal Celebrations</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Bespoke Elegance</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #C5A880' }}>Royal Celebrations</span>
             </div>
           </div>
         </section>
@@ -490,9 +509,8 @@ export default function WeddingsPage() {
         </section>
 
         {/* ── LEAD FORM / WEDDING ENQUIRY ── */}
-        <section id="wedding-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="wedding-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_wedding_reception.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

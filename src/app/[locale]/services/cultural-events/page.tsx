@@ -143,8 +143,8 @@ export default function SeasonalEventsPage() {
           title="Cultural Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering authentic cultural experiences across Riyadh, Jeddah, and beyond."
-          backgroundImage="/services/majlis_gathering_people.webp"
-          imageAlt="Cultural events Saudi Arabia — Ramadan and National Day organizer"
+          backgroundImage="/services/premium_cultural_event_hero.png"
+          imageAlt="Luxury Saudi cultural event and celebration at night with traditional Majlis"
           badge="Cultural Events | التراث السعودي"
           enableParallax
           breadcrumbs={[
@@ -196,11 +196,36 @@ export default function SeasonalEventsPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/majlis_gathering_people.webp')" }} aria-label="Cultural event visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Cultural Heritage</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Saudi Tradition</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Cultural Heritage</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Saudi Tradition</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Cultural Heritage</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Saudi Tradition</span>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Occasions */}
         <section className="py-32 bg-white relative">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-24">
-              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 mb-8 font-bold">Honoring Our <span className="text-[var(--primary)]">Traditions</span></h2>
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                Saudi Arabia&apos;s Premier Heritage Organizer
+              </span>
+              <h2 className="text-3xl md:text-4xl font-sans text-slate-900 mb-6 font-bold">
+                Elevating Cultural Events <br className="hidden md:block" />
+                <span className="text-[var(--primary)]">in Saudi Arabia</span>
+              </h2>
+              <p className="text-gray-500 max-w-3xl mx-auto text-sm leading-relaxed mb-8">
+                As a fully integrated cultural event management company, we provide end-to-end services for religious festivals, public celebrations, and national holidays. From breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">AlUla destination activations</Link> to <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-semibold">Vision 2030</Link> national alignments, our team ensures every occasion authentically honors our Saudi heritage.
+              </p>
               <div className="w-24 h-px bg-[var(--primary-dark)]/30 mx-auto" />
             </div>
 
@@ -328,9 +353,8 @@ export default function SeasonalEventsPage() {
         </section>
 
         {/* ── LEAD FORM / CELEBRATION ENQUIRY ── */}
-        <section id="celebration-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="celebration-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/alula_gala_people.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

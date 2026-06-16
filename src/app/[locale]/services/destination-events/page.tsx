@@ -204,8 +204,8 @@ export default function DestinationEventsPage() {
           title="Destination Event Planning"
           titleHighlight="in Saudi Arabia"
           subtitle="Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
-          backgroundImage="/services/alula_gala_people.webp"
-          imageAlt="Destination events Saudi Arabia — AlUla, NEOM, Red Sea"
+          backgroundImage="/services/premium_destination_event_hero.png"
+          imageAlt="Luxury destination event in AlUla Saudi Arabia with desert mountains and dining setup"
           enableParallax
           badge="Destination Events"
           breadcrumbs={[
@@ -244,15 +244,33 @@ export default function DestinationEventsPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/hero_bg.webp')" }} aria-label="Destination event visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-[#0B0C10]/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-sand-50 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Extraordinary Journeys</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #d97706' }}>Kingdom Destinations</span>
+              <span className="text-sand-50 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Extraordinary Journeys</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #d97706' }}>Kingdom Destinations</span>
+              <span className="text-sand-50 text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Extraordinary Journeys</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px #d97706' }}>Kingdom Destinations</span>
+            </div>
+          </div>
+        </section>
+
         {/* ── Destination Showcase ── */}
         <section className="py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-4xl font-display text-ink-950 mb-4">
+              <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-600 mb-4 uppercase">
+                <span className="w-5 h-px bg-gold-500" /> Saudi Arabia&apos;s Premier Destination Events
+              </span>
+              <h2 className="text-3xl md:text-5xl font-display text-ink-950 mb-6">
                 Extraordinary <span className="text-gold-600 italic">Settings</span>
               </h2>
-              <p className="text-slate-500 text-sm max-w-2xl mx-auto">
-                Each destination in the Kingdom offers a unique story, an unforgettable backdrop, and a logistical challenge only we can master.
+              <p className="text-slate-500 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+                As the Kingdom&apos;s leading destination event management company, we transform remote landscapes into breathtaking venues. From <Link href="/locations/alula" className="text-gold-600 hover:underline font-semibold">desert glamping in AlUla</Link> and <Link href="/services/luxury-vip-events" className="text-gold-600 hover:underline font-semibold">VIP Red Sea yacht experiences</Link>, to executing visionary <Link href="/portfolio/vision-2030" className="text-gold-600 hover:underline font-semibold">Vision 2030</Link> corporate summits in NEOM — we deliver five-star production where others see only logistical challenges.
               </p>
             </div>
 
@@ -398,9 +416,8 @@ export default function DestinationEventsPage() {
         </section>
 
         {/* ── LEAD FORM / DESTINATION ENQUIRY ── */}
-        <section id="destination-enquiry" className="py-24 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0B0C10 0%, #181920 55%, #0B0C10 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-gold-400/[0.06] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-gold-400/[0.04] pointer-events-none" />
+        <section id="destination-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_wedding_reception.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(11,12,16,0.95) 0%, rgba(24,25,32,0.92) 55%, rgba(11,12,16,0.95) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">

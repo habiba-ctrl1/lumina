@@ -438,8 +438,8 @@ export default function CorporateEventsPage() {
           title="Corporate Event Management"
           titleHighlight="in Saudi Arabia"
           subtitle="A corporate event organizer in Saudi Arabia for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's leading venues."
-          backgroundImage="/services/alkhobar_corporate_people.webp"
-          imageAlt="Corporate event management Saudi Arabia — executive summit at KAFD Riyadh"
+          backgroundImage="/services/premium_corporate_summit_hero.png"
+          imageAlt="Luxury corporate executive summit in Riyadh Saudi Arabia with VIP seating and LED stage"
           enableParallax
           badge="فعاليات الشركات | Corporate Events"
           breadcrumbs={[
@@ -510,8 +510,8 @@ export default function CorporateEventsPage() {
                   Saudi Arabia&apos;s Premier Corporate Event Architects
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  From AGM to Grand Gala —<br />
-                  <span className="text-[var(--primary)]">flawless, every time.</span>
+                  Elevating Corporate Event Management <br />
+                  <span className="text-[var(--primary)]">in Saudi Arabia.</span>
                 </h2>
                 <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
                   <p>
@@ -521,8 +521,7 @@ export default function CorporateEventsPage() {
                     <strong className="text-neutral-900">Annual General Meetings</strong> for listed Saudi
                     companies, to 5,000-delegate summits at the{" "}
                     <strong className="text-neutral-900">King Abdullah Financial District (KAFD)</strong> and
-                    Riyadh International Convention and Exhibition Center{" "}
-                    <strong className="text-neutral-900">(RICEC)</strong>.
+                    <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-medium"> Riyadh International Convention and Exhibition Center (RICEC)</Link>.
                   </p>
                   <p>
                     Our clients include <strong className="text-neutral-900">Saudi Aramco</strong>,{" "}
@@ -533,11 +532,11 @@ export default function CorporateEventsPage() {
                     <strong className="text-neutral-900">Red Sea Project</strong>, and{" "}
                     <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — all of
                     whom demand zero margin for error, full bilingual capability, and alignment with{" "}
-                    <strong className="text-neutral-900">Saudi Vision 2030</strong> objectives.
+                    <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-medium">Saudi Vision 2030</Link> objectives.
                   </p>
                   <p>
                     As a fully accredited{" "}
-                    <strong className="text-neutral-900">Professional Conference Organizer (PCO)</strong>{" "}
+                    <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-medium">Professional Conference Organizer (PCO)</Link>{" "}
                     affiliated with IAPCO and MPI, we manage the complete event lifecycle — from GEA
                     permit acquisition and venue negotiation through to post-event analytics and media
                     distribution — under one unified, accountable team.
@@ -563,6 +562,21 @@ export default function CorporateEventsPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }} aria-label="Corporate event visual showcase">
+          <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Corporate Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Corporate Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
+              <span className="text-white text-7xl md:text-9xl font-black uppercase tracking-widest mx-8">Corporate Excellence</span>
+              <span className="text-transparent text-7xl md:text-9xl font-black uppercase tracking-widest mx-8" style={{ WebkitTextStroke: '2px white' }}>Vision 2030</span>
             </div>
           </div>
         </section>
@@ -708,9 +722,8 @@ export default function CorporateEventsPage() {
         </section>
 
         {/* ── LEAD FORM / PROPOSAL ── */}
-        <section id="proposal" className="py-24 md:py-28 bg-[#06302296] relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0a3d2c 0%, #064E3B 55%, #0D6B4E 100%)" }}>
-          <div className="absolute -top-24 -right-24 w-[460px] h-[460px] rounded-full bg-white/[0.04] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-white/[0.03] pointer-events-none" />
+        <section id="proposal" className="py-24 md:py-28 bg-fixed bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: "url('/services/gallery_corporate_gala.webp')" }}>
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">
