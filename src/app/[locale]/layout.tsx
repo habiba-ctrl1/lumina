@@ -161,11 +161,28 @@ const organizationSchema = {
     "Premier event management company in Saudi Arabia specializing in corporate events, exhibitions, luxury weddings, conferences, and event production across Riyadh, Jeddah, and AlUla.",
   telephone: "+966501234567",
   email: "infosaudieventmanagement@gmail.com",
+  priceRange: "$$$$",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Riyadh",
     addressCountry: "SA",
     addressRegion: "Riyadh Province",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 24.7136,
+    longitude: 46.6753,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "184",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
   },
   areaServed: [
     {
@@ -250,6 +267,7 @@ const organizationSchema = {
     "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
     "https://twitter.com/saudieventmgmt",
     "https://linkedin.com/company/saudieventmanagement",
+    "https://www.facebook.com/saudieventmanagement",
   ],
 };
 
@@ -262,7 +280,15 @@ const websiteSchema = {
   publisher: {
     "@id": "https://saudieventmanagement.com/#organization",
   },
-  inLanguage: ["en-US", "ar-SA"]
+  inLanguage: ["en-US", "ar-SA"],
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://saudieventmanagement.com/blog?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────

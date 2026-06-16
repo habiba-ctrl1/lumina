@@ -14,8 +14,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isAr = locale === "ar";
 
   return {
+    // AR title already carries the Arabic brand, so use `absolute` to bypass the
+    // layout's "%s | Saudi Event Management" template (avoids a doubled brand).
+    // EN stays a plain string so the template appends the brand once.
     title: isAr
-      ? "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية"
+      ? { absolute: "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية" }
       : "Event Management Company in Saudi Arabia",
     description: isAr
       ? "شركة إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات في الرياض وجدة ومكة والعلا."
@@ -270,81 +273,14 @@ function InternalLinkHub() {
 // ─────────────────────────────────────────────────────────────────────────────
 // Page-level schema (supplements layout.tsx global schema)
 // ─────────────────────────────────────────────────────────────────────────────
+// Page-level schema only. Organization (#organization) and WebSite (#website)
+// are defined once in layout.tsx — re-declaring them here created two nodes with
+// the same @id but different properties, which confuses entity resolution. The
+// homepage now contributes only page-specific nodes: the hero VideoObject, the
+// FAQ (synced 1:1 with the visible FAQ section), and high-level Service entities.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://saudieventmanagement.com/#organization",
-      name: "Saudi Event Management",
-      image: "https://saudieventmanagement.com/hero_bg.webp",
-      url: "https://saudieventmanagement.com",
-      telephone: "+966501234567",
-      priceRange: "$$$$",
-      description:
-        "Saudi Arabia's premier event management agency specializing in custom-made luxury weddings and high-end corporate galas across Riyadh, Jeddah, and AlUla.",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Olaya District",
-        addressLocality: "Riyadh",
-        addressRegion: "Riyadh Province",
-        postalCode: "12211",
-        addressCountry: "SA",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 24.7136,   // ← fixed: was New York coords (40.7128, -74.0060)
-        longitude: 46.6753,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "184",
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        opens: "00:00",
-        closes: "23:59",
-      },
-      sameAs: [
-        "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
-        "https://www.twitter.com/saudieventmgmt",
-        "https://linkedin.com/company/saudieventmanagement",
-        "https://www.facebook.com/saudieventmanagement",
-      ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Event Management Services",
-        itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Corporate Event Management", url: "https://saudieventmanagement.com/services/corporate-events" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Luxury Wedding Planning", url: "https://saudieventmanagement.com/services/weddings" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conference Management", url: "https://saudieventmanagement.com/services/conferences" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Exhibition Management", url: "https://saudieventmanagement.com/services/exhibitions" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Destination Events", url: "https://saudieventmanagement.com/services/destination-events" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Luxury VIP Events", url: "https://saudieventmanagement.com/services/luxury-vip-events" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Event Production", url: "https://saudieventmanagement.com/services/event-production" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cultural Events", url: "https://saudieventmanagement.com/services/cultural-events" } },
-        ],
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://saudieventmanagement.com/#website",
-      url: "https://saudieventmanagement.com",
-      name: "Saudi Event Management",
-      description: "Saudi Arabia's premier luxury and corporate event management company — Riyadh, Jeddah, Dammam, AlUla, NEOM.",
-      publisher: { "@id": "https://saudieventmanagement.com/#organization" },
-      inLanguage: ["en-US", "ar-SA"],
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://saudieventmanagement.com/blog?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
     {
       // Makes the hero background video eligible for Google video indexing.
       // (Update uploadDate when the showreel is replaced.)
@@ -363,25 +299,14 @@ const jsonLd = {
       publisher: { "@id": "https://saudieventmanagement.com/#organization" },
     },
     {
+      // Synced 1:1 with the visible FAQ section (homeFaqs) so the structured
+      // data always matches on-page content — a Google rich-results requirement.
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "What areas in KSA do you serve?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Saudi Event Management provides premium event services across Riyadh, Jeddah, Dammam, and AlUla, specializing in corporate, government, and luxury private events."
-          }
-        },
-        {
-          "@type": "Question",
-          name: "Why choose Saudi Event Management?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "We are Saudi Arabia's premier event management agency with a network of over 200 premium vendors and a track record of producing over 500 successful luxury and corporate events."
-          }
-        }
-      ]
+      mainEntity: homeFaqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
     {
       "@type": "Service",
