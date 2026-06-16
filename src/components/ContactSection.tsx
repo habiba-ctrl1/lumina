@@ -18,7 +18,7 @@ export default function ContactSection() {
   `;
 
   return (
-    <SectionWrapper id="contact" className="bg-[var(--surface-warm)] bg-dot-grid relative overflow-hidden">
+    <SectionWrapper id="contact" className="relative overflow-hidden">
       <div className="relative z-10 py-10 max-w-6xl mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
@@ -31,14 +31,14 @@ export default function ContactSection() {
             className="lg:col-span-5"
           >
             <div className="mb-10">
-              <span className="section-label mb-6">
-                <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              <span className="section-label mb-6 !text-amber-300">
+                <span className="w-6 h-0.5 rounded-full bg-amber-300 opacity-60" />
                 Contact
               </span>
-              <h2 className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold" style={{ letterSpacing: "-0.025em" }}>
+              <h2 className="text-white text-3xl md:text-4xl mb-5 font-semibold" style={{ letterSpacing: "-0.025em" }}>
                 {t("title")}
               </h2>
-              <p className="text-neutral-500 text-[16px] leading-relaxed">
+              <p className="text-white/70 text-[16px] leading-relaxed">
                 {t("subtitle")}
               </p>
             </div>
@@ -46,16 +46,15 @@ export default function ContactSection() {
             <div className="space-y-8">
               {/* Headquarters */}
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-white border border-neutral-200/80 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
-                >
-                  <MapPin className="text-[var(--primary)]" size={18} />
+                <div className="w-12 h-12 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center shrink-0 backdrop-blur-sm">
+
+                  <MapPin className="text-amber-300" size={18} />
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-semibold text-neutral-900 mb-2">
+                  <h4 className="text-[13px] font-semibold text-white mb-2">
                     {t("headquarters")}
                   </h4>
-                  <p className="text-neutral-500 text-[14px] leading-relaxed whitespace-pre-line">
+                  <p className="text-white/70 text-[14px] leading-relaxed whitespace-pre-line">
                     {t("headquartersAddress")}
                   </p>
                 </div>
@@ -63,34 +62,32 @@ export default function ContactSection() {
 
               {/* Direct Line */}
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-white border border-neutral-200/80 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
-                >
-                  <Phone className="text-[var(--primary)]" size={18} />
+                <div className="w-12 h-12 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center shrink-0 backdrop-blur-sm">
+
+                  <Phone className="text-amber-300" size={18} />
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-semibold text-neutral-900 mb-2">
+                  <h4 className="text-[13px] font-semibold text-white mb-2">
                     {t("directLine")}
                   </h4>
-                  <p className="text-neutral-500 text-[14px] leading-relaxed">
+                  <p className="text-white/70 text-[14px] leading-relaxed">
                     +966 50 123 4567<br />
-                    <span className="text-neutral-400 text-[12px] mt-1 block">{t("hours")}</span>
+                    <span className="text-white/45 text-[12px] mt-1 block">{t("hours")}</span>
                   </p>
                 </div>
               </div>
 
               {/* Email Inquiries */}
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 bg-white border border-neutral-200/80 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.03)" }}
-                >
-                  <Mail className="text-[var(--primary)]" size={18} />
+                <div className="w-12 h-12 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center shrink-0 backdrop-blur-sm">
+
+                  <Mail className="text-amber-300" size={18} />
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-semibold text-neutral-900 mb-2">
+                  <h4 className="text-[13px] font-semibold text-white mb-2">
                     {t("emailInquiries")}
                   </h4>
-                  <p className="text-neutral-500 text-[14px]">
+                  <p className="text-white/70 text-[14px]">
                     infosaudieventmanagement@gmail.com
                   </p>
                 </div>

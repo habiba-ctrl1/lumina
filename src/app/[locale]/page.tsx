@@ -86,28 +86,41 @@ const whyChoose = [
 
 function WhyChooseSection() {
   return (
-    <section className="bg-white py-24 border-t border-neutral-100" aria-label="Why choose our event management company">
-      <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+    <section
+      className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden"
+      style={{ backgroundImage: "url('/locations/riyadh-hero.webp')" }}
+      aria-label="Why choose our event management company"
+    >
+      {/* Elegant dark overlay so the white text + glass cards read clearly */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.78) 0%, rgba(15,23,42,0.68) 50%, rgba(15,23,42,0.82) 100%)" }}
+      />
+      <div className="relative z-10 container mx-auto px-6 lg:px-8 max-w-7xl">
         <div className="text-center mb-14 max-w-2xl mx-auto">
-          <span className="section-label mx-auto mb-4">
-            <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+          <span className="section-label mx-auto mb-4 !text-amber-300">
+            <span className="w-6 h-0.5 rounded-full bg-amber-300 opacity-60" />
             Why Choose Us
           </span>
-          <h2 className="text-neutral-900 text-3xl md:text-4xl font-semibold mt-4" style={{ letterSpacing: "-0.025em" }}>
-            Why Choose Our <span className="text-[var(--primary)]">Event Management Company in Saudi Arabia</span>
+          <h2 className="text-white text-3xl md:text-4xl font-semibold mt-4" style={{ letterSpacing: "-0.025em" }}>
+            Why Choose Our <span className="text-amber-300">Event Management Company in Saudi Arabia</span>
           </h2>
-          <p className="text-neutral-500 mt-4 text-[15px] leading-relaxed">
+          <p className="text-white/70 mt-4 text-[15px] leading-relaxed">
             A full-service event management company trusted for corporate events, conferences, exhibitions, and weddings across the Kingdom.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {whyChoose.map((r) => (
-            <div key={r.title} className="bg-white border border-neutral-200/80 rounded-2xl p-7 hover:border-[var(--primary)]/40 hover:shadow-lg transition-all duration-300">
-              <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/8 flex items-center justify-center mb-5">
-                <r.icon size={22} className="text-[var(--primary)]" />
+            <div
+              key={r.title}
+              className="bg-white/[0.07] border border-white/15 rounded-2xl p-7 backdrop-blur-md hover:bg-white/[0.12] hover:border-amber-300/40 transition-all duration-300"
+            >
+              <div className="w-12 h-12 rounded-xl bg-amber-300/15 border border-amber-300/20 flex items-center justify-center mb-5">
+                <r.icon size={22} className="text-amber-300" />
               </div>
-              <h3 className="font-semibold text-neutral-900 text-[17px] mb-2" style={{ letterSpacing: "-0.01em" }}>{r.title}</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">{r.desc}</p>
+              <h3 className="font-semibold text-white text-[17px] mb-2" style={{ letterSpacing: "-0.01em" }}>{r.title}</h3>
+              <p className="text-white/65 text-sm leading-relaxed">{r.desc}</p>
             </div>
           ))}
         </div>
@@ -378,7 +391,16 @@ export default async function Home({ params }: PageProps) {
       <Hero />
       <GeoDefinitionBlock />
       <MarqueeStrip />
-      <ContactSection />
+
+      {/* ── Premium parallax band — Get in Touch form over a fixed Saudi backdrop ── */}
+      <div
+        className="relative isolate bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/hero_bg.webp')" }}
+      >
+        <div aria-hidden className="absolute inset-0 bg-slate-900/70" />
+        <ContactSection />
+      </div>
+
       <StatsSection />
       <Services />
       <WhyChooseSection />
