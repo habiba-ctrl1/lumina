@@ -325,6 +325,22 @@ const jsonLd = {
         { "@type": "Thing", name: "Zaffa", sameAs: "https://en.wikipedia.org/wiki/Zaffa" },
         { "@type": "Thing", name: "Saudi Arabia", sameAs: "https://en.wikipedia.org/wiki/Saudi_Arabia" },
       ],
+      primaryImageOfPage: {
+        "@id": "https://saudieventmanagement.com/services/royal-weddings#primaryimage",
+      },
+    },
+
+    /* ── 8. ImageObject (primary hero — enriches image search & WebPage) ── */
+    {
+      "@type": "ImageObject",
+      "@id": "https://saudieventmanagement.com/services/royal-weddings#primaryimage",
+      url: "https://saudieventmanagement.com/services/wedding_stage_backdrop_decor.webp",
+      contentUrl: "https://saudieventmanagement.com/services/wedding_stage_backdrop_decor.webp",
+      width: 1200,
+      height: 630,
+      caption:
+        "Royal wedding stage and floral backdrop at a five-star Saudi Arabian palace venue — designed by Saudi Event Management.",
+      representativeOfPage: true,
     },
   ],
 };
@@ -607,6 +623,7 @@ export default function RoyalWeddingsPage() {
             { label: "Royal Weddings" },
           ]}
           minHeight="large"
+          enableParallax
           trustElements={[
             { value: "15+", label: "Years of Royal Expertise" },
             { value: "500+", label: "Royal Celebrations Delivered" },
@@ -952,6 +969,49 @@ export default function RoyalWeddingsPage() {
           </div>
         </section>
 
+        {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
+        <div
+          className="relative isolate bg-fixed bg-cover bg-center"
+          style={{ backgroundImage: "url('/services/wedding_stage_backdrop_decor.webp')" }}
+          aria-label="Royal wedding philosophy"
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(2,17,11,0.86) 0%, rgba(2,17,11,0.74) 50%, rgba(2,17,11,0.9) 100%)",
+            }}
+          />
+          <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 py-28 md:py-36 text-center">
+            <span className="text-[#E5A100] text-xs uppercase tracking-[0.25em] font-bold mb-7 block">
+              The Saudi Event Management Standard
+            </span>
+            <p
+              className="text-white text-2xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.25]"
+              style={{ letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            >
+              A royal wedding is measured not in its scale, but in the{" "}
+              <span className="text-[#E5A100]">grace of every ceremony</span> — from the
+              first Zaffa drumbeat to the final Walima farewell.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/consultation"
+                className="inline-block px-10 py-4 bg-[var(--primary)] text-white font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all rounded-xl text-sm shadow-[0_4px_18px_rgba(0,0,0,0.35)]"
+              >
+                Begin Your Royal Consultation
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-block px-10 py-4 border border-white/30 text-white font-semibold uppercase tracking-widest hover:bg-white/10 transition-all text-sm rounded-xl"
+              >
+                View Our Portfolio
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* ── ARABIC AUTHORITY SECTION ── */}
         <section className="py-28 bg-emerald-950 text-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -1097,9 +1157,10 @@ export default function RoyalWeddingsPage() {
         {/* ── INTERNAL LINKING ── */}
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-sm font-bold text-slate-900 mb-8 uppercase tracking-widest">
-              Related Services
-            </h3>
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
+              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 {

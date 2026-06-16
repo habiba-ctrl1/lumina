@@ -123,9 +123,9 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
   );
 }
 
-export default function Services() {
+export default function Services({ showAllServicesLink = true }: { showAllServicesLink?: boolean }) {
   const t = useTranslations("services");
-  
+
   return (
     <SectionWrapper className="bg-neutral-50/60 relative" id="services">
       <div className="relative z-10 py-10">
@@ -172,6 +172,19 @@ export default function Services() {
             <ServiceCard key={service.id} service={service} index={index} t={t} />
           ))}
         </div>
+
+        {/* View all services */}
+        {showAllServicesLink && (
+          <div className="mt-12 text-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-[var(--primary)] font-semibold text-sm border border-[var(--primary)]/30 rounded-full px-7 py-3.5 hover:bg-[var(--primary)]/5 transition-colors"
+            >
+              View All Event Management Services
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );

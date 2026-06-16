@@ -395,7 +395,7 @@ export default async function Home({ params }: PageProps) {
       {/* ── Premium parallax band — Get in Touch form over a fixed Saudi backdrop ── */}
       <div
         className="relative isolate bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: "url('/hero_bg.webp')" }}
+        style={{ backgroundImage: "url('/homepage/form.jpg')" }}
       >
         <div aria-hidden className="absolute inset-0 bg-slate-900/70" />
         <ContactSection />

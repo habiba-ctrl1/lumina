@@ -885,9 +885,10 @@ export default async function PseoServicePage({
         {/* ── Related Services ── */}
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">
-              Related Services
-            </h3>
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
+              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.relatedServices.map((rel) => (
                 <Link

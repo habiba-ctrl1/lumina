@@ -315,15 +315,45 @@ export default function WeddingsPage() {
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-32 bg-white relative">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-20">
-            <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-8 block">Our Expertise</span>
-            <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">Social Event <span className="text-[var(--primary)]">Planning</span></h2>
+        {/* Our Expertise — Social Event Planning (fixed-background parallax banner) */}
+        <section
+          className="relative py-32 bg-fixed bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop')" }}
+        >
+          {/* Dark elegant overlay */}
+          <div aria-hidden className="absolute inset-0 bg-slate-900/60" />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
+
+          {/* Header */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-[#C5A880] text-xs uppercase tracking-[0.28em] font-bold mb-6 block"
+            >
+              Our Expertise
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl md:text-5xl font-sans text-white font-bold leading-tight"
+              style={{ letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
+            >
+              Social Event <span className="text-[#C5A880]">Planning</span>
+            </motion.h2>
+            <p className="text-white/75 mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+              From intimate Henna nights to grand receptions — eight specialised disciplines that bring
+              every Saudi celebration to life.
+            </p>
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Cards */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Heart, title: "Engagement Party", desc: "Elegant engagement celebration planning in KSA for intimate or grand gatherings." },
                 { icon: Sparkles, title: "Henna Nights", desc: "Authentic henna party organizer in Saudi Arabia with a modern luxurious twist." },
@@ -333,14 +363,21 @@ export default function WeddingsPage() {
                 { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
                 { icon: Gift, title: "Floral Design", desc: "Custom-made arrangements from the best wedding decoration company in Saudi Arabia." },
-              ].map((service: any, i: number) => (
-                <div key={i} className="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-200 group">
-                  <div className="w-16 h-16 bg-gold-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--primary)] transition-colors">
-                    <service.icon size={28} className="text-[var(--primary)] group-hover:text-white transition-colors" />
+              ].map((service, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: (i % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/15 hover:border-[#C5A880]/60 hover:bg-white/[0.16] transition-all duration-500 group"
+                >
+                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[var(--primary)] transition-colors">
+                    <service.icon size={26} className="text-[#C5A880] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-sans font-bold text-slate-900 mb-8">{service.title}</h3>
-                  <p className="text-gray-500 text-sm font-normal leading-relaxed">{service.desc}</p>
-                </div>
+                  <h3 className="text-lg font-sans font-bold text-white mb-3">{service.title}</h3>
+                  <p className="text-white/70 text-sm font-normal leading-relaxed">{service.desc}</p>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -364,7 +401,7 @@ export default function WeddingsPage() {
                   { title: "Price guide for Saudi weddings 2025", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
                   { title: "Wedding vendor directory Saudi Arabia", desc: "Our exclusive network of the Kingdom's finest caterers, designers, and entertainers." },
                   { title: "Saudi wedding trends 2025", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
-                ].map((post: any, idx: number) => (
+                ].map((post, idx) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-normal leading-relaxed">{post.desc}</p>
@@ -529,7 +566,7 @@ export default function WeddingsPage() {
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
                 { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Saudi Event Management is frequently called the best wedding company Saudi Arabia." },
                 { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }
-              ].map((faq: any, i: number) => (
+              ].map((faq, i) => (
                 <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200">
                   <h3 className="text-lg font-bold text-slate-900 mb-3">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>
@@ -542,7 +579,10 @@ export default function WeddingsPage() {
         {/* ── Related Services ── */}
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Related Services</h3>
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
+              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { title: "Royal Weddings", slug: "royal-weddings", desc: "Nikah, Walima, Zaffa, and Laylat al-Henna — ceremonial excellence for distinguished Saudi families." },

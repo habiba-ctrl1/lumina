@@ -503,9 +503,10 @@ export default function LuxuryVIPEventsPage() {
         {/* ── Related Services ── */}
         <section className="py-20 bg-[var(--surface-warm)] border-t border-gold-200/60">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">
-              Related Services
-            </h2>
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">Related Services</h2>
+              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { title: "Destination Events", slug: "destination-events", desc: "AlUla, NEOM, Red Sea coastal — breathtaking locations for extraordinary events." },

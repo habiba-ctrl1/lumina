@@ -72,7 +72,9 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-[14px] font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.01em" }}>
-              {t("servicesTitle")}
+              <Link href="/services" className="hover:text-[var(--primary)] transition-colors duration-200">
+                {t("servicesTitle")}
+              </Link>
             </h4>
             <ul className="space-y-3">
               {[
@@ -84,6 +86,7 @@ export default function Footer() {
                 { name: "Luxury VIP Events", href: "/services/luxury-vip-events" },
                 { name: "Destination Events", href: "/services/destination-events" },
                 { name: "Cultural Events", href: "/services/cultural-events" },
+                { name: "All Event Management Services", href: "/services" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link

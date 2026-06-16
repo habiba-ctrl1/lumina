@@ -514,7 +514,10 @@ export default function ExhibitionsPage() {
         {/* ── Related Services ── */}
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Related Services</h2>
+            <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">Related Services</h2>
+              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
                 { title: "Conference Management", slug: "conferences", desc: "B2B summit planning, PCO services, and hybrid conference management." },
