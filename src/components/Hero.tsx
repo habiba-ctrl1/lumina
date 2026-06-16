@@ -74,6 +74,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          poster="/hero_bg.webp"
           className="pointer-events-none"
           style={{ 
             width: "100vw", 

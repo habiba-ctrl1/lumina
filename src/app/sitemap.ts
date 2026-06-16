@@ -207,6 +207,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: freq,
     priority,
+    // Attach the hero showreel to the homepage entry so Google can discover and
+    // index it (paired with the VideoObject schema on the page itself).
+    ...(route === ''
+      ? {
+          videos: [
+            {
+              title:
+                'Saudi Event Management — Luxury Event Production in Saudi Arabia',
+              thumbnail_loc: `${BASE}/hero_bg.webp`,
+              description:
+                'Showreel of luxury weddings, royal ceremonies, corporate galas, and exhibitions produced by Saudi Event Management across Riyadh, Jeddah, Dammam, and AlUla.',
+              content_loc: `${BASE}/hero-video1.mp4`,
+            },
+          ],
+        }
+      : {}),
   }));
 
   const allEntries = [

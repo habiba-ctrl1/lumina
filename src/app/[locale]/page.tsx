@@ -346,6 +346,23 @@ const jsonLd = {
       },
     },
     {
+      // Makes the hero background video eligible for Google video indexing.
+      // (Update uploadDate when the showreel is replaced.)
+      "@type": "VideoObject",
+      "@id": "https://saudieventmanagement.com/#hero-video",
+      name: "Saudi Event Management — Luxury Event Production in Saudi Arabia",
+      description:
+        "Showreel of luxury weddings, royal ceremonies, corporate galas, and exhibitions produced by Saudi Event Management across Riyadh, Jeddah, Dammam, and AlUla.",
+      thumbnailUrl: ["https://saudieventmanagement.com/hero_bg.webp"],
+      uploadDate: "2026-06-01T09:00:00+03:00",
+      duration: "PT5S",
+      contentUrl: "https://saudieventmanagement.com/hero-video1.mp4",
+      url: "https://saudieventmanagement.com/",
+      isFamilyFriendly: true,
+      inLanguage: "en",
+      publisher: { "@id": "https://saudieventmanagement.com/#organization" },
+    },
+    {
       "@type": "FAQPage",
       mainEntity: [
         {
