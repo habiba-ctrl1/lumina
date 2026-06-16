@@ -405,7 +405,20 @@ export default async function Home({ params }: PageProps) {
       <Services />
       <WhyChooseSection />
       <FilterablePortfolio />
-      <HowItWorks />
+
+      {/* ── Premium parallax band — Our Methodology over a fixed process backdrop ── */}
+      <div
+        className="relative isolate bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: "url('/process-parallax.webp')" }}
+      >
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.72) 50%, rgba(15,23,42,0.85) 100%)" }}
+        />
+        <HowItWorks />
+      </div>
+
       <IndustriesSection />
       <CityPresence />
       <MapClient />
