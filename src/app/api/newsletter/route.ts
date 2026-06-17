@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { resend, isResendConfigured, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/resend';
 import { logActivity } from '@/lib/logger';
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY || 're_missing_key');
     const { email } = await request.json();
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -17,12 +16,13 @@ export async function POST(request: Request) {
     await logActivity('Newsletter Subscription', `New subscriber: ${email}`, email);
 
     // Send emails via Resend (admin notice + customer welcome).
-    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'missing-key') {
+    if (isResendConfigured) {
       try {
         // Admin notification
         await resend.emails.send({
-          from: 'Saudi Event Management <info@saudieventmanagement.com>',
-          to: ['infosaudieventmanagement@gmail.com'],
+          from: FROM_EMAIL,
+          to: [ADMIN_EMAIL],
+          replyTo: email,
           subject: `New Newsletter Subscriber: ${email}`,
           html: `
             <div style="font-family: sans-serif; padding: 30px; border: 1px solid #f0f0f0; border-radius: 20px;">
@@ -34,8 +34,9 @@ export async function POST(request: Request) {
 
         // Customer welcome / confirmation
         await resend.emails.send({
-          from: 'Saudi Event Management <info@saudieventmanagement.com>',
+          from: FROM_EMAIL,
           to: [email],
+          replyTo: ADMIN_EMAIL,
           subject: 'Welcome to Saudi Event Management',
           html: `
             <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px;">
