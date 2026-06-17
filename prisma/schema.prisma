@@ -3,8 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  // Provided automatically by the Vercel ↔ Supabase integration.
+  // Pooled connection (pgbouncer) — used by the app at runtime.
+  url       = env("POSTGRES_PRISMA_URL")
+  // Direct (non-pooled) connection — used by `prisma migrate` / `db push`.
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
