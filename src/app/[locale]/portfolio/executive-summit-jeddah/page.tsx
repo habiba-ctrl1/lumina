@@ -29,15 +29,8 @@ export default function ExecutiveSummitJeddah() {
 
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-blue-50">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/portfolio/jeddah-summit.webp"
-            alt="Jeddah Executive Summit"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-80"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/portfolio/jeddah-summit.webp')" }}>
+          
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent" />
         </div>
         

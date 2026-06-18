@@ -29,15 +29,8 @@ export default function DammamCorporateSeminar() {
 
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center bg-neutral-900">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/portfolio/dammam-seminar.webp" 
-            alt="Dammam Corporate Seminar" 
-            fill
-            sizes="100vw"
-            className="object-cover opacity-80"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/portfolio/dammam-seminar.webp')" }}>
+          
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/50" />
         </div>
         

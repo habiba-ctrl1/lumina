@@ -29,15 +29,8 @@ export default function GrandWeddingCeremony() {
 
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/wedding_hall_grand_entrance.webp"
-            alt="Grand Wedding Ceremony"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-80"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/wedding_hall_grand_entrance.webp')" }}>
+          
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">

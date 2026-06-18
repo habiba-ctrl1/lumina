@@ -29,15 +29,8 @@ export default function MakkahVipRetreat() {
 
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/portfolio/makkah-vip-retreat.webp"
-            alt="Makkah VIP Retreat — private luxury retreat event management in Makkah, Saudi Arabia"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-80"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/portfolio/makkah-vip-retreat.webp')" }}>
+          
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
         </div>
         

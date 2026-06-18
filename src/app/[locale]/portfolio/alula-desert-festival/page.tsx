@@ -29,15 +29,8 @@ export default function AlUlaDesertFestival() {
 
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/portfolio/alula-festival.webp" 
-            alt="AlUla Desert Festival" 
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/portfolio/alula-festival.webp')" }}>
+          
           <div className="absolute inset-0 bg-neutral-900/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/20" />
         </div>

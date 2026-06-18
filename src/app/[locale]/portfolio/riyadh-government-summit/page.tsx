@@ -29,15 +29,8 @@ export default function RiyadhGovernmentSummit() {
 
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/riyadh_summit_people.webp"
-            alt="Riyadh Government Summit"
-            fill
-            sizes="100vw"
-            className="object-cover opacity-80"
-            priority
-          />
+        <div className="absolute inset-0 z-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: "url('/riyadh_summit_people.webp')" }}>
+          
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white to-white" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
