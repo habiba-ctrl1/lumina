@@ -253,7 +253,7 @@ export default async function RoyalRiyadhWeddingCaseStudy({
           {c.stats.map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
-              <div className="text-xs uppercase tracking-widest text-slate-300 mb-1">{stat.label}</div>
+              <div className="text-xs uppercase tracking-widest text-neutral-300 mb-1">{stat.label}</div>
               <div className="text-lg font-sans font-bold text-white">{stat.val}</div>
             </div>
           ))}
@@ -261,7 +261,7 @@ export default async function RoyalRiyadhWeddingCaseStudy({
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-300 font-light text-lg leading-relaxed space-y-16">
+      <section className="py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-neutral-300 font-light text-lg leading-relaxed space-y-16">
         
         {/* The Challenge */}
         <div>
@@ -321,7 +321,7 @@ export default async function RoyalRiyadhWeddingCaseStudy({
             {c.metrics.map((m: any, i: number) => (
               <div key={i} className="text-center">
                 <div className="text-3xl md:text-4xl font-sans font-bold text-[var(--primary)] mb-2">{m.value}</div>
-                <div className="text-xs uppercase tracking-widest text-slate-300 leading-snug">{m.label}</div>
+                <div className="text-xs uppercase tracking-widest text-neutral-300 leading-snug">{m.label}</div>
               </div>
             ))}
           </div>

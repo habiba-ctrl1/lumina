@@ -25,7 +25,7 @@ export default function DammamCorporateSeminar() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center bg-gray-900">
+      <section className="relative h-[70vh] flex items-center justify-center bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/hero_bg.webp" 
@@ -39,21 +39,21 @@ export default function DammamCorporateSeminar() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-white hover:text-primary transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+          <Link href="/portfolio" className="inline-flex items-center text-white hover:text-[var(--primary)] transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
             <ArrowLeft size={16} className="me-2" /> Back to Portfolio
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-white/20">
             Industrial & Energy Sector
           </span>
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tight">
-            Dammam <span className="text-primary ">Corporate</span> Seminar
+            Dammam <span className="text-[var(--primary)] ">Corporate</span> Seminar
           </h1>
-          <p className="text-slate-600 text-lg font-light max-w-2xl mx-auto">Connecting global energy giants in the heart of the Eastern Province. A masterpiece of logistical and industrial coordination.</p>
+          <p className="text-neutral-600 text-lg font-light max-w-2xl mx-auto">Connecting global energy giants in the heart of the Eastern Province. A masterpiece of logistical and industrial coordination.</p>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-white border-y border-slate-200 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
+      <section className="py-32 bg-white border-y border-neutral-200/80 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Factory, label: "Focus", val: "Energy Sector" },
@@ -62,21 +62,21 @@ export default function DammamCorporateSeminar() {
             { icon: ShieldCheck, label: "Protocol", val: "Strict Safety" }
           ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
-              <stat.icon size={24} className="text-primary mx-auto mb-3" />
-              <div className="text-[10px] uppercase tracking-widest text-slate-600 mb-1 font-bold">{stat.label}</div>
-              <div className="text-sm font-sans font-bold text-black uppercase">{stat.val}</div>
+              <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
+              <div className="text-[10px] uppercase tracking-widest text-neutral-600 mb-1 font-bold">{stat.label}</div>
+              <div className="text-sm font-sans font-bold text-neutral-900 uppercase">{stat.val}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-600 font-light text-base leading-relaxed space-y-24">
+      <section className="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-neutral-600 font-light text-base leading-relaxed space-y-24">
         
         {/* Industrial Precision */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Industrial <span className="text-primary ">Precision</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Industrial <span className="text-[var(--primary)] ">Precision</span></h2>
             <p className="mb-8">
               Dammam is the industrial powerhouse of the Kingdom. For this corporate seminar, we were required to deliver an event that reflected the efficiency and scale of the energy sector. This involved managing large-scale attendance, complex AV requirements for technical presentations, and high-security protocol for international stakeholders.
             </p>
@@ -97,20 +97,20 @@ export default function DammamCorporateSeminar() {
             { title: "Catering Logsitics", desc: "High-volume, high-quality catering that met strict dietary and timing requirements of the energy industry." },
             { title: "Post-Event Reporting", desc: "Detailed engagement analytics and feedback reports delivered to the client within 24 hours." }
           ].map((item: any, i: number) => (
-            <div key={i} className="bg-white p-10 rounded-3xl border border-slate-200 flex gap-10">
-              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                <CheckCircle2 size={20} className="text-primary" />
+            <div key={i} className="bg-white p-10 rounded-3xl border border-neutral-200/80 flex gap-10">
+              <div className="w-10 h-10 bg-[var(--primary)]/10 rounded-xl flex items-center justify-center shrink-0">
+                <CheckCircle2 size={20} className="text-[var(--primary)]" />
               </div>
               <div>
-                <h4 className="text-black text-[10px] font-bold uppercase tracking-widest mb-2">{item.title}</h4>
-                <p className="text-xs text-gray-500 font-light leading-relaxed">{item.desc}</p>
+                <h4 className="text-neutral-900 text-[10px] font-bold uppercase tracking-widest mb-2">{item.title}</h4>
+                <p className="text-xs text-neutral-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Conclusion */}
-        <div className="bg-primary text-white p-12 md:p-24 rounded-3xl text-center relative overflow-hidden">
+        <div className="bg-[var(--primary)] text-white p-12 md:p-24 rounded-3xl text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
           <h2 className="text-2xl md:text-3xl font-sans font-bold mb-8 uppercase tracking-tight">Fueling <span className="">Connections</span></h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto font-light leading-relaxed">
@@ -120,20 +120,20 @@ export default function DammamCorporateSeminar() {
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Corporate Event Management
             </Link>
-            <Link href="/services/exhibitions" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/exhibitions" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Exhibition Management
             </Link>
-            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Conference Management
             </Link>
-            <Link href="/locations/dammam" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/locations/dammam" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Corporate Events in Dammam
             </Link>
           </div>
@@ -142,10 +142,10 @@ export default function DammamCorporateSeminar() {
 
       {/* CTA */}
       <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-black mb-8 uppercase tracking-tight">Scale Your <span className="text-primary ">Industrial Presence</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Scale Your <span className="text-[var(--primary)] ">Industrial Presence</span></h2>
         <Link
           href="/contact"
-          className="inline-block px-12 py-6 bg-black text-white font-bold uppercase tracking-[0.2em] hover:bg-primary transition-all rounded-xl shadow-2xl text-xs"
+          className="inline-block px-12 py-6 bg-neutral-900 text-white font-bold uppercase tracking-[0.2em] hover:bg-[var(--primary)] transition-all rounded-xl shadow-2xl text-xs"
         >
           Contact Our Industrial Events Team
         </Link>

@@ -130,17 +130,17 @@ export default async function Vision2030Portfolio({ params }: { params: Promise<
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-white border-t border-slate-200">
+      <section className="py-16 bg-white border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/cultural-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/cultural-events" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Cultural &amp; Heritage Events
             </Link>
-            <Link href="/services/destination-events" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/destination-events" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Destination Event Management
             </Link>
-            <Link href="/services/event-production" className="px-5 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/event-production" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Event Production
             </Link>
           </div>

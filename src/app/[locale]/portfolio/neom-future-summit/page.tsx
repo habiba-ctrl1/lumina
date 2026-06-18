@@ -25,7 +25,7 @@ export default function NeomFutureSummitCaseStudy() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center bg-black">
+      <section className="relative h-[70vh] flex items-center justify-center bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/hero_bg.webp" 
@@ -48,12 +48,12 @@ export default function NeomFutureSummitCaseStudy() {
           <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight">
             The NEOM <span className="text-[var(--primary)] font-bold">Future Summit</span>
           </h1>
-          <p className="text-slate-300 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
+          <p className="text-neutral-300 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
         </div>
       </section>
 
       {/* Project Overview */}
-      <section className="py-32 bg-white border border-slate-200 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-2xl">
+      <section className="py-32 bg-white border border-neutral-200/80 relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
           {[
             { icon: Globe, label: "Reach", val: "Global Investors" },
@@ -63,19 +63,19 @@ export default function NeomFutureSummitCaseStudy() {
           ].map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
-              <div className="text-xs uppercase tracking-widest text-slate-600 mb-1">{stat.label}</div>
-              <div className="text-lg font-sans font-bold text-slate-900">{stat.val}</div>
+              <div className="text-xs uppercase tracking-widest text-neutral-600 mb-1">{stat.label}</div>
+              <div className="text-lg font-sans font-bold text-neutral-900">{stat.val}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-600 font-light text-lg leading-relaxed space-y-16">
+      <section className="py-32 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-neutral-600 font-light text-lg leading-relaxed space-y-16">
         
         {/* The Challenge */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-8">The <span className="text-[var(--primary)]">Brief</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">The <span className="text-[var(--primary)]">Brief</span></h2>
           <p className="mb-8">
             Saudi Event Management was commissioned by the NEOM Investment Authority to execute a two-day high-level summit for 500 global CEOs, tech pioneers, and sovereign wealth fund managers. The challenge was to create an environment that felt both hyper-futuristic and deeply hospitable, reflecting NEOM's identity as the intersection of nature and technology.
           </p>
@@ -87,7 +87,7 @@ export default function NeomFutureSummitCaseStudy() {
         {/* The Solution */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-8">The <span className="text-[var(--primary)]">Execution</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">The <span className="text-[var(--primary)]">Execution</span></h2>
             <p className="mb-8">
               We designed a 360-degree immersive "Living Boardroom" featuring kinetic LED walls that responded to real-time data visualizations. Our team managed every aspect from private jet charters to bespoke biometric check-ins.
             </p>
@@ -100,12 +100,12 @@ export default function NeomFutureSummitCaseStudy() {
               ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-sm">
                   <CheckCircle2 size={18} className="text-[var(--primary)] shrink-0 mt-1" />
-                  <span className="text-slate-600">{item}</span>
+                  <span className="text-neutral-600">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-square rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
+          <div className="relative aspect-square rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xl">
             <div className="absolute inset-0 bg-[var(--primary)]/10 animate-pulse" />
             <Image src="/gallery_corporate_gala.webp" alt="NEOM Tech Hub Setup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </div>
@@ -113,15 +113,15 @@ export default function NeomFutureSummitCaseStudy() {
 
         {/* The Result */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-8">The <span className="text-[var(--primary)]">Impact</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">The <span className="text-[var(--primary)]">Impact</span></h2>
           <p className="mb-8 text-justify">
             The summit was hailed as a benchmark for the future of international diplomacy and corporate gathering. Post-event surveys showed a 98% satisfaction rate, with over $40B in investment pledges announced during the closing gala. Saudi Event Management's ability to blend high-tech infrastructure with the warmth of Saudi hospitality was cited as the key factor in the event's success.
           </p>
           
           {/* Testimonial */}
-          <div className="bg-white border border-slate-200 p-10 rounded-3xl text-center relative">
+          <div className="bg-white border border-neutral-200/80 p-10 rounded-3xl text-center relative">
             <div className="absolute top-0 start-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-[var(--primary)] text-4xl font-serif">&quot;</div>
-            <p className="text-xl md:text-2xl font-sans font-bold text-slate-800 mb-8 leading-snug">
+            <p className="text-xl md:text-2xl font-sans font-bold text-neutral-800 mb-8 leading-snug">
               &quot;Saudi Event Management redefined what is possible in corporate event management. They didn&apos;t just host a summit; they created a gateway to the future.&quot;
             </p>
             <div className="text-[var(--primary)] font-medium uppercase tracking-widest text-sm">— Director of Investment, NEOM</div>
@@ -130,20 +130,20 @@ export default function NeomFutureSummitCaseStudy() {
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-slate-50 border-t border-slate-200">
+      <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Corporate Event Management
             </Link>
-            <Link href="/services/destination-events" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/destination-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Destination Event Management
             </Link>
-            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Conference Management
             </Link>
-            <Link href="/services/event-production" className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+            <Link href="/services/event-production" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
               Event Production
             </Link>
           </div>
@@ -152,10 +152,10 @@ export default function NeomFutureSummitCaseStudy() {
 
       {/* CTA */}
       <section className="py-32 bg-white text-center">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-slate-900 mb-8">Host Your <span className="text-[var(--primary)]">Global Milestone</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">Host Your <span className="text-[var(--primary)]">Global Milestone</span></h2>
         <Link
           href="/contact"
-          className="inline-block px-10 py-4 bg-black text-white font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-colors rounded-lg shadow-xl"
+          className="inline-block px-10 py-4 bg-neutral-900 text-white font-bold uppercase tracking-widest hover:bg-[var(--primary)] transition-colors rounded-lg shadow-xl"
         >
           Request a Corporate Deck
         </Link>
