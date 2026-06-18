@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Heart, Moon, Users, MapPin } from "lucide-reac
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'Madinah Spiritual Event',
-    description: 'A profound spiritual gathering in the city of the Prophet, Madinah, managed with reverence and luxury by Saudi Event Management.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/madinah-spiritual-event`,
-      languages: hreflangAlternates("/portfolio/madinah-spiritual-event"),
-    },
-  };
+  return caseStudyMetadata("madinah-spiritual-event", locale);
 }
 
 export default function MadinahSpiritualEvent() {

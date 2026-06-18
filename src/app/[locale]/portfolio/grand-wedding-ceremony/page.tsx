@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Users, Crown, Star, Music } from "lucide-react
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: "Grand Wedding Ceremony Case Study | Saudi Event Management",
-    description: "Traditional Saudi grand wedding ceremony for 600+ guests — VIP Zaffa entrance protocol, palatial ballroom production, and full-service luxury coordination by Saudi Event Management.",
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/grand-wedding-ceremony`,
-      languages: hreflangAlternates("/portfolio/grand-wedding-ceremony"),
-    },
-  };
+  return caseStudyMetadata("grand-wedding-ceremony", locale);
 }
 
 export default function GrandWeddingCeremony() {

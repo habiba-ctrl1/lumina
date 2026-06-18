@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Moon, Star, MapPin, Users } from "lucide-react
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'Makkah VIP Retreat Case Study',
-    description: 'Bespoke event management for spiritual and high-profile retreats in the Holy City of Makkah.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/makkah-vip-retreat`,
-      languages: hreflangAlternates("/portfolio/makkah-vip-retreat"),
-    },
-  };
+  return caseStudyMetadata("makkah-vip-retreat", locale);
 }
 
 export default function MakkahVipRetreat() {

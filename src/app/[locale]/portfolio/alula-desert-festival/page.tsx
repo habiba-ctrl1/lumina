@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Tent, Sun, Camera, Wind } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'AlUla Desert Festival Case Study',
-    description: 'A breathtaking cultural festival in the ancient desert of AlUla, executed by Saudi Event Management.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/alula-desert-festival`,
-      languages: hreflangAlternates("/portfolio/alula-desert-festival"),
-    },
-  };
+  return caseStudyMetadata("alula-desert-festival", locale);
 }
 
 export default function AlUlaDesertFestival() {

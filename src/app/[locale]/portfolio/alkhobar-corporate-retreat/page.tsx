@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Users, Target, Layers, Award } from "lucide-re
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: "Al Khobar Corporate Retreat Case Study | Saudi Event Management",
-    description: "Executive team-building retreat for a Saudi Aramco subsidiary in Al Khobar — 120 senior leaders, immersive branding, and strategic engagement managed by Saudi Event Management.",
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/alkhobar-corporate-retreat`,
-      languages: hreflangAlternates("/portfolio/alkhobar-corporate-retreat"),
-    },
-  };
+  return caseStudyMetadata("alkhobar-corporate-retreat", locale);
 }
 
 export default function AlkhobarCorporateRetreat() {

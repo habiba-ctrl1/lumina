@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Cpu, Globe, Zap, Network } from "lucide-react"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'Global Tech Summit',
-    description: 'Executing a massive international technology summit in Saudi Arabia with cutting-edge production by Saudi Event Management.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/global-tech-summit`,
-      languages: hreflangAlternates("/portfolio/global-tech-summit"),
-    },
-  };
+  return caseStudyMetadata("global-tech-summit", locale);
 }
 
 export default function GlobalTechSummit() {

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Building, Ship, Anchor, Waves } from "lucide-r
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'Executive Summit Jeddah Case Study',
-    description: 'A high-level executive summit held in the coastal city of Jeddah, featuring coastal elegance and corporate precision by Saudi Event Management.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/executive-summit-jeddah`,
-      languages: hreflangAlternates("/portfolio/executive-summit-jeddah"),
-    },
-  };
+  return caseStudyMetadata("executive-summit-jeddah", locale);
 }
 
 export default function ExecutiveSummitJeddah() {

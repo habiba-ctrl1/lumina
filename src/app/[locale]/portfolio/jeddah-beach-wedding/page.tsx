@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Waves, Users, Sunset, Heart } from "lucide-rea
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: "Jeddah Seaside Wedding Case Study | Saudi Event Management",
-    description: "Luxury coastal wedding production on the Red Sea in Jeddah — 450 guests, bespoke beachfront design, and full-service luxury coordination by Saudi Event Management.",
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/jeddah-beach-wedding`,
-      languages: hreflangAlternates("/portfolio/jeddah-beach-wedding"),
-    },
-  };
+  return caseStudyMetadata("jeddah-beach-wedding", locale);
 }
 
 export default function JeddahBeachWedding() {

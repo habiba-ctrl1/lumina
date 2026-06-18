@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Globe, Cpu, Zap, Building2 } from "lucide-reac
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'NEOM Future Summit Case Study',
-    description: 'How Saudi Event Management executed the NEOM Future Summit, a high-stakes corporate event in the heart of the future.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/neom-future-summit`,
-      languages: hreflangAlternates("/portfolio/neom-future-summit"),
-    },
-  };
+  return caseStudyMetadata("neom-future-summit", locale);
 }
 
 export default function NeomFutureSummitCaseStudy() {

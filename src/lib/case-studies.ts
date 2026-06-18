@@ -1,6 +1,11 @@
-// Single source of truth for portfolio case studies — powers both the
-// per-page structured data (CaseStudySchema) and the related-projects /
-// conversion block (CaseStudyCTA).
+// Single source of truth for portfolio case studies — powers the per-page
+// structured data (CaseStudySchema), the related-projects / conversion block
+// (CaseStudyCTA), and per-page metadata (caseStudyMetadata).
+
+import type { Metadata } from "next";
+import { hreflangAlternates } from "@/lib/seo";
+
+const BASE = "https://saudieventmanagement.com";
 
 export type CaseStudy = {
   slug: string;
@@ -139,6 +144,35 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     image: "/riyadh_summit_people.webp",
   },
 };
+
+/** Full per-page metadata (title, description, keywords, canonical, hreflang,
+ *  OpenGraph + Twitter with the project image) for a case-study page. */
+export function caseStudyMetadata(slug: string, locale: string): Metadata {
+  const cs = CASE_STUDIES[slug];
+  const path = `/portfolio/${slug}`;
+  const url = `${BASE}${locale === "en" ? "" : "/ar"}${path}`;
+  const img = `${BASE}${cs.image}`;
+  const title = `${cs.name} — Event Management in ${cs.location}`;
+  return {
+    title,
+    description: cs.description,
+    keywords: `${cs.name}, ${cs.category} ${cs.location}, event management ${cs.location} Saudi Arabia, Saudi Event Management portfolio`,
+    alternates: { canonical: url, languages: hreflangAlternates(path) },
+    openGraph: {
+      title,
+      description: cs.description,
+      url,
+      type: "article",
+      images: [{ url: img, alt: `${cs.name} — ${cs.category} in ${cs.location}, Saudi Arabia` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: cs.description,
+      images: [img],
+    },
+  };
+}
 
 /** Up to `count` other case studies, preferring the same category. */
 export function relatedCaseStudies(slug: string, count = 3): CaseStudy[] {

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
-import { hreflangAlternates } from "@/lib/seo";
+import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
 import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,15 +10,7 @@ import { ArrowLeft, CheckCircle2, Shield, Users, Coffee, Home } from "lucide-rea
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
-  return {
-    title: 'Riyadh Elite Majlis Case Study',
-    description: 'Exquisite Majlis gathering in Riyadh, showcasing Najdi heritage with ultra-modern luxury.',
-    alternates: {
-      canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/riyadh-elite-majlis`,
-      languages: hreflangAlternates("/portfolio/riyadh-elite-majlis"),
-    },
-  };
+  return caseStudyMetadata("riyadh-elite-majlis", locale);
 }
 
 export default function RiyadhEliteMajlis() {
