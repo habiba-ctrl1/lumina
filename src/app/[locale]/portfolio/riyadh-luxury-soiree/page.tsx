@@ -18,7 +18,7 @@ export default function RiyadhLuxurySoiree() {
       <section className="relative h-[90vh] flex items-center justify-center bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
+            src="/portfolio/riyadh-soiree.webp" 
             alt="Riyadh Luxury Soiree" 
             fill
             sizes="100vw"
@@ -103,7 +103,7 @@ export default function RiyadhLuxurySoiree() {
         {/* Impact */}
         <div className="bg-neutral-900 text-white p-12 md:p-32 rounded-[5rem] text-center relative overflow-hidden">
           <div className="absolute top-0 start-0 w-full h-full opacity-30">
-            <Image src="/hero_bg.webp" alt="Background" fill sizes="100vw" className="object-cover" />
+            <Image src="/portfolio/riyadh-soiree.webp" alt="Background" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
             <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-[var(--primary)] ">Wonder</span></h3>

@@ -28,7 +28,7 @@ export default function RiyadhEliteMajlis() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
+            src="/portfolio/riyadh-majlis.webp" 
             alt="Riyadh Elite Majlis" 
             fill
             sizes="100vw"
@@ -117,7 +117,7 @@ export default function RiyadhEliteMajlis() {
         {/* Impact */}
         <div className="bg-neutral-900 text-white p-12 md:p-24 rounded-3xl text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
-            <Image src="/hero_bg.webp" alt="Pattern" fill sizes="100vw" className="object-cover" />
+            <Image src="/portfolio/riyadh-majlis.webp" alt="Pattern" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-[var(--primary)] ">Legacy</span></h2>

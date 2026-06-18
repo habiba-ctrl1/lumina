@@ -28,7 +28,7 @@ export default function DammamCorporateSeminar() {
       <section className="relative h-[70vh] flex items-center justify-center bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
+            src="/portfolio/dammam-seminar.webp" 
             alt="Dammam Corporate Seminar" 
             fill
             sizes="100vw"

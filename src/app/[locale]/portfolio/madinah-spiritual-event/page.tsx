@@ -28,7 +28,7 @@ export default function MadinahSpiritualEvent() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/locations/madinah-hero.webp"
+            src="/portfolio/madinah-spiritual.webp"
             alt="Madinah spiritual event — dignified event management in Madinah, Saudi Arabia"
             fill
             sizes="100vw"

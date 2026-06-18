@@ -28,7 +28,7 @@ export default function GlobalTechSummit() {
       <section className="relative h-[80vh] flex items-center justify-center bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero_bg.webp" 
+            src="/portfolio/tech-summit.webp" 
             alt="Global Tech Summit" 
             fill
             sizes="100vw"

@@ -28,7 +28,7 @@ export default function AlUlaDesertFestival() {
       <section className="relative h-[90vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/gallery_1.webp" 
+            src="/portfolio/alula-festival.webp" 
             alt="AlUla Desert Festival" 
             width={1920}
             height={1080}
@@ -96,7 +96,7 @@ export default function AlUlaDesertFestival() {
             </div>
             <div className="pt-12">
               <div className="relative aspect-[3/5] rounded-3xl overflow-hidden shadow-lg">
-                <Image src="/gallery_1.webp" alt="Festival Detail 3" width={400} height={600} className="w-full h-full object-cover" />
+                <Image src="/portfolio/alula-festival.webp" alt="Festival Detail 3" width={400} height={600} className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function AlUlaDesertFestival() {
       {/* CTA */}
       <section className="py-32 bg-neutral-900 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/gallery_1.webp" alt="Desert" fill sizes="100vw" className="object-cover" />
+          <Image src="/portfolio/alula-festival.webp" alt="Desert" fill sizes="100vw" className="object-cover" />
         </div>
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">Lead the <span className="text-[var(--primary)] ">Cultural Wave</span></h2>
