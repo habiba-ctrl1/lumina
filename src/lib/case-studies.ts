@@ -14,6 +14,13 @@ export type CaseStudy = {
   category: string;
   location: string;
   image: string;
+  /** Arabic translations for /ar rendering + metadata. */
+  ar: {
+    name: string;
+    description: string;
+    category: string;
+    location: string;
+  };
 };
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
@@ -25,6 +32,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Luxury Weddings",
     location: "Riyadh",
     image: "/royal_wedding_saudi.webp",
+    ar: {
+      name: "الزفاف الملكي آل سعود",
+      description: "زفاف ملكي لـ 800 ضيف في الرياض مع بناء واحة صحراوية معمارية مخصصة، وبروتوكول كامل لكبار الشخصيات، وإنتاج فاخر من البداية إلى النهاية.",
+      category: "حفلات الزفاف الفاخرة",
+      location: "الرياض",
+    },
   },
   "makkah-vip-retreat": {
     slug: "makkah-vip-retreat",
@@ -34,6 +47,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "VIP & Private Events",
     location: "Makkah",
     image: "/portfolio/makkah-vip-retreat.webp",
+    ar: {
+      name: "ملاذ كبار الشخصيات في مكة",
+      description: "ملاذ خاص فائق الفخامة لمدة 10 أيام في مكة المكرمة مع أمن متعدد المستويات، وضيافة طعام خاصة، وتنقّلات سلسة إلى الحرم لوفد رفيع المستوى.",
+      category: "فعاليات كبار الشخصيات والخاصة",
+      location: "مكة المكرمة",
+    },
   },
   "madinah-spiritual-event": {
     slug: "madinah-spiritual-event",
@@ -43,6 +62,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Cultural & Spiritual Events",
     location: "Madinah",
     image: "/portfolio/madinah-spiritual.webp",
+    ar: {
+      name: "فعالية روحانية في المدينة",
+      description: "تجمّع روحاني راقٍ في المدينة المنورة، مصمَّم حول السكينة وانسيابية أوقات الصلاة والحِرف التقليدية مع ضيافة خمس نجوم بتحفّظ تام.",
+      category: "الفعاليات الثقافية والروحانية",
+      location: "المدينة المنورة",
+    },
   },
   "alula-desert-festival": {
     slug: "alula-desert-festival",
@@ -52,6 +77,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Cultural Events",
     location: "AlUla",
     image: "/portfolio/alula-festival.webp",
+    ar: {
+      name: "مهرجان العُلا الصحراوي",
+      description: "إنتاج مهرجان تراثي صحراوي في وادي أشار بالعُلا يمزج المناظر النبطية مع المسرح المعاصر والإضاءة وتجربة الجمهور.",
+      category: "الفعاليات الثقافية",
+      location: "العُلا",
+    },
   },
   "dammam-corporate-seminar": {
     slug: "dammam-corporate-seminar",
@@ -61,6 +92,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Corporate Events",
     location: "Dammam",
     image: "/portfolio/dammam-seminar.webp",
+    ar: {
+      name: "ندوة الدمام للشركات",
+      description: "ندوة شركات لقطاع الطاقة في الدمام والخبر مع إنتاج مؤتمرات كامل وإدارة الوفود وبرنامج تواصل على ساحل الخليج العربي.",
+      category: "فعاليات الشركات",
+      location: "الدمام",
+    },
   },
   "executive-summit-jeddah": {
     slug: "executive-summit-jeddah",
@@ -70,6 +107,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Corporate Events",
     location: "Jeddah",
     image: "/portfolio/jeddah-summit.webp",
+    ar: {
+      name: "قمة جدة التنفيذية",
+      description: "قمة شركات دبلوماسية عالية الأمان لـ 300 ضيف في مكان مرموق بجدة، مع إدارة البروتوكول وإنتاج المسرح وضيافة على البحر الأحمر.",
+      category: "فعاليات الشركات",
+      location: "جدة",
+    },
   },
   "global-tech-summit": {
     slug: "global-tech-summit",
@@ -79,6 +122,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Conferences & Summits",
     location: "Riyadh",
     image: "/portfolio/tech-summit.webp",
+    ar: {
+      name: "القمة التقنية العالمية",
+      description: "مؤتمر تقني واسع النطاق في الرياض مع منصة عرض LED وإنتاج غامر وإدارة كاملة للوفود والمتحدثين.",
+      category: "المؤتمرات والقمم",
+      location: "الرياض",
+    },
   },
   "neom-future-summit": {
     slug: "neom-future-summit",
@@ -88,6 +137,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Conferences & Summits",
     location: "NEOM",
     image: "/portfolio/neom-summit.webp",
+    ar: {
+      name: "قمة نيوم للمستقبل",
+      description: "إنتاج مؤتمر فاخر خالٍ من النفايات لـ 250 من كبار الشخصيات لأحد المشاريع العملاقة السعودية الرائدة، داخل بنية نيوم العصرية.",
+      category: "المؤتمرات والقمم",
+      location: "نيوم",
+    },
   },
   "riyadh-elite-majlis": {
     slug: "riyadh-elite-majlis",
@@ -97,6 +152,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "VIP & Private Events",
     location: "Riyadh",
     image: "/portfolio/riyadh-majlis.webp",
+    ar: {
+      name: "مجلس الرياض النخبوي",
+      description: "مجلس سعودي تقليدي فاخر في الرياض بديكور نجدي، وجلسات ذهبية وكريمية اللون، وضيافة راقية لكبار الشخصيات.",
+      category: "فعاليات كبار الشخصيات والخاصة",
+      location: "الرياض",
+    },
   },
   "riyadh-luxury-soiree": {
     slug: "riyadh-luxury-soiree",
@@ -106,6 +167,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Luxury Events",
     location: "Riyadh",
     image: "/portfolio/riyadh-soiree.webp",
+    ar: {
+      name: "أمسية الرياض الفاخرة",
+      description: "أمسية فاخرة ساحرة في الرياض تتميّز بطاولات مضاءة بالشموع، وتصميم زهري معماري، وإنتاج فعاليات كامل لقائمة ضيوف راقية.",
+      category: "الفعاليات الفاخرة",
+      location: "الرياض",
+    },
   },
   "alkhobar-corporate-retreat": {
     slug: "alkhobar-corporate-retreat",
@@ -115,6 +182,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Corporate Events",
     location: "Al Khobar",
     image: "/alkhobar_corporate_people.webp",
+    ar: {
+      name: "ملاذ الخبر للشركات",
+      description: "ملاذ تنفيذي لبناء الفرق والعلامة التجارية لـ 120 مندوبًا في المنطقة الشرقية، مع لوجستيات كاملة وتيسير وضيافة شركات.",
+      category: "فعاليات الشركات",
+      location: "الخبر",
+    },
   },
   "grand-wedding-ceremony": {
     slug: "grand-wedding-ceremony",
@@ -124,6 +197,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Luxury Weddings",
     location: "Riyadh",
     image: "/wedding_hall_grand_entrance.webp",
+    ar: {
+      name: "حفل زفاف فخم",
+      description: "حفل زفاف فخم لأكثر من 600 ضيف في الرياض مع بروتوكول دخول تقليدي لكبار الشخصيات، ومسرح مخصص، وتصميم زهري، وإنتاج كامل.",
+      category: "حفلات الزفاف الفاخرة",
+      location: "الرياض",
+    },
   },
   "jeddah-beach-wedding": {
     slug: "jeddah-beach-wedding",
@@ -133,6 +212,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Luxury Weddings",
     location: "Jeddah",
     image: "/jeddah_beach_wedding_setup.webp",
+    ar: {
+      name: "زفاف جدة على الشاطئ",
+      description: "إنتاج زفاف فاخر على ساحل البحر الأحمر لـ 450 ضيفًا على واجهة جدة البحرية، مع مسرح على الواجهة وإضاءة وتصميم مخصص.",
+      category: "حفلات الزفاف الفاخرة",
+      location: "جدة",
+    },
   },
   "riyadh-government-summit": {
     slug: "riyadh-government-summit",
@@ -142,6 +227,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: "Conferences & Summits",
     location: "Riyadh",
     image: "/riyadh_summit_people.webp",
+    ar: {
+      name: "قمة الرياض الحكومية",
+      description: "قمة حكومية لأكثر من 1200 مندوب في الرياض مع إنتاج متعدد الشاشات غامر، وإدارة البروتوكول، وعمليات وفود عالية الأمان.",
+      category: "المؤتمرات والقمم",
+      location: "الرياض",
+    },
   },
 };
 
@@ -149,26 +240,42 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
  *  OpenGraph + Twitter with the project image) for a case-study page. */
 export function caseStudyMetadata(slug: string, locale: string): Metadata {
   const cs = CASE_STUDIES[slug];
+  const isAr = locale === "ar";
   const path = `/portfolio/${slug}`;
-  const url = `${BASE}${locale === "en" ? "" : "/ar"}${path}`;
+  const url = `${BASE}${isAr ? "/ar" : ""}${path}`;
   const img = `${BASE}${cs.image}`;
-  const title = `${cs.name} — Event Management in ${cs.location}`;
+
+  const name = isAr ? cs.ar.name : cs.name;
+  const description = isAr ? cs.ar.description : cs.description;
+  const category = isAr ? cs.ar.category : cs.category;
+  const location = isAr ? cs.ar.location : cs.location;
+  const title = isAr
+    ? `${name} — إدارة الفعاليات في ${location}`
+    : `${name} — Event Management in ${location}`;
+  const keywords = isAr
+    ? `${name}، ${category} ${location}، إدارة فعاليات ${location} السعودية، أعمال شركة إدارة الفعاليات السعودية`
+    : `${name}, ${category} ${location}, event management ${location} Saudi Arabia, Saudi Event Management portfolio`;
+  const alt = isAr
+    ? `${name} — ${category} في ${location}، المملكة العربية السعودية`
+    : `${name} — ${category} in ${location}, Saudi Arabia`;
+
   return {
     title,
-    description: cs.description,
-    keywords: `${cs.name}, ${cs.category} ${cs.location}, event management ${cs.location} Saudi Arabia, Saudi Event Management portfolio`,
+    description,
+    keywords,
     alternates: { canonical: url, languages: hreflangAlternates(path) },
     openGraph: {
       title,
-      description: cs.description,
+      description,
       url,
       type: "article",
-      images: [{ url: img, alt: `${cs.name} — ${cs.category} in ${cs.location}, Saudi Arabia` }],
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: img, alt }],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: cs.description,
+      description,
       images: [img],
     },
   };
