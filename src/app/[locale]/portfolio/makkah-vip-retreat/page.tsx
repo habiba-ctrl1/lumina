@@ -28,8 +28,8 @@ export default function MakkahVipRetreat() {
       <section className="relative h-[80vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/locations/riyadh-hero.webp" 
-            alt="Makkah VIP Retreat" 
+            src="/locations/makkah-hero.webp"
+            alt="Makkah VIP Retreat — private luxury retreat event management in Makkah, Saudi Arabia"
             fill
             sizes="100vw"
             className="object-cover opacity-80"
