@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
+import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -177,6 +178,7 @@ export default function GrandWeddingCeremony() {
         </Link>
       </section>
 
+      <CaseStudyCTA slug="grand-wedding-ceremony" />
       <Footer />
       <WhatsAppButton />
     </main>

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
+import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -123,7 +124,7 @@ export default function RiyadhEliteMajlis() {
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-[var(--primary)] ">Legacy</span></h2>
-            <p className="text-neutral-600 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               The event resulted in three major cross-border partnerships being signed on-site. The relaxed yet professional atmosphere of the Elite Majlis provided the perfect catalyst for high-trust negotiations.
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
@@ -165,6 +166,7 @@ export default function RiyadhEliteMajlis() {
         </Link>
       </section>
 
+      <CaseStudyCTA slug="riyadh-elite-majlis" />
       <Footer />
       <WhatsAppButton />
     </main>

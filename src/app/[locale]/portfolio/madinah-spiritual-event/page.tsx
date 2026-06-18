@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
+import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -114,7 +115,7 @@ export default function MadinahSpiritualEvent() {
         {/* Conclusion */}
         <div className="bg-neutral-900 text-white p-12 md:p-24 rounded-3xl text-center">
           <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">A <span className="text-[var(--primary)] ">Profound</span> Impact</h2>
-          <p className="text-neutral-600 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             The event was described by attendees as a "transformative experience." Saudi Event Management's ability to handle the complexities of the city while maintaining a profound sense of reverence and luxury established a new benchmark for spiritual events.
           </p>
           <div className="inline-block px-8 py-4 bg-white/5 rounded-full border border-white/10">
@@ -155,6 +156,7 @@ export default function MadinahSpiritualEvent() {
         </Link>
       </section>
 
+      <CaseStudyCTA slug="madinah-spiritual-event" />
       <Footer />
       <WhatsAppButton />
     </main>

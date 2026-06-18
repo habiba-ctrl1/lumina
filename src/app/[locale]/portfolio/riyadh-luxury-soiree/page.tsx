@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import Footer from "@/components/Footer";
+import CaseStudyCTA from "@/components/CaseStudyCTA";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -159,6 +160,7 @@ export default function RiyadhLuxurySoiree() {
         </Link>
       </section>
 
+      <CaseStudyCTA slug="riyadh-luxury-soiree" />
       <Footer />
       <WhatsAppButton />
     </main>
