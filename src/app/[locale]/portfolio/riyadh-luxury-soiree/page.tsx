@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import CaseStudySchema from "@/components/CaseStudySchema";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export default function RiyadhLuxurySoiree() {
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
+      <CaseStudySchema slug="riyadh-luxury-soiree" />
 
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center bg-neutral-900">

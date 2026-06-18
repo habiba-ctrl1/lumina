@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import CaseStudySchema from "@/components/CaseStudySchema";
 import { hreflangAlternates } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -23,6 +24,7 @@ export default function AlUlaDesertFestival() {
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
+      <CaseStudySchema slug="alula-desert-festival" />
 
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center justify-center">
