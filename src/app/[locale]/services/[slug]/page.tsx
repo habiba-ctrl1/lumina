@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -679,6 +679,30 @@ const PSEO_DATA: Record<
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+/* ─── Arabic SEO-critical layer (phase 2). Service names keyed by parentSlug;
+       title/H1/description are templated with the entry's `cityAr`, so all 20
+       city×service pages localize without per-entry edits. Body stays English. ─── */
+const SERVICE_AR: Record<string, string> = {
+  "corporate-events": "إدارة فعاليات الشركات",
+  "weddings": "تنظيم حفلات الزفاف الفاخرة",
+  "exhibitions": "إدارة المعارض",
+  "conferences": "إدارة المؤتمرات",
+  "event-production": "الإنتاج الفعّالياتي",
+  "cultural-events": "الفعاليات الثقافية والموسمية",
+  "luxury-vip-events": "إدارة الفعاليات الفاخرة وكبار الشخصيات",
+  "destination-events": "تخطيط فعاليات الوجهات",
+};
+
+function arText(data: { parentSlug: string; cityAr: string }) {
+  const s = SERVICE_AR[data.parentSlug] ?? "إدارة الفعاليات";
+  return {
+    serviceAr: s,
+    h1: `${s} في ${data.cityAr}`,
+    titleTag: `${s} في ${data.cityAr} | إدارة الفعاليات السعودية`,
+    metaDescription: `${s} في ${data.cityAr} مع إدارة الفعاليات السعودية — خبرة تتجاوز 15 عامًا في التخطيط والتنفيذ الاحترافي بمعايير عالمية. اطلب عرضك المجاني خلال 24 ساعة.`,
+  };
+}
+
 export async function generateStaticParams() {
   return Object.keys(PSEO_DATA).flatMap((slug) => [
     { locale: "en", slug },
@@ -695,17 +719,24 @@ export async function generateMetadata({
   const data = PSEO_DATA[slug];
   if (!data) return {};
 
+  const isAr = locale === "ar";
+  const ar = arText(data);
+  // AR title already carries the Arabic brand, so use `absolute` to bypass the
+  // layout's "%s | Saudi Event Management" template (avoids a doubled brand).
+  const title = isAr ? { absolute: ar.titleTag } : data.titleTag;
+  const ogTitle = isAr ? ar.titleTag : data.titleTag;
+  const description = isAr ? ar.metaDescription : data.metaDescription;
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/${slug}`;
 
   return {
-    title: data.titleTag,
-    description: data.metaDescription,
+    title,
+    description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: data.titleTag,
-      description: data.metaDescription,
+      title: ogTitle,
+      description,
       url: canonicalUrl,
       images: [{ url: data.heroImage, width: 1200, height: 630, alt: data.heroImageAlt }],
     },
@@ -715,12 +746,15 @@ export async function generateMetadata({
 export default async function PseoServicePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const data = PSEO_DATA[slug];
 
   if (!data) notFound();
+
+  const isAr = locale === "ar";
+  const ar = arText(data);
 
   const canonicalUrl = `https://saudieventmanagement.com/services/${slug}`;
 
@@ -784,24 +818,34 @@ export default async function PseoServicePage({
             <div className="flex items-center justify-center gap-2 mb-6">
               <MapPin size={14} className="text-gold-400" />
               <span className="text-gold-400 font-bold uppercase tracking-[0.2em] text-[10px]">
-                {data.city} ({data.cityAr}) • {data.service}
+                {isAr ? `${data.cityAr} • ${ar.serviceAr}` : `${data.city} (${data.cityAr}) • ${data.service}`}
               </span>
             </div>
             <h1 className="font-display font-bold text-white text-3xl md:text-5xl lg:text-6xl mb-6 leading-tight max-w-4xl mx-auto">
-              {data.h1}
+              {isAr ? ar.h1 : data.h1}
             </h1>
             <p className="text-sand-300 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
-              <strong className="text-white">Saudi Event Management</strong> — the leading{" "}
-              <strong className="text-white">{data.service}</strong> specialist in{" "}
-              <strong className="text-white">{data.city}, Saudi Arabia</strong>.
+              {isAr ? (
+                <>
+                  <strong className="text-white">إدارة الفعاليات السعودية</strong> — المتخصص الأول في{" "}
+                  <strong className="text-white">{ar.serviceAr}</strong> في{" "}
+                  <strong className="text-white">{data.cityAr}، المملكة العربية السعودية</strong>.
+                </>
+              ) : (
+                <>
+                  <strong className="text-white">Saudi Event Management</strong> — the leading{" "}
+                  <strong className="text-white">{data.service}</strong> specialist in{" "}
+                  <strong className="text-white">{data.city}, Saudi Arabia</strong>.
+                </>
+              )}
             </p>
             <a
-              href="https://wa.me/966501234567"
+              href="https://wa.me/966539388072"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-10 py-4 bg-gold-400 text-ink-950 font-bold uppercase tracking-widest hover:bg-gold-500 transition-all shadow-lg"
             >
-              Consult Our {data.city} Experts
+              {isAr ? `استشر خبراءنا في ${data.cityAr}` : `Consult Our ${data.city} Experts`}
             </a>
           </div>
         </section>
@@ -854,7 +898,7 @@ export default async function PseoServicePage({
                 Get a bespoke proposal from our {data.city} team — no obligation, no one-size-fits-all packages.
               </p>
               <a
-                href="https://wa.me/966501234567"
+                href="https://wa.me/966539388072"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-[var(--primary)] text-white font-bold uppercase tracking-[0.15em] text-[11px] rounded-sm hover:bg-[var(--primary-dark)] transition-colors shadow-md"

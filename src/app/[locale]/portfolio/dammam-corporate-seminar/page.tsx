@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("dammam-corporate-seminar", locale);
 }
 
-export default function DammamCorporateSeminar() {
+export default async function DammamCorporateSeminar() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -27,14 +29,14 @@ export default function DammamCorporateSeminar() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-white hover:text-[var(--primary)] transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-white hover:text-[var(--primary)] transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-white/20">
-            Industrial & Energy Sector
+            {isAr ? "دراسة حالة" : "Industrial & Energy Sector"}
           </span>
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tight">
-            Dammam <span className="text-[var(--primary)] ">Corporate</span> Seminar
+            {isAr ? "ندوة الدمام للشركات" : <>Dammam <span className="text-[var(--primary)] ">Corporate</span> Seminar</>}
           </h1>
           <p className="text-neutral-600 text-lg font-light max-w-2xl mx-auto">Connecting global energy giants in the heart of the Eastern Province. A masterpiece of logistical and industrial coordination.</p>
         </div>

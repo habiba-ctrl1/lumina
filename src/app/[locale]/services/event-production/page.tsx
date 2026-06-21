@@ -3,6 +3,7 @@ import { hreflangAlternates } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -19,12 +20,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/event-production`;
 
   return {
-    title: "Event Production Company Saudi Arabia | Stage, Sound & Lighting Riyadh",
-    description:
-      "Premier event production company in Saudi Arabia. Custom stage fabrication, concert-grade sound engineering, intelligent lighting design, LED & projection mapping for corporate and luxury events in Riyadh & Jeddah.",
+    title: isAr
+      ? { absolute: "شركة إنتاج فعاليات في السعودية | المسرح والصوت والإضاءة بالرياض | إدارة الفعاليات السعودية" }
+      : "Event Production Company Saudi Arabia | Stage, Sound & Lighting Riyadh",
+    description: isAr
+      ? "شركة رائدة في الإنتاج الفعّالياتي بالسعودية. تصنيع مسارح مخصّصة، وهندسة صوت بجودة الحفلات، وتصميم إضاءة ذكية، وشاشات LED والعرض الضوئي للفعاليات المؤسسية والفاخرة في الرياض وجدة."
+      : "Premier event production company in Saudi Arabia. Custom stage fabrication, concert-grade sound engineering, intelligent lighting design, LED & projection mapping for corporate and luxury events in Riyadh & Jeddah.",
     keywords: [
       "Event production company Saudi Arabia",
       "Stage design Riyadh",
@@ -41,9 +46,12 @@ export async function generateMetadata({
       languages: hreflangAlternates("/services/event-production"),
     },
     openGraph: {
-      title: "Event Production Company Saudi Arabia | Saudi Event Management",
-      description:
-        "Custom stage design, concert-grade AV, intelligent lighting, and immersive projection mapping for events across Saudi Arabia.",
+      title: isAr
+        ? "شركة إنتاج فعاليات في السعودية | إدارة الفعاليات السعودية"
+        : "Event Production Company Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "تصميم مسارح مخصّص، وصوت وصورة بجودة الحفلات، وإضاءة ذكية، وعرض ضوئي غامر للفعاليات في عموم السعودية."
+        : "Custom stage design, concert-grade AV, intelligent lighting, and immersive projection mapping for events across Saudi Arabia.",
       url: canonicalUrl,
       images: [{ url: "/services/event_production_stage_riyadh.webp", width: 1200, height: 630, alt: "Event production company Saudi Arabia — concert-grade stage, LED wall and lighting at a Riyadh event" }],
     },
@@ -211,7 +219,9 @@ const jsonLd = {
   ],
 };
 
-export default function EventProductionPage() {
+export default async function EventProductionPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <>
       <script
@@ -224,17 +234,21 @@ export default function EventProductionPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Event Production Services"
-          titleHighlight="Saudi Arabia"
-          subtitle="Technical powerhouse for custom stage fabrication, concert-grade sound systems, LED projection mapping, and National Day show productions — transforming any venue into an extraordinary experience."
+          title={isAr ? "خدمات الإنتاج الفعّالياتي" : "Event Production Services"}
+          titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "قوة تقنية متكاملة لتصنيع المسارح المخصّصة، وأنظمة الصوت بجودة الحفلات، والعرض الضوئي على شاشات LED، وإنتاجات عروض اليوم الوطني — نحوّل أي قاعة إلى تجربة استثنائية."
+              : "Technical powerhouse for custom stage fabrication, concert-grade sound systems, LED projection mapping, and National Day show productions — transforming any venue into an extraordinary experience."
+          }
           backgroundImage="/services/event_production_stage_riyadh.webp"
           imageAlt="Event production company Saudi Arabia — concert-grade stage, LED video wall and lighting rig at a Riyadh event"
           enableParallax
-          badge="Event Production"
+          badge={isAr ? "الإنتاج الفعّالياتي" : "Event Production"}
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Event Production" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "الإنتاج الفعّالياتي" : "Event Production" },
           ]}
           minHeight="large"
           trustElements={[
@@ -254,7 +268,7 @@ export default function EventProductionPage() {
               Get a Production Quote
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Talk to a Producer
@@ -409,7 +423,7 @@ export default function EventProductionPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20production%20quote."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20production%20quote."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"

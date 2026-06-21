@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Camera, Cake, Flower2, Utensils, Star, ArrowRight } from "lucide-react";
 
-const WHATSAPP_BASE = "https://wa.me/966501234567?text=";
+const WHATSAPP_BASE = "https://wa.me/966539388072?text=";
 
 const categories = [
   { id: "photographers", name: "Photographers", icon: Camera },
@@ -25,7 +25,7 @@ const vendors = [
     reviews: 124,
     location: "Riyadh, KSA",
     specialty: "Cinematic Weddings",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const vendors = [
     reviews: 89,
     location: "Dubai, UAE",
     specialty: "Multi-tier Fondant",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const vendors = [
     reviews: 56,
     location: "Riyadh, SA",
     specialty: "Exotic Installations",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const vendors = [
     reviews: 210,
     location: "Jeddah, KSA",
     specialty: "Traditional Majlis",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
   {
     id: 5,
@@ -69,7 +69,7 @@ const vendors = [
     reviews: 45,
     location: "Islamabad, PK",
     specialty: "Documentary Style",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
   {
     id: 6,
@@ -80,7 +80,7 @@ const vendors = [
     reviews: 32,
     location: "Karachi, PK",
     specialty: "Artisan Desserts",
-    whatsapp: "966501234567"
+    whatsapp: "966539388072"
   },
 ];
 

@@ -138,7 +138,7 @@ export default function BecomeOne() {
                 <h4 className="text-gold-400 text-[10px] font-bold uppercase tracking-widest mb-3">Direct Inquiry</h4>
                 <p className="text-emerald-200/80 text-[10px] mb-8 leading-relaxed">For high-level strategic inquiries or government relations, please contact us via WhatsApp.</p>
                 <a 
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20discuss%20a%20strategic%20partnership."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20discuss%20a%20strategic%20partnership."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-gold-400 text-sand-50 py-3 rounded-sm text-[9px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gold-500 transition-all"

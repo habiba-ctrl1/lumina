@@ -20,7 +20,7 @@ const WhatsAppIcon = ({ size = 24, className = "" }: { size?: number; className?
 export default function WhatsAppButton() {
   const t = useTranslations("whatsapp");
   const [isHovered, setIsHovered] = useState(false);
-  const WHATSAPP_URL = "https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.";
+  const WHATSAPP_URL = "https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services.";
 
   return (
     <motion.div

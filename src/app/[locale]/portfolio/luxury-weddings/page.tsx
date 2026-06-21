@@ -10,10 +10,15 @@ import { Crown, Heart, Sparkles, Flower2, ArrowRight } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Luxury Wedding Planners Saudi Arabia | Royal Weddings',
-    description: 'Saudi Event Management crafts the most exclusive luxury weddings and royal ceremonies in Riyadh, Jeddah, and AlUla. Complete VIP bridal services and kosha design.',
+    title: isAr
+      ? { absolute: "مخطّطو حفلات الزفاف الفاخرة في السعودية | الأعراس الملكية | إدارة الفعاليات السعودية" }
+      : 'Luxury Wedding Planners Saudi Arabia | Royal Weddings',
+    description: isAr
+      ? "تصمّم إدارة الفعاليات السعودية أرقى حفلات الزفاف الفاخرة والمراسم الملكية في الرياض وجدة والعلا — خدمات عرائس كاملة لكبار الشخصيات وتصميم كوشة استثنائي."
+      : 'Saudi Event Management crafts the most exclusive luxury weddings and royal ceremonies in Riyadh, Jeddah, and AlUla. Complete VIP bridal services and kosha design.',
     keywords: 'Luxury wedding planners Riyadh, Royal weddings Saudi Arabia, VIP wedding organizer KSA, Kosha design Riyadh, Destination weddings AlUla',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/luxury-weddings`,
@@ -90,23 +95,28 @@ const jsonLd = {
 export default async function LuxuryWeddingsPortfolio({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const isAr = locale === "ar";
+  const arHref = isAr ? "/ar" : "";
 
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ScrollProgress />
       <Navbar />
-      
+
       <InternalPageHero
-        title="Royal Wedding Portfolio"
-        subtitle="We orchestrate the Kingdom's most magnificent weddings, blending breathtaking floral architecture with absolute discretion and flawless execution."
+        title={isAr ? "أعمال الأعراس الملكية" : "Royal Wedding Portfolio"}
+        subtitle={
+          isAr
+            ? "ننسّق أبهى حفلات الزفاف في المملكة، بمزج هندسة الأزهار الآسرة مع سرية مطلقة وتنفيذ لا تشوبه شائبة."
+            : "We orchestrate the Kingdom's most magnificent weddings, blending breathtaking floral architecture with absolute discretion and flawless execution."
+        }
         backgroundImage="/luxury_wedding_couple_guests.webp"
         imageAlt="Luxury royal weddings Saudi Arabia portfolio"
-        badge="Luxury Weddings Portfolio"
+        badge={isAr ? "أعمال حفلات الزفاف الفاخرة" : "Luxury Weddings Portfolio"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Portfolio", href: "/portfolio" },
-          { label: "Luxury Weddings" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "أعمالنا" : "Portfolio", href: `${arHref}/portfolio` },
+          { label: isAr ? "حفلات الزفاف الفاخرة" : "Luxury Weddings" },
         ]}
         enableParallax
         minHeight="standard"
@@ -117,18 +127,31 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
         <div className="max-w-4xl mx-auto px-6">
           <span className="section-label mb-5">
             <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-            Luxury Weddings
+            {isAr ? "حفلات الزفاف الفاخرة" : "Luxury Weddings"}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mt-5 mb-6" style={{ letterSpacing: "-0.025em" }}>
-            The Kingdom&apos;s Most <span className="text-[var(--primary)]">Magnificent Weddings</span>
+            {isAr ? <>أبهى <span className="text-[var(--primary)]">حفلات الزفاف</span> في المملكة</> : <>The Kingdom&apos;s Most <span className="text-[var(--primary)]">Magnificent Weddings</span></>}
           </h2>
           <div className="space-y-5 text-neutral-600 text-[16px] leading-relaxed">
-            <p>
-              Saudi Event Management is a luxury wedding planner producing royal ceremonies and high-net-worth celebrations across the Kingdom — from grand ballrooms in <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link> and seafront venues in <Link href="/locations/jeddah" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Jeddah</Link> to destination weddings in the deserts of <Link href="/locations/alula" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">AlUla</Link>.
-            </p>
-            <p>
-              Every wedding is delivered end-to-end: kosha and stage design, floral architecture, zaffah choreography, lighting, catering coordination, and VIP protocol — all with absolute discretion. Planning yours? Read our <Link href="/blog/exceptional-wedding-cost-saudi-arabia-guide" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">guide to luxury wedding costs in Saudi Arabia</Link> before you begin.
-            </p>
+            {isAr ? (
+              <>
+                <p>
+                  إدارة الفعاليات السعودية مخطّط حفلات زفاف فاخرة يُنتج المراسم الملكية واحتفالات كبار الثروات في عموم المملكة — من القاعات الكبرى في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">الرياض</Link> والقاعات المطلّة على البحر في <Link href={`${arHref}/locations/jeddah`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">جدة</Link> إلى حفلات الزفاف في صحارى <Link href={`${arHref}/locations/alula`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">العلا</Link>.
+                </p>
+                <p>
+                  كل زفاف يُنفَّذ بالكامل: تصميم الكوشة والمسرح، وهندسة الأزهار، وتصميم الزفّة، والإضاءة، وتنسيق الضيافة، وبروتوكول كبار الشخصيات — كل ذلك بسرية مطلقة. أتخطّط لزفافك؟ اطّلع على <Link href={`${arHref}/blog/exceptional-wedding-cost-saudi-arabia-guide`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">دليل تكاليف حفلات الزفاف الفاخرة في السعودية</Link> قبل أن تبدأ.
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  Saudi Event Management is a luxury wedding planner producing royal ceremonies and high-net-worth celebrations across the Kingdom — from grand ballrooms in <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link> and seafront venues in <Link href="/locations/jeddah" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Jeddah</Link> to destination weddings in the deserts of <Link href="/locations/alula" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">AlUla</Link>.
+                </p>
+                <p>
+                  Every wedding is delivered end-to-end: kosha and stage design, floral architecture, zaffah choreography, lighting, catering coordination, and VIP protocol — all with absolute discretion. Planning yours? Read our <Link href="/blog/exceptional-wedding-cost-saudi-arabia-guide" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">guide to luxury wedding costs in Saudi Arabia</Link> before you begin.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -137,23 +160,23 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
       <section className="py-20 md:py-24 bg-white border-b border-neutral-100">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-3xl font-semibold text-neutral-900 mb-12 text-center" style={{ letterSpacing: "-0.025em" }}>
-            How We Produce <span className="text-[var(--primary)]">Royal Weddings</span>
+            {isAr ? <>كيف نُنتج <span className="text-[var(--primary)]">الأعراس الملكية</span></> : <>How We Produce <span className="text-[var(--primary)]">Royal Weddings</span></>}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Crown className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Royal Protocol</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Absolute privacy, high-security clearance, and seamless protocol management for royal family members and VVIP guests.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "البروتوكول الملكي" : "Royal Protocol"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "خصوصية مطلقة، وتصاريح أمنية عالية، وإدارة بروتوكول سلسة لأفراد العائلة المالكة وكبار الشخصيات." : "Absolute privacy, high-security clearance, and seamless protocol management for royal family members and VVIP guests."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Flower2 className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Kosha Design</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Architectural stage building and ceiling-to-floor floral installations crafted by world-renowned designers.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "تصميم الكوشة" : "Kosha Design"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "بناء مسرح معماري وتنسيقات أزهار من السقف إلى الأرض بإبداع مصممين عالميين." : "Architectural stage building and ceiling-to-floor floral installations crafted by world-renowned designers."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Sparkles className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Zaffah Choreography</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Orchestration of grand entrances featuring top-tier regional performers and synchronized ambient lighting.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "تصميم الزفّة" : "Zaffah Choreography"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "تنسيق دخول مهيب بأبرز فنّاني المنطقة وإضاءة محيطة متناغمة." : "Orchestration of grand entrances featuring top-tier regional performers and synchronized ambient lighting."}</p>
             </div>
           </div>
         </div>
@@ -162,10 +185,10 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
       {/* Featured Case Studies */}
       <section className="py-24 bg-[var(--surface-raised)]">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-12 text-center" style={{ letterSpacing: "-0.025em" }}>Featured Wedding Case Studies</h2>
+          <h2 className="text-3xl font-semibold mb-12 text-center" style={{ letterSpacing: "-0.025em" }}>{isAr ? "دراسات حالة مختارة للأعراس" : "Featured Wedding Case Studies"}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {caseStudies.map((item, i) => (
-              <Link href={`/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg hover:border-[var(--primary)]/40 transition-all" aria-label={`View case study: ${item.title} in ${item.loc}`}>
+              <Link href={`${arHref}/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg hover:border-[var(--primary)]/40 transition-all" aria-label={`View case study: ${item.title} in ${item.loc}`}>
                 <div className="h-72 overflow-hidden relative">
                   <Image
                     src={item.img}
@@ -176,11 +199,11 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
                   />
                 </div>
                 <div className="p-7">
-                  <p className="text-xs font-semibold text-[var(--primary)] uppercase tracking-wider mb-2">{item.loc}, Saudi Arabia</p>
+                  <p className="text-xs font-semibold text-[var(--primary)] uppercase tracking-wider mb-2">{item.loc}, {isAr ? "السعودية" : "Saudi Arabia"}</p>
                   <h3 className="text-2xl font-semibold text-neutral-900 group-hover:text-[var(--primary)] transition-colors mb-2">{item.title}</h3>
                   <p className="text-neutral-500 text-[14px] leading-relaxed mb-4">{item.brief}</p>
                   <span className="inline-flex items-center gap-1.5 text-[var(--primary)] text-[13px] font-semibold">
-                    View case study
+                    {isAr ? "عرض دراسة الحالة" : "View case study"}
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform rtl:rotate-180" />
                   </span>
                 </div>
@@ -193,16 +216,16 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
       {/* Related Services */}
       <section className="py-16 bg-white border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/weddings" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury Wedding Planning
+            <Link href={`${arHref}/services/weddings`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "تنظيم حفلات الزفاف الفاخرة" : "Luxury Wedding Planning"}
             </Link>
-            <Link href="/services/royal-weddings" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Royal Weddings &amp; Ceremonies
+            <Link href={`${arHref}/services/royal-weddings`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الأعراس الملكية والمراسم" : "Royal Weddings & Ceremonies"}
             </Link>
-            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury &amp; VIP Events
+            <Link href={`${arHref}/services/luxury-vip-events`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الفاخرة وكبار الشخصيات" : "Luxury & VIP Events"}
             </Link>
           </div>
         </div>
@@ -241,20 +264,20 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Plan Your <span className="text-emerald-400">Royal Wedding?</span></h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>{isAr ? <>هل أنت مستعدّ لتخطيط <span className="text-emerald-400">زفافك الملكي؟</span></> : <>Ready to Plan Your <span className="text-emerald-400">Royal Wedding?</span></>}</h2>
             <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
-              Speak with our senior bridal consultants to design a magnificent celebration.
+              {isAr ? "تحدّث مع كبار استشاريي العرائس لدينا لتصميم احتفال مهيب." : "Speak with our senior bridal consultants to design a magnificent celebration."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="/contact"
+                href={`${arHref}/contact`}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] group"
               >
-                Book Your Bridal Consultation
+                {isAr ? "احجز استشارة العرائس" : "Book Your Bridal Consultation"}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform rtl:rotate-180" />
               </Link>
               <a
-                href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20plan%20a%20luxury%20wedding."
+                href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20to%20plan%20a%20luxury%20wedding."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#25D366] text-white font-medium hover:bg-[#1fb855] transition-colors rounded-xl text-[14px] shadow-[0_4px_14px_rgba(37,211,102,0.35)]"
@@ -263,7 +286,7 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
                 <svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor" aria-hidden="true">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
-                WhatsApp Us
+                {isAr ? "راسلنا على واتساب" : "WhatsApp Us"}
               </a>
             </div>
           </div>

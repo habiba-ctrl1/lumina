@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("madinah-spiritual-event", locale);
 }
 
-export default function MadinahSpiritualEvent() {
+export default async function MadinahSpiritualEvent() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -27,14 +29,14 @@ export default function MadinahSpiritualEvent() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-neutral-900 transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-[var(--primary)] hover:text-neutral-900 transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-neutral-900 text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-[var(--primary)]/10 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-[var(--primary)]/20">
-            Reverence & Grace
+            {isAr ? "دراسة حالة" : "Reverence & Grace"}
           </span>
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-neutral-900 mb-8 leading-tight uppercase tracking-tight">
-            Madinah <span className="text-[var(--primary)] ">Spiritual</span> Event
+            {isAr ? "فعالية روحانية في المدينة" : <>Madinah <span className="text-[var(--primary)] ">Spiritual</span> Event</>}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">Crafting moments of profound peace in the City of the Prophet. A celebration of faith, heritage, and unparalleled hospitality.</p>
         </div>

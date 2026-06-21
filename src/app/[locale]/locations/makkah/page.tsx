@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -20,12 +21,16 @@ import {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/makkah`;
   return {
-    title: "Event Management in Makkah | Saudi Event Management",
-    description:
-      "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
+    title: isAr
+      ? { absolute: "إدارة الفعاليات في مكة المكرمة | إدارة الفعاليات السعودية" }
+      : "Event Management in Makkah | Saudi Event Management",
+    description: isAr
+      ? "تقدّم إدارة الفعاليات السعودية مؤتمرات الشركات والمعارض الحلال وحفلات الزفاف الفاخرة والضيافة المؤسسية للحج في مكة المكرمة. كوادر مسلمة بالكامل. مرخّصون من أمانة مكة وهيئة تطوير مكة ووزارة الحج. القاعات: هيلتون مكة، وفيرمونت، ورافلز، وأبراج البيت."
+      : "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
     keywords:
       "event management company in Makkah, event planner in Makkah, corporate event organizer in Makkah, wedding planner in Makkah, conference organizer Makkah, Hilton Makkah Convention Hotel, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
     alternates: {
@@ -33,9 +38,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/locations/makkah"),
     },
     openGraph: {
-      title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
-      description:
-        "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only operations. RCMC and Amanah Makkah permitted.",
+      title: isAr
+        ? "إدارة الفعاليات في مكة المكرمة | إدارة الفعاليات السعودية"
+        : "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
+      description: isAr
+        ? "مؤتمرات الشركات، والمعارض الحلال، وحفلات الزفاف الفاخرة، والضيافة المؤسسية للحج في مكة المكرمة. عمليات بكوادر مسلمة بالكامل. مرخّصون من هيئة تطوير مكة وأمانة مكة."
+        : "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only operations. RCMC and Amanah Makkah permitted.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -124,7 +132,7 @@ const jsonLd = {
           },
         ],
       },
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "knowsAbout": [
         "Hilton Makkah Convention Hotel",
         "Fairmont Makkah Clock Royal Tower",
@@ -397,7 +405,9 @@ const eventCalendar = [
   },
 ];
 
-export default function MakkahPage() {
+export default async function MakkahPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <script
@@ -407,16 +417,20 @@ export default function MakkahPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Event Management in"
-        titleHighlight="Makkah Al-Mukarramah"
-        subtitle="Corporate conferences, halal exhibitions, luxury Islamic weddings, and Haj corporate hospitality — delivered across Makkah's finest venues by a fully Muslim-staffed team. Permitted by Amanah Makkah and RCMC."
+        title={isAr ? "إدارة الفعاليات في" : "Event Management in"}
+        titleHighlight={isAr ? "مكة المكرمة" : "Makkah Al-Mukarramah"}
+        subtitle={
+          isAr
+            ? "مؤتمرات الشركات، والمعارض الحلال، وحفلات الزفاف الإسلامية الفاخرة، والضيافة المؤسسية للحج — تُقدَّم في أرقى قاعات مكة بفريق مسلم بالكامل. مرخّصون من أمانة مكة وهيئة تطوير مكة."
+            : "Corporate conferences, halal exhibitions, luxury Islamic weddings, and Haj corporate hospitality — delivered across Makkah's finest venues by a fully Muslim-staffed team. Permitted by Amanah Makkah and RCMC."
+        }
         backgroundImage="/locations/makkah-hero.webp"
         imageAlt="Makkah Al-Mukarramah cityscape — event management in the holy city, Saudi Arabia"
-        badge="Islam's Holiest City | Makkah Al-Mukarramah"
+        badge={isAr ? "أقدس مدن الإسلام | مكة المكرمة" : "Islam's Holiest City | Makkah Al-Mukarramah"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Locations", href: "/locations" },
-          { label: "Makkah" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "المواقع" : "Locations", href: `${arHref}/locations` },
+          { label: isAr ? "مكة" : "Makkah" },
         ]}
         minHeight="large"
       />
@@ -640,7 +654,7 @@ export default function MakkahPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events Delivered in Makkah", val: "60+" },
+              { label: "Events Delivered in Makkah", val: "30+" },
               { label: "Venue Partnerships", val: "15+" },
               { label: "Muslim-Verified Vendors", val: "100%" },
               { label: "RCMC Compliance Rate", val: "100%" },

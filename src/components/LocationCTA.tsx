@@ -19,7 +19,7 @@ export default function LocationCTA({ city }: { city: string }) {
   const waText = encodeURIComponent(
     `Hi Saudi Event Management! I'd like to plan an event in ${city}. Could you share availability and a proposal?`
   );
-  const waUrl = `https://wa.me/966501234567?text=${waText}`;
+  const waUrl = `https://wa.me/966539388072?text=${waText}`;
 
   return (
     <section className="px-4 sm:px-6 lg:px-8 py-16 md:py-20">

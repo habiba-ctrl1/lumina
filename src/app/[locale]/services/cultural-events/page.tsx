@@ -9,8 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
 export default function SeasonalEventsPage() {
+  const isAr = useLocale() === "ar";
+  const arHref = isAr ? "/ar" : "";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -140,17 +143,21 @@ export default function SeasonalEventsPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Cultural Event Management"
-          titleHighlight="in Saudi Arabia"
-          subtitle="The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering authentic cultural experiences across Riyadh, Jeddah, and beyond."
+          title={isAr ? "إدارة الفعاليات الثقافية" : "Cultural Event Management"}
+          titleHighlight={isAr ? "في السعودية" : "in Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "المنظِّم الرائد في المملكة لفعاليات رمضان واليوم الوطني والعيد — نحفظ التراث السعودي ونقدّم تجارب ثقافية أصيلة في الرياض وجدة وما بعدها."
+              : "The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering authentic cultural experiences across Riyadh, Jeddah, and beyond."
+          }
           backgroundImage="/services/premium_cultural_event_hero.webp"
           imageAlt="Luxury Saudi cultural event and celebration at night with traditional Majlis"
-          badge="Cultural Events | التراث السعودي"
+          badge={isAr ? "الفعاليات الثقافية | التراث السعودي" : "Cultural Events | التراث السعودي"}
           enableParallax
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Cultural Events" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "الفعاليات الثقافية" : "Cultural Events" },
           ]}
           minHeight="large"
         />
@@ -163,7 +170,7 @@ export default function SeasonalEventsPage() {
               Plan Your Celebration
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Talk to Our Events Team
@@ -383,7 +390,7 @@ export default function SeasonalEventsPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20cultural%20or%20national%20event."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20cultural%20or%20national%20event."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"

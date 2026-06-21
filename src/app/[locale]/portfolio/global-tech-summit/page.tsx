@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("global-tech-summit", locale);
 }
 
-export default function GlobalTechSummit() {
+export default async function GlobalTechSummit() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -27,14 +29,14 @@ export default function GlobalTechSummit() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-[var(--primary)]/20 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-[var(--primary)]/30">
-            Technology & Innovation
+            {isAr ? "دراسة حالة" : "Technology & Innovation"}
           </span>
           <h1 className="text-4xl md:text-7xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tight">
-            Global <span className="text-[var(--primary)] ">Tech</span> Summit
+            {isAr ? "القمة التقنية العالمية" : <>Global <span className="text-[var(--primary)] ">Tech</span> Summit</>}
           </h1>
           <p className="text-neutral-600 text-lg font-light max-w-2xl mx-auto">The intersection of venture capital, silicon, and Saudi Vision. A high-production benchmark for the digital age.</p>
         </div>

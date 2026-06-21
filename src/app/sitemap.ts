@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/lib/blog-data';
+import { teamMemberSlugs } from './[locale]/about/our-team/[name]/page';
 import { isArabicRouteInSitemap, isArabicPath, stripLocalePrefix } from '@/lib/seo';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://saudieventmanagement.com";
@@ -98,13 +99,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ])
   );
 
-  /* ── PSEO service×city pages at /services/[slug] ────────────────────────── */
-  const pseoServiceEntries = pseoServiceSlugs.map((slug) => ({
-    url: `${BASE}/services/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  /* ── PSEO service×city pages at /services/[slug] (EN + AR; AR kept by the
+        filter now that the "/services" subtree is translated) ────────────────── */
+  const pseoServiceEntries = pseoServiceSlugs.flatMap((slug) => [
+    {
+      url: `${BASE}/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/ar/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ]);
 
   /* ── Location city×service pages (secondary cities: top 2 services only) ── */
   const secondaryCityServiceEntries = secondaryCities.flatMap((city) =>
@@ -123,6 +133,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     ])
   );
+
+  /* ── Team-member detail pages (dynamic, both locales) ─────────────────────── */
+  // Slugs come from the route's data source (TEAM_PROFILES) so new profiles are
+  // picked up automatically. The Arabic /about subtree is translated → indexable,
+  // so the AR entries survive the filter below; EN is always kept.
+  const teamMemberEntries = teamMemberSlugs.flatMap((slug) => [
+    {
+      url: `${BASE}/about/our-team/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${BASE}/ar/about/our-team/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.45,
+    },
+  ]);
+
+  /* ── Arabic portfolio case studies (phase 2 — translated, so kept by the filter
+        below). English portfolio entries live in staticPages as before. ─────────── */
+  const portfolioArCaseStudies = [
+    "royal-riyadh-wedding", "makkah-vip-retreat", "madinah-spiritual-event",
+    "alula-desert-festival", "dammam-corporate-seminar", "executive-summit-jeddah",
+    "global-tech-summit", "neom-future-summit", "riyadh-elite-majlis",
+    "riyadh-luxury-soiree", "alkhobar-corporate-retreat", "grand-wedding-ceremony",
+    "jeddah-beach-wedding", "riyadh-government-summit",
+    // Category pages (SEO-critical Arabic layer localized).
+    "luxury-weddings", "corporate-events", "vision-2030",
+  ];
+  const portfolioArEntries = [
+    // Portfolio index (Arabic)
+    { url: `${BASE}/ar/portfolio`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
+    ...portfolioArCaseStudies.map((slug) => ({
+      url: `${BASE}/ar/portfolio/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.55,
+    })),
+  ];
 
   /* ── Static pages ────────────────────────────────────────────────────────── */
   const staticPages: { route: string; freq: 'weekly' | 'monthly'; priority: number }[] = [
@@ -162,6 +213,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/ar/services/exhibitions',        freq: 'monthly', priority: 0.7  },
     { route: '/ar/services/conferences',        freq: 'monthly', priority: 0.7  },
     { route: '/ar/services/destination-events', freq: 'monthly', priority: 0.65 },
+    { route: '/ar/services/event-production',    freq: 'monthly', priority: 0.65 },
+    { route: '/ar/services/cultural-events',     freq: 'monthly', priority: 0.65 },
+    { route: '/ar/services/luxury-vip-events',   freq: 'monthly', priority: 0.65 },
+    { route: '/ar/services/royal-weddings',      freq: 'monthly', priority: 0.6  },
+    { route: '/ar/services/production-venues',   freq: 'monthly', priority: 0.6  },
 
     // ── Portfolio ─────────────────────────────────────────────────────────────
     { route: '/portfolio/luxury-weddings',           freq: 'monthly', priority: 0.7 },
@@ -187,6 +243,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/about/awards-accolades',   freq: 'monthly', priority: 0.55 },
     { route: '/about/careers',            freq: 'monthly', priority: 0.55 },
 
+    // ── About (Arabic) ──────────────────────────────────────────────────────────
+    // /about subtree is translated + indexable, so its Arabic subpages belong in
+    // the sitemap (the /ar/about index is already covered in "Arabic core" above).
+    { route: '/ar/about/our-team',         freq: 'monthly', priority: 0.5  },
+    { route: '/ar/about/awards-accolades', freq: 'monthly', priority: 0.45 },
+    { route: '/ar/about/careers',          freq: 'monthly', priority: 0.45 },
+
     // ── Supporting ────────────────────────────────────────────────────────────
     { route: '/vendors',              freq: 'monthly', priority: 0.6 },
     { route: '/vendor-registration',  freq: 'monthly', priority: 0.55 },
@@ -198,7 +261,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/editorial-policy',     freq: 'monthly', priority: 0.3 },
     { route: '/privacy',              freq: 'monthly', priority: 0.3 },
     { route: '/terms',                freq: 'monthly', priority: 0.3 },
-    // NOTE: /tracking and /portfolio-luxury intentionally excluded — thin/noindex content
+    // NOTE: /tracking intentionally excluded — private utility route served with a
+    //       `noindex, nofollow` meta (kept crawlable so that tag is honored).
+    // NOTE: /portfolio-luxury intentionally excluded — it is a 308 permanent redirect
+    //       to /portfolio (no indexable content of its own).
     // NOTE: /admin/* intentionally excluded — blocked in robots.txt
   ];
 
@@ -227,6 +293,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const allEntries = [
     ...staticEntries,
+    ...teamMemberEntries,
+    ...portfolioArEntries,
     ...locationCityEntries,
     ...primaryCityServiceEntries,
     ...secondaryCityServiceEntries,

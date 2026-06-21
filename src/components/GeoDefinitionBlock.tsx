@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "500+",  label: "Events Produced",     sub: "Experience across Saudi Vision 2030 initiatives." },
-  { value: "200+",  label: "Trusted Vendors",     sub: "A vetted network of KSA event partners."          },
-  { value: "100%",  label: "Client Satisfaction", sub: "Corporate and government events Kingdom-wide."    },
+  { value: "250+",  label: "Events Produced",     sub: "Experience across Saudi Vision 2030 initiatives." },
+  { value: "20+",   label: "Trusted Vendors",     sub: "A vetted network of KSA event partners."          },
+  { value: "15+",   label: "Years of Experience", sub: "Delivering events Kingdom-wide since 2010."       },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];

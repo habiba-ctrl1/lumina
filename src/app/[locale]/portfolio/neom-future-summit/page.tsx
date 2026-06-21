@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("neom-future-summit", locale);
 }
 
-export default function NeomFutureSummitCaseStudy() {
+export default async function NeomFutureSummitCaseStudy() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -27,14 +29,14 @@ export default function NeomFutureSummitCaseStudy() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-sm uppercase tracking-widest font-medium">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-sm uppercase tracking-widest font-medium">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-white text-xs uppercase tracking-[0.4em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/20">
-            Corporate Case Study
+            {isAr ? "دراسة حالة" : "Corporate Case Study"}
           </span>
           <h1 className="text-3xl md:text-5xl font-sans font-bold text-white mb-8 leading-tight">
-            The NEOM <span className="text-[var(--primary)] font-bold">Future Summit</span>
+            {isAr ? "قمة نيوم للمستقبل" : <>The NEOM <span className="text-[var(--primary)] font-bold">Future Summit</span></>}
           </h1>
           <p className="text-neutral-300 text-lg font-light">Architecting the future of global investment in the heart of the desert.</p>
         </div>

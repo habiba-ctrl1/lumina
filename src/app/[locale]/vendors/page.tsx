@@ -388,7 +388,7 @@ export default async function VendorsPage({ params }: PageProps) {
             Our partnerships team is available on WhatsApp for a quick conversation before you apply.
           </p>
           <a
-            href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20becoming%20a%20vendor%20partner."
+            href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20becoming%20a%20vendor%20partner."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-4 rounded-xl text-[15px] font-medium transition-all duration-200"

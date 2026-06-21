@@ -313,7 +313,7 @@ export default function ConsultationPage() {
                 <div className="pt-6 border-t border-neutral-100 text-center">
                   <p className="text-neutral-400 text-[11px] font-medium uppercase tracking-wider mb-3">Prefer instant reply?</p>
                   <a 
-                    href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I'd%20like%20to%20book%20a%20consultation."
+                    href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I'd%20like%20to%20book%20a%20consultation."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-emerald-600 font-semibold text-[13px] hover:text-emerald-700 transition-colors"

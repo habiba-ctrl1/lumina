@@ -7,10 +7,13 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Our Executive Team | Saudi Event Management',
-    description: 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.',
+    title: isAr ? 'فريقنا التنفيذي | إدارة الفعاليات السعودية' : 'Our Executive Team | Saudi Event Management',
+    description: isAr
+      ? 'تعرّف على فريق القيادة التنفيذية في إدارة الفعاليات السعودية بقيادة المؤسِّسة والرئيسة التنفيذية حبيبة أصغر. خبراء في تخطيط الفعاليات الفاخرة في جميع أنحاء المملكة العربية السعودية.'
+      : 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.',
     keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/our-team`,
@@ -63,14 +66,16 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
           <div className="flex flex-col items-center gap-4 mb-6">
             <span className="section-label bg-white border border-neutral-200/80">
               <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Executive Leadership
+              {isAr ? "القيادة التنفيذية" : "Executive Leadership"}
             </span>
           </div>
           <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            The <span className="text-[var(--primary)]">Architects</span> of Luxury
+            {isAr ? (<>مهندسو <span className="text-[var(--primary)]">الفخامة</span></>) : (<>The <span className="text-[var(--primary)]">Architects</span> of Luxury</>)}
           </h1>
           <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Meet the visionaries, producers, and operational experts behind Saudi Arabia's most prestigious events.
+            {isAr
+              ? "تعرّف على أصحاب الرؤية والمنتجين وخبراء العمليات وراء أرقى فعاليات المملكة العربية السعودية."
+              : "Meet the visionaries, producers, and operational experts behind Saudi Arabia's most prestigious events."}
           </p>
         </div>
       </div>
@@ -81,20 +86,33 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/3">
               <div className="rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative aspect-[3/4]">
-                <Image src="/gallery_corporate_gala.webp" alt="Habiba Asghar - CEO" fill className="object-cover" />
+                <Image src="/gallery_corporate_gala.webp" alt={isAr ? "حبيبة أصغر - الرئيسة التنفيذية" : "Habiba Asghar - CEO"} fill className="object-cover" />
               </div>
             </div>
             <div className="w-full md:w-2/3">
-              <h2 className="text-3xl font-semibold mb-2">Habiba Asghar</h2>
-              <p className="text-[var(--primary)] uppercase tracking-wider font-semibold text-sm mb-6">Founder & CEO</p>
-              
+              <h2 className="text-3xl font-semibold mb-2">{isAr ? "حبيبة أصغر" : "Habiba Asghar"}</h2>
+              <p className="text-[var(--primary)] uppercase tracking-wider font-semibold text-sm mb-6">{isAr ? "المؤسِّسة والرئيسة التنفيذية" : "Founder & CEO"}</p>
+
               <div className="prose prose-slate max-w-none text-neutral-500 leading-relaxed space-y-6">
-                <p>
-                  As the Founder and CEO of Saudi Event Management, Habiba Asghar has fundamentally elevated the standard of luxury event production in the Kingdom. With over a decade of high-stakes event experience, she leads a team of international experts dedicated to translating complex client visions into flawless realities.
-                </p>
-                <p>
-                  Her expertise spans royal weddings, C-suite corporate summits, and massive cultural activations aligned with Saudi Vision 2030. Habiba is known for her uncompromising attention to detail and her ability to seamlessly integrate high-level VIP protocol with breathtaking aesthetic design.
-                </p>
+                {isAr ? (
+                  <>
+                    <p>
+                      بصفتها المؤسِّسة والرئيسة التنفيذية لإدارة الفعاليات السعودية، ارتقت حبيبة أصغر بمعايير إنتاج الفعاليات الفاخرة في المملكة بشكل جوهري. وبخبرة تتجاوز عقداً من الزمن في الفعاليات عالية المخاطر، تقود فريقاً من الخبراء الدوليين المكرّسين لتحويل رؤى العملاء المعقّدة إلى واقع لا تشوبه شائبة.
+                    </p>
+                    <p>
+                      تمتد خبرتها لتشمل حفلات الزفاف الملكية، وقمم الشركات لكبار التنفيذيين، والتفعيلات الثقافية الضخمة المتوافقة مع رؤية السعودية 2030. وتشتهر حبيبة باهتمامها الذي لا يقبل المساومة بالتفاصيل، وقدرتها على الدمج السلس بين بروتوكول كبار الشخصيات رفيع المستوى والتصميم الجمالي الآسر.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      As the Founder and CEO of Saudi Event Management, Habiba Asghar has fundamentally elevated the standard of luxury event production in the Kingdom. With over a decade of high-stakes event experience, she leads a team of international experts dedicated to translating complex client visions into flawless realities.
+                    </p>
+                    <p>
+                      Her expertise spans royal weddings, C-suite corporate summits, and massive cultural activations aligned with Saudi Vision 2030. Habiba is known for her uncompromising attention to detail and her ability to seamlessly integrate high-level VIP protocol with breathtaking aesthetic design.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>

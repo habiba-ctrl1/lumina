@@ -1,11 +1,12 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowLeft, ArrowRight, Lightbulb, TrendingUp,
   AlertTriangle, CheckCircle, ArrowUpRight, Clock,
-  Calendar, MessageCircle, ListChecks,
+  Calendar, MessageCircle, ListChecks, HelpCircle, Plus,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,7 +31,8 @@ function inlineMarkdown(text: string): string {
 type ContentSegment =
   | { kind: "block"; content: string }
   | { kind: "table"; rows: string[] }
-  | { kind: "takeaways"; items: string[] };
+  | { kind: "takeaways"; items: string[] }
+  | { kind: "faq"; items: { q: string; a: string }[] };
 
 /* ─── Pre-process flat blocks into typed segments ────────────────────────────── */
 function parseSegments(blocks: string[]): ContentSegment[] {
@@ -47,6 +49,24 @@ function parseSegments(blocks: string[]): ContentSegment[] {
         i++;
       }
       if (rows.length) segs.push({ kind: "table", rows });
+      continue;
+    }
+
+    /* FAQ header → collect following [Q]/[A] pairs */
+    if (b === "## Frequently Asked Questions") {
+      const items: { q: string; a: string }[] = [];
+      i++;
+      while (i < blocks.length && blocks[i].startsWith("[Q]")) {
+        const q = blocks[i].replace("[Q]", "").trim();
+        i++;
+        let a = "";
+        if (i < blocks.length && blocks[i].startsWith("[A]")) {
+          a = blocks[i].replace("[A]", "").trim();
+          i++;
+        }
+        items.push({ q, a });
+      }
+      if (items.length) segs.push({ kind: "faq", items });
       continue;
     }
 
@@ -146,11 +166,53 @@ function TakeawaysCard({ items }: { items: string[] }) {
   );
 }
 
+/* ─── FAQ accordion (native <details> for accessibility + SEO) ───────────────── */
+function FaqSection({ items }: { items: { q: string; a: string }[] }) {
+  return (
+    <div className="my-14">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-9 h-9 rounded-xl bg-[var(--primary)] flex items-center justify-center shrink-0">
+          <HelpCircle size={16} className="text-white" />
+        </div>
+        <h2
+          className="text-[clamp(1.3rem,2.8vw,1.65rem)] font-semibold text-[var(--heading)] leading-tight m-0"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <div className="space-y-3">
+        {items.map((item, i) => (
+          <details
+            key={i}
+            className="group rounded-xl border border-[var(--border)] bg-[var(--surface)] open:bg-[var(--surface-tinted)] open:border-[var(--primary)]/20 transition-colors"
+          >
+            <summary className="flex items-start justify-between gap-4 cursor-pointer list-none px-5 py-4 select-none">
+              <span className="text-[15px] font-semibold text-[var(--heading)] leading-snug">
+                {item.q}
+              </span>
+              <span className="mt-0.5 w-6 h-6 rounded-lg bg-[var(--primary-muted)] flex items-center justify-center shrink-0 transition-transform duration-300 group-open:rotate-45">
+                <Plus size={14} className="text-[var(--primary)]" />
+              </span>
+            </summary>
+            <p
+              className="px-5 pb-5 -mt-1 text-[var(--foreground-medium)] text-[14.5px] leading-[1.8] m-0"
+              dangerouslySetInnerHTML={{ __html: inlineMarkdown(item.a) }}
+            />
+          </details>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════════
    Main page component
    ═══════════════════════════════════════════════════════════════════════════════ */
 export default function BlogPostPage() {
   const params = useParams();
+  const isAr = useLocale() === "ar";
+  const lp = (path: string) => `${isAr ? "/ar" : ""}${path}`;
   const slug = params.slug as string;
   const post = blogPosts.find((p) => p.slug === slug);
   const currentIdx = blogPosts.findIndex((p) => p.slug === slug);
@@ -315,10 +377,13 @@ export default function BlogPostPage() {
   };
 
   /* ── JSON-LD schema ─────────────────────────────────────────────────────── */
+  const displayTitle = isAr && post.titleAr ? post.titleAr : post.title;
+  const displayExcerpt = isAr && post.excerptAr ? post.excerptAr : post.excerpt;
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
+    headline: displayTitle,
     image: `https://saudieventmanagement.com${post.image}`,
     author: { "@type": "Person", name: post.author },
     publisher: {
@@ -327,8 +392,24 @@ export default function BlogPostPage() {
       logo: { "@type": "ImageObject", url: "https://saudieventmanagement.com/logo.png" },
     },
     datePublished: post.date,
-    description: post.excerpt,
+    description: displayExcerpt,
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://saudieventmanagement.com/blog/${post.slug}` },
+  };
+
+  /* ── FAQ schema (FAQPage) — built from any FAQ segment ──────────────────── */
+  const stripMarkdown = (s: string) =>
+    s.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\*\*([^*]+)\*\*/g, "$1").trim();
+  const faqSeg = segments.find((s) => s.kind === "faq") as
+    | { kind: "faq"; items: { q: string; a: string }[] }
+    | undefined;
+  const faqSchema = faqSeg && {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqSeg.items.map((item) => ({
+      "@type": "Question",
+      name: stripMarkdown(item.q),
+      acceptedAnswer: { "@type": "Answer", text: stripMarkdown(item.a) },
+    })),
   };
 
   /* ══════════════════════════════════════════════════════════════════════════════
@@ -337,17 +418,20 @@ export default function BlogPostPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <ScrollProgress />
       <Navbar />
 
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <nav aria-label="Breadcrumb" className="bg-[var(--surface-raised)] border-b border-[var(--border-subtle)] pt-20">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center gap-2 text-[12px] font-medium text-[var(--foreground-muted)] flex-wrap">
-          <Link href="/" className="hover:text-[var(--heading)] transition-colors">Home</Link>
+          <Link href={lp("/")} className="hover:text-[var(--heading)] transition-colors">{isAr ? "الرئيسية" : "Home"}</Link>
           <Chevron size={11} className="text-[var(--foreground-disabled)]" />
-          <Link href="/blog" className="hover:text-[var(--heading)] transition-colors">Journal</Link>
+          <Link href={lp("/blog")} className="hover:text-[var(--heading)] transition-colors">{isAr ? "المدوّنة" : "Journal"}</Link>
           <Chevron size={11} className="text-[var(--foreground-disabled)]" />
-          <span className="text-[var(--heading)] line-clamp-1">{post.title}</span>
+          <span className="text-[var(--heading)] line-clamp-1">{displayTitle}</span>
         </div>
       </nav>
 
@@ -389,7 +473,7 @@ export default function BlogPostPage() {
               className="text-3xl md:text-[2.8rem] lg:text-[3.2rem] font-bold text-white leading-[1.08] mb-6 max-w-3xl"
               style={{ letterSpacing: "-0.03em", textShadow: "0 2px 20px rgba(0,0,0,0.25)" }}
             >
-              {post.title}
+              {displayTitle}
             </h1>
 
             <div className="flex flex-wrap items-center gap-5 text-[12px] text-white/60 font-medium border-t border-white/10 pt-5">
@@ -436,6 +520,7 @@ export default function BlogPostPage() {
                 {segments.map((seg, idx) => {
                   if (seg.kind === "table")     return <BlogTable     key={`t${idx}`}  rows={seg.rows} />;
                   if (seg.kind === "takeaways") return <TakeawaysCard key={`tw${idx}`} items={seg.items} />;
+                  if (seg.kind === "faq")       return <FaqSection    key={`f${idx}`}  items={seg.items} />;
                   const el = renderBlock(seg.content, idx);
                   return el ? <div key={idx}>{el}</div> : null;
                 })}

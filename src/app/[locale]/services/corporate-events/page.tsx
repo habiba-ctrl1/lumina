@@ -1,3 +1,4 @@
+import { getLocale } from "next-intl/server";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -55,7 +56,7 @@ const jsonLd = {
         name: "Saudi Event Management",
         image: "https://saudieventmanagement.com/services/alkhobar_corporate_people.webp",
         url: "https://saudieventmanagement.com",
-        telephone: "+966501234567",
+        telephone: "+966539388072",
         address: {
           "@type": "PostalAddress",
           streetAddress: "King Fahd Road",
@@ -420,9 +421,119 @@ const faqs = [
   },
 ];
 
+/* ─── Arabic body content (phase 1b). Parallel to the English arrays above and
+       selected by index when locale === "ar"; English output stays unchanged. ─── */
+const eventTypesAr = [
+  { title: "الجمعيات العمومية السنوية", desc: "إدارة الجمعيات العمومية واجتماعات المساهمين مع تصويت إلكتروني آمن، ومحاضر ثنائية اللغة، والامتثال التنظيمي للشركات السعودية المدرجة." },
+  { title: "القمم التنفيذية", desc: "قمم الإدارة العليا ومنتديات القيادة وملتقيات الاستراتيجية في مركز الملك عبدالله المالي وبرج المملكة — مع بروتوكول كبار الشخصيات وقاعات فرعية وإدارة المتحدثين." },
+  { title: "حفلات الجوائز والعشاء", desc: "حفلات تكريم وجوائز الشركات وحفلات العشاء الفاخرة — تصميم مسرح مخصص، وديكور يحمل هوية العلامة، وقوائم طعام حلال راقية، وفقرات ترفيهية في قاعات الخمس نجوم." },
+  { title: "إطلاق المنتجات", desc: "إطلاقات منتجات وعلامات مؤثّرة بإنتاج تجريبي غامر، وشاشات LED، وتكامل مباشر مع وسائل التواصل، وإدارة المؤتمرات الصحفية." },
+  { title: "المؤتمرات الهجينة", desc: "إنتاج فعاليات هجينة سلس — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات رقمية تفاعلية، وإدارة المندوبين حول العالم." },
+  { title: "ملتقيات مجالس الإدارة", desc: "ملتقيات حصرية لمجالس الإدارة والقيادة في العُلا ونيوم ووجهات البحر الأحمر — تصميم أجندة مخصص، وإقامة فاخرة، وسرية تامة." },
+  { title: "فعاليات رؤية 2030", desc: "فعاليات تفعيل العلامة المتوافقة مع الجهات الحكومية وشراكات القطاعين العام والخاص لهيئة الترفيه ووزارة الثقافة وهيئة السياحة ومحطات المشاريع العملاقة." },
+  { title: "الاجتماعات العامة للموظفين", desc: "فعاليات تفاعل واسعة للموظفين، واجتماعات الشركة العامة، وحفلات التكريم للكوادر السعودية — ثنائية اللغة وشاملة ومؤثّرة." },
+];
+
+const capabilitiesAr = [
+  { title: "خدمات منظِّم المؤتمرات (PCO)", desc: "خدمات منظِّم مؤتمرات احترافي متكاملة — معتمدة من IAPCO، تشمل تسجيل المندوبين وإدارة الإقامة وتنسيق البرامج." },
+  { title: "الإنتاج الصوتي والمرئي والتقني", desc: "صوت بجودة الحفلات، وإضاءة ذكية، وشاشات LED بدقة 4K، وبنية بث بجودة احترافية لأي سعة قاعة." },
+  { title: "الترجمة الفورية", desc: "ترجمة فورية عربية-إنجليزية (ولغة ثالثة) بأجهزة Bosch أو Sennheiser مطابقة لمعايير ISO ومترجمين معتمدين." },
+  { title: "التصاريح والامتثال", desc: "إدارة كاملة لتصاريح هيئة الترفيه، وموافقات البلدية، وتصاريح الدفاع المدني، وإشعارات وزارة الداخلية — دون أي تعقيد." },
+  { title: "تسجيل المندوبين", desc: "منصات تسجيل إلكترونية مخصصة، وطباعة بطاقات، وأنظمة دخول بـ QR، وتحليلات بيانات لإدارة أكثر من 5000 مندوب." },
+  { title: "إدارة المتحدثين", desc: "لوجستيات متكاملة للمتحدثين — مستندات إحاطة، ودعم تأشيرات، وإدارة غرف الاستعداد، وتنسيق بروفات الصوت والصورة محليًا ودوليًا." },
+  { title: "المحتوى ثنائي اللغة", desc: "هوية فعاليات كاملة بالعربية والإنجليزية: برامج، ولافتات، وأصول رقمية، ومحتوى تواصل اجتماعي من فريقنا الإبداعي ثنائي اللغة." },
+  { title: "تحليلات ما بعد الفعالية", desc: "تقارير شاملة بعد الفعالية: استبيانات رضا المندوبين، وحصر التغطية الإعلامية، وقياس العائد على الاستثمار، وتوزيع تسجيلات الفعالية." },
+];
+
+const venueCityAr = [
+  { city: "الرياض", tag: "العاصمة ومركز الملك عبدالله المالي" },
+  { city: "جدة", tag: "مركز أعمال البحر الأحمر" },
+  { city: "الدمام والمنطقة الشرقية", tag: "الطاقة والتجارة" },
+];
+
+const planningStepsAr = [
+  { title: "الاكتشاف والإحاطة", desc: "تحديد الأهداف، وتوصيف الجمهور، وعدد المندوبين، وإطار الميزانية، والمتطلبات التنظيمية، واختيار المدينة." },
+  { title: "اختيار القاعة", desc: "قائمة قاعات منتقاة مع معاينات ميدانية، ومقارنة أسعار، ومواصفات صوتية ومرئية، وأسعار تفضيلية في مركز الملك عبدالله المالي وRICEC وكبرى الفنادق." },
+  { title: "التصميم الإبداعي وتصميم البرنامج", desc: "تصميم المسرح، والهوية، وتسلسل الجلسات، وبرنامج المتحدثين، واختيار الفقرات الترفيهية، وبنية محتوى ثنائية اللغة." },
+  { title: "التصاريح والامتثال", desc: "تصاريح هيئة الترفيه، وموافقات البلدية، وتصاريح الدفاع المدني، وإشعارات الوزارات — تُدار بالكامل داخليًا دون أي عبء على العميل." },
+  { title: "الإنتاج والبروفات", desc: "تركيب الصوت والصورة، وأنظمة الإضاءة، وإعداد البث، وأجهزة الترجمة، وبروفات تقنية كاملة مع المتحدثين وفريق العمليات." },
+  { title: "التنفيذ والتقارير", desc: "فريق عمليات يدير كل دقيقة يوم الفعالية. وبعدها: تحليلات المندوبين، وملخص إعلامي، وتسجيلات، ومؤشرات العائد خلال 7 أيام." },
+];
+
+const faqsAr = [
+  { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "تُصنَّف إدارة الفعاليات السعودية باستمرار كأبرز شركة لإدارة فعاليات الشركات في المملكة — خبرة تتجاوز 15 عامًا، وأكثر من 500 فعالية مؤسسية، وصفة شريك مفضّل في مركز الملك عبدالله المالي وRICEC، وخدمة أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة." },
+  { q: "كم تبلغ تكلفة إدارة فعاليات الشركات في السعودية؟", a: "تبدأ القمم التنفيذية من 75,000 إلى 300,000 ريال، وتتراوح حفلات العشاء الفاخرة من 150,000 إلى 600,000 ريال، أما المؤتمرات الكبرى في مركز الملك عبدالله المالي أو RICEC لأكثر من 500 مندوب فتتراوح عادةً من 300,000 إلى 1,500,000 ريال. تواصل معنا لعرض سعر مخصص." },
+  { q: "ما أبرز قاعات فعاليات الشركات في الرياض؟", a: "مركز مؤتمرات الملك عبدالله المالي (2500 مقعد)، وRICEC (أكبر مركز مؤتمرات ومعارض في السعودية)، وريتز كارلتون الرياض، وفورسيزونز برج المملكة، وفندق الفيصلية، وجي دبليو ماريوت الرياض، وفيرمونت الرياض KAFD." },
+  { q: "ما هو منظِّم المؤتمرات الاحترافي (PCO) في السعودية؟", a: "منظِّم المؤتمرات الاحترافي (PCO) يدير دورة حياة المؤتمر كاملة — القاعة، والتسجيل، والصوت والصورة، والترجمة، والتصاريح، ولوجستيات المتحدثين. وإدارة الفعاليات السعودية عضو مرتبط بـ IAPCO وعضو في MPI." },
+  { q: "هل تديرون فعاليات الشركات الهجينة في السعودية؟", a: "نعم — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات أسئلة تفاعلية، وتواصل افتراضي. وقد أدرنا مؤتمرات هجينة لأرامكو السعودية بآلاف المندوبين عن بُعد حول العالم." },
+  { q: "ما التصاريح المطلوبة لفعاليات الشركات في السعودية؟", a: "رخصة الترفيه من هيئة الترفيه، وتصريح فعالية من البلدية، وتصريح الدفاع المدني، وإشعارات وزارة الداخلية للتجمعات الدولية الكبيرة. وتدير إدارة الفعاليات السعودية جميع مسارات التصاريح من البداية للنهاية." },
+  { q: "كيف تتوافق إدارة الفعاليات السعودية مع رؤية 2030؟", a: "نعمل مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة ومطوري المشاريع العملاقة (نيوم، الدرعية، مشروع البحر الأحمر) لتقديم فعاليات متوافقة مع رؤية 2030 والمبادرة الخضراء وأهداف التحول الوطني." },
+  { q: "هل تديرون فعاليات لأرامكو السعودية والجهات الحكومية؟", a: "نعم — سجل حافل مع أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وسدايا والجهات الوزارية. بروتوكول كبار الشخصيات على المستوى الحكومي، وإدارة قاعات آمنة، واتفاقيات سرية ثنائية اللغة، وترجمة فورية." },
+];
+
+const statLabelsAr = [
+  "فعالية مؤسسية منفّذة",
+  "عامًا في السوق السعودي",
+  "أقصى عدد مندوبين تمت إدارته",
+  "متوسط تقييم العملاء",
+  "مدينة سعودية نغطيها",
+  "مهلة تقديم العرض",
+];
+
+/* Section-level Arabic copy (headings, labels, paragraphs). */
+const cAr = {
+  ctaProposal: "اطلب عرضًا لفعالية شركتك",
+  ctaSpeak: "تحدّث إلى فريقنا",
+  trustQuote: "شريك موثوق لفعاليات رؤية 2030 منذ 2012.",
+  introLabel: "روّاد هندسة فعاليات الشركات في السعودية",
+  introH2a: "نرتقي بإدارة فعاليات الشركات",
+  introH2b: "في السعودية.",
+  introP1: "على مدى أكثر من 15 عامًا، كانت إدارة الفعاليات السعودية العمود التشغيلي خلف أهم التجمّعات المؤسسية في المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى قمم بـ 5000 مندوب في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
+  introP2: "يضم عملاؤنا أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة، وقائمة متنامية من مطوّري المشاريع العملاقة تشمل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — وكلّهم لا يقبلون أي هامش للخطأ، ويطلبون قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
+  introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) معتمدًا ومرتبطًا بـ IAPCO وMPI، ندير دورة حياة الفعالية كاملة — من استخراج تصاريح هيئة الترفيه والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت فريق واحد مسؤول وموحّد.",
+  evLabel: "خبرة في كل نوع فعالية",
+  evH2a: "كل صيغة مؤسسية.",
+  evH2b: "بإتقان.",
+  evP: "ثماني تخصصات متميزة في فعاليات الشركات — يقود كلًّا منها فريق متخصص بخبرة عميقة في السوق السعودي وشبكة موردين موثوقة.",
+  vnLabel: "ريادة في القاعات",
+  vnH2a: "أبرز قاعات فعاليات الشركات",
+  vnH2b: "في السعودية",
+  vnP: "وصول بصفة شريك مفضّل إلى أبرز مراكز المؤتمرات في المملكة، ومرافق مركز الملك عبدالله المالي، وفنادق الأعمال الخمس نجوم — بأسعار تفاوضية وأولوية في الحجز.",
+  capLabel: "قدرات داخلية",
+  capH2a: "فريق واحد. مسؤولية",
+  capH2b: "كاملة.",
+  capP: "جميع القدرات مملوكة داخليًا — دون احتكاك تعدّد الموردين ودون فجوات في المسؤولية.",
+  prLabel: "منهجيتنا",
+  prH2a: "كيف نخطّط",
+  prH2b: "فعالية شركة",
+  prH2c: "في السعودية",
+  prP: "منهجية من ست مراحل صُقلت عبر أكثر من 500 فعالية مؤسسية — من الإحاطة الأولى إلى تقرير العائد على الاستثمار بعد الفعالية.",
+  formEyebrow: "اطلب عرضًا",
+  formH2a: "لِنبنِ معًا",
+  formH2b: "فعاليتك المؤسسية الكبرى القادمة.",
+  formP: "شاركنا ملخّص فعاليتك وسيعود إليك مستشار أول بعرض مخصّص ومفصّل خلال ساعتي عمل — القاعات، والإنتاج، والميزانية، وجدول تنفيذ واضح.",
+  formBullets: [
+    "مدير حساب معتمد كمنظِّم مؤتمرات (PCO)",
+    "أسعار تفضيلية للقاعات في مركز الملك عبدالله المالي وRICEC وفنادق الخمس نجوم",
+    "إدارة كاملة لتصاريح هيئة الترفيه والامتثال داخليًا",
+    "تسعير شفّاف ومفصّل — دون رسوم خفية",
+  ],
+  formWhatsapp: "أو راسلنا عبر واتساب",
+  faqLabel: "الأسئلة الشائعة",
+  faqH2a: "أسئلة فعاليات الشركات",
+  faqH2b: "في السعودية",
+  relatedPrefix: "تصفّح ",
+  relatedPortfolio: "أعمالنا الكاملة",
+  relatedTestimonials: "آراء العملاء",
+  relatedConferences: "إدارة المؤتمرات",
+  viewAllServices: "عرض كل الخدمات",
+};
+
 /* ─────────────────────────── PAGE COMPONENT ─────────────────────────── */
 
-export default function CorporateEventsPage() {
+export default async function CorporateEventsPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <>
       <script
@@ -435,21 +546,25 @@ export default function CorporateEventsPage() {
 
         {/* ── HERO ── */}
         <InternalPageHero
-          title="Corporate Event Management"
-          titleHighlight="in Saudi Arabia"
-          subtitle="A corporate event organizer in Saudi Arabia for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's leading venues."
+          title={isAr ? "إدارة فعاليات الشركات" : "Corporate Event Management"}
+          titleHighlight={isAr ? "في السعودية" : "in Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "منظِّم فعاليات الشركات في السعودية للجمعيات العمومية والقمم التنفيذية وحفلات العشاء وإطلاق المنتجات وفعاليات رؤية 2030 — في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض وأبرز قاعات المملكة."
+              : "A corporate event organizer in Saudi Arabia for AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations — at KAFD, RICEC, and the Kingdom's leading venues."
+          }
           backgroundImage="/services/premium_corporate_summit_hero.webp"
           imageAlt="Luxury corporate executive summit in Riyadh Saudi Arabia with VIP seating and LED stage"
           enableParallax
-          badge="فعاليات الشركات | Corporate Events"
+          badge={isAr ? "فعاليات الشركات" : "فعاليات الشركات | Corporate Events"}
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Corporate Events" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "فعاليات الشركات" : "Corporate Events" },
           ]}
           minHeight="large"
           trustElements={[
-            { value: "500+", label: "Corporate Events Delivered" },
+            { value: "150+", label: "Corporate Events Delivered" },
             { value: "15+", label: "Years of Saudi Market Expertise" },
             { value: "5,000+", label: "Max Delegate Capacity Managed" },
           ]}
@@ -462,13 +577,13 @@ export default function CorporateEventsPage() {
               href="#proposal"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
-              Request a Corporate Proposal
+              {isAr ? cAr.ctaProposal : "Request a Corporate Proposal"}
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
-              <Phone size={15} /> Speak to Our Team
+              <Phone size={15} /> {isAr ? cAr.ctaSpeak : "Speak to Our Team"}
             </a>
           </div>
         </div>
@@ -494,7 +609,7 @@ export default function CorporateEventsPage() {
                 <span>NEOM</span>
               </div>
               <div className="text-xs text-neutral-500 font-light italic">
-                &quot;Trusted partner for Vision 2030 corporate events since 2012.&quot;
+                {isAr ? `«${cAr.trustQuote}»` : "\"Trusted partner for Vision 2030 corporate events since 2012.\""}
               </div>
             </div>
           </div>
@@ -507,12 +622,38 @@ export default function CorporateEventsPage() {
               <div className="space-y-7">
                 <span className="section-label">
                   <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                  Saudi Arabia&apos;s Premier Corporate Event Architects
+                  {isAr ? cAr.introLabel : "Saudi Arabia's Premier Corporate Event Architects"}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  Elevating Corporate Event Management <br />
-                  <span className="text-[var(--primary)]">in Saudi Arabia.</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    {cAr.introH2a} <br />
+                    <span className="text-[var(--primary)]">{cAr.introH2b}</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    Elevating Corporate Event Management <br />
+                    <span className="text-[var(--primary)]">in Saudi Arabia.</span>
+                  </h2>
+                )}
+                {isAr ? (
+                  <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
+                    <p>
+                      {cAr.introP1.split("RICEC")[0]}
+                      <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-medium">RICEC</Link>
+                      {cAr.introP1.split("RICEC")[1]}
+                    </p>
+                    <p>
+                      {cAr.introP2.split("رؤية السعودية 2030")[0]}
+                      <Link href={`${arHref}/portfolio/vision-2030`} className="text-[var(--primary)] hover:underline font-medium">رؤية السعودية 2030</Link>
+                      {cAr.introP2.split("رؤية السعودية 2030")[1]}
+                    </p>
+                    <p>
+                      {cAr.introP3.split("(PCO)")[0]}
+                      <Link href={`${arHref}/services/conferences`} className="text-[var(--primary)] hover:underline font-medium">منظِّم مؤتمرات احترافيًا (PCO)</Link>
+                      {cAr.introP3.split("(PCO)")[1]}
+                    </p>
+                  </div>
+                ) : (
                 <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
                   <p>
                     For over 15 years, <strong className="text-neutral-900">Saudi Event Management</strong> has
@@ -542,23 +683,24 @@ export default function CorporateEventsPage() {
                     distribution — under one unified, accountable team.
                   </p>
                 </div>
+                )}
               </div>
               {/* Stats column */}
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { value: "500+", label: "Corporate Events Delivered" },
+                  { value: "150+", label: "Corporate Events Delivered" },
                   { value: "15+", label: "Years in Saudi Market" },
                   { value: "5,000+", label: "Max Delegates Managed" },
                   { value: "4.9★", label: "Average Client Rating" },
                   { value: "12", label: "Saudi Cities Covered" },
                   { value: "24 hrs", label: "Proposal Turnaround" },
-                ].map((stat) => (
+                ].map((stat, i) => (
                   <div
                     key={stat.label}
                     className="bg-white border border-neutral-200/80 rounded-2xl p-6 text-center shadow-[0_1px_3px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] hover:border-[var(--primary)]/30 transition-all"
                   >
                     <div className="text-2xl font-bold text-[var(--primary)] mb-1">{stat.value}</div>
-                    <div className="text-[10px] text-neutral-500 uppercase tracking-widest leading-tight">{stat.label}</div>
+                    <div className="text-[10px] text-neutral-500 uppercase tracking-widest leading-tight">{isAr ? statLabelsAr[i] : stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -587,14 +729,15 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Event Type Expertise
+                {isAr ? cAr.evLabel : "Event Type Expertise"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Every corporate format. <span className="text-[var(--primary)]">Mastered.</span>
+                {isAr ? cAr.evH2a : "Every corporate format."} <span className="text-[var(--primary)]">{isAr ? cAr.evH2b : "Mastered."}</span>
               </h2>
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                Eight distinct corporate event disciplines — each led by a specialist team with deep
-                Saudi-market experience and a vetted vendor network.
+                {isAr
+                  ? cAr.evP
+                  : "Eight distinct corporate event disciplines — each led by a specialist team with deep Saudi-market experience and a vetted vendor network."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -607,12 +750,12 @@ export default function CorporateEventsPage() {
                     <et.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
                   </div>
                   <div className="mb-1">
-                    <span className="text-[10px] text-neutral-400 uppercase tracking-widest">{et.arabic}</span>
+                    <span className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "" : et.arabic}</span>
                   </div>
                   <h3 className="font-bold text-neutral-900 text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">
-                    {et.title}
+                    {isAr ? eventTypesAr[i].title : et.title}
                   </h3>
-                  <p className="text-neutral-500 text-xs leading-relaxed">{et.desc}</p>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{isAr ? eventTypesAr[i].desc : et.desc}</p>
                 </div>
               ))}
             </div>
@@ -625,26 +768,27 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Venue Authority
+                {isAr ? cAr.vnLabel : "Venue Authority"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Top corporate event venues <span className="text-[var(--primary)]">in Saudi Arabia</span>
+                {isAr ? cAr.vnH2a : "Top corporate event venues"} <span className="text-[var(--primary)]">{isAr ? cAr.vnH2b : "in Saudi Arabia"}</span>
               </h2>
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
-                Preferred-partner access to the Kingdom&apos;s premier convention centres, KAFD facilities, and
-                five-star business hotels — with negotiated rates and priority booking.
+                {isAr
+                  ? cAr.vnP
+                  : "Preferred-partner access to the Kingdom's premier convention centres, KAFD facilities, and five-star business hotels — with negotiated rates and priority booking."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {venueCity.map((v) => (
+              {venueCity.map((v, i) => (
                 <div key={v.city} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8">
                   <div className="flex items-start justify-between mb-5">
                     <div>
-                      <h3 className="text-xl font-bold text-neutral-900">{v.city}</h3>
-                      <span className="text-sm text-neutral-400">{v.arabic}</span>
+                      <h3 className="text-xl font-bold text-neutral-900">{isAr ? venueCityAr[i].city : v.city}</h3>
+                      <span className="text-sm text-neutral-400">{isAr ? "" : v.arabic}</span>
                     </div>
                     <span className="text-[10px] bg-emerald-50 text-[var(--primary)] border border-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider font-semibold whitespace-nowrap">
-                      {v.tag}
+                      {isAr ? venueCityAr[i].tag : v.tag}
                     </span>
                   </div>
                   <ul className="space-y-3">
@@ -667,13 +811,15 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                In-House Capabilities
+                {isAr ? cAr.capLabel : "In-House Capabilities"}
               </span>
               <h2 className="text-3xl font-bold text-neutral-900">
-                One team. Complete <span className="text-[var(--primary)]">accountability.</span>
+                {isAr ? cAr.capH2a : "One team. Complete"} <span className="text-[var(--primary)]">{isAr ? cAr.capH2b : "accountability."}</span>
               </h2>
               <p className="text-neutral-500 mt-4 max-w-xl mx-auto text-sm">
-                All capabilities owned in-house — no multi-vendor friction, no accountability gaps.
+                {isAr
+                  ? cAr.capP
+                  : "All capabilities owned in-house — no multi-vendor friction, no accountability gaps."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -685,8 +831,8 @@ export default function CorporateEventsPage() {
                   <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5 group-hover:bg-[var(--primary)] transition-colors">
                     <cap.icon size={22} className="text-[var(--primary)] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-bold text-neutral-900 text-sm mb-3">{cap.title}</h3>
-                  <p className="text-neutral-500 text-xs leading-relaxed">{cap.desc}</p>
+                  <h3 className="font-bold text-neutral-900 text-sm mb-3">{isAr ? capabilitiesAr[i].title : cap.title}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{isAr ? capabilitiesAr[i].desc : cap.desc}</p>
                 </div>
               ))}
             </div>
@@ -699,22 +845,23 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Our Process
+                {isAr ? cAr.prLabel : "Our Process"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                How we plan a <span className="text-[var(--primary)]">corporate event</span> in Saudi Arabia
+                {isAr ? cAr.prH2a : "How we plan a"} <span className="text-[var(--primary)]">{isAr ? cAr.prH2b : "corporate event"}</span> {isAr ? cAr.prH2c : "in Saudi Arabia"}
               </h2>
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
-                A six-stage methodology refined across 500+ corporate events — from initial brief to
-                post-event ROI reporting.
+                {isAr
+                  ? cAr.prP
+                  : "A six-stage methodology refined across 500+ corporate events — from initial brief to post-event ROI reporting."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {planningSteps.map((s, i) => (
                 <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-8 hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all">
                   <div className="text-4xl font-bold text-[var(--primary)]/25 mb-4">{s.step}</div>
-                  <h3 className="font-bold text-neutral-900 text-base mb-3">{s.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="font-bold text-neutral-900 text-base mb-3">{isAr ? planningStepsAr[i].title : s.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? planningStepsAr[i].desc : s.desc}</p>
                 </div>
               ))}
             </div>
@@ -728,23 +875,33 @@ export default function CorporateEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">
                 <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
-                  <span className="w-6 h-px bg-[#C5A880]" /> Request a Proposal
+                  <span className="w-6 h-px bg-[#C5A880]" /> {isAr ? cAr.formEyebrow : "Request a Proposal"}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  Let&apos;s build your next<br />
-                  <span className="text-[#C5A880]">flagship corporate event.</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    {cAr.formH2a}<br />
+                    <span className="text-[#C5A880]">{cAr.formH2b}</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    Let&apos;s build your next<br />
+                    <span className="text-[#C5A880]">flagship corporate event.</span>
+                  </h2>
+                )}
                 <p className="text-white/70 text-base leading-relaxed max-w-md">
-                  Share your brief and a senior consultant will return a tailored, itemised proposal within
-                  two business hours — venues, production, budget, and a clear delivery timeline.
+                  {isAr
+                    ? cAr.formP
+                    : "Share your brief and a senior consultant will return a tailored, itemised proposal within two business hours — venues, production, budget, and a clear delivery timeline."}
                 </p>
                 <ul className="space-y-3.5 pt-2">
-                  {[
+                  {(isAr
+                    ? cAr.formBullets
+                    : [
                     "Dedicated PCO-certified account director",
                     "Preferred-partner venue rates at KAFD, RICEC & 5-star hotels",
                     "Full GEA permit & compliance handled in-house",
                     "Transparent, itemised pricing — no hidden fees",
-                  ].map((item) => (
+                  ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
                       <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
                       {item}
@@ -753,22 +910,22 @@ export default function CorporateEventsPage() {
                 </ul>
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <a
-                    href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20a%20corporate%20event."
+                    href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20a%20corporate%20event."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
                   >
-                    <Phone size={15} /> Or message us on WhatsApp
+                    <Phone size={15} /> {isAr ? cAr.formWhatsapp : "Or message us on WhatsApp"}
                   </a>
                 </div>
               </div>
               <ServiceLeadForm
                 source="corporate_events_page"
                 defaultEventType="Corporate Summit / Conference"
-                eyebrow="Corporate Proposal"
-                heading="Request a corporate proposal"
-                subheading="A senior consultant will respond within 2 hours with a tailored plan and indicative budget."
-                submitLabel="Request My Proposal"
+                eyebrow={isAr ? "عرض فعاليات الشركات" : "Corporate Proposal"}
+                heading={isAr ? "اطلب عرضًا لفعالية شركتك" : "Request a corporate proposal"}
+                subheading={isAr ? "سيردّ مستشار أول خلال ساعتين بخطة مخصّصة وميزانية تقديرية." : "A senior consultant will respond within 2 hours with a tailored plan and indicative budget."}
+                submitLabel={isAr ? "أرسل طلب العرض" : "Request My Proposal"}
                 eventTypeOptions={[
                   "Annual General Meeting (AGM)",
                   "Executive Summit / Conference",
@@ -791,12 +948,29 @@ export default function CorporateEventsPage() {
               <div className="space-y-6">
                 <span className="section-label">
                   <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                  Vision 2030 Alignment
+                  {isAr ? "التوافق مع رؤية 2030" : "Vision 2030 Alignment"}
                 </span>
-                <h2 className="text-3xl font-bold text-neutral-900 leading-tight">
-                  Corporate events at the <br />
-                  <span className="text-[var(--primary)]">heart of the Kingdom&apos;s transformation</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl font-bold text-neutral-900 leading-tight">
+                    فعاليات الشركات في <br />
+                    <span className="text-[var(--primary)]">قلب تحوّل المملكة</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl font-bold text-neutral-900 leading-tight">
+                    Corporate events at the <br />
+                    <span className="text-[var(--primary)]">heart of the Kingdom&apos;s transformation</span>
+                  </h2>
+                )}
+                {isAr ? (
+                  <div className="space-y-4 text-neutral-600 text-sm leading-relaxed">
+                    <p>
+                      أوجدت رؤية السعودية 2030 أكثر مشهد لفعاليات الشركات حيويةً في المنطقة. فمن منتدى مبادرة مستقبل الاستثمار (FII) ومؤتمر LEAP للتقنية إلى سيتي سكيب السعودية وبلاك هات الشرق الأوسط، تستضيف المملكة اليوم فعاليات بمستوى عالمي تتطلب إدارة بمعايير عالمية.
+                    </p>
+                    <p>
+                      وتُعدّ إدارة الفعاليات السعودية جزءًا أصيلًا من منظومة رؤية 2030 — بالشراكة مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة لتقديم فعاليات تدعم أهداف برنامج التحول الوطني للمملكة.
+                    </p>
+                  </div>
+                ) : (
                 <div className="space-y-4 text-neutral-600 text-sm leading-relaxed">
                   <p>
                     Saudi Vision 2030 has created the most dynamic corporate events landscape in the
@@ -815,6 +989,7 @@ export default function CorporateEventsPage() {
                     that advance the Kingdom&apos;s National Transformation Program objectives.
                   </p>
                 </div>
+                )}
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -882,10 +1057,10 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Experience · Expertise · Authoritativeness · Trust
+                {isAr ? "الخبرة · الكفاءة · الموثوقية · الثقة" : "Experience · Expertise · Authoritativeness · Trust"}
               </span>
               <h2 className="text-3xl font-bold text-neutral-900">
-                Our corporate events <span className="text-[var(--primary)]">expert team</span>
+                {isAr ? "فريق خبراء" : "Our corporate events"} <span className="text-[var(--primary)]">{isAr ? "فعاليات الشركات لدينا" : "expert team"}</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -895,18 +1070,21 @@ export default function CorporateEventsPage() {
                   title: "CEO & Executive Event Director",
                   arabic: "الرئيس التنفيذي ومدير الفعاليات",
                   bio: "15+ years managing corporate events for Saudi Aramco, SABIC, and NEOM. Expert in government protocol, GEA permitting, and executive summit logistics for 5,000+ delegate events.",
+                  bioAr: "أكثر من 15 عامًا في إدارة فعاليات الشركات لأرامكو السعودية وسابك ونيوم. خبير في البروتوكول الحكومي وتصاريح هيئة الترفيه ولوجستيات القمم التنفيذية لفعاليات تتجاوز 5000 مندوب.",
                 },
                 {
                   name: "Layla Al-Zahrani",
                   title: "Head of Corporate Conferences",
                   arabic: "رئيسة قسم المؤتمرات المؤسسية",
                   bio: "IAPCO-certified PCO with a decade of experience managing hybrid conferences and ministerial summits. Specialist in simultaneous interpretation infrastructure and multilingual delegate management.",
+                  bioAr: "منظِّمة مؤتمرات معتمدة من IAPCO بخبرة عشر سنوات في إدارة المؤتمرات الهجينة والقمم الوزارية. متخصصة في بنية الترجمة الفورية وإدارة المندوبين متعددي اللغات.",
                 },
                 {
                   name: "Tariq Al-Qahtani",
                   title: "Technical Production Director",
                   arabic: "مدير الإنتاج التقني",
                   bio: "AV and stage production specialist with a portfolio spanning KAFD Conference Center and RICEC. Expert in broadcast-grade streaming, LED wall systems, and lighting design for 1,000+ capacity events.",
+                  bioAr: "متخصص في الإنتاج الصوتي والمرئي وإنتاج المسارح بسجل يمتد من مركز مؤتمرات الملك عبدالله المالي إلى RICEC. خبير في البث بجودة احترافية وأنظمة شاشات LED وتصميم الإضاءة لفعاليات تتجاوز 1000 مقعد.",
                 },
               ].map((m, i) => (
                 <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-8 shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
@@ -914,9 +1092,9 @@ export default function CorporateEventsPage() {
                     <Users size={24} className="text-[var(--primary)]" />
                   </div>
                   <h3 className="font-bold text-neutral-900 text-base">{m.name}</h3>
-                  <p className="text-[var(--primary)] text-xs font-semibold uppercase tracking-wide mt-1 mb-1">{m.title}</p>
-                  <p className="text-neutral-400 text-xs mb-4">{m.arabic}</p>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{m.bio}</p>
+                  <p className="text-[var(--primary)] text-xs font-semibold uppercase tracking-wide mt-1 mb-1">{isAr ? m.arabic : m.title}</p>
+                  <p className="text-neutral-400 text-xs mb-4">{isAr ? "" : m.arabic}</p>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? m.bioAr : m.bio}</p>
                 </div>
               ))}
             </div>
@@ -928,17 +1106,19 @@ export default function CorporateEventsPage() {
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Corporate events <span className="text-[var(--primary)]">FAQs</span>
+                {isAr ? cAr.faqH2a : "Corporate events"} <span className="text-[var(--primary)]">{isAr ? cAr.faqH2b : "FAQs"}</span>
               </h2>
               <p className="text-neutral-500 mt-4 text-sm">
-                Authoritative answers to the most common questions about corporate event management in Saudi Arabia.
+                {isAr
+                  ? "إجابات موثوقة عن أكثر الأسئلة شيوعًا حول إدارة فعاليات الشركات في السعودية."
+                  : "Authoritative answers to the most common questions about corporate event management in Saudi Arabia."}
               </p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
                 <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
-                  <h3 className="font-bold text-neutral-900 text-base mb-3">{faq.q}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                  <h3 className="font-bold text-neutral-900 text-base mb-3">{isAr ? faqsAr[i].q : faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? faqsAr[i].a : faq.a}</p>
                 </div>
               ))}
             </div>
@@ -951,24 +1131,33 @@ export default function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Real-World Considerations
+                {isAr ? "اعتبارات واقعية" : "Real-World Considerations"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Corporate event challenges — <span className="text-[var(--primary)]">solved with experience</span>
+                {isAr ? "تحديات فعاليات الشركات — " : "Corporate event challenges — "}<span className="text-[var(--primary)]">{isAr ? "نحلّها بالخبرة" : "solved with experience"}</span>
               </h2>
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
-                High-stakes corporate events in Saudi Arabia carry predictable risks. Here is how our team plans around the ones organisers raise most.
+                {isAr
+                  ? "تحمل فعاليات الشركات عالية المخاطر في السعودية تحدياتٍ متوقّعة. وإليك كيف يخطّط فريقنا لتجاوز أكثرها تكرارًا لدى المنظّمين."
+                  : "High-stakes corporate events in Saudi Arabia carry predictable risks. Here is how our team plans around the ones organisers raise most."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
+              {(isAr
+                ? [
+                { c: "تأمين القاعات الكبرى في مهلة قصيرة", s: "تُحجز قاعات مركز الملك عبدالله المالي والخمس نجوم قبل أشهر. وصولنا بصفة شريك مفضّل وخيارات حجز المواعيد يبقيان القاعات المميزة متاحة حتى ضمن جداول ضيّقة." },
+                { c: "تصاريح هيئة الترفيه والامتثال متعدد الجهات", s: "تُرتّب رخص الترفيه وموافقات البلدية وتصاريح الدفاع المدني مبكرًا وتُدار داخليًا، فلا تهدّد الموافقات موعد الفعالية أبدًا." },
+                { c: "المندوبون ثنائيو اللغة وبروتوكول كبار الشخصيات", s: "الترجمة الفورية العربية-الإنجليزية، وجلوس البروتوكول، وتنسيق المواكب تضمن خدمة الوزراء والمندوبين الدوليين بالكامل." },
+                { c: "وصول هجين دون مساس بتجربة الحضور", s: "البث بجودة احترافية والمنصات التفاعلية يوسّعان الجمهور عالميًا مع بقاء التجربة المباشرة من الطراز الأول." },
+                  ]
+                : [
                 { c: "Securing flagship venues on short notice", s: "KAFD and five-star ballrooms book months out. Preferred-partner access and held-date options keep premium venues available even on compressed timelines." },
                 { c: "GEA permits & multi-authority compliance", s: "Entertainment licenses, municipality approvals, and civil-defense clearances are sequenced early and managed in-house, so approvals never threaten the event date." },
                 { c: "Bilingual delegates & dignitary protocol", s: "Simultaneous Arabic–English interpretation, protocol seating, and motorcade coordination keep ministers and international delegates fully served." },
                 { c: "Hybrid reach without in-room compromise", s: "Broadcast-grade streaming and interactive platforms extend the audience globally while the live experience stays first-class." },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{isAr ? "التحدّي" : "Challenge"}</span>
                   <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -983,31 +1172,41 @@ export default function CorporateEventsPage() {
         {/* ── FEATURED PROJECTS & CONSULTATION ── */}
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Corporate Events — Featured Projects</h3>
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">{isAr ? "فعاليات الشركات — مشاريع مختارة" : "Corporate Events — Featured Projects"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {[
+              {(isAr
+                ? [
+                { title: "قمة الرياض الحكومية", slug: "riyadh-government-summit", desc: "قمة على مستوى وزاري ببروتوكول كبار الشخصيات وترجمة فورية وإنتاج بثّي." },
+                { title: "قمة جدة التنفيذية", slug: "executive-summit-jeddah", desc: "قمة لكبار التنفيذيين على البحر الأحمر بخدمات منظِّم مؤتمرات متكاملة وضيافة." },
+                { title: "قمة التقنية العالمية", slug: "global-tech-summit", desc: "مؤتمر تقني على مدى أيام بإنتاج مسرح رئيسي وإدارة مندوبين." },
+                  ]
+                : [
                 { title: "Riyadh Government Summit", slug: "riyadh-government-summit", desc: "A ministerial-level summit with VIP protocol, interpretation, and broadcast production." },
                 { title: "Executive Summit Jeddah", slug: "executive-summit-jeddah", desc: "A senior executive summit by the Red Sea with full PCO services and hospitality." },
                 { title: "Global Tech Summit", slug: "global-tech-summit", desc: "A multi-day technology conference with main-stage production and delegate management." },
-              ].map((p) => (
-                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+              ]).map((p) => (
+                <Link key={p.slug} href={`${arHref}/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
                   <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
                   <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "عرض المشروع" : "View Project"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
               <div>
-                <h3 className="text-neutral-900 font-bold text-lg">Planning a corporate event?</h3>
-                <p className="text-neutral-500 text-sm mt-1">Book a free consultation or request a proposal — a senior consultant replies within two hours.</p>
+                <h3 className="text-neutral-900 font-bold text-lg">{isAr ? "تخطّط لفعالية مؤسسية؟" : "Planning a corporate event?"}</h3>
+                <p className="text-neutral-500 text-sm mt-1">{isAr ? "احجز استشارة مجانية أو اطلب عرضًا — يردّ مستشار أول خلال ساعتين." : "Book a free consultation or request a proposal — a senior consultant replies within two hours."}</p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
-                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+                <Link href={`${arHref}/consultation`} className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">{isAr ? "احجز استشارة مجانية" : "Book a Free Consultation"}</Link>
+                <Link href={`${arHref}/contact`} className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">{isAr ? "تواصل معنا" : "Contact Us"}</Link>
               </div>
             </div>
-            <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/conferences" className="text-[var(--primary)] font-semibold hover:underline">conference management</Link>.</p>
+            {isAr ? (
+              <p className="text-neutral-500 text-sm mt-6">تصفّح <Link href={`${arHref}/portfolio`} className="text-[var(--primary)] font-semibold hover:underline">أعمالنا الكاملة</Link>، واطّلع على <Link href={`${arHref}/testimonials`} className="text-[var(--primary)] font-semibold hover:underline">آراء العملاء</Link>، أو استكشف <Link href={`${arHref}/services/conferences`} className="text-[var(--primary)] font-semibold hover:underline">إدارة المؤتمرات</Link>.</p>
+            ) : (
+              <p className="text-neutral-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore <Link href="/services/conferences" className="text-[var(--primary)] font-semibold hover:underline">conference management</Link>.</p>
+            )}
           </div>
         </section>
 
@@ -1015,24 +1214,31 @@ export default function CorporateEventsPage() {
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">Related Services</h2>
-              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h2>
+              <Link href={`${arHref}/services`} className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">{isAr ? cAr.viewAllServices : "View all services"} <ChevronRight size={12} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "إدارة المؤتمرات", slug: "conferences", desc: "خدمات منظِّم مؤتمرات متكاملة، وبث هجين، وإدارة متحدثين لـ 50 إلى 5000 مندوب." },
+                { title: "المعارض والمعارض التجارية", slug: "exhibitions", desc: "تصميم أجنحة وبناء منصات وإدارة معارض B2B في RICEC وJCFE." },
+                { title: "الفعاليات الفاخرة وكبار الشخصيات", slug: "luxury-vip-events", desc: "ملتقيات تنفيذية وفعاليات مجالس إدارة وبروتوكول كبار الشخصيات للعملاء الملكيين وكبار الثروات." },
+                { title: "الإنتاج الفعّالياتي", slug: "event-production", desc: "مسرح وصوت وصورة وشاشات LED وإضاءة وإنتاج تقني متكامل لأي حجم فعالية." },
+                  ]
+                : [
                 { title: "Conference Management", slug: "conferences", desc: "Full PCO services, hybrid streaming, speaker management for 50–5,000 delegates." },
                 { title: "Exhibitions & Trade Shows", slug: "exhibitions", desc: "Booth design, stand building, and B2B expo management at RICEC and JCFE." },
                 { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Executive retreats, board events, and VIP protocol for royal and HNWI clients." },
                 { title: "Event Production", slug: "event-production", desc: "Stage, AV, LED walls, lighting, and full technical production for any event scale." },
-              ].map((rel) => (
+              ]).map((rel) => (
                 <Link
                   key={rel.slug}
-                  href={`/services/${rel.slug}`}
+                  href={`${arHref}/services/${rel.slug}`}
                   className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
                   <h3 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h3>
                   <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Explore <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "استكشف" : "Explore"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
@@ -1042,19 +1248,27 @@ export default function CorporateEventsPage() {
         {/* ── CORPORATE EVENTS BY CITY ── */}
         <section className="py-16 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="text-sm font-bold text-neutral-900 mb-2 uppercase tracking-widest">Corporate Events by City</h2>
-            <p className="text-neutral-400 text-xs mb-8">End-to-end corporate event management across Saudi Arabia&apos;s major business cities.</p>
+            <h2 className="text-sm font-bold text-neutral-900 mb-2 uppercase tracking-widest">{isAr ? "فعاليات الشركات حسب المدينة" : "Corporate Events by City"}</h2>
+            <p className="text-neutral-400 text-xs mb-8">{isAr ? "إدارة متكاملة لفعاليات الشركات في كبرى مدن الأعمال بالسعودية." : "End-to-end corporate event management across Saudi Arabia's major business cities."}</p>
             <div className="flex flex-wrap gap-3">
-              {[
+              {(isAr
+                ? [
+                { name: "فعاليات الشركات في الرياض", href: "/locations/riyadh" },
+                { name: "فعاليات الشركات في جدة", href: "/locations/jeddah" },
+                { name: "فعاليات الشركات في الدمام", href: "/locations/dammam" },
+                { name: "فعاليات في العُلا", href: "/locations/alula" },
+                { name: "فعاليات في مكة", href: "/locations/makkah" },
+                  ]
+                : [
                 { name: "Corporate Events Riyadh", href: "/locations/riyadh" },
                 { name: "Corporate Events Jeddah", href: "/locations/jeddah" },
                 { name: "Corporate Events Dammam", href: "/locations/dammam" },
                 { name: "Events in AlUla", href: "/locations/alula" },
                 { name: "Events in Makkah", href: "/locations/makkah" },
-              ].map((loc) => (
+              ]).map((loc) => (
                 <Link
                   key={loc.href}
-                  href={loc.href}
+                  href={`${arHref}${loc.href}`}
                   className="px-5 py-2.5 bg-neutral-50 border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                 >
                   {loc.name}
@@ -1067,7 +1281,7 @@ export default function CorporateEventsPage() {
         {/* ── FROM OUR BLOG ── */}
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">Corporate Event Insights</h2>
+            <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">{isAr ? "مقالات عن فعاليات الشركات" : "Corporate Event Insights"}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Exclusive analysis of Saudi Arabia's MICE sector under Vision 2030 — growth metrics, emerging venues, and GEA impact." },
@@ -1079,13 +1293,13 @@ export default function CorporateEventsPage() {
               ].map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`${arHref}/blog/${post.slug}`}
                   className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-[0_8px_30px_rgba(13,107,78,0.08)] transition-all"
                 >
-                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Corporate Insight</span>
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">{isAr ? "رؤية مؤسسية" : "Corporate Insight"}</span>
                   <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h3>
                   <p className="text-neutral-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اقرأ المقال" : "Read Article"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>

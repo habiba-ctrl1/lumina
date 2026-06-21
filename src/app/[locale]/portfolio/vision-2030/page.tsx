@@ -10,10 +10,15 @@ import { Compass, Landmark, ShieldCheck, ArrowRight } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Vision 2030 & Cultural Events Management KSA',
-    description: 'Specialized in government-level cultural activations, Riyadh Season events, and heritage tourism festivals in AlUla. Full GEA permit management.',
+    title: isAr
+      ? { absolute: "إدارة فعاليات رؤية 2030 والفعاليات الثقافية في السعودية | إدارة الفعاليات السعودية" }
+      : 'Vision 2030 & Cultural Events Management KSA',
+    description: isAr
+      ? "متخصصون في التفعيلات الثقافية على المستوى الحكومي وفعاليات موسم الرياض ومهرجانات السياحة التراثية في العلا. إدارة كاملة لتصاريح هيئة الترفيه."
+      : 'Specialized in government-level cultural activations, Riyadh Season events, and heritage tourism festivals in AlUla. Full GEA permit management.',
     keywords: 'Saudi Vision 2030 events, Riyadh Season event management, AlUla festival planner, GEA event permits KSA, Government event management Saudi Arabia',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/vision-2030`,
@@ -62,23 +67,28 @@ const jsonLd = {
 export default async function Vision2030Portfolio({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const isAr = locale === "ar";
+  const arHref = isAr ? "/ar" : "";
 
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ScrollProgress />
       <Navbar />
-      
+
       <InternalPageHero
-        title="Vision 2030 Event Portfolio"
-        subtitle="Supporting the Kingdom's cultural renaissance by executing mega-events, heritage festivals, and tourism initiatives with flawless precision."
+        title={isAr ? "أعمال فعاليات رؤية 2030" : "Vision 2030 Event Portfolio"}
+        subtitle={
+          isAr
+            ? "ندعم النهضة الثقافية للمملكة بتنفيذ الفعاليات الكبرى والمهرجانات التراثية والمبادرات السياحية بدقة لا تشوبها شائبة."
+            : "Supporting the Kingdom's cultural renaissance by executing mega-events, heritage festivals, and tourism initiatives with flawless precision."
+        }
         backgroundImage="/neom_summit_people.webp"
         imageAlt="Vision 2030 cultural activations Saudi Arabia portfolio"
-        badge="Vision 2030 Activations"
+        badge={isAr ? "تفعيلات رؤية 2030" : "Vision 2030 Activations"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Portfolio", href: "/portfolio" },
-          { label: "Vision 2030" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "أعمالنا" : "Portfolio", href: `${arHref}/portfolio` },
+          { label: isAr ? "رؤية 2030" : "Vision 2030" },
         ]}
         minHeight="standard"
       />
@@ -89,18 +99,18 @@ export default async function Vision2030Portfolio({ params }: { params: Promise<
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <ShieldCheck className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">GEA Compliance</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">End-to-end management of General Entertainment Authority permits, safety protocols, and crowd control for public festivals.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "الامتثال لهيئة الترفيه" : "GEA Compliance"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "إدارة متكاملة لتصاريح الهيئة العامة للترفيه، وبروتوكولات السلامة، وتنظيم الحشود للمهرجانات العامة." : "End-to-end management of General Entertainment Authority permits, safety protocols, and crowd control for public festivals."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Landmark className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Heritage Sites</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Specialized logistics for operating in UNESCO World Heritage sites like AlUla and Diriyah without environmental impact.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "المواقع التراثية" : "Heritage Sites"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "لوجستيات متخصصة للعمل في مواقع التراث العالمي لليونسكو مثل العلا والدرعية دون أثر بيئي." : "Specialized logistics for operating in UNESCO World Heritage sites like AlUla and Diriyah without environmental impact."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Compass className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Mega Projects</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Dedicated production teams for NEOM, Red Sea Global, and Qiddiya launches and milestone celebrations.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "المشاريع العملاقة" : "Mega Projects"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "فرق إنتاج مخصّصة لإطلاقات نيوم والبحر الأحمر والقدية واحتفالات المحطات الكبرى." : "Dedicated production teams for NEOM, Red Sea Global, and Qiddiya launches and milestone celebrations."}</p>
             </div>
           </div>
         </div>
@@ -109,13 +119,18 @@ export default async function Vision2030Portfolio({ params }: { params: Promise<
       {/* Featured Case Studies */}
       <section className="py-24 bg-[var(--surface-raised)]">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-12 text-center">Featured Cultural Case Studies</h2>
+          <h2 className="text-3xl font-semibold mb-12 text-center">{isAr ? "دراسات حالة ثقافية مختارة" : "Featured Cultural Case Studies"}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
+            {(isAr
+              ? [
+              { title: "مهرجان العلا الصحراوي", loc: "العلا", img: "/gallery_destination_wedding.webp", slug: "alula-desert-festival" },
+              { title: "قمة نيوم للمستقبل", loc: "نيوم", img: "/gallery_corporate_gala.webp", slug: "neom-future-summit" },
+                ]
+              : [
               { title: "AlUla Desert Festival", loc: "AlUla", img: "/gallery_destination_wedding.webp", slug: "alula-desert-festival" },
               { title: "NEOM Future Summit", loc: "NEOM", img: "/gallery_corporate_gala.webp", slug: "neom-future-summit" }
-            ].map((item, i) => (
-              <Link href={`/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg transition-all">
+            ]).map((item, i) => (
+              <Link href={`${arHref}/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg transition-all">
                 <div className="h-80 overflow-hidden relative">
                   <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
@@ -132,16 +147,16 @@ export default async function Vision2030Portfolio({ params }: { params: Promise<
       {/* Related Services */}
       <section className="py-16 bg-white border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/cultural-events" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Cultural &amp; Heritage Events
+            <Link href={`${arHref}/services/cultural-events`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الثقافية والتراثية" : "Cultural & Heritage Events"}
             </Link>
-            <Link href="/services/destination-events" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Destination Event Management
+            <Link href={`${arHref}/services/destination-events`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة فعاليات الوجهات" : "Destination Event Management"}
             </Link>
-            <Link href="/services/event-production" className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Event Production
+            <Link href={`${arHref}/services/event-production`} className="px-5 py-2.5 bg-[var(--surface-raised)] border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الإنتاج الفعّالياتي" : "Event Production"}
             </Link>
           </div>
         </div>
@@ -180,15 +195,15 @@ export default async function Vision2030Portfolio({ params }: { params: Promise<
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Define the <span className="text-emerald-400">Future?</span></h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>{isAr ? <>هل أنت مستعدّ لصناعة <span className="text-emerald-400">المستقبل؟</span></> : <>Ready to Define the <span className="text-emerald-400">Future?</span></>}</h2>
             <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
-              We partner with government bodies and global brands to execute Vision 2030's most ambitious projects.
+              {isAr ? "نتشارك مع الجهات الحكومية والعلامات العالمية لتنفيذ أكثر مشاريع رؤية 2030 طموحًا." : "We partner with government bodies and global brands to execute Vision 2030's most ambitious projects."}
             </p>
-            <Link 
-              href="/contact" 
+            <Link
+              href={`${arHref}/contact`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] group"
             >
-              Consult with Our Team
+              {isAr ? "استشر فريقنا" : "Consult with Our Team"}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

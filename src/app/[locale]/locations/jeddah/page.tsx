@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -11,12 +12,16 @@ import { Anchor, Waves, Camera, Building, MapPin, Calendar, Users, Star, Chevron
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/jeddah`;
   return {
-    title: "Event Management Company in Jeddah | Saudi Event Management",
-    description:
-      "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
+    title: isAr
+      ? { absolute: "شركة إدارة فعاليات في جدة | إدارة الفعاليات السعودية" }
+      : "Event Management Company in Jeddah | Saudi Event Management",
+    description: isAr
+      ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بجدة. مؤتمرات الشركات في مركز جدة للمعارض، وحفلات الزفاف الفاخرة في فورسيزونز وروزوود جدة، وتفعيلات على الكورنيش. إدارة فعاليات متكاملة في المنطقة الغربية."
+      : "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
     keywords:
       "event management company in Jeddah, event planner in Jeddah, corporate event organizer in Jeddah, wedding planner in Jeddah, conference management Jeddah, Jeddah Convention Center events, brand activation Jeddah, outdoor events Jeddah Corniche, شركة تنظيم فعاليات في جدة",
     alternates: {
@@ -24,9 +29,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/locations/jeddah"),
     },
     openGraph: {
-      title: "Event Management Company in Jeddah | Saudi Event Management",
-      description:
-        "Jeddah's premier event planning company — corporate conferences, luxury weddings, and brand activations across the Red Sea coast.",
+      title: isAr
+        ? "شركة إدارة فعاليات في جدة | إدارة الفعاليات السعودية"
+        : "Event Management Company in Jeddah | Saudi Event Management",
+      description: isAr
+        ? "الشركة الرائدة لإدارة الفعاليات في جدة — مؤتمرات الشركات، وحفلات الزفاف الفاخرة، والتفعيلات على ساحل البحر الأحمر."
+        : "Jeddah's premier event planning company — corporate conferences, luxury weddings, and brand activations across the Red Sea coast.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -123,7 +131,7 @@ const jsonLd = {
           },
         ],
       },
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "knowsAbout": [
         "Jeddah Convention & Exhibition Center",
         "King Abdullah Sports City",
@@ -358,7 +366,9 @@ const eventCalendar = [
   },
 ];
 
-export default function JeddahPage() {
+export default async function JeddahPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <script
@@ -368,16 +378,20 @@ export default function JeddahPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Event Management Company in "
-        titleHighlight="Jeddah"
-        subtitle="Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
+        title={isAr ? "شركة إدارة فعاليات في " : "Event Management Company in "}
+        titleHighlight={isAr ? "جدة" : "Jeddah"}
+        subtitle={
+          isAr
+            ? "أناقة ساحلية وحفلات مخصّصة — من نافورة الملك فهد إلى بيوت البلد الحجرية. مخطّط فعالياتك في جدة لفعاليات الشركات وحفلات الزفاف والتفعيلات على ساحل البحر الأحمر."
+            : "Coastal elegance and bespoke galas — from King Fahd Fountain to the coral-stone mansions of Al-Balad. Your event planner in Jeddah for corporate events, weddings, and brand activations across the Red Sea coast."
+        }
         backgroundImage="/locations/jeddah-hero.webp"
         imageAlt="Jeddah, Saudi Arabia — event management company on the Red Sea coast"
-        badge="The Bride of the Red Sea | Jeddah"
+        badge={isAr ? "عروس البحر الأحمر | جدة" : "The Bride of the Red Sea | Jeddah"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Locations", href: "/locations" },
-          { label: "Jeddah" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "المواقع" : "Locations", href: `${arHref}/locations` },
+          { label: isAr ? "جدة" : "Jeddah" },
         ]}
         minHeight="large"
       />
@@ -592,7 +606,7 @@ export default function JeddahPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events Delivered in Jeddah", val: "120+" },
+              { label: "Events Delivered in Jeddah", val: "60+" },
               { label: "Venue Partnerships", val: "30+" },
               { label: "Jeddah-Based Specialists", val: "12" },
               { label: "Avg. Guest Satisfaction", val: "98%" },

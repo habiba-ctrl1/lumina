@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -21,12 +22,16 @@ import {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/riyadh`;
   return {
-    title: "Event Management Company in Riyadh | Saudi Event Management",
-    description:
-      "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
+    title: isAr
+      ? { absolute: "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية" }
+      : "Event Management Company in Riyadh | Saudi Event Management",
+    description: isAr
+      ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030 ومرخّصون من هيئة الترفيه."
+      : "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
     keywords:
       "event management company in Riyadh, event planner in Riyadh, corporate event organizer in Riyadh, wedding planner in Riyadh, conference management Riyadh RICEC, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
     alternates: {
@@ -34,9 +39,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/locations/riyadh"),
     },
     openGraph: {
-      title: "Event Management Company in Riyadh | Saudi Event Management",
-      description:
-        "Riyadh's premier event management company — corporate conferences, government summits, exhibitions at RICEC, and luxury weddings at Four Seasons & Ritz-Carlton.",
+      title: isAr
+        ? "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية"
+        : "Event Management Company in Riyadh | Saudi Event Management",
+      description: isAr
+        ? "الشركة الرائدة لإدارة الفعاليات في الرياض — مؤتمرات الشركات، والقمم الحكومية، والمعارض في RICEC، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون."
+        : "Riyadh's premier event management company — corporate conferences, government summits, exhibitions at RICEC, and luxury weddings at Four Seasons & Ritz-Carlton.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -137,7 +145,7 @@ const jsonLd = {
           },
         ],
       },
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "knowsAbout": [
         "Riyadh International Convention & Exhibition Center (RICEC)",
         "King Abdulaziz International Conference Center (KAICC)",
@@ -408,7 +416,9 @@ const eventCalendar = [
   },
 ];
 
-export default function RiyadhPage() {
+export default async function RiyadhPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <script
@@ -418,16 +428,20 @@ export default function RiyadhPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Event Management in "
-        titleHighlight="Riyadh"
-        subtitle="From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
+        title={isAr ? "إدارة الفعاليات في " : "Event Management in "}
+        titleHighlight={isAr ? "الرياض" : "Riyadh"}
+        subtitle={
+          isAr
+            ? "من معارض RICEC إلى قمم مبادرة مستقبل الاستثمار، ومن حفلات الدرعية التراثية إلى حفلات الزفاف الفاخرة في فورسيزونز — الشركة الرائدة لإدارة الفعاليات في الرياض، نقدّم فعاليات متوافقة مع رؤية 2030 بأعلى المعايير."
+            : "From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
+        }
         backgroundImage="/locations/riyadh-hero.webp"
         imageAlt="Riyadh city skyline — event management company in Riyadh, Saudi Arabia"
-        badge="Saudi Arabia's Capital | Riyadh"
+        badge={isAr ? "عاصمة السعودية | الرياض" : "Saudi Arabia's Capital | Riyadh"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Locations", href: "/locations" },
-          { label: "Riyadh" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "المواقع" : "Locations", href: `${arHref}/locations` },
+          { label: isAr ? "الرياض" : "Riyadh" },
         ]}
         enableParallax
         minHeight="large"
@@ -652,7 +666,7 @@ export default function RiyadhPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events Delivered in Riyadh", val: "200+" },
+              { label: "Events Delivered in Riyadh", val: "120+" },
               { label: "Venue Partnerships", val: "45+" },
               { label: "Riyadh-Based Specialists", val: "15" },
               { label: "Avg. Guest Satisfaction", val: "99%" },

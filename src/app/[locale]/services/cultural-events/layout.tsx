@@ -7,12 +7,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/cultural-events`;
 
   return {
-    title: "Cultural & Religious Event Planning Saudi Arabia | Ramadan, National Day & Eid",
-    description:
-      "Authentic cultural and religious event management across Saudi Arabia. Ramadan iftars, National Day galas, Founding Day celebrations, Eid parties, and Riyadh Season activations — by Saudi Event Management.",
+    title: isAr
+      ? { absolute: "تنظيم الفعاليات الثقافية والدينية في السعودية | رمضان واليوم الوطني والعيد | إدارة الفعاليات السعودية" }
+      : "Cultural & Religious Event Planning Saudi Arabia | Ramadan, National Day & Eid",
+    description: isAr
+      ? "إدارة أصيلة للفعاليات الثقافية والدينية في عموم السعودية. إفطارات رمضان، وحفلات اليوم الوطني، واحتفالات يوم التأسيس، وحفلات العيد، وتفعيلات موسم الرياض — من إدارة الفعاليات السعودية."
+      : "Authentic cultural and religious event management across Saudi Arabia. Ramadan iftars, National Day galas, Founding Day celebrations, Eid parties, and Riyadh Season activations — by Saudi Event Management.",
     keywords: [
       "Cultural event management Saudi Arabia",
       "Ramadan event planner KSA",
@@ -30,9 +34,12 @@ export async function generateMetadata({
       languages: hreflangAlternates("/services/cultural-events"),
     },
     openGraph: {
-      title: "Cultural & Religious Event Planning Saudi Arabia | Saudi Event Management",
-      description:
-        "Authentic cultural event management — Ramadan iftars, National Day galas, Founding Day, Eid celebrations, and Riyadh Season activations.",
+      title: isAr
+        ? "تنظيم الفعاليات الثقافية والدينية في السعودية | إدارة الفعاليات السعودية"
+        : "Cultural & Religious Event Planning Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "إدارة أصيلة للفعاليات الثقافية — إفطارات رمضان، وحفلات اليوم الوطني، ويوم التأسيس، واحتفالات العيد، وتفعيلات موسم الرياض."
+        : "Authentic cultural event management — Ramadan iftars, National Day galas, Founding Day, Eid celebrations, and Riyadh Season activations.",
       url: canonicalUrl,
       images: [
         {

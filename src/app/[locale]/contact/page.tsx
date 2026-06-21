@@ -62,7 +62,7 @@ export default async function ContactPage({ params }: PageProps) {
     "@id": "https://saudieventmanagement.com/#organization",
     "name": "Saudi Event Management",
     "image": "/hero_bg.webp",
-    "telephone": "+966501234567",
+    "telephone": "+966539388072",
     "email": "infosaudieventmanagement@gmail.com",
     "url": "https://saudieventmanagement.com",
     "address": {
@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: PageProps) {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "contactType": "customer service",
       "areaServed": "SA",
       "availableLanguage": ["Arabic", "English"],
@@ -149,7 +149,7 @@ export default async function ContactPage({ params }: PageProps) {
                 {content.whatsappDesc}
               </p>
               <a
-                href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20services."
+                href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-4 rounded-xl shadow-[0_2px_8px_rgba(37,211,102,0.2)] transition-all text-[14px] font-medium"
@@ -190,7 +190,7 @@ export default async function ContactPage({ params }: PageProps) {
                   </div>
                   <div>
                     <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.callLabel}</span>
-                    <a href="tel:+966501234567" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
+                    <a href="tel:+966539388072" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
                       +966 50 123 4567
                     </a>
                   </div>
