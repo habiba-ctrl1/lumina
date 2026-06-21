@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -51,7 +52,7 @@ const jsonLd = {
         name: "Saudi Event Management",
         image: "https://saudieventmanagement.com/services/wedding_stage_backdrop_decor.webp",
         url: "https://saudieventmanagement.com",
-        telephone: "+966501234567",
+        telephone: "+966539388072",
         address: {
           "@type": "PostalAddress",
           streetAddress: "King Fahd Road",
@@ -597,7 +598,9 @@ const faqs = [
 
 /* ─────────────────────────── PAGE COMPONENT ─────────────────────────── */
 
-export default function RoyalWeddingsPage() {
+export default async function RoyalWeddingsPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <>
       <script
@@ -610,17 +613,21 @@ export default function RoyalWeddingsPage() {
 
         {/* ── HERO ── */}
         <InternalPageHero
-          title="Royal Wedding Planners"
-          titleHighlight="Saudi Arabia"
-          subtitle="Bespoke royal wedding architecture for the Kingdom's most distinguished families — Nikah, Walima, Zaffa, Laylat al-Henna, and Milka ceremonies crafted to perfection at the finest palace venues in Riyadh, Jeddah, AlUla, and NEOM."
+          title={isAr ? "مخطّطو الأعراس الملكية" : "Royal Wedding Planners"}
+          titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "هندسة أعراس ملكية مخصّصة لأعرق عائلات المملكة — مراسم عقد القران والوليمة والزفّة وليلة الحناء والملكة مصمّمة بإتقان في أرقى القصور بالرياض وجدة والعلا ونيوم."
+              : "Bespoke royal wedding architecture for the Kingdom's most distinguished families — Nikah, Walima, Zaffa, Laylat al-Henna, and Milka ceremonies crafted to perfection at the finest palace venues in Riyadh, Jeddah, AlUla, and NEOM."
+          }
           backgroundImage="/services/wedding_stage_backdrop_decor.webp"
           imageAlt="Royal wedding ceremony Saudi Arabia — grand ballroom with floral arches and gold details"
-          badge="حفلات الأعراس الملكية | Royal Weddings"
+          badge={isAr ? "الأعراس الملكية" : "حفلات الأعراس الملكية | Royal Weddings"}
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Luxury Weddings", href: "/services/weddings" },
-            { label: "Royal Weddings" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "حفلات الزفاف الفاخرة" : "Luxury Weddings", href: `${arHref}/services/weddings` },
+            { label: isAr ? "الأعراس الملكية" : "Royal Weddings" },
           ]}
           minHeight="large"
           enableParallax

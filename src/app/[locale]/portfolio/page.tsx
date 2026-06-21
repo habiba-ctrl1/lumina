@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
@@ -13,12 +14,17 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
     // NOTE: the root layout title template appends " | Saudi Event Management",
     // so the brand is intentionally omitted here to avoid duplicating it.
-    title: 'Event Portfolio — Luxury Events & Productions in Saudi Arabia',
-    description: 'Explore Saudi Event Management\'s portfolio of completed corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 productions across Riyadh, Jeddah, AlUla, and NEOM.',
+    title: isAr
+      ? { absolute: "أعمالنا — فعاليات وإنتاجات فاخرة في السعودية | إدارة الفعاليات السعودية" }
+      : 'Event Portfolio — Luxury Events & Productions in Saudi Arabia',
+    description: isAr
+      ? "استكشف أعمال إدارة الفعاليات السعودية من فعاليات الشركات والمؤتمرات والمعارض وإطلاق المنتجات وحفلات الزفاف الفاخرة وإنتاجات رؤية 2030 في الرياض وجدة والعلا ونيوم."
+      : 'Explore Saudi Event Management\'s portfolio of completed corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 productions across Riyadh, Jeddah, AlUla, and NEOM.',
     keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Corporate Events Riyadh, Exhibitions Jeddah, Conference Production, Royal Weddings, Saudi Event Management Case Studies',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio`,
@@ -80,7 +86,9 @@ const jsonLd = {
   ]
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script
@@ -89,15 +97,19 @@ export default function PortfolioPage() {
       />
       <ScrollProgress />
       <Navbar />
-      
+
       <InternalPageHero
-        title="Portfolio"
-        titleHighlight="Showcase"
-        subtitle="The definitive visual testament to Saudi Event Management's execution excellence — from GEA-licensed gala productions to high-security royal wedding logistics across the Kingdom."
+        title={isAr ? "أعمالنا" : "Portfolio"}
+        titleHighlight={isAr ? "مختارات" : "Showcase"}
+        subtitle={
+          isAr
+            ? "الشاهد البصري الأبرز على تميّز إدارة الفعاليات السعودية في التنفيذ — من إنتاج الحفلات المرخّصة من هيئة الترفيه إلى لوجستيات الأعراس الملكية عالية الأمان في عموم المملكة."
+            : "The definitive visual testament to Saudi Event Management's execution excellence — from GEA-licensed gala productions to high-security royal wedding logistics across the Kingdom."
+        }
         backgroundImage="/luxury_wedding_couple_guests.webp"
         imageAlt="Luxury wedding guests celebrating at a grand Saudi Arabia event"
-        badge="Curated Excellence"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Portfolio" }]}
+        badge={isAr ? "تميّز منتقى" : "Curated Excellence"}
+        breadcrumbs={[{ label: isAr ? "الرئيسية" : "Home", href: arHref || "/" }, { label: isAr ? "أعمالنا" : "Portfolio" }]}
         enableParallax
         minHeight="large"
       />
@@ -108,33 +120,55 @@ export default function PortfolioPage() {
           <div className="max-w-3xl">
             <span className="section-label mb-6">
               <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Our Work
+              {isAr ? "أعمالنا" : "Our Work"}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mt-5 mb-6" style={{ letterSpacing: "-0.025em" }}>
-              A Portfolio Built on <span className="text-[var(--primary)]">Flawless Execution</span>
+              {isAr ? <>أعمال مبنية على <span className="text-[var(--primary)]">تنفيذ متقن</span></> : <>A Portfolio Built on <span className="text-[var(--primary)]">Flawless Execution</span></>}
             </h2>
             <div className="space-y-5 text-neutral-600 text-[16px] leading-relaxed">
-              <p>
-                Saudi Event Management is a full-service event management company that has delivered 250+ events across the Kingdom since 2010. This portfolio brings together completed corporate events, government summits, conferences, exhibitions, product launches, and luxury weddings — each produced end-to-end by our in-house team.
-              </p>
-              <p>
-                Our projects span <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link>, Jeddah, Dammam, AlUla, and NEOM, ranging from intimate 120-guest executive retreats to 5,000-capacity Riyadh Season productions. Every event is GEA-licensed, protocol-led, and aligned with the cultural ambitions of Saudi Vision 2030.
-              </p>
+              {isAr ? (
+                <>
+                  <p>
+                    إدارة الفعاليات السعودية شركة متكاملة الخدمات نفّذت أكثر من 250 فعالية في عموم المملكة منذ 2010. تجمع هذه الأعمال فعاليات شركات وقممًا حكومية ومؤتمرات ومعارض وإطلاق منتجات وحفلات زفاف فاخرة — كلّها مُنتَجة بالكامل عبر فريقنا الداخلي.
+                  </p>
+                  <p>
+                    تمتد مشاريعنا عبر <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">الرياض</Link> وجدة والدمام والعلا ونيوم، من ملتقيات تنفيذية حميمة بـ 120 ضيفًا إلى إنتاجات موسم الرياض بسعة 5000 شخص. وكل فعالية مرخّصة من هيئة الترفيه، ومُدارة بالبروتوكول، ومتوائمة مع طموحات رؤية السعودية 2030 الثقافية.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Saudi Event Management is a full-service event management company that has delivered 250+ events across the Kingdom since 2010. This portfolio brings together completed corporate events, government summits, conferences, exhibitions, product launches, and luxury weddings — each produced end-to-end by our in-house team.
+                  </p>
+                  <p>
+                    Our projects span <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link>, Jeddah, Dammam, AlUla, and NEOM, ranging from intimate 120-guest executive retreats to 5,000-capacity Riyadh Season productions. Every event is GEA-licensed, protocol-led, and aligned with the cultural ambitions of Saudi Vision 2030.
+                  </p>
+                </>
+              )}
             </div>
           </div>
 
           {/* What every project includes — concise capability list in a soft card */}
           <div className="mt-12 rounded-3xl border border-neutral-200/80 bg-gradient-to-br from-[var(--surface-raised)] to-white p-8 md:p-10 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-            <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-neutral-500 mb-7">What every project includes</h3>
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-neutral-500 mb-7">{isAr ? "ما يتضمّنه كل مشروع" : "What every project includes"}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
-              {[
+              {(isAr
+                ? [
+                "تصاريح هيئة الترفيه والتراخيص والامتثال التنظيمي الكامل",
+                "بروتوكول كبار الشخصيات والأمن وإدارة تجربة الضيوف",
+                "إنتاج المسرح والصوت والصورة والإضاءة والعرض الغامر",
+                "تصميم مخصّص وتصنيع وهندسة أزهار",
+                "اختيار القاعات في الرياض وجدة والعلا ونيوم",
+                "لوجستيات متكاملة وإدارة الموردين والميزانية",
+                  ]
+                : [
                 "GEA permits, licensing, and full regulatory compliance",
                 "VIP protocol, security, and guest experience management",
                 "Stage, AV, lighting, and immersive projection production",
                 "Bespoke design, fabrication, and floral architecture",
                 "Venue sourcing across Riyadh, Jeddah, AlUla, and NEOM",
                 "End-to-end logistics, vendor, and budget management",
-              ].map((cap) => (
+              ]).map((cap) => (
                 <div key={cap} className="flex items-start gap-3">
                   <CheckCircle2 size={20} className="text-[var(--primary)] shrink-0 mt-0.5" />
                   <p className="text-neutral-700 text-[15px] leading-relaxed">{cap}</p>
@@ -151,18 +185,26 @@ export default function PortfolioPage() {
           <div className="text-center mb-8">
             <div className="prose prose-slate max-w-3xl mx-auto text-neutral-500 text-[14.5px] leading-relaxed mb-6">
               <p>
-                From procuring mandatory GEA permits and VIP protocol coordination to heavy-duty stage rigging and immersive projection mapping — our methodology is built on flawless logistics wrapped in luxury aesthetics.
+                {isAr
+                  ? "من استخراج تصاريح هيئة الترفيه الإلزامية وتنسيق بروتوكول كبار الشخصيات إلى تركيب المسارح الثقيلة والعرض الغامر — منهجيتنا مبنية على لوجستيات متقنة بلمسة جمالية فاخرة."
+                  : "From procuring mandatory GEA permits and VIP protocol coordination to heavy-duty stage rigging and immersive projection mapping — our methodology is built on flawless logistics wrapped in luxury aesthetics."}
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
-              {[
+              {(isAr
+                ? [
+                { name: "حفلات الزفاف الفاخرة", href: "/portfolio/luxury-weddings" },
+                { name: "قمم الشركات", href: "/portfolio/corporate-events" },
+                { name: "تفعيلات رؤية 2030", href: "/portfolio/vision-2030" },
+                  ]
+                : [
                 { name: "Luxury Weddings", href: "/portfolio/luxury-weddings" },
                 { name: "Corporate Summits", href: "/portfolio/corporate-events" },
                 { name: "Vision 2030 Activations", href: "/portfolio/vision-2030" }
-              ].map((cat, i) => (
+              ]).map((cat, i) => (
                 <Link
                   key={i}
-                  href={cat.href}
+                  href={`${arHref}${cat.href}`}
                   className="px-5 py-2.5 text-[13px] font-medium bg-white border border-neutral-200 text-neutral-600 rounded-full hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all shadow-sm"
                 >
                   {cat.name}
@@ -187,25 +229,36 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 mb-5" style={{ letterSpacing: "-0.025em" }}>
-              Event Categories We <span className="text-[var(--primary)]">Deliver</span>
+              {isAr ? <>فئات الفعاليات التي <span className="text-[var(--primary)]">ننفّذها</span></> : <>Event Categories We <span className="text-[var(--primary)]">Deliver</span></>}
             </h2>
             <p className="text-neutral-500 text-[16px] leading-relaxed">
-              Every project in this portfolio is produced by a dedicated specialist team. Explore the full service behind each category:
+              {isAr
+                ? "كل مشروع في هذه الأعمال يُنتَج عبر فريق متخصص. استكشف الخدمة الكاملة وراء كل فئة:"
+                : "Every project in this portfolio is produced by a dedicated specialist team. Explore the full service behind each category:"}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
+            {(isAr
+              ? [
+              { icon: Building2, title: "فعاليات الشركات", desc: "حفلات وقمم وتفعيلات علامة لكبرى المؤسسات السعودية والعالمية.", href: "/services/corporate-events" },
+              { icon: Layers, title: "المعارض", desc: "تصميم أجنحة مخصّصة وتصنيع منصات وإدارة معارض متكاملة.", href: "/services/exhibitions" },
+              { icon: Mic2, title: "المؤتمرات والقمم", desc: "مؤتمرات حكومية وتنفيذية بإدارة المندوبين والبروتوكول.", href: "/services/conferences" },
+              { icon: PartyPopper, title: "حفلات الزفاف الفاخرة", desc: "تخطيط وتصميم وإنتاج أعراس ملكية ولكبار الثروات.", href: "/services/weddings" },
+              { icon: Sparkles, title: "الإنتاج الفعّالياتي", desc: "مسرح وصوت وصورة وإضاءة وإنتاج عروض غامرة بأي حجم.", href: "/services/event-production" },
+              { icon: Briefcase, title: "الفعاليات الثقافية ورؤية 2030", desc: "تفعيلات ثقافية مرخّصة من هيئة الترفيه وإنتاجات اليوم الوطني.", href: "/services/cultural-events" },
+                ]
+              : [
               { icon: Building2, title: "Corporate Events", desc: "Galas, summits, and brand activations for leading Saudi and global organisations.", href: "/services/corporate-events" },
               { icon: Layers, title: "Exhibitions", desc: "Custom pavilion design, stand fabrication, and full-show exhibition management.", href: "/services/exhibitions" },
               { icon: Mic2, title: "Conferences & Summits", desc: "Government and executive conferences with delegate and protocol management.", href: "/services/conferences" },
               { icon: PartyPopper, title: "Luxury Weddings", desc: "Royal and high-net-worth wedding planning, design, and production.", href: "/services/weddings" },
               { icon: Sparkles, title: "Event Production", desc: "Stage, AV, lighting, and immersive show production at any scale.", href: "/services/event-production" },
               { icon: Briefcase, title: "Cultural & Vision 2030", desc: "GEA-licensed cultural activations and National Day productions.", href: "/services/cultural-events" },
-            ].map((cat) => (
+            ]).map((cat) => (
               <Link
                 key={cat.href}
-                href={cat.href}
+                href={`${arHref}${cat.href}`}
                 className="group flex flex-col p-7 rounded-2xl border border-neutral-200/80 bg-white hover:border-[var(--primary)]/40 hover:shadow-md transition-all"
               >
                 <div className="w-12 h-12 flex items-center justify-center bg-emerald-50 rounded-xl text-[var(--primary)] border border-emerald-100/50 mb-5">
@@ -232,20 +285,22 @@ export default function PortfolioPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Start Your <span className="text-emerald-400">Legacy?</span></h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>{isAr ? <>هل أنت مستعدّ لصناعة <span className="text-emerald-400">إرثك؟</span></> : <>Ready to Start Your <span className="text-emerald-400">Legacy?</span></>}</h2>
             <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
-              Let&apos;s discuss your vision and create something truly extraordinary together. Tell us about your event and our planners will respond within one business day.
+              {isAr
+                ? "لنناقش رؤيتك ونصنع معًا شيئًا استثنائيًا حقًا. أخبرنا عن فعاليتك وسيردّ مخطّطونا خلال يوم عمل واحد."
+                : "Let's discuss your vision and create something truly extraordinary together. Tell us about your event and our planners will respond within one business day."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="/contact"
+                href={`${arHref}/contact`}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)]"
               >
-                Book Your Discovery Call
+                {isAr ? "احجز جلسة تعارف" : "Book Your Discovery Call"}
                 <ArrowRight size={16} />
               </Link>
               <a
-                href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20my%20event."
+                href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20my%20event."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#25D366] text-white font-medium hover:bg-[#1fb855] transition-colors rounded-xl text-[14px] shadow-[0_4px_14px_rgba(37,211,102,0.35)]"
@@ -254,7 +309,7 @@ export default function PortfolioPage() {
                 <svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor" aria-hidden="true">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
-                WhatsApp Us
+                {isAr ? "راسلنا على واتساب" : "WhatsApp Us"}
               </a>
             </div>
           </div>

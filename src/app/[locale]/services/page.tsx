@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -17,12 +18,16 @@ import {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/services`;
   return {
-    title: "Event Management Services in Saudi Arabia | Weddings, Corporate & Exhibitions",
-    description:
-      "Award-winning event management company in Saudi Arabia. 15+ years and 500+ events delivered — luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
+    title: isAr
+      ? { absolute: "خدمات إدارة الفعاليات في السعودية | حفلات الزفاف والشركات والمعارض | إدارة الفعاليات السعودية" }
+      : "Event Management Services in Saudi Arabia | Weddings, Corporate & Exhibitions",
+    description: isAr
+      ? "شركة إدارة فعاليات حائزة على جوائز في السعودية. أكثر من 15 عامًا و500 فعالية منفّذة — حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وفعاليات كبار الشخصيات والوجهات في الرياض وجدة والدمام والعلا ونيوم. عرض مجاني خلال 24 ساعة."
+      : "Award-winning event management company in Saudi Arabia. 15+ years and 500+ events delivered — luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
     keywords: [
       "Event Management Services Saudi Arabia",
       "Event management company Saudi Arabia",
@@ -41,9 +46,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/services"),
     },
     openGraph: {
-      title: "Event Management Services in Saudi Arabia | Saudi Event Management",
-      description:
-        "15+ years and 500+ events. Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP experiences across Riyadh, Jeddah, Dammam, AlUla & NEOM.",
+      title: isAr
+        ? "خدمات إدارة الفعاليات في السعودية | إدارة الفعاليات السعودية"
+        : "Event Management Services in Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "أكثر من 15 عامًا و500 فعالية. حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وتجارب الوجهات وكبار الشخصيات في الرياض وجدة والدمام والعلا ونيوم."
+        : "15+ years and 500+ events. Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP experiences across Riyadh, Jeddah, Dammam, AlUla & NEOM.",
       url: path,
       type: "website",
       images: [{ url: "/services/hero_bg.webp", width: 1200, height: 630, alt: "Luxury event management services in Saudi Arabia by Saudi Event Management" }],
@@ -268,7 +276,7 @@ const jsonLd = {
         "postalCode": "11564",
         "addressCountry": "SA",
       },
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "knowsAbout": [
         "Event management", "Corporate event planning", "Luxury wedding planning",
         "Exhibition management", "Conference organizing", "Event production",
@@ -354,7 +362,8 @@ const jsonLd = {
   ],
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-[var(--background)] text-neutral-900 overflow-hidden">
       <script
@@ -365,18 +374,22 @@ export default function ServicesPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Event Management Services"
-        titleHighlight="in Saudi Arabia"
-        subtitle="From high-stakes corporate summits to grand royal weddings — explore the Kingdom's full suite of luxury event management services across Riyadh, Jeddah, Dammam, AlUla, and NEOM."
+        title={isAr ? "خدمات إدارة الفعاليات" : "Event Management Services"}
+        titleHighlight={isAr ? "في السعودية" : "in Saudi Arabia"}
+        subtitle={
+          isAr
+            ? "من القمم المؤسسية عالية الأهمية إلى الأعراس الملكية الكبرى — استكشف باقة المملكة الكاملة من خدمات إدارة الفعاليات الفاخرة في الرياض وجدة والدمام والعلا ونيوم."
+            : "From high-stakes corporate summits to grand royal weddings — explore the Kingdom's full suite of luxury event management services across Riyadh, Jeddah, Dammam, AlUla, and NEOM."
+        }
         backgroundImage="/services/wedding_stage_backdrop_decor.webp"
         imageAlt="Luxury wedding stage backdrop and floral décor at a premium event in Saudi Arabia"
-        badge="Our Expertise"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
+        badge={isAr ? "خبرتنا" : "Our Expertise"}
+        breadcrumbs={[{ label: isAr ? "الرئيسية" : "Home", href: isAr ? "/ar" : "/" }, { label: isAr ? "الخدمات" : "Services" }]}
         enableParallax
         disableZoom
         minHeight="large"
         trustElements={[
-          { value: "500+", label: "Events Managed" },
+          { value: "250+", label: "Events Managed" },
           { value: "15+", label: "Years of Saudi Expertise" },
           { value: "24 Hours", label: "Quote Response" },
         ]}
@@ -392,7 +405,7 @@ export default function ServicesPage() {
             Request a Free Proposal
           </Link>
           <a
-            href="tel:+966501234567"
+            href="tel:+966539388072"
             className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
           >
             <Phone size={15} /> Speak to Our Team
@@ -758,7 +771,7 @@ export default function ServicesPage() {
               </ul>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20an%20event."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20an%20event."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"

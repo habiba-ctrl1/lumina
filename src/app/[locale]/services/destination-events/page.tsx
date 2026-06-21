@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { hreflangAlternates } from "@/lib/seo";
+import { getLocale } from "next-intl/server";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -11,12 +12,16 @@ import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/services/destination-events`;
   return {
-    title: "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
-    description:
-      "Plan breathtaking destination events in Saudi Arabia. From desert glamping and ancient heritage experiences in AlUla, to luxury yacht events on the Red Sea and futuristic summits in NEOM.",
+    title: isAr
+      ? { absolute: "فعاليات الوجهات في السعودية | العلا ونيوم والبحر الأحمر والدرعية | إدارة الفعاليات السعودية" }
+      : "Destination Events Saudi Arabia | AlUla, NEOM, Red Sea & Diriyah",
+    description: isAr
+      ? "خطّط لفعاليات وجهات آسرة في السعودية. من التخييم الفاخر وتجارب التراث العريق في العلا، إلى فعاليات اليخوت الفاخرة على البحر الأحمر والقمم المستقبلية في نيوم."
+      : "Plan breathtaking destination events in Saudi Arabia. From desert glamping and ancient heritage experiences in AlUla, to luxury yacht events on the Red Sea and futuristic summits in NEOM.",
     keywords: [
       "Destination events Saudi Arabia",
       "AlUla event planning",
@@ -34,9 +39,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/services/destination-events"),
     },
     openGraph: {
-      title: "Destination Events Saudi Arabia | AlUla, NEOM & Red Sea",
-      description:
-        "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
+      title: isAr
+        ? "فعاليات الوجهات في السعودية | العلا ونيوم والبحر الأحمر"
+        : "Destination Events Saudi Arabia | AlUla, NEOM & Red Sea",
+      description: isAr
+        ? "فعاليات وجهات آسرة عبر أبرز معالم السعودية — العلا ونيوم والبحر الأحمر والدرعية."
+        : "Breathtaking destination events across Saudi Arabia's most iconic landscapes — AlUla, NEOM, Red Sea, and Diriyah.",
       url: path,
       images: [{ url: "/services/hero_bg.webp", width: 1200, height: 630, alt: "Destination Events Saudi Arabia" }],
     },
@@ -190,7 +198,9 @@ const resources = [
   { title: "Destination Weddings in AlUla & The Red Sea", desc: "Crafting breathtaking desert ceremonies and Red Sea beachfront weddings in Saudi Arabia.", href: "/blog/destination-weddings-alula-red-sea" },
 ];
 
-export default function DestinationEventsPage() {
+export default async function DestinationEventsPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <>
       <script
@@ -201,17 +211,21 @@ export default function DestinationEventsPage() {
         <Navbar darkHero={false} />
 
         <InternalPageHero
-          title="Destination Event Planning"
-          titleHighlight="in Saudi Arabia"
-          subtitle="Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
+          title={isAr ? "تخطيط فعاليات الوجهات" : "Destination Event Planning"}
+          titleHighlight={isAr ? "في السعودية" : "in Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "إدارة متخصصة لفعاليات الوجهات عبر أبهى مناظر المملكة — العلا ونيوم والبحر الأحمر والدرعية — بلوجستيات سلسة وتجارب استثنائية."
+              : "Specialist destination event management across the Kingdom's most breathtaking landscapes — AlUla, NEOM, the Red Sea, and Diriyah — with seamless logistics and extraordinary experiences."
+          }
           backgroundImage="/services/premium_destination_event_hero.webp"
           imageAlt="Luxury destination event in AlUla Saudi Arabia with desert mountains and dining setup"
           enableParallax
-          badge="Destination Events"
+          badge={isAr ? "فعاليات الوجهات" : "Destination Events"}
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Destination Events" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "فعاليات الوجهات" : "Destination Events" },
           ]}
           minHeight="large"
         />
@@ -224,7 +238,7 @@ export default function DestinationEventsPage() {
               Explore Destinations
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-300 text-ink-900 font-semibold uppercase tracking-widest hover:border-gold-500 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Plan a Site Visit
@@ -446,7 +460,7 @@ export default function DestinationEventsPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20destination%20event%20in%20Saudi%20Arabia."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20destination%20event%20in%20Saudi%20Arabia."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-gold-400 hover:text-gold-400 transition-colors"

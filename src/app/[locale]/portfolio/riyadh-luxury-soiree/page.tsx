@@ -8,10 +8,12 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 import { ArrowLeft, CheckCircle2, GlassWater, Music, Sparkles, Camera } from "lucide-react";
 
 
 export default function RiyadhLuxurySoiree() {
+  const isAr = useLocale() === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -25,18 +27,18 @@ export default function RiyadhLuxurySoiree() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-[var(--primary)] hover:text-white transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20"
           >
-            Private Elite Celebration
+            {isAr ? "دراسة حالة" : "Private Elite Celebration"}
           </motion.span>
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
-            Riyadh <span className="text-[var(--primary)] ">Luxury</span> Soiree
+            {isAr ? "أمسية الرياض الفاخرة" : <>Riyadh <span className="text-[var(--primary)] ">Luxury</span> Soiree</>}
           </h1>
           <p className="text-neutral-600 text-xl font-light max-w-2xl mx-auto leading-relaxed">Redefining the boundaries of private entertainment. A night of avant-garde design and sensory wonder.</p>
         </div>

@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, Stars, MapPin, Sparkles, Utensils, Music, Camera, Gift, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
 // Metadata cannot be exported from a client component in Next.js 13+ app dir
 // So we move it to a separate layout or just skip it if this is a client page.
@@ -17,6 +18,8 @@ import { motion } from "framer-motion";
 // Actually, I can use a separate server component for metadata.
 
 export default function WeddingsPage() {
+  const isAr = useLocale() === "ar";
+  const arHref = isAr ? "/ar" : "";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -34,7 +37,7 @@ export default function WeddingsPage() {
             "addressLocality": "Riyadh",
             "addressCountry": "SA"
           },
-          "telephone": "+966501234567"
+          "telephone": "+966539388072"
         },
         "areaServed": ["Riyadh", "Jeddah", "Dammam", "KSA"],
         "hasOfferCatalog": {
@@ -206,17 +209,21 @@ export default function WeddingsPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Wedding Planner"
-          titleHighlight="Saudi Arabia"
-          subtitle="Expert wedding planning in Riyadh, Jeddah, and Dammam — from traditional Nikah and Milka ceremonies to Henna nights and grand receptions at the Kingdom's most sought-after venues."
+          title={isAr ? "تنظيم حفلات الزفاف" : "Wedding Planner"}
+          titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "تخطيط احترافي لحفلات الزفاف في الرياض وجدة والدمام — من مراسم عقد القران والملكة إلى ليالي الحناء وحفلات الاستقبال الكبرى في أكثر قاعات المملكة رقيًا."
+              : "Expert wedding planning in Riyadh, Jeddah, and Dammam — from traditional Nikah and Milka ceremonies to Henna nights and grand receptions at the Kingdom's most sought-after venues."
+          }
           backgroundImage="/services/luxury_wedding_couple_guests.webp"
           imageAlt="Wedding planner Saudi Arabia — Nikah ceremony and reception"
-          badge="حفلات الزفاف | Wedding Planning"
+          badge={isAr ? "حفلات الزفاف" : "حفلات الزفاف | Wedding Planning"}
           enableParallax
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Weddings" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "حفلات الزفاف" : "Weddings" },
           ]}
           minHeight="large"
         />
@@ -229,7 +236,7 @@ export default function WeddingsPage() {
               Start Planning Your Dream
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Speak to a Wedding Planner
@@ -276,22 +283,36 @@ export default function WeddingsPage() {
               <div className="space-y-8">
                 <span className="section-label mb-4 flex">
                   <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                  Saudi Arabia&apos;s Premier Wedding Planner
+                  {isAr ? "مخطِّط حفلات الزفاف الأول في السعودية" : "Saudi Arabia's Premier Wedding Planner"}
                 </span>
-                <h2 className="text-3xl md:text-5xl font-sans text-slate-900 leading-tight font-bold">
-                  Crafting the Best <br/><span className="text-[var(--primary)]">Wedding Experience</span> in Riyadh
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-5xl font-sans text-slate-900 leading-tight font-bold">
+                    نصمّم أفضل <br/><span className="text-[var(--primary)]">تجربة زفاف</span> في الرياض
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-5xl font-sans text-slate-900 leading-tight font-bold">
+                    Crafting the Best <br/><span className="text-[var(--primary)]">Wedding Experience</span> in Riyadh
+                  </h2>
+                )}
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
-                  As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
+                  {isAr ? (
+                    <>
+                      بصفتنا <strong className="text-slate-900">مخطِّط حفلات الزفاف الأول في السعودية</strong> منذ أكثر من 15 عامًا، تتخصص إدارة الفعاليات السعودية في تحويل رؤيتك إلى تحفة فنية. تضم أعمالنا احتفالات حصرية في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-semibold">ريتز كارلتون الرياض</Link>، و<strong className="text-slate-900">فورسيزونز</strong>، و<Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف في الوجهات</Link> الساحرة على البحر الأحمر.
+                    </>
+                  ) : (
+                    <>
+                      As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
+                    </>
+                  )}
                 </p>
                 <div className="grid grid-cols-2 gap-10 pt-8">
                   <div>
-                    <h4 className="text-[var(--primary)] font-bold mb-2">مخططة أفراح السعودية</h4>
-                    <p className="text-sm text-gray-500 font-light">Unrivaled expertise in traditional Saudi wedding traditions and modern luxury.</p>
+                    <h4 className="text-[var(--primary)] font-bold mb-2">{isAr ? "مخطِّطو أفراح السعودية" : "مخططة أفراح السعودية"}</h4>
+                    <p className="text-sm text-gray-500 font-light">{isAr ? "خبرة لا تُضاهى في تقاليد الأعراس السعودية الأصيلة والفخامة العصرية." : "Unrivaled expertise in traditional Saudi wedding traditions and modern luxury."}</p>
                   </div>
                   <div>
-                    <h4 className="text-[var(--primary)] font-bold mb-2">Venue Partnerships</h4>
-                    <p className="text-sm text-gray-500 font-light">Preferred planning partner for JW Marriott Riyadh and InterContinental Jeddah.</p>
+                    <h4 className="text-[var(--primary)] font-bold mb-2">{isAr ? "شراكات القاعات" : "Venue Partnerships"}</h4>
+                    <p className="text-sm text-gray-500 font-light">{isAr ? "شريك التخطيط المفضّل لجي دبليو ماريوت الرياض وإنتركونتيننتال جدة." : "Preferred planning partner for JW Marriott Riyadh and InterContinental Jeddah."}</p>
                   </div>
                 </div>
               </div>
@@ -305,7 +326,7 @@ export default function WeddingsPage() {
             <div className="flex flex-wrap justify-between items-center gap-12">
               <div className="flex items-center gap-10">
                 <div className="text-3xl font-sans text-[var(--primary)] font-bold">15+</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-600">Years in <br/>Saudi Market</div>
+                <div className="text-[10px] uppercase tracking-widest text-slate-600">{isAr ? <>عامًا في <br/>السوق السعودي</> : <>Years in <br/>Saudi Market</>}</div>
               </div>
               <div className="flex gap-10 grayscale opacity-40">
                 <span className="text-xs font-bold tracking-widest">FOUR SEASONS</span>
@@ -313,7 +334,7 @@ export default function WeddingsPage() {
                 <span className="text-xs font-bold tracking-widest">JW MARRIOTT</span>
               </div>
               <div className="text-sm text-gray-500 font-light ">
-                &quot;Award-winning planning excellence for the Kingdom&apos;s elite.&quot;
+                {isAr ? "«تميّز حائز على جوائز في تخطيط أعراس نخبة المملكة.»" : "\"Award-winning planning excellence for the Kingdom's elite.\""}
               </div>
             </div>
           </div>
@@ -352,7 +373,7 @@ export default function WeddingsPage() {
               transition={{ duration: 0.6 }}
               className="text-[#C5A880] text-xs uppercase tracking-[0.28em] font-bold mb-6 block"
             >
-              Our Expertise
+              {isAr ? "خبرتنا" : "Our Expertise"}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
@@ -362,18 +383,30 @@ export default function WeddingsPage() {
               className="text-3xl md:text-5xl font-sans text-white font-bold leading-tight"
               style={{ letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
             >
-              Social Event <span className="text-[#C5A880]">Planning</span>
+              {isAr ? <>تنظيم <span className="text-[#C5A880]">المناسبات الاجتماعية</span></> : <>Social Event <span className="text-[#C5A880]">Planning</span></>}
             </motion.h2>
             <p className="text-white/75 mt-6 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-              From intimate Henna nights to grand receptions — eight specialised disciplines that bring
-              every Saudi celebration to life.
+              {isAr
+                ? "من ليالي الحناء الحميمة إلى حفلات الاستقبال الكبرى — ثماني تخصصات تُحيي كل احتفال سعودي."
+                : "From intimate Henna nights to grand receptions — eight specialised disciplines that bring every Saudi celebration to life."}
             </p>
           </div>
 
           {/* Cards */}
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                { icon: Heart, title: "حفل الخطوبة", desc: "تخطيط أنيق لحفلات الخطوبة في المملكة للتجمّعات الحميمة أو الكبرى." },
+                { icon: Sparkles, title: "ليالي الحناء", desc: "منظِّم حفلات حناء أصيلة في السعودية بلمسة عصرية فاخرة." },
+                { icon: Stars, title: "حفلات التخرّج", desc: "تخطيط راقٍ لحفلات التخرّج في الرياض للاحتفاء بالإنجازات بأناقة." },
+                { icon: MapPin, title: "المناسبات الاجتماعية", desc: "تخطيط شامل للمناسبات الاجتماعية في جدة لجميع احتفالاتك الخاصة." },
+                { icon: Utensils, title: "ضيافة فاخرة", desc: "قوائم طعام عالمية المستوى مصمّمة وفق ذوقك الثقافي والشخصي." },
+                { icon: Music, title: "الترفيه", desc: "وصول حصري لأبرز الفنانين ومنسّقي الموسيقى وتنظيم زفّة متقن في المملكة." },
+                { icon: Camera, title: "الإنتاج الإعلامي", desc: "تصوير فوتوغرافي وفيديو سينمائي لتوثيق كل لحظة." },
+                { icon: Gift, title: "تصميم الأزهار", desc: "تنسيقات مصمّمة خصيصًا من أفضل شركة ديكور أعراس في السعودية." },
+                  ]
+                : [
                 { icon: Heart, title: "Engagement Party", desc: "Elegant engagement celebration planning in KSA for intimate or grand gatherings." },
                 { icon: Sparkles, title: "Henna Nights", desc: "Authentic henna party organizer in Saudi Arabia with a modern luxurious twist." },
                 { icon: Stars, title: "Graduation Parties", desc: "Premium graduation party Riyadh planning for celebrating milestones in style." },
@@ -382,7 +415,7 @@ export default function WeddingsPage() {
                 { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
                 { icon: Gift, title: "Floral Design", desc: "Custom-made arrangements from the best wedding decoration company in Saudi Arabia." },
-              ].map((service, i) => (
+              ]).map((service, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 24 }}
@@ -407,20 +440,27 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
-                <h3 className="text-2xl font-sans font-bold text-slate-900">Bridal <br/><span className="text-[var(--primary)]">Resources</span></h3>
-                <p className="text-gray-500 text-sm font-normal leading-relaxed">Expert advice for navigating the luxury wedding landscape in the Kingdom.</p>
+                <h3 className="text-2xl font-sans font-bold text-slate-900">{isAr ? <>موارد <br/><span className="text-[var(--primary)]">العروس</span></> : <>Bridal <br/><span className="text-[var(--primary)]">Resources</span></>}</h3>
+                <p className="text-gray-500 text-sm font-normal leading-relaxed">{isAr ? "نصائح خبيرة للتنقّل في مشهد الأعراس الفاخرة بالمملكة." : "Expert advice for navigating the luxury wedding landscape in the Kingdom."}</p>
                 <div className="pt-6 border-t border-slate-200">
-                  <p className="text-slate-900 font-bold text-sm">Fatima Al-Rashid</p>
-                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">Senior Wedding Consultant</p>
+                  <p className="text-slate-900 font-bold text-sm">{isAr ? "فاطمة الراشد" : "Fatima Al-Rashid"}</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">{isAr ? "استشارية أعراس أولى" : "Senior Wedding Consultant"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">
-                {[
+                {(isAr
+                  ? [
+                  { title: "قصص أعراس حقيقية ومقالات مصوّرة", desc: "استكشف معرضنا لأبهى الاحتفالات الأخيرة في الرياض وجدة." },
+                  { title: "دليل أسعار الأعراس السعودية 2025", desc: "تفصيل شامل لتكاليف الأعراس الفاخرة، من القاعات النخبوية إلى الأزهار المخصّصة." },
+                  { title: "دليل موردي الأعراس في السعودية", desc: "شبكتنا الحصرية من أمهر مقدّمي الضيافة والمصممين والفنانين في المملكة." },
+                  { title: "اتجاهات الأعراس السعودية 2025", desc: "اكتشف أحدث صيحات أزياء العرائس والإعلام السينمائي والديكور الغامر." },
+                    ]
+                  : [
                   { title: "Real wedding stories & photo essays", desc: "Explore our gallery of breathtaking recent celebrations across Riyadh and Jeddah." },
                   { title: "Price guide for Saudi weddings 2025", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
                   { title: "Wedding vendor directory Saudi Arabia", desc: "Our exclusive network of the Kingdom's finest caterers, designers, and entertainers." },
                   { title: "Saudi wedding trends 2025", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
-                ].map((post, idx) => (
+                ]).map((post, idx) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
                     <p className="text-gray-500 text-[11px] font-normal leading-relaxed">{post.desc}</p>
@@ -458,18 +498,26 @@ export default function WeddingsPage() {
         <section className="py-32 bg-slate-50 border-y border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Our Process</span>
-              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">How we plan your <span className="text-[var(--primary)]">wedding</span> in Saudi Arabia</h2>
-              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">A clear five-stage journey refined over 15 years of weddings across Riyadh, Jeddah, and AlUla — built around Saudi family traditions and modern celebration.</p>
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">{isAr ? "منهجيتنا" : "Our Process"}</span>
+              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">{isAr ? <>كيف نخطّط <span className="text-[var(--primary)]">زفافك</span> في السعودية</> : <>How we plan your <span className="text-[var(--primary)]">wedding</span> in Saudi Arabia</>}</h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">{isAr ? "رحلة واضحة من خمس مراحل صُقلت عبر 15 عامًا من الأعراس في الرياض وجدة والعُلا — مبنية على تقاليد الأسرة السعودية والاحتفال العصري." : "A clear five-stage journey refined over 15 years of weddings across Riyadh, Jeddah, and AlUla — built around Saudi family traditions and modern celebration."}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {[
+              {(isAr
+                ? [
+                { step: "01", title: "الاستشارة والرؤية", desc: "نستمع إلى العروسين والعائلتين، ثم نحدّد عدد الضيوف والميزانية والتوازن بين التقليد والأناقة العصرية الذي ترغبونه." },
+                { step: "02", title: "القاعة والتاريخ", desc: "قائمة منتقاة وزيارات ميدانية في الرياض وجدة والدمام — مع حجز مواعيد الموسم مبكرًا لتأمين قاعتك المفضّلة." },
+                { step: "03", title: "التصميم والتنسيق", desc: "المسرح والكوشة والأزهار والإضاءة وقوائم الضيافة والزفّة — تُقدَّم كلوحة إلهام متكاملة قبل الالتزام بأي ريال." },
+                { step: "04", title: "التنسيق والتصاريح", desc: "إدارة الموردين، واللوجستيات المنفصلة حسب الحاجة، وأي تصاريح من هيئة الترفيه أو البلدية يتولاها مخطّطك بالكامل." },
+                { step: "05", title: "تنفيذ يوم الزفاف", desc: "فريق متفرّغ يوم الزفاف يدير الجدول دقيقة بدقيقة ليستمتع العروسان والعائلتان بالاحتفال فحسب." },
+                  ]
+                : [
                 { step: "01", title: "Consultation & Vision", desc: "We listen to the couple and families, then define guest count, budget, and the balance of tradition and contemporary style you want." },
                 { step: "02", title: "Venue & Date", desc: "Curated shortlist and site visits across Riyadh, Jeddah, and Dammam — peak-season dates locked early to secure your preferred ballroom." },
                 { step: "03", title: "Design & Styling", desc: "Stage, Kosha, floral, lighting, catering menus, and Zaffa — presented as a complete moodboard before a riyal is committed." },
                 { step: "04", title: "Coordination & Permits", desc: "Vendor management, gender-segregated logistics where required, and any GEA or municipality permits handled end-to-end by your planner." },
                 { step: "05", title: "Wedding Day Delivery", desc: "A dedicated on-day team runs the timeline minute-by-minute so the couple and families simply enjoy the celebration." },
-              ].map((s) => (
+              ]).map((s) => (
                 <div key={s.step} className="bg-white border border-slate-200 rounded-2xl p-6">
                   <div className="text-3xl font-bold text-[var(--primary)]/25 mb-3">{s.step}</div>
                   <h3 className="font-bold text-slate-900 text-sm mb-2">{s.title}</h3>
@@ -484,19 +532,26 @@ export default function WeddingsPage() {
         <section className="py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Planning</span>
-              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">Common wedding challenges — <span className="text-[var(--primary)]">and how we solve them</span></h2>
-              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">Saudi weddings carry unique logistical and cultural considerations. Here is how our team handles the ones couples ask about most.</p>
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">{isAr ? "تخطيط واقعي" : "Real-World Planning"}</span>
+              <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">{isAr ? <>تحديات الأعراس الشائعة — <span className="text-[var(--primary)]">وكيف نحلّها</span></> : <>Common wedding challenges — <span className="text-[var(--primary)]">and how we solve them</span></>}</h2>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">{isAr ? "تحمل الأعراس السعودية اعتبارات لوجستية وثقافية فريدة. وإليك كيف يتعامل فريقنا مع أكثرها تكرارًا لدى العروسين." : "Saudi weddings carry unique logistical and cultural considerations. Here is how our team handles the ones couples ask about most."}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
+              {(isAr
+                ? [
+                { c: "ندرة القاعات في الموسم", s: "تُحجز قاعات الرياض وجدة قبل 6 إلى 12 شهرًا في موسمي الخريف وما بعد رمضان. وصولنا بصفة شريك مفضّل يتيح تأمين المواعيد مبكرًا فلا تساوم على القاعة أبدًا." },
+                { c: "الموازنة بين توقّعات العائلتين", s: "نعمل كمنسّق محايد بين العائلتين، نقدّم خيارات واضحة وخطة واحدة معتمدة — نحفظ العلاقات ونبقي القرارات تتقدّم." },
+                { c: "اللوجستيات المنفصلة حسب الأقسام", s: "مداخل منفصلة، ومسارات خدمة متوازية، ومناطق تصوير للنساء فقط، وتوظيف متحفّظ تُصمَّم في المخطّط من اليوم الأول، لا تُرتجل ليلة الزفاف." },
+                { c: "موثوقية الموردين وتضخّم الميزانية", s: "شبكة موردين موثوقة بنطاقات مكتوبة وميزانية شفّافة ومفصّلة تعني عدم وجود مفاجآت لحظية أو تكاليف خفية مع اقتراب الموعد." },
+                  ]
+                : [
                 { c: "Peak-season venue scarcity", s: "Riyadh and Jeddah ballrooms book 6–12 months ahead for the autumn and post-Ramadan seasons. Preferred-partner access lets us secure dates early so you never compromise on the venue." },
                 { c: "Balancing two families' expectations", s: "We act as a neutral coordinator between families, presenting clear options and a single approved plan — protecting relationships while keeping decisions moving." },
                 { c: "Gender-segregated logistics", s: "Separate entrances, parallel service flows, women-only photography zones, and discreet staffing are designed into the floor plan from day one, not improvised on the night." },
                 { c: "Vendor reliability & budget creep", s: "A vetted vendor network with written scopes and a transparent, itemised budget means no last-minute surprises or hidden costs as the date approaches." },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{isAr ? "التحدّي" : "Challenge"}</span>
                   <h3 className="font-bold text-slate-900 text-base mt-1 mb-3">{item.c}</h3>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -515,23 +570,38 @@ export default function WeddingsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">
                 <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
-                  <span className="w-6 h-px bg-[#C5A880]" /> Begin Your Wedding Journey
+                  <span className="w-6 h-px bg-[#C5A880]" /> {isAr ? "ابدأ رحلة زفافك" : "Begin Your Wedding Journey"}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  Your dream wedding,<br />
-                  <span className="text-[#C5A880]">planned to perfection.</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    زفاف أحلامك،<br />
+                    <span className="text-[#C5A880]">مخطَّط بإتقان.</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    Your dream wedding,<br />
+                    <span className="text-[#C5A880]">planned to perfection.</span>
+                  </h2>
+                )}
                 <p className="text-white/70 text-base leading-relaxed max-w-md">
-                  Share your vision, preferred dates, and city. Our senior wedding planner returns a
-                  tailored concept, venue shortlist, and a transparent quote within two hours.
+                  {isAr
+                    ? "شاركينا رؤيتك والتواريخ المفضّلة والمدينة. يعيد إليك مخطّط الأعراس الأول مفهومًا مخصّصًا وقائمة قاعات وعرض سعر شفّاف خلال ساعتين."
+                    : "Share your vision, preferred dates, and city. Our senior wedding planner returns a tailored concept, venue shortlist, and a transparent quote within two hours."}
                 </p>
                 <ul className="space-y-3.5 pt-2">
-                  {[
+                  {(isAr
+                    ? [
+                    "مفهوم وتصميم وتنسيق أزهار مخصّص",
+                    "قاعات مفضّلة — ريتز كارلتون وفورسيزونز وغيرها",
+                    "تنسيق كامل لعقد القران والملكة وحفل الاستقبال",
+                    "تخطيط متحفّظ بسرية تامة",
+                  ]
+                    : [
                     "Bespoke concept, styling & floral design",
                     "Preferred venues — Ritz-Carlton, Four Seasons & more",
                     "Full coordination for Nikah, Milka & reception",
                     "Discreet planning with complete confidentiality",
-                  ].map((item) => (
+                  ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
                       <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
                       {item}
@@ -539,21 +609,21 @@ export default function WeddingsPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20luxury%20wedding."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20plan%20a%20luxury%20wedding."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
                 >
-                  <Phone size={15} /> Or message us on WhatsApp
+                  <Phone size={15} /> {isAr ? "أو راسلنا عبر واتساب" : "Or message us on WhatsApp"}
                 </a>
               </div>
               <ServiceLeadForm
                 source="weddings_page"
                 defaultEventType="Luxury Wedding"
-                eyebrow="Wedding Enquiry"
-                heading="Plan your luxury wedding"
-                subheading="Our senior wedding planner will respond within 2 hours with a tailored concept and quote."
-                submitLabel="Request Wedding Consultation"
+                eyebrow={isAr ? "استفسار زفاف" : "Wedding Enquiry"}
+                heading={isAr ? "خطّط لزفافك الفاخر" : "Plan your luxury wedding"}
+                subheading={isAr ? "سيردّ مخطّط الأعراس الأول خلال ساعتين بمفهوم مخصّص وعرض سعر." : "Our senior wedding planner will respond within 2 hours with a tailored concept and quote."}
+                submitLabel={isAr ? "اطلب استشارة الزفاف" : "Request Wedding Consultation"}
                 eventTypeOptions={[
                   "Full Wedding Planning",
                   "Nikah / Milka Ceremony",
@@ -571,12 +641,22 @@ export default function WeddingsPage() {
         <section className="py-32 bg-white relative">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-20">
-              <h2 className="text-2xl font-sans text-slate-900 font-bold">Common <span className="text-[var(--primary)]">Inquiries</span></h2>
-              <p className="text-gray-500 mt-4">Everything you need to know about planning your Saudi wedding.</p>
+              <h2 className="text-2xl font-sans text-slate-900 font-bold">{isAr ? <>الأسئلة <span className="text-[var(--primary)]">الشائعة</span></> : <>Common <span className="text-[var(--primary)]">Inquiries</span></>}</h2>
+              <p className="text-gray-500 mt-4">{isAr ? "كل ما تحتاج معرفته عن تخطيط زفافك السعودي." : "Everything you need to know about planning your Saudi wedding."}</p>
             </div>
 
             <div className="space-y-6">
-              {[
+              {(isAr
+                ? [
+                { q: "من هم أفضل مخطّطي الأعراس في الرياض؟", a: "يقدّم أفضل مخطّطي الأعراس في الرياض مزيجًا متناغمًا من الأصالة الثقافية والفخامة العصرية. وتحظى إدارة الفعاليات السعودية بتقييم عالٍ لتحويل قاعات راقية مثل ريتز كارلتون إلى تحف مخصّصة." },
+                { q: "كم تبلغ تكلفة الزفاف السعودي؟", a: "يتراوح الزفاف السعودي الفاخر عادةً من 150,000 ريال إلى ما يزيد على 1,000,000 ريال، ويشمل ذلك اختيار قاعات راقية وتصاميم أزهار مخصّصة وترفيهًا وضيافة عالمية المستوى." },
+                { q: "ما أفضل الفنادق للأعراس في جدة؟", a: "ريتز كارلتون جدة، وبارك حياة، ووالدورف أستوريا من أفضل فنادق الأعراس في جدة. ونتخصص في تأمين هذه القاعات الحصرية على البحر الأحمر بأسعار تفضيلية." },
+                { q: "مخطّط أعراس قريب مني في الرياض", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها، ما يضمن لك دائمًا دعمًا فوريًا وعمليًا لحفل زفافك المخصّص." },
+                { q: "من ينظّم الأعراس في جدة بالسعودية", a: "نخطّط وننفّذ أعراسًا مذهلة في جدة بفريق متخصص في الفخامة الساحلية." },
+                { q: "أفضل شركة أعراس في السعودية", a: "تُوصف إدارة الفعاليات السعودية كثيرًا بأنها أفضل شركة أعراس في السعودية لذوقها الرفيع وتميّزها التشغيلي." },
+                { q: "هل يختلف منسّق الزفاف عن مخطّط الزفاف؟", a: "يدير مخطّط الزفاف الرحلة الإبداعية واللوجستية كاملة (غالبًا 6 إلى 12 شهرًا)، بينما يركّز المنسّق على تنفيذ «يوم الزفاف» فقط لضمان سير خططك بسلاسة." },
+                  ]
+                : [
                 { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Saudi Event Management is highly rated for transforming high-profile venues like the Ritz-Carlton into personalized masterpieces." },
                 { q: "How much does a Saudi wedding cost?", a: "A luxury Saudi wedding typically ranges from SAR 150,000 to upwards of SAR 1,000,000. This includes premium venue sourcing, custom floral designs, and world-class entertainment and catering." },
                 { q: "Which hotels are best for weddings in Jeddah?", a: "The Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria are among the best hotels for weddings in Jeddah. We specialize in securing these exclusive Red Sea venues with preferred rates." },
@@ -584,7 +664,7 @@ export default function WeddingsPage() {
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },
                 { q: "best wedding company Saudi Arabia", a: "Known for our impeccable taste and operational excellence, Saudi Event Management is frequently called the best wedding company Saudi Arabia." },
                 { q: "Is a wedding coordinator different from a wedding planner?", a: "A wedding planner manages the entire creative and logistical journey (often 6-12 months), while a coordinator focuses purely on the 'day-of' execution to ensure your plans run flawlessly." }
-              ].map((faq, i) => (
+              ]).map((faq, i) => (
                 <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200">
                   <h3 className="text-lg font-bold text-slate-900 mb-3">{faq.q}</h3>
                   <p className="text-gray-600 font-light text-sm leading-relaxed">{faq.a}</p>
@@ -598,24 +678,31 @@ export default function WeddingsPage() {
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
-              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
+              <Link href={`${arHref}/services`} className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">{isAr ? "عرض كل الخدمات" : "View all services"} <ChevronRight size={12} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "الأعراس الملكية", slug: "royal-weddings", desc: "عقد القران والوليمة والزفّة وليلة الحناء — تميّز مراسمي للعائلات السعودية المرموقة." },
+                { title: "فعاليات الوجهات", slug: "destination-events", desc: "حفلات زفاف في العُلا ونيوم وساحل البحر الأحمر." },
+                { title: "الفعاليات الفاخرة وكبار الشخصيات", slug: "luxury-vip-events", desc: "تجارب فعاليات ملكية وكبار الثروات بسرية مطلقة." },
+                { title: "الإنتاج الفعّالياتي", slug: "event-production", desc: "مسرح وصوت وصورة وإضاءة وإنتاج أزهار لأي حجم زفاف." },
+                  ]
+                : [
                 { title: "Royal Weddings", slug: "royal-weddings", desc: "Nikah, Walima, Zaffa, and Laylat al-Henna — ceremonial excellence for distinguished Saudi families." },
                 { title: "Destination Events", slug: "destination-events", desc: "Destination weddings in AlUla, NEOM, and the Red Sea coast." },
                 { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Royal and HNWI event experiences with absolute discretion." },
                 { title: "Event Production", slug: "event-production", desc: "Stage, AV, lighting, and floral production for any wedding scale." },
-              ].map((rel) => (
+              ]).map((rel) => (
                 <Link
                   key={rel.slug}
-                  href={`/services/${rel.slug}`}
+                  href={`${arHref}/services/${rel.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
                 >
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اعرف المزيد" : "Learn More"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
@@ -625,50 +712,68 @@ export default function WeddingsPage() {
         {/* ── FEATURED WEDDING PROJECTS & CONSULTATION ── */}
         <section className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Featured Weddings From Our Portfolio</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "أعراس مختارة من أعمالنا" : "Featured Weddings From Our Portfolio"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {[
+              {(isAr
+                ? [
+                { title: "زفاف الرياض الملكي", slug: "royal-riyadh-wedding", desc: "زفاف مراسمي متعدد الأيام لعائلة رياضية مرموقة — عقد قران وزفّة وحفل وليمة كبير." },
+                { title: "زفاف شاطئ جدة", slug: "jeddah-beach-wedding", desc: "احتفال على واجهة البحر الأحمر يمزج التنسيق الساحلي بالضيافة الحجازية الأصيلة." },
+                { title: "حفل زفاف كبير", slug: "grand-wedding-ceremony", desc: "زفاف قاعة متكامل بكوشة مخصّصة وتصميم أزهار وإنتاج إعلامي سينمائي." },
+                  ]
+                : [
                 { title: "Royal Riyadh Wedding", slug: "royal-riyadh-wedding", desc: "A multi-day ceremonial wedding for a distinguished Riyadh family — Nikah, Zaffa, and a grand Walima reception." },
                 { title: "Jeddah Beach Wedding", slug: "jeddah-beach-wedding", desc: "A Red Sea waterfront celebration blending coastal styling with traditional Hejazi hospitality." },
                 { title: "Grand Wedding Ceremony", slug: "grand-wedding-ceremony", desc: "A full-scale ballroom wedding with bespoke Kosha, floral design, and cinematic media production." },
-              ].map((p) => (
-                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+              ]).map((p) => (
+                <Link key={p.slug} href={`${arHref}/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "عرض المشروع" : "View Project"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
               <div>
-                <h3 className="text-slate-900 font-bold text-lg">Ready to start planning?</h3>
-                <p className="text-gray-500 text-sm mt-1">Book a free consultation or speak directly with our wedding team — we typically reply within two hours.</p>
+                <h3 className="text-slate-900 font-bold text-lg">{isAr ? "مستعدّ لبدء التخطيط؟" : "Ready to start planning?"}</h3>
+                <p className="text-gray-500 text-sm mt-1">{isAr ? "احجز استشارة مجانية أو تحدّث مباشرة مع فريق الأعراس — نردّ عادةً خلال ساعتين." : "Book a free consultation or speak directly with our wedding team — we typically reply within two hours."}</p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
-                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+                <Link href={`${arHref}/consultation`} className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">{isAr ? "احجز استشارة مجانية" : "Book a Free Consultation"}</Link>
+                <Link href={`${arHref}/contact`} className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">{isAr ? "تواصل معنا" : "Contact Us"}</Link>
               </div>
             </div>
-            <p className="text-gray-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore our <Link href="/services/royal-weddings" className="text-[var(--primary)] font-semibold hover:underline">royal wedding planning</Link> service.</p>
+            {isAr ? (
+              <p className="text-gray-500 text-sm mt-6">تصفّح <Link href={`${arHref}/portfolio`} className="text-[var(--primary)] font-semibold hover:underline">أعمالنا الكاملة</Link>، واطّلع على <Link href={`${arHref}/testimonials`} className="text-[var(--primary)] font-semibold hover:underline">آراء العملاء</Link>، أو استكشف خدمة <Link href={`${arHref}/services/royal-weddings`} className="text-[var(--primary)] font-semibold hover:underline">تخطيط الأعراس الملكية</Link>.</p>
+            ) : (
+              <p className="text-gray-500 text-sm mt-6">Browse our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or explore our <Link href="/services/royal-weddings" className="text-[var(--primary)] font-semibold hover:underline">royal wedding planning</Link> service.</p>
+            )}
           </div>
         </section>
 
         {/* ── Wedding Planning Locations ── */}
         <section className="py-16 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-2 uppercase tracking-widest">Where We Plan Weddings</h3>
-            <p className="text-gray-500 text-sm mb-8">Luxury wedding planning services available across Saudi Arabia&apos;s premier destinations.</p>
+            <h3 className="text-lg font-bold text-slate-900 mb-2 uppercase tracking-widest">{isAr ? "أين ننظّم الأعراس" : "Where We Plan Weddings"}</h3>
+            <p className="text-gray-500 text-sm mb-8">{isAr ? "خدمات تنظيم أعراس فاخرة متوفّرة في أبرز وجهات السعودية." : "Luxury wedding planning services available across Saudi Arabia's premier destinations."}</p>
             <div className="flex flex-wrap gap-3">
-              {[
+              {(isAr
+                ? [
+                { name: "مخطّط أعراس الرياض", href: "/locations/riyadh" },
+                { name: "مخطّط أعراس جدة", href: "/locations/jeddah" },
+                { name: "مخطّط أعراس الدمام", href: "/locations/dammam" },
+                { name: "أعراس الوجهات في العُلا", href: "/locations/alula" },
+                { name: "أعراس مكة", href: "/locations/makkah" },
+                  ]
+                : [
                 { name: "Wedding Planner Riyadh", href: "/locations/riyadh" },
                 { name: "Wedding Planner Jeddah", href: "/locations/jeddah" },
                 { name: "Wedding Planner Dammam", href: "/locations/dammam" },
                 { name: "Destination Weddings AlUla", href: "/locations/alula" },
                 { name: "Weddings Makkah", href: "/locations/makkah" },
-              ].map((loc) => (
+              ]).map((loc) => (
                 <Link
                   key={loc.href}
-                  href={loc.href}
+                  href={`${arHref}${loc.href}`}
                   className="px-5 py-2.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                 >
                   {loc.name}
@@ -681,7 +786,7 @@ export default function WeddingsPage() {
         {/* ── From Our Blog ── */}
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Wedding Planning Resources</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "موارد تخطيط الأعراس" : "Wedding Planning Resources"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { title: "How Much Does a Wedding Cost in Saudi Arabia? (2026 Guide)", slug: "exceptional-wedding-cost-saudi-arabia-guide", desc: "A comprehensive data-driven cost breakdown comparing Riyadh vs AlUla luxury weddings." },
@@ -693,13 +798,13 @@ export default function WeddingsPage() {
               ].map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`${arHref}/blog/${post.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
                 >
-                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Wedding Guide</span>
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">{isAr ? "دليل الأعراس" : "Wedding Guide"}</span>
                   <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اقرأ المقال" : "Read Article"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>

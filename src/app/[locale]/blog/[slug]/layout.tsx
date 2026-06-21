@@ -12,17 +12,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   const canonical = `${BASE}${locale === "en" ? "" : "/ar"}/blog/${slug}`;
+  const isAr = locale === "ar";
+  const p = post as any;
+  const title = isAr
+    ? p.metaTitleAr || p.titleAr || p.metaTitle || post.title
+    : p.metaTitle || post.title;
+  const description = isAr
+    ? p.metaDescriptionAr || p.excerptAr || p.metaDescription || post.excerpt
+    : p.metaDescription || post.excerpt;
 
   return {
-    title: (post as any).metaTitle || post.title,
-    description: (post as any).metaDescription || post.excerpt,
+    title,
+    description,
     alternates: {
       canonical,
       languages: hreflangAlternates(`/blog/${slug}`),
     },
     openGraph: {
-      title: (post as any).metaTitle || post.title,
-      description: (post as any).metaDescription || post.excerpt,
+      title,
+      description,
       images: [post.image],
     },
   };

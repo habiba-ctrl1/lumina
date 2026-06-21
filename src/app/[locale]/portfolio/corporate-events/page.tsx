@@ -10,10 +10,15 @@ import { ArrowRight, Briefcase, Building2, Presentation } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Corporate Event Management Saudi Arabia | Executive Summits',
-    description: 'Elite corporate event management in Saudi Arabia. We specialize in executive summits, AGMs, trade shows, and B2B matchmaking across Riyadh, Jeddah, and the GCC.',
+    title: isAr
+      ? { absolute: "إدارة فعاليات الشركات في السعودية | القمم التنفيذية | إدارة الفعاليات السعودية" }
+      : 'Corporate Event Management Saudi Arabia | Executive Summits',
+    description: isAr
+      ? "إدارة راقية لفعاليات الشركات في السعودية. نتخصص في القمم التنفيذية والجمعيات العمومية والمعارض التجارية والمطابقة التجارية B2B في الرياض وجدة ودول الخليج."
+      : 'Elite corporate event management in Saudi Arabia. We specialize in executive summits, AGMs, trade shows, and B2B matchmaking across Riyadh, Jeddah, and the GCC.',
     keywords: 'Corporate event management Saudi Arabia, Executive summits Riyadh, AGM planner KSA, B2B event management Jeddah, Trade show organizer',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio/corporate-events`,
@@ -68,23 +73,28 @@ const jsonLd = {
 export default async function CorporateEventsPortfolio({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const isAr = locale === "ar";
+  const arHref = isAr ? "/ar" : "";
 
   return (
     <main className="min-h-screen bg-white text-neutral-900 overflow-hidden relative">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ScrollProgress />
       <Navbar />
-      
+
       <InternalPageHero
-        title="Corporate Events Portfolio"
-        subtitle="From high-stakes board meetings to massive international trade shows, we provide military-grade logistics and unparalleled production quality for the corporate sector."
+        title={isAr ? "أعمال فعاليات الشركات" : "Corporate Events Portfolio"}
+        subtitle={
+          isAr
+            ? "من اجتماعات مجالس الإدارة عالية الأهمية إلى المعارض التجارية الدولية الضخمة، نقدّم لوجستيات بدقة عسكرية وجودة إنتاج لا تُضاهى لقطاع الشركات."
+            : "From high-stakes board meetings to massive international trade shows, we provide military-grade logistics and unparalleled production quality for the corporate sector."
+        }
         backgroundImage="/riyadh_summit_people.webp"
         imageAlt="Corporate event management Saudi Arabia portfolio"
-        badge="Corporate Events Portfolio"
+        badge={isAr ? "أعمال فعاليات الشركات" : "Corporate Events Portfolio"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Portfolio", href: "/portfolio" },
-          { label: "Corporate Events" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "أعمالنا" : "Portfolio", href: `${arHref}/portfolio` },
+          { label: isAr ? "فعاليات الشركات" : "Corporate Events" },
         ]}
         minHeight="standard"
       />
@@ -95,18 +105,18 @@ export default async function CorporateEventsPortfolio({ params }: { params: Pro
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Briefcase className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">Executive Summits</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">End-to-end management of AGMs, C-suite retreats, and shareholder meetings with strict confidentiality protocols.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "القمم التنفيذية" : "Executive Summits"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "إدارة متكاملة للجمعيات العمومية وملتقيات الإدارة العليا واجتماعات المساهمين ببروتوكولات سرية صارمة." : "End-to-end management of AGMs, C-suite retreats, and shareholder meetings with strict confidentiality protocols."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Presentation className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">AV & Rigging</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">State-of-the-art projection mapping, LED screens, and professional stage rigging for maximum audience impact.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "الصوت والصورة والتركيب" : "AV & Rigging"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "عرض ضوئي متطوّر، وشاشات LED، وتركيب مسارح احترافي لأقصى تأثير على الجمهور." : "State-of-the-art projection mapping, LED screens, and professional stage rigging for maximum audience impact."}</p>
             </div>
             <div className="bg-neutral-50 p-8 rounded-2xl border border-neutral-100">
               <Building2 className="text-[var(--primary)] mb-4" size={32} />
-              <h3 className="text-xl font-semibold mb-3">B2B Matchmaking</h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">Advanced networking technologies and protocol coordination for international delegations and corporate giants.</p>
+              <h3 className="text-xl font-semibold mb-3">{isAr ? "المطابقة التجارية B2B" : "B2B Matchmaking"}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "تقنيات تواصل متقدمة وتنسيق بروتوكول للوفود الدولية وكبرى الشركات." : "Advanced networking technologies and protocol coordination for international delegations and corporate giants."}</p>
             </div>
           </div>
         </div>
@@ -115,14 +125,20 @@ export default async function CorporateEventsPortfolio({ params }: { params: Pro
       {/* Featured Case Studies */}
       <section className="py-24 bg-[var(--surface-raised)]">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold mb-12 text-center">Featured Corporate Case Studies</h2>
+          <h2 className="text-3xl font-semibold mb-12 text-center">{isAr ? "دراسات حالة مختارة لفعاليات الشركات" : "Featured Corporate Case Studies"}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {(isAr
+              ? [
+              { title: "القمة التقنية العالمية", loc: "الرياض", img: "/gallery_2.webp", slug: "global-tech-summit" },
+              { title: "القمة التنفيذية", loc: "جدة", img: "/gallery_corporate_gala.webp", slug: "executive-summit-jeddah" },
+              { title: "ندوة الشركات", loc: "الدمام", img: "/gallery_vip_party.webp", slug: "dammam-corporate-seminar" },
+                ]
+              : [
               { title: "Global Tech Summit", loc: "Riyadh", img: "/gallery_2.webp", slug: "global-tech-summit" },
               { title: "Executive Summit", loc: "Jeddah", img: "/gallery_corporate_gala.webp", slug: "executive-summit-jeddah" },
               { title: "Corporate Seminar", loc: "Dammam", img: "/gallery_vip_party.webp", slug: "dammam-corporate-seminar" }
-            ].map((item, i) => (
-              <Link href={`/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg transition-all">
+            ]).map((item, i) => (
+              <Link href={`${arHref}/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg transition-all">
                 <div className="h-64 overflow-hidden relative">
                   <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
@@ -169,15 +185,15 @@ export default async function CorporateEventsPortfolio({ params }: { params: Pro
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>Ready to Host Your <span className="text-emerald-400">Next Summit?</span></h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6" style={{ letterSpacing: "-0.025em" }}>{isAr ? <>هل أنت مستعدّ لاستضافة <span className="text-emerald-400">قمتك القادمة؟</span></> : <>Ready to Host Your <span className="text-emerald-400">Next Summit?</span></>}</h2>
             <p className="text-neutral-400 max-w-2xl mx-auto mb-10 text-[15px] leading-relaxed">
-              Let's align our global production standards with your corporate vision.
+              {isAr ? "لِنوائم معايير إنتاجنا العالمية مع رؤية شركتك." : "Let's align our global production standards with your corporate vision."}
             </p>
-            <Link 
-              href="/contact" 
+            <Link
+              href={`${arHref}/contact`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 font-medium hover:bg-neutral-50 transition-colors rounded-xl text-[14px] shadow-[0_2px_10px_rgba(0,0,0,0.1)] group"
             >
-              Request a Corporate Deck
+              {isAr ? "اطلب عرضًا تقديميًا للشركات" : "Request a Corporate Deck"}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

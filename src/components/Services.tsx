@@ -109,7 +109,7 @@ function ServiceCard({ service, index, t }: { service: typeof services[0]; index
           <ArrowRight size={13} />
         </Link>
         <a
-          href={`https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(t(`items.${itemKey}.title`))}%20services.`}
+          href={`https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20${encodeURIComponent(t(`items.${itemKey}.title`))}%20services.`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:scale-110"

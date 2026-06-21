@@ -7,12 +7,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/services/production-venues`;
 
   return {
-    title: "Event Services & Venues Saudi Arabia | AV, Catering, Staging & Decoration",
-    description:
-      "Full-service event management in Saudi Arabia — premium venue sourcing in Riyadh, ISO-certified AV production, luxury catering, stage design, event decoration, and media production. Tier-1 vendor for KSA's top venues.",
+    title: isAr
+      ? { absolute: "خدمات وقاعات الفعاليات في السعودية | الصوت والصورة والتموين والمسرح والديكور | إدارة الفعاليات السعودية" }
+      : "Event Services & Venues Saudi Arabia | AV, Catering, Staging & Decoration",
+    description: isAr
+      ? "إدارة فعاليات متكاملة في السعودية — اختيار قاعات راقية في الرياض، وإنتاج صوت وصورة معتمد من ISO، وتموين فاخر، وتصميم مسرح، وديكور فعاليات، وإنتاج إعلامي. مورّد من الفئة الأولى لأبرز قاعات المملكة."
+      : "Full-service event management in Saudi Arabia — premium venue sourcing in Riyadh, ISO-certified AV production, luxury catering, stage design, event decoration, and media production. Tier-1 vendor for KSA's top venues.",
     keywords: [
       "Event services Saudi Arabia",
       "Event venue Riyadh",
@@ -32,9 +36,12 @@ export async function generateMetadata({
       languages: hreflangAlternates("/services/production-venues"),
     },
     openGraph: {
-      title: "Event Services & Venues Saudi Arabia | Saudi Event Management",
-      description:
-        "Full-service event management — premium venue sourcing, ISO-certified AV production, luxury catering, stage design, and event decoration across Saudi Arabia.",
+      title: isAr
+        ? "خدمات وقاعات الفعاليات في السعودية | إدارة الفعاليات السعودية"
+        : "Event Services & Venues Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "إدارة فعاليات متكاملة — اختيار قاعات راقية، وإنتاج صوت وصورة معتمد من ISO، وتموين فاخر، وتصميم مسرح، وديكور فعاليات في عموم السعودية."
+        : "Full-service event management — premium venue sourcing, ISO-certified AV production, luxury catering, stage design, and event decoration across Saudi Arabia.",
       url: canonicalUrl,
       images: [
         {

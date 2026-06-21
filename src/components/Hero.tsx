@@ -85,7 +85,7 @@ export default function Hero() {
             loop
             playsInline
             preload="none"
-            poster="/hero_bg.webp"
+            poster="/hero-mobile.webp"
             className="pointer-events-none"
             style={{
               width: "100vw",
@@ -105,7 +105,7 @@ export default function Hero() {
         ) : (
           /* Mobile / SSR: lightweight WebP poster — MP4 never downloaded */
           <img
-            src="/hero_bg.webp"
+            src="/hero-mobile.webp"
             alt=""
             aria-hidden
             fetchPriority="high"
@@ -227,7 +227,7 @@ export default function Hero() {
 
             {/* Secondary — WhatsApp */}
             <a
-              href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20my%20event."
+              href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20my%20event."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[13px] font-semibold text-white transition-all duration-200 hover:scale-[1.02]"

@@ -124,7 +124,7 @@ export default function CaseStudyCTA({ slug }: { slug: string }) {
                 {t.consult} <ArrowRight size={15} className={isAr ? "rotate-180" : ""} />
               </Link>
               <a
-                href={`https://wa.me/966501234567?text=${waText}`}
+                href={`https://wa.me/966539388072?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#25D366] text-white font-semibold rounded-xl text-[14px] hover:bg-[#1fb855] transition-colors"

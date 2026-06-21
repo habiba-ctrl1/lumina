@@ -269,10 +269,10 @@
     "title": "VISION 2030 ALIGNMENT",
     "subtitle": "Supporting the General Entertainment Authority (GEA) to host world-class events through world-class cultural activations.",
     "items": [
-      { "value": 50, "suffix": "+", "label": "Events Managed" },
+      { "value": 250, "suffix": "+", "label": "Events Managed" },
+      { "value": 15, "suffix": "+", "label": "Years of Experience" },
       { "value": 20, "suffix": "+", "label": "Trusted Vendors" },
-      { "value": 10, "suffix": "+", "label": "Saudi Cities Served" },
-      { "value": 100, "suffix": "%", "label": "Client Satisfaction" }
+      { "value": 10, "suffix": "+", "label": "Saudi Cities Served" }
     ]
   },
   "portfolio": {
@@ -288,7 +288,9 @@
       "exhibitions": "Exhibitions",
       "eventProduction": "Event Production",
       "corporateEvents": "Corporate Events",
-      "luxuryWeddings": "Luxury Weddings"
+      "luxuryWeddings": "Luxury Weddings",
+      "vipPrivate": "VIP & Private",
+      "cultural": "Cultural Events"
     }
   },
   "testimonials": {
@@ -509,7 +511,7 @@
     "bio3": "Our philosophy is simple — every detail should feel intentional, effortlessly beautiful and deeply resonant with our clients' vision.",
     "yearsOfExcellence": "Years of Excellence",
     "stats": [
-      { "number": "500+", "label": "Events Crafted" },
+      { "number": "250+", "label": "Events Crafted" },
       { "number": "15+", "label": "Countries Served" },
       { "number": "100%", "label": "Client Satisfaction" }
     ]

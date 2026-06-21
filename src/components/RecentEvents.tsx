@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import Link from "next/link";
@@ -89,26 +88,31 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
           >
             {galleryItems.map((item: any) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
-                <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer">
+                <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer" aria-label={`View case study: ${item.title}`}>
                   <div className="relative w-[260px] md:w-[380px] h-[360px] md:h-[500px] rounded-2xl overflow-hidden border border-neutral-200/80 transition-all duration-500"
                     style={{
                       boxShadow: "0 8px 24px -4px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.04)",
                     }}
                   >
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      width={760}
-                      height={1000}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    {/* Background image — rendered via CSS so Swiper loop-clones always
+                        paint reliably (next/image clones break in coverflow loop mode). */}
+                    <div
+                      role="img"
+                      aria-label={item.alt}
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                      style={{ backgroundImage: `url('${item.src}')` }}
                     />
                     {/* Gradient Overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-neutral-950/10 to-transparent" />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/75 via-neutral-950/15 to-transparent" />
+
                     {/* Content */}
                     <div className="absolute bottom-0 start-0 end-0 p-6 z-10">
                       <p className="text-[12px] text-emerald-400 font-semibold mb-1" style={{ letterSpacing: "0.05em" }}>{item.category}</p>
                       <h3 className="text-lg md:text-xl font-semibold text-white leading-tight" style={{ letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <span className="inline-flex items-center gap-1.5 text-white/85 text-[12.5px] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        View case study
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rtl:rotate-180"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </span>
                       <div className="w-8 h-0.5 bg-[var(--primary)] mt-3 rounded-full opacity-80" />
                     </div>
                   </div>

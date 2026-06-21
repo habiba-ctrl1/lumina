@@ -269,10 +269,10 @@
     "title": "التوافق مع رؤية 2030",
     "subtitle": "دعم الهيئة العامة للترفيه لاستضافة فعاليات عالمية من خلال تفعيلات ثقافية عالمية المستوى.",
     "items": [
-      { "value": 50, "suffix": "+", "label": "فعاليات أُديرت" },
+      { "value": 250, "suffix": "+", "label": "فعاليات أُديرت" },
+      { "value": 15, "suffix": "+", "label": "سنة خبرة" },
       { "value": 20, "suffix": "+", "label": "موردون موثوقون" },
-      { "value": 10, "suffix": "+", "label": "مدن سعودية" },
-      { "value": 100, "suffix": "%", "label": "رضا العملاء" }
+      { "value": 10, "suffix": "+", "label": "مدن سعودية" }
     ]
   },
   "portfolio": {
@@ -288,7 +288,9 @@
       "exhibitions": "المعارض",
       "eventProduction": "الإنتاج التقني",
       "corporateEvents": "فعاليات الشركات",
-      "luxuryWeddings": "حفلات الزفاف الفاخرة"
+      "luxuryWeddings": "حفلات الزفاف الفاخرة",
+      "vipPrivate": "كبار الشخصيات والخاصة",
+      "cultural": "الفعاليات الثقافية"
     }
   },
   "testimonials": {

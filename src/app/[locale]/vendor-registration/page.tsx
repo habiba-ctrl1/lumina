@@ -135,7 +135,7 @@ export default function VendorRegistration() {
                 <h4 className="text-neutral-900 text-lg font-semibold mb-3" style={{ letterSpacing: "-0.01em" }}>Direct Support</h4>
                 <p className="text-neutral-500 text-[14px] mb-8 leading-relaxed">Prefer to speak with our partnership team directly?</p>
                 <a 
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20register%20as%20a%20vendor."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20want%20to%20register%20as%20a%20vendor."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-[#25D366] text-white py-4 rounded-xl text-[14px] font-medium flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all shadow-[0_1px_2px_rgba(37,211,102,0.2)]"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -21,12 +22,16 @@ import {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations/alula`;
   return {
-    title: "Event Management & Destination Weddings in AlUla",
-    description:
-      "Your event planner in AlUla for destination weddings, corporate retreats, and heritage events. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
+    title: isAr
+      ? { absolute: "إدارة الفعاليات وحفلات الزفاف الوجهاتية في العلا | إدارة الفعاليات السعودية" }
+      : "Event Management & Destination Weddings in AlUla",
+    description: isAr
+      ? "مخطّط فعالياتك في العلا لحفلات الزفاف الوجهاتية وملتقيات الشركات والفعاليات التراثية. وصول مرخّص من الهيئة الملكية للعلا إلى قاعة مرايا، وبانيان تري العلا، وهابيتاس، وموقع الحِجر المدرج في اليونسكو، ووادي أشار. موسم الذروة: نوفمبر–أبريل."
+      : "Your event planner in AlUla for destination weddings, corporate retreats, and heritage events. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
     keywords:
       "event management company in AlUla, destination wedding planner AlUla, event planner in AlUla, corporate retreat AlUla, Maraya Concert Hall events, Banyan Tree AlUla wedding, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla",
     alternates: {
@@ -34,9 +39,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/locations/alula"),
     },
     openGraph: {
-      title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
-      description:
-        "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
+      title: isAr
+        ? "إدارة الفعاليات في العلا — مرايا والحِجر وفعاليات الصحراء الفاخرة"
+        : "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
+      description: isAr
+        ? "حفلات زفاف وجهاتية فائقة الفخامة، وملتقيات شركات، وتفعيلات تراثية في العلا. مرخّصون من الهيئة الملكية للعلا. مرايا، والحِجر، وبانيان تري، وهابيتاس العلا."
+        : "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -134,7 +142,7 @@ const jsonLd = {
           },
         ],
       },
-      "telephone": "+966501234567",
+      "telephone": "+966539388072",
       "knowsAbout": [
         "Maraya Concert Hall AlUla (world's largest mirrored building)",
         "Hegra (Mada'in Saleh) UNESCO World Heritage Site",
@@ -390,7 +398,9 @@ const eventCalendar = [
   },
 ];
 
-export default function AlUlaPage() {
+export default async function AlUlaPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <script
@@ -400,16 +410,20 @@ export default function AlUlaPage() {
       <Navbar />
 
       <InternalPageHero
-        title="Event Management & Destination Weddings in "
-        titleHighlight="AlUla"
-        subtitle="In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
+        title={isAr ? "إدارة الفعاليات وحفلات الزفاف الوجهاتية في " : "Event Management & Destination Weddings in "}
+        titleHighlight={isAr ? "العلا" : "AlUla"}
+        subtitle={
+          isAr
+            ? "في أعظم متحف حيّ في العالم — حفلات زفاف وجهاتية، وملتقيات شركات، وفعاليات تراثية من قاعة مرايا إلى مقابر الحِجر النبطية وصخرة الفيل عند الغروب. مرخّصون من الهيئة الملكية للعلا."
+            : "In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
+        }
         backgroundImage="/locations/alula-hero.webp"
         imageAlt="AlUla heritage landscape — event management and destination weddings in AlUla, Saudi Arabia"
-        badge="Saudi Arabia's UNESCO Destination | AlUla"
+        badge={isAr ? "وجهة السعودية المدرجة في اليونسكو | العلا" : "Saudi Arabia's UNESCO Destination | AlUla"}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Locations", href: "/locations" },
-          { label: "AlUla" },
+          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+          { label: isAr ? "المواقع" : "Locations", href: `${arHref}/locations` },
+          { label: isAr ? "العلا" : "AlUla" },
         ]}
         minHeight="large"
       />

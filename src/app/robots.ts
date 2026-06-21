@@ -28,7 +28,10 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/search',
           '/admin/quote-wizard',
           '/admin/login',
-          '/tracking',
+          // NOTE: /tracking is intentionally NOT disallowed here. It must stay
+          // crawlable so Googlebot can see its `noindex, nofollow` meta tag
+          // (set in app/[locale]/tracking/page.tsx). A robots.txt Disallow would
+          // hide that tag and could leave the URL indexable via external links.
         ],
       },
     ],

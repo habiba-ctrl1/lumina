@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { hreflangAlternates } from "@/lib/seo";
+import { getLocale } from "next-intl/server";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,12 +11,16 @@ import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/services/luxury-vip-events`;
   return {
-    title: "VIP Event Management Saudi Arabia | Private & Corporate Events",
-    description:
-      "VIP event management and private concierge services in Riyadh, Jeddah, and AlUla. We specialise in private parties, royal family events, government delegations, and bespoke desert and yacht events.",
+    title: isAr
+      ? { absolute: "إدارة فعاليات كبار الشخصيات في السعودية | فعاليات خاصة ومؤسسية | إدارة الفعاليات السعودية" }
+      : "VIP Event Management Saudi Arabia | Private & Corporate Events",
+    description: isAr
+      ? "إدارة فعاليات كبار الشخصيات وخدمات الكونسيرج الخاصة في الرياض وجدة والعلا. نتخصص في الحفلات الخاصة وفعاليات العائلة المالكة والوفود الحكومية وفعاليات الصحراء واليخوت المخصّصة."
+      : "VIP event management and private concierge services in Riyadh, Jeddah, and AlUla. We specialise in private parties, royal family events, government delegations, and bespoke desert and yacht events.",
     keywords: [
       "VIP event planning Saudi Arabia",
       "Luxury events Riyadh",
@@ -32,8 +37,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: hreflangAlternates("/services/luxury-vip-events"),
     },
     openGraph: {
-      title: "VIP Event Management Saudi Arabia | Saudi Event Management",
-      description: "Discreet VIP event management for royal families, government delegations, and private clients across Saudi Arabia.",
+      title: isAr
+        ? "إدارة فعاليات كبار الشخصيات في السعودية | إدارة الفعاليات السعودية"
+        : "VIP Event Management Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "إدارة متحفّظة لفعاليات كبار الشخصيات للعائلات المالكة والوفود الحكومية والعملاء من القطاع الخاص في عموم السعودية."
+        : "Discreet VIP event management for royal families, government delegations, and private clients across Saudi Arabia.",
       url: path,
       images: [{ url: "/services/luxury_vip_majlis.webp", width: 1200, height: 630, alt: "VIP and private event management Saudi Arabia" }],
     },
@@ -53,7 +62,7 @@ const jsonLd = {
         "name": "Saudi Event Management",
         "image": "https://www.saudieventmanagement.com/services/gallery_charity_gala.webp",
         "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
-        "telephone": "+966501234567",
+        "telephone": "+966539388072",
       },
       "areaServed": ["Riyadh", "Jeddah", "AlUla", "Red Sea", "NEOM", "Saudi Arabia"],
       "serviceType": "Luxury Event Management",
@@ -181,7 +190,9 @@ const faqs = [
   { q: "VIP concierge service Saudi Arabia", a: "Our VIP concierge services cover every detail — private chef arrangements, luxury fleet transportation, helicopter transfers, hotel suite buyouts, bespoke gifting, and a 24/7 dedicated event manager for every VIP guest." },
 ];
 
-export default function LuxuryVIPEventsPage() {
+export default async function LuxuryVIPEventsPage() {
+  const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <>
       <script
@@ -192,17 +203,21 @@ export default function LuxuryVIPEventsPage() {
         <Navbar />
 
         <InternalPageHero
-          title="VIP & Private Event Management"
-          titleHighlight="Saudi Arabia"
-          subtitle="A specialist VIP event management team for royal families, government delegations, and private clients — discreet, white-glove experiences from private concerts and yacht events to bespoke desert gatherings in AlUla."
+          title={isAr ? "إدارة فعاليات كبار الشخصيات والخاصة" : "VIP & Private Event Management"}
+          titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "فريق متخصص في إدارة فعاليات كبار الشخصيات للعائلات المالكة والوفود الحكومية والعملاء الخاصين — تجارب متحفّظة وراقية من الحفلات الخاصة وفعاليات اليخوت إلى تجمّعات الصحراء المخصّصة في العلا."
+              : "A specialist VIP event management team for royal families, government delegations, and private clients — discreet, white-glove experiences from private concerts and yacht events to bespoke desert gatherings in AlUla."
+          }
           backgroundImage="/services/premium_luxury_vip_hero.webp"
           imageAlt="Exclusive luxury private VIP event in Saudi Arabia at night"
-          badge="VIP & Private Events"
+          badge={isAr ? "فعاليات كبار الشخصيات والخاصة" : "VIP & Private Events"}
           enableParallax
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Luxury VIP Events" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "فعاليات كبار الشخصيات" : "Luxury VIP Events" },
           ]}
           minHeight="large"
           trustElements={[
@@ -222,7 +237,7 @@ export default function LuxuryVIPEventsPage() {
               Request Private Consultation
             </Link>
             <a
-              href="https://wa.me/966501234567?text=Hi%2C%20I%27d%20like%20a%20private%20VIP%20event%20consultation."
+              href="https://wa.me/966539388072?text=Hi%2C%20I%27d%20like%20a%20private%20VIP%20event%20consultation."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-gold-700 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"

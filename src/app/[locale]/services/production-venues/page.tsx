@@ -9,8 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Speaker, Camera, Utensils, PenTool, Lightbulb, Map, Zap, Star, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLocale } from "next-intl";
 
 export default function ProductionVenuesPage() {
+  const isAr = useLocale() === "ar";
+  const arHref = isAr ? "/ar" : "";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -137,17 +140,21 @@ export default function ProductionVenuesPage() {
         <Navbar />
 
         <InternalPageHero
-          title="Event Services & Venue Sourcing"
-          titleHighlight="Saudi Arabia"
-          subtitle="Venue sourcing, AV production, staging, catering, and media under one roof — with access to KAICC, RECC, and leading event venues across Riyadh, Jeddah, and the Kingdom."
+          title={isAr ? "خدمات الفعاليات واختيار القاعات" : "Event Services & Venue Sourcing"}
+          titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
+          subtitle={
+            isAr
+              ? "اختيار القاعات، وإنتاج الصوت والصورة، والمسرح، والتموين، والإعلام تحت سقف واحد — مع وصول إلى مركز الملك عبدالعزيز ومركز الرياض للمعارض وأبرز قاعات الفعاليات في عموم المملكة."
+              : "Venue sourcing, AV production, staging, catering, and media under one roof — with access to KAICC, RECC, and leading event venues across Riyadh, Jeddah, and the Kingdom."
+          }
           backgroundImage="/services/saudi_gala_table_alcohol_free.webp"
           imageAlt="Event services Saudi Arabia — production venues and elite event spaces"
-          badge="Venues & Production"
+          badge={isAr ? "القاعات والإنتاج" : "Venues & Production"}
           enableParallax
           breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "Services", href: "/services" },
-            { label: "Event Services & Venues" },
+            { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
+            { label: isAr ? "الخدمات" : "Services", href: `${arHref}/services` },
+            { label: isAr ? "خدمات وقاعات الفعاليات" : "Event Services & Venues" },
           ]}
           minHeight="large"
           trustElements={[
@@ -167,7 +174,7 @@ export default function ProductionVenuesPage() {
               Inquire for Services
             </Link>
             <a
-              href="tel:+966501234567"
+              href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Request a Venue Walkthrough
@@ -362,7 +369,7 @@ export default function ProductionVenuesPage() {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20quote%20for%20event%20production%20and%20venue%20services."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20quote%20for%20event%20production%20and%20venue%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"

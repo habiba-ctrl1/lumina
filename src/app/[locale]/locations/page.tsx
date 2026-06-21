@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
 import InternalPageHero from "@/components/InternalPageHero";
@@ -12,12 +13,16 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const path = `${base}${locale === "en" ? "" : "/ar"}/locations`;
   return {
-    title: "Event Management Company Across Saudi Arabia | 12 Cities",
-    description:
-      "Looking for an event management company in Saudi Arabia? We have on-the-ground event planners in 12 cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk — with local venue relationships and GEA-compliant execution Kingdom-wide.",
+    title: isAr
+      ? { absolute: "شركة إدارة فعاليات في عموم السعودية | 12 مدينة | إدارة الفعاليات السعودية" }
+      : "Event Management Company Across Saudi Arabia | 12 Cities",
+    description: isAr
+      ? "تبحث عن شركة إدارة فعاليات في السعودية؟ لدينا منظّمو فعاليات ميدانيون في 12 مدينة — الرياض وجدة ومكة والدمام والعلا والمدينة والخبر ونيوم والطائف وأبها والدرعية وتبوك — بعلاقات محلية مع القاعات وتنفيذ متوافق مع هيئة الترفيه في عموم المملكة."
+      : "Looking for an event management company in Saudi Arabia? We have on-the-ground event planners in 12 cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk — with local venue relationships and GEA-compliant execution Kingdom-wide.",
     keywords: [
       "event management company Saudi Arabia",
       "event planner Saudi Arabia",
@@ -143,25 +148,30 @@ const strategicCities = [
   },
 ];
 
-export default function LocationsPage() {
+export default async function LocationsPage() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-[var(--background)] text-neutral-900 overflow-hidden relative border-t border-neutral-100">
       <ScrollProgress />
       <Navbar />
 
       <InternalPageHero
-        title="Event Management Across"
-        titleHighlight="Saudi Arabia"
-        subtitle="On-the-ground teams across 12 Saudi cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. Dedicated local vendor networks and GEA compliance expertise in every market."
+        title={isAr ? "إدارة الفعاليات في عموم" : "Event Management Across"}
+        titleHighlight={isAr ? "السعودية" : "Saudi Arabia"}
+        subtitle={
+          isAr
+            ? "فرق ميدانية في 12 مدينة سعودية — الرياض وجدة ومكة والدمام والعلا والمدينة والخبر ونيوم والطائف وأبها والدرعية وتبوك. شبكات موردين محلية مخصّصة وخبرة في الامتثال لهيئة الترفيه في كل سوق."
+            : "On-the-ground teams across 12 Saudi cities — Riyadh, Jeddah, Makkah, Dammam, AlUla, Madinah, Al Khobar, NEOM, Taif, Abha, Diriyah & Tabuk. Dedicated local vendor networks and GEA compliance expertise in every market."
+        }
         backgroundImage="/locations/riyadh-hero.webp"
-        badge="Kingdom-Wide Operations"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
+        badge={isAr ? "عمليات في عموم المملكة" : "Kingdom-Wide Operations"}
+        breadcrumbs={[{ label: isAr ? "الرئيسية" : "Home", href: isAr ? "/ar" : "/" }, { label: isAr ? "المواقع" : "Locations" }]}
         enableParallax
         minHeight="large"
         trustElements={[
           { value: "12", label: "Cities Covered" },
           { value: "13+", label: "Saudi Regions Served" },
-          { value: "300+", label: "Events Delivered" },
+          { value: "250+", label: "Events Delivered" },
           { value: "100%", label: "GEA Compliant" },
         ]}
       />
@@ -529,7 +539,7 @@ export default function LocationsPage() {
               Request a Proposal
             </Link>
             <a
-              href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+              href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-sm bg-[#25D366] text-white text-sm font-semibold hover:scale-105 transition-transform"

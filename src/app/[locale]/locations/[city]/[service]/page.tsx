@@ -251,7 +251,7 @@ export default async function CityServicePage({ params }: PageProps) {
             "addressRegion": cityData.region,
             "addressCountry": "SA",
           },
-          "telephone": "+966501234567",
+          "telephone": "+966539388072",
         },
         "areaServed": { "@type": "City", "name": cityData.name },
         "url": canonicalUrl,

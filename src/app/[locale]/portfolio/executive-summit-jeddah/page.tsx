@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("executive-summit-jeddah", locale);
 }
 
-export default function ExecutiveSummitJeddah() {
+export default async function ExecutiveSummitJeddah() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -27,14 +29,14 @@ export default function ExecutiveSummitJeddah() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <Link href="/portfolio" className="inline-flex items-center text-[var(--primary)] hover:text-neutral-900 transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-[var(--primary)] hover:text-neutral-900 transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-neutral-900 text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/50 backdrop-blur-md inline-block px-6 py-2 rounded-full border border-[var(--primary)]/20">
-            Coastal Corporate Strategy
+            {isAr ? "دراسة حالة" : "Coastal Corporate Strategy"}
           </span>
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-neutral-900 mb-8 leading-tight uppercase tracking-tight">
-            Executive <span className="text-[var(--primary)] ">Summit</span> Jeddah
+            {isAr ? "قمة جدة التنفيذية" : <>Executive <span className="text-[var(--primary)] ">Summit</span> Jeddah</>}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">Blending the maritime heritage of the Red Sea with the future of Saudi industry. An elite gathering at the edge of the world.</p>
         </div>

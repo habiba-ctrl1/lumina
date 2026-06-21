@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { MapPin, ArrowRight } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 
@@ -11,60 +12,69 @@ const portfolioItems = [
   {
     id: 1, src: "/luxury_wedding_couple_guests.webp", title: "Al-Saud Royal Wedding", category: "Luxury Weddings",
     slug: "royal-riyadh-wedding", client: "Private Royal Commission", date: "Dec 2024",
-    guests: "800+", outcome: "Architectural desert oasis build",
+    guests: "800+", outcome: "Architectural desert oasis build", location: "Riyadh",
+    services: "Design · Production · VIP Protocol",
     alt: "Luxury royal wedding guests celebrating in a grand Saudi Arabia wedding hall"
   },
   {
     id: 2, src: "/neom_summit_people.webp", title: "NEOM Future Summit", category: "Conferences",
     slug: "neom-future-summit", client: "Leading Saudi Giga-Project", date: "Nov 2024",
-    guests: "250 VIPs", outcome: "Zero-waste luxury production",
+    guests: "250 VIPs", outcome: "Zero-waste luxury production", location: "NEOM",
+    services: "Conference · Staging · Delegate Management",
     alt: "VIPs and speakers at a high-tech NEOM summit stage in Saudi Arabia"
   },
   {
-    id: 3, src: "/event_production_stage_riyadh.webp", title: "Riyadh Stage Production", category: "Event Production",
-    slug: "makkah-vip-retreat", client: "Riyadh Season Headliner", date: "Oct 2024",
-    guests: "5,000+", outcome: "Custom LED stage & show production",
-    alt: "Concert-grade stage, LED video wall and lighting production at a Riyadh event in Saudi Arabia"
+    id: 3, src: "/portfolio/makkah-vip-retreat.webp", title: "Makkah VIP Retreat", category: "VIP & Private",
+    slug: "makkah-vip-retreat", client: "VIP Delegation", date: "Oct 2024",
+    guests: "VIP Delegation", outcome: "10-day ultra-luxury private retreat", location: "Makkah",
+    services: "Security · Private Dining · Haram Logistics",
+    alt: "Ultra-luxury private VIP retreat villa setting in Makkah, Saudi Arabia"
   },
   {
     id: 4, src: "/riyadh_summit_people.webp", title: "Riyadh Government Summit", category: "Conferences",
     slug: "riyadh-government-summit", client: "Premier Government Ministry", date: "Sept 2024",
-    guests: "1,200+", outcome: "Immersive multi-screen production",
+    guests: "1,200+", outcome: "Immersive multi-screen production", location: "Riyadh",
+    services: "Conference · Multi-screen · Protocol",
     alt: "Large audience and immersive screens at a high-level government summit in Riyadh Saudi Arabia"
   },
   {
-    id: 5, src: "/exhibition_hall_riyadh.webp", title: "Riyadh Expo Pavilion", category: "Exhibitions",
-    slug: "alula-desert-festival", client: "National Exhibitions Authority", date: "Jan 2025",
-    guests: "600", outcome: "Multi-brand pavilion & stand build",
-    alt: "Exhibition hall with trade-show booths and brand stands at a Riyadh expo in Saudi Arabia"
+    id: 5, src: "/portfolio/alula-festival.webp", title: "AlUla Desert Festival", category: "Cultural Events",
+    slug: "alula-desert-festival", client: "National Cultural Activation", date: "Jan 2025",
+    guests: "5,000+ Daily", outcome: "Heritage desert festival production", location: "AlUla",
+    services: "Staging · Lighting · Audience Experience",
+    alt: "Heritage desert festival staging and lighting in AlUla's Ashar Valley, Saudi Arabia"
   },
   {
     id: 6, src: "/jeddah_luxury_people.webp", title: "Jeddah Executive Soiree", category: "Corporate Events",
     slug: "executive-summit-jeddah", client: "Prominent Government Ministry", date: "Feb 2025",
-    guests: "300", outcome: "High-security diplomatic summit",
+    guests: "300", outcome: "High-security diplomatic summit", location: "Jeddah",
+    services: "Corporate · Hospitality · Security",
     alt: "Elegant guests networking at a high-end luxury hotel event in Jeddah Saudi Arabia"
   },
   {
     id: 7, src: "/jeddah_beach_wedding_setup.webp", title: "Jeddah Seaside Wedding", category: "Luxury Weddings",
     slug: "jeddah-beach-wedding", client: "Private Family Commission", date: "Mar 2025",
-    guests: "450", outcome: "Luxury Red Sea coastal production",
+    guests: "450", outcome: "Luxury Red Sea coastal production", location: "Jeddah",
+    services: "Design · Floral · Coastal Production",
     alt: "Luxurious seaside wedding setup with guests on the Red Sea coast in Jeddah"
   },
   {
     id: 8, src: "/alkhobar_corporate_people.webp", title: "Al Khobar Corporate Retreat", category: "Corporate Events",
     slug: "alkhobar-corporate-retreat", client: "Saudi Aramco Subsidiary", date: "Apr 2025",
-    guests: "120", outcome: "Executive team building & branding",
+    guests: "120", outcome: "Executive team building & branding", location: "Al Khobar",
+    services: "Corporate · Branding · Team Building",
     alt: "Professional corporate team at a branded Eastern Province event in Al Khobar Saudi Arabia"
   },
   {
     id: 9, src: "/wedding_hall_grand_entrance.webp", title: "Grand Wedding Ceremony", category: "Luxury Weddings",
     slug: "grand-wedding-ceremony", client: "Private Royal Commission", date: "May 2025",
-    guests: "600+", outcome: "Traditional VIP entrance protocol",
+    guests: "600+", outcome: "Traditional VIP entrance protocol", location: "Riyadh",
+    services: "Design · Production · VIP Protocol",
     alt: "Traditional male wedding entrance with VIP guests in a grand Saudi Arabia wedding hall"
   },
 ];
 
-const categories = ["all", "conferences", "exhibitions", "eventProduction", "corporateEvents", "luxuryWeddings"];
+const categories = ["all", "conferences", "corporateEvents", "luxuryWeddings", "vipPrivate", "cultural"];
 
 export default function FilterablePortfolio() {
   const t = useTranslations("portfolio");
@@ -148,10 +158,11 @@ export default function FilterablePortfolio() {
                 className="group relative h-[360px] overflow-hidden rounded-2xl bg-white border border-neutral-200/80 transition-all duration-300 hover:border-neutral-300"
                 style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
               >
-                <Link href={`/portfolio/${item.slug}`} className="block w-full h-full">
-                  <Image 
+                <Link href={`/portfolio/${item.slug}`} className="block w-full h-full" aria-label={`View case study: ${item.title} — ${item.category} in ${item.location}`}>
+                  <Image
                     src={item.src} alt={item.alt} width={800} height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   
                   {/* Overlay */}
@@ -178,10 +189,15 @@ export default function FilterablePortfolio() {
                         <div className="w-5 h-px bg-emerald-400 opacity-60" />
                         <span className="text-emerald-400 text-[12px] font-medium">{item.client}</span>
                       </div>
-                      <h3 className="text-xl text-white mb-1 font-semibold" style={{ letterSpacing: "-0.01em" }}>{item.title}</h3>
-                      
+                      <h3 className="text-xl text-white mb-1.5 font-semibold" style={{ letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <div className="flex items-center gap-1.5 text-white/80 text-[12.5px]">
+                        <MapPin size={13} className="text-emerald-400 shrink-0" />
+                        <span>{item.location}, Saudi Arabia</span>
+                      </div>
+
                       {/* Hover metadata */}
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 mt-3">
+                        <p className="text-[12.5px] text-neutral-300 leading-snug mb-3">{item.services}</p>
                         <div className="grid grid-cols-2 gap-3 border-t border-white/15 pt-3">
                           <div>
                             <p className="text-[11px] text-neutral-400 mb-0.5">{t("guests")}</p>
@@ -192,6 +208,10 @@ export default function FilterablePortfolio() {
                             <p className="text-[13px] text-white font-semibold">{item.date}</p>
                           </div>
                         </div>
+                        <span className="inline-flex items-center gap-1.5 text-emerald-400 text-[12.5px] font-semibold mt-3">
+                          View case study
+                          <ArrowRight size={13} className="rtl:rotate-180" />
+                        </span>
                       </div>
                     </div>
                   </div>

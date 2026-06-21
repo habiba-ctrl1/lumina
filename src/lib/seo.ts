@@ -45,8 +45,31 @@ export const AR_INDEXABLE = false;
  *   "/locations/riyadh",
  *   "/blog/destination-wedding-planning-guide",
  */
+/*
+ * ── SAFE-ROLLOUT GATING (Plan A) ─────────────────────────────────────────────
+ * Only routes whose Arabic BODY is fully translated are listed as indexable.
+ * Pages that currently have the SEO-critical Arabic layer (title + meta + H1 +
+ * hero) but whose long-form body is still English are deliberately LEFT OUT so
+ * they stay `noindex` — Google never sees a half-translated page. As each page's
+ * body is finished, add it back here (or via a prefix) to switch it on.
+ *
+ * Status of the in-progress work (kept noindex until body is done):
+ *   • /services index + 6 secondary sub-pages + 20 PSEO  → noindex (was noindex
+ *     before this work, so nothing is lost — just not shipped yet)
+ *   • all /portfolio AR pages (index, categories, case studies) → noindex
+ *   • all /blog AR posts → noindex
+ * Already-indexed-and-improved (kept ON): "/" , the /about and /locations
+ * subtrees (these were indexable before and only gained Arabic title/H1 — de-
+ * indexing them would lose existing impressions, so they stay).
+ */
 export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/", // Homepage — Arabic content complete.
+
+  // The 4 core service pages have FULL bilingual bodies (complete) → indexable.
+  "/services/corporate-events",
+  "/services/weddings",
+  "/services/exhibitions",
+  "/services/conferences",
 ]);
 
 /**
@@ -58,9 +81,13 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
  * `TRANSLATED_AR_ROUTES` for single pages, prefixes here for whole sections.
  */
 export const TRANSLATED_AR_ROUTE_PREFIXES: readonly string[] = [
-  "/locations", // /locations index + every /locations/[city] and /locations/[city]/[service].
-  // NOTE: /blog, /services, /portfolio are still PENDING — do not add until their
-  // Arabic content is complete.
+  "/locations", // Already indexable before this work; Arabic title/H1 added on the
+                //   index + 5 city pages, full Arabic on every /[city]/[service].
+  "/about",     // /about + our-team, awards-accolades, careers, our-team/[name].
+  // NOTE: "/services" is intentionally NOT a prefix under Plan A — only the 4
+  //   body-complete service pages are listed in TRANSLATED_AR_ROUTES. The /services
+  //   index, the 6 secondary sub-pages, and the 20 PSEO pages stay noindex until
+  //   their long-form bodies are translated. /blog and /portfolio: same (none listed).
 ];
 
 /** Canonical site origin, no trailing slash. */

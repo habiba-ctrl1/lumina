@@ -128,7 +128,7 @@ export default function FAQ({ showHeader = true }: { showHeader?: boolean }) {
             {t("conciergeDesc")}
           </p>
           <a 
-            href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20have%20a%20question%20about%20your%20services."
+            href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20have%20a%20question%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl text-[14px] font-medium hover:bg-[#20ba59] transition-all duration-200"

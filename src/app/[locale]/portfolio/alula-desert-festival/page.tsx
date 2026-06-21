@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { getLocale } from "next-intl/server";
 import CaseStudySchema from "@/components/CaseStudySchema";
 import { caseStudyMetadata } from "@/lib/case-studies";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return caseStudyMetadata("alula-desert-festival", locale);
 }
 
-export default function AlUlaDesertFestival() {
+export default async function AlUlaDesertFestival() {
+  const isAr = (await getLocale()) === "ar";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -28,14 +30,14 @@ export default function AlUlaDesertFestival() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <Link href="/portfolio" className="inline-flex items-center text-white hover:text-[var(--primary)] transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-            <ArrowLeft size={16} className="me-2" /> Back to Portfolio
+          <Link href={isAr ? "/ar/portfolio" : "/portfolio"} className="inline-flex items-center text-white hover:text-[var(--primary)] transition-colors mb-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <ArrowLeft size={16} className="me-2" /> {isAr ? "العودة إلى الأعمال" : "Back to Portfolio"}
           </Link>
           <span className="text-white text-[10px] uppercase tracking-[0.5em] font-bold mb-8 block bg-white/10 backdrop-blur-md inline-block px-8 py-3 rounded-full border border-white/20">
-            National Cultural Activation
+            {isAr ? "دراسة حالة" : "National Cultural Activation"}
           </span>
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
-            AlUla <span className="text-[var(--primary)] ">Desert</span> Festival
+            {isAr ? "مهرجان العُلا الصحراوي" : <>AlUla <span className="text-[var(--primary)] ">Desert</span> Festival</>}
           </h1>
           <p className="text-neutral-200 text-xl font-light max-w-2xl mx-auto leading-relaxed">Harmonizing ancient history with avant-garde production in the heart of the Saudi desert.</p>
         </div>

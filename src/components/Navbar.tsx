@@ -534,7 +534,7 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
 
               {/* CTA */}
               <Link
-                href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+                href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-lg text-[13px] font-medium hover:opacity-90 transition-opacity duration-200"
@@ -794,7 +794,7 @@ export default function Navbar({ darkHero = false, locale: localeProp }: { darkH
 
                 {/* CTA */}
                 <Link
-                  href="https://wa.me/966501234567?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
+                  href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20am%20interested%20in%20your%20event%20management%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}

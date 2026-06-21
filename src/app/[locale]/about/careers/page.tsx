@@ -7,10 +7,13 @@ import { Briefcase, Send } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Careers | Saudi Event Management Jobs',
-    description: 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.',
+    title: isAr ? 'الوظائف | فرص العمل في إدارة الفعاليات السعودية' : 'Careers | Saudi Event Management Jobs',
+    description: isAr
+      ? 'انضم إلى إدارة الفعاليات السعودية، الشركة الرائدة في إنتاج الفعاليات الفاخرة في المملكة العربية السعودية. نوظّف مخططي فعاليات ومنتجين وخبراء عمليات في الرياض.'
+      : 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.',
     keywords: 'Event management jobs Saudi Arabia, Careers in event planning Riyadh, Hiring event producers KSA, Saudi Event Management jobs',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/careers`,
@@ -55,14 +58,16 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
           <div className="flex flex-col items-center gap-4 mb-6">
             <span className="section-label bg-white border border-neutral-200/80">
               <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Join Our Team
+              {isAr ? "انضم إلى فريقنا" : "Join Our Team"}
             </span>
           </div>
           <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Build the <span className="text-[var(--primary)]">Future</span> of Events
+            {isAr ? (<>اصنع <span className="text-[var(--primary)]">مستقبل</span> الفعاليات</>) : (<>Build the <span className="text-[var(--primary)]">Future</span> of Events</>)}
           </h1>
           <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            We are always looking for visionary planners, rigorous producers, and creative minds to join our rapidly growing operations across Saudi Arabia.
+            {isAr
+              ? "نبحث دائماً عن مخططين أصحاب رؤية، ومنتجين دقيقين، وعقول مبدعة للانضمام إلى عملياتنا سريعة النمو في جميع أنحاء المملكة العربية السعودية."
+              : "We are always looking for visionary planners, rigorous producers, and creative minds to join our rapidly growing operations across Saudi Arabia."}
           </p>
         </div>
       </div>
@@ -71,22 +76,26 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
       <section className="py-24 bg-white border-b border-neutral-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <Briefcase className="text-[var(--primary)] mx-auto mb-6" size={40} />
-          <h2 className="text-3xl font-semibold mb-6">Open Positions</h2>
+          <h2 className="text-3xl font-semibold mb-6">{isAr ? "الوظائف الشاغرة" : "Open Positions"}</h2>
           <p className="text-neutral-500 leading-relaxed mb-10">
-            As we scale alongside Saudi Vision 2030, our demand for elite talent is constant. If you have experience in luxury event production, high-end hospitality, or corporate event logistics, we want to hear from you.
+            {isAr
+              ? "مع توسّعنا جنباً إلى جنب مع رؤية السعودية 2030، يظل طلبنا على المواهب المتميّزة مستمراً. إذا كانت لديك خبرة في إنتاج الفعاليات الفاخرة، أو الضيافة الراقية، أو لوجستيات فعاليات الشركات، فنحن نتطلّع لسماع صوتك."
+              : "As we scale alongside Saudi Vision 2030, our demand for elite talent is constant. If you have experience in luxury event production, high-end hospitality, or corporate event logistics, we want to hear from you."}
           </p>
-          
+
           <div className="bg-neutral-50 border border-neutral-200 p-8 rounded-2xl text-start">
-            <h3 className="text-xl font-semibold mb-2">Spontaneous Application</h3>
-            <p className="text-sm text-neutral-500 mb-6">Location: Riyadh, Jeddah, or Remote (KSA)</p>
+            <h3 className="text-xl font-semibold mb-2">{isAr ? "طلب توظيف تلقائي" : "Spontaneous Application"}</h3>
+            <p className="text-sm text-neutral-500 mb-6">{isAr ? "الموقع: الرياض، أو جدة، أو عن بُعد (داخل المملكة)" : "Location: Riyadh, Jeddah, or Remote (KSA)"}</p>
             <p className="text-neutral-600 mb-6 text-sm leading-relaxed">
-              Submit your resume and portfolio to our executive HR team. We review all applications and will contact you when a suitable position aligns with your expertise.
+              {isAr
+                ? "أرسل سيرتك الذاتية وأعمالك إلى فريق الموارد البشرية التنفيذي لدينا. نراجع جميع الطلبات وسنتواصل معك عند توفّر منصب مناسب يتوافق مع خبرتك."
+                : "Submit your resume and portfolio to our executive HR team. We review all applications and will contact you when a suitable position aligns with your expertise."}
             </p>
-            <a 
-              href="mailto:careers@saudieventmanagement.com" 
+            <a
+              href="mailto:careers@saudieventmanagement.com"
               className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors"
             >
-              Email Resume <Send size={14} />
+              {isAr ? "أرسل سيرتك الذاتية" : "Email Resume"} <Send size={14} className="rtl:rotate-180" />
             </a>
           </div>
         </div>

@@ -7,10 +7,13 @@ import { Award, Star } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Awards & Accolades | Saudi Event Management',
-    description: 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.',
+    title: isAr ? 'الجوائز والتكريمات | إدارة الفعاليات السعودية' : 'Awards & Accolades | Saudi Event Management',
+    description: isAr
+      ? 'تعرّف على الجوائز والتكريم الذي نالته إدارة الفعاليات السعودية، بما في ذلك جائزة أفضل منظّم فعاليات فاخرة في الخليج 2024.'
+      : 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.',
     keywords: 'Award winning event planner Saudi Arabia, Best event management company Riyadh, Luxury event awards KSA',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/awards-accolades`,
@@ -55,14 +58,16 @@ export default async function AwardsPage({ params }: { params: Promise<{ locale:
           <div className="flex flex-col items-center gap-4 mb-6">
             <span className="section-label bg-white border border-neutral-200/80">
               <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-              Industry Recognition
+              {isAr ? "تقدير القطاع" : "Industry Recognition"}
             </span>
           </div>
           <h1 className="font-semibold text-neutral-900 text-4xl md:text-5xl lg:text-6xl mb-6" style={{ letterSpacing: "-0.025em" }}>
-            Awards & <span className="text-[var(--primary)]">Accolades</span>
+            {isAr ? (<>الجوائز <span className="text-[var(--primary)]">والتكريمات</span></>) : (<>Awards & <span className="text-[var(--primary)]">Accolades</span></>)}
           </h1>
           <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Our commitment to flawless execution and luxury design has positioned us as the premier event management agency in the Kingdom.
+            {isAr
+              ? "لقد رسّخ التزامنا بالتنفيذ المتقن والتصميم الفاخر مكانتنا كأبرز وكالة لإدارة الفعاليات في المملكة."
+              : "Our commitment to flawless execution and luxury design has positioned us as the premier event management agency in the Kingdom."}
           </p>
         </div>
       </div>
@@ -77,10 +82,12 @@ export default async function AwardsPage({ params }: { params: Promise<{ locale:
                 <Award className="text-[var(--primary)]" size={32} />
               </div>
               <div>
-                <h2 className="text-2xl font-semibold mb-2">Best Luxury Event Planner GCC</h2>
+                <h2 className="text-2xl font-semibold mb-2">{isAr ? "أفضل منظّم فعاليات فاخرة في الخليج" : "Best Luxury Event Planner GCC"}</h2>
                 <p className="text-[var(--primary)] font-medium text-sm mb-4">2024</p>
                 <p className="text-neutral-500 leading-relaxed text-sm">
-                  Awarded for excellence in managing ultra-luxury destination weddings and high-profile royal events across the Gulf region, setting new benchmarks in protocol and aesthetics.
+                  {isAr
+                    ? "مُنحت تقديراً للتميّز في إدارة حفلات الزفاف الوجهات فائقة الفخامة والفعاليات الملكية رفيعة المستوى في منطقة الخليج، إذ أرست معايير جديدة في البروتوكول والجماليات."
+                    : "Awarded for excellence in managing ultra-luxury destination weddings and high-profile royal events across the Gulf region, setting new benchmarks in protocol and aesthetics."}
                 </p>
               </div>
             </div>
@@ -90,10 +97,12 @@ export default async function AwardsPage({ params }: { params: Promise<{ locale:
                 <Star className="text-[var(--primary)]" size={32} />
               </div>
               <div>
-                <h2 className="text-2xl font-semibold mb-2">Corporate Production Excellence Award</h2>
+                <h2 className="text-2xl font-semibold mb-2">{isAr ? "جائزة التميّز في إنتاج فعاليات الشركات" : "Corporate Production Excellence Award"}</h2>
                 <p className="text-[var(--primary)] font-medium text-sm mb-4">2023</p>
                 <p className="text-neutral-500 leading-relaxed text-sm">
-                  Recognized for flawless technical execution, AV rigging, and protocol management during major international summits held in Riyadh.
+                  {isAr
+                    ? "مُنحت تقديراً للتنفيذ التقني المتقن، وتركيب الأنظمة الصوتية والمرئية، وإدارة البروتوكول خلال القمم الدولية الكبرى التي أُقيمت في الرياض."
+                    : "Recognized for flawless technical execution, AV rigging, and protocol management during major international summits held in Riyadh."}
                 </p>
               </div>
             </div>

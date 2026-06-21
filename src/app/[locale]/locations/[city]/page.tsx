@@ -1005,7 +1005,7 @@ export default async function DynamicLocationPage({ params }: PageProps) {
         "description": d.description,
         "image": `https://saudieventmanagement.com${heroImage}`,
         "url": canonicalUrl,
-        "telephone": "+966501234567",
+        "telephone": "+966539388072",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": d.name,

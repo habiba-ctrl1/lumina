@@ -7,14 +7,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
   const canonical = `${base}${locale === "en" ? "" : "/ar"}/services/royal-weddings`;
 
   return {
-    title:
-      "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury & Royal Protocol | Saudi Event Management",
-    description:
-      "Saudi Arabia's foremost royal wedding planning specialists. Nikah ceremonies, Walima receptions for 2,000+ guests, Zaffa processions, and bespoke palace-venue experiences — designed for the Kingdom's most distinguished families in Riyadh, Jeddah, AlUla, and NEOM.",
+    title: isAr
+      ? { absolute: "مخطّط أعراس ملكية في السعودية | فخامة المراسم والبروتوكول الملكي | إدارة الفعاليات السعودية" }
+      : "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury & Royal Protocol | Saudi Event Management",
+    description: isAr
+      ? "كبار المتخصصين في تخطيط الأعراس الملكية بالسعودية. مراسم عقد القران، وحفلات وليمة لأكثر من 2000 ضيف، ومواكب الزفّة، وتجارب قصور مخصّصة — مصمّمة لأعرق عائلات المملكة في الرياض وجدة والعلا ونيوم."
+      : "Saudi Arabia's foremost royal wedding planning specialists. Nikah ceremonies, Walima receptions for 2,000+ guests, Zaffa processions, and bespoke palace-venue experiences — designed for the Kingdom's most distinguished families in Riyadh, Jeddah, AlUla, and NEOM.",
     keywords: [
       "royal wedding planner Saudi Arabia",
       "royal wedding Saudi Arabia",
@@ -42,10 +45,12 @@ export async function generateMetadata({
       languages: hreflangAlternates("/services/royal-weddings"),
     },
     openGraph: {
-      title:
-        "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury | Saudi Event Management",
-      description:
-        "Bespoke royal wedding planning for the Kingdom's most distinguished families. Nikah, Walima, Zaffa, Henna Night — every ceremony crafted to perfection in Riyadh, Jeddah, AlUla, and NEOM.",
+      title: isAr
+        ? "مخطّط أعراس ملكية في السعودية | فخامة المراسم | إدارة الفعاليات السعودية"
+        : "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury | Saudi Event Management",
+      description: isAr
+        ? "تخطيط أعراس ملكية مخصّص لأعرق عائلات المملكة. عقد القران، والوليمة، والزفّة، وليلة الحناء — كل مراسم مصمّمة بإتقان في الرياض وجدة والعلا ونيوم."
+        : "Bespoke royal wedding planning for the Kingdom's most distinguished families. Nikah, Walima, Zaffa, Henna Night — every ceremony crafted to perfection in Riyadh, Jeddah, AlUla, and NEOM.",
       url: canonical,
       type: "website",
       images: [
@@ -59,9 +64,12 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Royal Wedding Planner Saudi Arabia | Saudi Event Management",
-      description:
-        "Saudi Arabia's premier royal wedding architects — Nikah, Walima, Zaffa, palace venues, VIP protocol.",
+      title: isAr
+        ? "مخطّط أعراس ملكية في السعودية | إدارة الفعاليات السعودية"
+        : "Royal Wedding Planner Saudi Arabia | Saudi Event Management",
+      description: isAr
+        ? "روّاد هندسة الأعراس الملكية في السعودية — عقد القران، والوليمة، والزفّة، وقصور، وبروتوكول كبار الشخصيات."
+        : "Saudi Arabia's premier royal wedding architects — Nikah, Walima, Zaffa, palace venues, VIP protocol.",
       images: [`${base}/services/wedding_stage_backdrop_decor.webp`],
     },
     // Route-aware: Arabic stays `noindex, follow` until this route is added to
