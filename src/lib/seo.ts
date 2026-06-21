@@ -65,11 +65,12 @@ export const AR_INDEXABLE = false;
 export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/", // Homepage — Arabic content complete.
 
-  // The 4 core service pages have FULL bilingual bodies (complete) → indexable.
+  // Service pages with FULL bilingual bodies (complete) → indexable.
   "/services/corporate-events",
   "/services/weddings",
   "/services/exhibitions",
   "/services/conferences",
+  "/services/event-production", // body fully translated
 ]);
 
 /**
