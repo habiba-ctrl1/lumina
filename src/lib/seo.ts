@@ -45,80 +45,31 @@ export const AR_INDEXABLE = false;
  *   "/locations/riyadh",
  *   "/blog/destination-wedding-planning-guide",
  */
+/*
+ * ── SAFE-ROLLOUT GATING (Plan A) ─────────────────────────────────────────────
+ * Only routes whose Arabic BODY is fully translated are listed as indexable.
+ * Pages that currently have the SEO-critical Arabic layer (title + meta + H1 +
+ * hero) but whose long-form body is still English are deliberately LEFT OUT so
+ * they stay `noindex` — Google never sees a half-translated page. As each page's
+ * body is finished, add it back here (or via a prefix) to switch it on.
+ *
+ * Status of the in-progress work (kept noindex until body is done):
+ *   • /services index + 6 secondary sub-pages + 20 PSEO  → noindex (was noindex
+ *     before this work, so nothing is lost — just not shipped yet)
+ *   • all /portfolio AR pages (index, categories, case studies) → noindex
+ *   • all /blog AR posts → noindex
+ * Already-indexed-and-improved (kept ON): "/" , the /about and /locations
+ * subtrees (these were indexable before and only gained Arabic title/H1 — de-
+ * indexing them would lose existing impressions, so they stay).
+ */
 export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/", // Homepage — Arabic content complete.
 
-  // NOTE: the entire "/services" subtree (index, 10 sub-pages, and the 20 PSEO
-  // city×service pages) is now localized — it is handled by the "/services" prefix
-  // in TRANSLATED_AR_ROUTE_PREFIXES below, so no exact "/services/*" entries here.
-
-  // ── Phase 2 portfolio rollout. Each case study already ships bilingual
-  //    metadata/schema via caseStudyMetadata() and a localized H1. Listed as exact
-  //    entries (NOT a "/portfolio" prefix) so the still-English portfolio index and
-  //    category pages stay noindex until they are localized.
-  "/portfolio/royal-riyadh-wedding",
-  "/portfolio/makkah-vip-retreat",
-  "/portfolio/madinah-spiritual-event",
-  "/portfolio/alula-desert-festival",
-  "/portfolio/dammam-corporate-seminar",
-  "/portfolio/executive-summit-jeddah",
-  "/portfolio/global-tech-summit",
-  "/portfolio/neom-future-summit",
-  "/portfolio/riyadh-elite-majlis",
-  "/portfolio/riyadh-luxury-soiree",
-  "/portfolio/alkhobar-corporate-retreat",
-  "/portfolio/grand-wedding-ceremony",
-  "/portfolio/jeddah-beach-wedding",
-  "/portfolio/riyadh-government-summit",
-
-  // Portfolio index + category pages (SEO-critical Arabic layer localized).
-  "/portfolio",
-  "/portfolio/luxury-weddings",
-  "/portfolio/corporate-events",
-  "/portfolio/vision-2030",
-
-  // ── Phase 2 blog rollout — batch 1 (10 highest-value pillar/cross-linked posts).
-  //    Arabic title/excerpt/meta drive the SEO-critical layer; long-form body follows.
-  //    The matching /ar/blog/<slug> sitemap entries already exist (blogEntriesAR) and
-  //    are unblocked by the filter once listed here.
-  "/blog/complete-guide-event-planning-saudi-arabia-2026",
-  "/blog/best-event-management-company-riyadh-questions-to-ask",
-  "/blog/corporate-event-planning-saudi-arabia-step-by-step-guide",
-  "/blog/event-planning-mistakes-to-avoid",
-  "/blog/luxury-weddings-saudi-arabia-destination",
-  "/blog/trending-colors-2026-event-palette",
-  "/blog/exceptional-wedding-cost-saudi-arabia-guide",
-  "/blog/state-of-mice-industry-saudi-arabia-2026",
-  "/blog/mice-tourism-saudi-arabia-complete-guide-2026",
-  "/blog/best-corporate-event-venues-riyadh-2026",
-
-  // Blog rollout — batch 2 (10 more high-intent / cross-linked posts).
-  "/blog/gea-event-permit-guide-saudi-arabia",
-  "/blog/best-wedding-venues-jeddah-2026",
-  "/blog/destination-weddings-alula-red-sea",
-  "/blog/crafting-unforgettable-royal-weddings-saudi-arabia",
-  "/blog/vision-2030-redefining-saudi-event-landscape",
-  "/blog/alula-events-guide-maraya-hegra-desert",
-  "/blog/event-production-cost-guide-saudi-arabia-2026",
-  "/blog/vip-executive-retreats-neom-2026",
-  "/blog/ramadan-event-planning-guide-saudi-arabia",
-  "/blog/national-day-event-ideas-saudi-arabia-corporates",
-
-  // Blog rollout — batch 3 (final 14 posts; completes blog SEO-critical localization).
-  "/blog/ultimate-guide-exceptional-event-planning",
-  "/blog/destination-wedding-planning-guide",
-  "/blog/art-of-tablescaping-guide",
-  "/blog/elevating-corporate-events-riyadh-jeddah",
-  "/blog/advanced-semantic-seo-event-management-ksa",
-  "/blog/alula-desert-festivals-cultural-activations",
-  "/blog/corporate-event-excellence-riyadh-jeddah",
-  "/blog/future-event-production-saudi-arabia-technology-sustainability",
-  "/blog/2026-exceptional-event-decor-trends-saudi-arabia",
-  "/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events",
-  "/blog/diriyah-gate-event-venues-corporate",
-  "/blog/plan-mega-exhibition-riyadh-logistics",
-  "/blog/eco-friendly-event-management-saudi-arabia",
-  "/blog/entertainment-activations-jeddah-season-corporate",
+  // The 4 core service pages have FULL bilingual bodies (complete) → indexable.
+  "/services/corporate-events",
+  "/services/weddings",
+  "/services/exhibitions",
+  "/services/conferences",
 ]);
 
 /**
@@ -130,11 +81,13 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
  * `TRANSLATED_AR_ROUTES` for single pages, prefixes here for whole sections.
  */
 export const TRANSLATED_AR_ROUTE_PREFIXES: readonly string[] = [
-  "/locations", // /locations index + every /locations/[city] and /locations/[city]/[service].
-  "/about",     // /about + our-team, awards-accolades, careers, and our-team/[name] — fully translated.
-  "/services",  // /services index + 10 sub-pages + 20 PSEO city×service pages — all localized.
-  // NOTE: /blog and /portfolio are rolled out PER ROUTE via TRANSLATED_AR_ROUTES
-  // (not full prefixes) — only their completed pages are indexable so far.
+  "/locations", // Already indexable before this work; Arabic title/H1 added on the
+                //   index + 5 city pages, full Arabic on every /[city]/[service].
+  "/about",     // /about + our-team, awards-accolades, careers, our-team/[name].
+  // NOTE: "/services" is intentionally NOT a prefix under Plan A — only the 4
+  //   body-complete service pages are listed in TRANSLATED_AR_ROUTES. The /services
+  //   index, the 6 secondary sub-pages, and the 20 PSEO pages stay noindex until
+  //   their long-form bodies are translated. /blog and /portfolio: same (none listed).
 ];
 
 /** Canonical site origin, no trailing slash. */
