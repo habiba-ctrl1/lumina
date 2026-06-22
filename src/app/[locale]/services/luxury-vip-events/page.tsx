@@ -190,6 +190,103 @@ const faqs = [
   { q: "VIP concierge service Saudi Arabia", a: "Our VIP concierge services cover every detail — private chef arrangements, luxury fleet transportation, helicopter transfers, hotel suite buyouts, bespoke gifting, and a 24/7 dedicated event manager for every VIP guest." },
 ];
 
+/* ─── Arabic body content (long-form). Parallel to the English arrays above. ─── */
+const servicesAr = [
+  { title: "فعاليات العائلة المالكة", desc: "تنفيذ متحفّظ ولا تشوبه شائبة للتجمّعات الخاصة لأفراد العائلة المالكة — سرية تامة، وتنسيق أمني بدقة عالية، والتزام بالبروتوكول." },
+  { title: "كونسيرج كبار الثروات", desc: "كونسيرج فعاليات متكامل لكبار الثروات: حجز مواهب عالمية، وترتيبات طهاة خاصين، وأسطول فاخر، ودعم مدير مخصّص على مدار الساعة." },
+  { title: "تجارب اليخوت والصحراء", desc: "فعاليات فائقة الفخامة على متن يخوت خاصة في البحر الأحمر، أو تخييم فاخر وعشاء تحت النجوم في صحراء العلا البكر." },
+  { title: "إطلاقات العلامات الحصرية", desc: "كشف علامات بالدعوة فقط ومؤثّر للسيارات الفاخرة والأزياء الراقية والمجوهرات والمشروبات الفاخرة — مصمّم للتضخيم الاجتماعي والإعلامي." },
+  { title: "الحفلات الموسيقية الخاصة", desc: "تأمين نجوم عالميين وإقليميين من الصف الأول لعروض خاصة حميمة — إدارة كاملة للمتطلبات، وطيران خاص، وإنتاج مسرح، وحقوق بث." },
+  { title: "بروتوكول وأمن كبار الشخصيات", desc: "إدارة بروتوكول دبلوماسي خبيرة، وتنسيق حماية مباشرة مع شركات أمن معتمدة، ونقل آمن، والتحكم بالدخول للمحيط." },
+];
+
+const geoHighlightsAr = [
+  { location: "الرياض", tag: "فعاليات كبار الشخصيات في العاصمة", desc: "الجناح الملكي في ريتز كارلتون، وقصر المربع، وأجنحة حصرية في برج الفيصلية." },
+  { location: "جدة", tag: "الفخامة الساحلية", desc: "استئجار يخوت فاخرة في البحر الأحمر، وفعاليات روزوود على الشاطئ، وحفلات على أسطح الكورنيش." },
+  { location: "العلا", tag: "وجهات تراثية", desc: "عشاء خاص في مرايا، وتخييم فاخر في الحِجر، وتجارب مخصّصة في جبال الحجاز." },
+  { location: "نيوم", tag: "ملتقيات الابتكار", desc: "قمم فاخرة استشرافية وملتقيات خاصة داخل المشروع العملاق بقيمة 500 مليار دولار في السعودية." },
+];
+
+const resourcesAr = [
+  { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط تجارب الصحراء", desc: "كيفية الوصول إلى مرايا للفعاليات الخاصة، وتخطيط عشاء الحِجر التراثي، والتعامل مع تصاريح الهيئة الملكية للعلا." },
+  { title: "الخيط الذهبي: نسج نمط الحياة الفاخر في أرقى فعاليات السعودية", desc: "من خدمات الكونسيرج المخصّصة إلى الحفلات بالدعوة فقط — دليل نمط حياة كبار الشخصيات في السعودية." },
+  { title: "ملتقيات كبار التنفيذيين في نيوم: دليل 2026", desc: "استراتيجيات لاستضافة ملتقيات تنفيذية لا تُنسى في مشاريع نيوم المتطوّرة." },
+  { title: "أفضل قاعات فعاليات الشركات في الرياض 2026", desc: "دليل حصري لأبرز قاعات المملكة — مركز الملك عبدالله المالي وريتز كارلتون وقاعات فنادق الخمس نجوم." },
+];
+
+const faqsAr = [
+  { q: "كيف تضمنون السرية لفعاليات كبار الشخصيات والعائلة المالكة؟", a: "نعمل بموجب اتفاقيات عدم إفصاح صارمة (NDA). ويخضع طاقمنا النخبوي لفحص خلفية دقيق وتدريب على الأمن الرقمي. ونطبّق ضوابط دخول صارمة، واتصالات مشفّرة، وإدارة محيط آمن." },
+  { q: "هل يمكنكم تنظيم حفلات موسيقية خاصة مع فنانين عالميين في السعودية؟", a: "نعم. عبر شبكات وكالات المواهب العالمية لدينا، نتفاوض وندير ظهورات خاصة لموسيقيين وفنانين عالميين من الصف الأول، ونتولّى كل المتطلبات والطيران الخاص والإنتاج التقني." },
+  { q: "هل توفّرون حماية مباشرة وأمنًا لفعاليات كبار الشخصيات؟", a: "ننسّق مع كبرى شركات الأمن الخاص ومكاتب البروتوكول الحكومية لحماية مباشرة سلسة، وإدارة محيط آمن، وتنسيق المواكب، وإدارة حشود متحفّظة." },
+  { q: "ما القاعات التي تستخدمونها لفعاليات كبار الشخصيات الفاخرة في السعودية؟", a: "نؤمّن وصولًا حصريًا لأرقى قاعات السعودية بما فيها ريتز كارلتون الرياض، وفورسيزونز، وروزوود جدة، وقاعة مرايا في العلا، وعقارات خاصة مخصّصة في عموم المملكة." },
+  { q: "هل يمكنكم تنظيم تجارب صحراوية فائقة الفخامة في العلا؟", a: "نعم. العلا من وجهاتنا المميزة لكبار الشخصيات. نصمّم عشاءً صحراويًا خاصًا، وتجارب تخييم فاخر، وتفعيلات في المواقع التراثية بالتعاون الكامل مع الهيئة الملكية للعلا للوصول إلى المواقع وعمليات دون أثر." },
+  { q: "هل تقدّمون تخطيط فعاليات للإقامات الخاصة لكبار الثروات؟", a: "نعم. ننظّم وننفّذ بانتظام فعاليات خاصة في القصور الملكية والمجمّعات الفاخرة والعقارات الخاصة في عموم المملكة — ننقل قدرتنا الإنتاجية الكاملة مباشرة إلى عقار العميل الخاص." },
+  { q: "ما أكثر تجربة حصرية يمكنكم تقديمها؟", a: "تشمل أكثر عروضنا حصرية حفلات موسيقية خاصة مع فنانين عالميين على مسارح مخصّصة في جبال حجاز العلا، وفعاليات يخوت على ساحل البحر الأحمر، وكشف علامات بالدعوة فقط ببيئات غامرة 360°." },
+  { q: "مخطط فعاليات فاخرة قريب مني في الرياض", a: "يقع قسم كبار الشخصيات لدى إدارة الفعاليات السعودية في الرياض، ويوفّر خدمات تخطيط فعاليات راقية للعملاء البارزين في عموم العاصمة بتوفّر ميداني فوري." },
+  { q: "خدمة كونسيرج كبار الشخصيات في السعودية", a: "تغطّي خدمات الكونسيرج لدينا كل تفصيل — ترتيبات طهاة خاصين، ونقل بأسطول فاخر، وتنقّلات بطائرات هليكوبتر، وحجز أجنحة فندقية كاملة، وهدايا مخصّصة، ومدير فعالية مخصّص على مدار الساعة لكل ضيف." },
+];
+
+const challengesAr = [
+  { c: "الخصوصية والتحفّظ المطلق", s: "اتفاقيات عدم إفصاح صارمة، وطاقم موثوق، وإعلام مُتحكَّم به، وقوائم ضيوف على أساس الحاجة للمعرفة تحمي العملاء البارزين قبل الفعالية وأثناءها وبعدها." },
+  { c: "تنسيق الأمن والحماية المباشرة", s: "ننسّق مع الأمن الخاص والجهات بشأن المواكب والتحكم بالدخول والمحيط الآمن — دون أن يشعر الضيوف بأنهم تحت الرقابة." },
+  { c: "الطلبات المخصّصة اللحظية", s: "كونسيرج مخصّص وشبكة موردين عميقة تجعل الطلبات النادرة — فنانون خاصون، ولوجستيات استئجار، ومستلزمات نادرة — تتحقق بهدوء وسرعة." },
+  { c: "تنفيذ مثالي دون بروفة", s: "مخطّطون كبار وخطط بديلة مدمجة تعني أن الفعالية الخاصة لمرة واحدة تسير بإتقان من المرة الأولى، لأنه لا توجد إعادة." },
+];
+
+const cAr = {
+  ctaConsult: "اطلب استشارة خاصة",
+  ctaWhatsapp: "واتساب متحفّظ",
+  servEyebrow: "قسم كبار الشخصيات",
+  servH2a: "نصمّم تجارب",
+  servH2b: "حصرية لكبار الشخصيات",
+  servPpre: "بصفتنا منظِّم فعاليات كبار الشخصيات وخدمة الكونسيرج الفاخرة الأولى في السعودية، نقدّم تخطيطًا متحفّظًا وراقيًا لأكثر عملاء المملكة تميّزًا. من التجمّعات الملكية الخاصة و",
+  servLinkDest: "ملتقيات الصحراء في العلا",
+  servPmid: " إلى تأمين قاعات حصرية في ",
+  servLinkRiyadh: "الحي الدبلوماسي بالرياض",
+  servPpost: "، كل تفصيل مُتوقَّع، وكل سرّ محفوظ بدقة.",
+  geoEyebrow: "أين نُبدع",
+  geoH2a: "وجهات",
+  geoH2b: "أيقونية",
+  geoP: "كل موقع في المملكة يقدّم لوحة فريدة لتجارب فائقة الفخامة.",
+  formEyebrow: "بالدعوة · خاص تمامًا",
+  formH2a: "ابدأ محادثة",
+  formH2b: "سرّية.",
+  formP: "شاركنا بعض التفاصيل المتحفّظة وسيتواصل معك مدير قسم كبار الشخصيات شخصيًا خلال ساعتين. كل استفسار محمي باتفاقية عدم إفصاح من أول تواصل.",
+  formBullets: [
+    "محمي باتفاقية عدم إفصاح من أول رسالة",
+    "مدير فعاليات كبار شخصيات مخصّص على مدار الساعة",
+    "وصول حصري إلى مرايا وريتز كارلتون والعقارات الخاصة",
+    "نجوم الصف الأول، وطيران خاص، وحماية مباشرة",
+  ],
+  teamName: "فريق شؤون البروتوكول",
+  teamSub: "قسم الفعاليات الدبلوماسية وكبار الشخصيات",
+  formPropEyebrow: "استفسار خاص",
+  formPropHeading: "اطلب استشارة خاصة",
+  formPropSub: "سرّي ومتحفّظ. سيردّ مدير قسم كبار الشخصيات شخصيًا خلال ساعتين.",
+  formPropSubmit: "اطلب استشارة خاصة",
+  khEyebrow: "معرفة داخلية",
+  khH2a: "موارد تخطيط",
+  khH2b: "كبار الشخصيات",
+  khP: "معرفة داخلية لأكثر عملاء فعاليات المملكة تميّزًا.",
+  khViewAll: "عرض كل الأدلّة",
+  faqH2a: "الأسئلة الشائعة",
+  faqH2b: "لفعاليات كبار الشخصيات",
+  chLabel: "اعتبارات واقعية",
+  chH2a: "تحديات فعاليات كبار الشخصيات — ",
+  chH2b: "تُدار بتحفّظ",
+  chP: "الفعاليات الخاصة للعائلات المالكة وكبار الثروات تتطلب معيارًا مختلفًا. وإليك كيف يدير فريقنا الاعتبارات الأهم.",
+  challengeLabel: "التحدّي",
+  featTitle: "فعاليات خاصة — مشاريع مختارة",
+  viewProject: "عرض المشروع",
+  ctaH3: "تخطّط لفعالية خاصة لكبار الشخصيات؟",
+  ctaP: "رتّب استشارة سرّية أو تحدّث إلى فريق الفعاليات الخاصة — نردّ بتحفّظ خلال ساعتين.",
+  ctaConsult2: "استشارة خاصة",
+  ctaContact: "تواصل معنا",
+  relTitle: "خدمات ذات صلة",
+  relViewAll: "عرض كل الخدمات",
+  learnMore: "اعرف المزيد",
+};
+
 export default async function LuxuryVIPEventsPage() {
   const isAr = (await getLocale()) === "ar";
   const arHref = isAr ? "/ar" : "";
@@ -234,7 +331,7 @@ export default async function LuxuryVIPEventsPage() {
               href="#private-consultation"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-gold-700 text-white font-semibold uppercase tracking-widest hover:bg-gold-800 transition-all shadow-[0_4px_14px_rgba(127,102,66,0.3)] rounded-xl text-[13px] w-full sm:w-auto"
             >
-              Request Private Consultation
+              {isAr ? cAr.ctaConsult : "Request Private Consultation"}
             </Link>
             <a
               href="https://wa.me/966539388072?text=Hi%2C%20I%27d%20like%20a%20private%20VIP%20event%20consultation."
@@ -242,7 +339,7 @@ export default async function LuxuryVIPEventsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-gold-700 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
-              <Phone size={15} /> Discreet WhatsApp
+              <Phone size={15} /> {isAr ? cAr.ctaWhatsapp : "Discreet WhatsApp"}
             </a>
           </div>
         </div>
@@ -280,14 +377,22 @@ export default async function LuxuryVIPEventsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700 mb-4">
-                <span className="w-5 h-px bg-gold-400" /> The VIP Division
+                <span className="w-5 h-px bg-gold-400" /> {isAr ? cAr.servEyebrow : "The VIP Division"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                Curating Bespoke <br className="hidden md:block" />
-                <span className="text-gold-700">VIP Experiences</span>
+                {isAr ? cAr.servH2a : "Curating Bespoke"} <br className="hidden md:block" />
+                <span className="text-gold-700">{isAr ? cAr.servH2b : "VIP Experiences"}</span>
               </h2>
               <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed">
-                As Saudi Arabia&apos;s premier luxury concierge and VIP event planner, we deliver discreet, white-glove planning for the Kingdom&apos;s most discerning clients. From private royal gatherings and <Link href="/services/destination-events" className="text-gold-700 hover:underline font-semibold">desert retreats in AlUla</Link> to securing exclusive venues in <Link href="/locations/riyadh" className="text-gold-700 hover:underline font-semibold">Riyadh&apos;s Diplomatic Quarter</Link>, every detail is anticipated, and every confidence is strictly kept.
+                {isAr ? (
+                  <>
+                    {cAr.servPpre}<Link href={`${arHref}/services/destination-events`} className="text-gold-700 hover:underline font-semibold">{cAr.servLinkDest}</Link>{cAr.servPmid}<Link href={`${arHref}/locations/riyadh`} className="text-gold-700 hover:underline font-semibold">{cAr.servLinkRiyadh}</Link>{cAr.servPpost}
+                  </>
+                ) : (
+                  <>
+                    As Saudi Arabia&apos;s premier luxury concierge and VIP event planner, we deliver discreet, white-glove planning for the Kingdom&apos;s most discerning clients. From private royal gatherings and <Link href="/services/destination-events" className="text-gold-700 hover:underline font-semibold">desert retreats in AlUla</Link> to securing exclusive venues in <Link href="/locations/riyadh" className="text-gold-700 hover:underline font-semibold">Riyadh&apos;s Diplomatic Quarter</Link>, every detail is anticipated, and every confidence is strictly kept.
+                  </>
+                )}
               </p>
             </div>
 
@@ -300,8 +405,8 @@ export default async function LuxuryVIPEventsPage() {
                   <div className="w-12 h-12 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center mb-5 group-hover:bg-gold-700 transition-colors">
                     <s.icon size={22} className="text-gold-700 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-3">{s.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="text-lg font-bold text-neutral-900 mb-3">{isAr ? servicesAr[i].title : s.title}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? servicesAr[i].desc : s.desc}</p>
                 </div>
               ))}
             </div>
@@ -313,22 +418,22 @@ export default async function LuxuryVIPEventsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700 mb-4">
-                <span className="w-5 h-px bg-gold-400" /> Where We Create
+                <span className="w-5 h-px bg-gold-400" /> {isAr ? cAr.geoEyebrow : "Where We Create"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Iconic <span className="text-gold-700">destinations</span>
+                {isAr ? cAr.geoH2a : "Iconic"} <span className="text-gold-700">{isAr ? cAr.geoH2b : "destinations"}</span>
               </h2>
               <p className="text-neutral-500 mt-4 text-sm max-w-2xl mx-auto">
-                Each location in the Kingdom presents a unique canvas for ultra-luxury experiences.
+                {isAr ? cAr.geoP : "Each location in the Kingdom presents a unique canvas for ultra-luxury experiences."}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {geoHighlights.map((geo, i) => (
                 <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-7 hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all">
-                  <span className="text-[10px] text-gold-700 uppercase tracking-widest font-bold block mb-3">{geo.tag}</span>
-                  <h3 className="text-neutral-900 font-bold text-lg mb-3">{geo.location}</h3>
-                  <p className="text-neutral-500 text-xs leading-relaxed">{geo.desc}</p>
+                  <span className="text-[10px] text-gold-700 uppercase tracking-widest font-bold block mb-3">{isAr ? geoHighlightsAr[i].tag : geo.tag}</span>
+                  <h3 className="text-neutral-900 font-bold text-lg mb-3">{isAr ? geoHighlightsAr[i].location : geo.location}</h3>
+                  <p className="text-neutral-500 text-xs leading-relaxed">{isAr ? geoHighlightsAr[i].desc : geo.desc}</p>
                 </div>
               ))}
             </div>
@@ -343,23 +448,33 @@ export default async function LuxuryVIPEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">
                 <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-gold-300">
-                  <span className="w-6 h-px bg-gold-400" /> By Invitation · Strictly Private
+                  <span className="w-6 h-px bg-gold-400" /> {isAr ? cAr.formEyebrow : "By Invitation · Strictly Private"}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  Begin a confidential<br />
-                  <span className="text-gold-300">conversation.</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    {cAr.formH2a}<br />
+                    <span className="text-gold-300">{cAr.formH2b}</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    Begin a confidential<br />
+                    <span className="text-gold-300">conversation.</span>
+                  </h2>
+                )}
                 <p className="text-white/65 text-base leading-relaxed max-w-md">
-                  Share a few discreet details and the Director of our VIP Division will personally reach out
-                  within two hours. Every enquiry is protected under NDA from first contact.
+                  {isAr
+                    ? cAr.formP
+                    : "Share a few discreet details and the Director of our VIP Division will personally reach out within two hours. Every enquiry is protected under NDA from first contact."}
                 </p>
                 <ul className="space-y-3.5 pt-2">
-                  {[
+                  {(isAr
+                    ? cAr.formBullets
+                    : [
                     "NDA-protected from the very first message",
                     "Dedicated 24/7 VIP event director",
                     "Exclusive access to Maraya, Ritz-Carlton & private estates",
                     "A-list talent, private aviation & close protection",
-                  ].map((item) => (
+                  ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
                       <CheckCircle2 size={18} className="text-gold-300 shrink-0 mt-0.5" />
                       {item}
@@ -367,17 +482,17 @@ export default async function LuxuryVIPEventsPage() {
                   ))}
                 </ul>
                 <div className="pt-3 border-t border-white/10">
-                  <p className="text-white font-bold text-sm">H.H. Protocol Affairs Team</p>
-                  <p className="text-white/40 text-[10px] uppercase tracking-widest">Diplomatic &amp; VIP Events Division</p>
+                  <p className="text-white font-bold text-sm">{isAr ? cAr.teamName : "H.H. Protocol Affairs Team"}</p>
+                  <p className="text-white/40 text-[10px] uppercase tracking-widest">{isAr ? cAr.teamSub : "Diplomatic & VIP Events Division"}</p>
                 </div>
               </div>
               <ServiceLeadForm
                 source="luxury_vip_events_page"
                 defaultEventType="Luxury & VIP Event"
-                eyebrow="Private Enquiry"
-                heading="Request a private consultation"
-                subheading="Confidential and discreet. The Director of our VIP Division will respond personally within 2 hours."
-                submitLabel="Request Private Consultation"
+                eyebrow={isAr ? cAr.formPropEyebrow : "Private Enquiry"}
+                heading={isAr ? cAr.formPropHeading : "Request a private consultation"}
+                subheading={isAr ? cAr.formPropSub : "Confidential and discreet. The Director of our VIP Division will respond personally within 2 hours."}
+                submitLabel={isAr ? cAr.formPropSubmit : "Request Private Consultation"}
                 eventTypeOptions={[
                   "Royal Family Event",
                   "HNWI Private Celebration",
@@ -398,30 +513,30 @@ export default async function LuxuryVIPEventsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1 space-y-6">
                 <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider text-gold-700">
-                  <span className="w-5 h-px bg-gold-400" /> Insider Knowledge
+                  <span className="w-5 h-px bg-gold-400" /> {isAr ? cAr.khEyebrow : "Insider Knowledge"}
                 </span>
                 <h2 className="text-2xl font-bold text-neutral-900">
-                  VIP planning <br />
-                  <span className="text-gold-700">resources</span>
+                  {isAr ? cAr.khH2a : "VIP planning"} <br />
+                  <span className="text-gold-700">{isAr ? cAr.khH2b : "resources"}</span>
                 </h2>
                 <p className="text-neutral-500 text-sm leading-relaxed">
-                  Insider knowledge for the Kingdom&apos;s most discerning event clients.
+                  {isAr ? cAr.khP : "Insider knowledge for the Kingdom's most discerning event clients."}
                 </p>
-                <Link href="/blog" className="inline-block text-gold-700 text-xs font-bold uppercase tracking-widest border-b border-gold-400 pb-1">
-                  View All Guides
+                <Link href={`${arHref}/blog`} className="inline-block text-gold-700 text-xs font-bold uppercase tracking-widest border-b border-gold-400 pb-1">
+                  {isAr ? cAr.khViewAll : "View All Guides"}
                 </Link>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {resources.map((r, i) => (
                   <Link
                     key={i}
-                    href={r.href}
+                    href={`${arHref}${r.href}`}
                     className="p-6 bg-[var(--surface-warm)] border border-gold-200/50 rounded-2xl hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all cursor-pointer group block"
                   >
                     <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-gold-700 transition-colors">
-                      {r.title}
+                      {isAr ? resourcesAr[i].title : r.title}
                     </h3>
-                    <p className="text-neutral-500 text-xs leading-relaxed">{r.desc}</p>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{isAr ? resourcesAr[i].desc : r.desc}</p>
                   </Link>
                 ))}
               </div>
@@ -456,15 +571,15 @@ export default async function LuxuryVIPEventsPage() {
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-14">
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                VIP events <span className="text-gold-700">FAQ</span>
+                {isAr ? cAr.faqH2a : "VIP events"} <span className="text-gold-700">{isAr ? cAr.faqH2b : "FAQ"}</span>
               </h2>
               <div className="w-12 h-px bg-gold-400 mx-auto mt-4" />
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
                 <div key={i} className="bg-[var(--surface-warm)] border border-gold-200/50 p-7 rounded-2xl">
-                  <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                  <h3 className="text-base font-bold text-neutral-900 mb-3">{isAr ? faqsAr[i].q : faq.q}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? faqsAr[i].a : faq.a}</p>
                 </div>
               ))}
             </div>
@@ -475,19 +590,21 @@ export default async function LuxuryVIPEventsPage() {
         <section className="py-24 md:py-28 bg-white border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">VIP event challenges — <span className="text-[var(--primary)]">handled with discretion</span></h2>
-              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">Private events for royal families and high-net-worth clients demand a different standard. Here is how our team manages the considerations that matter most.</p>
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">{isAr ? cAr.chLabel : "Real-World Considerations"}</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">{isAr ? cAr.chH2a : "VIP event challenges — "}<span className="text-[var(--primary)]">{isAr ? cAr.chH2b : "handled with discretion"}</span></h2>
+              <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">{isAr ? cAr.chP : "Private events for royal families and high-net-worth clients demand a different standard. Here is how our team manages the considerations that matter most."}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
+              {(isAr
+                ? challengesAr
+                : [
                 { c: "Absolute privacy & discretion", s: "Strict NDAs, vetted crew, controlled media, and need-to-know guest lists protect high-profile clients before, during, and after the event." },
                 { c: "Security & close-protection coordination", s: "We liaise with private security and authorities on motorcades, access control, and secure perimeters — without making guests feel policed." },
                 { c: "Last-minute, bespoke requests", s: "A dedicated concierge and a deep vendor network make rare requests — private performers, charter logistics, rare provisions — happen quietly and quickly." },
                 { c: "Flawless, no-rehearsal execution", s: "Senior planners and built-in contingencies mean a one-off private event runs perfectly the first time, because there is no second take." },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{isAr ? cAr.challengeLabel : "Challenge"}</span>
                   <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -502,31 +619,41 @@ export default async function LuxuryVIPEventsPage() {
         {/* ── FEATURED PROJECTS & CONSULTATION ── */}
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">Private Events — Featured Projects</h3>
+            <h3 className="text-lg font-bold text-neutral-900 mb-8 uppercase tracking-widest">{isAr ? cAr.featTitle : "Private Events — Featured Projects"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {[
+              {(isAr
+                ? [
+                { title: "أمسية الرياض الفاخرة", slug: "riyadh-luxury-soiree", desc: "أمسية خاصة بالدعوة فقط بتنسيق مخصّص وسرية تامة." },
+                { title: "ملاذ كبار الشخصيات في مكة", slug: "makkah-vip-retreat", desc: "ملاذ متحفّظ لكبار الشخصيات بضيافة كونسيرج وتنسيق حماية مباشرة." },
+                { title: "مجلس الرياض النخبوي", slug: "riyadh-elite-majlis", desc: "مجلس حصري يمزج الضيافة التقليدية برقي الفعاليات الخاصة." },
+                  ]
+                : [
                 { title: "Riyadh Luxury Soirée", slug: "riyadh-luxury-soiree", desc: "An invitation-only private soirée with bespoke styling and complete discretion." },
                 { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "A discreet VIP retreat with concierge hospitality and close-protection coordination." },
                 { title: "Riyadh Elite Majlis", slug: "riyadh-elite-majlis", desc: "An exclusive majlis gathering blending traditional hospitality with private-event polish." },
-              ].map((p) => (
-                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
+              ]).map((p) => (
+                <Link key={p.slug} href={`${arHref}/portfolio/${p.slug}`} className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all">
                   <h4 className="text-neutral-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
                   <p className="text-neutral-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? cAr.viewProject : "View Project"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/80 rounded-2xl p-8">
               <div>
-                <h3 className="text-neutral-900 font-bold text-lg">Planning a private VIP event?</h3>
-                <p className="text-neutral-500 text-sm mt-1">Arrange a confidential consultation or speak with our private events team — we reply discreetly within two hours.</p>
+                <h3 className="text-neutral-900 font-bold text-lg">{isAr ? cAr.ctaH3 : "Planning a private VIP event?"}</h3>
+                <p className="text-neutral-500 text-sm mt-1">{isAr ? cAr.ctaP : "Arrange a confidential consultation or speak with our private events team — we reply discreetly within two hours."}</p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Private Consultation</Link>
-                <Link href="/contact" className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+                <Link href={`${arHref}/consultation`} className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">{isAr ? cAr.ctaConsult2 : "Private Consultation"}</Link>
+                <Link href={`${arHref}/contact`} className="px-6 py-3 border border-neutral-200 text-neutral-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">{isAr ? cAr.ctaContact : "Contact Us"}</Link>
               </div>
             </div>
-            <p className="text-neutral-500 text-sm mt-6">Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or discover our <Link href="/services/destination-events" className="text-[var(--primary)] font-semibold hover:underline">destination events</Link> service.</p>
+            {isAr ? (
+              <p className="text-neutral-500 text-sm mt-6">استكشف <Link href={`${arHref}/portfolio`} className="text-[var(--primary)] font-semibold hover:underline">أعمالنا الكاملة</Link>، واطّلع على <Link href={`${arHref}/testimonials`} className="text-[var(--primary)] font-semibold hover:underline">آراء العملاء</Link>، أو اكتشف خدمة <Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] font-semibold hover:underline">فعاليات الوجهات</Link>.</p>
+            ) : (
+              <p className="text-neutral-500 text-sm mt-6">Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or discover our <Link href="/services/destination-events" className="text-[var(--primary)] font-semibold hover:underline">destination events</Link> service.</p>
+            )}
           </div>
         </section>
 
@@ -534,24 +661,30 @@ export default async function LuxuryVIPEventsPage() {
         <section className="py-20 bg-[var(--surface-warm)] border-t border-gold-200/60">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">Related Services</h2>
-              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+              <h2 className="text-sm font-bold text-neutral-900 uppercase tracking-widest">{isAr ? cAr.relTitle : "Related Services"}</h2>
+              <Link href={`${arHref}/services`} className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">{isAr ? cAr.relViewAll : "View all services"} <ChevronRight size={12} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "فعاليات الوجهات", slug: "destination-events", desc: "العلا ونيوم وساحل البحر الأحمر — مواقع آسرة لفعاليات استثنائية." },
+                { title: "حفلات الزفاف الفاخرة", slug: "weddings", desc: "أعراس ملكية واحتفالات اجتماعية مخصّصة في أرقى قاعات السعودية." },
+                { title: "فعاليات الشركات", slug: "corporate-events", desc: "ملتقيات تنفيذية وفعاليات مجالس إدارة رفيعة بإدارة بروتوكول كبار الشخصيات الكاملة." },
+                  ]
+                : [
                 { title: "Destination Events", slug: "destination-events", desc: "AlUla, NEOM, Red Sea coastal — breathtaking locations for extraordinary events." },
                 { title: "Luxury Weddings", slug: "weddings", desc: "Royal weddings and bespoke social celebrations at Saudi Arabia's finest venues." },
                 { title: "Corporate Events", slug: "corporate-events", desc: "Executive retreats and high-level board events with full VIP protocol management." },
-              ].map((rel) => (
+              ]).map((rel) => (
                 <Link
                   key={rel.slug}
-                  href={`/services/${rel.slug}`}
+                  href={`${arHref}/services/${rel.slug}`}
                   className="group bg-white border border-neutral-200/80 rounded-2xl p-6 hover:border-gold-400 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)] transition-all"
                 >
                   <h3 className="text-neutral-900 font-bold mb-2 group-hover:text-gold-700 transition-colors">{rel.title}</h3>
                   <p className="text-neutral-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
                   <span className="text-gold-700 text-xs font-bold flex items-center gap-1">
-                    Learn More <ChevronRight size={12} />
+                    {isAr ? cAr.learnMore : "Learn More"} <ChevronRight size={12} />
                   </span>
                 </Link>
               ))}
