@@ -72,6 +72,7 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/services/conferences",
   "/services/event-production", // body fully translated
   "/services/luxury-vip-events", // body fully translated
+  "/services/destination-events", // body fully translated
 ]);
 
 /**
