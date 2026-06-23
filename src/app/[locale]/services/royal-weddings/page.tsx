@@ -596,11 +596,267 @@ const faqs = [
   },
 ];
 
+/* ─────────────────────── ARABIC PARALLEL DATA ─────────────────────── */
+
+const ceremoniesAr = [
+  {
+    icon: Heart,
+    name: "الملكة",
+    arabic: "Milka",
+    desc: "لقاء الخطبة الرسمي — احتفال عائلي خاص يُعلن الارتباط رسميًا، يُقام غالبًا في المنزل أو مجلس خاص بحضور الأقارب المقرّبين.",
+  },
+  {
+    icon: Sparkles,
+    name: "ليلة الحناء",
+    arabic: "Laylat al-Henna",
+    desc: "ليلة حناء العروس — احتفال نسائي حميم مع فنّانات حناء بارعات، وموسيقى خليجية، وهدايا مخصّصة، يُقام قبل عقد القران بليلة إلى ثلاث.",
+  },
+  {
+    icon: Star,
+    name: "عقد النكاح",
+    arabic: "Aqd al-Nikah",
+    desc: "مراسم عقد الزواج الإسلامي — يجريه مأذون مرخّص — عادةً في مسجد أو منزل أو مجلس مخصّص، بحضور رجال العائلة والشهود.",
+  },
+  {
+    icon: Music,
+    name: "زفة العريس",
+    arabic: "Zaffa",
+    desc: "موكب العريس الاحتفالي مع منشدين، وعازفي طبل ومزمار، وفرق عرضة بالسيوف يرافقون العريس إلى قاعة الاستقبال.",
+  },
+  {
+    icon: Crown,
+    name: "وليمة الزواج",
+    arabic: "Walima",
+    desc: "وليمة الزفاف الكبرى بعد عقد القران — سُنّة مؤكدة — تستضيف من 300 إلى أكثر من 3000 ضيف بمأدبة سعودية فاخرة متعددة الأطباق، وفرقة طرب، وجلوس رسمي لكبار الضيوف.",
+  },
+  {
+    icon: Gem,
+    name: "الصبحية",
+    arabic: "Sabahiyya",
+    desc: "احتفال صباح اليوم التالي حيث تستقبل عائلة العروس العروسين في لقاء إفطار عائلي دافئ، يُتمّ رحلة العرس الملكي متعددة الأيام.",
+  },
+];
+
+const servicesAr = [
+  {
+    icon: MapPin,
+    title: "اختيار القاعات الملكية",
+    desc: "وصول حصري إلى القصور، وقاعات الخمس نجوم، والاستحواذ الكامل على المنتجعات الخاصة في الرياض وجدة والعلا ونيوم — بأسعار الشركاء المفضّلين.",
+  },
+  {
+    icon: Flower2,
+    title: "تصميم الأزهار والديكور",
+    desc: "تركيبات أزهار مخصّصة — من أقواس الذهب الوردي إلى أسقف الأوركيد الأبيض المتدفّقة — من إبداع أبرز مصممي الأزهار في المملكة بأثر ملكي.",
+  },
+  {
+    icon: Crown,
+    title: "إدارة البروتوكول الملكي",
+    desc: "ضباط بروتوكول كبار الشخصيات ذوو خبرة يديرون تسلسل جلوس الضيوف، وتنسيق المأذون، واستقبال شيوخ القبائل، ولوجستيات الضيوف الدبلوماسيين بسرّية تامة.",
+  },
+  {
+    icon: Music,
+    title: "الزفّة والترفيه",
+    desc: "فرق زفّة أصيلة، وفرق طرب، وعازفو عود، وفرق إنشاد — جميعها مرخّصة من هيئة الترفيه ومدقّقة بصرامة لأداء بمستوى ملكي.",
+  },
+  {
+    icon: Camera,
+    title: "إنتاج إعلامي سينمائي",
+    desc: "تصوير سينمائي بطائرات درون بدقة 4K، وتغطية عقد قران متعددة الكاميرات، ومونتاج احترافي يحوّل احتفالك الملكي إلى تحفة فنية خالدة.",
+  },
+  {
+    icon: Users,
+    title: "إدارة ضيوف كبار الشخصيات",
+    desc: "تصميم دعوات متكامل، وتتبّع تأكيدات الحضور، وحقائب ضيوف مخصّصة، وتنسيق نقل فاخر، وكونسيرج ضيافة في اليوم لضيوف كبار الشخصيات والضيوف الملكيين.",
+  },
+  {
+    icon: Sparkles,
+    title: "كونسيرج تنسيق العروس",
+    desc: "استشارات أزياء خاصة تربط العروس بمصممين سعوديين، ودور أزياء عالمية، وكبار الجواهرجية — من عباءة الزفاف إلى فستان الاستقبال.",
+  },
+  {
+    icon: Shield,
+    title: "أمن وخصوصية تامّة",
+    desc: "شراكات موثوقة مع شركات أمن خاص مرخّصة تضمن أمن الفعالية الكامل، وإدارة حظر النشر الإعلامي، والالتزام باتفاقيات السرّية للعائلات الملكية وكبار الأثرياء.",
+  },
+];
+
+const venuesAr = [
+  {
+    city: "الرياض",
+    arabic: "Riyadh",
+    tag: "فخامة العاصمة",
+    color: "bg-slate-900",
+    properties: [
+      "الريتز كارلتون الرياض — قاعة الهدا الكبرى (أكثر من 1200 ضيف)",
+      "فورسيزونز في مركز المملكة — الجسر السماوي والقاعات الملكية",
+      "فندق الفيصلية — أجنحة الولائم البانورامية في البرج",
+      "جي دبليو ماريوت الرياض — قاعات مرنة تتسع لـ1500 ضيف",
+      "فيرمونت الرياض كافد — جمالية ملكية معاصرة",
+    ],
+  },
+  {
+    city: "جدة",
+    arabic: "Jeddah",
+    tag: "أناقة البحر الأحمر",
+    color: "bg-emerald-950",
+    properties: [
+      "والدورف أستوريا جدة – قصر الشرق — قصر على الواجهة البحرية",
+      "فورسيزونز جدة في مملكة سبأ — فخامة على الشاطئ",
+      "الريتز كارلتون جدة — إطلالة على شاطئ البحر الأحمر",
+      "بارك حياة جدة — المارينا والنادي الشاطئي",
+      "إنتركونتيننتال جدة — قاعات الكورنيش الكبرى",
+    ],
+  },
+  {
+    city: "العُلا · نيوم",
+    arabic: "AlUla & NEOM",
+    tag: "جلال الوجهات",
+    color: "bg-stone-900",
+    properties: [
+      "محمية شرعان الطبيعية — ملاذ منحوت في الحجر الرملي",
+      "قاعة مرايا — أكبر مبنى مكسوّ بالمرايا في العالم",
+      "موقع الحِجر للتراث العالمي — خلفية نبطية أثرية",
+      "جزيرة سندالة نيوم — منتجع جزيرة خاصة",
+      "مخيمات خاصة على الهضبة الصحراوية — تجارب استحواذ حصري",
+    ],
+  },
+];
+
+const planningStepsAr = [
+  {
+    step: "01",
+    title: "الاستشارة الملكية",
+    desc: "جلسة إحاطة سرّية — تحت اتفاقية عدم إفصاح — نرسم فيها رؤيتك الاحتفالية، وحجم الضيوف، وتفضيلات المدن، وإطار الميزانية.",
+  },
+  {
+    step: "02",
+    title: "تأمين القاعة والموعد",
+    desc: "قائمة قاعات مختارة مع زيارات للمواقع. تُوقّع العقود قبل 12–18 شهرًا لحجز القاعات المفضّلة والاستحواذ على المنتجعات.",
+  },
+  {
+    step: "03",
+    title: "تصميم المراسم",
+    desc: "إدارة إبداعية لكل مراسم — الملكة، والحناء، وعقد القران، والزفّة، والوليمة — مع لوحات مزاجية كاملة، ولوحات ألوان، ومفاهيم أزهار.",
+  },
+  {
+    step: "04",
+    title: "تجميع الموردين",
+    desc: "فرق موردين ملكية منتقاة بعناية: كبار منسّقي الأزهار، وفرق الزفّة، وفرق الطرب، وفرق طهاة حلال، وأطقم سينمائية، وفنّانات حناء.",
+  },
+  {
+    step: "05",
+    title: "البروتوكول واللوجستيات",
+    desc: "إدارة ضيوف كبار الشخصيات، وأطقم الدعوات، والنقل، وإحاطات الأمن، وأدلّة البروتوكول في اليوم لكل مراسم.",
+  },
+  {
+    step: "06",
+    title: "تنفيذ بلا أخطاء",
+    desc: "فريق في اليوم من 15–40 محترفًا يدير كل دقيقة — من أول نقرة طبل في الزفّة إلى وداع الختام — دون أي هامش للخطأ.",
+  },
+];
+
+const packagesAr = [
+  {
+    tier: "النخبة",
+    arabic: "Elite",
+    guests: "حتى 300 ضيف",
+    price: "تبدأ من 250,000 ريال",
+    highlight: false,
+    features: [
+      "تنسيق مراسم عقد القران",
+      "حفل الوليمة (قاعة واحدة)",
+      "تصميم أزهار وديكور مختار",
+      "فرقة زفّة احتفالية",
+      "تموين حلال متعدد الأطباق",
+      "تصوير فوتوغرافي وفيديو",
+      "كونسيرج تنسيق العروس",
+      "مستشار تخطيط مخصّص",
+    ],
+  },
+  {
+    tier: "الملكي",
+    arabic: "Royal",
+    guests: "300–1000 ضيف",
+    price: "تبدأ من 500,000 ريال",
+    highlight: true,
+    features: [
+      "كل ما في باقة النخبة",
+      "إدارة مراسم متعددة (الملكة ← الوليمة)",
+      "تنظيم ليلة الحناء",
+      "لوجستيات حفلين منفصلين (رجال/نساء)",
+      "فرقة طرب وعازف عود",
+      "إنتاج فيلم سينمائي 4K",
+      "جناح إدارة ضيوف كبار الشخصيات",
+      "ضابط بروتوكول مخصّص",
+      "تنسيق أمن خاص",
+    ],
+  },
+  {
+    tier: "الإمبراطوري",
+    arabic: "Imperial",
+    guests: "1000–3000+ ضيف",
+    price: "تبدأ من 1,500,000 ريال",
+    highlight: false,
+    features: [
+      "كل ما في الباقة الملكية",
+      "استحواذ حصري على القاعة / المنتجع",
+      "خيار وجهة العلا / نيوم",
+      "برنامج ملكي متعدد الأيام",
+      "فنانو ترفيه عالميون",
+      "الصبحية وفعاليات ما بعد الزفاف",
+      "إدارة إعلامية كاملة واتفاقية سرّية",
+      "فريق عمليات في اليوم من 40 شخصًا",
+      "هدايا مخصّصة وألبوم إرث",
+    ],
+  },
+];
+
+const faqsAr = [
+  {
+    q: "من هم أفضل مخطّطي الأعراس الملكية في السعودية؟",
+    a: "إدارة الفعاليات السعودية هي المتخصص الأول في الأعراس الملكية بالمملكة — أكثر من 15 عامًا من الخبرة الاحتفالية، ومكانة شريك مفضّل في كل القاعات الكبرى ذات الخمس نجوم، وفريق بروتوكول ملكي متخصّص. تمتد أعمالنا عبر الرياض وجدة والعلا ونيوم.",
+  },
+  {
+    q: "كم تكلفة العرس الملكي في السعودية؟",
+    a: "تتراوح تكاليف الأعراس الملكية في المملكة من 250,000 ريال لاحتفالات النخبة الحميمة (حتى 300 ضيف) إلى أكثر من 1.5 مليون ريال للفعاليات الإمبراطورية الكبرى (1000–3000+ ضيف). وتشمل أهم عوامل التكلفة حصرية القاعة، ونطاق المراسم المتعددة، ومستوى الترفيه، وحجم تركيبات الأزهار.",
+  },
+  {
+    q: "ما المراسم التي يتضمّنها العرس الملكي السعودي؟",
+    a: "يشمل العرس الملكي السعودي التقليدي: الملكة (الخطبة)، وليلة الحناء، وعقد النكاح، والزفّة (موكب العريس)، والوليمة (مأدبة الزفاف)، والصبحية (لقاء العائلة صباح اليوم التالي). ونحن ندير المراسم الست من البداية إلى النهاية.",
+  },
+  {
+    q: "ما الفرق بين النكاح والوليمة؟",
+    a: "عقد النكاح هو عقد الزواج الإسلامي — مراسم قانونية ودينية رسمية أمام الشهود. أما الوليمة فهي مأدبة الاحتفال التي تُقام بعد النكاح — وغالبًا تكون أكبر فعالية، تستضيف المئات إلى الآلاف من الضيوف، وهي سُنّة مؤكدة في التقاليد الإسلامية.",
+  },
+  {
+    q: "كم من الوقت يجب التخطيط مسبقًا لعرس ملكي في السعودية؟",
+    a: "نوصي بـ12–24 شهرًا لفعالية بمستوى ملكي. تتطلب قاعات الخمس نجوم في الرياض وجدة حجزًا قبل 12–18 شهرًا. ويتطلب الديكور المستورد المخصّص والترفيه الحصري من 6–9 أشهر. ابدأ استشارتك قبل 18 شهرًا على الأقل من الموعد المستهدف.",
+  },
+  {
+    q: "هل تشمل الأعراس الملكية السعودية حفلين منفصلين للرجال والنساء؟",
+    a: "نعم — الحفلات المنفصلة بين الجنسين معتادة في العائلات الملكية السعودية التقليدية. ونحن ندير لوجستيات الحفلين بجودة متساوية في المساحتين، بما يشمل تنسيق ترفيه مشترك، وخدمة تموين متزامنة، وربط بالكاميرات للعروس والعريس.",
+  },
+  {
+    q: "هل يمكنكم تنظيم عرس ملكي في العلا أو نيوم؟",
+    a: "بالتأكيد. نتخصّص في الأعراس الملكية الوجهة في محمية شرعان الطبيعية، وموقع الحِجر للتراث العالمي، وقاعة مرايا في العلا، وفي جزيرة سندالة بنيوم. وكلاهما يتطلب تصاريح من الهيئة الملكية يديرها فريقنا من البداية إلى النهاية.",
+  },
+  {
+    q: "ما هي الزفّة في العرس السعودي؟",
+    a: "الزفّة هي الموكب الاحتفالي الذي يرافق العريس إلى الاستقبال، مصحوبًا بالمنشدين، وعازفي الطبل والمزمار، وفرق العرضة بالسيوف. ونحن نوفّر ونصمّم فرق زفّة أصيلة وندمجها مع أنظمة الصوت والصورة في القاعة.",
+  },
+];
+
 /* ─────────────────────────── PAGE COMPONENT ─────────────────────────── */
 
 export default async function RoyalWeddingsPage() {
   const isAr = (await getLocale()) === "ar";
   const arHref = isAr ? "/ar" : "";
+  const ceremoniesData = isAr ? ceremoniesAr : ceremonies;
+  const servicesData = isAr ? servicesAr : services;
+  const venuesData = isAr ? venuesAr : venues;
+  const planningStepsData = isAr ? planningStepsAr : planningSteps;
+  const packagesData = isAr ? packagesAr : packages;
+  const faqsData = isAr ? faqsAr : faqs;
   return (
     <>
       <script
@@ -632,9 +888,9 @@ export default async function RoyalWeddingsPage() {
           minHeight="large"
           enableParallax
           trustElements={[
-            { value: "15+", label: "Years of Royal Expertise" },
-            { value: "500+", label: "Royal Celebrations Delivered" },
-            { value: "12", label: "Cities Across Saudi Arabia" },
+            { value: "15+", label: isAr ? "أعوام من الخبرة الملكية" : "Years of Royal Expertise" },
+            { value: "500+", label: isAr ? "احتفال ملكي منفّذ" : "Royal Celebrations Delivered" },
+            { value: "12", label: isAr ? "مدينة في عموم السعودية" : "Cities Across Saudi Arabia" },
           ]}
         />
 
@@ -642,16 +898,16 @@ export default async function RoyalWeddingsPage() {
         <div className="bg-white border-b border-neutral-100 py-6">
           <div className="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/consultation"
+              href={`${arHref}/consultation`}
               className="inline-block px-10 py-4 bg-[var(--primary)] text-white font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-sm"
             >
-              Begin Your Royal Consultation
+              {isAr ? "ابدأ استشارتك الملكية" : "Begin Your Royal Consultation"}
             </Link>
             <Link
-              href="/contact"
+              href={`${arHref}/contact`}
               className="inline-block px-10 py-4 border border-slate-300 text-slate-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] transition-all text-sm"
             >
-              Private Enquiry
+              {isAr ? "استفسار خاص" : "Private Enquiry"}
             </Link>
           </div>
         </div>
@@ -697,50 +953,79 @@ export default async function RoyalWeddingsPage() {
               {/* Semantic prose */}
               <div className="space-y-7">
                 <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold">
-                  Saudi Arabia&apos;s Premier Royal Wedding Architects
+                  {isAr ? "روّاد هندسة الأعراس الملكية في السعودية" : "Saudi Arabia's Premier Royal Wedding Architects"}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-                  A royal wedding planner who honours <br />
-                  <span className="text-[var(--primary)]">every ceremony, every sacred tradition</span>
+                  {isAr ? (
+                    <>مخطّط أعراس ملكية يكرّم <br /><span className="text-[var(--primary)]">كل مراسم، وكل تقليد مقدّس</span></>
+                  ) : (
+                    <>A royal wedding planner who honours <br /><span className="text-[var(--primary)]">every ceremony, every sacred tradition</span></>
+                  )}
                 </h2>
                 <div className="space-y-5 text-gray-600 text-base leading-relaxed font-light">
-                  <p>
-                    A <strong className="text-slate-900">royal wedding in Saudi Arabia</strong> is not a
-                    single event — it is a multi-day ceremonial journey that weaves together the{" "}
-                    <strong className="text-slate-900">Milka</strong> betrothal, the intimate{" "}
-                    <strong className="text-slate-900">Laylat al-Henna</strong>, the sacred{" "}
-                    <strong className="text-slate-900">Aqd al-Nikah</strong>, the exhilarating{" "}
-                    <strong className="text-slate-900">Zaffa procession</strong>, and the grand{" "}
-                    <strong className="text-slate-900">Walima feast</strong> into one seamless narrative
-                    of cultural magnificence.
-                  </p>
-                  <p>
-                    For over 15 years, Saudi Event Management has served as the trusted{" "}
-                    <strong className="text-slate-900">royal wedding planner</strong> for distinguished
-                    Saudi families — delivering flawless ceremonies at the{" "}
-                    <strong className="text-slate-900">Ritz-Carlton Riyadh</strong>,{" "}
-                    <strong className="text-slate-900">Waldorf Astoria Jeddah</strong>,{" "}
-                    <strong className="text-slate-900">Sharaan Resort AlUla</strong>, and exclusive
-                    palace venues across the Kingdom. Our approach honours the depth of Saudi tradition
-                    while curating the precision of international luxury.
-                  </p>
-                  <p>
-                    Whether you are planning an intimate 300-guest{" "}
-                    <strong className="text-slate-900">Nikah ceremony in Riyadh</strong> or a
-                    3,000-guest imperial{" "}
-                    <strong className="text-slate-900">Walima reception at a destination venue in
-                    AlUla</strong>, our team provides the same commitment to ceremonial excellence,
-                    royal protocol mastery, and absolute discretion.
-                  </p>
+                  {isAr ? (
+                    <>
+                      <p>
+                        إن <strong className="text-slate-900">العرس الملكي في السعودية</strong> ليس فعالية
+                        واحدة — بل رحلة احتفالية متعددة الأيام تنسج معًا خطبة{" "}
+                        <strong className="text-slate-900">الملكة</strong>، و<strong className="text-slate-900">ليلة الحناء</strong> الحميمة، و
+                        <strong className="text-slate-900">عقد النكاح</strong> المقدّس، و
+                        <strong className="text-slate-900">زفّة العريس</strong> المبهجة، و
+                        <strong className="text-slate-900">وليمة الزواج</strong> الكبرى في سردية واحدة متناغمة من الروعة الثقافية.
+                      </p>
+                      <p>
+                        منذ أكثر من 15 عامًا، تعمل إدارة الفعاليات السعودية{" "}
+                        <strong className="text-slate-900">مخطّطًا موثوقًا للأعراس الملكية</strong> لأعرق العائلات السعودية — بتنفيذ مراسم لا تشوبها شائبة في{" "}
+                        <strong className="text-slate-900">الريتز كارلتون الرياض</strong>، و
+                        <strong className="text-slate-900">والدورف أستوريا جدة</strong>، و
+                        <strong className="text-slate-900">منتجع شرعان العلا</strong>، وأرقى القصور في عموم المملكة. ونهجنا يكرّم عمق التقاليد السعودية مع دقّة الفخامة العالمية.
+                      </p>
+                      <p>
+                        سواء كنت تخطّط لـ<strong className="text-slate-900">مراسم عقد قران حميمة في الرياض</strong> بـ300 ضيف أو
+                        <strong className="text-slate-900">وليمة إمبراطورية بـ3000 ضيف في وجهة بالعلا</strong>، يقدّم فريقنا الالتزام ذاته بالتميّز الاحتفالي، وإتقان البروتوكول الملكي، والسرّية التامة.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        A <strong className="text-slate-900">royal wedding in Saudi Arabia</strong> is not a
+                        single event — it is a multi-day ceremonial journey that weaves together the{" "}
+                        <strong className="text-slate-900">Milka</strong> betrothal, the intimate{" "}
+                        <strong className="text-slate-900">Laylat al-Henna</strong>, the sacred{" "}
+                        <strong className="text-slate-900">Aqd al-Nikah</strong>, the exhilarating{" "}
+                        <strong className="text-slate-900">Zaffa procession</strong>, and the grand{" "}
+                        <strong className="text-slate-900">Walima feast</strong> into one seamless narrative
+                        of cultural magnificence.
+                      </p>
+                      <p>
+                        For over 15 years, Saudi Event Management has served as the trusted{" "}
+                        <strong className="text-slate-900">royal wedding planner</strong> for distinguished
+                        Saudi families — delivering flawless ceremonies at the{" "}
+                        <strong className="text-slate-900">Ritz-Carlton Riyadh</strong>,{" "}
+                        <strong className="text-slate-900">Waldorf Astoria Jeddah</strong>,{" "}
+                        <strong className="text-slate-900">Sharaan Resort AlUla</strong>, and exclusive
+                        palace venues across the Kingdom. Our approach honours the depth of Saudi tradition
+                        while curating the precision of international luxury.
+                      </p>
+                      <p>
+                        Whether you are planning an intimate 300-guest{" "}
+                        <strong className="text-slate-900">Nikah ceremony in Riyadh</strong> or a
+                        3,000-guest imperial{" "}
+                        <strong className="text-slate-900">Walima reception at a destination venue in
+                        AlUla</strong>, our team provides the same commitment to ceremonial excellence,
+                        royal protocol mastery, and absolute discretion.
+                      </p>
+                    </>
+                  )}
                 </div>
                 <div className="grid grid-cols-2 gap-8 pt-4 border-t border-slate-100">
                   <div>
                     <p className="text-[var(--primary)] font-bold text-sm mb-1">مخطط أفراح ملكي</p>
-                    <p className="text-gray-500 text-xs font-light">Expert cultural consultants fluent in Saudi royal ceremonial traditions.</p>
+                    <p className="text-gray-500 text-xs font-light">{isAr ? "مستشارون ثقافيون خبراء يتقنون تقاليد الأعراس الملكية السعودية." : "Expert cultural consultants fluent in Saudi royal ceremonial traditions."}</p>
                   </div>
                   <div>
-                    <p className="text-[var(--primary)] font-bold text-sm mb-1">Preferred Venue Partners</p>
-                    <p className="text-gray-500 text-xs font-light">Preferred-partner status with all major five-star venues across KSA.</p>
+                    <p className="text-[var(--primary)] font-bold text-sm mb-1">{isAr ? "شركاء القاعات المفضّلون" : "Preferred Venue Partners"}</p>
+                    <p className="text-gray-500 text-xs font-light">{isAr ? "مكانة شريك مفضّل مع كل القاعات الكبرى ذات الخمس نجوم في المملكة." : "Preferred-partner status with all major five-star venues across KSA."}</p>
                   </div>
                 </div>
               </div>
@@ -754,15 +1039,15 @@ export default async function RoyalWeddingsPage() {
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold text-[var(--primary)]">15+</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">Years of<br/>Royal Expertise</span>
+                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>أعوام من الخبرة<br/>الملكية</> : <>Years of<br/>Royal Expertise</>}</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold text-[var(--primary)]">500+</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">Royal Celebrations<br/>Delivered</span>
+                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>احتفال ملكي<br/>منفّذ</> : <>Royal Celebrations<br/>Delivered</>}</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold text-[var(--primary)]">4.9★</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">Average Client<br/>Rating (148 reviews)</span>
+                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>متوسط تقييم<br/>العملاء (148 تقييمًا)</> : <>Average Client<br/>Rating (148 reviews)</>}</span>
               </div>
               <div className="flex gap-8 grayscale opacity-40 items-center">
                 <span className="text-xs font-bold tracking-widest">RITZ-CARLTON</span>
@@ -778,19 +1063,19 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                The Royal Wedding Journey
+                {isAr ? "رحلة العرس الملكي" : "The Royal Wedding Journey"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Six Ceremonies. <span className="text-[var(--primary)]">One Seamless Narrative.</span>
+                {isAr ? <>ست مراسم. <span className="text-[var(--primary)]">سردية واحدة متناغمة.</span></> : <>Six Ceremonies. <span className="text-[var(--primary)]">One Seamless Narrative.</span></>}
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
-                Saudi royal weddings are multi-day celebrations built on six sacred ceremonies. We plan,
-                produce, and perfect every one — from the intimate Milka gathering to the imperial Walima
-                feast.
+                {isAr
+                  ? "الأعراس الملكية السعودية احتفالات متعددة الأيام مبنية على ست مراسم مقدّسة. نخطّط لكلٍّ منها وننتجها ونتقنها — من لقاء الملكة الحميم إلى وليمة الزفاف الإمبراطورية."
+                  : "Saudi royal weddings are multi-day celebrations built on six sacred ceremonies. We plan, produce, and perfect every one — from the intimate Milka gathering to the imperial Walima feast."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {ceremonies.map((c, i) => (
+              {ceremoniesData.map((c, i) => (
                 <div
                   key={i}
                   className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-[var(--primary)]/40 hover:shadow-lg transition-all group"
@@ -816,14 +1101,14 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                Royal Service Suite
+                {isAr ? "جناح الخدمات الملكية" : "Royal Service Suite"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Complete Royal Wedding <span className="text-[var(--primary)]">Capabilities</span>
+                {isAr ? <>إمكانات <span className="text-[var(--primary)]">عرس ملكي</span> متكاملة</> : <>Complete Royal Wedding <span className="text-[var(--primary)]">Capabilities</span></>}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((s, i) => (
+              {servicesData.map((s, i) => (
                 <div
                   key={i}
                   className="bg-white p-7 rounded-2xl border border-slate-200 hover:shadow-md transition-all group"
@@ -844,18 +1129,19 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                Venue Authority
+                {isAr ? "مرجعية القاعات" : "Venue Authority"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Best Royal Wedding <span className="text-[var(--primary)]">Venues in Saudi Arabia</span>
+                {isAr ? <>أفضل <span className="text-[var(--primary)]">قاعات الأعراس الملكية في السعودية</span></> : <>Best Royal Wedding <span className="text-[var(--primary)]">Venues in Saudi Arabia</span></>}
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
-                Preferred-partner access to the Kingdom's most prestigious palace hotels, resort properties,
-                and UNESCO-heritage destinations.
+                {isAr
+                  ? "وصول كشريك مفضّل إلى أعرق فنادق القصور، والمنتجعات، ووجهات التراث العالمي لليونسكو في المملكة."
+                  : "Preferred-partner access to the Kingdom's most prestigious palace hotels, resort properties, and UNESCO-heritage destinations."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {venues.map((v) => (
+              {venuesData.map((v) => (
                 <div key={v.city} className={`${v.color} text-white rounded-2xl p-8`}>
                   <div className="flex items-start justify-between mb-5">
                     <div>
@@ -885,18 +1171,19 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                Our Process
+                {isAr ? "منهجيتنا" : "Our Process"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                How We Plan a <span className="text-[var(--primary)]">Royal Wedding</span>
+                {isAr ? <>كيف نخطّط لـ<span className="text-[var(--primary)]">عرس ملكي</span></> : <>How We Plan a <span className="text-[var(--primary)]">Royal Wedding</span></>}
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
-                A six-stage methodology refined across 500+ royal celebrations — from initial NDA consultation
-                to post-wedding cinematic archive.
+                {isAr
+                  ? "منهجية من ست مراحل صُقِلت عبر أكثر من 500 احتفال ملكي — من الاستشارة الأولى تحت اتفاقية السرّية إلى الأرشيف السينمائي بعد الزفاف."
+                  : "A six-stage methodology refined across 500+ royal celebrations — from initial NDA consultation to post-wedding cinematic archive."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {planningSteps.map((step, i) => (
+              {planningStepsData.map((step, i) => (
                 <div
                   key={i}
                   className="bg-white rounded-2xl p-8 border border-slate-200 hover:shadow-md transition-all"
@@ -915,18 +1202,19 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                Royal Wedding Packages Saudi Arabia
+                {isAr ? "باقات الأعراس الملكية في السعودية" : "Royal Wedding Packages Saudi Arabia"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Three Tiers of <span className="text-[var(--primary)]">Royal Excellence</span>
+                {isAr ? <>ثلاث فئات من <span className="text-[var(--primary)]">التميّز الملكي</span></> : <>Three Tiers of <span className="text-[var(--primary)]">Royal Excellence</span></>}
               </h2>
               <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm">
-                From intimate elite celebrations to 3,000-guest imperial spectacles. Every package is bespoke
-                — these are starting frameworks, not constraints.
+                {isAr
+                  ? "من احتفالات النخبة الحميمة إلى المشاهد الإمبراطورية بـ3000 ضيف. كل باقة مصمّمة خصيصًا — هذه أطر بداية، لا قيود."
+                  : "From intimate elite celebrations to 3,000-guest imperial spectacles. Every package is bespoke — these are starting frameworks, not constraints."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-              {packages.map((pkg, i) => (
+              {packagesData.map((pkg, i) => (
                 <div
                   key={i}
                   className={`rounded-2xl p-8 flex flex-col border ${
@@ -961,14 +1249,14 @@ export default async function RoyalWeddingsPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/consultation"
+                    href={`${arHref}/consultation`}
                     className={`mt-8 block text-center py-3 px-6 font-bold text-sm uppercase tracking-widest transition-all rounded-lg ${
                       pkg.highlight
                         ? "bg-[var(--primary)] text-white hover:bg-[var(--primary-dark)]"
                         : "border border-slate-200 text-slate-900 hover:border-[var(--primary)]/40 hover:bg-neutral-50"
                     }`}
                   >
-                    Request Proposal
+                    {isAr ? "اطلب عرضًا" : "Request Proposal"}
                   </Link>
                 </div>
               ))}
@@ -992,28 +1280,32 @@ export default async function RoyalWeddingsPage() {
           />
           <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 py-28 md:py-36 text-center">
             <span className="text-[#E5A100] text-xs uppercase tracking-[0.25em] font-bold mb-7 block">
-              The Saudi Event Management Standard
+              {isAr ? "معيار إدارة الفعاليات السعودية" : "The Saudi Event Management Standard"}
             </span>
             <p
               className="text-white text-2xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.25]"
               style={{ letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
             >
-              A royal wedding is measured not in its scale, but in the{" "}
-              <span className="text-[#E5A100]">grace of every ceremony</span> — from the
-              first Zaffa drumbeat to the final Walima farewell.
+              {isAr ? (
+                <>لا يُقاس العرس الملكي بحجمه، بل بـ<span className="text-[#E5A100]">رقيّ كل مراسم فيه</span> — من أول نقرة طبل في الزفّة إلى وداع الوليمة الأخير.</>
+              ) : (
+                <>A royal wedding is measured not in its scale, but in the{" "}
+                <span className="text-[#E5A100]">grace of every ceremony</span> — from the
+                first Zaffa drumbeat to the final Walima farewell.</>
+              )}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/consultation"
+                href={`${arHref}/consultation`}
                 className="inline-block px-10 py-4 bg-[var(--primary)] text-white font-bold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all rounded-xl text-sm shadow-[0_4px_18px_rgba(0,0,0,0.35)]"
               >
-                Begin Your Royal Consultation
+                {isAr ? "ابدأ استشارتك الملكية" : "Begin Your Royal Consultation"}
               </Link>
               <Link
-                href="/portfolio"
+                href={`${arHref}/portfolio`}
                 className="inline-block px-10 py-4 border border-white/30 text-white font-semibold uppercase tracking-widest hover:bg-white/10 transition-all text-sm rounded-xl"
               >
-                View Our Portfolio
+                {isAr ? "شاهد أعمالنا" : "View Our Portfolio"}
               </Link>
             </div>
           </div>
@@ -1066,14 +1358,35 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">
-                Experience · Expertise · Authoritativeness · Trust
+                {isAr ? "الخبرة · الكفاءة · المرجعية · الثقة" : "Experience · Expertise · Authoritativeness · Trust"}
               </span>
               <h2 className="text-3xl font-bold text-slate-900">
-                Our Royal Wedding <span className="text-[var(--primary)]">Expert Team</span>
+                {isAr ? <>فريق <span className="text-[var(--primary)]">خبراء الأعراس الملكية</span></> : <>Our Royal Wedding <span className="text-[var(--primary)]">Expert Team</span></>}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
+              {(isAr
+                ? [
+                {
+                  name: "فاطمة الراشد",
+                  title: "كبيرة مستشاري الأعراس الملكية",
+                  arabic: "Senior Royal Wedding Consultant",
+                  bio: "15 عامًا من التخصص في مراسم الأعراس الملكية والأثرياء في السعودية. خبيرة في بروتوكول عقد القران التقليدي، ولوجستيات الوليمة، وإدارة الحفلين المنفصلين.",
+                },
+                {
+                  name: "نورة الغامدي",
+                  title: "مديرة التصميم الاحتفالي",
+                  arabic: "Ceremonial Design Director",
+                  bio: "مصممة أزهار وديكور حائزة على جوائز بأعمال تمتد من الريتز كارلتون الرياض إلى والدورف أستوريا جدة. متخصصة في التركيبات المخصّصة بمقياس ملكي.",
+                },
+                {
+                  name: "خالد العتيبي",
+                  title: "مدير البروتوكول الملكي وكبار الشخصيات",
+                  arabic: "Royal Protocol & VIP Manager",
+                  bio: "مسؤول بروتوكول سابق. يدير جلوس كبار الشخصيات، وضيافة شيوخ القبائل، وتنسيق الضيوف الدبلوماسيين، وإحاطات الأمن للاحتفالات الملكية.",
+                },
+                  ]
+                : [
                 {
                   name: "Fatima Al-Rashid",
                   title: "Senior Royal Wedding Consultant",
@@ -1092,7 +1405,7 @@ export default async function RoyalWeddingsPage() {
                   arabic: "مدير البروتوكول الملكي",
                   bio: "Former Ministry of Protocol official. Manages VIP seating, tribal elder hospitality, diplomatic guest coordination, and security briefings for royal celebrations.",
                 },
-              ].map((member, i) => (
+              ]).map((member, i) => (
                 <div key={i} className="bg-neutral-50 rounded-2xl p-8 border border-slate-100">
                   <div className="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-5">
                     <Users size={24} className="text-[var(--primary)]" />
@@ -1112,14 +1425,16 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Royal Wedding <span className="text-[var(--primary)]">FAQs</span>
+                {isAr ? <>الأسئلة الشائعة حول <span className="text-[var(--primary)]">الأعراس الملكية</span></> : <>Royal Wedding <span className="text-[var(--primary)]">FAQs</span></>}
               </h2>
               <p className="text-gray-500 mt-4 text-sm">
-                Authoritative answers to the most common questions about royal wedding planning in Saudi Arabia.
+                {isAr
+                  ? "إجابات موثوقة لأكثر الأسئلة شيوعًا حول تخطيط الأعراس الملكية في السعودية."
+                  : "Authoritative answers to the most common questions about royal wedding planning in Saudi Arabia."}
               </p>
             </div>
             <div className="space-y-4">
-              {faqs.map((faq, i) => (
+              {faqsData.map((faq, i) => (
                 <div key={i} className="bg-white rounded-2xl p-7 border border-slate-200">
                   <h3 className="font-bold text-slate-900 text-base mb-3">{faq.q}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
@@ -1133,23 +1448,32 @@ export default async function RoyalWeddingsPage() {
         <section className="py-24 md:py-28 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-16">
-              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">Real-World Considerations</span>
+              <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">{isAr ? "اعتبارات من الواقع" : "Real-World Considerations"}</span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Royal wedding challenges — <span className="text-[var(--primary)]">solved with experience</span>
+                {isAr ? <>تحديات الأعراس الملكية — <span className="text-[var(--primary)]">نحلّها بالخبرة</span></> : <>Royal wedding challenges — <span className="text-[var(--primary)]">solved with experience</span></>}
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
-                A multi-day royal celebration carries protocol, privacy, and logistical demands that few teams have managed at scale. Here is how we handle the ones distinguished families raise most.
+                {isAr
+                  ? "يحمل الاحتفال الملكي متعدد الأيام متطلبات بروتوكول وخصوصية ولوجستيات قلّ من أدارها على هذا النطاق. وإليك كيف نتعامل مع أكثر ما تطرحه العائلات العريقة."
+                  : "A multi-day royal celebration carries protocol, privacy, and logistical demands that few teams have managed at scale. Here is how we handle the ones distinguished families raise most."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
+              {(isAr
+                ? [
+                { c: "استمرارية المراسم متعددة الأيام", s: "تُدار الملكة وليلة الحناء وعقد القران والزفّة والوليمة من جدول زمني رئيسي واحد بمدير مسؤول واحد — لتبقى التنسيقات والتموين وحركة الضيوف متناسقة عبر كل يوم." },
+                { c: "البروتوكول الملكي وإدارة ضيوف كبار الشخصيات", s: "تُخطّط تراتبية الجلوس، ووصول المواكب، ومجالس مخصّصة، والتعامل الحصيف مع كبار الشخصيات بطاقم بروتوكول خبير يفهم التوقعات الاحتفالية السعودية." },
+                { c: "الخصوصية والسرّية والأمن", s: "اتفاقيات سرّية صارمة، وطاقم مدقّق، ووصول إعلامي مُتحكَّم به، ومناطق نسائية حصرية، وتنسيق حماية قريبة تُبقي الاحتفال خاصًا للعائلات رفيعة المستوى." },
+                { c: "لوجستيات الضيوف الكبيرة (حتى 3000)", s: "مطابخ متوازية، وخدمة على مراحل، وخطط مرور ومواقف، واحتياطية في الكواليس تضمن أن تبدو وليمة بـ3000 ضيف بسلاسة عقد قران حميم." },
+                  ]
+                : [
                 { c: "Multi-day ceremony continuity", s: "Milka, Laylat al-Henna, Nikah, Zaffa, and Walima are run from one master timeline with a single accountable director — so styling, catering, and guest flow stay consistent across every day." },
                 { c: "Royal protocol & VIP guest management", s: "Seating hierarchy, motorcade arrivals, dedicated majlis areas, and discreet handling of senior dignitaries are planned with experienced protocol staff who understand Saudi ceremonial expectations." },
                 { c: "Privacy, discretion & security", s: "Strict NDAs, vetted crew, controlled media access, women-only zones, and close-protection liaison keep the celebration private for high-profile families." },
                 { c: "Large-guest logistics (up to 3,000)", s: "Parallel kitchens, phased service, traffic and parking plans, and back-of-house redundancy ensure a 3,000-guest Walima feels as effortless as an intimate Nikah." },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Challenge</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{isAr ? "تحدٍّ" : "Challenge"}</span>
                   <h3 className="font-bold text-slate-900 text-base mt-1 mb-3">{item.c}</h3>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -1165,11 +1489,34 @@ export default async function RoyalWeddingsPage() {
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
-              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
+              <Link href={`${arHref}/services`} className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">{isAr ? "كل الخدمات" : "View all services"} <ChevronRight size={12} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                {
+                  title: "حفلات الزفاف الفاخرة",
+                  slug: "weddings",
+                  desc: "تخطيط زفاف فاخر متكامل عبر الرياض وجدة والدمام لكل المقاييس.",
+                },
+                {
+                  title: "فعاليات الفخامة وكبار الشخصيات",
+                  slug: "luxury-vip-events",
+                  desc: "فعاليات خاصة فائقة السرّية للعائلات الملكية وكبار الأثرياء والضيوف الدبلوماسيين.",
+                },
+                {
+                  title: "فعاليات الوجهات",
+                  slug: "destination-events",
+                  desc: "أعراس ملكية وجهة في العلا ونيوم والبحر الأحمر — تُدار من البداية إلى النهاية.",
+                },
+                {
+                  title: "إنتاج الفعاليات",
+                  slug: "event-production",
+                  desc: "مسرح وصوت وصورة وإضاءة وإنتاج تقني كامل لأي مقياس عرس ملكي.",
+                },
+                  ]
+                : [
                 {
                   title: "Luxury Weddings",
                   slug: "weddings",
@@ -1190,10 +1537,10 @@ export default async function RoyalWeddingsPage() {
                   slug: "event-production",
                   desc: "Stage, AV, lighting, and full technical production for any royal wedding scale.",
                 },
-              ].map((rel) => (
+              ]).map((rel) => (
                 <Link
                   key={rel.slug}
-                  href={`/services/${rel.slug}`}
+                  href={`${arHref}/services/${rel.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/40 hover:shadow-md transition-all"
                 >
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">
@@ -1201,7 +1548,7 @@ export default async function RoyalWeddingsPage() {
                   </h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
                   <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">
-                    Explore <ChevronRight size={12} />
+                    {isAr ? "استكشف" : "Explore"} <ChevronRight size={12} />
                   </span>
                 </Link>
               ))}
@@ -1212,45 +1559,59 @@ export default async function RoyalWeddingsPage() {
         {/* ── FEATURED ROYAL WEDDINGS & CONSULTATION ── */}
         <section className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Featured Celebrations From Our Portfolio</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "احتفالات مختارة من أعمالنا" : "Featured Celebrations From Our Portfolio"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {[
+              {(isAr
+                ? [
+                { title: "عرس الرياض الملكي", slug: "royal-riyadh-wedding", desc: "عرس احتفالي متعدد الأيام لعائلة عريقة في الرياض — عقد قران، وزفّة، ووليمة كبرى." },
+                { title: "حفل زفاف فخم", slug: "grand-wedding-ceremony", desc: "احتفال بمقياس القصور مع كوشة مخصّصة، وبروتوكول ملكي، وإنتاج إعلامي سينمائي." },
+                { title: "ملاذ مكة لكبار الشخصيات", slug: "makkah-vip-retreat", desc: "ضيافة حصيفة لكبار الشخصيات واستضافة احتفالية لتجمّع عائلي رفيع المستوى." },
+                  ]
+                : [
                 { title: "Royal Riyadh Wedding", slug: "royal-riyadh-wedding", desc: "A multi-day ceremonial wedding for a distinguished Riyadh family — Nikah, Zaffa, and a grand Walima." },
                 { title: "Grand Wedding Ceremony", slug: "grand-wedding-ceremony", desc: "A palace-scale celebration with bespoke Kosha, royal protocol, and cinematic media production." },
                 { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "Discreet VIP hospitality and ceremonial hosting for a high-profile family gathering." },
-              ].map((p) => (
-                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+              ]).map((p) => (
+                <Link key={p.slug} href={`${arHref}/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "عرض المشروع" : "View Project"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
-            <p className="text-gray-500 text-sm">See our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or <Link href="/consultation" className="text-[var(--primary)] font-semibold hover:underline">book a private royal wedding consultation</Link>.</p>
+            <p className="text-gray-500 text-sm">{isAr ? <>اطّلع على <Link href={`${arHref}/portfolio`} className="text-[var(--primary)] font-semibold hover:underline">معرض أعمالنا</Link> الكامل، واقرأ <Link href={`${arHref}/testimonials`} className="text-[var(--primary)] font-semibold hover:underline">آراء العملاء</Link>، أو <Link href={`${arHref}/consultation`} className="text-[var(--primary)] font-semibold hover:underline">احجز استشارة خاصة لعرس ملكي</Link>.</> : <>See our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link>, read <Link href="/testimonials" className="text-[var(--primary)] font-semibold hover:underline">client testimonials</Link>, or <Link href="/consultation" className="text-[var(--primary)] font-semibold hover:underline">book a private royal wedding consultation</Link>.</>}</p>
           </div>
         </section>
 
         {/* ── From Our Blog ── */}
         <section className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Royal Wedding Resources</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "مصادر الأعراس الملكية" : "Royal Wedding Resources"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "صناعة أعراس ملكية لا تُنسى في السعودية", slug: "crafting-unforgettable-royal-weddings-saudi-arabia", desc: "استكشف جوهر العرس الملكي السعودي وكيف تصوغ رؤية 2030 الاحتفالات الكبرى." },
+                { title: "كم تكلفة الزفاف في السعودية؟ (دليل 2026)", slug: "exceptional-wedding-cost-saudi-arabia-guide", desc: "تفصيل شامل لتكاليف 2026 يقارن تخطيط الزفاف المخصّص بين الرياض والعلا." },
+                { title: "أعراس الوجهات في العلا والبحر الأحمر", slug: "destination-weddings-alula-red-sea", desc: "تجاوز القاعة — مراسم صحراوية مخصّصة في العلا وأعراس على شاطئ البحر الأحمر." },
+                { title: "أفضل قاعات الزفاف في جدة 2026", slug: "best-wedding-venues-jeddah-2026", desc: "دليل كامل لأفضل قاعات الزفاف في جدة — مساحات على الواجهة البحرية وقاعات فندقية استثنائية." },
+                { title: "لماذا أصبحت السعودية وجهة الزفاف العالمية الجديدة", slug: "destination-wedding-planning-guide", desc: "من العلا إلى نيوم، اكتشف كيف جعلت رؤية 2030 السعودية وجهة الزفاف المثالية." },
+                  ]
+                : [
                 { title: "Crafting Unforgettable Royal Weddings in Saudi Arabia", slug: "crafting-unforgettable-royal-weddings-saudi-arabia", desc: "Explore the essence of a royal Saudi wedding and how Vision 2030 is shaping grand celebrations." },
                 { title: "How Much Does a Wedding Cost in Saudi Arabia? (2026 Guide)", slug: "exceptional-wedding-cost-saudi-arabia-guide", desc: "A comprehensive 2026 cost breakdown comparing bespoke Riyadh vs AlUla wedding planning." },
                 { title: "Destination Weddings in AlUla & The Red Sea", slug: "destination-weddings-alula-red-sea", desc: "Move beyond the ballroom — bespoke desert ceremonies in AlUla and Red Sea beachfront weddings." },
                 { title: "Best Wedding Venues in Jeddah 2026", slug: "best-wedding-venues-jeddah-2026", desc: "Complete guide to Jeddah's best wedding venues — waterfront spaces and exceptional hotel ballrooms." },
                 { title: "Why Saudi Arabia is the New Global Destination for Weddings", slug: "destination-wedding-planning-guide", desc: "From AlUla to NEOM, discover why Vision 2030 has made Saudi Arabia the ultimate wedding destination." },
-              ].map((post) => (
+              ]).map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`${arHref}/blog/${post.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
                 >
-                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Wedding Guide</span>
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">{isAr ? "دليل الزفاف" : "Wedding Guide"}</span>
                   <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اقرأ المقال" : "Read Article"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
