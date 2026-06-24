@@ -92,6 +92,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/vision-2030-redefining-saudi-event-landscape", // body fully translated
   "/blog/destination-weddings-alula-red-sea", // body fully translated
   "/blog/elevating-corporate-events-riyadh-jeddah", // body fully translated
+  "/blog/advanced-semantic-seo-event-management-ksa", // body fully translated
+  "/blog/alula-desert-festivals-cultural-activations", // body fully translated
 ]);
 
 /**
