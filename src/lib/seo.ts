@@ -86,6 +86,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/ultimate-guide-exceptional-event-planning", // body fully translated
   "/blog/trending-colors-2026-event-palette", // body fully translated
   "/blog/destination-wedding-planning-guide", // body fully translated
+  "/blog/art-of-tablescaping-guide", // body fully translated
+  "/blog/exceptional-wedding-cost-saudi-arabia-guide", // body fully translated
 ]);
 
 /**
