@@ -104,6 +104,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/ramadan-event-planning-guide-saudi-arabia", // body fully translated
   "/blog/national-day-event-ideas-saudi-arabia-corporates", // body fully translated
   "/blog/gea-event-permit-guide-saudi-arabia", // body fully translated
+  "/blog/mice-tourism-saudi-arabia-complete-guide-2026", // body fully translated
+  "/blog/alula-events-guide-maraya-hegra-desert", // body fully translated
 ]);
 
 /**
