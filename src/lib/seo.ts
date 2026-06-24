@@ -90,6 +90,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/exceptional-wedding-cost-saudi-arabia-guide", // body fully translated
   "/blog/state-of-mice-industry-saudi-arabia-2026", // body fully translated
   "/blog/vision-2030-redefining-saudi-event-landscape", // body fully translated
+  "/blog/destination-weddings-alula-red-sea", // body fully translated
+  "/blog/elevating-corporate-events-riyadh-jeddah", // body fully translated
 ]);
 
 /**
