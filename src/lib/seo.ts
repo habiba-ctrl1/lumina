@@ -108,6 +108,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/alula-events-guide-maraya-hegra-desert", // body fully translated
   "/blog/event-production-cost-guide-saudi-arabia-2026", // body fully translated
   "/blog/vip-executive-retreats-neom-2026", // body fully translated
+  "/blog/diriyah-gate-event-venues-corporate", // body fully translated
+  "/blog/plan-mega-exhibition-riyadh-logistics", // body fully translated
 ]);
 
 /**
