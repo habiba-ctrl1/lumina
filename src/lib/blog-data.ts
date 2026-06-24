@@ -1191,6 +1191,19 @@ export const blogPosts: BlogPost[] = [
       "Being eco-friendly isn't just a trend anymore; it is a requirement. Major government-backed events now demand real proof of environmental compliance, aligning with the Saudi Green Initiative. If you want to win government contracts, your [event management](/services/corporate-events) strategy must include clear sustainability goals.",
       "[TIP] Venues book out extremely fast! If you are planning a major corporate event, you need to secure your venue **at least 6 to 8 months in advance**—especially if your dates overlap with Riyadh Season.",
       "Planning a conference or exhibition in Saudi Arabia? From venue sourcing to GEA permits, our team handles it all. [Contact us](/contact) to start planning your next big MICE event!"
+    ],
+    contentAr: [
+      "قطاع المعارض والمؤتمرات ([الاجتماعات والحوافز والمؤتمرات والمعارض](/services/conferences)) في السعودية يزدهر. بل إنه نما في السنوات الأربع الماضية أسرع مما نما في العشرين عامًا التي سبقتها مجتمعة! وإن كنت تخطّط لفعالية مؤسسية أو معرض في المملكة، فإليك كل ما تحتاج معرفته عن اتجاه القطاع في 2026.",
+      "## 1. نمو غير مسبوق",
+      "بموجب [رؤية 2030](/portfolio/vision-2030)، تتحوّل السعودية بسرعة إلى مركز عالمي لفعاليات الأعمال. ففي 2026 وحده، يُتوقّع أن تستضيف المملكة أكثر من 450 معرضًا دوليًا كبيرًا — قفزة هائلة بنسبة 35% عن 2024. ما الذي يدفع ذلك؟ استثمارات حكومية ضخمة، والتحضير لكأس العالم 2034، والاستعداد لإكسبو 2030 في [الرياض](/locations/riyadh).",
+      "## 2. قاعات عالمية المستوى",
+      "ولّت أيام قاعات مؤتمرات الفنادق البسيطة. فقاعات مثل كافد ومركز الرياض للمؤتمرات والمعارض وضعت معيارًا جديدًا. تقدّم تقنية صوت وصورة بمستوى المؤسسات، وإعدادات ترجمة فورية، ومخطّطات أرضية مرنة ضخمة. وسواء كنت تستضيف اجتماع مجلس إدارة حميمًا بـ200 شخص أو مؤتمرًا عالميًا بـ5,000 مندوب، تتعامل هذه القاعات معه بلا أخطاء.",
+      "## 3. اتجاه «الأعمال والترفيه» حقيقي",
+      "نشهد ارتفاعًا كبيرًا في «الأعمال والترفيه» (Bleisure) — الأعمال ممزوجة بالترفيه. فالمندوبون الدوليون لا يأتون لمؤتمر ويرحلون فقط. بل يمدّدون رحلاتهم لزيارة مواقع تاريخية مثل [العلا](/locations/alula) أو الاسترخاء على ساحل البحر الأحمر في جدة. وكمنظّم فعاليات، تقديم هذه الإضافات الثقافية طريقة رائعة لجذب الحضور العالمي.",
+      "## 4. الاستدامة أصبحت إلزامية",
+      "أن تكون صديقًا للبيئة لم يعد مجرد اتجاه؛ بل صار متطلبًا. فالفعاليات الكبرى المدعومة حكوميًا تطلب الآن دليلًا حقيقيًا على الامتثال البيئي، تماشيًا مع مبادرة السعودية الخضراء. وإن أردت الفوز بعقود حكومية، يجب أن تتضمّن استراتيجية [إدارة فعالياتك](/services/corporate-events) أهداف استدامة واضحة.",
+      "[TIP] القاعات تُحجز بسرعة فائقة! إن كنت تخطّط لفعالية مؤسسية كبرى، تحتاج لتأمين قاعتك **قبل 6 إلى 8 أشهر على الأقل** — خصوصًا إن تداخلت مواعيدك مع موسم الرياض.",
+      "تخطّط لمؤتمر أو معرض في السعودية؟ من اختيار القاعة إلى تصاريح الهيئة العامة للترفيه، يتولّى فريقنا كل ذلك. [تواصل معنا](/contact) لبدء تخطيط فعالية MICE الكبرى القادمة!"
     ]
   },
   {
@@ -1223,6 +1236,21 @@ export const blogPosts: BlogPost[] = [
       "## 3. What This Means for Your Next Event",
       "There is a huge demand for [corporate event management](/services/corporate-events) that truly understands the goals of [Vision 2030](/portfolio/vision-2030). Whether you are hosting a [business conference](/services/conferences) in Riyadh or a luxury retreat in [Jeddah](/locations/jeddah), you need a team that knows how to blend Saudi culture with international standards.",
       "At Saudi Event Management, we organize everything from major government summits to beautiful [destination events](/services/destination-events) in futuristic places like NEOM and AlUla. [Contact us today](/contact) to start planning an event that meets the new standard!"
+    ],
+    contentAr: [
+      "[رؤية 2030](/portfolio/vision-2030) غيّرت تمامًا ما يتوقّعه الناس من الفعاليات في السعودية. فالأشياء التي نجحت قبل سنوات قليلة — كقاعة فندق عادية وإضاءة بسيطة — لم تعد كافية. واليوم، تريد الجهات الحكومية والشركات الكبرى والأعمال المحلية جميعًا شيئًا مبهرًا.",
+      "خلال السنوات القليلة الماضية، نما مشهد الفعاليات في المملكة بشكل هائل. وبفضل خطة رؤية 2030 والهيئة العامة للترفيه، لدينا الآن قاعات جديدة مذهلة، وارتفعت معايير الفعاليات بشدّة.",
+      "## 1. فعاليات بهدف حقيقي",
+      "رؤية 2030 تدور حول تنمية الاقتصاد وتحسين الحياة للجميع. ولهذا، لم تعد الفعاليات مجرد حفلات — بل أدوات قوية لمشاركة ثقافتنا وتعزيز السياحة. ومع مهرجانات و[معارض](/services/exhibitions) دولية ضخمة في مدن مثل [الرياض](/locations/riyadh) و[جدة](/locations/jeddah)، يتوقّع الجمهور السعودي الآن تجارب عالمية المستوى.",
+      "**ملاحظة سريعة:** إن كان في فعاليتك موسيقى حية أو ترفيه، *يجب* أن تحصل على تصريح من الهيئة العامة للترفيه. وتستغرق هذه العملية عادةً 4 إلى 8 أسابيع، لذا خطّط مسبقًا!",
+      "## 2. كيف تبدو الفعاليات السعودية الحديثة؟",
+      "العصر الجديد للفعاليات السعودية يجمع بين أفضل ما في العالمين: تراثنا العريق وأحدث التقنيات. وأبرز فعاليات اليوم تتميّز بـ:",
+      "- **جذور ثقافية:** تصاميم نجدية جميلة، وخط عربي أنيق، وطعام محلي مذهل.",
+      "- **تقنية ذكية:** شاشات LED ضخمة بدقة 4K، وعروض ضوء ثلاثية الأبعاد مذهلة، وتسجيل دخول سريع بالذكاء الاصطناعي.",
+      "- **التوجّه الأخضر:** تركيز قوي على الممارسات الصديقة للبيئة لتتماشى مع مبادرة السعودية الخضراء.",
+      "## 3. ماذا يعني هذا لفعاليتك القادمة؟",
+      "هناك طلب هائل على [إدارة الفعاليات المؤسسية](/services/corporate-events) التي تفهم حقًا أهداف [رؤية 2030](/portfolio/vision-2030). وسواء كنت تستضيف [مؤتمر أعمال](/services/conferences) في الرياض أو ملاذًا فاخرًا في [جدة](/locations/jeddah)، تحتاج فريقًا يعرف كيف يمزج الثقافة السعودية بالمعايير العالمية.",
+      "في إدارة الفعاليات السعودية، ننظّم كل شيء من القمم الحكومية الكبرى إلى [فعاليات الوجهات](/services/destination-events) الجميلة في أماكن مستقبلية مثل نيوم والعلا. [تواصل معنا اليوم](/contact) لبدء تخطيط فعالية ترقى إلى المعيار الجديد!"
     ]
   },
   {
