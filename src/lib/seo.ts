@@ -76,6 +76,9 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/services/cultural-events", // body fully translated
   "/services/production-venues", // body fully translated
   "/services/royal-weddings", // body fully translated
+
+  // Blog posts with FULL bilingual bodies (contentAr complete) → indexable.
+  "/blog/complete-guide-event-planning-saudi-arabia-2026", // body fully translated
 ]);
 
 /**
