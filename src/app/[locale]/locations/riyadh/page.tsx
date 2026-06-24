@@ -208,6 +208,22 @@ const jsonLd = {
             "text": "Riyadh Season, organized by the General Entertainment Authority (GEA), offers brand activation zones at Boulevard Riyadh City, Riyadh Front, MDL Beast, and Diriyah. Corporate participation requires GEA licensing and, for large activations, RCRC coordination. Saudi Event Management manages the full GEA permit process and production for Riyadh Season brand activations.",
           },
         },
+        {
+          "@type": "Question",
+          "name": "What is the best corporate event venue in KAFD (King Abdullah Financial District)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management plans and produces corporate events at KAFD end-to-end: AV and stage production, GEA and Amanah Ar-Riyad permits, and bilingual delegate management.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Do you organise Vision 2030 events and seminars in Riyadh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues. We have produced seminars and forums for PIF portfolio companies, MISA, and national transformation programs, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA compliance.",
+          },
+        },
       ],
     },
     {
@@ -386,6 +402,14 @@ const faqs = [
   {
     q: "How do companies participate in Riyadh Season brand activations?",
     a: "Riyadh Season activation zones — including Boulevard Riyadh City, Riyadh Front, and MDL Beast — are managed by the General Entertainment Authority (GEA). Participation requires a GEA brand activation license, with lead times of 4–6 weeks. Saudi Event Management handles the full GEA application, production, and on-ground management for Riyadh Season campaigns.",
+  },
+  {
+    q: "What is the best corporate event venue in KAFD (King Abdullah Financial District)?",
+    a: "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management plans and produces corporate events at KAFD end-to-end: AV and stage production, GEA and Amanah Ar-Riyad permits, and bilingual delegate management.",
+  },
+  {
+    q: "Do you organise Vision 2030 events and seminars in Riyadh?",
+    a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues. We have produced seminars and forums for PIF portfolio companies, MISA, and national transformation programs, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA compliance.",
   },
 ];
 
