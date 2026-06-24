@@ -112,6 +112,27 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/plan-mega-exhibition-riyadh-logistics", // body fully translated
   "/blog/eco-friendly-event-management-saudi-arabia", // body fully translated
   "/blog/entertainment-activations-jeddah-season-corporate", // body fully translated
+
+  // PSEO service×city pages with FULL bilingual bodies (PSEO_AR complete) → indexable.
+  "/services/corporate-events-riyadh",
+  "/services/corporate-events-jeddah",
+  "/services/corporate-events-dammam",
+  "/services/luxury-weddings-riyadh",
+  "/services/luxury-weddings-jeddah",
+  "/services/luxury-weddings-dammam",
+  "/services/exhibitions-jeddah",
+  "/services/exhibitions-dammam",
+  "/services/conference-management-jeddah",
+  "/services/conference-management-dammam",
+  "/services/event-production-riyadh",
+  "/services/event-production-jeddah",
+  "/services/event-production-alula",
+  "/services/cultural-events-riyadh",
+  "/services/cultural-events-jeddah",
+  "/services/vip-events-jeddah",
+  "/services/vip-events-alula",
+  "/services/destination-events-alula",
+  "/services/destination-events-neom",
 ]);
 
 /**
