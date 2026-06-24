@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function GrandWeddingCeremony() {
   const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -41,7 +42,9 @@ export default async function GrandWeddingCeremony() {
             {isAr ? "حفل زفاف فخم" : <>Grand <span className="text-[var(--primary)]">Wedding Ceremony</span></>}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">
-            A full-scale traditional Saudi wedding for 600+ guests — from the ceremonial Zaffa procession to the grand ballroom reveal, every detail orchestrated with royal precision.
+            {isAr
+              ? "زفاف سعودي تقليدي متكامل لأكثر من 600 ضيف — من موكب الزفّة الاحتفالي إلى الكشف الكبير في القاعة، كل تفصيل نُسّق بدقّة ملكية."
+              : "A full-scale traditional Saudi wedding for 600+ guests — from the ceremonial Zaffa procession to the grand ballroom reveal, every detail orchestrated with royal precision."}
           </p>
         </div>
       </section>
@@ -49,12 +52,19 @@ export default async function GrandWeddingCeremony() {
       {/* Stats */}
       <section className="py-16 md:py-20 bg-white border border-neutral-200/80 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
-          {[
+          {(isAr
+            ? [
+            { icon: Users, label: "الضيوف", val: "+600" },
+            { icon: Crown, label: "التكليف", val: "ملكي خاص" },
+            { icon: Music, label: "الزفّة", val: "فرقة حية" },
+            { icon: Star, label: "البروتوكول", val: "دخول كبار الشخصيات" },
+              ]
+            : [
             { icon: Users, label: "Guests", val: "600+" },
             { icon: Crown, label: "Commission", val: "Private Royal" },
             { icon: Music, label: "Zaffa", val: "Live Ensemble" },
             { icon: Star, label: "Protocol", val: "VIP Entrance" },
-          ].map((stat, i) => (
+          ]).map((stat, i) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-neutral-600 mb-1 font-bold">{stat.label}</div>
@@ -76,13 +86,17 @@ export default async function GrandWeddingCeremony() {
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">
-              The <span className="text-[var(--primary)]">Tradition</span>
+              {isAr ? "التقاليد" : <>The <span className="text-[var(--primary)]">Tradition</span></>}
             </h2>
             <p className="mb-8">
-              A prominent royal family commissioned Saudi Event Management to produce a multi-day wedding that honoured the full richness of Saudi ceremonial traditions — from the Milkah signing to the grand mixed reception — while meeting the expectations of international guests unfamiliar with local customs.
+              {isAr
+                ? "كلّفت عائلة ملكية بارزة إدارة الفعاليات السعودية بإنتاج زفاف متعدد الأيام يكرّم ثراء التقاليد الاحتفالية السعودية كاملًا — من توقيع الملكة إلى الاستقبال الكبير المختلط — مع تلبية توقعات الضيوف الدوليين غير المعتادين على العادات المحلية."
+                : "A prominent royal family commissioned Saudi Event Management to produce a multi-day wedding that honoured the full richness of Saudi ceremonial traditions — from the Milkah signing to the grand mixed reception — while meeting the expectations of international guests unfamiliar with local customs."}
             </p>
             <p>
-              The venue was a premier Riyadh ballroom transformed over five days into a palace of white marble, gold lanterns, and 40,000 individually-placed white roses. A dedicated cultural liaison team guided each international guest through every ceremony element.
+              {isAr
+                ? "كانت القاعة من أرقى قاعات الرياض، حُوِّلت على مدى خمسة أيام إلى قصر من الرخام الأبيض، والفوانيس الذهبية، و40,000 وردة بيضاء وُضعت واحدة واحدة. ووجّه فريق تواصل ثقافي مخصّص كل ضيف دولي عبر كل عنصر من المراسم."
+                : "The venue was a premier Riyadh ballroom transformed over five days into a palace of white marble, gold lanterns, and 40,000 individually-placed white roses. A dedicated cultural liaison team guided each international guest through every ceremony element."}
             </p>
           </div>
         </div>
@@ -90,15 +104,22 @@ export default async function GrandWeddingCeremony() {
         {/* Execution */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-10 uppercase tracking-tight">
-            Royal <span className="text-[var(--primary)]">Production</span>
+            {isAr ? <>إنتاج <span className="text-[var(--primary)]">ملكي</span></> : <>Royal <span className="text-[var(--primary)]">Production</span></>}
           </h2>
           <div className="grid md:grid-cols-2 gap-10">
-            {[
+            {(isAr
+              ? [
+              { title: "زفّة احتفالية", desc: "فرقة زفّة حية من 24 عضوًا بطبّالين سعوديين وحاملي سيوف وحاملي عطور قادت موكب العريس." },
+              { title: "عمارة الأزهار", desc: "40,000 وردة بيضاء نُسجت في أقواس مخصّصة، وقطع مركزية للطاولات، ومظلّة ممر احتفالي بطول 10 أمتار." },
+              { title: "إدارة ضيوف كبار الشخصيات", desc: "كونسيرج مخصّص لكل عائلة من كبار الشخصيات، يدير الجلوس والمتطلبات الغذائية والأجنحة العائلية الخاصة." },
+              { title: "فيلم وتصوير", desc: "طاقم سينمائي من أربعة فرق يوثّق كل مراسم على التوازي — واحد لكل منطقة في القاعة — لفيلم زفاف كامل بدقة 4K." },
+                ]
+              : [
               { title: "Ceremonial Zaffa", desc: "A 24-piece live Zaffa ensemble with Saudi drummers, swordsmen, and fragrance bearers led the groom's procession." },
               { title: "Floral Architecture", desc: "40,000 white roses woven into custom arches, table centrepieces, and a 10-metre ceremonial aisle canopy." },
               { title: "VIP Guest Management", desc: "A dedicated concierge for each VIP family, managing seating, dietary requirements, and private family suites." },
               { title: "Film & Photography", desc: "A four-team cinematic crew documenting every ceremony in parallel — one per venue zone — for a full 4K wedding film." },
-            ].map((item, i) => (
+            ]).map((item, i) => (
               <div key={i} className="flex gap-10 p-8 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-[var(--primary)]/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[var(--primary)] transition-colors">
                   <CheckCircle2 size={24} className="text-[var(--primary)] group-hover:text-white" />
@@ -119,13 +140,15 @@ export default async function GrandWeddingCeremony() {
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">
-              The <span className="text-[var(--primary)]">Legacy</span>
+              {isAr ? "الإرث" : <>The <span className="text-[var(--primary)]">Legacy</span></>}
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              The family described the event as "a memory that will live for generations." The ceremonial film was later screened at a private family reunion of over 200 members. Saudi Event Management was retained immediately for the next family occasion.
+              {isAr
+                ? "وصفت العائلة الفعالية بأنها «ذكرى ستعيش لأجيال». وعُرِض الفيلم الاحتفالي لاحقًا في لمّ شمل عائلي خاص ضمّ أكثر من 200 فرد. وتم التعاقد مع إدارة الفعاليات السعودية فورًا للمناسبة العائلية التالية."
+                : "The family described the event as \"a memory that will live for generations.\" The ceremonial film was later screened at a private family reunion of over 200 members. Saudi Event Management was retained immediately for the next family occasion."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
-              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">Traditional VIP Entrance Protocol</span>
+              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "بروتوكول دخول كبار الشخصيات التقليدي" : "Traditional VIP Entrance Protocol"}</span>
             </div>
           </div>
         </div>
@@ -134,19 +157,19 @@ export default async function GrandWeddingCeremony() {
       {/* Related Services */}
       <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/weddings" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury Wedding Planning
+            <Link href={`${arHref}/services/weddings`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "تخطيط الزفاف الفاخر" : "Luxury Wedding Planning"}
             </Link>
-            <Link href="/services/royal-weddings" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Royal Weddings &amp; Ceremonies
+            <Link href={`${arHref}/services/royal-weddings`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الأعراس الملكية والمراسم" : "Royal Weddings & Ceremonies"}
             </Link>
-            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury &amp; VIP Events
+            <Link href={`${arHref}/services/luxury-vip-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الفاخرة وكبار الشخصيات" : "Luxury & VIP Events"}
             </Link>
-            <Link href="/locations/riyadh" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Weddings in Riyadh
+            <Link href={`${arHref}/locations/riyadh`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الأعراس في الرياض" : "Weddings in Riyadh"}
             </Link>
           </div>
         </div>
@@ -155,13 +178,13 @@ export default async function GrandWeddingCeremony() {
       {/* CTA */}
       <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">
-          Plan Your <span className="text-[var(--primary)]">Grand Celebration</span>
+          {isAr ? <>خطّط لـ<span className="text-[var(--primary)]">احتفالك الكبير</span></> : <>Plan Your <span className="text-[var(--primary)]">Grand Celebration</span></>}
         </h2>
         <Link
-          href="/contact"
+          href={`${arHref}/contact`}
           className="inline-block px-12 py-6 bg-[var(--primary)] text-white font-bold uppercase tracking-[0.2em] hover:bg-neutral-900 transition-all rounded-xl shadow-2xl text-xs"
         >
-          Explore Wedding Services
+          {isAr ? "استكشف خدمات الزفاف" : "Explore Wedding Services"}
         </Link>
       </section>
 
