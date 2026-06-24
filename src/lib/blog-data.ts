@@ -13,11 +13,15 @@ export interface BlogPost {
   metaDescription?: string;
   // ── Arabic SEO-critical layer (phase 2 blog rollout). When present and the route
   //    is locale `ar`, these drive the <title>, meta description, H1 and breadcrumb.
-  //    Long-form `content[]` stays English until a later pass. ──
+  //    `contentAr` (when present) is the fully-translated long-form body, mirroring
+  //    `content[]` block-for-block with the same markdown markers (## / ### / - / |
+  //    tables / [TIP] / [INSIGHT] / [Q] / [A] / links / **bold**). A post is only
+  //    flipped to indexable (in TRANSLATED_AR_ROUTES) once `contentAr` is complete. ──
   titleAr?: string;
   excerptAr?: string;
   metaTitleAr?: string;
   metaDescriptionAr?: string;
+  contentAr?: string[];
 }
 
 export const blogCategories = [
