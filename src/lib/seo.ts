@@ -133,6 +133,11 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/services/vip-events-alula",
   "/services/destination-events-alula",
   "/services/destination-events-neom",
+
+  // Portfolio case studies with FULL bilingual bodies → indexable.
+  "/portfolio/alula-desert-festival", // body fully translated
+  "/portfolio/executive-summit-jeddah", // body fully translated
+  "/portfolio/global-tech-summit", // body fully translated
 ]);
 
 /**
