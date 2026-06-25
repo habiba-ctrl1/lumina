@@ -14,6 +14,7 @@ import { ArrowLeft, CheckCircle2, GlassWater, Music, Sparkles, Camera } from "lu
 
 export default function RiyadhLuxurySoiree() {
   const isAr = useLocale() === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -40,19 +41,26 @@ export default function RiyadhLuxurySoiree() {
           <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-8 leading-tight uppercase tracking-tighter">
             {isAr ? "أمسية الرياض الفاخرة" : <>Riyadh <span className="text-[var(--primary)] ">Luxury</span> Soiree</>}
           </h1>
-          <p className="text-neutral-600 text-xl font-light max-w-2xl mx-auto leading-relaxed">Redefining the boundaries of private entertainment. A night of avant-garde design and sensory wonder.</p>
+          <p className="text-neutral-600 text-xl font-light max-w-2xl mx-auto leading-relaxed">{isAr ? "إعادة تعريف حدود الترفيه الخاص. ليلة من التصميم الطليعي والدهشة الحسّية." : "Redefining the boundaries of private entertainment. A night of avant-garde design and sensory wonder."}</p>
         </div>
       </section>
 
       {/* Project Overview */}
       <section className="py-32 bg-white border-y border-neutral-200/80 relative z-20 -mt-24 mx-4 md:mx-auto max-w-6xl rounded-[4rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8 md:px-16">
-          {[
+          {(isAr
+            ? [
+            { icon: Sparkles, label: "الثيمة", val: "طليعية" },
+            { icon: GlassWater, label: "الطعام", val: "بأسلوب ميشلان" },
+            { icon: Music, label: "الصوت", val: "أوركسترا حية" },
+            { icon: Camera, label: "الإعلام", val: "فيلم خاص" },
+              ]
+            : [
             { icon: Sparkles, label: "Theme", val: "Avant-Garde" },
             { icon: GlassWater, label: "Dining", val: "Michelin Style" },
             { icon: Music, label: "Sound", val: "Live Orchestra" },
             { icon: Camera, label: "Media", val: "Private Film" }
-          ].map((stat: any, i: number) => (
+          ]).map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={32} className="text-[var(--primary)] mx-auto mb-8" />
               <div className="text-[10px] uppercase tracking-[0.2em] text-neutral-600 mb-2 font-bold">{stat.label}</div>
@@ -68,12 +76,16 @@ export default function RiyadhLuxurySoiree() {
         {/* The Brief */}
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">The <span className="text-[var(--primary)] ">Ambition</span></h2>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "الطموح" : <>The <span className="text-[var(--primary)] ">Ambition</span></>}</h2>
             <p className="mb-8">
-              A private client sought to host a soiree that would be remembered as a cultural milestone in Riyadh's social calendar. The requirement was to transcend traditional luxury and enter the realm of the "immersive masterpiece."
+              {isAr
+                ? "سعى عميل خاص لاستضافة أمسية تُذكَر كمعلم ثقافي في الأجندة الاجتماعية للرياض. وكان المطلب تجاوز الفخامة التقليدية والدخول إلى عالم «التحفة الغامرة»."
+                : "A private client sought to host a soiree that would be remembered as a cultural milestone in Riyadh's social calendar. The requirement was to transcend traditional luxury and enter the realm of the \"immersive masterpiece.\""}
             </p>
             <p>
-              We transformed a private estate into a multi-sensory journey, featuring kinetic art installations, holographic performances, and a dining experience that evolved with the music throughout the night.
+              {isAr
+                ? "حوّلنا عقارًا خاصًا إلى رحلة متعددة الحواس، بتركيبات فنية حركية، وعروض هولوغرافية، وتجربة طعام تطوّرت مع الموسيقى طوال الليل."
+                : "We transformed a private estate into a multi-sensory journey, featuring kinetic art installations, holographic performances, and a dining experience that evolved with the music throughout the night."}
             </p>
           </div>
           <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-neutral-200/80">
@@ -83,11 +95,17 @@ export default function RiyadhLuxurySoiree() {
 
         {/* Masterful Execution */}
         <div className="grid md:grid-cols-3 gap-12">
-          {[
+          {(isAr
+            ? [
+            { title: "ديكور حركي", desc: "تركيبات سقفية تحرّكت بتناغم مع الأوركسترا الحية، لخلق بيئة «حيّة»." },
+            { title: "مسرح ذوّاقة", desc: "قائمة تذوّق من 10 أطباق، قُدّم كل طبق بإسقاط رقمي مخصّص على الطاولة." },
+            { title: "خصوصية نخبوية", desc: "تطبيق بروتوكول «بلا هواتف» بخزائن رقمية آمنة لضمان خصوصية مطلقة لضيوف كبار الشخصيات." },
+              ]
+            : [
             { title: "Kinetic Decor", desc: "Ceiling installations that moved in sync with the live orchestra, creating a 'living' environment." },
             { title: "Gourmet Theater", desc: "A 10-course tasting menu where each dish was introduced by a bespoke digital projection on the table." },
             { title: "Elite Privacy", desc: "Implementation of a 'No-Phone' protocol with secure digital lockers to ensure absolute privacy for VVIP guests." }
-          ].map((item: any, i: number) => (
+          ]).map((item: any, i: number) => (
             <div key={i} className="p-12 bg-white rounded-[3rem] border border-neutral-200/80 hover:shadow-2xl transition-all group">
               <div className="w-12 h-12 bg-neutral-900 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[var(--primary)] transition-colors">
                 <CheckCircle2 size={24} className="text-white" />
@@ -104,19 +122,21 @@ export default function RiyadhLuxurySoiree() {
             <Image src="/portfolio/riyadh-soiree.webp" alt="Background" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">A Night of <span className="text-[var(--primary)] ">Wonder</span></h3>
+            <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">{isAr ? <>ليلة من <span className="text-[var(--primary)] ">الدهشة</span></> : <>A Night of <span className="text-[var(--primary)] ">Wonder</span></>}</h3>
             <p className="text-neutral-600 text-xl max-w-3xl mx-auto font-light leading-relaxed mb-16">
-              The soiree set a new standard for private celebrations in the Kingdom. It was not just a party; it was an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world.
+              {isAr
+                ? "أرست الأمسية معيارًا جديدًا للاحتفالات الخاصة في المملكة. لم تكن مجرد حفلة؛ بل معرضًا للممكن، يمزج أرقى الضيافة بأكثر تقنيات الإنتاج تقدّمًا في العالم."
+                : "The soiree set a new standard for private celebrations in the Kingdom. It was not just a party; it was an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world."}
             </p>
             <div className="flex justify-center gap-16">
               <div>
                 <div className="text-3xl font-bold text-[var(--primary)]">100%</div>
-                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">Privacy Maintained</div>
+                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">{isAr ? "خصوصية محفوظة" : "Privacy Maintained"}</div>
               </div>
               <div className="w-px h-16 bg-white/10" />
               <div>
-                <div className="text-3xl font-bold text-[var(--primary)]">VVIP</div>
-                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">Guest Tier</div>
+                <div className="text-3xl font-bold text-[var(--primary)]">{isAr ? "كبار الشخصيات" : "VVIP"}</div>
+                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">{isAr ? "فئة الضيوف" : "Guest Tier"}</div>
               </div>
             </div>
           </div>
@@ -126,19 +146,19 @@ export default function RiyadhLuxurySoiree() {
       {/* Related Services */}
       <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury &amp; VIP Events
+            <Link href={`${arHref}/services/luxury-vip-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الفاخرة وكبار الشخصيات" : "Luxury & VIP Events"}
             </Link>
-            <Link href="/services/weddings" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury Wedding Planning
+            <Link href={`${arHref}/services/weddings`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "تخطيط الزفاف الفاخر" : "Luxury Wedding Planning"}
             </Link>
-            <Link href="/services/event-production" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Event Production
+            <Link href={`${arHref}/services/event-production`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الإنتاج الفعّالياتي" : "Event Production"}
             </Link>
-            <Link href="/locations/riyadh" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Exclusive Events in Riyadh
+            <Link href={`${arHref}/locations/riyadh`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الحصرية في الرياض" : "Exclusive Events in Riyadh"}
             </Link>
           </div>
         </div>
@@ -146,12 +166,12 @@ export default function RiyadhLuxurySoiree() {
 
       {/* CTA */}
       <section className="py-32 text-center bg-white">
-        <h3 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Host Your <span className="text-[var(--primary)] ">Private Masterpiece</span></h3>
+        <h3 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? <>استضف <span className="text-[var(--primary)] ">تحفتك الخاصة</span></> : <>Host Your <span className="text-[var(--primary)] ">Private Masterpiece</span></>}</h3>
         <Link
-          href="/contact"
+          href={`${arHref}/contact`}
           className="inline-block px-12 py-6 bg-neutral-900 text-white font-bold uppercase tracking-[0.2em] hover:bg-[var(--primary)] transition-all rounded-xl shadow-2xl text-xs"
         >
-          Request a Private Briefing
+          {isAr ? "اطلب جلسة إحاطة خاصة" : "Request a Private Briefing"}
         </Link>
       </section>
 

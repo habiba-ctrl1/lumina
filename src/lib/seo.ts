@@ -146,6 +146,8 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/portfolio/makkah-vip-retreat", // body fully translated
   "/portfolio/madinah-spiritual-event", // body fully translated
   "/portfolio/riyadh-government-summit", // body fully translated
+  "/portfolio/riyadh-elite-majlis", // body fully translated
+  "/portfolio/riyadh-luxury-soiree", // body fully translated
 ]);
 
 /**
