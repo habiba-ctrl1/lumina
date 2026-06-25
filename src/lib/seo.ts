@@ -134,7 +134,12 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/services/destination-events-alula",
   "/services/destination-events-neom",
 
-  // Portfolio case studies with FULL bilingual bodies → indexable.
+  // Portfolio index + category pages + case studies with FULL bilingual bodies → indexable.
+  "/portfolio", // index fully translated
+  "/portfolio/corporate-events", // category fully translated
+  "/portfolio/luxury-weddings", // category fully translated
+  "/portfolio/vision-2030", // category fully translated
+  "/portfolio/royal-riyadh-wedding", // body fully translated
   "/portfolio/alula-desert-festival", // body fully translated
   "/portfolio/executive-summit-jeddah", // body fully translated
   "/portfolio/global-tech-summit", // body fully translated

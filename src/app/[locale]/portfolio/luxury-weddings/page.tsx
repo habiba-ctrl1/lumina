@@ -52,6 +52,30 @@ const caseStudies = [
   },
 ];
 
+// Arabic copy for the visible case-study grid (JSON-LD above stays English).
+const caseStudiesAr = [
+  {
+    title: "زفاف ملكي", loc: "الرياض", img: "/gallery_2.webp", slug: "royal-riyadh-wedding",
+    brief: "زفاف ملكي لـ800 ضيف مع بناء واحة صحراوية مخصّصة وبروتوكول كامل لكبار الشخصيات.",
+    alt: "Luxury royal wedding kosha and floral stage design at a grand Riyadh wedding hall in Saudi Arabia",
+  },
+  {
+    title: "أمسية فاخرة", loc: "الرياض", img: "/gallery_destination_wedding.webp", slug: "riyadh-luxury-soiree",
+    brief: "أمسية راقية حميمة بإضاءة غامرة وهندسة أزهار مختارة.",
+    alt: "Elegant luxury wedding soiree table setting and ambient lighting in Riyadh Saudi Arabia",
+  },
+  {
+    title: "زفاف على الشاطئ", loc: "جدة", img: "/jeddah_beach_wedding_setup.webp", slug: "jeddah-beach-wedding",
+    brief: "إنتاج زفاف ساحلي على البحر الأحمر بـ450 ضيفًا على واجهة جدة البحرية.",
+    alt: "Luxurious seaside wedding setup with floral arch on the Red Sea coast in Jeddah Saudi Arabia",
+  },
+  {
+    title: "حفل كبير", loc: "الرياض", img: "/wedding_hall_grand_entrance.webp", slug: "grand-wedding-ceremony",
+    brief: "زفاف كبير لأكثر من 600 ضيف بدخول زفّة تقليدي وإنتاج كامل.",
+    alt: "Grand traditional wedding entrance with VIP guests in a luxury Riyadh wedding hall Saudi Arabia",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -187,7 +211,7 @@ export default async function LuxuryWeddingsPortfolio({ params }: { params: Prom
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-semibold mb-12 text-center" style={{ letterSpacing: "-0.025em" }}>{isAr ? "دراسات حالة مختارة للأعراس" : "Featured Wedding Case Studies"}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {caseStudies.map((item, i) => (
+            {(isAr ? caseStudiesAr : caseStudies).map((item, i) => (
               <Link href={`${arHref}/portfolio/${item.slug}`} key={i} className="group block bg-white rounded-2xl overflow-hidden border border-neutral-200/80 hover:shadow-lg hover:border-[var(--primary)]/40 transition-all" aria-label={`View case study: ${item.title} in ${item.loc}`}>
                 <div className="h-72 overflow-hidden relative">
                   <Image
