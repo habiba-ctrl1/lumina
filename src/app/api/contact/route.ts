@@ -19,8 +19,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
     }
 
-    const team = ["Sarah", "Ahmed", "Nora", "Admin"];
-    const randomAssignee = team[Math.floor(Math.random() * team.length)];
+    // All inbound leads are routed to Habiba Asghar (single point of ownership).
+    const randomAssignee = "Habiba Asghar";
 
     // 1. Save to Prisma using Transaction (All or Nothing)
     let inquiry;
@@ -129,22 +129,79 @@ export async function POST(request: Request) {
         );
 
         if (isResendConfigured) {
-          // Admin Notification
+          // Admin / Team Notification ----------------------------------------
+          // Safe fallbacks so the email never shows "undefined" for optional fields.
+          const safeEventType = eventType || 'General Enquiry';
+          const safeGuests = guestCount ? `${guestCount} guests` : 'Guest count TBD';
+          const safeCity = venueCity || 'TBD';
+          const safeDate = eventDate || 'Flexible / TBD';
+          const safeBudget = budget || 'Not specified';
+          const safePhone = phone || null;
+          const safeCompany = company || null;
+          const safeMessage = message || 'No additional details provided.';
+          const estimateValue = inquiry.estimate?.totalAmount.toLocaleString() ?? 'N/A';
+          // wa.me needs digits only (no +, spaces or dashes).
+          const waClient = safePhone ? safePhone.replace(/[^0-9]/g, '') : null;
+          const waClientText = encodeURIComponent(
+            `Hello ${name}, thank you for contacting Saudi Event Management regarding your ${safeEventType}. I'm Habiba, your dedicated event consultant.`
+          );
+
           await resend.emails.send({
             from: FROM_EMAIL,
             to: [ADMIN_EMAIL],
             replyTo: email,
-            subject: `New Lead: ${name} (Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()})`,
+            subject: `🔔 New Lead: ${name} · ${safeEventType} · SAR ${estimateValue}`,
             html: `
-              <div style="font-family: sans-serif; padding: 30px; border: 1px solid #f0f0f0; border-radius: 20px;">
-                <h2 style="color: #1a1a1a;">Automated Quote Generated</h2>
-                <p style="font-size: 16px; color: #666;">A new lead has been auto-assigned to <strong>${inquiry.assignedTo}</strong>.</p>
-                
-                <div style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 20px 0;">
-                  <h3 style="margin-top: 0; color: #c5a059;">Projected Estimate: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}</h3>
-                  <p><strong>Event:</strong> ${eventType} for ${guestCount} guests</p>
-                  <p><strong>Location:</strong> ${venueCity}</p>
-                  <p><strong>Client:</strong> ${name} (${email})</p>
+              <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
+
+                <!-- Header -->
+                <div style="background-color: #0d0d0d; padding: 28px 32px;">
+                  <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Internal Lead Alert</p>
+                  <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">New Quote Request Received</h1>
+                </div>
+
+                <!-- Assignee + Estimate banner -->
+                <div style="padding: 24px 32px; background-color: #faf9f7; border-bottom: 1px solid #eee;">
+                  <p style="font-size: 14px; color: #555; margin: 0 0 4px 0;">Auto-assigned to <strong style="color: #0d0d0d;">${inquiry.assignedTo}</strong></p>
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0;">Projected Estimate</p>
+                  <p style="font-size: 26px; color: #c5a059; font-weight: 600; margin: 0;">SAR ${estimateValue}</p>
+                </div>
+
+                <!-- Event details table -->
+                <div style="padding: 28px 32px;">
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Event Details</h3>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">
+                    <tr><td style="padding: 8px 0; color: #888; width: 130px;">Event Type</td><td style="padding: 8px 0; font-weight: 500;">${safeEventType}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Guests</td><td style="padding: 8px 0; font-weight: 500;">${safeGuests}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Location</td><td style="padding: 8px 0; font-weight: 500;">${safeCity}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Event Date</td><td style="padding: 8px 0; font-weight: 500;">${safeDate}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Budget</td><td style="padding: 8px 0; font-weight: 500;">${safeBudget}</td></tr>
+                  </table>
+
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 16px 0;">Client</h3>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">
+                    <tr><td style="padding: 8px 0; color: #888; width: 130px;">Name</td><td style="padding: 8px 0; font-weight: 500;">${name}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #c5a059; text-decoration: none;">${email}</a></td></tr>
+                    ${safePhone ? `<tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:${safePhone}" style="color: #c5a059; text-decoration: none;">${safePhone}</a></td></tr>` : ''}
+                    ${safeCompany ? `<tr><td style="padding: 8px 0; color: #888;">Company</td><td style="padding: 8px 0; font-weight: 500;">${safeCompany}</td></tr>` : ''}
+                  </table>
+
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 12px 0;">Message</h3>
+                  <div style="background-color: #faf9f7; border-left: 3px solid #c5a059; padding: 16px 20px; font-size: 14px; line-height: 1.7; color: #444; border-radius: 0 8px 8px 0;">
+                    ${safeMessage}
+                  </div>
+
+                  <!-- CTA -->
+                  <div style="margin-top: 32px; text-align: center;">
+                    ${waClient ? `<a href="https://wa.me/${waClient}?text=${waClientText}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 14px 28px; border-radius: 8px; letter-spacing: 0.3px; margin: 0 6px 12px 6px;">WhatsApp ${name} &rarr;</a>` : ''}
+                    <a href="https://saudieventmanagement.com/admin/dashboard" style="display: inline-block; background-color: #0d0d0d; color: #ffffff; text-decoration: none; font-size: 14px; padding: 14px 28px; border-radius: 8px; letter-spacing: 0.5px; margin: 0 6px 12px 6px;">Open Admin Console &rarr;</a>
+                    <p style="margin: 14px 0 0 0;"><a href="mailto:${email}" style="color: #c5a059; font-size: 13px; text-decoration: none;">Or reply directly by email to ${name}</a></p>
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #0d0d0d; padding: 18px 32px; text-align: center;">
+                  <p style="color: #888; font-size: 11px; margin: 0;">Saudi Event Management · Automated Lead Engine</p>
                 </div>
               </div>
             `,
@@ -182,9 +239,15 @@ export async function POST(request: Request) {
                   <p style="font-size: 12px; color: #888; margin: 12px 0 0 0; line-height: 1.5;">*This is an automated baseline projection based on your initial parameters. Your dedicated consultant will provide a fully customized, detailed proposal.</p>
                 </div>
 
-                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 32px;">
-                  A member of our senior concierge team will be in touch with you within the next <strong>90 minutes</strong> to discuss your vision in detail and outline the exact next steps to bring your event to life.
+                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 28px;">
+                  A member of our senior concierge team will be in touch with you <strong>the same day</strong> to discuss your vision in detail and outline the exact next steps to bring your event to life.
                 </p>
+
+                <!-- WhatsApp CTA -->
+                <div style="text-align: center; margin: 0 0 32px 0;">
+                  <p style="color: #888; font-size: 13px; margin: 0 0 14px 0;">Prefer to talk now? Reach us instantly on WhatsApp.</p>
+                  <a href="https://wa.me/966539388072?text=${encodeURIComponent(`Hi Saudi Event Management, I just submitted an inquiry about my ${eventType || 'event'} and would like to discuss it.`)}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 36px; border-radius: 8px; letter-spacing: 0.3px;">Chat with us on WhatsApp</a>
+                </div>
 
                 <!-- Sign-off -->
                 <div style="border-top: 1px solid #eaeaea; padding-top: 32px; margin-top: 32px;">
