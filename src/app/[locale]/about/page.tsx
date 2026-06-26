@@ -96,7 +96,7 @@ function buildJsonLd(isAr: boolean) {
           "sameAs": [
             "https://www.instagram.com/saudieventmanagement",
             "https://www.twitter.com/saudieventmgmt",
-            "https://linkedin.com/company/saudieventmanagement"
+            "https://www.linkedin.com/company/saudi-event-management"
           ]
         }
       },

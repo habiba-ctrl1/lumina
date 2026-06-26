@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? { absolute: "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية" }
       : "Event Management Company in Saudi Arabia",
     description: isAr
-      ? "شركة إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات في الرياض وجدة ومكة والعلا."
-      : "Saudi Event Management is a leading event management company in Saudi Arabia. We deliver corporate events, exhibitions, luxury weddings and conferences in Riyadh, Jeddah, Makkah, and AlUla.",
+      ? "شركة إدارة الفعاليات السعودية الرائدة بخبرة 15+ عامًا في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — مرخّصة من هيئة الترفيه وبإنتاج داخلي. احصل على استشارة مجانية."
+      : "Saudi Arabia's full-service event management company — 15+ years delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA-licensed, in-house production. Get a free consultation.",
     keywords: isAr
       ? [
           "تنظيم معارض ومؤتمرات",

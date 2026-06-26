@@ -25,7 +25,7 @@ const Linkedin = ({ size = 18, className = "" }: { size?: number; className?: st
 const socialLinks = [
   { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" },
   { icon: Twitter,   label: "Twitter",   url: "https://twitter.com/saudieventmgmt" },
-  { icon: Linkedin,  label: "LinkedIn",  url: "https://linkedin.com/company/saudieventmanagement" },
+  { icon: Linkedin,  label: "LinkedIn",  url: "https://www.linkedin.com/company/saudi-event-management" },
 ];
 
 export default function Footer() {
