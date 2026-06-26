@@ -13,10 +13,12 @@ export default function ContactForm() {
     venueCity: "",
     message: "",
     source: "contact_page",
+    inquiryType: "client",
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const isClient = formData.inquiryType === "client";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +42,7 @@ export default function ContactForm() {
         venueCity: "",
         message: "",
         source: "contact_page",
+        inquiryType: "client",
       });
 
       setTimeout(() => setStatus("idle"), 5000);
@@ -60,10 +63,37 @@ export default function ContactForm() {
     <div className="bg-white rounded-2xl p-8 md:p-12 border border-neutral-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)] relative overflow-hidden">
       <div className="flex items-center gap-2 mb-8">
         <Sparkles className="text-[var(--primary)]" size={16} />
-        <span className="text-[12px] font-semibold text-[var(--primary)] tracking-wider">Inquiry Form</span>
+        <span className="text-[12px] font-semibold text-[var(--primary)] tracking-wider">
+          {isClient ? "Inquiry Form" : "Partnership Inquiry"}
+        </span>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+        {/* Inquiry Type Selector */}
+        <div className="space-y-2">
+          <label className="text-[13px] font-medium text-neutral-500 block">I am a...</label>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { value: "client", label: "Client", sub: "Planning an event" },
+              { value: "vendor", label: "Vendor / Partner", sub: "Offering services" },
+            ].map((opt) => (
+              <button
+                type="button"
+                key={opt.value}
+                onClick={() => setFormData({ ...formData, inquiryType: opt.value })}
+                className={`text-start px-4 py-3 rounded-xl border transition-all cursor-pointer ${
+                  formData.inquiryType === opt.value
+                    ? "border-[var(--primary)] bg-[var(--primary)]/5 shadow-sm"
+                    : "border-neutral-200/80 hover:border-neutral-300 bg-neutral-50"
+                }`}
+              >
+                <span className="block text-[14px] font-medium text-neutral-900">{opt.label}</span>
+                <span className="block text-[12px] text-neutral-400">{opt.sub}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Full Name */}
           <div className="space-y-2">
@@ -117,7 +147,8 @@ export default function ContactForm() {
             />
           </div>
 
-          {/* Event Category */}
+          {/* Event Category — clients only */}
+          {isClient && (
           <div className="space-y-2">
             <label className="text-[13px] font-medium text-neutral-500 block">
               Event Category
@@ -137,9 +168,11 @@ export default function ContactForm() {
               <option value="Private Concert" className="text-neutral-900">Exclusive Social & Cultural Event</option>
             </select>
           </div>
+          )}
         </div>
 
-        {/* Venue Location */}
+        {/* Venue Location — clients only */}
+        {isClient && (
         <div className="space-y-2">
           <label className="text-[13px] font-medium text-neutral-500 block">
             Preferred Venue City
@@ -158,16 +191,19 @@ export default function ContactForm() {
             <option value="Dammam" className="text-neutral-900">Dammam & Eastern Province</option>
           </select>
         </div>
+        )}
 
         {/* Your Vision */}
         <div className="space-y-2">
           <label className="text-[13px] font-medium text-neutral-500 block">
-            Describe Your Vision <span className="text-[var(--primary)]">*</span>
+            {isClient ? "Describe Your Vision" : "About Your Company & Services"} <span className="text-[var(--primary)]">*</span>
           </label>
           <textarea
             required
             rows={5}
-            placeholder="Tell us about the masterpiece you wish to create, event size, themes, and special requirements..."
+            placeholder={isClient
+              ? "Tell us about the masterpiece you wish to create, event size, themes, and special requirements..."
+              : "Tell us about your company, the services you offer, cities you cover, and how you'd like to partner with us..."}
             className={`${inputClass("msg")} resize-none`}
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -212,7 +248,9 @@ export default function ContactForm() {
               className="flex items-center gap-3 text-emerald-700 text-[13px] font-medium bg-emerald-50 px-6 py-4 rounded-xl border border-emerald-100 mt-4"
             >
               <CheckCircle size={18} className="shrink-0 text-emerald-600" />
-              <span>Vision Received. Our lead consultant will connect with you within 2 hours.</span>
+              <span>{isClient
+                ? "Vision Received. Our lead consultant will connect with you within 2 hours."
+                : "Thank you! Our partnerships team will review your details and be in touch."}</span>
             </motion.div>
           )}
 
