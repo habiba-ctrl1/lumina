@@ -143,6 +143,7 @@ export async function generateMetadata({
 
 import CustomCursor from "@/components/CustomCursor";
 import SplashScreen from "@/components/SplashScreen";
+import StickyLeadBar from "@/components/StickyLeadBar";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -264,10 +265,9 @@ const organizationSchema = {
     ],
   },
   sameAs: [
-    "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
-    "https://twitter.com/saudieventmgmt",
+    "https://www.instagram.com/saudieventmanagement",
+    "https://www.facebook.com/profile.php?id=61591377842185",
     "https://www.linkedin.com/company/saudi-event-management",
-    "https://www.facebook.com/saudieventmanagement",
   ],
 };
 
@@ -369,6 +369,7 @@ export default async function RootLayout({
         <CustomCursor />
         <NextIntlClientProvider messages={messages}>
           {children}
+          <StickyLeadBar />
         </NextIntlClientProvider>
       </body>
     </html>
