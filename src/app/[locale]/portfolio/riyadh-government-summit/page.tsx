@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function RiyadhGovernmentSummit() {
   const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -41,7 +42,9 @@ export default async function RiyadhGovernmentSummit() {
             {isAr ? "قمة الرياض الحكومية" : <>Riyadh <span className="text-[var(--primary)]">Government Summit</span></>}
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">
-            A high-stakes ministerial conference uniting 1,200+ delegates under one immersive production framework — broadcast-quality staging, real-time translation, and seamless VIP protocol.
+            {isAr
+              ? "مؤتمر وزاري عالي الأهمية يوحّد أكثر من 1,200 مندوب تحت إطار إنتاج غامر واحد — مسرح بجودة البثّ، وترجمة فورية، وبروتوكول سلس لكبار الشخصيات."
+              : "A high-stakes ministerial conference uniting 1,200+ delegates under one immersive production framework — broadcast-quality staging, real-time translation, and seamless VIP protocol."}
           </p>
         </div>
       </section>
@@ -49,12 +52,19 @@ export default async function RiyadhGovernmentSummit() {
       {/* Stats */}
       <section className="py-16 md:py-20 bg-white border border-neutral-200/80 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
-          {[
+          {(isAr
+            ? [
+            { icon: Users, label: "المندوبون", val: "+1,200" },
+            { icon: Monitor, label: "الإنتاج", val: "متعدد الشاشات" },
+            { icon: Mic, label: "المتحدثون", val: "40 وزيرًا" },
+            { icon: Shield, label: "الأمن", val: "بروتوكول كبار الشخصيات" },
+              ]
+            : [
             { icon: Users, label: "Delegates", val: "1,200+" },
             { icon: Monitor, label: "Production", val: "Multi-Screen" },
             { icon: Mic, label: "Speakers", val: "40 Ministers" },
             { icon: Shield, label: "Security", val: "VIP Protocol" },
-          ].map((stat, i) => (
+          ]).map((stat, i) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-neutral-600 mb-1 font-bold">{stat.label}</div>
@@ -76,13 +86,17 @@ export default async function RiyadhGovernmentSummit() {
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">
-              The <span className="text-[var(--primary)]">Brief</span>
+              {isAr ? "المهمّة" : <>The <span className="text-[var(--primary)]">Brief</span></>}
             </h2>
             <p className="mb-8">
-              A premier government ministry commissioned Saudi Event Management to deliver a national-level summit at KAFD, Riyadh, with a mandate for broadcast-quality production. Over 40 senior officials and 1,200 delegates required seamless logistics, simultaneous Arabic-English translation, and a visual identity befitting the Kingdom's Vision 2030 agenda.
+              {isAr
+                ? "كلّفت وزارة حكومية رائدة إدارة الفعاليات السعودية بتنفيذ قمة على المستوى الوطني في كافد بالرياض، بتفويض لإنتاج بجودة البثّ. وتطلّب أكثر من 40 مسؤولًا رفيعًا و1,200 مندوب لوجستيات سلسة، وترجمة فورية عربية-إنجليزية، وهوية بصرية تليق بأجندة رؤية المملكة 2030."
+                : "A premier government ministry commissioned Saudi Event Management to deliver a national-level summit at KAFD, Riyadh, with a mandate for broadcast-quality production. Over 40 senior officials and 1,200 delegates required seamless logistics, simultaneous Arabic-English translation, and a visual identity befitting the Kingdom's Vision 2030 agenda."}
             </p>
             <p>
-              The challenge was uniting three breakout halls and one plenary arena under a single integrated AV network — live-switched in real time — while maintaining a blackout protocol for classified sessions.
+              {isAr
+                ? "كان التحدّي توحيد ثلاث قاعات جانبية وساحة عامة واحدة تحت شبكة صوت وصورة متكاملة واحدة — تُبدَّل مباشرةً في الوقت الفعلي — مع الحفاظ على بروتوكول تعتيم للجلسات السرّية."
+                : "The challenge was uniting three breakout halls and one plenary arena under a single integrated AV network — live-switched in real time — while maintaining a blackout protocol for classified sessions."}
             </p>
           </div>
         </div>
@@ -90,15 +104,22 @@ export default async function RiyadhGovernmentSummit() {
         {/* Execution */}
         <div>
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-10 uppercase tracking-tight">
-            Precision <span className="text-[var(--primary)]">Execution</span>
+            {isAr ? <>تنفيذ <span className="text-[var(--primary)]">دقيق</span></> : <>Precision <span className="text-[var(--primary)]">Execution</span></>}
           </h2>
           <div className="grid md:grid-cols-2 gap-10">
-            {[
+            {(isAr
+              ? [
+              { title: "مسرح LED محيطي", desc: "جدار LED منحنٍ بطول 24 مترًا خلق خلفية بانورامية سلسة عبر القاعة العامة." },
+              { title: "ترجمة فورية", desc: "كبائن ترجمة فورية عربية–إنجليزية تخدم كل مقاعد المندوبين الـ1,200." },
+              { title: "تنسيق مواكب كبار الشخصيات", desc: "فريق بروتوكول مخصّص أدار وصول كبار الشخصيات ومغادرتهم دون أي ظهور إعلامي." },
+              { title: "البثّ والبثّ المباشر", desc: "طاقم إنتاج حي من 30 شخصًا أدار تغذيات متعددة الكاميرات وُزّعت على القاعات الإضافية وبثّ مباشر مؤمّن." },
+                ]
+              : [
               { title: "LED Volume Stage", desc: "A 24-metre curved LED wall created a seamless panoramic backdrop across the plenary hall." },
               { title: "Real-Time Translation", desc: "Simultaneous Arabic–English interpretation booths serving all 1,200 delegate seats." },
               { title: "VIP Motorcade Coordination", desc: "A dedicated protocol team managed dignitary arrivals and departures with zero media exposure." },
               { title: "Broadcast & Streaming", desc: "A live production crew of 30 managed multi-camera feeds distributed to overflow rooms and a secured live stream." },
-            ].map((item, i) => (
+            ]).map((item, i) => (
               <div key={i} className="flex gap-10 p-8 bg-white rounded-3xl border border-neutral-200/80 hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-[var(--primary)]/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[var(--primary)] transition-colors">
                   <CheckCircle2 size={24} className="text-[var(--primary)] group-hover:text-white" />
@@ -119,13 +140,15 @@ export default async function RiyadhGovernmentSummit() {
           </div>
           <div className="relative z-10">
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">
-              The <span className="text-[var(--primary)]">Outcome</span>
+              {isAr ? "النتيجة" : <>The <span className="text-[var(--primary)]">Outcome</span></>}
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              The summit concluded with four ministerial declarations signed on-stage and drew positive coverage across regional media. Zero technical incidents were recorded across 14 hours of live production.
+              {isAr
+                ? "اختُتمت القمة بأربعة إعلانات وزارية وُقّعت على المسرح، ونالت تغطية إيجابية عبر الإعلام الإقليمي. ولم تُسجَّل أي حوادث تقنية على مدى 14 ساعة من الإنتاج المباشر."
+                : "The summit concluded with four ministerial declarations signed on-stage and drew positive coverage across regional media. Zero technical incidents were recorded across 14 hours of live production."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
-              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">Zero-Incident Large-Scale Production</span>
+              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "إنتاج واسع النطاق بلا حوادث" : "Zero-Incident Large-Scale Production"}</span>
             </div>
           </div>
         </div>
@@ -134,19 +157,19 @@ export default async function RiyadhGovernmentSummit() {
       {/* Related Services */}
       <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Corporate Event Management
+            <Link href={`${arHref}/services/corporate-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة الفعاليات المؤسسية" : "Corporate Event Management"}
             </Link>
-            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Conference Management
+            <Link href={`${arHref}/services/conferences`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة المؤتمرات" : "Conference Management"}
             </Link>
-            <Link href="/services/event-production" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Event Production
+            <Link href={`${arHref}/services/event-production`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الإنتاج الفعّالياتي" : "Event Production"}
             </Link>
-            <Link href="/locations/riyadh" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Corporate Events in Riyadh
+            <Link href={`${arHref}/locations/riyadh`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات المؤسسية في الرياض" : "Corporate Events in Riyadh"}
             </Link>
           </div>
         </div>
@@ -155,13 +178,13 @@ export default async function RiyadhGovernmentSummit() {
       {/* CTA */}
       <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
         <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">
-          Plan Your <span className="text-[var(--primary)]">Next Summit</span>
+          {isAr ? <>خطّط لـ<span className="text-[var(--primary)]">قمتك القادمة</span></> : <>Plan Your <span className="text-[var(--primary)]">Next Summit</span></>}
         </h2>
         <Link
-          href="/contact"
+          href={`${arHref}/contact`}
           className="inline-block px-12 py-6 bg-[var(--primary)] text-white font-bold uppercase tracking-[0.2em] hover:bg-neutral-900 transition-all rounded-xl shadow-2xl text-xs"
         >
-          Request a Conference Proposal
+          {isAr ? "اطلب عرض مؤتمر" : "Request a Conference Proposal"}
         </Link>
       </section>
 

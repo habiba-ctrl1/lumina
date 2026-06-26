@@ -88,6 +88,42 @@ function parseSegments(blocks: string[]): ContentSegment[] {
   return segs;
 }
 
+/* ─── Localized UI strings ──────────────────────────────────────────────────── */
+const UI = {
+  en: {
+    home: "Home", journal: "Journal", topics: "Topics", keyTakeaways: "Key Takeaways",
+    faq: "Frequently Asked Questions", writtenBy: "Written by",
+    specialist: "Event Industry Specialist", relatedServices: "Related Services",
+    relatedArticles: "Related Articles", needHelp: "Need Help Planning?",
+    needHelpBody: "Our event team is ready to help across Saudi Arabia — Riyadh, Jeddah, AlUla, and beyond.",
+    freeConsult: "Get a Free Consultation", readyPlan: "Ready to Plan Your Event?",
+    readyPlanBody: "Our team delivers events across Saudi Arabia — from Riyadh to AlUla.",
+    planNext: "Plan Your Next Event",
+    bottomBody: "Whether you are planning a corporate summit in Riyadh, an exhibition in Jeddah, or a destination event in AlUla — our team delivers from concept to completion.",
+    bookCall: "Book a Discovery Call", exploreServices: "Explore Services",
+    previous: "Previous", next: "Next", continueReading: "Continue Reading",
+    moreInsights: "More", insightsWord: "Insights", viewAll: "View all articles",
+    readArticle: "Read article", notFound: "Article Not Found", backJournal: "Back to Journal",
+    tipLabels: { tip: "Expert Tip", insight: "Industry Insight", mistake: "Common Pitfall", recommendation: "Our Recommendation" },
+  },
+  ar: {
+    home: "الرئيسية", journal: "المدوّنة", topics: "المواضيع", keyTakeaways: "أبرز النقاط",
+    faq: "الأسئلة الشائعة", writtenBy: "بقلم",
+    specialist: "متخصص في صناعة الفعاليات", relatedServices: "خدمات ذات صلة",
+    relatedArticles: "مقالات ذات صلة", needHelp: "تحتاج مساعدة في التخطيط؟",
+    needHelpBody: "فريق الفعاليات لدينا جاهز لمساعدتك في عموم السعودية — الرياض وجدة والعلا وما بعدها.",
+    freeConsult: "احصل على استشارة مجانية", readyPlan: "جاهز لتخطيط فعاليتك؟",
+    readyPlanBody: "ينفّذ فريقنا الفعاليات في عموم السعودية — من الرياض إلى العلا.",
+    planNext: "خطّط لفعاليتك القادمة",
+    bottomBody: "سواء كنت تخطّط لقمة مؤسسية في الرياض، أو معرض في جدة، أو فعالية وجهة في العلا — ينفّذ فريقنا من الفكرة إلى الإنجاز.",
+    bookCall: "احجز مكالمة تعريفية", exploreServices: "استكشف الخدمات",
+    previous: "السابق", next: "التالي", continueReading: "تابع القراءة",
+    moreInsights: "المزيد من", insightsWord: "الرؤى", viewAll: "عرض كل المقالات",
+    readArticle: "اقرأ المقال", notFound: "المقال غير موجود", backJournal: "العودة إلى المدوّنة",
+    tipLabels: { tip: "نصيحة الخبير", insight: "رؤية القطاع", mistake: "خطأ شائع", recommendation: "توصيتنا" },
+  },
+};
+
 /* ─── Styled data table ─────────────────────────────────────────────────────── */
 function BlogTable({ rows }: { rows: string[] }) {
   const parseCells = (row: string) =>
@@ -138,7 +174,7 @@ function BlogTable({ rows }: { rows: string[] }) {
 }
 
 /* ─── Key Takeaways summary card ────────────────────────────────────────────── */
-function TakeawaysCard({ items }: { items: string[] }) {
+function TakeawaysCard({ items, label }: { items: string[]; label: string }) {
   return (
     <div className="my-12 rounded-2xl bg-[var(--surface-tinted)] border border-[var(--primary)]/15 p-7 md:p-8">
       <div className="flex items-center gap-3 mb-6">
@@ -146,7 +182,7 @@ function TakeawaysCard({ items }: { items: string[] }) {
           <ListChecks size={16} className="text-white" />
         </div>
         <p className="text-[16px] font-bold text-[var(--heading)] leading-tight" style={{ letterSpacing: "-0.015em" }}>
-          Key Takeaways
+          {label}
         </p>
       </div>
       <ul className="space-y-3.5">
@@ -167,7 +203,7 @@ function TakeawaysCard({ items }: { items: string[] }) {
 }
 
 /* ─── FAQ accordion (native <details> for accessibility + SEO) ───────────────── */
-function FaqSection({ items }: { items: { q: string; a: string }[] }) {
+function FaqSection({ items, heading }: { items: { q: string; a: string }[]; heading: string }) {
   return (
     <div className="my-14">
       <div className="flex items-center gap-3 mb-6">
@@ -178,7 +214,7 @@ function FaqSection({ items }: { items: { q: string; a: string }[] }) {
           className="text-[clamp(1.3rem,2.8vw,1.65rem)] font-semibold text-[var(--heading)] leading-tight m-0"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Frequently Asked Questions
+          {heading}
         </h2>
       </div>
       <div className="space-y-3">
@@ -212,6 +248,7 @@ function FaqSection({ items }: { items: { q: string; a: string }[] }) {
 export default function BlogPostPage() {
   const params = useParams();
   const isAr = useLocale() === "ar";
+  const t = isAr ? UI.ar : UI.en;
   const lp = (path: string) => `${isAr ? "/ar" : ""}${path}`;
   const slug = params.slug as string;
   const post = blogPosts.find((p) => p.slug === slug);
@@ -220,6 +257,18 @@ export default function BlogPostPage() {
   const nextPost = currentIdx < blogPosts.length - 1 ? blogPosts[currentIdx + 1] : null;
 
   /* Related posts — same category first, fill remaining slots */
+  const titleOf = (p: typeof blogPosts[number]) => (isAr && p.titleAr ? p.titleAr : p.title);
+  const excerptOf = (p: typeof blogPosts[number]) => (isAr && p.excerptAr ? p.excerptAr : p.excerpt);
+  const catMapAr: Record<string, string> = {
+    "Event Planning": "تنظيم الفعاليات",
+    "Color Trends": "اتجاهات الألوان",
+    "Decor Ideas": "أفكار الديكور",
+    "Weddings": "الأعراس",
+    "Corporate": "المؤسسات",
+    "Lifestyle": "نمط الحياة",
+  };
+  const catOf = (cat: string) => (isAr ? catMapAr[cat] ?? cat : cat);
+
   const relatedPosts = blogPosts
     .filter((p) => p.slug !== slug && p.category === post?.category)
     .slice(0, 3);
@@ -232,25 +281,43 @@ export default function BlogPostPage() {
 
   /* Related services by post category */
   const getRelatedServices = (cat: string) => {
-    const map: Record<string, { title: string; href: string; desc: string }[]> = {
-      Corporate: [
-        { title: "Corporate Events & Galas",  href: "/services/corporate-events", desc: "High-profile summits and executive dinners." },
-        { title: "Conference Management",     href: "/services/conferences",      desc: "End-to-end MICE solutions." },
-        { title: "Exhibition Management",     href: "/services/exhibitions",      desc: "Large-scale trade shows & expos." },
-      ],
-      Weddings: [
-        { title: "Wedding Planning",          href: "/services/weddings",         desc: "Royal weddings and milestone celebrations." },
-        { title: "Destination Events",        href: "/services/destination-events", desc: "AlUla, Red Sea & NEOM events." },
-        { title: "VIP Events",               href: "/services/luxury-vip-events",  desc: "Private and intimate celebrations." },
-      ],
-    };
-    return (
-      map[cat] ?? [
-        { title: "Corporate Events",  href: "/services/corporate-events",  desc: "Strategic business events." },
-        { title: "Wedding Planning",  href: "/services/weddings",          desc: "Memorable celebrations." },
-        { title: "Destination Events",href: "/services/destination-events", desc: "Across Saudi Arabia." },
-      ]
-    );
+    const map: Record<string, { title: string; href: string; desc: string }[]> = isAr
+      ? {
+          Corporate: [
+            { title: "الفعاليات المؤسسية والحفلات", href: "/services/corporate-events", desc: "قمم رفيعة المستوى وعشاء تنفيذي." },
+            { title: "إدارة المؤتمرات", href: "/services/conferences", desc: "حلول MICE متكاملة." },
+            { title: "إدارة المعارض", href: "/services/exhibitions", desc: "معارض ومعارض تجارية واسعة النطاق." },
+          ],
+          Weddings: [
+            { title: "تخطيط الزفاف", href: "/services/weddings", desc: "أعراس ملكية واحتفالات بالمناسبات." },
+            { title: "فعاليات الوجهات", href: "/services/destination-events", desc: "فعاليات العلا والبحر الأحمر ونيوم." },
+            { title: "فعاليات كبار الشخصيات", href: "/services/luxury-vip-events", desc: "احتفالات خاصة وحميمة." },
+          ],
+        }
+      : {
+          Corporate: [
+            { title: "Corporate Events & Galas",  href: "/services/corporate-events", desc: "High-profile summits and executive dinners." },
+            { title: "Conference Management",     href: "/services/conferences",      desc: "End-to-end MICE solutions." },
+            { title: "Exhibition Management",     href: "/services/exhibitions",      desc: "Large-scale trade shows & expos." },
+          ],
+          Weddings: [
+            { title: "Wedding Planning",          href: "/services/weddings",         desc: "Royal weddings and milestone celebrations." },
+            { title: "Destination Events",        href: "/services/destination-events", desc: "AlUla, Red Sea & NEOM events." },
+            { title: "VIP Events",               href: "/services/luxury-vip-events",  desc: "Private and intimate celebrations." },
+          ],
+        };
+    const fallback = isAr
+      ? [
+          { title: "الفعاليات المؤسسية",  href: "/services/corporate-events",  desc: "فعاليات أعمال استراتيجية." },
+          { title: "تخطيط الزفاف",  href: "/services/weddings",          desc: "احتفالات لا تُنسى." },
+          { title: "فعاليات الوجهات", href: "/services/destination-events", desc: "في عموم السعودية." },
+        ]
+      : [
+          { title: "Corporate Events",  href: "/services/corporate-events",  desc: "Strategic business events." },
+          { title: "Wedding Planning",  href: "/services/weddings",          desc: "Memorable celebrations." },
+          { title: "Destination Events",href: "/services/destination-events", desc: "Across Saudi Arabia." },
+        ];
+    return map[cat] ?? fallback;
   };
 
   /* ── 404 ──────────────────────────────────────────────────────────────────── */
@@ -259,9 +326,9 @@ export default function BlogPostPage() {
       <main className="min-h-screen bg-[var(--background)] flex items-center justify-center">
         <Navbar />
         <div className="text-center">
-          <h1 className="text-2xl font-semibold text-[var(--heading)] mb-4">Article Not Found</h1>
-          <Link href="/blog" className="text-[var(--primary)] text-sm font-medium hover:underline">
-            &larr; Back to Journal
+          <h1 className="text-2xl font-semibold text-[var(--heading)] mb-4">{t.notFound}</h1>
+          <Link href={lp("/blog")} className="text-[var(--primary)] text-sm font-medium hover:underline">
+            &larr; {t.backJournal}
           </Link>
         </div>
       </main>
@@ -269,7 +336,8 @@ export default function BlogPostPage() {
   }
 
   /* ── Parse content into typed segments (skip hero intro block) ──────────── */
-  const segments = parseSegments(post.content.slice(1));
+  const displayContent = isAr && post.contentAr ? post.contentAr : post.content;
+  const segments = parseSegments(displayContent.slice(1));
 
   /* ── Single-block renderer ──────────────────────────────────────────────── */
   const renderBlock = (content: string, idx: number) => {
@@ -308,22 +376,22 @@ export default function BlogPostPage() {
       { icon: any; label: string; bg: string; border: string; label_color: string; icon_bg: string }
     > = {
       "[TIP]": {
-        icon: Lightbulb, label: "Expert Tip",
+        icon: Lightbulb, label: t.tipLabels.tip,
         bg: "bg-amber-50/70", border: "border-amber-300/70",
         label_color: "text-amber-700", icon_bg: "bg-amber-100",
       },
       "[INSIGHT]": {
-        icon: TrendingUp, label: "Industry Insight",
+        icon: TrendingUp, label: t.tipLabels.insight,
         bg: "bg-sky-50/70", border: "border-sky-300/70",
         label_color: "text-sky-700", icon_bg: "bg-sky-100",
       },
       "[MISTAKE]": {
-        icon: AlertTriangle, label: "Common Pitfall",
+        icon: AlertTriangle, label: t.tipLabels.mistake,
         bg: "bg-rose-50/60", border: "border-rose-300/60",
         label_color: "text-rose-700", icon_bg: "bg-rose-100",
       },
       "[RECOMMENDATION]": {
-        icon: CheckCircle, label: "Our Recommendation",
+        icon: CheckCircle, label: t.tipLabels.recommendation,
         bg: "bg-emerald-50/60", border: "border-emerald-300/60",
         label_color: "text-emerald-700", icon_bg: "bg-emerald-100",
       },
@@ -461,7 +529,7 @@ export default function BlogPostPage() {
                 className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] text-white/90 border border-white/20 backdrop-blur-sm"
                 style={{ background: "rgba(255,255,255,0.1)" }}
               >
-                {post.category}
+                {catOf(post.category)}
               </span>
               <span className="text-white/65 text-[12px] font-medium flex items-center gap-1.5">
                 <Clock size={12} />
@@ -505,12 +573,12 @@ export default function BlogPostPage() {
               className="min-w-0"
             >
               {/* Editorial lede — hero introduction */}
-              {post.content[0] && (
+              {displayContent[0] && (
                 <div className="mb-12 pb-10 border-b border-[var(--border)]">
                   <p
                     className="text-[var(--foreground)] text-[1.1rem] md:text-[1.175rem] leading-[1.8] font-[450]"
                     style={{ letterSpacing: "-0.01em" }}
-                    dangerouslySetInnerHTML={{ __html: inlineMarkdown(post.content[0]) }}
+                    dangerouslySetInnerHTML={{ __html: inlineMarkdown(displayContent[0]) }}
                   />
                 </div>
               )}
@@ -519,8 +587,8 @@ export default function BlogPostPage() {
               <div>
                 {segments.map((seg, idx) => {
                   if (seg.kind === "table")     return <BlogTable     key={`t${idx}`}  rows={seg.rows} />;
-                  if (seg.kind === "takeaways") return <TakeawaysCard key={`tw${idx}`} items={seg.items} />;
-                  if (seg.kind === "faq")       return <FaqSection    key={`f${idx}`}  items={seg.items} />;
+                  if (seg.kind === "takeaways") return <TakeawaysCard key={`tw${idx}`} items={seg.items} label={t.keyTakeaways} />;
+                  if (seg.kind === "faq")       return <FaqSection    key={`f${idx}`}  items={seg.items} heading={t.faq} />;
                   const el = renderBlock(seg.content, idx);
                   return el ? <div key={idx}>{el}</div> : null;
                 })}
@@ -529,9 +597,9 @@ export default function BlogPostPage() {
               {/* Topic tags */}
               <div className="mt-14 pt-8 border-t border-[var(--border)] flex flex-wrap items-center gap-2">
                 <span className="text-[11px] uppercase tracking-wider text-[var(--foreground-faint)] font-semibold mr-1">
-                  Topics
+                  {t.topics}
                 </span>
-                {[post.category, "Saudi Arabia", "Vision 2030"].map((tag) => (
+                {[catOf(post.category), isAr ? "السعودية" : "Saudi Arabia", isAr ? "رؤية 2030" : "Vision 2030"].map((tag) => (
                   <span
                     key={tag}
                     className="px-3.5 py-1.5 rounded-full text-[11px] font-medium text-[var(--foreground-muted)] bg-[var(--surface-raised)] border border-[var(--border-subtle)] hover:border-[var(--border)] transition-colors cursor-default"
@@ -544,13 +612,13 @@ export default function BlogPostPage() {
               {/* Mobile sidebar CTA */}
               <div className="mt-10 lg:hidden p-6 rounded-2xl bg-[var(--surface-tinted)] border border-[var(--primary)]/15">
                 <p className="text-[14px] font-semibold text-[var(--heading)] mb-2">
-                  Ready to Plan Your Event?
+                  {t.readyPlan}
                 </p>
                 <p className="text-[13px] text-[var(--foreground-muted)] leading-relaxed mb-4">
-                  Our team delivers events across Saudi Arabia — from Riyadh to AlUla.
+                  {t.readyPlanBody}
                 </p>
-                <Link href="/contact" className="btn-primary w-full text-center text-[13px] py-3">
-                  Get a Free Consultation
+                <Link href={lp("/contact")} className="btn-primary w-full text-center text-[13px] py-3">
+                  {t.freeConsult}
                 </Link>
               </div>
             </motion.article>
@@ -562,7 +630,7 @@ export default function BlogPostPage() {
                 {/* Author */}
                 <div className="p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
                   <p className="text-[10px] uppercase tracking-[0.12em] text-[var(--foreground-faint)] font-bold mb-3">
-                    Written by
+                    {t.writtenBy}
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[var(--primary-muted)] border border-[var(--primary)]/20 flex items-center justify-center text-[var(--primary)] font-bold text-sm shrink-0">
@@ -570,7 +638,7 @@ export default function BlogPostPage() {
                     </div>
                     <div>
                       <p className="text-[13px] font-semibold text-[var(--heading)]">{post.author}</p>
-                      <p className="text-[11px] text-[var(--foreground-muted)]">Event Industry Specialist</p>
+                      <p className="text-[11px] text-[var(--foreground-muted)]">{t.specialist}</p>
                     </div>
                   </div>
                 </div>
@@ -585,15 +653,15 @@ export default function BlogPostPage() {
                     <div className="w-8 h-8 rounded-xl bg-white/15 flex items-center justify-center mb-3">
                       <MessageCircle size={15} className="text-white" />
                     </div>
-                    <p className="text-[14px] font-semibold text-white mb-1.5">Need Help Planning?</p>
+                    <p className="text-[14px] font-semibold text-white mb-1.5">{t.needHelp}</p>
                     <p className="text-[12px] text-white/75 leading-relaxed mb-4">
-                      Our event team is ready to help across Saudi Arabia — Riyadh, Jeddah, AlUla, and beyond.
+                      {t.needHelpBody}
                     </p>
                     <Link
-                      href="/contact"
+                      href={lp("/contact")}
                       className="inline-flex items-center gap-2 w-full justify-center px-4 py-2.5 rounded-lg bg-white text-[var(--primary)] text-[12.5px] font-semibold hover:bg-white/90 transition-colors"
                     >
-                      Get a Free Consultation
+                      {t.freeConsult}
                     </Link>
                   </div>
                 </div>
@@ -601,13 +669,13 @@ export default function BlogPostPage() {
                 {/* Related Services */}
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.12em] text-[var(--foreground-faint)] font-bold mb-3">
-                    Related Services
+                    {t.relatedServices}
                   </p>
                   <div className="space-y-2">
                     {getRelatedServices(post.category).map((s, i) => (
                       <Link
                         key={i}
-                        href={s.href}
+                        href={lp(s.href)}
                         className="group flex items-start gap-3 p-3.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface)] hover:border-[var(--primary)]/30 hover:shadow-[var(--shadow-sm)] transition-all duration-200"
                       >
                         <div className="w-8 h-8 rounded-lg bg-[var(--primary-muted)] flex items-center justify-center shrink-0 group-hover:bg-emerald-50 transition-colors">
@@ -627,13 +695,13 @@ export default function BlogPostPage() {
                 {/* Related Articles */}
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.12em] text-[var(--foreground-faint)] font-bold mb-3">
-                    Related Articles
+                    {t.relatedArticles}
                   </p>
                   <div className="space-y-4">
                     {relatedPosts.slice(0, 3).map((rp) => (
-                      <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block">
+                      <Link key={rp.slug} href={lp(`/blog/${rp.slug}`)} className="group block">
                         <p className="text-[12.5px] font-medium text-[var(--heading)] group-hover:text-[var(--primary)] transition-colors line-clamp-2 leading-snug mb-1">
-                          {rp.title}
+                          {titleOf(rp)}
                         </p>
                         <p className="text-[11px] text-[var(--foreground-faint)] flex items-center gap-1.5">
                           <Clock size={10} />
@@ -655,23 +723,23 @@ export default function BlogPostPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <span className="section-label mb-5 mx-auto w-fit">
             <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-            Plan Your Next Event
+            {t.planNext}
           </span>
           <h2
             className="text-2xl md:text-3xl font-semibold text-[var(--heading)] mb-4"
             style={{ letterSpacing: "-0.025em" }}
           >
-            Let&apos;s Plan Your <span className="text-[var(--primary)]">Next Event</span> Together
+            {isAr ? <>لنخطّط لـ<span className="text-[var(--primary)]">فعاليتك القادمة</span> معًا</> : <>Let&apos;s Plan Your <span className="text-[var(--primary)]">Next Event</span> Together</>}
           </h2>
           <p className="text-[var(--foreground-muted)] text-[15px] mb-8 max-w-xl mx-auto leading-relaxed">
-            Whether you are planning a corporate summit in Riyadh, an exhibition in Jeddah, or a destination event in AlUla — our team delivers from concept to completion.
+            {t.bottomBody}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/contact" className="btn-primary px-8 py-3.5">
-              Book a Discovery Call <ArrowRight size={15} />
+            <Link href={lp("/contact")} className="btn-primary px-8 py-3.5">
+              {t.bookCall} <ArrowRight size={15} />
             </Link>
-            <Link href="/services" className="btn-outline px-8 py-3.5">
-              Explore Services
+            <Link href={lp("/services")} className="btn-outline px-8 py-3.5">
+              {t.exploreServices}
             </Link>
           </div>
         </div>
@@ -682,24 +750,24 @@ export default function BlogPostPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[var(--border)]">
             {prevPost ? (
-              <Link href={`/blog/${prevPost.slug}`} className="group py-10 md:pr-10 transition-all">
+              <Link href={lp(`/blog/${prevPost.slug}`)} className="group py-10 md:pr-10 transition-all">
                 <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--foreground-faint)] font-bold flex items-center gap-2 mb-3">
-                  <ArrowLeft size={13} /> Previous
+                  <ArrowLeft size={13} /> {t.previous}
                 </span>
                 <h4 className="text-[15px] font-semibold text-[var(--heading)] group-hover:text-[var(--primary)] transition-colors line-clamp-2">
-                  {prevPost.title}
+                  {titleOf(prevPost)}
                 </h4>
               </Link>
             ) : (
               <div className="py-10 md:pr-10" />
             )}
             {nextPost ? (
-              <Link href={`/blog/${nextPost.slug}`} className="group py-10 md:pl-10 text-left md:text-right transition-all">
+              <Link href={lp(`/blog/${nextPost.slug}`)} className="group py-10 md:pl-10 text-left md:text-right transition-all">
                 <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--foreground-faint)] font-bold flex items-center md:justify-end gap-2 mb-3">
-                  Next <ArrowRight size={13} />
+                  {t.next} <ArrowRight size={13} />
                 </span>
                 <h4 className="text-[15px] font-semibold text-[var(--heading)] group-hover:text-[var(--primary)] transition-colors line-clamp-2">
-                  {nextPost.title}
+                  {titleOf(nextPost)}
                 </h4>
               </Link>
             ) : (
@@ -716,26 +784,26 @@ export default function BlogPostPage() {
             <div>
               <span className="section-label mb-3 block w-fit">
                 <span className="w-4 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-                Continue Reading
+                {t.continueReading}
               </span>
               <h3
                 className="text-2xl md:text-3xl font-semibold text-[var(--heading)]"
                 style={{ letterSpacing: "-0.025em" }}
               >
-                More <span className="text-[var(--primary)]">Insights</span>
+                {t.moreInsights} <span className="text-[var(--primary)]">{t.insightsWord}</span>
               </h3>
             </div>
             <Link
-              href="/blog"
+              href={lp("/blog")}
               className="text-[var(--primary)] text-[13px] font-medium flex items-center gap-1.5 hover:gap-2.5 transition-all"
             >
-              View all articles <ArrowRight size={14} />
+              {t.viewAll} <ArrowRight size={14} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedPosts.map((rp) => (
-              <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group">
+              <Link key={rp.slug} href={lp(`/blog/${rp.slug}`)} className="group">
                 <motion.article
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.2 }}
@@ -744,13 +812,13 @@ export default function BlogPostPage() {
                   <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
                     <Image
                       src={rp.image}
-                      alt={rp.title}
+                      alt={titleOf(rp)}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-3 end-3">
                       <span className="text-[10px] font-medium text-[var(--primary)] bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg shadow-sm">
-                        {rp.category}
+                        {catOf(rp.category)}
                       </span>
                     </div>
                   </div>
@@ -763,13 +831,13 @@ export default function BlogPostPage() {
                       className="text-[16px] font-semibold text-[var(--heading)] group-hover:text-[var(--primary)] transition-colors line-clamp-2 leading-snug mb-3"
                       style={{ letterSpacing: "-0.01em" }}
                     >
-                      {rp.title}
+                      {titleOf(rp)}
                     </h4>
                     <p className="text-[var(--foreground-muted)] text-[13px] line-clamp-2 leading-relaxed mb-4">
-                      {rp.excerpt}
+                      {excerptOf(rp)}
                     </p>
                     <span className="flex items-center gap-1.5 text-[var(--primary)] text-[12px] font-medium">
-                      Read article <ArrowRight size={12} />
+                      {t.readArticle} <ArrowRight size={12} />
                     </span>
                   </div>
                 </motion.article>

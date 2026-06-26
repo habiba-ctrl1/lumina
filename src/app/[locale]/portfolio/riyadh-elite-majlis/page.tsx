@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function RiyadhEliteMajlis() {
   const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -38,19 +39,26 @@ export default async function RiyadhEliteMajlis() {
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-neutral-900 mb-8 leading-tight uppercase tracking-tight">
             {isAr ? "مجلس الرياض النخبوي" : <>Riyadh <span className="text-[var(--primary)] ">Elite Majlis</span></>}
           </h1>
-          <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">Where tradition meets the boardroom. An exclusive environment for high-stakes networking and cultural exchange.</p>
+          <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">{isAr ? "حيث يلتقي التراث بقاعة الاجتماعات. بيئة حصرية للتواصل عالي الأهمية والتبادل الثقافي." : "Where tradition meets the boardroom. An exclusive environment for high-stakes networking and cultural exchange."}</p>
         </div>
       </section>
 
       {/* Project Overview */}
       <section className="py-16 md:py-20 bg-white border border-neutral-200/80 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
-          {[
+          {(isAr
+            ? [
+            { icon: Home, label: "الموقع", val: "قصر خاص" },
+            { icon: Users, label: "السعة", val: "50 من كبار الشخصيات" },
+            { icon: Coffee, label: "التموين", val: "مزيج تراثي" },
+            { icon: Shield, label: "الخصوصية", val: "تعتيم تام" },
+              ]
+            : [
             { icon: Home, label: "Setting", val: "Private Palace" },
             { icon: Users, label: "Capacity", val: "50 VVIPs" },
             { icon: Coffee, label: "Catering", val: "Heritage Fusion" },
             { icon: Shield, label: "Privacy", val: "Total Blackout" }
-          ].map((stat: any, i: number) => (
+          ]).map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-neutral-600 mb-1 font-bold">{stat.label}</div>
@@ -71,26 +79,37 @@ export default async function RiyadhEliteMajlis() {
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">The <span className="text-[var(--primary)] ">Concept</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "المفهوم" : <>The <span className="text-[var(--primary)] ">Concept</span></>}</h2>
             <p className="mb-8">
-              The Majlis is the heartbeat of Saudi social and political life. For this project, we were tasked with modernizing the Majlis experience for a group of international CEOs and local ministers. The goal was to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions.
+              {isAr
+                ? "المجلس هو نبض الحياة الاجتماعية والسياسية السعودية. ولهذا المشروع، كُلِّفنا بتحديث تجربة المجلس لمجموعة من الرؤساء التنفيذيين الدوليين والوزراء المحليين. وكان الهدف الحفاظ على دفء الضيافة السعودية الأصيل مع توفير البنية التحتية للنقاشات المؤسسية رفيعة المستوى."
+                : "The Majlis is the heartbeat of Saudi social and political life. For this project, we were tasked with modernizing the Majlis experience for a group of international CEOs and local ministers. The goal was to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions."}
             </p>
             <p>
-              We designed a custom-built modular Majlis that could be deployed in a private garden, featuring climate-controlled interiors and integrated discreet technology for presentations.
+              {isAr
+                ? "صمّمنا مجلسًا معياريًا مبنيًا خصيصًا يمكن نشره في حديقة خاصة، بتصميمات داخلية متحكّم بمناخها وتقنية متحفّظة مدمجة للعروض."
+                : "We designed a custom-built modular Majlis that could be deployed in a private garden, featuring climate-controlled interiors and integrated discreet technology for presentations."}
             </p>
           </div>
         </div>
 
         {/* The Execution */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-10 uppercase tracking-tight">Impeccable <span className="text-[var(--primary)] ">Detail</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-10 uppercase tracking-tight">{isAr ? <>تفاصيل <span className="text-[var(--primary)] ">لا تشوبها شائبة</span></> : <>Impeccable <span className="text-[var(--primary)] ">Detail</span></>}</h2>
           <div className="grid md:grid-cols-2 gap-10">
-            {[
+            {(isAr
+              ? [
+              { title: "مفروشات مخصّصة", desc: "زخارف نسيج السدو المصنوعة يدويًا مدمجة في مقاعد عصرية مريحة." },
+              { title: "هوية حسّية", desc: "عطر مخصّص من العود وورد الطائف صُمّم خصيصًا لتلك الأمسية." },
+              { title: "رحلة طهي", desc: "قائمة تذوّق من 12 طبقًا تعيد ابتكار النكهات السعودية التقليدية لذائقة عالمية." },
+              { title: "تكامل تقني", desc: "شاشات LED مخفيّة وصوت موجّه حافظا على جمالية المساحة." },
+                ]
+              : [
               { title: "Custom Furnishings", desc: "Hand-crafted Sadu weaving patterns integrated into ergonomic modern seating." },
               { title: "Sensory Branding", desc: "A custom-curated fragrance of Oud and Taif Rose designed specifically for the evening." },
               { title: "Gastronomic Journey", desc: "A 12-course tasting menu reinventing traditional Saudi flavors for a global palate." },
               { title: "Tech Integration", desc: "Hidden LED screens and directional audio that preserved the aesthetic of the space." }
-            ].map((item: any, i: number) => (
+            ]).map((item: any, i: number) => (
               <div key={i} className="flex gap-10 p-8 bg-white rounded-3xl border border-neutral-200/80 hover:bg-white hover:shadow-xl transition-all group">
                 <div className="w-12 h-12 bg-[var(--primary)]/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[var(--primary)] transition-colors">
                   <CheckCircle2 size={24} className="text-[var(--primary)] group-hover:text-white" />
@@ -110,12 +129,14 @@ export default async function RiyadhEliteMajlis() {
             <Image src="/portfolio/riyadh-majlis.webp" alt="Pattern" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">The <span className="text-[var(--primary)] ">Legacy</span></h2>
+            <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">{isAr ? "الإرث" : <>The <span className="text-[var(--primary)] ">Legacy</span></>}</h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-              The event resulted in three major cross-border partnerships being signed on-site. The relaxed yet professional atmosphere of the Elite Majlis provided the perfect catalyst for high-trust negotiations.
+              {isAr
+                ? "أسفرت الفعالية عن توقيع ثلاث شراكات كبرى عابرة للحدود في الموقع. ووفّرت أجواء المجلس النخبوي المريحة والمهنية في آنٍ المحفّز المثالي لمفاوضات عالية الثقة."
+                : "The event resulted in three major cross-border partnerships being signed on-site. The relaxed yet professional atmosphere of the Elite Majlis provided the perfect catalyst for high-trust negotiations."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
-              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">Excellence in Cultural Diplomacy</span>
+              <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "التميّز في الدبلوماسية الثقافية" : "Excellence in Cultural Diplomacy"}</span>
             </div>
           </div>
         </div>
@@ -124,19 +145,19 @@ export default async function RiyadhEliteMajlis() {
       {/* Related Services */}
       <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury &amp; VIP Events
+            <Link href={`${arHref}/services/luxury-vip-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الفاخرة وكبار الشخصيات" : "Luxury & VIP Events"}
             </Link>
-            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Corporate Event Management
+            <Link href={`${arHref}/services/corporate-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة الفعاليات المؤسسية" : "Corporate Event Management"}
             </Link>
-            <Link href="/services/cultural-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Cultural &amp; Heritage Events
+            <Link href={`${arHref}/services/cultural-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الثقافية والتراثية" : "Cultural & Heritage Events"}
             </Link>
-            <Link href="/locations/riyadh" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Exclusive Events in Riyadh
+            <Link href={`${arHref}/locations/riyadh`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الحصرية في الرياض" : "Exclusive Events in Riyadh"}
             </Link>
           </div>
         </div>
@@ -144,12 +165,12 @@ export default async function RiyadhEliteMajlis() {
 
       {/* CTA */}
       <section className="py-20 md:py-28 text-center bg-[var(--surface-raised)] border-t border-neutral-100">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Host Your <span className="text-[var(--primary)] ">Signature Gathering</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? <>استضف <span className="text-[var(--primary)] ">تجمّعك المميّز</span></> : <>Host Your <span className="text-[var(--primary)] ">Signature Gathering</span></>}</h2>
         <Link
-          href="/contact"
+          href={`${arHref}/contact`}
           className="inline-block px-12 py-6 bg-[var(--primary)] text-white font-bold uppercase tracking-[0.2em] hover:bg-neutral-900 transition-all rounded-xl shadow-2xl text-xs"
         >
-          Inquire About Majlis Services
+          {isAr ? "استفسر عن خدمات المجلس" : "Inquire About Majlis Services"}
         </Link>
       </section>
 

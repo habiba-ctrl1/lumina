@@ -4,18 +4,21 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import SectionWrapper from "./SectionWrapper";
 
 const galleryItems = [
-  { id: 1, src: "/luxury_wedding_couple_guests.webp",    title: "Royal Riyadh Wedding",      category: "Weddings",  slug: "royal-riyadh-wedding",        alt: "Luxury royal wedding guests celebrating in a grand Saudi Arabia wedding hall" },
-  { id: 2, src: "/riyadh_summit_people.webp",            title: "Executive Summit Jeddah",   category: "Corporate", slug: "executive-summit-jeddah",      alt: "Large audience at an immersive corporate summit in Jeddah Saudi Arabia" },
-  { id: 3, src: "/majlis_gathering_people.webp",         title: "Elite Majlis Gathering",    category: "Private",   slug: "riyadh-elite-majlis",          alt: "Men in traditional Saudi attire networking at a luxury Majlis gathering" },
-  { id: 4, src: "/jeddah_luxury_people.webp",            title: "Riyadh Luxury Soiree",      category: "Private",   slug: "riyadh-luxury-soiree",         alt: "Elegant guests at an exclusive luxury hotel soiree in Saudi Arabia" },
-  { id: 5, src: "/alula_gala_people.webp",               title: "AlUla Heritage Gala",       category: "Culture",   slug: "alula-desert-festival",        alt: "Guests in formal wear at a desert heritage gala event in AlUla Saudi Arabia" },
-  { id: 6, src: "/neom_summit_people.webp",              title: "NEOM Future Summit",        category: "Corporate", slug: "neom-future-summit",           alt: "VIPs and speakers at a high-tech NEOM summit stage in Saudi Arabia" },
+  { id: 1, src: "/luxury_wedding_couple_guests.webp",    title: "Royal Riyadh Wedding",      titleAr: "زفاف الرياض الملكي",      category: "Weddings",  categoryAr: "أعراس",   slug: "royal-riyadh-wedding",        alt: "Luxury royal wedding guests celebrating in a grand Saudi Arabia wedding hall" },
+  { id: 2, src: "/riyadh_summit_people.webp",            title: "Executive Summit Jeddah",   titleAr: "قمة جدة التنفيذية",       category: "Corporate", categoryAr: "مؤسسي",   slug: "executive-summit-jeddah",      alt: "Large audience at an immersive corporate summit in Jeddah Saudi Arabia" },
+  { id: 3, src: "/majlis_gathering_people.webp",         title: "Elite Majlis Gathering",    titleAr: "ملتقى المجلس النخبوي",    category: "Private",   categoryAr: "خاص",     slug: "riyadh-elite-majlis",          alt: "Men in traditional Saudi attire networking at a luxury Majlis gathering" },
+  { id: 4, src: "/jeddah_luxury_people.webp",            title: "Riyadh Luxury Soiree",      titleAr: "أمسية الرياض الفاخرة",    category: "Private",   categoryAr: "خاص",     slug: "riyadh-luxury-soiree",         alt: "Elegant guests at an exclusive luxury hotel soiree in Saudi Arabia" },
+  { id: 5, src: "/alula_gala_people.webp",               title: "AlUla Heritage Gala",       titleAr: "حفل العلا التراثي",       category: "Culture",   categoryAr: "ثقافة",   slug: "alula-desert-festival",        alt: "Guests in formal wear at a desert heritage gala event in AlUla Saudi Arabia" },
+  { id: 6, src: "/neom_summit_people.webp",              title: "NEOM Future Summit",        titleAr: "قمة نيوم للمستقبل",       category: "Corporate", categoryAr: "مؤسسي",   slug: "neom-future-summit",           alt: "VIPs and speakers at a high-tech NEOM summit stage in Saudi Arabia" },
 ];
 
 export default function RecentEvents({ hideHeader = false }: { hideHeader?: boolean }) {
+  const isAr = useLocale() === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <SectionWrapper id="gallery" className="bg-[var(--surface-raised)] relative overflow-hidden">
       <div className="relative z-10">
@@ -30,31 +33,31 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
             >
               <span className="section-label">
                 <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
-                Portfolio
+                {isAr ? "أعمالنا" : "Portfolio"}
               </span>
             </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 8 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
+            <motion.h2
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
               className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold"
               style={{ letterSpacing: "-0.025em" }}
             >
-              Recent <span className="text-[var(--primary)]">Masterpieces</span>
+              {isAr ? <>أحدث <span className="text-[var(--primary)]">التحف</span></> : <>Recent <span className="text-[var(--primary)]">Masterpieces</span></>}
             </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1 }} 
-              viewport={{ once: true }} 
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-neutral-500 text-[16px] leading-relaxed"
             >
-              Explore our most spectacular luxury events in this immersive curated gallery.
+              {isAr ? "استكشف أبهى فعالياتنا الفاخرة في هذا المعرض المنسّق الغامر." : "Explore our most spectacular luxury events in this immersive curated gallery."}
             </motion.p>
           </div>
         ) : (
-          <h2 className="sr-only">Recent Portfolio Masterpieces</h2>
+          <h2 className="sr-only">{isAr ? "أحدث تحف الأعمال" : "Recent Portfolio Masterpieces"}</h2>
         )}
 
         {/* 3D Coverflow Gallery */}
@@ -88,7 +91,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
           >
             {galleryItems.map((item: any) => (
               <SwiperSlide key={item.id} style={{ width: 'auto' }}>
-                <Link href={item.slug ? `/portfolio/${item.slug}` : "/portfolio"} className="block group cursor-pointer" aria-label={`View case study: ${item.title}`}>
+                <Link href={item.slug ? `${arHref}/portfolio/${item.slug}` : `${arHref}/portfolio`} className="block group cursor-pointer" aria-label={`${isAr ? "عرض دراسة الحالة" : "View case study"}: ${isAr ? item.titleAr : item.title}`}>
                   <div className="relative w-[260px] md:w-[380px] h-[360px] md:h-[500px] rounded-2xl overflow-hidden border border-neutral-200/80 transition-all duration-500"
                     style={{
                       boxShadow: "0 8px 24px -4px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.04)",
@@ -107,10 +110,10 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
 
                     {/* Content */}
                     <div className="absolute bottom-0 start-0 end-0 p-6 z-10">
-                      <p className="text-[12px] text-emerald-400 font-semibold mb-1" style={{ letterSpacing: "0.05em" }}>{item.category}</p>
-                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight" style={{ letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <p className="text-[12px] text-emerald-400 font-semibold mb-1" style={{ letterSpacing: "0.05em" }}>{isAr ? item.categoryAr : item.category}</p>
+                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight" style={{ letterSpacing: "-0.01em" }}>{isAr ? item.titleAr : item.title}</h3>
                       <span className="inline-flex items-center gap-1.5 text-white/85 text-[12.5px] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        View case study
+                        {isAr ? "عرض دراسة الحالة" : "View case study"}
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rtl:rotate-180"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                       </span>
                       <div className="w-8 h-0.5 bg-[var(--primary)] mt-3 rounded-full opacity-80" />

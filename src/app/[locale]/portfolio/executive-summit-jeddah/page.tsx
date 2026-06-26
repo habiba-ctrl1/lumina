@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function ExecutiveSummitJeddah() {
   const isAr = (await getLocale()) === "ar";
+  const arHref = isAr ? "/ar" : "";
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <Navbar />
@@ -38,19 +39,26 @@ export default async function ExecutiveSummitJeddah() {
           <h1 className="text-4xl md:text-6xl font-sans font-bold text-neutral-900 mb-8 leading-tight uppercase tracking-tight">
             {isAr ? "قمة جدة التنفيذية" : <>Executive <span className="text-[var(--primary)] ">Summit</span> Jeddah</>}
           </h1>
-          <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">Blending the maritime heritage of the Red Sea with the future of Saudi industry. An elite gathering at the edge of the world.</p>
+          <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">{isAr ? "مزج التراث البحري للبحر الأحمر بمستقبل الصناعة السعودية. تجمّع نخبوي على حافة العالم." : "Blending the maritime heritage of the Red Sea with the future of Saudi industry. An elite gathering at the edge of the world."}</p>
         </div>
       </section>
 
       {/* Project Overview */}
       <section className="py-16 md:py-20 bg-white border border-neutral-200/80 relative z-20 -mt-16 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-8">
-          {[
+          {(isAr
+            ? [
+            { icon: Ship, label: "القاعة", val: "نادي يخوت خاص" },
+            { icon: Building, label: "النطاق", val: "حصري لكبار التنفيذيين" },
+            { icon: Waves, label: "الموقع", val: "واجهة البحر الأحمر" },
+            { icon: Anchor, label: "الثيمة", val: "المستقبل البحري" },
+              ]
+            : [
             { icon: Ship, label: "Venue", val: "Private Yacht Club" },
             { icon: Building, label: "Scale", val: "C-Suite Exclusive" },
             { icon: Waves, label: "Setting", val: "Red Sea Front" },
             { icon: Anchor, label: "Theme", val: "Maritime Future" }
-          ].map((stat: any, i: number) => (
+          ]).map((stat: any, i: number) => (
             <div key={i} className="text-center">
               <stat.icon size={24} className="text-[var(--primary)] mx-auto mb-3" />
               <div className="text-[10px] uppercase tracking-widest text-neutral-600 mb-1 font-bold">{stat.label}</div>
@@ -69,25 +77,35 @@ export default async function ExecutiveSummitJeddah() {
             <Image src="/gallery_2.webp" alt="Jeddah Coastal Event" width={800} height={800} className="w-full h-full object-cover" />
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Coastal <span className="text-[var(--primary)] ">Elegance</span></h2>
+            <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "أناقة ساحلية" : <>Coastal <span className="text-[var(--primary)] ">Elegance</span></>}</h2>
             <p className="mb-8">
-              For the Jeddah Executive Summit, we curated an environment that leveraged the city&apos;s unique relationship with the Red Sea. The challenge was to create a space that felt expansive and inspiring, yet secure and private enough for sensitive policy discussions.
+              {isAr
+                ? "لقمة جدة التنفيذية، صمّمنا بيئة استثمرت علاقة المدينة الفريدة بالبحر الأحمر. وكان التحدّي خلق مساحة تبدو رحبة وملهمة، لكنها آمنة وخاصة بما يكفي لنقاشات السياسات الحساسة."
+                : "For the Jeddah Executive Summit, we curated an environment that leveraged the city's unique relationship with the Red Sea. The challenge was to create a space that felt expansive and inspiring, yet secure and private enough for sensitive policy discussions."}
             </p>
             <p>
-              We designed a custom-built glass pavilion on the water's edge, allowing the sunset to serve as the backdrop for the closing gala without compromising on acoustic privacy or climate control.
+              {isAr
+                ? "صمّمنا جناحًا زجاجيًا مبنيًا خصيصًا على حافة الماء، أتاح للغروب أن يكون خلفية للحفل الختامي دون أي مساومة على الخصوصية الصوتية أو التحكّم في المناخ."
+                : "We designed a custom-built glass pavilion on the water's edge, allowing the sunset to serve as the backdrop for the closing gala without compromising on acoustic privacy or climate control."}
             </p>
           </div>
         </div>
 
         {/* Operational Pillars */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-12 uppercase tracking-tight text-center">Summit <span className="text-[var(--primary)] ">Pillars</span></h2>
+          <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-12 uppercase tracking-tight text-center">{isAr ? "ركائز القمة" : <>Summit <span className="text-[var(--primary)] ">Pillars</span></>}</h2>
           <div className="grid md:grid-cols-3 gap-10">
-            {[
+            {(isAr
+              ? [
+              { title: "كونسيرج فائق العناية", desc: "إدارة سفر وإقامة متكاملة للرؤساء التنفيذيين الدوليين، بما يشمل التعامل مع صالات الطائرات الخاصة." },
+              { title: "بيئة مخصّصة", desc: "أثاث مصمّم خصيصًا بموادّ مستدامة عكست أنظمة الشعاب المرجانية في البحر الأحمر." },
+              { title: "تميّز أمني", desc: "شبكة أمن «خفيّة» وسلسة حمت كبار الشخصيات مع الحفاظ على أجواء مريحة." },
+                ]
+              : [
               { title: "White-Glove Concierge", desc: "End-to-end travel and stay management for international CEOs, including private jet terminal handling." },
               { title: "Bespoke Environment", desc: "Custom-designed furniture using sustainable materials that reflected the Red Sea's coral ecosystems." },
               { title: "Security Excellence", desc: "A seamless, 'invisible' security net that protected VIPs while maintaining a relaxed atmosphere." }
-            ].map((item: any, i: number) => (
+            ]).map((item: any, i: number) => (
               <div key={i} className="p-10 bg-white rounded-3xl border border-neutral-200/80 hover:border-[var(--primary)]/40 transition-all group">
                 <h3 className="text-neutral-900 text-xs font-bold uppercase tracking-widest mb-8 group-hover:text-[var(--primary)] transition-colors">{item.title}</h3>
                 <p className="text-sm text-neutral-500 font-light leading-relaxed">{item.desc}</p>
@@ -99,29 +117,31 @@ export default async function ExecutiveSummitJeddah() {
         {/* Testimonial */}
         <div className="bg-neutral-900 text-white p-12 md:p-24 rounded-3xl text-center">
           <p className="text-xl md:text-3xl font-sans font-light  mb-10 leading-relaxed">
-            "The executive summit in Jeddah was a masterclass in balance. Saudi Event Management delivered professional precision with the soul of a coastal retreat."
+            {isAr
+              ? "«كانت قمة جدة التنفيذية درسًا في التوازن. قدّمت إدارة الفعاليات السعودية دقّة احترافية بروح ملاذ ساحلي.»"
+              : "\"The executive summit in Jeddah was a masterclass in balance. Saudi Event Management delivered professional precision with the soul of a coastal retreat.\""}
           </p>
           <div className="w-12 h-px bg-[var(--primary)] mx-auto mb-8" />
-          <p className="text-[var(--primary)] text-[10px] font-bold uppercase tracking-[0.4em]">CEO, Global Logistics Forum</p>
+          <p className="text-[var(--primary)] text-[10px] font-bold uppercase tracking-[0.4em]">{isAr ? "الرئيس التنفيذي، منتدى اللوجستيات العالمي" : "CEO, Global Logistics Forum"}</p>
         </div>
       </section>
 
       {/* Related Services */}
       <section className="py-16 bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">Related Services</h3>
+          <h3 className="text-xs font-bold text-neutral-500 mb-6 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
           <div className="flex flex-wrap gap-4">
-            <Link href="/services/corporate-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Corporate Event Management
+            <Link href={`${arHref}/services/corporate-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة الفعاليات المؤسسية" : "Corporate Event Management"}
             </Link>
-            <Link href="/services/conferences" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Conference Management
+            <Link href={`${arHref}/services/conferences`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "إدارة المؤتمرات" : "Conference Management"}
             </Link>
-            <Link href="/services/luxury-vip-events" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Luxury &amp; VIP Events
+            <Link href={`${arHref}/services/luxury-vip-events`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات الفاخرة وكبار الشخصيات" : "Luxury & VIP Events"}
             </Link>
-            <Link href="/locations/jeddah" className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
-              Corporate Events in Jeddah
+            <Link href={`${arHref}/locations/jeddah`} className="px-5 py-2.5 bg-white border border-neutral-200/80 rounded-full text-xs font-medium text-neutral-700 hover:border-[var(--primary)]/40 hover:text-[var(--primary)] transition-colors">
+              {isAr ? "الفعاليات المؤسسية في جدة" : "Corporate Events in Jeddah"}
             </Link>
           </div>
         </div>
@@ -129,12 +149,12 @@ export default async function ExecutiveSummitJeddah() {
 
       {/* CTA */}
       <section className="py-32 bg-white text-center">
-        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">Elevate Your <span className="text-[var(--primary)] ">Corporate Voice</span></h2>
+        <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? <>ارفع <span className="text-[var(--primary)] ">صوت مؤسستك</span></> : <>Elevate Your <span className="text-[var(--primary)] ">Corporate Voice</span></>}</h2>
         <Link
-          href="/contact"
+          href={`${arHref}/contact`}
           className="inline-block px-12 py-6 bg-neutral-900 text-white font-bold uppercase tracking-[0.2em] hover:bg-[var(--primary)] transition-all rounded-xl shadow-2xl text-xs"
         >
-          Partner with Our Corporate Team
+          {isAr ? "تعاون مع فريقنا المؤسسي" : "Partner with Our Corporate Team"}
         </Link>
       </section>
 

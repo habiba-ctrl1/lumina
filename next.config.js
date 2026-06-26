@@ -4,6 +4,10 @@ const withNextIntl = require('next-intl/plugin')('./src/i18n/request.ts');
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Cap the largest generated width at 2048px. The default includes 3840px
+    // (4K), which this site never needs — generating it is CPU-heavy, slows the
+    // /_next/image optimizer (causing crawler timeouts) and hurts mobile LCP.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     minimumCacheTTL: 2678400, // 31 days — cache optimized images longer
     remotePatterns: [
       {

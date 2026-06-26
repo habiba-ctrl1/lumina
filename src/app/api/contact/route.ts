@@ -3,32 +3,54 @@ import prisma from '@/lib/prisma';
 import { resend, isResendConfigured, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/resend';
 import { logActivity } from '@/lib/logger';
 
-import { generateAutomatedQuote } from '@/lib/quote-engine';
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { 
-      name, email, phone, company, eventType, budget, 
-      eventDate, guestCount, venueCity, message, source 
+    const {
+      name, email, phone, company, eventType, budget,
+      eventDate, guestCount, venueCity, message, source, inquiryType
     } = body;
 
-    console.log('Incoming Inquiry:', { name, email, eventType });
+    // A "vendor" submission is a supplier/partner pitching their services — NOT a
+    // client booking an event. These must skip quote generation and the sales
+    // pipeline so they never pollute leads/quotes with fake estimates.
+    // Detected via the explicit form toggle OR any dedicated vendor/partner page
+    // (source-based detection means a form can't accidentally leak into the
+    // client pipeline by forgetting to send inquiryType).
+    const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor_inquiry'];
+    const isVendor = inquiryType === 'vendor' || VENDOR_SOURCES.includes(source);
+
+    console.log('Incoming Inquiry:', { name, email, eventType, inquiryType: isVendor ? 'vendor' : 'client' });
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
     }
 
-    const team = ["Sarah", "Ahmed", "Nora", "Admin"];
-    const randomAssignee = team[Math.floor(Math.random() * team.length)];
+    // All inbound client leads are routed to Habiba Asghar (single point of ownership).
+    const randomAssignee = "Habiba Asghar";
 
     // 1. Save to Prisma using Transaction (All or Nothing)
-    let inquiry;
+    let inquiry: any;
     try {
-      const quoteData = generateAutomatedQuote(eventType, guestCount, budget);
-
+      if (isVendor) {
+        // Vendor / partner inquiry: store a record only — no estimate, no Client,
+        // Lead, or QuoteRequest. Keeps the sales pipeline & quotes clean.
+        inquiry = await prisma.inquiry.create({
+          data: {
+            name,
+            email,
+            phone: phone || null,
+            company: company || null,
+            eventType: eventType || 'Vendor / Partnership',
+            message,
+            assignedTo: randomAssignee,
+            source: source || 'vendor_inquiry',
+          },
+        });
+      } else {
       inquiry = await prisma.$transaction(async (tx) => {
-        // 1a. Create Inquiry and Estimate
+        // 1a. Create the Inquiry record — real client data only, NO auto-quote.
+        // Real quotes are produced manually via the Proposals / Quote Wizard.
         const createdInquiry = await tx.inquiry.create({
           data: {
             name,
@@ -43,19 +65,7 @@ export async function POST(request: Request) {
             message,
             assignedTo: randomAssignee,
             source: source || 'direct_contact',
-            estimate: {
-              create: {
-                baseAmount: quoteData.baseAmount,
-                serviceFee: quoteData.serviceFee,
-                totalAmount: quoteData.totalAmount,
-                breakdown: JSON.stringify(quoteData.breakdown),
-                status: 'Generated'
-              }
-            }
           },
-          include: {
-            estimate: true
-          }
         });
 
         // 1b. Automatically create Client in CRM database if not exists
@@ -87,7 +97,7 @@ export async function POST(request: Request) {
             eventDate: eventDate || null,
             source: 'website',
             status: 'New',
-            notes: `Projected Estimate: SAR ${quoteData.totalAmount.toLocaleString()}`
+            notes: budget ? `Client stated budget: ${budget}` : 'New website inquiry — awaiting consultation.'
           }
         });
 
@@ -110,6 +120,7 @@ export async function POST(request: Request) {
 
         return createdInquiry;
       });
+      }
 
     } catch (prismaError) {
       console.error('Prisma Transaction Error:', prismaError);
@@ -122,29 +133,164 @@ export async function POST(request: Request) {
     // to ensure the serverless function doesn't sleep before the email sends.
     const executeBackgroundTasks = async () => {
       try {
+        // ── VENDOR / PARTNER PATH ───────────────────────────────────────────
+        // No quote, no sales-pipeline noise. Just notify the team and acknowledge.
+        if (isVendor) {
+          await logActivity(
+            'New Vendor Inquiry',
+            `Partnership / supplier inquiry from ${name}${company ? ` (${company})` : ''}.`,
+            email
+          );
+
+          if (isResendConfigured) {
+            const vendorWa = phone ? phone.replace(/[^0-9]/g, '') : null;
+            const vendorMsg = message || 'No additional details provided.';
+
+            // Admin notification (vendor pitch — deliberately no estimate).
+            await resend.emails.send({
+              from: FROM_EMAIL,
+              to: [ADMIN_EMAIL],
+              replyTo: email,
+              subject: `🤝 New Partner Inquiry: ${name}${company ? ` · ${company}` : ''}`,
+              html: `
+                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
+                  <div style="background-color: #0d0d0d; padding: 28px 32px;">
+                    <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Partner / Vendor Inquiry</p>
+                    <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">A supplier wants to partner with you</h1>
+                  </div>
+                  <div style="padding: 28px 32px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">
+                      <tr><td style="padding: 8px 0; color: #888; width: 130px;">Contact</td><td style="padding: 8px 0; font-weight: 500;">${name}</td></tr>
+                      ${company ? `<tr><td style="padding: 8px 0; color: #888;">Company</td><td style="padding: 8px 0; font-weight: 500;">${company}</td></tr>` : ''}
+                      <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #c5a059; text-decoration: none;">${email}</a></td></tr>
+                      ${phone ? `<tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #c5a059; text-decoration: none;">${phone}</a></td></tr>` : ''}
+                    </table>
+                    <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 24px 0 12px 0;">Their Message</h3>
+                    <div style="background-color: #faf9f7; border-left: 3px solid #c5a059; padding: 16px 20px; font-size: 14px; line-height: 1.7; color: #444; border-radius: 0 8px 8px 0;">${vendorMsg}</div>
+                    <div style="margin-top: 28px; text-align: center;">
+                      ${vendorWa ? `<a href="https://wa.me/${vendorWa}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 14px 28px; border-radius: 8px; margin: 0 6px 12px 6px;">WhatsApp ${name} &rarr;</a>` : ''}
+                      <a href="mailto:${email}" style="display: inline-block; background-color: #0d0d0d; color: #ffffff; text-decoration: none; font-size: 14px; padding: 14px 28px; border-radius: 8px; margin: 0 6px 12px 6px;">Reply by Email &rarr;</a>
+                    </div>
+                  </div>
+                  <div style="background-color: #0d0d0d; padding: 18px 32px; text-align: center;">
+                    <p style="color: #888; font-size: 11px; margin: 0;">Saudi Event Management · Partner Inquiries</p>
+                  </div>
+                </div>
+              `,
+            });
+
+            // Acknowledgement to the vendor — partnership tone, no quote/SAR figure.
+            await resend.emails.send({
+              from: FROM_EMAIL,
+              to: [email],
+              replyTo: ADMIN_EMAIL,
+              subject: 'Thank you for your partnership inquiry — Saudi Event Management',
+              html: `
+                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px;">
+                  <div style="text-align: center; margin-bottom: 40px;">
+                    <h1 style="color: #000000; font-size: 22px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin: 0;">Saudi Event Management</h1>
+                    <div style="width: 40px; height: 2px; background-color: #c5a059; margin: 20px auto 0;"></div>
+                  </div>
+                  <h2 style="color: #1a1a1a; font-size: 20px; font-weight: 400; margin-bottom: 24px;">Dear ${name},</h2>
+                  <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 24px;">
+                    Thank you for reaching out and for your interest in partnering with <strong>Saudi Event Management</strong>. We're always glad to connect with talented suppliers and creative partners across the Kingdom and the wider GCC.
+                  </p>
+                  <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 24px;">
+                    Our team will review your details${company ? ` and ${company}'s profile` : ''} and will be in touch should there be a fit for our upcoming events. If you have a portfolio, rate card, or showreel, feel free to reply to this email and include it.
+                  </p>
+                  <div style="border-top: 1px solid #eaeaea; padding-top: 32px; margin-top: 32px;">
+                    <p style="color: #1a1a1a; font-size: 15px; margin: 0 0 4px 0;">With warm regards,</p>
+                    <p style="color: #c5a059; font-size: 16px; font-weight: 500; margin: 0 0 16px 0;">The Partnerships Team</p>
+                    <p style="color: #888; font-size: 12px; margin: 0;">Saudi Event Management</p>
+                    <p style="color: #888; font-size: 12px; margin: 4px 0 0 0;"><a href="https://saudieventmanagement.com" style="color: #c5a059; text-decoration: none;">saudieventmanagement.com</a> | Riyadh, Kingdom of Saudi Arabia</p>
+                  </div>
+                </div>
+              `,
+            });
+          }
+          return; // Vendor path complete — skip all client/quote emails below.
+        }
+
         await logActivity(
-          'New Lead Received', 
-          `Inquiry from ${name} (Auto-assigned to ${inquiry.assignedTo}). Projected Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}`, 
+          'New Lead Received',
+          `Inquiry from ${name} (assigned to ${inquiry.assignedTo})${budget ? `. Stated budget: ${budget}` : ''}`,
           email
         );
 
         if (isResendConfigured) {
-          // Admin Notification
+          // Admin / Team Notification ----------------------------------------
+          // Safe fallbacks so the email never shows "undefined" for optional fields.
+          const safeEventType = eventType || 'General Enquiry';
+          const safeGuests = guestCount ? `${guestCount} guests` : 'Guest count TBD';
+          const safeCity = venueCity || 'TBD';
+          const safeDate = eventDate || 'Flexible / TBD';
+          const safeBudget = budget || 'Not specified';
+          const safePhone = phone || null;
+          const safeCompany = company || null;
+          const safeMessage = message || 'No additional details provided.';
+          // wa.me needs digits only (no +, spaces or dashes).
+          const waClient = safePhone ? safePhone.replace(/[^0-9]/g, '') : null;
+          const waClientText = encodeURIComponent(
+            `Hello ${name}, thank you for contacting Saudi Event Management regarding your ${safeEventType}. I'm Habiba, your dedicated event consultant.`
+          );
+
           await resend.emails.send({
             from: FROM_EMAIL,
             to: [ADMIN_EMAIL],
             replyTo: email,
-            subject: `New Lead: ${name} (Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()})`,
+            subject: `🔔 New Lead: ${name} · ${safeEventType} · ${safeCity}`,
             html: `
-              <div style="font-family: sans-serif; padding: 30px; border: 1px solid #f0f0f0; border-radius: 20px;">
-                <h2 style="color: #1a1a1a;">Automated Quote Generated</h2>
-                <p style="font-size: 16px; color: #666;">A new lead has been auto-assigned to <strong>${inquiry.assignedTo}</strong>.</p>
-                
-                <div style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 20px 0;">
-                  <h3 style="margin-top: 0; color: #c5a059;">Projected Estimate: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}</h3>
-                  <p><strong>Event:</strong> ${eventType} for ${guestCount} guests</p>
-                  <p><strong>Location:</strong> ${venueCity}</p>
-                  <p><strong>Client:</strong> ${name} (${email})</p>
+              <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
+
+                <!-- Header -->
+                <div style="background-color: #0d0d0d; padding: 28px 32px;">
+                  <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Internal Lead Alert</p>
+                  <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">New Client Inquiry Received</h1>
+                </div>
+
+                <!-- Assignee + client budget banner -->
+                <div style="padding: 24px 32px; background-color: #faf9f7; border-bottom: 1px solid #eee;">
+                  <p style="font-size: 14px; color: #555; margin: 0 0 4px 0;">Assigned to <strong style="color: #0d0d0d;">${inquiry.assignedTo}</strong></p>
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0;">Client's Stated Budget</p>
+                  <p style="font-size: 22px; color: #0d0d0d; font-weight: 600; margin: 0;">${safeBudget}</p>
+                  <p style="font-size: 12px; color: #999; margin: 8px 0 0 0;">Prepare a tailored proposal in the Quote Wizard — no auto-quote is generated.</p>
+                </div>
+
+                <!-- Event details table -->
+                <div style="padding: 28px 32px;">
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Event Details</h3>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">
+                    <tr><td style="padding: 8px 0; color: #888; width: 130px;">Event Type</td><td style="padding: 8px 0; font-weight: 500;">${safeEventType}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Guests</td><td style="padding: 8px 0; font-weight: 500;">${safeGuests}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Location</td><td style="padding: 8px 0; font-weight: 500;">${safeCity}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Event Date</td><td style="padding: 8px 0; font-weight: 500;">${safeDate}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Budget</td><td style="padding: 8px 0; font-weight: 500;">${safeBudget}</td></tr>
+                  </table>
+
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 16px 0;">Client</h3>
+                  <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #333;">
+                    <tr><td style="padding: 8px 0; color: #888; width: 130px;">Name</td><td style="padding: 8px 0; font-weight: 500;">${name}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #c5a059; text-decoration: none;">${email}</a></td></tr>
+                    ${safePhone ? `<tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:${safePhone}" style="color: #c5a059; text-decoration: none;">${safePhone}</a></td></tr>` : ''}
+                    ${safeCompany ? `<tr><td style="padding: 8px 0; color: #888;">Company</td><td style="padding: 8px 0; font-weight: 500;">${safeCompany}</td></tr>` : ''}
+                  </table>
+
+                  <h3 style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 12px 0;">Message</h3>
+                  <div style="background-color: #faf9f7; border-left: 3px solid #c5a059; padding: 16px 20px; font-size: 14px; line-height: 1.7; color: #444; border-radius: 0 8px 8px 0;">
+                    ${safeMessage}
+                  </div>
+
+                  <!-- CTA -->
+                  <div style="margin-top: 32px; text-align: center;">
+                    ${waClient ? `<a href="https://wa.me/${waClient}?text=${waClientText}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 14px 28px; border-radius: 8px; letter-spacing: 0.3px; margin: 0 6px 12px 6px;">WhatsApp ${name} &rarr;</a>` : ''}
+                    <a href="https://saudieventmanagement.com/admin/dashboard" style="display: inline-block; background-color: #0d0d0d; color: #ffffff; text-decoration: none; font-size: 14px; padding: 14px 28px; border-radius: 8px; letter-spacing: 0.5px; margin: 0 6px 12px 6px;">Open Admin Console &rarr;</a>
+                    <p style="margin: 14px 0 0 0;"><a href="mailto:${email}" style="color: #c5a059; font-size: 13px; text-decoration: none;">Or reply directly by email to ${name}</a></p>
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #0d0d0d; padding: 18px 32px; text-align: center;">
+                  <p style="color: #888; font-size: 11px; margin: 0;">Saudi Event Management · Automated Lead Engine</p>
                 </div>
               </div>
             `,
@@ -155,7 +301,7 @@ export async function POST(request: Request) {
             from: FROM_EMAIL,
             to: [email],
             replyTo: ADMIN_EMAIL,
-            subject: 'Your Luxury Event Projection - Saudi Event Management',
+            subject: "We've received your inquiry — Saudi Event Management",
             html: `
               <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px;">
                 <!-- Logo Header -->
@@ -175,16 +321,21 @@ export async function POST(request: Request) {
                   At Saudi Event Management, we specialize in curating unparalleled luxury experiences across the Kingdom—from the majestic landscapes of AlUla to the bustling financial districts of Riyadh. Our executive team is currently reviewing the details of your request to ensure we assign the most specialized consultant to your portfolio.
                 </p>
 
-                <!-- Highlight Box -->
+                <!-- What happens next -->
                 <div style="background-color: #faf9f7; border-left: 4px solid #c5a059; padding: 24px; margin: 32px 0;">
-                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">Preliminary Projection</p>
-                  <p style="font-size: 20px; color: #1a1a1a; margin: 0; font-weight: 500;">SAR ${inquiry.estimate?.totalAmount.toLocaleString()}*</p>
-                  <p style="font-size: 12px; color: #888; margin: 12px 0 0 0; line-height: 1.5;">*This is an automated baseline projection based on your initial parameters. Your dedicated consultant will provide a fully customized, detailed proposal.</p>
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">What happens next</p>
+                  <p style="font-size: 15px; color: #1a1a1a; margin: 0; line-height: 1.7;">Your dedicated consultant will review your requirements and prepare a fully customised proposal tailored to your event — including a detailed quotation built around your vision and budget.</p>
                 </div>
 
-                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 32px;">
-                  A member of our senior concierge team will be in touch with you within the next <strong>90 minutes</strong> to discuss your vision in detail and outline the exact next steps to bring your event to life.
+                <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 28px;">
+                  A member of our senior concierge team will be in touch with you <strong>the same day</strong> to discuss your vision in detail and outline the exact next steps to bring your event to life.
                 </p>
+
+                <!-- WhatsApp CTA -->
+                <div style="text-align: center; margin: 0 0 32px 0;">
+                  <p style="color: #888; font-size: 13px; margin: 0 0 14px 0;">Prefer to talk now? Reach us instantly on WhatsApp.</p>
+                  <a href="https://wa.me/966539388072?text=${encodeURIComponent(`Hi Saudi Event Management, I just submitted an inquiry about my ${eventType || 'event'} and would like to discuss it.`)}" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 36px; border-radius: 8px; letter-spacing: 0.3px;">Chat with us on WhatsApp</a>
+                </div>
 
                 <!-- Sign-off -->
                 <div style="border-top: 1px solid #eaeaea; padding-top: 32px; margin-top: 32px;">
@@ -220,8 +371,19 @@ export async function GET(request: Request) {
     const status = searchParams.get('status');
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');
+    const audience = searchParams.get('audience'); // 'client' | 'partner' | 'all'
+
+    // Vendor/partner submissions are tagged by source. Use this to split the
+    // admin view into Clients vs Partners.
+    const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor_inquiry'];
 
     let where: any = {};
+
+    if (audience === 'partner') {
+      where.source = { in: VENDOR_SOURCES };
+    } else if (audience === 'client') {
+      where.source = { notIn: VENDOR_SOURCES };
+    }
 
     if (search) {
       where.OR = [

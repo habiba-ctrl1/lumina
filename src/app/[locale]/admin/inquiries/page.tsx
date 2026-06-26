@@ -30,6 +30,7 @@ export default function AdminInquiries() {
   const [category, setCategory] = useState("all");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [audience, setAudience] = useState<"client" | "partner">("client");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,12 +38,12 @@ export default function AdminInquiries() {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [search, status, category, startDate, endDate]);
+  }, [search, status, category, startDate, endDate, audience]);
 
   const fetchInquiries = async () => {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ search, status, category, startDate, endDate });
+      const params = new URLSearchParams({ search, status, category, startDate, endDate, audience });
       const response = await fetch(`/api/contact?${params.toString()}`);
       const data = await response.json();
       if (!data.error) setInquiries(Array.isArray(data) ? data : []);
@@ -74,9 +75,13 @@ export default function AdminInquiries() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 tracking-tight mb-1">
-            Lead Management
+            {audience === "client" ? "Lead Management" : "Partner Inquiries"}
           </h1>
-          <p className="text-sm text-slate-500">Qualify, segment, and respond to incoming event leads.</p>
+          <p className="text-sm text-slate-500">
+            {audience === "client"
+              ? "Qualify, segment, and respond to incoming event leads."
+              : "Suppliers and partners who want to work with you — kept separate from client leads."}
+          </p>
         </div>
         <button
           onClick={fetchInquiries}
@@ -86,6 +91,26 @@ export default function AdminInquiries() {
           <RefreshCw size={14} className={loading ? "animate-spin text-teal-600" : "text-teal-600"} />
           Refresh
         </button>
+      </div>
+
+      {/* Audience Tabs — separate client leads from vendor/partner inquiries */}
+      <div className="flex gap-2 mb-5">
+        {([
+          { key: "client", label: "Client Leads" },
+          { key: "partner", label: "Partner Inquiries" },
+        ] as const).map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setAudience(tab.key)}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+              audience === tab.key
+                ? "bg-teal-600 text-white border-teal-600 shadow-sm"
+                : "bg-white text-slate-600 border-slate-200 hover:border-teal-300"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
       {/* Filters Bar */}

@@ -65,11 +65,94 @@ export const AR_INDEXABLE = false;
 export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/", // Homepage — Arabic content complete.
 
-  // The 4 core service pages have FULL bilingual bodies (complete) → indexable.
+  // Service pages with FULL bilingual bodies (complete) → indexable.
   "/services/corporate-events",
   "/services/weddings",
   "/services/exhibitions",
   "/services/conferences",
+  "/services/event-production", // body fully translated
+  "/services/luxury-vip-events", // body fully translated
+  "/services/destination-events", // body fully translated
+  "/services/cultural-events", // body fully translated
+  "/services/production-venues", // body fully translated
+  "/services/royal-weddings", // body fully translated
+
+  // Blog posts with FULL bilingual bodies (contentAr complete) → indexable.
+  "/blog/complete-guide-event-planning-saudi-arabia-2026", // body fully translated
+  "/blog/best-event-management-company-riyadh-questions-to-ask", // body fully translated
+  "/blog/corporate-event-planning-saudi-arabia-step-by-step-guide", // body fully translated
+  "/blog/event-planning-mistakes-to-avoid", // body fully translated
+  "/blog/luxury-weddings-saudi-arabia-destination", // body fully translated
+  "/blog/ultimate-guide-exceptional-event-planning", // body fully translated
+  "/blog/trending-colors-2026-event-palette", // body fully translated
+  "/blog/destination-wedding-planning-guide", // body fully translated
+  "/blog/art-of-tablescaping-guide", // body fully translated
+  "/blog/exceptional-wedding-cost-saudi-arabia-guide", // body fully translated
+  "/blog/state-of-mice-industry-saudi-arabia-2026", // body fully translated
+  "/blog/vision-2030-redefining-saudi-event-landscape", // body fully translated
+  "/blog/destination-weddings-alula-red-sea", // body fully translated
+  "/blog/elevating-corporate-events-riyadh-jeddah", // body fully translated
+  "/blog/advanced-semantic-seo-event-management-ksa", // body fully translated
+  "/blog/alula-desert-festivals-cultural-activations", // body fully translated
+  "/blog/crafting-unforgettable-royal-weddings-saudi-arabia", // body fully translated
+  "/blog/corporate-event-excellence-riyadh-jeddah", // body fully translated
+  "/blog/future-event-production-saudi-arabia-technology-sustainability", // body fully translated
+  "/blog/2026-exceptional-event-decor-trends-saudi-arabia", // body fully translated
+  "/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events", // body fully translated
+  "/blog/best-corporate-event-venues-riyadh-2026", // body fully translated
+  "/blog/best-wedding-venues-jeddah-2026", // body fully translated
+  "/blog/ramadan-event-planning-guide-saudi-arabia", // body fully translated
+  "/blog/national-day-event-ideas-saudi-arabia-corporates", // body fully translated
+  "/blog/gea-event-permit-guide-saudi-arabia", // body fully translated
+  "/blog/mice-tourism-saudi-arabia-complete-guide-2026", // body fully translated
+  "/blog/alula-events-guide-maraya-hegra-desert", // body fully translated
+  "/blog/event-production-cost-guide-saudi-arabia-2026", // body fully translated
+  "/blog/vip-executive-retreats-neom-2026", // body fully translated
+  "/blog/diriyah-gate-event-venues-corporate", // body fully translated
+  "/blog/plan-mega-exhibition-riyadh-logistics", // body fully translated
+  "/blog/eco-friendly-event-management-saudi-arabia", // body fully translated
+  "/blog/entertainment-activations-jeddah-season-corporate", // body fully translated
+
+  // PSEO service×city pages with FULL bilingual bodies (PSEO_AR complete) → indexable.
+  "/services/corporate-events-riyadh",
+  "/services/corporate-events-jeddah",
+  "/services/corporate-events-dammam",
+  "/services/luxury-weddings-riyadh",
+  "/services/luxury-weddings-jeddah",
+  "/services/luxury-weddings-dammam",
+  "/services/exhibitions-jeddah",
+  "/services/exhibitions-dammam",
+  "/services/conference-management-jeddah",
+  "/services/conference-management-dammam",
+  "/services/event-production-riyadh",
+  "/services/event-production-jeddah",
+  "/services/event-production-alula",
+  "/services/cultural-events-riyadh",
+  "/services/cultural-events-jeddah",
+  "/services/vip-events-jeddah",
+  "/services/vip-events-alula",
+  "/services/destination-events-alula",
+  "/services/destination-events-neom",
+
+  // Portfolio index + category pages + case studies with FULL bilingual bodies → indexable.
+  "/portfolio", // index fully translated
+  "/portfolio/corporate-events", // category fully translated
+  "/portfolio/luxury-weddings", // category fully translated
+  "/portfolio/vision-2030", // category fully translated
+  "/portfolio/royal-riyadh-wedding", // body fully translated
+  "/portfolio/alula-desert-festival", // body fully translated
+  "/portfolio/executive-summit-jeddah", // body fully translated
+  "/portfolio/global-tech-summit", // body fully translated
+  "/portfolio/neom-future-summit", // body fully translated
+  "/portfolio/dammam-corporate-seminar", // body fully translated
+  "/portfolio/alkhobar-corporate-retreat", // body fully translated
+  "/portfolio/jeddah-beach-wedding", // body fully translated
+  "/portfolio/grand-wedding-ceremony", // body fully translated
+  "/portfolio/makkah-vip-retreat", // body fully translated
+  "/portfolio/madinah-spiritual-event", // body fully translated
+  "/portfolio/riyadh-government-summit", // body fully translated
+  "/portfolio/riyadh-elite-majlis", // body fully translated
+  "/portfolio/riyadh-luxury-soiree", // body fully translated
 ]);
 
 /**

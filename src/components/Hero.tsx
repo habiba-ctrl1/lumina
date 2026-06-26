@@ -106,8 +106,9 @@ export default function Hero() {
           /* Mobile / SSR: lightweight WebP poster — MP4 never downloaded */
           <img
             src="/hero-mobile.webp"
-            alt=""
-            aria-hidden
+            alt={isRtl
+              ? "منصة زفاف فاخرة بالورود الحمراء والثريات الكريستالية من تنظيم إدارة الفعاليات السعودية"
+              : "Luxury wedding stage with red roses and crystal chandeliers by Saudi Event Management"}
             fetchPriority="high"
             className="pointer-events-none"
             style={{

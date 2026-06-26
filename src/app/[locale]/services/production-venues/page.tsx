@@ -171,13 +171,13 @@ export default function ProductionVenuesPage() {
               href="#services-enquiry"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
-              Inquire for Services
+              {isAr ? "استفسر عن الخدمات" : "Inquire for Services"}
             </Link>
             <a
               href="tel:+966539388072"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
-              <Phone size={15} /> Request a Venue Walkthrough
+              <Phone size={15} /> {isAr ? "اطلب جولة في القاعة" : "Request a Venue Walkthrough"}
             </a>
           </div>
         </div>
@@ -191,8 +191,8 @@ export default function ProductionVenuesPage() {
                   <Star className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">ISO 9001 Certified</p>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Quality Management Partners</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "حاصلون على ISO 9001" : "ISO 9001 Certified"}</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "شركاء إدارة الجودة" : "Quality Management Partners"}</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
@@ -202,7 +202,7 @@ export default function ProductionVenuesPage() {
                 <span>RITZ-CARLTON</span>
               </div>
               <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
-                &quot;Tier-1 Vendor Status in Saudi Arabia&quot;
+                {isAr ? "«مورّد من الفئة الأولى في السعودية»" : "\"Tier-1 Vendor Status in Saudi Arabia\""}
               </div>
             </div>
           </div>
@@ -229,18 +229,37 @@ export default function ProductionVenuesPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Full-Service Event Production
+                {isAr ? "إنتاج فعاليات متكامل الخدمات" : "Full-Service Event Production"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                Our production <span className="text-[var(--primary)]">services</span>
+                {isAr ? "خدمات" : "Our production"} <span className="text-[var(--primary)]">{isAr ? "الإنتاج لدينا" : "services"}</span>
               </h2>
               <p className="text-neutral-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
-                Venue sourcing, AV, staging, catering and media — a single in-house team for every
-                technical and hospitality element of your event. From <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">executive corporate summits</Link> to securing elite locations for <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP private events</Link>, we offer exclusive access to Saudi Arabia&apos;s premier spaces.
+                {isAr ? (
+                  <>
+                    اختيار القاعات، والصوت والصورة، والمسرح، والتموين، والإعلام — فريق داخلي واحد لكل عنصر تقني وضيافي في فعاليتك. من <Link href={`${arHref}/services/corporate-events`} className="text-[var(--primary)] hover:underline font-semibold">القمم المؤسسية التنفيذية</Link> إلى تأمين مواقع راقية لـ<Link href={`${arHref}/services/luxury-vip-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات كبار الشخصيات الخاصة</Link>، نوفّر وصولًا حصريًا إلى أرقى مساحات السعودية.
+                  </>
+                ) : (
+                  <>
+                    Venue sourcing, AV, staging, catering and media — a single in-house team for every
+                    technical and hospitality element of your event. From <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">executive corporate summits</Link> to securing elite locations for <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP private events</Link>, we offer exclusive access to Saudi Arabia&apos;s premier spaces.
+                  </>
+                )}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                { icon: Speaker, title: "إنتاج الصوت والصورة", desc: "إنتاج صوتي ومرئي معتمد من ISO لقمم بمستوى مركز الملك عبدالعزيز. صوت بجودة الحفلات ومرئيات LED سينمائية." },
+                { icon: Map, title: "اختيار القاعات", desc: "اختيار قاعات خبير في السعودية، يمنح وصولًا حصريًا لأرقى قاعات الرياض وخيارات مدينة الملك عبدالله الاقتصادية." },
+                { icon: Zap, title: "تصميم المسرح", desc: "تصميم مسارح حائز على جوائز في مدينة الفيصلية. بيئات معمارية غامرة للفعاليات الكبرى." },
+                { icon: Utensils, title: "التموين الفاخر", desc: "تموين فعاليات راقٍ في السعودية. بالشراكة مع روزوود جدة لتجارب طعام بخمس نجوم." },
+                { icon: PenTool, title: "ديكور الفعاليات", desc: "ديكور فعاليات مخصّص في جدة، يوفّر بنية تحتية متينة ويوظّف اتجاهات التصميم في المملكة 2025." },
+                { icon: Camera, title: "الإنتاج الإعلامي", desc: "تصوير فوتوغرافي وفيديو سينمائي احترافي لتجمّعات مركز الملك عبدالعزيز ومركز الملك عبدالله المالي." },
+                { icon: Lightbulb, title: "فن الإضاءة", desc: "خدمات إضاءة فعاليات ديناميكية في الرياض، متخصصة في صناعة الأجواء للقاعات الكبرى." },
+                { icon: Star, title: "ضيافة كبار الشخصيات", desc: "إدارة ضيوف كبار الشخصيات، وخدمات كونسيرج، ولوجستيات فعاليات موثوقة في المملكة في ريتز كارلتون وأبرز القاعات." },
+                  ]
+                : [
                 { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
                 { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
                 { icon: Zap, title: "Stage Design", desc: "Award-winning event staging at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
@@ -249,7 +268,7 @@ export default function ProductionVenuesPage() {
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
                 { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
                 { icon: Star, title: "VIP Hospitality", desc: "VIP guest management, concierge services, and dependable event logistics across KSA at Ritz-Carlton and other leading venues." },
-              ].map((service: any, i: number) => (
+              ]).map((service: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -276,22 +295,29 @@ export default function ProductionVenuesPage() {
               <div className="lg:col-span-1 space-y-6">
                 <span className="section-label">
                   <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                  Production Hub
+                  {isAr ? "مركز الإنتاج" : "Production Hub"}
                 </span>
-                <h2 className="text-2xl font-bold text-neutral-900">Technical <br/><span className="text-[var(--primary)]">guides</span></h2>
-                <p className="text-neutral-500 text-sm leading-relaxed">Technical guides and design trends for executing world-class events in the Kingdom.</p>
+                <h2 className="text-2xl font-bold text-neutral-900">{isAr ? <>أدلّة <br/><span className="text-[var(--primary)]">تقنية</span></> : <>Technical <br/><span className="text-[var(--primary)]">guides</span></>}</h2>
+                <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "أدلّة تقنية واتجاهات تصميم لتنفيذ فعاليات عالمية المستوى في المملكة." : "Technical guides and design trends for executing world-class events in the Kingdom."}</p>
                 <div className="pt-6 border-t border-neutral-200">
-                  <p className="text-neutral-900 font-bold text-sm">Fahad Al-Sulaiman</p>
-                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">Head of Production</p>
+                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "فهد السليمان" : "Fahad Al-Sulaiman"}</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? "رئيس الإنتاج" : "Head of Production"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
+                {(isAr
+                  ? [
+                  { title: "دليل كامل لخدمات الفعاليات في السعودية", desc: "من المتطلبات التقنية للصوت والصورة إلى تراخيص التموين: التنقّل في مشهد الخدمات بالمملكة." },
+                  { title: "أبرز قاعات الفعاليات في الرياض 2025", desc: "نظرة حصرية على مركز الملك عبدالعزيز وريتز كارلتون ومستقبل مساحات القاعات في مركز الملك عبدالله المالي." },
+                  { title: "دليل إنتاج الصوت والصورة للفعاليات السعودية", desc: "تحسين الصوت والإضاءة وتقنية المرئيات لبيئات القاعات الكبرى." },
+                  { title: "اتجاهات ديكور الفعاليات في المملكة 2025", desc: "استكشاف مزج الزخارف السعودية التقليدية بالبساطة المستقبلية." },
+                    ]
+                  : [
                   { title: "Complete guide to event services in Saudi Arabia", desc: "From AV technical riders to catering licenses: navigating the KSA service landscape." },
                   { title: "Top event venues in Riyadh 2025", desc: "An exclusive look at KAICC, Ritz-Carlton, and the future of venue spaces in KAFD." },
                   { title: "AV production guide for Saudi events", desc: "Optimizing sound, light, and visual technology for grand-scale ballroom environments." },
                   { title: "Event decoration trends in KSA 2025", desc: "Exploring the fusion of traditional Saudi motifs with futuristic minimalism." }
-                ].map((post: any, idx: number) => (
+                ]).map((post: any, idx: number) => (
                   <div key={idx} className="p-6 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl hover:border-[var(--primary)]/30 hover:shadow-[0_8px_30px_rgba(13,107,78,0.07)] transition-all cursor-pointer group">
                     <h3 className="text-neutral-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h3>
                     <p className="text-neutral-500 text-xs leading-relaxed">{post.desc}</p>
@@ -345,23 +371,38 @@ export default function ProductionVenuesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="text-white space-y-7">
                 <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] uppercase text-[#C5A880]">
-                  <span className="w-6 h-px bg-[#C5A880]" /> Request a Service Quote
+                  <span className="w-6 h-px bg-[#C5A880]" /> {isAr ? "اطلب عرض خدمة" : "Request a Service Quote"}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
-                  One team for venue, <br />
-                  <span className="text-[#C5A880]">AV, catering &amp; production.</span>
-                </h2>
+                {isAr ? (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    فريق واحد للقاعة، <br />
+                    <span className="text-[#C5A880]">والصوت والصورة، والتموين، والإنتاج.</span>
+                  </h2>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
+                    One team for venue, <br />
+                    <span className="text-[#C5A880]">AV, catering &amp; production.</span>
+                  </h2>
+                )}
                 <p className="text-white/70 text-base leading-relaxed max-w-md">
-                  Tell us your venue, guest count, and technical needs. Our production team returns a
-                  recommended venue, equipment plan, and an itemised quote within two hours.
+                  {isAr
+                    ? "أخبرنا بالقاعة وعدد الضيوف والمتطلبات التقنية. يعيد إليك فريق الإنتاج قاعة موصى بها وخطة معدات وعرضًا مبوّبًا خلال ساعتين."
+                    : "Tell us your venue, guest count, and technical needs. Our production team returns a recommended venue, equipment plan, and an itemised quote within two hours."}
                 </p>
                 <ul className="space-y-3.5 pt-2">
-                  {[
+                  {(isAr
+                    ? [
+                    "وصول حصري للقاعات — مركز الملك عبدالعزيز ومركز الرياض للمعارض ومدينة الملك عبدالله",
+                    "صوت وصورة ومسرح وإضاءة بجودة الحفلات",
+                    "تموين بخمس نجوم وضيافة كبار الشخصيات",
+                    "إنتاج وتغطية إعلامية سينمائية",
+                  ]
+                    : [
                     "Exclusive venue access — KAICC, RECC & KAEC",
                     "Concert-grade AV, staging & lighting",
                     "Five-star catering & VIP hospitality",
                     "Cinematic media production & coverage",
-                  ].map((item) => (
+                  ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
                       <CheckCircle2 size={18} className="text-[#C5A880] shrink-0 mt-0.5" />
                       {item}
@@ -374,16 +415,16 @@ export default function ProductionVenuesPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold border-b border-white/30 pb-1 hover:border-[#C5A880] hover:text-[#C5A880] transition-colors"
                 >
-                  <Phone size={15} /> Or message us on WhatsApp
+                  <Phone size={15} /> {isAr ? "أو راسلنا عبر واتساب" : "Or message us on WhatsApp"}
                 </a>
               </div>
               <ServiceLeadForm
                 source="production_venues_page"
                 defaultEventType="Event Production / Technical"
-                eyebrow="Services Enquiry"
-                heading="Request your service quote"
-                subheading="Our production team will respond within 2 hours with a venue and technical plan."
-                submitLabel="Request Service Quote"
+                eyebrow={isAr ? "استفسار الخدمات" : "Services Enquiry"}
+                heading={isAr ? "اطلب عرض خدمتك" : "Request your service quote"}
+                subheading={isAr ? "سيردّ فريق الإنتاج خلال ساعتين بخطة قاعة وتقنية." : "Our production team will respond within 2 hours with a venue and technical plan."}
+                submitLabel={isAr ? "اطلب عرض الخدمة" : "Request Service Quote"}
                 eventTypeOptions={[
                   "Venue Sourcing & Rental",
                   "AV & Technical Production",
@@ -402,27 +443,35 @@ export default function ProductionVenuesPage() {
         <section className="py-24 md:py-28 bg-neutral-50/70 border-b border-neutral-200/70">
           <div className="max-w-5xl mx-auto px-6 lg:px-12">
             <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">Investment <span className="text-[var(--primary)]">guide</span></h2>
-              <p className="text-neutral-400 mt-4 uppercase tracking-[0.3em] text-[10px]">Estimated 2025 Service Rates in Saudi Arabia</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">{isAr ? <>دليل <span className="text-[var(--primary)]">الاستثمار</span></> : <>Investment <span className="text-[var(--primary)]">guide</span></>}</h2>
+              <p className="text-neutral-400 mt-4 uppercase tracking-[0.3em] text-[10px]">{isAr ? "أسعار خدمات تقديرية لعام 2025 في السعودية" : "Estimated 2025 Service Rates in Saudi Arabia"}</p>
             </div>
 
             <div className="overflow-x-auto rounded-3xl border border-neutral-200/80 bg-white shadow-[0_8px_40px_rgba(15,23,42,0.06)]">
               <table className="w-full text-start min-w-[560px]">
                 <thead className="bg-neutral-50">
                   <tr>
-                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Service Category</th>
-                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Starting Investment</th>
-                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">Key Inclusions</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">{isAr ? "فئة الخدمة" : "Service Category"}</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">{isAr ? "يبدأ الاستثمار من" : "Starting Investment"}</th>
+                    <th className="px-8 py-5 text-[var(--primary)] uppercase tracking-widest text-xs font-bold text-start">{isAr ? "أهم ما يشمله" : "Key Inclusions"}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-100">
-                  {[
+                  {(isAr
+                    ? [
+                    { category: "إنتاج الصوت والصورة", price: "15,000 ريال", inclusions: "صوت، إضاءة، طاقم تقني" },
+                    { category: "تصميم وبناء المسرح", price: "35,000 ريال", inclusions: "تصاميم ثلاثية الأبعاد، تصنيع، تركيب" },
+                    { category: "التموين الفاخر", price: "450 ريال / ضيف", inclusions: "محطات حيّة، طاقم خدمة، أدوات فضية" },
+                    { category: "تأجير القاعة", price: "50,000 ريال", inclusions: "الموقع، الأمن، الإعداد الأساسي" },
+                    { category: "إعلام الفعالية", price: "8,500 ريال", inclusions: "تصوير، لقطات سينمائية" },
+                      ]
+                    : [
                     { category: "AV Production", price: "SAR 15,000", inclusions: "Audio, Lighting, Technical Crew" },
                     { category: "Stage Design & Build", price: "SAR 35,000", inclusions: "3D Renders, Fabrication, Install" },
                     { category: "Luxury Catering", price: "SAR 450 / Guest", inclusions: "Live Stations, Staffing, Silverware" },
                     { category: "Venue Rental", price: "SAR 50,000", inclusions: "Location, Security, Basic Setup" },
                     { category: "Event Media", price: "SAR 8,500", inclusions: "Photography, Cinematic Highlights" },
-                  ].map((row: any, i: number) => (
+                  ]).map((row: any, i: number) => (
                     <tr key={i} className="hover:bg-neutral-50/80 transition-colors">
                       <td className="px-8 py-5 text-neutral-900 font-semibold">{row.category}</td>
                       <td className="px-8 py-5 text-[var(--primary)] font-bold">{row.price}</td>
@@ -438,9 +487,20 @@ export default function ProductionVenuesPage() {
         {/* FAQ Section */}
         <section className="py-24 md:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center text-neutral-900">Service <span className="text-[var(--primary)]">queries</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-14 text-center text-neutral-900">{isAr ? <>استفسارات <span className="text-[var(--primary)]">الخدمة</span></> : <>Service <span className="text-[var(--primary)]">queries</span></>}</h2>
             <div className="space-y-4">
-              {[
+              {(isAr
+                ? [
+                { q: "ما معدات الصوت والصورة التي أحتاجها لمؤتمر بـ 500 شخص في الرياض؟", a: "يتطلب مؤتمر بـ 500 شخص نظام صوت لاين-أراي قويًا، وشاشتي LED كبيرتين على الأقل، وميكروفونات لاسلكية، وإعدادًا للتبديل المباشر متعدد الكاميرات. وبصفتنا شركة صوت وصورة رائدة للفعاليات في المملكة، توفّر إدارة الفعاليات السعودية مواصفات تقنية كاملة مصمّمة لقاعتك." },
+                { q: "هل يمكنكم ترشيح مقدّمي تموين للفعاليات في جدة؟", a: "بالتأكيد. لدينا شراكات حصرية مع فرق طهي نخبوية، تشمل طهاة تنفيذيين في روزوود جدة. ويمكننا تقديم عروض تموين فعاليات مفصّلة في السعودية بسرعة، من العشاء الفاخر إلى البوفيهات المؤسسية الضخمة." },
+                { q: "ما أنماط ديكور الفعاليات الشائعة في السعودية؟", a: "يمزج الاتجاه الحالي البساطة المستقبلية بالتراث التقليدي. لمسات معدنية أنيقة مع زخارف نجدية هندسية تقليدية، وإضاءة معمارية محيطة، وتركيبات أزهار فاخرة وعطرة." },
+                { q: "ما الذي تشمله إدارة الفعاليات المتكاملة في المملكة؟", a: "يغطّي نموذج إدارة الفعاليات السعودية المتكامل كل شيء من البحث عن القاعات والتصميم الإبداعي إلى إنتاج الصوت والصورة والتموين والتنفيذ الميداني." },
+                { q: "كيف أختار قاعة فعاليات في الرياض؟", a: "نحلّل ثيمة فعاليتك وقائمة ضيوفك ومتطلباتك التقنية لتسهيل تأجير القاعة المثالية في الرياض، سواء كانت فندق خمس نجوم أو ملاذًا صحراويًا حصريًا." },
+                { q: "قاعة فعاليات قريبة مني في الرياض", a: "تعمل إدارة الفعاليات السعودية محليًا في الرياض، ما يمنحك وصولًا فوريًا وحصريًا لأكثر قصور المدينة وفنادقها ومراكز معارضها طلبًا." },
+                { q: "شركة تموين للفعاليات في جدة", a: "ندير لوجستيات تموين راقية على الساحل الغربي، لنضمن أن تتميّز فعالياتك في جدة بأطعمة عالمية وخدمة لا تشوبها شائبة." },
+                { q: "إنتاج صوت وصورة قريب مني في السعودية", a: "بعملياتنا في عموم المملكة، توفّر إدارة الفعاليات السعودية إنتاج صوت وصورة بجودة الحفلات ودعمًا تقنيًا محليًا أينما أُقيمت فعاليتك." },
+                  ]
+                : [
                 { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Saudi Event Management provides complete technical specifications tailored to your venue." },
                 { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We hold exclusive partnerships with elite culinary teams, including executive chefs at the Rosewood Jeddah. We can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
                 { q: "What event decoration styles are popular in Saudi Arabia?", a: "The current trend fuses futuristic minimalism with traditional heritage. Think sleek metallic accents paired with traditional Najdi geometric patterns, ambient architectural lighting, and opulent, fragrant floral installations." },
@@ -449,7 +509,7 @@ export default function ProductionVenuesPage() {
                 { q: "event venue near me Riyadh", a: "Saudi Event Management operates locally in Riyadh, granting you immediate, exclusive access to the city's most sought-after palaces, hotels, and exhibition centers." },
                 { q: "catering company for events Jeddah", a: "We manage high-end catering logistics on the West Coast, ensuring your Jeddah events feature world-class gastronomy and impeccable service." },
                 { q: "AV production near me Saudi Arabia", a: "With operations across the Kingdom, Saudi Event Management provides localized, concert-grade AV production and technical support wherever your event takes place." }
-              ].map((faq: any, i: number) => (
+              ]).map((faq: any, i: number) => (
                 <div key={i} className="bg-neutral-50/80 border border-neutral-200/80 p-7 rounded-2xl">
                   <h3 className="text-base font-bold text-neutral-900 mb-3">{faq.q}</h3>
                   <p className="text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
@@ -465,24 +525,33 @@ export default function ProductionVenuesPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                Real-World Production
+                {isAr ? "إنتاج من الواقع" : "Real-World Production"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-                Production challenges — <span className="text-[var(--primary)]">and how we solve them</span>
+                {isAr ? <>تحديات الإنتاج — <span className="text-[var(--primary)]">وكيف نحلّها</span></> : <>Production challenges — <span className="text-[var(--primary)]">and how we solve them</span></>}
               </h2>
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
-                Delivering technical production across hotels, convention centres, and remote desert venues raises recurring problems. Here is how our team plans around them.
+                {isAr
+                  ? "تنفيذ الإنتاج التقني عبر الفنادق ومراكز المؤتمرات والقاعات الصحراوية النائية يثير مشكلات متكررة. وإليك كيف يخطّط فريقنا لتجاوزها."
+                  : "Delivering technical production across hotels, convention centres, and remote desert venues raises recurring problems. Here is how our team plans around them."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
+              {(isAr
+                ? [
+                { c: "حدود الطاقة والتعليق في القاعة", s: "كثير من قاعات الحفلات والمواقع التراثية لم تُبنَ يومًا لأحمال بجودة الحفلات. نُجري مسحًا تقنيًا للموقع مبكرًا، ثم نحدّد المولّدات وتوزيع الطاقة النظيف والتعليق المعتمد كي لا تحدّ قيود القاعة الإنتاج أبدًا." },
+                { c: "نوافذ التحميل والتبديل الضيّقة", s: "حين تستضيف القاعة فعاليات متتالية، يصبح وقت التجهيز قاسيًا. المنصّات المعيارية الجاهزة، وضفائر الكابلات المعنونة، وقائمة نداء الطاقم المُتمرَّن عليها تتيح لنا التحميل والاختبار والفكّ داخل النافذة." },
+                { c: "فجوات المساءلة بين الموردين", s: "تبادل اللوم بين فرق الصوت والصورة والتموين والديكور والقاعة هو نمط الفشل الكلاسيكي. وبامتلاك كل تخصّص داخليًا تحت مدير إنتاج واحد، يكون هناك نقطة مساءلة واحدة." },
+                { c: "لوجستيات القاعات النائية (العلا، الصحراء)", s: "تحتاج المواقع خارج الشبكة إلى الطاقة والتحكّم في المناخ والاحتياطية. نخطّط لمولّدات صامتة، وبطاريات احتياطية، وحلول طوارئ بالمعدات البديلة كي يسير حفل صحراوي بموثوقية قاعة خمس نجوم." },
+                  ]
+                : [
                 { c: "Venue power & rigging limits", s: "Many ballrooms and heritage sites were never built for concert-grade loads. We conduct a technical site survey early, then spec generators, clean power distribution, and certified rigging so the venue's limits never cap the production." },
                 { c: "Tight load-in and changeover windows", s: "When a venue hosts back-to-back events, set-up time is brutal. Pre-built modular staging, labelled cable looms, and a rehearsed crew call sheet let us load in, test, and strike inside the window." },
                 { c: "Multi-vendor accountability gaps", s: "AV, catering, décor, and venue teams pointing fingers is the classic failure mode. With every discipline owned in-house under one production director, there is a single point of accountability." },
                 { c: "Remote-venue logistics (AlUla, desert)", s: "Off-grid sites need power, climate control, and redundancy. We plan silent generators, battery backup, and spare-kit contingencies so a desert gala runs as reliably as a five-star ballroom." },
-              ].map((item) => (
+              ]).map((item) => (
                 <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Challenge</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{isAr ? "تحدٍّ" : "Challenge"}</span>
                   <h3 className="font-bold text-neutral-900 text-base mt-1 mb-3">{item.c}</h3>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -498,24 +567,31 @@ export default function ProductionVenuesPage() {
         <section className="py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">Related Services</h3>
-              <Link href="/services" className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">View all services <ChevronRight size={12} /></Link>
+              <h3 className="text-lg font-bold text-slate-900 uppercase tracking-widest">{isAr ? "خدمات ذات صلة" : "Related Services"}</h3>
+              <Link href={`${arHref}/services`} className="text-[var(--primary)] text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">{isAr ? "كل الخدمات" : "View all services"} <ChevronRight size={12} /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "إنتاج الفعاليات", slug: "event-production", desc: "إنتاج تقني متخصّص — مسرح وصوت وصورة وإضاءة وشاشات LED." },
+                { title: "إدارة المؤتمرات", slug: "conferences", desc: "خدمات منظّم مؤتمرات احترافي تدمج الصوت والصورة والتموين لتنفيذ سلس." },
+                { title: "الفعاليات المؤسسية", slug: "corporate-events", desc: "تخطيط فعاليات مؤسسية متكامل مع إنتاج داخلي." },
+                { title: "المعارض والمعارض التجارية", slug: "exhibitions", desc: "توفير القاعات وإنتاج الصوت والصورة لمعارض الأعمال والمعارض التجارية." },
+                  ]
+                : [
                 { title: "Event Production", slug: "event-production", desc: "Dedicated technical production — stage, AV, lighting, and LED." },
                 { title: "Conference Management", slug: "conferences", desc: "Full PCO services integrating AV and catering for seamless delivery." },
                 { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with in-house production." },
                 { title: "Exhibitions & Trade Shows", slug: "exhibitions", desc: "Venue sourcing and AV production for B2B expos and trade shows." },
-              ].map((rel) => (
+              ]).map((rel) => (
                 <Link
                   key={rel.slug}
-                  href={`/services/${rel.slug}`}
+                  href={`${arHref}/services/${rel.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
                 >
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{rel.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{rel.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Learn More <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اعرف المزيد" : "Learn More"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
@@ -525,54 +601,67 @@ export default function ProductionVenuesPage() {
         {/* ── FEATURED PROJECTS & CONSULTATION ── */}
         <section className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Production In Action — Featured Projects</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "الإنتاج في الميدان — مشاريع مختارة" : "Production In Action — Featured Projects"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {[
+              {(isAr
+                ? [
+                { title: "قمة التقنية العالمية", slug: "global-tech-summit", desc: "صوت وصورة للمسرح الرئيسي، وشاشات LED، وتبديل مباشر لمؤتمر تقني متعدد الأيام." },
+                { title: "قمة جدة التنفيذية", slug: "executive-summit-jeddah", desc: "إنتاج قاعة متكامل، ومنصّات، وضيافة لتجمّع تنفيذي رفيع المستوى." },
+                { title: "مهرجان العلا الصحراوي", slug: "alula-desert-festival", desc: "منصّات وطاقة وإضاءة خارج الشبكة لفعالية تراثية صحراوية واسعة النطاق." },
+                  ]
+                : [
                 { title: "Global Tech Summit", slug: "global-tech-summit", desc: "Main-stage AV, LED walls, and live switching for a multi-day technology conference." },
                 { title: "Executive Summit Jeddah", slug: "executive-summit-jeddah", desc: "Full ballroom production, staging, and hospitality for a senior executive gathering." },
                 { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "Off-grid staging, power, and lighting for a large-scale desert heritage event." },
-              ].map((p) => (
-                <Link key={p.slug} href={`/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
+              ]).map((p) => (
+                <Link key={p.slug} href={`${arHref}/portfolio/${p.slug}`} className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all">
                   <h4 className="text-slate-900 font-bold mb-2 text-sm group-hover:text-[var(--primary)] transition-colors">{p.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3">{p.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">View Project <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "عرض المشروع" : "View Project"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-slate-200 rounded-2xl p-8">
               <div>
-                <h3 className="text-slate-900 font-bold text-lg">Need a venue and production plan?</h3>
-                <p className="text-gray-500 text-sm mt-1">Book a free consultation or request a venue walkthrough — our production team replies within two hours.</p>
+                <h3 className="text-slate-900 font-bold text-lg">{isAr ? "تحتاج خطة قاعة وإنتاج؟" : "Need a venue and production plan?"}</h3>
+                <p className="text-gray-500 text-sm mt-1">{isAr ? "احجز استشارة مجانية أو اطلب جولة في القاعة — يردّ فريق الإنتاج لدينا خلال ساعتين." : "Book a free consultation or request a venue walkthrough — our production team replies within two hours."}</p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href="/consultation" className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">Book a Free Consultation</Link>
-                <Link href="/contact" className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">Contact Us</Link>
+                <Link href={`${arHref}/consultation`} className="px-6 py-3 bg-[var(--primary)] text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-[var(--primary-dark)] transition-colors">{isAr ? "احجز استشارة مجانية" : "Book a Free Consultation"}</Link>
+                <Link href={`${arHref}/contact`} className="px-6 py-3 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-xl hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">{isAr ? "تواصل معنا" : "Contact Us"}</Link>
               </div>
             </div>
-            <p className="text-gray-500 text-sm mt-6">Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link> or our dedicated <Link href="/services/event-production" className="text-[var(--primary)] font-semibold hover:underline">event production service</Link>.</p>
+            <p className="text-gray-500 text-sm mt-6">{isAr ? <>استكشف <Link href={`${arHref}/portfolio`} className="text-[var(--primary)] font-semibold hover:underline">معرض أعمالنا</Link> الكامل أو خدمتنا المتخصّصة في <Link href={`${arHref}/services/event-production`} className="text-[var(--primary)] font-semibold hover:underline">إنتاج الفعاليات</Link>.</> : <>Explore our full <Link href="/portfolio" className="text-[var(--primary)] font-semibold hover:underline">event portfolio</Link> or our dedicated <Link href="/services/event-production" className="text-[var(--primary)] font-semibold hover:underline">event production service</Link>.</>}</p>
           </div>
         </section>
 
         {/* ── From Our Blog ── */}
         <section className="py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">Venue & Production Resources</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-8 uppercase tracking-widest">{isAr ? "مصادر القاعات والإنتاج" : "Venue & Production Resources"}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
+              {(isAr
+                ? [
+                { title: "دليل تكلفة إنتاج الفعاليات في السعودية 2026", slug: "event-production-cost-guide-saudi-arabia-2026", desc: "دليل أسعار 2026 للصوت والصورة والمسرح وشاشات LED ومنظومات الإضاءة والإسقاط الضوئي في الرياض وجدة." },
+                { title: "أفضل قاعات الفعاليات المؤسسية في الرياض 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "دليل مرتّب لأبرز قاعات الفعاليات المؤسسية في الرياض — السعة ومواصفات الصوت والصورة وجداول الحجز." },
+                { title: "مستقبل إنتاج الفعاليات في السعودية", slug: "future-event-production-saudi-arabia-technology-sustainability", desc: "كيف يتطوّر إنتاج الفعاليات في السعودية بأحدث التقنيات والممارسات المستدامة." },
+                { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط الصحراء", slug: "alula-events-guide-maraya-hegra-desert", desc: "الدليل الشامل لتخطيط الفعاليات في العلا — الوصول إلى مرايا، وفعاليات الحِجر التراثية، وتصاريح الهيئة الملكية." },
+                  ]
+                : [
                 { title: "Event Production Cost Guide Saudi Arabia 2026", slug: "event-production-cost-guide-saudi-arabia-2026", desc: "2026 pricing guide for AV, stage, LED walls, lighting rigs, and projection mapping in Riyadh and Jeddah." },
                 { title: "Best Corporate Event Venues in Riyadh 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "Rank-ordered guide to Riyadh's top corporate event venues — capacity, AV specs, and booking timelines." },
                 { title: "The Future of Event Production in Saudi Arabia", slug: "future-event-production-saudi-arabia-technology-sustainability", desc: "How event production in Saudi Arabia is evolving with cutting-edge technology and sustainable practices." },
                 { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and RCU permits." },
-              ].map((post) => (
+              ]).map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`${arHref}/blog/${post.slug}`}
                   className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[var(--primary)]/30 hover:shadow-md transition-all"
                 >
-                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">Production Guide</span>
+                  <span className="text-[var(--primary)] text-[10px] uppercase tracking-[0.2em] font-bold mb-3 block">{isAr ? "دليل الإنتاج" : "Production Guide"}</span>
                   <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors line-clamp-2">{post.title}</h4>
                   <p className="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">{post.desc}</p>
-                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">Read Article <ChevronRight size={12} /></span>
+                  <span className="text-[var(--primary)] text-xs font-bold flex items-center gap-1">{isAr ? "اقرأ المقال" : "Read Article"} <ChevronRight size={12} /></span>
                 </Link>
               ))}
             </div>
