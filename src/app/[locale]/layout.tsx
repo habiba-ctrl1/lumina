@@ -266,7 +266,7 @@ const organizationSchema = {
   sameAs: [
     "https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn",
     "https://twitter.com/saudieventmgmt",
-    "https://linkedin.com/company/saudieventmanagement",
+    "https://www.linkedin.com/company/saudi-event-management",
     "https://www.facebook.com/saudieventmanagement",
   ],
 };
