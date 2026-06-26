@@ -3,8 +3,6 @@ import prisma from '@/lib/prisma';
 import { resend, isResendConfigured, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/resend';
 import { logActivity } from '@/lib/logger';
 
-import { generateAutomatedQuote } from '@/lib/quote-engine';
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -50,10 +48,9 @@ export async function POST(request: Request) {
           },
         });
       } else {
-      const quoteData = generateAutomatedQuote(eventType, guestCount, budget);
-
       inquiry = await prisma.$transaction(async (tx) => {
-        // 1a. Create Inquiry and Estimate
+        // 1a. Create the Inquiry record — real client data only, NO auto-quote.
+        // Real quotes are produced manually via the Proposals / Quote Wizard.
         const createdInquiry = await tx.inquiry.create({
           data: {
             name,
@@ -68,19 +65,7 @@ export async function POST(request: Request) {
             message,
             assignedTo: randomAssignee,
             source: source || 'direct_contact',
-            estimate: {
-              create: {
-                baseAmount: quoteData.baseAmount,
-                serviceFee: quoteData.serviceFee,
-                totalAmount: quoteData.totalAmount,
-                breakdown: JSON.stringify(quoteData.breakdown),
-                status: 'Generated'
-              }
-            }
           },
-          include: {
-            estimate: true
-          }
         });
 
         // 1b. Automatically create Client in CRM database if not exists
@@ -112,7 +97,7 @@ export async function POST(request: Request) {
             eventDate: eventDate || null,
             source: 'website',
             status: 'New',
-            notes: `Projected Estimate: SAR ${quoteData.totalAmount.toLocaleString()}`
+            notes: budget ? `Client stated budget: ${budget}` : 'New website inquiry — awaiting consultation.'
           }
         });
 
@@ -228,7 +213,7 @@ export async function POST(request: Request) {
 
         await logActivity(
           'New Lead Received',
-          `Inquiry from ${name} (Auto-assigned to ${inquiry.assignedTo}). Projected Quote: SAR ${inquiry.estimate?.totalAmount.toLocaleString()}`,
+          `Inquiry from ${name} (assigned to ${inquiry.assignedTo})${budget ? `. Stated budget: ${budget}` : ''}`,
           email
         );
 
@@ -243,7 +228,6 @@ export async function POST(request: Request) {
           const safePhone = phone || null;
           const safeCompany = company || null;
           const safeMessage = message || 'No additional details provided.';
-          const estimateValue = inquiry.estimate?.totalAmount.toLocaleString() ?? 'N/A';
           // wa.me needs digits only (no +, spaces or dashes).
           const waClient = safePhone ? safePhone.replace(/[^0-9]/g, '') : null;
           const waClientText = encodeURIComponent(
@@ -254,21 +238,22 @@ export async function POST(request: Request) {
             from: FROM_EMAIL,
             to: [ADMIN_EMAIL],
             replyTo: email,
-            subject: `🔔 New Lead: ${name} · ${safeEventType} · SAR ${estimateValue}`,
+            subject: `🔔 New Lead: ${name} · ${safeEventType} · ${safeCity}`,
             html: `
               <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
 
                 <!-- Header -->
                 <div style="background-color: #0d0d0d; padding: 28px 32px;">
                   <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Internal Lead Alert</p>
-                  <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">New Quote Request Received</h1>
+                  <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">New Client Inquiry Received</h1>
                 </div>
 
-                <!-- Assignee + Estimate banner -->
+                <!-- Assignee + client budget banner -->
                 <div style="padding: 24px 32px; background-color: #faf9f7; border-bottom: 1px solid #eee;">
-                  <p style="font-size: 14px; color: #555; margin: 0 0 4px 0;">Auto-assigned to <strong style="color: #0d0d0d;">${inquiry.assignedTo}</strong></p>
-                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0;">Projected Estimate</p>
-                  <p style="font-size: 26px; color: #c5a059; font-weight: 600; margin: 0;">SAR ${estimateValue}</p>
+                  <p style="font-size: 14px; color: #555; margin: 0 0 4px 0;">Assigned to <strong style="color: #0d0d0d;">${inquiry.assignedTo}</strong></p>
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 4px 0;">Client's Stated Budget</p>
+                  <p style="font-size: 22px; color: #0d0d0d; font-weight: 600; margin: 0;">${safeBudget}</p>
+                  <p style="font-size: 12px; color: #999; margin: 8px 0 0 0;">Prepare a tailored proposal in the Quote Wizard — no auto-quote is generated.</p>
                 </div>
 
                 <!-- Event details table -->
@@ -316,7 +301,7 @@ export async function POST(request: Request) {
             from: FROM_EMAIL,
             to: [email],
             replyTo: ADMIN_EMAIL,
-            subject: 'Your Luxury Event Projection - Saudi Event Management',
+            subject: "We've received your inquiry — Saudi Event Management",
             html: `
               <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 30px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px;">
                 <!-- Logo Header -->
@@ -336,11 +321,10 @@ export async function POST(request: Request) {
                   At Saudi Event Management, we specialize in curating unparalleled luxury experiences across the Kingdom—from the majestic landscapes of AlUla to the bustling financial districts of Riyadh. Our executive team is currently reviewing the details of your request to ensure we assign the most specialized consultant to your portfolio.
                 </p>
 
-                <!-- Highlight Box -->
+                <!-- What happens next -->
                 <div style="background-color: #faf9f7; border-left: 4px solid #c5a059; padding: 24px; margin: 32px 0;">
-                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">Preliminary Projection</p>
-                  <p style="font-size: 20px; color: #1a1a1a; margin: 0; font-weight: 500;">SAR ${inquiry.estimate?.totalAmount.toLocaleString()}*</p>
-                  <p style="font-size: 12px; color: #888; margin: 12px 0 0 0; line-height: 1.5;">*This is an automated baseline projection based on your initial parameters. Your dedicated consultant will provide a fully customized, detailed proposal.</p>
+                  <p style="font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px 0;">What happens next</p>
+                  <p style="font-size: 15px; color: #1a1a1a; margin: 0; line-height: 1.7;">Your dedicated consultant will review your requirements and prepare a fully customised proposal tailored to your event — including a detailed quotation built around your vision and budget.</p>
                 </div>
 
                 <p style="color: #4a4a4a; font-size: 15px; line-height: 1.8; margin-bottom: 28px;">
@@ -387,8 +371,19 @@ export async function GET(request: Request) {
     const status = searchParams.get('status');
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');
+    const audience = searchParams.get('audience'); // 'client' | 'partner' | 'all'
+
+    // Vendor/partner submissions are tagged by source. Use this to split the
+    // admin view into Clients vs Partners.
+    const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor_inquiry'];
 
     let where: any = {};
+
+    if (audience === 'partner') {
+      where.source = { in: VENDOR_SOURCES };
+    } else if (audience === 'client') {
+      where.source = { notIn: VENDOR_SOURCES };
+    }
 
     if (search) {
       where.OR = [
