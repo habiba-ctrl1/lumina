@@ -16,7 +16,11 @@ export async function POST(request: Request) {
     // A "vendor" submission is a supplier/partner pitching their services — NOT a
     // client booking an event. These must skip quote generation and the sales
     // pipeline so they never pollute leads/quotes with fake estimates.
-    const isVendor = inquiryType === 'vendor';
+    // Detected via the explicit form toggle OR any dedicated vendor/partner page
+    // (source-based detection means a form can't accidentally leak into the
+    // client pipeline by forgetting to send inquiryType).
+    const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor_inquiry'];
+    const isVendor = inquiryType === 'vendor' || VENDOR_SOURCES.includes(source);
 
     console.log('Incoming Inquiry:', { name, email, eventType, inquiryType: isVendor ? 'vendor' : 'client' });
 
@@ -42,7 +46,7 @@ export async function POST(request: Request) {
             eventType: eventType || 'Vendor / Partnership',
             message,
             assignedTo: randomAssignee,
-            source: 'vendor_inquiry',
+            source: source || 'vendor_inquiry',
           },
         });
       } else {
