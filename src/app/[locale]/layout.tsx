@@ -143,6 +143,7 @@ export async function generateMetadata({
 
 import CustomCursor from "@/components/CustomCursor";
 import SplashScreen from "@/components/SplashScreen";
+import StickyLeadBar from "@/components/StickyLeadBar";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -369,6 +370,7 @@ export default async function RootLayout({
         <CustomCursor />
         <NextIntlClientProvider messages={messages}>
           {children}
+          <StickyLeadBar />
         </NextIntlClientProvider>
       </body>
     </html>
