@@ -20,7 +20,7 @@ export async function generateMetadata({
       : "Corporate Event Management Saudi Arabia | AGMs, Summits & Galas | Saudi Event Management",
     description: isAr
       ? "شركة رائدة في إدارة فعاليات الشركات بالسعودية: اجتماعات الجمعيات العمومية، القمم التنفيذية، حفلات العشاء الفاخرة، إطلاق المنتجات، وفعاليات رؤية 2030 في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض وأفخم القاعات بالرياض وجدة والدمام. احجز استشارة مجانية."
-      : "Saudi Arabia's premier corporate event management company — AGMs, executive summits, gala dinners, product launches, and Vision 2030 activations at KAFD, RICEC, and top five-star venues across Riyadh, Jeddah, and Dammam.",
+      : "Saudi Arabia's premier corporate event company — AGMs, executive summits, gala dinners & product launches at KAFD, RICEC & top five-star venues in Riyadh & Jeddah. Get a free quote in 24 hours.",
     keywords: [
       "corporate event management Saudi Arabia",
       "corporate event planning Riyadh",

@@ -12,10 +12,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           absolute:
             "تنظيم حفلات الزفاف في السعودية | مخطِّط أعراس الرياض وجدة والدمام | إدارة الفعاليات السعودية",
         }
-      : "Wedding Planning Services Saudi Arabia | Saudi Event Management",
+      : "Luxury Wedding Planner Saudi Arabia — Riyadh, Jeddah & AlUla",
     description: isAr
-      ? "خدمات تنظيم حفلات زفاف احترافية في الرياض وجدة والدمام — مراسم عقد القران والملكة، وليالي الحناء، وحفلات الاستقبال الكبرى. فريق موثوق لتخطيط الأعراس الفاخرة في السعودية."
-      : "Professional wedding planning services across Riyadh, Jeddah, and Dammam — Nikah and Milka ceremonies, Henna nights, and grand receptions. Saudi Arabia's trusted wedding planning team.",
+      ? "مخطِّط أعراس فاخرة في السعودية بخبرة 15+ عامًا — عقد القران والملكة، وليالي الحناء، والكوشة، وحفلات الاستقبال الكبرى في الرياض وجدة والعلا. احصل على استشارة مجانية اليوم."
+      : "Saudi Arabia's trusted luxury wedding planner — 15+ years crafting Nikah & Milka ceremonies, Henna nights, kosha design & grand receptions in Riyadh, Jeddah & AlUla. Get a free consultation today.",
     alternates: {
       canonical: canonicalUrl,
       languages: hreflangAlternates("/services/weddings"),
