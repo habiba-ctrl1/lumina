@@ -12,6 +12,23 @@ const Instagram = ({ size = 20, className = "" }: { size?: number; className?: s
     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
   </svg>
 );
+const Facebook = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+const Linkedin = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+
+// Official, verified social profiles — kept in sync with the footer + schema sameAs.
+const socials = [
+  { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/saudieventmanagement" },
+  { icon: Facebook,  label: "Facebook",  url: "https://www.facebook.com/profile.php?id=61591377842185" },
+  { icon: Linkedin,  label: "LinkedIn",  url: "https://www.linkedin.com/company/saudi-event-management" },
+];
 
 const posts = [
   { id: 1, src: "/gallery_wedding_reception.webp", likes: "1.2k", comments: "45", alt: "Luxury wedding reception decoration setup Saudi Arabia" },
@@ -38,9 +55,9 @@ export default function InstagramFeed() {
             </div>
             <h2 className="text-neutral-900 text-3xl md:text-4xl font-semibold" style={{ letterSpacing: "-0.025em" }}>{t("title")} <span className="text-[var(--primary)]">{t("titleHighlight")}</span></h2>
           </div>
-          <motion.a 
-            href="https://www.instagram.com/saudieventmanagement?igsh=enVkcGtuZGxiZ2Nn" 
-            target="_blank" 
+          <motion.a
+            href="https://www.instagram.com/saudieventmanagement"
+            target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -80,6 +97,31 @@ export default function InstagramFeed() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* ── Connect with us — all official social profiles ───────────────── */}
+        <div className="mt-14 flex flex-col items-center gap-5">
+          <p className="text-neutral-500 text-[14px] font-medium">{t("connect")}</p>
+          <div className="flex items-center gap-4">
+            {socials.map((s) => (
+              <motion.a
+                key={s.label}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                whileHover={{ scale: 1.06, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                className="w-12 h-12 flex items-center justify-center rounded-2xl
+                  border border-neutral-200/80 text-neutral-600 bg-white
+                  hover:border-[var(--primary)] hover:text-[var(--primary)] hover:bg-emerald-50/40
+                  transition-colors duration-200"
+                style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
+              >
+                <s.icon size={20} />
+              </motion.a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
