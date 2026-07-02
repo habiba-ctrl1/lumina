@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { hreflangAlternates } from "@/lib/seo";
+import { hreflangAlternates, robotsForRoute } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -9,12 +9,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
+  const title = isAr ? 'الوظائف وفرص العمل في إدارة الفعاليات' : 'Careers & Job Opportunities';
+  const description = isAr
+    ? 'انضم إلى إدارة الفعاليات السعودية، الشركة الرائدة في إنتاج الفعاليات الفاخرة في المملكة العربية السعودية. نوظّف مخططي فعاليات ومنتجين وخبراء عمليات في الرياض.'
+    : 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.';
   return {
-    title: isAr ? 'الوظائف | فرص العمل في إدارة الفعاليات السعودية' : 'Careers | Saudi Event Management Jobs',
-    description: isAr
-      ? 'انضم إلى إدارة الفعاليات السعودية، الشركة الرائدة في إنتاج الفعاليات الفاخرة في المملكة العربية السعودية. نوظّف مخططي فعاليات ومنتجين وخبراء عمليات في الرياض.'
-      : 'Join Saudi Event Management, the leading luxury event production company in Saudi Arabia. We are hiring event planners, producers, and operational experts in Riyadh.',
+    title,
+    description,
     keywords: 'Event management jobs Saudi Arabia, Careers in event planning Riyadh, Hiring event producers KSA, Saudi Event Management jobs',
+    robots: robotsForRoute(locale, "/about/careers"),
+    openGraph: { title, description },
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/careers`,
       languages: hreflangAlternates("/about/careers"),

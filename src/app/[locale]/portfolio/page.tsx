@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? { absolute: "أعمالنا — فعاليات وإنتاجات فاخرة في السعودية | إدارة الفعاليات السعودية" }
       : 'Event Portfolio — Luxury Events & Productions in Saudi Arabia',
     description: isAr
-      ? "استكشف أعمال إدارة الفعاليات السعودية من فعاليات الشركات والمؤتمرات والمعارض وإطلاق المنتجات وحفلات الزفاف الفاخرة وإنتاجات رؤية 2030 في الرياض وجدة والعلا ونيوم."
-      : 'Explore Saudi Event Management\'s portfolio of completed corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 productions across Riyadh, Jeddah, AlUla, and NEOM.',
+      ? "استكشف رؤية إدارة الفعاليات السعودية لمنصتنا المتخصصة في تنظيم فعاليات الشركات والمؤتمرات والمعارض وإطلاق المنتجات وحفلات الزفاف الفاخرة وإنتاجات رؤية 2030 في الرياض وجدة والعلا ونيوم."
+      : 'Explore Saudi Event Management\'s vision for a premier B2B platform connecting clients with vendors for corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 productions across Riyadh, Jeddah, AlUla, and NEOM.',
     keywords: 'Event Portfolio Saudi Arabia, Luxury Events Gallery KSA, Corporate Events Riyadh, Exhibitions Jeddah, Conference Production, Royal Weddings, Saudi Event Management Case Studies',
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/portfolio`,
@@ -36,15 +36,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 // Single source of truth for the featured projects — also powers the JSON-LD
 // ItemList below so the structured data always matches the visible portfolio.
 const featuredProjects = [
-  { name: "Al-Saud Royal Wedding", slug: "royal-riyadh-wedding", category: "Luxury Wedding", location: "Riyadh", description: "An 800-guest royal wedding with a bespoke architectural desert oasis build and full VIP protocol." },
-  { name: "NEOM Future Summit", slug: "neom-future-summit", category: "Conference", location: "NEOM", description: "A 250-VIP zero-waste luxury conference production for a leading Saudi giga-project." },
-  { name: "Makkah VIP Retreat", slug: "makkah-vip-retreat", category: "VIP & Private", location: "Makkah", description: "A 10-day ultra-luxury private retreat with full security, bespoke dining, and zero-wait Haram logistics for a VIP delegation." },
-  { name: "Riyadh Government Summit", slug: "riyadh-government-summit", category: "Conference", location: "Riyadh", description: "A 1,200+ delegate government summit with immersive multi-screen production and protocol management." },
-  { name: "AlUla Desert Festival", slug: "alula-desert-festival", category: "Cultural Event", location: "AlUla", description: "A heritage desert festival production in AlUla blending Nabataean landscapes with contemporary staging." },
-  { name: "Jeddah Executive Summit", slug: "executive-summit-jeddah", category: "Corporate Event", location: "Jeddah", description: "A 300-guest high-security diplomatic corporate summit at a prominent Jeddah venue." },
-  { name: "Jeddah Seaside Wedding", slug: "jeddah-beach-wedding", category: "Luxury Wedding", location: "Jeddah", description: "A 450-guest luxury Red Sea coastal wedding production on the Jeddah seafront." },
-  { name: "Al Khobar Corporate Retreat", slug: "alkhobar-corporate-retreat", category: "Corporate Event", location: "Al Khobar", description: "A 120-delegate executive team-building and branding retreat in the Eastern Province." },
-  { name: "Grand Wedding Ceremony", slug: "grand-wedding-ceremony", category: "Luxury Wedding", location: "Riyadh", description: "A 600+ guest grand wedding with traditional VIP entrance protocol and full production." },
+  { name: "Luxury Weddings", slug: "luxury-weddings", category: "Wedding Planning", location: "Saudi Arabia", description: "Connecting clients with premium vendors for royal weddings, traditional ceremonies, and destination celebrations." },
+  { name: "Corporate Events", slug: "corporate-events", category: "Event Management", location: "Saudi Arabia", description: "B2B solutions for corporate summits, galas, and VIP executive retreats." },
+  { name: "Exhibitions & Trade", slug: "exhibitions", category: "Exhibition Management", location: "Saudi Arabia", description: "Platform for sourcing stand builders and exhibition management services." },
+  { name: "Conferences & Summits", slug: "conferences", category: "Conference Management", location: "Saudi Arabia", description: "End-to-end connections for staging and managing high-stakes government and corporate conferences." },
+  { name: "Vision 2030 Activations", slug: "cultural-events", category: "Cultural Events", location: "Saudi Arabia", description: "Heritage festivals and National Day productions aligned with Vision 2030." },
 ];
 
 const jsonLd = {
@@ -52,8 +48,8 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "CollectionPage",
-      "name": "Saudi Event Management Portfolio",
-      "description": "Portfolio of completed corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 event productions across Saudi Arabia.",
+      "name": "Saudi Event Management Vision",
+      "description": "Discover our vision for a B2B platform dedicated to corporate events, conferences, exhibitions, product launches, luxury weddings, and Vision 2030 event productions across Saudi Arabia.",
       "url": "https://saudieventmanagement.com/portfolio",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://saudieventmanagement.com/#website" },
@@ -64,14 +60,14 @@ const jsonLd = {
         "itemListElement": featuredProjects.map((p, i) => ({
           "@type": "ListItem",
           "position": i + 1,
-          "url": `https://saudieventmanagement.com/portfolio/${p.slug}`,
+          "url": `https://saudieventmanagement.com/services/${p.slug}`,
           "item": {
-            "@type": "CreativeWork",
+            "@type": "Service",
             "name": p.name,
-            "about": p.category,
+            "category": p.category,
             "description": p.description,
-            "locationCreated": { "@type": "Place", "name": `${p.location}, Saudi Arabia` },
-            "creator": { "@id": "https://saudieventmanagement.com/#organization" }
+            "areaServed": { "@type": "Country", "name": "Saudi Arabia" },
+            "provider": { "@id": "https://saudieventmanagement.com/#organization" }
           }
         }))
       }
@@ -103,8 +99,8 @@ export default async function PortfolioPage() {
         titleHighlight={isAr ? "مختارات" : "Showcase"}
         subtitle={
           isAr
-            ? "الشاهد البصري الأبرز على تميّز إدارة الفعاليات السعودية في التنفيذ — من إنتاج الحفلات المرخّصة من هيئة الترفيه إلى لوجستيات الأعراس الملكية عالية الأمان في عموم المملكة."
-            : "The definitive visual testament to Saudi Event Management's execution excellence — from GEA-licensed gala productions to high-security royal wedding logistics across the Kingdom."
+            ? "رؤيتنا لمنصة الفعاليات B2B الرائدة في السعودية — تبسيط تنظيم الفعاليات وربط العملاء بأفضل الموردين المعتمدين في عموم المملكة."
+            : "Our vision for Saudi Arabia's premier B2B event platform — simplifying event planning and connecting clients with vetted vendors across the Kingdom."
         }
         backgroundImage="/luxury_wedding_couple_guests.webp"
         imageAlt="Luxury wedding guests celebrating at a grand Saudi Arabia event"
@@ -129,19 +125,19 @@ export default async function PortfolioPage() {
               {isAr ? (
                 <>
                   <p>
-                    إدارة الفعاليات السعودية شركة متكاملة الخدمات نفّذت أكثر من 250 فعالية في عموم المملكة منذ 2010. تجمع هذه الأعمال فعاليات شركات وقممًا حكومية ومؤتمرات ومعارض وإطلاق منتجات وحفلات زفاف فاخرة — كلّها مُنتَجة بالكامل عبر فريقنا الداخلي.
+                    تتمثل رؤية إدارة الفعاليات السعودية في بناء منصة شاملة لربط العملاء بمزودي الخدمات المتميزين في جميع أنحاء المملكة. سيشمل تركيزنا فعاليات الشركات والقمم الحكومية والمؤتمرات والمعارض وإطلاق المنتجات وحفلات الزفاف الفاخرة.
                   </p>
                   <p>
-                    تمتد مشاريعنا عبر <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">الرياض</Link> وجدة والدمام والعلا ونيوم، من ملتقيات تنفيذية حميمة بـ 120 ضيفًا إلى إنتاجات موسم الرياض بسعة 5000 شخص. وكل فعالية مرخّصة من هيئة الترفيه، ومُدارة بالبروتوكول، ومتوائمة مع طموحات رؤية السعودية 2030 الثقافية.
+                    نستهدف تغطية مشاريع في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">الرياض</Link> وجدة والدمام والعلا ونيوم، ونهدف لتوفير شبكة موردين معتمدة تتوافق مع طموحات رؤية السعودية 2030 الثقافية.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    Saudi Event Management is a full-service event management company that has delivered 250+ events across the Kingdom since 2010. This portfolio brings together completed corporate events, government summits, conferences, exhibitions, product launches, and luxury weddings — each produced end-to-end by our in-house team.
+                    Saudi Event Management's vision is to build a comprehensive B2B platform connecting clients with premium event service providers across the Kingdom. Our focus encompasses corporate events, government summits, conferences, exhibitions, product launches, and luxury weddings.
                   </p>
                   <p>
-                    Our projects span <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link>, Jeddah, Dammam, AlUla, and NEOM, ranging from intimate 120-guest executive retreats to 5,000-capacity Riyadh Season productions. Every event is GEA-licensed, protocol-led, and aligned with the cultural ambitions of Saudi Vision 2030.
+                    Targeting projects across <Link href="/locations/riyadh" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">Riyadh</Link>, Jeddah, Dammam, AlUla, and NEOM, our goal is to provide a curated network of vetted vendors aligned with the cultural ambitions of Saudi Vision 2030.
                   </p>
                 </>
               )}
@@ -150,7 +146,7 @@ export default async function PortfolioPage() {
 
           {/* What every project includes — concise capability list in a soft card */}
           <div className="mt-12 rounded-3xl border border-neutral-200/80 bg-gradient-to-br from-[var(--surface-raised)] to-white p-8 md:p-10 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-            <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-neutral-500 mb-7">{isAr ? "ما يتضمّنه كل مشروع" : "What every project includes"}</h3>
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-neutral-500 mb-7">{isAr ? "ما ستقدمه المنصة" : "What our platform will provide"}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
               {(isAr
                 ? [
@@ -186,8 +182,8 @@ export default async function PortfolioPage() {
             <div className="prose prose-slate max-w-3xl mx-auto text-neutral-500 text-[14.5px] leading-relaxed mb-6">
               <p>
                 {isAr
-                  ? "من استخراج تصاريح هيئة الترفيه الإلزامية وتنسيق بروتوكول كبار الشخصيات إلى تركيب المسارح الثقيلة والعرض الغامر — منهجيتنا مبنية على لوجستيات متقنة بلمسة جمالية فاخرة."
-                  : "From procuring mandatory GEA permits and VIP protocol coordination to heavy-duty stage rigging and immersive projection mapping — our methodology is built on flawless logistics wrapped in luxury aesthetics."}
+                  ? "من استخراج تصاريح هيئة الترفيه وتنسيق بروتوكول كبار الشخصيات إلى توفير خدمات العرض والإنتاج — تم تصميم منصتنا لدعم وتسهيل خدمات الفعاليات المتكاملة بلمسة جمالية فاخرة."
+                  : "From procuring mandatory GEA permits and VIP protocol coordination to staging and immersive projection mapping — our platform is designed to support and facilitate flawless logistics wrapped in luxury aesthetics."}
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
@@ -233,8 +229,8 @@ export default async function PortfolioPage() {
             </h2>
             <p className="text-neutral-500 text-[16px] leading-relaxed">
               {isAr
-                ? "كل مشروع في هذه الأعمال يُنتَج عبر فريق متخصص. استكشف الخدمة الكاملة وراء كل فئة:"
-                : "Every project in this portfolio is produced by a dedicated specialist team. Explore the full service behind each category:"}
+                ? "كل فئة فعاليات تعكس التزامنا بربط العملاء بأفضل الموردين. استكشف رؤيتنا لكل فئة:"
+                : "Every event category reflects our commitment to connecting clients with the best vendors. Explore our vision for each category:"}
             </p>
           </div>
 

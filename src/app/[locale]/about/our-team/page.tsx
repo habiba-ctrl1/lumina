@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { hreflangAlternates } from "@/lib/seo";
+import { hreflangAlternates, robotsForRoute } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
@@ -9,12 +9,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
+  const title = isAr ? 'فريقنا التنفيذي' : 'Our Executive Team';
+  const description = isAr
+    ? 'تعرّف على فريق القيادة التنفيذية في إدارة الفعاليات السعودية بقيادة المؤسِّسة والرئيسة التنفيذية حبيبة أصغر. خبراء في تخطيط الفعاليات الفاخرة في جميع أنحاء المملكة العربية السعودية.'
+    : 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.';
   return {
-    title: isAr ? 'فريقنا التنفيذي | إدارة الفعاليات السعودية' : 'Our Executive Team | Saudi Event Management',
-    description: isAr
-      ? 'تعرّف على فريق القيادة التنفيذية في إدارة الفعاليات السعودية بقيادة المؤسِّسة والرئيسة التنفيذية حبيبة أصغر. خبراء في تخطيط الفعاليات الفاخرة في جميع أنحاء المملكة العربية السعودية.'
-      : 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.',
+    title,
+    description,
     keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
+    robots: robotsForRoute(locale, "/about/our-team"),
+    openGraph: { title, description },
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/our-team`,
       languages: hreflangAlternates("/about/our-team"),

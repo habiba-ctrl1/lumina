@@ -263,27 +263,7 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.9 }}
             className={`flex flex-wrap items-center gap-5 pt-7 border-t border-white/10 ${rowReverse}`}
           >
-            {/* Avatar initials stack */}
-            <div className={`flex -space-x-2.5 shrink-0 ${isRtl ? "flex-row-reverse" : ""}`}>
-              {["A", "M", "F", "K"].map((letter, i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-white/15 bg-white/10 flex items-center
-                             justify-center text-[10px] font-bold text-white/80 backdrop-blur-sm"
-                >
-                  {letter}
-                </div>
-              ))}
-            </div>
             <div>
-              <div className={`flex items-center gap-1 mb-0.5 ${rowReverse}`}>
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#F59E0B">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                ))}
-                <span className="text-[11px] font-semibold text-white/75 ml-1.5">4.9</span>
-              </div>
               <p className="text-[11px] text-white/40">
                 {stats[0]} &middot; {stats[1]}
               </p>
@@ -448,9 +428,9 @@ export default function Hero() {
             }}
           >
             {[
-              { num: "250+", label: isRtl ? "فعالية منفذة" : "Events Delivered" },
-              { num: "15+",  label: isRtl ? "سنة خبرة"     : "Years"        },
-              { num: "4.9★", label: isRtl ? "تقييم"         : "Rating"       },
+              { num: isRtl ? "جديد" : "New", label: isRtl ? "أُطلقت 2026" : "Launched 2026" },
+              { num: "10+",  label: isRtl ? "مدينة سعودية" : "Saudi Cities" },
+              { num: "B2B",  label: isRtl ? "منصة"          : "Platform"     },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="text-[17px] font-black text-white leading-none mb-0.5" style={{ letterSpacing: "-0.03em" }}>
@@ -486,7 +466,7 @@ export default function Hero() {
           className="text-white/14 text-[8px] font-bold tracking-[0.48em] uppercase select-none"
           style={{ writingMode: "vertical-rl" }}
         >
-          Est. 2010
+          Est. 2026
         </span>
       </div>
     </div>
