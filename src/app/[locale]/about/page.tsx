@@ -13,13 +13,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
+  const title = isAr
+    ? 'من نحن — خبراء تنظيم الفعاليات في المملكة العربية السعودية'
+    : 'About Us — Event Planning Experts in Saudi Arabia';
+  const description = isAr
+    ? 'إدارة الفعاليات السعودية شركة حائزة على جوائز في تنظيم الفعاليات تأسست عام 2018 في الرياض. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
+    : 'Saudi Event Management is an award-winning event management company founded in 2018 in Riyadh. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.';
   return {
-    title: isAr
-      ? 'من نحن — خبراء تنظيم الفعاليات في المملكة العربية السعودية'
-      : 'About Us — Event Planning Experts in Saudi Arabia',
-    description: isAr
-      ? 'إدارة الفعاليات السعودية شركة حائزة على جوائز في تنظيم الفعاليات تأسست عام 2018 في الرياض. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
-      : 'Saudi Event Management is an award-winning event management company founded in 2018 in Riyadh. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.',
+    title,
+    description,
     keywords: [
       "Event Planning Experts Saudi Arabia",
       "Event management companies",
@@ -30,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       "Event Planner KSA",
       "Luxury Event Organizer Riyadh"
     ],
+    openGraph: { title, description },
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about`,
       languages: hreflangAlternates("/about"),

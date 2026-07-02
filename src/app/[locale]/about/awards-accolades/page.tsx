@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { hreflangAlternates } from "@/lib/seo";
+import { hreflangAlternates, robotsForRoute } from "@/lib/seo";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -9,12 +9,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
+  const title = isAr ? 'الجوائز والتكريمات' : 'Awards & Accolades';
+  const description = isAr
+    ? 'تعرّف على الجوائز والتكريم الذي نالته إدارة الفعاليات السعودية، بما في ذلك جائزة أفضل منظّم فعاليات فاخرة في الخليج 2024.'
+    : 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.';
   return {
-    title: isAr ? 'الجوائز والتكريمات | إدارة الفعاليات السعودية' : 'Awards & Accolades | Saudi Event Management',
-    description: isAr
-      ? 'تعرّف على الجوائز والتكريم الذي نالته إدارة الفعاليات السعودية، بما في ذلك جائزة أفضل منظّم فعاليات فاخرة في الخليج 2024.'
-      : 'Discover the awards and industry recognition earned by Saudi Event Management, including Best Luxury Event Planner GCC 2024.',
+    title,
+    description,
     keywords: 'Award winning event planner Saudi Arabia, Best event management company Riyadh, Luxury event awards KSA',
+    robots: robotsForRoute(locale, "/about/awards-accolades"),
+    openGraph: { title, description },
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/about/awards-accolades`,
       languages: hreflangAlternates("/about/awards-accolades"),

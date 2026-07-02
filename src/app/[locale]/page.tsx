@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? { absolute: "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية" }
       : "Event Management Company in Saudi Arabia",
     description: isAr
-      ? "شركة إدارة الفعاليات السعودية الرائدة بخبرة 15+ عامًا في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — مرخّصة من هيئة الترفيه وبإنتاج داخلي. احصل على استشارة مجانية."
-      : "Saudi Arabia's full-service event management company — 15+ years delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA-licensed, in-house production. Get a free consultation.",
+      ? "شركة إدارة الفعاليات السعودية الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — مرخّصة من هيئة الترفيه وبإنتاج داخلي. احصل على استشارة مجانية."
+      : "Saudi Arabia's full-service event management company — delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA-licensed, in-house production. Get a free consultation.",
     keywords: isAr
       ? [
           "تنظيم معارض ومؤتمرات",
@@ -270,7 +270,7 @@ function InternalLinkHub() {
             Explore <span className="text-[var(--primary)]">Saudi Event Management</span>
           </h2>
           <p className="text-neutral-500 mt-4 text-[15px] leading-relaxed">
-            Browse our event management services, the Saudi cities we operate in, and the work behind 250+ delivered events.
+            Browse our event management services, the Saudi cities we operate in, and the vision behind our platform.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
