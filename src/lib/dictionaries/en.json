@@ -269,10 +269,10 @@
     "title": "OUR GROWING NETWORK",
     "subtitle": "Building a trusted vendor ecosystem to support world-class event planning aligned with Saudi Arabia's Vision 2030.",
     "items": [
-      { "value": 3, "suffix": "+", "label": "Vetted Vendors" },
+      { "value": 20, "suffix": "+", "label": "Vetted Vendors" },
       { "value": 6, "suffix": "+", "label": "Event Categories" },
       { "value": 10, "suffix": "+", "label": "Saudi Cities Covered" },
-      { "value": 2026, "suffix": "", "label": "Founded" }
+      { "value": 100, "suffix": "%", "label": "Quality Vetted" }
     ]
   },
   "portfolio": {
