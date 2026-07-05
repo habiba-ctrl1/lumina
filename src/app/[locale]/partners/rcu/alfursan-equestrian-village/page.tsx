@@ -327,13 +327,13 @@ export default function AlFursanPage() {
         </div>
       </section>
 
-      {/* ── DRAFT FOOTER NOTICE ───────────────────────────────────────── */}
-      <div className="bg-neutral-900 border-t border-neutral-800 px-6 py-8 text-center">
-        <h4 className="text-amber-500 text-[13px] font-bold tracking-[0.15em] uppercase mb-2">
-          Information Notice
+      {/* ── PARTNERSHIP INFORMATION ───────────────────────────────────── */}
+      <div className="bg-neutral-900 border-t border-neutral-800 px-6 py-12 text-center">
+        <h4 className="text-emerald-500 text-[12px] font-bold tracking-[0.15em] uppercase mb-3">
+          Partnership Information
         </h4>
-        <p className="text-neutral-400 text-[13px] max-w-2xl mx-auto font-light leading-relaxed">
-          The information presented on this page is subject to approval by the Royal Commission for AlUla and is displayed here for review purposes only.
+        <p className="text-neutral-400 text-[13px] max-w-3xl mx-auto font-light leading-relaxed">
+          This venue is represented on Saudi Event Management as an Official Partner. All inquiries submitted through SEM are coordinated directly with the partner. Content displayed on this page is subject to partner approval and periodic updates.
         </p>
       </div>
 
