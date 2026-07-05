@@ -37,3 +37,7 @@ next-env.d.ts
 
 # large video files (>100MB GitHub limit)
 public/hero-video.mp4
+
+# RCU Confidential Brochures - NEVER push to remote
+public/private/
+scratch/
