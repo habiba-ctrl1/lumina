@@ -222,9 +222,9 @@ export default function AlMughayraPage() {
       <section className="py-24 md:py-32 bg-neutral-900 text-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Destination Utility</span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Curated <span className="text-amber-300">Experiences</span></h2>
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Types</span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
+              What You Can <span className="text-amber-300">Host</span></h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {[
@@ -291,7 +291,7 @@ export default function AlMughayraPage() {
              <Image src="/venues/almughayra_p4_3.jpeg" alt="Background Texture" fill className="object-cover grayscale" />
           </div>
           <div className="relative z-10">
-            <h2 className="font-semibold mb-6 text-3xl md:text-4xl text-white tracking-tight">
+            <h2 className="font-semibold mb-6 text-3xl md:text-4xl tracking-tight" style={{ color: '#ffffff' }}>
               Engage with <span className="text-emerald-400">AlMughayra</span>
             </h2>
             <p className="text-neutral-300 max-w-2xl mx-auto mb-10 text-[16px] leading-relaxed font-light">
