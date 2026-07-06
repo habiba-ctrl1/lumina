@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { hreflangAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const base = "https://saudieventmanagement.com";
   return {
     title: {
-      template: "%s | RCU Venue Partner — Saudi Event Management",
-      default: "Official RCU Venue Partner — Saudi Event Management",
+      template: "%s | Venue Portfolio — Saudi Event Management",
+      default: "Venue Portfolio — Saudi Event Management",
     },
     robots: { index: false, follow: false }, // DRAFT — not for indexing
   };
