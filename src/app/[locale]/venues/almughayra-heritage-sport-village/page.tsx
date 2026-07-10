@@ -257,8 +257,11 @@ export default function AlMughayraPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { src: "/venues/almughayra_p2_1.jpeg", alt: "AlMughayra HSV — Desert Landscape" },
+              { src: "/venues/almughayra_event_1.png", alt: "Camel Racing Action on the Competition Track" },
               { src: "/venues/almughayra_p4_3.jpeg", alt: "Royal Venue Structure" },
+              { src: "/venues/almughayra_event_2.png", alt: "Heritage Village Cultural Festival" },
               { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
+              { src: "/venues/almughayra_event_3.png", alt: "Night Festival & Stage Performance" },
               { src: "/venues/almughayra_p9_8.jpeg", alt: "Heritage Village Entrance" },
               { src: "/venues/almughayra_p11_10.jpeg", alt: "Camel Tracks Facility" },
               { src: "/venues/almughayra_p13_12.jpeg", alt: "Camel Racing Experience" },
@@ -279,7 +282,7 @@ export default function AlMughayraPage() {
             ))}
           </div>
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
-            Images displayed for proposal review.
+            Venue infrastructure and event imagery displayed for proposal review.
           </p>
         </div>
       </section>

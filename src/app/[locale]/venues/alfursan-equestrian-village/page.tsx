@@ -257,9 +257,12 @@ export default function AlFursanPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { src: "/venues/alfursan_p2_1.jpeg", alt: "AlFursan Village — Landscape Architecture" },
+              { src: "/venues/alfursan_p2_1.jpeg", alt: "AlFursan Village — Desert Landscape Architecture" },
+              { src: "/venues/alfursan_event_1.png", alt: "Desert Polo Match at Sunset" },
               { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
+              { src: "/venues/alfursan_event_2.png", alt: "Evening Hospitality Event" },
               { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
+              { src: "/venues/alfursan_event_3.png", alt: "Spectators at the Equestrian Grandstand" },
               { src: "/venues/alfursan_p10_9.jpeg", alt: "Premium Lounge Presentation Setup" },
               { src: "/venues/alfursan_p13_12.jpeg", alt: "Heritage Lounge Interior Details" },
               { src: "/venues/alfursan_p15_14.jpeg", alt: "Indoor Gathering Area Architecture" },
@@ -280,7 +283,7 @@ export default function AlFursanPage() {
             ))}
           </div>
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
-            Images displayed for proposal review.
+            Venue infrastructure and event imagery displayed for proposal review.
           </p>
         </div>
       </section>

@@ -48,7 +48,7 @@ export default function Hero() {
         body: JSON.stringify({
           name:      form.name,
           email:     form.email,
-          phone:     "To be confirmed",
+          phone:     "+966539388072",
           eventType: form.eventType,
           budget:    "To be discussed",
           message:   "Quick quote request submitted via hero section.",
