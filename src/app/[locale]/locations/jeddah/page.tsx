@@ -606,7 +606,7 @@ export default async function JeddahPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events Delivered in Jeddah", val: "60+" },
+              { label: "Local Vendor Network", val: "Jeddah-Wide" },
               { label: "Venue Partnerships", val: "30+" },
               { label: "Jeddah-Based Specialists", val: "12" },
               { label: "Avg. Guest Satisfaction", val: "98%" },

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Building2, PartyPopper, Mic2, Sparkles, Layers, Users } from "lucide-react";
+import { Building2, PartyPopper, Mic2, Sparkles, Layers, Users } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
@@ -81,30 +81,14 @@ export default function FilterablePortfolio() {
             className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold"
             style={{ letterSpacing: "-0.025em" }}
           >
-            {isAr ? "رؤيتنا" : "Our Vision"}
+            {isAr ? "ما ننسّقه" : "What We Coordinate"}
           </motion.h2>
           <p className="text-neutral-500 text-[16px] leading-relaxed">
             {isAr
-              ? "نحن نبني محفظتنا — اكتشف أنواع الفعاليات التي نربط العملاء بها مع أفضل مزودي الخدمات في المملكة."
-              : "We're building our portfolio — discover the types of events where we connect clients with the Kingdom's best service providers."}
+              ? "من الاستشارة الأولى إلى التنفيذ النهائي، ننسّق كل فئة من الفئات التالية عبر شبكة موردين نتحقق منهم شخصياً."
+              : "From first consultation to final execution, we coordinate every category below through our personally vetted vendor network."}
           </p>
         </div>
-
-        {/* Coming Soon Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex justify-center mb-14"
-        >
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800">
-            <Calendar size={16} className="text-amber-600" />
-            <span className="text-[13px] font-semibold">
-              {isAr ? "المحفظة قيد البناء — قريباً" : "Portfolio Coming Soon — Stay Tuned"}
-            </span>
-          </div>
-        </motion.div>
 
         {/* Event Types Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
@@ -141,8 +125,8 @@ export default function FilterablePortfolio() {
         >
           <p className="text-neutral-400 text-[14px] mb-4">
             {isAr
-              ? "هل تريد أن تكون من أوائل مشاريعنا؟ تواصل معنا اليوم."
-              : "Want to be one of our first projects? Get in touch today."}
+              ? "أخبرنا عن فعاليتك وسنوصلك بالموردين المعتمدين المناسبين."
+              : "Tell us about your event and we'll match you with the right vetted vendors."}
           </p>
           <a
             href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20to%20discuss%20my%20event."

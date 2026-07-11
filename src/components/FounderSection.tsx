@@ -41,7 +41,7 @@ export default function FounderSection() {
               className="absolute -bottom-5 -end-5 bg-neutral-800 border border-neutral-700/50 px-6 py-4 hidden md:block rounded-xl"
               style={{ boxShadow: "0 8px 24px -4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)" }}
             >
-              <p className="text-emerald-400 text-2xl font-bold" style={{ letterSpacing: "-0.03em" }}>12+</p>
+              <p className="text-emerald-400 text-2xl font-bold" style={{ letterSpacing: "-0.03em" }}>100%</p>
               <p className="text-neutral-400 text-[12px] font-medium">{t("yearsOfExcellence")}</p>
             </motion.div>
           </motion.div>

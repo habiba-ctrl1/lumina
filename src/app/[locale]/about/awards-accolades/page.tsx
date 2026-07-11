@@ -124,8 +124,8 @@ export default async function AwardsPage({ params }: { params: Promise<{ locale:
           <div className="text-neutral-600 text-[15px] leading-relaxed space-y-4">
             <p>
               {isAr
-                ? "على مدار السنوات الماضية، أثبتت إدارة الفعاليات السعودية قدرتها الاستثنائية على تصميم وتنفيذ فعاليات تتجاوز المعايير العالمية. حصولنا على هذه الجوائز المرموقة ليس سوى انعكاس لالتزامنا الراسخ بالجودة، والابتكار، وتقديم خدمات ترقى إلى مستوى تطلعات عملائنا من الشخصيات المرموقة والشركات الكبرى."
-                : "Over the years, Saudi Event Management has proven its exceptional ability to design and execute events that transcend global standards. Winning these prestigious awards is a reflection of our unwavering commitment to quality, innovation, and delivering services that meet the high expectations of our distinguished clients and major corporate partners."}
+                ? "تُثبت إدارة الفعاليات السعودية قدرتها الاستثنائية على تصميم وتنفيذ فعاليات تتجاوز المعايير العالمية. حصولنا على هذه الجوائز المرموقة ليس سوى انعكاس لالتزامنا الراسخ بالجودة، والابتكار، وتقديم خدمات ترقى إلى مستوى تطلعات عملائنا من الشخصيات المرموقة والشركات الكبرى."
+                : "Saudi Event Management brings a proven ability to design and execute events that transcend global standards. Winning these prestigious awards is a reflection of our unwavering commitment to quality, innovation, and delivering services that meet the high expectations of our distinguished clients and major corporate partners."}
             </p>
             <p>
               {isAr

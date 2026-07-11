@@ -121,7 +121,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "25+", label: "NEOM Events" },
+      { val: "NEOM-Wide", label: "Local Vendor Network" },
       { val: "5", label: "Venue Partners" },
       { val: "100%", label: "Zero-Carbon" },
       { val: "Direct", label: "NEOM Partnership" },
@@ -248,7 +248,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "90+", label: "Khobar Events" },
+      { val: "Khobar-Wide", label: "Local Vendor Network" },
       { val: "30+", label: "Venue Partners" },
       { val: "Aramco", label: "Anchor Client Sector" },
       { val: "24/7", label: "Local Support" },
@@ -374,7 +374,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "40+", label: "Madinah Events" },
+      { val: "Madinah-Wide", label: "Local Vendor Network" },
       { val: "5", label: "Hotel Partners" },
       { val: "100%", label: "Cultural Compliance" },
       { val: "24/7", label: "VIP Concierge" },
@@ -500,7 +500,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "35+", label: "Taif Events" },
+      { val: "Taif-Wide", label: "Local Vendor Network" },
       { val: "15+", label: "Venue Partners" },
       { val: "12", label: "Mountain Venues" },
       { val: "24/7", label: "Local Support" },
@@ -626,7 +626,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "30+", label: "Abha Events" },
+      { val: "Abha-Wide", label: "Local Vendor Network" },
       { val: "12+", label: "Venue Partners" },
       { val: "100%", label: "Cultural Events" },
       { val: "24/7", label: "On-site Support" },
@@ -752,7 +752,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "60+", label: "Diriyah Events" },
+      { val: "Diriyah-Wide", label: "Local Vendor Network" },
       { val: "DGDA", label: "Preferred Partner" },
       { val: "UNESCO", label: "Heritage Access" },
       { val: "24/7", label: "VIP Concierge" },
@@ -878,7 +878,7 @@ const pseoCities: Record<string, CityData> = {
       },
     ],
     stats: [
-      { val: "20+", label: "Tabuk Events" },
+      { val: "Tabuk-Wide", label: "Local Vendor Network" },
       { val: "8+", label: "Venue Partners" },
       { val: "NEOM", label: "Gateway Region" },
       { val: "24/7", label: "On-site Support" },

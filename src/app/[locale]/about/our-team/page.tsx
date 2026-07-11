@@ -101,7 +101,7 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
                 {isAr ? (
                   <>
                     <p>
-                      بصفتها المؤسِّسة والرئيسة التنفيذية لإدارة الفعاليات السعودية، ارتقت حبيبة أصغر بمعايير إنتاج الفعاليات الفاخرة في المملكة بشكل جوهري. وبخبرة تتجاوز عقداً من الزمن في الفعاليات عالية المخاطر، تقود فريقاً من الخبراء الدوليين المكرّسين لتحويل رؤى العملاء المعقّدة إلى واقع لا تشوبه شائبة.
+                      بصفتها المؤسِّسة والرئيسة التنفيذية لإدارة الفعاليات السعودية، ارتقت حبيبة أصغر بمعايير إنتاج الفعاليات الفاخرة في المملكة بشكل جوهري. مستفيدة من خبرتها العملية في الفعاليات عالية المخاطر، تقود فريقاً من الخبراء الدوليين المكرّسين لتحويل رؤى العملاء المعقّدة إلى واقع لا تشوبه شائبة.
                     </p>
                     <p>
                       تمتد خبرتها لتشمل حفلات الزفاف الملكية، وقمم الشركات لكبار التنفيذيين، والتفعيلات الثقافية الضخمة المتوافقة مع رؤية السعودية 2030. وتشتهر حبيبة باهتمامها الذي لا يقبل المساومة بالتفاصيل، وقدرتها على الدمج السلس بين بروتوكول كبار الشخصيات رفيع المستوى والتصميم الجمالي الآسر.
@@ -110,7 +110,7 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
                 ) : (
                   <>
                     <p>
-                      As the Founder and CEO of Saudi Event Management, Habiba Asghar has fundamentally elevated the standard of luxury event production in the Kingdom. With over a decade of high-stakes event experience, she leads a team of international experts dedicated to translating complex client visions into flawless realities.
+                      As the Founder and CEO of Saudi Event Management, Habiba Asghar has fundamentally elevated the standard of luxury event production in the Kingdom. Drawing on hands-on, high-stakes event experience, she leads a team of international experts dedicated to translating complex client visions into flawless realities.
                     </p>
                     <p>
                       Her expertise spans royal weddings, C-suite corporate summits, and massive cultural activations aligned with Saudi Vision 2030. Habiba is known for her uncompromising attention to detail and her ability to seamlessly integrate high-level VIP protocol with breathtaking aesthetic design.

@@ -258,7 +258,7 @@ export default function ExhibitionsPage() {
           minHeight="large"
           trustElements={[
             { value: "RECC", label: "Official Partner Network" },
-            { value: "100+", label: "Pavilions Delivered" },
+            { value: "20+", label: "Vetted Vendors" },
             { value: "Award", label: "Winning Booth Design 2024" },
           ]}
         />

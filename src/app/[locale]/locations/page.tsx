@@ -57,7 +57,7 @@ const locations = [
     description:
       "The administrative and financial capital of Saudi Arabia — and the undisputed heart of Vision 2030. From high-security diplomatic summits at KAFD to royal wedding productions in Diriyah and Riyadh Season mega-activations, our Riyadh team handles the Kingdom's most elite and protocol-sensitive events.",
     tags: ["KAFD", "Riyadh Season", "Diriyah", "Vision 2030"],
-    stat: "150+ events",
+    stat: "Vetted Local Vendors",
   },
   {
     city: "Jeddah",
@@ -69,7 +69,7 @@ const locations = [
     description:
       "Saudi Arabia's cosmopolitan gateway to the world. Jeddah's vibrant waterfront and international character attract luxury seaside weddings, global brand exhibitions at JECC, and avant-garde corporate galas that push creative boundaries — making it our premier showcase for innovative event design.",
     tags: ["JCEC", "Red Sea Global", "Corniche", "International Expos"],
-    stat: "80+ events",
+    stat: "Vetted Local Vendors",
   },
   {
     city: "Al Khobar",
@@ -81,7 +81,7 @@ const locations = [
     description:
       "Often overlooked by boutique agencies — but a goldmine for high-volume, high-loyalty events. Al Khobar sits at the centre of Saudi Arabia's energy and industrial sector, with Saudi Aramco, SABIC, and hundreds of multinational corporations generating consistent demand for premium Majlis gatherings, executive retreats, and supplier conferences.",
     tags: ["Saudi Aramco", "SABIC", "Dhahran Expo", "Jubail IC"],
-    stat: "35+ events",
+    stat: "Vetted Local Vendors",
   },
   {
     city: "Makkah",
@@ -93,7 +93,7 @@ const locations = [
     description:
       "Constant, year-round demand for high-end concierge services, exclusive private gatherings, and premium Hajj & Umrah season hospitality programmes for international delegations. We operate under Ministry of Hajj guidelines with absolute cultural discretion for royal households and government bodies.",
     tags: ["VIP Concierge", "Ministry of Hajj", "International Delegations"],
-    stat: "30+ events",
+    stat: "Vetted Local Vendors",
   },
   {
     city: "Dammam",
@@ -105,7 +105,7 @@ const locations = [
     description:
       "The administrative capital of the Eastern Province — a natural complement to Al Khobar for corporate-tier events. Dammam hosts government summits, Aramco contractor events, and lavish family weddings for Saudi Arabia's most established Eastern Province clans.",
     tags: ["Government Events", "Eastern Province", "Aramco Contractors", "Family Weddings"],
-    stat: "25+ events",
+    stat: "Vetted Local Vendors",
   },
 ];
 
@@ -171,7 +171,7 @@ export default async function LocationsPage() {
         trustElements={[
           { value: "12", label: "Cities Covered" },
           { value: "13+", label: "Saudi Regions Served" },
-          { value: "250+", label: "Events Delivered" },
+          { value: "20+", label: "Vetted Vendors" },
           { value: "100%", label: "GEA Compliant" },
         ]}
       />

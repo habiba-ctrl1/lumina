@@ -340,8 +340,8 @@ export default async function ConferencesPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "200+", label: "Conferences Delivered" },
-            { value: "50K+", label: "Delegates Managed" },
+            { value: "20+", label: "Vetted Vendors" },
+            { value: "10+", label: "Saudi Cities Covered" },
             { value: "IAPCO", label: "Aligned PCO Standards" },
           ]}
         />
@@ -579,9 +579,9 @@ export default async function ConferencesPage() {
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-4">
                   {[
-                    { label: "مؤتمرات منفذة", value: "200+" },
-                    { label: "مندوب مُدار", value: "50K+" },
-                    { label: "سنوات خبرة", value: "15+" },
+                    { label: "مورد معتمد", value: "20+" },
+                    { label: "مدينة سعودية نغطيها", value: "10+" },
+                    { label: "توثيق الموردين", value: "100%" },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="text-3xl font-bold text-[var(--primary)]">{stat.value}</p>

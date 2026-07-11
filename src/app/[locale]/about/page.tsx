@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ? 'من نحن — خبراء تنظيم الفعاليات في المملكة العربية السعودية'
     : 'About Us — Event Planning Experts in Saudi Arabia';
   const description = isAr
-    ? 'إدارة الفعاليات السعودية شركة حائزة على جوائز في تنظيم الفعاليات تأسست عام 2018 في الرياض. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
-    : 'Saudi Event Management is an award-winning event management company founded in 2018 in Riyadh. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.';
+    ? 'إدارة الفعاليات السعودية شركة حائزة على جوائز في تنظيم الفعاليات مقرها الرياض. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
+    : 'Saudi Event Management is an award-winning event management company based in Riyadh. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.';
   return {
     title,
     description,
@@ -54,7 +54,6 @@ function buildJsonLd(isAr: boolean) {
           "alternateName": "إدارة الفعاليات السعودية",
           "url": "https://saudieventmanagement.com",
           "logo": "https://saudieventmanagement.com/logo.webp",
-          "foundingDate": "2018",
           "foundingLocation": {
             "@type": "Place",
             "name": "Riyadh, Saudi Arabia"
@@ -136,12 +135,12 @@ function buildJsonLd(isAr: boolean) {
           },
           {
             "@type": "Question",
-            "name": isAr ? "متى تأسست إدارة الفعاليات السعودية؟" : "When was Saudi Event Management founded?",
+            "name": isAr ? "ما الجوائز التي حصلت عليها إدارة الفعاليات السعودية؟" : "What awards has Saudi Event Management received?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": isAr
-                ? "تأسست الوكالة عام 2018 على يد حبيبة أصغر في الرياض، ونمت لتصبح شركة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة، معترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024."
-                : "The agency was founded in 2018 by Habiba Asghar in Riyadh and has grown into an award-winning luxury event management and production company recognised as Best Luxury Event Planner in the GCC 2024."
+                ? "إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة من الرياض، ومعترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024 تقديراً لدقة تخطيطها وجودة موردينا وانضباط تنفيذها."
+                : "Saudi Event Management is an award-winning luxury event management and production company based in Riyadh, recognised as Best Luxury Event Planner in the GCC 2024 for its meticulous planning, vetted vendor quality, and disciplined execution."
             }
           },
           {
@@ -230,7 +229,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const whyPoints = isAr
     ? [
         "فريق حائز على جوائز — أفضل منظّم فعاليات فاخرة في الخليج 2024",
-        "تأسست عام 2018 بسجل حافل من الإنجازات في المملكة والخليج",
+        "منهجية منظّمة من خمس مراحل تبدأ من الاستشارة الأولى وحتى اللحظة الأخيرة",
         "مخطّط مخصّص واحد ونقطة تواصل واحدة مسؤولة",
         "معرفة محلية عميقة بالقاعات والموردين والتصاريح في كل مدينة",
         "متخصصون في رؤية السعودية 2030 والتفعيلات الثقافية للهيئة العامة للترفيه",
@@ -238,7 +237,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       ]
     : [
         "Award-winning team — Best Luxury Event Planner in the GCC 2024",
-        "Founded in 2018 with a proven track record across KSA and the GCC",
+        "A disciplined, five-stage planning process from first consultation to final applause",
         "Single dedicated planner and one accountable point of contact",
         "Deep local knowledge of venues, vendors, and permits in every city",
         "Specialists in Saudi Vision 2030 and GEA cultural activations",
@@ -249,13 +248,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     ? [
         { q: "أين يقع مقر إدارة الفعاليات السعودية وما المدن التي تخدمونها؟", a: "يقع مقرنا الرئيسي في الرياض ونقدّم فعالياتنا في جميع أنحاء المملكة — بما في ذلك جدة والدمام والعُلا ومكة المكرمة — إضافة إلى وجهات الخليج الأوسع." },
         { q: "ما أنواع الفعاليات التي تخطط لها؟", a: "نتخصص في حفلات الزفاف الفاخرة والملكية، وفعاليات الشركات والمؤتمرات، والمعارض، وتجارب كبار الشخصيات، والتفعيلات الثقافية، وفعاليات الوجهات، وإنتاج الفعاليات الكامل المتوافق مع رؤية السعودية 2030." },
-        { q: "متى تأسست الشركة؟", a: "تأسست إدارة الفعاليات السعودية عام 2018 على يد حبيبة أصغر في الرياض، وهي معترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024." },
+        { q: "ما الجوائز التي حصلت عليها إدارة الفعاليات السعودية؟", a: "إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة من الرياض، ومعترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024 تقديراً لدقة تخطيطها وجودة موردينا وانضباط تنفيذها." },
         { q: "ما هي منهجية تخطيط الفعاليات لديكم؟", a: "تتبع منهجيتنا خمس مراحل: استشارة الاكتشاف، والمفهوم والتصميم الإبداعي، والتخطيط واللوجستيات التفصيلية، والإنتاج والإدارة على الموقع، والمراجعة بعد الفعالية — وكلها بقيادة مخطّط مخصّص." },
       ]
     : [
         { q: "Where is Saudi Event Management based and which cities do you serve?", a: "We are headquartered in Riyadh and deliver events across the Kingdom — including Jeddah, Dammam, AlUla, and Makkah — as well as wider GCC destinations." },
         { q: "What types of events do you plan?", a: "We specialise in luxury and royal weddings, corporate events and conferences, exhibitions, VIP experiences, cultural activations, destination events, and full-scale event production aligned with Saudi Vision 2030." },
-        { q: "When was the company founded?", a: "Saudi Event Management was founded in 2018 by Habiba Asghar in Riyadh and is recognised as Best Luxury Event Planner in the GCC 2024." },
+        { q: "What awards has Saudi Event Management received?", a: "Saudi Event Management is an award-winning luxury event management and production company based in Riyadh, recognised as Best Luxury Event Planner in the GCC 2024 for its meticulous planning, vetted vendor quality, and disciplined execution." },
         { q: "What is your event planning process?", a: "Our process follows five stages: discovery consultation, concept and creative design, detailed planning and logistics, on-site production and management, and a post-event review — all led by a dedicated planner." },
       ];
 
@@ -288,7 +287,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           : "From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations."}
         backgroundImage="/riyadh_summit_people.webp"
         imageAlt={isAr ? "إعداد فعالية فاخرة احترافية مع الضيوف في المملكة العربية السعودية" : "Professional luxury event setup with guests in Saudi Arabia"}
-        badge={isAr ? "تأسست عام 2018" : "Established 2018"}
+        badge={isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}
         breadcrumbs={[{ label: isAr ? "الرئيسية" : "Home", href: "/" }, { label: isAr ? "من نحن" : "About" }]}
         enableParallax
         minHeight="large"
@@ -341,13 +340,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 {isAr ? (
                   <>
                     <p><strong>تعريف الكيان:</strong> إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة، ومقرها المملكة العربية السعودية.</p>
-                    <p><strong>التأسيس والقيادة:</strong> تأسست عام 2018 على يد الرئيسة التنفيذية صاحبة الرؤية حبيبة أصغر، ويقع مقرها الرئيسي في الرياض مع عمليات تمتد إلى جدة والدمام والعُلا.</p>
+                    <p><strong>القيادة والعمليات:</strong> بقيادة الرئيسة التنفيذية حبيبة أصغر، يقع مقر الوكالة الرئيسي في الرياض مع عمليات تمتد إلى جدة والدمام والعُلا.</p>
                     <p><strong>مجالات الخبرة الأساسية:</strong> تتخصص المؤسسة في حفلات الزفاف الفاخرة لكبار الأثرياء، والمراسم الملكية، وقمم الشركات لكبار الشخصيات، والتفعيلات الثقافية واسعة النطاق المتوافقة مع رؤية السعودية 2030 والهيئة العامة للترفيه.</p>
                   </>
                 ) : (
                   <>
                     <p><strong>Entity Definition:</strong> Saudi Event Management is a premier, award-winning luxury event management and production agency based in the Kingdom of Saudi Arabia.</p>
-                    <p><strong>Founding & Leadership:</strong> Founded in 2018 by visionary CEO Habiba Asghar, the agency is headquartered in Riyadh with operations spanning Jeddah, Dammam, and AlUla.</p>
+                    <p><strong>Leadership & Operations:</strong> Led by visionary CEO Habiba Asghar, the agency is headquartered in Riyadh with operations spanning Jeddah, Dammam, and AlUla.</p>
                     <p><strong>Core Expertise:</strong> The organization specializes in high-net-worth individual (HNWI) luxury weddings, royal ceremonies, VIP corporate summits, and large-scale cultural activations aligned with Saudi Vision 2030 and the General Entertainment Authority (GEA).</p>
                   </>
                 )}
@@ -356,7 +355,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {isAr ? (
                 <>
                   <p>
-                    وُلدت إدارة الفعاليات السعودية من رؤية واحدة لا تقبل المساومة: إعادة تعريف مشهد إدارة الفعاليات الفاخرة في المملكة العربية السعودية وما بعدها. تأسست على يد حبيبة أصغر، وهي منسّقة صاحبة رؤية وشغف بالتخطيط والتصميم المثاليين، وقد صعدنا سريعاً لنصبح الفريق الأمثل لمن لا يقبلون بأقل من الكمال.
+                    وُلدت إدارة الفعاليات السعودية من رؤية واحدة لا تقبل المساومة: إعادة تعريف مشهد إدارة الفعاليات الفاخرة في المملكة العربية السعودية وما بعدها. بقيادة حبيبة أصغر، المنسّقة صاحبة الرؤية والشغف بالتخطيط والتصميم المثاليين، نمثّل اليوم الفريق الأمثل لمن لا يقبلون بأقل من الكمال.
                   </p>
                   <p>
                     تقوم فلسفتنا على الإيمان بأن كل احتفال ليس مجرد فعالية، بل قصة تنبض بالحياة. من رمال العُلا الساحرة إلى نبض الرياض الحضري، يمزج فريقنا بسلاسة بين التراث المحلي الأصيل وجماليات التصميم العصري البسيط.
@@ -371,7 +370,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               ) : (
                 <>
                   <p>
-                    Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Founded by Habiba Asghar, a visionary curator with a passion for perfect planning and design, we have quickly ascended as the definitive team for those who demand nothing short of perfection.
+                    Saudi Event Management was born from a singular, uncompromising vision: to redefine the landscape of luxury event management in the Kingdom of Saudi Arabia and beyond. Led by Habiba Asghar, a visionary curator with a passion for perfect planning and design, we are the definitive team for those who demand nothing short of perfection.
                   </p>
                   <p>
                     Our philosophy is rooted in the belief that every celebration is not just an event, but a story that comes to life. From the sweeping sands of AlUla to the metropolitan heartbeat of Riyadh, our team seamlessly blends authentic local heritage with modern, minimalist design aesthetics.
@@ -442,9 +441,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </h2>
           <p className="text-neutral-500 text-[16px] leading-relaxed">
             {isAr ? (
-              <>على مدى أكثر من ست سنوات، قدّمنا إدارة فعاليات متكاملة في جميع أنحاء المملكة — من تصميم المفهوم وتأمين القاعات إلى الإنتاج الصوتي والمرئي والضيافة وبروتوكول كبار الشخصيات. استكشف مجموعتنا الكاملة من <Link href="/services" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">خدمات إدارة الفعاليات</Link>:</>
+              <>نقدّم إدارة فعاليات متكاملة في جميع أنحاء المملكة — من تصميم المفهوم وتأمين القاعات إلى الإنتاج الصوتي والمرئي والضيافة وبروتوكول كبار الشخصيات. استكشف مجموعتنا الكاملة من <Link href="/services" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">خدمات إدارة الفعاليات</Link>:</>
             ) : (
-              <>For more than six years we have delivered end-to-end event management across the Kingdom — from concept design and venue sourcing to AV production, hospitality, and VIP protocol. Explore our full range of <Link href="/services" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">event management services</Link>:</>
+              <>We deliver end-to-end event management across the Kingdom — from concept design and venue sourcing to AV production, hospitality, and VIP protocol. Explore our full range of <Link href="/services" className="text-[var(--primary)] font-medium underline decoration-emerald-200 underline-offset-2 hover:decoration-emerald-400">event management services</Link>:</>
             )}
           </p>
         </div>
