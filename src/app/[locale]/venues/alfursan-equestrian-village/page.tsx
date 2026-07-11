@@ -266,6 +266,8 @@ export default function AlFursanPage() {
               { src: "/venues/alfursan_p10_9.jpeg", alt: "Guest Lounge Interior" },
               { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
               { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
+              { src: "/venues/alfursan_p12_11.jpeg", alt: "Briefing Session in the Lounge" },
+              { src: "/venues/alfursan_p13_12.jpeg", alt: "Auditorium Seating Setup" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
                 <Image 

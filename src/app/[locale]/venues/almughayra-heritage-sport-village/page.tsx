@@ -265,6 +265,8 @@ export default function AlMughayraPage() {
               { src: "/venues/almughayra_p10_9.jpeg", alt: "Aerial View of the Village Complex" },
               { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
               { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
+              { src: "/venues/almughayra_p12_11.jpeg", alt: "Aerial View of Competition Racetrack" },
+              { src: "/venues/almughayra_p13_12.jpeg", alt: "Aerial View of Training Racetrack" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
                 <Image 
