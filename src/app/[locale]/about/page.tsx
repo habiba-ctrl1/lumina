@@ -256,12 +256,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const subPages = isAr
     ? [
         { title: "فريقنا", desc: "تعرّف على خبراء تنظيم الفعاليات والمبدعين وراء كل تحفة من إدارة الفعاليات السعودية.", href: "/about/our-team", icon: "👥" },
-        { title: "الجوائز والتكريمات", desc: "نحتفي بتكريمنا كأبرز شركة إدارة فعاليات فاخرة في المملكة العربية السعودية.", href: "/about/awards-accolades", icon: "🏆" },
+        { title: "التقدير والمعايير", desc: "كيف نتحقق من الموردين ونضمن معياراً ثابتاً للجودة في كل فعالية.", href: "/about/awards-accolades", icon: "🏆" },
         { title: "الوظائف", desc: "انضم إلى فريق إدارة الفعاليات الرائد في المملكة. استكشف الفرص في الرياض وجدة والعُلا.", href: "/about/careers", icon: "💼" },
       ]
     : [
         { title: "Our Team", desc: "Meet the expert event planners and creatives behind every Saudi Event Management masterpiece.", href: "/about/our-team", icon: "👥" },
-        { title: "Awards & Accolades", desc: "Celebrating our recognition as Saudi Arabia's leading luxury event management company.", href: "/about/awards-accolades", icon: "🏆" },
+        { title: "Recognition & Standards", desc: "How we vet vendors and hold every event to a consistent quality standard.", href: "/about/awards-accolades", icon: "🏆" },
         { title: "Careers", desc: "Join Saudi Arabia's premier event management team. Explore opportunities across Riyadh, Jeddah, and AlUla.", href: "/about/careers", icon: "💼" },
       ];
 
