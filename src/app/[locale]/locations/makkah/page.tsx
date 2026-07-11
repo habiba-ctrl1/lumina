@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? { absolute: "إدارة الفعاليات في مكة المكرمة | إدارة الفعاليات السعودية" }
       : "Event Management in Makkah | Saudi Event Management",
     description: isAr
-      ? "تقدّم إدارة الفعاليات السعودية مؤتمرات الشركات والمعارض الحلال وحفلات الزفاف الفاخرة والضيافة المؤسسية للحج في مكة المكرمة. كوادر مسلمة بالكامل. مرخّصون من أمانة مكة وهيئة تطوير مكة ووزارة الحج. القاعات: هيلتون مكة، وفيرمونت، ورافلز، وأبراج البيت."
-      : "Saudi Event Management delivers corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only staffing. Permitted by Amanah Makkah, RCMC, and Ministry of Haj. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
+      ? "تقدّم إدارة الفعاليات السعودية مؤتمرات الشركات والمعارض الحلال وحفلات الزفاف الفاخرة والضيافة المؤسسية للحج في مكة المكرمة، بشبكة موردين مسلمين معتمدين تعمل وفق متطلبات أمانة مكة وهيئة تطوير مكة ووزارة الحج. القاعات: هيلتون مكة، وفيرمونت، ورافلز، وأبراج البيت."
+      : "Saudi Event Management coordinates corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah, with a Muslim-vetted vendor network operating in line with Amanah Makkah, RCMC, and Ministry of Haj requirements. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",
     keywords:
       "event management company in Makkah, event planner in Makkah, corporate event organizer in Makkah, wedding planner in Makkah, conference organizer Makkah, Hilton Makkah Convention Hotel, Haj corporate hospitality, halal exhibition management, تنظيم فعاليات مكة المكرمة",
     alternates: {
@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ? "إدارة الفعاليات في مكة المكرمة | إدارة الفعاليات السعودية"
         : "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
       description: isAr
-        ? "مؤتمرات الشركات، والمعارض الحلال، وحفلات الزفاف الفاخرة، والضيافة المؤسسية للحج في مكة المكرمة. عمليات بكوادر مسلمة بالكامل. مرخّصون من هيئة تطوير مكة وأمانة مكة."
-        : "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah. Muslim-only operations. RCMC and Amanah Makkah permitted.",
+        ? "مؤتمرات الشركات، والمعارض الحلال، وحفلات الزفاف الفاخرة، والضيافة المؤسسية للحج في مكة المكرمة، عبر شبكة موردين مسلمين معتمدين وفق متطلبات هيئة تطوير مكة وأمانة مكة."
+        : "Corporate conferences, halal exhibitions, luxury weddings and Haj corporate hospitality in Makkah Al-Mukarramah, coordinated through a Muslim-vetted vendor network in line with RCMC and Amanah Makkah requirements.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: "summary_large_image",
       title: "Event Management in Makkah Al-Mukarramah | Saudi Event Management",
       description:
-        "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah. Muslim-only staffing. RCMC permitted.",
+        "Corporate conferences, halal exhibitions, luxury weddings & Haj hospitality in Makkah, coordinated through a Muslim-vetted vendor network in line with RCMC requirements.",
       images: ["https://saudieventmanagement.com/locations/makkah-og.webp"],
     },
   };
@@ -76,7 +76,7 @@ const jsonLd = {
       "name": "Saudi Event Management — Makkah Al-Mukarramah",
       "url": "https://saudieventmanagement.com/locations/makkah",
       "description":
-        "Saudi Event Management provides full-service event management in Makkah Al-Mukarramah, including corporate conferences at the Hilton Makkah Convention Hotel, luxury weddings at Fairmont and Raffles Makkah, halal exhibitions, and Haj corporate hospitality. All operations are Muslim-staffed and permitted by Amanah Makkah and the Royal Commission for Makkah City and Holy Sites (RCMC).",
+        "Saudi Event Management coordinates event management in Makkah Al-Mukarramah, including corporate conferences at the Hilton Makkah Convention Hotel, luxury weddings at Fairmont and Raffles Makkah, halal exhibitions, and Haj corporate hospitality — through a Muslim-vetted vendor network operating in line with Amanah Makkah and Royal Commission for Makkah City and Holy Sites (RCMC) requirements.",
       "image":
         "https://saudieventmanagement.com/locations/makkah-hero.webp",
       "address": {
@@ -177,7 +177,7 @@ const jsonLd = {
           "name": "Can non-Muslim staff or vendors work at events in Makkah?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Makkah Al-Mukarramah is exclusively accessible to Muslims under Saudi Arabian law enforced by the Royal Commission for Makkah City and Holy Sites. All event staff, AV technicians, caterers, security, décor crews, and photographers must be Muslim with valid documentation. Saudi Event Management maintains a fully verified Muslim-only vendor and crew network in Makkah.",
+            "text": "No. Makkah Al-Mukarramah is exclusively accessible to Muslims under Saudi Arabian law enforced by the Royal Commission for Makkah City and Holy Sites. All event staff, AV technicians, caterers, security, décor crews, and photographers must be Muslim with valid documentation. Saudi Event Management coordinates a Muslim-vetted vendor and crew network in Makkah to meet this requirement.",
           },
         },
         {
@@ -185,7 +185,7 @@ const jsonLd = {
           "name": "What is Haj corporate hospitality and who provides it in Makkah?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Haj corporate hospitality refers to the professional management of VIP pilgrim delegation logistics during Haj season — including accommodation coordination at Abraj Al-Bait hotels, private transport, Arafat day arrangements, and post-Haj corporate receptions. Saudi Event Management is one of the few event companies in Makkah that provides end-to-end Haj corporate hospitality for Islamic banks, OIC delegations, and Muslim-majority multinational corporations.",
+            "text": "Haj corporate hospitality refers to the professional management of VIP pilgrim delegation logistics during Haj season — including accommodation coordination at Abraj Al-Bait hotels, private transport, Arafat day arrangements, and post-Haj corporate receptions. Saudi Event Management coordinates end-to-end Haj corporate hospitality for institutional and corporate delegations, including Islamic financial institutions and multinational organizations.",
           },
         },
         {
@@ -332,7 +332,7 @@ const services = [
   {
     icon: Users,
     title: "Haj Corporate Hospitality",
-    text: "End-to-end VIP pilgrim delegation management for Islamic banks, OIC member states, and Muslim-majority MNCs — accommodation, transport, and Arafat day coordination.",
+    text: "End-to-end VIP pilgrim delegation management for institutional and corporate delegations — accommodation, transport, and Arafat day coordination.",
     href: "/locations/makkah/corporate-event-management",
   },
   {
@@ -350,7 +350,7 @@ const services = [
   {
     icon: ShieldCheck,
     title: "Government & Ministerial Events",
-    text: "Ministry of Haj and Umrah coordinated events, Muslim World League gatherings, and OIC delegation management with full RCMC compliance.",
+    text: "Coordination support for government, ministerial, and international-organization events in Makkah, navigated with full RCMC compliance.",
     href: "/locations/makkah/corporate-event-management",
   },
 ];
@@ -366,11 +366,11 @@ const faqs = [
   },
   {
     q: "Can non-Muslim staff or vendors work at events in Makkah?",
-    a: "No. Makkah Al-Mukarramah is exclusively accessible to Muslims under Saudi Arabian law. All event staff, AV technicians, caterers, security personnel, and vendors must be Muslim with valid documentation. Saudi Event Management maintains a fully verified Muslim-only operational network in Makkah.",
+    a: "No. Makkah Al-Mukarramah is exclusively accessible to Muslims under Saudi Arabian law. All event staff, AV technicians, caterers, security personnel, and vendors must be Muslim with valid documentation. Saudi Event Management coordinates a Muslim-vetted vendor network in Makkah to meet this requirement.",
   },
   {
     q: "What is Haj corporate hospitality and who provides it in Makkah?",
-    a: "Haj corporate hospitality is the professional management of VIP pilgrim delegations during Haj season — covering accommodation at Abraj Al-Bait hotels, private transport, Arafat day coordination, and post-Haj corporate receptions. Saudi Event Management provides this service for Islamic banks, OIC delegations, and Muslim-majority multinational corporations.",
+    a: "Haj corporate hospitality is the professional management of VIP pilgrim delegations during Haj season — covering accommodation at Abraj Al-Bait hotels, private transport, Arafat day coordination, and post-Haj corporate receptions. Saudi Event Management coordinates this service for institutional and corporate delegations, including Islamic financial institutions and multinational organizations.",
   },
   {
     q: "What is the peak event season in Makkah?",
@@ -448,7 +448,7 @@ export default async function MakkahPage() {
               href="/locations/makkah/corporate-event-management"
               className="underline hover:text-amber-900"
             >
-              Our Muslim-only vendor network ensures full compliance.
+              We coordinate a Muslim-vetted vendor network to help ensure compliance.
             </Link>
           </p>
         </div>
@@ -542,15 +542,13 @@ export default async function MakkahPage() {
                 dedicated MICE facility outside of Jeddah.
               </p>
               <p>
-                For organizations in the Islamic economy — from{" "}
-                <strong>Islamic Development Bank</strong> and{" "}
-                <strong>OIC</strong> delegations to halal industry leaders and{" "}
-                <strong>Muslim World League</strong> programs — Makkah is the
-                only city that carries the full weight of Islamic authority and
-                institutional credibility. Saudi Event Management is the only
-                full-service event company in the Western Region maintaining a
-                verified <strong>Muslim-only vendor and crew network</strong>{" "}
-                that meets{" "}
+                For organizations in the Islamic economy — from Islamic
+                financial institutions and halal industry leaders to
+                international Islamic organizations — Makkah carries the full
+                weight of Islamic authority and institutional credibility.
+                Saudi Event Management coordinates a{" "}
+                <strong>Muslim-vetted vendor and crew network</strong> in the
+                Western Region, built to meet{" "}
                 <strong>RCMC and Amanah Makkah</strong> legal requirements for
                 every event format.
               </p>
@@ -656,8 +654,8 @@ export default async function MakkahPage() {
             {[
               { label: "Local Vendor Network", val: "Makkah-Wide" },
               { label: "Venue Partnerships", val: "15+" },
-              { label: "Muslim-Verified Vendors", val: "100%" },
-              { label: "RCMC Compliance Rate", val: "100%" },
+              { label: "Vendor Vetting", val: "Muslim-Verified" },
+              { label: "Compliance Approach", val: "RCMC-Aligned" },
             ].map((stat, i) => (
               <div key={i}>
                 <div className="text-2xl md:text-3xl font-display font-medium text-neutral-900 mb-2">
@@ -739,7 +737,7 @@ export default async function MakkahPage() {
               {
                 icon: ShieldCheck,
                 title: "Muslim-Only Access",
-                body: "All attendees, vendors, staff, and contractors must be Muslim. Saudi Event Management maintains RCMC-compliant documentation for every crew member and supplier in our Makkah network.",
+                body: "All attendees, vendors, staff, and contractors must be Muslim. We help clients source Muslim-vetted crew and suppliers and coordinate the RCMC-compliant documentation each event requires.",
               },
               {
                 icon: Calendar,
@@ -758,8 +756,8 @@ export default async function MakkahPage() {
               },
               {
                 icon: ShieldCheck,
-                title: "Dress Code Enforcement",
-                body: "Islamic modesty standards (Hijab and appropriate attire) are mandatory for all event participants in Makkah. Our event coordinators brief all attendees and enforce compliance on-site.",
+                title: "Dress Code Guidance",
+                body: "Islamic modesty standards (Hijab and appropriate attire) are mandatory for all event participants in Makkah. We brief clients and their guests in advance so every event stays compliant on-site.",
               },
               {
                 icon: Building2,
@@ -798,16 +796,16 @@ export default async function MakkahPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "The Only Full-Service Muslim-Only Event Network",
-                body: "We maintain Makkah's only fully verified Muslim-staffed event crew — AV technicians, caterers, security, décor, and photographers — all RCMC-compliant. No other agency offers this at full-service scale.",
+                title: "A Muslim-Vetted Event Network",
+                body: "We coordinate a Muslim-staffed event crew — AV technicians, caterers, security, décor, and photographers — vetted to RCMC-compliant standards for every Makkah project.",
               },
               {
-                title: "Haj Corporate Hospitality Specialists",
-                body: "We are one of the few event management companies in Saudi Arabia that specializes in VIP pilgrim delegation logistics for Islamic banks, OIC member states, and Muslim-majority MNCs during Haj season.",
+                title: "Haj Corporate Hospitality Coordination",
+                body: "We coordinate VIP pilgrim delegation logistics for institutional and corporate clients during Haj season — accommodation, transport, and Arafat day arrangements.",
               },
               {
-                title: "Dual-Authority Permit Experts",
-                body: "We simultaneously manage Amanah Makkah municipal permits and RCMC Haram-zone overlay permits — the two-tier system that blocks most international event organizers from operating in Makkah.",
+                title: "Dual-Authority Permit Navigation",
+                body: "We help clients navigate both Amanah Makkah municipal permits and RCMC Haram-zone overlay permits — the two-tier system that governs event access in Makkah.",
               },
             ].map((card, i) => (
               <div
@@ -873,14 +871,13 @@ export default async function MakkahPage() {
                 hospitality for institutional delegations.
               </p>
               <p>
-                All operations are conducted by a{" "}
-                <strong>verified Muslim-only team</strong> in compliance with{" "}
+                All operations are coordinated through a{" "}
+                <strong>Muslim-vetted team</strong> in line with{" "}
                 <strong>RCMC (Royal Commission for Makkah City)</strong> and{" "}
-                <strong>Amanah Makkah</strong> regulations. We serve{" "}
-                <strong>Islamic Development Bank</strong> partner events,{" "}
-                <strong>Muslim World League</strong> gatherings,{" "}
-                <strong>OIC</strong> delegations, and corporate organizations
-                managing Muslim pilgrim groups during{" "}
+                <strong>Amanah Makkah</strong> regulations. We support
+                Islamic financial institutions, international Islamic
+                organizations, and corporate organizations managing Muslim
+                pilgrim groups during{" "}
                 <strong>Haj</strong> and{" "}
                 <strong>Umrah seasons</strong>. Makkah&apos;s unique position
                 as the global centre of Islamic economy and religious tourism
