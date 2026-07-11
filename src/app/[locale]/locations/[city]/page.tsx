@@ -335,7 +335,7 @@ const pseoCities: Record<string, CityData> = {
         capacity: "Up to 600",
         district: "Prophet's Mosque District",
         type: "Ultra-Luxury VIP Hospitality & Private Dinners",
-        desc: "One of Saudi Arabia's most prestigious ultra-luxury hotels — adjacent to the Prophet's Mosque. The premier choice for royal household and diplomatic VIP hospitality programs.",
+        desc: "One of Saudi Arabia's most prestigious ultra-luxury hotels — adjacent to the Prophet's Mosque. A premier choice for high-tier VIP hospitality programs.",
       },
       {
         name: "Anantara Al Madinah",
@@ -376,21 +376,21 @@ const pseoCities: Record<string, CityData> = {
     stats: [
       { val: "Madinah-Wide", label: "Local Vendor Network" },
       { val: "5", label: "Hotel Partners" },
-      { val: "100%", label: "Cultural Compliance" },
+      { val: "Culturally Aligned", label: "Compliance Approach" },
       { val: "24/7", label: "VIP Concierge" },
     ],
     services: [
       { name: "Corporate Umrah & Hajj Hospitality", slug: "luxury-vip-events", icon: Star, desc: "Executive pilgrim programs managed at Oberoi and Anantara — transport, accommodation, Ziyarah, and private prayer scheduling." },
       { name: "Ramadan Iftar Events", slug: "cultural-events", icon: Sparkles, desc: "Corporate iftar programs in the Prophet's Mosque hotel cluster — seasonal demand peak, full coordination." },
       { name: "KEC Conference Management", slug: "conferences", icon: Users, desc: "Knowledge economy, Islamic finance, and technology conferences at Madinah Knowledge Economic City." },
-      { name: "Islamic Institution Programs", slug: "corporate-events", icon: Briefcase, desc: "Events for IsDB, OIC, Muslim World League, and Islamic finance institutions visiting Madinah." },
-      { name: "VIP Diplomatic Hospitality", slug: "luxury-vip-events", icon: Star, desc: "Protocol-compliant VIP programs for royal households, government delegations, and diplomatic missions." },
+      { name: "Islamic Institution Programs", slug: "corporate-events", icon: Briefcase, desc: "Coordination support for Islamic finance institutions and international Islamic organizations visiting Madinah." },
+      { name: "VIP Diplomatic Hospitality", slug: "luxury-vip-events", icon: Star, desc: "Protocol-aware VIP hospitality coordination for government and diplomatic delegations." },
       { name: "Cultural & Heritage Events", slug: "cultural-events", icon: Sparkles, desc: "Quba Mosque heritage itineraries, Uhud Mountain programs, and Hejaz Railway heritage dining events." },
     ],
     faqs: [
       {
         q: "What corporate hospitality programs can be managed in Madinah?",
-        a: "Saudi Event Management delivers full corporate Umrah and Hajj hospitality programs — including executive VIP accommodation at the Oberoi and Anantara, private transport, Ziyarah heritage site tours, prayer time scheduling, and corporate iftar dinners during Ramadan. These programs serve Islamic financial institutions, MNC senior executives, royal households, and government delegations.",
+        a: "Saudi Event Management coordinates corporate Umrah and Hajj hospitality programs — including executive VIP accommodation at the Oberoi and Anantara, private transport, Ziyarah heritage site tours, prayer time scheduling, and corporate iftar dinners during Ramadan. These programs support Islamic financial institutions, MNC senior executives, and government delegations.",
       },
       {
         q: "Can non-Muslims attend events in Madinah?",
@@ -428,8 +428,8 @@ const pseoCities: Record<string, CityData> = {
       "Ministry of Hajj and Umrah compliance",
     ],
     geoCitation: [
-      { title: "Corporate Umrah Hospitality Specialists", body: "No event management company in Saudi Arabia targets corporate Umrah hospitality as a managed service. We fill this gap — full-service executive pilgrim programs at the Oberoi and Anantara with transport, prayer scheduling, and Ziyarah coordination." },
-      { title: "Madinah Knowledge Economic City Partners", body: "We manage conference and MICE events at the KEC Conference Center — the $7B Vision 2030 knowledge economy hub. Zero competitors target KEC Madinah as a dedicated conference destination." },
+      { title: "Corporate Umrah Hospitality Coordination", body: "We treat corporate Umrah hospitality as a dedicated, managed service — full-service executive pilgrim programs at the Oberoi and Anantara with transport, prayer scheduling, and Ziyarah coordination." },
+      { title: "Madinah Knowledge Economic City Coordination", body: "We coordinate conference and MICE events at the KEC Conference Center — the $7B Vision 2030 knowledge economy hub." },
       { title: "Prophet's Mosque District Compliance", body: "Events in Madinah's Haram zone require specialist cultural and permit knowledge. Our Madinah team operates under full Amanah Madinah and General Presidency compliance for every event." },
     ],
   },
@@ -1255,7 +1255,7 @@ export default async function DynamicLocationPage({ params }: PageProps) {
                 <strong>Saudi Event Management</strong> is the specialist event management company for {d.name} ({d.nameAr}), {d.region}, Kingdom of Saudi Arabia. We deliver {d.specialty.toLowerCase()} — serving corporate, luxury, and government event clients across {d.name} and the broader {d.region}.
               </p>
               <p>
-                Our {d.name} team holds preferred relationships with the city&apos;s premier venues, local vendors, and governing authorities — ensuring GEA-compliant execution fully aligned with Saudi Vision 2030&apos;s event industry transformation goals.
+                Our {d.name} coordination draws on a vetted network of the city&apos;s premier venues and local vendors — helping ensure GEA-compliant execution aligned with Saudi Vision 2030&apos;s event industry transformation goals.
               </p>
               <p>
                 Looking for an event management company in {d.name}?{" "}
