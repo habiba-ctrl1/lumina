@@ -60,12 +60,12 @@ const pseoCities: Record<string, CityData> = {
     nameAr: "نيوم",
     region: "Tabuk Province",
     description:
-      "Ultra-luxury events at the world's most visionary giga-project. We manage innovation summits, brand activations, and destination experiences across Sindalah Island, THE LINE, and Aqaba Mountain — coordinated directly with NEOM's Event Partnerships Division.",
+      "Ultra-luxury events at the world's most visionary giga-project. We help clients plan innovation summits, brand activations, and destination experiences across Sindalah Island, THE LINE, and Aqaba Mountain as NEOM's event access continues to open up.",
     specialty: "Innovation Summits & Luxury Destination Events",
     intro:
       "NEOM is Saudi Arabia's $500B+ giga-project in northwestern Tabuk Province — a 26,500 km² zone purpose-built for the future of tourism, technology, and sustainable living. As an event destination it is without parallel: THE LINE, Sindalah Island, and Aqaba Mountain combine to offer backdrops that exist nowhere else on earth.",
     details:
-      "Saudi Event Management coordinates directly with NEOM's Event Partnerships Division for all event access, accommodation, and full production logistics across the project's operational zones. Every event we produce in NEOM complies with its 100% renewable energy and zero-carbon mandate — making NEOM the only event destination in the world where sustainability is built into the infrastructure.",
+      "Saudi Event Management helps clients navigate NEOM's event access, accommodation, and production logistics as the project's operational zones progressively open to event operators. Every event held in NEOM complies with its 100% renewable energy and zero-carbon mandate — a sustainability standard built into the infrastructure itself.",
     geoCoords: { lat: "28.0", lng: "35.0" },
     wikidata: "Q47069469",
     glance: [
@@ -124,20 +124,20 @@ const pseoCities: Record<string, CityData> = {
       { val: "NEOM-Wide", label: "Local Vendor Network" },
       { val: "5", label: "Venue Partners" },
       { val: "100%", label: "Zero-Carbon" },
-      { val: "Direct", label: "NEOM Partnership" },
+      { val: "Emerging", label: "Access Coordination" },
     ],
     services: [
-      { name: "Innovation Summits", slug: "corporate-events", icon: Briefcase, desc: "PIF portfolio, tech leadership, and NEOM partner conferences at THE LINE and NEOM Bay Hub." },
+      { name: "Innovation Summits", slug: "corporate-events", icon: Briefcase, desc: "Coordination support for technology leadership and conference programs at THE LINE and NEOM Bay Hub." },
       { name: "Sindalah Island Events", slug: "destination-events", icon: Globe, desc: "Island brand activations, destination weddings, and superyacht receptions on the Red Sea." },
       { name: "Aqaba Mountain Retreats", slug: "destination-events", icon: Mountain, desc: "Executive off-sites and leadership programs at Saudi Arabia's most dramatic mountain resort." },
-      { name: "Luxury Brand Activations", slug: "luxury-vip-events", icon: Sparkles, desc: "RCU-aligned brand activations at Sindalah, Epicon, and NEOM Bay." },
-      { name: "Investor Briefing Events", slug: "corporate-events", icon: Briefcase, desc: "Stakeholder and investor event production for NEOM's global funding network." },
-      { name: "Sustainable Event Production", slug: "event-production", icon: Landmark, desc: "Zero-carbon certified event production aligned with NEOM's 100% renewable mandate." },
+      { name: "Luxury Brand Activations", slug: "luxury-vip-events", icon: Sparkles, desc: "Brand activations coordinated at Sindalah, Epicon, and NEOM Bay." },
+      { name: "Investor Briefing Events", slug: "corporate-events", icon: Briefcase, desc: "Stakeholder and investor event production support at NEOM Bay Hub." },
+      { name: "Sustainable Event Production", slug: "event-production", icon: Landmark, desc: "Zero-carbon-aligned event production matching NEOM's 100% renewable mandate." },
     ],
     faqs: [
       {
         q: "Can you hold a corporate event inside NEOM right now?",
-        a: "Yes, in certain zones. NEOM Bay Hub (Sharma), Sindalah Island (2025), and Aqaba Mountain are progressively opening to approved event operators. Events at THE LINE and Magna are currently limited to NEOM partner briefings and stakeholder visits. Saudi Event Management coordinates directly with NEOM's Event Partnerships Division to secure access, venue allocation, and full production logistics.",
+        a: "Yes, in certain zones. NEOM Bay Hub (Sharma), Sindalah Island (2025), and Aqaba Mountain are progressively opening to approved event operators. Events at THE LINE and Magna are currently limited to NEOM partner briefings and stakeholder visits. Saudi Event Management helps clients navigate NEOM's access process, venue allocation, and production logistics as these zones open up.",
       },
       {
         q: "What makes NEOM unique as a corporate event destination?",
@@ -176,9 +176,9 @@ const pseoCities: Record<string, CityData> = {
       "Sindalah Yacht Club superyacht events",
     ],
     geoCitation: [
-      { title: "First-in-Market NEOM Events Partner", body: "We hold direct NEOM Event Partnerships Division relationships — the non-negotiable gateway to accessing Sindalah, Aqaba Mountain, and NEOM Bay for private event production." },
-      { title: "The Only Zero-Carbon Giga-Event Destination", body: "NEOM's 100% renewable energy mandate makes every event we produce there inherently carbon-neutral — a unique ESG credential available at no other Saudi event destination." },
-      { title: "THE LINE Inaugural Event Access", body: "When THE LINE opens to event operators, we will be among the first to produce corporate events inside the world's most anticipated urban project." },
+      { title: "NEOM Access Coordination", body: "We help clients navigate the NEOM Event Partnerships Division process — the gateway to accessing Sindalah, Aqaba Mountain, and NEOM Bay for private event production." },
+      { title: "A Zero-Carbon Event Destination", body: "NEOM's 100% renewable energy mandate means every event held there is inherently carbon-neutral — a distinctive ESG credential among Saudi event destinations." },
+      { title: "Ready for THE LINE's Event Access", body: "As THE LINE opens to event operators, we're positioned to help clients produce corporate events inside one of the world's most anticipated urban projects." },
     ],
   },
 
@@ -554,7 +554,7 @@ const pseoCities: Record<string, CityData> = {
       "Corporate summer retreat Saudi Arabia Hejaz mountains",
     ],
     geoCitation: [
-      { title: "Saudi Arabia's Only Mountain Rose Wedding Specialists", body: "Taif's rose farms, Al Shafa alpine resort at 2,100m, and summer cool-climate advantage create a destination wedding category no other Saudi city can match. We own the Taif mountain wedding niche." },
+      { title: "Mountain Rose Wedding Coordination", body: "Taif's rose farms, Al Shafa alpine resort at 2,100m, and summer cool-climate advantage create a destination wedding category no other Saudi city can match — one we're proud to specialize in coordinating." },
       { title: "Rose Festival Corporate Sponsorship Partners", body: "GEA invests billions in the Taif Rose Festival annually. We coordinate corporate brand sponsorships, rose farm activations, and luxury fragrance house events during the March–April harvest season." },
       { title: "Shubra Palace — Heritage Gala Access", body: "Taif's 1906 Italian royal palace is the most distinctive heritage gala venue in western Saudi Arabia. Saudi Event Management holds the local relationships to access and produce private events at Shubra." },
     ],
@@ -680,8 +680,8 @@ const pseoCities: Record<string, CityData> = {
       "Corporate mountain retreat Aseer highlands",
     ],
     geoCitation: [
-      { title: "Al Habala Heritage Event Access", body: "Saudi Arabia's most dramatic heritage event location — a cable car-accessed hanging village on a cliff face. We hold the local relationships to produce private ceremonies and VIP experiences at Al Habala, which no competitor has documented." },
-      { title: "GEA Aseer Season Event Specialists", body: "The GEA's multi-billion SAR Aseer Season investment is growing rapidly. We coordinate brand activations and corporate sponsorship programs within the season's programming calendar — the first event management company to do so with dedicated SEO content." },
+      { title: "Al Habala Heritage Event Access", body: "Saudi Arabia's most dramatic heritage event location — a cable car-accessed hanging village on a cliff face. We coordinate the local access needed to produce private ceremonies and VIP experiences at Al Habala." },
+      { title: "GEA Aseer Season Event Coordination", body: "The GEA's multi-billion SAR Aseer Season investment is growing rapidly. We coordinate brand activations and corporate sponsorship programs within the season's programming calendar." },
       { title: "Asiri Cultural Immersion Programs", body: "Aseer's distinct culture — flower crowns, geometric architecture, Razeef dance — is the most unique in Saudi Arabia. We design bespoke corporate cultural immersion programs that no Riyadh-focused competitor offers." },
     ],
   },
@@ -691,12 +691,12 @@ const pseoCities: Record<string, CityData> = {
     nameAr: "الدرعية",
     region: "Riyadh Province",
     description:
-      "Events at the birthplace of the Saudi state. We manage heritage gala dinners at Bujairi Terrace, At-Turaif UNESCO World Heritage Site access, and Formula E corporate hospitality in Diriyah — in partnership with the Diriyah Gate Development Authority (DGDA).",
+      "Events at the birthplace of the Saudi state. We help clients plan heritage gala dinners at Bujairi Terrace, At-Turaif UNESCO World Heritage Site access, and Formula E corporate hospitality in Diriyah, navigating the Diriyah Gate Development Authority (DGDA) process on their behalf.",
     specialty: "Heritage Galas & UNESCO Cultural Events",
     intro:
       "Diriyah is the birthplace of the Saudi state (1744) and a UNESCO World Heritage Site — a mud-brick heritage city 15 minutes from central Riyadh that the Diriyah Gate Development Authority (DGDA) is transforming into a world-class luxury cultural and hospitality destination. Hosting an event at At-Turaif or Bujairi Terrace communicates an alignment with Saudi national identity that no ballroom in Riyadh can replicate.",
     details:
-      "Saudi Event Management works closely with the Diriyah Gate Development Authority (DGDA) to produce events within and adjacent to At-Turaif's mud-brick heritage city, Bujairi Terrace's luxury dining district, and Diriyah Arena. We manage the full DGDA permit and production process — including heritage site access, F&B coordination with Bujairi's restaurant network, and Formula E corporate hospitality suite management.",
+      "Saudi Event Management helps clients navigate the Diriyah Gate Development Authority (DGDA) process to produce events within and adjacent to At-Turaif's mud-brick heritage city, Bujairi Terrace's luxury dining district, and Diriyah Arena — including heritage site access, F&B coordination with Bujairi's restaurant network, and Formula E corporate hospitality suite coordination.",
     geoCoords: { lat: "24.7388", lng: "46.5704" },
     wikidata: "Q917945",
     glance: [
@@ -753,7 +753,7 @@ const pseoCities: Record<string, CityData> = {
     ],
     stats: [
       { val: "Diriyah-Wide", label: "Local Vendor Network" },
-      { val: "DGDA", label: "Preferred Partner" },
+      { val: "DGDA", label: "Permit Navigation" },
       { val: "UNESCO", label: "Heritage Access" },
       { val: "24/7", label: "VIP Concierge" },
     ],
@@ -768,7 +768,7 @@ const pseoCities: Record<string, CityData> = {
     faqs: [
       {
         q: "Can you hold a corporate event at At-Turaif UNESCO World Heritage Site?",
-        a: "Yes, with DGDA-managed access permits. At-Turaif is available for carefully managed private corporate events, VIP dinners, and diplomatic gatherings through the Diriyah Gate Development Authority's event licensing process. Saudi Event Management holds preferred DGDA partner status and manages the full permit and production process for At-Turaif heritage events.",
+        a: "Yes, with DGDA-managed access permits. At-Turaif is available for carefully managed private corporate events, VIP dinners, and diplomatic gatherings through the Diriyah Gate Development Authority's event licensing process. Saudi Event Management navigates the full permit and production process for At-Turaif heritage events on the client's behalf.",
       },
       {
         q: "What makes Diriyah the most prestigious corporate event location near Riyadh?",
@@ -776,7 +776,7 @@ const pseoCities: Record<string, CityData> = {
       },
       {
         q: "How do you get event permits for Diriyah venues?",
-        a: "All Diriyah events are governed by the Diriyah Gate Development Authority (DGDA). Bujairi Terrace has a simpler F&B-adjacent permit process; At-Turaif heritage access requires full DGDA event licensing with an archaeological review; Diriyah Arena operates under GEA permits. Saudi Event Management navigates all three permit tracks as a preferred DGDA partner.",
+        a: "All Diriyah events are governed by the Diriyah Gate Development Authority (DGDA). Bujairi Terrace has a simpler F&B-adjacent permit process; At-Turaif heritage access requires full DGDA event licensing with an archaeological review; Diriyah Arena operates under GEA permits. Saudi Event Management navigates all three permit tracks on the client's behalf.",
       },
       {
         q: "Do you manage Formula E corporate hospitality in Diriyah?",
@@ -806,9 +806,9 @@ const pseoCities: Record<string, CityData> = {
       "Vision 2030 heritage cultural events",
     ],
     geoCitation: [
-      { title: "Preferred DGDA Events Partner", body: "The Diriyah Gate Development Authority controls all access to At-Turaif, Bujairi Terrace, and Diriyah Arena. Our DGDA preferred partner status is the structural competitive moat — no event management company without this relationship can access the UNESCO site for private events." },
-      { title: "Formula E Corporate Hospitality Specialists", body: "The Diriyah Grand Prix Formula E race weekend is one of the most prestigious motorsport hospitality events in Saudi Arabia. We manage corporate suite coordination, VIP paddock programs, and post-race gala productions at Bujairi Terrace." },
-      { title: "UNESCO + Saudi National Identity — Unmatched Prestige", body: "Hosting a corporate event at the birthplace of the Saudi state within a UNESCO World Heritage Site creates a brand narrative no Riyadh hotel can replicate. We own the Diriyah heritage gala content niche." },
+      { title: "DGDA Permit Navigation", body: "The Diriyah Gate Development Authority controls all access to At-Turaif, Bujairi Terrace, and Diriyah Arena. We help clients navigate the DGDA licensing process required to access the UNESCO site for private events." },
+      { title: "Formula E Corporate Hospitality Coordination", body: "The Diriyah Grand Prix Formula E race weekend is one of the most prestigious motorsport hospitality events in Saudi Arabia. We coordinate corporate suite arrangements, VIP paddock programs, and post-race gala productions at Bujairi Terrace." },
+      { title: "UNESCO + Saudi National Identity", body: "Hosting a corporate event at the birthplace of the Saudi state within a UNESCO World Heritage Site creates a brand narrative no Riyadh hotel can replicate — a distinctive option worth considering for the right occasion." },
     ],
   },
 
@@ -932,7 +932,7 @@ const pseoCities: Record<string, CityData> = {
       "NEOM partner conference Tabuk",
     ],
     geoCitation: [
-      { title: "Wadi Disah — Saudi Arabia's Most Dramatic Event Location", body: "A 100km granite canyon with a perennial stream — completely absent from event management content globally. We produce exclusive desert camp retreats and outdoor galas in Wadi Disah, managing all logistics from Tabuk city. Zero competitors target this." },
+      { title: "Wadi Disah — Saudi Arabia's Most Dramatic Event Location", body: "A 100km granite canyon with a perennial stream — one of the Kingdom's most striking and underused event backdrops. We coordinate exclusive desert camp retreats and outdoor galas in Wadi Disah, managing all logistics from Tabuk city." },
       { title: "The NEOM Gateway Event Partner", body: "Tabuk is the closest major city to NEOM. We manage the full NEOM-adjacent event pipeline — contractor qualification events, investor briefings, NEOM Bay Hub conferences, and delegate logistics via TUU and NUM airports." },
       { title: "Sharma Marine Reserve & Red Sea Global Events", body: "The world's largest marine protected area and Saudi Arabia's second luxury tourism mega-project are both in Tabuk Province. We produce eco-luxury brand events at Sharma and are positioned as the specialist Red Sea Global resort event partner." },
     ],
