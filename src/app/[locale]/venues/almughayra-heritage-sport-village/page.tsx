@@ -15,16 +15,16 @@ export const metadata: Metadata = {
   description:
     "Explore AlMughayra Heritage Sport Village in AlUla — a world-class destination for traditional sports, camel racing, and cultural events.",
   alternates: {
-    canonical: "https://draft.sem.sa/venues/almughayra-heritage-sport-village",
+    canonical: "https://saudieventmanagement.com/venues/almughayra-heritage-sport-village",
   },
   openGraph: {
     title: "AlMughayra Heritage Sport Village — Venue Portfolio",
     description: "A premier destination asset for traditional sports, heritage festivals, and camel racing in AlUla.",
-    url: "https://draft.sem.sa/venues/almughayra-heritage-sport-village",
+    url: "https://saudieventmanagement.com/venues/almughayra-heritage-sport-village",
     siteName: "Saudi Event Management",
     images: [
       {
-        url: "https://draft.sem.sa/venues/almughayra_p2_1.jpeg",
+        url: "https://saudieventmanagement.com/venues/almughayra_p2_1.jpeg",
         width: 1200,
         height: 630,
         alt: "AlMughayra Heritage Sport Village",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AlMughayra Heritage Sport Village — Venue Portfolio",
     description: "A premier destination asset for traditional sports, heritage festivals, and camel racing in AlUla.",
-    images: ["https://draft.sem.sa/venues/almughayra_p2_1.jpeg"],
+    images: ["https://saudieventmanagement.com/venues/almughayra_p2_1.jpeg"],
   },
   robots: { index: false, follow: false },
 };
@@ -256,12 +256,17 @@ export default function AlMughayraPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { src: "/venues/almughayra_event_camel_rider.jpeg", alt: "AlMughayra HSV — Camel Rider in Desert" },
-              { src: "/venues/almughayra_event_race.jpeg", alt: "Camel Racing Action on the Competition Track" },
+              { src: "/venues/almughayra_p5_4.jpeg", alt: "Royal Venue — Guest Lounge" },
+              { src: "/venues/almughayra_camel_race.png", alt: "Camel Racing in the Desert" },
+              { src: "/venues/almughayra_p6_5.jpeg", alt: "AlUla Camel Cup — Hospitality Lounge" },
+              { src: "/venues/almughayra_event_race.jpeg", alt: "Camel Race Competition Track" },
               { src: "/venues/almughayra_p4_3.jpeg", alt: "Royal Venue Structure" },
-              { src: "/venues/almughayra_event_night.webp", alt: "Heritage Village Night Festival" },
+              { src: "/venues/almughayra_event_camel_rider.jpeg", alt: "Camel Rider in AlUla Desert" },
+              { src: "/venues/almughayra_p9_8.jpeg", alt: "Heritage Village at Dusk" },
+              { src: "/venues/almughayra_event_night.webp", alt: "Night Light Show on Desert Cliffs" },
               { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
               { src: "/venues/almughayra_event_trophy.jpeg", alt: "Camel Cup Trophy Ceremony" },
+              { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
                 <Image 

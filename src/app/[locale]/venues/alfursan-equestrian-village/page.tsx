@@ -15,16 +15,16 @@ export const metadata: Metadata = {
   description:
     "Explore AlFursan Equestrian Village, a premier heritage destination and equestrian hub in AlUla.",
   alternates: {
-    canonical: "https://draft.sem.sa/venues/alfursan-equestrian-village",
+    canonical: "https://saudieventmanagement.com/venues/alfursan-equestrian-village",
   },
   openGraph: {
     title: "AlFursan Equestrian Village — Venue Portfolio",
     description: "Discover AlFursan Equestrian Village in AlUla — a world-class destination honouring cultural heritage and equestrian excellence.",
-    url: "https://draft.sem.sa/venues/alfursan-equestrian-village",
+    url: "https://saudieventmanagement.com/venues/alfursan-equestrian-village",
     siteName: "Saudi Event Management",
     images: [
       {
-        url: "https://draft.sem.sa/venues/alfursan_p2_1.jpeg",
+        url: "https://saudieventmanagement.com/venues/alfursan_p2_1.jpeg",
         width: 1200,
         height: 630,
         alt: "AlFursan Equestrian Village Landscape",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AlFursan Equestrian Village — Venue Portfolio",
     description: "Discover AlFursan Equestrian Village in AlUla — a world-class destination honouring cultural heritage and equestrian excellence.",
-    images: ["https://draft.sem.sa/venues/alfursan_p2_1.jpeg"],
+    images: ["https://saudieventmanagement.com/venues/alfursan_p2_1.jpeg"],
   },
   robots: { index: false, follow: false },
 };
@@ -257,12 +257,17 @@ export default function AlFursanPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { src: "/venues/alfursan_event_aerial.jpeg", alt: "AlFursan Village — Aerial View" },
-              { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match" },
+              { src: "/venues/alfursan_p6_5.jpeg", alt: "AlFursan Village — Desert Setting" },
+              { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match at AlUla" },
+              { src: "/venues/alfursan_p9_8.jpeg", alt: "Polo Field & Grandstand" },
+              { src: "/venues/alfursan_event_action.jpeg", alt: "Polo Players in Action" },
               { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
-              { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Event" },
+              { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Area" },
+              { src: "/venues/alfursan_p5_4.jpeg", alt: "Event Hospitality Under the Stars" },
+              { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
               { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
-              { src: "/venues/alfursan_event_action.jpeg", alt: "Equestrian Sports Action" },
+              { src: "/venues/alfursan_event_aerial.jpeg", alt: "Equestrian Village Aerial View" },
+              { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
                 <Image 
