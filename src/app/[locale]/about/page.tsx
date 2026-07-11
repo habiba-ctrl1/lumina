@@ -73,11 +73,6 @@ function buildJsonLd(isAr: boolean) {
               "VIP Protocol Management"
             ]
           },
-          "numberOfEmployees": {
-            "@type": "QuantitativeValue",
-            "minValue": 20,
-            "maxValue": 50
-          },
           "areaServed": [
             { "@type": "City", "name": "Riyadh" },
             { "@type": "City", "name": "Jeddah" },
