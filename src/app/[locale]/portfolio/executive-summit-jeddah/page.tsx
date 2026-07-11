@@ -118,11 +118,11 @@ export default async function ExecutiveSummitJeddah() {
         <div className="bg-neutral-900 text-white p-12 md:p-24 rounded-3xl text-center">
           <p className="text-xl md:text-3xl font-sans font-light  mb-10 leading-relaxed">
             {isAr
-              ? "«كانت قمة جدة التنفيذية درسًا في التوازن. قدّمت إدارة الفعاليات السعودية دقّة احترافية بروح ملاذ ساحلي.»"
-              : "\"The executive summit in Jeddah was a masterclass in balance. Saudi Event Management delivered professional precision with the soul of a coastal retreat.\""}
+              ? "«ينبغي أن تكون قمة جدة التنفيذية درسًا في التوازن — دقّة احترافية تُقدَّم بروح ملاذ ساحلي.»"
+              : "\"An executive summit in Jeddah should be a masterclass in balance — professional precision delivered with the soul of a coastal retreat.\""}
           </p>
           <div className="w-12 h-px bg-[var(--primary)] mx-auto mb-8" />
-          <p className="text-[var(--primary)] text-[10px] font-bold uppercase tracking-[0.4em]">{isAr ? "الرئيس التنفيذي، منتدى اللوجستيات العالمي" : "CEO, Global Logistics Forum"}</p>
+          <p className="text-[var(--primary)] text-[10px] font-bold uppercase tracking-[0.4em]">{isAr ? "— معيارنا للقمم التنفيذية الساحلية" : "— Our Standard for Coastal Executive Summits"}</p>
         </div>
       </section>
 

@@ -76,8 +76,8 @@ export default async function NeomFutureSummitCaseStudy() {
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">{isAr ? "المهمّة" : <>The <span className="text-[var(--primary)]">Brief</span></>}</h2>
           <p className="mb-8">
             {isAr
-              ? "كلّفت هيئة الاستثمار في نيوم إدارة الفعاليات السعودية بتنفيذ قمة رفيعة المستوى بيومين لـ500 من الرؤساء التنفيذيين العالميين، ورواد التقنية، ومديري صناديق الثروة السيادية. وكان التحدّي خلق بيئة تبدو فائقة المستقبلية وعميقة الضيافة في آنٍ، تعكس هوية نيوم كتقاطع للطبيعة والتقنية."
-              : "Saudi Event Management was commissioned by the NEOM Investment Authority to execute a two-day high-level summit for 500 global CEOs, tech pioneers, and sovereign wealth fund managers. The challenge was to create an environment that felt both hyper-futuristic and deeply hospitable, reflecting NEOM's identity as the intersection of nature and technology."}
+              ? "يوضّح هذا التصوّر كيف نصمّم قمة رفيعة المستوى بيومين لـ500 من الرؤساء التنفيذيين العالميين، ورواد التقنية، ومديري صناديق الثروة السيادية، في بيئة على طراز نيوم. والتحدّي هو خلق بيئة تبدو فائقة المستقبلية وعميقة الضيافة في آنٍ، تعكس هوية نيوم كتقاطع للطبيعة والتقنية."
+              : "This concept illustrates how we would design a two-day high-level summit for 500 global CEOs, tech pioneers, and sovereign wealth fund managers in a NEOM-style setting. The challenge is creating an environment that feels both hyper-futuristic and deeply hospitable, reflecting NEOM's identity as the intersection of nature and technology."}
           </p>
           <p>
             {isAr
@@ -127,8 +127,8 @@ export default async function NeomFutureSummitCaseStudy() {
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8">{isAr ? "الأثر" : <>The <span className="text-[var(--primary)]">Impact</span></>}</h2>
           <p className="mb-8 text-justify">
             {isAr
-              ? "حظيت القمة بإشادة كمعيار لمستقبل الدبلوماسية الدولية والتجمّعات المؤسسية. وأظهرت استبيانات ما بعد الفعالية معدّل رضا بنسبة 98%، مع إعلان تعهّدات استثمارية تجاوزت 40 مليار دولار خلال الحفل الختامي. وذُكرت قدرة إدارة الفعاليات السعودية على مزج البنية التحتية عالية التقنية بدفء الضيافة السعودية كعامل رئيسي في نجاح الفعالية."
-              : "The summit was hailed as a benchmark for the future of international diplomacy and corporate gathering. Post-event surveys showed a 98% satisfaction rate, with over $40B in investment pledges announced during the closing gala. Saudi Event Management's ability to blend high-tech infrastructure with the warmth of Saudi hospitality was cited as the key factor in the event's success."}
+              ? "تُصمَّم قمة بهذا المستوى لتكون معياراً لمستقبل الدبلوماسية الدولية والتجمّعات المؤسسية — مسرح مبني لدعم محادثات استثمارية جادة وتجربة ضيوف تحقق باستمرار أعلى معدلات الرضا. ومزج البنية التحتية عالية التقنية بدفء الضيافة السعودية هو المعيار الذي نقدّمه في كل قمة مؤسسية واسعة النطاق."
+              : "A summit at this level is designed to be a benchmark for the future of international diplomacy and corporate gathering — a stage built to support serious investment conversations and the kind of guest experience that consistently earns top-tier satisfaction scores. Blending high-tech infrastructure with the warmth of Saudi hospitality is the standard we bring to every large-scale corporate summit."}
           </p>
 
           {/* Testimonial */}
@@ -136,10 +136,10 @@ export default async function NeomFutureSummitCaseStudy() {
             <div className="absolute top-0 start-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4 text-[var(--primary)] text-4xl font-serif">&quot;</div>
             <p className="text-xl md:text-2xl font-sans font-bold text-neutral-800 mb-8 leading-snug">
               {isAr
-                ? "«أعادت إدارة الفعاليات السعودية تعريف الممكن في إدارة الفعاليات المؤسسية. لم تستضف قمة فحسب؛ بل صنعت بوابة إلى المستقبل.»"
-                : "\"Saudi Event Management redefined what is possible in corporate event management. They didn't just host a summit; they created a gateway to the future.\""}
+                ? "«هذا ما نسعى إلى إعادة تعريفه في إدارة الفعاليات المؤسسية — ليس مجرد استضافة قمة، بل صناعة بوابة إلى المستقبل.»"
+                : "\"This is what we aim to redefine in corporate event management — not just hosting a summit, but creating a gateway to the future.\""}
             </p>
-            <div className="text-[var(--primary)] font-medium uppercase tracking-widest text-sm">{isAr ? "— مدير الاستثمار، نيوم" : "— Director of Investment, NEOM"}</div>
+            <div className="text-[var(--primary)] font-medium uppercase tracking-widest text-sm">{isAr ? "— رؤيتنا للقمم العالمية" : "— Our Vision for Global Summits"}</div>
           </div>
         </div>
       </section>

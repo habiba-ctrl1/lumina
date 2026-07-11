@@ -77,8 +77,8 @@ export default async function DammamCorporateSeminar() {
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "دقّة صناعية" : <>Industrial <span className="text-[var(--primary)] ">Precision</span></>}</h2>
             <p className="mb-8">
               {isAr
-                ? "الدمام هي القوة الصناعية للمملكة. ولهذه الندوة المؤسسية، طُلب منا تقديم فعالية تعكس كفاءة قطاع الطاقة وحجمه. وشمل ذلك إدارة حضور كبير، ومتطلبات صوت وصورة معقّدة للعروض التقنية، وبروتوكول أمني عالٍ لأصحاب المصلحة الدوليين."
-                : "Dammam is the industrial powerhouse of the Kingdom. For this corporate seminar, we were required to deliver an event that reflected the efficiency and scale of the energy sector. This involved managing large-scale attendance, complex AV requirements for technical presentations, and high-security protocol for international stakeholders."}
+                ? "الدمام هي القوة الصناعية للمملكة. ويتمحور هذا التصوّر حول ندوة مؤسسية تعكس كفاءة قطاع الطاقة وحجمه — بإدارة حضور كبير، ومتطلبات صوت وصورة معقّدة للعروض التقنية، وبروتوكول أمني عالٍ لأصحاب المصلحة الدوليين."
+                : "Dammam is the industrial powerhouse of the Kingdom. This concept is built around a corporate seminar that reflects the efficiency and scale of the energy sector — managing large-scale attendance, complex AV requirements for technical presentations, and high-security protocol for international stakeholders."}
             </p>
             <p>
               {isAr
@@ -124,8 +124,8 @@ export default async function DammamCorporateSeminar() {
           <h2 className="text-2xl md:text-3xl font-sans font-bold mb-8 uppercase tracking-tight">{isAr ? "تغذية الروابط" : <>Fueling <span className="">Connections</span></>}</h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto font-light leading-relaxed">
             {isAr
-              ? "حظيت الندوة بإشادة كأبرز فعالية تواصل لقطاع الطاقة في المنطقة. وذُكرت قدرتنا على التعامل مع المتطلبات بالحجم الصناعي باهتمام بالتفاصيل بمستوى البوتيك كعامل التميّز الرئيسي."
-              : "The seminar was hailed as the premier networking event for the region's energy sector. Our ability to handle industrial-scale requirements with boutique-level attention to detail was cited as the key differentiator."}
+              ? "تُصمَّم ندوة بهذا المستوى لتكون أبرز فعالية تواصل لقطاع الطاقة في المنطقة. والتعامل مع المتطلبات بالحجم الصناعي باهتمام بالتفاصيل بمستوى البوتيك هو عامل التميّز الذي نبنيه في كل إنتاج."
+              : "A seminar at this level is designed to be the premier networking event for the region's energy sector. Handling industrial-scale requirements with boutique-level attention to detail is the differentiator we build into every production."}
           </p>
         </div>
       </section>

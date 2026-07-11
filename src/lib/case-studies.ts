@@ -26,15 +26,15 @@ export type CaseStudy = {
 export const CASE_STUDIES: Record<string, CaseStudy> = {
   "royal-riyadh-wedding": {
     slug: "royal-riyadh-wedding",
-    name: "Al-Saud Royal Wedding",
+    name: "Riyadh Royal-Style Palace Wedding",
     description:
-      "An 800-guest royal wedding in Riyadh with a bespoke architectural desert-oasis build, full VIP protocol, and end-to-end luxury production.",
+      "A concept for an 800-guest royal-style wedding in Riyadh, illustrating a bespoke architectural desert-oasis build, full VIP protocol, and end-to-end luxury production.",
     category: "Luxury Weddings",
     location: "Riyadh",
     image: "/royal_wedding_saudi.webp",
     ar: {
-      name: "الزفاف الملكي آل سعود",
-      description: "زفاف ملكي لـ 800 ضيف في الرياض مع بناء واحة صحراوية معمارية مخصصة، وبروتوكول كامل لكبار الشخصيات، وإنتاج فاخر من البداية إلى النهاية.",
+      name: "زفاف بروتوكول ملكي في الرياض",
+      description: "تصوّر لزفاف بأسلوب ملكي لـ 800 ضيف في الرياض، يوضّح بناء واحة صحراوية معمارية مخصصة، وبروتوكول كامل لكبار الشخصيات، وإنتاج فاخر من البداية إلى النهاية.",
       category: "حفلات الزفاف الفاخرة",
       location: "الرياض",
     },

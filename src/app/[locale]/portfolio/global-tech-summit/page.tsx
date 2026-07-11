@@ -77,13 +77,13 @@ export default async function GlobalTechSummit() {
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "التكليف" : <>The <span className="text-[var(--primary)] ">Mandate</span></>}</h2>
             <p className="mb-8">
               {isAr
-                ? "كُلِّفت إدارة الفعاليات السعودية بتصميم وتنفيذ قمة بثلاثة أيام تستضيف أكثر قادة التقنية تأثيرًا في العالم. وكان المطلب بيئة «بلا أعطال» تندمج فيها البنية التحتية والاتصال والضيافة في تجربة رقمية واحدة سلسة."
-                : "Saudi Event Management was appointed to design and execute a three-day summit that would host the world's most influential tech leaders. The requirement was a \"Zero-Failure\" environment where infrastructure, connectivity, and hospitality merged into a single, seamless digital experience."}
+                ? "يوضّح هذا التصوّر كيف تصمّم إدارة الفعاليات السعودية وتنفّذ قمة بثلاثة أيام مبنية لاستضافة أكثر قادة التقنية تأثيرًا في العالم. والمطلب: بيئة «بلا أعطال» تندمج فيها البنية التحتية والاتصال والضيافة في تجربة رقمية واحدة سلسة."
+                : "This concept illustrates how Saudi Event Management would design and execute a three-day summit built to host the world's most influential tech leaders. The requirement: a \"Zero-Failure\" environment where infrastructure, connectivity, and hospitality merge into a single, seamless digital experience."}
             </p>
             <p>
               {isAr
-                ? "بنينا قاعة ذكية مؤقتة بتسجيل بيومتري، وصالات تواصل مدعومة بالذكاء الاصطناعي، ومسارح هولوغرافية أتاحت لمتحدثين من سان فرانسيسكو الظهور مباشرةً في الرياض."
-                : "We built a temporary smart-venue featuring biometric registration, AI-driven networking lounges, and holographic stages that allowed speakers from San Francisco to appear live in Riyadh."}
+                ? "ويستلزم إنتاج بهذا الحجم قاعة ذكية مؤقتة بتسجيل بيومتري، وصالات تواصل مدعومة بالذكاء الاصطناعي، ومسارح هولوغرافية تتيح لمتحدثين من سان فرانسيسكو الظهور مباشرةً في الرياض."
+                : "A build at this scale calls for a temporary smart-venue featuring biometric registration, AI-driven networking lounges, and holographic stages that let speakers from San Francisco appear live in Riyadh."}
             </p>
           </div>
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-neutral-200/80">
@@ -122,18 +122,18 @@ export default async function GlobalTechSummit() {
           <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? <>إتقان <span className="text-[var(--primary)] ">تشغيلي</span></> : <>Operational <span className="text-[var(--primary)] ">Perfection</span></>}</h2>
           <p className="text-neutral-500 max-w-2xl font-light mb-12">
             {isAr
-              ? "حظيت القمة التقنية العالمية بإشادة كأكثر فعالية متقدّمة تقنيًا في تاريخ المنطقة. وعزّز تشغيل بنسبة 100% لكل الخدمات الرقمية ومعدّل رضا ضيوف بنسبة 99% مكانتنا كرواد للإنتاج المؤسسي المعقّد."
-              : "The Global Tech Summit was lauded as the most technologically advanced event in the region's history. 100% uptime for all digital services and a 99% guest satisfaction rate solidified our position as the leaders in complex corporate production."}
+              ? "تُصمَّم قمة بهذا المستوى لتكون من أكثر الفعاليات تقدّمًا تقنيًا من نوعها في المنطقة — مبنية على معدّل تشغيل يقارب 100% لكل الخدمات الرقمية وتجربة ضيوف تحقق أعلى معدلات الرضا. وهذا هو المعيار الذي نقدّمه في الإنتاج المؤسسي المعقّد."
+              : "A summit at this level is designed to be among the most technologically advanced events of its kind in the region — built around near-100% uptime for all digital services and the kind of guest experience that earns top satisfaction scores. This is the standard we bring to complex corporate production."}
           </p>
           <div className="flex gap-12">
             <div>
               <div className="text-2xl font-bold text-neutral-900">1.2M</div>
-              <div className="text-[10px] text-neutral-600 uppercase tracking-widest font-bold">{isAr ? "مشاهد مباشر" : "Live Viewers"}</div>
+              <div className="text-[10px] text-neutral-600 uppercase tracking-widest font-bold">{isAr ? "سعة المشاهدة المباشرة" : "Live Viewer Capacity"}</div>
             </div>
             <div className="w-px h-10 bg-neutral-200" />
             <div>
               <div className="text-2xl font-bold text-neutral-900">500+</div>
-              <div className="text-[10px] text-neutral-600 uppercase tracking-widest font-bold">{isAr ? "شركة ناشئة حاضرة" : "Startups Present"}</div>
+              <div className="text-[10px] text-neutral-600 uppercase tracking-widest font-bold">{isAr ? "سعة استيعاب الشركات الناشئة" : "Startup Capacity"}</div>
             </div>
           </div>
         </div>

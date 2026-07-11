@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     : "Royal Riyadh Wedding Case Study — Luxury Wedding Planning in Diriyah";
   const socialTitle = `${title} | Saudi Event Management`;
   const description = isAr
-    ? "كيف نظمت إدارة الفعاليات السعودية حفل زفاف ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية التاريخية بالرياض — يجمع بين التراث والفخامة العصرية."
-    : "An inside look into how Saudi Event Management orchestrated a magnificent royal wedding for 1,200+ guests over 3 days in historic Diriyah, Riyadh — blending Saudi tradition with modern luxury.";
+    ? "تصوّر لكيفية تنظيم إدارة الفعاليات السعودية حفل زفاف بأسلوب ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية التاريخية بالرياض — يجمع بين التراث والفخامة العصرية."
+    : "A concept case study for how Saudi Event Management would orchestrate a magnificent royal-style wedding for 1,200+ guests over 3 days in historic Diriyah, Riyadh — blending Saudi tradition with modern luxury.";
 
   return {
     title,
@@ -73,8 +73,8 @@ function buildJsonLd(locale: string) {
         "@type": "Article",
         headline: isAr ? "حفل زفاف ملكي في الرياض — دراسة حالة" : "The Royal Riyadh Wedding — Case Study",
         description: isAr
-          ? "دراسة حالة لحفل زفاف ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية، الرياض."
-          : "A case study of a luxury royal wedding for 1,200+ guests over 3 days in Diriyah, Riyadh.",
+          ? "تصوّر لدراسة حالة حفل زفاف بأسلوب ملكي فاخر لأكثر من 1200 ضيف على مدى 3 أيام في الدرعية، الرياض."
+          : "A concept case study for a luxury royal-style wedding for 1,200+ guests over 3 days in Diriyah, Riyadh.",
         image: OG_IMAGE,
         inLanguage: isAr ? "ar" : "en",
         author: { "@type": "Organization", name: "Saudi Event Management" },
@@ -123,14 +123,14 @@ export default async function RoyalRiyadhWeddingCaseStudy({
     challengePre: isAr ? "" : "The ",
     challengeHi: isAr ? "التحدي" : "Challenge",
     challengeP1: isAr
-      ? "رغب عملاؤنا الكرام في احتفال يكرّم التقاليد السعودية العريقة مع إدخال عناصر تصميم طليعية. وتطلّب حجم الفعالية الهائل — استضافة أكثر من 1,200 من كبار الضيوف والشخصيات المرموقة وأفراد العائلات الملكية على مدى ثلاثة أيام في الدرعية التاريخية — تخطيطاً لوجستياً دقيقاً وتنفيذاً لا تشوبه شائبة وسرية مطلقة."
-      : <>Our esteemed clients desired a celebration that honored deep-rooted Saudi traditions while introducing avant-garde design elements. The sheer scale of the event—hosting over 1,200 VIP guests, dignitaries, and royalty over a three-day period in <Link href={lp("/locations/riyadh")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">historical Diriyah, Riyadh</Link>—required meticulous logistical planning, flawless execution, and absolute discretion.</>,
+      ? "يتصوّر هذا المفهوم احتفالاً يكرّم التقاليد السعودية العريقة مع إدخال عناصر تصميم طليعية. ويتطلّب حجم فعالية بهذا المستوى — استضافة أكثر من 1,200 من كبار الضيوف والشخصيات المرموقة على مدى ثلاثة أيام في الدرعية التاريخية — تخطيطاً لوجستياً دقيقاً وتنفيذاً لا تشوبه شائبة وسرية مطلقة."
+      : <>This concept envisions a celebration that honors deep-rooted Saudi traditions while introducing avant-garde design elements. The sheer scale of an event at this level—hosting over 1,200 VIP guests and dignitaries over a three-day period in <Link href={lp("/locations/riyadh")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">historical Diriyah, Riyadh</Link>—demands meticulous logistical planning, flawless execution, and absolute discretion.</>,
     challengeP2: isAr
-      ? "كان التحدي الأكبر هو تحويل مساحة صحراوية خام إلى واحة خلابة مكيّفة بالكامل ضمن جدول بناء صارم مدته 14 يوماً، مع ضمان عدم الإخلال بالموقع التراثي المحيط."
-      : "The primary challenge was transforming a raw desert expanse into a breathtaking, climate-controlled oasis within a rigorous 14-day build schedule, ensuring no disruption to the surrounding heritage site.",
+      ? "يكمن التحدي الأكبر في تحويل مساحة صحراوية خام إلى واحة خلابة مكيّفة بالكامل ضمن جدول بناء صارم مدته 14 يوماً، مع ضمان عدم الإخلال بالموقع التراثي المحيط."
+      : "The primary challenge lies in transforming a raw desert expanse into a breathtaking, climate-controlled oasis within a rigorous 14-day build schedule, ensuring no disruption to the surrounding heritage site.",
     challengeP3: isAr
-      ? "أضافت حساسية الموقع — الواقع على مقربة من حي الطريف المدرج ضمن قائمة اليونسكو للتراث العالمي — طبقة من التعقيد. فكل عنصر إنشائي وكل وحدة إضاءة وكل مسار وصول للضيوف تطلّب موافقات دقيقة من الجهات المعنية، وتنسيقاً مع بروتوكولات الأمن الملكي، والتزاماً صارماً بمعايير الحفاظ على التراث."
-      : <>The site's sensitivity—adjacent to the <Link href={lp("/blog/diriyah-gate-event-venues-corporate")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">UNESCO-listed At-Turaif district</Link>—added a further layer of complexity. Every structural element, lighting rig, and guest-access route required careful approvals, coordination with royal security protocols, and strict adherence to heritage-preservation standards.</>,
+      ? "تضيف حساسية الموقع — الواقع على مقربة من حي الطريف المدرج ضمن قائمة اليونسكو للتراث العالمي — طبقة من التعقيد. فكل عنصر إنشائي وكل وحدة إضاءة وكل مسار وصول للضيوف يتطلّب موافقات دقيقة من الجهات المعنية، وتنسيقاً مع بروتوكولات أمنية على مستوى القصور، والتزاماً صارماً بمعايير الحفاظ على التراث."
+      : <>The site's sensitivity—adjacent to the <Link href={lp("/blog/diriyah-gate-event-venues-corporate")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">UNESCO-listed At-Turaif district</Link>—adds a further layer of complexity. Every structural element, lighting rig, and guest-access route requires careful approvals, coordination with palace-level security protocols, and strict adherence to heritage-preservation standards.</>,
     approachPre: isAr ? "" : "Our ",
     approachHi: isAr ? "النهج" : "Approach",
     approachP1: isAr
@@ -156,11 +156,11 @@ export default async function RoyalRiyadhWeddingCaseStudy({
     resultPre: isAr ? "" : "The ",
     resultHi: isAr ? "النتيجة" : "Result",
     resultP: isAr
-      ? "اعتُبرت الفعالية تحفة من الفخامة العصرية، وأرست معياراً جديداً لحفلات زفاف النخبة في المملكة. كان رضا الضيوف غير مسبوق، وترك الدمج السلس بين التقنية والتقاليد انطباعاً لا يُنسى."
-      : <>The event was widely regarded as a masterpiece of modern luxury, setting a new benchmark for <Link href={lp("/blog/crafting-unforgettable-royal-weddings-saudi-arabia")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">high-society weddings in Saudi Arabia</Link>. Guest satisfaction was unprecedented, and the seamless integration of technology and tradition left a lasting impression.</>,
+      ? "تُصمَّم فعالية بهذا المستوى لتكون تحفة من الفخامة العصرية، وترسي المعيار الذي نطمح إليه لحفلات زفاف النخبة في المملكة. والهدف هو تجربة ضيوف سلسة لدرجة يبدو معها الدمج بين التقنية والتقاليد بلا أي جهد يُذكر."
+      : <>A production at this level is designed to be a masterpiece of modern luxury, setting the benchmark we aim for in <Link href={lp("/blog/crafting-unforgettable-royal-weddings-saudi-arabia")} className="text-[var(--primary)] underline underline-offset-2 hover:text-white transition-colors">high-society weddings in Saudi Arabia</Link>. The goal is a guest experience so seamless that the integration of technology and tradition feels effortless from arrival to farewell.</>,
     resultP2: isAr
-      ? "سُلّم الموقع التراثي إلى حالته الأصلية تماماً خلال 72 ساعة من ختام الاحتفال، دون أي أثر دائم على محيطه. ورسّخت هذه الفعالية مكانة إدارة الفعاليات السعودية كشريك موثوق للمناسبات رفيعة المستوى التي لا تحتمل أدنى خطأ، وأثمرت عن علاقات طويلة الأمد وإحالات حصرية ضمن أرقى الأوساط في المملكة."
-      : "The heritage site was returned to its original condition within 72 hours of the celebration's close, leaving no lasting footprint on its surroundings. The project cemented Saudi Event Management's standing as a trusted partner for high-stakes occasions that allow no margin for error—yielding lasting relationships and discreet referrals within the Kingdom's most exclusive circles.",
+      ? "معيارنا في المواقع المجاورة للتراث هو إعادة الموقع إلى حالته الأصلية تماماً خلال 72 ساعة من ختام الفعالية، دون أي أثر دائم على محيطه. وهذا المستوى من الدقة والسرية هو ما نقدّمه في كل مناسبة رفيعة المستوى لا تحتمل أدنى هامش للخطأ."
+      : "Our standard for heritage-adjacent builds is to return the site to its original condition within 72 hours of an event's close, leaving no lasting footprint on its surroundings. It's this level of discretion and precision that we bring to every high-stakes occasion that allows no margin for error.",
     metricsPre: isAr ? "بـ" : "By the ",
     metricsHi: isAr ? "الأرقام" : "Numbers",
     metrics: isAr
@@ -198,9 +198,9 @@ export default async function RoyalRiyadhWeddingCaseStudy({
       { href: lp("/portfolio/alula-desert-festival"), title: isAr ? "مهرجان العلا الصحراوي" : "AlUla Desert Festival", meta: isAr ? "العلا" : "AlUla" },
     ],
     testimonial: isAr
-      ? "«لم تكتفِ إدارة الفعاليات السعودية بتنظيم حفل زفاف؛ بل صنعت إرثاً. إن اهتمامهم بالتفاصيل وسعيهم الدؤوب نحو الكمال مكّنانا من أن نكون حاضرين تماماً في أهم لحظة في حياتنا.»"
-      : "“Saudi Event Management did not just plan a wedding; they crafted a legacy. Their attention to detail and unwavering pursuit of perfection allowed us to be fully present in the most important moment of our lives.”",
-    testimonialBy: isAr ? "— العروس والعريس" : "— The Bride & Groom",
+      ? "«هذا هو المعيار الذي نلتزم به في كل احتفال نصمّمه: اهتمام كامل بالتفاصيل وسعي دؤوب نحو الكمال، ليكون عملاؤنا حاضرين تماماً في أهم لحظات حياتهم.»"
+      : "“This is the standard we hold for every celebration we design: complete attention to detail and an unwavering pursuit of perfection, so our clients can be fully present in the most important moments of their lives.”",
+    testimonialBy: isAr ? "— فلسفتنا في كل حفل زفاف" : "— Our Approach to Every Wedding",
     relatedServices: isAr ? "خدمات ذات صلة" : "Related Services",
     links: [
       { href: lp("/services/weddings"), label: isAr ? "تخطيط حفلات الزفاف الفاخرة" : "Luxury Wedding Planning" },

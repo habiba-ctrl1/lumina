@@ -90,8 +90,8 @@ export default async function RiyadhGovernmentSummit() {
             </h2>
             <p className="mb-8">
               {isAr
-                ? "كلّفت وزارة حكومية رائدة إدارة الفعاليات السعودية بتنفيذ قمة على المستوى الوطني في كافد بالرياض، بتفويض لإنتاج بجودة البثّ. وتطلّب أكثر من 40 مسؤولًا رفيعًا و1,200 مندوب لوجستيات سلسة، وترجمة فورية عربية-إنجليزية، وهوية بصرية تليق بأجندة رؤية المملكة 2030."
-                : "A premier government ministry commissioned Saudi Event Management to deliver a national-level summit at KAFD, Riyadh, with a mandate for broadcast-quality production. Over 40 senior officials and 1,200 delegates required seamless logistics, simultaneous Arabic-English translation, and a visual identity befitting the Kingdom's Vision 2030 agenda."}
+                ? "يوضّح هذا التصوّر كيف نتعامل مع قمة وطنية في كافد بالرياض، بتفويض لإنتاج بجودة البثّ. فتجمّع بهذا الحجم — أكثر من 40 مسؤولًا رفيعًا و1,200 مندوب — يستلزم لوجستيات سلسة، وترجمة فورية عربية-إنجليزية، وهوية بصرية تليق بأجندة رؤية المملكة 2030."
+                : "This concept illustrates how we would approach a national-level government summit at KAFD, Riyadh, with a mandate for broadcast-quality production. A gathering at this scale — 40+ senior officials and 1,200 delegates — calls for seamless logistics, simultaneous Arabic-English translation, and a visual identity befitting the Kingdom's Vision 2030 agenda."}
             </p>
             <p>
               {isAr
@@ -144,8 +144,8 @@ export default async function RiyadhGovernmentSummit() {
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               {isAr
-                ? "اختُتمت القمة بأربعة إعلانات وزارية وُقّعت على المسرح، ونالت تغطية إيجابية عبر الإعلام الإقليمي. ولم تُسجَّل أي حوادث تقنية على مدى 14 ساعة من الإنتاج المباشر."
-                : "The summit concluded with four ministerial declarations signed on-stage and drew positive coverage across regional media. Zero technical incidents were recorded across 14 hours of live production."}
+                ? "تُصمَّم قمة بهذا المستوى لتحقيق نتائج كهذه: إعلانات وزارية تُوقَّع على المسرح، وتغطية إعلامية إقليمية قوية، وإنتاج مباشر مصمَّم لتحقيق صفر حوادث تقنية على مدى 14 ساعة من البث."
+                : "A summit at this level is designed around outcomes like these: ministerial declarations signed on-stage, strong regional media coverage, and a live production built for zero technical incidents across 14 hours on air."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
               <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "إنتاج واسع النطاق بلا حوادث" : "Zero-Incident Large-Scale Production"}</span>

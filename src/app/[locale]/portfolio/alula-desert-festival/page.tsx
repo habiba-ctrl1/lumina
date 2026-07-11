@@ -78,8 +78,8 @@ export default async function AlUlaDesertFestival() {
             <h2 className="text-3xl md:text-4xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? <>الطموح</> : <>The <span className="text-[var(--primary)] ">Ambition</span></>}</h2>
             <p className="mb-8">
               {isAr
-                ? "العلا مكان ذو أهمية جيولوجية وتاريخية هائلة. وكانت مهمّتنا خلق مهرجان يحتفي بهذا التراث دون ترك أثر على البيئة. وتطلّب المشروع نشر بنية تحتية كبيرة — مسارح، ومقاعد، ومراكز تموين، وإضاءة — في موقع صحراوي نائٍ بمرافق قائمة محدودة."
-                : "AlUla is a place of immense geological and historical significance. Our mandate was to create a festival that celebrated this heritage without leaving a trace on the environment. The project required the deployment of significant infrastructure—stages, seating, catering hubs, and lighting—in a remote desert location with limited existing facilities."}
+                ? "العلا مكان ذو أهمية جيولوجية وتاريخية هائلة. ويتمحور هذا التصوّر حول مهرجان يحتفي بهذا التراث دون ترك أثر على البيئة. ويستلزم إنتاج بهذا الحجم نشر بنية تحتية كبيرة — مسارح، ومقاعد، ومراكز تموين، وإضاءة — في موقع صحراوي نائٍ بمرافق قائمة محدودة."
+                : "AlUla is a place of immense geological and historical significance. This concept is built around a festival that celebrates this heritage without leaving a trace on the environment. A production at this scale calls for the deployment of significant infrastructure—stages, seating, catering hubs, and lighting—in a remote desert location with limited existing facilities."}
             </p>
             <p>
               {isAr
@@ -134,10 +134,10 @@ export default async function AlUlaDesertFestival() {
         <div className="max-w-4xl mx-auto text-center ">
           <p className="text-2xl md:text-4xl font-sans text-neutral-900 mb-10 leading-snug">
             {isAr
-              ? "«لم تبنِ إدارة الفعاليات السعودية مهرجانًا فحسب؛ بل صنعت جسرًا بين الماضي القديم ومستقبل مستدام.»"
-              : "\"Saudi Event Management didn't just build a festival; they created a bridge between the ancient past and a sustainable future.\""}
+              ? "«هذا ما نسعى إلى تحقيقه في كل إنتاج ثقافي: جسر بين الماضي القديم ومستقبل مستدام.»"
+              : "\"This is what we aim to build with every cultural production: a bridge between the ancient past and a sustainable future.\""}
           </p>
-          <div className="text-[var(--primary)] font-bold uppercase tracking-[0.4em] text-xs">{isAr ? "— الهيئة الملكية لمحافظة العلا" : "— Royal Commission for AlUla"}</div>
+          <div className="text-[var(--primary)] font-bold uppercase tracking-[0.4em] text-xs">{isAr ? "— نهجنا في مواقع التراث الثقافي" : "— Our Approach to Cultural Heritage Sites"}</div>
         </div>
       </section>
 
