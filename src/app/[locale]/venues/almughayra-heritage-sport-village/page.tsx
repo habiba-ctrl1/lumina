@@ -49,7 +49,7 @@ const jsonLd = {
       "@type": "TouristAttraction",
       "name": "AlMughayra Heritage Sport Village",
       "description": "A world-class complex blending heritage and modernity, perfect for traditional sports, camel racing, and community engagement in AlUla.",
-      "image": "https://draft.sem.sa/venues/almughayra_p2_1.jpeg",
+      "image": "https://saudieventmanagement.com/venues/almughayra_p2_1.jpeg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "AlUla",
@@ -259,15 +259,11 @@ export default function AlMughayraPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { src: "/venues/almughayra_p5_4.jpeg", alt: "Royal Venue — Guest Lounge" },
-              { src: "/venues/almughayra_camel_race.png", alt: "Camel Racing in the Desert" },
               { src: "/venues/almughayra_p6_5.jpeg", alt: "AlUla Camel Cup — Hospitality Lounge" },
-              { src: "/venues/almughayra_event_race.jpeg", alt: "Camel Race Competition Track" },
               { src: "/venues/almughayra_p4_3.jpeg", alt: "Royal Venue Structure" },
-              { src: "/venues/almughayra_event_camel_rider.jpeg", alt: "Camel Rider in AlUla Desert" },
               { src: "/venues/almughayra_p9_8.jpeg", alt: "Heritage Village at Dusk" },
-              { src: "/venues/almughayra_event_night.webp", alt: "Night Light Show on Desert Cliffs" },
+              { src: "/venues/almughayra_p10_9.jpeg", alt: "Aerial View of the Village Complex" },
               { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
-              { src: "/venues/almughayra_event_trophy.jpeg", alt: "Camel Cup Trophy Ceremony" },
               { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">

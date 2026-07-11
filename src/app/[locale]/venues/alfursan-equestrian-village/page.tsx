@@ -49,7 +49,7 @@ const jsonLd = {
       "@type": "TouristAttraction",
       "name": "AlFursan Equestrian Village",
       "description": "A distinctive destination honouring AlUla's cultural heritage and natural beauty — blending equestrian tradition with world-class facilities.",
-      "image": "https://draft.sem.sa/venues/alfursan_p2_1.jpeg",
+      "image": "https://saudieventmanagement.com/venues/alfursan_p2_1.jpeg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "AlUla",
@@ -260,15 +260,11 @@ export default function AlFursanPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { src: "/venues/alfursan_p6_5.jpeg", alt: "AlFursan Village — Desert Setting" },
-              { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match at AlUla" },
               { src: "/venues/alfursan_p9_8.jpeg", alt: "Polo Field & Grandstand" },
-              { src: "/venues/alfursan_event_action.jpeg", alt: "Polo Players in Action" },
               { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
-              { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Area" },
               { src: "/venues/alfursan_p5_4.jpeg", alt: "Event Hospitality Under the Stars" },
-              { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
+              { src: "/venues/alfursan_p10_9.jpeg", alt: "Guest Lounge Interior" },
               { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
-              { src: "/venues/alfursan_event_aerial.jpeg", alt: "Equestrian Village Aerial View" },
               { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
