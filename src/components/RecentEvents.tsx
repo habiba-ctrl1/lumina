@@ -44,7 +44,7 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
               className="text-neutral-900 text-3xl md:text-4xl mb-5 font-semibold"
               style={{ letterSpacing: "-0.025em" }}
             >
-              {isAr ? <>أحدث <span className="text-[var(--primary)]">التحف</span></> : <>Recent <span className="text-[var(--primary)]">Masterpieces</span></>}
+              {isAr ? <>مفاهيم <span className="text-[var(--primary)]">فعالياتنا</span></> : <>Event <span className="text-[var(--primary)]">Concepts</span></>}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
@@ -53,11 +53,11 @@ export default function RecentEvents({ hideHeader = false }: { hideHeader?: bool
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-neutral-500 text-[16px] leading-relaxed"
             >
-              {isAr ? "استكشف أبهى فعالياتنا الفاخرة في هذا المعرض المنسّق الغامر." : "Explore our most spectacular luxury events in this immersive curated gallery."}
+              {isAr ? "استكشف أمثلة على الفعاليات الفاخرة التي ننسّقها، من الفكرة حتى التنفيذ." : "Explore examples of the luxury events we coordinate, from concept to execution."}
             </motion.p>
           </div>
         ) : (
-          <h2 className="sr-only">{isAr ? "أحدث تحف الأعمال" : "Recent Portfolio Masterpieces"}</h2>
+          <h2 className="sr-only">{isAr ? "مفاهيم فعالياتنا" : "Portfolio Event Concepts"}</h2>
         )}
 
         {/* 3D Coverflow Gallery */}

@@ -82,8 +82,8 @@ export default async function RiyadhEliteMajlis() {
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "المفهوم" : <>The <span className="text-[var(--primary)] ">Concept</span></>}</h2>
             <p className="mb-8">
               {isAr
-                ? "المجلس هو نبض الحياة الاجتماعية والسياسية السعودية. ولهذا المشروع، كُلِّفنا بتحديث تجربة المجلس لمجموعة من الرؤساء التنفيذيين الدوليين والوزراء المحليين. وكان الهدف الحفاظ على دفء الضيافة السعودية الأصيل مع توفير البنية التحتية للنقاشات المؤسسية رفيعة المستوى."
-                : "The Majlis is the heartbeat of Saudi social and political life. For this project, we were tasked with modernizing the Majlis experience for a group of international CEOs and local ministers. The goal was to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions."}
+                ? "المجلس هو نبض الحياة الاجتماعية والسياسية السعودية. ويُحدِّث هذا التصوّر تجربة المجلس لتجمّع من الرؤساء التنفيذيين الدوليين وكبار الشخصيات المحلية — والهدف هو الحفاظ على دفء الضيافة السعودية الأصيل مع توفير البنية التحتية للنقاشات المؤسسية رفيعة المستوى."
+                : "The Majlis is the heartbeat of Saudi social and political life. This concept modernizes the Majlis experience for a gathering of international CEOs and prominent local dignitaries — the goal is to maintain the authentic warmth of Saudi hospitality while providing the infrastructure for high-level corporate discussions."}
             </p>
             <p>
               {isAr
@@ -132,8 +132,8 @@ export default async function RiyadhEliteMajlis() {
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">{isAr ? "الإرث" : <>The <span className="text-[var(--primary)] ">Legacy</span></>}</h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               {isAr
-                ? "أسفرت الفعالية عن توقيع ثلاث شراكات كبرى عابرة للحدود في الموقع. ووفّرت أجواء المجلس النخبوي المريحة والمهنية في آنٍ المحفّز المثالي لمفاوضات عالية الثقة."
-                : "The event resulted in three major cross-border partnerships being signed on-site. The relaxed yet professional atmosphere of the Elite Majlis provided the perfect catalyst for high-trust negotiations."}
+                ? "تُصمَّم فعالية من هذا النوع لتكون المحفّز المثالي للمفاوضات عالية الثقة والشراكات العابرة للحدود — فأجواء المجلس النخبوي المريحة والمهنية في آنٍ مصمَّمة خصيصًا لتمنح كبار الضيوف الراحة بينما تُنجَز الأعمال."
+                : "A gathering of this kind is designed to be the perfect catalyst for high-trust negotiations and cross-border partnerships — the relaxed yet professional atmosphere of the Elite Majlis format is built specifically to put high-level guests at ease while the business at hand gets done."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
               <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "التميّز في الدبلوماسية الثقافية" : "Excellence in Cultural Diplomacy"}</span>

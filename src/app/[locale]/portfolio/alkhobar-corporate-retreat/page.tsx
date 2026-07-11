@@ -43,8 +43,8 @@ export default async function AlkhobarCorporateRetreat() {
           </h1>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto">
             {isAr
-              ? "ملاذ تنفيذي بثلاثة أيام لـ120 قائدًا من كبار قادة إحدى شركات أرامكو السعودية التابعة — صُمّم خصيصًا لتعزيز الثقافة، ومواءمة الاستراتيجية، وتكريم المواهب."
-              : "A three-day executive retreat for 120 senior leaders of a Saudi Aramco subsidiary — purpose-built to strengthen culture, align strategy, and celebrate talent."}
+              ? "ملاذ تنفيذي بثلاثة أيام لـ120 قائدًا من كبار قادة إحدى شركات الطاقة الكبرى في المنطقة الشرقية — صُمّم خصيصًا لتعزيز الثقافة، ومواءمة الاستراتيجية، وتكريم المواهب."
+              : "A three-day executive retreat for 120 senior leaders of a major Eastern Province energy company — purpose-built to strengthen culture, align strategy, and celebrate talent."}
           </p>
         </div>
       </section>
@@ -90,8 +90,8 @@ export default async function AlkhobarCorporateRetreat() {
             </h2>
             <p className="mb-8">
               {isAr
-                ? "إثر إعادة هيكلة مؤسسية كبرى، احتاج مدير الموارد البشرية في الشركة التابعة فعالية تعيد ترسيخ 120 قائدًا حول رؤية علامة موحّدة وتعيد ضبط البوصلة الثقافية للمنظمة. وأُقيم الملاذ في منتجع خاص على ساحل المنطقة الشرقية، مع سياسة صارمة بمنع الأجهزة خلال كل الجلسات."
-                : "Following a major corporate restructuring, the subsidiary's CHRO needed an event that would re-anchor 120 senior leaders around a unified brand vision and reset the cultural compass of the organisation. The retreat was held at a private resort on the Eastern Province coast, with a strict no-device policy during all facilitated sessions."}
+                ? "يوضّح هذا التصوّر كيف ندعم عملية إعادة هيكلة مؤسسية كبرى — فعالية مصمَّمة لإعادة ترسيخ 120 قائدًا حول رؤية علامة موحّدة وضبط البوصلة الثقافية للمنظمة. ويُقام الملاذ في منتجع خاص على ساحل المنطقة الشرقية، مع سياسة صارمة بمنع الأجهزة خلال كل الجلسات."
+                : "This concept illustrates how we'd support a major corporate restructuring — an event designed to re-anchor 120 senior leaders around a unified brand vision and reset the cultural compass of the organisation. The retreat unfolds at a private resort on the Eastern Province coast, with a strict no-device policy during all facilitated sessions."}
             </p>
             <p>
               {isAr
@@ -144,8 +144,8 @@ export default async function AlkhobarCorporateRetreat() {
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               {isAr
-                ? "سجّل استبيان داخلي بعد الملاذ ارتفاعًا بـ34 نقطة في درجات تماسك الفريق. وأفاد مدير الموارد البشرية بأن جدارية تفعيل العلامة تُعلَّق الآن في مقرّ الشركة بالظهران، لتكون تذكيرًا يوميًا بالرؤية الجماعية التي رُسِمت في الملاذ."
-                : "A post-retreat internal survey recorded a 34-point rise in team cohesion scores. The CHRO reported that the brand activation mural now hangs in the company's Dhahran headquarters, serving as a daily reminder of the collective vision set at the retreat."}
+                ? "يُصمَّم ملاذ بهذا المستوى لإحداث أثر ملموس وقابل للقياس في تماسك الفريق — أثر يمكن للقيادة الإشارة إليه، كجدارية تفعيل العلامة المصمَّمة لتُعلَّق بشكل دائم في مقرّ الشركة كتذكير يومي بالرؤية الجماعية التي رُسِمت في الملاذ."
+                : "A retreat at this level is designed to move the needle on team cohesion in a measurable way, with the kind of post-event impact leadership can point to — like a brand activation mural built to hang permanently at company headquarters as a daily reminder of the collective vision set at the retreat."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
               <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "بناء الفرق التنفيذية وتفعيل العلامة" : "Executive Team Building & Branding"}</span>

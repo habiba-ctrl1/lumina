@@ -123,8 +123,8 @@ export default async function MakkahVipRetreat() {
             <h2 className="text-2xl md:text-4xl font-sans font-bold mb-8 uppercase tracking-tight">{isAr ? "النتيجة" : <>The <span className="text-[var(--primary)] ">Result</span></>}</h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl font-light">
               {isAr
-                ? "وصف الوفد الملاذ بأنه أكثر تجربة سلاسة وإثراءً روحانيًا واجهوها. تولّت إدارة الفعاليات السعودية كل تعقيد، ما أتاح للضيوف اختبار مكة بسلام وفخامة غير مسبوقين."
-                : "The retreat was described by the delegation as the most seamless and spiritually enriching experience they had encountered. Saudi Event Management handled every complexity, allowing the guests to experience Makkah with unprecedented peace and luxury."}
+                ? "يُصمَّم ملاذ بهذا المستوى ليكون التجربة الأكثر سلاسة وإثراءً روحانيًا لأي وفد. وتتولى إدارة الفعاليات السعودية كل تعقيد، بما يتيح للضيوف اختبار مكة بسلام وفخامة لا مساومة فيهما."
+                : "A retreat at this level is designed to be the most seamless and spiritually enriching experience a delegation could ask for. Saudi Event Management is built to handle every complexity, so guests can experience Makkah with complete peace and uncompromising luxury."}
             </p>
             <div className="flex items-center gap-10 border-t border-white/10 pt-10">
               <div className="w-16 h-16 rounded-full bg-[var(--primary)]/20 flex items-center justify-center">
@@ -132,7 +132,7 @@ export default async function MakkahVipRetreat() {
               </div>
               <div>
                 <p className="text-sm font-bold uppercase tracking-widest ">{isAr ? "«اهتمام بالتفاصيل لا يُضاهى في أقدس المدن.»" : "\"Unmatched attention to detail in the holiest of cities.\""}</p>
-                <p className="text-[10px] text-neutral-500 uppercase tracking-widest mt-1">{isAr ? "— رئيس المراسم" : "— Chief of Protocol"}</p>
+                <p className="text-[10px] text-neutral-500 uppercase tracking-widest mt-1">{isAr ? "— معيارنا لملاذات كبار الشخصيات في مكة" : "— Our Standard for VIP Retreats in Makkah"}</p>
               </div>
             </div>
           </div>

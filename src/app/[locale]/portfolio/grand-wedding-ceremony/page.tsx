@@ -55,13 +55,13 @@ export default async function GrandWeddingCeremony() {
           {(isAr
             ? [
             { icon: Users, label: "الضيوف", val: "+600" },
-            { icon: Crown, label: "التكليف", val: "ملكي خاص" },
+            { icon: Crown, label: "الطراز", val: "بأسلوب ملكي" },
             { icon: Music, label: "الزفّة", val: "فرقة حية" },
             { icon: Star, label: "البروتوكول", val: "دخول كبار الشخصيات" },
               ]
             : [
             { icon: Users, label: "Guests", val: "600+" },
-            { icon: Crown, label: "Commission", val: "Private Royal" },
+            { icon: Crown, label: "Style", val: "Royal-Style" },
             { icon: Music, label: "Zaffa", val: "Live Ensemble" },
             { icon: Star, label: "Protocol", val: "VIP Entrance" },
           ]).map((stat, i) => (
@@ -90,8 +90,8 @@ export default async function GrandWeddingCeremony() {
             </h2>
             <p className="mb-8">
               {isAr
-                ? "كلّفت عائلة ملكية بارزة إدارة الفعاليات السعودية بإنتاج زفاف متعدد الأيام يكرّم ثراء التقاليد الاحتفالية السعودية كاملًا — من توقيع الملكة إلى الاستقبال الكبير المختلط — مع تلبية توقعات الضيوف الدوليين غير المعتادين على العادات المحلية."
-                : "A prominent royal family commissioned Saudi Event Management to produce a multi-day wedding that honoured the full richness of Saudi ceremonial traditions — from the Milkah signing to the grand mixed reception — while meeting the expectations of international guests unfamiliar with local customs."}
+                ? "يتصوّر هذا المفهوم إنتاج زفاف متعدد الأيام بأسلوب ملكي يكرّم ثراء التقاليد الاحتفالية السعودية كاملًا — من توقيع الملكة إلى الاستقبال الكبير المختلط — مع تلبية توقعات الضيوف الدوليين غير المعتادين على العادات المحلية."
+                : "This concept envisions a multi-day royal-style wedding production that honours the full richness of Saudi ceremonial traditions — from the Milkah signing to the grand mixed reception — while meeting the expectations of international guests unfamiliar with local customs."}
             </p>
             <p>
               {isAr
@@ -144,8 +144,8 @@ export default async function GrandWeddingCeremony() {
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               {isAr
-                ? "وصفت العائلة الفعالية بأنها «ذكرى ستعيش لأجيال». وعُرِض الفيلم الاحتفالي لاحقًا في لمّ شمل عائلي خاص ضمّ أكثر من 200 فرد. وتم التعاقد مع إدارة الفعاليات السعودية فورًا للمناسبة العائلية التالية."
-                : "The family described the event as \"a memory that will live for generations.\" The ceremonial film was later screened at a private family reunion of over 200 members. Saudi Event Management was retained immediately for the next family occasion."}
+                ? "تُصمَّم مناسبة بهذا المستوى لتكون «ذكرى تعيش لأجيال» — من نوع الأفلام الاحتفالية التي تستحق العرض مجددًا في تجمّعات العائلة القادمة، ومن نوع التجارب التي تجعل عملاءنا يعودون إلينا في المناسبة العائلية التالية."
+                : "A wedding at this level is designed to be a memory that lives for generations — the kind of ceremonial film worth screening again at future family gatherings, and the kind of experience that has clients returning to us for the next family occasion."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
               <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "بروتوكول دخول كبار الشخصيات التقليدي" : "Traditional VIP Entrance Protocol"}</span>

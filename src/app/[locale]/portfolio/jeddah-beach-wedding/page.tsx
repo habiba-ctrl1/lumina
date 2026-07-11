@@ -144,8 +144,8 @@ export default async function JeddahBeachWedding() {
             </h2>
             <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
               {isAr
-                ? "وصفت العائلة الاحتفال بثلاثة أيام بأنه «أجمل فعالية حضرناها على الإطلاق». وتلقّى كل ضيف تذكارًا ساحليًا مصنوعًا يدويًا، وشُورِك الفيلم الوثائقي منذ ذلك الحين بشكل خاص بين أكثر من 2,000 من معارف العائلة."
-                : "The three-day celebration was described by the family as \"the most beautiful event we have ever attended.\" Every guest received a hand-crafted coastal keepsake, and the video documentary has since been shared privately among over 2,000 family connections."}
+                ? "تُصمَّم مناسبة بهذا المستوى لتكون من النوع الذي تصفه العائلة بأنه «أجمل فعالية حضرناها على الإطلاق». ويتلقّى كل ضيف تذكارًا ساحليًا مصنوعًا يدويًا، ويُصمَّم الفيلم الوثائقي ليكون ذكرى تُعتَز بها وتُشارَك لسنوات ضمن دائرة العائلة."
+                : "A celebration at this level is designed to be the kind of event a family calls \"the most beautiful we have ever attended.\" Every guest receives a hand-crafted coastal keepsake, and the video documentary is built to be treasured and shared for years within the family circle."}
             </p>
             <div className="inline-block px-8 py-4 border border-[var(--primary)]/30 rounded-full">
               <span className="text-[var(--primary)] text-xs font-bold uppercase tracking-[0.3em]">{isAr ? "إنتاج ساحلي فاخر على البحر الأحمر" : "Luxury Red Sea Coastal Production"}</span>

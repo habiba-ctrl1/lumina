@@ -80,8 +80,8 @@ export default async function MadinahSpiritualEvent() {
             <h2 className="text-2xl md:text-3xl font-sans font-bold text-neutral-900 mb-8 uppercase tracking-tight">{isAr ? "الجوهر" : <>The <span className="text-[var(--primary)] ">Essence</span></>}</h2>
             <p className="mb-8">
               {isAr
-                ? "تتطلّب المدينة المنوّرة نهجًا فريدًا في إدارة الفعاليات — نهجًا يقدّم الطمأنينة والاحترام والانسياب السلس. ولهذا التجمّع الروحاني، كُلِّفنا بتصميم مساحة تبدو امتدادًا لسكينة المدينة المقدّسة الفطرية."
-                : "Madinah demands a unique approach to event management—one that prioritizes tranquility, respect, and effortless flow. For this spiritual gathering, we were commissioned to design a space that felt like an extension of the holy city's innate serenity."}
+                ? "تتطلّب المدينة المنوّرة نهجًا فريدًا في إدارة الفعاليات — نهجًا يقدّم الطمأنينة والاحترام والانسياب السلس. ويتمحور هذا التصوّر حول تجمّع روحاني مصمَّم ليبدو امتدادًا لسكينة المدينة المقدّسة الفطرية."
+                : "Madinah demands a unique approach to event management—one that prioritizes tranquility, respect, and effortless flow. This concept is built around a spiritual gathering designed to feel like an extension of the holy city's innate serenity."}
             </p>
             <p>
               {isAr
@@ -123,8 +123,8 @@ export default async function MadinahSpiritualEvent() {
           <h2 className="text-2xl md:text-4xl font-sans font-bold mb-10 uppercase tracking-tight">{isAr ? <>أثر <span className="text-[var(--primary)] ">عميق</span></> : <>A <span className="text-[var(--primary)] ">Profound</span> Impact</>}</h2>
           <p className="text-neutral-300 text-lg mb-12 max-w-3xl mx-auto font-light leading-relaxed">
             {isAr
-              ? "وصف الحضور الفعالية بأنها «تجربة محوّلة». وأرست قدرة إدارة الفعاليات السعودية على التعامل مع تعقيدات المدينة مع الحفاظ على إحساس عميق بالخشوع والفخامة معيارًا جديدًا للفعاليات الروحانية."
-              : "The event was described by attendees as a \"transformative experience.\" Saudi Event Management's ability to handle the complexities of the city while maintaining a profound sense of reverence and luxury established a new benchmark for spiritual events."}
+              ? "تُصمَّم فعالية بهذا المستوى لتكون «تجربة محوّلة» لكل حاضر. والقدرة على التعامل مع تعقيدات المدينة مع الحفاظ على إحساس عميق بالخشوع والفخامة هي المعيار الذي نلتزم به في كل فعالية روحانية."
+              : "A gathering at this level is designed to be a transformative experience for every attendee. Handling the complexities of the city while maintaining a profound sense of reverence and luxury is the benchmark we hold ourselves to for every spiritual event."}
           </p>
           <div className="inline-block px-8 py-4 bg-white/5 rounded-full border border-white/10">
             <span className="text-[var(--primary)] text-[10px] font-bold uppercase tracking-[0.4em]">{isAr ? "التميّز في الضيافة الروحانية" : "Excellence in Spiritual Hospitality"}</span>

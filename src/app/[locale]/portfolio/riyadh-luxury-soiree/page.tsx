@@ -125,13 +125,13 @@ export default function RiyadhLuxurySoiree() {
             <h3 className="text-3xl md:text-5xl font-sans font-bold mb-10 uppercase tracking-tight">{isAr ? <>ليلة من <span className="text-[var(--primary)] ">الدهشة</span></> : <>A Night of <span className="text-[var(--primary)] ">Wonder</span></>}</h3>
             <p className="text-neutral-600 text-xl max-w-3xl mx-auto font-light leading-relaxed mb-16">
               {isAr
-                ? "أرست الأمسية معيارًا جديدًا للاحتفالات الخاصة في المملكة. لم تكن مجرد حفلة؛ بل معرضًا للممكن، يمزج أرقى الضيافة بأكثر تقنيات الإنتاج تقدّمًا في العالم."
-                : "The soiree set a new standard for private celebrations in the Kingdom. It was not just a party; it was an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world."}
+                ? "تُصمَّم أمسية بهذا المستوى لترسي معيارًا جديدًا للاحتفالات الخاصة في المملكة — ليست مجرد حفلة، بل معرضًا للممكن، يمزج أرقى الضيافة بأكثر تقنيات الإنتاج تقدّمًا في العالم."
+                : "A soiree at this level is designed to set a new standard for private celebrations in the Kingdom — not just a party, but an exhibition of the possible, blending the finest hospitality with the most advanced production techniques in the world."}
             </p>
             <div className="flex justify-center gap-16">
               <div>
                 <div className="text-3xl font-bold text-[var(--primary)]">100%</div>
-                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">{isAr ? "خصوصية محفوظة" : "Privacy Maintained"}</div>
+                <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-2">{isAr ? "خصوصية بالتصميم" : "Privacy by Design"}</div>
               </div>
               <div className="w-px h-16 bg-white/10" />
               <div>
