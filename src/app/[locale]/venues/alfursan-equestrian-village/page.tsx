@@ -223,20 +223,22 @@ export default function AlFursanPage() {
       <section className="py-24 md:py-32 bg-neutral-900 text-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Types</span>
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Applications</span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
-              What You Can <span className="text-amber-300">Host</span></h2>
+              Ideal <span className="text-amber-300">For</span></h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {[
-              "Concerts & live performances",
-              "Corporate gatherings & ceremonies",
-              "Community engagement events",
-              "Equestrian activities & shows",
-              "Training sessions & presentations",
-              "Intimate celebrations & parties",
-              "Cultural heritage experiences",
-              "Show events with panoramic AlUla views",
+              "Destination Weddings & Engagements",
+              "Gala Dinners & Award Ceremonies",
+              "Executive Summits & Board Retreats",
+              "Product Launches & Exhibitions",
+              "Corporate Events & Conferences",
+              "VIP Receptions & Private Gatherings",
+              "Equestrian Sporting Events",
+              "Luxury Outdoor Experiences",
+              "Vision 2030 Activations",
+              "Cultural Festivals & Concerts",
             ].map((exp, i) => (
               <div key={i} className="flex items-center gap-4 bg-neutral-800/50 border border-neutral-700/50 rounded-xl px-6 py-4">
                 <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
