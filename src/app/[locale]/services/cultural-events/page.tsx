@@ -197,7 +197,7 @@ export default function SeasonalEventsPage() {
                 <span>FOUNDING DAY</span>
               </div>
               <div className="text-sm text-gray-500 font-light ">
-                {isAr ? "«مشاركة رسمية في مبادرات اليوم الوطني منذ أكثر من عقد.»" : "\"Official participation in National Day initiatives for over a decade.\""}
+                {isAr ? "«مشاركة رسمية في مبادرات اليوم الوطني بمعايير تنظيمية دقيقة.»" : "\"Official participation in National Day initiatives, delivered to rigorous cultural and logistical standards.\""}
               </div>
             </div>
           </div>

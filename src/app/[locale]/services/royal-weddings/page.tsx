@@ -118,7 +118,7 @@ const jsonLd = {
           name: "Who are the best royal wedding planners in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Saudi Event Management is widely recognised as Saudi Arabia's foremost royal wedding planning specialist. With over 15 years of ceremonial expertise, we deliver bespoke royal experiences — from intimate Nikah ceremonies to grand Walima receptions for 2,000+ guests — at the Kingdom's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons Kingdom Centre, and exclusive palace properties. Our portfolio covers Riyadh, Jeddah, AlUla, and NEOM.",
+            text: "Saudi Event Management is widely recognised as Saudi Arabia's foremost royal wedding planning specialist. We deliver bespoke royal experiences — from intimate Nikah ceremonies to grand Walima receptions for 2,000+ guests — at the Kingdom's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons Kingdom Centre, and exclusive palace properties. Our portfolio covers Riyadh, Jeddah, AlUla, and NEOM.",
           },
         },
         {
@@ -564,7 +564,7 @@ const packages = [
 const faqs = [
   {
     q: "Who are the best royal wedding planners in Saudi Arabia?",
-    a: "Saudi Event Management is Saudi Arabia's foremost royal wedding specialist — over 15 years of ceremonial expertise, preferred-partner status at all major five-star venues, and a dedicated royal protocol team. Our portfolio spans Riyadh, Jeddah, AlUla, and NEOM.",
+    a: "Saudi Event Management is Saudi Arabia's foremost royal wedding specialist — preferred-partner status at all major five-star venues, and a dedicated royal protocol team. Our portfolio spans Riyadh, Jeddah, AlUla, and NEOM.",
   },
   {
     q: "How much does a royal wedding cost in Saudi Arabia?",
@@ -814,7 +814,7 @@ const packagesAr = [
 const faqsAr = [
   {
     q: "من هم أفضل مخطّطي الأعراس الملكية في السعودية؟",
-    a: "إدارة الفعاليات السعودية هي المتخصص الأول في الأعراس الملكية بالمملكة — أكثر من 15 عامًا من الخبرة الاحتفالية، ومكانة شريك مفضّل في كل القاعات الكبرى ذات الخمس نجوم، وفريق بروتوكول ملكي متخصّص. تمتد أعمالنا عبر الرياض وجدة والعلا ونيوم.",
+    a: "إدارة الفعاليات السعودية هي المتخصص الأول في الأعراس الملكية بالمملكة — مكانة شريك مفضّل في كل القاعات الكبرى ذات الخمس نجوم، وفريق بروتوكول ملكي متخصّص. تمتد أعمالنا عبر الرياض وجدة والعلا ونيوم.",
   },
   {
     q: "كم تكلفة العرس الملكي في السعودية؟",
@@ -888,8 +888,8 @@ export default async function RoyalWeddingsPage() {
           minHeight="large"
           enableParallax
           trustElements={[
-            { value: "15+", label: isAr ? "أعوام من الخبرة الملكية" : "Years of Royal Expertise" },
-            { value: "500+", label: isAr ? "احتفال ملكي منفّذ" : "Royal Celebrations Delivered" },
+            { value: "20+", label: isAr ? "مورد معتمد" : "Vetted Vendors" },
+            { value: "100%", label: isAr ? "توثيق الموردين" : "Vendor Vetting" },
             { value: "12", label: isAr ? "مدينة في عموم السعودية" : "Cities Across Saudi Arabia" },
           ]}
         />
@@ -974,8 +974,8 @@ export default async function RoyalWeddingsPage() {
                         <strong className="text-slate-900">وليمة الزواج</strong> الكبرى في سردية واحدة متناغمة من الروعة الثقافية.
                       </p>
                       <p>
-                        منذ أكثر من 15 عامًا، تعمل إدارة الفعاليات السعودية{" "}
-                        <strong className="text-slate-900">مخطّطًا موثوقًا للأعراس الملكية</strong> لأعرق العائلات السعودية — بتنفيذ مراسم لا تشوبها شائبة في{" "}
+                        تعمل إدارة الفعاليات السعودية{" "}
+                        <strong className="text-slate-900">مخطّطًا موثوقًا للأعراس الملكية</strong> لأعرق العائلات السعودية، عبر شبكة متخصصين معتمدين في أنحاء المملكة — بتنفيذ مراسم لا تشوبها شائبة في{" "}
                         <strong className="text-slate-900">الريتز كارلتون الرياض</strong>، و
                         <strong className="text-slate-900">والدورف أستوريا جدة</strong>، و
                         <strong className="text-slate-900">منتجع شرعان العلا</strong>، وأرقى القصور في عموم المملكة. ونهجنا يكرّم عمق التقاليد السعودية مع دقّة الفخامة العالمية.
@@ -998,7 +998,8 @@ export default async function RoyalWeddingsPage() {
                         of cultural magnificence.
                       </p>
                       <p>
-                        For over 15 years, Saudi Event Management has served as the trusted{" "}
+                        Saudi Event Management coordinates royal-standard wedding logistics through a
+                        Kingdom-wide network of vetted specialists, serving as the trusted{" "}
                         <strong className="text-slate-900">royal wedding planner</strong> for distinguished
                         Saudi families — delivering flawless ceremonies at the{" "}
                         <strong className="text-slate-900">Ritz-Carlton Riyadh</strong>,{" "}
@@ -1038,12 +1039,12 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-[var(--primary)]">15+</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>أعوام من الخبرة<br/>الملكية</> : <>Years of<br/>Royal Expertise</>}</span>
+                <span className="text-3xl font-bold text-[var(--primary)]">20+</span>
+                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>مورد<br/>معتمد</> : <>Vetted<br/>Vendors</>}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-[var(--primary)]">500+</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>احتفال ملكي<br/>منفّذ</> : <>Royal Celebrations<br/>Delivered</>}</span>
+                <span className="text-3xl font-bold text-[var(--primary)]">100%</span>
+                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>توثيق<br/>الموردين</> : <>Vendor<br/>Vetting</>}</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold text-[var(--primary)]">4.9★</span>
@@ -1178,8 +1179,8 @@ export default async function RoyalWeddingsPage() {
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
                 {isAr
-                  ? "منهجية من ست مراحل صُقِلت عبر أكثر من 500 احتفال ملكي — من الاستشارة الأولى تحت اتفاقية السرّية إلى الأرشيف السينمائي بعد الزفاف."
-                  : "A six-stage methodology refined across 500+ royal celebrations — from initial NDA consultation to post-wedding cinematic archive."}
+                  ? "منهجية من ست مراحل مصمّمة لتقديم تنفيذ متسق لا تشوبه شائبة — من الاستشارة الأولى تحت اتفاقية السرّية إلى الأرشيف السينمائي بعد الزفاف."
+                  : "A six-stage methodology built for flawless, consistent delivery — from initial NDA consultation to post-wedding cinematic archive."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1340,7 +1341,7 @@ export default async function RoyalWeddingsPage() {
             {/* Deep Arabic semantic prose for NLP coverage */}
             <div className="mt-12 bg-white/5 rounded-2xl p-8 text-right" dir="rtl">
               <h3 className="text-xl font-bold text-white mb-4">
-                خبرة <span className="text-[var(--primary)]">15 عاماً</span> في تنظيم الأعراس الملكية السعودية
+                خبرة <span className="text-[var(--primary)]">متخصصة</span> في تنظيم الأعراس الملكية السعودية
               </h3>
               <p className="text-white/60 text-sm leading-loose">
                 نحن في سعودي إيفنت مانجمنت نفخر بكوننا المرجع الأول لتخطيط وتنظيم الأعراس الملكية في المملكة
@@ -1371,7 +1372,7 @@ export default async function RoyalWeddingsPage() {
                   name: "فاطمة الراشد",
                   title: "كبيرة مستشاري الأعراس الملكية",
                   arabic: "Senior Royal Wedding Consultant",
-                  bio: "15 عامًا من التخصص في مراسم الأعراس الملكية والأثرياء في السعودية. خبيرة في بروتوكول عقد القران التقليدي، ولوجستيات الوليمة، وإدارة الحفلين المنفصلين.",
+                  bio: "متخصصة في مراسم الأعراس الملكية والأثرياء في السعودية. خبيرة في بروتوكول عقد القران التقليدي، ولوجستيات الوليمة، وإدارة الحفلين المنفصلين.",
                 },
                 {
                   name: "نورة الغامدي",
@@ -1391,7 +1392,7 @@ export default async function RoyalWeddingsPage() {
                   name: "Fatima Al-Rashid",
                   title: "Senior Royal Wedding Consultant",
                   arabic: "مستشارة الأفراح الملكية",
-                  bio: "15 years specialising in Saudi royal and HNWI wedding ceremonies. Expert in traditional Nikah protocol, Walima logistics, and dual-reception management.",
+                  bio: "Specialises in Saudi royal and HNWI wedding ceremonies. Expert in traditional Nikah protocol, Walima logistics, and dual-reception management.",
                 },
                 {
                   name: "Nora Al-Ghamdi",

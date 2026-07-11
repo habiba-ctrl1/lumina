@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         }
       : "Luxury Wedding Planner Saudi Arabia — Riyadh, Jeddah & AlUla",
     description: isAr
-      ? "مخطِّط أعراس فاخرة في السعودية بخبرة 15+ عامًا — عقد القران والملكة، وليالي الحناء، والكوشة، وحفلات الاستقبال الكبرى في الرياض وجدة والعلا. احصل على استشارة مجانية اليوم."
-      : "Saudi Arabia's trusted luxury wedding planner — 15+ years crafting Nikah & Milka ceremonies, Henna nights, kosha design & grand receptions in Riyadh, Jeddah & AlUla. Get a free consultation today.",
+      ? "مخطِّط أعراس فاخرة في السعودية — عقد القران والملكة، وليالي الحناء، والكوشة، وحفلات الاستقبال الكبرى في الرياض وجدة والعلا. احصل على استشارة مجانية اليوم."
+      : "Saudi Arabia's trusted luxury wedding planner — crafting Nikah & Milka ceremonies, Henna nights, kosha design & grand receptions in Riyadh, Jeddah & AlUla. Get a free consultation today.",
     alternates: {
       canonical: canonicalUrl,
       languages: hreflangAlternates("/services/weddings"),

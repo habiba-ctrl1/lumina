@@ -690,7 +690,7 @@ export default async function RiyadhPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events Delivered in Riyadh", val: "120+" },
+              { label: "Local Vendor Network", val: "Riyadh-Wide" },
               { label: "Venue Partnerships", val: "45+" },
               { label: "Riyadh-Based Specialists", val: "15" },
               { label: "Avg. Guest Satisfaction", val: "99%" },
@@ -775,7 +775,7 @@ export default async function RiyadhPage() {
                   {
                     name: "Fahad Al-Saud",
                     role: "Riyadh Managing Director",
-                    desc: "15+ years delivering corporate events across KAFD, KAICC, and Diriyah.",
+                    desc: "Delivering corporate events across KAFD, KAICC, and Diriyah.",
                   },
                   {
                     name: "Layla Mansour",

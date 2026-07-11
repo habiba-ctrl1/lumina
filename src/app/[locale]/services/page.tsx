@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? { absolute: "خدمات إدارة الفعاليات في السعودية | حفلات الزفاف والشركات والمعارض | إدارة الفعاليات السعودية" }
       : "Event Management Services in Saudi Arabia | Weddings, Corporate & Exhibitions",
     description: isAr
-      ? "شركة إدارة فعاليات حائزة على جوائز في السعودية. أكثر من 15 عامًا و500 فعالية منفّذة — حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وفعاليات كبار الشخصيات والوجهات في الرياض وجدة والدمام والعلا ونيوم. عرض مجاني خلال 24 ساعة."
-      : "Award-winning event management company in Saudi Arabia. 15+ years and 500+ events delivered — luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
+      ? "شركة إدارة فعاليات حائزة على جوائز في السعودية. شبكة شركاء مُنتقاة بعناية فائقة لتنظيم حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وفعاليات كبار الشخصيات والوجهات في الرياض وجدة والدمام والعلا ونيوم. عرض مجاني خلال 24 ساعة."
+      : "Award-winning event management company in Saudi Arabia. A rigorously vetted partner network delivering luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
     keywords: [
       "Event Management Services Saudi Arabia",
       "Event management company Saudi Arabia",
@@ -50,8 +50,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ? "خدمات إدارة الفعاليات في السعودية | إدارة الفعاليات السعودية"
         : "Event Management Services in Saudi Arabia | Saudi Event Management",
       description: isAr
-        ? "أكثر من 15 عامًا و500 فعالية. حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وتجارب الوجهات وكبار الشخصيات في الرياض وجدة والدمام والعلا ونيوم."
-        : "15+ years and 500+ events. Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP experiences across Riyadh, Jeddah, Dammam, AlUla & NEOM.",
+        ? "شبكة شركاء مُنتقاة بعناية فائقة. حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وتجارب الوجهات وكبار الشخصيات في الرياض وجدة والدمام والعلا ونيوم."
+        : "A rigorously vetted partner network. Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP experiences across Riyadh, Jeddah, Dammam, AlUla & NEOM.",
       url: path,
       type: "website",
       images: [{ url: "/services/hero_bg.webp", width: 1200, height: 630, alt: "Luxury event management services in Saudi Arabia by Saudi Event Management" }],
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: "summary_large_image",
       title: "Event Management Services in Saudi Arabia | Saudi Event Management",
       description:
-        "Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP events across the Kingdom. 15+ years · 500+ events.",
+        "Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP events across the Kingdom. 20+ vetted vendors · 10+ Saudi cities.",
       images: ["/services/hero_bg.webp"],
     },
   };
@@ -161,7 +161,7 @@ const serviceCategories = [
 
 const whyChooseUs = [
   { icon: Layers, title: "One Accountable Team", desc: "Creative, technical AV, catering coordination, permits, and logistics owned in-house — no multi-vendor finger-pointing, one point of accountability." },
-  { icon: Award, title: "15+ Years, 500+ Events", desc: "A 12-year operating track record across the Kingdom — from intimate royal majlis gatherings to 5,000-delegate national summits." },
+  { icon: Award, title: "Rigorous Vendor Vetting", desc: "A carefully vetted network of partners across the Kingdom — delivering everything from intimate royal majlis gatherings to 5,000-delegate national summits." },
   { icon: ShieldCheck, title: "Permits & Compliance In-House", desc: "GEA entertainment licenses, municipality approvals, and civil-defense clearances managed end-to-end, so approvals never threaten your date." },
   { icon: Languages, title: "Fully Bilingual Delivery", desc: "Arabic–English simultaneous interpretation, bilingual collateral, and culturally fluent programming for domestic and international audiences." },
   { icon: Crown, title: "Discretion & VIP Protocol", desc: "Bilateral NDAs, secure venue management, and royal-grade protocol for HNWI, diplomatic, and government guests." },
@@ -266,7 +266,6 @@ const jsonLd = {
       "url": "https://saudieventmanagement.com",
       "logo": "https://saudieventmanagement.com/services/logo.png",
       "image": "https://saudieventmanagement.com/services/hero_bg.webp",
-      "foundingDate": "2012",
       "slogan": "Luxury event management across Saudi Arabia.",
       "address": {
         "@type": "PostalAddress",
@@ -389,8 +388,8 @@ export default async function ServicesPage() {
         disableZoom
         minHeight="large"
         trustElements={[
-          { value: "250+", label: "Events Managed" },
-          { value: "15+", label: "Years of Saudi Expertise" },
+          { value: "20+", label: "Vetted Vendors" },
+          { value: "10+", label: "Saudi Cities Covered" },
           { value: "24 Hours", label: "Quote Response" },
         ]}
       />
@@ -418,7 +417,7 @@ export default async function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap justify-between items-center gap-8">
             <div className="text-xs text-neutral-500 font-light italic max-w-xs">
-              &quot;A trusted partner for Vision 2030 events across the Kingdom since 2012.&quot;
+              &quot;A trusted partner for Vision 2030 events across the Kingdom.&quot;
             </div>
             <div className="h-8 w-px bg-neutral-200 hidden md:block" />
             <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-neutral-400">
@@ -589,7 +588,7 @@ export default async function ServicesPage() {
               How we deliver a <span className="text-[var(--primary)]">flawless event</span>
             </h2>
             <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm md:text-base">
-              A six-stage methodology refined across 500+ events — from the first brief to post-event ROI reporting.
+              A six-stage methodology built for consistent, reliable delivery — from the first brief to post-event ROI reporting.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

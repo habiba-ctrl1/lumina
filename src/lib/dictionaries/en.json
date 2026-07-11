@@ -60,10 +60,10 @@
     "label": "Saudi Event Management",
     "title": "Event Management Company in",
     "titleHighlight": "Saudi Arabia",
-    "subtitle": "Saudi Event Management is a Riyadh-focused B2B platform connecting clients with trusted, vetted event service providers across Saudi Arabia. Founded in 2026, we're building a curated vendor network to simplify event planning across the Kingdom.",
+    "subtitle": "Saudi Event Management is a Riyadh-focused B2B platform connecting clients with trusted, vetted event service providers across Saudi Arabia. Every vendor in our network is personally vetted, giving you one accountable point of contact for planning across the Kingdom.",
     "requestQuote": "Request a Quote",
     "viewPortfolio": "View Portfolio",
-    "stats": ["Newly Launched", "Building Our Network"],
+    "stats": ["Riyadh-Based Platform", "Personally Vetted Vendors"],
     "yearsOf": "Years of",
     "excellence": "Excellence",
     "h1En": "Event Management Company in Saudi Arabia — Corporate Events, Conferences, Exhibitions & Weddings in Riyadh & Jeddah",
@@ -266,8 +266,8 @@
     ]
   },
   "stats": {
-    "title": "OUR GROWING NETWORK",
-    "subtitle": "Building a trusted vendor ecosystem to support world-class event planning aligned with Saudi Arabia's Vision 2030.",
+    "title": "OUR VENDOR NETWORK",
+    "subtitle": "A trusted vendor ecosystem supporting world-class event planning aligned with Saudi Arabia's Vision 2030.",
     "items": [
       { "value": 20, "suffix": "+", "label": "Vetted Vendors" },
       { "value": 6, "suffix": "+", "label": "Event Categories" },
@@ -296,7 +296,7 @@
   "testimonials": {
     "items": [
       {
-        "quote": "We're building our client portfolio — be among the first to experience our curated vendor network and personalised event planning.",
+        "quote": "We personally vet every vendor in our network so you get one accountable partner — not a directory of strangers.",
         "author": "Saudi Event Management",
         "role": "Riyadh, Saudi Arabia"
       }
@@ -487,12 +487,12 @@
     "titleHighlight": "Event Planning",
     "titleEnd": "Across Saudi Arabia",
     "subtitle": "A Modern B2B Event Platform",
-    "bio1": "Founded by **Habiba Asghar** in 2026, Saudi Event Management was created with a clear mission: to simplify how clients find and connect with trusted event service providers across the Kingdom.",
-    "bio2": "We're building a curated network of vetted vendors — from event planners and AV producers to florists and caterers — making it easier than ever to plan exceptional events in Saudi Arabia.",
+    "bio1": "**Habiba Asghar** founded Saudi Event Management with a clear mission: to simplify how clients find and connect with trusted event service providers across the Kingdom.",
+    "bio2": "We maintain a curated network of vetted vendors — from event planners and AV producers to florists and caterers — making it easier than ever to plan exceptional events in Saudi Arabia.",
     "bio3": "Our philosophy is simple — provide a transparent, reliable platform where quality is guaranteed and every vendor is personally vetted for excellence.",
-    "yearsOfExcellence": "Est. 2026",
+    "yearsOfExcellence": "Personally Vetted Network",
     "stats": [
-      { "number": "2026", "label": "Founded" },
+      { "number": "100%", "label": "Vendor Vetting" },
       { "number": "6+", "label": "Event Categories" },
       { "number": "10+", "label": "Cities Covered" }
     ]

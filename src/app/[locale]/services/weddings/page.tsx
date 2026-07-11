@@ -297,11 +297,11 @@ export default function WeddingsPage() {
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
                   {isAr ? (
                     <>
-                      بصفتنا <strong className="text-slate-900">مخطِّط حفلات الزفاف الأول في السعودية</strong> منذ أكثر من 15 عامًا، تتخصص إدارة الفعاليات السعودية في تحويل رؤيتك إلى تحفة فنية. تضم أعمالنا احتفالات حصرية في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-semibold">ريتز كارلتون الرياض</Link>، و<strong className="text-slate-900">فورسيزونز</strong>، و<Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف في الوجهات</Link> الساحرة على البحر الأحمر.
+                      بصفتنا <strong className="text-slate-900">مخطِّط حفلات الزفاف الأول في السعودية</strong>، تتخصص إدارة الفعاليات السعودية في تحويل رؤيتك إلى تحفة فنية. تضم أعمالنا احتفالات حصرية في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-semibold">ريتز كارلتون الرياض</Link>، و<strong className="text-slate-900">فورسيزونز</strong>، و<Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف في الوجهات</Link> الساحرة على البحر الأحمر.
                     </>
                   ) : (
                     <>
-                      As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong> for over 15 years, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
+                      As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong>, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
                     </>
                   )}
                 </p>
@@ -325,8 +325,8 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-12">
               <div className="flex items-center gap-10">
-                <div className="text-3xl font-sans text-[var(--primary)] font-bold">15+</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-600">{isAr ? <>عامًا في <br/>السوق السعودي</> : <>Years in <br/>Saudi Market</>}</div>
+                <div className="text-3xl font-sans text-[var(--primary)] font-bold">20+</div>
+                <div className="text-[10px] uppercase tracking-widest text-slate-600">{isAr ? <>مورد <br/>معتمد</> : <>Vetted <br/>Vendors</>}</div>
               </div>
               <div className="flex gap-10 grayscale opacity-40">
                 <span className="text-xs font-bold tracking-widest">FOUR SEASONS</span>
@@ -500,7 +500,7 @@ export default function WeddingsPage() {
             <div className="text-center mb-16">
               <span className="text-[var(--primary)] text-xs uppercase tracking-widest font-bold mb-4 block">{isAr ? "منهجيتنا" : "Our Process"}</span>
               <h2 className="text-2xl md:text-4xl font-sans text-slate-900 font-bold">{isAr ? <>كيف نخطّط <span className="text-[var(--primary)]">زفافك</span> في السعودية</> : <>How we plan your <span className="text-[var(--primary)]">wedding</span> in Saudi Arabia</>}</h2>
-              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">{isAr ? "رحلة واضحة من خمس مراحل صُقلت عبر 15 عامًا من الأعراس في الرياض وجدة والعُلا — مبنية على تقاليد الأسرة السعودية والاحتفال العصري." : "A clear five-stage journey refined over 15 years of weddings across Riyadh, Jeddah, and AlUla — built around Saudi family traditions and modern celebration."}</p>
+              <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">{isAr ? "رحلة واضحة من خمس مراحل مصمَّمة لأعراس الرياض وجدة والعُلا — مبنية على تقاليد الأسرة السعودية والاحتفال العصري." : "A clear five-stage journey built for weddings across Riyadh, Jeddah, and AlUla — grounded in Saudi family traditions and modern celebration."}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {(isAr

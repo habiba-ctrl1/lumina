@@ -57,7 +57,7 @@ const PSEO_DATA: Record<
       "Hybrid conference streaming and translation services",
     ],
     faqs: [
-      { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management is the leading corporate event management company in Riyadh, serving Saudi Aramco, HRDF, SABIC, and major government entities with over 15 years of local operational experience." },
+      { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management is the leading corporate event management company in Riyadh, serving Saudi Aramco, HRDF, SABIC, and major government entities through a locally coordinated vendor network." },
       { q: "What are the best corporate event venues in Riyadh?", a: "The top corporate event venues in Riyadh include the KAFD Conference Center, KAICC, Ritz-Carlton, JW Marriott, and Al Faisaliah Hotel. We hold preferred partnerships with all major Riyadh venues." },
       { q: "corporate event company near me Riyadh", a: "Saudi Event Management is headquartered in Riyadh with a full-time team available for rapid on-site consultation and same-day event logistics support across the capital." },
     ],
@@ -699,7 +699,7 @@ function arText(data: { parentSlug: string; cityAr: string }) {
     serviceAr: s,
     h1: `${s} في ${data.cityAr}`,
     titleTag: `${s} في ${data.cityAr} | إدارة الفعاليات السعودية`,
-    metaDescription: `${s} في ${data.cityAr} مع إدارة الفعاليات السعودية — خبرة تتجاوز 15 عامًا في التخطيط والتنفيذ الاحترافي بمعايير عالمية. اطلب عرضك المجاني خلال 24 ساعة.`,
+    metaDescription: `${s} في ${data.cityAr} مع إدارة الفعاليات السعودية — تخطيط وتنفيذ احترافي عبر شبكة موردين معتمدين بمعايير عالمية. اطلب عرضك المجاني خلال 24 ساعة.`,
   };
 }
 
@@ -734,7 +734,7 @@ const PSEO_AR: Record<
       "بث مؤتمرات هجين وخدمات ترجمة",
     ],
     faqs: [
-      { q: "ما شركات إدارة الفعاليات العاملة في الرياض؟", a: "إدارة الفعاليات السعودية هي الشركة الرائدة في إدارة الفعاليات المؤسسية بالرياض، تخدم أرامكو السعودية وصندوق تنمية الموارد البشرية وسابك وكبرى الجهات الحكومية بخبرة تشغيلية محلية تتجاوز 15 عامًا." },
+      { q: "ما شركات إدارة الفعاليات العاملة في الرياض؟", a: "إدارة الفعاليات السعودية هي الشركة الرائدة في إدارة الفعاليات المؤسسية بالرياض، تخدم أرامكو السعودية وصندوق تنمية الموارد البشرية وسابك وكبرى الجهات الحكومية من خلال شبكة تنسيق محلية معتمدة." },
       { q: "ما أفضل قاعات الفعاليات المؤسسية في الرياض؟", a: "تشمل أفضل قاعات الفعاليات المؤسسية في الرياض مركز كافد للمؤتمرات، ومركز الملك عبدالعزيز للمؤتمرات، والريتز كارلتون، وجي دبليو ماريوت، وفندق الفيصلية. ونحتفظ بشراكات مفضّلة مع كل قاعات الرياض الكبرى." },
       { q: "شركة فعاليات مؤسسية قريبة مني في الرياض", a: "مقرّ إدارة الفعاليات السعودية في الرياض بفريق متفرّغ متاح للاستشارة الميدانية السريعة ودعم لوجستيات الفعاليات في اليوم نفسه عبر العاصمة." },
     ],

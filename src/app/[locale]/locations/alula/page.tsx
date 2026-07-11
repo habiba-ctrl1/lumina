@@ -612,7 +612,7 @@ export default async function AlUlaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
-              { label: "Events in AlUla", val: "40+" },
+              { label: "Local Vendor Network", val: "AlUla-Wide" },
               { label: "Venue Partnerships", val: "8" },
               { label: "RCU Permit Success", val: "100%" },
               { label: "UNESCO Heritage Events", val: "Specialist" },

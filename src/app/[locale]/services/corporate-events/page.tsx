@@ -112,7 +112,7 @@ const jsonLd = {
           name: "What is the best corporate event management company in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Saudi Event Management is consistently rated the leading corporate event management company in Saudi Arabia. With over 15 years of experience and preferred-partner status at KAFD, RICEC, and all major five-star venues, we have delivered 500+ corporate events for entities including Saudi Aramco, SABIC, HRDF, PIF, and NEOM — from intimate board retreats to 5,000-delegate national conferences.",
+            text: "Saudi Event Management is consistently rated the leading corporate event management company in Saudi Arabia. With preferred-partner status at KAFD, RICEC, and all major five-star venues, we coordinate corporate events for entities including Saudi Aramco, SABIC, HRDF, PIF, and NEOM — from intimate board retreats to 5,000-delegate national conferences.",
           },
         },
         {
@@ -389,7 +389,7 @@ const planningSteps = [
 const faqs = [
   {
     q: "What is the best corporate event management company in Saudi Arabia?",
-    a: "Saudi Event Management is consistently rated the leading corporate event management company in KSA — 15+ years, 500+ corporate events, preferred-partner status at KAFD and RICEC, serving Saudi Aramco, SABIC, HRDF, and PIF.",
+    a: "Saudi Event Management is consistently rated the leading corporate event management company in KSA — preferred-partner status at KAFD and RICEC, serving Saudi Aramco, SABIC, HRDF, and PIF.",
   },
   {
     q: "How much does corporate event management cost in Saudi Arabia?",
@@ -461,7 +461,7 @@ const planningStepsAr = [
 ];
 
 const faqsAr = [
-  { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "تُصنَّف إدارة الفعاليات السعودية باستمرار كأبرز شركة لإدارة فعاليات الشركات في المملكة — خبرة تتجاوز 15 عامًا، وأكثر من 500 فعالية مؤسسية، وصفة شريك مفضّل في مركز الملك عبدالله المالي وRICEC، وخدمة أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة." },
+  { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "تُصنَّف إدارة الفعاليات السعودية باستمرار كأبرز شركة لإدارة فعاليات الشركات في المملكة — صفة شريك مفضّل في مركز الملك عبدالله المالي وRICEC، وخدمة أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة." },
   { q: "كم تبلغ تكلفة إدارة فعاليات الشركات في السعودية؟", a: "تبدأ القمم التنفيذية من 75,000 إلى 300,000 ريال، وتتراوح حفلات العشاء الفاخرة من 150,000 إلى 600,000 ريال، أما المؤتمرات الكبرى في مركز الملك عبدالله المالي أو RICEC لأكثر من 500 مندوب فتتراوح عادةً من 300,000 إلى 1,500,000 ريال. تواصل معنا لعرض سعر مخصص." },
   { q: "ما أبرز قاعات فعاليات الشركات في الرياض؟", a: "مركز مؤتمرات الملك عبدالله المالي (2500 مقعد)، وRICEC (أكبر مركز مؤتمرات ومعارض في السعودية)، وريتز كارلتون الرياض، وفورسيزونز برج المملكة، وفندق الفيصلية، وجي دبليو ماريوت الرياض، وفيرمونت الرياض KAFD." },
   { q: "ما هو منظِّم المؤتمرات الاحترافي (PCO) في السعودية؟", a: "منظِّم المؤتمرات الاحترافي (PCO) يدير دورة حياة المؤتمر كاملة — القاعة، والتسجيل، والصوت والصورة، والترجمة، والتصاريح، ولوجستيات المتحدثين. وإدارة الفعاليات السعودية عضو مرتبط بـ IAPCO وعضو في MPI." },
@@ -472,8 +472,8 @@ const faqsAr = [
 ];
 
 const statLabelsAr = [
-  "فعالية مؤسسية منفّذة",
-  "عامًا في السوق السعودي",
+  "مورد معتمد",
+  "توثيق الموردين",
   "أقصى عدد مندوبين تمت إدارته",
   "متوسط تقييم العملاء",
   "مدينة سعودية نغطيها",
@@ -484,11 +484,11 @@ const statLabelsAr = [
 const cAr = {
   ctaProposal: "اطلب عرضًا لفعالية شركتك",
   ctaSpeak: "تحدّث إلى فريقنا",
-  trustQuote: "شريك موثوق لفعاليات رؤية 2030 منذ 2012.",
+  trustQuote: "شريك موثوق لفعاليات رؤية 2030 في جميع أنحاء المملكة.",
   introLabel: "روّاد هندسة فعاليات الشركات في السعودية",
   introH2a: "نرتقي بإدارة فعاليات الشركات",
   introH2b: "في السعودية.",
-  introP1: "على مدى أكثر من 15 عامًا، كانت إدارة الفعاليات السعودية العمود التشغيلي خلف أهم التجمّعات المؤسسية في المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى قمم بـ 5000 مندوب في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
+  introP1: "إدارة الفعاليات السعودية هي العمود التشغيلي خلف أهم التجمّعات المؤسسية في المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى قمم بـ 5000 مندوب في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
   introP2: "يضم عملاؤنا أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة، وقائمة متنامية من مطوّري المشاريع العملاقة تشمل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — وكلّهم لا يقبلون أي هامش للخطأ، ويطلبون قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
   introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) معتمدًا ومرتبطًا بـ IAPCO وMPI، ندير دورة حياة الفعالية كاملة — من استخراج تصاريح هيئة الترفيه والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت فريق واحد مسؤول وموحّد.",
   evLabel: "خبرة في كل نوع فعالية",
@@ -507,7 +507,7 @@ const cAr = {
   prH2a: "كيف نخطّط",
   prH2b: "فعالية شركة",
   prH2c: "في السعودية",
-  prP: "منهجية من ست مراحل صُقلت عبر أكثر من 500 فعالية مؤسسية — من الإحاطة الأولى إلى تقرير العائد على الاستثمار بعد الفعالية.",
+  prP: "منهجية من ست مراحل مصمّمة لتقديم تنفيذ متسق وموثوق — من الإحاطة الأولى إلى تقرير العائد على الاستثمار بعد الفعالية.",
   formEyebrow: "اطلب عرضًا",
   formH2a: "لِنبنِ معًا",
   formH2b: "فعاليتك المؤسسية الكبرى القادمة.",
@@ -564,8 +564,8 @@ export default async function CorporateEventsPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "150+", label: "Corporate Events Delivered" },
-            { value: "15+", label: "Years of Saudi Market Expertise" },
+            { value: "20+", label: "Vetted Vendors" },
+            { value: "100%", label: "Vendor Vetting" },
             { value: "5,000+", label: "Max Delegate Capacity Managed" },
           ]}
         />
@@ -609,7 +609,7 @@ export default async function CorporateEventsPage() {
                 <span>NEOM</span>
               </div>
               <div className="text-xs text-neutral-500 font-light italic">
-                {isAr ? `«${cAr.trustQuote}»` : "\"Trusted partner for Vision 2030 corporate events since 2012.\""}
+                {isAr ? `«${cAr.trustQuote}»` : "\"Trusted partner for Vision 2030 corporate events across the Kingdom.\""}
               </div>
             </div>
           </div>
@@ -656,8 +656,8 @@ export default async function CorporateEventsPage() {
                 ) : (
                 <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
                   <p>
-                    For over 15 years, <strong className="text-neutral-900">Saudi Event Management</strong> has
-                    been the operational backbone behind the Kingdom&apos;s most consequential corporate
+                    <strong className="text-neutral-900">Saudi Event Management</strong> is
+                    the operational backbone behind the Kingdom&apos;s most consequential corporate
                     gatherings — from{" "}
                     <strong className="text-neutral-900">Annual General Meetings</strong> for listed Saudi
                     companies, to 5,000-delegate summits at the{" "}
@@ -688,8 +688,8 @@ export default async function CorporateEventsPage() {
               {/* Stats column */}
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { value: "150+", label: "Corporate Events Delivered" },
-                  { value: "15+", label: "Years in Saudi Market" },
+                  { value: "20+", label: "Vetted Vendors" },
+                  { value: "100%", label: "Vendor Vetting" },
                   { value: "5,000+", label: "Max Delegates Managed" },
                   { value: "4.9★", label: "Average Client Rating" },
                   { value: "12", label: "Saudi Cities Covered" },
@@ -853,7 +853,7 @@ export default async function CorporateEventsPage() {
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
                 {isAr
                   ? cAr.prP
-                  : "A six-stage methodology refined across 500+ corporate events — from initial brief to post-event ROI reporting."}
+                  : "A six-stage methodology built for consistent, reliable delivery — from initial brief to post-event ROI reporting."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1039,7 +1039,7 @@ export default async function CorporateEventsPage() {
             {/* Deep Arabic prose */}
             <div className="mt-10 bg-[var(--surface-tinted)] border border-emerald-100 rounded-2xl p-8 text-right" dir="rtl">
               <h3 className="text-xl font-bold text-neutral-900 mb-4">
-                خبرة <span className="text-[var(--primary)]">15 عاماً</span> في إدارة الفعاليات المؤسسية
+                خبرة <span className="text-[var(--primary)]">متخصصة</span> في إدارة الفعاليات المؤسسية
               </h3>
               <p className="text-neutral-600 text-sm leading-loose">
                 نحن في سعودي إيفنت مانجمنت نقدم خدمات متكاملة لإدارة الفعاليات المؤسسية في المملكة العربية
@@ -1069,15 +1069,15 @@ export default async function CorporateEventsPage() {
                   name: "Omar Al-Farsi",
                   title: "CEO & Executive Event Director",
                   arabic: "الرئيس التنفيذي ومدير الفعاليات",
-                  bio: "15+ years managing corporate events for Saudi Aramco, SABIC, and NEOM. Expert in government protocol, GEA permitting, and executive summit logistics for 5,000+ delegate events.",
-                  bioAr: "أكثر من 15 عامًا في إدارة فعاليات الشركات لأرامكو السعودية وسابك ونيوم. خبير في البروتوكول الحكومي وتصاريح هيئة الترفيه ولوجستيات القمم التنفيذية لفعاليات تتجاوز 5000 مندوب.",
+                  bio: "Leads corporate event delivery for Saudi Aramco, SABIC, and NEOM. Expert in government protocol, GEA permitting, and executive summit logistics for 5,000+ delegate events.",
+                  bioAr: "يقود تنفيذ فعاليات الشركات لأرامكو السعودية وسابك ونيوم. خبير في البروتوكول الحكومي وتصاريح هيئة الترفيه ولوجستيات القمم التنفيذية لفعاليات تتجاوز 5000 مندوب.",
                 },
                 {
                   name: "Layla Al-Zahrani",
                   title: "Head of Corporate Conferences",
                   arabic: "رئيسة قسم المؤتمرات المؤسسية",
-                  bio: "IAPCO-certified PCO with a decade of experience managing hybrid conferences and ministerial summits. Specialist in simultaneous interpretation infrastructure and multilingual delegate management.",
-                  bioAr: "منظِّمة مؤتمرات معتمدة من IAPCO بخبرة عشر سنوات في إدارة المؤتمرات الهجينة والقمم الوزارية. متخصصة في بنية الترجمة الفورية وإدارة المندوبين متعددي اللغات.",
+                  bio: "IAPCO-certified PCO specialising in hybrid conferences and ministerial summits. Specialist in simultaneous interpretation infrastructure and multilingual delegate management.",
+                  bioAr: "منظِّمة مؤتمرات معتمدة من IAPCO ومتخصصة في إدارة المؤتمرات الهجينة والقمم الوزارية. متخصصة في بنية الترجمة الفورية وإدارة المندوبين متعددي اللغات.",
                 },
                 {
                   name: "Tariq Al-Qahtani",

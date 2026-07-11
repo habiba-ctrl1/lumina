@@ -428,7 +428,7 @@ export default function Hero() {
             }}
           >
             {[
-              { num: isRtl ? "جديد" : "New", label: isRtl ? "أُطلقت 2026" : "Launched 2026" },
+              { num: "20+",  label: isRtl ? "مورد معتمد" : "Vetted Vendors" },
               { num: "10+",  label: isRtl ? "مدينة سعودية" : "Saudi Cities" },
               { num: "B2B",  label: isRtl ? "منصة"          : "Platform"     },
             ].map((s, i) => (
@@ -466,7 +466,7 @@ export default function Hero() {
           className="text-white/14 text-[8px] font-bold tracking-[0.48em] uppercase select-none"
           style={{ writingMode: "vertical-rl" }}
         >
-          Est. 2026
+          Vetted Vendor Network
         </span>
       </div>
     </div>
