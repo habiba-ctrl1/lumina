@@ -183,7 +183,7 @@ const industries = [
   { icon: TrendingUp, title: "Banking & Finance", desc: "AGMs, investor forums, and FII-calibre events at KAFD and beyond." },
   { icon: Globe, title: "Technology & Telecom", desc: "Product launches, hybrid conferences, and LEAP-scale tech activations." },
   { icon: Gem, title: "Luxury, Retail & Fashion", desc: "Brand launches, runway shows, and experiential VIP activations." },
-  { icon: Briefcase, title: "Real Estate & Giga-Projects", desc: "Milestone events for NEOM, Red Sea, Diriyah, and Qiddiya developers." },
+  { icon: Briefcase, title: "Real Estate & Giga-Projects", desc: "Milestone-event coordination for giga-project developers across NEOM, Red Sea, Diriyah, and Qiddiya." },
   { icon: Heart, title: "Private & Royal Clients", desc: "Royal weddings, HNWI celebrations, and ultra-discreet private events." },
   { icon: Sun, title: "Culture, Tourism & Sport", desc: "Seasonal festivals, Riyadh Season activations, and heritage events." },
 ];
@@ -232,7 +232,7 @@ const faqs = [
   },
   {
     q: "Are you aligned with Saudi Vision 2030 event initiatives?",
-    a: "Absolutely. We are an active partner in Vision 2030 cultural and economic event initiatives, working alongside the General Entertainment Authority (GEA), the Ministry of Culture, Saudi Tourism Authority, and numerous giga-project developers to deliver world-class events that align with the Kingdom's transformation goals.",
+    a: "Absolutely. Our event planning is built around Saudi Vision 2030's cultural and economic transformation goals. We handle the GEA entertainment permits, Ministry of Culture participation licenses, and other regulatory requirements needed to deliver world-class events that meet the Kingdom's standards.",
   },
   {
     q: "Do you handle event permits and regulatory compliance in Saudi Arabia?",
@@ -252,7 +252,7 @@ const faqs = [
   },
   {
     q: "Do you provide event management for government entities in Saudi Arabia?",
-    a: "Yes. Saudi Event Management has an extensive track record managing government-aligned events for entities including HRDF, Saudi Aramco, SABIC, and ministerial conferences. We are fully equipped to handle GEA compliance, national protocol, and secure VIP management.",
+    a: "Yes. We coordinate government-aligned and Vision 2030 events, and our vetted vendor network is fully equipped to handle GEA compliance, national protocol, and secure VIP management for public-sector and ministerial-scale programs.",
   },
 ];
 
@@ -291,12 +291,6 @@ const jsonLd = {
         { "@type": "City", "name": "Madinah", "sameAs": "https://en.wikipedia.org/wiki/Medina" },
         { "@type": "Country", "name": "Saudi Arabia", "sameAs": "https://en.wikipedia.org/wiki/Saudi_Arabia" },
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "148",
-        "bestRating": "5",
-      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Event Management Services Saudi Arabia",
@@ -417,20 +411,19 @@ export default async function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap justify-between items-center gap-8">
             <div className="text-xs text-neutral-500 font-light italic max-w-xs">
-              &quot;A trusted partner for Vision 2030 events across the Kingdom.&quot;
+              &quot;Built to support Vision 2030-scale events across the Kingdom.&quot;
             </div>
             <div className="h-8 w-px bg-neutral-200 hidden md:block" />
             <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-neutral-400">
-              <span>SAUDI ARAMCO</span>
-              <span>SABIC</span>
-              <span>HRDF</span>
-              <span>PIF</span>
-              <span>NEOM</span>
-              <span>GEA</span>
+              <span>CORPORATE SUMMITS</span>
+              <span>LUXURY WEDDINGS</span>
+              <span>EXHIBITIONS</span>
+              <span>GOVERNMENT PROTOCOL</span>
+              <span>DESTINATION EVENTS</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[var(--primary)] font-bold text-sm">4.9★</span>
-              <span className="text-[10px] text-neutral-400 uppercase tracking-widest">148 Client Reviews</span>
+              <span className="text-[var(--primary)] font-bold text-sm">24hr</span>
+              <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Proposal Turnaround</span>
             </div>
           </div>
         </div>

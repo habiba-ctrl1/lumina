@@ -56,7 +56,7 @@ export async function generateMetadata({
         : "Corporate Event Management Saudi Arabia | Saudi Event Management",
       description: isAr
         ? "تنظيم متكامل لفعاليات الشركات: الجمعيات العمومية، القمم التنفيذية، حفلات العشاء، وفعاليات رؤية 2030 في الرياض وجدة والدمام."
-        : "End-to-end corporate event planning for AGMs, executive summits, gala dinners, and Vision 2030 activations across Riyadh, Jeddah, and Dammam. IAPCO-affiliated. Preferred partner at KAFD and RICEC.",
+        : "End-to-end corporate event planning for AGMs, executive summits, gala dinners, and Vision 2030 activations across Riyadh, Jeddah, and Dammam. Full-service PCO with in-house permits and compliance.",
       url: canonical,
       type: "website",
       images: [
