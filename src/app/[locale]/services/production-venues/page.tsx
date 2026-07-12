@@ -39,22 +39,6 @@ export default function ProductionVenuesPage() {
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stage Design" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luxury Catering" } }
           ]
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "156"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Luxury Event Venue Package",
-        "description": "Exclusive venue rental and full-service coordination in Riyadh.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "SAR",
-          "price": "75000",
-          "availability": "https://schema.org/InStock"
         }
       },
       {
@@ -73,7 +57,7 @@ export default function ProductionVenuesPage() {
             "name": "Can you recommend event caterers in Jeddah?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we partner with top-tier culinary teams, including those at Rosewood Jeddah. We can provide customized event catering quotes Saudi Arabia based on your guest count and preference for traditional or international menus."
+              "text": "Yes, we coordinate with top-tier culinary teams across Jeddah. We can provide customized event catering quotes Saudi Arabia based on your guest count and preference for traditional or international menus."
             }
           },
           {
@@ -121,11 +105,7 @@ export default function ProductionVenuesPage() {
       {
         "@type": "Organization",
         "name": "Saudi Event Management Event Services",
-        "description": "Leading technical production partner for KAICC and RECC summits in Saudi Arabia.",
-        "memberOf": {
-          "@type": "Organization",
-          "name": "KAEC Strategic Service Network"
-        }
+        "description": "Technical production coordination for KAICC and RECC summits in Saudi Arabia."
       }
     ]
   };
@@ -158,9 +138,9 @@ export default function ProductionVenuesPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "ISO 9001", label: "Certified Quality Partners" },
-            { value: "4.9/5", label: "From 156 Client Reviews" },
-            { value: "Tier-1", label: "Vendor Status in KSA" },
+            { value: "20+", label: "Vetted Vendors" },
+            { value: "100%", label: "Vendor Vetting" },
+            { value: "10+", label: "Saudi Cities Covered" },
           ]}
         />
 
@@ -191,8 +171,8 @@ export default function ProductionVenuesPage() {
                   <Star className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "حاصلون على ISO 9001" : "ISO 9001 Certified"}</p>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "شركاء إدارة الجودة" : "Quality Management Partners"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "شركاء موثقون" : "Vetted Quality Partners"}</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
@@ -202,7 +182,7 @@ export default function ProductionVenuesPage() {
                 <span>RITZ-CARLTON</span>
               </div>
               <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
-                {isAr ? "«مورّد من الفئة الأولى في السعودية»" : "\"Tier-1 Vendor Status in Saudi Arabia\""}
+                {isAr ? "«شبكة موردين معتمدة شخصياً في السعودية»" : "\"A Personally Vetted Vendor Network in Saudi Arabia\""}
               </div>
             </div>
           </div>
@@ -253,7 +233,7 @@ export default function ProductionVenuesPage() {
                 { icon: Speaker, title: "إنتاج الصوت والصورة", desc: "إنتاج صوتي ومرئي معتمد من ISO لقمم بمستوى مركز الملك عبدالعزيز. صوت بجودة الحفلات ومرئيات LED سينمائية." },
                 { icon: Map, title: "اختيار القاعات", desc: "اختيار قاعات خبير في السعودية، يمنح وصولًا حصريًا لأرقى قاعات الرياض وخيارات مدينة الملك عبدالله الاقتصادية." },
                 { icon: Zap, title: "تصميم المسرح", desc: "تصميم مسارح حائز على جوائز في مدينة الفيصلية. بيئات معمارية غامرة للفعاليات الكبرى." },
-                { icon: Utensils, title: "التموين الفاخر", desc: "تموين فعاليات راقٍ في السعودية. بالشراكة مع روزوود جدة لتجارب طعام بخمس نجوم." },
+                { icon: Utensils, title: "التموين الفاخر", desc: "تموين فعاليات راقٍ في السعودية، بالتنسيق مع فرق طهي بخمس نجوم في جدة." },
                 { icon: PenTool, title: "ديكور الفعاليات", desc: "ديكور فعاليات مخصّص في جدة، يوفّر بنية تحتية متينة ويوظّف اتجاهات التصميم في المملكة 2025." },
                 { icon: Camera, title: "الإنتاج الإعلامي", desc: "تصوير فوتوغرافي وفيديو سينمائي احترافي لتجمّعات مركز الملك عبدالعزيز ومركز الملك عبدالله المالي." },
                 { icon: Lightbulb, title: "فن الإضاءة", desc: "خدمات إضاءة فعاليات ديناميكية في الرياض، متخصصة في صناعة الأجواء للقاعات الكبرى." },
@@ -263,7 +243,7 @@ export default function ProductionVenuesPage() {
                 { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
                 { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
                 { icon: Zap, title: "Stage Design", desc: "Award-winning event staging at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
-                { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia. Partnered with Rosewood Jeddah for five-star dining experiences." },
+                { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia, coordinated with five-star culinary teams across Jeddah." },
                 { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah, providing robust event infrastructure and utilizing 2025 KSA design trends." },
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },
                 { icon: Lightbulb, title: "Lighting Artistry", desc: "Dynamic event lighting Riyadh services, specialized in creating mood for grand ballrooms." },
@@ -492,7 +472,7 @@ export default function ProductionVenuesPage() {
               {(isAr
                 ? [
                 { q: "ما معدات الصوت والصورة التي أحتاجها لمؤتمر بـ 500 شخص في الرياض؟", a: "يتطلب مؤتمر بـ 500 شخص نظام صوت لاين-أراي قويًا، وشاشتي LED كبيرتين على الأقل، وميكروفونات لاسلكية، وإعدادًا للتبديل المباشر متعدد الكاميرات. وبصفتنا شركة صوت وصورة رائدة للفعاليات في المملكة، توفّر إدارة الفعاليات السعودية مواصفات تقنية كاملة مصمّمة لقاعتك." },
-                { q: "هل يمكنكم ترشيح مقدّمي تموين للفعاليات في جدة؟", a: "بالتأكيد. لدينا شراكات حصرية مع فرق طهي نخبوية، تشمل طهاة تنفيذيين في روزوود جدة. ويمكننا تقديم عروض تموين فعاليات مفصّلة في السعودية بسرعة، من العشاء الفاخر إلى البوفيهات المؤسسية الضخمة." },
+                { q: "هل يمكنكم ترشيح مقدّمي تموين للفعاليات في جدة؟", a: "بالتأكيد. ننسّق مع فرق طهي نخبوية في جدة، ويمكننا تقديم عروض تموين فعاليات مفصّلة في السعودية بسرعة، من العشاء الفاخر إلى البوفيهات المؤسسية الضخمة." },
                 { q: "ما أنماط ديكور الفعاليات الشائعة في السعودية؟", a: "يمزج الاتجاه الحالي البساطة المستقبلية بالتراث التقليدي. لمسات معدنية أنيقة مع زخارف نجدية هندسية تقليدية، وإضاءة معمارية محيطة، وتركيبات أزهار فاخرة وعطرة." },
                 { q: "ما الذي تشمله إدارة الفعاليات المتكاملة في المملكة؟", a: "يغطّي نموذج إدارة الفعاليات السعودية المتكامل كل شيء من البحث عن القاعات والتصميم الإبداعي إلى إنتاج الصوت والصورة والتموين والتنفيذ الميداني." },
                 { q: "كيف أختار قاعة فعاليات في الرياض؟", a: "نحلّل ثيمة فعاليتك وقائمة ضيوفك ومتطلباتك التقنية لتسهيل تأجير القاعة المثالية في الرياض، سواء كانت فندق خمس نجوم أو ملاذًا صحراويًا حصريًا." },
@@ -502,7 +482,7 @@ export default function ProductionVenuesPage() {
                   ]
                 : [
                 { q: "What AV equipment do I need for a 500-person conference in Riyadh?", a: "A 500-person conference requires a robust line array sound system, at least two large LED display walls, lavalier mics, and a multi-camera live switching setup. As a leading AV company for events KSA, Saudi Event Management provides complete technical specifications tailored to your venue." },
-                { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We hold exclusive partnerships with elite culinary teams, including executive chefs at the Rosewood Jeddah. We can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
+                { q: "Can you recommend event caterers in Jeddah?", a: "Absolutely. We coordinate with elite culinary teams across Jeddah and can quickly provide detailed event catering quotes Saudi Arabia for everything from VIP plated dinners to massive corporate buffets." },
                 { q: "What event decoration styles are popular in Saudi Arabia?", a: "The current trend fuses futuristic minimalism with traditional heritage. Think sleek metallic accents paired with traditional Najdi geometric patterns, ambient architectural lighting, and opulent, fragrant floral installations." },
                 { q: "What is included in full-service event management in KSA?", a: "Saudi Event Management's full-service model covers everything from venue scouting and creative design to AV production, catering, and on-site event execution." },
                 { q: "How to choose an event venue in Riyadh?", a: "We analyze your event's theme, guest list, and technical needs to facilitate the ideal event venue rental Riyadh, whether it's a 5-star hotel or an exclusive desert retreat." },
