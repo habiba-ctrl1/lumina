@@ -260,14 +260,20 @@ export default function AlFursanPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { src: "/venues/alfursan_p6_5.jpeg", alt: "AlFursan Village — Desert Setting" },
+              { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match at AlUla" },
               { src: "/venues/alfursan_p9_8.jpeg", alt: "Polo Field & Grandstand" },
+              { src: "/venues/alfursan_event_action.jpeg", alt: "Polo Players in Action" },
               { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
               { src: "/venues/alfursan_p5_4.jpeg", alt: "Event Hospitality Under the Stars" },
+              { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Area" },
               { src: "/venues/alfursan_p10_9.jpeg", alt: "Guest Lounge Interior" },
               { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
               { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
+              { src: "/venues/alfursan_event_aerial.jpeg", alt: "Equestrian Village Aerial View" },
               { src: "/venues/alfursan_p12_11.jpeg", alt: "Briefing Session in the Lounge" },
               { src: "/venues/alfursan_p13_12.jpeg", alt: "Auditorium Seating Setup" },
+              { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
+              { src: "/venues/ai-generated/alfursan_polo_match.png", alt: "Polo Match Concept Visual" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
                 <Image 
