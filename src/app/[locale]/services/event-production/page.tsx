@@ -152,7 +152,7 @@ const faqs = [
   },
   {
     q: "Do you work on National Day and Riyadh Season shows?",
-    a: "Yes. We have contributed to National Day (September 23) and Riyadh Season productions, providing stage fabrication, LED walls, intelligent lighting, and full AV production for large-scale public events and brand activations.",
+    a: "Yes. We coordinate stage fabrication, LED walls, intelligent lighting, and full AV production for National Day (September 23) and Riyadh Season-scale public events and brand activations.",
   },
   {
     q: "What is the largest stage you have built in Saudi Arabia?",
@@ -206,7 +206,7 @@ const faqsAr = [
   { q: "كم تبلغ تكلفة الإنتاج الفعّالياتي في السعودية؟", a: "تتفاوت تكاليف الإنتاج الفعّالياتي في السعودية كثيرًا حسب الحجم والتعقيد. تبدأ باقة الصوت والصورة لفعالية شركات ليوم واحد من نحو 18,000 ريال. أما تصنيع مسرح وإنتاج متكامل لحفل أو حفلة موسيقية بـ 1000 شخص فقد يتراوح من 150,000 إلى أكثر من 500,000 ريال. تواصل معنا لعرض مفصّل." },
   { q: "هل توفّرون أنظمة صوت للفعاليات الخارجية في السعودية؟", a: "نعم. نوفّر أنظمة لاين-أراي مقاومة للطقس، وأبراج تأخير، ومصفوفات مضخّمات صوت مصمّمة للبيئات الخارجية، بما في ذلك مواقع الصحراء في العلا والقاعات الشاطئية على البحر الأحمر. وتشمل جميع الأنظمة مهندسي صوت ميدانيين وتنسيق RF." },
   { q: "هل يمكنكم تنفيذ إسقاط الصور في مواقع العلا أو الدرعية التراثية؟", a: "نعم. نفّذت إدارة الفعاليات السعودية تفعيلات إسقاط صور في مواقع تراثية. ونعمل عن قرب مع الهيئة الملكية للعلا وهيئة تطوير بوابة الدرعية لتصاريح المواقع وبروتوكولات إنتاج دون أثر." },
-  { q: "هل تعملون في عروض اليوم الوطني وموسم الرياض؟", a: "نعم. ساهمنا في إنتاجات اليوم الوطني (23 سبتمبر) وموسم الرياض، بتوفير تصنيع المسارح وجدران LED والإضاءة الذكية والإنتاج الصوتي والمرئي المتكامل للفعاليات العامة الكبرى وتفعيلات العلامات." },
+  { q: "هل تعملون في عروض اليوم الوطني وموسم الرياض؟", a: "نعم. ننسّق تصنيع المسارح وجدران LED والإضاءة الذكية والإنتاج الصوتي والمرئي المتكامل لفعاليات بحجم اليوم الوطني (23 سبتمبر) وموسم الرياض وتفعيلات العلامات الكبرى." },
   { q: "ما أكبر مسرح بنيتموه في السعودية؟", a: "شملت أكبر مسارحنا منصّات رئيسية بعرض 60 مترًا لإنتاجات بحجم الحفلات الموسيقية. ويستخدم فريق التصنيع لدينا فولاذًا إنشائيًا معتمدًا ويوفّر رسومات هندسية كاملة وحسابات أحمال لموافقة القاعة." },
   { q: "شركة إنتاج فعاليات قريبة مني في الرياض", a: "يقع مستودع وفريق الإنتاج لدى إدارة الفعاليات السعودية في الرياض، ما يجعلنا الخيار الأمثل لأي متطلب إنتاج فعاليات في العاصمة — من إعداد مسرح مؤسسي إلى إنتاج مهرجان بحجم الحفلات." },
   { q: "تأجير أنظمة صوت في الرياض", a: "نوفّر تأجير أنظمة صوت بجودة الحفلات في الرياض تشمل أنظمة لاين-أراي (L-Acoustics وd&b audiotechnik)، وحزم ميكروفونات لاسلكية، وأنظمة مراقبة داخل الأذن، ودعم مشغّلي صوت وصورة لفعاليات بأي حجم." },
@@ -224,8 +224,8 @@ const challengesAr = [
 const cAr = {
   ctaQuote: "احصل على عرض إنتاج",
   ctaTalk: "تحدّث إلى منتج",
-  credISO: "حاصلون على ISO 9001",
-  credISOsub: "معايير الإنتاج التقني",
+  credISO: "+20 مورد معتمد",
+  credISOsub: "شبكة إنتاج تقني موثقة",
   credQuote: "شريك تقني — تفعيلات موسم الرياض",
   servLabel: "الإنتاج التقني الرائد في السعودية",
   servH2a: "قدرات الإنتاج",
@@ -363,7 +363,7 @@ export default async function EventProductionPage() {
           trustElements={[
             { value: "60m", label: "Largest Stage Built" },
             { value: "4K", label: "LED & Projection Mapping" },
-            { value: "ISO 9001", label: "Certified Production" },
+            { value: "20+", label: "Vetted Vendors" },
           ]}
         />
 
@@ -394,8 +394,8 @@ export default async function EventProductionPage() {
                   <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? cAr.credISO : "ISO 9001 Certified"}</p>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? cAr.credISOsub : "Technical Production Standards"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? cAr.credISO : "20+ Vetted Vendors"}</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? cAr.credISOsub : "Technical Production Network"}</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
