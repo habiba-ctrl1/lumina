@@ -57,8 +57,8 @@ const PSEO_DATA: Record<
       "Hybrid conference streaming and translation services",
     ],
     faqs: [
-      { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management is the leading corporate event management company in Riyadh, serving Saudi Aramco, HRDF, SABIC, and major government entities through a locally coordinated vendor network." },
-      { q: "What are the best corporate event venues in Riyadh?", a: "The top corporate event venues in Riyadh include the KAFD Conference Center, KAICC, Ritz-Carlton, JW Marriott, and Al Faisaliah Hotel. We hold preferred partnerships with all major Riyadh venues." },
+      { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management is built to deliver corporate event management in Riyadh at the scale of Saudi Aramco, HRDF, SABIC, and major government entities, through a locally coordinated vendor network." },
+      { q: "What are the best corporate event venues in Riyadh?", a: "The top corporate event venues in Riyadh include the KAFD Conference Center, KAICC, Ritz-Carlton, JW Marriott, and Al Faisaliah Hotel. We coordinate access across all major Riyadh venues." },
       { q: "corporate event company near me Riyadh", a: "Saudi Event Management is headquartered in Riyadh with a full-time team available for rapid on-site consultation and same-day event logistics support across the capital." },
     ],
     relatedServices: [
@@ -90,7 +90,7 @@ const PSEO_DATA: Record<
       "GEA-compliant entertainment and hospitality management",
     ],
     faqs: [
-      { q: "What are the best corporate event venues in Jeddah?", a: "Top venues in Jeddah include the Rosewood Jeddah, Ritz-Carlton Jeddah, Waldorf Astoria (Qasr Al Sharq), InterContinental Jeddah, and the Jeddah Center for Forums and Events. We secure preferred access to all of these." },
+      { q: "What are the best corporate event venues in Jeddah?", a: "Top venues in Jeddah include the Rosewood Jeddah, Ritz-Carlton Jeddah, Waldorf Astoria (Qasr Al Sharq), InterContinental Jeddah, and the Jeddah Center for Forums and Events. We coordinate access across all of these." },
       { q: "Who organizes corporate conferences in Jeddah?", a: "Saudi Event Management is a premier corporate conference organizer in Jeddah, providing end-to-end PCO services, AV production, speaker management, and GEA permit processing for the city's major business events." },
       { q: "business event organizer near me Jeddah", a: "Saudi Event Management has a dedicated Jeddah operations team providing on-the-ground support for all corporate events across the city, from initial venue walk-throughs to post-event reporting." },
     ],
@@ -119,12 +119,12 @@ const PSEO_DATA: Record<
       "Eastern Province business galas and award ceremonies",
       "AGMs and shareholder meetings for regional corporates",
       "Team building and corporate retreats Eastern Province",
-      "Saudi Aramco and SABIC aligned event management",
+      "Event management built for Saudi Aramco and SABIC-scale organisations",
       "Cross-regional logistics (Dammam–Khobar–Dhahran corridor)",
     ],
     faqs: [
-      { q: "What corporate event venues exist in Dammam?", a: "Dammam's top corporate event venues include the Intercontinental Hotel Al Khobar, Four Points by Sheraton Dammam, Marriott Hotel Dammam, and the Dammam Chamber of Commerce. Saudi Event Management holds preferred access to all major venues." },
-      { q: "Do you manage corporate events for Saudi Aramco?", a: "Yes. Saudi Event Management has extensive experience managing corporate events aligned with Saudi Aramco's operational standards, including executive summits, training conferences, and corporate celebration events in the Eastern Province." },
+      { q: "What corporate event venues exist in Dammam?", a: "Dammam's top corporate event venues include the Intercontinental Hotel Al Khobar, Four Points by Sheraton Dammam, Marriott Hotel Dammam, and the Dammam Chamber of Commerce. We coordinate access across all major venues." },
+      { q: "Do you manage corporate events for Saudi Aramco?", a: "Yes. Saudi Event Management is built to manage corporate events aligned with Saudi Aramco's operational standards, including executive summits, training conferences, and corporate celebration events in the Eastern Province." },
       { q: "corporate event company near me Dammam", a: "Saudi Event Management provides rapid-response corporate event support across Dammam, Khobar, and Dhahran — with a dedicated Eastern Province project team." },
     ],
     relatedServices: [
@@ -259,7 +259,7 @@ const PSEO_DATA: Record<
       "Post-event lead management and reporting",
     ],
     faqs: [
-      { q: "What exhibition venues are available in Jeddah?", a: "Jeddah's primary exhibition venue is the Jeddah Center for Forums and Events (JCFE). Saudi Event Management holds preferred organizer status at this venue, providing expedited space bookings and logistics support." },
+      { q: "What exhibition venues are available in Jeddah?", a: "Jeddah's primary exhibition venue is the Jeddah Center for Forums and Events (JCFE). Saudi Event Management coordinates space bookings and logistics support at this venue." },
       { q: "Who manages trade shows in Jeddah?", a: "Saudi Event Management is a leading trade show organizer in Jeddah, providing end-to-end exhibition management for both domestic and international exhibitors across all industry sectors." },
       { q: "expo booth builder near me Jeddah", a: "Our Jeddah-based exhibition team provides rapid on-site booth design consultation, construction, and branding services for any trade show or commercial display event in the city." },
     ],
@@ -287,13 +287,13 @@ const PSEO_DATA: Record<
       "Oil and gas sector trade show management Dammam",
       "Technical industrial exhibition booth design",
       "Eastern Province B2B expo and product launches",
-      "Saudi Aramco and SABIC aligned exhibition services",
+      "Exhibition services built for Saudi Aramco and SABIC-scale organisations",
       "Delegate management and VIP hospitality",
       "Post-show analytics and lead conversion support",
     ],
     faqs: [
       { q: "What trade show venues exist in Dammam?", a: "Dammam's key exhibition venues include the Chamber of Commerce and Industry building and several large-scale hotel convention spaces. Saudi Event Management also facilitates custom outdoor exhibition builds for the Eastern Province." },
-      { q: "Do you manage oil and gas trade shows in Saudi Arabia?", a: "Yes. Saudi Event Management has extensive experience organizing and participating in oil and gas sector exhibitions, including AlShargiyah expos, coordinating between global industry players and the Saudi Aramco/SABIC supply chain ecosystem." },
+      { q: "Do you manage oil and gas trade shows in Saudi Arabia?", a: "Yes. Saudi Event Management is built to organize and support oil and gas sector exhibitions, including AlShargiyah-style expos, coordinating within the Saudi Aramco/SABIC supply chain ecosystem." },
       { q: "exhibition company near me Dammam", a: "Our Eastern Province team is based in the Dammam-Khobar corridor, providing immediate local support for all exhibition and trade show requirements across the region." },
     ],
     relatedServices: [
@@ -395,7 +395,7 @@ const PSEO_DATA: Record<
       "On-site AV crew and technical directors",
     ],
     faqs: [
-      { q: "Which event production companies operate in Riyadh?", a: "Saudi Event Management is one of Riyadh's leading event production companies, with a full in-house production warehouse, certified technical crew, and proven track record on National Day and Riyadh Season productions." },
+      { q: "Which event production companies operate in Riyadh?", a: "Saudi Event Management coordinates event production in Riyadh through a vetted network of technical crews and equipment partners, built for National Day and Riyadh Season-scale productions." },
       { q: "How much does AV production cost in Riyadh?", a: "AV production costs in Riyadh start from SAR 18,000 for a full-day corporate event package. Stage fabrication, LED walls, and projection mapping are priced separately based on scale and complexity." },
       { q: "event production company near me Riyadh", a: "Our production warehouse and team are based in Riyadh, making us the most accessible event production company for any capital event requirement — from same-week AV packages to large-scale concert productions." },
     ],
