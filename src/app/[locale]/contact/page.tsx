@@ -191,7 +191,7 @@ export default async function ContactPage({ params }: PageProps) {
                   <div>
                     <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.callLabel}</span>
                     <a href="tel:+966539388072" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
-                      +966 50 123 4567
+                      +966 539 388 072
                     </a>
                   </div>
                 </div>

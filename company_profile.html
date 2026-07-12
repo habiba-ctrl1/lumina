@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi Event Management - Company Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-navy: #0A192F;
+            --primary-gold: #D4AF37;
+            --text-dark: #333333;
+            --text-light: #555555;
+            --bg-light: #F9FAFB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Container for the page */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .company-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            margin-left: 15px;
+            height: 1px;
+            background-color: #E5E7EB;
+        }
+
+        p {
+            font-size: 13.5px;
+            color: var(--text-light);
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        ul li {
+            font-size: 13.5px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 16px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+        }
+
+        /* Highlight box for 'Our Focus' & 'Vision' */
+        .highlight-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary-navy);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .highlight-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box h2::after {
+            display: none;
+        }
+
+        .vision {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 14.5px;
+            margin-top: 25px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 20px 0;
+        }
+
+        /* Footer / Contact */
+        footer {
+            position: absolute;
+            bottom: 20mm;
+            left: 20mm;
+            right: 20mm;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary-gold);
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            color: var(--primary-gold);
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .year-badge {
+            position: absolute;
+            top: 20mm;
+            right: 20mm;
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary-gold);
+            padding: 4px 8px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="year-badge">Est. 2026</div>
+        
+        <header>
+            <div class="company-name">Saudi Event Management</div>
+            <div class="tagline">Connecting You to Trusted Event Partners Across Saudi Arabia</div>
+        </header>
+
+        <section>
+            <h2>About Us</h2>
+            <p>
+                Saudi Event Management is a B2B event coordination platform connecting clients with trusted, vetted event service providers across Saudi Arabia. We simplify event planning by acting as a single point of contact — understanding client requirements, identifying suitable vendor partners, comparing options, and coordinating the full process from first brief to execution.
+            </p>
+        </section>
+
+        <section>
+            <h2>Our Model</h2>
+            <p>
+                We do not operate as a traditional in-house production company. Instead, we partner with independent, specialized vendors across key categories including AV & production, entertainment, hospitality, and logistics. We match the right partners to each client's unique needs — saving time, optimizing budgets, and ensuring quality through careful, unbiased vendor selection.
+            </p>
+        </section>
+
+        <section>
+            <h2>What We Offer</h2>
+            <ul>
+                <li><strong>Single Point of Contact:</strong> Seamless multi-vendor coordination through one dedicated manager.</li>
+                <li><strong>Vendor Sourcing & Comparison:</strong> Transparent access to a curated network of top-tier local providers.</li>
+                <li><strong>Project & Timeline Management:</strong> End-to-end communication and execution tracking to ensure deadlines are met.</li>
+                <li><strong>Bilingual Support:</strong> Professional Arabic-English client support bridging communication gaps.</li>
+            </ul>
+        </section>
+
+        <div class="highlight-box">
+            <h2>Our Focus</h2>
+            <p>
+                Currently building a curated network of trusted vendor partners across Riyadh, with strategic plans to expand Kingdom-wide. As a founder-led startup, our core focus is rooted in absolute transparency, rapid responsiveness, and long-term partnership building.
+            </p>
+        </div>
+
+        <div class="vision">
+            "To become one of the leading event coordination platforms in the Kingdom, supporting Saudi Arabia's growing events ecosystem under Vision 2030."
+        </div>
+
+        <footer>
+            <div class="contact-item">
+                <span class="contact-icon">🌐</span> saudieventmanagement.com
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📞</span> +966 XX XXX XXXX
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span> info@saudieventmanagement.com
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

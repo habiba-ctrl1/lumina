@@ -97,7 +97,7 @@ export default function ContactSection() {
                     {t("directLine")}
                   </h4>
                   <p className="text-white/70 text-[14px] leading-relaxed">
-                    +966 50 123 4567<br />
+                    <a href="tel:+966539388072" className="hover:text-amber-300 transition-colors">+966 539 388 072</a><br />
                     <span className="text-white/45 text-[12px] mt-1 block">{t("hours")}</span>
                   </p>
                 </div>
