@@ -18,37 +18,6 @@ export default function ExhibitionsPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ExhibitionEvent",
-        "name": "Global Trade Expo 2025 Riyadh",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "startDate": "2025-11-20T09:00",
-        "endDate": "2025-11-22T18:00",
-        "location": {
-          "@type": "Place",
-          "name": "Riyadh International Convention & Exhibition Center (RICEC)",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "King Abdullah Rd",
-            "addressLocality": "Riyadh",
-            "addressCountry": "SA"
-          }
-        },
-        "description": "The premier B2B trade show for international brands in Saudi Arabia.",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Saudi Event Management",
-          "url": "https://saudieventmanagement.com"
-        },
-        "offers": {
-          "@type": "Offer",
-          "name": "Exhibition Space Inquiry",
-          "price": "0",
-          "priceCurrency": "SAR",
-          "url": "https://saudieventmanagement.com/contact",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
         "@type": "LocalBusiness",
         "name": "Saudi Event Management Exhibition Management",
         "image": "https://saudieventmanagement.com/services/corporate.webp",
@@ -173,11 +142,7 @@ export default function ExhibitionsPage() {
       {
         "@type": "Organization",
         "name": "Saudi Event Management Exhibition Management",
-        "description": "Partnering with the Royal Commission for Riyadh City (RCEF) and Saudi Expo 2030 initiatives.",
-        "memberOf": {
-          "@type": "Organization",
-          "name": "RECC Official Partner Network"
-        }
+        "description": "Coordinating exhibition management aligned with Saudi Expo 2030 initiatives."
       }
     ]
   };
@@ -257,7 +222,7 @@ export default function ExhibitionsPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "RECC", label: "Official Partner Network" },
+            { value: "10+", label: "Saudi Cities Covered" },
             { value: "20+", label: "Vetted Vendors" },
             { value: "Award", label: "Winning Booth Design 2024" },
           ]}
@@ -290,7 +255,7 @@ export default function ExhibitionsPage() {
                   <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "شريك رسمي لمركز الرياض للمعارض (RECC)" : "Official RECC Partner"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}</p>
                   <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "لوجستيات القاعات والدعم" : "Venue Logistics & Support"}</p>
                 </div>
               </div>

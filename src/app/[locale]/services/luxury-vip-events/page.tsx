@@ -83,7 +83,7 @@ const jsonLd = {
           "name": "Can you arrange private concerts with international artists in Saudi Arabia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Through our global talent agency networks, we negotiate and manage private appearances by A-list international musicians, speakers, and performers. We handle all technical riders, artist hospitality, private aviation, and production requirements.",
+            "text": "Yes. We coordinate private appearances by musicians, speakers, and performers through our talent-booking partners, and manage technical riders, artist hospitality, private aviation, and production requirements.",
           },
         },
         {
@@ -99,7 +99,7 @@ const jsonLd = {
           "name": "What venues do you use for luxury VIP events in Saudi Arabia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We secure exclusive access to Saudi Arabia's most prestigious private venues — including the Ritz-Carlton Riyadh (used for high-level state events), Four Seasons Riyadh, Rosewood Jeddah, the Maraya concert hall in AlUla, and bespoke private estates and desert locations across the Kingdom.",
+            "text": "We coordinate access to Saudi Arabia's most prestigious private venues — including the Ritz-Carlton Riyadh, Four Seasons Riyadh, Rosewood Jeddah, the Maraya concert hall in AlUla, and bespoke private estates and desert locations across the Kingdom.",
           },
         },
         {
@@ -160,7 +160,7 @@ const services = [
   { icon: Gem, title: "HNWI Concierge", desc: "End-to-end event concierge for High-Net-Worth Individuals: international talent booking, private chef arrangements, luxury fleet, and 24/7 dedicated manager support." },
   { icon: MapPin, title: "Yacht & Desert Experiences", desc: "Curated ultra-luxury events aboard private superyachts on the Red Sea, or bespoke glamping and stargazing dinners in AlUla's pristine desert landscape." },
   { icon: Star, title: "Exclusive Brand Launches", desc: "High-impact, invitation-only brand unveilings for luxury automotive, haute couture, fine jewellery, and prestige spirits — crafted for social and media amplification." },
-  { icon: Music, title: "Private Concerts", desc: "Securing A-list international and regional artists for intimate private performances — full rider management, private aviation, stage production, and broadcast rights." },
+  { icon: Music, title: "Private Concerts", desc: "Coordinating international and regional artists for intimate private performances — full rider management, private aviation, stage production, and broadcast rights." },
   { icon: Shield, title: "VIP Protocol & Security", desc: "Expert diplomatic protocol management, close-protection co-ordination with certified security firms, secure transport, and perimeter access control." },
 ];
 
@@ -180,11 +180,11 @@ const resources = [
 
 const faqs = [
   { q: "How do you ensure confidentiality for VIP and Royal family events?", a: "We operate under strict Non-Disclosure Agreements (NDAs). Our elite staff undergoes rigorous background vetting and digital security training. We implement stringent access controls, encrypted communications, and secure perimeter management." },
-  { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes. Through our global talent agency networks, we negotiate and manage private appearances by A-list international musicians and performers, handling all rider requirements, private aviation, and technical production." },
+  { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes. We coordinate private appearances by musicians and performers through our talent-booking partners, handling rider requirements, private aviation, and technical production." },
   { q: "Do you provide close protection and security for VIP events?", a: "We co-ordinate with top-tier private security firms and government protocol offices for seamless close-protection, secure perimeter management, motorcade co-ordination, and discreet crowd management." },
-  { q: "What venues do you use for luxury VIP events in Saudi Arabia?", a: "We secure exclusive access to Saudi Arabia's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons, Rosewood Jeddah, Maraya Concert Hall in AlUla, and bespoke private estates across the Kingdom." },
+  { q: "What venues do you use for luxury VIP events in Saudi Arabia?", a: "We coordinate access to Saudi Arabia's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons, Rosewood Jeddah, Maraya Concert Hall in AlUla, and bespoke private estates across the Kingdom." },
   { q: "Can you organise ultra-luxury desert experiences in AlUla?", a: "Yes. AlUla is one of our signature VIP destinations. We design private desert dinners, glamping experiences, and heritage site activations in full collaboration with the Royal Commission for AlUla (RCU) for site access and zero-impact operations." },
-  { q: "Do you offer event planning for HNWI private residences?", a: "Yes. We regularly plan and execute private events at royal palaces, luxury compounds, and private estates across the Kingdom — bringing our full production capability directly to the client's private property." },
+  { q: "Do you offer event planning for HNWI private residences?", a: "Yes. We plan and execute private events at luxury compounds and private estates across the Kingdom — bringing our full production capability directly to the client's private property." },
   { q: "What is the most exclusive experience you can offer?", a: "Our most exclusive offerings include private concerts with international artists at custom-built stages in AlUla's Hejaz mountains, superyacht events along the Red Sea coastline, and invitation-only brand unveilings with bespoke 360° immersive environments." },
   { q: "luxury event planner near me Riyadh", a: "Saudi Event Management's VIP division is headquartered in Riyadh, providing white-glove event planning services for high-profile clients across the capital with immediate on-site availability." },
   { q: "VIP concierge service Saudi Arabia", a: "Our VIP concierge services cover every detail — private chef arrangements, luxury fleet transportation, helicopter transfers, hotel suite buyouts, bespoke gifting, and a 24/7 dedicated event manager for every VIP guest." },
@@ -216,11 +216,11 @@ const resourcesAr = [
 
 const faqsAr = [
   { q: "كيف تضمنون السرية لفعاليات كبار الشخصيات والعائلة المالكة؟", a: "نعمل بموجب اتفاقيات عدم إفصاح صارمة (NDA). ويخضع طاقمنا النخبوي لفحص خلفية دقيق وتدريب على الأمن الرقمي. ونطبّق ضوابط دخول صارمة، واتصالات مشفّرة، وإدارة محيط آمن." },
-  { q: "هل يمكنكم تنظيم حفلات موسيقية خاصة مع فنانين عالميين في السعودية؟", a: "نعم. عبر شبكات وكالات المواهب العالمية لدينا، نتفاوض وندير ظهورات خاصة لموسيقيين وفنانين عالميين من الصف الأول، ونتولّى كل المتطلبات والطيران الخاص والإنتاج التقني." },
+  { q: "هل يمكنكم تنظيم حفلات موسيقية خاصة مع فنانين عالميين في السعودية؟", a: "نعم. ننسّق ظهورات خاصة لموسيقيين وفنانين عبر شركائنا في حجز المواهب، ونتولّى المتطلبات والطيران الخاص والإنتاج التقني." },
   { q: "هل توفّرون حماية مباشرة وأمنًا لفعاليات كبار الشخصيات؟", a: "ننسّق مع كبرى شركات الأمن الخاص ومكاتب البروتوكول الحكومية لحماية مباشرة سلسة، وإدارة محيط آمن، وتنسيق المواكب، وإدارة حشود متحفّظة." },
   { q: "ما القاعات التي تستخدمونها لفعاليات كبار الشخصيات الفاخرة في السعودية؟", a: "نؤمّن وصولًا حصريًا لأرقى قاعات السعودية بما فيها ريتز كارلتون الرياض، وفورسيزونز، وروزوود جدة، وقاعة مرايا في العلا، وعقارات خاصة مخصّصة في عموم المملكة." },
   { q: "هل يمكنكم تنظيم تجارب صحراوية فائقة الفخامة في العلا؟", a: "نعم. العلا من وجهاتنا المميزة لكبار الشخصيات. نصمّم عشاءً صحراويًا خاصًا، وتجارب تخييم فاخر، وتفعيلات في المواقع التراثية بالتعاون الكامل مع الهيئة الملكية للعلا للوصول إلى المواقع وعمليات دون أثر." },
-  { q: "هل تقدّمون تخطيط فعاليات للإقامات الخاصة لكبار الثروات؟", a: "نعم. ننظّم وننفّذ بانتظام فعاليات خاصة في القصور الملكية والمجمّعات الفاخرة والعقارات الخاصة في عموم المملكة — ننقل قدرتنا الإنتاجية الكاملة مباشرة إلى عقار العميل الخاص." },
+  { q: "هل تقدّمون تخطيط فعاليات للإقامات الخاصة لكبار الثروات؟", a: "نعم. ننظّم وننفّذ فعاليات خاصة في المجمّعات الفاخرة والعقارات الخاصة في عموم المملكة — ننقل قدرتنا الإنتاجية الكاملة مباشرة إلى عقار العميل الخاص." },
   { q: "ما أكثر تجربة حصرية يمكنكم تقديمها؟", a: "تشمل أكثر عروضنا حصرية حفلات موسيقية خاصة مع فنانين عالميين على مسارح مخصّصة في جبال حجاز العلا، وفعاليات يخوت على ساحل البحر الأحمر، وكشف علامات بالدعوة فقط ببيئات غامرة 360°." },
   { q: "مخطط فعاليات فاخرة قريب مني في الرياض", a: "يقع قسم كبار الشخصيات لدى إدارة الفعاليات السعودية في الرياض، ويوفّر خدمات تخطيط فعاليات راقية للعملاء البارزين في عموم العاصمة بتوفّر ميداني فوري." },
   { q: "خدمة كونسيرج كبار الشخصيات في السعودية", a: "تغطّي خدمات الكونسيرج لدينا كل تفصيل — ترتيبات طهاة خاصين، ونقل بأسطول فاخر، وتنقّلات بطائرات هليكوبتر، وحجز أجنحة فندقية كاملة، وهدايا مخصّصة، ومدير فعالية مخصّص على مدار الساعة لكل ضيف." },
@@ -255,8 +255,8 @@ const cAr = {
   formBullets: [
     "محمي باتفاقية عدم إفصاح من أول رسالة",
     "مدير فعاليات كبار شخصيات مخصّص على مدار الساعة",
-    "وصول حصري إلى مرايا وريتز كارلتون والعقارات الخاصة",
-    "نجوم الصف الأول، وطيران خاص، وحماية مباشرة",
+    "وصول إلى مرايا وريتز كارلتون والعقارات الخاصة",
+    "حجز فنانين، وطيران خاص، وحماية مباشرة",
   ],
   teamName: "فريق شؤون البروتوكول",
   teamSub: "قسم الفعاليات الدبلوماسية وكبار الشخصيات",
@@ -472,8 +472,8 @@ export default async function LuxuryVIPEventsPage() {
                     : [
                     "NDA-protected from the very first message",
                     "Dedicated 24/7 VIP event director",
-                    "Exclusive access to Maraya, Ritz-Carlton & private estates",
-                    "A-list talent, private aviation & close protection",
+                    "Access to Maraya, Ritz-Carlton & private estates",
+                    "Talent booking, private aviation & close protection",
                   ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
                       <CheckCircle2 size={18} className="text-gold-300 shrink-0 mt-0.5" />

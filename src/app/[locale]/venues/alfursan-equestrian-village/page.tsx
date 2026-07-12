@@ -229,16 +229,16 @@ export default function AlFursanPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {[
-              "Destination Weddings & Engagements",
-              "Gala Dinners & Award Ceremonies",
-              "Executive Summits & Board Retreats",
-              "Product Launches & Exhibitions",
-              "Corporate Events & Conferences",
-              "VIP Receptions & Private Gatherings",
-              "Equestrian Sporting Events",
-              "Luxury Outdoor Experiences",
+              "Destination Weddings",
+              "Gala Dinners & Awards",
+              "Executive Summits",
+              "Board Retreats",
+              "Annual General Meetings (AGMs)",
+              "Product Launches",
+              "Hybrid Conferences",
+              "Town Halls & All-Hands",
               "Vision 2030 Activations",
-              "Cultural Festivals & Concerts",
+              "Corporate Retreats & Executive Off-sites",
             ].map((exp, i) => (
               <div key={i} className="flex items-center gap-4 bg-neutral-800/50 border border-neutral-700/50 rounded-xl px-6 py-4">
                 <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
