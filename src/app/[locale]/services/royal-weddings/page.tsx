@@ -1384,7 +1384,7 @@ export default async function RoyalWeddingsPage() {
                   name: "خالد العتيبي",
                   title: "مدير البروتوكول الملكي وكبار الشخصيات",
                   arabic: "Royal Protocol & VIP Manager",
-                  bio: "مسؤول بروتوكول سابق. يدير جلوس كبار الشخصيات، وضيافة شيوخ القبائل، وتنسيق الضيوف الدبلوماسيين، وإحاطات الأمن للاحتفالات الملكية.",
+                  bio: "متخصص في جلوس كبار الشخصيات، وضيافة شيوخ القبائل، وتنسيق الضيوف الدبلوماسيين، وإحاطات الأمن للاحتفالات بمستوى ملكي.",
                 },
                   ]
                 : [
@@ -1404,7 +1404,7 @@ export default async function RoyalWeddingsPage() {
                   name: "Khalid Al-Otaibi",
                   title: "Royal Protocol & VIP Manager",
                   arabic: "مدير البروتوكول الملكي",
-                  bio: "Former Ministry of Protocol official. Manages VIP seating, tribal elder hospitality, diplomatic guest coordination, and security briefings for royal celebrations.",
+                  bio: "Specialist in VIP seating, tribal elder hospitality, diplomatic guest coordination, and security briefings for royal-scale celebrations.",
                 },
               ]).map((member, i) => (
                 <div key={i} className="bg-neutral-50 rounded-2xl p-8 border border-slate-100">

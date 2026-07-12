@@ -110,75 +110,11 @@ export default function WeddingsPage() {
             "name": "best wedding company Saudi Arabia",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Consistently ranked as the best wedding company Saudi Arabia, Saudi Event Management excels in delivering high-end, customized experiences for our clients."
+              "text": "Saudi Event Management is built to deliver the best wedding planning experience in Saudi Arabia, coordinating high-end, customized celebrations through a personally vetted vendor network."
             }
           }
         ]
       },
-    {
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "LocalBusiness",
-        "name": "Saudi Event Management"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Sarah Al-Saud"
-      },
-      "reviewBody": "Saudi Event Management made my dream wedding in Riyadh a reality. Their attention to detail and traditional Saudi touches were perfect."
-    },
-    {
-      "@type": "Event",
-      "name": "Grand Saudi Wedding Showcase 2025",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "startDate": "2025-10-15T19:00",
-      "endDate": "2025-10-15T23:00",
-      "location": {
-        "@type": "Place",
-        "name": "The Ritz-Carlton, Riyadh",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Al Hada Area",
-          "addressLocality": "Riyadh",
-          "addressRegion": "Riyadh",
-          "postalCode": "11493",
-          "addressCountry": "SA"
-        }
-      },
-      "image": "https://saudieventmanagement.com/services/wedding.webp",
-      "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
-      "organizer": {
-        "@type": "Organization",
-        "name": "Saudi Event Management",
-        "url": "https://saudieventmanagement.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "name": "Wedding Planning Consultation",
-        "price": "0",
-        "priceCurrency": "SAR",
-        "url": "https://saudieventmanagement.com/contact",
-        "availability": "https://schema.org/InStock"
-      },
-      "performer": {
-        "@type": "Organization",
-        "name": "Saudi Event Management"
-      }
-    },
-    {
-      "@type": "AggregateRating",
-      "itemReviewed": {
-        "@type": "LocalBusiness",
-        "name": "Saudi Event Management"
-      },
-      "ratingValue": "4.9",
-      "reviewCount": "120"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -190,11 +126,7 @@ export default function WeddingsPage() {
     {
       "@type": "Organization",
       "name": "Saudi Event Management Luxury Weddings",
-      "description": "Aligning with the Saudi Tourism Authority to showcase the Kingdom's finest wedding destinations.",
-      "memberOf": {
-        "@type": "Organization",
-        "name": "Ministry of Culture Creative Network"
-      }
+      "description": "Showcasing the Kingdom's finest wedding destinations, aligned with Saudi tourism goals."
     }
     ]
   };
@@ -312,7 +244,7 @@ export default function WeddingsPage() {
                   </div>
                   <div>
                     <h4 className="text-[var(--primary)] font-bold mb-2">{isAr ? "شراكات القاعات" : "Venue Partnerships"}</h4>
-                    <p className="text-sm text-gray-500 font-light">{isAr ? "شريك التخطيط المفضّل لجي دبليو ماريوت الرياض وإنتركونتيننتال جدة." : "Preferred planning partner for JW Marriott Riyadh and InterContinental Jeddah."}</p>
+                    <p className="text-sm text-gray-500 font-light">{isAr ? "تنسيق فعاليات معتمد في جي دبليو ماريوت الرياض وإنتركونتيننتال جدة." : "Coordinated wedding planning at JW Marriott Riyadh and InterContinental Jeddah."}</p>
                   </div>
                 </div>
               </div>
