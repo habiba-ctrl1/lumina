@@ -218,6 +218,40 @@ export default function AlMughayraPage() {
         </div>
       </section>
 
+      {/* ── SIGNATURE EVENTS ────────────────────────────────────────────── */}
+      <section className="py-24 bg-white border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Core Scope</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight">
+              Signature <span className="text-emerald-700">Heritage Events</span></h2>
+            <p className="mt-4 text-neutral-500 max-w-2xl mx-auto text-[15px]">
+              AlMughayra Heritage Sport Village is the premier destination for preserving and celebrating traditional Saudi sporting customs.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Camel Cup</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                Often referred to as the "Pinnacle of Camel Racing," this major event features elite camel racing and high-stakes competitions.
+              </p>
+            </div>
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Falcon Cup</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                A prestigious traditional falconry championship honoring the deep-rooted Bedouin heritage of hunting and training.
+              </p>
+            </div>
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">Immersive Cultural Festivals</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                Multi-sensory journeys offering storytelling, artisan crafts, traditional music, and authentic Saudi hospitality experiences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── EXPERIENCES ───────────────────────────────────────────────── */}
       <section 
         className="relative py-24 md:py-32 text-white bg-fixed bg-center bg-cover"

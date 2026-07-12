@@ -219,6 +219,40 @@ export default function AlFursanPage() {
         </div>
       </section>
 
+      {/* ── SIGNATURE EVENTS ────────────────────────────────────────────── */}
+      <section className="py-24 bg-white border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Core Scope</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight">
+              Signature <span className="text-emerald-700">Sporting Events</span></h2>
+            <p className="mt-4 text-neutral-500 max-w-2xl mx-auto text-[15px]">
+              AlFursan Equestrian Village is purpose-built to host the world's most prestigious equestrian competitions.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Desert Polo</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                An exclusive equestrian sporting event drawing professional polo players, patrons, and royalty to the desert circuit.
+              </p>
+            </div>
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">AlFursan Endurance AlUla</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                A premier two-day endurance event drawing hundreds of elite riders from around the globe to navigate the desert terrain.
+              </p>
+            </div>
+            <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">Heritage Sports</h3>
+              <p className="text-neutral-600 text-[14px] leading-relaxed">
+                Regular hosts for world-class traditional competitions, including the Tent Pegging World Championship and the Horseback Archery World Cup.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── EXPERIENCES ───────────────────────────────────────────────── */}
       <section 
         className="relative py-24 md:py-32 text-white bg-fixed bg-center bg-cover"
