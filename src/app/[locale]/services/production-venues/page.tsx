@@ -39,22 +39,6 @@ export default function ProductionVenuesPage() {
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stage Design" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luxury Catering" } }
           ]
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "156"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Luxury Event Venue Package",
-        "description": "Exclusive venue rental and full-service coordination in Riyadh.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "SAR",
-          "price": "75000",
-          "availability": "https://schema.org/InStock"
         }
       },
       {
@@ -73,7 +57,7 @@ export default function ProductionVenuesPage() {
             "name": "Can you recommend event caterers in Jeddah?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we partner with top-tier culinary teams, including those at Rosewood Jeddah. We can provide customized event catering quotes Saudi Arabia based on your guest count and preference for traditional or international menus."
+              "text": "Yes, we coordinate with top-tier culinary teams across Jeddah. We can provide customized event catering quotes Saudi Arabia based on your guest count and preference for traditional or international menus."
             }
           },
           {
@@ -121,11 +105,7 @@ export default function ProductionVenuesPage() {
       {
         "@type": "Organization",
         "name": "Saudi Event Management Event Services",
-        "description": "Leading technical production partner for KAICC and RECC summits in Saudi Arabia.",
-        "memberOf": {
-          "@type": "Organization",
-          "name": "KAEC Strategic Service Network"
-        }
+        "description": "Technical production coordination for KAICC and RECC summits in Saudi Arabia."
       }
     ]
   };
@@ -158,9 +138,9 @@ export default function ProductionVenuesPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "ISO 9001", label: "Certified Quality Partners" },
-            { value: "4.9/5", label: "From 156 Client Reviews" },
-            { value: "Tier-1", label: "Vendor Status in KSA" },
+            { value: "20+", label: "Vetted Vendors" },
+            { value: "100%", label: "Vendor Vetting" },
+            { value: "10+", label: "Saudi Cities Covered" },
           ]}
         />
 

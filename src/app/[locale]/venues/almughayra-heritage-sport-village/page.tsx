@@ -219,8 +219,14 @@ export default function AlMughayraPage() {
       </section>
 
       {/* ── EXPERIENCES ───────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-neutral-900 text-white">
-        <div className="max-w-5xl mx-auto px-6">
+      <section 
+        className="relative py-24 md:py-32 text-white bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: `url('/venues/almughayra_event_night.webp')` }}
+      >
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-neutral-950/85 z-0"></div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Applications</span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
@@ -239,7 +245,7 @@ export default function AlMughayraPage() {
               "Vision 2030 Activations",
               "Corporate Retreats & Executive Off-sites",
             ].map((exp, i) => (
-              <div key={i} className="flex items-center gap-4 bg-neutral-800/50 border border-neutral-700/50 rounded-xl px-6 py-4">
+              <div key={i} className="flex items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 hover:border-emerald-500/50 transition-colors rounded-xl px-6 py-4">
                 <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
                 <span className="text-neutral-200 text-[15px] font-light">{exp}</span>
               </div>
