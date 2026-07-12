@@ -112,7 +112,7 @@ const jsonLd = {
           name: "What is the best corporate event management company in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Saudi Event Management is consistently rated the leading corporate event management company in Saudi Arabia. With preferred-partner status at KAFD, RICEC, and all major five-star venues, we coordinate corporate events for entities including Saudi Aramco, SABIC, HRDF, PIF, and NEOM — from intimate board retreats to 5,000-delegate national conferences.",
+            text: "Saudi Event Management is built to deliver leading corporate event management in Saudi Arabia. We coordinate venue sourcing at KAFD, RICEC, and all major five-star venues, and manage corporate events at every scale — from intimate board retreats to 5,000-delegate national conferences.",
           },
         },
         {
@@ -136,7 +136,7 @@ const jsonLd = {
           name: "What is a PCO (Professional Conference Organizer) in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "A PCO (Professional Conference Organizer) in Saudi Arabia is a specialist event management company that handles the full lifecycle of a conference — from venue sourcing and delegate registration to AV production, simultaneous Arabic-English interpretation, GEA permitting, speaker management, and post-event reporting. Saudi Event Management operates as a fully accredited PCO, affiliated with IAPCO (International Association of Professional Congress Organisers) and MPI (Meeting Professionals International).",
+            text: "A PCO (Professional Conference Organizer) in Saudi Arabia is a specialist event management company that handles the full lifecycle of a conference — from venue sourcing and delegate registration to AV production, simultaneous Arabic-English interpretation, GEA permitting, speaker management, and post-event reporting. Saudi Event Management operates as a full-service PCO, managing every stage of that lifecycle in-house.",
           },
         },
         {
@@ -152,7 +152,7 @@ const jsonLd = {
           name: "Can you manage hybrid corporate events in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Saudi Event Management is fully equipped for hybrid corporate event production — combining live in-person audiences with remote delegates via professional broadcast-grade streaming infrastructure. Our hybrid capabilities include multi-camera studio setups, real-time subtitling in Arabic and English, interactive Q&A platforms, virtual networking rooms, and audience engagement tools. We have managed hybrid conferences for entities including Saudi Aramco and government ministries with global delegate participation.",
+            text: "Yes. Saudi Event Management is fully equipped for hybrid corporate event production — combining live in-person audiences with remote delegates via professional broadcast-grade streaming infrastructure. Our hybrid capabilities include multi-camera studio setups, real-time subtitling in Arabic and English, interactive Q&A platforms, virtual networking rooms, and audience engagement tools, built to support large-scale conferences with global delegate participation.",
           },
         },
         {
@@ -168,7 +168,7 @@ const jsonLd = {
           name: "How does Saudi Event Management align with Saudi Vision 2030?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Saudi Event Management is an active operational partner in Saudi Vision 2030 event initiatives. We work with the General Entertainment Authority (GEA), the Ministry of Culture, Saudi Tourism Authority, and giga-project developers (NEOM, Red Sea Project, Diriyah Gate, Qiddiya) to deliver world-class events that advance the Kingdom's cultural, economic, and tourism transformation goals. Our corporate event programming integrates Vision 2030 branding, sustainability protocols aligned with the Saudi Green Initiative, and accessible bilingual content.",
+            text: "Saudi Event Management builds corporate event programming around Saudi Vision 2030's cultural, economic, and tourism transformation goals, including for events tied to giga-project milestones (NEOM, Red Sea Project, Diriyah Gate, Qiddiya). We handle the GEA entertainment permits and Ministry of Culture participation licenses these events require, and integrate Vision 2030 branding, sustainability protocols aligned with the Saudi Green Initiative, and accessible bilingual content.",
           },
         },
         {
@@ -189,10 +189,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "Do you manage events for government entities and Saudi Aramco?",
+          name: "Can you manage events for government entities and large Saudi corporates?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Saudi Event Management has an extensive track record delivering events for Saudi government entities and major corporates including Saudi Aramco, SABIC, HRDF, SDAIA, and ministerial bodies. We are fully equipped for government-level VIP protocol, secure venue management, bilateral NDAs, national flag and protocol compliance, and Arabic-English simultaneous interpretation for ministerial-level conferences.",
+            text: "Yes. Saudi Event Management is built for government-level VIP protocol, secure venue management, bilateral NDAs, national flag and protocol compliance, and Arabic-English simultaneous interpretation for ministerial-level conferences and major corporate events alike.",
           },
         },
         {
@@ -271,19 +271,6 @@ const jsonLd = {
       ],
     },
 
-    /* ── 5. AggregateRating ── */
-    {
-      "@type": "AggregateRating",
-      itemReviewed: {
-        "@type": "LocalBusiness",
-        name: "Saudi Event Management",
-        "@id": "https://saudieventmanagement.com#organization",
-      },
-      ratingValue: "4.9",
-      reviewCount: "148",
-      bestRating: "5",
-    },
-
     /* ── 6. BreadcrumbList ── */
     {
       "@type": "BreadcrumbList",
@@ -321,12 +308,12 @@ const eventTypes = [
   { icon: Zap, title: "Product Launches", arabic: "إطلاق المنتجات", desc: "High-impact product and brand launches with immersive experiential production, LED walls, live social media integration, and press conference management." },
   { icon: Globe, title: "Hybrid Conferences", arabic: "المؤتمرات الهجينة", desc: "Seamless hybrid event production — broadcast-grade streaming, simultaneous Arabic-English interpretation, interactive digital platforms, and global delegate management." },
   { icon: Users, title: "Board Retreats", arabic: "ملتقيات مجالس الإدارة", desc: "Exclusive board and leadership retreats in AlUla, NEOM, and Red Sea destinations — bespoke agenda design, luxury accommodation, and complete confidentiality." },
-  { icon: TrendingUp, title: "Vision 2030 Activations", arabic: "فعاليات رؤية 2030", desc: "Government-aligned brand activations and public-private partnership events for GEA, Ministry of Culture, Saudi Tourism Authority, and giga-project milestones." },
+  { icon: TrendingUp, title: "Vision 2030 Activations", arabic: "فعاليات رؤية 2030", desc: "Government-aligned brand activations and public-private partnership events tied to national transformation initiatives and giga-project milestones." },
   { icon: Briefcase, title: "Town Halls & All-Hands", arabic: "الاجتماعات العامة", desc: "Large-scale employee engagement events, company town halls, and recognition ceremonies for Saudi corporate workforces — bilingual, inclusive, impactful." },
 ];
 
 const capabilities = [
-  { icon: Mic, title: "PCO Services", desc: "Full Professional Conference Organizer services — IAPCO-affiliated, covering delegate registration, accommodation management, and programme coordination." },
+  { icon: Mic, title: "PCO Services", desc: "Full Professional Conference Organizer services — covering delegate registration, accommodation management, and programme coordination, in-house end to end." },
   { icon: Layers, title: "AV & Technical Production", desc: "Concert-grade sound, intelligent lighting, 4K LED walls, and broadcast-quality streaming infrastructure for any venue capacity." },
   { icon: Globe, title: "Simultaneous Interpretation", desc: "Arabic-English (and third-language) simultaneous interpretation with Bosch or Sennheiser ISO-compliant equipment and accredited interpreters." },
   { icon: Shield, title: "Permits & Compliance", desc: "End-to-end GEA permit management, municipality approvals, civil defense clearances, and Ministry of Interior notifications — zero friction." },
@@ -379,7 +366,7 @@ const venueCity = [
 
 const planningSteps = [
   { step: "01", title: "Discovery & Brief", desc: "Objectives mapping, audience profiling, delegate count, budget framework, regulatory requirements, and city selection." },
-  { step: "02", title: "Venue Sourcing", desc: "Curated venue shortlist with site inspections, comparative pricing, AV specs, and preferred-partner negotiated rates at KAFD, RICEC, and major hotels." },
+  { step: "02", title: "Venue Sourcing", desc: "Curated venue shortlist with site inspections, comparative pricing, AV specs, and negotiated rates at KAFD, RICEC, and major hotels." },
   { step: "03", title: "Creative & Programme Design", desc: "Stage design, branding, session flow, speaker programme, entertainment selection, and bilingual content architecture." },
   { step: "04", title: "Permits & Compliance", desc: "GEA permits, municipality approvals, civil defense clearances, and Ministry notifications — all managed in-house with zero client friction." },
   { step: "05", title: "Production & Rehearsals", desc: "AV install, lighting rigs, streaming setup, interpreter equipment, and full technical rehearsals with speakers and operations team." },
@@ -389,7 +376,7 @@ const planningSteps = [
 const faqs = [
   {
     q: "What is the best corporate event management company in Saudi Arabia?",
-    a: "Saudi Event Management is consistently rated the leading corporate event management company in KSA — preferred-partner status at KAFD and RICEC, serving Saudi Aramco, SABIC, HRDF, and PIF.",
+    a: "Saudi Event Management is built to deliver the leading corporate event management experience in KSA — full venue sourcing and coordination at KAFD and RICEC, backed by a rigorously vetted vendor network.",
   },
   {
     q: "How much does corporate event management cost in Saudi Arabia?",
@@ -401,11 +388,11 @@ const faqs = [
   },
   {
     q: "What is a PCO in Saudi Arabia?",
-    a: "A PCO (Professional Conference Organizer) manages the full conference lifecycle — venue, registration, AV, interpretation, permitting, and speaker logistics. Saudi Event Management is IAPCO-affiliated and MPI-member.",
+    a: "A PCO (Professional Conference Organizer) manages the full conference lifecycle — venue, registration, AV, interpretation, permitting, and speaker logistics. Saudi Event Management operates as a full-service PCO, managing every stage in-house.",
   },
   {
     q: "Can you manage hybrid corporate events in Saudi Arabia?",
-    a: "Yes — broadcast-grade streaming, simultaneous Arabic-English interpretation, interactive Q&A platforms, and virtual networking. We have managed hybrid conferences for Saudi Aramco with thousands of global remote delegates.",
+    a: "Yes — broadcast-grade streaming, simultaneous Arabic-English interpretation, interactive Q&A platforms, and virtual networking, built to support conferences with thousands of global remote delegates.",
   },
   {
     q: "What permits are needed for corporate events in Saudi Arabia?",
@@ -413,11 +400,11 @@ const faqs = [
   },
   {
     q: "How does Saudi Event Management align with Vision 2030?",
-    a: "We work with GEA, Ministry of Culture, Saudi Tourism Authority, and giga-project developers (NEOM, Diriyah, Red Sea Project) to deliver events aligned with Vision 2030, the Saudi Green Initiative, and National Transformation objectives.",
+    a: "We build corporate event programming around Vision 2030, the Saudi Green Initiative, and National Transformation objectives — including events tied to giga-project milestones (NEOM, Diriyah, Red Sea Project) — and handle the GEA and Ministry of Culture permits these events require.",
   },
   {
-    q: "Do you manage events for Saudi Aramco and government entities?",
-    a: "Yes — extensive track record with Saudi Aramco, SABIC, HRDF, SDAIA, and ministerial bodies. Full government-level VIP protocol, secure venue management, bilingual NDAs, and simultaneous interpretation.",
+    q: "Can you manage events for government entities and large Saudi corporates?",
+    a: "Yes — full government-level VIP protocol, secure venue management, bilingual NDAs, and simultaneous interpretation, built for ministerial bodies and major Saudi corporates alike.",
   },
 ];
 
@@ -430,12 +417,12 @@ const eventTypesAr = [
   { title: "إطلاق المنتجات", desc: "إطلاقات منتجات وعلامات مؤثّرة بإنتاج تجريبي غامر، وشاشات LED، وتكامل مباشر مع وسائل التواصل، وإدارة المؤتمرات الصحفية." },
   { title: "المؤتمرات الهجينة", desc: "إنتاج فعاليات هجينة سلس — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات رقمية تفاعلية، وإدارة المندوبين حول العالم." },
   { title: "ملتقيات مجالس الإدارة", desc: "ملتقيات حصرية لمجالس الإدارة والقيادة في العُلا ونيوم ووجهات البحر الأحمر — تصميم أجندة مخصص، وإقامة فاخرة، وسرية تامة." },
-  { title: "فعاليات رؤية 2030", desc: "فعاليات تفعيل العلامة المتوافقة مع الجهات الحكومية وشراكات القطاعين العام والخاص لهيئة الترفيه ووزارة الثقافة وهيئة السياحة ومحطات المشاريع العملاقة." },
+  { title: "فعاليات رؤية 2030", desc: "فعاليات تفعيل العلامة المتوافقة مع الجهات الحكومية وشراكات القطاعين العام والخاص المرتبطة بمبادرات التحول الوطني ومحطات المشاريع العملاقة." },
   { title: "الاجتماعات العامة للموظفين", desc: "فعاليات تفاعل واسعة للموظفين، واجتماعات الشركة العامة، وحفلات التكريم للكوادر السعودية — ثنائية اللغة وشاملة ومؤثّرة." },
 ];
 
 const capabilitiesAr = [
-  { title: "خدمات منظِّم المؤتمرات (PCO)", desc: "خدمات منظِّم مؤتمرات احترافي متكاملة — معتمدة من IAPCO، تشمل تسجيل المندوبين وإدارة الإقامة وتنسيق البرامج." },
+  { title: "خدمات منظِّم المؤتمرات (PCO)", desc: "خدمات منظِّم مؤتمرات احترافي متكاملة، تشمل تسجيل المندوبين وإدارة الإقامة وتنسيق البرامج، بإدارة داخلية كاملة." },
   { title: "الإنتاج الصوتي والمرئي والتقني", desc: "صوت بجودة الحفلات، وإضاءة ذكية، وشاشات LED بدقة 4K، وبنية بث بجودة احترافية لأي سعة قاعة." },
   { title: "الترجمة الفورية", desc: "ترجمة فورية عربية-إنجليزية (ولغة ثالثة) بأجهزة Bosch أو Sennheiser مطابقة لمعايير ISO ومترجمين معتمدين." },
   { title: "التصاريح والامتثال", desc: "إدارة كاملة لتصاريح هيئة الترفيه، وموافقات البلدية، وتصاريح الدفاع المدني، وإشعارات وزارة الداخلية — دون أي تعقيد." },
@@ -461,21 +448,21 @@ const planningStepsAr = [
 ];
 
 const faqsAr = [
-  { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "تُصنَّف إدارة الفعاليات السعودية باستمرار كأبرز شركة لإدارة فعاليات الشركات في المملكة — صفة شريك مفضّل في مركز الملك عبدالله المالي وRICEC، وخدمة أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة." },
+  { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "صُممت إدارة الفعاليات السعودية لتقديم تجربة رائدة في إدارة فعاليات الشركات بالمملكة — تنسيق كامل للقاعات في مركز الملك عبدالله المالي وRICEC، مدعومة بشبكة موردين مُنتقاة بعناية فائقة." },
   { q: "كم تبلغ تكلفة إدارة فعاليات الشركات في السعودية؟", a: "تبدأ القمم التنفيذية من 75,000 إلى 300,000 ريال، وتتراوح حفلات العشاء الفاخرة من 150,000 إلى 600,000 ريال، أما المؤتمرات الكبرى في مركز الملك عبدالله المالي أو RICEC لأكثر من 500 مندوب فتتراوح عادةً من 300,000 إلى 1,500,000 ريال. تواصل معنا لعرض سعر مخصص." },
   { q: "ما أبرز قاعات فعاليات الشركات في الرياض؟", a: "مركز مؤتمرات الملك عبدالله المالي (2500 مقعد)، وRICEC (أكبر مركز مؤتمرات ومعارض في السعودية)، وريتز كارلتون الرياض، وفورسيزونز برج المملكة، وفندق الفيصلية، وجي دبليو ماريوت الرياض، وفيرمونت الرياض KAFD." },
-  { q: "ما هو منظِّم المؤتمرات الاحترافي (PCO) في السعودية؟", a: "منظِّم المؤتمرات الاحترافي (PCO) يدير دورة حياة المؤتمر كاملة — القاعة، والتسجيل، والصوت والصورة، والترجمة، والتصاريح، ولوجستيات المتحدثين. وإدارة الفعاليات السعودية عضو مرتبط بـ IAPCO وعضو في MPI." },
-  { q: "هل تديرون فعاليات الشركات الهجينة في السعودية؟", a: "نعم — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات أسئلة تفاعلية، وتواصل افتراضي. وقد أدرنا مؤتمرات هجينة لأرامكو السعودية بآلاف المندوبين عن بُعد حول العالم." },
+  { q: "ما هو منظِّم المؤتمرات الاحترافي (PCO) في السعودية؟", a: "منظِّم المؤتمرات الاحترافي (PCO) يدير دورة حياة المؤتمر كاملة — القاعة، والتسجيل، والصوت والصورة، والترجمة، والتصاريح، ولوجستيات المتحدثين. وتعمل إدارة الفعاليات السعودية كمنظِّم مؤتمرات متكامل الخدمة يدير كل مرحلة داخليًا." },
+  { q: "هل تديرون فعاليات الشركات الهجينة في السعودية؟", a: "نعم — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات أسئلة تفاعلية، وتواصل افتراضي، مصمّمة لدعم مؤتمرات بآلاف المندوبين عن بُعد حول العالم." },
   { q: "ما التصاريح المطلوبة لفعاليات الشركات في السعودية؟", a: "رخصة الترفيه من هيئة الترفيه، وتصريح فعالية من البلدية، وتصريح الدفاع المدني، وإشعارات وزارة الداخلية للتجمعات الدولية الكبيرة. وتدير إدارة الفعاليات السعودية جميع مسارات التصاريح من البداية للنهاية." },
-  { q: "كيف تتوافق إدارة الفعاليات السعودية مع رؤية 2030؟", a: "نعمل مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة ومطوري المشاريع العملاقة (نيوم، الدرعية، مشروع البحر الأحمر) لتقديم فعاليات متوافقة مع رؤية 2030 والمبادرة الخضراء وأهداف التحول الوطني." },
-  { q: "هل تديرون فعاليات لأرامكو السعودية والجهات الحكومية؟", a: "نعم — سجل حافل مع أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وسدايا والجهات الوزارية. بروتوكول كبار الشخصيات على المستوى الحكومي، وإدارة قاعات آمنة، واتفاقيات سرية ثنائية اللغة، وترجمة فورية." },
+  { q: "كيف تتوافق إدارة الفعاليات السعودية مع رؤية 2030؟", a: "نبني برامج فعاليات الشركات حول رؤية 2030 والمبادرة الخضراء وأهداف التحول الوطني — بما في ذلك الفعاليات المرتبطة بمحطات المشاريع العملاقة (نيوم، الدرعية، مشروع البحر الأحمر) — ونتولى تصاريح هيئة الترفيه ووزارة الثقافة التي تتطلبها هذه الفعاليات." },
+  { q: "هل تديرون فعاليات للجهات الحكومية وكبرى الشركات السعودية؟", a: "نعم — بروتوكول كبار الشخصيات على المستوى الحكومي، وإدارة قاعات آمنة، واتفاقيات سرية ثنائية اللغة، وترجمة فورية، مصمّمة لخدمة الجهات الوزارية وكبرى الشركات السعودية على حدٍّ سواء." },
 ];
 
 const statLabelsAr = [
   "مورد معتمد",
   "توثيق الموردين",
   "أقصى عدد مندوبين تمت إدارته",
-  "متوسط تقييم العملاء",
+  "تسليم متكامل (PCO)",
   "مدينة سعودية نغطيها",
   "مهلة تقديم العرض",
 ];
@@ -484,13 +471,13 @@ const statLabelsAr = [
 const cAr = {
   ctaProposal: "اطلب عرضًا لفعالية شركتك",
   ctaSpeak: "تحدّث إلى فريقنا",
-  trustQuote: "شريك موثوق لفعاليات رؤية 2030 في جميع أنحاء المملكة.",
+  trustQuote: "قدرات مصمّمة لفعاليات الشركات بحجم رؤية 2030 في جميع أنحاء المملكة.",
   introLabel: "روّاد هندسة فعاليات الشركات في السعودية",
   introH2a: "نرتقي بإدارة فعاليات الشركات",
   introH2b: "في السعودية.",
   introP1: "إدارة الفعاليات السعودية هي العمود التشغيلي خلف أهم التجمّعات المؤسسية في المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى قمم بـ 5000 مندوب في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
-  introP2: "يضم عملاؤنا أرامكو السعودية وسابك وصندوق تنمية الموارد البشرية وصندوق الاستثمارات العامة، وقائمة متنامية من مطوّري المشاريع العملاقة تشمل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — وكلّهم لا يقبلون أي هامش للخطأ، ويطلبون قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
-  introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) معتمدًا ومرتبطًا بـ IAPCO وMPI، ندير دورة حياة الفعالية كاملة — من استخراج تصاريح هيئة الترفيه والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت فريق واحد مسؤول وموحّد.",
+  introP2: "بُنيت قدراتنا لخدمة مؤسسات بحجم أرامكو السعودية وسابك، ومطوّري مشاريع عملاقة مثل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — جهات لا تقبل أي هامش للخطأ، وتطلب قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
+  introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) متكامل الخدمة، ندير دورة حياة الفعالية كاملة — من استخراج تصاريح هيئة الترفيه والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت فريق واحد مسؤول وموحّد.",
   evLabel: "خبرة في كل نوع فعالية",
   evH2a: "كل صيغة مؤسسية.",
   evH2b: "بإتقان.",
@@ -498,7 +485,7 @@ const cAr = {
   vnLabel: "ريادة في القاعات",
   vnH2a: "أبرز قاعات فعاليات الشركات",
   vnH2b: "في السعودية",
-  vnP: "وصول بصفة شريك مفضّل إلى أبرز مراكز المؤتمرات في المملكة، ومرافق مركز الملك عبدالله المالي، وفنادق الأعمال الخمس نجوم — بأسعار تفاوضية وأولوية في الحجز.",
+  vnP: "تنسيق كامل للوصول إلى أبرز مراكز المؤتمرات في المملكة، ومرافق مركز الملك عبدالله المالي، وفنادق الأعمال الخمس نجوم — بأسعار تفاوضية وأولوية في الحجز.",
   capLabel: "قدرات داخلية",
   capH2a: "فريق واحد. مسؤولية",
   capH2b: "كاملة.",
@@ -593,23 +580,22 @@ export default async function CorporateEventsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-3">
-                <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">IAPCO</span>
-                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Affiliated Member</span>
+                <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">PCO</span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Full-Service Delivery</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">MPI</span>
-                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Meeting Professionals</span>
+                <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">GEA</span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Permits Handled In-House</span>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
               <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-neutral-400">
-                <span>SAUDI ARAMCO</span>
-                <span>SABIC</span>
-                <span>HRDF</span>
-                <span>PIF</span>
-                <span>NEOM</span>
+                <span>KAFD</span>
+                <span>RICEC</span>
+                <span>RITZ-CARLTON</span>
+                <span>FOUR SEASONS</span>
               </div>
               <div className="text-xs text-neutral-500 font-light italic">
-                {isAr ? `«${cAr.trustQuote}»` : "\"Trusted partner for Vision 2030 corporate events across the Kingdom.\""}
+                {isAr ? `«${cAr.trustQuote}»` : "\"Built to support Vision 2030-scale corporate events across the Kingdom.\""}
               </div>
             </div>
           </div>
@@ -665,20 +651,19 @@ export default async function CorporateEventsPage() {
                     <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-medium"> Riyadh International Convention and Exhibition Center (RICEC)</Link>.
                   </p>
                   <p>
-                    Our clients include <strong className="text-neutral-900">Saudi Aramco</strong>,{" "}
-                    <strong className="text-neutral-900">SABIC</strong>,{" "}
-                    <strong className="text-neutral-900">HRDF</strong>,{" "}
-                    <strong className="text-neutral-900">PIF</strong>, and a growing roster of giga-project
-                    developers including <strong className="text-neutral-900">NEOM</strong>,{" "}
+                    Our capabilities are built for organisations at the scale of{" "}
+                    <strong className="text-neutral-900">Saudi Aramco</strong> and{" "}
+                    <strong className="text-neutral-900">SABIC</strong>, and for giga-project
+                    developers such as <strong className="text-neutral-900">NEOM</strong>,{" "}
                     <strong className="text-neutral-900">Red Sea Project</strong>, and{" "}
-                    <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — all of
-                    whom demand zero margin for error, full bilingual capability, and alignment with{" "}
+                    <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — organisations that
+                    demand zero margin for error, full bilingual capability, and alignment with{" "}
                     <Link href="/portfolio/vision-2030" className="text-[var(--primary)] hover:underline font-medium">Saudi Vision 2030</Link> objectives.
                   </p>
                   <p>
-                    As a fully accredited{" "}
-                    <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-medium">Professional Conference Organizer (PCO)</Link>{" "}
-                    affiliated with IAPCO and MPI, we manage the complete event lifecycle — from GEA
+                    As a full-service{" "}
+                    <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-medium">Professional Conference Organizer (PCO)</Link>,{" "}
+                    we manage the complete event lifecycle — from GEA
                     permit acquisition and venue negotiation through to post-event analytics and media
                     distribution — under one unified, accountable team.
                   </p>
@@ -691,7 +676,7 @@ export default async function CorporateEventsPage() {
                   { value: "20+", label: "Vetted Vendors" },
                   { value: "100%", label: "Vendor Vetting" },
                   { value: "5,000+", label: "Max Delegates Managed" },
-                  { value: "4.9★", label: "Average Client Rating" },
+                  { value: "PCO", label: "Full-Service Delivery" },
                   { value: "12", label: "Saudi Cities Covered" },
                   { value: "24 hrs", label: "Proposal Turnaround" },
                 ].map((stat, i) => (
@@ -776,7 +761,7 @@ export default async function CorporateEventsPage() {
               <p className="text-neutral-500 mt-4 max-w-2xl mx-auto text-sm">
                 {isAr
                   ? cAr.vnP
-                  : "Preferred-partner access to the Kingdom's premier convention centres, KAFD facilities, and five-star business hotels — with negotiated rates and priority booking."}
+                  : "Full coordination of access to the Kingdom's premier convention centres, KAFD facilities, and five-star business hotels — with negotiated rates and priority booking."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -967,7 +952,7 @@ export default async function CorporateEventsPage() {
                       أوجدت رؤية السعودية 2030 أكثر مشهد لفعاليات الشركات حيويةً في المنطقة. فمن منتدى مبادرة مستقبل الاستثمار (FII) ومؤتمر LEAP للتقنية إلى سيتي سكيب السعودية وبلاك هات الشرق الأوسط، تستضيف المملكة اليوم فعاليات بمستوى عالمي تتطلب إدارة بمعايير عالمية.
                     </p>
                     <p>
-                      وتُعدّ إدارة الفعاليات السعودية جزءًا أصيلًا من منظومة رؤية 2030 — بالشراكة مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة لتقديم فعاليات تدعم أهداف برنامج التحول الوطني للمملكة.
+                      وتُعدّ إدارة الفعاليات السعودية جزءًا أصيلًا من منظومة رؤية 2030 — نتولّى تصاريح هيئة الترفيه وتراخيص مشاركة وزارة الثقافة لتقديم فعاليات تدعم أهداف برنامج التحول الوطني للمملكة.
                     </p>
                   </div>
                 ) : (
@@ -982,11 +967,11 @@ export default async function CorporateEventsPage() {
                     calibre events that demand global-standard management.
                   </p>
                   <p>
-                    Saudi Event Management is deeply embedded in the Vision 2030 ecosystem — partnering
-                    with the <strong className="text-neutral-900">General Entertainment Authority (GEA)</strong>,{" "}
-                    <strong className="text-neutral-900">Ministry of Culture</strong>, and{" "}
-                    <strong className="text-neutral-900">Saudi Tourism Authority</strong> to deliver events
-                    that advance the Kingdom&apos;s National Transformation Program objectives.
+                    Saudi Event Management is built for the Vision 2030 ecosystem — handling the{" "}
+                    <strong className="text-neutral-900">General Entertainment Authority (GEA)</strong> permits and{" "}
+                    <strong className="text-neutral-900">Ministry of Culture</strong> participation licenses
+                    these events require, to deliver programming
+                    that advances the Kingdom&apos;s National Transformation Program objectives.
                   </p>
                 </div>
                 )}
@@ -1025,7 +1010,7 @@ export default async function CorporateEventsPage() {
               {[
                 { ar: "إدارة فعاليات مؤسسية الرياض", en: "Corporate Events Riyadh", desc: "تنظيم المؤتمرات والقمم التنفيذية وحفلات الجوائز في قلب العاصمة ومركز الملك عبدالله المالي." },
                 { ar: "مؤتمرات وفعاليات جدة", en: "Conferences Jeddah", desc: "إدارة المؤتمرات والمعارض وحفلات الأعمال في جدة بمواصفات عالمية على ساحل البحر الأحمر." },
-                { ar: "فعاليات رؤية 2030", en: "Vision 2030 Events", desc: "شراكات استراتيجية مع هيئة الترفيه ووزارة الثقافة وهيئة السياحة لتنفيذ فعاليات رؤية 2030." },
+                { ar: "فعاليات رؤية 2030", en: "Vision 2030 Events", desc: "إدارة كاملة لتصاريح هيئة الترفيه ووزارة الثقافة لتنفيذ فعاليات رؤية 2030." },
                 { ar: "منظم مؤتمرات احترافي", en: "PCO Saudi Arabia", desc: "خدمات المنظم المحترف للمؤتمرات — تسجيل المشاركين والترجمة الفورية وإدارة المتحدثين والإنتاج التقني." },
               ].map((item) => (
                 <div key={item.en} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-6 hover:border-[var(--primary)]/30 transition-colors">
@@ -1044,8 +1029,8 @@ export default async function CorporateEventsPage() {
               <p className="text-neutral-600 text-sm leading-loose">
                 نحن في سعودي إيفنت مانجمنت نقدم خدمات متكاملة لإدارة الفعاليات المؤسسية في المملكة العربية
                 السعودية — من الاجتماعات السنوية للمساهمين وحفلات الجوائز والقمم التنفيذية إلى المؤتمرات الهجينة
-                وإطلاق المنتجات وتنشيط العلامات التجارية. نحن شركاء موثوقون لأرامكو السعودية وسابك وصندوق
-                الاستثمارات العامة وهيئة تطوير الموارد البشرية، مع التزام تام بمعايير رؤية المملكة 2030.
+                وإطلاق المنتجات وتنشيط العلامات التجارية. قدراتنا مصمّمة لخدمة مؤسسات بحجم أرامكو السعودية وسابك
+                وكبرى الشركات السعودية، مع التزام تام بمعايير رؤية المملكة 2030.
               </p>
             </div>
           </div>
@@ -1069,15 +1054,15 @@ export default async function CorporateEventsPage() {
                   name: "Omar Al-Farsi",
                   title: "CEO & Executive Event Director",
                   arabic: "الرئيس التنفيذي ومدير الفعاليات",
-                  bio: "Leads corporate event delivery for Saudi Aramco, SABIC, and NEOM. Expert in government protocol, GEA permitting, and executive summit logistics for 5,000+ delegate events.",
-                  bioAr: "يقود تنفيذ فعاليات الشركات لأرامكو السعودية وسابك ونيوم. خبير في البروتوكول الحكومي وتصاريح هيئة الترفيه ولوجستيات القمم التنفيذية لفعاليات تتجاوز 5000 مندوب.",
+                  bio: "Leads corporate event delivery from executive summit strategy through on-site execution. Expert in government protocol, GEA permitting, and logistics for 5,000+ delegate events.",
+                  bioAr: "يقود تنفيذ فعاليات الشركات من استراتيجية القمة التنفيذية وحتى التنفيذ الميداني. خبير في البروتوكول الحكومي وتصاريح هيئة الترفيه ولوجستيات القمم التنفيذية لفعاليات تتجاوز 5000 مندوب.",
                 },
                 {
                   name: "Layla Al-Zahrani",
                   title: "Head of Corporate Conferences",
                   arabic: "رئيسة قسم المؤتمرات المؤسسية",
-                  bio: "IAPCO-certified PCO specialising in hybrid conferences and ministerial summits. Specialist in simultaneous interpretation infrastructure and multilingual delegate management.",
-                  bioAr: "منظِّمة مؤتمرات معتمدة من IAPCO ومتخصصة في إدارة المؤتمرات الهجينة والقمم الوزارية. متخصصة في بنية الترجمة الفورية وإدارة المندوبين متعددي اللغات.",
+                  bio: "PCO specialist focused on hybrid conferences and large-scale corporate summits. Specialist in simultaneous interpretation infrastructure and multilingual delegate management.",
+                  bioAr: "منظِّمة مؤتمرات متخصصة في إدارة المؤتمرات الهجينة والقمم المؤسسية الكبرى. متخصصة في بنية الترجمة الفورية وإدارة المندوبين متعددي اللغات.",
                 },
                 {
                   name: "Tariq Al-Qahtani",
@@ -1145,13 +1130,13 @@ export default async function CorporateEventsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {(isAr
                 ? [
-                { c: "تأمين القاعات الكبرى في مهلة قصيرة", s: "تُحجز قاعات مركز الملك عبدالله المالي والخمس نجوم قبل أشهر. وصولنا بصفة شريك مفضّل وخيارات حجز المواعيد يبقيان القاعات المميزة متاحة حتى ضمن جداول ضيّقة." },
+                { c: "تأمين القاعات الكبرى في مهلة قصيرة", s: "تُحجز قاعات مركز الملك عبدالله المالي والخمس نجوم قبل أشهر. تنسيقنا المبكر وخيارات حجز المواعيد يبقيان القاعات المميزة متاحة حتى ضمن جداول ضيّقة." },
                 { c: "تصاريح هيئة الترفيه والامتثال متعدد الجهات", s: "تُرتّب رخص الترفيه وموافقات البلدية وتصاريح الدفاع المدني مبكرًا وتُدار داخليًا، فلا تهدّد الموافقات موعد الفعالية أبدًا." },
                 { c: "المندوبون ثنائيو اللغة وبروتوكول كبار الشخصيات", s: "الترجمة الفورية العربية-الإنجليزية، وجلوس البروتوكول، وتنسيق المواكب تضمن خدمة الوزراء والمندوبين الدوليين بالكامل." },
                 { c: "وصول هجين دون مساس بتجربة الحضور", s: "البث بجودة احترافية والمنصات التفاعلية يوسّعان الجمهور عالميًا مع بقاء التجربة المباشرة من الطراز الأول." },
                   ]
                 : [
-                { c: "Securing flagship venues on short notice", s: "KAFD and five-star ballrooms book months out. Preferred-partner access and held-date options keep premium venues available even on compressed timelines." },
+                { c: "Securing flagship venues on short notice", s: "KAFD and five-star ballrooms book months out. Early coordination and held-date options keep premium venues available even on compressed timelines." },
                 { c: "GEA permits & multi-authority compliance", s: "Entertainment licenses, municipality approvals, and civil-defense clearances are sequenced early and managed in-house, so approvals never threaten the event date." },
                 { c: "Bilingual delegates & dignitary protocol", s: "Simultaneous Arabic–English interpretation, protocol seating, and motorcade coordination keep ministers and international delegates fully served." },
                 { c: "Hybrid reach without in-room compromise", s: "Broadcast-grade streaming and interactive platforms extend the audience globally while the live experience stays first-class." },

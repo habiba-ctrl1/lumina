@@ -129,7 +129,7 @@ const faqs = [
   },
   {
     q: "What are the best conference venues in Riyadh?",
-    a: "The top conference venues in Riyadh include the King Abdullah Financial District (KAFD) Conference Center — ideal for large ministerial summits — the King Abdul Aziz International Conference Center (KAICC), Al Faisaliah Hotel, Ritz-Carlton Riyadh, and JW Marriott Hotel Riyadh. We hold preferred partnerships with all major venues.",
+    a: "The top conference venues in Riyadh include the King Abdullah Financial District (KAFD) Conference Center — ideal for large ministerial summits — the King Abdul Aziz International Conference Center (KAICC), Al Faisaliah Hotel, Ritz-Carlton Riyadh, and JW Marriott Hotel Riyadh. We handle venue sourcing and rate negotiation at each of these properties on your behalf.",
   },
   {
     q: "How much does conference management cost in Saudi Arabia?",
@@ -141,7 +141,7 @@ const faqs = [
   },
   {
     q: "How many delegates can you manage at one conference?",
-    a: "We have experience managing conferences from 50 to over 5,000 delegates. Our delegate management systems are scalable, and we have executed government-level summits with multiple breakout tracks and VIP ministerial streams running simultaneously.",
+    a: "Our delegate management systems are built to scale from 50 to over 5,000 delegates, including government-level summits with multiple breakout tracks and VIP ministerial streams running simultaneously.",
   },
   {
     q: "Do you provide simultaneous translation at conferences?",
@@ -157,7 +157,7 @@ const faqs = [
   },
   {
     q: "best conference management company Saudi Arabia",
-    a: "Saudi Event Management is widely regarded as one of the best conference management companies in Saudi Arabia, having organized events for Saudi Aramco, HRDF, SABIC, and multiple ministerial bodies. Our IAPCO-aligned methodologies and ISO-certified AV partners ensure world-class execution.",
+    a: "Saudi Event Management is built to deliver world-class conference management in Saudi Arabia — from B2B summits to ministerial-level conferences. Our PCO methodology and carefully vetted AV production partners ensure consistent, professional execution at any scale.",
   },
   {
     q: "How early should I book a conference organizer in Riyadh?",
@@ -187,14 +187,14 @@ const resourcesAr = [
 
 const faqsAr = [
   { q: "ما الذي تشمله إدارة المؤتمرات الاحترافية؟", a: "تشمل إدارة المؤتمرات الاحترافية (خدمات PCO) اختيار القاعة والتفاوض عليها، وإعداد نظام التسجيل، وتنسيق المتحدثين، والإنتاج الصوتي والمرئي، والترجمة الفورية، وإدارة بروتوكول كبار الشخصيات، والتوظيف الميداني، وتنسيق الضيافة، وتقارير ما بعد الفعالية. وتقدّم إدارة الفعاليات السعودية كل ذلك تحت سقف واحد." },
-  { q: "ما أفضل قاعات المؤتمرات في الرياض؟", a: "تشمل أبرز قاعات المؤتمرات في الرياض مركز مؤتمرات الملك عبدالله المالي (KAFD) — الأنسب للقمم الوزارية الكبرى — ومركز الملك عبدالعزيز الدولي للمؤتمرات (KAICC)، وفندق الفيصلية، وريتز كارلتون الرياض، وجي دبليو ماريوت الرياض. ولدينا شراكات مفضّلة مع جميع القاعات الكبرى." },
+  { q: "ما أفضل قاعات المؤتمرات في الرياض؟", a: "تشمل أبرز قاعات المؤتمرات في الرياض مركز مؤتمرات الملك عبدالله المالي (KAFD) — الأنسب للقمم الوزارية الكبرى — ومركز الملك عبدالعزيز الدولي للمؤتمرات (KAICC)، وفندق الفيصلية، وريتز كارلتون الرياض، وجي دبليو ماريوت الرياض. ونتولى التنسيق والتفاوض على الأسعار في كل هذه القاعات نيابة عنك." },
   { q: "كم تبلغ تكلفة إدارة المؤتمرات في السعودية؟", a: "تبدأ تكلفة إدارة المؤتمرات في السعودية من نحو 55,000 ريال لقمة ليوم واحد بـ 100 مندوب، وترتفع بشكل كبير للفعاليات متعددة الأيام بمتحدثين دوليين وبث هجين. تواصل معنا لعرض مخصّص يناسب عدد مندوبيك ومتطلباتك التقنية." },
   { q: "هل يمكنكم إدارة المؤتمرات الهجينة والافتراضية في السعودية؟", a: "نعم. تقدّم إدارة الفعاليات السعودية حلول مؤتمرات هجينة بجودة بثّ احترافية تشمل إنتاجًا متعدد الكاميرات، ومنصات بث مؤسسية (Zoom Webinar وHopin وRTMP مخصص)، وتغذية ترجمة فورية، وميزات تفاعلية للمشاركين داخل القاعة وعبر الإنترنت." },
-  { q: "كم عدد المندوبين الذين يمكنكم إدارتهم في مؤتمر واحد؟", a: "لدينا خبرة في إدارة مؤتمرات من 50 إلى أكثر من 5000 مندوب. أنظمتنا لإدارة المندوبين قابلة للتوسّع، وقد نفّذنا قممًا حكومية بمسارات فرعية متعددة ومسارات وزارية لكبار الشخصيات تعمل في آنٍ واحد." },
+  { q: "كم عدد المندوبين الذين يمكنكم إدارتهم في مؤتمر واحد؟", a: "أنظمتنا لإدارة المندوبين مصمَّمة للتوسّع من 50 إلى أكثر من 5000 مندوب، بما في ذلك قمم حكومية بمسارات فرعية متعددة ومسارات وزارية لكبار الشخصيات تعمل في آنٍ واحد." },
   { q: "هل توفّرون ترجمة فورية في المؤتمرات؟", a: "نعم. نوفّر كبائن ترجمة فورية بمعايير ISO مع فرق مترجمين محترفين للعربية-الإنجليزية والفرنسية والصينية وغيرها. كما نوفّر الترجمة الفورية عن بُعد (RSI) للفعاليات الهجينة." },
   { q: "ما إعداد الصوت والصورة الذي أحتاجه لمؤتمر بـ 1000 شخص في الرياض؟", a: "يتطلب مؤتمر بـ 1000 شخص عادةً نظام صوت لاين-أراي رئيسيًا، وشاشتي مراقبة LED للمتحدث، وشاشة عرض مركزية أو شاشة LED فائقة العرض، و3 إلى 5 مواقع كاميرات للتبديل المباشر، وميكروفونات لاسلكية ومنصة، وأنظمة استجابة جمهور لاسلكية، ومديرًا تقنيًا متفرّغًا. وسيصمّم فريقنا متطلبات تقنية كاملة لقاعتك." },
   { q: "منظّم مؤتمرات قريب مني في الرياض", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها مع فريق إنتاج مؤتمرات متفرّغ تحت الطلب. نوفّر جولات ميدانية ومعاينات للقاعات ولوجستيات استجابة سريعة لأي متطلب مؤتمر في العاصمة." },
-  { q: "أفضل شركة لإدارة المؤتمرات في السعودية", a: "تُعدّ إدارة الفعاليات السعودية من أفضل شركات إدارة المؤتمرات في السعودية، إذ نظّمت فعاليات لأرامكو السعودية وصندوق تنمية الموارد البشرية وسابك وعدة جهات وزارية. وتضمن منهجياتنا المتوائمة مع IAPCO وشركاؤنا في الصوت والصورة المعتمدون من ISO تنفيذًا بمستوى عالمي." },
+  { q: "أفضل شركة لإدارة المؤتمرات في السعودية", a: "صُممت إدارة الفعاليات السعودية لتقديم إدارة مؤتمرات بمستوى عالمي في المملكة — من قمم الأعمال إلى المؤتمرات على المستوى الوزاري. وتضمن منهجية PCO لدينا وشركاؤنا المُنتقون بعناية في الصوت والصورة تنفيذًا احترافيًا ومتسقًا في أي حجم." },
   { q: "قبل كم من الوقت يجب أن أحجز منظّم مؤتمرات في الرياض؟", a: "لمؤتمر يضم أكثر من 200 مندوب بمتحدثين دوليين، نوصي بالتعاقد مع منظّم مؤتمرات احترافي قبل 4 إلى 6 أشهر على الأقل. يتيح ذلك وقتًا للتفاوض على القاعة، وتصاريح هيئة الترفيه، وتسهيل تأشيرات المتحدثين، وبناء أنظمة التسجيل وهوية الفعالية." },
 ];
 
@@ -301,8 +301,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "name": "Saudi Event Management — Conference Division",
-      "description": "IAPCO-aligned professional conference organiser (PCO) for government, corporate, and scientific summits in Saudi Arabia.",
-      "memberOf": { "@type": "Organization", "name": "GEA Certified Event Organizers" },
+      "description": "Professional conference organiser (PCO) for government, corporate, and scientific summits in Saudi Arabia.",
     },
   ],
 };
@@ -326,8 +325,8 @@ export default async function ConferencesPage() {
           titleHighlight={isAr ? "في السعودية" : "Saudi Arabia"}
           subtitle={
             isAr
-              ? "منظِّم مؤتمرات احترافي (PCO) رائد في السعودية — قمم حكومية ومؤتمرات أعمال ومؤتمرات علمية لجهات تشمل أرامكو السعودية وصندوق تنمية الموارد البشرية وسابك."
-              : "Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for entities including Saudi Aramco, HRDF, and SABIC."
+              ? "منظِّم مؤتمرات احترافي (PCO) رائد في السعودية — قمم حكومية ومؤتمرات أعمال ومؤتمرات علمية لجهات من كل الأحجام، من جلسات مجالس إدارة بـ50 مندوبًا إلى قمم وطنية بـ5000 مقعد."
+              : "Leading Professional Conference Organiser (PCO) in Saudi Arabia — government summits, B2B conferences, and scientific congresses for organizations of every scale, from 50-delegate boardroom sessions to 5,000-seat national summits."
           }
           backgroundImage="/services/premium_conference_management_hero.webp"
           imageAlt="Large-scale international conference in Saudi Arabia with massive LED stage"
@@ -342,7 +341,7 @@ export default async function ConferencesPage() {
           trustElements={[
             { value: "20+", label: "Vetted Vendors" },
             { value: "10+", label: "Saudi Cities Covered" },
-            { value: "IAPCO", label: "Aligned PCO Standards" },
+            { value: "2 Hours", label: "Quote Response" },
           ]}
         />
 
@@ -373,19 +372,19 @@ export default async function ConferencesPage() {
                   <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">IAPCO-Aligned PCO</p>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">Best-Practice Conference Standards</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">Full-Service PCO</p>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">End-to-End Conference Operations</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
               <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold tracking-widest text-neutral-400">
-                <span>SAUDI ARAMCO</span>
-                <span>HRDF</span>
-                <span>SABIC</span>
                 <span>KAFD</span>
+                <span>KAICC</span>
+                <span>AL FAISALIAH</span>
+                <span>RITZ-CARLTON</span>
               </div>
               <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
-                &quot;Trusted PCO for Vision 2030 Summits&quot;
+                &quot;Built for Vision 2030-Scale Summits&quot;
               </div>
             </div>
           </div>

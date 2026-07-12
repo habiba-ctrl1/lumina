@@ -124,11 +124,7 @@ export default function SeasonalEventsPage() {
       {
         "@type": "Organization",
         "name": "Saudi Event Management Seasonal Events",
-        "description": "Specializing in Saudi National Day, Founding Day, and Riyadh Season cultural activations.",
-        "memberOf": {
-          "@type": "Organization",
-          "name": "GEA Certified Event Organizers"
-        }
+        "description": "Specializing in Saudi National Day, Founding Day, and Riyadh Season cultural activations."
       }
     ]
   };
@@ -187,17 +183,17 @@ export default function SeasonalEventsPage() {
                   <Award className="text-[var(--primary)]" size={24} />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-bold text-sm tracking-widest">{isAr ? "معتمدون في التراث" : "Heritage Certified"}</p>
-                  <p className="text-[10px] text-gray-500 uppercase">{isAr ? "اعتمادات الحساسية الثقافية" : "Cultural Sensitivity Credentials"}</p>
+                  <p className="text-slate-900 font-bold text-sm tracking-widest">{isAr ? "خبرة تراثية عميقة" : "Deep Heritage Expertise"}</p>
+                  <p className="text-[10px] text-gray-500 uppercase">{isAr ? "حساسية ثقافية وإقليمية" : "Regional Cultural Sensitivity"}</p>
                 </div>
               </div>
               <div className="flex gap-10 grayscale opacity-40  font-bold text-xs tracking-widest">
                 <span>RIYADH SEASON</span>
-                <span>MINISTRY OF HAJJ</span>
+                <span>NATIONAL DAY</span>
                 <span>FOUNDING DAY</span>
               </div>
               <div className="text-sm text-gray-500 font-light ">
-                {isAr ? "«مشاركة رسمية في مبادرات اليوم الوطني بمعايير تنظيمية دقيقة.»" : "\"Official participation in National Day initiatives, delivered to rigorous cultural and logistical standards.\""}
+                {isAr ? "«برامج اليوم الوطني ويوم التأسيس بمعايير ثقافية ولوجستية دقيقة.»" : "\"National Day and Founding Day programming delivered to rigorous cultural and logistical standards.\""}
               </div>
             </div>
           </div>
@@ -251,7 +247,7 @@ export default function SeasonalEventsPage() {
                 { icon: Flag, title: "اليوم الوطني (23 سبتمبر)", desc: "تخطيط احتفالات اليوم الوطني المؤثّرة وتفعيلات الإجازات في المملكة. من الألعاب النارية الكبرى إلى مهرجانات التراث المجتمعية.", linkText: "تجربة اليوم الوطني" },
                 { icon: Gift, title: "عيد الفطر والأضحى", desc: "إدارة شاملة للاحتفالات الدينية في المملكة. نحفظ بهجة العيدين بفعاليات فاخرة للشركات والعائلات.", linkText: "إدارة العيد" },
                 { icon: Landmark, title: "يوم التأسيس (22 فبراير)", desc: "تكريم جذور المملكة في يوم التأسيس بمعارض تقليدية وفعاليات تراثية سعودية.", linkText: "تراث يوم التأسيس" },
-                { icon: Star, title: "موسم الحج والعمرة", desc: "التنسيق مع وزارة الحج والعمرة لتقديم دعم راقٍ وخدمات فعاليات للحجاج خلال موسم المناسبات الروحانية في السعودية.", linkText: "الدعم الديني" },
+                { icon: Star, title: "موسم الحج والعمرة", desc: "دعم الضيافة والتجمعات للعائلات وكبار الضيوف خلال موسم سفر الحج والعمرة في السعودية — فعاليات ترحيب، وضيافة مجالس، ولوجستيات الضيوف.", linkText: "ضيافة موسمية" },
                 { icon: Award, title: "موسم الرياض", desc: "المساهمة في أكثر مواسم الترفيه طموحًا بالمملكة بتخطيط احتفالات سنوية فريدة وتنفيذ متقن.", linkText: "تفعيلات الموسم" },
                   ]
                 : [
@@ -282,8 +278,8 @@ export default function SeasonalEventsPage() {
                 {
                   icon: Star,
                   title: "Hajj & Umrah Season",
-                  desc: "Coordinating with the Ministry of Hajj and Umrah to provide elite support and event services for pilgrims during the spiritual festival season Saudi Arabia.",
-                  linkText: "Religious Support"
+                  desc: "Hospitality and gathering support for families and VIP guests during the Hajj and Umrah travel season in Saudi Arabia — welcome events, majlis hospitality, and guest logistics.",
+                  linkText: "Seasonal Hospitality"
                 },
                 {
                   icon: Award,
