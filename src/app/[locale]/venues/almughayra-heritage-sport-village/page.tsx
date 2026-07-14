@@ -107,7 +107,7 @@ const experiences = [
     category: "Heritage & Culture",
     title: "AlUla Old Town",
     description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.",
-    expandedDescription: "AlUla's Old Town is an 800-year-old mud-brick settlement, restored under RCU stewardship and now home to galleries, cafes, and small heritage sites along its original narrow lanes. An evening walk through it, once the desert heat has passed, gives guests a sense of AlUla's history that the venue's own heritage architecture only hints at.",
+    expandedDescription: "AlUla's Old Town is an 800-year-old mud-brick settlement, carefully restored and now home to galleries, cafes, and small heritage sites along its original narrow lanes. An evening walk through it, once the desert heat has passed, gives guests a sense of AlUla's history that the venue's own heritage architecture only hints at.",
     image: "/venues/experiences/old-town.jpg",
     imageAlt: "AlUla Old Town heritage district",
   },
@@ -259,7 +259,7 @@ export default function AlMughayraPage() {
             </h2>
             <div className="space-y-5 text-neutral-600 text-[15px] md:text-[16px] leading-relaxed font-light">
               <p>
-                An event venue in AlUla comes with something no hotel ballroom can offer: a 200,000-year-old sandstone landscape managed as a single protected destination by the Royal Commission for AlUla, home to Hegra — Saudi Arabia&apos;s first UNESCO World Heritage Site. It is this combination of ancient heritage, desert scale, and five-star infrastructure that makes AlUla event planning a category of its own.
+                An event venue in AlUla comes with something no hotel ballroom can offer: a 200,000-year-old sandstone landscape and Saudi Arabia&apos;s first UNESCO World Heritage Site, home to the ancient tombs of Hegra. It is this combination of ancient heritage, desert scale, and five-star infrastructure that makes AlUla event planning a category of its own.
               </p>
               <p>
                 Bringing an international delegation to AlMughayra is a different decision than booking a conference hall in Riyadh or Jeddah. It gives a corporate event, gala, or destination wedding a setting guests will still be describing long after the agenda ends — and a reason for the trip to become a multi-day AlUla itinerary rather than a single afternoon.
