@@ -1,13 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import InternalPageHero from "@/components/InternalPageHero";
+import VenueExperienceGrid from "@/components/venues/VenueExperienceGrid";
+import VenueJourneyTimeline from "@/components/venues/VenueJourneyTimeline";
+import GalleryLightbox from "@/components/venues/GalleryLightbox";
+import ParallaxImageBand from "@/components/venues/ParallaxImageBand";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
   MapPin, Users, Music, Armchair,
-  Tent, TreePine, Shield, ArrowRight, CheckCircle2,
-  Building2, Fence, MountainSnow, ChevronRight
+  Tent, TreePine, Shield, ArrowRight,
+  Building2, Fence, MountainSnow,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -72,11 +77,59 @@ const jsonLd = {
   ]
 };
 
+// ─── Facility data — capacity shown only when confirmed. ───
+const facilities = [
+  { name: "Endurance Terrace", cap: "1,000 guests", icon: Tent, desc: "An inviting space with natural wooden flooring. Shaded and suitable for air conditioning. Space available for stage construction." },
+  { name: "Polo Grandstand", cap: "1,000 guests", icon: MountainSnow, desc: "Seating area offering captivating views. Suitable for concerts and show events. The polo field accommodates stage performances." },
+  { name: "Shuwayma Lounge", cap: "70 guests", icon: Armchair, desc: "High-quality furniture adorned with traditional decorative lights and carpets. Equipped with a large screen." },
+  { name: "Dahma Lounge", cap: "100 guests", icon: Armchair, desc: "Comfortable seating with traditional decor showcasing AlUla's colour themes. Includes large screen." },
+  { name: "Saqlawiya Lounge", cap: "100 guests", icon: Armchair, desc: "Traditional heritage lights and carpets. Flexible furniture arrangements for bespoke corporate setups." },
+  { name: "Kahilah Lounge", cap: "100 guests", icon: Armchair, desc: "Features two large screens for presentations. Adorned with heritage carpets and inspired decor." },
+  { name: "Obaya Lounge", cap: "120 guests", icon: Armchair, desc: "The largest VIP lounge, featuring two large screens, premium furniture, and traditional elements." },
+  { name: "Indoor Gathering Area", cap: undefined, icon: Building2, desc: "Flexible space for intimate celebrations. Can operate independently or combine with main lounges for larger functions." },
+  { name: "Polo Field", cap: undefined, icon: Fence, desc: "Professional polo field adaptable for stage performances, utilizing strict protections to preserve the sports flooring." },
+  { name: "Horse Tracks & Stables", cap: undefined, icon: TreePine, desc: "Operational equestrian infrastructure supporting training and events, forming the core of this equestrian hub." },
+];
+
+const experiences = [
+  { category: "Equestrian", title: "Horseback Riding Across the Canyon", description: "Guided rides through the sandstone terrain surrounding AlFursan, for riders of every level.", image: "/venues/experiences/horse-riding1.jpeg", imageAlt: "Horseback riders crossing the AlUla canyon near AlFursan" },
+  { category: "Heritage & Culture", title: "Elephant Rock at Sunset", description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.", image: "/venues/experiences/elephant-rock.jpg", imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla" },
+  { category: "Heritage & Culture", title: "AlUla Old Town", description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.", image: "/venues/experiences/old-town.jpg", imageAlt: "AlUla Old Town heritage district" },
+  { category: "Fine Dining", title: "Dinner in the Old Town", description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.", image: "/venues/experiences/joontos-dining.jpg", imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town" },
+  { category: "Luxury Stays", title: "Banyan Tree & Habitas AlUla", description: "Full resort buyout programs for delegations who want the whole valley to themselves.", image: "/venues/experiences/banyan-tree2.avif", imageAlt: "Banyan Tree AlUla luxury desert resort" },
+  { category: "Adventure", title: "Desert Dune Excursions", description: "UTV and buggy routes through the dunes surrounding the equestrian village.", image: "/venues/experiences/UTV-BUGGY-2.jpg", imageAlt: "Desert UTV buggy tour near AlUla" },
+];
+
+const journeyStops = [
+  { day: "Day 1", title: "Arrival & Signature Event", description: "Delegates arrive via AlUla International Airport, transfer to AlFursan, and the event takes centre stage on the Polo Grandstand or Endurance Terrace." },
+  { day: "Day 2", title: "Heritage & Adventure", description: "A morning at Hegra or Elephant Rock, an afternoon in the saddle — canyon rides, desert excursions, or a private Old Town walk." },
+  { day: "Day 3", title: "Leisure & Departure", description: "A relaxed morning at a resort of choice, a final dinner in the Old Town, and departure with a story worth retelling." },
+];
+
+const galleryImages = [
+  { src: "/venues/alfursan_p6_5.jpeg", alt: "AlFursan Village — Desert Setting" },
+  { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match at AlUla" },
+  { src: "/venues/alfursan_p9_8.jpeg", alt: "Polo Field & Grandstand" },
+  { src: "/venues/alfursan_event_action.jpeg", alt: "Polo Players in Action" },
+  { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
+  { src: "/venues/alfursan_p5_4.jpeg", alt: "Event Hospitality Under the Stars" },
+  { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Area" },
+  { src: "/venues/alfursan_p10_9.jpeg", alt: "Guest Lounge Interior" },
+  { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
+  { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
+  { src: "/venues/alfursan_event_aerial.jpeg", alt: "Equestrian Village Aerial View" },
+  { src: "/venues/alfursan_p12_11.jpeg", alt: "Briefing Session in the Lounge" },
+  { src: "/venues/alfursan_p13_12.jpeg", alt: "Auditorium Seating Setup" },
+  { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
+  { src: "/venues/experiences/horse-riding.jpeg", alt: "Guests riding at AlFursan Equestrian Village" },
+  { src: "/venues/experiences/horse-riding3.jpg", alt: "Horseback riding session at AlFursan, AlUla" },
+];
+
 export default function AlFursanPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+
       <Navbar />
 
       {/* ── DRAFT BANNER ──────────────────────────────────────────────── */}
@@ -85,48 +138,48 @@ export default function AlFursanPage() {
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center items-center overflow-hidden bg-neutral-900">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/venues/alfursan_p2_1.jpeg"
-            alt="AlFursan Equestrian Village — AlUla"
-            fill
-            className="object-cover opacity-40 animate-in fade-in duration-[2000ms]"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-900/60 to-neutral-900/40" />
-        </div>
+      <InternalPageHero
+        title="AlFursan"
+        titleHighlight="Equestrian Village"
+        subtitle="A world-class destination asset honouring AlUla's cultural heritage — blending premier equestrian tradition with exceptional landscape infrastructure."
+        backgroundImage="/venues/alfursan_p2_1.jpeg"
+        imageAlt="AlFursan Equestrian Village — AlUla"
+        badge="AlUla, Saudi Arabia"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+          { label: "AlFursan Equestrian Village" },
+        ]}
+        enableParallax
+        minHeight="large"
+      />
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center animate-in slide-in-from-bottom-8 fade-in duration-1000">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-[12px] md:text-[13px] font-medium text-neutral-400 mb-8 tracking-wide">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
-            <ChevronRight size={14} className="text-neutral-600" />
-            <Link href="/venues" className="hover:text-emerald-400 transition-colors">Venues</Link>
-            <ChevronRight size={14} className="text-neutral-600" />
-            <span className="text-amber-300">AlFursan Equestrian Village</span>
-          </nav>
+      <div className="bg-white border-b border-neutral-100 py-6 flex justify-center">
+        <Link
+          href="/contact"
+          className="px-8 py-4 text-white text-[14px] font-medium rounded-xl transition-all flex items-center gap-2"
+          style={{
+            background: "linear-gradient(135deg, #044b36 0%, #0d6b4e 100%)",
+            boxShadow: "0 4px 16px rgba(13, 107, 78, 0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
+          }}
+        >
+          Request a Quote <ArrowRight size={16} />
+        </Link>
+      </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
-            AlFursan <span className="text-emerald-400">Equestrian Village</span>
-          </h1>
-          <p className="text-neutral-300 text-[16px] md:text-[18px] max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-            A world-class destination asset honouring AlUla&apos;s cultural heritage — blending premier equestrian tradition with exceptional landscape infrastructure.
+      {/* ── POSITIONING STATEMENT ────────────────────────────────────── */}
+      <section
+        className="relative py-20 md:py-28 px-6 bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: "url('/venues/alfursan_p5_4.jpeg')" }}
+      >
+        <div className="absolute inset-0 bg-neutral-950/80" />
+        <div className="relative max-w-3xl mx-auto text-center">
+          <div className="w-10 h-px bg-emerald-500/60 mx-auto mb-8" />
+          <p className="text-white text-xl md:text-3xl font-light leading-snug tracking-tight">
+            Your guests won&apos;t just attend an event. They&apos;ll fall in love with a destination —{" "}
+            <span className="text-emerald-400 font-medium">starting at AlFursan.</span>
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-4 text-white text-[14px] font-medium rounded-xl transition-all flex items-center gap-2"
-              style={{
-                background: "linear-gradient(135deg, #044b36 0%, #0d6b4e 100%)",
-                boxShadow: "0 4px 16px rgba(13, 107, 78, 0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
-              }}
-            >
-              Request a Quote <ArrowRight size={16} />
-            </Link>
-          </div>
+          <div className="w-10 h-px bg-emerald-500/60 mx-auto mt-8" />
         </div>
       </section>
 
@@ -152,8 +205,33 @@ export default function AlFursanPage() {
         </div>
       </section>
 
-      {/* ── HIGHLIGHTS ────────────────────────────────────────────────── */}
+      {/* ── WHY ALULA ─────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-neutral-50 border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <ParallaxImageBand
+            src="/alula_maraya_hegra_guide.webp"
+            alt="AlUla heritage landscape — Maraya Concert Hall and Hegra UNESCO site"
+            className="aspect-[4/5] rounded-2xl order-2 lg:order-1 shadow-lg"
+          />
+          <div className="order-1 lg:order-2">
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Beyond the Venue</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight mb-6">
+              A Destination Your Guests <span className="text-emerald-700">Will Remember</span>
+            </h2>
+            <div className="space-y-5 text-neutral-600 text-[15px] md:text-[16px] leading-relaxed font-light">
+              <p>
+                An event venue in AlUla comes with something no hotel ballroom can offer: a 200,000-year-old sandstone landscape managed as a single protected destination by the Royal Commission for AlUla, home to Hegra — Saudi Arabia&apos;s first UNESCO World Heritage Site. It is this combination of ancient heritage, desert scale, and five-star infrastructure that makes AlUla event planning a category of its own.
+              </p>
+              <p>
+                Bringing an international delegation to AlFursan is a different decision than booking a conference hall in Riyadh or Jeddah. It gives a corporate event, gala, or equestrian showcase a setting guests will still be describing long after the agenda ends — and a reason for the trip to become a multi-day AlUla itinerary rather than a single afternoon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HIGHLIGHTS ────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Strategic Assets</span>
@@ -184,7 +262,7 @@ export default function AlFursanPage() {
       </section>
 
       {/* ── FACILITIES ────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
+      <section className="py-24 md:py-32 bg-neutral-50 border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Infrastructure</span>
@@ -192,24 +270,15 @@ export default function AlFursanPage() {
               Premium Destination <span className="text-emerald-700">Spaces</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Endurance Terrace", cap: "1,000 guests", icon: Tent, desc: "An inviting space with natural wooden flooring. Shaded and suitable for air conditioning. Space available for stage construction." },
-              { name: "Polo Grandstand", cap: "1,000 guests", icon: MountainSnow, desc: "Seating area offering captivating views. Suitable for concerts and show events. The polo field accommodates stage performances." },
-              { name: "Shuwayma Lounge", cap: "70 guests", icon: Armchair, desc: "High-quality furniture adorned with traditional decorative lights and carpets. Equipped with a large screen." },
-              { name: "Dahma Lounge", cap: "100 guests", icon: Armchair, desc: "Comfortable seating with traditional decor showcasing AlUla's colour themes. Includes large screen." },
-              { name: "Saqlawiya Lounge", cap: "100 guests", icon: Armchair, desc: "Traditional heritage lights and carpets. Flexible furniture arrangements for bespoke corporate setups." },
-              { name: "Kahilah Lounge", cap: "100 guests", icon: Armchair, desc: "Features two large screens for presentations. Adorned with heritage carpets and inspired decor." },
-              { name: "Obaya Lounge", cap: "120 guests", icon: Armchair, desc: "The largest VIP lounge, featuring two large screens, premium furniture, and traditional elements." },
-              { name: "Indoor Gathering Area", cap: "[Pending Final Confirmation]", icon: Building2, desc: "Flexible space for intimate celebrations. Can operate independently or combine with main lounges for larger functions." },
-              { name: "Polo Field", cap: "[Pending Final Confirmation]", icon: Fence, desc: "Professional polo field adaptable for stage performances, utilizing strict protections to preserve the sports flooring." },
-              { name: "Horse Tracks & Stables", cap: "[Pending Final Confirmation]", icon: TreePine, desc: "Operational equestrian infrastructure supporting training and events, forming the core of this equestrian hub." },
-            ].map((f, i) => (
+            {facilities.map((f, i) => (
               <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-500">
                 <div className="flex items-center justify-between mb-6">
                   <f.icon size={24} className="text-neutral-400" />
-                  <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
-                    {f.cap}
-                  </span>
+                  {f.cap && (
+                    <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
+                      {f.cap}
+                    </span>
+                  )}
                 </div>
                 <h4 className="text-[18px] font-medium text-neutral-900 mb-3">{f.name}</h4>
                 <p className="text-neutral-500 text-[14px] leading-relaxed font-light">{f.desc}</p>
@@ -219,18 +288,33 @@ export default function AlFursanPage() {
         </div>
       </section>
 
+      {/* ── FULL-BLEED IMAGE BREAK ───────────────────────────────────── */}
+      <section className="relative h-[55vh] md:h-[65vh] overflow-hidden">
+        <ParallaxImageBand
+          src="/venues/alfursan_p8_7.jpeg"
+          alt="Equestrian grounds and canyon backdrop at AlFursan, AlUla"
+          className="w-full h-full"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 p-8 md:p-16 text-center pointer-events-none">
+          <span className="text-emerald-300 text-[11px] font-bold tracking-widest uppercase mb-3 block">Beyond the Agenda</span>
+          <p className="text-white text-xl md:text-2xl font-light max-w-xl mx-auto">The ride doesn&apos;t end when the event does.</p>
+        </div>
+      </section>
+
       {/* ── SIGNATURE EVENTS ────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-b border-neutral-100">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Core Scope</span>
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight">
               Signature <span className="text-emerald-700">Sporting Events</span></h2>
             <p className="mt-4 text-neutral-500 max-w-2xl mx-auto text-[15px]">
-              AlFursan Equestrian Village is purpose-built to host the world's most prestigious equestrian competitions.
+              AlFursan Equestrian Village is purpose-built to host the world&apos;s most prestigious equestrian competitions.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
             <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
               <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Desert Polo</h3>
               <p className="text-neutral-600 text-[14px] leading-relaxed">
@@ -250,44 +334,36 @@ export default function AlFursanPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── EXPERIENCES ───────────────────────────────────────────────── */}
-      <section 
-        className="relative py-24 md:py-32 text-white bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: `url('/venues/alfursan_event_hospitality.jpeg')` }}
-      >
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-neutral-950/85 z-0"></div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Applications</span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
-              Ideal <span className="text-amber-300">For</span></h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 pt-10 border-t border-neutral-100">
             {[
-              "Destination Weddings",
-              "Gala Dinners & Awards",
-              "Executive Summits",
-              "Board Retreats",
-              "Annual General Meetings (AGMs)",
-              "Product Launches",
-              "Hybrid Conferences",
-              "Town Halls & All-Hands",
-              "Vision 2030 Activations",
-              "Corporate Retreats & Executive Off-sites",
-            ].map((exp, i) => (
-              <div key={i} className="flex items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 hover:border-emerald-500/50 transition-colors rounded-xl px-6 py-4">
-                <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
-                <span className="text-neutral-200 text-[15px] font-light">{exp}</span>
-              </div>
+              "Executive Polo Days",
+              "Equestrian Sporting Hospitality",
+              "Desert Retreats & Off-Sites",
+              "Heritage Sport Sponsorship Activations",
+            ].map((tag) => (
+              <span key={tag} className="px-4 py-2 rounded-full border border-neutral-200 text-neutral-600 text-[13px] font-medium">
+                {tag}
+              </span>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── THE ALULA EXPERIENCE ─────────────────────────────────────── */}
+      <VenueExperienceGrid
+        eyebrow="Before & After the Event"
+        heading={<>The AlUla <span className="text-emerald-700">Experience</span></>}
+        intro="A one-day event at AlFursan sits inside a much larger destination. Here is what your guests can build a multi-day itinerary around."
+        items={experiences}
+      />
+
+      {/* ── SUGGESTED JOURNEY ─────────────────────────────────────────── */}
+      <VenueJourneyTimeline
+        eyebrow="Planning the Trip"
+        heading={<>A Suggested <span className="text-emerald-700">Multi-Day Journey</span></>}
+        intro="Most international delegations extend their stay beyond the event itself. Here is one way the days can come together."
+        stops={journeyStops}
+      />
 
       {/* ── GALLERY ───────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
@@ -297,39 +373,7 @@ export default function AlFursanPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight">
               Destination <span className="text-emerald-700">Gallery</span></h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { src: "/venues/alfursan_p6_5.jpeg", alt: "AlFursan Village — Desert Setting" },
-              { src: "/venues/alfursan_event_polo.jpg", alt: "Desert Polo Match at AlUla" },
-              { src: "/venues/alfursan_p9_8.jpeg", alt: "Polo Field & Grandstand" },
-              { src: "/venues/alfursan_event_action.jpeg", alt: "Polo Players in Action" },
-              { src: "/venues/alfursan_p4_3.jpeg", alt: "Endurance Terrace Setup" },
-              { src: "/venues/alfursan_p5_4.jpeg", alt: "Event Hospitality Under the Stars" },
-              { src: "/venues/alfursan_event_hospitality.jpeg", alt: "VIP Hospitality Area" },
-              { src: "/venues/alfursan_p10_9.jpeg", alt: "Guest Lounge Interior" },
-              { src: "/venues/alfursan_p7_6.jpeg", alt: "Polo Grandstand Infrastructure" },
-              { src: "/venues/alfursan_p8_7.jpeg", alt: "Equestrian Grounds & Canyon Backdrop" },
-              { src: "/venues/alfursan_event_aerial.jpeg", alt: "Equestrian Village Aerial View" },
-              { src: "/venues/alfursan_p12_11.jpeg", alt: "Briefing Session in the Lounge" },
-              { src: "/venues/alfursan_p13_12.jpeg", alt: "Auditorium Seating Setup" },
-              { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
-              { src: "/venues/ai-generated/alfursan_polo_match.png", alt: "Polo Match Concept Visual" },
-            ].map((img, i) => (
-              <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
-                <Image 
-                  src={img.src} 
-                  alt={img.alt} 
-                  fill 
-                  className="object-cover transition-transform duration-[2000ms] group-hover:scale-105" 
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 inset-x-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
-                  <span className="text-white text-[14px] font-medium tracking-wide">{img.alt}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <GalleryLightbox images={galleryImages} />
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
             Venue infrastructure and event imagery displayed for proposal review.
           </p>

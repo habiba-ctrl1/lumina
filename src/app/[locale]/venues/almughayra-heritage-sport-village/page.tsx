@@ -1,13 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import InternalPageHero from "@/components/InternalPageHero";
+import VenueExperienceGrid from "@/components/venues/VenueExperienceGrid";
+import VenueJourneyTimeline from "@/components/venues/VenueJourneyTimeline";
+import GalleryLightbox from "@/components/venues/GalleryLightbox";
+import ParallaxImageBand from "@/components/venues/ParallaxImageBand";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
-  MapPin, Users, Maximize2, Music, Armchair,
-  Tent, TreePine, Shield, ArrowRight, CheckCircle2,
-  Building2, Landmark, Footprints, Home, Palette, ChevronRight
+  MapPin, Users, Music,
+  Footprints, Home, Building2, Landmark, Palette, ArrowRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -72,11 +76,53 @@ const jsonLd = {
   ]
 };
 
+// ─── Facility data — capacity/area shown only when confirmed. ───
+const facilities = [
+  { name: "Royal Venue", cap: "800 guests", area: "4,500 sqm", icon: Landmark, desc: "An inviting space ideal for gatherings and ceremonies. Features high-quality furniture adorned with traditional decorations. Accommodates stage construction." },
+  { name: "Heritage Village", cap: undefined, area: "17,500 sqm", icon: Palette, desc: "An immersive experience celebrating AlUla's cultural richness. Features traditional architecture, food outlets, and spaces for local artists." },
+  { name: "8 km Competition Racetrack", cap: "Intl. Events", area: "8 km", icon: Footprints, desc: "A premier main track designed specifically for local and international camel racing competitions." },
+  { name: "6 km Training Racetrack", cap: "Year-Round", area: "6 km", icon: Footprints, desc: "Available year-round for camel training and local events. Supports the development of heritage sports traditions." },
+  { name: "Camel Shelters (Ezabs)", cap: "250 Shelters", area: undefined, icon: Home, desc: "Dedicated resting spaces for camels during events, providing essential infrastructure for the racing community." },
+  { name: "Parking & Access", cap: "Ample Capacity", area: undefined, icon: Building2, desc: "Both the Royal Venue and Heritage Village offer ample parking and dedicated entrances ensuring seamless visitor access." },
+];
+
+const experiences = [
+  { category: "Heritage Sport", title: "Camel Trekking in the Desert", description: "Ride alongside the same landscape used for the AlUla Camel Cup, guided by local handlers.", image: "/venues/almughayra_event_camel_rider.jpeg", imageAlt: "Camel rider crossing the desert near AlMughayra, AlUla" },
+  { category: "Heritage & Culture", title: "Elephant Rock at Sunset", description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.", image: "/venues/experiences/elephant-rock.jpg", imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla" },
+  { category: "Heritage & Culture", title: "AlUla Old Town", description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.", image: "/venues/experiences/old-town.jpg", imageAlt: "AlUla Old Town heritage district" },
+  { category: "Fine Dining", title: "Dinner in the Old Town", description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.", image: "/venues/experiences/joontos-dining.jpg", imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town" },
+  { category: "Luxury Stays", title: "Banyan Tree & Habitas AlUla", description: "Full resort buyout programs for delegations who want the whole valley to themselves.", image: "/venues/experiences/banyan-tree1.jpeg", imageAlt: "Banyan Tree AlUla luxury desert resort" },
+  { category: "Adventure", title: "Desert Dune Excursions", description: "UTV and buggy routes through the dunes surrounding the heritage village.", image: "/venues/experiences/UTV-BUGGY-1.jpg", imageAlt: "Desert UTV buggy tour near AlUla" },
+];
+
+const journeyStops = [
+  { day: "Day 1", title: "Arrival & Signature Event", description: "Delegates arrive via AlUla International Airport, transfer to AlMughayra, and the event takes centre stage in the Royal Venue." },
+  { day: "Day 2", title: "Heritage & Adventure", description: "A morning at Hegra or Elephant Rock, an afternoon in the desert — dune excursions, camel trekking, or a private Old Town walk." },
+  { day: "Day 3", title: "Leisure & Departure", description: "A relaxed morning at a resort of choice, a final dinner in the Old Town, and departure with a story worth retelling." },
+];
+
+const galleryImages = [
+  { src: "/venues/almughayra_p5_4.jpeg", alt: "Royal Venue — Guest Lounge" },
+  { src: "/venues/ai-generated/almughayra_camel_race.png", alt: "Camel Racing in the Desert" },
+  { src: "/venues/almughayra_p6_5.jpeg", alt: "AlUla Camel Cup — Hospitality Lounge" },
+  { src: "/venues/almughayra_event_race.jpeg", alt: "Camel Race Competition Track" },
+  { src: "/venues/almughayra_p4_3.jpeg", alt: "Royal Venue Structure" },
+  { src: "/venues/almughayra_event_camel_rider.jpeg", alt: "Camel Rider in AlUla Desert" },
+  { src: "/venues/almughayra_p9_8.jpeg", alt: "Heritage Village at Dusk" },
+  { src: "/venues/almughayra_event_night.webp", alt: "Night Light Show on Desert Cliffs" },
+  { src: "/venues/almughayra_p10_9.jpeg", alt: "Aerial View of the Village Complex" },
+  { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
+  { src: "/venues/almughayra_event_trophy.jpeg", alt: "Camel Cup Trophy Ceremony" },
+  { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
+  { src: "/venues/almughayra_p12_11.jpeg", alt: "Aerial View of Competition Racetrack" },
+  { src: "/venues/almughayra_p13_12.jpeg", alt: "Aerial View of Training Racetrack" },
+];
+
 export default function AlMughayraPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] overflow-hidden font-sans">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+
       <Navbar />
 
       {/* ── DRAFT BANNER ──────────────────────────────────────────────── */}
@@ -85,48 +131,48 @@ export default function AlMughayraPage() {
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 flex flex-col justify-center items-center overflow-hidden bg-neutral-900">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/venues/almughayra_p2_1.jpeg"
-            alt="AlMughayra Heritage Sport Village — AlUla"
-            fill
-            className="object-cover opacity-40 animate-in fade-in duration-[2000ms]"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-900/60 to-neutral-900/40" />
-        </div>
+      <InternalPageHero
+        title="AlMughayra"
+        titleHighlight="Heritage Sport Village"
+        subtitle="A world-class destination asset blending heritage and modernity — the ultimate hub for traditional sports, cultural showcases, and community engagement."
+        backgroundImage="/venues/almughayra_p2_1.jpeg"
+        imageAlt="AlMughayra Heritage Sport Village — AlUla"
+        badge="AlUla, Saudi Arabia"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+          { label: "AlMughayra Heritage Sport Village" },
+        ]}
+        enableParallax
+        minHeight="large"
+      />
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center animate-in slide-in-from-bottom-8 fade-in duration-1000">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-[12px] md:text-[13px] font-medium text-neutral-400 mb-8 tracking-wide">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
-            <ChevronRight size={14} className="text-neutral-600" />
-            <Link href="/venues" className="hover:text-emerald-400 transition-colors">Venues</Link>
-            <ChevronRight size={14} className="text-neutral-600" />
-            <span className="text-amber-300">AlMughayra Heritage Sport Village</span>
-          </nav>
+      <div className="bg-white border-b border-neutral-100 py-6 flex justify-center">
+        <Link
+          href="/contact"
+          className="px-8 py-4 text-white text-[14px] font-medium rounded-xl transition-all flex items-center gap-2"
+          style={{
+            background: "linear-gradient(135deg, #044b36 0%, #0d6b4e 100%)",
+            boxShadow: "0 4px 16px rgba(13, 107, 78, 0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
+          }}
+        >
+          Request a Quote <ArrowRight size={16} />
+        </Link>
+      </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
-            AlMughayra <span className="text-emerald-400">Heritage Sport Village</span>
-          </h1>
-          <p className="text-neutral-300 text-[16px] md:text-[18px] max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-            A world-class destination asset blending heritage and modernity — the ultimate hub for traditional sports, cultural showcases, and community engagement.
+      {/* ── POSITIONING STATEMENT ────────────────────────────────────── */}
+      <section
+        className="relative py-20 md:py-28 px-6 bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: "url('/venues/almughayra_event_night.webp')" }}
+      >
+        <div className="absolute inset-0 bg-neutral-950/80" />
+        <div className="relative max-w-3xl mx-auto text-center">
+          <div className="w-10 h-px bg-emerald-500/60 mx-auto mb-8" />
+          <p className="text-white text-xl md:text-3xl font-light leading-snug tracking-tight">
+            Your guests won&apos;t just attend an event. They&apos;ll fall in love with a destination —{" "}
+            <span className="text-emerald-400 font-medium">starting at AlMughayra.</span>
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-4 text-white text-[14px] font-medium rounded-xl transition-all flex items-center gap-2"
-              style={{
-                background: "linear-gradient(135deg, #044b36 0%, #0d6b4e 100%)",
-                boxShadow: "0 4px 16px rgba(13, 107, 78, 0.28), inset 0 1px 0 rgba(255,255,255,0.14)",
-              }}
-            >
-              Request a Quote <ArrowRight size={16} />
-            </Link>
-          </div>
+          <div className="w-10 h-px bg-emerald-500/60 mx-auto mt-8" />
         </div>
       </section>
 
@@ -152,8 +198,33 @@ export default function AlMughayraPage() {
         </div>
       </section>
 
-      {/* ── HIGHLIGHTS ────────────────────────────────────────────────── */}
+      {/* ── WHY ALULA ─────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-neutral-50 border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <ParallaxImageBand
+            src="/alula_maraya_hegra_guide.webp"
+            alt="AlUla heritage landscape — Maraya Concert Hall and Hegra UNESCO site"
+            className="aspect-[4/5] rounded-2xl order-2 lg:order-1 shadow-lg"
+          />
+          <div className="order-1 lg:order-2">
+            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Beyond the Venue</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight mb-6">
+              A Destination Your Guests <span className="text-emerald-700">Will Remember</span>
+            </h2>
+            <div className="space-y-5 text-neutral-600 text-[15px] md:text-[16px] leading-relaxed font-light">
+              <p>
+                An event venue in AlUla comes with something no hotel ballroom can offer: a 200,000-year-old sandstone landscape managed as a single protected destination by the Royal Commission for AlUla, home to Hegra — Saudi Arabia&apos;s first UNESCO World Heritage Site. It is this combination of ancient heritage, desert scale, and five-star infrastructure that makes AlUla event planning a category of its own.
+              </p>
+              <p>
+                Bringing an international delegation to AlMughayra is a different decision than booking a conference hall in Riyadh or Jeddah. It gives a corporate event, gala, or destination wedding a setting guests will still be describing long after the agenda ends — and a reason for the trip to become a multi-day AlUla itinerary rather than a single afternoon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HIGHLIGHTS ────────────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Strategic Assets</span>
@@ -184,7 +255,7 @@ export default function AlMughayraPage() {
       </section>
 
       {/* ── FACILITIES ────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
+      <section className="py-24 md:py-32 bg-neutral-50 border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Infrastructure</span>
@@ -192,22 +263,15 @@ export default function AlMughayraPage() {
               Premium Destination <span className="text-emerald-700">Spaces</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Royal Venue", cap: "800 guests", area: "4,500 sqm", icon: Landmark, desc: "An inviting space ideal for gatherings and ceremonies. Features high-quality furniture adorned with traditional decorations. Accommodates stage construction." },
-              { name: "Heritage Village", cap: "[Pending Final Confirmation]", area: "17,500 sqm", icon: Palette, desc: "An immersive experience celebrating AlUla's cultural richness. Features traditional architecture, food outlets, and spaces for local artists." },
-              { name: "8 km Competition Racetrack", cap: "Intl. Events", area: "8 km", icon: Footprints, desc: "A premier main track designed specifically for local and international camel racing competitions." },
-              { name: "6 km Training Racetrack", cap: "Year-Round", area: "6 km", icon: Footprints, desc: "Available year-round for camel training and local events. Supports the development of heritage sports traditions." },
-              { name: "Camel Shelters (Ezabs)", cap: "250 Shelters", area: "[Pending Final Confirmation]", icon: Home, desc: "Dedicated resting spaces for camels during events, providing essential infrastructure for the racing community." },
-              { name: "Parking & Access", cap: "Ample Capacity", area: "[Pending Final Confirmation]", icon: Building2, desc: "Both the Royal Venue and Heritage Village offer ample parking and dedicated entrances ensuring seamless visitor access." },
-            ].map((f, i) => (
+            {facilities.map((f, i) => (
               <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-500">
                 <div className="flex items-center justify-between mb-6">
                   <f.icon size={24} className="text-neutral-400" />
-                  <div className="text-right flex flex-col gap-1 items-end">
+                  {f.cap && (
                     <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full">
                       {f.cap}
                     </span>
-                  </div>
+                  )}
                 </div>
                 <h4 className="text-[18px] font-medium text-neutral-900 mb-1">{f.name}</h4>
                 {f.area && <span className="text-[13px] text-emerald-600 font-medium block mb-3">{f.area}</span>}
@@ -218,8 +282,23 @@ export default function AlMughayraPage() {
         </div>
       </section>
 
+      {/* ── FULL-BLEED IMAGE BREAK ───────────────────────────────────── */}
+      <section className="relative h-[55vh] md:h-[65vh] overflow-hidden">
+        <ParallaxImageBand
+          src="/venues/almughayra_p9_8.jpeg"
+          alt="Heritage Village at dusk, AlMughayra, AlUla"
+          className="w-full h-full"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/10 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 p-8 md:p-16 text-center pointer-events-none">
+          <span className="text-emerald-300 text-[11px] font-bold tracking-widest uppercase mb-3 block">Beyond the Agenda</span>
+          <p className="text-white text-xl md:text-2xl font-light max-w-xl mx-auto">The desert doesn&apos;t close when the ceremony ends.</p>
+        </div>
+      </section>
+
       {/* ── SIGNATURE EVENTS ────────────────────────────────────────────── */}
-      <section className="py-24 bg-white border-b border-neutral-100">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-700 opacity-80 mb-4">Core Scope</span>
@@ -229,11 +308,11 @@ export default function AlMughayraPage() {
               AlMughayra Heritage Sport Village is the premier destination for preserving and celebrating traditional Saudi sporting customs.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
             <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
               <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Camel Cup</h3>
               <p className="text-neutral-600 text-[14px] leading-relaxed">
-                Often referred to as the "Pinnacle of Camel Racing," this major event features elite camel racing and high-stakes competitions.
+                Often referred to as the &ldquo;Pinnacle of Camel Racing,&rdquo; this major event features elite camel racing and high-stakes competitions.
               </p>
             </div>
             <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
@@ -249,44 +328,36 @@ export default function AlMughayraPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── EXPERIENCES ───────────────────────────────────────────────── */}
-      <section 
-        className="relative py-24 md:py-32 text-white bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: `url('/venues/almughayra_event_night.webp')` }}
-      >
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-neutral-950/85 z-0"></div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="block text-[12px] font-bold tracking-widest uppercase text-emerald-400 opacity-80 mb-4">Event Applications</span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
-              Ideal <span className="text-amber-300">For</span></h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 pt-10 border-t border-neutral-100">
             {[
-              "Destination Weddings",
-              "Gala Dinners & Awards",
-              "Executive Summits",
-              "Board Retreats",
-              "Annual General Meetings (AGMs)",
-              "Product Launches",
-              "Hybrid Conferences",
-              "Town Halls & All-Hands",
-              "Vision 2030 Activations",
-              "Corporate Retreats & Executive Off-sites",
-            ].map((exp, i) => (
-              <div key={i} className="flex items-center gap-4 bg-black/40 backdrop-blur-md border border-white/10 hover:border-emerald-500/50 transition-colors rounded-xl px-6 py-4">
-                <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
-                <span className="text-neutral-200 text-[15px] font-light">{exp}</span>
-              </div>
+              "Heritage Brand Activations",
+              "Cultural Festivals & National Day Programming",
+              "Executive Desert Majlis Evenings",
+              "Vision 2030 Heritage Sport Campaigns",
+            ].map((tag) => (
+              <span key={tag} className="px-4 py-2 rounded-full border border-neutral-200 text-neutral-600 text-[13px] font-medium">
+                {tag}
+              </span>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── THE ALULA EXPERIENCE ─────────────────────────────────────── */}
+      <VenueExperienceGrid
+        eyebrow="Before & After the Event"
+        heading={<>The AlUla <span className="text-emerald-700">Experience</span></>}
+        intro="A one-day event at AlMughayra sits inside a much larger destination. Here is what your guests can build a multi-day itinerary around."
+        items={experiences}
+      />
+
+      {/* ── SUGGESTED JOURNEY ─────────────────────────────────────────── */}
+      <VenueJourneyTimeline
+        eyebrow="Planning the Trip"
+        heading={<>A Suggested <span className="text-emerald-700">Multi-Day Journey</span></>}
+        intro="Most international delegations extend their stay beyond the event itself. Here is one way the days can come together."
+        stops={journeyStops}
+      />
 
       {/* ── GALLERY ───────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 bg-white border-b border-neutral-100">
@@ -296,38 +367,7 @@ export default function AlMughayraPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 tracking-tight">
               Destination <span className="text-emerald-700">Gallery</span></h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { src: "/venues/almughayra_p5_4.jpeg", alt: "Royal Venue — Guest Lounge" },
-              { src: "/venues/ai-generated/almughayra_camel_race.png", alt: "Camel Racing in the Desert" },
-              { src: "/venues/almughayra_p6_5.jpeg", alt: "AlUla Camel Cup — Hospitality Lounge" },
-              { src: "/venues/almughayra_event_race.jpeg", alt: "Camel Race Competition Track" },
-              { src: "/venues/almughayra_p4_3.jpeg", alt: "Royal Venue Structure" },
-              { src: "/venues/almughayra_event_camel_rider.jpeg", alt: "Camel Rider in AlUla Desert" },
-              { src: "/venues/almughayra_p9_8.jpeg", alt: "Heritage Village at Dusk" },
-              { src: "/venues/almughayra_event_night.webp", alt: "Night Light Show on Desert Cliffs" },
-              { src: "/venues/almughayra_p10_9.jpeg", alt: "Aerial View of the Village Complex" },
-              { src: "/venues/almughayra_p8_7.jpeg", alt: "Heritage Village Architecture" },
-              { src: "/venues/almughayra_event_trophy.jpeg", alt: "Camel Cup Trophy Ceremony" },
-              { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
-              { src: "/venues/almughayra_p12_11.jpeg", alt: "Aerial View of Competition Racetrack" },
-              { src: "/venues/almughayra_p13_12.jpeg", alt: "Aerial View of Training Racetrack" },
-            ].map((img, i) => (
-              <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-neutral-100">
-                <Image 
-                  src={img.src} 
-                  alt={img.alt} 
-                  fill 
-                  className="object-cover transition-transform duration-[2000ms] group-hover:scale-105" 
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 inset-x-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
-                  <span className="text-white text-[14px] font-medium tracking-wide">{img.alt}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <GalleryLightbox images={galleryImages} />
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
             Venue infrastructure and event imagery displayed for proposal review.
           </p>
