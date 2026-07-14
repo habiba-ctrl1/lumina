@@ -92,12 +92,54 @@ const facilities = [
 ];
 
 const experiences = [
-  { category: "Equestrian", title: "Horseback Riding Across the Canyon", description: "Guided rides through the sandstone terrain surrounding AlFursan, for riders of every level.", image: "/venues/experiences/horse-riding1.jpeg", imageAlt: "Horseback riders crossing the AlUla canyon near AlFursan" },
-  { category: "Heritage & Culture", title: "Elephant Rock at Sunset", description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.", image: "/venues/experiences/elephant-rock.jpg", imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla" },
-  { category: "Heritage & Culture", title: "AlUla Old Town", description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.", image: "/venues/experiences/old-town.jpg", imageAlt: "AlUla Old Town heritage district" },
-  { category: "Fine Dining", title: "Dinner in the Old Town", description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.", image: "/venues/experiences/joontos-dining.jpg", imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town" },
-  { category: "Luxury Stays", title: "Banyan Tree & Habitas AlUla", description: "Full resort buyout programs for delegations who want the whole valley to themselves.", image: "/venues/experiences/banyan-tree2.avif", imageAlt: "Banyan Tree AlUla luxury desert resort" },
-  { category: "Adventure", title: "Desert Dune Excursions", description: "UTV and buggy routes through the dunes surrounding the equestrian village.", image: "/venues/experiences/UTV-BUGGY-2.jpg", imageAlt: "Desert UTV buggy tour near AlUla" },
+  {
+    category: "Equestrian",
+    title: "Horseback Riding Across the Canyon",
+    description: "Guided rides through the sandstone terrain surrounding AlFursan, for riders of every level.",
+    expandedDescription: "AlFursan's stables support guided rides for riders of every level, from short introductory sessions to longer routes through the sandstone canyon terrain surrounding the village. This is also the field that hosted Richard Mille AlUla Desert Polo — riding here connects guests directly to AlUla's competitive equestrian scene, not just its scenery.",
+    image: "/venues/experiences/horse-riding1.jpeg",
+    imageAlt: "Horseback riders crossing the AlUla canyon near AlFursan",
+  },
+  {
+    category: "Heritage & Culture",
+    title: "Elephant Rock at Sunset",
+    description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.",
+    expandedDescription: "Jabal Al-Fil, known to visitors as Elephant Rock, is a 52-metre sandstone arch shaped by millennia of wind and water — one of AlUla's most recognisable natural landmarks. It sits within easy reach of AlFursan and is best visited in the late afternoon, when the low sun turns the rock deep red-gold.",
+    image: "/venues/experiences/elephant-rock.jpg",
+    imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla",
+  },
+  {
+    category: "Heritage & Culture",
+    title: "AlUla Old Town",
+    description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.",
+    expandedDescription: "AlUla's Old Town is an 800-year-old mud-brick settlement, restored under RCU stewardship and now home to galleries, cafes, and small heritage sites along its original narrow lanes. An evening walk through it, once the desert heat has passed, gives guests a sense of AlUla's history that the venue's own heritage architecture only hints at.",
+    image: "/venues/experiences/old-town.jpg",
+    imageAlt: "AlUla Old Town heritage district",
+  },
+  {
+    category: "Fine Dining",
+    title: "Dinner in the Old Town",
+    description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.",
+    expandedDescription: "Several of Old Town's restored merchant houses now operate as restaurants, including Joontos at Dar Tantora, AlUla's first Old Town hotel. Dinner there seats guests inside a genuinely historic building rather than a themed one, and it makes a natural close to an event day at AlFursan.",
+    image: "/venues/experiences/joontos-dining.jpg",
+    imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town",
+  },
+  {
+    category: "Luxury Stays",
+    title: "Banyan Tree & Habitas AlUla",
+    description: "Full resort buyout programs for delegations who want the whole valley to themselves.",
+    expandedDescription: "Both resorts sit in the Ashar Valley and offer full buyout programs for groups who want privacy for the length of their stay. Banyan Tree leans toward classic desert luxury; Habitas has a rawer, architectural feel favoured by creative and brand-led groups. Either works as a base for a multi-day AlFursan itinerary.",
+    image: "/venues/experiences/banyan-tree2.avif",
+    imageAlt: "Banyan Tree AlUla luxury desert resort",
+  },
+  {
+    category: "Adventure",
+    title: "Desert Dune Excursions",
+    description: "UTV and buggy routes through the dunes surrounding the equestrian village.",
+    expandedDescription: "UTV and buggy routes run through the dune fields around the equestrian village, guided and timed for the cooler parts of the day. It's the most straightforward way to give a group a genuine desert adventure without adding a full day to the itinerary.",
+    image: "/venues/experiences/UTV-BUGGY-2.jpg",
+    imageAlt: "Desert UTV buggy tour near AlUla",
+  },
 ];
 
 const journeyStops = [
@@ -123,6 +165,10 @@ const galleryImages = [
   { src: "/venues/alfursan_grandstand.png", alt: "Polo Grandstand with Spectators" },
   { src: "/venues/experiences/horse-riding.jpeg", alt: "Guests riding at AlFursan Equestrian Village" },
   { src: "/venues/experiences/horse-riding3.jpg", alt: "Horseback riding session at AlFursan, AlUla" },
+  { src: "/venues/extracted/alfursan_richard_mille_polo_field.jpg", alt: "Richard Mille AlUla Desert Polo field at AlFursan, framed by sandstone formations" },
+  { src: "/venues/extracted/alfursan_riders_briefing.jpg", alt: "Riders' briefing session ahead of competition at AlFursan" },
+  { src: "/venues/extracted/alfursan_outdoor_conference.jpg", alt: "Outdoor conference session on the AlFursan terrace" },
+  { src: "/venues/extracted/alfursan_endurance_terrace_lounge.jpg", alt: "Endurance Terrace lounge interior at AlFursan" },
 ];
 
 export default function AlFursanPage() {
@@ -316,9 +362,9 @@ export default function AlFursanPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
             <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">AlUla Desert Polo</h3>
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">Richard Mille AlUla Desert Polo</h3>
               <p className="text-neutral-600 text-[14px] leading-relaxed">
-                An exclusive equestrian sporting event drawing professional polo players, patrons, and royalty to the desert circuit.
+                An exclusive polo tournament held on the AlFursan field, drawing international sponsors including Richard Mille and Bentley alongside professional players and patrons.
               </p>
             </div>
             <div className="p-8 bg-neutral-50 rounded-2xl border border-neutral-100">

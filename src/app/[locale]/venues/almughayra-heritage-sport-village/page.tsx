@@ -87,12 +87,54 @@ const facilities = [
 ];
 
 const experiences = [
-  { category: "Heritage Sport", title: "Camel Trekking in the Desert", description: "Ride alongside the same landscape used for the AlUla Camel Cup, guided by local handlers.", image: "/venues/almughayra_event_camel_rider.jpeg", imageAlt: "Camel rider crossing the desert near AlMughayra, AlUla" },
-  { category: "Heritage & Culture", title: "Elephant Rock at Sunset", description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.", image: "/venues/experiences/elephant-rock.jpg", imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla" },
-  { category: "Heritage & Culture", title: "AlUla Old Town", description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.", image: "/venues/experiences/old-town.jpg", imageAlt: "AlUla Old Town heritage district" },
-  { category: "Fine Dining", title: "Dinner in the Old Town", description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.", image: "/venues/experiences/joontos-dining.jpg", imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town" },
-  { category: "Luxury Stays", title: "Banyan Tree & Habitas AlUla", description: "Full resort buyout programs for delegations who want the whole valley to themselves.", image: "/venues/experiences/banyan-tree1.jpeg", imageAlt: "Banyan Tree AlUla luxury desert resort" },
-  { category: "Adventure", title: "Desert Dune Excursions", description: "UTV and buggy routes through the dunes surrounding the heritage village.", image: "/venues/experiences/UTV-BUGGY-1.jpg", imageAlt: "Desert UTV buggy tour near AlUla" },
+  {
+    category: "Heritage Sport",
+    title: "Camel Trekking in the Desert",
+    description: "Ride alongside the same landscape used for the AlUla Camel Cup, guided by local handlers.",
+    expandedDescription: "Camel racing has shaped this stretch of desert for generations, and the same tracks used for the AlUla Camel Cup are open to guests for guided trekking. Local handlers lead small groups across the dunes at a relaxed pace — an easy way to experience the terrain that gives AlMughayra its name, before or after the event itself.",
+    image: "/venues/almughayra_event_camel_rider.jpeg",
+    imageAlt: "Camel rider crossing the desert near AlMughayra, AlUla",
+  },
+  {
+    category: "Heritage & Culture",
+    title: "Elephant Rock at Sunset",
+    description: "A 52-metre sandstone arch, carved by wind and water — one of AlUla's most photographed landmarks.",
+    expandedDescription: "Jabal Al-Fil, known to visitors as Elephant Rock, is a 52-metre sandstone arch shaped by millennia of wind and water — one of AlUla's most recognisable natural landmarks. It sits within easy reach of AlMughayra and is best visited in the late afternoon, when the low sun turns the rock deep red-gold.",
+    image: "/venues/experiences/elephant-rock.jpg",
+    imageAlt: "Elephant Rock (Jabal Al-Fil) at sunset, AlUla",
+  },
+  {
+    category: "Heritage & Culture",
+    title: "AlUla Old Town",
+    description: "An 800-year-old mud-brick village — narrow lanes, galleries, and evening walks.",
+    expandedDescription: "AlUla's Old Town is an 800-year-old mud-brick settlement, restored under RCU stewardship and now home to galleries, cafes, and small heritage sites along its original narrow lanes. An evening walk through it, once the desert heat has passed, gives guests a sense of AlUla's history that the venue's own heritage architecture only hints at.",
+    image: "/venues/experiences/old-town.jpg",
+    imageAlt: "AlUla Old Town heritage district",
+  },
+  {
+    category: "Fine Dining",
+    title: "Dinner in the Old Town",
+    description: "Restored merchant houses now host AlUla's most distinctive dining rooms, including Joontos at Dar Tantora.",
+    expandedDescription: "Several of Old Town's restored merchant houses now operate as restaurants, including Joontos at Dar Tantora, AlUla's first Old Town hotel. Dinner there seats guests inside a genuinely historic building rather than a themed one, and it makes a natural close to an event day at AlMughayra.",
+    image: "/venues/experiences/joontos-dining.jpg",
+    imageAlt: "Joontos restaurant at Dar Tantora, AlUla Old Town",
+  },
+  {
+    category: "Luxury Stays",
+    title: "Banyan Tree & Habitas AlUla",
+    description: "Full resort buyout programs for delegations who want the whole valley to themselves.",
+    expandedDescription: "Both resorts sit in the Ashar Valley and offer full buyout programs for groups who want privacy for the length of their stay. Banyan Tree leans toward classic desert luxury; Habitas has a rawer, architectural feel favoured by creative and brand-led groups. Either works as a base for a multi-day AlMughayra itinerary.",
+    image: "/venues/experiences/banyan-tree1.jpeg",
+    imageAlt: "Banyan Tree AlUla luxury desert resort",
+  },
+  {
+    category: "Adventure",
+    title: "Desert Dune Excursions",
+    description: "UTV and buggy routes through the dunes surrounding the heritage village.",
+    expandedDescription: "UTV and buggy routes run through the dune fields around the heritage village, guided and timed for the cooler parts of the day. It's the most straightforward way to give a group a genuine desert adventure without adding a full day to the itinerary.",
+    image: "/venues/experiences/UTV-BUGGY-1.jpg",
+    imageAlt: "Desert UTV buggy tour near AlUla",
+  },
 ];
 
 const journeyStops = [
@@ -116,6 +158,10 @@ const galleryImages = [
   { src: "/venues/almughayra_p7_6.jpeg", alt: "Guest Reception & Lounge" },
   { src: "/venues/almughayra_p12_11.jpeg", alt: "Aerial View of Competition Racetrack" },
   { src: "/venues/almughayra_p13_12.jpeg", alt: "Aerial View of Training Racetrack" },
+  { src: "/venues/extracted/almughayra_aerial_dusk.jpg", alt: "Aerial view of Heritage Village at dusk with mountain backdrop" },
+  { src: "/venues/extracted/almughayra_aerial_racetrack.jpg", alt: "Aerial view of the camel racetrack and desert landscape" },
+  { src: "/venues/extracted/almughayra_royal_stage_guests.jpg", alt: "Guests in the Royal Stage lounge during the AlUla Camel Cup" },
+  { src: "/venues/extracted/almughayra_camel_cup_lounge.jpg", alt: "AlUla Camel Cup hospitality lounge inside the Royal Stage" },
 ];
 
 export default function AlMughayraPage() {
