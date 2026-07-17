@@ -57,21 +57,111 @@ model Event {
 model Vendor {
   id           String   @id @default(uuid())
   name         String
-  category     String   // Photography, Catering, Venue, Decor, Lighting, Entertainment, Furniture, AV Equipment, Luxury Cars
+  category     String   // primary category (legacy single value, kept for existing UI)
   services     String?
+  // ── PRIVATE CONTACT FIELDS — never expose on public routes/APIs/exports.
+  //    Only /admin (requireAdmin-guarded) may read these. Matching results must
+  //    use a select that excludes them. ──
   contactInfo  String?
-  city         String?
   email        String?
   phone        String?
   whatsapp     String?
+  contactPerson String?
+  // ── end private fields ──
+  city         String?
   portfolio    String?  // URL
   pricing      String?  // JSON string or description
   availability String?  // Available, Booked, Seasonal
   rating       Float    @default(5.0)
+  // ── Vendor-system fields (2026-07 intake rollout) ──
+  categories         String[] @default([]) // multi-category support
+  regionCoverage     String[] @default([]) // cities/regions served
+  yearsExperience    Int?
+  certifications     String?
+  rateCardSummary    String?
+  rateCardFiles      String?  // file names, stored locally on founder's laptop (SEM VENDOR DETAILS/)
+  portfolioFiles     String?  // file names / folder refs, stored locally
+  meetingStatus      String   @default("Contacted") // Contacted, Meeting Scheduled, Met, Negotiating, Confirmed Partner, Not Proceeding
+  agreementSigned    Boolean  @default(false)
+  agreementDate      DateTime?
+  verificationStatus String   @default("Pending") // Verified, Pending, Unverified
+  internalRating     Int      @default(0) // 0 = unrated, 1-5 editable as projects complete
+  preferred          Boolean  @default(false) // featured/preferred partner flag
+  photoPermission    Boolean  @default(false) // written permission to showcase their photos
+  notes        VendorNote[]
   events       Event[]  @relation("EventVendors")
   quotes       Quote[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+}
+
+// Public partner-onboarding submissions (/partner-onboarding form).
+// Kept SEPARATE from Vendor so spam/incomplete entries never pollute the vetted
+// vendor list — founder reviews in /admin and approves → creates/merges Vendor.
+// ── Contact fields here are PRIVATE, same rule as Vendor: never expose on
+//    public routes/APIs/exports. POST is public (vendors submit their own info);
+//    GET/PATCH are requireAdmin-only. ──
+model VendorApplication {
+  id              String   @id @default(uuid())
+  appNumber       String   @unique // "SEM-P-0001" — sequential partner application number
+  status          String   @default("Pending") // Pending, Approved, Rejected
+  // Step 1 — company & contact
+  companyName     String
+  businessType    String?
+  contactPerson   String
+  jobTitle        String?
+  whatsapp        String
+  email           String?
+  phone           String?
+  city            String
+  regionCoverage  String[] @default([])
+  website         String?
+  instagram       String?
+  linkedin        String?
+  facebook        String?
+  tiktok          String?
+  youtube         String?
+  googleMaps      String?
+  // Step 2 — services & company details
+  categories      String[] @default([])
+  servicesDesc    String?
+  yearsInBusiness String?
+  teamSize        String?
+  languages       String?
+  crNumber        String?
+  vatNumber       String?
+  // Step 3 — portfolio & pricing. LINKS ONLY (Drive/Dropbox/WeTransfer) —
+  // event-industry files are too heavy for serverless upload; founder decision 2026-07.
+  logoLink        String?
+  profileLink     String?  // company profile PDF link
+  portfolioLink   String?  // photos folder link
+  videoLink       String?
+  rateCardLink    String?
+  pricingType     String?  // "Rate card" | "Project based"
+  majorClients    String?
+  certifications  String?
+  // Step 4 — permissions & partnership (timestamped written consent record)
+  permLogoUse     Boolean  @default(false)
+  permMediaUse    Boolean  @default(false) // permission to use photos on SEM site + proposals
+  permAccurate    Boolean  @default(false)
+  featureOnSem    Boolean  @default(false)
+  backlinkAnswer  String?  // "Yes" | "Maybe later" | "No website"
+  extraNotes      String?
+  // review outcome — Approve adds to internal DB only; public site listing is a
+  // separate later step (blocked until founder's SEO brief).
+  vendorId        String?  // Vendor created or merged into on approval
+  reviewedAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Append-only meeting/interaction log — never overwrite, always add a new row.
+model VendorNote {
+  id        String   @id @default(uuid())
+  vendor    Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  vendorId  String
+  note      String
+  createdAt DateTime @default(now())
 }
 
 model Quote {
