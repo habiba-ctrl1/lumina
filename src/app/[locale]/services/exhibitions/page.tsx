@@ -5,6 +5,7 @@ import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
+import PartnerNetworkGallery from "@/components/PartnerNetworkGallery";
 import Image from "next/image";
 import Link from "next/link";
 import { Briefcase, Layout, Monitor, Globe, Users, PenTool, Lightbulb, TrendingUp, Award, ChevronRight, CheckCircle2, Phone } from "lucide-react";
@@ -332,6 +333,29 @@ export default function ExhibitionsPage() {
             </div>
           </div>
         </section>
+
+        {/* ── PARTNER PRODUCTION GALLERY ── */}
+        <PartnerNetworkGallery
+          isAr={isAr}
+          eyebrow="Real Exhibition Builds"
+          eyebrowAr="أعمال معارض حقيقية"
+          heading={<>Exhibition Stands <span className="text-[var(--primary)]">Delivered by Our Network</span></>}
+          headingAr={<>أجنحة معارض <span className="text-[var(--primary)]">من شبكة شركائنا</span></>}
+          subheading="A selection of exhibition stand and interactive LED builds delivered through SEM's vetted production partner network across the Gulf region."
+          subheadingAr="مجموعة مختارة من أجنحة المعارض وتركيبات الشاشات التفاعلية التي تم تنفيذها عبر شبكة شركاء الإنتاج المعتمدين لدى SEM في منطقة الخليج."
+          images={[
+            {
+              src: "/services/partner-network/exhibition-stand-design-saudi-arabia-1.webp",
+              alt: "Custom exhibition stand design with interactive LED tower installation at a major Gulf trade show",
+              altAr: "تصميم جناح معرض مخصص مع تركيب برج شاشات LED تفاعلي في معرض تجاري كبير بالخليج",
+            },
+            {
+              src: "/services/partner-network/exhibition-stand-design-saudi-arabia-2.webp",
+              alt: "Interactive LED exhibition tower build on the show floor of a national exhibition",
+              altAr: "تركيب برج شاشات LED تفاعلي على أرضية معرض وطني",
+            },
+          ]}
+        />
 
         {/* ── LEAD FORM / EXPO ENQUIRY ── */}
         <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }}>

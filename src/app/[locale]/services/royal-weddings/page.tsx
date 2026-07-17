@@ -3,6 +3,7 @@ import { getLocale } from "next-intl/server";
 import InternalPageHero from "@/components/InternalPageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PartnerNetworkGallery from "@/components/PartnerNetworkGallery";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -1166,6 +1167,44 @@ export default async function RoyalWeddingsPage() {
             </div>
           </div>
         </section>
+
+        {/* ── PARTNER PRODUCTION GALLERY ── */}
+        <PartnerNetworkGallery
+          isAr={isAr}
+          eyebrow="Real Wedding Scenography"
+          eyebrowAr="سينوغرافيا أعراس حقيقية"
+          heading={<>Luxury Wedding Decor <span className="text-[var(--primary)]">from Our Partner Network</span></>}
+          headingAr={<>ديكور أعراس فاخر <span className="text-[var(--primary)]">من شبكة شركائنا</span></>}
+          subheading="Bespoke floral scenography, illuminated installations, and garden builds delivered through SEM's vetted production partner network across the Gulf region."
+          subheadingAr="سينوغرافيا زهرية مصممة خصيصًا، وتركيبات مضيئة، وإنشاءات حدائق تم تنفيذها عبر شبكة شركاء الإنتاج المعتمدين لدى SEM في منطقة الخليج."
+          images={[
+            {
+              src: "/services/partner-network/luxury-wedding-decoration-saudi-arabia-1.webp",
+              alt: "Oversized floral tree installations for a luxury wedding reception",
+              altAr: "تركيبات أشجار زهرية ضخمة لحفل استقبال زفاف فاخر",
+            },
+            {
+              src: "/services/partner-network/luxury-wedding-decoration-saudi-arabia-2.webp",
+              alt: "Illuminated mirror walkway installation for a luxury wedding entrance",
+              altAr: "تركيب ممر مرايا مضيء لمدخل زفاف فاخر",
+            },
+            {
+              src: "/services/partner-network/luxury-wedding-decoration-saudi-arabia-3.webp",
+              alt: "Bespoke garden trellis and floral courtyard build for an outdoor luxury wedding",
+              altAr: "إنشاء تعريشة حديقة وفناء زهري مصمم خصيصًا لزفاف فاخر خارجي",
+            },
+            {
+              src: "/services/partner-network/luxury-wedding-decoration-saudi-arabia-4.webp",
+              alt: "Landscaped garden pathway decor for an outdoor luxury wedding celebration",
+              altAr: "ديكور ممر حديقة منسق لاحتفال زفاف فاخر خارجي",
+            },
+            {
+              src: "/services/partner-network/luxury-wedding-decoration-saudi-arabia-5.webp",
+              alt: "Elegant themed plaza build with live piano performance for a gala wedding evening",
+              altAr: "إنشاء ساحة بتصميم أنيق مع عزف بيانو حي لأمسية زفاف فاخرة",
+            },
+          ]}
+        />
 
         {/* ── HOW WE PLAN ── */}
         <section className="py-28 bg-neutral-50 border-y border-slate-200">
