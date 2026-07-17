@@ -104,6 +104,7 @@ const UI = {
     previous: "Previous", next: "Next", continueReading: "Continue Reading",
     moreInsights: "More", insightsWord: "Insights", viewAll: "View all articles",
     readArticle: "Read article", notFound: "Article Not Found", backJournal: "Back to Journal",
+    whatsappCta: "Chat on WhatsApp",
     tipLabels: { tip: "Expert Tip", insight: "Industry Insight", mistake: "Common Pitfall", recommendation: "Our Recommendation" },
   },
   ar: {
@@ -120,6 +121,7 @@ const UI = {
     previous: "السابق", next: "التالي", continueReading: "تابع القراءة",
     moreInsights: "المزيد من", insightsWord: "الرؤى", viewAll: "عرض كل المقالات",
     readArticle: "اقرأ المقال", notFound: "المقال غير موجود", backJournal: "العودة إلى المدوّنة",
+    whatsappCta: "تواصل عبر واتساب",
     tipLabels: { tip: "نصيحة الخبير", insight: "رؤية القطاع", mistake: "خطأ شائع", recommendation: "توصيتنا" },
   },
 };
@@ -366,6 +368,38 @@ export default function BlogPostPage() {
         >
           {text}
         </h2>
+      );
+    }
+
+    /* Inline lead-capture CTA box */
+    if (content.startsWith("[CTA]")) {
+      const text = content.replace("[CTA]", "").trim();
+      return (
+        <div
+          key={idx}
+          className="my-10 rounded-2xl border border-[var(--primary)]/25 bg-[var(--surface-tinted)] p-6 md:p-8"
+        >
+          <p
+            className="text-[var(--heading)] text-[15.5px] font-semibold leading-[1.75] mb-5"
+            dangerouslySetInnerHTML={{ __html: inlineMarkdown(text) }}
+          />
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%20would%20like%20a%20cost%20estimate%20for%20my%20event."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              <MessageCircle size={16} /> {t.whatsappCta}
+            </a>
+            <Link
+              href={lp("/contact")}
+              className="inline-flex items-center gap-2 border border-[var(--primary)] text-[var(--primary)] px-5 py-3 rounded-full text-sm font-semibold hover:bg-[var(--primary)] hover:text-white transition-colors"
+            >
+              {t.freeConsult} <ArrowUpRight size={15} />
+            </Link>
+          </div>
+        </div>
       );
     }
 
