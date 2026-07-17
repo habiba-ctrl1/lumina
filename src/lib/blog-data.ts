@@ -499,7 +499,7 @@ export const blogPosts: BlogPost[] = [
       "[A] Plan a dedicated VIP run-of-show covering private arrivals, lounges, correct seating hierarchy, security coordination, and discretion. In Saudi Arabia, events often include government officials or senior executives, so protocol must be handled by an experienced team. Mishandling a VIP can overshadow an otherwise flawless event.",
       "[Q] What should a post-event report include?",
       "[A] Measure results against your original objectives: leads generated, attendance and engagement, press and social reach, and survey feedback, translated into clear ROI. Pair it with a team debrief capturing what worked and what to improve. This turns each event into a learning asset for the next one.",
-      "Ready to plan a corporate event that delivers measurable results? From executive summits in Riyadh to product launches in Jeddah, our team manages every step — strategy, venue, production, and reporting. [Contact Saudi Event Management today](/contact) to start planning your next business event."
+      "Ready to plan a corporate event that delivers measurable results? From [executive summits in Riyadh](/locations/riyadh/corporate-event-management) to [product launches in Jeddah](/locations/jeddah/corporate-event-management), our team manages every step — strategy, venue, production, and reporting. [Contact Saudi Event Management today](/contact) to start planning your next business event."
     ],
     contentAr: [
       "الفعالية المؤسسية ليست مجرد تجمّع أبدًا. فإن أُحسِنت، أغلقت الصفقات، وأطلقت المنتجات، وعزّزت الثقافة، ووضعت علامتك في موقع القيادة. وإن أُسيئت، أضرّت بالأربعة بهدوء. وفي السعودية — حيث يتوقّع الجمهور الآن إنتاجًا بمستوى [موسم الرياض](/locations/riyadh)، وحيث تضيف تصاريح الهيئة العامة للترفيه والبروتوكول الثقافي تعقيدًا حقيقيًا — يتلخّص الفرق بين فعالية مؤسسية رائعة وأخرى منسيّة في العملية.",
@@ -569,7 +569,7 @@ export const blogPosts: BlogPost[] = [
       "[A] خطّط لجدول تشغيل مخصّص لكبار الشخصيات يغطّي الوصول الخاص، والصالات، وتراتبية الجلوس الصحيحة، وتنسيق الأمن، والحصافة. ففي السعودية، تشمل الفعاليات غالبًا مسؤولين حكوميين أو كبار تنفيذيين، لذا يجب أن يتولّى البروتوكول فريق متمرّس. وسوء التعامل مع ضيف كبير قد يطغى على فعالية لا تشوبها شائبة.",
       "[Q] ماذا يجب أن يتضمّن تقرير ما بعد الفعالية؟",
       "[A] قِس النتائج مقابل أهدافك الأصلية: العملاء المولّدون، والحضور والتفاعل، والوصول الصحفي والاجتماعي، وملاحظات الاستبيان، مترجمة إلى عائد استثمار واضح. اقرنه بجلسة مراجعة للفريق تلتقط ما نجح وما يجب تحسينه. هذا يحوّل كل فعالية إلى أصل تعلّمي للتالية.",
-      "جاهز لتخطيط فعالية مؤسسية تحقّق نتائج قابلة للقياس؟ من القمم التنفيذية في الرياض إلى إطلاق المنتجات في جدة، يدير فريقنا كل خطوة — الاستراتيجية والقاعة والإنتاج والتقارير. [Contact Saudi Event Management today](/contact) لبدء تخطيط فعالية أعمالك القادمة."
+      "جاهز لتخطيط فعالية مؤسسية تحقّق نتائج قابلة للقياس؟ من [القمم التنفيذية في الرياض](/locations/riyadh/corporate-event-management) إلى [إطلاق المنتجات في جدة](/locations/jeddah/corporate-event-management)، يدير فريقنا كل خطوة — الاستراتيجية والقاعة والإنتاج والتقارير. [Contact Saudi Event Management today](/contact) لبدء تخطيط فعالية أعمالك القادمة."
     ]
   },
   {
@@ -1505,7 +1505,7 @@ export const blogPosts: BlogPost[] = [
       "- Strong relationships with the best venues and vendors",
       "- Experience handling VIP and royal protocol",
       "- The ability to keep the event completely private and off social media (if that is what you want)",
-      "At Saudi Event Management, we specialize in producing large-scale, high-profile Saudi weddings. We handle the kosha, the zaffah, the permits, and every tiny detail so you can actually enjoy your big day. [Contact our wedding team](/contact) to start planning privately."
+      "At Saudi Event Management, our [royal wedding planning service](/services/royal-weddings) specializes in producing large-scale, high-profile Saudi weddings. We handle the kosha, the zaffah, the permits, and every tiny detail so you can actually enjoy your big day. [Contact our wedding team](/contact) to start planning privately."
     ],
     contentAr: [
       "تخطيط زفاف سعودي ضخم ورسمي — خصوصًا الذي يشمل كبار الشخصيات أو أفراد العائلة المالكة — ليس أمرًا يستطيع فريق فندق عادي التعامل معه وحده. فهو يتطلّب خبرة جادّة، وتوقيتًا مثاليًا، وحصافة تامة.",
@@ -1525,7 +1525,7 @@ export const blogPosts: BlogPost[] = [
       "- علاقات قوية مع أفضل القاعات والموردين",
       "- خبرة في التعامل مع بروتوكول كبار الشخصيات والملكي",
       "- القدرة على إبقاء الفعالية خاصة تمامًا وخارج وسائل التواصل (إن كان هذا ما تريده)",
-      "في إدارة الفعاليات السعودية، نتخصّص في إنتاج الأعراس السعودية الكبرى رفيعة المستوى. نتولّى الكوشة، والزفّة، والتصاريح، وكل تفصيل صغير كي تستمتع فعلًا بيومك الكبير. [تواصل مع فريق الأعراس لدينا](/contact) لبدء التخطيط بسرّية."
+      "في إدارة الفعاليات السعودية، تتخصّص [خدمة تخطيط الأعراس الملكية لدينا](/services/royal-weddings) في إنتاج الأعراس السعودية الكبرى رفيعة المستوى. نتولّى الكوشة، والزفّة، والتصاريح، وكل تفصيل صغير كي تستمتع فعلًا بيومك الكبير. [تواصل مع فريق الأعراس لدينا](/contact) لبدء التخطيط بسرّية."
     ]
   },
   {
@@ -1747,12 +1747,12 @@ export const blogPosts: BlogPost[] = [
     content: [
       "[Riyadh](/locations/riyadh) is quickly becoming one of the most competitive MICE destinations in the world, rivaling cities like Dubai and Singapore. With new conference centers, luxury hotel ballrooms, and heritage-site event spaces, [corporate event](/services/corporate-events) planners have incredible options. Here are our top venue picks for 2026.",
       "## 1. KAFD Conference Center — Best for Massive Summits",
-      "If you are hosting a huge international B2B summit or government conference, the KAFD Conference Center is the ultimate choice. It is Riyadh's premier large-format venue, featuring a 3,200-person plenary hall, 22 breakout rooms, and built-in 4K LED walls.",
+      "If you are hosting a huge international B2B summit or [government conference](/locations/riyadh/conference-planning), the KAFD Conference Center is the ultimate choice. It is Riyadh's premier large-format venue, featuring a 3,200-person plenary hall, 22 breakout rooms, and built-in 4K LED walls.",
       "**Capacity:** 3,200 (plenary hall) | **Best for:** International conferences and massive exhibitions",
       "## 2. The Ritz-Carlton Riyadh — Most Prestigious",
       "Set inside a breathtaking Najdi palace complex, the Al Faisaliah Ballroom at the Ritz-Carlton is the definition of prestige. With massive chandeliers and marble floors, it is the perfect setting for high-end [corporate galas](/services/corporate-events) or royal-level award ceremonies.",
       "**Capacity:** 1,500 guests | **Best for:** C-suite galas, VIP award ceremonies, and product launches",
-      "[TIP] When planning a high-end corporate gala, allocate at least 15% of your budget to AV and lighting. Good production turns a regular dinner into an unforgettable experience.",
+      "[TIP] When planning a [high-end corporate gala in Riyadh](/services/corporate-events-riyadh), allocate at least 15% of your budget to AV and lighting. Good production turns a regular dinner into an unforgettable experience.",
       "## 3. Four Seasons Hotel Riyadh — Best for Executive Meetings",
       "Located in the iconic Kingdom Centre, the Four Seasons is the preferred choice for intimate, high-protocol executive summits and board meetings. The venues offer incredible panoramic views of the city and absolute privacy.",
       "**Capacity:** 800 guests | **Best for:** Executive board meetings and private VIP hospitality",
@@ -1769,12 +1769,12 @@ export const blogPosts: BlogPost[] = [
     contentAr: [
       "تتحوّل [الرياض](/locations/riyadh) بسرعة إلى واحدة من أكثر وجهات المعارض والمؤتمرات تنافسية في العالم، تنافس مدنًا كدبي وسنغافورة. ومع مراكز مؤتمرات جديدة، وقاعات فنادق فاخرة، ومساحات فعاليات في مواقع تراثية، يملك منظّمو [الفعاليات المؤسسية](/services/corporate-events) خيارات مذهلة. وإليك أبرز اختياراتنا للقاعات في 2026.",
       "## 1. مركز كافد للمؤتمرات — الأفضل للقمم الضخمة",
-      "إن كنت تستضيف قمة دولية ضخمة بين الشركات أو مؤتمرًا حكوميًا، فمركز كافد للمؤتمرات هو الخيار الأمثل. إنه قاعة الرياض الرائدة كبيرة الحجم، بقاعة عامة تتسع لـ3,200 شخص، و22 غرفة جانبية، وشاشات LED مدمجة بدقة 4K.",
+      "إن كنت تستضيف قمة دولية ضخمة بين الشركات أو [مؤتمرًا حكوميًا](/locations/riyadh/conference-planning)، فمركز كافد للمؤتمرات هو الخيار الأمثل. إنه قاعة الرياض الرائدة كبيرة الحجم، بقاعة عامة تتسع لـ3,200 شخص، و22 غرفة جانبية، وشاشات LED مدمجة بدقة 4K.",
       "**السعة:** 3,200 (القاعة العامة) | **الأنسب لـ:** المؤتمرات الدولية والمعارض الضخمة",
       "## 2. الريتز كارلتون الرياض — الأكثر هيبة",
       "داخل مجمّع قصر نجدي خلّاب، قاعة الفيصلية في الريتز كارلتون هي تعريف الهيبة. بثرياتها الضخمة وأرضياتها الرخامية، إنها الموقع المثالي لـ[الحفلات المؤسسية](/services/corporate-events) الراقية أو حفلات الجوائز بمستوى ملكي.",
       "**السعة:** 1,500 ضيف | **الأنسب لـ:** حفلات كبار التنفيذيين، وحفلات جوائز كبار الشخصيات، وإطلاق المنتجات",
-      "[TIP] عند تخطيط حفل مؤسسي راقٍ، خصّص 15% على الأقل من ميزانيتك للصوت والصورة والإضاءة. فالإنتاج الجيد يحوّل عشاءً عاديًا إلى تجربة لا تُنسى.",
+      "[TIP] عند تخطيط [حفل مؤسسي راقٍ في الرياض](/services/corporate-events-riyadh)، خصّص 15% على الأقل من ميزانيتك للصوت والصورة والإضاءة. فالإنتاج الجيد يحوّل عشاءً عاديًا إلى تجربة لا تُنسى.",
       "## 3. فندق فورسيزونز الرياض — الأفضل للاجتماعات التنفيذية",
       "يقع في مركز المملكة الأيقوني، وفورسيزونز هو الخيار المفضّل للقمم التنفيذية واجتماعات مجلس الإدارة الحميمة عالية البروتوكول. تقدّم القاعات إطلالات بانورامية مذهلة على المدينة وخصوصية تامة.",
       "**السعة:** 800 ضيف | **الأنسب لـ:** اجتماعات مجلس الإدارة التنفيذية وضيافة كبار الشخصيات الخاصة",
@@ -1825,7 +1825,7 @@ export const blogPosts: BlogPost[] = [
       "Got a huge guest list? This is where you need to be. The main hall can host up to 5,000 guests, making it the top choice for massive family celebrations.",
       "**Capacity:** Up to 5,000 guests | **Best for:** Grand, large-scale weddings",
       "## Need Help Planning Your Jeddah Wedding?",
-      "Jeddah's peak wedding season is from October to April. Remember, waterfront venues often require special GEA sound permits if you are having live entertainment after 11 PM. But do not worry—our team at Saudi Event Management handles all permit applications for you.",
+      "Jeddah's peak wedding season is from October to April. Remember, waterfront venues often require special GEA sound permits if you are having live entertainment after 11 PM. But do not worry—our [luxury wedding planning team in Jeddah](/services/luxury-weddings-jeddah) handles all permit applications for you.",
       "[CTA] Shortlisting venues for your big day? Our [wedding planners in Jeddah](/services/weddings) can check live availability at these venues, negotiate rates for your date, and handle every permit for you.",
       "Want to see more details on pricing? Check out our full [wedding cost guide](/blog/exceptional-wedding-cost-saudi-arabia-guide). Ready to book your dream venue? [Contact our Jeddah wedding team](/contact) today!"
     ],
@@ -1849,7 +1849,7 @@ export const blogPosts: BlogPost[] = [
       "لديك قائمة ضيوف هائلة؟ هنا حيث يجب أن تكون. القاعة الرئيسية تستوعب حتى 5,000 ضيف، ما يجعلها الخيار الأول لاحتفالات العائلة الضخمة.",
       "**السعة:** حتى 5,000 ضيف | **الأنسب لـ:** الأعراس الكبرى واسعة النطاق",
       "## تحتاج مساعدة في تخطيط زفافك في جدة؟",
-      "ذروة موسم الزفاف في جدة من أكتوبر إلى أبريل. وتذكّر، القاعات على الواجهة البحرية تتطلّب غالبًا تصاريح صوت خاصة من الهيئة العامة للترفيه إن كان لديك ترفيه حي بعد الساعة 11 مساءً. لكن لا تقلق — فريقنا في إدارة الفعاليات السعودية يتولّى كل طلبات التصاريح نيابةً عنك.",
+      "ذروة موسم الزفاف في جدة من أكتوبر إلى أبريل. وتذكّر، القاعات على الواجهة البحرية تتطلّب غالبًا تصاريح صوت خاصة من الهيئة العامة للترفيه إن كان لديك ترفيه حي بعد الساعة 11 مساءً. لكن لا تقلق — [فريق تخطيط الأعراس الفاخرة لدينا في جدة](/services/luxury-weddings-jeddah) يتولّى كل طلبات التصاريح نيابةً عنك.",
       "[CTA] تختصر قائمة القاعات ليومك الكبير؟ يمكن لـ[منظّمي الأعراس لدينا في جدة](/services/weddings) التحقق من التوفّر المباشر في هذه القاعات، والتفاوض على الأسعار لموعدك، والتكفّل بكل التصاريح نيابةً عنك.",
       "تريد رؤية تفاصيل أكثر عن الأسعار؟ اطّلع على [دليل تكلفة الزفاف](/blog/exceptional-wedding-cost-saudi-arabia-guide) الكامل. جاهز لحجز قاعة أحلامك؟ [تواصل مع فريق أعراس جدة لدينا](/contact) اليوم!"
     ]
@@ -2298,7 +2298,7 @@ export const blogPosts: BlogPost[] = [
     featured: true,
     content: [
       "Planning a mega-exhibition in [Riyadh](/locations/riyadh) is a completely different challenge from organizing a normal corporate event. Think of it more like a construction project! You are dealing with hundreds of exhibitors building custom booths, tons of freight coming from around the world, and thousands of visitors who all need to move smoothly through the venue.",
-      "Riyadh has become the top destination for [exhibitions](/services/exhibitions) in the region. With the expansion of RICEC (Riyadh International Convention and Exhibition Center), demand for exhibition space is higher than ever—so you need to book **12 to 18 months in advance**.",
+      "Riyadh has become the top destination for [exhibitions](/services/exhibitions) in the region. With the expansion of RICEC (Riyadh International Convention and Exhibition Center), demand for [exhibition management in Riyadh](/locations/riyadh/exhibition-management) is higher than ever—so you need to book **12 to 18 months in advance**.",
       "## 1. Picking the Right Venue",
       "For a truly mega-exhibition (1,000+ exhibitors, 50,000+ visitors), your options in Riyadh are limited. RICEC is the go-to choice. But before you sign a contract, make sure the venue has:",
       "- **High-density Wi-Fi** across the entire show floor (exhibitors will complain loudly without it!)",
@@ -2321,7 +2321,7 @@ export const blogPosts: BlogPost[] = [
     ],
     contentAr: [
       "تخطيط معرض ضخم في [الرياض](/locations/riyadh) تحدٍّ مختلف تمامًا عن تنظيم فعالية مؤسسية عادية. فكّر فيه أكثر كمشروع بناء! أنت تتعامل مع مئات العارضين يبنون أجنحة مخصّصة، وأطنانًا من الشحن من حول العالم، وآلاف الزوّار الذين يحتاجون جميعًا للتنقّل بسلاسة عبر القاعة.",
-      "أصبحت الرياض الوجهة الأولى لـ[المعارض](/services/exhibitions) في المنطقة. ومع توسّع مركز الرياض الدولي للمؤتمرات والمعارض، الطلب على مساحة المعارض أعلى من أي وقت مضى — لذا تحتاج للحجز قبل **12 إلى 18 شهرًا**.",
+      "أصبحت الرياض الوجهة الأولى لـ[المعارض](/services/exhibitions) في المنطقة. ومع توسّع مركز الرياض الدولي للمؤتمرات والمعارض، الطلب على [إدارة المعارض في الرياض](/locations/riyadh/exhibition-management) أعلى من أي وقت مضى — لذا تحتاج للحجز قبل **12 إلى 18 شهرًا**.",
       "## 1. اختيار القاعة المناسبة",
       "لمعرض ضخم حقًا (1,000+ عارض، 50,000+ زائر)، خياراتك في الرياض محدودة. مركز الرياض الدولي للمؤتمرات والمعارض هو الخيار الأمثل. لكن قبل توقيع العقد، تأكّد أن القاعة لديها:",
       "- **واي فاي عالي الكثافة** عبر أرضية العرض كلها (سيشتكي العارضون بصوت عالٍ بدونه!)",
