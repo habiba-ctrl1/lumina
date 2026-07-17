@@ -75,6 +75,7 @@ const navGroups: NavGroup[] = [
     label: "Vendors",
     items: [
       { href: "/admin/vendors", label: "Vendors", icon: Briefcase },
+      { href: "/admin/vendor-applications", label: "Applications", icon: ClipboardList },
       { href: "/admin/quotes", label: "Quotes", icon: MessageSquareQuote },
     ],
   },
