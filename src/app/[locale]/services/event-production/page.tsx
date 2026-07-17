@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
+import PartnerNetworkGallery from "@/components/PartnerNetworkGallery";
 import {
   Zap, Music, Monitor, Camera, Layers, PenTool,
   Cpu, Lightbulb, ChevronRight, Award, CheckCircle2, Phone,
@@ -508,6 +509,34 @@ export default async function EventProductionPage() {
             </p>
           </div>
         </section>
+
+        {/* ── PARTNER PRODUCTION GALLERY ── */}
+        <PartnerNetworkGallery
+          isAr={isAr}
+          eyebrow="Real Production Builds"
+          eyebrowAr="أعمال إنتاج حقيقية"
+          heading={<>Stage &amp; Production Work <span className="text-[var(--primary)]">from Our Partner Network</span></>}
+          headingAr={<>أعمال المسرح والإنتاج <span className="text-[var(--primary)]">من شبكة شركائنا</span></>}
+          subheading="Large-scale stage builds, live performance production, and indoor arena fit-outs delivered through SEM's vetted production partner network across the Gulf region."
+          subheadingAr="إنشاءات مسرحية كبيرة الحجم، وإنتاج عروض حية، وتجهيزات صالات داخلية تم تنفيذها عبر شبكة شركاء الإنتاج المعتمدين لدى SEM في منطقة الخليج."
+          images={[
+            {
+              src: "/services/partner-network/event-production-company-saudi-arabia-1.webp",
+              alt: "Large-scale outdoor concert stage production with lighting rig for a national celebration",
+              altAr: "إنتاج مسرح حفلات خارجي كبير الحجم مع منظومة إضاءة لاحتفال وطني",
+            },
+            {
+              src: "/services/partner-network/event-production-company-saudi-arabia-2.webp",
+              alt: "Live cultural stage performance production for a national day celebration",
+              altAr: "إنتاج عرض مسرحي ثقافي حي لاحتفال باليوم الوطني",
+            },
+            {
+              src: "/services/partner-network/event-production-company-saudi-arabia-3.webp",
+              alt: "Large-format indoor event production with turf flooring and LED screen build",
+              altAr: "إنتاج فعالية داخلية واسعة النطاق مع أرضية عشبية وشاشة LED",
+            },
+          ]}
+        />
 
         {/* ── LEAD FORM / QUOTE ── */}
         <section id="quote" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_corporate_gala.webp')" }}>
