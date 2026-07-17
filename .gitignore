@@ -37,3 +37,18 @@ next-env.d.ts
 
 # large video files (>100MB GitHub limit)
 public/hero-video.mp4
+
+# RCU Confidential Brochures - NEVER push to remote
+public/private/
+scratch/
+
+# Vendor NDAs, agreements, company profiles, rate cards - NEVER push to remote
+SEM VENDOR DETAILS/
+
+# Google Search Console exports - private business data, must never be committed
+# (especially not inside public/, where it would be served on the live site)
+public/saudieventmanagement.com-Performance-on-Search-*/
+SEO/
+
+# Local archive of unused files (kept on laptop, not deployed)
+archive/
