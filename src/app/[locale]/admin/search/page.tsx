@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, Suspense } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, Mail, User, Briefcase, FileText, CalendarDays, ArrowRight, Loader2 } from "lucide-react";
@@ -32,7 +33,7 @@ function SearchResultsContent() {
       const [inqRes, clientRes, vendorRes, eventRes, blogRes] = await Promise.all([
         fetch(`/api/contact?search=${query}`),
         fetch(`/api/clients?search=${query}`),
-        fetch(`/api/vendors?search=${query}`),
+        adminFetch(`/api/vendors?search=${query}`),
         fetch(`/api/events?search=${query}`),
         fetch(`/api/blog`) // Blog API search not yet implemented, fetching all
       ]);

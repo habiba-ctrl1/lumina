@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { Briefcase, Star, Search, RefreshCw, Plus, X, Phone, Mail, MapPin, MoreVertical, CheckCircle2, Award, Zap, DollarSign } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,11 +19,30 @@ type Vendor = {
   pricing?: string;
   availability?: string;
   rating: number;
+  contactPerson?: string;
+  categories?: string[];
+  regionCoverage?: string[];
+  yearsExperience?: number | null;
+  certifications?: string;
+  rateCardSummary?: string;
+  rateCardFiles?: string;
+  portfolioFiles?: string;
+  meetingStatus?: string;
+  agreementSigned?: boolean;
+  agreementDate?: string | null;
+  verificationStatus?: string;
+  internalRating?: number;
+  preferred?: boolean;
+  photoPermission?: boolean;
+  notes?: { id: string; note: string; createdAt: string }[];
   _count?: {
     quotes: number;
     events: number;
   };
 };
+
+const MEETING_STATUSES = ["Contacted", "Meeting Scheduled", "Met", "Negotiating", "Confirmed Partner", "Not Proceeding"];
+const VERIFY_STATUSES = ["Verified", "Pending", "Unverified"];
 
 export default function VendorsPage() {
   const [vendors, setVendors] = useState<Vendor[]>([]);
@@ -33,10 +53,9 @@ export default function VendorsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Matching Engine State
-  const [matchType, setMatchType] = useState("Wedding");
+  const [matchService, setMatchService] = useState("");
   const [matchCity, setMatchCity] = useState("Riyadh");
-  const [matchBudget, setMatchBudget] = useState("50000");
-  const [matchedResults, setMatchedResults] = useState<Record<string, Vendor[]>>({});
+  const [matchedResults, setMatchedResults] = useState<Vendor[]>([]);
   const [matching, setMatching] = useState(false);
   const [showMatchEngine, setShowMatchEngine] = useState(false);
 
@@ -81,7 +100,7 @@ export default function VendorsPage() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ search, category });
-      const response = await fetch(`/api/vendors?${params.toString()}`);
+      const response = await adminFetch(`/api/vendors?${params.toString()}`);
       const data = await response.json();
       if (!data.error) setVendors(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -100,7 +119,7 @@ export default function VendorsPage() {
         ? `${formData.email} | ${formData.phone}`
         : formData.contactInfo;
 
-      const response = await fetch('/api/vendors', {
+      const response = await adminFetch('/api/vendors', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -139,17 +158,50 @@ export default function VendorsPage() {
     }
   };
 
+  // ── Vendor detail panel (view/edit + append-only notes) ──
+  const [detail, setDetail] = useState<Vendor | null>(null);
+  const [savingDetail, setSavingDetail] = useState(false);
+  const [newNote, setNewNote] = useState("");
+
+  const openVendor = async (id: string) => {
+    try {
+      const r = await adminFetch(`/api/vendors/${id}`);
+      const d = await r.json();
+      if (!d.error) setDetail(d);
+    } catch (e) { console.error("Failed to load vendor:", e); }
+  };
+
+  const saveDetail = async () => {
+    if (!detail) return;
+    setSavingDetail(true);
+    try {
+      const r = await adminFetch(`/api/vendors/${detail.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(detail),
+      });
+      if (r.ok) fetchVendors();
+      else alert("Save failed");
+    } finally { setSavingDetail(false); }
+  };
+
+  const addNote = async () => {
+    if (!detail || !newNote.trim()) return;
+    const r = await adminFetch(`/api/vendors/${detail.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ note: newNote }),
+    });
+    if (r.ok) { setNewNote(""); openVendor(detail.id); }
+  };
+
   const runMatchingEngine = async () => {
     setMatching(true);
     try {
-      const params = new URLSearchParams({
-        eventType: matchType,
-        city: matchCity,
-        budget: matchBudget
-      });
-      const res = await fetch(`/api/admin/vendor-match?${params.toString()}`);
+      const params = new URLSearchParams({ service: matchService, city: matchCity });
+      const res = await adminFetch(`/api/admin/vendor-match?${params.toString()}`);
       const data = await res.json();
-      if (data.success && data.matches) {
+      if (data.success && Array.isArray(data.matches)) {
         setMatchedResults(data.matches);
       }
     } catch (error) {
@@ -212,25 +264,25 @@ export default function VendorsPage() {
               <h2 className="text-sm font-semibold text-slate-800">Smart Vendor Matching Engine</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-end mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-end mb-5">
               <div>
-                <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Event Type</label>
-                <select 
-                  value={matchType} 
-                  onChange={(e) => setMatchType(e.target.value)}
+                <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Service Needed</label>
+                <select
+                  value={matchService}
+                  onChange={(e) => setMatchService(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400"
                 >
-                  <option value="Wedding">Wedding</option>
-                  <option value="Corporate">Corporate Gala</option>
-                  <option value="Private">Private Event</option>
-                  <option value="Culture">Cultural Activation</option>
+                  <option value="">Any Service</option>
+                  {["Tents & Structures", "Catering", "Entertainment", "Decor", "AV", "Full-Service", "Venues", "Wedding", "Transportation", "Scaffolding", "Speakers"].map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
                 </select>
               </div>
-              
+
               <div>
                 <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">City / Region</label>
-                <select 
-                  value={matchCity} 
+                <select
+                  value={matchCity}
                   onChange={(e) => setMatchCity(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400"
                 >
@@ -238,18 +290,7 @@ export default function VendorsPage() {
                 </select>
               </div>
 
-              <div>
-                <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Estimated Budget (SAR)</label>
-                <input 
-                  type="text" 
-                  value={matchBudget}
-                  onChange={(e) => setMatchBudget(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400"
-                  placeholder="e.g. 50000"
-                />
-              </div>
-
-              <button 
+              <button
                 onClick={runMatchingEngine}
                 disabled={matching}
                 className="w-full py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-all disabled:opacity-55"
@@ -258,39 +299,44 @@ export default function VendorsPage() {
               </button>
             </div>
 
-            {/* Match Results */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-slate-100 pt-4">
-              {['venues', 'caterings', 'decors'].map((categoryKey) => {
-                const list = matchedResults[categoryKey] || [];
-                const categoryLabel = categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1, -1);
-                
-                return (
-                  <div key={categoryKey} className="bg-slate-50 rounded-xl p-3 border border-slate-100">
-                    <h3 className="text-xs font-bold text-slate-700 mb-2 flex items-center justify-between">
-                      <span>Top 10 {categoryLabel}s</span>
-                      <span className="text-[10px] font-medium text-slate-400">{list.length} Suggested</span>
-                    </h3>
-                    <div className="space-y-1.5 max-h-52 overflow-y-auto">
-                      {list.length === 0 ? (
-                        <p className="text-[11px] text-slate-400 italic p-2 bg-white rounded border border-dashed">No matching partners found in this category.</p>
-                      ) : (
-                        list.map((item) => (
-                          <div key={item.id} className="bg-white p-2 rounded border border-slate-100 flex items-center justify-between text-xs hover:border-teal-300 transition-all">
-                            <div className="min-w-0">
-                              <p className="font-semibold text-slate-800 truncate">{item.name}</p>
-                              <p className="text-[10px] text-slate-400">{item.city || 'Saudi Arabia'}</p>
-                            </div>
-                            <div className="flex items-center gap-1 text-[11px] font-bold text-teal-600 bg-teal-50 px-1.5 py-0.5 rounded">
-                              <Star size={10} className="fill-current" />
-                              {item.rating.toFixed(1)}
-                            </div>
-                          </div>
-                        ))
-                      )}
+            {/* Match Results — top 5, ranked: Verified > Preferred > internal rating */}
+            <div className="border-t border-slate-100 pt-4">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xs font-bold text-slate-700">Best Matches ({matchedResults.length})</h3>
+                <span className="text-[10px] text-slate-400 italic">Date availability not tracked yet — confirm with vendor before quoting</span>
+              </div>
+              {matchedResults.length === 0 ? (
+                <p className="text-[11px] text-slate-400 italic p-3 bg-white rounded-xl border border-dashed">No matching partners found. Try &quot;Any Service&quot; or a different city.</p>
+              ) : (
+                <div className="space-y-1.5">
+                  {matchedResults.map((item, i) => (
+                    <div key={item.id} onClick={() => openVendor(item.id)}
+                      className="bg-white p-2.5 rounded-xl border border-slate-100 flex items-center justify-between text-xs hover:border-teal-300 transition-all cursor-pointer">
+                      <div className="min-w-0 flex items-center gap-2.5">
+                        <span className="w-5 h-5 rounded-md bg-slate-900 text-white text-[10px] font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-slate-800 truncate">{item.name}</p>
+                          <p className="text-[10px] text-slate-400 truncate">
+                            {(item.categories?.length ? item.categories : [item.category]).join(" · ")} — {item.regionCoverage?.join(", ") || item.city || "Saudi Arabia"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {item.verificationStatus === "Verified" && (
+                          <span className="text-[10px] font-semibold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded flex items-center gap-1"><CheckCircle2 size={10} /> Verified</span>
+                        )}
+                        {item.preferred && (
+                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded flex items-center gap-1"><Award size={10} /> Preferred</span>
+                        )}
+                        <span className="flex items-center gap-1 text-[11px] font-bold text-teal-600 bg-teal-50 px-1.5 py-0.5 rounded">
+                          <Star size={10} className="fill-current" />
+                          {(item.internalRating || 0) > 0 ? item.internalRating : "—"}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -360,7 +406,8 @@ export default function VendorsPage() {
                   key={vendor.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white border border-slate-200/80 rounded-2xl p-4 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col relative"
+                  onClick={() => openVendor(vendor.id)}
+                  className="bg-white border border-slate-200/80 rounded-2xl p-4 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col relative cursor-pointer"
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-600 shadow-sm border border-teal-100">
@@ -381,6 +428,24 @@ export default function VendorsPage() {
                       <span className="text-[10px] font-semibold text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded-md flex items-center gap-1">
                         <MapPin size={10} /> {vendor.city || 'Riyadh'}
                       </span>
+                      {vendor.meetingStatus && (
+                        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-md ${
+                          vendor.meetingStatus === "Confirmed Partner" ? "bg-emerald-50 text-emerald-700"
+                          : vendor.meetingStatus === "Not Proceeding" ? "bg-rose-50 text-rose-600"
+                          : "bg-amber-50 text-amber-700"}`}>
+                          {vendor.meetingStatus}
+                        </span>
+                      )}
+                      {vendor.verificationStatus === "Verified" && (
+                        <span className="text-[10px] font-semibold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded-md flex items-center gap-1">
+                          <CheckCircle2 size={10} /> Verified
+                        </span>
+                      )}
+                      {vendor.preferred && (
+                        <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded-md flex items-center gap-1">
+                          <Award size={10} /> Preferred
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
                       {vendor.services || 'Premium services tailored for luxury events.'}
@@ -392,7 +457,7 @@ export default function VendorsPage() {
                       <span className="text-[9px] uppercase tracking-wider text-slate-400">Engagement</span>
                       <span className="text-xs text-slate-700 font-semibold">{vendor._count?.events || 0} Events</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                       <a href={`mailto:${vendor.email || ''}`} className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-50"><Mail size={14} /></a>
                       <a href={`https://wa.me/${(vendor.whatsapp || vendor.phone || '').replace(/\D/g, '')}`} target="_blank" className="p-1.5 rounded-lg text-emerald-500 hover:bg-emerald-50"><Phone size={14} /></a>
                     </div>
@@ -580,6 +645,154 @@ export default function VendorsPage() {
                     </button>
                   </div>
                 </form>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Vendor Detail / Edit side-over */}
+      <AnimatePresence>
+        {detail && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setDetail(null)}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[100]"
+            />
+            <motion.div
+              initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 end-0 w-full md:w-[560px] bg-white border-l border-slate-200 z-[101] shadow-2xl flex flex-col"
+            >
+              <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <div className="min-w-0">
+                  <h2 className="text-sm font-semibold text-slate-800 tracking-tight truncate">{detail.name}</h2>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
+                    Partner Record · {detail._count?.events || 0} events · {detail._count?.quotes || 0} quotes
+                  </p>
+                </div>
+                <button onClick={() => setDetail(null)} className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg"><X size={18} /></button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-5 space-y-5">
+                {/* Status row */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Meeting Status</label>
+                    <select value={detail.meetingStatus || "Contacted"}
+                      onChange={(e) => setDetail({ ...detail, meetingStatus: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400">
+                      {MEETING_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Verification</label>
+                    <select value={detail.verificationStatus || "Pending"}
+                      onChange={(e) => setDetail({ ...detail, verificationStatus: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400">
+                      {VERIFY_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Toggles + rating */}
+                <div className="grid grid-cols-2 gap-2">
+                  {([
+                    ["agreementSigned", "Agreement Signed"],
+                    ["preferred", "Preferred Partner"],
+                    ["photoPermission", "Photo Permission"],
+                  ] as const).map(([key, label]) => (
+                    <label key={key} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
+                      <input type="checkbox" checked={!!detail[key]}
+                        onChange={(e) => setDetail({ ...detail, [key]: e.target.checked })}
+                        className="accent-teal-600" />
+                      <span className="text-xs font-semibold text-slate-700">{label}</span>
+                    </label>
+                  ))}
+                  <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+                    <span className="text-xs font-semibold text-slate-700">Internal Rating</span>
+                    <select value={detail.internalRating ?? 0}
+                      onChange={(e) => setDetail({ ...detail, internalRating: parseInt(e.target.value) })}
+                      className="bg-white border border-slate-200 rounded-lg px-2 py-1 text-xs font-bold text-slate-800 ms-auto">
+                      {[0, 1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>{n === 0 ? "—" : "★".repeat(n)}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Contact (private) */}
+                <div className="border border-rose-100 bg-rose-50/40 rounded-xl p-3 space-y-3">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-rose-500">Private — never shown to clients</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {([
+                      ["contactPerson", "Contact Person"],
+                      ["phone", "Phone"],
+                      ["email", "Email"],
+                      ["whatsapp", "WhatsApp"],
+                    ] as const).map(([key, label]) => (
+                      <div key={key} className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</label>
+                        <input type="text" value={(detail[key] as string) || ""}
+                          onChange={(e) => setDetail({ ...detail, [key]: e.target.value })}
+                          className="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Coverage & profile */}
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Categories (comma separated)</label>
+                    <input type="text" value={(detail.categories || []).join(", ")}
+                      onChange={(e) => setDetail({ ...detail, categories: e.target.value.split(",").map((x) => x.trim()).filter(Boolean) })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Region Coverage (comma separated)</label>
+                    <input type="text" value={(detail.regionCoverage || []).join(", ")}
+                      onChange={(e) => setDetail({ ...detail, regionCoverage: e.target.value.split(",").map((x) => x.trim()).filter(Boolean) })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Rate Card Summary (internal reference only)</label>
+                    <textarea rows={3} value={detail.rateCardSummary || ""}
+                      onChange={(e) => setDetail({ ...detail, rateCardSummary: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400 resize-none" />
+                  </div>
+                </div>
+
+                <button onClick={saveDetail} disabled={savingDetail}
+                  className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50">
+                  {savingDetail ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-teal-400" size={14} />}
+                  {savingDetail ? "Saving…" : "Save Changes"}
+                </button>
+
+                {/* Append-only notes log */}
+                <div className="border-t border-slate-100 pt-4">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">Meeting / Interaction Log (append-only)</p>
+                  <div className="flex gap-2 mb-3">
+                    <input type="text" value={newNote} onChange={(e) => setNewNote(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && addNote()}
+                      placeholder="Add a new note (old notes are never overwritten)…"
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400" />
+                    <button onClick={addNote} className="px-4 bg-teal-600 text-white rounded-xl text-xs font-bold hover:bg-teal-500">Add</button>
+                  </div>
+                  <div className="space-y-2 max-h-64 overflow-y-auto">
+                    {(detail.notes || []).length === 0 ? (
+                      <p className="text-[11px] text-slate-400 italic">No notes yet.</p>
+                    ) : (
+                      (detail.notes || []).map((n) => (
+                        <div key={n.id} className="bg-slate-50 border border-slate-100 rounded-xl p-3">
+                          <p className="text-[10px] text-slate-400 font-semibold mb-1">
+                            {new Date(n.createdAt).toLocaleString("en-GB", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                          </p>
+                          <p className="text-xs text-slate-700 leading-relaxed whitespace-pre-wrap">{n.note}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </>
