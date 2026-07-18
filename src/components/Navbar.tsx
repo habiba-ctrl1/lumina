@@ -67,7 +67,7 @@ const aboutItems = [
   { label: "About Us",           href: "/about",                    icon: Info,       desc: "Our story, mission & values"          },
   { label: "Our Team",           href: "/about/our-team",           icon: Users,      desc: "Meet the people behind every event"   },
   { label: "Recognition & Standards", href: "/about/awards-accolades", icon: Trophy,   desc: "Our vendor vetting & quality process"  },
-  { label: "Partner With Us",    href: "/vendors",                  icon: Handshake,  desc: "Join our vendor & partner network"    },
+  { label: "Partner With Us",    href: "/partner-onboarding",       icon: Handshake,  desc: "Join our vendor & partner network"    },
   { label: "Careers",            href: "/about/careers",            icon: Building2,  desc: "Grow with Saudi Event Management"     },
 ];
 
