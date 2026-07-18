@@ -403,6 +403,30 @@ export default function BlogPostPage() {
       );
     }
 
+    /* Inline image figure — format: [IMG]/blog/file.webp|Caption text */
+    if (content.startsWith("[IMG]")) {
+      const raw = content.replace("[IMG]", "").trim();
+      const [src, caption] = raw.split("|");
+      return (
+        <figure key={idx} className="my-10">
+          <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden">
+            <Image
+              src={src.trim()}
+              alt={(caption || "").trim()}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+          {caption && (
+            <figcaption className="mt-3 text-center text-[13px] text-[var(--foreground-medium)] opacity-80">
+              {caption.trim()}
+            </figcaption>
+          )}
+        </figure>
+      );
+    }
+
     /* Callout boxes */
     const callouts: Record<
       string,
