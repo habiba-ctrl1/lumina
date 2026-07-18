@@ -1,9 +1,16 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { logActivity } from '@/lib/logger';
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function GET(request: Request) {
   try {
+    // Vendor records contain private contact info — admin only, never public.
+    const user = await requireAdmin(request);
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search');
     const category = searchParams.get('category');
@@ -44,6 +51,11 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json();
     const vendor = await prisma.vendor.create({
       data: {

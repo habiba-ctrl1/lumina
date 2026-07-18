@@ -1,43 +1,63 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { requireAdmin } from '@/lib/api-auth';
 
+/**
+ * Vendor matching engine (admin only).
+ * GET /api/admin/vendor-match?city=Riyadh&service=Catering&includeUnverified=1
+ *
+ * Ranking (per founder's spec):
+ *  1. Service/category match (when a service is given)
+ *  2. Region coverage must include the client's city (or "Saudi Arabia"-wide)
+ *  3. Unverified excluded by default (includeUnverified=1 overrides)
+ *  4. Verified > Pending, then preferred flag, then internalRating, then rating
+ * Availability-by-date is not yet tracked — flagged in the response.
+ * Output contains NO private contact fields.
+ */
 export async function GET(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
-    const eventType = searchParams.get('eventType') || '';
-    const city = searchParams.get('city') || '';
-    const budgetStr = searchParams.get('budget') || '0';
-    const budget = parseFloat(budgetStr.replace(/[^0-9.]/g, '')) || 0;
+    const city = (searchParams.get('city') || '').trim().toLowerCase();
+    const service = (searchParams.get('service') || '').trim().toLowerCase();
+    const includeUnverified = searchParams.get('includeUnverified') === '1';
 
-    // Filter categories: Venues, Catering, Decor
-    const categories = ['Venue', 'Catering', 'Decor', 'AV & Lighting', 'Photography'];
+    const vendors = await prisma.vendor.findMany({
+      // Private contact fields deliberately excluded from matching output.
+      select: {
+        id: true, name: true, category: true, categories: true, services: true,
+        city: true, regionCoverage: true, verificationStatus: true, meetingStatus: true,
+        internalRating: true, rating: true, preferred: true, agreementSigned: true,
+      },
+    });
 
-    // Match engine logic:
-    // 1. Filter by category
-    // 2. Filter by city if specified
-    // 3. Sort by rating desc
-    const matches: Record<string, any[]> = {};
+    const coversCity = (v: (typeof vendors)[number]) =>
+      !city ||
+      (v.city || '').toLowerCase().includes(city) ||
+      v.regionCoverage.some((r) => r.toLowerCase().includes(city) || /saudi arabia/i.test(r));
 
-    for (const cat of categories) {
-      const vendors = await prisma.vendor.findMany({
-        where: {
-          category: { equals: cat },
-          city: city ? { equals: city } : undefined,
-        },
-        orderBy: [
-          { rating: 'desc' },
-          { name: 'asc' }
-        ],
-        take: 10,
-      });
+    const matchesService = (v: (typeof vendors)[number]) =>
+      !service ||
+      [v.category, ...v.categories, v.services || ''].join(' ').toLowerCase().includes(service);
 
-      matches[cat.toLowerCase() + 's'] = vendors;
-    }
+    const ranked = vendors
+      .filter((v) => (includeUnverified || v.verificationStatus !== 'Unverified') && coversCity(v) && matchesService(v))
+      .sort(
+        (a, b) =>
+          Number(b.verificationStatus === 'Verified') - Number(a.verificationStatus === 'Verified') ||
+          Number(b.preferred) - Number(a.preferred) ||
+          b.internalRating - a.internalRating ||
+          b.rating - a.rating
+      )
+      .slice(0, 5);
 
     return NextResponse.json({
       success: true,
-      matches,
-      filters: { eventType, city, budget }
+      matches: ranked,
+      note: 'Availability for specific dates is not yet tracked — confirm with the vendor before quoting.',
+      filters: { city, service, includeUnverified },
     });
   } catch (error) {
     console.error('Vendor matching engine error:', error);
