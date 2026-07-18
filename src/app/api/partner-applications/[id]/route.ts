@@ -28,6 +28,7 @@ function buildOnboardingNote(app: {
   rateCardLink: string | null;
   permMediaUse: boolean;
   permLogoUse: boolean;
+  permNonCircumvention: boolean;
   backlinkAnswer: string | null;
   featureOnSem: boolean;
   createdAt: Date;
@@ -36,7 +37,7 @@ function buildOnboardingNote(app: {
   return [
     `Onboarding form ${app.appNumber} submitted ${d}.`,
     `Links — logo: ${app.logoLink || '—'} | profile: ${app.profileLink || '—'} | photos: ${app.portfolioLink || '—'} | video: ${app.videoLink || '—'} | rate card: ${app.rateCardLink || '—'}.`,
-    `Permissions — media use: ${app.permMediaUse ? 'YES' : 'no'} | logo display: ${app.permLogoUse ? 'YES' : 'no'}.`,
+    `Permissions — media use: ${app.permMediaUse ? 'YES' : 'no'} | logo display: ${app.permLogoUse ? 'YES' : 'no'} | non-circumvention: ${app.permNonCircumvention ? 'AGREED' : 'no'}.`,
     `Backlink: ${app.backlinkAnswer || '—'} | wants SEM feature: ${app.featureOnSem ? 'yes' : 'no'}.`,
   ].join(' ');
 }

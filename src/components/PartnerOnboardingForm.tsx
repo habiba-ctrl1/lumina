@@ -13,7 +13,11 @@ import {
   ChevronRight,
   Send,
   Sparkles,
+  Upload,
+  FileText,
+  X,
 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Partner Onboarding Form — public, English-only (v1).
@@ -43,7 +47,7 @@ const CATEGORIES = [
   "Other",
 ];
 
-const CITIES = [
+const SAUDI_CITIES = [
   "Riyadh",
   "Jeddah",
   "Dammam",
@@ -53,7 +57,21 @@ const CITIES = [
   "AlUla",
   "NEOM",
   "Tabuk",
+];
+
+// Vendors in the network are already based in Dubai, Doha and Muscat — the
+// base-city dropdown and coverage grid both accept GCC options.
+const GCC_CITIES = ["Dubai", "Abu Dhabi", "Doha", "Manama", "Kuwait City", "Muscat"];
+
+const COVERAGE_OPTIONS = [
+  ...SAUDI_CITIES,
   "All Saudi Arabia",
+  "UAE",
+  "Qatar",
+  "Bahrain",
+  "Kuwait",
+  "Oman",
+  "All GCC",
 ];
 
 const STEPS = [
@@ -101,6 +119,7 @@ type FormState = {
   backlinkAnswer: string;
   extraNotes: string;
   permAccurate: boolean;
+  permNonCircumvention: boolean;
   companyUrl: string; // honeypot — hidden, must stay empty
 };
 
@@ -142,6 +161,7 @@ const INITIAL: FormState = {
   backlinkAnswer: "",
   extraNotes: "",
   permAccurate: false,
+  permNonCircumvention: false,
   companyUrl: "",
 };
 
@@ -216,6 +236,95 @@ function CheckboxGrid({
   );
 }
 
+type UploadState = {
+  status: "uploading" | "done" | "error";
+  name?: string;
+  error?: string;
+};
+
+// Link input + "Upload" button side by side. Once a file is uploaded (or while
+// uploading) the row becomes a file chip; removing it restores the link input.
+function LinkOrUploadField({
+  label,
+  hint,
+  placeholder,
+  accept,
+  value,
+  upload,
+  onLinkChange,
+  onFileSelect,
+  onRemove,
+}: {
+  label: string;
+  hint?: string;
+  placeholder: string;
+  accept: string;
+  value: string;
+  upload?: UploadState;
+  onLinkChange: (v: string) => void;
+  onFileSelect: (f: File) => void;
+  onRemove: () => void;
+}) {
+  const uploaded = value.startsWith("supabase://");
+  if (uploaded || upload?.status === "uploading") {
+    return (
+      <Field label={label}>
+        <div className="flex items-center justify-between gap-3 bg-neutral-50 border border-neutral-200/80 px-4 py-3 rounded-xl">
+          <span className="flex items-center gap-2 text-[13px] text-neutral-700 min-w-0">
+            <FileText size={14} className="text-[var(--primary)] flex-shrink-0" />
+            <span className="truncate">{upload?.name || "Uploaded file"}</span>
+          </span>
+          {upload?.status === "uploading" ? (
+            <span className="text-[11px] font-semibold text-neutral-400 flex-shrink-0 animate-pulse">
+              Uploading…
+            </span>
+          ) : (
+            <span className="flex items-center gap-2 flex-shrink-0">
+              <CheckCircle size={14} className="text-emerald-500" />
+              <button
+                type="button"
+                onClick={onRemove}
+                className="text-neutral-400 hover:text-red-500 transition-colors"
+                aria-label="Remove file"
+              >
+                <X size={14} />
+              </button>
+            </span>
+          )}
+        </div>
+      </Field>
+    );
+  }
+  return (
+    <Field label={label} hint={hint}>
+      <div className="flex gap-2">
+        <input
+          className={inputClass}
+          value={value}
+          onChange={(e) => onLinkChange(e.target.value)}
+          placeholder={placeholder}
+        />
+        <label className="flex-shrink-0 inline-flex items-center gap-1.5 px-3.5 rounded-xl border border-neutral-200 bg-neutral-50 text-[12px] font-semibold text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] cursor-pointer transition-all">
+          <Upload size={13} /> Upload
+          <input
+            type="file"
+            accept={accept}
+            className="hidden"
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (f) onFileSelect(f);
+              e.target.value = "";
+            }}
+          />
+        </label>
+      </div>
+      {upload?.status === "error" && (
+        <p className="text-[11px] text-red-500 mt-1">{upload.error}</p>
+      )}
+    </Field>
+  );
+}
+
 export default function PartnerOnboardingForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [step, setStep] = useState(0);
@@ -236,7 +345,45 @@ export default function PartnerOnboardingForm() {
         : [...f[field], value],
     }));
 
+  type FileField = "portfolioLink" | "profileLink" | "logoLink" | "rateCardLink";
+  const [uploads, setUploads] = useState<Partial<Record<FileField, UploadState>>>({});
+
+  const uploadFile = async (field: FileField, kind: string, file: File) => {
+    setUploads((u) => ({ ...u, [field]: { status: "uploading", name: file.name } }));
+    try {
+      const res = await fetch("/api/partner-applications/upload-url", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind, filename: file.name, size: file.size }),
+      });
+      const data = await res.json();
+      if (res.status === 503) throw new Error("Uploads are unavailable right now — please paste a link instead.");
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      const { error } = await supabase.storage
+        .from(data.bucket)
+        .uploadToSignedUrl(data.path, data.token, file);
+      if (error) throw new Error("Upload failed — please try again or paste a link.");
+      set(field, `supabase://${data.bucket}/${data.path}`);
+      setUploads((u) => ({ ...u, [field]: { status: "done", name: file.name } }));
+    } catch (e: any) {
+      setUploads((u) => ({
+        ...u,
+        [field]: { status: "error", error: e?.message || "Upload failed — please paste a link instead." },
+      }));
+    }
+  };
+
+  const removeUpload = (field: FileField) => {
+    // Storage cleanup isn't needed — orphaned files are pruned manually, and
+    // the private bucket is never listed publicly.
+    set(field, "");
+    setUploads((u) => ({ ...u, [field]: undefined }));
+  };
+
+  const uploadInProgress = Object.values(uploads).some((u) => u?.status === "uploading");
+
   const stepError = (): string => {
+    if (uploadInProgress) return "Please wait — a file is still uploading.";
     if (step === 0) {
       if (!form.companyName.trim()) return "Please enter your company name.";
       if (!form.contactPerson.trim()) return "Please enter a contact person.";
@@ -245,6 +392,8 @@ export default function PartnerOnboardingForm() {
     }
     if (step === 1 && form.categories.length === 0)
       return "Please select at least one service.";
+    if (step === 3 && !form.permNonCircumvention)
+      return "Please accept the non-circumvention agreement to continue.";
     if (step === 3 && !form.permAccurate)
       return "Please confirm the information provided is accurate.";
     return "";
@@ -433,9 +582,16 @@ export default function PartnerOnboardingForm() {
                       onChange={(e) => set("city", e.target.value)}
                     >
                       <option value="">Select city…</option>
-                      {CITIES.filter((c) => c !== "All Saudi Arabia").map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
+                      <optgroup label="Saudi Arabia">
+                        {SAUDI_CITIES.map((c) => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="GCC">
+                        {GCC_CITIES.map((c) => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </optgroup>
                     </select>
                   </Field>
                   <Field label="Phone (landline)">
@@ -501,7 +657,7 @@ export default function PartnerOnboardingForm() {
                 </Field>
                 <Field label="Which cities do you cover?">
                   <CheckboxGrid
-                    options={CITIES}
+                    options={COVERAGE_OPTIONS}
                     selected={form.regionCoverage}
                     onToggle={(v) => toggle("regionCoverage", v)}
                   />
@@ -543,21 +699,44 @@ export default function PartnerOnboardingForm() {
                 <div className="bg-neutral-50 border border-neutral-200/80 rounded-xl px-4 py-3">
                   <p className="text-[12px] text-neutral-500">
                     Everything on this page is <span className="font-semibold text-neutral-700">optional</span> —
-                    you can submit now and share files later on WhatsApp. For photos and
-                    documents, paste a <span className="font-semibold text-neutral-700">Google Drive, Dropbox or WeTransfer link</span>.
+                    you can submit now and share files later on WhatsApp. Paste a{" "}
+                    <span className="font-semibold text-neutral-700">Google Drive, Dropbox or WeTransfer link</span>,
+                    or <span className="font-semibold text-neutral-700">upload the file directly</span> (max 25MB).
                   </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-5">
-                  <Field label="Project photos" hint="Drive/Dropbox folder with your best work.">
-                    <input className={inputClass} value={form.portfolioLink} onChange={(e) => set("portfolioLink", e.target.value)} placeholder="https://drive.google.com/…" />
-                  </Field>
-                  <Field label="Company profile (PDF)">
-                    <input className={inputClass} value={form.profileLink} onChange={(e) => set("profileLink", e.target.value)} placeholder="Link to your company profile" />
-                  </Field>
-                  <Field label="Company logo">
-                    <input className={inputClass} value={form.logoLink} onChange={(e) => set("logoLink", e.target.value)} placeholder="Link to logo file (PNG/SVG)" />
-                  </Field>
-                  <Field label="Videos">
+                  <LinkOrUploadField
+                    label="Project photos"
+                    hint="Drive/Dropbox folder with your best work — or upload a PDF/ZIP."
+                    placeholder="https://drive.google.com/…"
+                    accept=".pdf,.zip,.png,.jpg,.jpeg,.webp"
+                    value={form.portfolioLink}
+                    upload={uploads.portfolioLink}
+                    onLinkChange={(v) => set("portfolioLink", v)}
+                    onFileSelect={(f) => uploadFile("portfolioLink", "portfolio", f)}
+                    onRemove={() => removeUpload("portfolioLink")}
+                  />
+                  <LinkOrUploadField
+                    label="Company profile (PDF)"
+                    placeholder="Link to your company profile"
+                    accept=".pdf"
+                    value={form.profileLink}
+                    upload={uploads.profileLink}
+                    onLinkChange={(v) => set("profileLink", v)}
+                    onFileSelect={(f) => uploadFile("profileLink", "profile", f)}
+                    onRemove={() => removeUpload("profileLink")}
+                  />
+                  <LinkOrUploadField
+                    label="Company logo"
+                    placeholder="Link to logo file (PNG/SVG)"
+                    accept=".png,.jpg,.jpeg,.webp,.svg"
+                    value={form.logoLink}
+                    upload={uploads.logoLink}
+                    onLinkChange={(v) => set("logoLink", v)}
+                    onFileSelect={(f) => uploadFile("logoLink", "logo", f)}
+                    onRemove={() => removeUpload("logoLink")}
+                  />
+                  <Field label="Videos" hint="Videos are link-only — YouTube or Drive.">
                     <input className={inputClass} value={form.videoLink} onChange={(e) => set("videoLink", e.target.value)} placeholder="YouTube / Drive link" />
                   </Field>
                 </div>
@@ -581,9 +760,16 @@ export default function PartnerOnboardingForm() {
                   </div>
                 </Field>
                 {form.pricingType === "Rate card" && (
-                  <Field label="Rate card link">
-                    <input className={inputClass} value={form.rateCardLink} onChange={(e) => set("rateCardLink", e.target.value)} placeholder="Link to your rate card" />
-                  </Field>
+                  <LinkOrUploadField
+                    label="Rate card"
+                    placeholder="Link to your rate card"
+                    accept=".pdf,.png,.jpg,.jpeg,.webp"
+                    value={form.rateCardLink}
+                    upload={uploads.rateCardLink}
+                    onLinkChange={(v) => set("rateCardLink", v)}
+                    onFileSelect={(f) => uploadFile("rateCardLink", "ratecard", f)}
+                    onRemove={() => removeUpload("rateCardLink")}
+                  />
                 )}
 
                 <div className="grid md:grid-cols-2 gap-5">
@@ -654,6 +840,28 @@ export default function PartnerOnboardingForm() {
                     placeholder="Additional notes…"
                   />
                 </Field>
+
+                <label
+                  className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
+                    form.permNonCircumvention
+                      ? "border-emerald-400 bg-emerald-50/50"
+                      : "border-neutral-200 bg-neutral-50 hover:border-neutral-300"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={form.permNonCircumvention}
+                    onChange={(e) => set("permNonCircumvention", e.target.checked)}
+                    className="mt-0.5 w-4 h-4 accent-emerald-500"
+                  />
+                  <span className="text-[13px] text-neutral-700">
+                    I agree that all leads and inquiries received through Saudi Event
+                    Management (SEM) remain the property of SEM. I will not directly
+                    solicit, negotiate with, or bypass SEM clients introduced through
+                    the platform without written approval from SEM.{" "}
+                    <span className="text-[var(--primary)]">*</span>
+                  </span>
+                </label>
 
                 <label
                   className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${

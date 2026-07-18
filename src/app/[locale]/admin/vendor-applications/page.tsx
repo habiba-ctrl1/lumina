@@ -55,6 +55,7 @@ type Application = {
   certifications?: string | null;
   permLogoUse: boolean;
   permMediaUse: boolean;
+  permNonCircumvention: boolean;
   featureOnSem: boolean;
   backlinkAnswer?: string | null;
   extraNotes?: string | null;
@@ -74,7 +75,41 @@ const statusBadge = (status: string) =>
     : "bg-red-50 text-red-500 border-red-200";
 
 function LinkRow({ label, url }: { label: string; url?: string | null }) {
+  const [opening, setOpening] = useState(false);
   if (!url) return null;
+
+  // Files uploaded through the onboarding form live in the PRIVATE
+  // "vendor-files" bucket as "supabase://…" paths — open via a short-lived
+  // signed URL from the admin-guarded file-url route.
+  if (url.startsWith("supabase://")) {
+    const openFile = async () => {
+      setOpening(true);
+      try {
+        const res = await adminFetch(
+          `/api/partner-applications/file-url?path=${encodeURIComponent(url)}`
+        );
+        const data = await res.json();
+        if (!res.ok || !data.url) throw new Error(data.error || "Failed to open file");
+        window.open(data.url, "_blank", "noopener,noreferrer");
+      } catch {
+        alert("Could not open the file — check that SUPABASE_SERVICE_ROLE_KEY is set.");
+      } finally {
+        setOpening(false);
+      }
+    };
+    return (
+      <button
+        type="button"
+        onClick={openFile}
+        disabled={opening}
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-teal-50 border border-teal-200 rounded-lg text-[12px] font-medium text-teal-700 hover:border-teal-300 transition-all disabled:opacity-60"
+      >
+        <LinkIcon size={11} /> {label} (uploaded){" "}
+        <ExternalLink size={10} className="text-teal-400" />
+      </button>
+    );
+  }
+
   const href = url.startsWith("http") ? url : `https://${url}`;
   return (
     <a
@@ -314,6 +349,7 @@ export default function VendorApplicationsPage() {
                         {/* Permissions */}
                         <div className="flex flex-wrap gap-2">
                           {[
+                            [app.permNonCircumvention, "Non-circumvention agreed"],
                             [app.permMediaUse, "Media use permission"],
                             [app.permLogoUse, "Logo display permission"],
                             [app.featureOnSem, "Wants SEM feature"],

@@ -77,6 +77,12 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+    if (body.permNonCircumvention !== true) {
+      return NextResponse.json(
+        { error: 'Please accept the non-circumvention agreement.' },
+        { status: 400 }
+      );
+    }
 
     // appNumber has a unique constraint — retry once on a rare collision.
     let application;
@@ -119,6 +125,7 @@ export async function POST(request: Request) {
             permLogoUse: body.permLogoUse === true,
             permMediaUse: body.permMediaUse === true,
             permAccurate: true,
+            permNonCircumvention: true,
             featureOnSem: body.featureOnSem === true,
             backlinkAnswer: str(body.backlinkAnswer, 50),
             extraNotes: str(body.extraNotes, 2000),

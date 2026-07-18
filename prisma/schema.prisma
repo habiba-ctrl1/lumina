@@ -144,6 +144,10 @@ model VendorApplication {
   permLogoUse     Boolean  @default(false)
   permMediaUse    Boolean  @default(false) // permission to use photos on SEM site + proposals
   permAccurate    Boolean  @default(false)
+  // Non-circumvention consent (required): leads/inquiries via SEM remain SEM
+  // property; no direct solicitation of SEM-introduced clients without written
+  // SEM approval.
+  permNonCircumvention Boolean @default(false)
   featureOnSem    Boolean  @default(false)
   backlinkAnswer  String?  // "Yes" | "Maybe later" | "No website"
   extraNotes      String?
