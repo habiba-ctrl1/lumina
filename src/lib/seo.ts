@@ -112,6 +112,11 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/blog/plan-mega-exhibition-riyadh-logistics", // body fully translated
   "/blog/eco-friendly-event-management-saudi-arabia", // body fully translated
   "/blog/entertainment-activations-jeddah-season-corporate", // body fully translated
+  "/blog/best-wedding-venues-riyadh-2026", // body fully translated
+  "/blog/best-corporate-event-venues-jeddah-2026", // body fully translated
+  "/blog/gala-dinner-awards-ceremony-planning-saudi-arabia", // body fully translated
+  "/blog/event-registration-badging-systems-saudi-arabia-2026", // body fully translated
+  "/blog/choosing-exhibition-trade-show-company-saudi-arabia", // body fully translated
 
   // PSEO service×city pages with FULL bilingual bodies (PSEO_AR complete) → indexable.
   "/services/corporate-events-riyadh",
