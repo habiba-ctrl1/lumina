@@ -123,9 +123,15 @@ export default function AdminQuotes() {
       const response = await fetch(`/api/admin/quote-requests/${id}/status`, {
         method: 'DELETE'
       });
-      if (response.ok) fetchData();
+      if (response.ok) {
+        fetchData();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        alert(data.error || "Failed to delete request");
+      }
     } catch (error) {
       console.error("Delete failed:", error);
+      alert("Failed to delete request");
     }
   };
 

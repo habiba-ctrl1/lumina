@@ -95,6 +95,32 @@ model Vendor {
   updatedAt    DateTime @updatedAt
 }
 
+// Triage log for inbound emails to infosaudieventmanagement@gmail.com, written
+// by the scheduled inbox-automation routine. Kept SEPARATE from
+// VendorApplication — that table is a signed-consent record (permAccurate /
+// permNonCircumvention); an unsolicited email hasn't gone through that, so it
+// never belongs there. Content of PDF attachments is never parsed — only
+// filenames are logged. GET/PATCH are requireAdmin-only; POST is gated by a
+// shared secret (the routine, not a person, calls it).
+model EmailLead {
+  id              String   @id @default(uuid())
+  category        String   // Partnership, CV, ClientInquiry, Spam, Uncertain
+  gmailThreadId   String   @unique
+  gmailMessageId  String
+  senderEmail     String
+  senderName      String?
+  companyName     String?
+  subject         String?
+  summary         String?
+  suggestedAction String?  // send_vendor_link, recommend_meeting, cv_reply, acknowledge_client, no_action
+  needsMeeting    Boolean  @default(false)
+  attachmentNames String?
+  draftCreated    Boolean  @default(false)
+  status          String   @default("New") // New, Reviewed, Actioned
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
 // Public partner-onboarding submissions (/partner-onboarding form).
 // Kept SEPARATE from Vendor so spam/incomplete entries never pollute the vetted
 // vendor list — founder reviews in /admin and approves → creates/merges Vendor.
@@ -267,7 +293,7 @@ model ClientEstimate {
   totalAmount Float
   breakdown   String?  // JSON string of costs
   status      String   @default("Generated") // Generated, Sent, Accepted, Expired
-  inquiry     Inquiry  @relation(fields: [inquiryId], references: [id])
+  inquiry     Inquiry  @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
   inquiryId   String   @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -301,7 +327,7 @@ model QuoteRequest {
 
 model Proposal {
   id           String   @id @default(uuid())
-  request      QuoteRequest @relation(fields: [requestId], references: [id])
+  request      QuoteRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
   requestId    String
   quoteNumber  String   @unique // e.g. "SEM-Q-2025-001"
   lineItems    String   // JSON string of [{ service, description, qty, unitPrice, total }]

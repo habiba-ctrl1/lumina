@@ -60,9 +60,13 @@ export default function AdminInquiries() {
       const response = await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setInquiries(inquiries.filter((i) => i.id !== id));
+      } else {
+        const data = await response.json().catch(() => ({}));
+        alert(data.error || "Failed to delete inquiry");
       }
     } catch (error) {
       console.error("Delete failed:", error);
+      alert("Failed to delete inquiry");
     }
   };
 
