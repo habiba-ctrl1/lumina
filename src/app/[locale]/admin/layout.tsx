@@ -35,7 +35,8 @@ import {
   Receipt,
   PieChart,
   ClipboardList,
-  Zap
+  Zap,
+  Inbox
 } from "lucide-react";
 
 type NavGroup = {
@@ -76,6 +77,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/vendors", label: "Vendors", icon: Briefcase },
       { href: "/admin/vendor-applications", label: "Applications", icon: ClipboardList },
+      { href: "/admin/email-leads", label: "Email Leads", icon: Inbox },
       { href: "/admin/quotes", label: "Quotes", icon: MessageSquareQuote },
     ],
   },
