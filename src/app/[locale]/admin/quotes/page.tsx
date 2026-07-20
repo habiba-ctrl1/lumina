@@ -375,7 +375,24 @@ export default function AdminQuotes() {
                             <MoreVertical size={18} />
                           </button>
                           <div className="absolute end-0 top-full mt-1 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl z-10 opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all p-2">
-                            <button 
+                            {req.status === 'pending' && (
+                              <button
+                                onClick={() => updateStatus(req.id, 'quote_sent')}
+                                className="w-full text-start px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors flex items-center gap-3"
+                                title="Use this if you already quoted the client directly (WhatsApp/call) instead of through the formal quote builder"
+                              >
+                                <TrendingUp size={14} /> Mark Quote Sent
+                              </button>
+                            )}
+                            {req.status === 'quote_sent' && (
+                              <button
+                                onClick={() => updateStatus(req.id, 'accepted')}
+                                className="w-full text-start px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors flex items-center gap-3"
+                              >
+                                <CheckCircle2 size={14} /> Mark Accepted
+                              </button>
+                            )}
+                            <button
                               onClick={() => updateStatus(req.id, 'rejected')}
                               className="w-full text-start px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors flex items-center gap-3"
                             >
