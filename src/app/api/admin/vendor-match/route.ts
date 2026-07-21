@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
+import { vendorScore } from '@/lib/vendor-ranking';
 
 /**
  * Vendor matching engine (admin only).
@@ -28,7 +29,7 @@ export async function GET(request: Request) {
       // Private contact fields deliberately excluded from matching output.
       select: {
         id: true, name: true, category: true, categories: true, services: true,
-        city: true, regionCoverage: true, verificationStatus: true, meetingStatus: true,
+        city: true, regionCoverage: true, verificationStatus: true, partnershipStatus: true, meetingStatus: true,
         internalRating: true, rating: true, preferred: true, agreementSigned: true,
       },
     });
@@ -44,13 +45,7 @@ export async function GET(request: Request) {
 
     const ranked = vendors
       .filter((v) => (includeUnverified || v.verificationStatus !== 'Unverified') && coversCity(v) && matchesService(v))
-      .sort(
-        (a, b) =>
-          Number(b.verificationStatus === 'Verified') - Number(a.verificationStatus === 'Verified') ||
-          Number(b.preferred) - Number(a.preferred) ||
-          b.internalRating - a.internalRating ||
-          b.rating - a.rating
-      )
+      .sort((a, b) => vendorScore(b) - vendorScore(a))
       .slice(0, 5);
 
     return NextResponse.json({

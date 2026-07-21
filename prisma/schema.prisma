@@ -74,23 +74,46 @@ model Vendor {
   availability String?  // Available, Booked, Seasonal
   rating       Float    @default(5.0)
   // ── Vendor-system fields (2026-07 intake rollout) ──
-  categories         String[] @default([]) // multi-category support
+  // DEPRECATED 2026-07: superseded by categoryLinks (Category m2m) below —
+  // kept read-only for history on existing rows, do not remove or write to.
+  categories         String[] @default([]) // multi-category support (legacy free text)
   regionCoverage     String[] @default([]) // cities/regions served
   yearsExperience    Int?
   certifications     String?
   rateCardSummary    String?
   rateCardFiles      String?  // file names, stored locally on founder's laptop (SEM VENDOR DETAILS/)
   portfolioFiles     String?  // file names / folder refs, stored locally
-  meetingStatus      String   @default("Contacted") // Contacted, Meeting Scheduled, Met, Negotiating, Confirmed Partner, Not Proceeding
+  meetingStatus      String   @default("Contacted") // Info Only, Contacted, Meeting Scheduled, Met, Negotiating, Confirmed Partner, Not Proceeding
   agreementSigned    Boolean  @default(false)
   agreementDate      DateTime?
-  verificationStatus String   @default("Pending") // Verified, Pending, Unverified
+  verificationStatus String   @default("Pending") // Verified, Pending, Unverified — is this vendor confirmed real/legitimate?
+  // Relationship tier — separate axis from verificationStatus on purpose: a vendor
+  // can be a trusted Partner while still Pending verification, or Verified without
+  // being a Partner (2026-07, founder-confirmed).
+  partnershipStatus  String   @default("Pending") // Pending, Verified Vendor, Partner
   internalRating     Int      @default(0) // 0 = unrated, 1-5 editable as projects complete
   preferred          Boolean  @default(false) // featured/preferred partner flag
   photoPermission    Boolean  @default(false) // written permission to showcase their photos
   notes        VendorNote[]
   events       Event[]  @relation("EventVendors")
   quotes       Quote[]
+  applications VendorApplication[]
+  categoryLinks Category[] @relation("VendorCategories")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Canonical category/service taxonomy — single source of truth so forms, admin
+// filters, and the vendor grid never drift into inconsistent free-text vocab
+// again. isActive lets the founder retire a category without losing history.
+model Category {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  slug         String   @unique
+  isActive     Boolean  @default(true)
+  sortOrder    Int      @default(0)
+  vendors      Vendor[]            @relation("VendorCategories")
+  applications VendorApplication[] @relation("ApplicationCategories")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -149,7 +172,10 @@ model VendorApplication {
   youtube         String?
   googleMaps      String?
   // Step 2 — services & company details
-  categories      String[] @default([])
+  // DEPRECATED 2026-07: superseded by categoryLinks (Category m2m) below —
+  // kept read-only for history on existing rows, do not remove or write to.
+  categories      String[] @default([]) // legacy free text
+  categoryLinks   Category[] @relation("ApplicationCategories")
   servicesDesc    String?
   yearsInBusiness String?
   teamSize        String?
@@ -179,6 +205,9 @@ model VendorApplication {
   extraNotes      String?
   // review outcome — Approve adds to internal DB only; public site listing is a
   // separate later step (blocked until founder's SEO brief).
+  // onDelete: SetNull — if a vendor is ever deleted, this application (a signed
+  // consent/audit record) must survive, just with the link cleared.
+  vendor          Vendor?  @relation(fields: [vendorId], references: [id], onDelete: SetNull)
   vendorId        String?  // Vendor created or merged into on approval
   reviewedAt      DateTime?
   createdAt       DateTime @default(now())

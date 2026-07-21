@@ -129,6 +129,9 @@ export async function POST(request: Request) {
             featureOnSem: body.featureOnSem === true,
             backlinkAnswer: str(body.backlinkAnswer, 50),
             extraNotes: str(body.extraNotes, 2000),
+            ...(Array.isArray(body.categoryIds) && body.categoryIds.length
+              ? { categoryLinks: { connect: body.categoryIds.map((id: string) => ({ id })) } }
+              : {}),
           },
         });
         break;

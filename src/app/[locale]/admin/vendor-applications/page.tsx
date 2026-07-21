@@ -165,15 +165,18 @@ export default function VendorApplicationsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
 
+  const [dupCandidates, setDupCandidates] = useState<{ vendor: VendorOption & { id: string }; matchedOn: string }[]>([]);
+
   const openApprovePanel = async (appId: string) => {
     setApproving(appId);
     setMergeVendorId("");
+    setDupCandidates([]);
     if (vendorOptions.length === 0) {
       try {
-        const res = await adminFetch("/api/vendors");
+        const res = await adminFetch("/api/vendors?pageSize=100&sortBy=name");
         const data = await res.json();
-        if (Array.isArray(data)) {
-          setVendorOptions(data.map((v: any) => ({ id: v.id, name: v.name, category: v.category })));
+        if (Array.isArray(data.vendors)) {
+          setVendorOptions(data.vendors.map((v: any) => ({ id: v.id, name: v.name, category: v.category })));
         }
       } catch (e) {
         console.error("Failed to fetch vendors:", e);
@@ -191,7 +194,13 @@ export default function VendorApplicationsPage() {
       });
       if (res.ok) {
         setApproving(null);
+        setDupCandidates([]);
         await fetchApplications();
+      } else if (res.status === 409) {
+        // Possible duplicate — surface it instead of silently creating a
+        // second vendor row. Admin picks merge or explicitly forces create.
+        const data = await res.json();
+        setDupCandidates(data.candidates || []);
       } else {
         const data = await res.json();
         alert(data.error || "Action failed");
@@ -201,8 +210,11 @@ export default function VendorApplicationsPage() {
     }
   };
 
-  const remove = async (id: string, appNumber: string) => {
-    if (!confirm(`Delete application ${appNumber}? This cannot be undone.`)) return;
+  const remove = async (id: string, appNumber: string, vendorId?: string | null) => {
+    const warning = vendorId
+      ? `Delete application ${appNumber}? This only removes the application record — the vendor it already created stays in your Vendors list and must be deleted separately if unwanted. This cannot be undone.`
+      : `Delete application ${appNumber}? This cannot be undone.`;
+    if (!confirm(warning)) return;
     setBusy(true);
     try {
       await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
@@ -384,6 +396,31 @@ export default function VendorApplicationsPage() {
                                     <option key={v.id} value={v.id}>Merge into: {v.name} ({v.category})</option>
                                   ))}
                                 </select>
+
+                                {dupCandidates.length > 0 && (
+                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 space-y-2">
+                                    <p className="text-[12px] font-bold text-amber-700">
+                                      Possible duplicate{dupCandidates.length > 1 ? "s" : ""} — this looks like a vendor already in your database:
+                                    </p>
+                                    {dupCandidates.map((c) => (
+                                      <div key={c.vendor.id} className="flex items-center justify-between text-[12px] bg-white rounded-md px-2.5 py-1.5 border border-amber-100">
+                                        <span className="text-slate-700">
+                                          <strong>{c.vendor.name}</strong> ({c.vendor.category}) — matched on {c.matchedOn}
+                                        </span>
+                                        <button
+                                          onClick={() => setMergeVendorId(c.vendor.id)}
+                                          className="text-teal-600 font-semibold hover:underline"
+                                        >
+                                          Merge into this
+                                        </button>
+                                      </div>
+                                    ))}
+                                    <p className="text-[11px] text-amber-600">
+                                      Sure it&apos;s a different company? Use &quot;Create anyway&quot; below instead of Confirm Approve.
+                                    </p>
+                                  </div>
+                                )}
+
                                 <div className="flex gap-2">
                                   <button
                                     disabled={busy}
@@ -392,8 +429,17 @@ export default function VendorApplicationsPage() {
                                   >
                                     <CheckCircle2 size={13} /> Confirm Approve
                                   </button>
+                                  {dupCandidates.length > 0 && !mergeVendorId && (
+                                    <button
+                                      disabled={busy}
+                                      onClick={() => act(app.id, { action: "approve", forceCreate: true })}
+                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all disabled:opacity-60"
+                                    >
+                                      Create anyway (different company)
+                                    </button>
+                                  )}
                                   <button
-                                    onClick={() => setApproving(null)}
+                                    onClick={() => { setApproving(null); setDupCandidates([]); }}
                                     className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
                                   >
                                     Cancel
@@ -428,18 +474,38 @@ export default function VendorApplicationsPage() {
                           </div>
                         )}
                         {app.status === "Rejected" && (
-                          <button
-                            disabled={busy}
-                            onClick={() => act(app.id, { action: "reopen" })}
-                            className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
-                          >
-                            Reopen as Pending
-                          </button>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              disabled={busy}
+                              onClick={() => act(app.id, { action: "reopen" })}
+                              className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
+                            >
+                              Reopen as Pending
+                            </button>
+                            <button
+                              disabled={busy}
+                              onClick={() => remove(app.id, app.appNumber)}
+                              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
+                            >
+                              <Trash2 size={13} /> Delete
+                            </button>
+                          </div>
                         )}
-                        {app.status === "Approved" && app.vendorId && (
-                          <p className="text-[12px] text-emerald-600 font-medium">
-                            ✓ Added to vendor database — see the Vendors page.
-                          </p>
+                        {app.status === "Approved" && (
+                          <div className="flex flex-wrap items-center gap-3">
+                            {app.vendorId && (
+                              <p className="text-[12px] text-emerald-600 font-medium">
+                                ✓ Added to vendor database — see the Vendors page.
+                              </p>
+                            )}
+                            <button
+                              disabled={busy}
+                              onClick={() => remove(app.id, app.appNumber, app.vendorId)}
+                              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
+                            >
+                              <Trash2 size={13} /> Delete application
+                            </button>
+                          </div>
                         )}
                       </div>
                     </motion.div>

@@ -38,13 +38,15 @@ function SearchResultsContent() {
         fetch(`/api/blog`) // Blog API search not yet implemented, fetching all
       ]);
 
-      const [inquiries, clients, vendors, events, blogs] = await Promise.all([
+      const [inquiries, clients, vendorData, events, blogs] = await Promise.all([
         inqRes.json(),
         clientRes.json(),
         vendorRes.json(),
         eventRes.json(),
         blogRes.json()
       ]);
+      // GET /api/vendors returns { vendors, page, total, ... } (paginated), not a bare array.
+      const vendors = Array.isArray(vendorData?.vendors) ? vendorData.vendors : [];
 
       const formattedResults: SearchResult[] = [
         ...(Array.isArray(inquiries) ? inquiries.map((i: any) => ({

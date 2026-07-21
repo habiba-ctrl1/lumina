@@ -12,7 +12,20 @@ export async function GET(request: Request, { params }: Params) {
   const { id } = await params;
   const vendor = await prisma.vendor.findUnique({
     where: { id },
-    include: { notes: { orderBy: { createdAt: 'desc' } }, _count: { select: { quotes: true, events: true } } },
+    include: {
+      notes: { orderBy: { createdAt: 'desc' } },
+      _count: { select: { quotes: true, events: true } },
+      categoryLinks: { select: { id: true, name: true, slug: true } },
+      // Originating onboarding application(s), if any — surfaces documents
+      // (CR/VAT/rate card/etc.) without duplicating that data onto Vendor.
+      applications: {
+        select: {
+          id: true, appNumber: true, crNumber: true, vatNumber: true,
+          logoLink: true, profileLink: true, rateCardLink: true, videoLink: true,
+          majorClients: true, createdAt: true,
+        },
+      },
+    },
   });
   if (!vendor) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   return NextResponse.json(vendor);
@@ -24,7 +37,8 @@ const EDITABLE = [
   'city', 'email', 'phone', 'whatsapp', 'portfolio', 'pricing', 'availability',
   'regionCoverage', 'yearsExperience', 'certifications', 'rateCardSummary',
   'rateCardFiles', 'portfolioFiles', 'meetingStatus', 'agreementSigned',
-  'agreementDate', 'verificationStatus', 'internalRating', 'preferred', 'photoPermission',
+  'agreementDate', 'verificationStatus', 'partnershipStatus', 'internalRating',
+  'preferred', 'photoPermission',
 ] as const;
 
 // PATCH /api/vendors/:id — update vendor fields (admin only)
@@ -40,6 +54,11 @@ export async function PATCH(request: Request, { params }: Params) {
   }
   if ('agreementDate' in data && typeof data.agreementDate === 'string' && data.agreementDate) {
     data.agreementDate = new Date(data.agreementDate as string);
+  }
+  // categoryIds is a relation set, not a plain scalar — handled separately
+  // from the EDITABLE scalar whitelist above.
+  if (Array.isArray(body.categoryIds)) {
+    data.categoryLinks = { set: body.categoryIds.map((catId: string) => ({ id: catId })) };
   }
   const vendor = await prisma.vendor.update({ where: { id }, data });
   return NextResponse.json(vendor);
