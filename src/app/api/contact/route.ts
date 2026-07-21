@@ -44,7 +44,11 @@ export async function POST(request: Request) {
             eventType: eventType || 'Vendor / Partnership',
             message,
             assignedTo: randomAssignee,
-            source: source || 'vendor_inquiry',
+            // The general /contact form always sends source: "contact_page"
+            // regardless of the client/vendor toggle — only trust an incoming
+            // source if it's already a recognized vendor source, otherwise tag
+            // it ourselves so it lands in the Partner Inquiries tab, not Client Leads.
+            source: VENDOR_SOURCES.includes(source) ? source : 'vendor_inquiry',
           },
         });
       } else {

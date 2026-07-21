@@ -148,8 +148,9 @@ export default function AdminDashboard() {
         return new Date(e.date) >= new Date();
       }).length;
 
-      // 2. Fetch recent inquiries
-      const inqRes = await fetch('/api/contact');
+      // 2. Fetch recent inquiries — client leads only; vendor/partner pitches
+      // have their own "Partner Inquiries" tab and shouldn't pollute this queue.
+      const inqRes = await fetch('/api/contact?audience=client');
       const inqJson = await inqRes.json();
       const recentInq = Array.isArray(inqJson) ? inqJson.slice(0, 5) : [];
 

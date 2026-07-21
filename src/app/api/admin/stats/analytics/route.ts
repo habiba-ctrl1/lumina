@@ -61,11 +61,14 @@ export async function GET() {
     const monthlyFinance = Object.values(monthlyData);
 
     // 5. General stats counters
+    // "totalInquiries" is the client-facing leads metric — vendor/partner pitches
+    // (same table, tagged by source) must not inflate it.
+    const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor_inquiry'];
     const [totalEvents, totalClients, totalVendors, totalInquiries, totalProposals] = await Promise.all([
       prisma.event.count(),
       prisma.client.count(),
       prisma.vendor.count(),
-      prisma.inquiry.count(),
+      prisma.inquiry.count({ where: { source: { notIn: VENDOR_SOURCES } } }),
       prisma.proposal.count()
     ]);
 
