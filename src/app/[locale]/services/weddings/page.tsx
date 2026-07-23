@@ -539,13 +539,13 @@ export default function WeddingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {(isAr
                 ? [
-                { c: "ندرة القاعات في الموسم", s: "تُحجز قاعات الرياض وجدة قبل 6 إلى 12 شهرًا في موسمي الخريف وما بعد رمضان. وصولنا بصفة شريك مفضّل يتيح تأمين المواعيد مبكرًا فلا تساوم على القاعة أبدًا." },
+                { c: "ندرة القاعات في الموسم", s: "تُحجز قاعات الرياض وجدة قبل 6 إلى 12 شهرًا في موسمي الخريف وما بعد رمضان. علاقاتنا القوية مع القاعات تتيح تأمين المواعيد مبكرًا فلا تساوم على القاعة أبدًا." },
                 { c: "الموازنة بين توقّعات العائلتين", s: "نعمل كمنسّق محايد بين العائلتين، نقدّم خيارات واضحة وخطة واحدة معتمدة — نحفظ العلاقات ونبقي القرارات تتقدّم." },
                 { c: "اللوجستيات المنفصلة حسب الأقسام", s: "مداخل منفصلة، ومسارات خدمة متوازية، ومناطق تصوير للنساء فقط، وتوظيف متحفّظ تُصمَّم في المخطّط من اليوم الأول، لا تُرتجل ليلة الزفاف." },
                 { c: "موثوقية الموردين وتضخّم الميزانية", s: "شبكة موردين موثوقة بنطاقات مكتوبة وميزانية شفّافة ومفصّلة تعني عدم وجود مفاجآت لحظية أو تكاليف خفية مع اقتراب الموعد." },
                   ]
                 : [
-                { c: "Peak-season venue scarcity", s: "Riyadh and Jeddah ballrooms book 6–12 months ahead for the autumn and post-Ramadan seasons. Preferred-partner access lets us secure dates early so you never compromise on the venue." },
+                { c: "Peak-season venue scarcity", s: "Riyadh and Jeddah ballrooms book 6–12 months ahead for the autumn and post-Ramadan seasons. Strong venue relationships let us secure dates early so you never compromise on the venue." },
                 { c: "Balancing two families' expectations", s: "We act as a neutral coordinator between families, presenting clear options and a single approved plan — protecting relationships while keeping decisions moving." },
                 { c: "Gender-segregated logistics", s: "Separate entrances, parallel service flows, women-only photography zones, and discreet staffing are designed into the floor plan from day one, not improvised on the night." },
                 { c: "Vendor reliability & budget creep", s: "A vetted vendor network with written scopes and a transparent, itemised budget means no last-minute surprises or hidden costs as the date approaches." },

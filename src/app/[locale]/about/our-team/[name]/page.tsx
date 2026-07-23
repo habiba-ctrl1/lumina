@@ -22,7 +22,6 @@ const TEAM_PROFILES: Record<
     roleAr: string;
     location: string;
     locationAr: string;
-    yearsExperience: number;
     specialisms: string[];
     specialismsAr: string[];
     credentials: string[];
@@ -41,38 +40,29 @@ const TEAM_PROFILES: Record<
     roleAr: "المؤسِّسة والرئيسة التنفيذية",
     location: "Riyadh, Saudi Arabia",
     locationAr: "الرياض، المملكة العربية السعودية",
-    yearsExperience: 18,
     specialisms: [
       "Luxury Event Strategy",
       "Corporate Event Management",
-      "MICE Tourism KSA",
+      "Vendor Network Development",
       "VIP Protocol Management",
       "Vision 2030 Events Alignment",
     ],
     specialismsAr: [
       "استراتيجية الفعاليات الفاخرة",
       "إدارة فعاليات الشركات",
-      "سياحة الاجتماعات والمؤتمرات في المملكة",
+      "تطوير شبكة الموردين",
       "إدارة بروتوكول كبار الشخصيات",
       "مواءمة فعاليات رؤية 2030",
     ],
-    credentials: [
-      "IAPCO Member (International Association of Professional Congress Organizers)",
-      "Certified Meeting Professional (CMP)",
-      "GEA Licensed Event Organizer",
-      "ISO 9001 Lead Auditor — Event Production",
-      "MBA, International Business",
-    ],
+    credentials: [],
     bio: [
-      "Habiba Asghar is the Founder and CEO of Saudi Event Management — the Kingdom's leading luxury and corporate event management firm. Her experience spans government, corporate, and royal family events across Saudi Arabia and the GCC, and she is recognised as one of the most respected voices in the region's events industry.",
-      "Habiba personally oversees Saudi Event Management's coordination standards and vendor vetting process across every project the company delivers — from National Day galas and Riyadh Season activations to royal weddings and international MICE conferences in Riyadh, Jeddah, Dammam, AlUla, and NEOM.",
-      "Habiba is a frequent speaker at Saudi MICE industry forums and has contributed extensively to the GEA's development of event quality standards under Vision 2030. She holds an MBA in International Business and is an active member of IAPCO, Saudi Arabia's foremost professional body for conference organizers.",
+      "Habiba Asghar is the Founder of Saudi Event Management, an event coordination and vendor-sourcing platform connecting clients with a curated network of experienced delivery partners across Saudi Arabia.",
+      "Habiba personally oversees Saudi Event Management's vendor vetting and coordination standards — matching client briefs with the right specialist partners for corporate events, luxury weddings, exhibitions, and cultural activations across Riyadh, Jeddah, Dammam, and AlUla.",
       "Her philosophy: every event is a story. The best events don't just happen — they are authored, from the first guest arrival to the final farewell.",
     ],
     bioAr: [
-      "حبيبة أصغر هي المؤسِّسة والرئيسة التنفيذية لإدارة الفعاليات السعودية — الشركة الرائدة في المملكة في مجال إدارة الفعاليات الفاخرة وفعاليات الشركات. تمتد خبرتها لتشمل الفعاليات الحكومية والمؤسسية وفعاليات العائلات المالكة في المملكة العربية السعودية ودول الخليج، وهي معترف بها كواحدة من أكثر الأصوات احتراماً في قطاع الفعاليات بالمنطقة.",
-      "تشرف حبيبة شخصياً على معايير التنسيق وعملية توثيق الموردين في إدارة الفعاليات السعودية عبر كل مشروع تنفّذه الشركة — من حفلات اليوم الوطني وتفعيلات موسم الرياض إلى حفلات الزفاف الملكية والمؤتمرات الدولية لسياحة الاجتماعات في الرياض وجدة والدمام والعُلا ونيوم.",
-      "حبيبة متحدثة دائمة في منتديات قطاع سياحة الاجتماعات والمؤتمرات السعودي، وقد ساهمت بشكل واسع في تطوير الهيئة العامة للترفيه لمعايير جودة الفعاليات ضمن رؤية 2030. وهي حاصلة على ماجستير في إدارة الأعمال الدولية، وعضو نشط في الرابطة الدولية لمنظّمي المؤتمرات المحترفين (IAPCO)، أبرز هيئة مهنية لمنظّمي المؤتمرات في المملكة.",
+      "حبيبة أصغر هي مؤسِّسة إدارة الفعاليات السعودية، منصة لتنسيق الفعاليات وتوفير الموردين تربط العملاء بشبكة مختارة من شركاء تنفيذ ذوي خبرة في جميع أنحاء المملكة العربية السعودية.",
+      "تشرف حبيبة شخصياً على عملية توثيق الموردين ومعايير التنسيق في إدارة الفعاليات السعودية — لمطابقة احتياجات كل عميل مع الشريك المتخصص المناسب لفعاليات الشركات، وحفلات الزفاف الفاخرة، والمعارض، والتفعيلات الثقافية في الرياض وجدة والدمام والعُلا.",
       "فلسفتها: كل فعالية قصة. أفضل الفعاليات لا تحدث صدفة — بل تُؤلَّف، من لحظة وصول أول ضيف وحتى الوداع الأخير.",
     ],
     publications: [
@@ -87,170 +77,6 @@ const TEAM_PROFILES: Record<
       { name: "Luxury VIP Events", href: "/services/luxury-vip-events" },
     ],
     image: "/gallery_charity_gala.webp",
-  },
-  "fahad-al-sulaiman": {
-    name: "Fahad Al-Sulaiman",
-    nameAr: "فهد السليمان",
-    slug: "fahad-al-sulaiman",
-    role: "Director of Event Production",
-    roleAr: "مدير إنتاج الفعاليات",
-    location: "Riyadh, Saudi Arabia",
-    locationAr: "الرياض، المملكة العربية السعودية",
-    yearsExperience: 15,
-    specialisms: [
-      "AV Production & Sound Engineering",
-      "Stage Design & Fabrication",
-      "LED & Projection Technology",
-      "Outdoor & Heritage Site Events",
-      "National Day & Riyadh Season Productions",
-    ],
-    specialismsAr: [
-      "الإنتاج الصوتي والمرئي والهندسة الصوتية",
-      "تصميم وتصنيع المسارح",
-      "تقنيات شاشات LED والإسقاط الضوئي",
-      "الفعاليات الخارجية وفعاليات المواقع التراثية",
-      "إنتاجات اليوم الوطني وموسم الرياض",
-    ],
-    credentials: [
-      "ISO 9001 Certified Production Manager",
-      "L-Acoustics Certified System Engineer",
-      "GrandMA3 Certified Lighting Programmer",
-      "GEA Technical Production License",
-      "NEBOSH Health & Safety Certificate",
-    ],
-    bio: [
-      "Fahad Al-Sulaiman is Saudi Event Management's Director of Event Production — the technical mind behind the company's most ambitious and complex productions across Saudi Arabia. He brings hands-on expertise in AV engineering, stage fabrication, and large-scale event production, delivering technical excellence for National Day galas, Riyadh Season activations, and destination events at AlUla and NEOM.",
-      "Fahad's technical expertise spans the full event production spectrum — from concert-grade L-Acoustics line array systems and Robe intelligent lighting to custom stage fabrications and immersive projection mapping on Saudi heritage sites. He is an L-Acoustics Certified System Engineer and holds a GrandMA3 programming certification for intelligent lighting design.",
-      "Under Fahad's leadership, Saudi Event Management's production team has become one of the most technically sophisticated in the Kingdom — operating an ISO 9001-certified production workflow and maintaining an in-house inventory of premium AV, staging, and lighting equipment.",
-      "His approach: invisible technical excellence. The best production is the one guests never notice — because everything just works, perfectly, every time.",
-    ],
-    bioAr: [
-      "فهد السليمان هو مدير إنتاج الفعاليات في إدارة الفعاليات السعودية — العقل التقني وراء أكثر إنتاجات الشركة طموحاً وتعقيداً في جميع أنحاء المملكة. يجلب فهد خبرة عملية في الهندسة الصوتية والمرئية، وتصنيع المسارح، وإنتاج الفعاليات واسعة النطاق، ليقدّم تميّزاً تقنياً لحفلات اليوم الوطني، وتفعيلات موسم الرياض، وفعاليات الوجهات في العُلا ونيوم.",
-      "تمتد خبرة فهد التقنية لتشمل طيف إنتاج الفعاليات بالكامل — من أنظمة الصوت الاحترافية بمستوى الحفلات الموسيقية وإضاءة Robe الذكية إلى تصنيع المسارح المخصّصة وعرض الإسقاط الضوئي الغامر على المواقع التراثية السعودية. وهو مهندس أنظمة معتمد من L-Acoustics ويحمل شهادة برمجة GrandMA3 لتصميم الإضاءة الذكية.",
-      "تحت قيادة فهد، أصبح فريق الإنتاج في إدارة الفعاليات السعودية واحداً من أكثر الفرق تطوراً تقنياً في المملكة — يعمل وفق سير عمل إنتاجي معتمد بمعيار ISO 9001 ويحتفظ بمخزون داخلي من معدّات الصوت والمرئيات والمسارح والإضاءة المتميّزة.",
-      "نهجه: التميّز التقني الخفي. أفضل إنتاج هو الذي لا يلاحظه الضيوف أبداً — لأن كل شيء يعمل ببساطة، بإتقان، في كل مرة.",
-    ],
-    publications: [
-      { title: "Best Corporate Event Venues in Riyadh 2026: The Complete Guide", href: "/blog/best-corporate-event-venues-riyadh-2026" },
-      { title: "Event Production Cost Guide Saudi Arabia 2026: AV, Stage & Lighting", href: "/blog/event-production-cost-guide-saudi-arabia-2026" },
-      { title: "How to Get a GEA Event Permit in Saudi Arabia: Complete 2026 Guide", href: "/blog/gea-event-permit-guide-saudi-arabia" },
-    ],
-    services: [
-      { name: "Event Production", href: "/services/event-production" },
-      { name: "Production Venues", href: "/services/production-venues" },
-      { name: "Conference Management", href: "/services/conferences" },
-      { name: "Exhibitions", href: "/services/exhibitions" },
-    ],
-    image: "/gallery_vip_party.webp",
-  },
-  "nadia-al-rashidi": {
-    name: "Dr. Nadia Al-Rashidi",
-    nameAr: "د. نادية الراشدي",
-    slug: "nadia-al-rashidi",
-    role: "Head of Wedding & Social Events",
-    roleAr: "رئيسة قسم حفلات الزفاف والفعاليات الاجتماعية",
-    location: "Jeddah, Saudi Arabia",
-    locationAr: "جدة، المملكة العربية السعودية",
-    yearsExperience: 12,
-    specialisms: [
-      "Luxury Wedding Design",
-      "Nikah Ceremony Coordination",
-      "Floral Architecture & Decor",
-      "VIP Bridal Concierge",
-      "Destination Wedding Planning (AlUla, Red Sea)",
-    ],
-    specialismsAr: [
-      "تصميم حفلات الزفاف الفاخرة",
-      "تنسيق مراسم عقد القران",
-      "الهندسة الزهرية والديكور",
-      "خدمة العرائس من كبار الشخصيات",
-      "تخطيط زفاف الوجهات (العُلا، البحر الأحمر)",
-    ],
-    credentials: [
-      "Certified Wedding & Event Designer (CWED)",
-      "Florist & Floral Design Diploma — Paris",
-      "GEA Licensed Event Organizer",
-      "PhD Candidate, Cultural Studies (Hejazi Heritage)",
-      "Member, Middle East Wedding Planners Association",
-    ],
-    bio: [
-      "Dr. Nadia Al-Rashidi is Saudi Event Management's Head of Wedding & Social Events — an internationally trained wedding designer and bridal consultant who plans and produces luxury weddings across Saudi Arabia, from intimate Nikah ceremonies to grand royal celebrations.",
-      "Based in Jeddah, Nadia brings a distinctive Hejazi cultural sensibility to her work — deeply informed by the region's rich wedding traditions, its unique relationship with Red Sea aesthetics, and the sophisticated expectations of Jeddah's cosmopolitan high society. Her weddings are widely recognized for their extraordinary floral architecture, immersive theatrical design, and meticulous attention to cultural authenticity.",
-      "Nadia trained in floral design in Paris before returning to Saudi Arabia to specialize in luxury wedding production. She is currently completing a PhD in Cultural Studies focused on the preservation of Hejazi wedding traditions in the context of Saudi Arabia's rapid social modernization.",
-      "Her philosophy: a wedding is not an event, it is a portrait. Every detail — from the scent in the air to the angle of the Kosha lights — should reflect the singular personality of the people at its centre.",
-    ],
-    bioAr: [
-      "الدكتورة نادية الراشدي هي رئيسة قسم حفلات الزفاف والفعاليات الاجتماعية في إدارة الفعاليات السعودية — مصمّمة زفاف ومستشارة عرائس مدرَّبة دولياً، تخطّط وتنفّذ حفلات الزفاف الفاخرة في جميع أنحاء المملكة العربية السعودية، من مراسم عقد القران الحميمة إلى الاحتفالات الملكية الكبرى.",
-      "تتّخذ نادية من جدة مقراً لها، وتضفي على عملها حسّاً ثقافياً حجازياً مميّزاً — مستلهَماً من تقاليد الزفاف الغنية في المنطقة، وعلاقتها الفريدة بجماليات البحر الأحمر، والتوقعات الراقية لمجتمع جدة العالمي. وتشتهر حفلاتها بهندستها الزهرية الاستثنائية، وتصميمها المسرحي الغامر، واهتمامها الدقيق بالأصالة الثقافية.",
-      "تدرّبت نادية على تصميم الزهور في باريس قبل أن تعود إلى المملكة العربية السعودية للتخصص في إنتاج حفلات الزفاف الفاخرة. وهي تُكمل حالياً درجة الدكتوراه في الدراسات الثقافية تركّز على الحفاظ على تقاليد الزفاف الحجازية في سياق التحديث الاجتماعي السريع في المملكة.",
-      "فلسفتها: الزفاف ليس فعالية، بل لوحة فنية. كل تفصيلة — من العطر في الهواء إلى زاوية إضاءة الكوشة — يجب أن تعكس الشخصية الفريدة لمن هم في قلبها.",
-    ],
-    publications: [
-      { title: "Best Wedding Venues in Jeddah 2026: Red Sea Romance Guide", href: "/blog/best-wedding-venues-jeddah-2026" },
-      { title: "Why Saudi Arabia is the New Global Destination for Luxury Weddings", href: "/blog/destination-wedding-planning-guide" },
-    ],
-    services: [
-      { name: "Luxury Weddings", href: "/services/weddings" },
-      { name: "Destination Events", href: "/services/destination-events" },
-      { name: "Luxury VIP Events", href: "/services/luxury-vip-events" },
-      { name: "Cultural Events", href: "/services/cultural-events" },
-    ],
-    image: "/wedding.webp",
-  },
-  "khalid-al-zahrani": {
-    name: "Khalid Al-Zahrani",
-    nameAr: "خالد الزهراني",
-    slug: "khalid-al-zahrani",
-    role: "Director of Destination & Cultural Events",
-    roleAr: "مدير فعاليات الوجهات والفعاليات الثقافية",
-    location: "AlUla, Saudi Arabia",
-    locationAr: "العُلا، المملكة العربية السعودية",
-    yearsExperience: 14,
-    specialisms: [
-      "AlUla Heritage Event Planning",
-      "Desert Destination Events",
-      "Cultural & Religious Event Management",
-      "RCU & DGDA Permit Management",
-      "Ramadan & National Day Events",
-    ],
-    specialismsAr: [
-      "تخطيط فعاليات تراث العُلا",
-      "فعاليات الوجهات الصحراوية",
-      "إدارة الفعاليات الثقافية والدينية",
-      "إدارة تصاريح الهيئة الملكية للعُلا وهيئة الدرعية",
-      "فعاليات رمضان واليوم الوطني",
-    ],
-    credentials: [
-      "RCU Preferred Event Partner — AlUla",
-      "DGDA Approved Event Organizer — Diriyah",
-      "GEA Licensed Cultural Event Organizer",
-      "BA Cultural Heritage Management",
-      "Red Sea Global Approved Event Partner",
-    ],
-    bio: [
-      "Khalid Al-Zahrani is Saudi Event Management's Director of Destination & Cultural Events — the company's foremost specialist in heritage site event planning, desert destination logistics, and Saudi cultural event management. Based primarily in AlUla, Khalid manages the company's most complex and prestige-critical projects: private concerts at Maraya, heritage dinners at Hegra, and exclusive events within NEOM's development landscape.",
-      "Specialising in Saudi Arabia's emerging destination event sector, Khalid has built unique relationships with the Royal Commission for AlUla (RCU), the Diriyah Gate Development Authority (DGDA), and NEOM's hospitality division — enabling Saudi Event Management to facilitate access to venues and sites that are unavailable to most event planners.",
-      "Khalid is also the company's leading expert on Saudi cultural and religious events — managing National Day galas, Ramadan corporate iftars, Founding Day celebrations, and Riyadh Season activations with a deep understanding of the cultural sensitivity, GEA compliance, and logistical precision these events require.",
-      "His philosophy: Saudi Arabia's landscapes are the world's most extraordinary event canvases. Our role is to use them respectfully, creatively, and unforgettably.",
-    ],
-    bioAr: [
-      "خالد الزهراني هو مدير فعاليات الوجهات والفعاليات الثقافية في إدارة الفعاليات السعودية — المتخصص الأبرز في الشركة في تخطيط فعاليات المواقع التراثية، ولوجستيات فعاليات الوجهات الصحراوية، وإدارة الفعاليات الثقافية السعودية. ويتّخذ من العُلا مقراً رئيسياً له، حيث يدير أكثر مشاريع الشركة تعقيداً وأهمية: حفلات خاصة في مرايا، وعشاءات تراثية في الحِجر، وفعاليات حصرية ضمن مشهد نيوم العمراني.",
-      "متخصصاً في قطاع فعاليات الوجهات الناشئ في المملكة، بنى خالد علاقات فريدة مع الهيئة الملكية لمحافظة العُلا، وهيئة تطوير بوابة الدرعية، وقسم الضيافة في نيوم — ما يمكّن إدارة الفعاليات السعودية من تسهيل الوصول إلى قاعات ومواقع غير متاحة لمعظم منظّمي الفعاليات.",
-      "خالد أيضاً هو الخبير الأول في الشركة في الفعاليات الثقافية والدينية السعودية — يدير حفلات اليوم الوطني، وإفطارات رمضان للشركات، واحتفالات يوم التأسيس، وتفعيلات موسم الرياض بفهم عميق للحساسية الثقافية، والامتثال للهيئة العامة للترفيه، والدقة اللوجستية التي تتطلبها هذه الفعاليات.",
-      "فلسفته: مناظر المملكة العربية السعودية الطبيعية هي أكثر لوحات الفعاليات إبهاراً في العالم. ودورنا أن نستخدمها باحترام وإبداع وبطريقة لا تُنسى.",
-    ],
-    publications: [
-      { title: "AlUla Events Guide 2026: Maraya, Hegra & Desert Experience Planning", href: "/blog/alula-events-guide-maraya-hegra-desert" },
-      { title: "Corporate Ramadan Event Planning Guide Saudi Arabia 2026", href: "/blog/ramadan-event-planning-guide-saudi-arabia" },
-      { title: "Saudi National Day Event Ideas for Corporates: September 23 Planning Guide", href: "/blog/national-day-event-ideas-saudi-arabia-corporates" },
-    ],
-    services: [
-      { name: "Destination Events", href: "/services/destination-events" },
-      { name: "Cultural Events", href: "/services/cultural-events" },
-      { name: "Luxury VIP Events", href: "/services/luxury-vip-events" },
-      { name: "Event Production", href: "/services/event-production" },
-    ],
-    image: "/alula_gala_people.webp",
   },
 };
 
@@ -413,10 +239,12 @@ export default async function TeamMemberPage({ params }: PageProps) {
                       <MapPin size={12} className="shrink-0" />
                       <span>{dLocation}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-slate-500 text-xs">
-                      <Award size={12} className="shrink-0" />
-                      <span>{isAr ? `${profile.credentials.length} اعتمادات مهنية` : `${profile.credentials.length} Professional Credentials`}</span>
-                    </div>
+                    {profile.credentials.length > 0 && (
+                      <div className="flex items-center gap-2 text-slate-500 text-xs">
+                        <Award size={12} className="shrink-0" />
+                        <span>{isAr ? `${profile.credentials.length} اعتمادات مهنية` : `${profile.credentials.length} Professional Credentials`}</span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-2 text-slate-500 text-xs" dir={isAr ? "ltr" : "rtl"}>
                       <span className="font-medium text-slate-700">{isAr ? profile.name : profile.nameAr}</span>
                       <span className="text-slate-400">•</span>
@@ -426,17 +254,19 @@ export default async function TeamMemberPage({ params }: PageProps) {
                 </div>
 
                 {/* Credentials */}
-                <div className="mt-6 bg-white border border-slate-200 rounded-2xl p-5">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-4">{isAr ? "المؤهلات" : "Credentials"}</h3>
-                  <ul className="space-y-2">
-                    {profile.credentials.map((c, i) => (
-                      <li key={i} className="flex items-start gap-2 text-slate-600 text-xs leading-relaxed">
-                        <span className="text-emerald-500 mt-0.5 shrink-0">✓</span>
-                        <span>{c}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {profile.credentials.length > 0 && (
+                  <div className="mt-6 bg-white border border-slate-200 rounded-2xl p-5">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-4">{isAr ? "المؤهلات" : "Credentials"}</h3>
+                    <ul className="space-y-2">
+                      {profile.credentials.map((c, i) => (
+                        <li key={i} className="flex items-start gap-2 text-slate-600 text-xs leading-relaxed">
+                          <span className="text-emerald-500 mt-0.5 shrink-0">✓</span>
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {/* Bio */}

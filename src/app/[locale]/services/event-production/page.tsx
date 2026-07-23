@@ -78,7 +78,7 @@ const services = [
   {
     icon: Monitor,
     title: "LED & Projection Mapping",
-    desc: "Ultra-high-resolution LED walls, curved and cylindrical LED installations, 3D architectural projection mapping, and real-time generative content for immersive experiences.",
+    desc: "Ultra-high-resolution LED walls, curved and cylindrical LED installations, 3D architectural projection mapping, and real-time generative content for immersive experiences — engineered with a specialist AV & broadcast systems-integration partner operating across Saudi Arabia and the GCC.",
   },
   {
     icon: Zap,
@@ -137,7 +137,7 @@ const resources = [
 const faqs = [
   {
     q: "What is event production?",
-    a: "Event production encompasses all the technical elements that bring an event to life: stage design, sound engineering, lighting, visual displays (LED and projection), structural rigging, power supply, and live broadcasting. Saudi Event Management provides all disciplines in-house for seamless co-ordination.",
+    a: "Event production encompasses all the technical elements that bring an event to life: stage design, sound engineering, lighting, visual displays (LED and projection), structural rigging, power supply, and live broadcasting. Saudi Event Management coordinates all disciplines through our trusted production partners for seamless co-ordination.",
   },
   {
     q: "How much does event production cost in Saudi Arabia?",
@@ -179,7 +179,7 @@ const servicesAr = [
   { title: "تصميم وتصنيع المسارح", desc: "بناء مسارح معمارية مخصّصة من 10 إلى 100 متر عرضًا — هياكل مخصّصة، ومنصّات متعددة المستويات، وتصنيع ديكورات مشهدية بالفولاذ الإنشائي والأكريليك والخشب." },
   { title: "تصميم الإضاءة الذكية", desc: "إضاءة متحركة RGBW ديناميكية، وضباب أجواء، وغسيل معماري، وإسقاط gobo، وشرائط LED مُخطّطة بالبكسل لبيئات غامرة بأي حجم." },
   { title: "هندسة الصوت بجودة الحفلات", desc: "أنظمة سماعات لاين-أراي، وإدارة لاسلكية RF، وضبط صوتي للقاعات، وأنظمة مراقبة داخل الأذن، وخلط احترافي للصوت الأمامي والمراقبة لوضوح لا تشوبه شائبة." },
-  { title: "شاشات LED وإسقاط الصور", desc: "جدران LED فائقة الدقة، وتركيبات LED منحنية وأسطوانية، وإسقاط ثلاثي الأبعاد على الأبنية، ومحتوى توليدي لحظي لتجارب غامرة." },
+  { title: "شاشات LED وإسقاط الصور", desc: "جدران LED فائقة الدقة، وتركيبات LED منحنية وأسطوانية، وإسقاط ثلاثي الأبعاد على الأبنية، ومحتوى توليدي لحظي لتجارب غامرة — بالتعاون مع شريك متخصص في تكامل أنظمة الصوت والصورة والبث، يعمل في جميع أنحاء السعودية ودول الخليج." },
   { title: "الطاقة والتركيب الإنشائي", desc: "إمداد مولّدات مناسب للموقع، وأنظمة توزيع طاقة نظيفة، وتركيب إنشائي معتمد، وحسابات أحمال النقاط، وهندسة جمالونات الأسقف." },
   { title: "المحتوى المباشر والبث", desc: "تبديل مباشر متعدد الكاميرات، وتشغيل رسوميات بجودة البث، وتركيب فيديو لحظي، وشاشات IMAG، وبنية بث متزامن." },
   { title: "تصميم البيئات المُسرحة", desc: "عناصر مشهدية مخصّصة، وتركيبات أزهار مخصّصة، وتصميم تجريبي يحمل هوية العلامة، وبناء تفعيلات المداخل، ومفاهيم ديكور مُسرحة كاملة." },
@@ -203,7 +203,7 @@ const resourcesAr = [
 ];
 
 const faqsAr = [
-  { q: "ما هو الإنتاج الفعّالياتي؟", a: "يشمل الإنتاج الفعّالياتي جميع العناصر التقنية التي تُحيي الفعالية: تصميم المسرح، وهندسة الصوت، والإضاءة، والعروض المرئية (LED والإسقاط)، والتركيب الإنشائي، وإمداد الطاقة، والبث المباشر. وتقدّم إدارة الفعاليات السعودية كل التخصصات داخليًا لتنسيق سلس." },
+  { q: "ما هو الإنتاج الفعّالياتي؟", a: "يشمل الإنتاج الفعّالياتي جميع العناصر التقنية التي تُحيي الفعالية: تصميم المسرح، وهندسة الصوت، والإضاءة، والعروض المرئية (LED والإسقاط)، والتركيب الإنشائي، وإمداد الطاقة، والبث المباشر. وتنسّق إدارة الفعاليات السعودية كل التخصصات عبر شركاء إنتاج موثوقين لتنسيق سلس." },
   { q: "كم تبلغ تكلفة الإنتاج الفعّالياتي في السعودية؟", a: "تتفاوت تكاليف الإنتاج الفعّالياتي في السعودية كثيرًا حسب الحجم والتعقيد. تبدأ باقة الصوت والصورة لفعالية شركات ليوم واحد من نحو 18,000 ريال. أما تصنيع مسرح وإنتاج متكامل لحفل أو حفلة موسيقية بـ 1000 شخص فقد يتراوح من 150,000 إلى أكثر من 500,000 ريال. تواصل معنا لعرض مفصّل." },
   { q: "هل توفّرون أنظمة صوت للفعاليات الخارجية في السعودية؟", a: "نعم. نوفّر أنظمة لاين-أراي مقاومة للطقس، وأبراج تأخير، ومصفوفات مضخّمات صوت مصمّمة للبيئات الخارجية، بما في ذلك مواقع الصحراء في العلا والقاعات الشاطئية على البحر الأحمر. وتشمل جميع الأنظمة مهندسي صوت ميدانيين وتنسيق RF." },
   { q: "هل يمكنكم تنفيذ إسقاط الصور في مواقع العلا أو الدرعية التراثية؟", a: "نعم. نفّذت إدارة الفعاليات السعودية تفعيلات إسقاط صور في مواقع تراثية. ونعمل عن قرب مع الهيئة الملكية للعلا وهيئة تطوير بوابة الدرعية لتصاريح المواقع وبروتوكولات إنتاج دون أثر." },
@@ -230,7 +230,7 @@ const cAr = {
   credQuote: "شريك تقني — تفعيلات موسم الرياض",
   servLabel: "الإنتاج التقني الرائد في السعودية",
   servH2a: "قدرات الإنتاج",
-  servH2b: "الداخلية",
+  servH2b: "المنسّقة",
   servPpre: "بصفتنا شريكًا تقنيًا رئيسيًا لفعاليات ",
   servLinkVision: "رؤية 2030",
   servPmid: "، نحتفظ بكل تخصص تقني تحت سقف واحد — من تصنيع المسارح الإنشائي إلى البث المباشر بجودة احترافية. وسواء بدعم ",
@@ -249,7 +249,7 @@ const cAr = {
   formEyebrow: "احصل على عرض إنتاج",
   formH2a: "أخبرنا بما تبنيه.",
   formH2b: "ونحن نهندسه.",
-  formP: "أرسل لنا ملخّص فعاليتك ويعيد إليك مديرنا الفني متطلبات تقنية مفصّلة وعرضًا مُبوّبًا — مسرح، وصوت، وإضاءة، وLED، وطاقة، وطاقم، كلّها مملوكة داخليًا.",
+  formP: "أرسل لنا ملخّص فعاليتك ويعيد إليك مديرنا الفني متطلبات تقنية مفصّلة وعرضًا مُبوّبًا — مسرح، وصوت، وإضاءة، وLED، وطاقة، وطاقم، جميعها منسّقة عبر شركاء موثوقين.",
   formBullets: [
     "تصميم مسرح ثلاثي الأبعاد مجاني مع كل عرض",
     "تركيب معتمد وحسابات أحمال إنشائية",
@@ -262,7 +262,7 @@ const cAr = {
   khH2b: "الإنتاج",
   khP: "أدلّة تقنية لمنتجي الفعاليات ومشغّلي القاعات وفرق العلامات الذين يخطّطون لفعاليات في المملكة.",
   khViewAll: "عرض كل المقالات",
-  khAuthorTitle: "رئيس الإنتاج التقني",
+  khAuthorTitle: "المؤسِّسة",
   faqH2a: "الأسئلة الشائعة",
   faqH2b: "للإنتاج الفعّالياتي",
   faqSub: "أسئلة تقنية يجيب عنها خبراء الإنتاج لدينا",
@@ -436,7 +436,7 @@ export default async function EventProductionPage() {
                 {isAr ? cAr.servLabel : "Saudi Arabia's Leading Technical Production"}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
-                {isAr ? cAr.servH2a : "In-House Production"} <span className="text-[var(--primary)]">{isAr ? cAr.servH2b : "Capabilities"}</span>
+                {isAr ? cAr.servH2a : "Production"} <span className="text-[var(--primary)]">{isAr ? cAr.servH2b : "Capabilities"}</span>
               </h2>
               <p className="text-neutral-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
                 {isAr ? (
@@ -561,7 +561,7 @@ export default async function EventProductionPage() {
                 <p className="text-white/70 text-base leading-relaxed max-w-md">
                   {isAr
                     ? cAr.formP
-                    : "Send us your event brief and our technical director returns a detailed rider and itemised quote — stage, sound, lighting, LED, power, and crew, all owned in-house."}
+                    : "Send us your event brief and our technical director returns a detailed rider and itemised quote — stage, sound, lighting, LED, power, and crew, all coordinated through trusted partners."}
                 </p>
                 <ul className="space-y-3.5 pt-2">
                   {(isAr
@@ -629,8 +629,8 @@ export default async function EventProductionPage() {
                   {isAr ? cAr.khViewAll : "View All Articles"}
                 </Link>
                 <div className="pt-6 border-t border-neutral-200/80">
-                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "فهد السليمان" : "Fahad Al-Sulaiman"}</p>
-                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? cAr.khAuthorTitle : "Head of Technical Production"}</p>
+                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "حبيبة أصغر" : "Habiba Asghar"}</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? cAr.khAuthorTitle : "Founder"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">

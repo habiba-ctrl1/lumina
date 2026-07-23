@@ -80,7 +80,7 @@ const locations = [
     focus: "Private Majlis & Corporate Retreats",
     description:
       "Often overlooked by boutique agencies — but a goldmine for high-volume, high-loyalty events. Al Khobar sits at the centre of Saudi Arabia's energy and industrial sector, with Saudi Aramco, SABIC, and hundreds of multinational corporations generating consistent demand for premium Majlis gatherings, executive retreats, and supplier conferences.",
-    tags: ["Saudi Aramco", "SABIC", "Dhahran Expo", "Jubail IC"],
+    tags: ["Energy Sector", "Industrial", "Dhahran Expo", "Jubail IC"],
     stat: "Vetted Local Vendors",
   },
   {
@@ -172,7 +172,6 @@ export default async function LocationsPage() {
           { value: "12", label: "Cities Covered" },
           { value: "13+", label: "Saudi Regions Served" },
           { value: "20+", label: "Vetted Vendors" },
-          { value: "100%", label: "GEA Compliant" },
         ]}
       />
 

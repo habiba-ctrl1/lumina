@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? { absolute: "شركة تنظيم معارض ومؤتمرات وفعاليات في السعودية | إدارة الفعاليات السعودية" }
       : "Event Management Company in Saudi Arabia",
     description: isAr
-      ? "شركة إدارة الفعاليات السعودية الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — مرخّصة من هيئة الترفيه وبإنتاج داخلي. احصل على استشارة مجانية."
-      : "Saudi Arabia's full-service event management company — delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA-licensed, in-house production. Get a free consultation.",
+      ? "شركة إدارة الفعاليات السعودية الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — تصاريح الهيئة العامة للترفيه عبر شركاء موثوقين. احصل على استشارة مجانية."
+      : "Saudi Arabia's full-service event management company — delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA permit support through trusted partners. Get a free consultation.",
     keywords: isAr
       ? [
           "تنظيم معارض ومؤتمرات",
@@ -76,8 +76,8 @@ import { blogPosts } from "@/lib/blog-data";
 // Homepage SEO content sections (server-rendered, premium light theme)
 // ─────────────────────────────────────────────────────────────────────────────
 const whyChoose = [
-  { icon: Building2, title: "In-House Event Production", desc: "Stage, AV, lighting and LED delivered by our own team — not subcontracted — for one accountable point of delivery." },
-  { icon: ShieldCheck, title: "GEA Permits & Compliance", desc: "We secure General Entertainment Authority permits, municipality approvals, and civil-defense clearances end-to-end." },
+  { icon: Building2, title: "Trusted Production Partners", desc: "Stage, AV, lighting and LED delivered by our vetted production partners, coordinated under one accountable point of contact." },
+  { icon: ShieldCheck, title: "GEA Permits & Compliance", desc: "Through our trusted partners, we arrange General Entertainment Authority permit filings, municipality approvals, and civil-defense clearances on your behalf, start to finish." },
   { icon: Languages, title: "Bilingual Arabic–English Team", desc: "Project managers, hosts, and event collateral in both languages for domestic and international audiences." },
   { icon: Sparkles, title: "Vision 2030 Experience", desc: "Delivering cultural, government, and corporate events aligned with the Kingdom's transformation agenda." },
   { icon: Users, title: "One Accountable Team", desc: "A single integrated team from first brief to on-day execution — no multi-vendor friction or finger-pointing." },
@@ -200,7 +200,7 @@ const homeFaqs = [
   },
   {
     q: "Do you handle event permits and GEA compliance?",
-    a: "Yes. We manage General Entertainment Authority (GEA) permits, municipality approvals, and civil-defense and police clearances end-to-end, so your event is fully licensed.",
+    a: "Yes. Working through our trusted partners, we arrange General Entertainment Authority (GEA) permits, municipality approvals, and civil-defense and police clearances on your behalf, so your event is fully compliant.",
   },
   {
     q: "How early should I book an event management company?",

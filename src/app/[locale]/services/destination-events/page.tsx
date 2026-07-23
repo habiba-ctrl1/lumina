@@ -259,7 +259,7 @@ const cAr = {
   khH3b: "الوجهات",
   khP: "معرفة خبيرة لتخطيط فعاليات استثنائية في أبرز مواقع السعودية الأيقونية.",
   khViewAll: "عرض كل الأدلّة",
-  khAuthorTitle: "رئيس فعاليات الوجهات",
+  khAuthorTitle: "المؤسِّسة",
   formEyebrow: "ابدأ فعالية وجهتك",
   formH2a: "فعاليات استثنائية في",
   formH2b: "عجائب المملكة.",
@@ -466,8 +466,8 @@ export default async function DestinationEventsPage() {
                   {isAr ? cAr.khViewAll : "View All Guides"}
                 </Link>
                 <div className="pt-6 border-t border-slate-200">
-                  <p className="text-ink-950 font-bold text-sm">{isAr ? "خالد الزهراني" : "Khalid Al-Zahrani"}</p>
-                  <p className="text-slate-500 text-[10px] uppercase tracking-widest">{isAr ? cAr.khAuthorTitle : "Head of Destination Events"}</p>
+                  <p className="text-ink-950 font-bold text-sm">{isAr ? "حبيبة أصغر" : "Habiba Asghar"}</p>
+                  <p className="text-slate-500 text-[10px] uppercase tracking-widest">{isAr ? cAr.khAuthorTitle : "Founder"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">

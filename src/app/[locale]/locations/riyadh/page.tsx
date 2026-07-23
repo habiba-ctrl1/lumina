@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? { absolute: "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية" }
       : "Event Management Company in Riyadh | Saudi Event Management",
     description: isAr
-      ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030 ومرخّصون من هيئة الترفيه."
-      : "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permitted.",
+      ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030، تصاريح هيئة الترفيه عبر شركاء موثوقين."
+      : "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permit support through trusted partners.",
     keywords:
       "event management company in Riyadh, event planner in Riyadh, corporate event organizer in Riyadh, wedding planner in Riyadh, conference management Riyadh RICEC, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
     alternates: {
@@ -181,7 +181,7 @@ const jsonLd = {
           "name": "Which event management companies in Riyadh specialize in Vision 2030 corporate events?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria Riyadh. We coordinate with SECB, GEA, and Amanah Ar-Riyad for full compliance on all engagements.",
+            "text": "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria Riyadh. We arrange SECB, GEA, and Amanah Ar-Riyad permit processes through trusted partners for full compliance on all engagements.",
           },
         },
         {
@@ -189,7 +189,7 @@ const jsonLd = {
           "name": "What permits are required to host a corporate event or exhibition in Riyadh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Corporate events in Riyadh require an Amanah Ar-Riyad municipal permit (2–3 weeks). Exhibitions at RICEC use the SECB fast-track pathway. Entertainment-category brand activations need a GEA license (4–6 weeks). Events at Diriyah require Diriyah Gate Development Authority (DGDA) approval. Saudi Event Management manages the complete permitting process.",
+            "text": "Corporate events in Riyadh require an Amanah Ar-Riyad municipal permit (2–3 weeks). Exhibitions at RICEC use the SECB fast-track pathway. Entertainment-category brand activations need a GEA license (4–6 weeks). Events at Diriyah require Diriyah Gate Development Authority (DGDA) approval. Saudi Event Management arranges the complete permitting process through trusted partners.",
           },
         },
         {
@@ -205,7 +205,7 @@ const jsonLd = {
           "name": "How do brands participate in Riyadh Season events?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Riyadh Season, organized by the General Entertainment Authority (GEA), offers brand activation zones at Boulevard Riyadh City, Riyadh Front, MDL Beast, and Diriyah. Corporate participation requires GEA licensing and, for large activations, RCRC coordination. Saudi Event Management manages the full GEA permit process and production for Riyadh Season brand activations.",
+            "text": "Riyadh Season, organized by the General Entertainment Authority (GEA), offers brand activation zones at Boulevard Riyadh City, Riyadh Front, MDL Beast, and Diriyah. Corporate participation requires GEA licensing and, for large activations, RCRC coordination. Saudi Event Management arranges the GEA permit process through trusted partners and production for Riyadh Season brand activations.",
           },
         },
         {
@@ -221,7 +221,7 @@ const jsonLd = {
           "name": "Do you organise Vision 2030 events and seminars in Riyadh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues. We have produced seminars and forums for PIF portfolio companies, MISA, and national transformation programs, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA compliance.",
+            "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
           },
         },
       ],
@@ -365,7 +365,7 @@ const services = [
   {
     icon: MapPin,
     title: "Government & Vision 2030 Events",
-    text: "Ministerial launches, national program events, and Vision 2030 corporate milestones. Direct relationships with GEA, SECB, MISA, and RCRC.",
+    text: "Ministerial launches, national program events, and Vision 2030 corporate milestones. Experienced navigating GEA, SECB, MISA, and RCRC requirements.",
     href: "/locations/riyadh/corporate-event-management",
   },
   {
@@ -401,7 +401,7 @@ const faqs = [
   },
   {
     q: "How do companies participate in Riyadh Season brand activations?",
-    a: "Riyadh Season activation zones — including Boulevard Riyadh City, Riyadh Front, and MDL Beast — are managed by the General Entertainment Authority (GEA). Participation requires a GEA brand activation license, with lead times of 4–6 weeks. Saudi Event Management handles the full GEA application, production, and on-ground management for Riyadh Season campaigns.",
+    a: "Riyadh Season activation zones — including Boulevard Riyadh City, Riyadh Front, and MDL Beast — are managed by the General Entertainment Authority (GEA). Participation requires a GEA brand activation license, with lead times of 4–6 weeks. Saudi Event Management arranges the GEA application through trusted partners, plus production and on-ground management for Riyadh Season campaigns.",
   },
   {
     q: "What is the best corporate event venue in KAFD (King Abdullah Financial District)?",
@@ -409,7 +409,7 @@ const faqs = [
   },
   {
     q: "Do you organise Vision 2030 events and seminars in Riyadh?",
-    a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues. We have produced seminars and forums for PIF portfolio companies, MISA, and national transformation programs, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA compliance.",
+    a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
   },
 ];
 
@@ -556,18 +556,19 @@ export default async function RiyadhPage() {
                 </strong>{" "}
                 in the Diplomatic Quarter handles ministerial summits and the{" "}
                 <strong>Future Investment Initiative (FII)</strong>. Saudi Event
-                Management&apos;s Riyadh team is fully accredited with{" "}
+                Management&apos;s Riyadh team arranges{" "}
                 <strong>GEA</strong>, <strong>SECB</strong>, and{" "}
-                <strong>Amanah Ar-Riyad</strong> — the three permit authorities
-                governing all Riyadh event categories.
+                <strong>Amanah Ar-Riyad</strong> permit processes through
+                trusted partners — the three authorities governing all Riyadh
+                event categories.
               </p>
             </div>
             <ul className="space-y-3">
               {[
-                "Direct SECB accreditation for RICEC exhibition management",
-                "GEA-licensed for Riyadh Season brand activations",
-                "Diplomatic Quarter clearance for KAICC government events",
-                "Diriyah Gate Development Authority (DGDA) approved partner",
+                "SECB permit-process experience for RICEC exhibition management",
+                "GEA permit coordination for Riyadh Season brand activations",
+                "Experience navigating KAICC government event requirements",
+                "Familiarity with Diriyah Gate Development Authority (DGDA) event requirements",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
                   <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -863,16 +864,16 @@ export default async function RiyadhPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "GEA, SECB & Amanah Accredited",
-                body: "We hold active accreditations with all three Riyadh permit authorities — GEA for entertainment events, SECB for MICE exhibitions, and Amanah Ar-Riyad for municipal permits. No delays, no compliance gaps.",
+                title: "GEA, SECB & Amanah Permit Expertise",
+                body: "Through our trusted partners, we arrange all three Riyadh permit processes on your behalf — GEA for entertainment events, SECB for MICE exhibitions, and Amanah Ar-Riyad for municipal permits. No delays, no compliance gaps.",
               },
               {
-                title: "RICEC Preferred Partner",
-                body: "As a preferred logistics and event management partner at RICEC, we have operational priority access for LEAP, World Defense Show, and Cityscape Saudi — the three largest annual events in Saudi Arabia.",
+                title: "RICEC Event Coordination",
+                body: "We coordinate logistics and event management support around RICEC's major annual calendar, including LEAP, World Defense Show, and Cityscape Saudi — three of the largest annual events in Saudi Arabia.",
               },
               {
                 title: "Vision 2030 Delivery Infrastructure",
-                body: "Every event we manage in Riyadh is structured to meet Vision 2030 reporting and compliance standards. We have delivered corporate events for PIF portfolio companies, MISA forums, and national program launches.",
+                body: "Every event we manage in Riyadh is structured to meet Vision 2030 reporting and compliance standards, with experience supporting corporate events, MISA-aligned forums, and national program launches.",
               },
             ].map((card, i) => (
               <div
@@ -945,17 +946,17 @@ export default async function RiyadhPage() {
                 <strong>Waldorf Astoria Riyadh</strong>.
               </p>
               <p>
-                We are fully accredited with the{" "}
+                Through our trusted partners, we arrange{" "}
                 <strong>
                   Saudi Exhibitions &amp; Conventions Bureau (SECB)
                 </strong>
                 , the{" "}
                 <strong>General Entertainment Authority (GEA)</strong>, and
-                Amanah Ar-Riyad. Our Riyadh portfolio includes{" "}
-                <strong>Vision 2030</strong> program events, PIF portfolio
-                company launches, Riyadh Season brand activations, and
-                heritage galas in <strong>Diriyah</strong>. As the host city
-                of <strong>World Expo 2030</strong>, Riyadh&apos;s event
+                Amanah Ar-Riyad permit processes for our clients. We
+                support <strong>Vision 2030</strong>-aligned program events,
+                Riyadh Season brand activations, and heritage galas in{" "}
+                <strong>Diriyah</strong>. As the host city of{" "}
+                <strong>World Expo 2030</strong>, Riyadh&apos;s event
                 infrastructure continues to expand — positioning our Riyadh
                 team for the largest event market in MENA.
               </p>

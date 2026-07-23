@@ -217,12 +217,12 @@ export default function ProductionVenuesPage() {
               <p className="text-neutral-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
                 {isAr ? (
                   <>
-                    اختيار القاعات، والصوت والصورة، والمسرح، والتموين، والإعلام — فريق داخلي واحد لكل عنصر تقني وضيافي في فعاليتك. من <Link href={`${arHref}/services/corporate-events`} className="text-[var(--primary)] hover:underline font-semibold">القمم المؤسسية التنفيذية</Link> إلى تأمين مواقع راقية لـ<Link href={`${arHref}/services/luxury-vip-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات كبار الشخصيات الخاصة</Link>، نوفّر وصولًا حصريًا إلى أرقى مساحات السعودية.
+                    اختيار القاعات، والصوت والصورة، والمسرح، والتموين، والإعلام — فريق تنسيق واحد لكل عنصر تقني وضيافي في فعاليتك. من <Link href={`${arHref}/services/corporate-events`} className="text-[var(--primary)] hover:underline font-semibold">القمم المؤسسية التنفيذية</Link> إلى تأمين مواقع راقية لـ<Link href={`${arHref}/services/luxury-vip-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات كبار الشخصيات الخاصة</Link>، نوفّر وصولًا واسعًا إلى أرقى مساحات السعودية.
                   </>
                 ) : (
                   <>
-                    Venue sourcing, AV, staging, catering and media — a single in-house team for every
-                    technical and hospitality element of your event. From <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">executive corporate summits</Link> to securing elite locations for <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP private events</Link>, we offer exclusive access to Saudi Arabia&apos;s premier spaces.
+                    Venue sourcing, AV, staging, catering and media — a single coordinating team for every
+                    technical and hospitality element of your event. From <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">executive corporate summits</Link> to securing elite locations for <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP private events</Link>, we offer broad access to Saudi Arabia&apos;s premier spaces.
                   </>
                 )}
               </p>
@@ -280,8 +280,8 @@ export default function ProductionVenuesPage() {
                 <h2 className="text-2xl font-bold text-neutral-900">{isAr ? <>أدلّة <br/><span className="text-[var(--primary)]">تقنية</span></> : <>Technical <br/><span className="text-[var(--primary)]">guides</span></>}</h2>
                 <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? "أدلّة تقنية واتجاهات تصميم لتنفيذ فعاليات عالمية المستوى في المملكة." : "Technical guides and design trends for executing world-class events in the Kingdom."}</p>
                 <div className="pt-6 border-t border-neutral-200">
-                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "فهد السليمان" : "Fahad Al-Sulaiman"}</p>
-                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? "رئيس الإنتاج" : "Head of Production"}</p>
+                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "حبيبة أصغر" : "Habiba Asghar"}</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? "المؤسِّسة" : "Founder"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -521,13 +521,13 @@ export default function ProductionVenuesPage() {
                 ? [
                 { c: "حدود الطاقة والتعليق في القاعة", s: "كثير من قاعات الحفلات والمواقع التراثية لم تُبنَ يومًا لأحمال بجودة الحفلات. نُجري مسحًا تقنيًا للموقع مبكرًا، ثم نحدّد المولّدات وتوزيع الطاقة النظيف والتعليق المعتمد كي لا تحدّ قيود القاعة الإنتاج أبدًا." },
                 { c: "نوافذ التحميل والتبديل الضيّقة", s: "حين تستضيف القاعة فعاليات متتالية، يصبح وقت التجهيز قاسيًا. المنصّات المعيارية الجاهزة، وضفائر الكابلات المعنونة، وقائمة نداء الطاقم المُتمرَّن عليها تتيح لنا التحميل والاختبار والفكّ داخل النافذة." },
-                { c: "فجوات المساءلة بين الموردين", s: "تبادل اللوم بين فرق الصوت والصورة والتموين والديكور والقاعة هو نمط الفشل الكلاسيكي. وبامتلاك كل تخصّص داخليًا تحت مدير إنتاج واحد، يكون هناك نقطة مساءلة واحدة." },
+                { c: "فجوات المساءلة بين الموردين", s: "تبادل اللوم بين فرق الصوت والصورة والتموين والديكور والقاعة هو نمط الفشل الكلاسيكي. وبتنسيق كل تخصّص تحت مدير إنتاج واحد، يكون هناك نقطة مساءلة واحدة." },
                 { c: "لوجستيات القاعات النائية (العلا، الصحراء)", s: "تحتاج المواقع خارج الشبكة إلى الطاقة والتحكّم في المناخ والاحتياطية. نخطّط لمولّدات صامتة، وبطاريات احتياطية، وحلول طوارئ بالمعدات البديلة كي يسير حفل صحراوي بموثوقية قاعة خمس نجوم." },
                   ]
                 : [
                 { c: "Venue power & rigging limits", s: "Many ballrooms and heritage sites were never built for concert-grade loads. We conduct a technical site survey early, then spec generators, clean power distribution, and certified rigging so the venue's limits never cap the production." },
                 { c: "Tight load-in and changeover windows", s: "When a venue hosts back-to-back events, set-up time is brutal. Pre-built modular staging, labelled cable looms, and a rehearsed crew call sheet let us load in, test, and strike inside the window." },
-                { c: "Multi-vendor accountability gaps", s: "AV, catering, décor, and venue teams pointing fingers is the classic failure mode. With every discipline owned in-house under one production director, there is a single point of accountability." },
+                { c: "Multi-vendor accountability gaps", s: "AV, catering, décor, and venue teams pointing fingers is the classic failure mode. With every discipline coordinated under one production director, there is a single point of accountability." },
                 { c: "Remote-venue logistics (AlUla, desert)", s: "Off-grid sites need power, climate control, and redundancy. We plan silent generators, battery backup, and spare-kit contingencies so a desert gala runs as reliably as a five-star ballroom." },
               ]).map((item) => (
                 <div key={item.c} className="bg-neutral-50/80 border border-neutral-200/80 rounded-2xl p-7">
@@ -561,7 +561,7 @@ export default function ProductionVenuesPage() {
                 : [
                 { title: "Event Production", slug: "event-production", desc: "Dedicated technical production — stage, AV, lighting, and LED." },
                 { title: "Conference Management", slug: "conferences", desc: "Full PCO services integrating AV and catering for seamless delivery." },
-                { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with in-house production." },
+                { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with trusted production partners." },
                 { title: "Exhibitions & Trade Shows", slug: "exhibitions", desc: "Venue sourcing and AV production for B2B expos and trade shows." },
               ]).map((rel) => (
                 <Link

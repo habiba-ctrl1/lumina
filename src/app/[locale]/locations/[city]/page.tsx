@@ -192,13 +192,13 @@ const pseoCities: Record<string, CityData> = {
     intro:
       "Al Khobar is the Eastern Province's most cosmopolitan and internationally integrated city — a Gulf-coast destination where Saudi Aramco's vast Dhahran expat community, major energy sector multinationals, and one of Saudi Arabia's most affluent resident populations converge. The Arabian Gulf Corniche offers unmatched waterfront backdrops for events year-round.",
     details:
-      "Our Al Khobar team serves the Eastern Province's energy sector, Aramco-adjacent corporate clients, and luxury wedding market with deep relationships across the Kempinski, Sofitel Corniche, InterContinental, and Le Méridien. Al Khobar's 30-minute link to Bahrain via King Fahd Causeway creates a unique cross-border event corridor that we manage as a single integrated service.",
+      "Our Al Khobar team coordinates events for the Eastern Province's energy sector and luxury wedding market with strong relationships across the Kempinski, Sofitel Corniche, InterContinental, and Le Méridien. Al Khobar's 30-minute link to Bahrain via King Fahd Causeway creates a unique cross-border event corridor that we coordinate as a single integrated service.",
     geoCoords: { lat: "26.2172", lng: "50.1971" },
     wikidata: "Q223359",
     glance: [
       { val: "1.1M", label: "City Population" },
       { val: "30 min", label: "To Bahrain" },
-      { val: "Aramco HQ", label: "Adjacent City" },
+      { val: "Aramco HQ", label: "Nearby Landmark" },
       { val: "Gulf Corniche", label: "Event Backdrop" },
       { val: "Oct–Mar", label: "Peak Season" },
       { val: "4 km", label: "Corniche Length" },
@@ -249,12 +249,12 @@ const pseoCities: Record<string, CityData> = {
     ],
     stats: [
       { val: "Khobar-Wide", label: "Local Vendor Network" },
-      { val: "30+", label: "Venue Partners" },
-      { val: "Aramco", label: "Anchor Client Sector" },
+      { val: "6", label: "Featured Venues" },
+      { val: "Energy", label: "Anchor Sector" },
       { val: "24/7", label: "Local Support" },
     ],
     services: [
-      { name: "Aramco-Adjacent Corporate Events", slug: "corporate-events", icon: Briefcase, desc: "Vendor days, partner conferences, and expat community events for Aramco's Dhahran Hills ecosystem." },
+      { name: "Energy Sector Corporate Events", slug: "corporate-events", icon: Briefcase, desc: "Vendor days, partner conferences, and expat community events across the Dhahran Hills energy sector." },
       { name: "Gulf Corniche Weddings", slug: "weddings", icon: Star, desc: "Luxury waterfront weddings at Sofitel Corniche and InterContinental with Arabian Gulf views." },
       { name: "Energy Sector Conferences", slug: "corporate-events", icon: Briefcase, desc: "Oil and gas, oilfield services, and energy industry MICE across Khobar and Dhahran venues." },
       { name: "Half Moon Bay Beach Events", slug: "destination-events", icon: Globe, desc: "Premium outdoor beach weddings and corporate retreats at the Gulf's most exclusive coastal venue." },
@@ -264,11 +264,11 @@ const pseoCities: Record<string, CityData> = {
     faqs: [
       {
         q: "What is the best luxury event venue in Al Khobar?",
-        a: "The Kempinski Al Othman Hotel Al Khobar is the Eastern Province's benchmark luxury event venue (1,500 guests). For Gulf Corniche views, the Sofitel Al Khobar The Corniche (2,000 guests) is the top choice for large corporate galas with Arabian Gulf waterfront backdrops. Both are preferred Saudi Event Management venues.",
+        a: "The Kempinski Al Othman Hotel Al Khobar is the Eastern Province's benchmark luxury event venue (1,500 guests). For Gulf Corniche views, the Sofitel Al Khobar The Corniche (2,000 guests) is the top choice for large corporate galas with Arabian Gulf waterfront backdrops. Both are venues we work with regularly.",
       },
       {
-        q: "Do you manage corporate events for Saudi Aramco employees and vendors?",
-        a: "Yes. Saudi Event Management provides dedicated corporate event management for Saudi Aramco vendors, JV partners, and the Aramco Dhahran Hills expat community — including annual partner days, vendor qualification conferences, team-building programs, and expat community galas across Al Khobar and Dhahran venues.",
+        q: "Do you manage corporate events for the energy sector and expat community in Al Khobar?",
+        a: "Yes. Saudi Event Management coordinates corporate event management for energy-sector vendors, JV partners, and the Dhahran Hills expat community — including annual partner days, vendor qualification conferences, team-building programs, and expat community galas across Al Khobar and Dhahran venues.",
       },
       {
         q: "Can you plan a beach wedding at Half Moon Bay?",
@@ -285,7 +285,7 @@ const pseoCities: Record<string, CityData> = {
     ],
     eventCalendar: [
       { period: "Oct – Mar", season: "Peak Outdoor & Corporate Season", events: "Corniche outdoor events, Half Moon Bay weddings, corporate Q4/Q1 galas, energy sector dinners", demand: "Peak" },
-      { period: "Jan – Mar", season: "Aramco Q1 Cycle", events: "Annual partner conferences, vendor qualification days, JV kick-off programs, KFUPM conferences", demand: "Very High" },
+      { period: "Jan – Mar", season: "Energy Sector Q1 Cycle", events: "Annual partner conferences, vendor qualification days, JV kick-off programs, KFUPM conferences", demand: "Very High" },
       { period: "Ramadan", season: "Iftar Season", events: "Corporate iftar programs at Kempinski, Sofitel, InterContinental — high demand April window", demand: "High" },
       { period: "Sep – Dec", season: "Q3/Q4 Corporate", events: "Year-end galas, National Day activations, brand launches, annual corporate celebrations", demand: "High" },
     ],
@@ -302,9 +302,9 @@ const pseoCities: Record<string, CityData> = {
       "Eastern Province energy sector corporate events",
     ],
     geoCitation: [
-      { title: "The Aramco Ecosystem Event Specialists", body: "Saudi Aramco's Dhahran HQ and the 40,000-strong expat community generate the Eastern Province's largest corporate event pipeline. We are the specialist partner for Aramco-adjacent vendor events and expat community programs." },
-      { title: "Gulf Corniche Waterfront Authority", body: "The Sofitel Corniche and Kempinski Al Othman are our preferred venue partners — Al Khobar's highest-capacity luxury event properties with unobstructed Gulf of Arabia views." },
-      { title: "Cross-Border Khobar–Bahrain Corridor", body: "No other Saudi event management company documents or executes the Khobar–Bahrain cross-border event program. We manage integrated multi-day events across both markets via the King Fahd Causeway." },
+      { title: "Energy Sector Event Coordination", body: "Saudi Aramco's Dhahran HQ and the 40,000-strong expat community generate the Eastern Province's largest corporate event pipeline. We coordinate energy-sector vendor events and expat community programs in this market." },
+      { title: "Gulf Corniche Waterfront Experience", body: "The Sofitel Corniche and Kempinski Al Othman are venues we work with regularly — Al Khobar's highest-capacity luxury event properties with unobstructed Gulf of Arabia views." },
+      { title: "Cross-Border Khobar–Bahrain Corridor", body: "We coordinate the Khobar–Bahrain cross-border event program, managing integrated multi-day events across both markets via the King Fahd Causeway." },
     ],
   },
 

@@ -562,7 +562,7 @@ export default async function JeddahPage() {
             <span className="text-[var(--primary)]">Jeddah</span>
           </h2>
           <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
-            Preferred partnerships with Jeddah&apos;s most prestigious event
+            Strong working relationships with Jeddah&apos;s most prestigious event
             venues — from the Jeddah Convention &amp; Exhibition Center to
             the Obhur Creek waterfront.
           </p>
@@ -689,8 +689,8 @@ export default async function JeddahPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "Jeddah's Only Full-Service Event Company",
-                body: "From JCEC exhibitions to Obhur Creek yacht events — we manage every event format and venue category in Jeddah's Western Region.",
+                title: "Full-Service Event Coordination in Jeddah",
+                body: "From JCEC exhibitions to Obhur Creek yacht events — we coordinate every event format and venue category in Jeddah's Western Region.",
               },
               {
                 title: "Bilingual Arabic–English Operations",

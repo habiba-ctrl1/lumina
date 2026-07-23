@@ -113,7 +113,7 @@ const services: Record<
       },
       {
         q: "Can you build custom exhibition stands in Saudi Arabia?",
-        a: "Yes. Our in-house design and fabrication team builds fully custom exhibition stands for trade shows across Saudi Arabia, including at RICEC Riyadh, RECC, and the Jeddah Center for Forums and Events.",
+        a: "Yes. We coordinate custom exhibition stand design and fabrication through trusted partners for trade shows across Saudi Arabia, including at RICEC Riyadh, RECC, and the Jeddah Center for Forums and Events.",
       },
       {
         q: "Do you have exhibition specialists in my city?",

@@ -29,7 +29,7 @@ export default function VendorCTA() {
               Are You an Event Industry Vendor?
             </h2>
             <p className="text-neutral-600 text-[15px] leading-relaxed max-w-2xl">
-              Join our curated network of 200+ premium vendors trusted by royal commissions and Fortune 500 delegations across Saudi Arabia.
+              Join our curated network of 20+ premium vendors delivering events across Saudi Arabia.
             </p>
           </div>
 
