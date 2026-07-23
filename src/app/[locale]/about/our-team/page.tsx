@@ -9,14 +9,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isAr = locale === "ar";
   const base = "https://saudieventmanagement.com";
-  const title = isAr ? 'فريقنا التنفيذي' : 'Our Executive Team';
+  const title = isAr ? 'فريقنا' : 'Our Team';
   const description = isAr
-    ? 'تعرّف على فريق القيادة التنفيذية في إدارة الفعاليات السعودية بقيادة المؤسِّسة والرئيسة التنفيذية حبيبة أصغر. خبراء في تخطيط الفعاليات الفاخرة في جميع أنحاء المملكة العربية السعودية.'
-    : 'Meet the executive leadership team at Saudi Event Management, led by Founder & CEO Habiba Asghar. Experts in luxury event planning across Saudi Arabia.';
+    ? 'تعرّف على مؤسِّسة إدارة الفعاليات السعودية حبيبة أصغر، وشبكة شركاء التنفيذ ذوي الخبرة الذين تتعاون معهم لتخطيط الفعاليات الفاخرة في جميع أنحاء المملكة العربية السعودية.'
+    : 'Meet Saudi Event Management founder Habiba Asghar and the network of experienced delivery partners she works with to plan luxury events across Saudi Arabia.';
   return {
     title,
     description,
-    keywords: 'Event management experts Riyadh, Habiba Asghar Saudi Event Management, Luxury event planners KSA, Executive event team',
+    keywords: 'Habiba Asghar Saudi Event Management, Luxury event planning KSA, Saudi event partner network',
     robots: robotsForRoute(locale, "/about/our-team"),
     openGraph: { title, description },
     alternates: {
@@ -40,7 +40,7 @@ const jsonLd = {
           "name": "Saudi Event Management"
         },
         "knowsAbout": ["Luxury Event Production", "Corporate Event Management", "VIP Protocol", "Wedding Planning"],
-        "description": "Habiba Asghar is the Founder and CEO of Saudi Event Management, leading a team of experts to deliver unparalleled luxury events across the Kingdom of Saudi Arabia."
+        "description": "Habiba Asghar is the Founder of Saudi Event Management, an event coordination and vendor-sourcing platform connecting clients with a curated network of experienced delivery partners across Saudi Arabia."
       }
     },
     {
@@ -78,8 +78,8 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
           </h1>
           <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
             {isAr
-              ? "تعرّف على أصحاب الرؤية والمنتجين وخبراء العمليات وراء أرقى فعاليات المملكة العربية السعودية."
-              : "Meet the visionaries, producers, and operational experts behind Saudi Arabia's most prestigious events."}
+              ? "تعرّفوا على المؤسِّسة وشبكة شركاء التنفيذ ذوي الخبرة الذين نتعاون معهم لتقديم فعاليات راقية في جميع أنحاء المملكة العربية السعودية."
+              : "Meet the founder and the network of experienced delivery partners we work with to bring premium events to life across Saudi Arabia."}
           </p>
         </div>
       </div>
@@ -101,19 +101,19 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
                 {isAr ? (
                   <>
                     <p>
-                      بصفتها المؤسِّسة والرئيسة التنفيذية لإدارة الفعاليات السعودية، ارتقت حبيبة أصغر بمعايير إنتاج الفعاليات الفاخرة في المملكة بشكل جوهري. مستفيدة من خبرتها العملية في الفعاليات عالية المخاطر، تقود فريقاً من الخبراء الدوليين المكرّسين لتحويل رؤى العملاء المعقّدة إلى واقع لا تشوبه شائبة.
+                      حبيبة أصغر هي مؤسِّسة إدارة الفعاليات السعودية — منصة لتنسيق الفعاليات وتوفير الموردين تربط العملاء بشبكة مختارة من شركاء التنفيذ ذوي الخبرة في جميع أنحاء المملكة.
                     </p>
                     <p>
-                      تمتد خبرتها لتشمل حفلات الزفاف الملكية، وقمم الشركات لكبار التنفيذيين، والتفعيلات الثقافية الضخمة المتوافقة مع رؤية السعودية 2030. وتشتهر حبيبة باهتمامها الذي لا يقبل المساومة بالتفاصيل، وقدرتها على الدمج السلس بين بروتوكول كبار الشخصيات رفيع المستوى والتصميم الجمالي الآسر.
+                      تشرف حبيبة شخصياً على عملية توثيق الموردين ومطابقة كل عميل بالشريك المتخصص المناسب لفعاليته — من حفلات الزفاف الفاخرة إلى قمم الشركات والتفعيلات الثقافية المتوافقة مع رؤية السعودية 2030.
                     </p>
                   </>
                 ) : (
                   <>
                     <p>
-                      As the Founder and CEO of Saudi Event Management, Habiba Asghar has fundamentally elevated the standard of luxury event production in the Kingdom. Drawing on hands-on, high-stakes event experience, she leads a team of international experts dedicated to translating complex client visions into flawless realities.
+                      Habiba Asghar is the Founder of Saudi Event Management — an event coordination and vendor-sourcing platform connecting clients with a curated network of experienced delivery partners across Saudi Arabia.
                     </p>
                     <p>
-                      Her expertise spans royal weddings, C-suite corporate summits, and massive cultural activations aligned with Saudi Vision 2030. Habiba is known for her uncompromising attention to detail and her ability to seamlessly integrate high-level VIP protocol with breathtaking aesthetic design.
+                      Habiba personally oversees the vendor vetting process and matches each client with the right specialist partner for their event — from luxury weddings to corporate summits and cultural activations aligned with Saudi Vision 2030.
                     </p>
                   </>
                 )}
@@ -127,23 +127,23 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
       <section className="bg-neutral-50 py-16 border-t border-neutral-200">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-semibold text-neutral-900 mb-4">
-            {isAr ? "الخبرة والاحترافية وراء كل فعالية ناجحة" : "The Expertise and Professionalism Behind Every Successful Event"}
+            {isAr ? "شبكة الشركاء وراء كل فعالية" : "The Partner Network Behind Every Event"}
           </h2>
           <div className="text-neutral-600 text-[15px] leading-relaxed space-y-4">
             <p>
               {isAr
-                ? "يضم فريق إدارة الفعاليات السعودية نخبة من أبرز العقول الاستراتيجية والإبداعية في مجال تنظيم الفعاليات على مستوى منطقة الشرق الأوسط. نحن نؤمن بأن نجاح أي مشروع يعتمد بشكل أساسي على شغف وكفاءة الأفراد الذين يقفون وراءه، ولذلك حرصنا على بناء فريق متكامل يجمع بين الفهم العميق للثقافة السعودية الأصيلة والخبرة العالمية في تطبيق أحدث المعايير الدولية."
-                : "The Saudi Event Management team comprises some of the most prominent strategic and creative minds in the event planning industry across the Middle East. We believe that the success of any project depends fundamentally on the passion and competence of the individuals behind it, which is why we have built an integrated team combining a deep understanding of authentic Saudi culture with global expertise in applying the latest international standards."}
+                ? "إدارة الفعاليات السعودية منصة يقودها مؤسِّسة واحدة تعمل مع شبكة مختارة من شركاء التنفيذ ذوي الخبرة في قطاع تنظيم الفعاليات بالمملكة. نؤمن بأن نجاح أي مشروع يعتمد على اختيار الشريك المناسب لكل احتياج، ولهذا نحرص على بناء شبكة تجمع بين الفهم العميق للثقافة السعودية الأصيلة والمعايير الدولية في التنفيذ."
+                : "Saudi Event Management is a founder-led platform working with a curated network of experienced delivery partners across the Kingdom's event industry. We believe project success depends on matching each need with the right specialist partner, which is why we've built a network that combines a deep understanding of authentic Saudi culture with international delivery standards."}
             </p>
             <p>
               {isAr
-                ? "بقيادة المديرة التنفيذية حبيبة أصغر، يعمل فريقنا بتناغم تام لتنفيذ مشاريع تتنوع بين المؤتمرات الحكومية رفيعة المستوى، وحفلات الزفاف الفاخرة، والمعارض الدولية في الرياض وجدة والعلا. يضم الفريق خبراء في البروتوكول، ومهندسين متخصصين في تقنيات الصوت والإضاءة، ومصممين فنيين يكرسون جهودهم لضمان تجربة سلسة، آمنة، ومثالية لكل ضيف."
-                : "Led by CEO Habiba Asghar, our team works in perfect harmony to execute projects ranging from high-level government conferences and luxury weddings to international exhibitions in Riyadh, Jeddah, and AlUla. The team includes protocol experts, specialized AV engineers, and artistic designers dedicated to ensuring a seamless, secure, and flawless experience for every guest."}
+                ? "بقيادة المؤسِّسة حبيبة أصغر، نقوم بمطابقة كل مشروع بالشركاء المناسبين — سواء لمؤتمرات الشركات، أو حفلات الزفاف الفاخرة، أو المعارض في الرياض وجدة والعلا. تشمل شبكتنا خبراء في البروتوكول، ومتخصصين في تقنيات الصوت والإضاءة، ومصممين، جميعهم مُختارون بعناية لضمان تجربة سلسة وآمنة لكل ضيف."
+                : "Led by founder Habiba Asghar, we match each project with the right partners — whether for corporate conferences, luxury weddings, or exhibitions in Riyadh, Jeddah, and AlUla. Our network includes protocol specialists, AV and lighting professionals, and designers, each carefully vetted to help ensure a seamless, secure experience for every guest."}
             </p>
             <p>
               {isAr
-                ? "نحن نلتزم بالارتقاء بقطاع الفعاليات في المملكة، مستلهمين أهداف رؤية السعودية 2030 لتحويل كل حدث إلى منصة للإبداع والابتكار. عندما تختار إدارة الفعاليات السعودية، فإنك تعتمد على شركاء استراتيجيين يضعون نجاحك في صميم أولوياتهم، لضمان ترك انطباع دائم يفوق التوقعات."
-                : "We are committed to elevating the events sector in the Kingdom, inspired by the goals of Saudi Vision 2030 to transform every event into a platform for creativity and innovation. When you choose Saudi Event Management, you are relying on strategic partners who place your success at the core of their priorities, ensuring a lasting impression that exceeds all expectations."}
+                ? "نحن نلتزم بالارتقاء بقطاع الفعاليات في المملكة، مستلهمين أهداف رؤية السعودية 2030 لتحويل كل حدث إلى منصة للإبداع والابتكار. عندما تختار إدارة الفعاليات السعودية، فإنك تعتمد على منسّق يضع نجاحك في صميم أولوياته، ويعمل مع شركاء موثوقين لضمان ترك انطباع دائم يفوق التوقعات."
+                : "We are committed to elevating the events sector in the Kingdom, inspired by the goals of Saudi Vision 2030 to transform every event into a platform for creativity and innovation. When you choose Saudi Event Management, you are relying on a coordinator who places your success at the core of their priorities, working with trusted partners to help ensure a lasting impression that exceeds expectations."}
             </p>
           </div>
         </div>

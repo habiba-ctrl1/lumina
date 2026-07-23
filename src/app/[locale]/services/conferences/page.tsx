@@ -89,12 +89,12 @@ const services = [
   {
     icon: ClipboardList,
     title: "Delegate Registration",
-    desc: "Custom-branded delegate portals, RFID badge printing, access-controlled session ticketing, and real-time attendance analytics dashboards.",
+    desc: "Custom-branded delegate portals, RFID badge printing, access-controlled session ticketing, and real-time attendance analytics dashboards — backed by a dedicated on-site registration, badging, and event-staffing partner network active across Riyadh, Jeddah, Dammam, and the wider GCC.",
   },
   {
     icon: Shield,
     title: "VIP & Diplomatic Protocol",
-    desc: "Motorcade coordination, close-protection liaison, secure perimeter management, and Ministry-level dignitary reception with full protocol briefings.",
+    desc: "Motorcade coordination, close-protection liaison, secure perimeter management, licensed on-site medical & ambulance coverage, and Ministry-level dignitary reception with full protocol briefings.",
   },
   {
     icon: Video,
@@ -173,8 +173,8 @@ const servicesAr = [
   { title: "إدارة المتحدثين", desc: "استقطاب متحدثين دوليين وإقليميين، وتنسيق غرف الاستعداد، وتلبية المتطلبات التقنية، وجدولة البروفات، ودعم ميداني يوم الفعالية." },
   { title: "الفعاليات الهجينة والبث المباشر", desc: "إنتاج فعاليات هجينة سلس ببث مباشر متعدد المنصات، وتصويت فوري، وغرف تواصل افتراضية، وأرشيف محتوى عند الطلب." },
   { title: "الترجمة الفورية", desc: "كبائن ترجمة فورية بمعايير ISO للجلسات العربية-الإنجليزية ومتعددة اللغات، لخدمة الوفود الدبلوماسية والدولية." },
-  { title: "تسجيل المندوبين", desc: "بوابات مندوبين بهوية مخصصة، وطباعة بطاقات RFID، وتذاكر جلسات بتحكم بالدخول، ولوحات تحليلات حضور لحظية." },
-  { title: "بروتوكول كبار الشخصيات والدبلوماسيين", desc: "تنسيق المواكب، والتنسيق مع الحماية المباشرة، وإدارة المحيط الآمن، واستقبال كبار الشخصيات على المستوى الوزاري بإحاطات بروتوكولية كاملة." },
+  { title: "تسجيل المندوبين", desc: "بوابات مندوبين بهوية مخصصة، وطباعة بطاقات RFID، وتذاكر جلسات بتحكم بالدخول، ولوحات تحليلات حضور لحظية — مدعومة بشبكة شركاء ميدانيين متخصصين في التسجيل وإصدار البطاقات والتوظيف الميداني، تغطي الرياض وجدة والدمام ودول الخليج." },
+  { title: "بروتوكول كبار الشخصيات والدبلوماسيين", desc: "تنسيق المواكب، والتنسيق مع الحماية المباشرة، وإدارة المحيط الآمن، وتغطية طبية وإسعافية مرخصة في الموقع، واستقبال كبار الشخصيات على المستوى الوزاري بإحاطات بروتوكولية كاملة." },
   { title: "إعلام ما بعد المؤتمر", desc: "أفلام مختصرة سينمائية، وتفريغ نصي حرفي، وتوزيع البيانات الصحفية، وحزم محتوى للتواصل الاجتماعي، وتقارير تنفيذية موجزة." },
 ];
 
@@ -540,8 +540,8 @@ export default async function ConferencesPage() {
                   {isAr ? cAr.resViewAll : "View All Articles"}
                 </Link>
                 <div className="pt-6 border-t border-neutral-200">
-                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "د. نادية الراشدي" : "Dr. Nadia Al-Rashidi"}</p>
-                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? "مديرة استراتيجية المؤتمرات" : "Conference Strategy Director"}</p>
+                  <p className="text-neutral-900 font-bold text-sm">{isAr ? "حبيبة أصغر" : "Habiba Asghar"}</p>
+                  <p className="text-neutral-400 text-[10px] uppercase tracking-widest">{isAr ? "المؤسِّسة" : "Founder"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">

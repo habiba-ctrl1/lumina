@@ -136,7 +136,7 @@ const jsonLd = {
           name: "What is a PCO (Professional Conference Organizer) in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "A PCO (Professional Conference Organizer) in Saudi Arabia is a specialist event management company that handles the full lifecycle of a conference — from venue sourcing and delegate registration to AV production, simultaneous Arabic-English interpretation, GEA permitting, speaker management, and post-event reporting. Saudi Event Management operates as a full-service PCO, managing every stage of that lifecycle in-house.",
+            text: "A PCO (Professional Conference Organizer) in Saudi Arabia is a specialist event management company that handles the full lifecycle of a conference — from venue sourcing and delegate registration to AV production, simultaneous Arabic-English interpretation, GEA permitting, speaker management, and post-event reporting. Saudi Event Management operates as a full-service PCO, coordinating every stage of that lifecycle through our trusted partner network.",
           },
         },
         {
@@ -313,10 +313,10 @@ const eventTypes = [
 ];
 
 const capabilities = [
-  { icon: Mic, title: "PCO Services", desc: "Full Professional Conference Organizer services — covering delegate registration, accommodation management, and programme coordination, in-house end to end." },
+  { icon: Mic, title: "PCO Services", desc: "Full Professional Conference Organizer services — covering delegate registration, accommodation management, and programme coordination, end to end." },
   { icon: Layers, title: "AV & Technical Production", desc: "Concert-grade sound, intelligent lighting, 4K LED walls, and broadcast-quality streaming infrastructure for any venue capacity." },
   { icon: Globe, title: "Simultaneous Interpretation", desc: "Arabic-English (and third-language) simultaneous interpretation with Bosch or Sennheiser ISO-compliant equipment and accredited interpreters." },
-  { icon: Shield, title: "Permits & Compliance", desc: "End-to-end GEA permit management, municipality approvals, civil defense clearances, and Ministry of Interior notifications — zero friction." },
+  { icon: Shield, title: "Permits & Compliance", desc: "End-to-end GEA permit management, municipality approvals, civil defense clearances, Ministry of Interior notifications, and licensed on-site medical & ambulance coverage — zero friction." },
   { icon: Users, title: "Delegate Registration", desc: "Custom-built online registration platforms, badge printing, QR check-in systems, and data analytics for delegate management up to 5,000+." },
   { icon: Calendar, title: "Speaker Management", desc: "End-to-end speaker logistics — briefing documents, visa support, green room management, and AV rehearsal coordination for domestic and international speakers." },
   { icon: Award, title: "Bilingual Content", desc: "Full Arabic-English event branding: programmes, signage, digital assets, and social media content crafted by our bilingual creative team." },
@@ -368,7 +368,7 @@ const planningSteps = [
   { step: "01", title: "Discovery & Brief", desc: "Objectives mapping, audience profiling, delegate count, budget framework, regulatory requirements, and city selection." },
   { step: "02", title: "Venue Sourcing", desc: "Curated venue shortlist with site inspections, comparative pricing, AV specs, and negotiated rates at KAFD, RICEC, and major hotels." },
   { step: "03", title: "Creative & Programme Design", desc: "Stage design, branding, session flow, speaker programme, entertainment selection, and bilingual content architecture." },
-  { step: "04", title: "Permits & Compliance", desc: "GEA permits, municipality approvals, civil defense clearances, and Ministry notifications — all managed in-house with zero client friction." },
+  { step: "04", title: "Permits & Compliance", desc: "GEA permits, municipality approvals, civil defense clearances, and Ministry notifications — all arranged through trusted partners with zero client friction." },
   { step: "05", title: "Production & Rehearsals", desc: "AV install, lighting rigs, streaming setup, interpreter equipment, and full technical rehearsals with speakers and operations team." },
   { step: "06", title: "Execution & Reporting", desc: "On-day operations team manages every minute. Post-event: delegate analytics, media summary, AV recordings, and ROI metrics delivered within 7 days." },
 ];
@@ -388,7 +388,7 @@ const faqs = [
   },
   {
     q: "What is a PCO in Saudi Arabia?",
-    a: "A PCO (Professional Conference Organizer) manages the full conference lifecycle — venue, registration, AV, interpretation, permitting, and speaker logistics. Saudi Event Management operates as a full-service PCO, managing every stage in-house.",
+    a: "A PCO (Professional Conference Organizer) manages the full conference lifecycle — venue, registration, AV, interpretation, permitting, and speaker logistics. Saudi Event Management operates as a full-service PCO, coordinating every stage through our trusted partner network.",
   },
   {
     q: "Can you manage hybrid corporate events in Saudi Arabia?",
@@ -425,7 +425,7 @@ const capabilitiesAr = [
   { title: "خدمات منظِّم المؤتمرات (PCO)", desc: "خدمات منظِّم مؤتمرات احترافي متكاملة، تشمل تسجيل المندوبين وإدارة الإقامة وتنسيق البرامج، بإدارة داخلية كاملة." },
   { title: "الإنتاج الصوتي والمرئي والتقني", desc: "صوت بجودة الحفلات، وإضاءة ذكية، وشاشات LED بدقة 4K، وبنية بث بجودة احترافية لأي سعة قاعة." },
   { title: "الترجمة الفورية", desc: "ترجمة فورية عربية-إنجليزية (ولغة ثالثة) بأجهزة Bosch أو Sennheiser مطابقة لمعايير ISO ومترجمين معتمدين." },
-  { title: "التصاريح والامتثال", desc: "إدارة كاملة لتصاريح هيئة الترفيه، وموافقات البلدية، وتصاريح الدفاع المدني، وإشعارات وزارة الداخلية — دون أي تعقيد." },
+  { title: "التصاريح والامتثال", desc: "إدارة كاملة لتصاريح هيئة الترفيه، وموافقات البلدية، وتصاريح الدفاع المدني، وإشعارات وزارة الداخلية، وتغطية طبية وإسعافية مرخصة في الموقع — دون أي تعقيد." },
   { title: "تسجيل المندوبين", desc: "منصات تسجيل إلكترونية مخصصة، وطباعة بطاقات، وأنظمة دخول بـ QR، وتحليلات بيانات لإدارة أكثر من 5000 مندوب." },
   { title: "إدارة المتحدثين", desc: "لوجستيات متكاملة للمتحدثين — مستندات إحاطة، ودعم تأشيرات، وإدارة غرف الاستعداد، وتنسيق بروفات الصوت والصورة محليًا ودوليًا." },
   { title: "المحتوى ثنائي اللغة", desc: "هوية فعاليات كاملة بالعربية والإنجليزية: برامج، ولافتات، وأصول رقمية، ومحتوى تواصل اجتماعي من فريقنا الإبداعي ثنائي اللغة." },
@@ -475,9 +475,9 @@ const cAr = {
   introLabel: "روّاد هندسة فعاليات الشركات في السعودية",
   introH2a: "نرتقي بإدارة فعاليات الشركات",
   introH2b: "في السعودية.",
-  introP1: "إدارة الفعاليات السعودية هي العمود التشغيلي خلف أهم التجمّعات المؤسسية في المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى قمم بـ 5000 مندوب في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
-  introP2: "بُنيت قدراتنا لخدمة مؤسسات بحجم أرامكو السعودية وسابك، ومطوّري مشاريع عملاقة مثل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — جهات لا تقبل أي هامش للخطأ، وتطلب قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
-  introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) متكامل الخدمة، ندير دورة حياة الفعالية كاملة — من استخراج تصاريح هيئة الترفيه والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت فريق واحد مسؤول وموحّد.",
+  introP1: "إدارة الفعاليات السعودية تنسّق التجمّعات المؤسسية في أنحاء المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى القمم الكبرى في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
+  introP2: "بُني نهجنا لخدمة مؤسسات تعمل بحجم أرامكو السعودية وسابك، ومطوّري مشاريع عملاقة مثل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — جهات لا تقبل أي هامش للخطأ، وتطلب قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
+  introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) متكامل الخدمة، ننسّق دورة حياة الفعالية كاملة — من تصاريح هيئة الترفيه عبر شركاء موثوقين والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت جهة تنسيق واحدة مسؤولة.",
   evLabel: "خبرة في كل نوع فعالية",
   evH2a: "كل صيغة مؤسسية.",
   evH2b: "بإتقان.",
@@ -486,10 +486,10 @@ const cAr = {
   vnH2a: "أبرز قاعات فعاليات الشركات",
   vnH2b: "في السعودية",
   vnP: "تنسيق كامل للوصول إلى أبرز مراكز المؤتمرات في المملكة، ومرافق مركز الملك عبدالله المالي، وفنادق الأعمال الخمس نجوم — بأسعار تفاوضية وأولوية في الحجز.",
-  capLabel: "قدرات داخلية",
+  capLabel: "قدرات منسّقة",
   capH2a: "فريق واحد. مسؤولية",
   capH2b: "كاملة.",
-  capP: "جميع القدرات مملوكة داخليًا — دون احتكاك تعدّد الموردين ودون فجوات في المسؤولية.",
+  capP: "جميع القدرات منسّقة تحت فريق واحد مسؤول — دون احتكاك تعدّد الموردين ودون فجوات في المسؤولية.",
   prLabel: "منهجيتنا",
   prH2a: "كيف نخطّط",
   prH2b: "فعالية شركة",
@@ -500,9 +500,9 @@ const cAr = {
   formH2b: "فعاليتك المؤسسية الكبرى القادمة.",
   formP: "شاركنا ملخّص فعاليتك وسيعود إليك مستشار أول بعرض مخصّص ومفصّل خلال ساعتي عمل — القاعات، والإنتاج، والميزانية، وجدول تنفيذ واضح.",
   formBullets: [
-    "مدير حساب معتمد كمنظِّم مؤتمرات (PCO)",
-    "أسعار تفضيلية للقاعات في مركز الملك عبدالله المالي وRICEC وفنادق الخمس نجوم",
-    "إدارة كاملة لتصاريح هيئة الترفيه والامتثال داخليًا",
+    "مدير حساب مخصّص لفعاليتك",
+    "علاقات قوية مع القاعات في مركز الملك عبدالله المالي وRICEC وفنادق الخمس نجوم",
+    "إدارة كاملة لتصاريح هيئة الترفيه والامتثال عبر شركاء موثوقين",
     "تسعير شفّاف ومفصّل — دون رسوم خفية",
   ],
   formWhatsapp: "أو راسلنا عبر واتساب",
@@ -585,7 +585,7 @@ export default async function CorporateEventsPage() {
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-[var(--primary)] font-bold text-sm uppercase tracking-widest">GEA</span>
-                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Permits Handled In-House</span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-widest">Permits Arranged Through Trusted Partners</span>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
               <div className="flex flex-wrap gap-6 text-[10px] font-bold tracking-widest text-neutral-400">
@@ -642,18 +642,17 @@ export default async function CorporateEventsPage() {
                 ) : (
                 <div className="space-y-5 text-neutral-600 text-base leading-relaxed">
                   <p>
-                    <strong className="text-neutral-900">Saudi Event Management</strong> is
-                    the operational backbone behind the Kingdom&apos;s most consequential corporate
-                    gatherings — from{" "}
+                    <strong className="text-neutral-900">Saudi Event Management</strong> coordinates
+                    corporate gatherings across the Kingdom — from{" "}
                     <strong className="text-neutral-900">Annual General Meetings</strong> for listed Saudi
-                    companies, to 5,000-delegate summits at the{" "}
+                    companies, to large-scale summits at the{" "}
                     <strong className="text-neutral-900">King Abdullah Financial District (KAFD)</strong> and
                     <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-medium"> Riyadh International Convention and Exhibition Center (RICEC)</Link>.
                   </p>
                   <p>
-                    Our capabilities are built for organisations at the scale of{" "}
+                    Our approach is built for organisations that operate at the scale of{" "}
                     <strong className="text-neutral-900">Saudi Aramco</strong> and{" "}
-                    <strong className="text-neutral-900">SABIC</strong>, and for giga-project
+                    <strong className="text-neutral-900">SABIC</strong>, and giga-project
                     developers such as <strong className="text-neutral-900">NEOM</strong>,{" "}
                     <strong className="text-neutral-900">Red Sea Project</strong>, and{" "}
                     <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — organisations that
@@ -663,9 +662,9 @@ export default async function CorporateEventsPage() {
                   <p>
                     As a full-service{" "}
                     <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-medium">Professional Conference Organizer (PCO)</Link>,{" "}
-                    we manage the complete event lifecycle — from GEA
-                    permit acquisition and venue negotiation through to post-event analytics and media
-                    distribution — under one unified, accountable team.
+                    we coordinate the complete event lifecycle — from GEA
+                    permit filing through trusted partners and venue negotiation through to post-event analytics and media
+                    distribution — under one unified, accountable point of contact.
                   </p>
                 </div>
                 )}
@@ -796,7 +795,7 @@ export default async function CorporateEventsPage() {
             <div className="text-center mb-16">
               <span className="section-label justify-center mb-4 flex">
                 <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
-                {isAr ? cAr.capLabel : "In-House Capabilities"}
+                {isAr ? cAr.capLabel : "Coordinated Capabilities"}
               </span>
               <h2 className="text-3xl font-bold text-neutral-900">
                 {isAr ? cAr.capH2a : "One team. Complete"} <span className="text-[var(--primary)]">{isAr ? cAr.capH2b : "accountability."}</span>
@@ -804,7 +803,7 @@ export default async function CorporateEventsPage() {
               <p className="text-neutral-500 mt-4 max-w-xl mx-auto text-sm">
                 {isAr
                   ? cAr.capP
-                  : "All capabilities owned in-house — no multi-vendor friction, no accountability gaps."}
+                  : "All capabilities coordinated under one accountable team — no multi-vendor friction, no accountability gaps."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -882,9 +881,9 @@ export default async function CorporateEventsPage() {
                   {(isAr
                     ? cAr.formBullets
                     : [
-                    "Dedicated PCO-certified account director",
-                    "Preferred-partner venue rates at KAFD, RICEC & 5-star hotels",
-                    "Full GEA permit & compliance handled in-house",
+                    "Dedicated account director for your event",
+                    "Strong venue relationships at KAFD, RICEC & 5-star hotels",
+                    "Full GEA permit & compliance support through trusted partners",
                     "Transparent, itemised pricing — no hidden fees",
                   ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
@@ -1131,13 +1130,13 @@ export default async function CorporateEventsPage() {
               {(isAr
                 ? [
                 { c: "تأمين القاعات الكبرى في مهلة قصيرة", s: "تُحجز قاعات مركز الملك عبدالله المالي والخمس نجوم قبل أشهر. تنسيقنا المبكر وخيارات حجز المواعيد يبقيان القاعات المميزة متاحة حتى ضمن جداول ضيّقة." },
-                { c: "تصاريح هيئة الترفيه والامتثال متعدد الجهات", s: "تُرتّب رخص الترفيه وموافقات البلدية وتصاريح الدفاع المدني مبكرًا وتُدار داخليًا، فلا تهدّد الموافقات موعد الفعالية أبدًا." },
+                { c: "تصاريح هيئة الترفيه والامتثال متعدد الجهات", s: "تُرتّب رخص الترفيه وموافقات البلدية وتصاريح الدفاع المدني مبكرًا عبر شركاء موثوقين، فلا تهدّد الموافقات موعد الفعالية أبدًا." },
                 { c: "المندوبون ثنائيو اللغة وبروتوكول كبار الشخصيات", s: "الترجمة الفورية العربية-الإنجليزية، وجلوس البروتوكول، وتنسيق المواكب تضمن خدمة الوزراء والمندوبين الدوليين بالكامل." },
                 { c: "وصول هجين دون مساس بتجربة الحضور", s: "البث بجودة احترافية والمنصات التفاعلية يوسّعان الجمهور عالميًا مع بقاء التجربة المباشرة من الطراز الأول." },
                   ]
                 : [
                 { c: "Securing flagship venues on short notice", s: "KAFD and five-star ballrooms book months out. Early coordination and held-date options keep premium venues available even on compressed timelines." },
-                { c: "GEA permits & multi-authority compliance", s: "Entertainment licenses, municipality approvals, and civil-defense clearances are sequenced early and managed in-house, so approvals never threaten the event date." },
+                { c: "GEA permits & multi-authority compliance", s: "Entertainment licenses, municipality approvals, and civil-defense clearances are sequenced early through trusted partners, so approvals never threaten the event date." },
                 { c: "Bilingual delegates & dignitary protocol", s: "Simultaneous Arabic–English interpretation, protocol seating, and motorcade coordination keep ministers and international delegates fully served." },
                 { c: "Hybrid reach without in-room compromise", s: "Broadcast-grade streaming and interactive platforms extend the audience globally while the live experience stays first-class." },
               ]).map((item) => (

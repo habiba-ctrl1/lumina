@@ -538,13 +538,13 @@ export default function SeasonalEventsPage() {
                 ? [
                 { c: "جداول رمضان والمواسم الضيّقة", s: "تُحجز قاعات الإفطار والسحور بسرعة. نثبّت المواعيد والضيافة مبكرًا حتى لا يُحرم تفعيلك الرمضاني من أفضل المساحات." },
                 { c: "الأصالة عبر المناطق (نجدي مقابل حجازي)", s: "تُصمّم البرامج والديكور والضيافة وفق التراث المحلي — تقاليد المجلس النجدي في الرياض، والعادات الحجازية في جدة — لا قالب عام أبدًا." },
-                { c: "تصاريح هيئة الترفيه والترفيه الموسمي", s: "تحتاج تفعيلات اليوم الوطني ويوم التأسيس وموسم الرياض إلى موافقات هيئة الترفيه والبلدية ضمن جداول ضيّقة، نتولّاها داخليًا." },
+                { c: "تصاريح هيئة الترفيه والترفيه الموسمي", s: "تحتاج تفعيلات اليوم الوطني ويوم التأسيس وموسم الرياض إلى موافقات هيئة الترفيه والبلدية ضمن جداول ضيّقة، ننسّقها عبر شركاء موثوقين." },
                 { c: "جمهور عائلي ومؤسسي وعام معًا", s: "يُخطَّط تدفّق الحشود، والمناطق المنفصلة حيث يلزم، والبرامج المناسبة للعائلة بحيث يشعر كل جمهور بالترحيب والأمان." },
                   ]
                 : [
                 { c: "Compressed Ramadan & seasonal lead times", s: "Iftar and Suhoor venues book out fast. We lock dates and catering early so your Ramadan activation isn't squeezed out of the best spaces." },
                 { c: "Authenticity across regions (Najdi vs Hejazi)", s: "Programming, décor, and hospitality are tailored to local heritage — Najdi majlis traditions in Riyadh, Hejazi customs in Jeddah — never a generic template." },
-                { c: "GEA & seasonal entertainment permits", s: "National Day, Founding Day, and Riyadh Season activations need GEA and municipality approvals on tight timelines, all handled in-house." },
+                { c: "GEA & seasonal entertainment permits", s: "National Day, Founding Day, and Riyadh Season activations need GEA and municipality approvals on tight timelines, all coordinated through trusted partners." },
                 { c: "Family, corporate & public audiences together", s: "Crowd flow, segregated areas where required, and family-appropriate programming are planned so every audience feels welcome and safe." },
               ]).map((item) => (
                 <div key={item.c} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">

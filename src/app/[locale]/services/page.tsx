@@ -160,9 +160,9 @@ const serviceCategories = [
 ];
 
 const whyChooseUs = [
-  { icon: Layers, title: "One Accountable Team", desc: "Creative, technical AV, catering coordination, permits, and logistics owned in-house — no multi-vendor finger-pointing, one point of accountability." },
+  { icon: Layers, title: "One Accountable Team", desc: "Creative, technical AV, catering coordination, permits, and logistics coordinated under one team — no multi-vendor finger-pointing, one point of accountability." },
   { icon: Award, title: "Rigorous Vendor Vetting", desc: "A carefully vetted network of partners across the Kingdom — delivering everything from intimate royal majlis gatherings to 5,000-delegate national summits." },
-  { icon: ShieldCheck, title: "Permits & Compliance In-House", desc: "GEA entertainment licenses, municipality approvals, and civil-defense clearances managed end-to-end, so approvals never threaten your date." },
+  { icon: ShieldCheck, title: "Permits & Compliance Coordinated", desc: "GEA entertainment licenses, municipality approvals, and civil-defense clearances arranged through trusted partners end-to-end, so approvals never threaten your date." },
   { icon: Languages, title: "Fully Bilingual Delivery", desc: "Arabic–English simultaneous interpretation, bilingual collateral, and culturally fluent programming for domestic and international audiences." },
   { icon: Crown, title: "Discretion & VIP Protocol", desc: "Bilateral NDAs, secure venue management, and royal-grade protocol for HNWI, diplomatic, and government guests." },
   { icon: Clock, title: "24-Hour Proposal Turnaround", desc: "Share a brief and a senior consultant returns a tailored, itemised proposal within one business day — venues, production, and budget." },
@@ -171,8 +171,8 @@ const whyChooseUs = [
 const processSteps = [
   { step: "01", title: "Consultation & Brief", desc: "We map your objectives, audience, guest count, budget, preferred cities, and any regulatory requirements in a detailed discovery session." },
   { step: "02", title: "Concept & Design", desc: "Our creative team develops the event concept — theme, stage design, branding, programme flow, and bilingual content architecture." },
-  { step: "03", title: "Planning & Permits", desc: "GEA permits, municipality approvals, and civil-defense clearances are sequenced early and handled in-house with zero client friction." },
-  { step: "04", title: "Venue & Vendor Sourcing", desc: "A curated venue shortlist with site inspections, plus a vetted network of 50+ trusted vendors at preferred-partner negotiated rates." },
+  { step: "03", title: "Planning & Permits", desc: "GEA permits, municipality approvals, and civil-defense clearances are sequenced early through trusted partners with zero client friction." },
+  { step: "04", title: "Venue & Vendor Sourcing", desc: "A curated venue shortlist with site inspections, plus a vetted network of 20+ trusted vendors at strong negotiated rates." },
   { step: "05", title: "Production & Execution", desc: "Full AV, staging, lighting, and rehearsals, followed by an on-day operations team that manages every minute of delivery." },
   { step: "06", title: "Post-Event Reporting", desc: "Guest feedback, media coverage, recordings, and ROI metrics delivered after the event, plus media distribution where required." },
 ];
@@ -555,11 +555,11 @@ export default async function ServicesPage() {
             meticulous hospitality standards demanded by luxury clients.
           </p>
           <p>
-            As a fully integrated event management company, Saudi Event Management provides in-house
+            As a fully integrated event management company, Saudi Event Management coordinates
             capabilities across creative production, technical{" "}
             <Link href="/services/event-production" className="text-[var(--primary)] font-medium hover:underline">AV and event production</Link>,
-            catering coordination, vendor management, digital streaming, and logistics. This singular
-            ownership of the end-to-end experience eliminates the friction of multi-vendor management
+            catering coordination, vendor management, digital streaming, and logistics. This single
+            point of accountability for the end-to-end experience eliminates the friction of multi-vendor management
             and ensures complete accountability. Explore our{" "}
             <Link href="/portfolio" className="text-[var(--primary)] font-medium hover:underline">event portfolio</Link>{" "}
             or read genuine{" "}
@@ -751,8 +751,8 @@ export default async function ServicesPage() {
               <ul className="space-y-3.5 pt-2">
                 {[
                   "Dedicated senior account director",
-                  "Preferred-partner venue rates Kingdom-wide",
-                  "Full GEA permit & compliance handled in-house",
+                  "Strong negotiated venue rates Kingdom-wide",
+                  "Full GEA permit & compliance support through trusted partners",
                   "Transparent, itemised pricing — no hidden fees",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-white/85 text-sm">

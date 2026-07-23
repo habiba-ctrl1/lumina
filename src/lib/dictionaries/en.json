@@ -101,13 +101,13 @@
     "items": [
       {
         "title": "Wedding Event Management",
-        "description": "Saudi Arabia's specialist wedding planning team — crafting royal weddings, traditional Saudi ceremonies, and destination celebrations fully licensed by the General Entertainment Authority (GEA) and compliant with Ministry of Culture guidelines.",
+        "description": "Saudi Arabia's specialist wedding planning team — crafting royal weddings, traditional Saudi ceremonies, and destination celebrations, with GEA permit support through trusted partners and compliance with Ministry of Culture guidelines.",
         "starting": "From SAR 50,000",
         "cta": "Explore Wedding Planning in Riyadh"
       },
       {
         "title": "Corporate Event Planning",
-        "description": "End-to-end corporate event management for Vision 2030-aligned business summits, AGMs, and gala dinners. We manage GEA permits, VIP protocols, and international delegation logistics across Riyadh's KAFD and Olaya District.",
+        "description": "End-to-end corporate event management for Vision 2030-aligned business summits, AGMs, and gala dinners. We arrange GEA permits through trusted partners, plus VIP protocols and international delegation logistics across Riyadh's KAFD and Olaya District.",
         "starting": "From SAR 75,000",
         "cta": "View Corporate Event Management Services"
       },
@@ -125,7 +125,7 @@
       },
       {
         "title": "Conference Management",
-        "description": "Comprehensive conference management across the Kingdom — GEA permit procurement, international VIP logistics, simultaneous translation, and hybrid digital-physical delivery. Trusted by government ministries, Saudi Aramco, and NEOM teams.",
+        "description": "Comprehensive conference management across the Kingdom — GEA permit support through trusted partners, international VIP logistics, simultaneous translation, and hybrid digital-physical delivery.",
         "starting": "From SAR 45,000",
         "cta": "View Conference & Summit Management"
       },
@@ -149,9 +149,9 @@
         "name": "Riyadh",
         "badge": "Capital Headquarters",
         "title": "Corporate & Government Events Hub",
-        "description": "Our founding city and primary operational base. From King Abdullah Financial District (KAFD) boardroom summits and Riyadh Season mega-activations to Olaya District gala dinners — we are embedded in the capital's most prestigious event ecosystem and trusted by government ministries, royal commissions, and Fortune 500 corporate delegations.",
+        "description": "Our founding city and primary operational base. From King Abdullah Financial District (KAFD) boardroom summits and Riyadh Season mega-activations to Olaya District gala dinners — we are embedded in the capital's most prestigious event ecosystem, coordinating with the venue and permit network that serves government, corporate, and private clients.",
         "tags": ["KAFD", "Riyadh Season", "Olaya District", "Government Events"],
-        "stat": "150+ events managed"
+        "stat": "Primary Operations Hub"
       },
       {
         "id": "jeddah",
@@ -160,25 +160,25 @@
         "title": "Red Sea Luxury & Cultural Events",
         "description": "Jeddah's vibrant waterfront and cosmopolitan character make it Saudi Arabia's premier destination for luxury weddings, international trade exhibitions at Jeddah Exhibition & Convention Centre (JECC), and Red Sea Global-aligned sustainable event productions. We manage every aspect from Corniche waterfront galas to upscale Tahlia Street corporate receptions.",
         "tags": ["JECC", "Red Sea Global", "Corniche", "Al-Balad"],
-        "stat": "80+ events managed"
+        "stat": "Coastal Event Specialists"
       },
       {
         "id": "alula",
         "name": "AlUla",
         "badge": "Heritage Destination",
         "title": "UNESCO Heritage & Desert Luxury",
-        "description": "As a Royal Commission for AlUla (RCU) preferred event partner, we produce destination weddings, executive retreats, and cultural activations across Hegra, Sharaan Nature Reserve, and the iconic Maraya concert hall — Saudi Arabia's most breathtaking and internationally recognised event canvas, aligned with Vision 2030 tourism targets.",
+        "description": "Operating within Royal Commission for AlUla (RCU) event guidelines, we produce destination weddings, executive retreats, and cultural activations across Hegra, Sharaan Nature Reserve, and the iconic Maraya concert hall — Saudi Arabia's most breathtaking and internationally recognised event canvas, aligned with Vision 2030 tourism targets.",
         "tags": ["Maraya", "RCU", "Hegra", "Sharaan"],
-        "stat": "40+ events managed"
+        "stat": "RCU-Aligned Destination Team"
       },
       {
         "id": "makkah",
         "name": "Makkah",
         "badge": "Spiritual Capital",
         "title": "VIP Spiritual & Ceremonial Events",
-        "description": "With absolute discretion and deep cultural understanding, we manage exclusive private gatherings, premium Hajj and Umrah season hospitality programmes, and high-value ceremonial receptions for government bodies, royal households, and international VIP delegations visiting the Holy City under Ministry of Hajj guidelines.",
+        "description": "With absolute discretion and deep cultural understanding, we manage exclusive private gatherings, premium Hajj and Umrah season hospitality programmes, and high-value ceremonial receptions for VIP visitors to the Holy City, in line with Ministry of Hajj guidelines.",
         "tags": ["VIP Hospitality", "Ministry of Hajj", "Private Delegations"],
-        "stat": "30+ events managed"
+        "stat": "VIP Hospitality Specialists"
       },
       {
         "id": "madinah",
@@ -187,16 +187,16 @@
         "title": "Heritage & Cultural Activations",
         "description": "Specialising in culturally respectful event production aligned with Madinah's spiritual and historical significance — bespoke heritage activations, intimate high-net-worth gatherings, and Vision 2030 religious tourism programming designed to connect international visitors with the profound legacy of the Prophet's City.",
         "tags": ["Heritage Tourism", "Vision 2030", "Cultural Events"],
-        "stat": "20+ events managed"
+        "stat": "Heritage Event Specialists"
       },
       {
         "id": "dammam",
         "name": "Dammam",
         "badge": "Eastern Province",
         "title": "Industrial, Energy & Corporate Expos",
-        "description": "The Eastern Province is Saudi Arabia's industrial and energy heartland. We organise Saudi Aramco supplier conferences, SABIC industry expos, and high-stakes corporate events at Dhahran Expo and across the Jubail Industrial City and Khobar business ecosystems — serving the Kingdom's most strategically important commercial region.",
-        "tags": ["Dhahran Expo", "Saudi Aramco", "Jubail IC"],
-        "stat": "35+ events managed"
+        "description": "The Eastern Province is Saudi Arabia's industrial and energy heartland. We organise industrial-sector supplier conferences, trade expos, and high-stakes corporate events at Dhahran Expo and across the Jubail Industrial City and Khobar business ecosystems — serving the Kingdom's most strategically important commercial region.",
+        "tags": ["Dhahran Expo", "Energy Sector", "Jubail IC"],
+        "stat": "Industrial Sector Specialists"
       }
     ]
   },
@@ -216,7 +216,7 @@
       },
       {
         "title": "Elite Vendor Network",
-        "desc": "Access our curated network of 200+ premium vendors — florists, caterers, photographers — all vetted for excellence."
+        "desc": "Access our curated network of 20+ premium vendors — florists, caterers, photographers — all vetted for excellence."
       },
       {
         "title": "Timeline Mastery",
@@ -462,7 +462,7 @@
       {
         "category": "logistics",
         "question": "Can you handle high-profile and VIP events?",
-        "answer": "Yes. We specialize in absolute discretion for royal families, government officials, and celebrity clients. NDAs are standard for all our elite projects."
+        "answer": "Yes. We specialize in absolute discretion for high-profile and VIP clients. NDAs are standard for all our elite projects."
       },
       {
         "category": "logistics",

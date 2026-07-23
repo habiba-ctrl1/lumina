@@ -1348,7 +1348,7 @@ export const blogPosts: BlogPost[] = [
       "## 3. Planning Timelines and Permits",
       "If you are planning a major corporate event, you need to move fast. Secure your venue at least **6 to 8 months in advance**—especially if your dates overlap with major [Riyadh Season](/locations/riyadh) activities.",
       "[TIP] Don't forget about GEA permits! If your event has live entertainment or music, you'll need proper approvals.",
-      "At Saudi Event Management, we handle the entire production cycle: concept development, venue selection, GEA permit applications, and day-of execution. Check out our guide on the [State of the MICE Industry](/blog/state-of-mice-industry-saudi-arabia-2026) for more insights.",
+      "At Saudi Event Management, we coordinate the entire production cycle: concept development, venue selection, GEA permit applications through trusted partners, and day-of execution. Check out our guide on the [State of the MICE Industry](/blog/state-of-mice-industry-saudi-arabia-2026) for more insights.",
       "Need a corporate event delivered to a high standard in Riyadh or Jeddah? [Contact our team](/contact) to discuss your vision!"
     ],
     contentAr: [
@@ -1365,7 +1365,7 @@ export const blogPosts: BlogPost[] = [
       "## 3. الجداول الزمنية والتصاريح",
       "إن كنت تخطّط لفعالية مؤسسية كبرى، عليك التحرّك بسرعة. أمّن قاعتك قبل **6 إلى 8 أشهر على الأقل** — خصوصًا إن تداخلت مواعيدك مع أنشطة [موسم الرياض](/locations/riyadh) الكبرى.",
       "[TIP] لا تنسَ تصاريح الهيئة العامة للترفيه! إن كان في فعاليتك ترفيه حي أو موسيقى، ستحتاج موافقات لائقة.",
-      "في إدارة الفعاليات السعودية، نتولّى دورة الإنتاج كاملة: تطوير المفهوم، واختيار القاعة، وطلبات تصاريح الهيئة العامة للترفيه، والتنفيذ في اليوم. اطّلع على دليلنا حول [حالة قطاع المعارض والمؤتمرات](/blog/state-of-mice-industry-saudi-arabia-2026) لمزيد من الرؤى.",
+      "في إدارة الفعاليات السعودية، ننسّق دورة الإنتاج كاملة: تطوير المفهوم، واختيار القاعة، وطلبات تصاريح الهيئة العامة للترفيه عبر شركاء موثوقين، والتنفيذ في اليوم. اطّلع على دليلنا حول [حالة قطاع المعارض والمؤتمرات](/blog/state-of-mice-industry-saudi-arabia-2026) لمزيد من الرؤى.",
       "تحتاج فعالية مؤسسية تُنفّذ بمعيار عالٍ في الرياض أو جدة؟ [تواصل مع فريقنا](/contact) لمناقشة رؤيتك!"
     ]
   },
@@ -1450,7 +1450,7 @@ export const blogPosts: BlogPost[] = [
       "- **VIP Guest Management:** Managing guests in remote locations requires extra care, so using smart RSVP and tracking tech is a must.",
       "## 3. The Future of AlUla Tourism",
       "The goal is to welcome 2 million visitors to AlUla every year by 2035! For brands and event planners, this is a massive opportunity to create unforgettable experiences that you just cannot replicate anywhere else in the world.",
-      "At Saudi Event Management, we have a preferred partnership with the RCU. We handle the entire process—from getting your permits to organizing all the remote desert logistics. [Contact our AlUla events team](/contact) today to start planning your masterpiece!"
+      "At Saudi Event Management, we work within RCU's event guidelines and coordinate the entire process through trusted partners—from getting your permits to organizing all the remote desert logistics. [Contact our AlUla events team](/contact) today to start planning your masterpiece!"
     ],
     contentAr: [
       "[العلا](/locations/alula) لم تعد مجرد موقع تاريخي جميل — بل أصبحت واحدة من أكثر الأماكن إثارة للفعاليات الثقافية في الشرق الأوسط. فخلال السنوات القليلة الماضية، غيّرت مهرجانات ضخمة مثل «شتاء طنطورة» و«ديزرت إكس العلا» تمامًا كيف يرى العالم السعودية كوجهة ثقافية.",
@@ -1468,7 +1468,7 @@ export const blogPosts: BlogPost[] = [
       "- **إدارة ضيوف كبار الشخصيات:** إدارة الضيوف في المواقع النائية تتطلّب عناية إضافية، لذا استخدام تقنية تأكيد حضور وتتبّع ذكية ضرورة.",
       "## 3. مستقبل سياحة العلا",
       "الهدف استقبال مليونَي زائر للعلا كل عام بحلول 2035! وللعلامات ومنظّمي الفعاليات، هذه فرصة هائلة لخلق تجارب لا تُنسى لا يمكن تكرارها في أي مكان آخر في العالم.",
-      "في إدارة الفعاليات السعودية، لدينا شراكة مفضّلة مع الهيئة الملكية للعلا. نتولّى العملية كاملة — من الحصول على تصاريحك إلى تنظيم كل اللوجستيات الصحراوية النائية. [تواصل مع فريق فعاليات العلا لدينا](/contact) اليوم لبدء تخطيط تحفتك!"
+      "في إدارة الفعاليات السعودية، نعمل ضمن إرشادات الهيئة الملكية للعلا وننسّق العملية كاملة عبر شركاء موثوقين — من الحصول على تصاريحك إلى تنظيم كل اللوجستيات الصحراوية النائية. [تواصل مع فريق فعاليات العلا لدينا](/contact) اليوم لبدء تخطيط تحفتك!"
     ]
   },
   {
@@ -1803,7 +1803,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog/jeddah_wedding_venues.webp",
     date: "June 07, 2026",
     readTime: "7 min read",
-    author: "Nadia Al-Rashidi",
+    author: "Habiba Asghar",
     featured: true,
     content: [
       "[Jeddah](/locations/jeddah) is the ultimate romantic city in Saudi Arabia. With its amazing Red Sea coastline and cosmopolitan energy, it is no wonder couples from all over the GCC want to get married here. The vibe here is completely different from Riyadh—it is more relaxed, coastal, and incredibly beautiful.",
@@ -1996,7 +1996,7 @@ export const blogPosts: BlogPost[] = [
       "- Forgetting to include artist GEA licenses in the application.",
       "- Changing the venue or date after the permit is approved (you will need to re-apply!).",
       "- Not having a proper security and crowd management plan.",
-      "Dealing with the GEA can be confusing, especially if it is your first time. At Saudi Event Management, we handle the **entire permit process** for you—from the paperwork to the portal submission to making sure everything is compliant on the day. [Contact us today](/contact) and let us take the stress out of your event permits!"
+      "Dealing with the GEA can be confusing, especially if it is your first time. At Saudi Event Management, we coordinate the **entire permit process** through trusted partners—from the paperwork to the portal submission to making sure everything is compliant on the day. [Contact us today](/contact) and let us take the stress out of your event permits!"
     ],
     contentAr: [
       "إن كنت تخطّط لأي فعالية في السعودية تتضمّن موسيقى حية أو فنانين أو ترفيهًا عامًا، **يجب** أن تحصل على تصريح من الهيئة العامة للترفيه. لا تصريح يعني لا فعالية — بهذه البساطة.",
@@ -2024,7 +2024,7 @@ export const blogPosts: BlogPost[] = [
       "- نسيان إدراج تراخيص الفنانين من الهيئة في الطلب.",
       "- تغيير القاعة أو الموعد بعد الموافقة على التصريح (ستحتاج لإعادة التقديم!).",
       "- عدم وجود خطة أمن وإدارة حشود لائقة.",
-      "التعامل مع الهيئة العامة للترفيه قد يكون مربكًا، خصوصًا إن كانت مرتك الأولى. في إدارة الفعاليات السعودية، نتولّى **عملية التصريح كاملة** نيابةً عنك — من الأوراق إلى التقديم على البوابة إلى ضمان الامتثال الكامل في اليوم. [تواصل معنا اليوم](/contact) ودعنا نزيل ضغط تصاريح فعاليتك!"
+      "التعامل مع الهيئة العامة للترفيه قد يكون مربكًا، خصوصًا إن كانت مرتك الأولى. في إدارة الفعاليات السعودية، ننسّق **عملية التصريح كاملة** عبر شركاء موثوقين نيابةً عنك — من الأوراق إلى التقديم على البوابة إلى ضمان الامتثال الكامل في اليوم. [تواصل معنا اليوم](/contact) ودعنا نزيل ضغط تصاريح فعاليتك!"
     ]
   },
   {
@@ -2060,7 +2060,7 @@ export const blogPosts: BlogPost[] = [
       "2. **Hire a Local Expert:** Engage a Professional Conference Organizer (PCO) like Saudi Event Management to handle local venue negotiations and navigate GEA permits.",
       "3. **Respect the Culture:** Do not treat a Saudi event like a standard Western conference. Authentic Arabic hospitality (like proper coffee service) is mandatory.",
       "[TIP] MICE venues book up fast! Secure your venue at least 6–8 months in advance, especially if it coincides with [Riyadh Season](/locations/riyadh).",
-      "Saudi Event Management is an expert PCO offering complete [MICE planning services](/services/conferences) across the Kingdom. From securing GEA permits to managing VIP delegates, we handle it all. [Contact us](/contact) to discuss your MICE requirements today."
+      "Saudi Event Management is an expert PCO offering complete [MICE planning services](/services/conferences) across the Kingdom. From coordinating GEA permits through trusted partners to managing VIP delegates, we handle it all. [Contact us](/contact) to discuss your MICE requirements today."
     ],
     contentAr: [
       "قطاع MICE (الاجتماعات والحوافز و[المؤتمرات](/services/conferences) و[المعارض](/services/exhibitions)) حاليًا من أسرع القطاعات نموًا في السعودية. ومدفوعًا بـ[رؤية 2030](/portfolio/vision-2030)، تضخّ المملكة استثمارات هائلة في قاعات وبنية تحتية عالمية المستوى لتصبح من أفضل 10 وجهات MICE عالميًا بحلول 2030.",
@@ -2079,7 +2079,7 @@ export const blogPosts: BlogPost[] = [
       "2. **وظّف خبيرًا محليًا:** تعاقد مع منظّم مؤتمرات محترف (PCO) كإدارة الفعاليات السعودية للتعامل مع مفاوضات القاعات المحلية والتنقّل بين تصاريح الهيئة العامة للترفيه.",
       "3. **احترم الثقافة:** لا تعامل فعالية سعودية كمؤتمر غربي قياسي. فالضيافة العربية الأصيلة (كخدمة القهوة اللائقة) إلزامية.",
       "[TIP] قاعات MICE تُحجز بسرعة! أمّن قاعتك قبل 6–8 أشهر على الأقل، خصوصًا إن تزامنت مع [موسم الرياض](/locations/riyadh).",
-      "إدارة الفعاليات السعودية منظّم مؤتمرات محترف خبير يقدّم [خدمات تخطيط MICE](/services/conferences) المتكاملة في عموم المملكة. من تأمين تصاريح الهيئة العامة للترفيه إلى إدارة مندوبي كبار الشخصيات، نتولّى كل ذلك. [تواصل معنا](/contact) لمناقشة متطلبات MICE الخاصة بك اليوم."
+      "إدارة الفعاليات السعودية منظّم مؤتمرات محترف خبير يقدّم [خدمات تخطيط MICE](/services/conferences) المتكاملة في عموم المملكة. من تنسيق تصاريح الهيئة العامة للترفيه عبر شركاء موثوقين إلى إدارة مندوبي كبار الشخصيات، نتولّى كل ذلك. [تواصل معنا](/contact) لمناقشة متطلبات MICE الخاصة بك اليوم."
     ]
   },
   {
@@ -2465,7 +2465,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog/riyadh_wedding_venues.webp",
     date: "June 24, 2026",
     readTime: "7 min read",
-    author: "Nadia Al-Rashidi",
+    author: "Habiba Asghar",
     featured: false,
     content: [
       "[Riyadh](/locations/riyadh) is the beating heart of formal Saudi celebration. As the Kingdom's capital, it has always hosted the country's grandest weddings — but a new generation of hotels and heritage venues has raised the bar even further. The vibe here is different from [Jeddah's](/blog/best-wedding-venues-jeddah-2026) coastal romance: Riyadh weddings are about scale, ceremony, and unforgettable grandeur.",
@@ -2631,7 +2631,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog/gala_dinner_awards_saudi.webp",
     date: "July 08, 2026",
     readTime: "6 min read",
-    author: "Nadia Al-Rashidi",
+    author: "Habiba Asghar",
     featured: false,
     content: [
       "A well-produced gala dinner or awards ceremony does more for a brand than almost any other event format — it rewards people publicly, signals success to clients and partners, and gives a company's culture a stage. In Saudi Arabia, where [corporate events](/services/corporate-events) have reached genuinely world-class production standards, galas have become a serious strategic tool rather than a once-a-year formality.",
@@ -2783,7 +2783,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog/exhibition_company_selection_saudi.webp",
     date: "July 17, 2026",
     readTime: "7 min read",
-    author: "Nadia Al-Rashidi",
+    author: "Habiba Asghar",
     featured: false,
     content: [
       "Saudi Arabia's [exhibition and trade show](/services/exhibitions) calendar has exploded over the past few years, from LEAP and the Saudi Cup to sector-specific expos across [Riyadh](/locations/riyadh) and [Jeddah](/locations/jeddah). With that growth has come a flood of new exhibition companies — some excellent, some barely more than a booth-rental service. Here are the questions that actually separate the two.",

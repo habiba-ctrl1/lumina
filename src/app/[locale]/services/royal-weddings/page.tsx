@@ -167,7 +167,7 @@ const jsonLd = {
           name: "What are the best hotels for royal weddings in Jeddah?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Jeddah's premier royal wedding venues include: (1) Waldorf Astoria Jeddah – Qasr Al Sharq — oceanfront palace-style hotel with Red Sea views; (2) Four Seasons Hotel Jeddah at Kingdom of Sheba — beachfront luxury; (3) The Ritz-Carlton Jeddah — Red Sea beach setting with classical Saudi architecture; (4) Park Hyatt Jeddah — Marina and Beach Club for intimate royal experiences; (5) InterContinental Jeddah — grand Corniche ballrooms. Saudi Event Management holds preferred-partner status with each property.",
+            text: "Jeddah's premier royal wedding venues include: (1) Waldorf Astoria Jeddah – Qasr Al Sharq — oceanfront palace-style hotel with Red Sea views; (2) Four Seasons Hotel Jeddah at Kingdom of Sheba — beachfront luxury; (3) The Ritz-Carlton Jeddah — Red Sea beach setting with classical Saudi architecture; (4) Park Hyatt Jeddah — Marina and Beach Club for intimate royal experiences; (5) InterContinental Jeddah — grand Corniche ballrooms. Saudi Event Management has strong working relationships with each property.",
           },
         },
         {
@@ -238,7 +238,7 @@ const jsonLd = {
           "@type": "HowToStep",
           position: 2,
           name: "Venue Sourcing & Securing",
-          text: "We present a curated shortlist of royal-appropriate venues — palace properties, five-star ballrooms, or exclusive resort takeovers — with preferred-partner pricing. Venue contracts are secured 12–18 months in advance.",
+          text: "We present a curated shortlist of royal-appropriate venues — palace properties, five-star ballrooms, or exclusive resort takeovers — with strong negotiated pricing. Venue contracts are secured 12–18 months in advance.",
         },
         {
           "@type": "HowToStep",
@@ -392,7 +392,7 @@ const services = [
   {
     icon: MapPin,
     title: "Royal Venue Sourcing",
-    desc: "Exclusive access to palace properties, five-star ballrooms, and private resort takeovers across Riyadh, Jeddah, AlUla, and NEOM — with preferred-partner pricing.",
+    desc: "Broad access to palace properties, five-star ballrooms, and private resort takeovers across Riyadh, Jeddah, AlUla, and NEOM — with strong negotiated pricing.",
   },
   {
     icon: Flower2,
@@ -565,7 +565,7 @@ const packages = [
 const faqs = [
   {
     q: "Who are the best royal wedding planners in Saudi Arabia?",
-    a: "Saudi Event Management is Saudi Arabia's foremost royal wedding specialist — preferred-partner status at all major five-star venues, and a dedicated royal protocol team. Our portfolio spans Riyadh, Jeddah, AlUla, and NEOM.",
+    a: "Saudi Event Management is a specialist in royal-style wedding planning — with strong relationships across major five-star venues, and a dedicated royal protocol team. Our portfolio spans Riyadh, Jeddah, AlUla, and NEOM.",
   },
   {
     q: "How much does a royal wedding cost in Saudi Arabia?",
@@ -1026,8 +1026,8 @@ export default async function RoyalWeddingsPage() {
                     <p className="text-gray-500 text-xs font-light">{isAr ? "مستشارون ثقافيون خبراء يتقنون تقاليد الأعراس الملكية السعودية." : "Expert cultural consultants fluent in Saudi royal ceremonial traditions."}</p>
                   </div>
                   <div>
-                    <p className="text-[var(--primary)] font-bold text-sm mb-1">{isAr ? "شركاء القاعات المفضّلون" : "Preferred Venue Partners"}</p>
-                    <p className="text-gray-500 text-xs font-light">{isAr ? "مكانة شريك مفضّل مع كل القاعات الكبرى ذات الخمس نجوم في المملكة." : "Preferred-partner status with all major five-star venues across KSA."}</p>
+                    <p className="text-[var(--primary)] font-bold text-sm mb-1">{isAr ? "علاقات قوية مع القاعات" : "Strong Venue Relationships"}</p>
+                    <p className="text-gray-500 text-xs font-light">{isAr ? "علاقات عمل قوية مع كبرى القاعات ذات الخمس نجوم في المملكة." : "Strong working relationships with major five-star venues across KSA."}</p>
                   </div>
                 </div>
               </div>
@@ -1138,8 +1138,8 @@ export default async function RoyalWeddingsPage() {
               </h2>
               <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-sm">
                 {isAr
-                  ? "وصول كشريك مفضّل إلى أعرق فنادق القصور، والمنتجعات، ووجهات التراث العالمي لليونسكو في المملكة."
-                  : "Preferred-partner access to the Kingdom's most prestigious palace hotels, resort properties, and UNESCO-heritage destinations."}
+                  ? "وصول واسع إلى أعرق فنادق القصور، والمنتجعات، ووجهات التراث العالمي لليونسكو في المملكة."
+                  : "Broad access to the Kingdom's most prestigious palace hotels, resort properties, and UNESCO-heritage destinations."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -178,7 +178,7 @@ const jsonLd = {
           "name": "Which event management companies in Dammam specialize in oil and gas sector corporate events?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Saudi Event Management is the Eastern Province's specialist for energy sector corporate events, with expertise in Saudi Aramco supplier and partner events in Dhahran, SABIC corporate programs, oil and gas conference management at DCEC and Sheraton Dammam, and KFUPM academic conference coordination.",
+            "text": "Saudi Event Management coordinates energy-sector corporate events in the Eastern Province, with experience in supplier and partner event formats in Dhahran, SABIC-aligned corporate programs, oil and gas conference management at DCEC and Sheraton Dammam, and KFUPM academic conference coordination.",
           },
         },
         {
@@ -186,7 +186,7 @@ const jsonLd = {
           "name": "Can you manage a cross-border event across Dammam and Bahrain?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Saudi Event Management manages cross-border corporate events via the King Fahd Causeway corridor, coordinating venues in Dammam and Al-Khobar with the Bahrain International Exhibition & Convention Centre (BIECC) and Gulf Hotel Bahrain. This capability serves Gulf-wide regional conferences and multinational corporate events.",
+            "text": "Yes. Saudi Event Management coordinates cross-border corporate events via the King Fahd Causeway corridor, working with venues in Dammam and Al-Khobar alongside the Bahrain International Exhibition & Convention Centre (BIECC) and Gulf Hotel Bahrain. This capability serves Gulf-wide regional conferences and multinational corporate events.",
           },
         },
         {
@@ -302,7 +302,7 @@ const services = [
   {
     icon: Building2,
     title: "Energy Sector Corporate Events",
-    text: "Saudi Aramco supplier days, SABIC partner events, oil & gas conferences, and energy transition summits at DCEC, Sheraton Dammam, and Dhahran Exhibition Center.",
+    text: "Energy-sector supplier days, industry partner events, oil & gas conferences, and energy transition summits at DCEC, Sheraton Dammam, and Dhahran Exhibition Center.",
     href: "/locations/dammam/corporate-event-management",
   },
   {
@@ -344,11 +344,11 @@ const faqs = [
   },
   {
     q: "Which event management company in Dammam specializes in oil and gas sector events?",
-    a: "Saudi Event Management is the Eastern Province's specialist for energy sector corporate events, with expertise in Saudi Aramco supplier and partner events in Dhahran, SABIC corporate programs, oil & gas conference management at DCEC and Sheraton Dammam, and KFUPM academic conference coordination.",
+    a: "Saudi Event Management coordinates energy-sector corporate events in the Eastern Province, with experience in supplier and partner event formats in Dhahran, SABIC-aligned corporate programs, oil & gas conference management at DCEC and Sheraton Dammam, and KFUPM academic conference coordination.",
   },
   {
     q: "Can you manage a cross-border event across Dammam and Bahrain?",
-    a: "Yes. Saudi Event Management manages cross-border corporate events via the King Fahd Causeway corridor, coordinating venues in Dammam and Al-Khobar with the Bahrain International Exhibition & Convention Centre (BIECC). This serves Gulf-wide regional conferences, multinational roadshows, and multi-day corporate events that draw attendees from both countries.",
+    a: "Yes. Saudi Event Management coordinates cross-border corporate events via the King Fahd Causeway corridor, working with venues in Dammam and Al-Khobar alongside the Bahrain International Exhibition & Convention Centre (BIECC). This serves Gulf-wide regional conferences, multinational roadshows, and multi-day corporate events that draw attendees from both countries.",
   },
   {
     q: "What outdoor event venues are available in Dammam and Al-Khobar?",
@@ -364,13 +364,13 @@ const eventCalendar = [
   {
     period: "Oct – Mar",
     season: "Peak Outdoor & Corporate Season",
-    events: "Coastal weddings, outdoor events, energy sector conferences, Aramco partner days",
+    events: "Coastal weddings, outdoor events, energy sector conferences, industry partner days",
     demand: "Peak",
   },
   {
     period: "Jan – Mar",
-    season: "Aramco & Energy Conference Cycle",
-    events: "Saudi Aramco supplier days, SABIC forums, oil & gas conferences, KFUPM summits",
+    season: "Energy Sector Conference Cycle",
+    events: "Energy-sector supplier days, industry forums, oil & gas conferences, KFUPM summits",
     demand: "Very High",
   },
   {
@@ -403,8 +403,8 @@ export default async function DammamPage() {
         titleHighlight={isAr ? "الدمام" : "Dammam"}
         subtitle={
           isAr
-            ? "فعاليات شركات راقية واحتفالات ساحلية — من مؤتمرات الطاقة بمستوى أرامكو السعودية في الظهران إلى حفلات الزفاف على واجهة الخليج في كمبينسكي الخبر ونصف القمر. مخطّط فعالياتك في عموم المنطقة الشرقية."
-            : "Elite corporate events and coastal celebrations — from Saudi Aramco-tier energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay. Your event planner across the Eastern Province."
+            ? "فعاليات شركات راقية واحتفالات ساحلية — من مؤتمرات الطاقة عالمية المستوى في الظهران إلى حفلات الزفاف على واجهة الخليج في كمبينسكي الخبر ونصف القمر. مخطّط فعالياتك في عموم المنطقة الشرقية."
+            : "Elite corporate events and coastal celebrations — from world-class energy conferences in Dhahran to Gulf waterfront weddings at Kempinski Al Khobar and Half Moon Bay. Your event planner across the Eastern Province."
         }
         backgroundImage="/locations/dammam-coast.webp"
         imageAlt="Dammam waterfront cityscape — event management company in Dammam, Eastern Province Saudi Arabia"
@@ -437,9 +437,9 @@ export default async function DammamPage() {
               { label: "Metro Population", val: "4.9M+" },
               { label: "DCEC Capacity", val: "5,000" },
               { label: "Peak Season", val: "Oct–Mar" },
-              { label: "Anchor Entity", val: "Saudi Aramco" },
+              { label: "Regional Anchor", val: "Saudi Aramco" },
               { label: "Bahrain Distance", val: "30km" },
-              { label: "Gulf Venues", val: "25+" },
+              { label: "Peak Venues", val: "6" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col gap-1">
                 <span className="text-lg md:text-xl font-display font-semibold text-neutral-900">{item.val}</span>
@@ -504,8 +504,8 @@ export default async function DammamPage() {
             </div>
             <ul className="space-y-3">
               {[
-                "Saudi Aramco supplier & partner event expertise (Dhahran)",
-                "DCEC and Sheraton Dammam preferred event partner",
+                "Energy-sector supplier & partner event experience (Dhahran)",
+                "DCEC and Sheraton Dammam venue coordination experience",
                 "King Fahd Causeway cross-border Dammam–Bahrain management",
                 "Half Moon Bay & Al-Khobar Corniche outdoor event specialists",
               ].map((item, i) => (
@@ -601,8 +601,8 @@ export default async function DammamPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             {[
               { label: "Local Vendor Network", val: "Dammam-Wide" },
-              { label: "Venue Partnerships", val: "25+" },
-              { label: "Eastern Province Specialists", val: "10" },
+              { label: "Peak Venues Covered", val: "6" },
+              { label: "Event Categories", val: "6" },
               { label: "Cross-Border Events", val: "Dammam + Bahrain" },
             ].map((stat, i) => (
               <div key={i}>
@@ -666,10 +666,9 @@ export default async function DammamPage() {
               <p className="text-neutral-600 text-sm leading-relaxed mb-6">
                 The <strong>King Fahd Causeway</strong> connects Dammam to
                 Bahrain in 30 minutes — creating the Gulf&apos;s only land-based
-                cross-border event corridor. Saudi Event Management is the only
-                event company in the region that manages multi-destination
-                corporate events spanning both sides of the causeway,
-                coordinating with the{" "}
+                cross-border event corridor. Saudi Event Management coordinates
+                multi-destination corporate events spanning both sides of the
+                causeway, working with the{" "}
                 <strong>
                   Bahrain International Exhibition &amp; Convention Centre
                   (BIECC)
@@ -721,16 +720,16 @@ export default async function DammamPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "Saudi Aramco Ecosystem Expertise",
-                body: "Deep operational knowledge of Aramco's supplier protocols, security clearance requirements, and the Dhahran campus event infrastructure. We manage events within and adjacent to the world's most valuable corporate campus.",
+                title: "Energy Sector Event Expertise",
+                body: "Working knowledge of the Dhahran campus event infrastructure and the protocols energy-sector suppliers and partners expect. We coordinate events within and adjacent to the region's energy corridor.",
               },
               {
-                title: "Only Cross-Border Gulf Event Manager",
-                body: "Saudi Event Management is the only event company in the region actively managing cross-border events via the King Fahd Causeway corridor, combining Saudi and Bahraini venue capacity for Gulf-wide corporate programs.",
+                title: "Cross-Border Gulf Event Coordination",
+                body: "Saudi Event Management coordinates cross-border events via the King Fahd Causeway corridor, combining Saudi and Bahraini venue capacity for Gulf-wide corporate programs.",
               },
               {
                 title: "Full Eastern Province Coverage",
-                body: "Dammam, Al-Khobar, Dhahran, Jubail Industrial City, Al-Ahsa UNESCO district, and Half Moon Bay — our Eastern Province network is the most comprehensive of any event management company in the region.",
+                body: "Dammam, Al-Khobar, Dhahran, Jubail Industrial City, Al-Ahsa UNESCO district, and Half Moon Bay — our Eastern Province network spans every major event category in the region.",
               },
             ].map((card, i) => (
               <div key={i} className="p-7 bg-white border border-neutral-200/80 rounded-2xl shadow-sm">
@@ -787,17 +786,17 @@ export default async function DammamPage() {
                 events at <strong>Half Moon Bay</strong>.
               </p>
               <p>
-                As the only Saudi event management company actively managing
-                cross-border programs via the{" "}
+                Through cross-border programs via the{" "}
                 <strong>King Fahd Causeway</strong>, we extend our Eastern
                 Province capability into Bahrain&apos;s{" "}
-                <strong>BIECC</strong> for Gulf-wide corporate events. We serve{" "}
-                <strong>Saudi Aramco</strong> ecosystem clients,{" "}
-                <strong>SABIC</strong> regional partners,{" "}
+                <strong>BIECC</strong> for Gulf-wide corporate events. We
+                support event needs across the{" "}
+                <strong>Saudi Aramco</strong> ecosystem,{" "}
+                <strong>SABIC</strong> regional partner activity,{" "}
                 <strong>KFUPM</strong> institutional events, and{" "}
                 <strong>Royal Commission for Jubail &amp; Yanbu</strong>{" "}
-                industrial exhibitions — the most specialized B2B event portfolio
-                in Saudi Arabia.
+                industrial exhibitions — a specialized B2B event focus in the
+                Eastern Province.
               </p>
               <p>
                 Need a corporate event organizer in Dammam or a wedding planner

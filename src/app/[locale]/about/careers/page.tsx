@@ -70,8 +70,8 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
           </h1>
           <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl mx-auto">
             {isAr
-              ? "نبحث دائماً عن مخططين أصحاب رؤية، ومنتجين دقيقين، وعقول مبدعة للانضمام إلى عملياتنا سريعة النمو في جميع أنحاء المملكة العربية السعودية."
-              : "We are always looking for visionary planners, rigorous producers, and creative minds to join our rapidly growing operations across Saudi Arabia."}
+              ? "نبحث دائماً عن مخططين أصحاب رؤية، ومنتجين دقيقين، وعقول مبدعة للانضمام إلى منصتنا النامية في جميع أنحاء المملكة العربية السعودية."
+              : "We are always looking for visionary planners, rigorous producers, and creative minds to join our growing platform across Saudi Arabia."}
           </p>
         </div>
       </div>
@@ -83,8 +83,8 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
           <h2 className="text-3xl font-semibold mb-6">{isAr ? "الوظائف الشاغرة" : "Open Positions"}</h2>
           <p className="text-neutral-500 leading-relaxed mb-10">
             {isAr
-              ? "مع توسّعنا جنباً إلى جنب مع رؤية السعودية 2030، يظل طلبنا على المواهب المتميّزة مستمراً. إذا كانت لديك خبرة في إنتاج الفعاليات الفاخرة، أو الضيافة الراقية، أو لوجستيات فعاليات الشركات، فنحن نتطلّع لسماع صوتك."
-              : "As we scale alongside Saudi Vision 2030, our demand for elite talent is constant. If you have experience in luxury event production, high-end hospitality, or corporate event logistics, we want to hear from you."}
+              ? "مع نمونا جنباً إلى جنب مع رؤية السعودية 2030، يظل اهتمامنا بالمواهب المتميّزة مستمراً. إذا كانت لديك خبرة في إنتاج الفعاليات الفاخرة، أو الضيافة الراقية، أو لوجستيات فعاليات الشركات، فنحن نتطلّع لسماع صوتك."
+              : "As we grow alongside Saudi Vision 2030, our interest in talented people is constant. If you have experience in luxury event production, high-end hospitality, or corporate event logistics, we want to hear from you."}
           </p>
 
           <div className="bg-neutral-50 border border-neutral-200 p-8 rounded-2xl text-start">
@@ -92,8 +92,8 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
             <p className="text-sm text-neutral-500 mb-6">{isAr ? "الموقع: الرياض، أو جدة، أو عن بُعد (داخل المملكة)" : "Location: Riyadh, Jeddah, or Remote (KSA)"}</p>
             <p className="text-neutral-600 mb-6 text-sm leading-relaxed">
               {isAr
-                ? "أرسل سيرتك الذاتية وأعمالك إلى فريق الموارد البشرية التنفيذي لدينا. نراجع جميع الطلبات وسنتواصل معك عند توفّر منصب مناسب يتوافق مع خبرتك."
-                : "Submit your resume and portfolio to our executive HR team. We review all applications and will contact you when a suitable position aligns with your expertise."}
+                ? "أرسل سيرتك الذاتية وأعمالك مباشرة إلينا. نراجع جميع الطلبات شخصياً وسنتواصل معك عند توفّر منصب مناسب يتوافق مع خبرتك."
+                : "Submit your resume and portfolio directly to us. We review all applications personally and will contact you when a suitable position aligns with your expertise."}
             </p>
             <a
               href="mailto:careers@saudieventmanagement.com"
