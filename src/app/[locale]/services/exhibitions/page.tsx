@@ -354,6 +354,16 @@ export default function ExhibitionsPage() {
               alt: "Interactive LED exhibition tower build on the show floor of a national exhibition",
               altAr: "تركيب برج شاشات LED تفاعلي على أرضية معرض وطني",
             },
+            {
+              src: "/services/partner-network/exhibition-stand-design-saudi-arabia-3.webp",
+              alt: "Themed exhibition booth build with immersive backdrop at an international book fair",
+              altAr: "جناح معرض مصمم بخلفية غامرة في معرض دولي للكتاب",
+            },
+            {
+              src: "/services/partner-network/exhibition-stand-design-saudi-arabia-4.webp",
+              alt: "Large-scale architectural facade set build for a themed exhibition district",
+              altAr: "بناء واجهة معمارية واسعة النطاق لحي معرض ذي طابع خاص",
+            },
           ]}
         />
 

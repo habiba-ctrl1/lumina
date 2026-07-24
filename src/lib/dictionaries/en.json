@@ -40,7 +40,13 @@
     "destinationEvents": "Destination Events",
     "destinationEventsDesc": "AlUla, NEOM & the Red Sea",
     "productionVenues": "Services & Venues",
-    "productionVenuesDesc": "Venue sourcing, AV & catering"
+    "productionVenuesDesc": "Venue sourcing, AV & catering",
+    "entertainment": "Entertainment",
+    "entertainmentDesc": "Live bands, DJs & performers",
+    "vipTransportation": "VIP Transportation",
+    "vipTransportationDesc": "Luxury & armored executive transport",
+    "valetParking": "Valet Parking",
+    "valetParkingDesc": "Uniformed valet staff for events"
   },
   "navLocations": {
     "riyadh": "Riyadh",
