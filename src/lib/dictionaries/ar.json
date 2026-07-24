@@ -40,7 +40,13 @@
     "destinationEvents": "فعاليات الوجهات",
     "destinationEventsDesc": "العُلا ونيوم والبحر الأحمر",
     "productionVenues": "الخدمات والأماكن",
-    "productionVenuesDesc": "تأمين الأماكن والصوت والضيافة"
+    "productionVenuesDesc": "تأمين الأماكن والصوت والضيافة",
+    "entertainment": "الترفيه",
+    "entertainmentDesc": "فرق موسيقية ومنسقو حفلات وفنانون",
+    "vipTransportation": "النقل الفاخر",
+    "vipTransportationDesc": "نقل تنفيذي فاخر ومدرَّع",
+    "valetParking": "خدمة الفاليه",
+    "valetParkingDesc": "طاقم فاليه موحّد الزي للفعاليات"
   },
   "navLocations": {
     "riyadh": "الرياض",

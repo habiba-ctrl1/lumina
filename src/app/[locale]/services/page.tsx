@@ -13,7 +13,7 @@ import Image from "next/image";
 import {
   Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
   Phone, CheckCircle2, ShieldCheck, Clock, Languages, Award, TrendingUp,
-  Layers, Landmark, Briefcase,
+  Layers, Landmark, Briefcase, Music, Car, KeyRound,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -156,6 +156,36 @@ const serviceCategories = [
     tags: ["Stage Design", "AV Production", "Projection Mapping"],
     img: "/services/event_production_stage_riyadh.webp",
     imgAlt: "Concert-grade event production stage with LED screens and intelligent lighting in Riyadh",
+  },
+  {
+    icon: Music,
+    slug: "entertainment",
+    title: "Entertainment",
+    arabic: "الترفيه",
+    desc: "Live musical performances, interactive acts, and DJ entertainment coordinated through a vetted talent network for weddings, corporate events, and cultural celebrations.",
+    tags: ["Live Bands", "DJ Booking", "Family Entertainment"],
+    img: "/services/event_production_stage_riyadh.webp",
+    imgAlt: "Live stage entertainment production with lighting and sound at a Saudi event",
+  },
+  {
+    icon: Car,
+    slug: "vip-transportation",
+    title: "VIP Transportation",
+    arabic: "النقل الفاخر",
+    desc: "Luxury and armored VIP transportation, airport transfers, and group delegate logistics coordinated through a vetted fleet partner network.",
+    tags: ["Airport Transfers", "Armored Vehicles", "Delegate Transport"],
+    img: "/services/premium_luxury_vip_hero.webp",
+    imgAlt: "Luxury VIP guest arrival and concierge experience at a Saudi event",
+  },
+  {
+    icon: KeyRound,
+    slug: "valet-parking",
+    title: "Valet Parking",
+    arabic: "خدمة الفاليه",
+    desc: "Uniformed, professional valet teams for weddings and corporate events — secure key management, accessibility support, and guest-arrival logistics.",
+    tags: ["Uniformed Staff", "Guest Arrivals", "Accessibility Support"],
+    img: "/services/wedding_hall_grand_entrance.webp",
+    imgAlt: "Grand guest entrance and arrival experience at a Saudi event venue",
   },
 ];
 

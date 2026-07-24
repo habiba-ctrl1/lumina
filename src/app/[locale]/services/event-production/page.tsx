@@ -535,6 +535,11 @@ export default async function EventProductionPage() {
               alt: "Large-format indoor event production with turf flooring and LED screen build",
               altAr: "إنتاج فعالية داخلية واسعة النطاق مع أرضية عشبية وشاشة LED",
             },
+            {
+              src: "/services/partner-network/event-production-company-saudi-arabia-4.webp",
+              alt: "Custom outdoor lattice pavilion structure with hand-painted mural backdrop",
+              altAr: "هيكل جناح خارجي مخصص بتصميم شبكي مع خلفية جدارية مرسومة يدويًا",
+            },
           ]}
         />
 
