@@ -52,3 +52,6 @@ SEO/
 
 # Local archive of unused files (kept on laptop, not deployed)
 archive/
+
+# Client documents (contracts, extracted data) - NEVER push to remote
+client/
