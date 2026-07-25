@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { adminFetch } from "@/lib/admin-fetch";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,7 +37,8 @@ import {
   PieChart,
   ClipboardList,
   Zap,
-  Inbox
+  Inbox,
+  ListChecks
 } from "lucide-react";
 
 type NavGroup = {
@@ -54,6 +56,7 @@ const navGroups: NavGroup[] = [
     label: "",
     items: [
       { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { href: "/admin/action-needed", label: "Action Needed", icon: ListChecks },
     ],
   },
   {
@@ -108,6 +111,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [pendingQuoteCount, setPendingQuoteCount] = useState(0);
+  const [actionNeededCount, setActionNeededCount] = useState(0);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
   const router = useRouter();
   const pathname = usePathname();
@@ -142,6 +146,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         if (data.counts) setPendingQuoteCount(data.counts.pending || 0);
       } catch (e) {
         console.error('Failed to fetch counts');
+      }
+      try {
+        const res = await adminFetch('/api/admin/action-needed');
+        const data = await res.json();
+        if (data.counts) setActionNeededCount(data.counts.total || 0);
+      } catch (e) {
+        console.error('Failed to fetch action-needed count');
       }
     };
     fetchCounts();
@@ -257,6 +268,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             {item.href === "/admin/quotes" && pendingQuoteCount > 0 && (
                               <span className="ms-auto px-1.5 py-0.5 bg-teal-500 text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
                                 {pendingQuoteCount}
+                              </span>
+                            )}
+                            {item.href === "/admin/action-needed" && actionNeededCount > 0 && (
+                              <span className="ms-auto px-1.5 py-0.5 bg-rose-500 text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
+                                {actionNeededCount}
                               </span>
                             )}
                             {isActive && (
