@@ -83,7 +83,7 @@ const jsonLd = {
           "name": "Can you build event infrastructure in remote desert locations?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. Our production team specialises in remote event logistics, bringing climate-controlled structural tents, generator power, lighting rigs, catering facilities, and luxury amenities to pristine desert environments while ensuring zero environmental impact and full compliance with RCU or heritage authority regulations.",
+            "text": "Absolutely. Our production team specialises in remote event logistics, bringing climate-controlled structural tents, generator power, lighting rigs, catering facilities, and luxury amenities to pristine desert environments while ensuring zero environmental impact and full compliance with heritage authority regulations.",
           },
         },
         {
@@ -91,7 +91,7 @@ const jsonLd = {
           "name": "How far in advance should we plan a destination event in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For major events and weddings in AlUla, we recommend starting planning 6 to 12 months in advance. High-demand periods at luxury resorts (particularly winter months October–March) book quickly, and Royal Commission for AlUla (RCU) site access permits require lead time.",
+            "text": "For major events and weddings in AlUla, we recommend starting planning 6 to 12 months in advance. High-demand periods at luxury resorts (particularly winter months October–March) book quickly, and heritage-site access permits require lead time.",
           },
         },
         {
@@ -99,7 +99,7 @@ const jsonLd = {
           "name": "What are the most scenic event venues in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AlUla's most spectacular event venues include the Maraya concert hall — the world's largest mirrored building, set among ancient Hejaz mountains — the Hegra UNESCO heritage site, Dadan archaeological ruins, and bespoke desert wadi settings. Saudi Event Management holds preferred access to all premium AlUla venues through our RCU partner status.",
+            "text": "AlUla's most spectacular event venues include the Maraya concert hall — the world's largest mirrored building, set among ancient Hejaz mountains — the Hegra UNESCO heritage site, Dadan archaeological ruins, and bespoke desert wadi settings. Saudi Event Management manages the full access and permitting process for all premium AlUla venues.",
           },
         },
         {
@@ -225,8 +225,8 @@ const resourcesAr = [
 const faqsAr = [
   { q: "هل تتولّون لوجستيات السفر لفعاليات الوجهات في السعودية؟", a: "نعم. نوفّر لوجستيات وجهات متكاملة تشمل رحلات خاصة، ونقل أرضي لكبار الشخصيات، وحجز إقامة فاخرة كاملة، وفرق دعم ميدانية في كل المواقع النائية بما فيها العلا ونيوم ومنتجعات البحر الأحمر." },
   { q: "هل يمكنكم بناء بنية تحتية للفعاليات في مواقع صحراوية نائية؟", a: "بالتأكيد. يتخصص فريق الإنتاج لدينا في لوجستيات الفعاليات النائية — نوفّر خيامًا إنشائية مكيّفة، وطاقة مولّدات، وإضاءة، ومرافق ضيافة، ووسائل راحة فاخرة في بيئات صحراوية بكر دون أثر بيئي." },
-  { q: "قبل كم من الوقت يجب التخطيط لفعالية وجهة في العلا؟", a: "للفعاليات الكبرى والأعراس في العلا، نوصي ببدء التخطيط قبل 6 إلى 12 شهرًا. تُحجز مواسم الذروة في المنتجعات الفاخرة بسرعة، وتتطلب تصاريح الوصول إلى مواقع الهيئة الملكية للعلا مهلة كبيرة." },
-  { q: "ما أكثر قاعات الفعاليات إبهارًا في العلا؟", a: "تشمل أبهى قاعات العلا قاعة مرايا (أكبر مبنى مرآتي في العالم)، وموقع الحِجر التراثي العالمي، وأطلال دادان الأثرية، ومواقع الوديان الصحراوية الخاصة. ولدينا وصول مفضّل عبر شراكتنا مع الهيئة الملكية للعلا." },
+  { q: "قبل كم من الوقت يجب التخطيط لفعالية وجهة في العلا؟", a: "للفعاليات الكبرى والأعراس في العلا، نوصي ببدء التخطيط قبل 6 إلى 12 شهرًا. تُحجز مواسم الذروة في المنتجعات الفاخرة بسرعة، وتتطلب تصاريح الوصول إلى المواقع التراثية مهلة كبيرة." },
+  { q: "ما أكثر قاعات الفعاليات إبهارًا في العلا؟", a: "تشمل أبهى قاعات العلا قاعة مرايا (أكبر مبنى مرآتي في العالم)، وموقع الحِجر التراثي العالمي، وأطلال دادان الأثرية، ومواقع الوديان الصحراوية الخاصة. وندير كامل عملية الوصول لكل هذه المواقع." },
   { q: "هل يمكنكم تنظيم فعاليات في نيوم للمندوبين الدوليين؟", a: "نعم. تدير إدارة الفعاليات السعودية ملتقيات الشركات وقمم الابتكار وتجارب العلامات داخل مشروع نيوم، وتتولّى كل التصاريح وسفر المندوبين والإقامة واللوجستيات الميدانية." },
   { q: "كيف تديرون لوجستيات الفعاليات الصحراوية النائية؟", a: "يدير فريق اللوجستيات النائية لدينا كل تسليم الإنتاج، وتوليد الطاقة، وإمداد المياه، والتكييف، وإدارة النفايات، والضيافة. وقد نفّذنا فعاليات في العلا وتبوك والربع الخالي بمعايير فخامة كاملة طوال الوقت." },
   { q: "كم تكلفة فعالية وجهة في العلا؟", a: "تبدأ فعاليات الوجهات في العلا من 250,000 ريال للتجمّعات الحميمة وقد تتجاوز 2,000,000 ريال للإنتاجات الكبرى ببنية تحتية مخصّصة ونجوم عالميين وحجز إقامة منتجعات فاخرة كاملة. تواصل معنا لعرض مخصّص." },
@@ -235,7 +235,7 @@ const faqsAr = [
 
 const challengesAr = [
   { c: "لوجستيات المواقع النائية ووصول الضيوف", s: "تُنسّق الرحلات الخاصة والتنقّلات البرية وحجوزات المنتجعات في العلا ونيوم من البداية للنهاية ليصل الضيوف بسلاسة وفي الموعد." },
-  { c: "تصاريح الهيئة الملكية للعلا والمواقع التراثية", s: "تتطلب الفعاليات في الحِجر ودادان والمواقع المحمية موافقات الهيئة الملكية للعلا وبروتوكولات دون أثر، نديرها مباشرة." },
+  { c: "تصاريح المواقع التراثية", s: "تتطلب الفعاليات في الحِجر ودادان والمواقع المحمية موافقات هيئة التراث وبروتوكولات دون أثر، نديرها مباشرة." },
   { c: "الطاقة والتكييف والبنية خارج الشبكة", s: "مولّدات صامتة، وتكييف، وبنية تحتية تُبنى من الصفر تجلب موثوقية الخمس نجوم إلى الصحراء والساحل." },
   { c: "راحة الضيوف في البيئات القاسية", s: "إدارة الحرارة، والظل، والترطيب، وخطط الطوارئ الجوية تبقي الضيوف مرتاحين عبر أيام الصحراء الحارة ولياليها الباردة." },
 ];
@@ -267,7 +267,7 @@ const cAr = {
   formBullets: [
     "وصول حصري إلى قاعات العلا ونيوم والبحر الأحمر",
     "لوجستيات سفر وإقامة متكاملة للضيوف",
-    "تصاريح الهيئة الملكية للعلا ونيوم والبنية التحتية الميدانية",
+    "تصاريح المواقع التراثية في العلا ونيوم والبنية التحتية الميدانية",
     "إنتاج مخصّص في مواقع الصحراء والساحل النائية",
   ],
   formWhatsapp: "أو راسلنا عبر واتساب",
@@ -345,8 +345,8 @@ export default async function DestinationEventsPage() {
         <section className="py-10 bg-ink-900 border-b border-white/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-center items-center gap-10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-              <span className="text-white text-xs font-bold tracking-widest">RCU PARTNER — AlUla</span>
-              <span className="text-white text-xs font-bold tracking-widest">DGDA — DIRIYAH</span>
+              <span className="text-white text-xs font-bold tracking-widest">ALULA HERITAGE SPECIALIST</span>
+              <span className="text-white text-xs font-bold tracking-widest">DIRIYAH HERITAGE</span>
               <span className="text-white text-xs font-bold tracking-widest">RED SEA PROJECT</span>
               <span className="text-white text-xs font-bold tracking-widest">NEOM APPROVED</span>
             </div>
@@ -563,7 +563,7 @@ export default async function DestinationEventsPage() {
                     : [
                     "Exclusive access to AlUla, NEOM & Red Sea venues",
                     "End-to-end guest travel & accommodation logistics",
-                    "RCU & RCN permits and on-site infrastructure",
+                    "Heritage-site permits and on-site infrastructure",
                     "Bespoke production in remote desert & coastal sites",
                   ]).map((item) => (
                     <li key={item} className="flex items-start gap-3 text-white/85 text-sm">
@@ -616,8 +616,8 @@ export default async function DestinationEventsPage() {
                 : [
                 { q: "Do you handle travel logistics for destination events in Saudi Arabia?", a: "Yes. We provide complete end-to-end destination event logistics including charter flights, VIP ground transportation, luxury accommodation buyouts, and on-the-ground support teams at all remote locations including AlUla, NEOM, and Red Sea resorts." },
                 { q: "Can you build event infrastructure in remote desert locations?", a: "Absolutely. Our production team specialises in remote event logistics — bringing climate-controlled structural tents, generator power, lighting, catering facilities, and luxury amenities to pristine desert environments with zero environmental impact." },
-                { q: "How far in advance should we plan a destination event in AlUla?", a: "For major events and weddings in AlUla, we recommend starting planning 6 to 12 months in advance. High-demand seasons at luxury resorts book quickly, and RCU site access permits require considerable lead time." },
-                { q: "What are the most scenic event venues in AlUla?", a: "AlUla's most spectacular venues include the Maraya concert hall (world's largest mirrored building), the Hegra UNESCO heritage site, Dadan archaeological ruins, and private desert wadi settings. We hold preferred access through our RCU partner status." },
+                { q: "How far in advance should we plan a destination event in AlUla?", a: "For major events and weddings in AlUla, we recommend starting planning 6 to 12 months in advance. High-demand seasons at luxury resorts book quickly, and heritage-site access permits require considerable lead time." },
+                { q: "What are the most scenic event venues in AlUla?", a: "AlUla's most spectacular venues include the Maraya concert hall (world's largest mirrored building), the Hegra UNESCO heritage site, Dadan archaeological ruins, and private desert wadi settings. We manage the full access process for all of them." },
                 { q: "Can you organise events at NEOM for international delegates?", a: "Yes. Saudi Event Management manages corporate retreats, innovation summits, and brand experiences within the NEOM development, handling all permitting, delegate travel, accommodation, and on-site logistics." },
                 { q: "How do you manage logistics for remote desert events?", a: "Our remote logistics team manages all production delivery, power generation, water supply, climate control, waste management, and catering. We have executed events in AlUla, Tabuk, and the Empty Quarter with full luxury standards maintained throughout." },
                 { q: "What is the cost of a destination event in AlUla?", a: "Destination events in AlUla start from SAR 250,000 for intimate gatherings and can exceed SAR 2,000,000 for large-scale productions with custom infrastructure, international talent, and luxury resort accommodation buyouts. Contact us for a tailored proposal." },
@@ -645,7 +645,7 @@ export default async function DestinationEventsPage() {
                 ? challengesAr
                 : [
                 { c: "Remote-site logistics & guest access", s: "Charter flights, road transfers, and resort buyouts in AlUla and NEOM are coordinated end-to-end so guests arrive effortlessly and on schedule." },
-                { c: "RCU & heritage-site permits", s: "Events at Hegra, Dadan, and other protected sites require Royal Commission for AlUla approvals and zero-impact protocols, which we manage directly." },
+                { c: "Heritage-site permits", s: "Events at Hegra, Dadan, and other protected sites require heritage-authority approvals and zero-impact protocols, which we manage directly." },
                 { c: "Power, climate & off-grid infrastructure", s: "Silent generators, climate control, and built-from-scratch infrastructure bring five-star reliability to the desert and coastline." },
                 { c: "Guest comfort in extreme environments", s: "Heat management, shade, hydration, and weather contingencies keep guests comfortable across hot desert days and cool nights." },
               ]).map((item) => (
@@ -669,12 +669,12 @@ export default async function DestinationEventsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {(isAr
                 ? [
-                { title: "مهرجان العلا الصحراوي", slug: "alula-desert-festival", desc: "مهرجان صحراوي واسع النطاق بلوجستيات ومسرح وإنتاج متوافق مع الهيئة الملكية للعلا." },
+                { title: "مهرجان العلا الصحراوي", slug: "alula-desert-festival", desc: "مهرجان صحراوي واسع النطاق بلوجستيات ومسرح وإنتاج متوافق مع متطلبات المواقع التراثية." },
                 { title: "قمة نيوم للمستقبل", slug: "neom-future-summit", desc: "قمة مؤسسية استشرافية مُستضافة داخل مشروع نيوم." },
                 { title: "ملاذ كبار الشخصيات في مكة", slug: "makkah-vip-retreat", desc: "ملاذ مخصّص لكبار الشخصيات بسفر وإقامة وضيافة متكاملة." },
                   ]
                 : [
-                { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "A large-scale desert festival with full logistics, staging, and RCU-compliant production." },
+                { title: "AlUla Desert Festival", slug: "alula-desert-festival", desc: "A large-scale desert festival with full logistics, staging, and heritage-site-compliant production." },
                 { title: "NEOM Future Summit", slug: "neom-future-summit", desc: "A forward-looking corporate summit hosted inside the NEOM development." },
                 { title: "Makkah VIP Retreat", slug: "makkah-vip-retreat", desc: "A bespoke VIP retreat with end-to-end travel, accommodation, and hosting." },
               ]).map((p) => (

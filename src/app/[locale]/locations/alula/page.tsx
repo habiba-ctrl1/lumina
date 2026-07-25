@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ? { absolute: "إدارة الفعاليات وحفلات الزفاف الوجهاتية في العلا | إدارة الفعاليات السعودية" }
       : "Event Management & Destination Weddings in AlUla",
     description: isAr
-      ? "مخطّط فعالياتك في العلا لحفلات الزفاف الوجهاتية وملتقيات الشركات والفعاليات التراثية. وصول مرخّص من الهيئة الملكية للعلا إلى قاعة مرايا، وبانيان تري العلا، وهابيتاس، وموقع الحِجر المدرج في اليونسكو، ووادي أشار. موسم الذروة: نوفمبر–أبريل."
-      : "Your event planner in AlUla for destination weddings, corporate retreats, and heritage events. RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
+      ? "مخطّط فعالياتك في العلا لحفلات الزفاف الوجهاتية وملتقيات الشركات والفعاليات التراثية. وصول مرخّص بالكامل إلى قاعة مرايا، وبانيان تري العلا، وهابيتاس، وموقع الحِجر المدرج في اليونسكو، ووادي أشار. موسم الذروة: نوفمبر–أبريل."
+      : "Your event planner in AlUla for destination weddings, corporate retreats, and heritage events. Fully permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas, Hegra UNESCO site, and Ashar Valley. Peak season: November–April.",
     keywords:
-      "event management company in AlUla, destination wedding planner AlUla, event planner in AlUla, corporate retreat AlUla, Maraya Concert Hall events, Banyan Tree AlUla wedding, Hegra UNESCO event, Ashar Valley wedding, RCU event permit AlUla",
+      "event management company in AlUla, destination wedding planner AlUla, event planner in AlUla, corporate retreat AlUla, Maraya Concert Hall events, Banyan Tree AlUla wedding, Hegra UNESCO event, Ashar Valley wedding, AlUla heritage event permits",
     alternates: {
       canonical: path,
       languages: hreflangAlternates("/locations/alula"),
@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         ? "إدارة الفعاليات في العلا — مرايا والحِجر وفعاليات الصحراء الفاخرة"
         : "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
       description: isAr
-        ? "حفلات زفاف وجهاتية فائقة الفخامة، وملتقيات شركات، وتفعيلات تراثية في العلا. مرخّصون من الهيئة الملكية للعلا. مرايا، والحِجر، وبانيان تري، وهابيتاس العلا."
-        : "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
+        ? "حفلات زفاف وجهاتية فائقة الفخامة، وملتقيات شركات، وتفعيلات تراثية في العلا. مرخّصون بالكامل. مرايا، والحِجر، وبانيان تري، وهابيتاس العلا."
+        : "Ultra-luxury destination weddings, corporate retreats & heritage brand activations in AlUla. Fully permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: "summary_large_image",
       title: "Event Management in AlUla — Maraya, Hegra & Luxury Desert Events",
       description:
-        "Ultra-luxury destination weddings, corporate retreats & heritage activations. RCU-permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
+        "Ultra-luxury destination weddings, corporate retreats & heritage activations. Fully permitted. Maraya, Hegra, Banyan Tree & Habitas AlUla.",
       images: ["https://saudieventmanagement.com/locations/alula-og.webp"],
     },
   };
@@ -77,7 +77,7 @@ const jsonLd = {
       "name": "Saudi Event Management — AlUla",
       "url": "https://saudieventmanagement.com/locations/alula",
       "description":
-        "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla, Saudi Arabia. We hold RCU-permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas AlUla, Hegra UNESCO World Heritage Site, and Ashar Valley. All events are managed in full compliance with Royal Commission for AlUla (RCU) regulations.",
+        "Saudi Event Management delivers ultra-luxury destination weddings, corporate retreats, and heritage brand activations in AlUla, Saudi Arabia. We hold fully permitted access to Maraya Concert Hall, Banyan Tree AlUla, Habitas AlUla, Hegra UNESCO World Heritage Site, and Ashar Valley. All events are managed in full compliance with AlUla's heritage site regulations.",
       "image": "https://saudieventmanagement.com/locations/alula-hero.webp",
       "address": {
         "@type": "PostalAddress",
@@ -150,7 +150,7 @@ const jsonLd = {
         "Habitas AlUla resort",
         "Ashar Valley outdoor events",
         "Jabal Al-Fil (Elephant Rock) sunset ceremonies",
-        "Royal Commission for AlUla (RCU) event permits",
+        "AlUla heritage site event permits",
         "Winter at Tantora festival",
         "Desert X AlUla brand activation",
         "AlUla Arts Festival",
@@ -170,7 +170,7 @@ const jsonLd = {
           "name": "What is the best event venue in AlUla for a luxury celebration?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Maraya Concert Hall is AlUla's premier event venue — the world's largest mirrored building at 9,740 sqm (Guinness World Record) with capacity for up to 500 seated guests in Ashar Valley. For intimate events under 150 guests, Banyan Tree AlUla and Habitas AlUla offer full resort buyout programs. Heritage site ceremonies at Hegra, Elephant Rock (Jabal Al-Fil), and Ashar Valley are available through RCU-permitted specialist event partners.",
+            "text": "Maraya Concert Hall is AlUla's premier event venue — the world's largest mirrored building at 9,740 sqm (Guinness World Record) with capacity for up to 500 seated guests in Ashar Valley. For intimate events under 150 guests, Banyan Tree AlUla and Habitas AlUla offer full resort buyout programs. Heritage site ceremonies at Hegra, Elephant Rock (Jabal Al-Fil), and Ashar Valley are available through permitted specialist event partners.",
           },
         },
         {
@@ -178,7 +178,7 @@ const jsonLd = {
           "name": "Who approves events in AlUla and how long do permits take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Royal Commission for AlUla (RCU) is the sole governing authority for all events in AlUla — there is no Amanah or GEA equivalent. Standard event permits take 4–8 weeks; heritage site access permits for Hegra, Dadan, and Jabal Ikmah require 8–16 weeks with archaeological impact review. Saudi Event Management operates as an RCU-experienced partner with direct relationships in the commission's event licensing division.",
+            "text": "AlUla's heritage authority is the sole governing body for all events in AlUla — there is no Amanah or GEA equivalent. Standard event permits take 4–8 weeks; heritage site access permits for Hegra, Dadan, and Jabal Ikmah require 8–16 weeks with archaeological impact review. Saudi Event Management manages the full permitting process for every AlUla event we deliver.",
           },
         },
         {
@@ -194,7 +194,7 @@ const jsonLd = {
           "name": "Can you hold a destination wedding at Hegra or Elephant Rock in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, but both require RCU heritage site access permits with 8–16 week lead times and environmental impact assessments. Hegra (Mada'in Saleh), Saudi Arabia's first UNESCO World Heritage Site, permits small, carefully managed private ceremonies among its Nabataean rock-cut tombs. Elephant Rock (Jabal Al-Fil) is more accessible for sunset ceremonies. Saudi Event Management holds the RCU relationships and experience required to secure and execute these permits.",
+            "text": "Yes, but both require heritage site access permits with 8–16 week lead times and environmental impact assessments. Hegra (Mada'in Saleh), Saudi Arabia's first UNESCO World Heritage Site, permits small, carefully managed private ceremonies among its Nabataean rock-cut tombs. Elephant Rock (Jabal Al-Fil) is more accessible for sunset ceremonies. Saudi Event Management has the experience required to secure and execute these permits.",
           },
         },
         {
@@ -202,7 +202,7 @@ const jsonLd = {
           "name": "What luxury brands have activated events in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AlUla has hosted luxury brand activations by international fashion, jewelry, and automotive houses leveraging the UNESCO heritage landscape backdrop. The Royal Commission for AlUla (RCU) manages a brand partnership program that allows approved luxury brands to stage activations at Maraya, Ashar Valley, and Hegra-adjacent sites. Saudi Event Management coordinates RCU-approved luxury brand production from concept to execution.",
+            "text": "AlUla has hosted luxury brand activations by international fashion, jewelry, and automotive houses leveraging the UNESCO heritage landscape backdrop. AlUla's heritage authority manages a brand partnership program that allows approved luxury brands to stage activations at Maraya, Ashar Valley, and Hegra-adjacent sites. Saudi Event Management coordinates approved luxury brand production from concept to execution.",
           },
         },
       ],
@@ -283,11 +283,11 @@ const venues = [
   {
     name: "Hegra (Mada'in Saleh)",
     abbr: "UNESCO World Heritage Site",
-    capacity: "Intimate — RCU controlled",
+    capacity: "Intimate — strictly controlled",
     district: "Hegra Plateau",
     type: "Heritage Ceremonies & Private Dinners",
     description:
-      "Saudi Arabia's first UNESCO World Heritage Site — 111 Nabataean rock-cut tombs carved into sandstone, dating to the 1st century BCE. Strictly controlled RCU access. Available for intimate private ceremonies and sunset dinners through permitted event partners.",
+      "Saudi Arabia's first UNESCO World Heritage Site — 111 Nabataean rock-cut tombs carved into sandstone, dating to the 1st century BCE. Strictly controlled heritage-site access. Available for intimate private ceremonies and sunset dinners through permitted event partners.",
   },
   {
     name: "Jabal Al-Fil (Elephant Rock)",
@@ -305,7 +305,7 @@ const venues = [
     district: "AlUla Old Town",
     type: "Heritage Dinners & Intimate Galas",
     description:
-      "A 900-year-old mud-brick village and adjacent canyon valley, restored under RCU stewardship. Dar Tantora by The House Hotel offers the most historically immersive event setting in AlUla — intimate dinners in restored ancient merchant houses.",
+      "A 900-year-old mud-brick village and adjacent canyon valley, restored under the heritage authority's stewardship. Dar Tantora by The House Hotel offers the most historically immersive event setting in AlUla — intimate dinners in restored ancient merchant houses.",
   },
 ];
 
@@ -313,7 +313,7 @@ const services = [
   {
     icon: Star,
     title: "Destination Weddings",
-    text: "Full-service destination wedding planning at Banyan Tree, Habitas, and heritage sites including Hegra and Elephant Rock. RCU permit management included.",
+    text: "Full-service destination wedding planning at Banyan Tree, Habitas, and heritage sites including Hegra and Elephant Rock. Heritage permit management included.",
     href: "/services/destination-events",
   },
   {
@@ -325,7 +325,7 @@ const services = [
   {
     icon: Sparkles,
     title: "Luxury Brand Activations",
-    text: "RCU-approved luxury brand activations at Maraya, Ashar Valley, and Hegra-adjacent landscapes. Fashion, automotive, jewelry, and hospitality brand productions.",
+    text: "Approved luxury brand activations at Maraya, Ashar Valley, and Hegra-adjacent landscapes. Fashion, automotive, jewelry, and hospitality brand productions.",
     href: "/services/event-production",
   },
   {
@@ -337,7 +337,7 @@ const services = [
   {
     icon: Camera,
     title: "Maraya Concert Hall Production",
-    text: "Corporate gala dinners, award ceremonies, and brand launches at the world's largest mirrored building — full technical production and RCU coordination.",
+    text: "Corporate gala dinners, award ceremonies, and brand launches at the world's largest mirrored building — full technical production and permit coordination.",
     href: "/services/event-production",
   },
   {
@@ -351,11 +351,11 @@ const services = [
 const faqs = [
   {
     q: "What is the best event venue in AlUla for a luxury celebration?",
-    a: "Maraya Concert Hall is AlUla's premier event venue — the world's largest mirrored building (9,740 sqm, Guinness World Record) with capacity for 500 seated guests in Ashar Valley. For intimate events under 150 guests, Banyan Tree AlUla and Habitas AlUla offer full resort buyouts. Heritage ceremonies at Hegra, Elephant Rock, and Ashar Valley are available through RCU-permitted specialist partners.",
+    a: "Maraya Concert Hall is AlUla's premier event venue — the world's largest mirrored building (9,740 sqm, Guinness World Record) with capacity for 500 seated guests in Ashar Valley. For intimate events under 150 guests, Banyan Tree AlUla and Habitas AlUla offer full resort buyouts. Heritage ceremonies at Hegra, Elephant Rock, and Ashar Valley are available through permitted specialist partners.",
   },
   {
     q: "Who approves events in AlUla and how long do permits take?",
-    a: "The Royal Commission for AlUla (RCU) is the sole governing authority — there is no Amanah or GEA equivalent. Standard event permits take 4–8 weeks. Heritage site access permits for Hegra, Dadan, and Jabal Ikmah require 8–16 weeks with archaeological impact review. Saudi Event Management holds direct RCU relationships and manages the full permitting process.",
+    a: "AlUla's heritage authority is the sole governing body — there is no Amanah or GEA equivalent. Standard event permits take 4–8 weeks. Heritage site access permits for Hegra, Dadan, and Jabal Ikmah require 8–16 weeks with archaeological impact review. Saudi Event Management manages the full permitting process for every AlUla event.",
   },
   {
     q: "When is the best season to hold an event in AlUla?",
@@ -363,11 +363,11 @@ const faqs = [
   },
   {
     q: "Can you hold a destination wedding at Hegra or Elephant Rock?",
-    a: "Yes. Hegra (Saudi Arabia's first UNESCO World Heritage Site) permits small, carefully managed private ceremonies among its Nabataean rock-cut tombs with RCU heritage access permits (8–16 weeks lead time). Elephant Rock (Jabal Al-Fil) is more accessible for sunset ceremonies. Saudi Event Management secures and manages both permit tracks.",
+    a: "Yes. Hegra (Saudi Arabia's first UNESCO World Heritage Site) permits small, carefully managed private ceremonies among its Nabataean rock-cut tombs with heritage access permits (8–16 weeks lead time). Elephant Rock (Jabal Al-Fil) is more accessible for sunset ceremonies. Saudi Event Management secures and manages both permit tracks.",
   },
   {
     q: "How are luxury brand activations managed in AlUla?",
-    a: "The Royal Commission for AlUla (RCU) manages a brand partnership program allowing approved luxury brands to activate at Maraya, Ashar Valley, and Hegra-adjacent sites. Saudi Event Management coordinates the full RCU brand activation approval process, production design, and on-ground management for fashion, automotive, jewelry, and hospitality brand events.",
+    a: "AlUla's heritage authority manages a brand partnership program allowing approved luxury brands to activate at Maraya, Ashar Valley, and Hegra-adjacent sites. Saudi Event Management coordinates the full brand activation approval process, production design, and on-ground management for fashion, automotive, jewelry, and hospitality brand events.",
   },
 ];
 
@@ -414,8 +414,8 @@ export default async function AlUlaPage() {
         titleHighlight={isAr ? "العلا" : "AlUla"}
         subtitle={
           isAr
-            ? "في أعظم متحف حيّ في العالم — حفلات زفاف وجهاتية، وملتقيات شركات، وفعاليات تراثية من قاعة مرايا إلى مقابر الحِجر النبطية وصخرة الفيل عند الغروب. مرخّصون من الهيئة الملكية للعلا."
-            : "In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. RCU-permitted."
+            ? "في أعظم متحف حيّ في العالم — حفلات زفاف وجهاتية، وملتقيات شركات، وفعاليات تراثية من قاعة مرايا إلى مقابر الحِجر النبطية وصخرة الفيل عند الغروب. مرخّصون بالكامل."
+            : "In the world's greatest living museum — destination weddings, corporate retreats, and heritage events from Maraya Concert Hall to Hegra's Nabataean tombs and Elephant Rock at sunset. Fully permitted."
         }
         backgroundImage="/locations/alula-hero.webp"
         imageAlt="AlUla heritage landscape — event management and destination weddings in AlUla, Saudi Arabia"
@@ -448,7 +448,7 @@ export default async function AlUlaPage() {
               { label: "UNESCO Heritage Site", val: "Hegra" },
               { label: "Maraya Capacity", val: "500" },
               { label: "Peak Season", val: "Nov–Apr" },
-              { label: "Permit Authority", val: "RCU" },
+              { label: "Heritage Permits", val: "Required" },
               { label: "Guinness Record", val: "Maraya" },
               { label: "Event Style", val: "Ultra-Luxury" },
             ].map((item, i) => (
@@ -492,8 +492,7 @@ export default async function AlUlaPage() {
               <p>
                 AlUla is Saudi Arabia&apos;s most extraordinary destination —
                 a 200,000-year-old landscape of sandstone canyons, palm oases,
-                and Nabataean heritage that the{" "}
-                <strong>Royal Commission for AlUla (RCU)</strong> has branded
+                and Nabataean heritage that has been branded
                 "The World&apos;s Greatest Living Museum." Events here operate
                 at a category above: intimate, meticulously produced, and
                 entirely irreplaceable.
@@ -505,7 +504,7 @@ export default async function AlUlaPage() {
                 cliffs. <strong>Hegra</strong> (Mada'in Saleh), Saudi
                 Arabia&apos;s first <strong>UNESCO World Heritage Site</strong>
                 , offers 111 Nabataean tombs as ceremony backdrops under
-                strict <strong>RCU heritage access permits</strong>.{" "}
+                strict <strong>heritage access permits</strong>.{" "}
                 <strong>Banyan Tree AlUla</strong> and{" "}
                 <strong>Habitas AlUla</strong> host full resort buyout programs
                 for destination weddings and executive retreats that no other
@@ -514,7 +513,7 @@ export default async function AlUlaPage() {
             </div>
             <ul className="space-y-3">
               {[
-                "RCU-permitted access to Hegra UNESCO site and Ashar Valley",
+                "Permitted access to Hegra UNESCO site and Ashar Valley",
                 "Maraya Concert Hall preferred production partner",
                 "Full resort buyout management — Banyan Tree & Habitas AlUla",
                 "Exclusive Elephant Rock (Jabal Al-Fil) sunset ceremony access",
@@ -614,7 +613,7 @@ export default async function AlUlaPage() {
             {[
               { label: "Local Vendor Network", val: "AlUla-Wide" },
               { label: "Venue Partnerships", val: "8" },
-              { label: "RCU Permit Success", val: "100%" },
+              { label: "AlUla Specialization", val: "Heritage & Luxury" },
               { label: "UNESCO Heritage Events", val: "Specialist" },
             ].map((stat, i) => (
               <div key={i}>
@@ -626,32 +625,33 @@ export default async function AlUlaPage() {
         </div>
       </section>
 
-      {/* RCU Permit Section — Critical Moat Content */}
+      {/* AlUla Heritage Permit Process Section */}
       <section className="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>
             <span className="section-label">Navigating AlUla</span>
             <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4 mb-6">
-              The RCU Permit Process —{" "}
+              The AlUla Permit Process —{" "}
               <span className="text-[var(--primary)]">
                 Why It Matters
               </span>
             </h2>
             <p className="text-neutral-600 text-sm leading-relaxed mb-6">
-              The <strong>Royal Commission for AlUla (RCU)</strong> is the
-              sole governing authority for every event in AlUla — from private
-              weddings to international brand activations. Unlike every other
-              Saudi city, there is no Amanah, GEA, or SECB pathway. All permits
-              flow through RCU&apos;s event licensing division, which operates
-              distinct tracks for commercial events, cultural programming,
-              heritage site access, and sustainability compliance.
+              AlUla&apos;s heritage authority is the sole governing body for
+              every event in AlUla — from private weddings to international
+              brand activations. Unlike every other Saudi city, there is no
+              Amanah, GEA, or SECB pathway. All permits flow through a single
+              event licensing division, which operates distinct tracks for
+              commercial events, cultural programming, heritage site access,
+              and sustainability compliance.
             </p>
             <p className="text-neutral-600 text-sm leading-relaxed mb-8">
-              Working with an event partner that already holds RCU relationships
-              is not optional — it is the difference between an event that
-              happens and one that doesn&apos;t. Saudi Event Management has
-              delivered events in AlUla through full RCU compliance on every
-              engagement.
+              Working with an event partner who understands AlUla&apos;s
+              permit requirements is essential — it is the difference between
+              an event that happens and one that doesn&apos;t. Saudi Event
+              Management manages the full permitting process for every AlUla
+              event we deliver, so clients don&apos;t have to navigate it
+              alone.
             </p>
             <Link
               href="/contact"
@@ -675,7 +675,7 @@ export default async function AlUlaPage() {
               {
                 track: "Brand Activation Permit",
                 timeline: "6–12 weeks",
-                scope: "Commercial brand events at RCU-managed sites — landscape and visual impact assessment",
+                scope: "Commercial brand events at managed heritage sites — landscape and visual impact assessment",
               },
               {
                 track: "Sustainability Compliance",
@@ -753,8 +753,8 @@ export default async function AlUlaPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "The Only RCU-Experienced Event Partner",
-                body: "We hold direct Royal Commission for AlUla relationships built across multiple event cycles — the non-negotiable requirement for accessing Hegra, Maraya, and the full heritage landscape for private events.",
+                title: "AlUla Heritage Permit Specialists",
+                body: "We manage the full heritage-site permitting process required to access Hegra, Maraya, and AlUla's protected landscape for private events — so our clients don't have to navigate it themselves.",
               },
               {
                 title: "Guinness-Record Venue Specialists",
@@ -808,8 +808,7 @@ export default async function AlUlaPage() {
                 specialist event management partner — delivering ultra-luxury
                 destination weddings, corporate retreats, and heritage brand
                 activations in Saudi Arabia&apos;s most extraordinary
-                destination. AlUla, governed by the{" "}
-                <strong>Royal Commission for AlUla (RCU)</strong>, is home to{" "}
+                destination. AlUla is home to{" "}
                 <strong>Hegra</strong> — the Kingdom&apos;s first{" "}
                 <strong>UNESCO World Heritage Site</strong> — and{" "}
                 <strong>Maraya Concert Hall</strong>, the{" "}
@@ -824,9 +823,8 @@ export default async function AlUlaPage() {
                 <strong>Jabal Al-Fil (Elephant Rock)</strong>, and luxury brand
                 activations integrated with{" "}
                 <strong>Winter at Tantora</strong> and{" "}
-                <strong>Desert X AlUla</strong>. As an{" "}
-                <strong>RCU-experienced event partner</strong>, we manage the
-                full permitting process — the non-negotiable gateway to
+                <strong>Desert X AlUla</strong>. We manage the
+                full heritage permitting process — the non-negotiable gateway to
                 operating in AlUla&apos;s heritage landscape. AlUla&apos;s
                 position as the centrepiece of Saudi{" "}
                 <strong>Vision 2030</strong>&apos;s cultural tourism strategy

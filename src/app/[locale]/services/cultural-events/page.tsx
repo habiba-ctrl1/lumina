@@ -501,14 +501,14 @@ export default function SeasonalEventsPage() {
                 { title: "أفكار فعاليات اليوم الوطني السعودي للشركات", slug: "national-day-event-ideas-saudi-arabia-corporates", desc: "أفكار إبداعية لفعاليات الشركات في اليوم الوطني — حفلات وطنية وتفعيلات وامتثال لهيئة الترفيه." },
                 { title: "دليل تنظيم فعاليات الشركات في رمضان", slug: "ramadan-event-planning-guide-saudi-arabia", desc: "دليل كامل لتخطيط إفطارات وسحور الشركات في السعودية." },
                 { title: "رؤية 2030 تعيد تعريف مشهد الفعاليات في السعودية", slug: "vision-2030-redefining-saudi-event-landscape", desc: "من نيوم إلى هيئة الترفيه، اكتشف كيف تصنع رؤية 2030 تجارب ثقافية تحويلية." },
-                { title: "دليل فعاليات العلا: مرايا والحِجر والصحراء", slug: "alula-events-guide-maraya-hegra-desert", desc: "الدليل الأشمل لتخطيط الفعاليات في العلا — الوصول إلى مرايا، وفعاليات الحِجر التراثية، وتصاريح الهيئة الملكية للعلا." },
+                { title: "دليل فعاليات العلا: مرايا والحِجر والصحراء", slug: "alula-events-guide-maraya-hegra-desert", desc: "الدليل الأشمل لتخطيط الفعاليات في العلا — الوصول إلى مرايا، وفعاليات الحِجر التراثية، وتصاريح المواقع التراثية." },
                   ]
                 : [
                 { title: "AlUla Desert Festivals & Cultural Activations", slug: "alula-desert-festivals-cultural-activations", desc: "Discover how AlUla is leveraging its rich heritage to host world-class cultural events under Vision 2030." },
                 { title: "Saudi National Day Event Ideas for Corporates", slug: "national-day-event-ideas-saudi-arabia-corporates", desc: "Creative corporate event ideas for Saudi National Day — patriotic galas, themed activations and GEA compliance." },
                 { title: "Corporate Ramadan Event Planning Guide", slug: "ramadan-event-planning-guide-saudi-arabia", desc: "Complete guide to planning corporate iftar and suhoor events in Saudi Arabia." },
                 { title: "Vision 2030 Redefining Saudi Arabia's Event Landscape", slug: "vision-2030-redefining-saudi-event-landscape", desc: "From NEOM to GEA, discover how Vision 2030 is creating transformative cultural experiences." },
-                { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and RCU permits." },
+                { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and heritage-site permits." },
               ]).map((post) => (
                 <Link
                   key={post.slug}

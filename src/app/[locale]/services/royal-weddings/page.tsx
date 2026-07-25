@@ -191,7 +191,7 @@ const jsonLd = {
           name: "Can Saudi Event Management plan royal weddings in AlUla or NEOM?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Saudi Event Management specialises in destination royal weddings in AlUla and NEOM — two of Saudi Arabia's most spectacular settings. In AlUla, we manage events at Sharaan Nature Reserve, Hegra (the UNESCO World Heritage site), and Maraya Concert Hall. In NEOM, we coordinate exclusive experiences on Sindalah Island and in Neom Bay. Both destinations require specialist logistics, Royal Commission permits, and sustainable event protocols that our team manages end-to-end.",
+            text: "Yes. Saudi Event Management specialises in destination royal weddings in AlUla and NEOM — two of Saudi Arabia's most spectacular settings. In AlUla, we manage events at Sharaan Nature Reserve, Hegra (the UNESCO World Heritage site), and Maraya Concert Hall. In NEOM, we coordinate exclusive experiences on Sindalah Island and in Neom Bay. Both destinations require specialist logistics, heritage-authority permits, and sustainable event protocols that our team manages end-to-end.",
           },
         },
         {
@@ -589,7 +589,7 @@ const faqs = [
   },
   {
     q: "Can you plan a royal wedding in AlUla or NEOM?",
-    a: "Absolutely. We specialise in destination royal weddings at Sharaan Nature Reserve, Hegra UNESCO Heritage Site, and Maraya Concert Hall in AlUla, and at Sindalah Island in NEOM. Both require Royal Commission permits that our team manages end-to-end.",
+    a: "Absolutely. We specialise in destination royal weddings at Sharaan Nature Reserve, Hegra UNESCO Heritage Site, and Maraya Concert Hall in AlUla, and at Sindalah Island in NEOM. Both require heritage-authority permits that our team manages end-to-end.",
   },
   {
     q: "What is the Zaffa procession in a Saudi wedding?",
@@ -839,7 +839,7 @@ const faqsAr = [
   },
   {
     q: "هل يمكنكم تنظيم عرس ملكي في العلا أو نيوم؟",
-    a: "بالتأكيد. نتخصّص في الأعراس الملكية الوجهة في محمية شرعان الطبيعية، وموقع الحِجر للتراث العالمي، وقاعة مرايا في العلا، وفي جزيرة سندالة بنيوم. وكلاهما يتطلب تصاريح من الهيئة الملكية يديرها فريقنا من البداية إلى النهاية.",
+    a: "بالتأكيد. نتخصّص في الأعراس الملكية الوجهة في محمية شرعان الطبيعية، وموقع الحِجر للتراث العالمي، وقاعة مرايا في العلا، وفي جزيرة سندالة بنيوم. وكلاهما يتطلب تصاريح من هيئة التراث يديرها فريقنا من البداية إلى النهاية.",
   },
   {
     q: "ما هي الزفّة في العرس السعودي؟",

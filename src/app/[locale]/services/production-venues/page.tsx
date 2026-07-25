@@ -625,13 +625,13 @@ export default function ProductionVenuesPage() {
                 { title: "دليل تكلفة إنتاج الفعاليات في السعودية 2026", slug: "event-production-cost-guide-saudi-arabia-2026", desc: "دليل أسعار 2026 للصوت والصورة والمسرح وشاشات LED ومنظومات الإضاءة والإسقاط الضوئي في الرياض وجدة." },
                 { title: "أفضل قاعات الفعاليات المؤسسية في الرياض 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "دليل مرتّب لأبرز قاعات الفعاليات المؤسسية في الرياض — السعة ومواصفات الصوت والصورة وجداول الحجز." },
                 { title: "مستقبل إنتاج الفعاليات في السعودية", slug: "future-event-production-saudi-arabia-technology-sustainability", desc: "كيف يتطوّر إنتاج الفعاليات في السعودية بأحدث التقنيات والممارسات المستدامة." },
-                { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط الصحراء", slug: "alula-events-guide-maraya-hegra-desert", desc: "الدليل الشامل لتخطيط الفعاليات في العلا — الوصول إلى مرايا، وفعاليات الحِجر التراثية، وتصاريح الهيئة الملكية." },
+                { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط الصحراء", slug: "alula-events-guide-maraya-hegra-desert", desc: "الدليل الشامل لتخطيط الفعاليات في العلا — الوصول إلى مرايا، وفعاليات الحِجر التراثية، وتصاريح المواقع التراثية." },
                   ]
                 : [
                 { title: "Event Production Cost Guide Saudi Arabia 2026", slug: "event-production-cost-guide-saudi-arabia-2026", desc: "2026 pricing guide for AV, stage, LED walls, lighting rigs, and projection mapping in Riyadh and Jeddah." },
                 { title: "Best Corporate Event Venues in Riyadh 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "Rank-ordered guide to Riyadh's top corporate event venues — capacity, AV specs, and booking timelines." },
                 { title: "The Future of Event Production in Saudi Arabia", slug: "future-event-production-saudi-arabia-technology-sustainability", desc: "How event production in Saudi Arabia is evolving with cutting-edge technology and sustainable practices." },
-                { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and RCU permits." },
+                { title: "AlUla Events Guide: Maraya, Hegra & Desert Planning", slug: "alula-events-guide-maraya-hegra-desert", desc: "The definitive guide to planning events in AlUla — Maraya access, Hegra heritage events, and heritage-site permits." },
               ]).map((post) => (
                 <Link
                   key={post.slug}
