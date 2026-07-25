@@ -11,14 +11,14 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AlMughayra Heritage Sport Village — Official Venue Partner | RCU & SEM",
+  title: "AlMughayra Heritage Sport Village — AlUla Heritage Venue | Saudi Event Management",
   description:
-    "Explore AlMughayra Heritage Sport Village in AlUla — a world-class destination for traditional sports, camel racing, and cultural events. Official Venue Partner of RCU.",
+    "Explore AlMughayra Heritage Sport Village in AlUla — a world-class destination for traditional sports, camel racing, and cultural events.",
   alternates: {
     canonical: "https://draft.sem.sa/partners/rcu/almughayra-heritage-sport-village",
   },
   openGraph: {
-    title: "AlMughayra Heritage Sport Village — Official Venue Partner",
+    title: "AlMughayra Heritage Sport Village — AlUla Heritage Venue",
     description: "A premier destination asset for traditional sports, heritage festivals, and camel racing in AlUla.",
     url: "https://draft.sem.sa/partners/rcu/almughayra-heritage-sport-village",
     siteName: "Saudi Event Management",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AlMughayra Heritage Sport Village — Official Venue Partner",
+    title: "AlMughayra Heritage Sport Village — AlUla Heritage Venue",
     description: "A premier destination asset for traditional sports, heritage festivals, and camel racing in AlUla.",
     images: ["https://draft.sem.sa/venues/almughayra_p2_1.jpeg"],
   },
@@ -81,7 +81,7 @@ export default function AlMughayraPage() {
 
       {/* ── DRAFT BANNER ──────────────────────────────────────────────── */}
       <div className="fixed top-0 inset-x-0 z-[200] bg-amber-500 text-white text-center text-[12px] sm:text-[13px] font-bold tracking-widest uppercase py-2 shadow-md">
-        DRAFT — Pending RCU Approval
+        DRAFT — Pending Approval
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
@@ -105,11 +105,11 @@ export default function AlMughayraPage() {
             <ChevronRight size={14} className="text-neutral-600" />
             <Link href="/partners" className="hover:text-emerald-400 transition-colors">Partners</Link>
             <ChevronRight size={14} className="text-neutral-600" />
-            <span className="text-amber-300">Royal Commission for AlUla</span>
+            <span className="text-amber-300">AlUla Heritage Venues</span>
           </nav>
 
           <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase text-amber-300 bg-amber-500/10 border border-amber-400/20 px-4 py-2 rounded-full mb-6">
-            Official Venue Partner
+            Heritage Destination Venue
           </span>
 
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
@@ -134,12 +134,12 @@ export default function AlMughayraPage() {
         </div>
       </section>
 
-      {/* ── PARTNERSHIP SECTION ───────────────────────────────────────── */}
+      {/* ── DESTINATION SECTION ───────────────────────────────────────── */}
       <section className="py-8 bg-neutral-950 border-b border-neutral-800 flex justify-center">
         <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-          <span className="text-[12px] uppercase tracking-widest text-neutral-400 font-medium">Presented in partnership with</span>
+          <span className="text-[12px] uppercase tracking-widest text-neutral-400 font-medium">A destination venue in</span>
           <div className="h-4 w-px bg-neutral-700 hidden md:block"></div>
-          <h2 className="text-[16px] font-serif tracking-wide text-amber-300/90">Royal Commission for AlUla</h2>
+          <h2 className="text-[16px] font-serif tracking-wide text-amber-300/90">AlUla, Saudi Arabia</h2>
         </div>
       </section>
 
@@ -207,11 +207,11 @@ export default function AlMughayraPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: "Royal Venue", cap: "800 guests", area: "4,500 sqm", icon: Landmark, desc: "An inviting space ideal for gatherings and ceremonies. Features high-quality furniture adorned with traditional decorations. Accommodates stage construction." },
-              { name: "Heritage Village", cap: "[Awaiting RCU Approval]", area: "17,500 sqm", icon: Palette, desc: "An immersive experience celebrating AlUla's cultural richness. Features traditional architecture, food outlets, and spaces for local artists." },
+              { name: "Heritage Village", cap: "[Awaiting Approval]", area: "17,500 sqm", icon: Palette, desc: "An immersive experience celebrating AlUla's cultural richness. Features traditional architecture, food outlets, and spaces for local artists." },
               { name: "8 km Competition Racetrack", cap: "Intl. Events", area: "8 km", icon: Footprints, desc: "A premier main track designed specifically for local and international camel racing competitions." },
               { name: "6 km Training Racetrack", cap: "Year-Round", area: "6 km", icon: Footprints, desc: "Available year-round for camel training and local events. Supports the development of heritage sports traditions." },
-              { name: "Camel Shelters (Ezabs)", cap: "250 Shelters", area: "[Awaiting RCU Approval]", icon: Home, desc: "Dedicated resting spaces for camels during events, providing essential infrastructure for the racing community." },
-              { name: "Parking & Access", cap: "Ample Capacity", area: "[Awaiting RCU Approval]", icon: Building2, desc: "Both the Royal Venue and Heritage Village offer ample parking and dedicated entrances ensuring seamless visitor access." },
+              { name: "Camel Shelters (Ezabs)", cap: "250 Shelters", area: "[Awaiting Approval]", icon: Home, desc: "Dedicated resting spaces for camels during events, providing essential infrastructure for the racing community." },
+              { name: "Parking & Access", cap: "Ample Capacity", area: "[Awaiting Approval]", icon: Building2, desc: "Both the Royal Venue and Heritage Village offer ample parking and dedicated entrances ensuring seamless visitor access." },
             ].map((f, i) => (
               <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-500">
                 <div className="flex items-center justify-between mb-6">
@@ -292,7 +292,7 @@ export default function AlMughayraPage() {
             ))}
           </div>
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
-            Images sourced directly from the approved Royal Commission for AlUla catalogues.
+            Images sourced directly from the venue's official catalogues.
           </p>
         </div>
       </section>
@@ -308,7 +308,7 @@ export default function AlMughayraPage() {
               Engage with <span className="text-emerald-400">AlMughayra</span>
             </h2>
             <p className="text-neutral-300 max-w-2xl mx-auto mb-10 text-[16px] leading-relaxed font-light">
-              Submit your destination inquiry through Saudi Event Management. We facilitate planning seamlessly with the Royal Commission for AlUla to secure this premier asset.
+              Submit your destination inquiry through Saudi Event Management. We facilitate planning seamlessly to secure this premier asset.
             </p>
             <div className="flex justify-center">
               <Link

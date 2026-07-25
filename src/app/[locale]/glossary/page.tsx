@@ -57,7 +57,7 @@ const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: "RCU (Royal Commission for AlUla)",
-    definition: "The government authority responsible for the development, conservation, and tourism management of AlUla — Saudi Arabia's UNESCO World Heritage destination. All events held at AlUla heritage sites, Maraya, and protected landscapes require RCU event permits. Saudi Event Management holds preferred vendor status with the RCU.",
+    definition: "The government authority responsible for the development, conservation, and tourism management of AlUla — Saudi Arabia's UNESCO World Heritage destination. All events held at AlUla heritage sites, Maraya, and protected landscapes require RCU event permits.",
     relatedService: { label: "Destination Events", href: "/services/destination-events" },
   },
   {

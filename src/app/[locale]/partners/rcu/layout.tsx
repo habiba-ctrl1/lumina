@@ -4,8 +4,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   return {
     title: {
-      template: "%s | RCU Venue Partner — Saudi Event Management",
-      default: "Official RCU Venue Partner — Saudi Event Management",
+      template: "%s | Heritage Venue — Saudi Event Management",
+      default: "AlUla Heritage Venue — Saudi Event Management",
     },
     robots: { index: false, follow: false }, // DRAFT — not for indexing
   };

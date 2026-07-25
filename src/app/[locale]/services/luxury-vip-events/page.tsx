@@ -107,7 +107,7 @@ const jsonLd = {
           "name": "Can you organise ultra-luxury desert experiences in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. AlUla is one of our signature destinations for luxury events. We design bespoke glamping experiences, private desert dinners beneath the stars, heritage site activations, and high-end corporate retreats — all in collaboration with the Royal Commission for AlUla (RCU) for site access and zero-impact protocols.",
+            "text": "Yes. AlUla is one of our signature destinations for luxury events. We design bespoke glamping experiences, private desert dinners beneath the stars, heritage site activations, and high-end corporate retreats — managing site access and zero-impact protocols in full.",
           },
         },
         {
@@ -172,7 +172,7 @@ const geoHighlights = [
 ];
 
 const resources = [
-  { title: "AlUla Events Guide: Maraya, Hegra & Desert Experience Planning", desc: "How to access Maraya for private events, plan Hegra heritage dinners, and navigate RCU permits.", href: "/blog/alula-events-guide-maraya-hegra-desert" },
+  { title: "AlUla Events Guide: Maraya, Hegra & Desert Experience Planning", desc: "How to access Maraya for private events, plan Hegra heritage dinners, and navigate heritage-site permits.", href: "/blog/alula-events-guide-maraya-hegra-desert" },
   { title: "The Golden Thread: Weaving Luxury Lifestyle into Saudi Arabia's Top-tier Events", desc: "From bespoke concierge services to invitation-only galas — the Saudi VIP lifestyle guide.", href: "/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events" },
   { title: "VIP Executive Retreats in NEOM: A 2026 Guide", desc: "Strategies for hosting unforgettable VIP executive retreats in NEOM's cutting-edge developments.", href: "/blog/vip-executive-retreats-neom-2026" },
   { title: "Best Corporate Event Venues in Riyadh 2026", desc: "An exclusive guide to the Kingdom's premier venues — KAFD, Ritz-Carlton, and five-star hotel ballrooms.", href: "/blog/best-corporate-event-venues-riyadh-2026" },
@@ -183,7 +183,7 @@ const faqs = [
   { q: "Can you arrange private concerts with international artists in Saudi Arabia?", a: "Yes. We coordinate private appearances by musicians and performers through our talent-booking partners, handling rider requirements, private aviation, and technical production." },
   { q: "Do you provide close protection and security for VIP events?", a: "We co-ordinate with top-tier private security firms and government protocol offices for seamless close-protection, secure perimeter management, motorcade co-ordination, and discreet crowd management." },
   { q: "What venues do you use for luxury VIP events in Saudi Arabia?", a: "We coordinate access to Saudi Arabia's most prestigious venues including the Ritz-Carlton Riyadh, Four Seasons, Rosewood Jeddah, Maraya Concert Hall in AlUla, and bespoke private estates across the Kingdom." },
-  { q: "Can you organise ultra-luxury desert experiences in AlUla?", a: "Yes. AlUla is one of our signature VIP destinations. We design private desert dinners, glamping experiences, and heritage site activations in full collaboration with the Royal Commission for AlUla (RCU) for site access and zero-impact operations." },
+  { q: "Can you organise ultra-luxury desert experiences in AlUla?", a: "Yes. AlUla is one of our signature VIP destinations. We design private desert dinners, glamping experiences, and heritage site activations, managing all site access and zero-impact requirements in full." },
   { q: "Do you offer event planning for HNWI private residences?", a: "Yes. We plan and execute private events at luxury compounds and private estates across the Kingdom — bringing our full production capability directly to the client's private property." },
   { q: "What is the most exclusive experience you can offer?", a: "Our most exclusive offerings include private concerts with international artists at custom-built stages in AlUla's Hejaz mountains, superyacht events along the Red Sea coastline, and invitation-only brand unveilings with bespoke 360° immersive environments." },
   { q: "luxury event planner near me Riyadh", a: "Saudi Event Management's VIP division is headquartered in Riyadh, providing white-glove event planning services for high-profile clients across the capital with immediate on-site availability." },
@@ -208,7 +208,7 @@ const geoHighlightsAr = [
 ];
 
 const resourcesAr = [
-  { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط تجارب الصحراء", desc: "كيفية الوصول إلى مرايا للفعاليات الخاصة، وتخطيط عشاء الحِجر التراثي، والتعامل مع تصاريح الهيئة الملكية للعلا." },
+  { title: "دليل فعاليات العلا: مرايا والحِجر وتخطيط تجارب الصحراء", desc: "كيفية الوصول إلى مرايا للفعاليات الخاصة، وتخطيط عشاء الحِجر التراثي، والتعامل مع تصاريح المواقع التراثية." },
   { title: "الخيط الذهبي: نسج نمط الحياة الفاخر في أرقى فعاليات السعودية", desc: "من خدمات الكونسيرج المخصّصة إلى الحفلات بالدعوة فقط — دليل نمط حياة كبار الشخصيات في السعودية." },
   { title: "ملتقيات كبار التنفيذيين في نيوم: دليل 2026", desc: "استراتيجيات لاستضافة ملتقيات تنفيذية لا تُنسى في مشاريع نيوم المتطوّرة." },
   { title: "أفضل قاعات فعاليات الشركات في الرياض 2026", desc: "دليل حصري لأبرز قاعات المملكة — مركز الملك عبدالله المالي وريتز كارلتون وقاعات فنادق الخمس نجوم." },
@@ -219,7 +219,7 @@ const faqsAr = [
   { q: "هل يمكنكم تنظيم حفلات موسيقية خاصة مع فنانين عالميين في السعودية؟", a: "نعم. ننسّق ظهورات خاصة لموسيقيين وفنانين عبر شركائنا في حجز المواهب، ونتولّى المتطلبات والطيران الخاص والإنتاج التقني." },
   { q: "هل توفّرون حماية مباشرة وأمنًا لفعاليات كبار الشخصيات؟", a: "ننسّق مع كبرى شركات الأمن الخاص ومكاتب البروتوكول الحكومية لحماية مباشرة سلسة، وإدارة محيط آمن، وتنسيق المواكب، وإدارة حشود متحفّظة." },
   { q: "ما القاعات التي تستخدمونها لفعاليات كبار الشخصيات الفاخرة في السعودية؟", a: "نؤمّن وصولًا حصريًا لأرقى قاعات السعودية بما فيها ريتز كارلتون الرياض، وفورسيزونز، وروزوود جدة، وقاعة مرايا في العلا، وعقارات خاصة مخصّصة في عموم المملكة." },
-  { q: "هل يمكنكم تنظيم تجارب صحراوية فائقة الفخامة في العلا؟", a: "نعم. العلا من وجهاتنا المميزة لكبار الشخصيات. نصمّم عشاءً صحراويًا خاصًا، وتجارب تخييم فاخر، وتفعيلات في المواقع التراثية بالتعاون الكامل مع الهيئة الملكية للعلا للوصول إلى المواقع وعمليات دون أثر." },
+  { q: "هل يمكنكم تنظيم تجارب صحراوية فائقة الفخامة في العلا؟", a: "نعم. العلا من وجهاتنا المميزة لكبار الشخصيات. نصمّم عشاءً صحراويًا خاصًا، وتجارب تخييم فاخر، وتفعيلات في المواقع التراثية، وندير كامل متطلبات الوصول للمواقع وعمليات دون أثر." },
   { q: "هل تقدّمون تخطيط فعاليات للإقامات الخاصة لكبار الثروات؟", a: "نعم. ننظّم وننفّذ فعاليات خاصة في المجمّعات الفاخرة والعقارات الخاصة في عموم المملكة — ننقل قدرتنا الإنتاجية الكاملة مباشرة إلى عقار العميل الخاص." },
   { q: "ما أكثر تجربة حصرية يمكنكم تقديمها؟", a: "تشمل أكثر عروضنا حصرية حفلات موسيقية خاصة مع فنانين عالميين على مسارح مخصّصة في جبال حجاز العلا، وفعاليات يخوت على ساحل البحر الأحمر، وكشف علامات بالدعوة فقط ببيئات غامرة 360°." },
   { q: "مخطط فعاليات فاخرة قريب مني في الرياض", a: "يقع قسم كبار الشخصيات لدى إدارة الفعاليات السعودية في الرياض، ويوفّر خدمات تخطيط فعاليات راقية للعملاء البارزين في عموم العاصمة بتوفّر ميداني فوري." },
@@ -352,7 +352,7 @@ export default async function LuxuryVIPEventsPage() {
               <span className="hover:text-gold-700 transition-colors">FOUR SEASONS</span>
               <span className="hover:text-gold-700 transition-colors">ROSEWOOD JEDDAH</span>
               <span className="hover:text-gold-700 transition-colors">MARAYA — ALULA</span>
-              <span className="hover:text-gold-700 transition-colors">RCU PARTNER</span>
+              <span className="hover:text-gold-700 transition-colors">ALULA HERITAGE SPECIALIST</span>
             </div>
           </div>
         </section>

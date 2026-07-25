@@ -11,14 +11,14 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AlFursan Equestrian Village — Official Venue Partner | RCU & SEM",
+  title: "AlFursan Equestrian Village — AlUla Heritage Venue | Saudi Event Management",
   description:
-    "Explore AlFursan Equestrian Village, a premier heritage destination and equestrian hub in AlUla. An Official Venue Partner of the Royal Commission for AlUla (RCU).",
+    "Explore AlFursan Equestrian Village, a premier heritage destination and equestrian hub in AlUla.",
   alternates: {
     canonical: "https://draft.sem.sa/partners/rcu/alfursan-equestrian-village",
   },
   openGraph: {
-    title: "AlFursan Equestrian Village — Official Venue Partner",
+    title: "AlFursan Equestrian Village — AlUla Heritage Venue",
     description: "Discover AlFursan Equestrian Village in AlUla — a world-class destination honouring cultural heritage and equestrian excellence.",
     url: "https://draft.sem.sa/partners/rcu/alfursan-equestrian-village",
     siteName: "Saudi Event Management",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AlFursan Equestrian Village — Official Venue Partner",
+    title: "AlFursan Equestrian Village — AlUla Heritage Venue",
     description: "Discover AlFursan Equestrian Village in AlUla — a world-class destination honouring cultural heritage and equestrian excellence.",
     images: ["https://draft.sem.sa/venues/alfursan_p2_1.jpeg"],
   },
@@ -81,7 +81,7 @@ export default function AlFursanPage() {
 
       {/* ── DRAFT BANNER ──────────────────────────────────────────────── */}
       <div className="fixed top-0 inset-x-0 z-[200] bg-amber-500 text-white text-center text-[12px] sm:text-[13px] font-bold tracking-widest uppercase py-2 shadow-md">
-        DRAFT — Pending RCU Approval
+        DRAFT — Pending Approval
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
@@ -105,11 +105,11 @@ export default function AlFursanPage() {
             <ChevronRight size={14} className="text-neutral-600" />
             <Link href="/partners" className="hover:text-emerald-400 transition-colors">Partners</Link>
             <ChevronRight size={14} className="text-neutral-600" />
-            <span className="text-amber-300">Royal Commission for AlUla</span>
+            <span className="text-amber-300">AlUla Heritage Venues</span>
           </nav>
 
           <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase text-amber-300 bg-amber-500/10 border border-amber-400/20 px-4 py-2 rounded-full mb-6">
-            Official Venue Partner
+            Heritage Destination Venue
           </span>
 
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
@@ -134,12 +134,12 @@ export default function AlFursanPage() {
         </div>
       </section>
 
-      {/* ── PARTNERSHIP SECTION ───────────────────────────────────────── */}
+      {/* ── DESTINATION SECTION ───────────────────────────────────────── */}
       <section className="py-8 bg-neutral-950 border-b border-neutral-800 flex justify-center">
         <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-          <span className="text-[12px] uppercase tracking-widest text-neutral-400 font-medium">Presented in partnership with</span>
+          <span className="text-[12px] uppercase tracking-widest text-neutral-400 font-medium">A destination venue in</span>
           <div className="h-4 w-px bg-neutral-700 hidden md:block"></div>
-          <h2 className="text-[16px] font-serif tracking-wide text-amber-300/90">Royal Commission for AlUla</h2>
+          <h2 className="text-[16px] font-serif tracking-wide text-amber-300/90">AlUla, Saudi Arabia</h2>
         </div>
       </section>
 
@@ -213,9 +213,9 @@ export default function AlFursanPage() {
               { name: "Saqlawiya Lounge", cap: "100 guests", icon: Armchair, desc: "Traditional heritage lights and carpets. Flexible furniture arrangements for bespoke corporate setups." },
               { name: "Kahilah Lounge", cap: "100 guests", icon: Armchair, desc: "Features two large screens for presentations. Adorned with heritage carpets and inspired decor." },
               { name: "Obaya Lounge", cap: "120 guests", icon: Armchair, desc: "The largest VIP lounge, featuring two large screens, premium furniture, and traditional elements." },
-              { name: "Indoor Gathering Area", cap: "[Awaiting RCU Approval]", icon: Building2, desc: "Flexible space for intimate celebrations. Can operate independently or combine with main lounges for larger functions." },
-              { name: "Polo Field", cap: "[Awaiting RCU Approval]", icon: Fence, desc: "Professional polo field adaptable for stage performances, utilizing strict protections to preserve the sports flooring." },
-              { name: "Horse Tracks & Stables", cap: "[Awaiting RCU Approval]", icon: TreePine, desc: "Operational equestrian infrastructure supporting training and events, forming the core of this equestrian hub." },
+              { name: "Indoor Gathering Area", cap: "[Awaiting Approval]", icon: Building2, desc: "Flexible space for intimate celebrations. Can operate independently or combine with main lounges for larger functions." },
+              { name: "Polo Field", cap: "[Awaiting Approval]", icon: Fence, desc: "Professional polo field adaptable for stage performances, utilizing strict protections to preserve the sports flooring." },
+              { name: "Horse Tracks & Stables", cap: "[Awaiting Approval]", icon: TreePine, desc: "Operational equestrian infrastructure supporting training and events, forming the core of this equestrian hub." },
             ].map((f, i) => (
               <div key={i} className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-emerald-200 hover:shadow-lg transition-all duration-500">
                 <div className="flex items-center justify-between mb-6">
@@ -293,7 +293,7 @@ export default function AlFursanPage() {
             ))}
           </div>
           <p className="text-center text-neutral-400 text-[13px] mt-10 italic">
-            Images sourced directly from the approved Royal Commission for AlUla catalogues.
+            Images sourced directly from the venue's official catalogues.
           </p>
         </div>
       </section>
@@ -309,7 +309,7 @@ export default function AlFursanPage() {
               Engage with <span className="text-emerald-400">AlFursan</span>
             </h2>
             <p className="text-neutral-300 max-w-2xl mx-auto mb-10 text-[16px] leading-relaxed font-light">
-              Submit your destination inquiry through Saudi Event Management. We facilitate planning seamlessly with the Royal Commission for AlUla to secure this premier asset.
+              Submit your destination inquiry through Saudi Event Management. We facilitate planning seamlessly to secure this premier asset.
             </p>
             <div className="flex justify-center">
               <Link

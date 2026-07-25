@@ -173,9 +173,9 @@
         "name": "AlUla",
         "badge": "Heritage Destination",
         "title": "UNESCO Heritage & Desert Luxury",
-        "description": "Operating within Royal Commission for AlUla (RCU) event guidelines, we produce destination weddings, executive retreats, and cultural activations across Hegra, Sharaan Nature Reserve, and the iconic Maraya concert hall — Saudi Arabia's most breathtaking and internationally recognised event canvas, aligned with Vision 2030 tourism targets.",
-        "tags": ["Maraya", "RCU", "Hegra", "Sharaan"],
-        "stat": "RCU-Aligned Destination Team"
+        "description": "Operating within AlUla's heritage event guidelines, we produce destination weddings, executive retreats, and cultural activations across Hegra, Sharaan Nature Reserve, and the iconic Maraya concert hall — Saudi Arabia's most breathtaking and internationally recognised event canvas, aligned with Vision 2030 tourism targets.",
+        "tags": ["Maraya", "Heritage Permits", "Hegra", "Sharaan"],
+        "stat": "AlUla Heritage Destination Team"
       },
       {
         "id": "makkah",
