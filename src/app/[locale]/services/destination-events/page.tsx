@@ -333,7 +333,7 @@ export default async function DestinationEventsPage() {
               {isAr ? cAr.ctaExplore : "Explore Destinations"}
             </Link>
             <a
-              href="tel:+966539388072"
+              href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-300 text-ink-900 font-semibold uppercase tracking-widest hover:border-gold-500 hover:text-gold-700 transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> {isAr ? cAr.ctaSiteVisit : "Plan a Site Visit"}

@@ -96,7 +96,7 @@ export default async function ContactPage({ params }: PageProps) {
       : "Connect directly with our planning directors for an immediate white-glove event booking experience.",
     directTitle: isAr ? "اتصال مباشر" : "Direct Contact",
     emailLabel: isAr ? "بريدنا الإلكتروني" : "Email Us",
-    callLabel: isAr ? "اتصل بنا" : "Call Us",
+    callLabel: isAr ? "واتساب" : "WhatsApp",
     hoursLabel: isAr ? "ساعات العمل" : "Operating Hours",
     hoursValue: isAr
       ? "يومياً: 9:00 صباحاً - 10:00 مساءً (بتوقيت المملكة العربية السعودية)"
@@ -183,14 +183,14 @@ export default async function ContactPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                {/* Call */}
+                {/* WhatsApp */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-neutral-50 border border-neutral-100 rounded-xl flex items-center justify-center shrink-0 text-[var(--primary)]">
-                    <Phone size={18} />
+                    <MessageCircle size={18} />
                   </div>
                   <div>
                     <span className="block text-[12px] text-neutral-500 font-medium mb-1">{content.callLabel}</span>
-                    <a href="tel:+966539388072" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
+                    <a href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer" className="text-neutral-900 text-[14px] hover:text-[var(--primary)] transition-colors font-semibold">
                       +966 539 388 072
                     </a>
                   </div>
