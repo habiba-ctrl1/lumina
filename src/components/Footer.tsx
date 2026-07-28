@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Mail, MessageCircle, MapPin, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -170,8 +170,8 @@ export default function Footer() {
                 <span className="text-[14px] text-neutral-500 font-medium">{t("contactAddress")}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-[var(--primary)] shrink-0" />
-                <a href="tel:+966539388072" className="text-[14px] text-neutral-500 font-medium hover:text-[var(--primary)] transition-colors">+966 539 388 072</a>
+                <MessageCircle size={16} className="text-[var(--primary)] shrink-0" />
+                <a href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer" className="text-[14px] text-neutral-500 font-medium hover:text-[var(--primary)] transition-colors">+966 539 388 072</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[var(--primary)] shrink-0" />

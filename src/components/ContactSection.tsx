@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Briefcase, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Send, Briefcase, CheckCircle, AlertCircle } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
@@ -86,18 +86,18 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Direct Line */}
+              {/* WhatsApp */}
               <div className="flex items-start gap-5">
                 <div className="w-12 h-12 bg-white/10 border border-white/15 rounded-xl flex items-center justify-center shrink-0 backdrop-blur-sm">
 
-                  <Phone className="text-amber-300" size={18} />
+                  <MessageCircle className="text-amber-300" size={18} />
                 </div>
                 <div>
                   <h4 className="text-[13px] font-semibold text-white mb-2">
                     {t("directLine")}
                   </h4>
                   <p className="text-white/70 text-[14px] leading-relaxed">
-                    <a href="tel:+966539388072" className="hover:text-amber-300 transition-colors">+966 539 388 072</a><br />
+                    <a href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer" className="hover:text-amber-300 transition-colors">+966 539 388 072</a><br />
                     <span className="text-white/45 text-[12px] mt-1 block">{t("hours")}</span>
                   </p>
                 </div>

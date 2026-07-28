@@ -378,7 +378,7 @@ export default async function EventProductionPage() {
               {isAr ? cAr.ctaQuote : "Get a Production Quote"}
             </Link>
             <a
-              href="tel:+966539388072"
+              href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> {isAr ? cAr.ctaTalk : "Talk to a Producer"}

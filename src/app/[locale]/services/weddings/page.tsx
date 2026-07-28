@@ -168,7 +168,7 @@ export default function WeddingsPage() {
               Start Planning Your Dream
             </Link>
             <a
-              href="tel:+966539388072"
+              href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[13px] rounded-xl w-full sm:w-auto"
             >
               <Phone size={15} /> Speak to a Wedding Planner
@@ -383,15 +383,15 @@ export default function WeddingsPage() {
                 {(isAr
                   ? [
                   { title: "قصص أعراس حقيقية ومقالات مصوّرة", desc: "استكشف معرضنا لأبهى الاحتفالات الأخيرة في الرياض وجدة." },
-                  { title: "دليل أسعار الأعراس السعودية 2025", desc: "تفصيل شامل لتكاليف الأعراس الفاخرة، من القاعات النخبوية إلى الأزهار المخصّصة." },
+                  { title: "دليل أسعار الأعراس السعودية 2026", desc: "تفصيل شامل لتكاليف الأعراس الفاخرة، من القاعات النخبوية إلى الأزهار المخصّصة." },
                   { title: "دليل موردي الأعراس في السعودية", desc: "شبكتنا الحصرية من أمهر مقدّمي الضيافة والمصممين والفنانين في المملكة." },
-                  { title: "اتجاهات الأعراس السعودية 2025", desc: "اكتشف أحدث صيحات أزياء العرائس والإعلام السينمائي والديكور الغامر." },
+                  { title: "اتجاهات الأعراس السعودية 2026", desc: "اكتشف أحدث صيحات أزياء العرائس والإعلام السينمائي والديكور الغامر." },
                     ]
                   : [
                   { title: "Real wedding stories & photo essays", desc: "Explore our gallery of breathtaking recent celebrations across Riyadh and Jeddah." },
-                  { title: "Price guide for Saudi weddings 2025", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
+                  { title: "Price guide for Saudi weddings 2026", desc: "A comprehensive breakdown of luxury wedding costs, from elite venues to custom florals." },
                   { title: "Wedding vendor directory Saudi Arabia", desc: "Our exclusive network of the Kingdom's finest caterers, designers, and entertainers." },
-                  { title: "Saudi wedding trends 2025", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
+                  { title: "Saudi wedding trends 2026", desc: "Discover the latest in bridal fashion, cinematic media, and immersive decor." }
                 ]).map((post, idx) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
