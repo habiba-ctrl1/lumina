@@ -29,6 +29,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import Link from "next/link";
+import { adminFetch } from "@/lib/admin-fetch";
 
 type QuoteRequest = {
   id: string;
@@ -83,9 +84,89 @@ export default function AdminQuotes() {
     notes: "This quote is valid for 14 days. A 40% deposit is required to confirm the booking. All prices in Saudi Riyal (SAR) inclusive of 15% VAT."
   });
 
+  // ── Vendor Quotes (cost side) for the open request ──────────────────────
+  const [vendors, setVendors] = useState<{ id: string; name: string; city?: string | null }[]>([]);
+  const [vendorQuotes, setVendorQuotes] = useState<any[]>([]);
+  const [vqLoading, setVqLoading] = useState(false);
+  const [vqSaving, setVqSaving] = useState(false);
+  const [vqForm, setVqForm] = useState({ vendorId: "", service: "", vendorCost: "", fileRef: "", status: "Received" });
+
   useEffect(() => {
     fetchData();
+    // Vendor list for the cost-side dropdown (admin-only endpoint).
+    (async () => {
+      try {
+        const res = await adminFetch('/api/vendors?pageSize=100');
+        const data = await res.json();
+        const list = data.vendors || [];
+        setVendors(list.map((v: any) => ({ id: v.id, name: v.name, city: v.city })));
+      } catch { /* dropdown just stays empty */ }
+    })();
   }, []);
+
+  // Load this request's vendor quotes whenever the detail panel opens.
+  useEffect(() => {
+    if (isDetailOpen && selectedRequest?.id) {
+      fetchVendorQuotes(selectedRequest.id);
+    } else {
+      setVendorQuotes([]);
+      setVqForm({ vendorId: "", service: "", vendorCost: "", fileRef: "", status: "Received" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDetailOpen, selectedRequest?.id]);
+
+  const fetchVendorQuotes = async (requestId: string) => {
+    setVqLoading(true);
+    try {
+      const res = await adminFetch(`/api/admin/vendor-quotes?requestId=${requestId}`);
+      const json = await res.json();
+      setVendorQuotes(json.data || []);
+    } catch { setVendorQuotes([]); }
+    finally { setVqLoading(false); }
+  };
+
+  const addVendorQuote = async () => {
+    if (!selectedRequest) return;
+    if (!vqForm.vendorId || !vqForm.service.trim() || !vqForm.vendorCost) {
+      alert("Vendor, service aur cost — teenon zaroori hain.");
+      return;
+    }
+    setVqSaving(true);
+    try {
+      const res = await adminFetch('/api/admin/vendor-quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ requestId: selectedRequest.id, ...vqForm }),
+      });
+      const json = await res.json();
+      if (res.ok) {
+        setVqForm({ vendorId: "", service: "", vendorCost: "", fileRef: "", status: "Received" });
+        fetchVendorQuotes(selectedRequest.id);
+      } else {
+        alert(json.error || "Failed to add vendor quote");
+      }
+    } catch { alert("Failed to add vendor quote"); }
+    finally { setVqSaving(false); }
+  };
+
+  const updateVendorQuoteStatus = async (id: string, status: string) => {
+    try {
+      await adminFetch(`/api/admin/vendor-quotes/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      if (selectedRequest) fetchVendorQuotes(selectedRequest.id);
+    } catch { /* ignore */ }
+  };
+
+  const deleteVendorQuote = async (id: string) => {
+    if (!confirm("Delete this vendor quote?")) return;
+    try {
+      await adminFetch(`/api/admin/vendor-quotes/${id}`, { method: 'DELETE' });
+      if (selectedRequest) fetchVendorQuotes(selectedRequest.id);
+    } catch { /* ignore */ }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -229,7 +310,7 @@ export default function AdminQuotes() {
             onClick={() => setIsManualModalOpen(true)}
             className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10"
           >
-            <Plus size={16} className="text-teal-500" />
+            <Plus size={16} className="text-emerald-500" />
             Add Manual Request
           </button>
           <button
@@ -338,7 +419,7 @@ export default function AdminQuotes() {
                     </td>
                     <td className="px-8 py-6 border-b border-slate-50">
                       <div className="flex items-center gap-2">
-                        <MapPin size={12} className="text-teal-500" />
+                        <MapPin size={12} className="text-emerald-500" />
                         <span className="text-xs font-bold text-slate-600">{req.eventCity}</span>
                       </div>
                     </td>
@@ -450,7 +531,7 @@ export default function AdminQuotes() {
                   <div className="bg-slate-50 rounded-2xl p-6 space-y-4 border border-slate-100">
                     <div className="flex items-center gap-10">
                       <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
-                        <User size={20} className="text-teal-500" />
+                        <User size={20} className="text-emerald-500" />
                       </div>
                       <div>
                         <p className="text-sm font-bold text-slate-900">{selectedRequest.clientName}</p>
@@ -499,6 +580,108 @@ export default function AdminQuotes() {
                   </div>
                 </div>
 
+                {/* Vendor Quotes — the COST side (internal only, never client-facing) */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Vendor Quotes · cost (internal)</span>
+                    <span className="text-[9px] text-slate-400 font-bold">{vendorQuotes.length}</span>
+                  </div>
+
+                  {/* Existing vendor quotes */}
+                  <div className="space-y-2">
+                    {vqLoading ? (
+                      <p className="text-xs text-slate-400 font-medium">Loading…</p>
+                    ) : vendorQuotes.length === 0 ? (
+                      <p className="text-xs text-slate-400 font-medium">Abhi koi vendor quote nahi — neeche add karo.</p>
+                    ) : vendorQuotes.map((vq: any) => (
+                      <div key={vq.id} className={`bg-slate-50 rounded-xl p-4 border ${vq.status === 'Selected' ? 'border-emerald-300' : 'border-slate-100'}`}>
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="min-w-0">
+                            <p className="text-xs font-bold text-slate-900 truncate">{vq.vendor?.name || 'Vendor'}</p>
+                            <p className="text-[11px] text-slate-500">{vq.service}</p>
+                          </div>
+                          <div className="text-end shrink-0">
+                            <p className="text-sm font-bold text-slate-900">{vq.currency} {vq.vendorCost.toLocaleString()}</p>
+                            <p className="text-[9px] text-slate-400 font-mono">{vq.quoteNumber}</p>
+                          </div>
+                        </div>
+                        {vq.fileRef && <p className="text-[10px] text-slate-400 mt-1 truncate">📎 {vq.fileRef}</p>}
+                        <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                          {['Requested', 'Received', 'Selected', 'Rejected'].map((s) => (
+                            <button
+                              key={s}
+                              onClick={() => updateVendorQuoteStatus(vq.id, s)}
+                              className={`px-2 py-0.5 rounded-md text-[9px] font-bold border transition-all ${vq.status === s ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-400 border-slate-200 hover:border-slate-300'}`}
+                            >
+                              {s}
+                            </button>
+                          ))}
+                          <button onClick={() => deleteVendorQuote(vq.id)} className="ms-auto text-slate-300 hover:text-red-500 transition-colors" title="Delete">
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Commission hint — only when a client proposal + a selected vendor cost both exist */}
+                  {selectedRequest.proposals.length > 0 && vendorQuotes.some((v: any) => v.status === 'Selected') && (
+                    (() => {
+                      const cost = vendorQuotes.filter((v: any) => v.status === 'Selected').reduce((a: number, b: any) => a + b.vendorCost, 0);
+                      const sell = selectedRequest.proposals[0].subtotal;
+                      const commission = sell - cost;
+                      return (
+                        <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex items-center justify-between text-[11px] font-bold">
+                          <span className="text-slate-500">Cost {cost.toLocaleString()} → Price {sell.toLocaleString()}</span>
+                          <span className={commission >= 0 ? 'text-emerald-600' : 'text-red-500'}>Commission {commission.toLocaleString()}</span>
+                        </div>
+                      );
+                    })()
+                  )}
+
+                  {/* Add vendor quote */}
+                  <div className="bg-white border border-slate-200 rounded-xl p-3 space-y-2">
+                    <select
+                      value={vqForm.vendorId}
+                      onChange={(e) => setVqForm({ ...vqForm, vendorId: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs font-bold focus:outline-none focus:border-emerald-400"
+                    >
+                      <option value="">Select vendor…</option>
+                      {vendors.map((v) => (
+                        <option key={v.id} value={v.id}>{v.name}{v.city ? ` · ${v.city}` : ''}</option>
+                      ))}
+                    </select>
+                    <div className="grid grid-cols-2 gap-2">
+                      <input
+                        placeholder="Service (e.g. Production)"
+                        value={vqForm.service}
+                        onChange={(e) => setVqForm({ ...vqForm, service: e.target.value })}
+                        className="bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs focus:outline-none focus:border-emerald-400"
+                      />
+                      <input
+                        type="number"
+                        placeholder="Cost (SAR)"
+                        value={vqForm.vendorCost}
+                        onChange={(e) => setVqForm({ ...vqForm, vendorCost: e.target.value })}
+                        className="bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs focus:outline-none focus:border-emerald-400"
+                      />
+                    </div>
+                    <input
+                      placeholder="PDF filename in VENDOR Quotations/ (optional)"
+                      value={vqForm.fileRef}
+                      onChange={(e) => setVqForm({ ...vqForm, fileRef: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs focus:outline-none focus:border-emerald-400"
+                    />
+                    <button
+                      onClick={addVendorQuote}
+                      disabled={vqSaving}
+                      className="w-full py-2 bg-slate-900 text-white rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-slate-800 disabled:opacity-50 flex items-center justify-center gap-1.5"
+                    >
+                      <Plus size={13} /> Add vendor quote
+                    </button>
+                  </div>
+                </div>
+
                 {/* Proposal Summary */}
                 {selectedRequest.proposals.length > 0 && (
                   <div className="space-y-4">
@@ -508,7 +691,7 @@ export default function AdminQuotes() {
                         <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Quote #{selectedRequest.proposals[0].quoteNumber}</p>
                         <span className="px-3 py-1 bg-white/10 rounded-full text-[8px] font-bold uppercase tracking-widest">{selectedRequest.proposals[0].status}</span>
                       </div>
-                      <h4 className="text-3xl font-bold text-teal-500">SAR {selectedRequest.proposals[0].totalAmount.toLocaleString()}</h4>
+                      <h4 className="text-3xl font-bold text-emerald-500">SAR {selectedRequest.proposals[0].totalAmount.toLocaleString()}</h4>
                       <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Valid until: {new Date(selectedRequest.proposals[0].validUntil).toLocaleDateString()}</p>
                     </div>
                   </div>
@@ -558,17 +741,17 @@ export default function AdminQuotes() {
               <form onSubmit={handleManualSubmit} className="p-10 grid grid-cols-2 gap-10">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Client Name</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-teal-400 focus:outline-none" 
+                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-emerald-400 focus:outline-none" 
                     value={manualForm.clientName} onChange={e => setManualForm({...manualForm, clientName: e.target.value})} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Client Phone</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-teal-400 focus:outline-none"
+                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-emerald-400 focus:outline-none"
                     value={manualForm.clientPhone} onChange={e => setManualForm({...manualForm, clientPhone: e.target.value})} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Event Type</label>
-                  <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-teal-400 focus:outline-none"
+                  <select required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-emerald-400 focus:outline-none"
                     value={manualForm.eventType} onChange={e => setManualForm({...manualForm, eventType: e.target.value})}>
                     <option value="">Select...</option>
                     <option value="Wedding">Wedding</option>
@@ -578,12 +761,12 @@ export default function AdminQuotes() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">City</label>
-                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-teal-400 focus:outline-none"
+                  <input required className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-emerald-400 focus:outline-none"
                     value={manualForm.eventCity} onChange={e => setManualForm({...manualForm, eventCity: e.target.value})} />
                 </div>
                 <div className="col-span-2 space-y-2">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Requirements & Vision</label>
-                  <textarea rows={3} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-teal-400 focus:outline-none resize-none"
+                  <textarea rows={3} className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm focus:border-emerald-400 focus:outline-none resize-none"
                     value={manualForm.requirements} onChange={e => setManualForm({...manualForm, requirements: e.target.value})} />
                 </div>
                 <button type="submit" className="col-span-2 py-5 bg-slate-900 text-white rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-slate-800 transition-all shadow-xl mt-4">
@@ -636,7 +819,7 @@ export default function AdminQuotes() {
                           <div className="col-span-2">
                             <input 
                               type="number" 
-                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-center text-xs font-bold focus:outline-none focus:border-teal-400"
+                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-center text-xs font-bold focus:outline-none focus:border-emerald-400"
                               value={item.qty}
                               onChange={e => updateLineItem(idx, 'qty', parseInt(e.target.value))}
                             />
@@ -644,7 +827,7 @@ export default function AdminQuotes() {
                           <div className="col-span-3">
                             <input 
                               type="number" 
-                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-end px-3 text-xs font-bold focus:outline-none focus:border-teal-400"
+                              className="w-full bg-white border border-slate-200 rounded-lg py-2 text-end px-3 text-xs font-bold focus:outline-none focus:border-emerald-400"
                               value={item.unitPrice}
                               onChange={e => updateLineItem(idx, 'unitPrice', parseFloat(e.target.value))}
                             />
@@ -663,7 +846,7 @@ export default function AdminQuotes() {
 
                     <button 
                       onClick={addLineItem}
-                      className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-teal-600 hover:text-gold-700 transition-colors ms-4"
+                      className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-emerald-600 hover:text-gold-700 transition-colors ms-4"
                     >
                       <PlusCircle size={14} /> Add Line Item
                     </button>
@@ -674,7 +857,7 @@ export default function AdminQuotes() {
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Terms & Conditions</label>
                       <textarea 
                         rows={4} 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-400 resize-none"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs font-medium text-slate-600 focus:outline-none focus:border-emerald-400 resize-none"
                         value={quoteForm.notes}
                         onChange={e => setQuoteForm({...quoteForm, notes: e.target.value})}
                       />
@@ -696,7 +879,7 @@ export default function AdminQuotes() {
                         <span>SAR {(quoteForm.lineItems.reduce((a, b) => a + b.total, 0) * 0.15).toLocaleString()}</span>
                       </div>
                       <div className="pt-4 border-t border-white/10 flex justify-between items-end">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-teal-500">Total SAR</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500">Total SAR</span>
                         <span className="text-3xl font-bold">{(quoteForm.lineItems.reduce((a, b) => a + b.total, 0) * 1.15).toLocaleString()}</span>
                       </div>
                     </div>
@@ -707,14 +890,14 @@ export default function AdminQuotes() {
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ms-1">Valid Until</label>
                       <input 
                         type="date" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-bold focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-bold focus:outline-none focus:border-emerald-400"
                         value={quoteForm.validUntil}
                         onChange={e => setQuoteForm({...quoteForm, validUntil: e.target.value})}
                       />
                     </div>
                     <button 
                       onClick={handleQuoteSubmit}
-                      className="w-full py-5 bg-teal-500 text-white rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-teal-600 transition-all shadow-xl shadow-teal-500/20"
+                      className="w-full py-5 bg-emerald-500 text-white rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20"
                     >
                       Send to Client
                     </button>

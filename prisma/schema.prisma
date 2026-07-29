@@ -79,6 +79,8 @@ model Vendor {
   categories         String[] @default([]) // multi-category support (legacy free text)
   regionCoverage     String[] @default([]) // cities/regions served
   yearsExperience    Int?
+  crNumber           String?  // Saudi Commercial Registration number
+  vatNumber          String?  // VAT registration number
   certifications     String?
   rateCardSummary    String?
   rateCardFiles      String?  // file names, stored locally on founder's laptop (SEM VENDOR DETAILS/)
@@ -97,6 +99,7 @@ model Vendor {
   notes        VendorNote[]
   events       Event[]  @relation("EventVendors")
   quotes       Quote[]
+  vendorQuotes VendorQuote[]
   applications VendorApplication[]
   categoryLinks Category[] @relation("VendorCategories")
   createdAt    DateTime @default(now())
@@ -350,6 +353,31 @@ model QuoteRequest {
   source       String   @default("website")
   status       String   @default("pending") // pending | quote_sent | accepted | rejected | archived
   proposals    Proposal[]
+  vendorQuotes VendorQuote[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// A vendor's price TO SEM for a specific client request (the cost side of a deal).
+// Kept separate from Proposal (the client-facing quote) so SEM's margin =
+// Proposal price − VendorQuote cost is always computable, and so vendor costs
+// NEVER appear in anything client-facing. Contact info stays on Vendor (admin-only,
+// never client-facing). File (their PDF) lives on the founder's laptop in
+// "VENDOR Quotations/" — only the filename is stored here (no paid upload, founder decision).
+model VendorQuote {
+  id           String   @id @default(uuid())
+  quoteNumber  String   @unique // "SEM-VQ-2026-001" — sequential internal ref
+  request      QuoteRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  requestId    String
+  vendor       Vendor   @relation(fields: [vendorId], references: [id])
+  vendorId     String
+  service      String   // what they're quoting for, e.g. "Stage production"
+  vendorCost   Float    // their price to SEM (before SEM margin)
+  currency     String   @default("SAR")
+  fileRef      String?  // filename in "VENDOR Quotations/" on founder's laptop
+  validUntil   DateTime?
+  status       String   @default("Requested") // Requested, Received, Selected, Rejected
+  notes        String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -367,6 +395,9 @@ model Proposal {
   validUntil   DateTime
   notes        String?
   status       String   @default("draft") // draft | sent | accepted | rejected | expired
+  // Sum of the vendor costs feeding this quote (internal only, never in client PDF).
+  // Commission = subtotal − vendorCostTotal. Defaults 0 until vendor costs are linked.
+  vendorCostTotal Float @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -381,6 +412,26 @@ model FinancialRecord {
   date        DateTime @default(now())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+// Scheduled meetings — logged when a booking/confirmation email comes in
+// (SMASCO-style booking tools, Google Calendar invites, manual calls) so the
+// founder always has one place answering "today, what time, with whom."
+model Meeting {
+  id           String    @id @default(uuid())
+  title        String
+  contactName  String?
+  contactEmail String?
+  company      String?
+  startTime    DateTime
+  endTime      DateTime?
+  platform     String?   // Google Meet, Teams, Zoom, Call, In-person
+  meetingLink  String?
+  status       String    @default("Scheduled") // Scheduled, Completed, Cancelled, Missed
+  source       String    @default("email") // email, manual, calendar
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }
 
 model Communication {
