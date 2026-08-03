@@ -21,6 +21,7 @@ import {
   Award,
   Layers,
   Phone,
+  UtensilsCrossed,
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -321,6 +322,7 @@ const capabilities = [
   { icon: Calendar, title: "Speaker Management", desc: "End-to-end speaker logistics — briefing documents, visa support, green room management, and AV rehearsal coordination for domestic and international speakers." },
   { icon: Award, title: "Bilingual Content", desc: "Full Arabic-English event branding: programmes, signage, digital assets, and social media content crafted by our bilingual creative team." },
   { icon: TrendingUp, title: "Post-Event Analytics", desc: "Comprehensive post-event reporting: delegate feedback surveys, media coverage aggregation, ROI measurement, and event recording distribution." },
+  { icon: UtensilsCrossed, title: "Catering & Menu Design", desc: "Tiered per-guest catering packages — from refined finger-food service to full buffet menus — through a dedicated catering partner network, with custom menus available on request." },
 ];
 
 const venueCity = [
@@ -430,6 +432,7 @@ const capabilitiesAr = [
   { title: "إدارة المتحدثين", desc: "لوجستيات متكاملة للمتحدثين — مستندات إحاطة، ودعم تأشيرات، وإدارة غرف الاستعداد، وتنسيق بروفات الصوت والصورة محليًا ودوليًا." },
   { title: "المحتوى ثنائي اللغة", desc: "هوية فعاليات كاملة بالعربية والإنجليزية: برامج، ولافتات، وأصول رقمية، ومحتوى تواصل اجتماعي من فريقنا الإبداعي ثنائي اللغة." },
   { title: "تحليلات ما بعد الفعالية", desc: "تقارير شاملة بعد الفعالية: استبيانات رضا المندوبين، وحصر التغطية الإعلامية، وقياس العائد على الاستثمار، وتوزيع تسجيلات الفعالية." },
+  { title: "التموين وتصميم القوائم", desc: "باقات تموين متدرجة لكل ضيف — من خدمة المقبلات الفاخرة إلى قوائم البوفيه الكاملة — عبر شبكة شركاء تموين متخصصة، مع إمكانية تخصيص القوائم حسب الطلب." },
 ];
 
 const venueCityAr = [

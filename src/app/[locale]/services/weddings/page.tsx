@@ -116,85 +116,12 @@ export default function WeddingsPage() {
         ]
       },
     {
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "LocalBusiness",
-        "name": "Saudi Event Management"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Sarah Al-Saud"
-      },
-      "reviewBody": "Saudi Event Management made my dream wedding in Riyadh a reality. Their attention to detail and traditional Saudi touches were perfect."
-    },
-    {
-      "@type": "Event",
-      "name": "Grand Saudi Wedding Showcase 2025",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "startDate": "2025-10-15T19:00",
-      "endDate": "2025-10-15T23:00",
-      "location": {
-        "@type": "Place",
-        "name": "The Ritz-Carlton, Riyadh",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Al Hada Area",
-          "addressLocality": "Riyadh",
-          "addressRegion": "Riyadh",
-          "postalCode": "11493",
-          "addressCountry": "SA"
-        }
-      },
-      "image": "https://saudieventmanagement.com/services/wedding.webp",
-      "description": "An exclusive showcase of luxury wedding trends and traditional Saudi elegance organized by Saudi Event Management.",
-      "organizer": {
-        "@type": "Organization",
-        "name": "Saudi Event Management",
-        "url": "https://saudieventmanagement.com"
-      },
-      "offers": {
-        "@type": "Offer",
-        "name": "Wedding Planning Consultation",
-        "price": "0",
-        "priceCurrency": "SAR",
-        "url": "https://saudieventmanagement.com/contact",
-        "availability": "https://schema.org/InStock"
-      },
-      "performer": {
-        "@type": "Organization",
-        "name": "Saudi Event Management"
-      }
-    },
-    {
-      "@type": "AggregateRating",
-      "itemReviewed": {
-        "@type": "LocalBusiness",
-        "name": "Saudi Event Management"
-      },
-      "ratingValue": "4.9",
-      "reviewCount": "120"
-    },
-    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
         { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
         { "@type": "ListItem", "position": 3, "name": "Weddings & Social Events", "item": "https://saudieventmanagement.com/services/weddings" }
       ]
-    },
-    {
-      "@type": "Organization",
-      "name": "Saudi Event Management Luxury Weddings",
-      "description": "Aligning with the Saudi Tourism Authority to showcase the Kingdom's finest wedding destinations.",
-      "memberOf": {
-        "@type": "Organization",
-        "name": "Ministry of Culture Creative Network"
-      }
     }
     ]
   };
@@ -297,11 +224,11 @@ export default function WeddingsPage() {
                 <p className="text-gray-600 text-lg leading-relaxed font-light">
                   {isAr ? (
                     <>
-                      بصفتنا <strong className="text-slate-900">مخطِّط حفلات الزفاف الأول في السعودية</strong>، تتخصص إدارة الفعاليات السعودية في تحويل رؤيتك إلى تحفة فنية. تضم أعمالنا احتفالات حصرية في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-semibold">ريتز كارلتون الرياض</Link>، و<strong className="text-slate-900">فورسيزونز</strong>، و<Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف في الوجهات</Link> الساحرة على البحر الأحمر.
+                      بصفتنا <strong className="text-slate-900">مخطِّط حفلات الزفاف الأول في السعودية</strong>، تتخصص إدارة الفعاليات السعودية في تحويل رؤيتك إلى تحفة فنية. تضم أعمالنا احتفالات حصرية في أرقى القاعات الفاخرة في <Link href={`${arHref}/locations/riyadh`} className="text-[var(--primary)] hover:underline font-semibold">الرياض</Link>، و<Link href={`${arHref}/services/destination-events`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف في الوجهات</Link> الساحرة على البحر الأحمر.
                     </>
                   ) : (
                     <>
-                      As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong>, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations at the <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Ritz-Carlton Riyadh</Link>, <strong className="text-slate-900">Four Seasons</strong>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
+                      As the premier <strong className="text-slate-900">wedding planner in Saudi Arabia</strong>, Saudi Event Management specializes in transforming your vision into an editorial masterpiece. Our portfolio includes exclusive celebrations across <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-semibold">Riyadh's most prestigious five-star venues</Link>, and breathtaking <Link href="/services/destination-events" className="text-[var(--primary)] hover:underline font-semibold">destination weddings</Link> along the Red Sea.
                     </>
                   )}
                 </p>
@@ -311,8 +238,8 @@ export default function WeddingsPage() {
                     <p className="text-sm text-gray-500 font-light">{isAr ? "خبرة لا تُضاهى في تقاليد الأعراس السعودية الأصيلة والفخامة العصرية." : "Unrivaled expertise in traditional Saudi wedding traditions and modern luxury."}</p>
                   </div>
                   <div>
-                    <h4 className="text-[var(--primary)] font-bold mb-2">{isAr ? "شراكات القاعات" : "Venue Partnerships"}</h4>
-                    <p className="text-sm text-gray-500 font-light">{isAr ? "شريك التخطيط المفضّل لجي دبليو ماريوت الرياض وإنتركونتيننتال جدة." : "Preferred planning partner for JW Marriott Riyadh and InterContinental Jeddah."}</p>
+                    <h4 className="text-[var(--primary)] font-bold mb-2">{isAr ? "الوصول إلى القاعات" : "Venue Access"}</h4>
+                    <p className="text-sm text-gray-500 font-light">{isAr ? "خبرة واسعة في التنسيق مع أرقى الفنادق الفاخرة وقاعات الفعاليات في المملكة." : "Extensive experience coordinating with the Kingdom's leading five-star hotels and luxury event venues."}</p>
                   </div>
                 </div>
               </div>
@@ -401,7 +328,7 @@ export default function WeddingsPage() {
                 { icon: Sparkles, title: "ليالي الحناء", desc: "منظِّم حفلات حناء أصيلة في السعودية بلمسة عصرية فاخرة." },
                 { icon: Stars, title: "حفلات التخرّج", desc: "تخطيط راقٍ لحفلات التخرّج في الرياض للاحتفاء بالإنجازات بأناقة." },
                 { icon: MapPin, title: "المناسبات الاجتماعية", desc: "تخطيط شامل للمناسبات الاجتماعية في جدة لجميع احتفالاتك الخاصة." },
-                { icon: Utensils, title: "ضيافة فاخرة", desc: "قوائم طعام عالمية المستوى مصمّمة وفق ذوقك الثقافي والشخصي." },
+                { icon: Utensils, title: "ضيافة فاخرة", desc: "قوائم طعام متدرجة من المقبلات الفاخرة إلى المآدب الكاملة، مصمّمة حسب عدد الضيوف ونوع المطبخ." },
                 { icon: Music, title: "الترفيه", desc: "وصول حصري لأبرز الفنانين ومنسّقي الموسيقى وتنظيم زفّة متقن في المملكة." },
                 { icon: Camera, title: "الإنتاج الإعلامي", desc: "تصوير فوتوغرافي وفيديو سينمائي لتوثيق كل لحظة." },
                 { icon: Gift, title: "تصميم الأزهار", desc: "تنسيقات مصمّمة خصيصًا من أفضل شركة ديكور أعراس في السعودية." },
@@ -411,7 +338,7 @@ export default function WeddingsPage() {
                 { icon: Sparkles, title: "Henna Nights", desc: "Authentic henna party organizer in Saudi Arabia with a modern luxurious twist." },
                 { icon: Stars, title: "Graduation Parties", desc: "Premium graduation party Riyadh planning for celebrating milestones in style." },
                 { icon: MapPin, title: "Social Events", desc: "Comprehensive social event planning Jeddah for all your private celebrations." },
-                { icon: Utensils, title: "Gourmet Catering", desc: "World-class menus tailored to your cultural and personal preferences." },
+                { icon: Utensils, title: "Gourmet Catering", desc: "Tiered menus from refined canapés to full banquets, customized to your guest count and cuisine." },
                 { icon: Music, title: "Entertainment", desc: "Exclusive access to top artists, DJs, and flawless Zaffa planning KSA." },
                 { icon: Camera, title: "Media Production", desc: "Cinematic photography and videography to capture every moment." },
                 { icon: Gift, title: "Floral Design", desc: "Custom-made arrangements from the best wedding decoration company in Saudi Arabia." },
@@ -443,8 +370,8 @@ export default function WeddingsPage() {
                 <h3 className="text-2xl font-sans font-bold text-slate-900">{isAr ? <>موارد <br/><span className="text-[var(--primary)]">العروس</span></> : <>Bridal <br/><span className="text-[var(--primary)]">Resources</span></>}</h3>
                 <p className="text-gray-500 text-sm font-normal leading-relaxed">{isAr ? "نصائح خبيرة للتنقّل في مشهد الأعراس الفاخرة بالمملكة." : "Expert advice for navigating the luxury wedding landscape in the Kingdom."}</p>
                 <div className="pt-6 border-t border-slate-200">
-                  <p className="text-slate-900 font-bold text-sm">{isAr ? "فاطمة الراشد" : "Fatima Al-Rashid"}</p>
-                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">{isAr ? "استشارية أعراس أولى" : "Senior Wedding Consultant"}</p>
+                  <p className="text-slate-900 font-bold text-sm">{isAr ? "فريق تخطيط الأعراس في SEM" : "SEM Wedding Planning Team"}</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">{isAr ? "رؤى مختارة للعرائس" : "Curated Bridal Insights"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">

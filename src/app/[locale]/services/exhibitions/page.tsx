@@ -150,8 +150,8 @@ export default function ExhibitionsPage() {
 
   const expoServices = [
     { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level industry expos with international delegations." },
-    { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and massive business fair pavilions." },
-    { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030, creating breathtaking exhibition pavilion Saudi structures." },
+    { icon: PenTool, title: "Booth Design", desc: "In-house 3D and 2D design studio translating your brand brief into a fully rendered stand concept before a single panel is cut." },
+    { icon: Layout, title: "Stand Building", desc: "Full turnkey fabrication — CNC and laser-cut metal and acrylic, custom signage, and digital printing — built at a dedicated production facility and delivered move-in ready." },
     { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
     { icon: Monitor, title: "Digital Showcase", desc: "High-impact commercial display event and product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
     { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
@@ -174,8 +174,8 @@ export default function ExhibitionsPage() {
   // ── Arabic body content (phase 1b) — parallel to the English arrays above. ──
   const expoServicesAr = [
     { title: "تنظيم المعارض التجارية", desc: "إدارة متكاملة لمعارض بحجم إندكس السعودية والزراعة السعودية بوفود دولية." },
-    { title: "تصميم الأجنحة", desc: "خبراء حائزون على جوائز في تصميم أجنحة المعارض بالمملكة لجايتكس وأجنحة المعارض التجارية الكبرى." },
-    { title: "بناء المنصات", desc: "باني منصات معارض رائد لإكسبو السعودية 2030، نبتكر أجنحة عرض مبهرة في السعودية." },
+    { title: "تصميم الأجنحة", desc: "استوديو تصميم داخلي ثنائي وثلاثي الأبعاد يحوّل مختصر علامتك التجارية إلى تصوّر جناح متكامل قبل قص أي لوح." },
+    { title: "بناء المنصات", desc: "تصنيع متكامل من الألف إلى الياء — قص بالليزر وCNC للمعادن والأكريليك، ولافتات مخصّصة، وطباعة رقمية — يُنفَّذ في منشأة إنتاج مخصّصة ويُسلَّم جاهزًا للتركيب." },
     { title: "المعارض الدولية", desc: "منظِّم معارض دولي استراتيجي في السعودية يربط شركاء أديبك العالميين بالمملكة." },
     { title: "العرض الرقمي", desc: "فعاليات عرض تجارية مؤثّرة وعروض منتجات في السعودية بتقنيات صوت وصورة وواقع افتراضي تفاعلية." },
     { title: "المطابقة التجارية (B2B)", desc: "مخطّط معارض B2B محترف في الرياض يسهّل تواصلًا عالي القيمة لقمم المعارض في جدة." },
