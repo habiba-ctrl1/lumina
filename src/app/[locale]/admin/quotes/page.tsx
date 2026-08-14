@@ -300,10 +300,10 @@ export default function AdminQuotes() {
   return (
     <div className="pb-20">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-10">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">Quote Requests</h1>
-          <p className="text-slate-500 font-medium">Manage and generate luxury event proposals for your clients.</p>
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight mb-1">Quote Requests</h1>
+          <p className="text-sm text-slate-500 font-medium">Manage and generate luxury event proposals for your clients.</p>
         </div>
         <div className="flex gap-3">
           <button
@@ -325,32 +325,32 @@ export default function AdminQuotes() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-10">
-          <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center border border-amber-100">
-            <Clock size={28} />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+          <div className="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center border border-amber-100">
+            <Clock size={18} />
           </div>
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Pending Requests</p>
-            <h3 className="text-2xl font-bold text-slate-900">{counts.pending}</h3>
+            <h3 className="text-xl font-bold text-slate-900">{counts.pending}</h3>
           </div>
         </div>
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-10">
-          <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center border border-blue-100">
-            <TrendingUp size={28} />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+          <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center border border-blue-100">
+            <TrendingUp size={18} />
           </div>
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Quotes Sent</p>
-            <h3 className="text-2xl font-bold text-slate-900">{counts.quote_sent}</h3>
+            <h3 className="text-xl font-bold text-slate-900">{counts.quote_sent}</h3>
           </div>
         </div>
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-10">
-          <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center border border-emerald-100">
-            <TrendingUp size={28} />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+          <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center border border-emerald-100">
+            <TrendingUp size={18} />
           </div>
           <div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Confirmed Value</p>
-            <h3 className="text-2xl font-bold text-slate-900">SAR {counts.confirmedValue.toLocaleString()}</h3>
+            <h3 className="text-xl font-bold text-slate-900">SAR {counts.confirmedValue.toLocaleString()}</h3>
           </div>
         </div>
       </div>

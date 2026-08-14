@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, TrendingUp, Star, Award, Building } from "lucide-react";
+import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, Star, Award, Building } from "lucide-react";
 import { motion } from "framer-motion";
 
 type Client = {
@@ -59,14 +59,9 @@ export default function ClientsPage() {
 
       {/* Stats Quick View */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
-          <div>
-            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Total Clients</p>
-            <h3 className="text-xl font-bold text-slate-800">{clients.length}</h3>
-          </div>
-          <div className="text-teal-600 bg-teal-50 px-2 py-1 rounded-lg flex items-center gap-1 text-xs font-semibold">
-            <TrendingUp size={12} /> +12%
-          </div>
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Total Clients</p>
+          <h3 className="text-xl font-bold text-slate-800">{clients.length}</h3>
         </div>
         
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
@@ -100,14 +95,14 @@ export default function ClientsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, email, or company..." 
-              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
           <div className="flex gap-2 w-full sm:w-auto">
             <select 
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full sm:w-auto px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer min-w-[130px]"
+              className="w-full sm:w-auto px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer min-w-[130px]"
             >
               <option value="all">All Statuses</option>
               <option value="VIP">VIP</option>
@@ -152,7 +147,7 @@ export default function ClientsPage() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold text-sm shadow-sm">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm shadow-sm">
                           {client.name.charAt(0)}
                         </div>
                         <div>
@@ -163,7 +158,7 @@ export default function ClientsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="space-y-0.5">
-                        <p className="text-xs text-slate-700 font-semibold flex items-center gap-1.5 hover:text-teal-600 transition-colors">
+                        <p className="text-xs text-slate-700 font-semibold flex items-center gap-1.5 hover:text-emerald-600 transition-colors">
                           <Mail size={12} className="text-slate-400" /> {client.email}
                         </p>
                         {client.phone && (
@@ -178,7 +173,7 @@ export default function ClientsPage() {
                         client.status === 'VIP' ? 'bg-amber-50 text-amber-600 border-amber-100' :
                         client.status === 'Corporate' ? 'bg-blue-50 text-blue-600 border-blue-100' :
                         client.status === 'Lead' ? 'bg-slate-100 text-slate-600 border-slate-200' :
-                        'bg-teal-50 text-teal-600 border-teal-100'
+                        'bg-emerald-50 text-emerald-600 border-emerald-100'
                       }`}>
                         {client.status}
                       </span>
