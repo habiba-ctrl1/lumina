@@ -34,7 +34,7 @@ const CATEGORIES = ["all", "Partnership", "CV", "ClientInquiry", "Spam", "Uncert
 
 const categoryBadge = (category: string) =>
   category === "Partnership"
-    ? "bg-teal-50 text-teal-700 border-teal-200"
+    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
     : category === "CV"
     ? "bg-slate-50 text-slate-500 border-slate-200"
     : category === "ClientInquiry"
@@ -100,7 +100,7 @@ export default function EmailLeadsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <Inbox size={20} className="text-teal-600" /> Email Leads
+            <Inbox size={20} className="text-emerald-600" /> Email Leads
           </h1>
           <p className="text-[12px] text-slate-400 mt-0.5">
             Inbox-triage log from infosaudieventmanagement@gmail.com — replies wait as Gmail
@@ -125,7 +125,7 @@ export default function EmailLeadsPage() {
               onClick={() => setTab(t)}
               className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all border ${
                 tab === t
-                  ? "bg-teal-50 border-teal-200 text-teal-700"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                   : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
               }`}
             >
@@ -236,7 +236,7 @@ export default function EmailLeadsPage() {
                           href={`https://mail.google.com/mail/u/0/#all/${lead.gmailThreadId}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-teal-300 hover:text-teal-700 transition-all"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700 transition-all"
                         >
                           Open thread in Gmail <ExternalLink size={10} className="text-slate-400" />
                         </a>

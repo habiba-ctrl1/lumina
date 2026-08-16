@@ -49,6 +49,10 @@ export default function QuoteWizard() {
     return estimate.venue + estimate.catering + estimate.decor + estimate.management;
   };
 
+  const termsAndConditions = `Payments for on-ground execution (venue, catering, décor, logistics and related services) are settled directly with SEM's vetted delivery and execution partners in Saudi Arabia, in accordance with the payment schedule outlined in this proposal.
+
+Saudi Event Management is responsible for vendor selection, quality assurance, coordination, and full project oversight from booking through event completion.`;
+
   return (
     <div className="pb-16 max-w-4xl mx-auto text-slate-800">
       <div className="mb-8 text-center">
@@ -63,7 +67,7 @@ export default function QuoteWizard() {
       <div className="flex items-center justify-between mb-10 relative">
         <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 rounded-full" />
         <div 
-          className="absolute top-1/2 left-0 h-1 bg-teal-500 -z-10 rounded-full transition-all duration-500" 
+          className="absolute top-1/2 left-0 h-1 bg-emerald-500 -z-10 rounded-full transition-all duration-500" 
           style={{ width: `${((step - 1) / 3) * 100}%` }} 
         />
         
@@ -75,7 +79,7 @@ export default function QuoteWizard() {
         ].map(s => (
           <div key={s.num} className="flex flex-col items-center gap-2">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm transition-colors duration-500 ${
-              step > s.num ? "bg-teal-500 text-white" : 
+              step > s.num ? "bg-emerald-500 text-white" : 
               step === s.num ? "bg-slate-900 text-white ring-4 ring-slate-200" : 
               "bg-white text-slate-400 border border-slate-200"
             }`}>
@@ -93,7 +97,7 @@ export default function QuoteWizard() {
         
         {loading && (
           <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
-            <div className="w-12 h-12 border-4 border-slate-100 border-t-teal-500 rounded-full animate-spin mb-4" />
+            <div className="w-12 h-12 border-4 border-slate-100 border-t-emerald-500 rounded-full animate-spin mb-4" />
             <p className="text-sm font-bold text-slate-600 animate-pulse">Processing step intelligently...</p>
           </div>
         )}
@@ -108,7 +112,7 @@ export default function QuoteWizard() {
 
             <div className="space-y-3 flex-1">
               <div className="flex items-center gap-4 p-4 border border-slate-200 rounded-2xl bg-slate-50">
-                <div className="p-3 bg-white shadow-sm rounded-xl text-teal-600"><Building size={20} /></div>
+                <div className="p-3 bg-white shadow-sm rounded-xl text-emerald-600"><Building size={20} /></div>
                 <div className="flex-1">
                   <h3 className="text-sm font-bold text-slate-800">Venue: Al-Faisaliah Grand Hall</h3>
                   <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Perfect match for 300 guests in Riyadh</p>
@@ -171,8 +175,13 @@ export default function QuoteWizard() {
                 </div>
                 <div className="pt-4 border-t border-slate-200 flex justify-between items-center">
                   <span className="text-base font-bold text-slate-900">Total Projected Investment</span>
-                  <span className="text-xl font-bold text-teal-650">SAR {calculateTotal().toLocaleString()}</span>
+                  <span className="text-xl font-bold text-emerald-650">SAR {calculateTotal().toLocaleString()}</span>
                 </div>
+              </div>
+
+              <div className="mt-4 bg-slate-50 rounded-2xl p-5 border border-slate-200">
+                <h3 className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Terms &amp; Conditions (included in every quote)</h3>
+                <p className="text-xs text-slate-600 whitespace-pre-line leading-relaxed">{termsAndConditions}</p>
               </div>
             </div>
 
@@ -187,9 +196,9 @@ export default function QuoteWizard() {
         {/* Step 3: Proposal PDF Generate */}
         {step === 3 && (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex-1 flex flex-col items-center justify-center text-center">
-            <div className="w-24 h-24 bg-teal-50 rounded-full flex items-center justify-center mb-6 relative">
-              <div className="absolute inset-0 border-4 border-teal-200 rounded-full animate-ping opacity-20" />
-              <FileText size={40} className="text-teal-500" />
+            <div className="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mb-6 relative">
+              <div className="absolute inset-0 border-4 border-emerald-200 rounded-full animate-ping opacity-20" />
+              <FileText size={40} className="text-emerald-500" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Proposal PDF Generated</h2>
             <p className="text-sm text-slate-500 max-w-sm mb-8">
@@ -222,7 +231,7 @@ export default function QuoteWizard() {
             <div className="flex gap-4">
               <button 
                 onClick={nextStep} 
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-teal-500 text-white font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-teal-600 transition-all shadow-lg shadow-teal-500/30 active:scale-95"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-emerald-500 text-white font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/30 active:scale-95"
               >
                 <Send size={16} /> One-Click Send (Email + WhatsApp)
               </button>

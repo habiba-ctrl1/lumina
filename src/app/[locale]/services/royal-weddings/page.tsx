@@ -287,19 +287,6 @@ const jsonLd = {
       ],
     },
 
-    /* ── 5. AggregateRating ── */
-    {
-      "@type": "AggregateRating",
-      itemReviewed: {
-        "@type": "LocalBusiness",
-        name: "Saudi Event Management",
-        "@id": "https://saudieventmanagement.com#organization",
-      },
-      ratingValue: "4.9",
-      reviewCount: "148",
-      bestRating: "5",
-    },
-
     /* ── 6. BreadcrumbList ── */
     {
       "@type": "BreadcrumbList",
@@ -1401,59 +1388,45 @@ export default async function RoyalWeddingsPage() {
                 {isAr ? "الخبرة · الكفاءة · المرجعية · الثقة" : "Experience · Expertise · Authoritativeness · Trust"}
               </span>
               <h2 className="text-3xl font-bold text-slate-900">
-                {isAr ? <>فريق <span className="text-[var(--primary)]">خبراء الأعراس الملكية</span></> : <>Our Royal Wedding <span className="text-[var(--primary)]">Expert Team</span></>}
+                {isAr ? <>خبرات <span className="text-[var(--primary)]">تخطيط الأعراس الملكية</span></> : <>Royal Wedding Planning <span className="text-[var(--primary)]">Expertise</span></>}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {(isAr
                 ? [
                 {
-                  name: "فاطمة الراشد",
-                  title: "كبيرة مستشاري الأعراس الملكية",
-                  arabic: "Senior Royal Wedding Consultant",
-                  bio: "متخصصة في مراسم الأعراس الملكية والأثرياء في السعودية. خبيرة في بروتوكول عقد القران التقليدي، ولوجستيات الوليمة، وإدارة الحفلين المنفصلين.",
+                  title: "استشارات الأعراس الملكية",
+                  bio: "متخصصون في مراسم الأعراس الملكية والأثرياء في السعودية. خبرة في بروتوكول عقد القران التقليدي، ولوجستيات الوليمة، وإدارة الحفلين المنفصلين.",
                 },
                 {
-                  name: "نورة الغامدي",
-                  title: "مديرة التصميم الاحتفالي",
-                  arabic: "Ceremonial Design Director",
-                  bio: "مصممة أزهار وديكور حائزة على جوائز بأعمال تمتد من الريتز كارلتون الرياض إلى والدورف أستوريا جدة. متخصصة في التركيبات المخصّصة بمقياس ملكي.",
+                  title: "التصميم الاحتفالي",
+                  bio: "تصميم أزهار وديكور بمقياس ملكي، مع تركيبات مخصّصة تلائم الاحتفالات الفاخرة.",
                 },
                 {
-                  name: "خالد العتيبي",
-                  title: "مدير البروتوكول الملكي وكبار الشخصيات",
-                  arabic: "Royal Protocol & VIP Manager",
-                  bio: "مسؤول بروتوكول سابق. يدير جلوس كبار الشخصيات، وضيافة شيوخ القبائل، وتنسيق الضيوف الدبلوماسيين، وإحاطات الأمن للاحتفالات الملكية.",
+                  title: "البروتوكول الملكي وكبار الشخصيات",
+                  bio: "إدارة جلوس كبار الشخصيات، وضيافة شيوخ القبائل، وتنسيق الضيوف الدبلوماسيين، وإحاطات الأمن للاحتفالات الملكية.",
                 },
                   ]
                 : [
                 {
-                  name: "Fatima Al-Rashid",
-                  title: "Senior Royal Wedding Consultant",
-                  arabic: "مستشارة الأفراح الملكية",
-                  bio: "Specialises in Saudi royal and HNWI wedding ceremonies. Expert in traditional Nikah protocol, Walima logistics, and dual-reception management.",
+                  title: "Royal Wedding Consultation",
+                  bio: "Specialising in Saudi royal and HNWI wedding ceremonies. Expertise in traditional Nikah protocol, Walima logistics, and dual-reception management.",
                 },
                 {
-                  name: "Nora Al-Ghamdi",
-                  title: "Ceremonial Design Director",
-                  arabic: "مديرة التصميم الاحتفالي",
-                  bio: "Award-winning floral and décor designer with a portfolio spanning Ritz-Carlton Riyadh and Waldorf Astoria Jeddah. Specialises in royal-scale bespoke installations.",
+                  title: "Ceremonial Design",
+                  bio: "Royal-scale floral and décor design, with bespoke installations tailored to luxury celebrations.",
                 },
                 {
-                  name: "Khalid Al-Otaibi",
-                  title: "Royal Protocol & VIP Manager",
-                  arabic: "مدير البروتوكول الملكي",
-                  bio: "Former Ministry of Protocol official. Manages VIP seating, tribal elder hospitality, diplomatic guest coordination, and security briefings for royal celebrations.",
+                  title: "Royal Protocol & VIP Management",
+                  bio: "Managing VIP seating, tribal elder hospitality, diplomatic guest coordination, and security briefings for royal celebrations.",
                 },
               ]).map((member, i) => (
                 <div key={i} className="bg-neutral-50 rounded-2xl p-8 border border-slate-100">
                   <div className="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-5">
                     <Users size={24} className="text-[var(--primary)]" />
                   </div>
-                  <h3 className="font-bold text-slate-900 text-base">{member.name}</h3>
-                  <p className="text-[var(--primary)] text-xs font-semibold uppercase tracking-wide mt-1 mb-1">{member.title}</p>
-                  <p className="text-gray-400 text-xs mb-4">{member.arabic}</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
+                  <h3 className="font-bold text-slate-900 text-base">{member.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mt-3">{member.bio}</p>
                 </div>
               ))}
             </div>

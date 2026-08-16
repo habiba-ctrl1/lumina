@@ -132,7 +132,7 @@ export default function ActionNeededPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <ListChecks size={20} className="text-teal-600" /> Action Needed
+            <ListChecks size={20} className="text-emerald-600" /> Action Needed
           </h1>
           <p className="text-[12px] text-slate-400 mt-0.5">
             Everything waiting on you — clients first, then partners. Job/CV emails are filed
@@ -226,7 +226,7 @@ export default function ActionNeededPage() {
             title="Partner applications — review"
             subtitle="Onboarding form submissions waiting to approve"
             count={data?.counts.partnerApplications ?? 0}
-            accent="bg-teal-50 text-teal-600"
+            accent="bg-emerald-50 text-emerald-600"
           >
             {data && data.partnerApplications.length === 0 ? (
               <p className="px-5 py-6 text-[12px] text-slate-400">No applications waiting. ✅</p>
@@ -251,7 +251,7 @@ export default function ActionNeededPage() {
                     </div>
                     <Link
                       href="/admin/vendor-applications"
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition-all"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 transition-all"
                     >
                       Review <ArrowRight size={11} />
                     </Link>
@@ -297,7 +297,7 @@ export default function ActionNeededPage() {
                         href={`https://mail.google.com/mail/u/0/#all/${e.gmailThreadId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:border-teal-300 hover:text-teal-700 transition-all"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:border-emerald-300 hover:text-emerald-700 transition-all"
                       >
                         Open <ExternalLink size={10} />
                       </a>

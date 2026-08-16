@@ -149,11 +149,11 @@ export default function FinancePage() {
         <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
           <div>
             <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Net Income</p>
-            <h3 className={`text-lg font-bold ${netProfit >= 0 ? 'text-teal-600' : 'text-red-650'}`}>
+            <h3 className={`text-lg font-bold ${netProfit >= 0 ? 'text-emerald-600' : 'text-red-650'}`}>
               SAR {netProfit.toLocaleString(undefined, { maximumFractionDigits: 0 })}
             </h3>
           </div>
-          <div className="p-2 bg-teal-50 text-teal-600 rounded-xl">
+          <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
             <DollarSign size={16} />
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function FinancePage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search description, reference..." 
-              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
           
@@ -187,7 +187,7 @@ export default function FinancePage() {
             <select 
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 min-w-[130px] cursor-pointer"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 min-w-[130px] cursor-pointer"
             >
               <option value="all">All Entries</option>
               <option value="revenue">Inflows (Revenue)</option>
@@ -197,7 +197,7 @@ export default function FinancePage() {
             <button 
               onClick={fetchRecords}
               disabled={loading}
-              className="p-2 bg-white border border-slate-200 rounded-xl text-teal-600 hover:bg-slate-50 transition-all shadow-sm"
+              className="p-2 bg-white border border-slate-200 rounded-xl text-emerald-600 hover:bg-slate-50 transition-all shadow-sm"
             >
               <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
             </button>
@@ -298,7 +298,7 @@ export default function FinancePage() {
             >
               <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-teal-500 rounded-xl text-white shadow-md">
+                  <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-md">
                     <DollarSign size={18} />
                   </div>
                   <div>
@@ -363,7 +363,7 @@ export default function FinancePage() {
                         placeholder="e.g. 75000"
                         value={formData.amount}
                         onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -387,7 +387,7 @@ export default function FinancePage() {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       placeholder="Enter posting narration..." 
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium focus:border-teal-400 resize-none"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium focus:border-emerald-400 resize-none"
                     />
                   </div>
 
@@ -396,7 +396,7 @@ export default function FinancePage() {
                     disabled={isSubmitting}
                     className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
-                    {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-teal-400" size={14} />}
+                    {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-emerald-400" size={14} />}
                     {isSubmitting ? "Post Posting..." : "Commit Transaction"}
                   </button>
                 </form>

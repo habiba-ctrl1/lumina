@@ -330,11 +330,11 @@ export default function VendorsPage() {
             }}
             className={`flex items-center gap-2 px-4 py-2 border rounded-xl font-semibold text-xs tracking-wide transition-all shadow-sm ${
               showMatchEngine
-                ? "bg-teal-50 border-teal-200 text-teal-700"
+                ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                 : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
             }`}
           >
-            <Zap size={14} className={showMatchEngine ? "text-teal-600 animate-pulse" : "text-slate-500"} />
+            <Zap size={14} className={showMatchEngine ? "text-emerald-600 animate-pulse" : "text-slate-500"} />
             Matching Engine
           </button>
           <button
@@ -359,8 +359,8 @@ export default function VendorsPage() {
             onClick={() => { setTab(t.key); setPage(1); }}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
               tab === t.key
-                ? "bg-teal-600 text-white border-teal-600 shadow-sm"
-                : "bg-white text-slate-600 border-slate-200 hover:border-teal-300"
+                ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                : "bg-white text-slate-600 border-slate-200 hover:border-emerald-300"
             }`}
           >
             <t.icon size={13} /> {t.label}
@@ -382,14 +382,14 @@ export default function VendorsPage() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
-            className="bg-white border border-teal-200/60 rounded-2xl p-5 mb-6 shadow-sm shadow-teal-500/5 relative overflow-hidden"
+            className="bg-white border border-emerald-200/60 rounded-2xl p-5 mb-6 shadow-sm shadow-emerald-500/5 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-3">
               <button onClick={() => setShowMatchEngine(false)} className="text-slate-400 hover:text-slate-600"><X size={16} /></button>
             </div>
 
             <div className="flex items-center gap-2 mb-1">
-              <div className="p-1 bg-teal-100 text-teal-700 rounded-lg"><Zap size={14} /></div>
+              <div className="p-1 bg-emerald-100 text-emerald-700 rounded-lg"><Zap size={14} /></div>
               <h2 className="text-sm font-semibold text-slate-800">Vendor Matching Engine</h2>
             </div>
             <p className="text-[10px] text-slate-400 mb-4 ms-7">Category/city text match, ranked by partnership tier &amp; rating — not yet AI-powered.</p>
@@ -400,7 +400,7 @@ export default function VendorsPage() {
                 <select
                   value={matchService}
                   onChange={(e) => setMatchService(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400"
                 >
                   <option value="">Any Service</option>
                   {categories.map((c) => (
@@ -414,7 +414,7 @@ export default function VendorsPage() {
                 <select
                   value={matchCity}
                   onChange={(e) => setMatchCity(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400"
                 >
                   {saudiCities.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -440,7 +440,7 @@ export default function VendorsPage() {
                 <div className="space-y-1.5">
                   {matchedResults.map((item, i) => (
                     <div key={item.id} onClick={() => openVendor(item.id)}
-                      className="bg-white p-2.5 rounded-xl border border-slate-100 flex items-center justify-between text-xs hover:border-teal-300 transition-all cursor-pointer">
+                      className="bg-white p-2.5 rounded-xl border border-slate-100 flex items-center justify-between text-xs hover:border-emerald-300 transition-all cursor-pointer">
                       <div className="min-w-0 flex items-center gap-2.5">
                         <span className="w-5 h-5 rounded-md bg-slate-900 text-white text-[10px] font-bold flex items-center justify-center shrink-0">{i + 1}</span>
                         <div className="min-w-0">
@@ -460,7 +460,7 @@ export default function VendorsPage() {
                         {item.preferred && (
                           <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded flex items-center gap-1"><Award size={10} /> Preferred</span>
                         )}
-                        <span className="flex items-center gap-1 text-[11px] font-bold text-teal-600 bg-teal-50 px-1.5 py-0.5 rounded">
+                        <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
                           <Star size={10} className="fill-current" />
                           {(item.internalRating || 0) > 0 ? item.internalRating : "—"}
                         </span>
@@ -506,14 +506,14 @@ export default function VendorsPage() {
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setPage(1); }}
                 placeholder="Search name, service, city, contact…"
-                className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+                className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
               />
             </div>
             <div className="flex items-center gap-2 w-full md:w-auto justify-end">
               <select
                 value={sortBy}
                 onChange={(e) => { setSortBy(e.target.value as typeof sortBy); setPage(1); }}
-                className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer shadow-sm"
+                className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer shadow-sm"
               >
                 <option value="best">Sort: Best first</option>
                 <option value="rating">Sort: Highest rating</option>
@@ -523,7 +523,7 @@ export default function VendorsPage() {
               <button
                 onClick={fetchVendors}
                 disabled={loading}
-                className="p-2 bg-white border border-slate-200 rounded-xl text-teal-600 hover:bg-slate-50 transition-all shadow-sm disabled:opacity-50"
+                className="p-2 bg-white border border-slate-200 rounded-xl text-emerald-600 hover:bg-slate-50 transition-all shadow-sm disabled:opacity-50"
               >
                 <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
               </button>
@@ -534,7 +534,7 @@ export default function VendorsPage() {
             <select
               value={categoryId}
               onChange={(e) => { setCategoryId(e.target.value); setPage(1); }}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer shadow-sm max-w-[220px]"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer shadow-sm max-w-[220px]"
             >
               <option value="all">All Categories</option>
               {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -542,7 +542,7 @@ export default function VendorsPage() {
             <select
               value={city}
               onChange={(e) => { setCity(e.target.value); setPage(1); }}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer shadow-sm max-w-[180px]"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer shadow-sm max-w-[180px]"
             >
               <option value="all">All Cities / Regions</option>
               {saudiCities.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -550,7 +550,7 @@ export default function VendorsPage() {
             <select
               value={verify}
               onChange={(e) => { setVerify(e.target.value); setPage(1); }}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer shadow-sm"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer shadow-sm"
             >
               <option value="all">All Verification</option>
               {VERIFY_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -558,7 +558,7 @@ export default function VendorsPage() {
             <select
               value={meeting}
               onChange={(e) => { setMeeting(e.target.value); setPage(1); }}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer shadow-sm"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer shadow-sm"
             >
               <option value="all">All Meeting Status</option>
               {MEETING_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -568,7 +568,7 @@ export default function VendorsPage() {
               onClick={() => { setOnlyPreferred(!onlyPreferred); setPage(1); }}
               className={`flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition-all shadow-sm ${
                 onlyPreferred
-                  ? "bg-teal-50 border-teal-300 text-teal-700"
+                  ? "bg-emerald-50 border-emerald-300 text-emerald-700"
                   : "bg-white border-slate-200 text-slate-500 hover:border-slate-300"
               }`}
             >
@@ -606,7 +606,7 @@ export default function VendorsPage() {
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-teal-600 font-bold text-xs bg-teal-50 px-4 py-2 rounded-xl hover:bg-teal-100 transition-all"
+                  className="mt-4 text-emerald-600 font-bold text-xs bg-emerald-50 px-4 py-2 rounded-xl hover:bg-emerald-100 transition-all"
                 >
                   Clear Filters
                 </button>
@@ -643,7 +643,7 @@ export default function VendorsPage() {
                             ? vendor.categoryLinks.map((c) => c.name)
                             : (vendor.categories?.length ? vendor.categories : [vendor.category])
                           ).slice(0, 3).map((c) => (
-                            <span key={c} className="text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded-md">{c}</span>
+                            <span key={c} className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md">{c}</span>
                           ))}
                         </div>
                       </td>
@@ -656,7 +656,7 @@ export default function VendorsPage() {
                             <span className="text-[10px] font-semibold text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded-md flex items-center gap-1 w-fit"><Handshake size={10} /> Partner</span>
                           )}
                           {vendor.partnershipStatus === "Verified Vendor" && (
-                            <span className="text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded-md w-fit">Verified Vendor</span>
+                            <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-md w-fit">Verified Vendor</span>
                           )}
                           {vendor.verificationStatus === "Verified" && (
                             <span className="text-[10px] font-semibold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded-md flex items-center gap-1 w-fit"><CheckCircle2 size={10} /> Verified</span>
@@ -731,7 +731,7 @@ export default function VendorsPage() {
             >
               <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-teal-500 rounded-xl text-white shadow-md">
+                  <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-md">
                     <Plus size={18} />
                   </div>
                   <div>
@@ -760,7 +760,7 @@ export default function VendorsPage() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onBlur={runDuplicateCheck}
                       placeholder="e.g. Majestic Catering Services"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-450"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-450"
                     />
                   </div>
 
@@ -778,7 +778,7 @@ export default function VendorsPage() {
                           <button
                             type="button"
                             onClick={() => { setIsModalOpen(false); openVendor(c.vendor.id); }}
-                            className="text-teal-600 font-semibold hover:underline"
+                            className="text-emerald-600 font-semibold hover:underline"
                           >
                             Edit existing
                           </button>
@@ -803,7 +803,7 @@ export default function VendorsPage() {
                               categoryIds: active ? f.categoryIds.filter((id) => id !== c.id) : [...f.categoryIds, c.id],
                             }))}
                             className={`text-[11px] font-medium px-2.5 py-1.5 rounded-lg border text-start transition-all ${
-                              active ? "border-teal-400 bg-teal-50 text-teal-700" : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                              active ? "border-emerald-400 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
                             }`}
                           >
                             {c.name}
@@ -817,7 +817,7 @@ export default function VendorsPage() {
                         value={newCategoryText}
                         onChange={(e) => setNewCategoryText(e.target.value)}
                         placeholder="Category not listed? Type to add…"
-                        className="flex-1 bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-2.5 text-[11px] font-medium text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="flex-1 bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-2.5 text-[11px] font-medium text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                       <button type="button" onClick={createCategoryInline} className="px-3 bg-slate-100 text-slate-700 rounded-lg text-[11px] font-bold hover:bg-slate-200">
                         + Add
@@ -832,7 +832,7 @@ export default function VendorsPage() {
                         required
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer"
                       >
                         {saudiCities.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
@@ -842,7 +842,7 @@ export default function VendorsPage() {
                       <select
                         value={formData.partnershipStatus}
                         onChange={(e) => setFormData({ ...formData, partnershipStatus: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer"
                       >
                         {PARTNERSHIP_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                       </select>
@@ -856,7 +856,7 @@ export default function VendorsPage() {
                       value={formData.contactPerson}
                       onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
                       placeholder="Full name"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                     />
                   </div>
 
@@ -869,7 +869,7 @@ export default function VendorsPage() {
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         onBlur={runDuplicateCheck}
                         placeholder="contact@company.sa"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                     <div className="space-y-1">
@@ -881,7 +881,7 @@ export default function VendorsPage() {
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         onBlur={runDuplicateCheck}
                         placeholder="+966..."
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -895,7 +895,7 @@ export default function VendorsPage() {
                         onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                         onBlur={runDuplicateCheck}
                         placeholder="+9665..."
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                     <div className="space-y-1">
@@ -905,7 +905,7 @@ export default function VendorsPage() {
                         value={formData.portfolio}
                         onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
                         placeholder="https://..."
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -916,7 +916,7 @@ export default function VendorsPage() {
                       <select
                         value={formData.pricing}
                         onChange={(e) => setFormData({ ...formData, pricing: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       >
                         <option value="Budget">Budget</option>
                         <option value="Premium">Premium</option>
@@ -933,7 +933,7 @@ export default function VendorsPage() {
                         required
                         value={formData.rating}
                         onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -945,7 +945,7 @@ export default function VendorsPage() {
                       value={formData.services}
                       onChange={(e) => setFormData({ ...formData, services: e.target.value })}
                       placeholder="Describe the specialized services offered by this partner..."
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400 resize-none"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400 resize-none"
                     />
                   </div>
 
@@ -955,7 +955,7 @@ export default function VendorsPage() {
                       disabled={isSubmitting}
                       className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-teal-400" size={14} />}
+                      {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-emerald-400" size={14} />}
                       {isSubmitting ? "Synchronizing..." : "Register Partner"}
                     </button>
                   </div>
@@ -997,7 +997,7 @@ export default function VendorsPage() {
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Meeting Status</label>
                     <select value={detail.meetingStatus || "Contacted"}
                       onChange={(e) => setDetail({ ...detail, meetingStatus: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400">
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400">
                       {MEETING_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
@@ -1005,7 +1005,7 @@ export default function VendorsPage() {
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Verification</label>
                     <select value={detail.verificationStatus || "Pending"}
                       onChange={(e) => setDetail({ ...detail, verificationStatus: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400">
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400">
                       {VERIFY_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
@@ -1013,7 +1013,7 @@ export default function VendorsPage() {
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Partnership</label>
                     <select value={detail.partnershipStatus || "Pending"}
                       onChange={(e) => setDetail({ ...detail, partnershipStatus: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400">
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400">
                       {PARTNERSHIP_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
@@ -1029,7 +1029,7 @@ export default function VendorsPage() {
                     <label key={key} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
                       <input type="checkbox" checked={!!detail[key]}
                         onChange={(e) => setDetail({ ...detail, [key]: e.target.checked })}
-                        className="accent-teal-600" />
+                        className="accent-emerald-600" />
                       <span className="text-xs font-semibold text-slate-700">{label}</span>
                     </label>
                   ))}
@@ -1057,7 +1057,7 @@ export default function VendorsPage() {
                         <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</label>
                         <input type="text" value={(detail[key] as string) || ""}
                           onChange={(e) => setDetail({ ...detail, [key]: e.target.value })}
-                          className="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" />
+                          className="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400" />
                       </div>
                     ))}
                   </div>
@@ -1080,7 +1080,7 @@ export default function VendorsPage() {
                               : [...(detail.categoryLinks || []), c],
                           })}
                           className={`text-[11px] font-medium px-2.5 py-1.5 rounded-lg border text-start transition-all ${
-                            active ? "border-teal-400 bg-teal-50 text-teal-700" : "border-white bg-white text-slate-600 hover:border-slate-300"
+                            active ? "border-emerald-400 bg-emerald-50 text-emerald-700" : "border-white bg-white text-slate-600 hover:border-slate-300"
                           }`}
                         >
                           {c.name}
@@ -1099,13 +1099,13 @@ export default function VendorsPage() {
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Region Coverage (comma separated)</label>
                     <input type="text" value={(detail.regionCoverage || []).join(", ")}
                       onChange={(e) => setDetail({ ...detail, regionCoverage: e.target.value.split(",").map((x) => x.trim()).filter(Boolean) })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" />
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Rate Card Summary (internal reference only)</label>
                     <textarea rows={3} value={detail.rateCardSummary || ""}
                       onChange={(e) => setDetail({ ...detail, rateCardSummary: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400 resize-none" />
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400 resize-none" />
                   </div>
                 </div>
 
@@ -1122,10 +1122,10 @@ export default function VendorsPage() {
                         {app.vatNumber && <p>VAT: {app.vatNumber}</p>}
                         {app.majorClients && <p>Major clients: {app.majorClients}</p>}
                         <div className="flex flex-wrap gap-2 pt-1">
-                          {app.logoLink && <a href={app.logoLink} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Logo</a>}
-                          {app.profileLink && <a href={app.profileLink} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Profile</a>}
-                          {app.rateCardLink && <a href={app.rateCardLink} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Rate card</a>}
-                          {app.videoLink && <a href={app.videoLink} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">Video</a>}
+                          {app.logoLink && <a href={app.logoLink} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Logo</a>}
+                          {app.profileLink && <a href={app.profileLink} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Profile</a>}
+                          {app.rateCardLink && <a href={app.rateCardLink} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Rate card</a>}
+                          {app.videoLink && <a href={app.videoLink} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Video</a>}
                         </div>
                       </div>
                     ))}
@@ -1134,7 +1134,7 @@ export default function VendorsPage() {
 
                 <button onClick={saveDetail} disabled={savingDetail}
                   className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-                  {savingDetail ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-teal-400" size={14} />}
+                  {savingDetail ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-emerald-400" size={14} />}
                   {savingDetail ? "Saving…" : "Save Changes"}
                 </button>
 
@@ -1145,8 +1145,8 @@ export default function VendorsPage() {
                     <input type="text" value={newNote} onChange={(e) => setNewNote(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && addNote()}
                       placeholder="Add a new note (old notes are never overwritten)…"
-                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400" />
-                    <button onClick={addNote} className="px-4 bg-teal-600 text-white rounded-xl text-xs font-bold hover:bg-teal-500">Add</button>
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400" />
+                    <button onClick={addNote} className="px-4 bg-emerald-600 text-white rounded-xl text-xs font-bold hover:bg-emerald-500">Add</button>
                   </div>
                   <div className="space-y-2 max-h-64 overflow-y-auto">
                     {(detail.notes || []).length === 0 ? (

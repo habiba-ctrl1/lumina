@@ -698,7 +698,7 @@ export default async function JeddahPage() {
               },
               {
                 title: "Vision 2030 Aligned",
-                body: "Certified partners with the Saudi Exhibitions & Conventions Bureau (SECB) and aligned with Jeddah's Vision 2030 tourism and entertainment growth mandate.",
+                body: "Aligned with Jeddah's Vision 2030 tourism and entertainment growth mandate, working within its exhibitions and conventions standards.",
               },
             ].map((card, i) => (
               <div

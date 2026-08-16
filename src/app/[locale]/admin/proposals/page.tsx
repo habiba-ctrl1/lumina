@@ -223,7 +223,7 @@ export default function ProposalsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by quote number or client..." 
-              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
           
@@ -231,7 +231,7 @@ export default function ProposalsPage() {
             <select 
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 min-w-[130px] cursor-pointer"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 min-w-[130px] cursor-pointer"
             >
               <option value="all">All Proposals</option>
               <option value="draft">Drafts</option>
@@ -244,7 +244,7 @@ export default function ProposalsPage() {
             <button 
               onClick={fetchProposals}
               disabled={loading}
-              className="p-2 bg-white border border-slate-200 rounded-xl text-teal-600 hover:bg-slate-50 transition-all shadow-sm"
+              className="p-2 bg-white border border-slate-200 rounded-xl text-emerald-600 hover:bg-slate-50 transition-all shadow-sm"
             >
               <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
             </button>
@@ -285,7 +285,7 @@ export default function ProposalsPage() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold shadow-sm">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold shadow-sm">
                           <FileText size={15} />
                         </div>
                         <div>
@@ -356,7 +356,7 @@ export default function ProposalsPage() {
             >
               <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-teal-550 rounded-xl text-white shadow-md">
+                  <div className="p-2 bg-emerald-550 rounded-xl text-white shadow-md">
                     <FileText size={18} />
                   </div>
                   <div>
@@ -377,7 +377,7 @@ export default function ProposalsPage() {
                         required
                         value={quoteNumber}
                         onChange={(e) => setQuoteNumber(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                     <div className="space-y-1">
@@ -417,7 +417,7 @@ export default function ProposalsPage() {
                       <button 
                         type="button" 
                         onClick={handleAddLineItem}
-                        className="flex items-center gap-1 text-[10px] font-bold text-teal-600 hover:text-teal-700"
+                        className="flex items-center gap-1 text-[10px] font-bold text-emerald-600 hover:text-emerald-700"
                       >
                         <PlusCircle size={12} /> Add Item
                       </button>
@@ -506,7 +506,7 @@ export default function ProposalsPage() {
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       placeholder="Add event custom clauses or validity guidelines..." 
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium focus:border-teal-400 resize-none"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium focus:border-emerald-400 resize-none"
                     />
                   </div>
 
@@ -515,7 +515,7 @@ export default function ProposalsPage() {
                     disabled={isSubmitting}
                     className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
-                    <Send size={13} className="text-teal-400" />
+                    <Send size={13} className="text-emerald-400" />
                     {isSubmitting ? "Generating Workspace..." : "Authorize & Send Proposal"}
                   </button>
                 </form>

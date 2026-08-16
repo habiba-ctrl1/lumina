@@ -114,7 +114,7 @@ export default function AdminTestimonials() {
                       value={form.author}
                       onChange={(e) => setForm({ ...form, author: e.target.value })}
                       placeholder="e.g. HRH Princess Sarah"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-405 shadow-sm"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-405 shadow-sm"
                     />
                   </div>
                   <div className="space-y-1">
@@ -124,7 +124,7 @@ export default function AdminTestimonials() {
                       value={form.role || ""}
                       onChange={(e) => setForm({ ...form, role: e.target.value })}
                       placeholder="e.g. Royal Commission for Riyadh"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-405 shadow-sm"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-405 shadow-sm"
                     />
                   </div>
                   <div className="space-y-1">
@@ -147,7 +147,7 @@ export default function AdminTestimonials() {
                       value={form.quote}
                       onChange={(e) => setForm({ ...form, quote: e.target.value })}
                       placeholder="Capture the essence of their experience..."
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-850 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-405 shadow-sm resize-none italic"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-850 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-405 shadow-sm resize-none italic"
                     />
                   </div>
                   <button
@@ -155,7 +155,7 @@ export default function AdminTestimonials() {
                     disabled={saving}
                     className="w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50 mt-2"
                   >
-                    {saving ? <Loader2 size={14} className="animate-spin text-teal-400" /> : <Save size={14} />}
+                    {saving ? <Loader2 size={14} className="animate-spin text-emerald-400" /> : <Save size={14} />}
                     {saving ? "Publishing..." : "Publish Testimonial"}
                   </button>
                 </div>
@@ -188,7 +188,7 @@ export default function AdminTestimonials() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="bg-white border border-slate-200/80 rounded-2xl p-6 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              className="bg-white border border-slate-200/80 rounded-2xl p-6 hover:border-emerald-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
               <div className="mb-4">
                 <div className="flex gap-0.5 mb-3">

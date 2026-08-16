@@ -56,7 +56,7 @@ export default function StatusPage() {
     if (action.includes("Partner") || action.includes("Vendor")) return "bg-purple-50 text-purple-605 border-purple-100";
     if (action.includes("Blog") || action.includes("Article")) return "bg-emerald-50 text-emerald-605 border-emerald-100";
     if (action.includes("Gallery")) return "bg-pink-50 text-pink-605 border-pink-100";
-    return "bg-teal-50 text-teal-700 border-teal-100";
+    return "bg-emerald-50 text-emerald-700 border-emerald-100";
   };
 
   const getLabelIcon = (action: string) => {
@@ -110,7 +110,7 @@ export default function StatusPage() {
 
       <div className="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden">
         <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100 bg-slate-50/50">
-          <div className="p-2 bg-teal-500 rounded-lg text-white shadow-sm shadow-teal-500/10">
+          <div className="p-2 bg-emerald-500 rounded-lg text-white shadow-sm shadow-emerald-500/10">
             <Activity size={18} />
           </div>
           <div>
@@ -144,7 +144,7 @@ export default function StatusPage() {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.03 }}
-                  className="flex items-center justify-between p-4 bg-white border border-slate-200/80 rounded-xl hover:border-teal-400 hover:shadow-sm transition-all duration-300 group"
+                  className="flex items-center justify-between p-4 bg-white border border-slate-200/80 rounded-xl hover:border-emerald-400 hover:shadow-sm transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-4 flex-1 min-w-0">
                     <div className={`px-2.5 py-1 rounded-lg text-[9px] uppercase tracking-wider font-bold flex items-center gap-1 border flex-shrink-0 ${getLabelStyle(log.action)}`}>

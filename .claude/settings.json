@@ -9,7 +9,11 @@
       "Bash(node scripts/restore_2eedc7c_images.js)",
       "Bash(git reset *)",
       "Bash(git commit -q -m 'revert: restore all page images to 2eedc7c local assets, remove injected stock photos *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "mcp__claude_ai_Gmail__create_draft",
+      "Bash(node scripts/ig-only.mjs)",
+      "Bash(node -e ' *)",
+      "WebFetch(domain:saudieventmanagement.com)"
     ]
   }
 }

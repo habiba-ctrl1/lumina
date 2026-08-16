@@ -38,7 +38,9 @@ import {
   ClipboardList,
   Zap,
   Inbox,
-  ListChecks
+  ListChecks,
+  CalendarClock,
+  Bot
 } from "lucide-react";
 
 type NavGroup = {
@@ -57,6 +59,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
       { href: "/admin/action-needed", label: "Action Needed", icon: ListChecks },
+      { href: "/admin/copilot", label: "Copilot", icon: Bot },
     ],
   },
   {
@@ -72,6 +75,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/events", label: "Events", icon: CalendarDays },
       { href: "/admin/calendar", label: "Calendar", icon: CalendarDays },
+      { href: "/admin/meetings", label: "Meetings", icon: CalendarClock },
       { href: "/admin/gallery", label: "Gallery", icon: Image },
     ],
   },
@@ -88,6 +92,7 @@ const navGroups: NavGroup[] = [
     label: "Marketing",
     items: [
       { href: "/admin/blog", label: "Blog", icon: Sparkles },
+      { href: "/admin/social", label: "Social Publisher", icon: Megaphone },
       { href: "/admin/testimonials", label: "Testimonials", icon: Star },
     ],
   },
@@ -112,6 +117,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [pendingQuoteCount, setPendingQuoteCount] = useState(0);
   const [actionNeededCount, setActionNeededCount] = useState(0);
+  const [todaysMeetingCount, setTodaysMeetingCount] = useState(0);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
   const router = useRouter();
   const pathname = usePathname();
@@ -154,6 +160,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       } catch (e) {
         console.error('Failed to fetch action-needed count');
       }
+      try {
+        const res = await adminFetch('/api/admin/meetings');
+        const data = await res.json();
+        const now = new Date();
+        const todaysCount = (data.data || []).filter((m: { startTime: string; status: string }) => {
+          const d = new Date(m.startTime);
+          return m.status === 'Scheduled' && d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+        }).length;
+        setTodaysMeetingCount(todaysCount);
+      } catch (e) {
+        console.error('Failed to fetch meetings count');
+      }
     };
     fetchCounts();
     const interval = setInterval(fetchCounts, 60000); // Refresh every minute
@@ -177,7 +195,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return (
       <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
           <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">Loading Dashboard…</span>
         </div>
       </div>
@@ -207,12 +225,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Brand */}
         <div className="px-5 py-4 border-b border-slate-100">
           <Link href="/admin/dashboard" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center shadow-sm shadow-teal-500/20 group-hover:shadow-md group-hover:shadow-teal-500/30 transition-all duration-300">
+            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-sm shadow-emerald-500/20 group-hover:shadow-md group-hover:shadow-emerald-500/30 transition-all duration-300">
               <Zap className="text-white" size={16} />
             </div>
             <div className="flex flex-col">
               <span className="text-[13px] font-bold text-slate-900 tracking-tight leading-none">Saudi Event</span>
-              <span className="text-[9px] text-teal-600 font-semibold uppercase tracking-[0.15em] mt-0.5">Admin Console</span>
+              <span className="text-[9px] text-emerald-600 font-semibold uppercase tracking-[0.15em] mt-0.5">Admin Console</span>
             </div>
           </Link>
         </div>
@@ -259,14 +277,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             onClick={() => setSidebarOpen(false)}
                             className={`flex items-center group relative px-3 py-[7px] rounded-lg text-[13px] font-medium transition-all duration-200 ${
                               isActive
-                                ? "bg-teal-50 text-teal-700 font-semibold"
+                                ? "bg-emerald-50 text-emerald-700 font-semibold"
                                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
                             }`}
                           >
-                            <item.icon size={15} className={`transition-colors duration-200 flex-shrink-0 ${isActive ? "text-teal-600" : "text-slate-400 group-hover:text-slate-500"}`} />
+                            <item.icon size={15} className={`transition-colors duration-200 flex-shrink-0 ${isActive ? "text-emerald-600" : "text-slate-400 group-hover:text-slate-500"}`} />
                             <span className="ms-2.5 truncate">{item.label}</span>
                             {item.href === "/admin/quotes" && pendingQuoteCount > 0 && (
-                              <span className="ms-auto px-1.5 py-0.5 bg-teal-500 text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
+                              <span className="ms-auto px-1.5 py-0.5 bg-emerald-500 text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
                                 {pendingQuoteCount}
                               </span>
                             )}
@@ -275,12 +293,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                 {actionNeededCount}
                               </span>
                             )}
+                            {item.href === "/admin/meetings" && todaysMeetingCount > 0 && (
+                              <span className="ms-auto px-1.5 py-0.5 bg-emerald-500 text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
+                                {todaysMeetingCount}
+                              </span>
+                            )}
                             {isActive && (
                               <motion.div 
                                 layoutId="active-indicator"
                                 className="absolute end-2"
                               >
-                                <div className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                               </motion.div>
                             )}
                           </Link>
@@ -330,9 +353,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 const q = (e.currentTarget.elements.namedItem('q') as HTMLInputElement).value;
                 if (q.trim()) router.push(`/admin/search?q=${encodeURIComponent(q)}`);
               }}
-              className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-slate-50 rounded-lg border border-slate-200 group transition-all focus-within:border-teal-400/50 focus-within:bg-white focus-within:shadow-sm focus-within:shadow-teal-500/5"
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-slate-50 rounded-lg border border-slate-200 group transition-all focus-within:border-emerald-400/50 focus-within:bg-white focus-within:shadow-sm focus-within:shadow-emerald-500/5"
             >
-              <Search size={14} className="text-slate-400 group-focus-within:text-teal-500 transition-colors" />
+              <Search size={14} className="text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
               <input 
                 name="q"
                 type="text" 
@@ -346,7 +369,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center gap-2">
             <button className="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all relative">
               <Bell size={17} />
-              <span className="absolute top-2 end-2 w-2 h-2 bg-teal-500 rounded-full border-2 border-white" />
+              <span className="absolute top-2 end-2 w-2 h-2 bg-emerald-500 rounded-full border-2 border-white" />
             </button>
             <div className="h-6 w-px bg-slate-200 mx-1" />
             <div className="flex items-center gap-2.5 group cursor-pointer hover:bg-slate-50 rounded-lg px-2 py-1.5 transition-all">
@@ -354,7 +377,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <p className="text-xs font-semibold text-slate-700 leading-none">Administrator</p>
                 <p className="text-[10px] text-slate-400 font-medium mt-0.5">Saudi Event HQ</p>
               </div>
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold text-[11px] shadow-sm shadow-teal-500/20">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-[11px] shadow-sm shadow-emerald-500/20">
                 SE
               </div>
             </div>

@@ -61,6 +61,7 @@ type Application = {
   extraNotes?: string | null;
   vendorId?: string | null;
   createdAt: string;
+  isQuickRegistration?: boolean;
 };
 
 type VendorOption = { id: string; name: string; category: string };
@@ -102,10 +103,10 @@ function LinkRow({ label, url }: { label: string; url?: string | null }) {
         type="button"
         onClick={openFile}
         disabled={opening}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-teal-50 border border-teal-200 rounded-lg text-[12px] font-medium text-teal-700 hover:border-teal-300 transition-all disabled:opacity-60"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-[12px] font-medium text-emerald-700 hover:border-emerald-300 transition-all disabled:opacity-60"
       >
         <LinkIcon size={11} /> {label} (uploaded){" "}
-        <ExternalLink size={10} className="text-teal-400" />
+        <ExternalLink size={10} className="text-emerald-400" />
       </button>
     );
   }
@@ -116,7 +117,7 @@ function LinkRow({ label, url }: { label: string; url?: string | null }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-teal-300 hover:text-teal-700 transition-all"
+      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700 transition-all"
     >
       <LinkIcon size={11} /> {label} <ExternalLink size={10} className="text-slate-400" />
     </a>
@@ -147,12 +148,70 @@ export default function VendorApplicationsPage() {
   const fetchApplications = async () => {
     setLoading(true);
     try {
+      // 1. Fetch formal Partner Applications
       const res = await adminFetch(`/api/partner-applications?status=${tab}`);
       const data = await res.json();
-      if (!data.error) {
-        setApplications(data.applications || []);
-        setCounts(data.counts || { pending: 0, approved: 0, rejected: 0 });
+      const formalApps: Application[] = !data.error ? data.applications || [] : [];
+      const baseCounts = data.counts || { pending: 0, approved: 0, rejected: 0 };
+
+      // 2. Fetch initial Vendor Registration inquiries
+      let vendorInquiries: Application[] = [];
+      try {
+        const inqRes = await fetch("/api/contact?audience=partner");
+        const inqData = await inqRes.json();
+        if (Array.isArray(inqData)) {
+          vendorInquiries = inqData.map((inq: any) => {
+            let pLink: string | null = null;
+            if (inq.message && inq.message.includes("Portfolio: ")) {
+              const match = inq.message.match(/Portfolio:\s*([^\s\n]+)/);
+              if (match) pLink = match[1];
+            }
+
+            return {
+              id: inq.id,
+              appNumber: "INQ-REG",
+              status: inq.status || "Pending",
+              companyName: inq.company || inq.name || "Vendor Registration",
+              contactPerson: inq.name,
+              whatsapp: inq.phone || "N/A",
+              phone: inq.phone,
+              email: inq.email,
+              city: inq.venueCity || "Saudi Arabia",
+              regionCoverage: [],
+              categories: [inq.eventType || "Vendor / Partnership"],
+              servicesDesc: inq.message,
+              portfolioLink: pLink,
+              permLogoUse: false,
+              permMediaUse: false,
+              permNonCircumvention: false,
+              featureOnSem: false,
+              createdAt: inq.createdAt,
+              isQuickRegistration: true,
+            };
+          });
+        }
+      } catch (inqErr) {
+        console.error("Failed to fetch vendor inquiries:", inqErr);
       }
+
+      const filteredInquiries = tab === "all"
+        ? vendorInquiries
+        : vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === tab.toLowerCase());
+
+      const combined = [...formalApps, ...filteredInquiries].sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      const inqPending = vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === "pending").length;
+      const inqApproved = vendorInquiries.filter((i) => (i.status || "").toLowerCase() === "approved").length;
+      const inqRejected = vendorInquiries.filter((i) => (i.status || "").toLowerCase() === "rejected").length;
+
+      setApplications(combined);
+      setCounts({
+        pending: baseCounts.pending + inqPending,
+        approved: baseCounts.approved + inqApproved,
+        rejected: baseCounts.rejected + inqRejected,
+      });
     } catch (e) {
       console.error("Failed to fetch applications:", e);
     } finally {
@@ -184,40 +243,58 @@ export default function VendorApplicationsPage() {
     }
   };
 
-  const act = async (id: string, body: Record<string, unknown>) => {
+  const act = async (id: string, body: Record<string, unknown>, isQuickRegistration?: boolean) => {
     setBusy(true);
     try {
-      const res = await adminFetch(`/api/partner-applications/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (res.ok) {
-        setApproving(null);
-        setDupCandidates([]);
-        await fetchApplications();
-      } else if (res.status === 409) {
-        // Possible duplicate — surface it instead of silently creating a
-        // second vendor row. Admin picks merge or explicitly forces create.
-        const data = await res.json();
-        setDupCandidates(data.candidates || []);
+      if (isQuickRegistration) {
+        const newStatus = body.action === "reject" ? "Rejected" : body.action === "reopen" ? "Pending" : "Approved";
+        const res = await fetch(`/api/contact?id=${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        });
+        if (res.ok) {
+          setApproving(null);
+          setDupCandidates([]);
+          await fetchApplications();
+        } else {
+          alert("Failed to update status");
+        }
       } else {
-        const data = await res.json();
-        alert(data.error || "Action failed");
+        const res = await adminFetch(`/api/partner-applications/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          setApproving(null);
+          setDupCandidates([]);
+          await fetchApplications();
+        } else if (res.status === 409) {
+          const data = await res.json();
+          setDupCandidates(data.candidates || []);
+        } else {
+          const data = await res.json();
+          alert(data.error || "Action failed");
+        }
       }
     } finally {
       setBusy(false);
     }
   };
 
-  const remove = async (id: string, appNumber: string, vendorId?: string | null) => {
+  const remove = async (id: string, appNumber: string, vendorId?: string | null, isQuickRegistration?: boolean) => {
     const warning = vendorId
       ? `Delete application ${appNumber}? This only removes the application record — the vendor it already created stays in your Vendors list and must be deleted separately if unwanted. This cannot be undone.`
-      : `Delete application ${appNumber}? This cannot be undone.`;
+      : `Delete submission ${appNumber}? This cannot be undone.`;
     if (!confirm(warning)) return;
     setBusy(true);
     try {
-      await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
+      if (isQuickRegistration) {
+        await fetch(`/api/contact?id=${id}`, { method: "DELETE" });
+      } else {
+        await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
+      }
       await fetchApplications();
     } finally {
       setBusy(false);
@@ -230,11 +307,10 @@ export default function VendorApplicationsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <ClipboardList size={20} className="text-teal-600" /> Partner Applications
+            <ClipboardList size={20} className="text-emerald-600" /> Partner Applications & Vendor Registrations
           </h1>
           <p className="text-[12px] text-slate-400 mt-0.5">
-            Submissions from /partner-onboarding — approve to add to your vendor database.
-            Approval does <span className="font-semibold">not</span> publish anything on the website.
+            Submissions from /partner-onboarding and /vendor-registration — approve to manage in your vendor network.
           </p>
         </div>
         <button
@@ -255,7 +331,7 @@ export default function VendorApplicationsPage() {
               onClick={() => setTab(t)}
               className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all border ${
                 tab === t
-                  ? "bg-teal-50 border-teal-200 text-teal-700"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                   : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
               }`}
             >
@@ -291,6 +367,15 @@ export default function VendorApplicationsPage() {
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[13px] font-bold text-slate-900">{app.companyName}</span>
                       <span className="text-[10px] font-mono text-slate-400">{app.appNumber}</span>
+                      {app.isQuickRegistration ? (
+                        <span className="px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-blue-50 text-blue-700 border-blue-200">
+                          Vendor Registration
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-slate-50 text-slate-600 border-slate-200">
+                          Partner Profile
+                        </span>
+                      )}
                       <span className={`px-2 py-0.5 rounded-full border text-[10px] font-semibold ${statusBadge(app.status)}`}>
                         {app.status}
                       </span>
@@ -321,17 +406,17 @@ export default function VendorApplicationsPage() {
                             {app.contactPerson}{app.jobTitle ? ` — ${app.jobTitle}` : ""}
                           </span>
                           <span className="inline-flex items-center gap-1.5 text-[13px] text-slate-600">
-                            <Phone size={12} className="text-teal-600" /> {app.whatsapp}
+                            <Phone size={12} className="text-emerald-600" /> {app.whatsapp}
                           </span>
                           {app.email && (
                             <span className="inline-flex items-center gap-1.5 text-[13px] text-slate-600">
-                              <Mail size={12} className="text-teal-600" /> {app.email}
+                              <Mail size={12} className="text-emerald-600" /> {app.email}
                             </span>
                           )}
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-4">
-                          <Detail label="Services" value={app.servicesDesc} />
+                          <Detail label="Services / Details" value={app.servicesDesc} />
                           <Detail label="Coverage" value={app.regionCoverage.join(", ")} />
                           <Detail label="Business type" value={app.businessType} />
                           <Detail label="Years / Team / Languages" value={[app.yearsInBusiness && `${app.yearsInBusiness} yrs`, app.teamSize && `team ${app.teamSize}`, app.languages].filter(Boolean).join(" · ")} />
@@ -344,7 +429,7 @@ export default function VendorApplicationsPage() {
 
                         {/* Links */}
                         <div className="flex flex-wrap gap-2">
-                          <LinkRow label="Photos" url={app.portfolioLink} />
+                          <LinkRow label="Portfolio / Website" url={app.portfolioLink} />
                           <LinkRow label="Profile PDF" url={app.profileLink} />
                           <LinkRow label="Logo" url={app.logoLink} />
                           <LinkRow label="Video" url={app.videoLink} />
@@ -359,24 +444,26 @@ export default function VendorApplicationsPage() {
                         </div>
 
                         {/* Permissions */}
-                        <div className="flex flex-wrap gap-2">
-                          {[
-                            [app.permNonCircumvention, "Non-circumvention agreed"],
-                            [app.permMediaUse, "Media use permission"],
-                            [app.permLogoUse, "Logo display permission"],
-                            [app.featureOnSem, "Wants SEM feature"],
-                            [!!app.backlinkAnswer, `Backlink: ${app.backlinkAnswer || "—"}`],
-                          ].map(([ok, label], i) => (
-                            <span
-                              key={i}
-                              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full border text-[11px] font-medium ${
-                                ok ? "bg-emerald-50 border-emerald-200 text-emerald-700" : "bg-slate-50 border-slate-200 text-slate-400"
-                              }`}
-                            >
-                              <ShieldCheck size={11} /> {label}
-                            </span>
-                          ))}
-                        </div>
+                        {!app.isQuickRegistration && (
+                          <div className="flex flex-wrap gap-2">
+                            {[
+                              [app.permNonCircumvention, "Non-circumvention agreed"],
+                              [app.permMediaUse, "Media use permission"],
+                              [app.permLogoUse, "Logo display permission"],
+                              [app.featureOnSem, "Wants SEM feature"],
+                              [!!app.backlinkAnswer, `Backlink: ${app.backlinkAnswer || "—"}`],
+                            ].map(([ok, label], i) => (
+                              <span
+                                key={i}
+                                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full border text-[11px] font-medium ${
+                                  ok ? "bg-emerald-50 border-emerald-200 text-emerald-700" : "bg-slate-50 border-slate-200 text-slate-400"
+                                }`}
+                              >
+                                <ShieldCheck size={11} /> {label}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
                         {/* Actions */}
                         {app.status === "Pending" && (
@@ -389,7 +476,7 @@ export default function VendorApplicationsPage() {
                                 <select
                                   value={mergeVendorId}
                                   onChange={(e) => setMergeVendorId(e.target.value)}
-                                  className="w-full max-w-md px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[13px] text-slate-700 outline-none focus:border-teal-400"
+                                  className="w-full max-w-md px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[13px] text-slate-700 outline-none focus:border-emerald-400"
                                 >
                                   <option value="">➕ Create as NEW vendor</option>
                                   {vendorOptions.map((v) => (
@@ -409,7 +496,7 @@ export default function VendorApplicationsPage() {
                                         </span>
                                         <button
                                           onClick={() => setMergeVendorId(c.vendor.id)}
-                                          className="text-teal-600 font-semibold hover:underline"
+                                          className="text-emerald-600 font-semibold hover:underline"
                                         >
                                           Merge into this
                                         </button>
@@ -424,7 +511,7 @@ export default function VendorApplicationsPage() {
                                 <div className="flex gap-2">
                                   <button
                                     disabled={busy}
-                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined })}
+                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined }, app.isQuickRegistration)}
                                     className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 text-white rounded-lg text-[12px] font-semibold hover:bg-emerald-600 transition-all disabled:opacity-60"
                                   >
                                     <CheckCircle2 size={13} /> Confirm Approve
@@ -432,7 +519,7 @@ export default function VendorApplicationsPage() {
                                   {dupCandidates.length > 0 && !mergeVendorId && (
                                     <button
                                       disabled={busy}
-                                      onClick={() => act(app.id, { action: "approve", forceCreate: true })}
+                                      onClick={() => act(app.id, { action: "approve", forceCreate: true }, app.isQuickRegistration)}
                                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all disabled:opacity-60"
                                     >
                                       Create anyway (different company)
@@ -457,14 +544,14 @@ export default function VendorApplicationsPage() {
                                 </button>
                                 <button
                                   disabled={busy}
-                                  onClick={() => act(app.id, { action: "reject" })}
+                                  onClick={() => act(app.id, { action: "reject" }, app.isQuickRegistration)}
                                   className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-red-200 text-red-500 rounded-lg text-[12px] font-semibold hover:bg-red-50 transition-all"
                                 >
                                   <XCircle size={13} /> Reject
                                 </button>
                                 <button
                                   disabled={busy}
-                                  onClick={() => remove(app.id, app.appNumber)}
+                                  onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
                                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all ms-auto"
                                 >
                                   <Trash2 size={13} /> Delete (spam)
@@ -477,14 +564,14 @@ export default function VendorApplicationsPage() {
                           <div className="flex flex-wrap gap-2">
                             <button
                               disabled={busy}
-                              onClick={() => act(app.id, { action: "reopen" })}
+                              onClick={() => act(app.id, { action: "reopen" }, app.isQuickRegistration)}
                               className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
                             >
                               Reopen as Pending
                             </button>
                             <button
                               disabled={busy}
-                              onClick={() => remove(app.id, app.appNumber)}
+                              onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
                               className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
                             >
                               <Trash2 size={13} /> Delete
@@ -500,7 +587,7 @@ export default function VendorApplicationsPage() {
                             )}
                             <button
                               disabled={busy}
-                              onClick={() => remove(app.id, app.appNumber, app.vendorId)}
+                              onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
                               className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
                             >
                               <Trash2 size={13} /> Delete application
@@ -519,3 +606,4 @@ export default function VendorApplicationsPage() {
     </div>
   );
 }
+

@@ -134,7 +134,7 @@ export default function AdminGallery() {
                       value={form.url}
                       onChange={(e) => setForm({ ...form, url: e.target.value })}
                       placeholder="https://images.unsplash.com/..."
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400"
                     />
                   </div>
                   <div className="space-y-1">
@@ -147,7 +147,7 @@ export default function AdminGallery() {
                       value={form.alt}
                       onChange={(e) => setForm({ ...form, alt: e.target.value })}
                       placeholder="e.g. Grand Ballroom Floral Decor"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400"
                     />
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function AdminGallery() {
                         required
                         value={form.type}
                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-teal-400 appearance-none cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-850 focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer"
                       >
                         <option value="image">Still Image</option>
                         <option value="video">Cinematic Video</option>
@@ -214,11 +214,11 @@ export default function AdminGallery() {
               key={asset.id}
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white border border-slate-200 rounded-2xl overflow-hidden group hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col"
+              className="bg-white border border-slate-200 rounded-2xl overflow-hidden group hover:border-emerald-400 hover:shadow-md transition-all duration-300 flex flex-col"
             >
               <div className="relative h-48 overflow-hidden bg-slate-100">
                 {asset.type === 'video' ? (
-                  <div className="w-full h-full flex items-center justify-center bg-slate-900 text-teal-500">
+                  <div className="w-full h-full flex items-center justify-center bg-slate-900 text-emerald-500">
                     <ImageIcon size={32} />
                     <span className="absolute bottom-3 start-3 text-[9px] font-bold uppercase tracking-wider bg-black/40 px-2 py-0.5 rounded text-white">Video Asset</span>
                   </div>
@@ -235,7 +235,7 @@ export default function AdminGallery() {
                 <div className="min-w-0 flex-1 me-3">
                   <h3 className="text-xs font-bold text-slate-800 truncate tracking-tight">{asset.alt || "Untitled Asset"}</h3>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[9px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-100 uppercase tracking-wider">
+                    <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 uppercase tracking-wider">
                       {asset.event?.type || 'Portfolio'}
                     </span>
                     <span className="text-[9px] text-slate-400 font-medium">Added {new Date(asset.createdAt).toLocaleDateString()}</span>

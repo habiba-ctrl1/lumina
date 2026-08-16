@@ -236,7 +236,7 @@ export default function AdminEvents() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by event title, location..." 
-              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
           
@@ -244,7 +244,7 @@ export default function AdminEvents() {
             <select 
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 min-w-[120px]"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 min-w-[120px]"
             >
               <option value="all">All Types</option>
               {eventTypes.map(t => <option key={t} value={t}>{t}</option>)}
@@ -253,7 +253,7 @@ export default function AdminEvents() {
             <select 
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 min-w-[120px]"
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 min-w-[120px]"
             >
               <option value="all">All Statuses</option>
               {eventStatuses.map(s => <option key={s} value={s}>{s}</option>)}
@@ -262,7 +262,7 @@ export default function AdminEvents() {
             <button 
               onClick={fetchEvents}
               disabled={loading}
-              className="p-2 bg-white border border-slate-200 rounded-xl text-teal-600 hover:bg-slate-50 transition-all shadow-sm"
+              className="p-2 bg-white border border-slate-200 rounded-xl text-emerald-600 hover:bg-slate-50 transition-all shadow-sm"
             >
               <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
             </button>
@@ -304,12 +304,12 @@ export default function AdminEvents() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 font-bold text-sm shadow-sm group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                        <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                           {event.type.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-slate-800 font-semibold text-xs tracking-tight group-hover:text-teal-650 transition-colors">{event.title}</p>
-                          <span className="text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.2 rounded mt-0.5 inline-block border border-teal-100">
+                          <p className="text-slate-800 font-semibold text-xs tracking-tight group-hover:text-emerald-650 transition-colors">{event.title}</p>
+                          <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded mt-0.5 inline-block border border-emerald-100">
                             {event.type}
                           </span>
                         </div>
@@ -342,7 +342,7 @@ export default function AdminEvents() {
                       <div className="space-y-0.5 text-[11px] text-slate-600">
                         {event.date && <p className="flex items-center gap-1"><Calendar size={11} className="text-slate-400" /> {new Date(event.date).toLocaleDateString()}</p>}
                         {event.location && <p className="flex items-center gap-1"><MapPin size={11} className="text-slate-400" /> {event.location}</p>}
-                        {event.budget && <p className="flex items-center gap-1 font-semibold text-teal-600"><DollarSign size={11} /> SAR {parseFloat(event.budget).toLocaleString()}</p>}
+                        {event.budget && <p className="flex items-center gap-1 font-semibold text-emerald-600"><DollarSign size={11} /> SAR {parseFloat(event.budget).toLocaleString()}</p>}
                       </div>
                     </td>
                     <td className="px-6 py-4 text-end">
@@ -378,7 +378,7 @@ export default function AdminEvents() {
             >
               <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 rounded-t-[2rem]">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-teal-500 rounded-xl text-white shadow-md shadow-teal-500/20">
+                  <div className="p-3 bg-emerald-500 rounded-xl text-white shadow-md shadow-emerald-500/20">
                     <Briefcase size={22} />
                   </div>
                   <div>
@@ -408,7 +408,7 @@ export default function AdminEvents() {
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="flex items-center gap-1.5 text-slate-500"><DollarSign size={14}/> Budget:</span>
-                          <span className="text-teal-650">{activeWorkspace.budget ? `SAR ${parseFloat(activeWorkspace.budget).toLocaleString()}` : "TBD"}</span>
+                          <span className="text-emerald-650">{activeWorkspace.budget ? `SAR ${parseFloat(activeWorkspace.budget).toLocaleString()}` : "TBD"}</span>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="flex items-center gap-1.5 text-slate-500"><Info size={14}/> Status:</span>
@@ -422,7 +422,7 @@ export default function AdminEvents() {
                       <div className="flex items-center gap-2">
                         <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-teal-500 transition-all duration-500" 
+                            className="h-full bg-emerald-500 transition-all duration-500" 
                             style={{ 
                               width: activeWorkspace.timeline === 'Completed' ? '100%' : 
                                      activeWorkspace.timeline === 'Execution' ? '80%' : 
@@ -452,18 +452,18 @@ export default function AdminEvents() {
                             onClick={() => toggleWorkspaceTask(task.id)}
                             className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
                               task.done 
-                                ? 'bg-teal-50/50 border-teal-200/50' 
+                                ? 'bg-emerald-50/50 border-emerald-200/50' 
                                 : 'bg-white border-slate-100 hover:border-slate-200 shadow-sm'
                             }`}
                           >
                             <div className="flex-shrink-0">
                               {task.done ? (
-                                <CheckSquare size={20} className="text-teal-500" />
+                                <CheckSquare size={20} className="text-emerald-500" />
                               ) : (
                                 <Square size={20} className="text-slate-300" />
                               )}
                             </div>
-                            <span className={`text-sm font-bold ${task.done ? 'text-teal-800 line-through opacity-70' : 'text-slate-700'}`}>
+                            <span className={`text-sm font-bold ${task.done ? 'text-emerald-800 line-through opacity-70' : 'text-slate-700'}`}>
                               {task.label}
                             </span>
                           </div>
@@ -509,7 +509,7 @@ export default function AdminEvents() {
             >
               <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-teal-500 rounded-xl text-white shadow-md">
+                  <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-md">
                     <Plus size={18} />
                   </div>
                   <div>
@@ -535,7 +535,7 @@ export default function AdminEvents() {
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                       placeholder="e.g. Royal Wedding Reception" 
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                     />
                   </div>
 
@@ -544,7 +544,7 @@ export default function AdminEvents() {
                     <select 
                       value={formData.clientId}
                       onChange={(e) => setFormData({ ...formData, clientId: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                     >
                       <option value="">Select client...</option>
                       {clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -568,7 +568,7 @@ export default function AdminEvents() {
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                         placeholder="Riyadh, Saudi Arabia" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -579,7 +579,7 @@ export default function AdminEvents() {
                       <select 
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       >
                         {eventTypes.map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
@@ -589,7 +589,7 @@ export default function AdminEvents() {
                       <select 
                         value={formData.status}
                         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       >
                         {eventStatuses.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
@@ -604,7 +604,7 @@ export default function AdminEvents() {
                         value={formData.guestCount}
                         onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })}
                         placeholder="e.g. 500" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                     <div className="space-y-1">
@@ -614,7 +614,7 @@ export default function AdminEvents() {
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         placeholder="e.g. 150000" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                       />
                     </div>
                   </div>
@@ -624,7 +624,7 @@ export default function AdminEvents() {
                     <select 
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400"
                     >
                       {timelines.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
@@ -637,7 +637,7 @@ export default function AdminEvents() {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       placeholder="Brief details about custom themes, logistics details..." 
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400 resize-none"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400 resize-none"
                     />
                   </div>
 
@@ -647,7 +647,7 @@ export default function AdminEvents() {
                       disabled={isSubmitting}
                       className="w-full bg-slate-900 text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-teal-400" size={14} />}
+                      {isSubmitting ? <RefreshCw className="animate-spin" size={14} /> : <CheckCircle2 className="text-emerald-400" size={14} />}
                       {isSubmitting ? "Creating Event..." : "Register Event Project"}
                     </button>
                   </div>

@@ -95,7 +95,7 @@ export default function CalendarPage() {
         {/* Calendar Header */}
         <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
           <div className="flex items-center gap-4">
-            <div className="p-2 bg-teal-500 rounded-xl text-white shadow-md">
+            <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-md">
               <CalendarDays size={20} />
             </div>
             <div>
@@ -149,7 +149,7 @@ export default function CalendarPage() {
                 <div className="flex justify-between items-start mb-2">
                   <span className={`text-xs font-bold transition-all ${
                     isToday 
-                      ? 'w-6 h-6 flex items-center justify-center rounded-lg bg-teal-500 text-white shadow-md shadow-teal-500/20' 
+                      ? 'w-6 h-6 flex items-center justify-center rounded-lg bg-emerald-500 text-white shadow-md shadow-emerald-500/20' 
                       : !item.currentMonth ? 'text-slate-300' : 'text-slate-400 group-hover:text-slate-700'
                   }`}>
                     {item.date}
@@ -157,7 +157,7 @@ export default function CalendarPage() {
                   {dateEvents.length > 0 && (
                     <div className="flex gap-0.5">
                       {dateEvents.slice(0, 3).map((_, idx) => (
-                        <div key={idx} className="w-1 h-1 rounded-full bg-teal-500" />
+                        <div key={idx} className="w-1 h-1 rounded-full bg-emerald-500" />
                       ))}
                     </div>
                   )}
@@ -172,7 +172,7 @@ export default function CalendarPage() {
                       className={`p-1.5 rounded-lg border text-[10px] leading-tight ${
                         event.type === 'Wedding' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' :
                         event.type === 'Corporate' ? 'bg-blue-50 border-blue-100 text-blue-700' :
-                        'bg-teal-50 border-teal-100 text-teal-705'
+                        'bg-emerald-50 border-emerald-100 text-emerald-705'
                       }`}
                     >
                       <p className="font-bold truncate mb-0.5">{event.title}</p>

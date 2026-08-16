@@ -434,6 +434,17 @@ model Meeting {
   updatedAt    DateTime  @updatedAt
 }
 
+// SEM Copilot — a single-session chat log for the founder's AI ops advisor
+// (paste a client/vendor message, get next-step guidance). Not tied to a
+// specific Client/Event yet; sessionId groups one conversation thread.
+model ChatMessage {
+  id        String   @id @default(uuid())
+  sessionId String   @default("default")
+  role      String   // user, assistant
+  content   String
+  createdAt DateTime @default(now())
+}
+
 model Communication {
   id          String   @id @default(uuid())
   type        String   // whatsapp, email, sms, call, note

@@ -113,14 +113,14 @@ function SearchResultsContent() {
           Universal Search
         </h1>
         <p className="text-slate-500 text-sm">
-          Showing results for &quot;<span className="text-teal-650 font-bold">{query}</span>&quot; across the intelligence hub.
+          Showing results for &quot;<span className="text-emerald-650 font-bold">{query}</span>&quot; across the intelligence hub.
         </p>
       </div>
 
       <div className="space-y-3">
         {loading ? (
           <div className="py-16 flex flex-col items-center justify-center gap-4">
-            <Loader2 className="animate-spin text-teal-600" size={28} />
+            <Loader2 className="animate-spin text-emerald-600" size={28} />
             <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Scanning Repositories</p>
           </div>
         ) : results.length === 0 ? (
@@ -142,18 +142,18 @@ function SearchResultsContent() {
               >
                 <Link 
                   href={result.href}
-                  className="bg-white border border-slate-200/80 rounded-2xl p-4 flex items-center justify-between hover:border-teal-400 hover:shadow-md transition-all group"
+                  className="bg-white border border-slate-200/80 rounded-2xl p-4 flex items-center justify-between hover:border-emerald-400 hover:shadow-md transition-all group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-teal-50 text-teal-600 border border-teal-100 rounded-xl flex items-center justify-center transition-all shadow-sm">
+                    <div className="w-10 h-10 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl flex items-center justify-center transition-all shadow-sm">
                       {getTypeIcon(result.type)}
                     </div>
                     <div>
-                      <h3 className="text-xs font-bold text-slate-800 mb-0.5 group-hover:text-teal-600 transition-colors tracking-tight">{result.title}</h3>
+                      <h3 className="text-xs font-bold text-slate-800 mb-0.5 group-hover:text-emerald-600 transition-colors tracking-tight">{result.title}</h3>
                       <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">{result.subtitle}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-teal-600 transition-all">
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-emerald-600 transition-all">
                     Access Record <ArrowRight size={12} />
                   </div>
                 </Link>

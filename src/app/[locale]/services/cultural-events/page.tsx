@@ -316,8 +316,8 @@ export default function SeasonalEventsPage() {
                 <h3 className="text-2xl font-sans font-bold text-slate-900">{isAr ? <>موارد <br/><span className="text-[var(--primary)]">التراث</span></> : <>Heritage <br/><span className="text-[var(--primary)]">Resources</span></>}</h3>
                 <p className="text-gray-500 text-sm font-light leading-relaxed">{isAr ? "رؤى خبيرة لتخطيط فعاليات ذات دلالة ثقافية في عموم المملكة." : "Expert insights for planning culturally significant events across the Kingdom."}</p>
                 <div className="pt-6 border-t border-slate-200">
-                  <p className="text-slate-900 font-bold text-sm">{isAr ? "صالح الحميد" : "Saleh Al-Humaid"}</p>
-                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">{isAr ? "مستشار الشؤون الثقافية" : "Cultural Affairs Advisor"}</p>
+                  <p className="text-slate-900 font-bold text-sm">{isAr ? "فريق سعودي لإدارة الفعاليات" : "Saudi Event Management Team"}</p>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest">{isAr ? "الشؤون الثقافية" : "Cultural Events"}</p>
                 </div>
               </div>
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10">

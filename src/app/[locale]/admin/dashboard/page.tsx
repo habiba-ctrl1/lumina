@@ -177,7 +177,7 @@ export default function AdminDashboard() {
   };
 
   const cards = [
-    { label: "New Leads", value: stats.newLeads, icon: Target, color: "text-teal-600", bg: "bg-teal-50" },
+    { label: "New Leads", value: stats.newLeads, icon: Target, color: "text-emerald-600", bg: "bg-emerald-50" },
     { label: "Pending Quotes", value: stats.pendingQuotes, icon: MessageSquareQuote, color: "text-blue-600", bg: "bg-blue-50" },
     { label: "Active Events", value: stats.activeEvents, icon: CalendarDays, color: "text-indigo-600", bg: "bg-indigo-50" },
     { label: "Vendors Available", value: stats.vendorsAvailable, icon: Briefcase, color: "text-violet-600", bg: "bg-violet-50" },
@@ -237,7 +237,7 @@ export default function AdminDashboard() {
                 <h2 className="text-sm font-semibold text-slate-850">Recent Inquiries</h2>
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Automated inbound client queue</p>
               </div>
-              <Link href="/admin/inquiries" className="text-xs font-semibold text-teal-600 hover:text-teal-700">View All →</Link>
+              <Link href="/admin/inquiries" className="text-xs font-semibold text-emerald-600 hover:text-emerald-700">View All →</Link>
             </div>
             <div className="divide-y divide-slate-100">
               {loading ? (
@@ -283,7 +283,7 @@ export default function AdminDashboard() {
                 value={newTaskText}
                 onChange={(e) => setNewTaskText(e.target.value)}
                 placeholder="Add task details (e.g. Schedule photoshoot booking)..." 
-                className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-teal-400"
+                className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400"
               />
               <button 
                 type="submit"
@@ -304,7 +304,7 @@ export default function AdminDashboard() {
                     className="flex items-center gap-3 text-start flex-1 min-w-0"
                   >
                     {task.completed ? (
-                      <CheckCircle2 size={16} className="text-teal-600 flex-shrink-0" />
+                      <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
                     ) : (
                       <div className="w-4 h-4 rounded border border-slate-300 flex-shrink-0" />
                     )}
@@ -333,21 +333,21 @@ export default function AdminDashboard() {
           
           {/* Quick Stats Summary Widget */}
           <div className="bg-slate-900 text-white rounded-2xl p-5 shadow-md relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl -mr-10 -mt-10" />
-            <h4 className="text-[10px] text-teal-400 font-bold uppercase tracking-wider mb-1">Owner Performance</h4>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl -mr-10 -mt-10" />
+            <h4 className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider mb-1">Owner Performance</h4>
             <h3 className="text-lg font-bold mb-3">Single Operator Status</h3>
             <div className="space-y-2.5 text-xs text-slate-300 font-medium">
               <div className="flex justify-between border-b border-white/10 pb-1.5">
                 <span>Auto-Lead Capture</span>
-                <span className="text-teal-400 font-bold">Enabled</span>
+                <span className="text-emerald-400 font-bold">Enabled</span>
               </div>
               <div className="flex justify-between border-b border-white/10 pb-1.5">
                 <span>AI Sourcing Engine</span>
-                <span className="text-teal-400 font-bold">Active</span>
+                <span className="text-emerald-400 font-bold">Active</span>
               </div>
               <div className="flex justify-between pb-0.5">
                 <span>WhatsApp Auto-Link</span>
-                <span className="text-teal-400 font-bold">Configured</span>
+                <span className="text-emerald-400 font-bold">Configured</span>
               </div>
             </div>
           </div>
@@ -363,7 +363,7 @@ export default function AdminDashboard() {
               ) : (
                 activityLogs.map((log) => (
                   <div key={log.id} className="relative ps-4 border-l border-slate-100 pb-1 last:pb-0">
-                    <div className="absolute -start-1 top-1 w-2 h-2 rounded-full bg-teal-500" />
+                    <div className="absolute -start-1 top-1 w-2 h-2 rounded-full bg-emerald-500" />
                     <p className="text-xs text-slate-800 font-semibold">{log.action}</p>
                     <p className="text-[10px] text-slate-400 mt-0.5">
                       {log.details} · {mounted && new Date(log.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -403,7 +403,7 @@ export default function AdminDashboard() {
                   <input 
                     type="text" 
                     required 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-400" 
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-400" 
                     placeholder="Client name" 
                     value={inquiryForm.name} 
                     onChange={e => setInquiryForm({...inquiryForm, name: e.target.value})} 
@@ -452,7 +452,7 @@ export default function AdminDashboard() {
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Message / Directives</label>
                   <textarea 
                     rows={3} 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-medium focus:outline-none focus:border-teal-400 resize-none" 
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs font-medium focus:outline-none focus:border-emerald-400 resize-none" 
                     placeholder="Enter customer specific desires..." 
                     value={inquiryForm.message} 
                     onChange={e => setInquiryForm({...inquiryForm, message: e.target.value})} 

@@ -44,6 +44,7 @@ const CATEGORIES = [
   'Decorations & Floral',
   'Security',
   'Hospitality',
+  'Corporate Gifts & Giveaways',
   'Other',
 ];
 

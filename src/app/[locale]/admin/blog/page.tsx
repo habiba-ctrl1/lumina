@@ -61,7 +61,7 @@ export default function AdminBlogPage() {
             <input 
               type="text" 
               placeholder="Search articles..." 
-              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-200 rounded-xl ps-9 pe-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
           <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all shadow-sm">
@@ -119,7 +119,7 @@ export default function AdminBlogPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-2 py-0.5 rounded-md bg-teal-50 border border-teal-105 text-[9px] uppercase tracking-wider font-bold text-teal-700">
+                      <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-105 text-[9px] uppercase tracking-wider font-bold text-emerald-700">
                         {post.category}
                       </span>
                     </td>
@@ -151,7 +151,7 @@ export default function AdminBlogPage() {
                           <ExternalLink size={14} />
                         </Link>
                         <button 
-                          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-455 hover:text-teal-600 hover:bg-teal-50"
+                          className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-455 hover:text-emerald-600 hover:bg-emerald-50"
                           title="Edit Article"
                         >
                           <Edit3 size={14} />

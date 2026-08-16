@@ -66,7 +66,7 @@ export default function AnalyticsPage() {
           disabled={loading}
           className="flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl shadow-sm active:scale-95 transition-all"
         >
-          <RefreshCw size={14} className={loading ? "animate-spin text-teal-650" : "text-teal-650"} />
+          <RefreshCw size={14} className={loading ? "animate-spin text-emerald-650" : "text-emerald-650"} />
           Refresh Stats
         </button>
       </div>
@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
 
       {loading ? (
         <div className="py-20 flex flex-col items-center justify-center gap-4">
-          <RefreshCw className="animate-spin text-teal-650" size={32} />
+          <RefreshCw className="animate-spin text-emerald-650" size={32} />
           <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Loading Business Intelligence Hub...</p>
         </div>
       ) : !data ? (
@@ -135,7 +135,7 @@ export default function AnalyticsPage() {
               {/* Financial chart */}
               <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm md:col-span-2">
                 <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1.5">
-                  <DollarSign size={16} className="text-teal-650" />
+                  <DollarSign size={16} className="text-emerald-650" />
                   Financial Inflows & Outflows (SAR)
                 </h3>
                 
@@ -151,7 +151,7 @@ export default function AnalyticsPage() {
                           {/* Revenue bar */}
                           <div 
                             style={{ height: `${Math.max(revenueHeight, 4)}px` }}
-                            className="w-3 bg-teal-500 rounded-t-sm relative group cursor-pointer"
+                            className="w-3 bg-emerald-500 rounded-t-sm relative group cursor-pointer"
                           >
                             <span className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] px-1.5 py-0.5 rounded font-bold opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap z-10">
                               Revenue: {f.revenue.toLocaleString()}
@@ -174,7 +174,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="flex gap-4 justify-end mt-4 text-[10px] font-bold">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2.5 h-2.5 bg-teal-500 rounded-sm" />
+                    <div className="w-2.5 h-2.5 bg-emerald-500 rounded-sm" />
                     <span className="text-slate-500">Inflows (Revenue)</span>
                   </div>
                   <div className="flex items-center gap-1.5">
@@ -187,7 +187,7 @@ export default function AnalyticsPage() {
               {/* Conversion and stats details */}
               <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm space-y-4">
                 <h3 className="text-sm font-semibold text-slate-800 mb-2 flex items-center gap-1.5">
-                  <TrendingUp size={16} className="text-teal-650" />
+                  <TrendingUp size={16} className="text-emerald-650" />
                   Performance Insights
                 </h3>
 
@@ -199,7 +199,7 @@ export default function AnalyticsPage() {
                         ? ((data.counters.totalProposals / data.counters.totalInquiries) * 100).toFixed(1)
                         : "0.0"}%
                     </h4>
-                    <span className="text-[10px] text-teal-600 font-bold">Proposal Generation</span>
+                    <span className="text-[10px] text-emerald-600 font-bold">Proposal Generation</span>
                   </div>
                 </div>
 
@@ -233,7 +233,7 @@ export default function AnalyticsPage() {
               {/* Event type distribution */}
               <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm">
                 <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1.5">
-                  <Layers size={16} className="text-teal-650" />
+                  <Layers size={16} className="text-emerald-650" />
                   Event Type Distribution
                 </h3>
                 <div className="space-y-3">
@@ -253,7 +253,7 @@ export default function AnalyticsPage() {
                           <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                             <div 
                               style={{ width: `${percentage}%` }}
-                              className="bg-teal-500 h-full rounded-full"
+                              className="bg-emerald-500 h-full rounded-full"
                             />
                           </div>
                         </div>
@@ -266,7 +266,7 @@ export default function AnalyticsPage() {
               {/* Vendor Category spread */}
               <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm">
                 <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1.5">
-                  <Briefcase size={16} className="text-teal-650" />
+                  <Briefcase size={16} className="text-emerald-650" />
                   Vendor Partners Categories Segment
                 </h3>
                 <div className="space-y-3">

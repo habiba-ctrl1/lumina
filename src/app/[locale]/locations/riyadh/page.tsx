@@ -161,7 +161,6 @@ const jsonLd = {
         "General Entertainment Authority (GEA)",
         "Saudi Exhibitions & Conventions Bureau (SECB)",
         "Vision 2030 corporate events",
-        "Public Investment Fund (PIF) events",
       ],
       "sameAs": ["https://www.wikidata.org/wiki/Q3692"],
     },
