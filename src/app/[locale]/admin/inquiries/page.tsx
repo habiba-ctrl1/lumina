@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2 } from "lucide-react";
+import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2, Clock } from "lucide-react";
 
 type Inquiry = {
   id: string;
@@ -246,6 +246,12 @@ export default function AdminInquiries() {
               </div>
 
               <div className="space-y-1.5 mb-4 flex-1 text-xs text-slate-600">
+                {inquiry.createdAt && (
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <Clock size={12} />
+                    <span>Submitted {new Date(inquiry.createdAt).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                  </div>
+                )}
                 <div className="flex items-center gap-2 truncate">
                   <Mail size={12} className="text-slate-400" />
                   <span>{inquiry.email}</span>
