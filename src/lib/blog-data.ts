@@ -1907,10 +1907,10 @@ export const blogPosts: BlogPost[] = [
     slug: "national-day-event-ideas-saudi-arabia-corporates",
     titleAr: "أفكار فعاليات اليوم الوطني السعودي للشركات: دليل تخطيط 23 سبتمبر",
     excerptAr: "أفكار وفعاليات مبتكرة للشركات للاحتفال باليوم الوطني السعودي — من التفعيلات إلى الحفلات المؤسسية التي تعزّز الانتماء والهوية.",
-    metaTitleAr: "أفكار فعاليات اليوم الوطني السعودي للشركات 2026",
-    metaDescriptionAr: "دليل تخطيط فعاليات اليوم الوطني السعودي للشركات في 23 سبتمبر — أفكار إبداعية للتفعيلات والحفلات المؤسسية التي تعزّز روح الانتماء والهوية الوطنية.",
-    metaTitle: "Saudi National Day Event Ideas for Corporates | September 23 Planning Guide",
-    metaDescription: "Creative Saudi National Day (September 23) corporate event ideas — gala dinners, patriotic activations, and themed experiences with full GEA compliance.",
+    metaTitleAr: "أفكار فعاليات اليوم الوطني السعودي 2026 للشركات | احجز الآن",
+    metaDescriptionAr: "أفكار فعاليات اليوم الوطني السعودي (23 سبتمبر) 2026 للشركات — حفلات وطنية، وترفيه مرخّص من الهيئة العامة للترفيه، وخدمات ضيافة لكبار الشخصيات. القاعات تُحجز بسرعة — احصل على عرض سعر مجاني اليوم.",
+    metaTitle: "Saudi National Day 2026 Event Ideas for Corporates | Book Now",
+    metaDescription: "Saudi National Day (Sept 23) corporate event ideas for 2026 — patriotic galas, GEA-compliant entertainment, and VIP guest logistics. Venues fill fast — get a free quote today.",
     title: "Saudi National Day Event Ideas for Corporates: September 23 Planning Guide",
     excerpt: "Creative corporate event ideas for Saudi National Day (September 23) — patriotic galas, themed activations, and how to book GEA-compliant entertainment.",
     category: "Event Planning",
@@ -1934,6 +1934,7 @@ export const blogPosts: BlogPost[] = [
       "- **Follow the Rules:** Every year, the GEA releases specific branding rules (colors, logos, slogans) for National Day. Your event design must strictly follow these guidelines.",
       "## 3. Secure the Best Performers",
       "The best Ardah dancers and Oud players get booked up months in advance. Do not leave your entertainment to the last minute!",
+      "[CTA] Hosting VIP guests or a large staff celebration this National Day? Our [entertainment](/services/entertainment), [VIP transportation](/services/vip-transportation), and [valet parking](/services/valet-parking) partners can be added to any package — get a same-day quote before the September rush.",
       "Want to throw the best Saudi National Day event your company has ever seen? Let our expert team handle the venues, the permits, and the performers. [Contact us today](/contact) to start planning an unforgettable September 23 celebration!"
     ],
     contentAr: [
@@ -1951,6 +1952,7 @@ export const blogPosts: BlogPost[] = [
       "- **اتبع القواعد:** كل عام، تُصدر الهيئة العامة للترفيه قواعد هوية محددة (ألوان، وشعارات، وعبارات) لليوم الوطني. ويجب أن يتبع تصميم فعاليتك هذه الإرشادات بدقّة.",
       "## 3. أمّن أفضل الفنانين",
       "أفضل راقصي العرضة وعازفي العود يُحجزون قبل أشهر. لا تترك ترفيهك للحظة الأخيرة!",
+      "[CTA] تستضيف ضيوفًا من كبار الشخصيات أو احتفالًا كبيرًا للموظفين هذا اليوم الوطني؟ يمكن إضافة شركاء [الترفيه](/services/entertainment) و[النقل الفاخر لكبار الشخصيات](/services/vip-transportation) و[خدمة الفاليه](/services/valet-parking) إلى أي باقة — احصل على عرض سعر في نفس اليوم قبل ازدحام سبتمبر.",
       "تريد إقامة أفضل فعالية يوم وطني سعودي رأتها شركتك؟ دع فريقنا الخبير يتولّى القاعات والتصاريح والفنانين. [تواصل معنا اليوم](/contact) لبدء تخطيط احتفال 23 سبتمبر لا يُنسى!"
     ]
   },

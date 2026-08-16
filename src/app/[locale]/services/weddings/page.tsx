@@ -615,12 +615,14 @@ export default function WeddingsPage() {
                 { title: "فعاليات الوجهات", slug: "destination-events", desc: "حفلات زفاف في العُلا ونيوم وساحل البحر الأحمر." },
                 { title: "الفعاليات الفاخرة وكبار الشخصيات", slug: "luxury-vip-events", desc: "تجارب فعاليات ملكية وكبار الثروات بسرية مطلقة." },
                 { title: "الإنتاج الفعّالياتي", slug: "event-production", desc: "مسرح وصوت وصورة وإضاءة وإنتاج أزهار لأي حجم زفاف." },
+                { title: "خدمة الفاليه", slug: "valet-parking", desc: "طاقم فاليه موحّد الزي لاستقبال ضيوف الزفاف وإدارة مواقف السيارات بسلاسة." },
                   ]
                 : [
                 { title: "Royal Weddings", slug: "royal-weddings", desc: "Nikah, Walima, Zaffa, and Laylat al-Henna — ceremonial excellence for distinguished Saudi families." },
                 { title: "Destination Events", slug: "destination-events", desc: "Destination weddings in AlUla, NEOM, and the Red Sea coast." },
                 { title: "Luxury & VIP Events", slug: "luxury-vip-events", desc: "Royal and HNWI event experiences with absolute discretion." },
                 { title: "Event Production", slug: "event-production", desc: "Stage, AV, lighting, and floral production for any wedding scale." },
+                { title: "Valet Parking", slug: "valet-parking", desc: "Uniformed valet teams for smooth guest arrivals and secure parking at your wedding venue." },
               ]).map((rel) => (
                 <Link
                   key={rel.slug}

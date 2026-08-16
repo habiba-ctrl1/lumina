@@ -1528,6 +1528,11 @@ export default async function RoyalWeddingsPage() {
                   slug: "event-production",
                   desc: "مسرح وصوت وصورة وإضاءة وإنتاج تقني كامل لأي مقياس عرس ملكي.",
                 },
+                {
+                  title: "النقل الفاخر لكبار الشخصيات",
+                  slug: "vip-transportation",
+                  desc: "نقل فاخر ومدرَّع للعائلة الملكية وكبار الضيوف، مع استقبال مطارات ونقل جماعي للمندوبين.",
+                },
                   ]
                 : [
                 {
@@ -1549,6 +1554,11 @@ export default async function RoyalWeddingsPage() {
                   title: "Event Production",
                   slug: "event-production",
                   desc: "Stage, AV, lighting, and full technical production for any royal wedding scale.",
+                },
+                {
+                  title: "VIP Transportation",
+                  slug: "vip-transportation",
+                  desc: "Luxury and armored transport for the royal family and distinguished guests, with airport transfers and delegate logistics.",
                 },
               ]).map((rel) => (
                 <Link
