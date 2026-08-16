@@ -172,6 +172,9 @@ const linkHub = {
     { label: "VIP & Private Event Planning", href: "/services/luxury-vip-events" },
     { label: "Cultural & Seasonal Events", href: "/services/cultural-events" },
     { label: "Royal Wedding Planning", href: "/services/royal-weddings" },
+    { label: "Event Valet Parking", href: "/services/valet-parking" },
+    { label: "VIP Event Transportation", href: "/services/vip-transportation" },
+    { label: "Event Entertainment Booking", href: "/services/entertainment" },
   ],
   locations: [
     { label: "Event Management in Riyadh", href: "/locations/riyadh" },

@@ -206,6 +206,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/destination-events',  freq: 'monthly', priority: 0.75 },
     { route: '/services/royal-weddings',      freq: 'monthly', priority: 0.7  },
     { route: '/services/production-venues',   freq: 'monthly', priority: 0.7  },
+    { route: '/services/valet-parking',       freq: 'monthly', priority: 0.7  },
+    { route: '/services/vip-transportation',  freq: 'monthly', priority: 0.7  },
+    { route: '/services/entertainment',       freq: 'monthly', priority: 0.7  },
 
     // ── Service sub-pages (Arabic) ─────────────────────────────────────────────
     { route: '/ar/services/corporate-events',   freq: 'monthly', priority: 0.75 },
@@ -218,6 +221,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/ar/services/luxury-vip-events',   freq: 'monthly', priority: 0.65 },
     { route: '/ar/services/royal-weddings',      freq: 'monthly', priority: 0.6  },
     { route: '/ar/services/production-venues',   freq: 'monthly', priority: 0.6  },
+    { route: '/ar/services/valet-parking',       freq: 'monthly', priority: 0.6  },
+    { route: '/ar/services/vip-transportation',  freq: 'monthly', priority: 0.6  },
+    { route: '/ar/services/entertainment',       freq: 'monthly', priority: 0.6  },
 
     // ── Portfolio ─────────────────────────────────────────────────────────────
     { route: '/portfolio/luxury-weddings',           freq: 'monthly', priority: 0.7 },
