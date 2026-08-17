@@ -41,7 +41,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/services/private_party.webp",
+          url: "/services/birthday_party_balloon_arch_riyadh.webp",
           width: 1200,
           height: 630,
           alt: "Birthday Party Planning Saudi Arabia",

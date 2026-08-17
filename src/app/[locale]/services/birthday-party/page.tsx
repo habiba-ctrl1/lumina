@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Users, Camera, Utensils, Music, ClipboardList, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
@@ -135,8 +136,8 @@ export default function BirthdayPartyPage() {
               ? "تجهيز وديكور، وترفيه وأنشطة للأطفال، وكشك تصوير، وضيافة — احتفال متكامل منسّق عبر شبكة شركاء إدارة الفعاليات السعودية، للأطفال والكبار."
               : "Setup and decor, kids entertainment and activities, photo booth, and catering — one managed celebration coordinated through Saudi Event Management's partner network, for kids and adults alike."
           }
-          backgroundImage="/services/private_party.webp"
-          imageAlt="Elegant birthday celebration setup with styled decor at a private Saudi venue"
+          backgroundImage="/services/birthday_party_balloon_arch_riyadh.webp"
+          imageAlt="Elegant gold and blush balloon arch with a styled dessert table at a private birthday celebration in Riyadh"
           enableParallax
           badge={isAr ? "حفلة عيد ميلاد" : "Birthday Party"}
           breadcrumbs={[
@@ -244,6 +245,38 @@ export default function BirthdayPartyPage() {
                   <h3 className="text-base font-bold text-neutral-900 mb-3">{isAr ? servicesAr[i].title : s.title}</h3>
                   <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? servicesAr[i].desc : s.desc}</p>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Photo Showcase ── */}
+        <section className="pb-24 md:pb-28 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  src: "/services/birthday_dessert_table_saudi.webp",
+                  alt: isAr ? "طاولة حلويات وكيك عيد ميلاد مصمَّمة بالذهبي" : "Styled birthday dessert table with cake, macarons, and gold accents",
+                  caption: isAr ? "طاولات حلويات مصمَّمة" : "Styled Dessert Tables",
+                },
+                {
+                  src: "/services/birthday_kids_entertainment_saudi.webp",
+                  alt: isAr ? "شخصية ترفيهية تؤدي فقرة للأطفال في حفلة عيد ميلاد" : "Costumed entertainer performing for children at a birthday party",
+                  caption: isAr ? "ترفيه للأطفال" : "Kids Entertainment",
+                },
+                {
+                  src: "/services/birthday_photo_booth_saudi.webp",
+                  alt: isAr ? "كشك تصوير مزيَّن بالزهور في حفلة" : "Floral-styled photo booth setup at a private celebration",
+                  caption: isAr ? "كشك تصوير مصمَّم" : "Styled Photo Booth",
+                },
+              ].map((img) => (
+                <div key={img.src}>
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200/80">
+                    <Image src={img.src} alt={img.alt} fill className="object-cover" />
+                  </div>
+                  <p className="text-center text-neutral-400 text-[11px] uppercase tracking-widest mt-3">{img.caption}</p>
+                </div>
               ))}
             </div>
           </div>
