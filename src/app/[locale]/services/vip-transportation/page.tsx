@@ -214,7 +214,7 @@ export default function VipTransportationPage() {
                     <Link href={`${arHref}/services/luxury-vip-events`} className="text-[var(--primary)] hover:underline font-semibold">الفعاليات الفاخرة</Link>
                     {" "}و{" "}
                     <Link href={`${arHref}/services/conferences`} className="text-[var(--primary)] hover:underline font-semibold">المؤتمرات</Link>
-                    {" "}عبر شبكة أسطول معتمدة، من استقبال المطار إلى المغادرة.
+                    {" "}عبر شبكة أسطول معتمدة، من استقبال المطار إلى المغادرة، مع خدمة كونسيرج ميدانية مساندة لضيوف كبار الشخصيات.
                   </>
                 ) : (
                   <>
@@ -222,7 +222,7 @@ export default function VipTransportationPage() {
                     <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP events</Link>
                     {" "}and{" "}
                     <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-semibold">conferences</Link>
-                    {" "}through a vetted fleet network, from airport pickup to final departure.
+                    {" "}through a vetted fleet network, from airport pickup to final departure, with on-site concierge support available for VIP guests as a supporting service.
                   </>
                 )}
               </p>

@@ -79,6 +79,7 @@ export const TRANSLATED_AR_ROUTES: ReadonlySet<string> = new Set<string>([
   "/services/entertainment", // body fully translated
   "/services/vip-transportation", // body fully translated
   "/services/valet-parking", // body fully translated
+  "/services/birthday-party", // body fully translated
 
   // Blog posts with FULL bilingual bodies (contentAr complete) → indexable.
   "/blog/complete-guide-event-planning-saudi-arabia-2026", // body fully translated

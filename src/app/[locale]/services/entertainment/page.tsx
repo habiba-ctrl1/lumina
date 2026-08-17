@@ -41,6 +41,11 @@ const services = [
     title: "On-Site Entertainment Production",
     desc: "Stage integration, sound checks, and technical coordination between performers and our event production team, ensuring a seamless live show.",
   },
+  {
+    icon: Music,
+    title: "Musicians & Live Bands",
+    desc: "Solo instrumentalists, vocalists, and full live bands — Oud, violin, keyboard, and more — trained and matched through our musical talent partner network for weddings, galas, and cultural events.",
+  },
 ];
 
 const servicesAr = [
@@ -50,6 +55,7 @@ const servicesAr = [
   { title: "ترفيه عائلي ومجتمعي", desc: "برامج ترفيه مناسبة للعائلات في أيام عائلات الشركات، ومهرجانات اليوم الوطني، والتفعيلات الثقافية المجتمعية." },
   { title: "استقطاب وحجز المواهب", desc: "وصول إلى شبكة منسّقة من الفنانين الإقليميين المعتمدين والمواهب الموسيقية، تُطابَق حسب جمهور فعاليتك وميزانيتك ومتطلباتها الثقافية." },
   { title: "إنتاج ترفيهي ميداني", desc: "دمج المسرح، وفحوصات الصوت، والتنسيق التقني بين الفنانين وفريق إنتاج الفعاليات لدينا، لضمان عرض حي سلس." },
+  { title: "الموسيقيون والفرق الحية", desc: "عازفون منفردون، ومطربون، وفرق موسيقية كاملة — عود وكمان وبيانو وغيرها — مدرَّبون ومُطابَقون عبر شبكة شركاء المواهب الموسيقية لدينا لحفلات الزفاف والحفلات الفاخرة والفعاليات الثقافية." },
 ];
 
 const faqs = [

@@ -175,6 +175,7 @@ const linkHub = {
     { label: "Event Valet Parking", href: "/services/valet-parking" },
     { label: "VIP Event Transportation", href: "/services/vip-transportation" },
     { label: "Event Entertainment Booking", href: "/services/entertainment" },
+    { label: "Birthday Party Planning", href: "/services/birthday-party" },
   ],
   locations: [
     { label: "Event Management in Riyadh", href: "/locations/riyadh" },

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
-import { DoorOpen, KeyRound, Accessibility, Sparkles, ClipboardList, Users, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
+import { DoorOpen, KeyRound, Accessibility, Sparkles, ClipboardList, Users, Car, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 
@@ -41,6 +41,11 @@ const services = [
     title: "Valet Logistics Planning",
     desc: "Parking-zone layout, traffic-flow planning, and staffing coordination for high-volume guest arrivals at weddings, galas, and summits.",
   },
+  {
+    icon: Car,
+    title: "Golf Cart Guest Mobility",
+    desc: "Golf carts for guest transfers from parking areas to the venue entrance at large properties, coordinated as part of your valet team's arrival flow.",
+  },
 ];
 
 const servicesAr = [
@@ -50,6 +55,7 @@ const servicesAr = [
   { title: "دعم ذوي الإعاقة وكبار السن", desc: "مساعدة بالكراسي المتحركة ودعم التنقّل للضيوف عند الوصول والمغادرة، ضمن خطة رعاية الضيوف لفعاليتك." },
   { title: "خدمات عناية إضافية بالمركبات", desc: "خدمات اختيارية لغسيل السيارات والتلميع واللمسات النهائية أثناء الفعاليات الطويلة، تُرتَّب عبر شبكة شركائنا المنسّقة." },
   { title: "تخطيط لوجستيات الفاليه", desc: "تخطيط مناطق الوقوف، وتدفّق الحركة، وتنسيق الطاقم لاستيعاب أعداد كبيرة من الضيوف في حفلات الزفاف والحفلات الفاخرة والقمم." },
+  { title: "عربات جولف لتنقّل الضيوف", desc: "عربات جولف لنقل الضيوف من مناطق الوقوف إلى مدخل الموقع في العقارات الكبيرة، منسّقة كجزء من تدفّق وصول طاقم الفاليه." },
 ];
 
 const faqs = [
