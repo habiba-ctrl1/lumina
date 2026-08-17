@@ -46,7 +46,9 @@
     "vipTransportation": "النقل الفاخر",
     "vipTransportationDesc": "نقل تنفيذي فاخر ومدرَّع",
     "valetParking": "خدمة الفاليه",
-    "valetParkingDesc": "طاقم فاليه موحّد الزي للفعاليات"
+    "valetParkingDesc": "طاقم فاليه موحّد الزي للفعاليات",
+    "birthdayParty": "حفلات أعياد الميلاد",
+    "birthdayPartyDesc": "تجهيز وترفيه وضيافة"
   },
   "navLocations": {
     "riyadh": "الرياض",

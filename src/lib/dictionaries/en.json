@@ -46,7 +46,9 @@
     "vipTransportation": "VIP Transportation",
     "vipTransportationDesc": "Luxury & armored executive transport",
     "valetParking": "Valet Parking",
-    "valetParkingDesc": "Uniformed valet staff for events"
+    "valetParkingDesc": "Uniformed valet staff for events",
+    "birthdayParty": "Birthday Party",
+    "birthdayPartyDesc": "Setup, entertainment & catering"
   },
   "navLocations": {
     "riyadh": "Riyadh",

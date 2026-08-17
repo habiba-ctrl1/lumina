@@ -6,7 +6,7 @@ import {
   Menu, X, ChevronDown, Heart, Briefcase, Presentation,
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
   Trophy, TrendingUp, ImageIcon, Building2, Info, Handshake,
-  Crown, Mic, Gem, Music, Car, KeyRound,
+  Crown, Mic, Gem, Music, Car, KeyRound, Cake,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
@@ -40,6 +40,7 @@ const services = [
   { key: "entertainment",     href: "/services/entertainment",     icon: Music },
   { key: "vipTransportation", href: "/services/vip-transportation",icon: Car },
   { key: "valetParking",      href: "/services/valet-parking",     icon: KeyRound },
+  { key: "birthdayParty",     href: "/services/birthday-party",    icon: Cake },
 ];
 
 const locations = [

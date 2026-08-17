@@ -13,7 +13,7 @@ import Image from "next/image";
 import {
   Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
   Phone, CheckCircle2, ShieldCheck, Clock, Languages, Award, TrendingUp,
-  Layers, Landmark, Briefcase, Music, Car, KeyRound,
+  Layers, Landmark, Briefcase, Music, Car, KeyRound, Cake,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -186,6 +186,16 @@ const serviceCategories = [
     tags: ["Uniformed Staff", "Guest Arrivals", "Accessibility Support"],
     img: "/services/wedding_hall_grand_entrance.webp",
     imgAlt: "Grand guest entrance and arrival experience at a Saudi event venue",
+  },
+  {
+    icon: Cake,
+    slug: "birthday-party",
+    title: "Birthday Party",
+    arabic: "حفلات أعياد الميلاد",
+    desc: "Birthday setup and decor, kids entertainment and activities, photo booths, and catering — coordinated as a single managed celebration through our partner network.",
+    tags: ["Birthday Setup", "Kids Entertainment", "Photo Booth"],
+    img: "/services/private_party.webp",
+    imgAlt: "Elegant birthday celebration setup with styled decor at a private Saudi venue",
   },
 ];
 
