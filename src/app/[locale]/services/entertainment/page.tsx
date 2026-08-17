@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
+import Image from "next/image";
 import { Music, Users, Disc3, Sparkles, Mic2, Radio, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
@@ -252,6 +253,23 @@ export default function EntertainmentPage() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Photo: Musicians & Live Bands ── */}
+        <section className="pb-24 md:pb-28 bg-white">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-200/80">
+              <Image
+                src="/services/live_band_musicians_saudi.webp"
+                alt={isAr ? "فرقة موسيقية حية تعزف عود وكمان وبيانو في فعالية سعودية" : "Live musical trio performing oud, violin, and keyboard at a Saudi event"}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="text-center text-neutral-400 text-[11px] uppercase tracking-widest mt-4">
+              {isAr ? "موسيقيون وفرق حية عبر شبكة شركائنا" : "Musicians & Live Bands Through Our Partner Network"}
+            </p>
           </div>
         </section>
 

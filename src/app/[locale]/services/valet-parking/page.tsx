@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
+import Image from "next/image";
 import { DoorOpen, KeyRound, Accessibility, Sparkles, ClipboardList, Users, Car, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
@@ -252,6 +253,23 @@ export default function ValetParkingPage() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Photo: Golf Cart Guest Mobility ── */}
+        <section className="pb-24 md:pb-28 bg-white">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-200/80">
+              <Image
+                src="/services/valet_golf_cart_guest_mobility.webp"
+                alt={isAr ? "عربة جولف تنقل ضيفًا من موقف السيارات إلى مدخل الفعالية مساءً" : "Golf cart transferring a guest from the parking area to the venue entrance at dusk"}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="text-center text-neutral-400 text-[11px] uppercase tracking-widest mt-4">
+              {isAr ? "عربات جولف لتنقّل الضيوف في العقارات الكبيرة" : "Golf Cart Mobility for Large Properties"}
+            </p>
           </div>
         </section>
 

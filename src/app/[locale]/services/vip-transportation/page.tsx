@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Link from "next/link";
+import Image from "next/image";
 import { PlaneTakeoff, ShieldCheck, Car, Users, Route, Sparkles, ChevronRight, Phone, CheckCircle2, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
@@ -246,6 +247,23 @@ export default function VipTransportationPage() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Photo: Airport & Chauffeur Transfers ── */}
+        <section className="pb-24 md:pb-28 bg-white">
+          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-200/80">
+              <Image
+                src="/services/vip_airport_chauffeur_riyadh.webp"
+                alt={isAr ? "سائق خاص يفتح باب سيارة فاخرة لضيف عند مدخل فندق في الرياض" : "Chauffeur assisting a guest from a luxury SUV at a hotel entrance in Riyadh"}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="text-center text-neutral-400 text-[11px] uppercase tracking-widest mt-4">
+              {isAr ? "استقبال فاخر بسائق خاص من المطار والفندق" : "Chauffeured Airport & Hotel Transfers"}
+            </p>
           </div>
         </section>
 
