@@ -55,3 +55,6 @@ archive/
 
 # Client documents (contracts, extracted data) - NEVER push to remote
 client/
+
+# Vendor quotations (pricing PDFs) - confidential, NEVER push to remote
+VENDOR Quotations/

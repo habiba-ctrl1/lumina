@@ -41,12 +41,15 @@ interface FormData {
   portfolioUrl: string;
   companyIntro: string;
   howHeard: string;
+  permAccurate: boolean;
+  permNonCircumvention: boolean;
 }
 
 const initial: FormData = {
   companyName: "", crNumber: "", contactName: "", jobTitle: "",
   phone: "", email: "", primaryCategory: "", additionalCategories: [],
   yearsInOperation: "", primaryCity: "", portfolioUrl: "", companyIntro: "", howHeard: "",
+  permAccurate: false, permNonCircumvention: false,
 };
 
 export default function VendorForm() {
@@ -80,6 +83,8 @@ export default function VendorForm() {
     if (!form.primaryCategory) e.primaryCategory = "Please select a primary category";
     if (!form.companyIntro.trim()) e.companyIntro = "Company introduction is required";
     else if (form.companyIntro.trim().split(/\s+/).length > 250) e.companyIntro = "Please keep it under 250 words";
+    if (!form.permAccurate) e.permAccurate = "Please confirm the information is accurate";
+    if (!form.permNonCircumvention) e.permNonCircumvention = "Please accept the non-circumvention agreement";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -89,14 +94,32 @@ export default function VendorForm() {
     if (!validate()) return;
     setStatus("loading");
     try {
-      const res = await fetch("/api/vendor", {
+      const categories = Array.from(
+        new Set([form.primaryCategory, ...form.additionalCategories].filter(Boolean))
+      );
+      const res = await fetch("/api/partner-applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          companyName: form.companyName,
+          crNumber: form.crNumber,
+          contactPerson: form.contactName,
+          jobTitle: form.jobTitle,
+          whatsapp: form.phone,
+          email: form.email,
+          city: form.primaryCity,
+          categories,
+          servicesDesc: form.companyIntro,
+          yearsInBusiness: form.yearsInOperation,
+          profileLink: form.portfolioUrl || undefined,
+          extraNotes: form.howHeard ? `Heard via: ${form.howHeard}` : undefined,
+          permAccurate: form.permAccurate,
+          permNonCircumvention: form.permNonCircumvention,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Submission failed");
-      setRef(data.ref);
+      setRef(data.appNumber);
       setStatus("success");
     } catch {
       setStatus("error");
@@ -290,6 +313,52 @@ export default function VendorForm() {
             </select>
           </div>
         </div>
+      </fieldset>
+
+      {/* Consent */}
+      <fieldset className="mb-8 space-y-3">
+        <label
+          className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
+            form.permNonCircumvention
+              ? "border-emerald-400 bg-emerald-50/50"
+              : "border-neutral-200 bg-neutral-50 hover:border-neutral-300"
+          }`}
+        >
+          <input
+            type="checkbox"
+            checked={form.permNonCircumvention}
+            onChange={(e) => setForm((prev) => ({ ...prev, permNonCircumvention: e.target.checked }))}
+            className="mt-0.5 w-4 h-4 accent-emerald-500"
+          />
+          <span className="text-[13px] text-neutral-700">
+            I agree that all leads and inquiries received through Saudi Event
+            Management (SEM) remain the property of SEM. I will not directly
+            solicit, negotiate with, or bypass SEM clients introduced through
+            the platform without written approval from SEM.{" "}
+            <span className="text-[var(--primary)]">*</span>
+          </span>
+        </label>
+        {errors.permNonCircumvention && <p className="text-rose-500 text-[12px]">{errors.permNonCircumvention}</p>}
+
+        <label
+          className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
+            form.permAccurate
+              ? "border-emerald-400 bg-emerald-50/50"
+              : "border-neutral-200 bg-neutral-50 hover:border-neutral-300"
+          }`}
+        >
+          <input
+            type="checkbox"
+            checked={form.permAccurate}
+            onChange={(e) => setForm((prev) => ({ ...prev, permAccurate: e.target.checked }))}
+            className="mt-0.5 w-4 h-4 accent-emerald-500"
+          />
+          <span className="text-[13px] text-neutral-700">
+            I confirm the information provided is accurate and I'm authorized to
+            submit it on behalf of my company. <span className="text-[var(--primary)]">*</span>
+          </span>
+        </label>
+        {errors.permAccurate && <p className="text-rose-500 text-[12px]">{errors.permAccurate}</p>}
       </fieldset>
 
       {/* Error banner */}

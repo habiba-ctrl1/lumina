@@ -8,6 +8,16 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
+const CATEGORY_LABELS: Record<string, string> = {
+  catering: "Catering & Fine Dining",
+  floral: "Floral Design",
+  photography: "Photography & Cinema",
+  decor: "Lighting & Decor",
+  entertainment: "Live Entertainment",
+  transport: "Luxury Transport",
+  venue: "Venue / Space",
+};
+
 export default function VendorRegistration() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -17,7 +27,9 @@ export default function VendorRegistration() {
     category: "",
     city: "",
     portfolio: "",
-    message: ""
+    message: "",
+    permAccurate: false,
+    permNonCircumvention: false,
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -25,25 +37,27 @@ export default function VendorRegistration() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/partner-applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.fullName,
+          companyName: formData.businessName,
+          contactPerson: formData.fullName,
+          whatsapp: formData.phone,
           email: formData.email,
-          phone: formData.phone,
-          company: formData.businessName,
-          eventType: formData.category,
-          venueCity: formData.city,
-          message: `Portfolio: ${formData.portfolio}\n\nDetails: ${formData.message}`,
-          source: "vendor_registration"
+          city: formData.city,
+          categories: [CATEGORY_LABELS[formData.category] || formData.category].filter(Boolean),
+          profileLink: formData.portfolio || undefined,
+          servicesDesc: formData.message || undefined,
+          permAccurate: formData.permAccurate,
+          permNonCircumvention: formData.permNonCircumvention,
         }),
       });
 
       if (!res.ok) throw new Error("Failed to submit");
-      
+
       setStatus("success");
       setFormData({
         fullName: "",
@@ -53,7 +67,9 @@ export default function VendorRegistration() {
         category: "",
         city: "",
         portfolio: "",
-        message: ""
+        message: "",
+        permAccurate: false,
+        permNonCircumvention: false,
       });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
@@ -274,9 +290,32 @@ export default function VendorRegistration() {
                     />
                   </div>
 
+                  <div className="space-y-3">
+                    <label className="flex items-start gap-3 p-4 rounded-xl border border-neutral-200/80 bg-neutral-50 cursor-pointer text-[13px] text-neutral-600">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={formData.permNonCircumvention}
+                        onChange={(e) => setFormData({ ...formData, permNonCircumvention: e.target.checked })}
+                        className="mt-0.5 w-4 h-4 accent-[var(--primary)]"
+                      />
+                      I agree that all leads and inquiries received through Saudi Event Management (SEM) remain the property of SEM. I will not directly solicit, negotiate with, or bypass SEM clients introduced through the platform without written approval from SEM.
+                    </label>
+                    <label className="flex items-start gap-3 p-4 rounded-xl border border-neutral-200/80 bg-neutral-50 cursor-pointer text-[13px] text-neutral-600">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={formData.permAccurate}
+                        onChange={(e) => setFormData({ ...formData, permAccurate: e.target.checked })}
+                        className="mt-0.5 w-4 h-4 accent-[var(--primary)]"
+                      />
+                      I confirm the information provided is accurate and I'm authorized to submit it on behalf of my company.
+                    </label>
+                  </div>
+
                   <div className="pt-4">
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={status === "loading"}
                       className="w-full bg-[var(--primary)] text-white py-4 rounded-xl text-[14px] font-medium hover:bg-[var(--primary-dark)] transition-all shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] disabled:opacity-50 flex items-center justify-center"
                     >

@@ -8,6 +8,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
+const PARTNER_TYPE_LABELS: Record<string, string> = {
+  strategic: "Strategic Partner",
+  supplier: "Elite Supplier",
+  cultural: "Cultural Collaborator",
+  venue: "Venue Partner",
+  tech: "Technology Partner",
+};
+
 export default function BecomeOne() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -17,32 +25,36 @@ export default function BecomeOne() {
     partnerType: "",
     city: "",
     website: "",
-    message: ""
+    message: "",
+    permAccurate: false,
+    permNonCircumvention: false,
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/partner-applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.fullName,
+          companyName: formData.businessName,
+          contactPerson: formData.fullName,
+          whatsapp: formData.phone,
           email: formData.email,
-          phone: formData.phone,
-          company: formData.businessName,
-          eventType: formData.partnerType,
-          venueCity: formData.city,
-          message: `Website: ${formData.website}\n\nPartner Details: ${formData.message}`,
-          source: "become_one_partnership"
+          city: formData.city,
+          categories: [PARTNER_TYPE_LABELS[formData.partnerType] || formData.partnerType].filter(Boolean),
+          profileLink: formData.website || undefined,
+          servicesDesc: formData.message || undefined,
+          permAccurate: formData.permAccurate,
+          permNonCircumvention: formData.permNonCircumvention,
         }),
       });
 
       if (!res.ok) throw new Error("Failed to submit");
-      
+
       setStatus("success");
       setFormData({
         fullName: "",
@@ -52,7 +64,9 @@ export default function BecomeOne() {
         partnerType: "",
         city: "",
         website: "",
-        message: ""
+        message: "",
+        permAccurate: false,
+        permNonCircumvention: false,
       });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
@@ -260,9 +274,32 @@ export default function BecomeOne() {
                     />
                   </div>
 
+                  <div className="space-y-3">
+                    <label className="flex items-start gap-3 p-4 rounded-sm border border-ink-600 bg-ink-950 cursor-pointer text-[10px] text-sand-200 leading-relaxed">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={formData.permNonCircumvention}
+                        onChange={(e) => setFormData({ ...formData, permNonCircumvention: e.target.checked })}
+                        className="mt-0.5 w-4 h-4 accent-gold-400"
+                      />
+                      I agree that all leads and inquiries received through Saudi Event Management (SEM) remain the property of SEM. I will not directly solicit, negotiate with, or bypass SEM clients introduced through the platform without written approval from SEM.
+                    </label>
+                    <label className="flex items-start gap-3 p-4 rounded-sm border border-ink-600 bg-ink-950 cursor-pointer text-[10px] text-sand-200 leading-relaxed">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={formData.permAccurate}
+                        onChange={(e) => setFormData({ ...formData, permAccurate: e.target.checked })}
+                        className="mt-0.5 w-4 h-4 accent-gold-400"
+                      />
+                      I confirm the information provided is accurate and I'm authorized to submit it on behalf of my company.
+                    </label>
+                  </div>
+
                   <div className="flex flex-col md:flex-row items-center gap-10 pt-4">
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={status === "loading"}
                       className="btn-primary font-semibold tracking-widest text-xs px-10 py-4 shadow-sm bg-gold-400 text-sand-50 hover:bg-gold-500 rounded-sm w-full md:w-auto"
                     >
