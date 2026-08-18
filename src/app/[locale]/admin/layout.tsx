@@ -363,7 +363,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         {/* Page Content */}
         <main className="flex-1 p-5 lg:p-6 overflow-x-hidden">
-          <div className="max-w-[1440px] mx-auto">
+          <div className="admin-scope max-w-[1440px] mx-auto">
             {children}
           </div>
         </main>

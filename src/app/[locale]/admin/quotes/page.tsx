@@ -29,6 +29,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import Link from "next/link";
+import { buildQuotationHtml } from "@/lib/quotation-html";
 
 type QuoteRequest = {
   id: string;
@@ -198,6 +199,65 @@ export default function AdminQuotes() {
     }
     newItems[index] = item;
     setQuoteForm({ ...quoteForm, lineItems: newItems });
+  };
+
+  // Open a branded, print-ready quotation in a new tab.
+  const openQuotationWindow = (html: string) => {
+    const win = window.open("", "_blank");
+    if (!win) {
+      alert("Popup blocked — please allow popups for this site to preview the PDF.");
+      return;
+    }
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+  };
+
+  const formatDate = (d: string | Date) =>
+    new Date(d).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+
+  // Preview from the live builder form (works before the quote is even saved).
+  const previewQuoteFromForm = () => {
+    if (!selectedRequest) return;
+    const subtotal = quoteForm.lineItems.reduce((a, b) => a + (b.total || 0), 0);
+    const vatAmount = subtotal * 0.15;
+    const html = buildQuotationHtml({
+      clientName: selectedRequest.clientName,
+      scope: selectedRequest.eventType,
+      location: selectedRequest.eventCity,
+      quoteNumber: selectedRequest.proposals[0]?.quoteNumber || "DRAFT",
+      date: formatDate(new Date()),
+      validity: quoteForm.validUntil ? `Valid until ${formatDate(quoteForm.validUntil)}` : "—",
+      lineItems: quoteForm.lineItems,
+      subtotal,
+      vatAmount,
+      totalAmount: subtotal + vatAmount,
+      terms: quoteForm.notes,
+    });
+    openQuotationWindow(html);
+  };
+
+  // Preview an already-saved proposal (from the detail panel).
+  const previewSavedProposal = (req: QuoteRequest) => {
+    const p = req.proposals[0];
+    if (!p) return;
+    let lineItems: any[] = [];
+    try { lineItems = JSON.parse(p.lineItems); } catch { lineItems = []; }
+    const html = buildQuotationHtml({
+      clientName: req.clientName,
+      scope: req.eventType,
+      location: req.eventCity,
+      quoteNumber: p.quoteNumber,
+      date: formatDate(p.createdAt || new Date()),
+      validity: p.validUntil ? `Valid until ${formatDate(p.validUntil)}` : "—",
+      lineItems,
+      subtotal: p.subtotal,
+      vatAmount: p.vatAmount,
+      totalAmount: p.totalAmount,
+      terms: p.notes || "",
+    });
+    openQuotationWindow(html);
   };
 
   const filteredRequests = requests.filter(req => {
@@ -524,8 +584,11 @@ export default function AdminQuotes() {
                     Create Quote
                   </button>
                 ) : (
-                  <button 
-                    className="flex-1 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                  <button
+                    type="button"
+                    onClick={() => previewSavedProposal(selectedRequest)}
+                    disabled={!selectedRequest.proposals.length}
+                    className="flex-1 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ExternalLink size={14} /> View Quote PDF
                   </button>
@@ -718,7 +781,11 @@ export default function AdminQuotes() {
                     >
                       Send to Client
                     </button>
-                    <button className="w-full py-5 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-slate-50 transition-all flex items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={previewQuoteFromForm}
+                      className="w-full py-5 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-slate-50 transition-all flex items-center justify-center gap-3"
+                    >
                       <FileText size={16} /> Preview PDF
                     </button>
                   </div>
