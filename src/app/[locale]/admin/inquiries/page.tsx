@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2, Plus, Sparkles, X, Loader2, Clock } from "lucide-react";
+import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2, Plus, Sparkles, X, Loader2, Clock, ChevronDown, MessageSquare } from "lucide-react";
 import { adminFetch } from "@/lib/admin-fetch";
 
 const EMPTY_FORM = {
@@ -37,6 +37,7 @@ export default function AdminInquiries() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [audience, setAudience] = useState<"client" | "partner">("client");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // ── Quick Add (manual WhatsApp/phone/email intake) ──────────────────────
   const [showAdd, setShowAdd] = useState(false);
@@ -145,6 +146,25 @@ export default function AdminInquiries() {
       alert("Failed to delete inquiry");
     }
   };
+
+  const updateStatus = async (id: string, newStatus: string) => {
+    try {
+      await fetch(`/api/contact?id=${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      setInquiries((prev) => prev.map((i) => (i.id === id ? { ...i, status: newStatus } : i)));
+    } catch (err) {
+      console.error("Status update failed:", err);
+    }
+  };
+
+  const statusClasses = (s?: string) =>
+    s === "Confirmed" ? "bg-emerald-50 text-emerald-700 border-emerald-200" :
+    s === "Contacted" ? "bg-blue-50 text-blue-700 border-blue-200" :
+    s === "Cancelled" ? "bg-red-50 text-red-600 border-red-200" :
+    "bg-amber-50 text-amber-700 border-amber-200";
 
   const categories = ["Wedding", "Corporate", "Private", "Culture", "Other"];
   const statusOptions = ["Pending", "Contacted", "Confirmed", "Cancelled"];
@@ -255,11 +275,19 @@ export default function AdminInquiries() {
         </div>
       </div>
 
-      {/* Inquiries Grid */}
+      {/* Results count */}
+      {!loading && inquiries.length > 0 && (
+        <p className="text-xs text-slate-500 mb-2 px-1">
+          Showing <span className="font-bold text-slate-700">{inquiries.length}</span>{" "}
+          {audience === "client" ? "client lead" : "partner inquiry"}{inquiries.length === 1 ? "" : "s"}
+        </p>
+      )}
+
+      {/* Inquiries List */}
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[1, 2, 3].map((i: any) => (
-            <div key={i} className="h-56 bg-white animate-pulse rounded-2xl border border-slate-200" />
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm divide-y divide-slate-100">
+          {[1, 2, 3, 4, 5].map((i: any) => (
+            <div key={i} className="h-16 animate-pulse bg-slate-50/60" />
           ))}
         </div>
       ) : inquiries.length === 0 ? (
@@ -268,11 +296,11 @@ export default function AdminInquiries() {
           <h3 className="text-sm font-semibold text-slate-800 mb-1">No Leads Found</h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
             {search || status !== 'all' || category !== 'all' || startDate || endDate
-              ? "We couldn't find any leads matching your filters." 
+              ? "We couldn't find any leads matching your filters."
               : "You haven't received any leads yet."}
           </p>
           {(search || status !== 'all' || category !== 'all' || startDate || endDate) && (
-            <button 
+            <button
               onClick={() => {setSearch(""); setStatus("all"); setCategory("all"); setStartDate(""); setEndDate("");}}
               className="mt-4 text-emerald-600 text-xs font-bold hover:text-emerald-700 bg-emerald-50 px-4 py-2 rounded-xl transition-all"
             >
@@ -281,125 +309,154 @@ export default function AdminInquiries() {
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {inquiries.map((inquiry: any) => (
-            <motion.div
-              key={inquiry.id}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-slate-200/80 p-5 rounded-2xl hover:border-emerald-400 hover:shadow-md transition-all duration-300 flex flex-col h-full relative"
-            >
-              <div className="absolute top-4 end-4">
-                <select 
-                  value={inquiry.status || 'Pending'}
-                  onChange={async (e) => {
-                    try {
-                      await fetch(`/api/contact?id=${inquiry.id}`, {
-                        method: 'PATCH',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ status: e.target.value })
-                      });
-                      fetchInquiries();
-                    } catch (err) {}
-                  }}
-                  className={`px-2 py-0.5 rounded-lg text-[10px] font-bold border focus:outline-none cursor-pointer transition-all ${
-                    inquiry.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
-                    inquiry.status === 'Contacted' ? 'bg-blue-50 text-blue-600 border-blue-100' :
-                    inquiry.status === 'Cancelled' ? 'bg-red-50 text-red-650 border-red-100' :
-                    'bg-amber-50 text-amber-600 border-amber-100'
-                  }`}
-                >
-                  <option value="Pending" className="bg-white text-slate-800">Pending</option>
-                  <option value="Contacted" className="bg-white text-slate-800">Contacted</option>
-                  <option value="Confirmed" className="bg-white text-slate-800">Confirmed</option>
-                  <option value="Cancelled" className="bg-white text-slate-800">Cancelled</option>
-                </select>
-              </div>
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-slate-50 border-b border-slate-100 text-left">
+                  <th className="px-5 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Name / Contact</th>
+                  <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 hidden md:table-cell">Event</th>
+                  <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 hidden lg:table-cell">Date &amp; City</th>
+                  <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 hidden sm:table-cell">Budget</th>
+                  <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">Status</th>
+                  <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {inquiries.map((inquiry: any) => {
+                  const isOpen = expandedId === inquiry.id;
+                  const waNumber = inquiry.phone ? inquiry.phone.replace(/[^0-9]/g, "") : "";
+                  return (
+                    <Fragment key={inquiry.id}>
+                      <tr
+                        className="hover:bg-slate-50/70 transition-colors align-middle"
+                      >
+                        {/* Name / Contact */}
+                        <td className="px-5 py-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 shrink-0 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center border border-emerald-100 font-bold text-sm">
+                              {(inquiry.name || "?").charAt(0).toUpperCase()}
+                            </div>
+                            <div className="min-w-0">
+                              <p className="font-semibold text-slate-800 truncate max-w-[220px]">{inquiry.name}</p>
+                              <div className="flex items-center gap-1.5 text-[11px] text-slate-500 truncate max-w-[220px]">
+                                <Mail size={11} className="text-slate-400 shrink-0" />
+                                <span className="truncate">{inquiry.email || "—"}</span>
+                              </div>
+                              {inquiry.phone && (
+                                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-0.5">
+                                  <Phone size={11} className="text-slate-400 shrink-0" />
+                                  <span>{inquiry.phone}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </td>
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center border border-emerald-100 font-bold text-sm shadow-sm">
-                  {inquiry.name.charAt(0)}
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-xs font-bold text-slate-800 truncate max-w-[150px]">{inquiry.name}</h3>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded">
-                      {inquiry.eventType || 'General'}
-                    </span>
-                  </div>
-                </div>
-              </div>
+                        {/* Event */}
+                        <td className="px-4 py-3 hidden md:table-cell">
+                          <span className="inline-block text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
+                            {inquiry.eventType || "General"}
+                          </span>
+                          {inquiry.guestCount && (
+                            <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1">
+                              <Users2 size={11} /> {inquiry.guestCount} guests
+                            </div>
+                          )}
+                        </td>
 
-              <div className="space-y-1.5 mb-4 flex-1 text-xs text-slate-600">
-                {inquiry.createdAt && (
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <Clock size={12} />
-                    <span>Submitted {new Date(inquiry.createdAt).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2 truncate">
-                  <Mail size={12} className="text-slate-400" />
-                  <span>{inquiry.email}</span>
-                </div>
-                {inquiry.phone && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Phone size={12} className="text-slate-400" />
-                      <span>{inquiry.phone}</span>
-                    </div>
-                    <a 
-                      href={`https://wa.me/${inquiry.phone.replace(/[^0-9]/g, '')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 font-bold"
-                    >
-                      WhatsApp
-                    </a>
-                  </div>
-                )}
-                {inquiry.company && (
-                  <div className="flex items-center gap-2 truncate">
-                    <Building2 size={12} className="text-slate-400" />
-                    <span>{inquiry.company}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <Calendar size={12} className="text-slate-400" />
-                  <span>{inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString() : 'Date TBD'}</span>
-                </div>
-                {inquiry.venueCity && (
-                  <div className="flex items-center gap-2">
-                    <MapPin size={12} className="text-slate-400" />
-                    <span>{inquiry.venueCity}</span>
-                  </div>
-                )}
-                {inquiry.guestCount && (
-                  <div className="flex items-center gap-2">
-                    <Users2 size={12} className="text-slate-400" />
-                    <span>{inquiry.guestCount} Guests</span>
-                  </div>
-                )}
-              </div>
+                        {/* Date & City */}
+                        <td className="px-4 py-3 hidden lg:table-cell">
+                          <div className="flex items-center gap-1.5 text-[12px] text-slate-600">
+                            <Calendar size={11} className="text-slate-400" />
+                            {inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString() : "Date TBD"}
+                          </div>
+                          {inquiry.venueCity && (
+                            <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-0.5">
+                              <MapPin size={11} /> {inquiry.venueCity}
+                            </div>
+                          )}
+                        </td>
 
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100 mb-4 min-h-[50px] text-[11px] leading-relaxed text-slate-500 italic">
-                "{inquiry.message}"
-              </div>
+                        {/* Budget */}
+                        <td className="px-4 py-3 hidden sm:table-cell">
+                          <span className="text-[12px] font-semibold text-slate-700">{inquiry.budget || "TBD"}</span>
+                        </td>
 
-              <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                <div className="flex flex-col">
-                  <span className="text-[9px] uppercase tracking-wider text-slate-400">Budget Limit</span>
-                  <span className="text-xs text-slate-800 font-semibold">{inquiry.budget || 'TBD'}</span>
-                </div>
-                <button
-                  onClick={() => deleteInquiry(inquiry.id)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-650 transition-colors"
-                  title="Delete Inquiry"
-                >
-                  <Trash2 size={13} />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+                        {/* Status */}
+                        <td className="px-4 py-3">
+                          <select
+                            value={inquiry.status || "Pending"}
+                            onChange={(e) => updateStatus(inquiry.id, e.target.value)}
+                            className={`px-2.5 py-1 rounded-lg text-[11px] font-bold border cursor-pointer focus:outline-none transition-all ${statusClasses(inquiry.status)}`}
+                          >
+                            {statusOptions.map((s) => (
+                              <option key={s} value={s} className="bg-white text-slate-800">{s}</option>
+                            ))}
+                          </select>
+                        </td>
+
+                        {/* Actions */}
+                        <td className="px-4 py-3">
+                          <div className="flex items-center justify-end gap-1">
+                            {waNumber && (
+                              <a
+                                href={`https://wa.me/${waNumber}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Open WhatsApp"
+                                className="p-1.5 rounded-lg text-emerald-600 hover:bg-emerald-50 transition-colors"
+                              >
+                                <MessageSquare size={15} />
+                              </a>
+                            )}
+                            <button
+                              onClick={() => setExpandedId(isOpen ? null : inquiry.id)}
+                              title="View details"
+                              className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+                            >
+                              <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                            </button>
+                            <button
+                              onClick={() => deleteInquiry(inquiry.id)}
+                              title="Delete"
+                              className="p-1.5 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                            >
+                              <Trash2 size={15} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+
+                      {/* Expanded detail row */}
+                      {isOpen && (
+                        <tr className="bg-slate-50/60">
+                          <td colSpan={6} className="px-5 py-4">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
+                              <Detail icon={Clock} label="Submitted" value={inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }) : "—"} />
+                              <Detail icon={Building2} label="Company" value={inquiry.company || "—"} />
+                              <Detail icon={Users2} label="Guests" value={inquiry.guestCount || "—"} />
+                              <Detail icon={DollarSign} label="Budget" value={inquiry.budget || "TBD"} />
+                              <Detail icon={Calendar} label="Event Date" value={inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString() : "TBD"} />
+                              <Detail icon={MapPin} label="City" value={inquiry.venueCity || "—"} />
+                              <Detail icon={Briefcase} label="Event Type" value={inquiry.eventType || "General"} />
+                              <Detail icon={Mail} label="Source" value={inquiry.source || "website"} />
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Message / Requirements</p>
+                              <div className="bg-white border border-slate-200 rounded-xl p-3 text-[13px] text-slate-600 leading-relaxed">
+                                {inquiry.message || "No message provided."}
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
@@ -506,6 +563,17 @@ export default function AdminInquiries() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function Detail({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value: string }) {
+  return (
+    <div>
+      <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">
+        <Icon size={11} /> {label}
+      </p>
+      <p className="text-[13px] font-medium text-slate-700 break-words">{value}</p>
     </div>
   );
 }
