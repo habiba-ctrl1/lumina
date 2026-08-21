@@ -81,9 +81,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]);
 
+  /* ── Consolidation (2026-08-22): corporate-event-management (all cities) and
+        conference-planning (all except Riyadh) are noindex,follow duplicates of the
+        canonical /services pages — excluded from the sitemap so we never list a
+        noindexed URL. Mirror of the rule in /locations/[city]/[service]/page.tsx. */
+  const isConsolidatedNoindex = (city: string, service: string) =>
+    service === "corporate-event-management" ||
+    (service === "conference-planning" && city !== "riyadh");
+
   /* ── Location city×service pages (primary cities: all services) ─────────── */
   const primaryCityServiceEntries = primaryCities.flatMap((city) =>
-    locationServices.flatMap((service) => [
+    locationServices.filter((service) => !isConsolidatedNoindex(city, service)).flatMap((service) => [
       {
         url: `${BASE}/locations/${city}/${service}`,
         lastModified: new Date(),
@@ -118,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   /* ── Location city×service pages (secondary cities: top 2 services only) ── */
   const secondaryCityServiceEntries = secondaryCities.flatMap((city) =>
-    ["corporate-event-management", "luxury-wedding-planning"].flatMap((service) => [
+    ["corporate-event-management", "luxury-wedding-planning"].filter((service) => !isConsolidatedNoindex(city, service)).flatMap((service) => [
       {
         url: `${BASE}/locations/${city}/${service}`,
         lastModified: new Date(),

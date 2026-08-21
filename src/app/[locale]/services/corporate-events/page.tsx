@@ -59,10 +59,8 @@ const jsonLd = {
         telephone: "+966539388072",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "King Fahd Road",
           addressLocality: "Riyadh",
           addressRegion: "Riyadh",
-          postalCode: "11564",
           addressCountry: "SA",
         },
       },
@@ -1237,16 +1235,16 @@ export default async function CorporateEventsPage() {
             <div className="flex flex-wrap gap-3">
               {(isAr
                 ? [
-                { name: "فعاليات الشركات في الرياض", href: "/locations/riyadh" },
-                { name: "فعاليات الشركات في جدة", href: "/locations/jeddah" },
-                { name: "فعاليات الشركات في الدمام", href: "/locations/dammam" },
+                { name: "فعاليات الشركات في الرياض", href: "/services/corporate-events-riyadh" },
+                { name: "فعاليات الشركات في جدة", href: "/services/corporate-events-jeddah" },
+                { name: "فعاليات الشركات في الدمام", href: "/services/corporate-events-dammam" },
                 { name: "فعاليات في العُلا", href: "/locations/alula" },
                 { name: "فعاليات في مكة", href: "/locations/makkah" },
                   ]
                 : [
-                { name: "Corporate Events Riyadh", href: "/locations/riyadh" },
-                { name: "Corporate Events Jeddah", href: "/locations/jeddah" },
-                { name: "Corporate Events Dammam", href: "/locations/dammam" },
+                { name: "Corporate Events Riyadh", href: "/services/corporate-events-riyadh" },
+                { name: "Corporate Events Jeddah", href: "/services/corporate-events-jeddah" },
+                { name: "Corporate Events Dammam", href: "/services/corporate-events-dammam" },
                 { name: "Events in AlUla", href: "/locations/alula" },
                 { name: "Events in Makkah", href: "/locations/makkah" },
               ]).map((loc) => (
@@ -1268,10 +1266,10 @@ export default async function CorporateEventsPage() {
             <h2 className="text-sm font-bold text-neutral-900 mb-8 uppercase tracking-widest">{isAr ? "مقالات عن فعاليات الشركات" : "Corporate Event Insights"}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
+                { title: "Gala Dinner & Awards Ceremony Planning in Saudi Arabia", slug: "gala-dinner-awards-ceremony-planning-saudi-arabia", desc: "Budgets, stage production, protocol and run-of-show for corporate gala dinners and awards nights — a complete 2026 planning guide." },
                 { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Exclusive analysis of Saudi Arabia's MICE sector under Vision 2030 — growth metrics, emerging venues, and GEA impact." },
                 { title: "Best Corporate Event Venues in Riyadh 2026", slug: "best-corporate-event-venues-riyadh-2026", desc: "Rank-ordered guide to Riyadh's top corporate event venues — capacity, AV specs, and booking timelines." },
                 { title: "MICE Tourism Saudi Arabia 2026: The Complete Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Everything you need to know about Saudi Arabia's booming MICE industry and Vision 2030 strategy." },
-                { title: "Corporate Event Excellence in Riyadh & Jeddah", slug: "corporate-event-excellence-riyadh-jeddah", desc: "Learn how expert corporate event planning can drive business success and foster strong networking experiences." },
                 { title: "How to Get a GEA Event Permit in Saudi Arabia", slug: "gea-event-permit-guide-saudi-arabia", desc: "Step-by-step guide to obtaining a GEA entertainment permit — requirements, costs, timelines, and common mistakes." },
                 { title: "VIP Executive Retreats in NEOM: A 2026 Guide", slug: "vip-executive-retreats-neom-2026", desc: "Strategies for hosting unforgettable VIP executive retreats in NEOM's cutting-edge developments." },
               ].map((post) => (

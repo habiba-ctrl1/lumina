@@ -261,13 +261,11 @@ export default function ExhibitionsPage() {
                 </div>
               </div>
               <div className="h-8 w-px bg-neutral-200 hidden md:block" />
-              <div className="flex flex-wrap items-center gap-8 text-[11px] font-bold tracking-widest text-neutral-400">
-                <span>INDEX SAUDI</span>
-                <span>SAUDI AGRICULTURE</span>
-                <span>ADIPEC</span>
+              <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold tracking-widest text-neutral-400 max-w-sm">
+                {isAr ? "نبني وندير الأجنحة في كبرى معارض المملكة" : "We build & manage stands at Saudi Arabia's major exhibitions"}
               </div>
               <div className="text-xs text-[var(--primary)] font-bold tracking-wide uppercase">
-                {isAr ? "«تصميم معارض حائز على جوائز 2024»" : "\"Award-Winning Exhibition Design 2024\""}
+                {isAr ? "«تصميم وتنفيذ أجنحة معارض مخصّصة»" : "\"Custom Exhibition Stand Design & Build\""}
               </div>
             </div>
           </div>

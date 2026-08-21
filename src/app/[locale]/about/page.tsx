@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ? 'من نحن — خبراء تنظيم الفعاليات في المملكة العربية السعودية'
     : 'About Us — Event Planning Experts in Saudi Arabia';
   const description = isAr
-    ? 'إدارة الفعاليات السعودية شركة حائزة على جوائز في تنظيم الفعاليات مقرها الرياض. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
-    : 'Saudi Event Management is an award-winning event management company based in Riyadh. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.';
+    ? 'إدارة الفعاليات السعودية شركة متخصصة في تنظيم الفعاليات مقرها الرياض، تعمل عبر شبكة موردين مختارين بعناية. ننظّم حفلات الزفاف الفاخرة وحفلات الشركات والمعارض وفعاليات رؤية 2030 في الرياض وجدة والدمام والعُلا.'
+    : 'Saudi Event Management is a specialist event management company based in Riyadh, working through a rigorously vetted partner network. We plan luxury weddings, corporate galas, exhibitions, and Vision 2030 events across Riyadh, Jeddah, Dammam, and AlUla.';
   return {
     title,
     description,
@@ -87,9 +87,6 @@ function buildJsonLd(isAr: boolean) {
             "Destination Weddings Saudi Arabia",
             "Saudi Vision 2030 Cultural Activations"
           ],
-          "award": [
-            "Best Luxury Event Planner GCC 2024"
-          ],
           "sameAs": [
             "https://www.instagram.com/saudieventmanagement",
             "https://www.facebook.com/profile.php?id=61591377842185",
@@ -130,12 +127,12 @@ function buildJsonLd(isAr: boolean) {
           },
           {
             "@type": "Question",
-            "name": isAr ? "ما الجوائز التي حصلت عليها إدارة الفعاليات السعودية؟" : "What awards has Saudi Event Management received?",
+            "name": isAr ? "ما الذي يميّز إدارة الفعاليات السعودية؟" : "What makes Saudi Event Management different?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": isAr
-                ? "إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة من الرياض، ومعترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024 تقديراً لدقة تخطيطها وجودة موردينا وانضباط تنفيذها."
-                : "Saudi Event Management is an award-winning luxury event management and production company based in Riyadh, recognised as Best Luxury Event Planner in the GCC 2024 for its meticulous planning, vetted vendor quality, and disciplined execution."
+                ? "نعمل عبر شبكة من الموردين تخضع لمراجعة شخصية دقيقة قبل الانضمام، ويقودك مخطّط واحد مسؤول من أول استفسار حتى التنفيذ النهائي. لا نعتمد على ألقاب أو شعارات — بل على منهجية منظّمة وجودة موردين مثبتة وتنفيذ منضبط في كل فعالية."
+                : "We work through a partner network that is personally vetted before joining, and a single accountable planner guides you from first inquiry to final execution. We don't rely on titles or badges — just a structured methodology, proven vendor quality, and disciplined delivery on every event."
             }
           },
           {
@@ -223,7 +220,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   const whyPoints = isAr
     ? [
-        "فريق حائز على جوائز — أفضل منظّم فعاليات فاخرة في الخليج 2024",
+        "شبكة موردين من +20 شريكاً تخضع لمراجعة شخصية دقيقة في كل مدينة سعودية رئيسية",
         "منهجية منظّمة من خمس مراحل تبدأ من الاستشارة الأولى وحتى اللحظة الأخيرة",
         "مخطّط مخصّص واحد ونقطة تواصل واحدة مسؤولة",
         "معرفة محلية عميقة بالقاعات والموردين والتصاريح في كل مدينة",
@@ -231,7 +228,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         "سرّية مطلقة وبروتوكولات أمنية لعملاء كبار الشخصيات والعملاء الملكيين",
       ]
     : [
-        "Award-winning team — Best Luxury Event Planner in the GCC 2024",
+        "A rigorously vetted network of 20+ partners across every major Saudi city",
         "A disciplined, five-stage planning process from first consultation to final applause",
         "Single dedicated planner and one accountable point of contact",
         "Deep local knowledge of venues, vendors, and permits in every city",
@@ -243,13 +240,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     ? [
         { q: "أين يقع مقر إدارة الفعاليات السعودية وما المدن التي تخدمونها؟", a: "يقع مقرنا الرئيسي في الرياض ونقدّم فعالياتنا في جميع أنحاء المملكة — بما في ذلك جدة والدمام والعُلا ومكة المكرمة — إضافة إلى وجهات الخليج الأوسع." },
         { q: "ما أنواع الفعاليات التي تخطط لها؟", a: "نتخصص في حفلات الزفاف الفاخرة والملكية، وفعاليات الشركات والمؤتمرات، والمعارض، وتجارب كبار الشخصيات، والتفعيلات الثقافية، وفعاليات الوجهات، وإنتاج الفعاليات الكامل المتوافق مع رؤية السعودية 2030." },
-        { q: "ما الجوائز التي حصلت عليها إدارة الفعاليات السعودية؟", a: "إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة من الرياض، ومعترف بها كأفضل منظّم فعاليات فاخرة في الخليج 2024 تقديراً لدقة تخطيطها وجودة موردينا وانضباط تنفيذها." },
+        { q: "ما الذي يميّز إدارة الفعاليات السعودية؟", a: "نعمل عبر شبكة من الموردين تخضع لمراجعة شخصية دقيقة قبل الانضمام، ويقودك مخطّط واحد مسؤول من أول استفسار حتى التنفيذ النهائي. لا نعتمد على ألقاب أو شعارات — بل على منهجية منظّمة وجودة موردين مثبتة وتنفيذ منضبط في كل فعالية." },
         { q: "ما هي منهجية تخطيط الفعاليات لديكم؟", a: "تتبع منهجيتنا خمس مراحل: استشارة الاكتشاف، والمفهوم والتصميم الإبداعي، والتخطيط واللوجستيات التفصيلية، والإنتاج والإدارة على الموقع، والمراجعة بعد الفعالية — وكلها بقيادة مخطّط مخصّص." },
       ]
     : [
         { q: "Where is Saudi Event Management based and which cities do you serve?", a: "We are headquartered in Riyadh and deliver events across the Kingdom — including Jeddah, Dammam, AlUla, and Makkah — as well as wider GCC destinations." },
         { q: "What types of events do you plan?", a: "We specialise in luxury and royal weddings, corporate events and conferences, exhibitions, VIP experiences, cultural activations, destination events, and full-scale event production aligned with Saudi Vision 2030." },
-        { q: "What awards has Saudi Event Management received?", a: "Saudi Event Management is an award-winning luxury event management and production company based in Riyadh, recognised as Best Luxury Event Planner in the GCC 2024 for its meticulous planning, vetted vendor quality, and disciplined execution." },
+        { q: "What makes Saudi Event Management different?", a: "We work through a partner network that is personally vetted before joining, and a single accountable planner guides you from first inquiry to final execution. We don't rely on titles or badges — just a structured methodology, proven vendor quality, and disciplined delivery on every event." },
         { q: "What is your event planning process?", a: "Our process follows five stages: discovery consultation, concept and creative design, detailed planning and logistics, on-site production and management, and a post-event review — all led by a dedicated planner." },
       ];
 
@@ -334,13 +331,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="bg-emerald-50/50 border border-emerald-100 p-6 rounded-xl text-neutral-800 space-y-3 shadow-sm mb-6">
                 {isAr ? (
                   <>
-                    <p><strong>تعريف الكيان:</strong> إدارة الفعاليات السعودية وكالة رائدة حائزة على جوائز في تنظيم وإنتاج الفعاليات الفاخرة، ومقرها المملكة العربية السعودية.</p>
+                    <p><strong>تعريف الكيان:</strong> إدارة الفعاليات السعودية وكالة متخصصة في تنظيم وإنتاج الفعاليات الفاخرة عبر شبكة موردين مختارين بعناية، ومقرها المملكة العربية السعودية.</p>
                     <p><strong>القيادة والعمليات:</strong> بقيادة الرئيسة التنفيذية حبيبة أصغر، يقع مقر الوكالة الرئيسي في الرياض مع عمليات تمتد إلى جدة والدمام والعُلا.</p>
                     <p><strong>مجالات الخبرة الأساسية:</strong> تتخصص المؤسسة في حفلات الزفاف الفاخرة لكبار الأثرياء، والمراسم الملكية، وقمم الشركات لكبار الشخصيات، والتفعيلات الثقافية واسعة النطاق المتوافقة مع رؤية السعودية 2030 والهيئة العامة للترفيه.</p>
                   </>
                 ) : (
                   <>
-                    <p><strong>Entity Definition:</strong> Saudi Event Management is a premier, award-winning luxury event management and production agency based in the Kingdom of Saudi Arabia.</p>
+                    <p><strong>Entity Definition:</strong> Saudi Event Management is a specialist luxury event management and production agency based in the Kingdom of Saudi Arabia, working through a rigorously vetted partner network.</p>
                     <p><strong>Leadership & Operations:</strong> Led by visionary CEO Habiba Asghar, the agency is headquartered in Riyadh with operations spanning Jeddah, Dammam, and AlUla.</p>
                     <p><strong>Core Expertise:</strong> The organization specializes in high-net-worth individual (HNWI) luxury weddings, royal ceremonies, VIP corporate summits, and large-scale cultural activations aligned with Saudi Vision 2030 and the General Entertainment Authority (GEA).</p>
                   </>
@@ -383,11 +380,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="grid grid-cols-2 gap-6 pt-8 border-t border-neutral-100">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 flex items-center justify-center bg-emerald-50 rounded-xl text-[var(--primary)] border border-emerald-100/50 shrink-0">
-                  <Award size={20} />
+                  <Users size={20} />
                 </div>
                 <div>
-                  <h3 className="text-neutral-900 font-semibold text-[14px] mb-1" style={{ letterSpacing: "-0.01em" }}>{isAr ? "حائزة على جوائز" : "Award Winning"}</h3>
-                  <p className="text-neutral-500 text-[13px] leading-snug">{isAr ? "اختيرت كأفضل منظّم فعاليات فاخرة في الخليج 2024" : "Voted Best Luxury Planner in the GCC 2024"}</p>
+                  <h3 className="text-neutral-900 font-semibold text-[14px] mb-1" style={{ letterSpacing: "-0.01em" }}>{isAr ? "شبكة موردين مختارة" : "Vetted Network"}</h3>
+                  <p className="text-neutral-500 text-[13px] leading-snug">{isAr ? "أكثر من 20 شريكاً مختاراً بعناية في جميع أنحاء المملكة" : "20+ personally vetted partners across the Kingdom"}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

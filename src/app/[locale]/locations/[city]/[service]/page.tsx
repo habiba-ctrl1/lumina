@@ -203,7 +203,20 @@ export async function generateMetadata({ params }: PageProps) {
   if (!cityData || !serviceData) return {};
 
   const canonicalUrl = `https://saudieventmanagement.com${locale === "en" ? "" : "/ar"}/locations/${city}/${service}`;
+  // ── Cannibalization consolidation (2026-08-22) ──────────────────────────────
+  // Corporate & conference city×service pages duplicate the richer, canonical
+  // /services/[slug] PSEO pages (e.g. /services/corporate-events-riyadh) and the
+  // national hubs, so Google split the signals and ranked neither (all stuck 68–80).
+  // The duplicates are set noindex,follow: they stay live and keep passing link
+  // equity up, but the /services page becomes the sole indexable target for that
+  // city×service intent. Riyadh conference-planning is kept indexable (capital
+  // market, no /services twin yet — a /services/conference-management-riyadh can
+  // be added later to fold it in too).
+  const consolidatedDuplicate =
+    service === "corporate-event-management" ||
+    (service === "conference-planning" && city !== "riyadh");
   return {
+    ...(consolidatedDuplicate ? { robots: { index: false, follow: true } } : {}),
     title: `${serviceData.name} in ${cityData.name} | Saudi Event Management`,
     description: `Saudi Event Management delivers premium ${serviceData.name.toLowerCase()} in ${cityData.name}, ${cityData.region}. ${serviceData.description}`,
     keywords: [

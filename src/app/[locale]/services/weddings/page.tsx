@@ -260,13 +260,11 @@ export default function WeddingsPage() {
                 <div className="text-3xl font-sans text-[var(--primary)] font-bold">20+</div>
                 <div className="text-[10px] uppercase tracking-widest text-slate-600">{isAr ? <>مورد <br/>معتمد</> : <>Vetted <br/>Vendors</>}</div>
               </div>
-              <div className="flex gap-10 grayscale opacity-40">
-                <span className="text-xs font-bold tracking-widest">FOUR SEASONS</span>
-                <span className="text-xs font-bold tracking-widest">RITZ-CARLTON</span>
-                <span className="text-xs font-bold tracking-widest">JW MARRIOTT</span>
+              <div className="text-xs font-medium tracking-widest text-slate-500 uppercase max-w-xs">
+                {isAr ? "ننسّق في أرقى قاعات المملكة ذات الخمس نجوم" : "We coordinate at the Kingdom's leading five-star venues"}
               </div>
               <div className="text-sm text-gray-500 font-light ">
-                {isAr ? "«تميّز حائز على جوائز في تخطيط أعراس نخبة المملكة.»" : "\"Award-winning planning excellence for the Kingdom's elite.\""}
+                {isAr ? "«تميّز في تخطيط أعراس نخبة المملكة.»" : "\"Bespoke planning excellence for the Kingdom's elite.\""}
               </div>
             </div>
           </div>
