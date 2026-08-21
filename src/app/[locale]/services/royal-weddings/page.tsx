@@ -56,10 +56,8 @@ const jsonLd = {
         telephone: "+966539388072",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "King Fahd Road",
           addressLocality: "Riyadh",
           addressRegion: "Riyadh",
-          postalCode: "11564",
           addressCountry: "SA",
         },
         geo: {

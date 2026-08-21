@@ -174,6 +174,7 @@ const geoHighlights = [
 const resources = [
   { title: "AlUla Events Guide: Maraya, Hegra & Desert Experience Planning", desc: "How to access Maraya for private events, plan Hegra heritage dinners, and navigate heritage-site permits.", href: "/blog/alula-events-guide-maraya-hegra-desert" },
   { title: "The Golden Thread: Weaving Luxury Lifestyle into Saudi Arabia's Top-tier Events", desc: "From bespoke concierge services to invitation-only galas — the Saudi VIP lifestyle guide.", href: "/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events" },
+  { title: "Gala Dinner & Awards Ceremony Planning in Saudi Arabia", desc: "Budgets, stage production, protocol and run-of-show for invitation-only galas and VIP awards nights — a complete 2026 guide.", href: "/blog/gala-dinner-awards-ceremony-planning-saudi-arabia" },
   { title: "VIP Executive Retreats in NEOM: A 2026 Guide", desc: "Strategies for hosting unforgettable VIP executive retreats in NEOM's cutting-edge developments.", href: "/blog/vip-executive-retreats-neom-2026" },
   { title: "Best Corporate Event Venues in Riyadh 2026", desc: "An exclusive guide to the Kingdom's premier venues — KAFD, Ritz-Carlton, and five-star hotel ballrooms.", href: "/blog/best-corporate-event-venues-riyadh-2026" },
 ];

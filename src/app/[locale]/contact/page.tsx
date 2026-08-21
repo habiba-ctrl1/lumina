@@ -67,10 +67,8 @@ export default async function ContactPage({ params }: PageProps) {
     "url": "https://saudieventmanagement.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Olaya District",
       "addressLocality": "Riyadh",
       "addressRegion": "Riyadh Province",
-      "postalCode": "12211",
       "addressCountry": "SA",
     },
     "contactPoint": {
@@ -101,13 +99,13 @@ export default async function ContactPage({ params }: PageProps) {
     hoursValue: isAr
       ? "يومياً: 9:00 صباحاً - 10:00 مساءً (بتوقيت المملكة العربية السعودية)"
       : "Daily: 9:00 AM - 10:00 PM (KSA Time)",
-    officesTitle: isAr ? "مكاتبنا الإقليمية" : "Regional Offices",
-    riyadhTitle: isAr ? "المقر الرئيسي - الرياض" : "Riyadh Headquarters",
-    riyadhAddress: isAr ? "حي العليا، الرياض، المملكة العربية السعودية" : "Olaya District, Riyadh, Kingdom of Saudi Arabia",
-    jeddahTitle: isAr ? "فرع جدة" : "Jeddah Branch",
-    jeddahAddress: isAr ? "طريق الملك عبدالعزيز، جدة، المملكة العربية السعودية" : "King Abdulaziz Road, Jeddah, KSA",
-    alulaTitle: isAr ? "جناح العلا" : "AlUla Pavilion",
-    alulaAddress: isAr ? "وادي عشار، العلا، المملكة العربية السعودية" : "Ashar Valley, AlUla, KSA",
+    officesTitle: isAr ? "أين نعمل" : "Where We Operate",
+    riyadhTitle: isAr ? "الرياض" : "Riyadh",
+    riyadhAddress: isAr ? "قاعدتنا الرئيسية — فعاليات العاصمة والشركات" : "Our home base — capital & corporate events",
+    jeddahTitle: isAr ? "جدة" : "Jeddah",
+    jeddahAddress: isAr ? "الفعاليات الساحلية وفعاليات الوجهات" : "Coastal & destination events",
+    alulaTitle: isAr ? "العلا" : "AlUla",
+    alulaAddress: isAr ? "التراث وتجارب الصحراء" : "Heritage & desert experiences",
   };
 
   return (
@@ -211,7 +209,7 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Regional Offices */}
+            {/* Where We Operate — service coverage (not physical offices) */}
             <div className="space-y-6 bg-white p-8 rounded-2xl border border-neutral-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
               <h3 className="font-semibold text-neutral-900 text-lg pb-4 border-b border-neutral-100 flex items-center gap-2" style={{ letterSpacing: "-0.01em" }}>
                 <MapPin size={18} className="text-[var(--primary)]" />

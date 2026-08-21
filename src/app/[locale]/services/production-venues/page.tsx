@@ -242,7 +242,7 @@ export default function ProductionVenuesPage() {
                 : [
                 { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
                 { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
-                { icon: Zap, title: "Stage Design", desc: "Award-winning event staging at Madinat Al Faisaliah. Immersive architectural environments for high-profile events." },
+                { icon: Zap, title: "Stage Design", desc: "Immersive event staging at Madinat Al Faisaliah. Architectural environments for high-profile events." },
                 { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia, coordinated with five-star culinary teams across Jeddah." },
                 { icon: PenTool, title: "Event Decoration", desc: "Bespoke event decoration Jeddah, providing robust event infrastructure and utilizing 2025 KSA design trends." },
                 { icon: Camera, title: "Media Production", desc: "Professional event photography and cinematic videography for KAICC and KAFD gatherings." },

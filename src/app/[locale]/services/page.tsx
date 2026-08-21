@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       : "Event Management Services in Saudi Arabia | Weddings, Corporate & Exhibitions",
     description: isAr
       ? "شركة إدارة فعاليات حائزة على جوائز في السعودية. شبكة شركاء مُنتقاة بعناية فائقة لتنظيم حفلات زفاف فاخرة، وقمم مؤسسية، ومعارض، ومؤتمرات، وفعاليات كبار الشخصيات والوجهات في الرياض وجدة والدمام والعلا ونيوم. عرض مجاني خلال 24 ساعة."
-      : "Award-winning event management company in Saudi Arabia. A rigorously vetted partner network delivering luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
+      : "Specialist event management company in Saudi Arabia. A rigorously vetted partner network delivering luxury weddings, corporate summits, exhibitions, conferences, VIP & destination events in Riyadh, Jeddah, Dammam, AlUla & NEOM. Free proposal in 24 hours.",
     keywords: [
       "Event Management Services Saudi Arabia",
       "Event management company Saudi Arabia",
@@ -309,10 +309,8 @@ const jsonLd = {
       "slogan": "Luxury event management across Saudi Arabia.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "King Fahd Road",
         "addressLocality": "Riyadh",
         "addressRegion": "Riyadh",
-        "postalCode": "11564",
         "addressCountry": "SA",
       },
       "telephone": "+966539388072",

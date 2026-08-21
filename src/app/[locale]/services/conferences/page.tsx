@@ -745,14 +745,14 @@ export default async function ConferencesPage() {
             <div className="flex flex-wrap gap-3">
               {(isAr
                 ? [
-                { name: "إدارة المؤتمرات في الرياض", href: "/locations/riyadh" },
-                { name: "إدارة المؤتمرات في جدة", href: "/locations/jeddah" },
-                { name: "إدارة المؤتمرات في الدمام", href: "/locations/dammam" },
+                { name: "إدارة المؤتمرات في الرياض", href: "/locations/riyadh/conference-planning" },
+                { name: "إدارة المؤتمرات في جدة", href: "/services/conference-management-jeddah" },
+                { name: "إدارة المؤتمرات في الدمام", href: "/services/conference-management-dammam" },
                   ]
                 : [
-                { name: "Conference Management Riyadh", href: "/locations/riyadh" },
-                { name: "Conference Management Jeddah", href: "/locations/jeddah" },
-                { name: "Conference Management Dammam", href: "/locations/dammam" },
+                { name: "Conference Management Riyadh", href: "/locations/riyadh/conference-planning" },
+                { name: "Conference Management Jeddah", href: "/services/conference-management-jeddah" },
+                { name: "Conference Management Dammam", href: "/services/conference-management-dammam" },
               ]).map((loc) => (
                 <Link
                   key={loc.href}
@@ -774,6 +774,7 @@ export default async function ConferencesPage() {
               {[
                 { title: "MICE Tourism Saudi Arabia 2026: The Complete Industry Guide", slug: "mice-tourism-saudi-arabia-complete-guide-2026", desc: "Everything you need to know about Saudi Arabia's booming MICE industry — market size, key venues, and Vision 2030 strategy." },
                 { title: "State of the MICE Industry in Saudi Arabia 2026", slug: "state-of-mice-industry-saudi-arabia-2026", desc: "Exclusive analysis of the MICE sector — explosive growth metrics, super-venues, and sustainability requirements." },
+                { title: "Gala Dinner & Awards Ceremony Planning in Saudi Arabia", slug: "gala-dinner-awards-ceremony-planning-saudi-arabia", desc: "Budgets, stage production, protocol and run-of-show for the gala dinners and awards nights that anchor major conferences and summits." },
               ].map((post) => (
                 <Link
                   key={post.slug}
