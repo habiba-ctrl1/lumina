@@ -32,8 +32,15 @@ const DEFAULT_MODELS: Record<ProviderName, string> = {
   gemini: "gemini-2.5-pro",
 };
 
+// Read an env var with surrounding whitespace stripped. Dashboard-pasted
+// values (Vercel, etc.) very commonly carry a stray trailing space or newline,
+// which would otherwise break exact-match comparisons and API auth.
+function envTrimmed(name: string): string {
+  return (process.env[name] || "").trim();
+}
+
 function getProviderName(): ProviderName {
-  const raw = (process.env.AI_PROVIDER || "anthropic").toLowerCase();
+  const raw = (envTrimmed("AI_PROVIDER") || "anthropic").toLowerCase();
   if (raw === "anthropic" || raw === "openai" || raw === "gemini") return raw;
   throw new AIProviderError(
     `Unknown AI_PROVIDER "${raw}" — expected "anthropic", "openai", or "gemini"`
@@ -48,14 +55,14 @@ function getProviderName(): ProviderName {
 export function assertProviderConfigured(): void {
   const provider = getProviderName();
   const keyEnv = PROVIDER_KEY_ENV[provider];
-  if (!process.env[keyEnv]) {
+  if (!envTrimmed(keyEnv)) {
     throw new AIProviderError(`${keyEnv} is not configured on the server`);
   }
 }
 
 export async function getAIReply(systemPrompt: string, messages: ChatMsg[]): Promise<string> {
   const provider = getProviderName();
-  const model = process.env.AI_MODEL || DEFAULT_MODELS[provider];
+  const model = envTrimmed("AI_MODEL") || DEFAULT_MODELS[provider];
 
   switch (provider) {
     case "anthropic":
@@ -68,7 +75,7 @@ export async function getAIReply(systemPrompt: string, messages: ChatMsg[]): Pro
 }
 
 async function callAnthropic(systemPrompt: string, messages: ChatMsg[], model: string): Promise<string> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = envTrimmed("ANTHROPIC_API_KEY");
   if (!apiKey) throw new AIProviderError("ANTHROPIC_API_KEY is not configured on the server");
 
   const { default: AnthropicClient } = await import("@anthropic-ai/sdk");
@@ -87,7 +94,7 @@ async function callAnthropic(systemPrompt: string, messages: ChatMsg[], model: s
 }
 
 async function callOpenAI(systemPrompt: string, messages: ChatMsg[], model: string): Promise<string> {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = envTrimmed("OPENAI_API_KEY");
   if (!apiKey) throw new AIProviderError("OPENAI_API_KEY is not configured on the server");
 
   const { default: OpenAI } = await import("openai");
@@ -105,7 +112,7 @@ async function callOpenAI(systemPrompt: string, messages: ChatMsg[], model: stri
 }
 
 async function callGemini(systemPrompt: string, messages: ChatMsg[], model: string): Promise<string> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = envTrimmed("GEMINI_API_KEY");
   if (!apiKey) throw new AIProviderError("GEMINI_API_KEY is not configured on the server");
   if (messages.length === 0) return "";
 
