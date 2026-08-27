@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
 import { getAIReply, assertProviderConfigured, AIProviderError } from '@/lib/ai-provider';
+import { buildSemContext } from '@/lib/copilot-context';
 
 // /api/admin/copilot (GET, POST — admin only)
 // SEM's AI operations advisor — paste a client/vendor message or situation,
@@ -22,7 +23,14 @@ Hard rules you must never violate in any suggestion or draft:
 - NEVER invent or suggest fabricated content — no fake testimonials, awards, years-in-business claims, or portfolio items. Don't emphasize company age in either direction.
 - SEM's fee/commission is never disclosed to the client.
 
-Keep replies concise and practical — Habiba is managing this solo alongside everything else, so prioritize clarity and actionability over long explanations.`;
+Keep replies concise and practical — Habiba is managing this solo alongside everything else, so prioritize clarity and actionability over long explanations.
+
+DATA GROUNDING — read carefully:
+- A section titled "SEM LIVE DATA SNAPSHOT" is appended below. It is a read-only extract of SEM's actual database (vendors, open inquiries, pipeline leads, pending quote requests, upcoming events), current as of this message. Treat it as your ONLY source of truth about what records exist.
+- When asked about vendors, leads, clients, events, counts, or coverage gaps, answer STRICTLY from that snapshot. Never invent a vendor, client, lead, number, date, or price that is not in it.
+- If the answer is not in the snapshot (or the snapshot says it failed to load), say you don't have that record rather than guessing — and suggest where she'd find or add it.
+- Vendor and client CONTACT details (phone, email, WhatsApp, contact person) are deliberately withheld from the snapshot. Never claim to know them; if she needs to contact someone, tell her to open that record in the admin panel.
+- You can READ and reason over this data, but you cannot change it — you have no ability to create, update, or delete records. Recommend actions for Habiba to take; never imply you performed them.`;
 
 export async function GET(request: Request) {
   try {
@@ -72,10 +80,15 @@ export async function POST(request: Request) {
       take: 40,
     });
 
+    // Read-only snapshot of live SEM data (contact-scrubbed) so the advisor
+    // answers from real records instead of guessing. Rebuilt each message.
+    const dataContext = await buildSemContext();
+    const systemWithData = `${SYSTEM_PROMPT}\n\n${dataContext}`;
+
     let replyText: string;
     try {
       replyText = await getAIReply(
-        SYSTEM_PROMPT,
+        systemWithData,
         history.map((m) => ({
           role: m.role === 'assistant' ? ('assistant' as const) : ('user' as const),
           content: m.content,
