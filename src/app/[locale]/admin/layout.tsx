@@ -38,7 +38,8 @@ import {
   ClipboardList,
   Zap,
   Inbox,
-  ListChecks
+  ListChecks,
+  Bot
 } from "lucide-react";
 
 type NavGroup = {
@@ -57,6 +58,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
       { href: "/admin/action-needed", label: "Action Needed", icon: ListChecks },
+      { href: "/admin/copilot", label: "Copilot", icon: Bot },
     ],
   },
   {
