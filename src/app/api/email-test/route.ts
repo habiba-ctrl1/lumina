@@ -1,37 +1,40 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { resend, isResendConfigured, FROM_EMAIL } from '@/lib/resend';
 
 /**
- * Email deliverability diagnostic.
+ * Email deliverability diagnostic (Gmail SMTP via nodemailer).
  *
  *   GET /api/email-test                      → config check only (no send)
  *   GET /api/email-test?to=you@example.com   → sends a real test email and
- *                                              returns Resend's raw response
+ *                                              returns the transport response
  *
- * The raw Resend response is what reveals the real problem:
- *   - 401 / "API key is invalid"            → bad RESEND_API_KEY
- *   - 403 / "domain is not verified"        → verify saudieventmanagement.com in Resend
- *   - 422 / "from address ... not allowed"  → sending domain mismatch
- *   - { id: "..." }                         → success, email accepted by Resend
+ * What the response tells you:
+ *   - "Invalid login" / 535                  → wrong SMTP_USER / SMTP_PASS (app password)
+ *   - "self signed certificate" / ECONNECT   → wrong SMTP_HOST / SMTP_PORT
+ *   - From rewritten to the gmail address     → "Send mail as" alias not verified in Gmail
+ *   - { sent: true, id: "..." }               → success, message accepted by Gmail SMTP
  *
  * Remove this route before going to production (it can send mail).
  */
 export async function GET(request: Request) {
-  const key = process.env.RESEND_API_KEY;
   const { searchParams } = new URL(request.url);
   const to = searchParams.get('to');
 
-  // Config check — never leaks the key, only its shape.
   const config = {
-    hasKey: Boolean(key),
-    keyLooksValid: Boolean(key && key.startsWith('re_') && key.length > 20),
-    keyPreview: key ? `${key.slice(0, 6)}…${key.slice(-4)}` : null,
-    fromAddress: 'info@saudieventmanagement.com',
+    hasSmtpHost: Boolean(process.env.SMTP_HOST),
+    hasSmtpUser: Boolean(process.env.SMTP_USER),
+    hasSmtpPass: Boolean(process.env.SMTP_PASS),
+    smtpHost: process.env.SMTP_HOST || 'smtp.gmail.com (default)',
+    smtpPort: process.env.SMTP_PORT || '465 (default)',
+    userPreview: process.env.SMTP_USER
+      ? `${process.env.SMTP_USER.slice(0, 3)}…@${(process.env.SMTP_USER.split('@')[1] || '')}`
+      : null,
+    fromAddress: FROM_EMAIL,
   };
 
-  if (!config.hasKey || !config.keyLooksValid) {
+  if (!isResendConfigured) {
     return NextResponse.json(
-      { ok: false, config, hint: 'RESEND_API_KEY is missing or malformed in .env.local.' },
+      { ok: false, config, hint: 'SMTP_HOST / SMTP_USER / SMTP_PASS missing in env.' },
       { status: 500 }
     );
   }
@@ -40,32 +43,23 @@ export async function GET(request: Request) {
     return NextResponse.json({
       ok: true,
       config,
-      hint: 'Config looks valid. Append ?to=your@email.com to send a real test email and verify domain/key.',
+      hint: 'Config looks valid. Append ?to=your@email.com to send a real test email.',
     });
   }
 
-  try {
-    const resend = new Resend(key);
-    const result = await resend.emails.send({
-      from: 'Saudi Event Management <info@saudieventmanagement.com>',
-      to: [to],
-      subject: 'Resend Test — Saudi Event Management',
-      html: '<p>This is a deliverability test from your website. If you received this, Resend and your domain are configured correctly.</p>',
-    });
+  const result = await resend.emails.send({
+    from: FROM_EMAIL,
+    to: [to],
+    subject: 'SMTP Test — Saudi Event Management',
+    html: '<p>This is a deliverability test from your website. If you received this, Gmail SMTP and your sending identity are configured correctly.</p>',
+  });
 
-    // Resend returns { data, error } — surface both so domain/key issues are visible.
-    if (result.error) {
-      return NextResponse.json(
-        { ok: false, config, sent: false, resendError: result.error },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json({ ok: true, config, sent: true, id: result.data?.id });
-  } catch (error) {
+  if (result.error) {
     return NextResponse.json(
-      { ok: false, config, sent: false, error: String(error) },
+      { ok: false, config, sent: false, error: String(result.error) },
       { status: 502 }
     );
   }
+
+  return NextResponse.json({ ok: true, config, sent: true, id: result.data?.id });
 }

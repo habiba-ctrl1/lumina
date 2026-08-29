@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { resend, isResendConfigured, FROM_EMAIL, ADMIN_EMAIL } from '@/lib/resend';
 
 export async function POST(request: Request) {
   try {
@@ -21,12 +21,10 @@ export async function POST(request: Request) {
       ? additionalCategories.join(', ')
       : 'None selected';
 
-    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_missing_key') {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-
+    if (isResendConfigured) {
       await resend.emails.send({
-        from: 'Saudi Event Management <info@saudieventmanagement.com>',
-        to: ['infosaudieventmanagement@gmail.com'],
+        from: FROM_EMAIL,
+        to: [ADMIN_EMAIL],
         subject: `New Vendor Application — ${companyName}`,
         html: `
           <div style="font-family: sans-serif; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid #e5e7eb; border-radius: 12px;">
