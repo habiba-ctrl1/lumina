@@ -12,22 +12,23 @@ export async function generateMetadata({
 
   return {
     title: isAr
-      ? { absolute: "تنظيم الفعاليات الثقافية والدينية في السعودية | رمضان واليوم الوطني والعيد | إدارة الفعاليات السعودية" }
-      : "Cultural & Religious Event Planning Saudi Arabia | Ramadan, National Day & Eid",
+      ? { absolute: "إدارة فعاليات اليوم الوطني السعودي 2026 | الرياض والسعودية | إدارة الفعاليات السعودية" }
+      : "Saudi National Day 2026 Event Management Riyadh | SEM",
     description: isAr
-      ? "إدارة أصيلة للفعاليات الثقافية والدينية في عموم السعودية. إفطارات رمضان، وحفلات اليوم الوطني، واحتفالات يوم التأسيس، وحفلات العيد، وتفعيلات موسم الرياض — من إدارة الفعاليات السعودية."
-      : "Authentic cultural and religious event management across Saudi Arabia. Ramadan iftars, National Day galas, Founding Day celebrations, Eid parties, and Riyadh Season activations — by Saudi Event Management.",
+      ? "إدارة فعاليات اليوم الوطني السعودي 2026 (23 سبتمبر) في الرياض وعموم المملكة — حفلات مؤسسية، وتفعيلات، وترفيه، وديكور وهوية، وهدايا وتوزيعات. القاعات تُحجز بسرعة — احصل على عرض سعر سريع من إدارة الفعاليات السعودية."
+      : "Saudi National Day 2026 (23 Sep) event management in Riyadh & across Saudi Arabia — corporate galas, activations, entertainment, décor & gifting. Venues fill fast — get a fast quote from Saudi Event Management.",
     keywords: [
+      "Saudi National Day event management",
+      "Saudi National Day event company",
+      "National Day corporate events Riyadh",
+      "National Day event planning Saudi Arabia",
+      "National Day gifts and giveaways Saudi Arabia",
       "Cultural event management Saudi Arabia",
-      "Ramadan event planner KSA",
-      "National Day event organizer Riyadh",
-      "Eid celebration company Saudi Arabia",
       "Founding Day events Saudi Arabia",
-      "Riyadh Season activations",
-      "Religious event planner Saudi Arabia",
-      "تنظيم فعاليات وطنية السعودية",
-      "مخطط فعاليات رمضان الرياض",
+      "Ramadan event planner KSA",
+      "إدارة فعاليات اليوم الوطني السعودي",
       "احتفالات اليوم الوطني السعودي",
+      "هدايا اليوم الوطني للشركات",
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -35,18 +36,18 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isAr
-        ? "تنظيم الفعاليات الثقافية والدينية في السعودية | إدارة الفعاليات السعودية"
-        : "Cultural & Religious Event Planning Saudi Arabia | Saudi Event Management",
+        ? "إدارة فعاليات اليوم الوطني السعودي 2026 | إدارة الفعاليات السعودية"
+        : "Saudi National Day 2026 Event Management | Saudi Event Management",
       description: isAr
-        ? "إدارة أصيلة للفعاليات الثقافية — إفطارات رمضان، وحفلات اليوم الوطني، ويوم التأسيس، واحتفالات العيد، وتفعيلات موسم الرياض."
-        : "Authentic cultural event management — Ramadan iftars, National Day galas, Founding Day, Eid celebrations, and Riyadh Season activations.",
+        ? "إدارة فعاليات اليوم الوطني السعودي 2026 (23 سبتمبر) في الرياض والمملكة — حفلات، وتفعيلات، وترفيه، وهدايا مؤسسية، إلى جانب رمضان ويوم التأسيس والعيد."
+        : "Saudi National Day 2026 (23 Sep) event management in Riyadh & the Kingdom — galas, activations, entertainment and corporate gifting, alongside Ramadan, Founding Day and Eid.",
       url: canonicalUrl,
       images: [
         {
-          url: "/services/private_party.webp",
+          url: "/blog/saudi_national_day_event_2026.webp",
           width: 1200,
           height: 630,
-          alt: "Cultural and Religious Events Saudi Arabia",
+          alt: "Saudi National Day corporate event in Riyadh with green-and-white national branding",
         },
       ],
     },

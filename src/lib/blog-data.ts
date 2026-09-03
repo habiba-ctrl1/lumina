@@ -1935,7 +1935,7 @@ export const blogPosts: BlogPost[] = [
       "## 3. Secure the Best Performers",
       "The best Ardah dancers and Oud players get booked up months in advance. Do not leave your entertainment to the last minute!",
       "[CTA] Hosting VIP guests or a large staff celebration this National Day? Our [entertainment](/services/entertainment), [VIP transportation](/services/vip-transportation), and [valet parking](/services/valet-parking) partners can be added to any package — get a same-day quote before the September rush.",
-      "Want to throw the best Saudi National Day event your company has ever seen? Let our expert team handle the venues, the permits, and the performers. [Contact us today](/contact) to start planning an unforgettable September 23 celebration!"
+      "Want to throw the best Saudi National Day event your company has ever seen? Let our expert [Saudi National Day event management](/services/cultural-events) team handle the venues, the permits, and the performers. [Contact us today](/contact) to start planning an unforgettable September 23 celebration!"
     ],
     contentAr: [
       "أصبح اليوم الوطني السعودي (23 سبتمبر) واحدًا من أكبر وأكثر الأوقات إثارة لفعاليات الشركات في المملكة. وسواء كنت عملًا محليًا أو علامة دولية، استضافة فعالية اليوم الوطني هي الطريقة المثالية لإظهار فخرك وتوافقك مع [رؤية 2030](/portfolio/vision-2030).",
@@ -1953,7 +1953,7 @@ export const blogPosts: BlogPost[] = [
       "## 3. أمّن أفضل الفنانين",
       "أفضل راقصي العرضة وعازفي العود يُحجزون قبل أشهر. لا تترك ترفيهك للحظة الأخيرة!",
       "[CTA] تستضيف ضيوفًا من كبار الشخصيات أو احتفالًا كبيرًا للموظفين هذا اليوم الوطني؟ يمكن إضافة شركاء [الترفيه](/services/entertainment) و[النقل الفاخر لكبار الشخصيات](/services/vip-transportation) و[خدمة الفاليه](/services/valet-parking) إلى أي باقة — احصل على عرض سعر في نفس اليوم قبل ازدحام سبتمبر.",
-      "تريد إقامة أفضل فعالية يوم وطني سعودي رأتها شركتك؟ دع فريقنا الخبير يتولّى القاعات والتصاريح والفنانين. [تواصل معنا اليوم](/contact) لبدء تخطيط احتفال 23 سبتمبر لا يُنسى!"
+      "تريد إقامة أفضل فعالية يوم وطني سعودي رأتها شركتك؟ دع فريق [إدارة فعاليات اليوم الوطني السعودي](/services/cultural-events) لدينا يتولّى القاعات والتصاريح والفنانين. [تواصل معنا اليوم](/contact) لبدء تخطيط احتفال 23 سبتمبر لا يُنسى!"
     ]
   },
   {
