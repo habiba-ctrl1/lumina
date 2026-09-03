@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
 import Image from "next/image";
 import Link from "next/link";
-import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight, Phone, CheckCircle2 } from "lucide-react";
+import { Moon, Star, Flag, Gift, Landmark, Award, ChevronRight, Phone, CheckCircle2, Building2, GraduationCap, Users, CalendarDays, Clock, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 
@@ -18,113 +18,117 @@ export default function SeasonalEventsPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Festival",
-        "name": "Ramadan Nights Riyadh 2025",
-        "startDate": "2025-03-01",
-        "endDate": "2025-03-30",
-        "location": {
-          "@type": "Place",
-          "name": "Diplomatic Quarter, Riyadh",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Riyadh",
-            "addressCountry": "SA"
-          }
+        "@type": "Service",
+        "@id": "https://saudieventmanagement.com/services/cultural-events#national-day",
+        "serviceType": "Saudi National Day event management",
+        "name": "Saudi National Day Event Management",
+        "provider": {
+          "@type": "Organization",
+          "name": "Saudi Event Management",
+          "url": "https://saudieventmanagement.com"
         },
-        "description": "Exquisite Ramadan iftar and suhoor events featuring traditional Saudi hospitality and luxury activations."
-      },
-      {
-        "@type": "CivicStructure",
-        "name": "Riyadh National Day Pavilion",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Riyadh",
-          "addressCountry": "SA"
-        }
+        "areaServed": [
+          { "@type": "City", "name": "Riyadh" },
+          { "@type": "City", "name": "Jeddah" },
+          { "@type": "AdministrativeArea", "name": "Eastern Province" }
+        ],
+        "description": "Corporate and large-scale Saudi National Day (23 September) event management — galas, activations, entertainment, décor and branding, gifting and giveaways — delivered across Riyadh, Jeddah, and the Eastern Province."
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What should I know about planning events during Ramadan in Saudi Arabia?",
+            "name": "When is Saudi National Day 2026?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Ramadan in Saudi Arabia requires cultural sensitivity, adjusting event timings to post-iftar or suhoor hours, and focusing on traditional hospitality. As a premier Ramadan event planner KSA, Saudi Event Management manages all aspects of luxury corporate iftars and brand activations."
+              "text": "Saudi National Day is on 23 September 2026. This edition marks Saudi National Day 96, commemorating the 1932 unification of the Kingdom under King Abdulaziz."
             }
           },
           {
             "@type": "Question",
-            "name": "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?",
+            "name": "What does Saudi National Day event management include?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Starting a Ramadan activation requires early concept design and venue booking. Saudi Event Management provides full-service solutions for brand activations, from bespoke Majlis setups to luxury catering."
+              "text": "It typically includes event planning and project management, venue sourcing and coordination, stage/AV and show production, décor and National Day branding, entertainment such as Ardah performances, catering and Saudi hospitality, VIP and guest management, permit coordination, brand activations, and corporate gifting or giveaways."
             }
           },
           {
             "@type": "Question",
-            "name": "How to organize a National Day celebration for our company?",
+            "name": "How early should a company plan a Saudi National Day event?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Organizing a National Day celebration requires patriotic branding, entertainment permits, and engaging cultural activities. As your National Day event organizer Riyadh, we recommend starting the process 3-4 months in advance."
+              "text": "Ideally three to six months ahead, because the best venues, Ardah troupes and production crews in Riyadh and Jeddah book out first. Closer to 23 September we can still help with brand activations, smaller celebrations, and corporate gifting."
             }
           },
           {
             "@type": "Question",
-            "name": "What is special about Saudi Founding Day celebrations?",
+            "name": "Do Saudi National Day events require permits?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Founding Day celebrates the traditional heritage of the Kingdom. Events often feature traditional attire, Saudi coffee ceremonies, and historical exhibitions."
+              "text": "Requirements depend on the event type, venue and activities. Public-facing events and live entertainment may require General Entertainment Authority (GEA) and municipality approvals. We coordinate the relevant approvals through trusted local partners."
             }
           },
           {
             "@type": "Question",
-            "name": "How early should I book a Ramadan event organizer?",
+            "name": "How much does a Saudi National Day event cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Due to high demand, we recommend booking your Ramadan event organizer at least 2-3 months before the holy month starts to secure the best venues and vendors."
+              "text": "There is no fixed price. The main cost drivers are guest numbers, venue, staging/AV and production, entertainment, catering, décor and branding, and gifting volumes. Share your brief and we return an itemised quote."
             }
           },
           {
             "@type": "Question",
-            "name": "Ramadan event company near me Saudi Arabia",
+            "name": "Can you handle Saudi National Day corporate gifting and giveaways?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Saudi Event Management is a premier Ramadan event company near me Saudi Arabia, offering localized, high-end Islamic seasonal events across Riyadh, Jeddah, and the Eastern Province."
+              "text": "Yes. We arrange branded National Day gifts, hampers and promotional giveaways for employees and clients — as a smaller standalone order or as part of a larger National Day event."
             }
           },
           {
             "@type": "Question",
-            "name": "National Day party organizer Riyadh",
+            "name": "What is the difference between Saudi National Day and Founding Day?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "As the top National Day party organizer Riyadh, Saudi Event Management creates massive patriotic festivals and exclusive corporate celebrations for the Kingdom's most important holiday."
+              "text": "National Day (23 September) marks the 1932 unification of the Kingdom by King Abdulaziz. Founding Day (22 February) marks the establishment of the first Saudi state in 1727. Both are national occasions but commemorate different milestones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which cities do you cover for National Day events in Saudi Arabia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work primarily in Riyadh, with delivery in Jeddah and the Eastern Province through our vetted partner network."
             }
           }
         ]
       },
       {
         "@type": "Article",
-        "headline": "How to Plan a National Day Celebration in Saudi Arabia",
+        "headline": "Saudi National Day Event Ideas for Corporates: September 23 Planning Guide",
         "author": {
           "@type": "Organization",
           "name": "Saudi Event Management"
         },
-        "datePublished": "2024-09-01",
-        "description": "A comprehensive guide to organizing high-impact National Day galas and community festivals in Riyadh."
+        "datePublished": "2026-06-07",
+        "dateModified": "2026-09-04",
+        "image": "https://saudieventmanagement.com/blog/saudi_national_day_event_2026.webp",
+        "url": "https://saudieventmanagement.com/blog/national-day-event-ideas-saudi-arabia-corporates",
+        "description": "A practical guide to organising high-impact Saudi National Day galas, activations and corporate celebrations in Riyadh and across the Kingdom."
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://saudieventmanagement.com" },
           { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://saudieventmanagement.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Seasonal & Religious Events", "item": "https://saudieventmanagement.com/services/seasonal" }
+          { "@type": "ListItem", "position": 3, "name": "Cultural Events", "item": "https://saudieventmanagement.com/services/cultural-events" }
         ]
       },
       {
         "@type": "Organization",
-        "name": "Saudi Event Management Seasonal Events",
-        "description": "Specializing in Saudi National Day, Founding Day, and Riyadh Season cultural activations."
+        "name": "Saudi Event Management",
+        "url": "https://saudieventmanagement.com",
+        "description": "Cultural event management in Saudi Arabia specialising in Saudi National Day, Founding Day, Ramadan, Eid and Riyadh Season activations."
       }
     ]
   };
@@ -143,12 +147,12 @@ export default function SeasonalEventsPage() {
           titleHighlight={isAr ? "في السعودية" : "in Saudi Arabia"}
           subtitle={
             isAr
-              ? "المنظِّم الرائد في المملكة لفعاليات رمضان واليوم الوطني والعيد — نحفظ التراث السعودي ونقدّم تجارب ثقافية أصيلة في الرياض وجدة وما بعدها."
-              : "The Kingdom's leading Ramadan, National Day, and Eid event organizer — preserving Saudi heritage and delivering authentic cultural experiences across Riyadh, Jeddah, and beyond."
+              ? "اليوم الوطني السعودي 96 يوافق 23 سبتمبر 2026 — إلى جانب رمضان ويوم التأسيس والعيد. متخصّصون في إدارة فعاليات اليوم الوطني للشركات: حفلات وتفعيلات وهدايا مؤسسية في الرياض وجدة وما بعدها."
+              : "Saudi National Day 96 falls on 23 September 2026 — alongside Ramadan, Founding Day and Eid. Specialists in Saudi National Day event management for corporates: galas, activations and gifting across Riyadh, Jeddah, and beyond."
           }
           backgroundImage="/services/premium_cultural_event_hero.webp"
           imageAlt="Luxury Saudi cultural event and celebration at night with traditional Majlis"
-          badge={isAr ? "الفعاليات الثقافية | التراث السعودي" : "Cultural Events | التراث السعودي"}
+          badge={isAr ? "اليوم الوطني 2026 | الفعاليات الثقافية" : "National Day 2026 | Cultural Events"}
           enableParallax
           breadcrumbs={[
             { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
@@ -163,7 +167,7 @@ export default function SeasonalEventsPage() {
               href="#celebration-enquiry"
               className="inline-flex items-center justify-center gap-2 px-9 py-4 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[13px] w-full sm:w-auto"
             >
-              {isAr ? "خطّط لاحتفالك" : "Plan Your Celebration"}
+              {isAr ? "اطلب عرض سعر اليوم الوطني" : "Request a National Day Quote"}
             </Link>
             <a
               href="https://wa.me/966539388072" target="_blank" rel="noopener noreferrer"
@@ -173,6 +177,216 @@ export default function SeasonalEventsPage() {
             </a>
           </div>
         </div>
+
+        {/* ── SAUDI NATIONAL DAY 2026 ── */}
+        <section id="national-day" className="py-24 md:py-28 bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="order-last lg:order-first">
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
+                  <Image
+                    src="/blog/saudi_national_day_event_2026.webp"
+                    alt={isAr ? "احتفال اليوم الوطني السعودي للشركات في الرياض بهوية خضراء وبيضاء" : "Saudi National Day corporate celebration in Riyadh with green-and-white national branding"}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="space-y-6">
+                <span className="section-label flex items-center gap-2">
+                  <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block" />
+                  {isAr ? "اليوم الوطني 96 · 23 سبتمبر 2026" : "National Day 96 · 23 September 2026"}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+                  {isAr ? "إدارة فعاليات اليوم الوطني السعودي" : "Saudi National Day event management"}{" "}
+                  <span className="text-[var(--primary)]">{isAr ? "في الرياض وعموم المملكة" : "in Riyadh & across the Kingdom"}</span>
+                </h2>
+                <div className="space-y-4 text-gray-600 text-sm md:text-[15px] leading-relaxed">
+                  <p>
+                    {isAr
+                      ? "من الحفلات المؤسسية الكبرى وتفعيلات العلامات إلى احتفالات الموظفين والهدايا المؤسسية — يتولّى فريقنا إدارة فعاليات اليوم الوطني للشركات والجهات في الرياض وجدة والمنطقة الشرقية. نتعامل مع القاعات والإنتاج والترفيه (بما في ذلك العرضة) والضيافة والتصاريح ضمن جداول موسم سبتمبر المزدحمة."
+                      : "From large corporate galas and brand activations to employee celebrations and corporate gifting, our team manages Saudi National Day events for companies and institutions across Riyadh, Jeddah and the Eastern Province. We coordinate venues, production, entertainment (including Ardah), hospitality and permits against the crowded September calendar."}
+                  </p>
+                  <p>
+                    {isAr
+                      ? "كل برنامج مبني على الأصالة والامتثال: هوية اليوم الوطني، وتنسيق تصاريح الهيئة العامة للترفيه والبلدية عبر شركاء موثوقين، وإدارة كبار الضيوف والحشود باحترافية."
+                      : "Every programme is built on authenticity and compliance — National Day branding, GEA and municipality permit coordination through trusted partners, and professional VIP and crowd management."}
+                  </p>
+                </div>
+
+                {/* Quick answer-first facts */}
+                <div className="grid grid-cols-3 gap-3">
+                  {(isAr
+                    ? [
+                        { k: "التاريخ", v: "23 سبتمبر 2026", s: "اليوم الوطني 96" },
+                        { k: "المدن", v: "الرياض وجدة", s: "والمنطقة الشرقية" },
+                        { k: "احجز مبكرًا", v: "٣–٦ أشهر", s: "لأفضل القاعات" },
+                      ]
+                    : [
+                        { k: "Date", v: "23 Sep 2026", s: "National Day 96" },
+                        { k: "Cities", v: "Riyadh & Jeddah", s: "+ Eastern Province" },
+                        { k: "Book ahead", v: "3–6 months", s: "for top venues" },
+                      ]
+                  ).map((f) => (
+                    <div key={f.k} className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">{f.k}</p>
+                      <p className="text-slate-900 font-bold text-sm leading-tight">{f.v}</p>
+                      <p className="text-gray-500 text-[11px] mt-0.5">{f.s}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tasteful urgency */}
+                <div className="flex items-start gap-3 bg-gold-50 border border-gold-200 rounded-2xl p-4">
+                  <Clock size={18} className="text-[var(--primary)] shrink-0 mt-0.5" />
+                  <p className="text-slate-700 text-sm leading-relaxed">
+                    {isAr
+                      ? "اليوم الوطني 96 يوافق 23 سبتمبر 2026 — على بُعد أسابيع قليلة. القاعات المميّزة وفرق العرضة وطواقم الإنتاج تُحجز أولًا؛ فكلّما بدأنا أبكر، أمّنّا خيارات أفضل."
+                      : "National Day 96 is on 23 September 2026 — just weeks away. Premium venues, Ardah troupes and production crews book out first, so the earlier we start, the more we can secure."}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-1">
+                  <Link
+                    href="#celebration-enquiry"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[var(--primary)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--primary-dark)] transition-all shadow-[0_4px_14px_rgba(13,107,78,0.25)] rounded-xl text-[12px]"
+                  >
+                    {isAr ? "اطلب عرض سعر اليوم الوطني" : "Request a National Day Quote"}
+                  </Link>
+                  <a
+                    href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20quote%20for%20National%20Day%20corporate%20gifts%20%26%20giveaways."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-neutral-200 text-neutral-700 font-semibold uppercase tracking-widest hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all text-[12px] rounded-xl"
+                  >
+                    <Gift size={15} /> {isAr ? "هدايا وتوزيعات اليوم الوطني" : "National Day Gifts & Giveaways"}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* What National Day event management includes */}
+            <div className="mt-20">
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                {isAr ? "ماذا تشمل إدارة فعاليات اليوم الوطني" : "What Saudi National Day event management includes"}
+              </h3>
+              <p className="text-gray-500 text-sm mb-8 max-w-3xl">
+                {isAr
+                  ? "نُنسّق دورة الفعالية كاملة تحت نقطة تواصل واحدة — كل ما نقدّمه فعليًا عبر شبكة شركائنا المعتمدة."
+                  : "We coordinate the full event lifecycle under one point of contact — everything we genuinely deliver through our vetted partner network."}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+                {(isAr
+                  ? [
+                      "تخطيط الفعاليات وإدارة المشاريع",
+                      "الإنتاج والمسرح والصوت والإضاءة",
+                      "الديكور وهوية اليوم الوطني",
+                      "الترفيه وعروض العرضة السعودية",
+                      "الضيافة وتقديم القهوة والمأكولات",
+                      "إدارة كبار الشخصيات والضيوف",
+                      "تأمين القاعات وتنسيقها",
+                      "تنسيق تصاريح الهيئة والبلدية",
+                      "تفعيلات العلامات التجارية",
+                      "الهدايا والتوزيعات المؤسسية",
+                      "اللوجستيات وإدارة الحشود",
+                      "التنسيق ثنائي اللغة (عربي/إنجليزي)",
+                    ]
+                  : [
+                      "Event planning & project management",
+                      "Stage, AV & show production",
+                      "Décor & National Day branding",
+                      "Entertainment & Ardah performances",
+                      "Catering & Saudi hospitality",
+                      "VIP & guest management",
+                      "Venue sourcing & coordination",
+                      "Permit & GEA/municipality coordination",
+                      "Brand activations",
+                      "Corporate gifting & giveaways",
+                      "Logistics & crowd management",
+                      "Bilingual (AR/EN) coordination",
+                    ]
+                ).map((inc) => (
+                  <div key={inc} className="flex items-start gap-2.5 border-b border-slate-100 pb-3">
+                    <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                    <span className="text-slate-700 text-sm">{inc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Who we plan National Day events for (segments) */}
+            <div className="mt-20">
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                {isAr ? "لمن نُخطّط فعاليات اليوم الوطني" : "Who we plan Saudi National Day events for"}
+              </h3>
+              <p className="text-gray-500 text-sm mb-8 max-w-3xl">
+                {isAr
+                  ? "من المشاريع الكبرى إلى طلبات الهدايا الأصغر — نستقبل الاستفسارين معًا."
+                  : "From large-scale projects to smaller gifting orders — we welcome both enquiries."}
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {(isAr
+                  ? [
+                      { icon: Building2, t: "فعاليات الشركات", d: "حفلات وتجمّعات اليوم الوطني للشركات المحلية والعالمية." },
+                      { icon: Landmark, t: "الجهات الحكومية والمؤسسية", d: "احتفالات رسمية بروتوكولية وفق هوية اليوم الوطني الرسمية." },
+                      { icon: GraduationCap, t: "المدارس والجامعات", d: "فعاليات طلابية آمنة ومناسبة للعائلات بطابع وطني." },
+                      { icon: Users, t: "تفعيلات عامة ومجتمعية كبرى", d: "مهرجانات ومنصات واسعة النطاق بإدارة حشود دقيقة." },
+                      { icon: Sparkles, t: "تفعيلات العلامات التجارية", d: "تفعيلات مبتكرة تربط علامتك بروح اليوم الوطني." },
+                      { icon: Gift, t: "الهدايا والتوزيعات", d: "هدايا وسلال وتوزيعات مؤسسية بهوية اليوم الوطني للموظفين والعملاء — كطلب مستقل أو ضمن فعالية.", cta: true },
+                    ]
+                  : [
+                      { icon: Building2, t: "Corporate National Day events", d: "Galas and staff celebrations for local and international companies." },
+                      { icon: Landmark, t: "Government & institutional", d: "Protocol-led official celebrations aligned to the year's National Day identity." },
+                      { icon: GraduationCap, t: "Schools & universities", d: "Safe, family-appropriate student events with authentic national theming." },
+                      { icon: Users, t: "Large-scale public & community", d: "Wide-scale festivals and stages with careful crowd management." },
+                      { icon: Sparkles, t: "Brand activations", d: "Creative activations that tie your brand to the spirit of National Day." },
+                      { icon: Gift, t: "Corporate gifting & giveaways", d: "Branded National Day gifts, hampers and giveaways for staff and clients — standalone or part of an event.", cta: true },
+                    ]
+                ).map((seg: any) => (
+                  <div key={seg.t} className={`rounded-2xl p-7 border transition-all ${seg.cta ? "bg-emerald-950 text-white border-emerald-900" : "bg-white border-slate-200 hover:shadow-md"}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${seg.cta ? "bg-white/10" : "bg-gold-50"}`}>
+                      <seg.icon size={22} className={seg.cta ? "text-[#C5A880]" : "text-[var(--primary)]"} />
+                    </div>
+                    <h4 className={`font-bold text-base mb-2 ${seg.cta ? "text-white" : "text-slate-900"}`}>{seg.t}</h4>
+                    <p className={`text-sm leading-relaxed ${seg.cta ? "text-white/70" : "text-gray-500"}`}>{seg.d}</p>
+                    {seg.cta && (
+                      <a
+                        href="https://wa.me/966539388072?text=Hi%20Saudi%20Event%20Management!%20I%27d%20like%20a%20quote%20for%20National%20Day%20corporate%20gifts%20%26%20giveaways."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-5 text-[#C5A880] text-xs font-bold uppercase tracking-widest border-b border-[#C5A880]/40 pb-1 hover:border-[#C5A880] transition-colors"
+                      >
+                        {isAr ? "اطلب عرض هدايا اليوم الوطني" : "Request a National Day Gifting Quote"} <ChevronRight size={12} />
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* National Day vs Founding Day */}
+            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {(isAr
+                ? [
+                    { badge: "23 سبتمبر", t: "اليوم الوطني السعودي", d: "يحتفي بتوحيد المملكة على يد الملك عبدالعزيز عام 1932. طابعه وطني احتفالي: ألعاب نارية، وعروض، وهوية خضراء وبيضاء." },
+                    { badge: "22 فبراير", t: "يوم التأسيس السعودي", d: "يحيي تأسيس الدولة السعودية الأولى عام 1727. طابعه تراثي: أزياء تقليدية، وحِرف، وسرد تاريخي نجدي." },
+                  ]
+                : [
+                    { badge: "23 September", t: "Saudi National Day", d: "Marks the 1932 unification of the Kingdom by King Abdulaziz. Celebratory and patriotic — fireworks, shows, and green-and-white branding." },
+                    { badge: "22 February", t: "Saudi Founding Day", d: "Marks the founding of the first Saudi state in 1727. Heritage-focused — traditional attire, crafts, and Najdi historical storytelling." },
+                  ]
+              ).map((d) => (
+                <div key={d.t} className="bg-slate-50 border border-slate-200 rounded-2xl p-7">
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-[var(--primary)] bg-white border border-gold-200 rounded-full px-3 py-1 mb-4">{d.badge}</span>
+                  <h4 className="font-bold text-slate-900 text-lg mb-2">{d.t}</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">{d.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* E-E-A-T & Cultural Credentials */}
         <section className="py-32 bg-white border-y border-slate-200">
@@ -324,15 +538,15 @@ export default function SeasonalEventsPage() {
                 {(isAr
                   ? [
                   { title: "دليل كامل لتفعيلات فعاليات رمضان في السعودية", desc: "تعمّق في تصميم المجالس والضيافة التقليدية والتفاعل الأخلاقي خلال الشهر الفضيل." },
-                  { title: "تخطيط فعاليات اليوم الوطني السعودي 2025", desc: "الاستعداد لأكبر احتفال في المملكة بهوية واسعة النطاق وثيمات وطنية." },
+                  { title: "تخطيط فعاليات اليوم الوطني السعودي 2026", desc: "الاستعداد لأكبر احتفال في المملكة بهوية واسعة النطاق وثيمات وطنية." },
                   { title: "دليل احتفالات العيد للشركات في المملكة", desc: "كيفية استضافة تجمّعات عيد شاملة واحتفالية لبيئات الشركات المتنوعة." },
-                  { title: "تقويم الفعاليات الموسمية في السعودية 2025", desc: "تتبّع تحوّل المملكة عبر موسم الرياض والمحطات الدينية والأعياد الوطنية." },
+                  { title: "تقويم الفعاليات الموسمية في السعودية 2026", desc: "تتبّع تحوّل المملكة عبر موسم الرياض والمحطات الدينية والأعياد الوطنية." },
                     ]
                   : [
                   { title: "Complete guide to Ramadan event activations in Saudi Arabia", desc: "A deep dive into Majlis design, traditional catering, and ethical engagement during the holy month." },
-                  { title: "Saudi National Day event planning 2025", desc: "Preparing for the Kingdom&apos;s biggest celebration with grand-scale branding and patriotic themes." },
+                  { title: "Saudi National Day event planning 2026", desc: "Preparing for the Kingdom&apos;s biggest celebration with grand-scale branding and patriotic themes." },
                   { title: "Corporate Eid celebration guide KSA", desc: "How to host inclusive and festive Eid gatherings for diverse corporate environments." },
-                  { title: "Seasonal event calendar Saudi Arabia 2025", desc: "Tracking the Kingdom&apos;s transformation through Riyadh Season, religious milestones, and national days." }
+                  { title: "Seasonal event calendar Saudi Arabia 2026", desc: "Tracking the Kingdom&apos;s transformation through Riyadh Season, religious milestones, and national days." }
                 ]).map((post: any, idx: number) => (
                   <div key={idx} className="p-8 bg-white rounded-2xl hover:bg-gold-50 transition-colors cursor-pointer group">
                     <h4 className="text-slate-900 font-bold text-sm mb-3 group-hover:text-[var(--primary)] transition-colors">{post.title}</h4>
@@ -435,15 +649,17 @@ export default function SeasonalEventsPage() {
               </div>
               <ServiceLeadForm
                 source="cultural_events_page"
-                defaultEventType="Cultural / National Event"
-                eyebrow={isAr ? "استفسار احتفال" : "Celebration Enquiry"}
-                heading={isAr ? "خطّط لفعاليتك الثقافية" : "Plan your cultural event"}
+                defaultEventType="National Day Event"
+                eyebrow={isAr ? "استفسار اليوم الوطني والفعاليات الثقافية" : "National Day & Cultural Enquiry"}
+                heading={isAr ? "خطّط لفعالية اليوم الوطني أو فعاليتك الثقافية" : "Plan your National Day or cultural event"}
                 subheading={isAr ? "سيردّ فريق الفعاليات خلال ساعتين بمفهوم وعرض مبوّب." : "Our events team will respond within 2 hours with a concept and itemised quote."}
-                submitLabel={isAr ? "اطلب عرض الفعالية" : "Request Event Proposal"}
+                submitLabel={isAr ? "اطلب عرض سعر اليوم الوطني" : "Request a National Day Quote"}
                 eventTypeOptions={[
+                  "National Day Event",
+                  "National Day Gifts & Giveaways",
+                  "Founding Day Event",
                   "Ramadan Iftar / Suhoor",
                   "Eid Celebration",
-                  "National Day / Founding Day",
                   "Cultural Festival",
                   "Government / Community Event",
                   "Other",
@@ -464,22 +680,24 @@ export default function SeasonalEventsPage() {
             <div className="space-y-6">
               {(isAr
                 ? [
-                { q: "ما الذي يجب معرفته عن تخطيط الفعاليات خلال رمضان في السعودية؟", a: "يتطلب التخطيط فهمًا ثقافيًا عميقًا. تتحوّل أوقات الفعاليات إلى وقت متأخر من الليل (السحور)، ويبرز الديكور الضيافة التقليدية. وبصفتنا من أبرز مخطّطي فعاليات رمضان في المملكة، تصنع إدارة الفعاليات السعودية تجارب أصيلة وراقية." },
-                { q: "نريد تنفيذ تفعيل إفطار رمضاني لعلامتنا في الرياض. من أين نبدأ؟", a: "ابدأ بمفهوم متناغم ثقافيًا. نساعدك على تصميم التفعيل، وتأمين مساحة مميزة في مول أو فندق، والتنفيذ بإتقان." },
-                { q: "كيف ننظّم احتفال اليوم الوطني لشركتنا؟", a: "ركّز على الثيمات الوطنية، والتنسيق المبكر للقاعة، وتأمين تصاريح هيئة الترفيه اللازمة. وبصفتنا منظّم فعاليات اليوم الوطني في الرياض، نتولّى كل شيء من الديكور الأخضر إلى الترفيه التقليدي." },
-                { q: "هل يمكنكم إدارة احتفالات العيد أيضًا؟", a: "نعم، نحن شركة رائدة لاحتفالات العيد في السعودية، متخصصون في التجمّعات العائلية الفاخرة الحميمة واحتفالات العيد المؤسسية الكبرى." },
-                { q: "ما الذي يميّز احتفالات يوم التأسيس السعودي؟", a: "إنه وقت للاحتفاء بالتراث النجدي والإقليمي السعودي. تبرز فعالياتنا الضيافة التقليدية والحِرف والسرد التاريخي." },
-                { q: "شركة فعاليات رمضان قريبة مني في السعودية", a: "تعمل إدارة الفعاليات السعودية بكثافة في عموم المملكة، وتوفّر خبرة محلية فورية لأي تفعيل علامة رمضاني راقٍ أو إفطار مؤسسي." },
-                { q: "منظّم حفلات اليوم الوطني في الرياض", a: "بصفتنا منظّم حفلات اليوم الوطني الأبرز في الرياض، تتخصص إدارة الفعاليات السعودية في صناعة فعاليات وطنية واسعة النطاق ومهرجانات مجتمعية متوافقة مع رؤية 2030." },
+                { q: "متى اليوم الوطني السعودي 2026؟", a: "يوافق اليوم الوطني السعودي 23 سبتمبر 2026. وهذه النسخة هي اليوم الوطني 96، احتفاءً بتوحيد المملكة على يد الملك عبدالعزيز عام 1932." },
+                { q: "ماذا تشمل إدارة فعاليات اليوم الوطني السعودي؟", a: "تشمل عادةً تخطيط الفعالية وإدارة المشروع، وتأمين القاعات وتنسيقها، والإنتاج والمسرح والصوت، والديكور وهوية اليوم الوطني، والترفيه مثل عروض العرضة، والضيافة السعودية، وإدارة كبار الضيوف، وتنسيق التصاريح، وتفعيلات العلامات، والهدايا والتوزيعات المؤسسية." },
+                { q: "متى يجب أن تبدأ الشركة بالتخطيط لفعالية اليوم الوطني؟", a: "من الأفضل قبل ثلاثة إلى ستة أشهر، لأن أفضل القاعات وفرق العرضة وطواقم الإنتاج في الرياض وجدة تُحجز أولًا. وقرب 23 سبتمبر يمكننا المساعدة في التفعيلات والاحتفالات الأصغر والهدايا المؤسسية." },
+                { q: "هل تتطلب فعاليات اليوم الوطني تصاريح؟", a: "تعتمد المتطلبات على نوع الفعالية والقاعة والأنشطة. قد تحتاج الفعاليات العامة والترفيه المباشر إلى موافقات الهيئة العامة للترفيه والبلدية، وننسّق ذلك عبر شركاء موثوقين." },
+                { q: "كم تكلفة فعالية اليوم الوطني السعودي؟", a: "لا يوجد سعر ثابت. أهم عوامل التكلفة: عدد الضيوف، والقاعة، والإنتاج والمسرح والصوت، والترفيه، والضيافة، والديكور والهوية، وكميات الهدايا. شاركنا التفاصيل ونعيد إليك عرضًا مبوّبًا." },
+                { q: "هل يمكنكم توفير هدايا وتوزيعات اليوم الوطني للشركات؟", a: "نعم. نوفّر هدايا وسلالًا وتوزيعات مؤسسية بهوية اليوم الوطني للموظفين والعملاء — كطلب مستقل أصغر أو ضمن فعالية أكبر." },
+                { q: "ما الفرق بين اليوم الوطني ويوم التأسيس؟", a: "اليوم الوطني (23 سبتمبر) يحيي توحيد المملكة عام 1932 على يد الملك عبدالعزيز، بينما يوم التأسيس (22 فبراير) يحيي تأسيس الدولة السعودية الأولى عام 1727. كلاهما مناسبة وطنية لكن لكلٍّ محطته." },
+                { q: "أي المدن تغطّون لفعاليات اليوم الوطني في السعودية؟", a: "نعمل بشكل أساسي في الرياض، مع التنفيذ في جدة والمنطقة الشرقية عبر شبكة شركائنا المعتمدة." },
                   ]
                 : [
-                { q: "What should I know about planning events during Ramadan in Saudi Arabia?", a: "Planning requires deep cultural understanding. Event timings shift to late night (Suhoor), and decor emphasizes traditional hospitality. As a top Ramadan event planner KSA, Saudi Event Management creates authentic, high-end experiences." },
-                { q: "We want to do a Ramadan iftar activation for our brand in Riyadh. Where do we start?", a: "Start with a culturally resonant concept. We help you design the activation, secure premium mall or hotel space, and execute flawlessly." },
-                { q: "How to organize a National Day celebration for our company?", a: "Focus on patriotic themes, early venue coordination, and secure necessary GEA permits. As your National Day event organizer Riyadh, we handle everything from green-themed decor to traditional entertainment." },
-                { q: "Can you manage Eid celebrations as well?", a: "Yes, we are a leading Eid celebration company Saudi Arabia, specializing in both intimate luxury family gatherings and large-scale corporate Eid festivities." },
-                { q: "What is special about Saudi Founding Day celebrations?", a: "It's a time to celebrate traditional 'Najdi' and regional Saudi heritage. Our events emphasize traditional hospitality, crafts, and historical storytelling." },
-                { q: "Ramadan event company near me Saudi Arabia", a: "Saudi Event Management operates extensively across Saudi Arabia, offering immediate local expertise for any high-end Ramadan brand activation or corporate Iftar." },
-                { q: "National Day party organizer Riyadh", a: "As a premier National Day party organizer Riyadh, Saudi Event Management specializes in creating large-scale patriotic events and community festivals that align with Vision 2030." }
+                { q: "When is Saudi National Day 2026?", a: "Saudi National Day is on 23 September 2026. This edition marks Saudi National Day 96, commemorating the 1932 unification of the Kingdom under King Abdulaziz." },
+                { q: "What does Saudi National Day event management include?", a: "It typically includes event planning and project management, venue sourcing and coordination, stage/AV and show production, décor and National Day branding, entertainment such as Ardah performances, catering and Saudi hospitality, VIP and guest management, permit coordination, brand activations, and corporate gifting or giveaways." },
+                { q: "How early should a company plan a Saudi National Day event?", a: "Ideally three to six months ahead, because the best venues, Ardah troupes and production crews in Riyadh and Jeddah book out first. Closer to 23 September we can still help with brand activations, smaller celebrations, and corporate gifting." },
+                { q: "Do Saudi National Day events require permits?", a: "Requirements depend on the event type, venue and activities. Public-facing events and live entertainment may require General Entertainment Authority (GEA) and municipality approvals. We coordinate the relevant approvals through trusted local partners." },
+                { q: "How much does a Saudi National Day event cost?", a: "There is no fixed price. The main cost drivers are guest numbers, venue, staging/AV and production, entertainment, catering, décor and branding, and gifting volumes. Share your brief and we return an itemised quote." },
+                { q: "Can you handle Saudi National Day corporate gifting and giveaways?", a: "Yes. We arrange branded National Day gifts, hampers and promotional giveaways for employees and clients — as a smaller standalone order or as part of a larger National Day event." },
+                { q: "What is the difference between Saudi National Day and Founding Day?", a: "National Day (23 September) marks the 1932 unification of the Kingdom by King Abdulaziz. Founding Day (22 February) marks the establishment of the first Saudi state in 1727. Both are national occasions but commemorate different milestones." },
+                { q: "Which cities do you cover for National Day events in Saudi Arabia?", a: "We work primarily in Riyadh, with delivery in Jeddah and the Eastern Province through our vetted partner network." }
               ]).map((faq: any, i: number) => (
                 <div key={i} className="bg-white p-10 rounded-2xl border border-slate-200">
                   <h3 className="text-xl font-bold text-slate-900 mb-8">{faq.q}</h3>

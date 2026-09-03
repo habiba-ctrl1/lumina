@@ -221,7 +221,7 @@ export default function EntertainmentPage() {
                     <Link href={`${arHref}/services/weddings`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف</Link>
                     {" "}إلى{" "}
                     <Link href={`${arHref}/services/corporate-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات الشركات</Link>
-                    {" "}والاحتفالات الثقافية.
+                    {" "}و<Link href={`${arHref}/services/cultural-events`} className="text-[var(--primary)] hover:underline font-semibold">احتفالات اليوم الوطني</Link>.
                   </>
                 ) : (
                   <>
@@ -229,7 +229,7 @@ export default function EntertainmentPage() {
                     <Link href="/services/weddings" className="text-[var(--primary)] hover:underline font-semibold">weddings</Link>
                     {" "}to{" "}
                     <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">corporate events</Link>
-                    {" "}and cultural celebrations.
+                    {" "}and <Link href="/services/cultural-events" className="text-[var(--primary)] hover:underline font-semibold">National Day celebrations</Link>.
                   </>
                 )}
               </p>

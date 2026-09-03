@@ -669,6 +669,13 @@ export default async function CorporateEventsPage() {
                   </p>
                 </div>
                 )}
+                <p className="text-neutral-600 text-base leading-relaxed">
+                  {isAr ? (
+                    <>تشمل ذروة الموسم المؤسسي احتفالات <Link href={`${arHref}/services/cultural-events`} className="text-[var(--primary)] hover:underline font-medium">اليوم الوطني السعودي</Link> — نخطّطها قبل أشهر لتأمين القاعات والتصاريح والترفيه.</>
+                  ) : (
+                    <>Peak corporate season includes <Link href="/services/cultural-events" className="text-[var(--primary)] hover:underline font-medium">Saudi National Day event management</Link> — planned months ahead to secure venues, permits and entertainment.</>
+                  )}
+                </p>
               </div>
               {/* Stats column */}
               <div className="grid grid-cols-2 gap-5">
