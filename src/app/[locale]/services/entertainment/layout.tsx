@@ -12,21 +12,22 @@ export async function generateMetadata({
 
   return {
     title: isAr
-      ? { absolute: "شركة ترفيه الفعاليات في السعودية | فرق موسيقية وفنانون ومنسقو حفلات | إدارة الفعاليات السعودية" }
-      : "Event Entertainment Company Saudi Arabia | Live Bands, DJs & Performers | Saudi Event Management",
+      ? { absolute: "شركة ترفيه فعاليات في الرياض والسعودية | فرق موسيقية ومنسقو حفلات وفنانون | إدارة الفعاليات السعودية" }
+      : "Event Entertainment Company Riyadh & Saudi Arabia | Live Bands, DJs & Performers | Saudi Event Management",
     description: isAr
-      ? "تنسيق ترفيه الفعاليات في عموم السعودية — فرق موسيقية شرقية وغربية، وفنانون تفاعليون، ومنسقو حفلات (DJ)، وترفيه عائلي — عبر شبكة شركاء إدارة الفعاليات السعودية."
-      : "Event entertainment coordination across Saudi Arabia — Eastern & Western live bands, interactive performers, DJs, and family entertainment — delivered through Saudi Event Management's partner network.",
+      ? "تنسيق ترفيه الفعاليات في الرياض وعموم السعودية — فرق موسيقية شرقية وغربية، وفنانون تفاعليون، ومنسقو حفلات (DJ)، وترفيه للأعراس وحفلات الشركات وحفلات الجوائز — عبر شبكة شركاء إدارة الفعاليات السعودية."
+      : "Event entertainment coordination across Riyadh and Saudi Arabia — Eastern & Western live bands, interactive performers, and DJs for weddings, corporate events, and gala & awards nights — delivered through Saudi Event Management's partner network.",
     keywords: [
-      "Event entertainment company Saudi Arabia",
+      "Event entertainment company Riyadh",
       "Wedding entertainment Riyadh",
       "Live band booking Saudi Arabia",
       "Corporate event entertainment KSA",
+      "Gala & awards entertainment Saudi Arabia",
       "DJ booking Riyadh Jeddah",
       "Event performers Saudi Arabia",
-      "شركة ترفيه فعاليات السعودية",
+      "شركة ترفيه فعاليات الرياض",
       "فرقة موسيقية حفل زفاف الرياض",
-      "منسق حفلات دي جي جدة",
+      "منسق حفلات دي جي الرياض",
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -34,11 +35,11 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isAr
-        ? "شركة ترفيه الفعاليات في السعودية | إدارة الفعاليات السعودية"
-        : "Event Entertainment Company Saudi Arabia | Saudi Event Management",
+        ? "شركة ترفيه فعاليات في الرياض والسعودية | إدارة الفعاليات السعودية"
+        : "Event Entertainment Company in Riyadh & Saudi Arabia | Saudi Event Management",
       description: isAr
-        ? "فرق موسيقية، وفنانون تفاعليون، ومنسقو حفلات، وترفيه عائلي — منسّق عبر شبكة شركاء إدارة الفعاليات السعودية."
-        : "Live bands, interactive performers, DJs, and family entertainment — coordinated through Saudi Event Management's partner network.",
+        ? "فرق موسيقية، وفنانون تفاعليون، ومنسقو حفلات، وترفيه للأعراس وحفلات الشركات والجوائز — منسّق عبر شبكة شركاء إدارة الفعاليات السعودية."
+        : "Live bands, interactive performers, and DJs for weddings, corporate events, and gala nights — coordinated through Saudi Event Management's partner network.",
       url: canonicalUrl,
       images: [
         {

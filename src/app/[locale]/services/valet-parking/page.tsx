@@ -77,6 +77,14 @@ const faqs = [
     a: "Yes. We plan parking-zone layout, traffic flow, and staffing levels for high-volume events, from corporate galas to multi-day summits.",
   },
   {
+    q: "Can valet parking support conferences and exhibitions?",
+    a: "Yes. For conferences and exhibitions we coordinate high-throughput valet and parking management — peak-arrival staffing, clear drop-off zones, and organized retrieval sized to delegate and visitor volumes.",
+  },
+  {
+    q: "Can VIP guests receive priority arrival and luggage assistance?",
+    a: "Yes. VIP guests can receive priority parking, personalized greetings at a dedicated valet counter, door service, and luggage assistance as part of a premium arrival experience.",
+  },
+  {
     q: "How far in advance should I book valet parking for my event?",
     a: "We recommend confirming valet staffing at least 2-3 weeks before your event, and earlier during peak wedding and Riyadh Season periods.",
   },
@@ -91,8 +99,42 @@ const faqsAr = [
   { q: "هل يمكن لطاقم الفاليه مساعدة كبار السن أو ذوي الإعاقة؟", a: "نعم. توفّر فرق الفاليه المنسّقة لدينا مساعدة بالكراسي المتحركة ودعم التنقّل للضيوف عند الوصول والمغادرة." },
   { q: "كيف تُدار سلامة المفاتيح والمركبات مع خدمة الفاليه؟", a: "تستخدم فرق الفاليه نظامًا آمنًا لإدارة المفاتيح واسترجاع المركبات، بحيث تُتَبَّع مركبات الضيوف وتُعاد بكفاءة دون انتظار غير ضروري." },
   { q: "هل تقدّمون فاليه لفعاليات الشركات الكبرى والقمم؟", a: "نعم. نخطّط تصميم مناطق الوقوف وتدفّق الحركة ومستويات التوظيف للفعاليات عالية الحجم، من حفلات الشركات إلى القمم متعددة الأيام." },
+  { q: "هل يمكن للفاليه دعم المؤتمرات والمعارض؟", a: "نعم. للمؤتمرات والمعارض ننسّق فاليه وإدارة وقوف عالية السعة — طاقم لأوقات ذروة الوصول، ومناطق إنزال واضحة، واسترجاع منظَّم بحسب أعداد المندوبين والزوّار." },
+  { q: "هل يحصل ضيوف كبار الشخصيات على أولوية وصول ومساعدة بالأمتعة؟", a: "نعم. يمكن لضيوف كبار الشخصيات الحصول على أولوية الوقوف، واستقبال شخصي عند كاونتر فاليه مخصّص، وخدمة فتح الأبواب، ومساعدة بالأمتعة ضمن تجربة وصول متميّزة." },
   { q: "قبل كم من الوقت يجب حجز خدمة الفاليه لفعاليتي؟", a: "نوصي بتأكيد طاقم الفاليه قبل 2-3 أسابيع على الأقل من فعاليتك، وأبكر من ذلك خلال مواسم الذروة كالزفاف وموسم الرياض." },
   { q: "خدمة فاليه قريبة مني في السعودية", a: "تنسّق إدارة الفعاليات السعودية خدمة فاليه الفعاليات في الرياض وجدة والمنطقة الشرقية عبر شبكة شركاء فاليه موحّدة الزي ومعتمدة." },
+];
+
+const eventTypes = [
+  { title: "Corporate Event Valet", desc: "Peak-arrival staffing, clear drop-off zones, and organized retrieval for corporate galas, summits, and product launches." },
+  { title: "Wedding Valet", desc: "Uniformed teams and a red-carpet arrival experience for the couple, families, and guests at any wedding scale." },
+  { title: "Conference Valet", desc: "High-throughput delegate parking management, sized to attendee volumes and timed around session start and end." },
+  { title: "Exhibition Valet", desc: "Visitor and exhibitor parking flow across large venue campuses, with traffic-zone planning for busy show days." },
+  { title: "Venue & Hotel Valet", desc: "Event-based valet coordinated at hotels and private venues, integrated with the property's own arrival flow." },
+  { title: "Gala & VIP Valet", desc: "Priority parking, a dedicated valet counter, and a discreet, premium arrival experience for VIP guests." },
+];
+
+const eventTypesAr = [
+  { title: "فاليه فعاليات الشركات", desc: "طاقم لأوقات ذروة الوصول، ومناطق إنزال واضحة، واسترجاع منظَّم لحفلات الشركات والقمم وإطلاق المنتجات." },
+  { title: "فاليه حفلات الزفاف", desc: "فرق موحّدة الزي وتجربة وصول مميّزة للعروسين والعائلات والضيوف في أي حجم زفاف." },
+  { title: "فاليه المؤتمرات", desc: "إدارة وقوف عالية السعة للمندوبين، بحسب أعداد الحضور ومتزامنة مع بدء الجلسات وانتهائها." },
+  { title: "فاليه المعارض", desc: "تنظيم تدفّق وقوف الزوّار والعارضين عبر مواقع المعارض الكبيرة، مع تخطيط مناطق الحركة لأيام العرض المزدحمة." },
+  { title: "فاليه المواقع والفنادق", desc: "فاليه للفعاليات منسّق في الفنادق والمواقع الخاصة، ومندمج مع تدفّق الوصول الخاص بالموقع." },
+  { title: "فاليه الحفلات وكبار الشخصيات", desc: "أولوية الوقوف، وكاونتر فاليه مخصّص، وتجربة وصول متميّزة ومتكتّمة لضيوف كبار الشخصيات." },
+];
+
+const premiumAddOns = [
+  "Uniformed valet staff", "Dedicated valet counter", "Secure key management",
+  "Priority parking", "Wheelchair & mobility assistance", "Luggage assistance",
+  "Door open/close service", "Umbrella service", "Mobile car washing",
+  "Vehicle detailing & touch-ups", "Golf-buggy transfer to entrance",
+];
+
+const premiumAddOnsAr = [
+  "طاقم فاليه موحّد الزي", "كاونتر فاليه مخصّص", "إدارة مفاتيح آمنة",
+  "أولوية الوقوف", "مساعدة بالكراسي المتحركة والتنقّل", "مساعدة بالأمتعة",
+  "خدمة فتح وإغلاق الأبواب", "خدمة المظلات", "غسيل سيارات متنقّل",
+  "تلميع ولمسات نهائية للمركبات", "نقل بعربة جولف إلى المدخل",
 ];
 
 export default function ValetParkingPage() {
@@ -252,6 +294,61 @@ export default function ValetParkingPage() {
                   <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? servicesAr[i].desc : s.desc}</p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Valet by Event Type ── */}
+        <section className="py-20 md:py-24 bg-neutral-50/70 border-y border-neutral-200/80">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-12">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                {isAr ? "حسب نوع الفعالية" : "By Event Type"}
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
+                {isAr ? "فاليه مناسب لكل " : "The right valet for every "}
+                <span className="text-[var(--primary)]">{isAr ? "فعالية" : "event"}</span>
+              </h2>
+              <p className="text-neutral-500 max-w-2xl mx-auto text-sm leading-relaxed mt-4">
+                {isAr
+                  ? "طاقم فاليه موحّد الزي، منسّق بحسب حجم وتدفّق كل نوع فعالية — من الزفاف والشركات إلى المؤتمرات والمعارض والمواقع."
+                  : "Uniformed valet teams, coordinated around the scale and arrival flow of each kind of event — from weddings and corporate to conferences, exhibitions, and venues."}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {(isAr ? eventTypesAr : eventTypes).map((et, i) => (
+                <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-6">
+                  <div className="flex items-center gap-2.5 mb-2.5">
+                    <CheckCircle2 size={17} className="text-[var(--primary)] shrink-0" />
+                    <h3 className="text-[15px] font-bold text-neutral-900">{et.title}</h3>
+                  </div>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{et.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Premium add-ons */}
+            <div className="mt-12 max-w-4xl mx-auto bg-white border border-neutral-200/80 rounded-2xl p-7 md:p-8">
+              <div className="flex items-center gap-2.5 mb-5">
+                <Sparkles size={18} className="text-[var(--primary)] shrink-0" />
+                <h3 className="text-[15px] font-bold text-neutral-900">
+                  {isAr ? "خدمات وصول متميّزة اختيارية" : "Optional Premium Arrival Add-Ons"}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
+                {(isAr ? premiumAddOnsAr : premiumAddOns).map((item) => (
+                  <span key={item} className="inline-flex items-center gap-1.5 text-[13px] text-neutral-600 bg-neutral-50 border border-neutral-200/80 rounded-full px-3.5 py-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]/60" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <p className="text-neutral-400 text-xs leading-relaxed mt-5">
+                {isAr
+                  ? "تُضاف حسب حجم فعاليتك وموقعها ومستوى الخدمة المطلوب — أخبرنا بما تحتاجه ونصمّم خطة الفاليه المناسبة."
+                  : "Added based on your event's scale, venue, and required service level — tell us what you need and we'll shape the right valet plan."}
+              </p>
             </div>
           </div>
         </section>

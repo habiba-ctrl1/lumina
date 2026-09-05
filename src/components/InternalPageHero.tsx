@@ -17,6 +17,7 @@ export interface TrustElement {
 
 export interface InternalPageHeroProps {
   title: string;
+  titleColor?: string;              // optional inline color for the main title (beats the global heading-color rule); defaults to the CSS `text-white` class
   titleHighlight?: string;          // text after the main title, rendered in brand green
   subtitle?: string;
   backgroundImage: string;
@@ -39,6 +40,7 @@ const HEIGHT: Record<string, string> = {
 
 export default function InternalPageHero({
   title,
+  titleColor,
   titleHighlight,
   subtitle,
   backgroundImage,
@@ -203,6 +205,7 @@ export default function InternalPageHero({
           style={{
             letterSpacing: "-0.03em",
             textShadow: "0 2px 20px rgba(0,0,0,0.25)",
+            color: titleColor,
           }}
         >
           {title}

@@ -219,6 +219,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/entertainment',       freq: 'monthly', priority: 0.7  },
     { route: '/services/birthday-party',      freq: 'monthly', priority: 0.7  },
 
+    // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
+    { route: '/travel',                       freq: 'monthly', priority: 0.75 },
+    { route: '/ar/travel',                    freq: 'monthly', priority: 0.6  },
+
     // ── Service sub-pages (Arabic) ─────────────────────────────────────────────
     { route: '/ar/services/corporate-events',   freq: 'monthly', priority: 0.75 },
     { route: '/ar/services/weddings',           freq: 'monthly', priority: 0.75 },
