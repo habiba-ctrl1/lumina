@@ -12,19 +12,23 @@ export async function generateMetadata({
 
   return {
     title: isAr
-      ? { absolute: "النقل الفاخر لكبار الشخصيات في السعودية | نقل تنفيذي ومدرَّع | إدارة الفعاليات السعودية" }
-      : "VIP Event Transportation Saudi Arabia | Luxury & Armored Executive Transport | Saudi Event Management",
+      ? { absolute: "نقل كبار الشخصيات في الرياض والسعودية | سائق خاص واستقبال مطارات ونقل فعاليات | إدارة الفعاليات السعودية" }
+      : "VIP Transportation Riyadh & Saudi Arabia | Chauffeur, Airport & Event Transfers | Saudi Event Management",
     description: isAr
-      ? "تنسيق نقل فاخر ومدرَّع لضيوف الفعاليات وكبار الشخصيات في عموم السعودية — استقبال المطارات، وتأجير سيارات فاخرة بسائقين، ونقل جماعي للمندوبين، عبر شبكة شركاء إدارة الفعاليات السعودية."
-      : "Luxury and armored VIP transportation coordination for event guests across Saudi Arabia — airport transfers, chauffeured luxury vehicle hire, and group delegate transport — delivered through Saudi Event Management's partner network.",
+      ? "نقل كبار الشخصيات بسائق خاص في الرياض وعموم السعودية — استقبال المطارات والفنادق، وتأجير سيارات فاخرة بسائقين، ومركبات تنفيذية مدرَّعة، وأساطيل لضيوف الشركات والمؤتمرات والأعراس، بتنسيق إدارة الفعاليات السعودية."
+      : "VIP and chauffeur-driven transportation across Riyadh and Saudi Arabia — airport & hotel transfers, luxury car hire with drivers, armored executive cars, and corporate, conference & wedding guest fleets, coordinated by Saudi Event Management.",
     keywords: [
       "VIP transportation Riyadh",
-      "Luxury car hire for events Saudi Arabia",
+      "Chauffeur service Riyadh",
+      "Luxury car with driver Riyadh",
       "Airport transfer service Riyadh",
-      "Executive transportation Saudi Arabia",
+      "Executive & corporate transportation Saudi Arabia",
+      "Conference delegate transportation KSA",
       "Armored vehicle hire Riyadh",
-      "Event delegate transportation KSA",
+      "Luxury car hire for events Saudi Arabia",
       "نقل كبار الشخصيات الرياض",
+      "سيارة فاخرة مع سائق الرياض",
+      "خدمة سائق خاص الرياض",
       "تأجير سيارات فاخرة السعودية",
       "نقل تنفيذي مدرّع الرياض",
     ],
@@ -34,11 +38,11 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isAr
-        ? "النقل الفاخر لكبار الشخصيات في السعودية | إدارة الفعاليات السعودية"
-        : "VIP Event Transportation Saudi Arabia | Saudi Event Management",
+        ? "نقل كبار الشخصيات وسائق خاص في الرياض والسعودية | إدارة الفعاليات السعودية"
+        : "VIP Transportation & Chauffeur Hire in Riyadh | Saudi Event Management",
       description: isAr
-        ? "نقل فاخر ومدرَّع، واستقبال مطارات، ونقل جماعي للمندوبين — منسّق عبر شبكة شركاء إدارة الفعاليات السعودية."
-        : "Luxury and armored transport, airport transfers, and group delegate transportation — coordinated through Saudi Event Management's partner network.",
+        ? "سائق خاص واستقبال مطارات، ومركبات مدرَّعة، وأساطيل لضيوف الشركات والمؤتمرات والأعراس — منسّق عبر شبكة شركاء إدارة الفعاليات السعودية."
+        : "Chauffeur-driven cars, airport transfers, armored vehicles, and corporate, conference & wedding guest fleets — coordinated through Saudi Event Management's partner network.",
       url: canonicalUrl,
       images: [
         {

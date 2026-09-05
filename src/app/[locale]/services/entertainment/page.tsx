@@ -77,6 +77,10 @@ const faqs = [
     a: "We recommend confirming entertainment bookings at least 4-6 weeks before your event, and 2-3 months ahead during peak wedding and Riyadh Season periods.",
   },
   {
+    q: "Can you provide entertainment for a gala dinner or awards ceremony?",
+    a: "Yes. For gala dinners and awards ceremonies we coordinate ambient live music during arrivals and dining, feature performances between segments, and DJ or house-band talent for the celebration — all timed to the run-of-show.",
+  },
+  {
     q: "Do you coordinate sound and stage production with the entertainment?",
     a: "Yes. Our entertainment bookings are coordinated directly with our AV and event production teams, so sound checks, stage integration, and technical riders are handled end-to-end.",
   },
@@ -91,6 +95,7 @@ const faqsAr = [
   { q: "هل يمكنكم حجز فنانين لفعاليات الشركات والتفعيلات التجارية؟", a: "نعم. نستقطب وننسّق مواهب الترفيه لحفلات الشركات وإطلاق المنتجات والتفعيلات التجارية — من الموسيقى الهادئة إلى العروض التفاعلية عالية الطاقة." },
   { q: "ما خيارات الترفيه المتاحة للفعاليات المناسبة للعائلات؟", a: "ننسّق برامج ترفيه مناسبة للعائلات في أيام عائلات الشركات ومهرجانات اليوم الوطني والاحتفالات المجتمعية، تناسب الجمهور المختلط الأعمار." },
   { q: "قبل كم من الوقت يجب حجز الترفيه لفعاليتي؟", a: "نوصي بتأكيد حجوزات الترفيه قبل 4-6 أسابيع على الأقل من فعاليتك، وقبل 2-3 أشهر خلال مواسم الذروة كالزفاف وموسم الرياض." },
+  { q: "هل يمكنكم توفير ترفيه لحفل عشاء أو حفل جوائز؟", a: "نعم. لحفلات العشاء والجوائز ننسّق موسيقى حية هادئة أثناء الاستقبال والعشاء، وفقرات مميّزة بين الأجزاء، ومنسق حفلات أو فرقة للاحتفال — كلها متزامنة مع برنامج الحفل." },
   { q: "هل تنسّقون الصوت والمسرح مع الفقرات الترفيهية؟", a: "نعم. تُنسَّق حجوزات الترفيه مباشرة مع فرق الصوت والصورة وإنتاج الفعاليات لدينا، بحيث تُدار فحوصات الصوت ودمج المسرح والمتطلبات التقنية من البداية للنهاية." },
   { q: "شركة ترفيه فعاليات قريبة مني في السعودية", a: "تنسّق إدارة الفعاليات السعودية ترفيه الفعاليات في الرياض وجدة والمنطقة الشرقية عبر شبكة شركاء معتمدة من الموسيقيين والفنانين ومنسقي الحفلات." },
 ];
@@ -221,7 +226,10 @@ export default function EntertainmentPage() {
                     <Link href={`${arHref}/services/weddings`} className="text-[var(--primary)] hover:underline font-semibold">حفلات الزفاف</Link>
                     {" "}إلى{" "}
                     <Link href={`${arHref}/services/corporate-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات الشركات</Link>
-                    {" "}والاحتفالات الثقافية.
+                    {"، و"}
+                    <Link href={`${arHref}/blog/gala-dinner-awards-ceremony-planning-saudi-arabia`} className="text-[var(--primary)] hover:underline font-semibold">حفلات العشاء والجوائز</Link>
+                    {"، و"}
+                    <Link href={`${arHref}/services/cultural-events`} className="text-[var(--primary)] hover:underline font-semibold">احتفالات اليوم الوطني</Link>.
                   </>
                 ) : (
                   <>
@@ -229,7 +237,10 @@ export default function EntertainmentPage() {
                     <Link href="/services/weddings" className="text-[var(--primary)] hover:underline font-semibold">weddings</Link>
                     {" "}to{" "}
                     <Link href="/services/corporate-events" className="text-[var(--primary)] hover:underline font-semibold">corporate events</Link>
-                    {" "}and cultural celebrations.
+                    {", "}
+                    <Link href="/blog/gala-dinner-awards-ceremony-planning-saudi-arabia" className="text-[var(--primary)] hover:underline font-semibold">gala dinners &amp; awards</Link>
+                    {", and "}
+                    <Link href="/services/cultural-events" className="text-[var(--primary)] hover:underline font-semibold">National Day celebrations</Link>.
                   </>
                 )}
               </p>

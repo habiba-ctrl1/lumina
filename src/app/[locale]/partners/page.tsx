@@ -124,6 +124,66 @@ export default function PartnersPage() {
         </div>
       </section>
 
+      {/* Trusted Delivery Network */}
+      <section className="py-24 md:py-32 bg-neutral-50/70 border-t border-neutral-200/80">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="section-label justify-center inline-flex mb-4">
+              <span className="w-6 h-0.5 rounded-full bg-[var(--primary)] opacity-40" />
+              Vetted Delivery Network
+            </span>
+            <h2 className="font-semibold text-neutral-900 mb-6 text-3xl md:text-4xl" style={{ letterSpacing: "-0.025em" }}>
+              Our Trusted <span className="text-[var(--primary)]">Service Partners</span>
+            </h2>
+            <p className="text-neutral-500 max-w-2xl mx-auto text-[16px] leading-relaxed">
+              Every event is delivered through Saudi Event Management with a network of vetted, specialist partners. Coordination, quoting, and your single point of contact always remain with SEM.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Advanced Prestige — VIP Transportation & Valet */}
+            <div className="bg-white border border-neutral-200/80 rounded-3xl p-8 md:p-10 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-start">
+                <div className="shrink-0 w-full md:w-56">
+                  <div className="bg-neutral-900 rounded-2xl px-6 flex items-center justify-center h-32">
+                    <Image
+                      src="/partners/advanced-prestige-logo.webp"
+                      alt="Advanced Prestige — VIP transportation and valet partner in Riyadh"
+                      width={220}
+                      height={90}
+                      className="object-contain max-h-16 w-auto"
+                    />
+                  </div>
+                  <p className="text-center text-[11px] text-neutral-400 uppercase tracking-widest mt-3">Transportation &amp; Valet · Riyadh</p>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-xl text-neutral-900 mb-1">Advanced Prestige</h3>
+                  <p className="text-neutral-400 text-sm mb-6">VIP Transportation &amp; Valet · Established Riyadh fleet & valet operator</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
+                    {[
+                      "Airport & hotel transfers with meet-and-greet",
+                      "VIP, executive & armored vehicles",
+                      "Chauffeur-driven luxury cars, SUVs & sedans",
+                      "Group & delegate transport, golf buggies & vintage cars",
+                      "Uniformed valet teams & secure key management",
+                      "Priority parking, accessibility & premium arrival service",
+                    ].map((cap) => (
+                      <div key={cap} className="flex items-start gap-2.5 text-[13px] text-neutral-600 leading-relaxed">
+                        <div className="w-1.5 h-1.5 bg-[var(--primary)] rounded-full mt-1.5 shrink-0" />
+                        {cap}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-center text-neutral-400 text-xs leading-relaxed mt-6 max-w-2xl mx-auto">
+              Partner capabilities are delivered and coordinated by Saudi Event Management. Client relationships, proposals, and quotations are handled by SEM directly.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Vision 2030 Alignment */}
       <section className="py-24 md:py-32 overflow-hidden bg-[var(--surface-raised)] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-6">

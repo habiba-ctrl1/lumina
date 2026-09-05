@@ -71,6 +71,18 @@ const faqs = [
     a: "Yes. We coordinate specialty and vintage vehicles for wedding entrances and grand arrivals, alongside standard luxury chauffeur fleets.",
   },
   {
+    q: "Can you provide chauffeur-driven vehicles for corporate events?",
+    a: "Yes. We coordinate executive sedans, premium SUVs, and chauffeur-driven vehicles for corporate events — from moving a leadership team and clients to full delegate transport for a corporate gala or product launch.",
+  },
+  {
+    q: "Can you handle transportation for conferences and exhibitions?",
+    a: "Yes. We coordinate delegate and speaker transportation for conferences and exhibitions — hotel-to-venue shuttles, VIP and speaker cars, and scheduled group runs timed around the event programme.",
+  },
+  {
+    q: "Can transportation be customized around an event itinerary?",
+    a: "Yes. We plan routes, pickup points, and vehicle assignments around your run-of-show — arrivals, session breaks, offsite dinners, and departures — so transport aligns with your itinerary rather than the other way around.",
+  },
+  {
     q: "How far in advance should I book event transportation?",
     a: "We recommend confirming transportation bookings at least 3-4 weeks before your event, and earlier during peak wedding and conference seasons to secure the best fleet availability.",
   },
@@ -85,8 +97,29 @@ const faqsAr = [
   { q: "هل يمكنكم توفير مركبات مدرَّعة للضيوف رفيعي المستوى؟", a: "نعم. لنقل الضيوف رفيعي المستوى، ننسّق خيارات مركبات مدرَّعة وآمنة مع سائقين ذوي خبرة وحذر." },
   { q: "هل تديرون النقل الجماعي لمندوبي المؤتمرات؟", a: "نعم. ننسّق أساطيل مركبات كبيرة وتخطيط مسارات لنقل مندوبي المؤتمرات، من مجموعات تنفيذية صغيرة إلى مئات الحضور." },
   { q: "هل يمكن توفير سيارات كلاسيكية أو احتفالية لدخول العروسين؟", a: "نعم. ننسّق مركبات خاصة وكلاسيكية لدخول العروسين والوصول الكبير، إلى جانب أساطيل السائقين الفاخرة المعتادة." },
+  { q: "هل توفّرون مركبات بسائق لفعاليات الشركات؟", a: "نعم. ننسّق سيارات سيدان تنفيذية، ودفع رباعي فاخر، ومركبات بسائق لفعاليات الشركات — من نقل فريق القيادة والعملاء إلى نقل المندوبين الكامل لحفل شركة أو إطلاق منتج." },
+  { q: "هل تتولّون النقل للمؤتمرات والمعارض؟", a: "نعم. ننسّق نقل المندوبين والمتحدثين للمؤتمرات والمعارض — حافلات من الفندق إلى الموقع، وسيارات كبار الشخصيات والمتحدثين، ورحلات جماعية مجدولة بحسب برنامج الفعالية." },
+  { q: "هل يمكن تخصيص النقل حسب برنامج الفعالية؟", a: "نعم. نخطّط المسارات ونقاط الاستقبال وتوزيع المركبات وفق برنامج فعاليتك — الوصول، وفترات الجلسات، والعشاء الخارجي، والمغادرة — بحيث يتماشى النقل مع برنامجك." },
   { q: "قبل كم من الوقت يجب حجز نقل الفعالية؟", a: "نوصي بتأكيد حجوزات النقل قبل 3-4 أسابيع على الأقل من فعاليتك، وأبكر من ذلك خلال مواسم الذروة كالزفاف والمؤتمرات لضمان توفّر الأسطول." },
   { q: "خدمة نقل كبار الشخصيات قريبة مني في السعودية", a: "تنسّق إدارة الفعاليات السعودية نقل كبار الشخصيات والنقل الفاخر للفعاليات في الرياض وجدة والمنطقة الشرقية عبر شبكة شركاء أسطول معتمدة." },
+];
+
+const eventTypes = [
+  { title: "Corporate Events", desc: "Executive and client transport, plus full delegate movement for corporate galas, award nights, and product launches." },
+  { title: "Conferences", desc: "Hotel-to-venue delegate shuttles, speaker and VIP cars, and scheduled group runs timed to the conference programme." },
+  { title: "Exhibitions", desc: "Stand-team, sponsor, and VIP-visitor transport across large exhibition campuses and between venues and hotels." },
+  { title: "VIP & Government Guests", desc: "Discreet, armored, and protocol-oriented movement for dignitaries, diplomats, and high-profile guests." },
+  { title: "Weddings", desc: "Bridal-party cars, ceremonial and vintage vehicle entrances, and guest shuttles for large celebrations." },
+  { title: "Groups & Delegations", desc: "Large-vehicle fleets and multi-point route coordination scaled from small executive groups to hundreds of attendees." },
+];
+
+const eventTypesAr = [
+  { title: "فعاليات الشركات", desc: "نقل تنفيذي وللعملاء، إضافةً إلى نقل المندوبين الكامل لحفلات الشركات وليالي الجوائز وإطلاق المنتجات." },
+  { title: "المؤتمرات", desc: "حافلات المندوبين من الفندق إلى الموقع، وسيارات المتحدثين وكبار الشخصيات، ورحلات جماعية مجدولة حسب برنامج المؤتمر." },
+  { title: "المعارض", desc: "نقل فرق الأجنحة والرعاة وزوّار كبار الشخصيات عبر مواقع المعارض الكبيرة وبين القاعات والفنادق." },
+  { title: "كبار الشخصيات والضيوف الرسميون", desc: "تنقّل متكتّم ومدرَّع ومراعٍ للبروتوكول للضيوف الرسميين والدبلوماسيين والشخصيات رفيعة المستوى." },
+  { title: "حفلات الزفاف", desc: "سيارات موكب العروسين، ومركبات الدخول الاحتفالية والكلاسيكية، وحافلات الضيوف للاحتفالات الكبيرة." },
+  { title: "المجموعات والوفود", desc: "أساطيل مركبات كبيرة وتنسيق مسارات متعددة النقاط، من مجموعات تنفيذية صغيرة إلى مئات الحضور." },
 ];
 
 export default function VipTransportationPage() {
@@ -215,7 +248,8 @@ export default function VipTransportationPage() {
                     <Link href={`${arHref}/services/luxury-vip-events`} className="text-[var(--primary)] hover:underline font-semibold">الفعاليات الفاخرة</Link>
                     {" "}و{" "}
                     <Link href={`${arHref}/services/conferences`} className="text-[var(--primary)] hover:underline font-semibold">المؤتمرات</Link>
-                    {" "}عبر شبكة أسطول معتمدة، من استقبال المطار إلى المغادرة، مع خدمة كونسيرج ميدانية مساندة لضيوف كبار الشخصيات.
+                    {" "}عبر شبكة أسطول معتمدة، من استقبال المطار إلى المغادرة، مع خدمة كونسيرج ميدانية مساندة لضيوف كبار الشخصيات. أما للسفر الخاص والترفيهي، فاطّلع على{" "}
+                    <Link href={`${arHref}/travel`} className="text-[var(--primary)] hover:underline font-semibold">السياحة الفاخرة والجولات الخاصة</Link>.
                   </>
                 ) : (
                   <>
@@ -223,7 +257,8 @@ export default function VipTransportationPage() {
                     <Link href="/services/luxury-vip-events" className="text-[var(--primary)] hover:underline font-semibold">VIP events</Link>
                     {" "}and{" "}
                     <Link href="/services/conferences" className="text-[var(--primary)] hover:underline font-semibold">conferences</Link>
-                    {" "}through a vetted fleet network, from airport pickup to final departure, with on-site concierge support available for VIP guests as a supporting service.
+                    {" "}through a vetted fleet network, from airport pickup to final departure, with on-site concierge support available for VIP guests as a supporting service. Planning private, leisure travel instead? See our{" "}
+                    <Link href="/travel" className="text-[var(--primary)] hover:underline font-semibold">luxury travel &amp; private tours</Link>.
                   </>
                 )}
               </p>
@@ -245,6 +280,38 @@ export default function VipTransportationPage() {
                   <h3 className="text-base font-bold text-neutral-900 mb-3">{isAr ? servicesAr[i].title : s.title}</h3>
                   <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? servicesAr[i].desc : s.desc}</p>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── VIP Transportation by Event Type ── */}
+        <section className="py-20 md:py-24 bg-neutral-50/70 border-y border-neutral-200/80">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center mb-12">
+              <span className="section-label justify-center mb-4 flex">
+                <span className="w-5 h-0.5 rounded-full bg-[var(--primary)] opacity-50 inline-block mr-1" />
+                {isAr ? "حسب نوع الفعالية" : "By Event Type"}
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
+                {isAr ? "نقل مصمَّم حول " : "Transportation built around "}
+                <span className="text-[var(--primary)]">{isAr ? "فعاليتك" : "your event"}</span>
+              </h2>
+              <p className="text-neutral-500 max-w-2xl mx-auto text-sm leading-relaxed mt-4">
+                {isAr
+                  ? "نفس شبكة الأسطول المعتمدة، منسّقة بحسب متطلبات كل نوع فعالية — من الشركات والمؤتمرات إلى كبار الشخصيات والزفاف."
+                  : "The same vetted fleet network, coordinated around what each kind of event actually needs — from corporate and conferences to VIP guests and weddings."}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {(isAr ? eventTypesAr : eventTypes).map((et, i) => (
+                <div key={i} className="bg-white border border-neutral-200/80 rounded-2xl p-6">
+                  <div className="flex items-center gap-2.5 mb-2.5">
+                    <CheckCircle2 size={17} className="text-[var(--primary)] shrink-0" />
+                    <h3 className="text-[15px] font-bold text-neutral-900">{et.title}</h3>
+                  </div>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{et.desc}</p>
+                </div>
               ))}
             </div>
           </div>

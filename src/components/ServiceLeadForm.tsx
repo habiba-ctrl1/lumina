@@ -19,6 +19,20 @@ export interface ServiceLeadFormProps {
   subheading?: string;
   /** Submit button label. */
   submitLabel?: string;
+  /** Label for the category dropdown (default "Event Type"). */
+  eventTypeLabel?: string;
+  /** Label for the guests/travellers field (default "Guests"). */
+  guestCountLabel?: string;
+  /** Label for the (optional) date field (default "Preferred Date"). */
+  dateLabel?: string;
+  /** Placeholder for the guests/travellers field. */
+  guestCountPlaceholder?: string;
+  /** Label for the company field (default "Company / Organisation"). */
+  companyLabel?: string;
+  /** Label for the free-text field (default "Project Details"). */
+  messageLabel?: string;
+  /** Placeholder for the free-text field. */
+  messagePlaceholder?: string;
 }
 
 const DEFAULT_EVENT_TYPES = [
@@ -39,6 +53,13 @@ export default function ServiceLeadForm({
   heading = "Tell us about your event",
   subheading = "Share a few details and a senior consultant will respond within 2 hours with a tailored proposal.",
   submitLabel = "Request My Proposal",
+  eventTypeLabel = "Event Type",
+  guestCountLabel = "Guests",
+  dateLabel = "Preferred Date",
+  guestCountPlaceholder = "e.g. 250",
+  companyLabel = "Company / Organisation",
+  messageLabel = "Project Details",
+  messagePlaceholder = "Tell us about your objectives, preferred dates, venue ideas, and any special requirements...",
 }: ServiceLeadFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -47,6 +68,7 @@ export default function ServiceLeadForm({
     company: "",
     eventType: defaultEventType,
     venueCity: "",
+    eventDate: "",
     guestCount: "",
     message: "",
     source,
@@ -76,6 +98,7 @@ export default function ServiceLeadForm({
         company: "",
         eventType: defaultEventType,
         venueCity: "",
+        eventDate: "",
         guestCount: "",
         message: "",
         source,
@@ -156,7 +179,7 @@ export default function ServiceLeadForm({
           </div>
 
           <div className="space-y-2">
-            <label className="text-[13px] font-medium text-neutral-500 block">Company / Organisation</label>
+            <label className="text-[13px] font-medium text-neutral-500 block">{companyLabel}</label>
             <input
               type="text"
               placeholder="Company name"
@@ -169,9 +192,9 @@ export default function ServiceLeadForm({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div className="space-y-2 md:col-span-1">
-            <label className="text-[13px] font-medium text-neutral-500 block">Event Type</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="space-y-2">
+            <label className="text-[13px] font-medium text-neutral-500 block">{eventTypeLabel}</label>
             <select
               value={formData.eventType}
               onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
@@ -208,10 +231,22 @@ export default function ServiceLeadForm({
           </div>
 
           <div className="space-y-2">
-            <label className="text-[13px] font-medium text-neutral-500 block">Guests</label>
+            <label className="text-[13px] font-medium text-neutral-500 block">{dateLabel}</label>
+            <input
+              type="date"
+              className={`${inputClass("date")} cursor-pointer`}
+              value={formData.eventDate}
+              onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
+              onFocus={() => setFocusedField("date")}
+              onBlur={() => setFocusedField(null)}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[13px] font-medium text-neutral-500 block">{guestCountLabel}</label>
             <input
               type="text"
-              placeholder="e.g. 250"
+              placeholder={guestCountPlaceholder}
               className={inputClass("guests")}
               value={formData.guestCount}
               onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })}
@@ -223,12 +258,12 @@ export default function ServiceLeadForm({
 
         <div className="space-y-2">
           <label className="text-[13px] font-medium text-neutral-500 block">
-            Project Details <span className="text-[var(--primary)]">*</span>
+            {messageLabel} <span className="text-[var(--primary)]">*</span>
           </label>
           <textarea
             required
             rows={4}
-            placeholder="Tell us about your objectives, preferred dates, venue ideas, and any special requirements..."
+            placeholder={messagePlaceholder}
             className={`${inputClass("msg")} resize-none`}
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
