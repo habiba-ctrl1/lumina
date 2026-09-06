@@ -432,6 +432,13 @@ export default async function ConferencesPage() {
                   </>
                 )}
               </p>
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed mt-4">
+                {isAr ? (
+                  <>ننسّق أيضًا القمم والمؤتمرات المؤسسية والحكومية التي تُقام حول <Link href={`${arHref}/services/cultural-events`} className="text-[var(--primary)] hover:underline font-semibold">فعاليات اليوم الوطني السعودي</Link> في سبتمبر.</>
+                ) : (
+                  <>We also coordinate government and corporate summits timed around <Link href="/services/cultural-events" className="text-[var(--primary)] hover:underline font-semibold">Saudi National Day events</Link> in September.</>
+                )}
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

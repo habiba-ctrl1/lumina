@@ -309,6 +309,13 @@ export default function ExhibitionsPage() {
                   </>
                 )}
               </p>
+              <p className="text-neutral-500 max-w-3xl mx-auto text-sm leading-relaxed mt-4">
+                {isAr ? (
+                  <>نصمّم أيضًا أجنحة وتفعيلات معرضية بهوية <Link href={`${arHref}/services/cultural-events`} className="text-[var(--primary)] hover:underline font-semibold">اليوم الوطني السعودي</Link> للعلامات والجهات المشاركة في معارض سبتمبر.</>
+                ) : (
+                  <>We also design exhibition booths and floor activations themed for <Link href="/services/cultural-events" className="text-[var(--primary)] hover:underline font-semibold">Saudi National Day</Link>, for brands and institutions exhibiting during the September calendar.</>
+                )}
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
