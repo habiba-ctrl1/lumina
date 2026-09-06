@@ -357,6 +357,8 @@ export default async function Home({ params }: PageProps) {
   // Locale comes from the route segment (the single source of truth) — not a
   // cookie, which can desync from the URL and breaks static rendering.
   const { locale } = await params;
+  const isAr = locale === "ar";
+  const arHref = isAr ? "/ar" : "";
 
   return (
     /*
@@ -393,6 +395,26 @@ export default async function Home({ params }: PageProps) {
           Footer        → Navigation + newsletter
       ──────────────────────────────────────────────────────────────────── */}
       <Hero />
+
+      {/* ── Seasonal: Saudi National Day 2026 (23 Sep) — remove after the season ── */}
+      <div className="bg-emerald-950 border-b border-emerald-900">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+          <p className="text-white text-[13px] sm:text-sm font-medium">
+            <span className="text-[#C5A880] font-bold">
+              {isAr ? "اليوم الوطني 96 · 23 سبتمبر 2026" : "National Day 96 · 23 September 2026"}
+            </span>
+            {"  "}
+            {isAr ? "— نخطّط ونُنفّذ فعاليات الشركات والجهات في الرياض وجدة والمنطقة الشرقية." : "— planning & delivering corporate and institutional events in Riyadh, Jeddah & the Eastern Province."}
+          </p>
+          <Link
+            href={`${arHref}/services/cultural-events#celebration-enquiry`}
+            className="shrink-0 inline-flex items-center gap-1.5 px-5 py-2 bg-[#C5A880] text-emerald-950 text-[12px] font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors"
+          >
+            {isAr ? "اطلب عرض سعر اليوم الوطني" : "Request a National Day Proposal"}
+          </Link>
+        </div>
+      </div>
+
       <GeoDefinitionBlock />
       <MarqueeStrip />
 
