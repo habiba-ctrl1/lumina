@@ -2,10 +2,31 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { adminFetch } from "@/lib/admin-fetch";
-import { Briefcase, Star, Search, RefreshCw, Plus, X, Phone, Mail, MapPin, CheckCircle2, Award, Zap, FileCheck, Camera, Users, ChevronLeft, ChevronRight, ShieldAlert, Handshake } from "lucide-react";
+import { Briefcase, Star, Search, RefreshCw, Plus, X, Phone, Mail, MapPin, CheckCircle2, Award, Zap, FileCheck, Camera, Users, ChevronLeft, ChevronRight, ShieldAlert, Handshake, Layers, AlertTriangle, Paperclip, ExternalLink, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "@/lib/supabase";
 import type { CategoryOption } from "@/lib/categories";
 import type { DuplicateCandidate } from "@/lib/vendor-dedupe";
+
+type UploadState = { status: "uploading" | "done" | "error"; name: string; error?: string };
+
+// Upload a file straight to the private "vendor-files" Supabase bucket (same
+// flow the public onboarding form uses) and return a "supabase://…" path to
+// store on the vendor record. Used both for the Add-Partner form and for
+// attaching a PDF to an existing vendor from the detail panel — covers vendor
+// applications that arrived by email/WhatsApp instead of the onboarding form.
+async function uploadVendorFile(kind: "profile" | "ratecard", file: File): Promise<string> {
+  const res = await fetch("/api/partner-applications/upload-url", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ kind, filename: file.name, size: file.size }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Upload failed");
+  const { error } = await supabase.storage.from(data.bucket).uploadToSignedUrl(data.path, data.token, file);
+  if (error) throw new Error("Upload failed — please try again.");
+  return `supabase://${data.bucket}/${data.path}`;
+}
 
 type Vendor = {
   id: string;
@@ -108,6 +129,37 @@ export default function VendorsPage() {
   const [matching, setMatching] = useState(false);
   const [showMatchEngine, setShowMatchEngine] = useState(false);
 
+  // ── Network coverage: vendors per category, flags gaps (< 2 vendors) so the
+  // founder can see exactly where to recruit a second/third partner ──
+  const [showCoverage, setShowCoverage] = useState(false);
+  const [coverage, setCoverage] = useState<{ id: string; name: string; count: number }[]>([]);
+  const [coverageLoading, setCoverageLoading] = useState(false);
+  const COVERAGE_TARGET = 2;
+
+  const fetchCoverage = async () => {
+    setCoverageLoading(true);
+    try {
+      const res = await adminFetch("/api/admin/categories");
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setCoverage(
+          data
+            .filter((c: { isActive?: boolean }) => c.isActive !== false)
+            .map((c: { id: string; name: string; _count?: { vendors?: number } }) => ({
+              id: c.id,
+              name: c.name,
+              count: c._count?.vendors ?? 0,
+            }))
+            .sort((a: { count: number }, b: { count: number }) => a.count - b.count)
+        );
+      }
+    } catch (e) {
+      console.error("Failed to fetch coverage:", e);
+    } finally {
+      setCoverageLoading(false);
+    }
+  };
+
   // Form State (Add Vendor)
   const [formData, setFormData] = useState({
     name: "",
@@ -122,9 +174,23 @@ export default function VendorsPage() {
     pricing: "Budget",
     partnershipStatus: "Pending",
     rating: "5.0",
+    portfolioFiles: "",
+    rateCardFiles: "",
   });
   const [dupCandidates, setDupCandidates] = useState<DuplicateCandidate[]>([]);
   const [checkingDup, setCheckingDup] = useState(false);
+  const [fileUploads, setFileUploads] = useState<Partial<Record<"portfolioFiles" | "rateCardFiles", UploadState>>>({});
+
+  const handleFileSelect = async (field: "portfolioFiles" | "rateCardFiles", kind: "profile" | "ratecard", file: File) => {
+    setFileUploads((u) => ({ ...u, [field]: { status: "uploading", name: file.name } }));
+    try {
+      const path = await uploadVendorFile(kind, file);
+      setFormData((f) => ({ ...f, [field]: path }));
+      setFileUploads((u) => ({ ...u, [field]: { status: "done", name: file.name } }));
+    } catch (e: any) {
+      setFileUploads((u) => ({ ...u, [field]: { status: "error", name: file.name, error: e?.message || "Upload failed" } }));
+    }
+  };
 
   useEffect(() => {
     fetchCategories();
@@ -244,8 +310,9 @@ export default function VendorsPage() {
         setFormData({
           name: "", categoryIds: [], services: "", contactPerson: "", city: "Riyadh",
           email: "", phone: "", whatsapp: "", portfolio: "", pricing: "Budget",
-          partnershipStatus: "Pending", rating: "5.0",
+          partnershipStatus: "Pending", rating: "5.0", portfolioFiles: "", rateCardFiles: "",
         });
+        setFileUploads({});
         fetchVendors();
       } else {
         alert(`Failed to register partner: ${data.error || 'Unknown error'}`);
@@ -262,6 +329,40 @@ export default function VendorsPage() {
   const [detail, setDetail] = useState<Vendor | null>(null);
   const [savingDetail, setSavingDetail] = useState(false);
   const [newNote, setNewNote] = useState("");
+  const [detailFileUploads, setDetailFileUploads] = useState<Partial<Record<"portfolioFiles" | "rateCardFiles", UploadState>>>({});
+  const [openingFile, setOpeningFile] = useState<string | null>(null);
+
+  const handleDetailFileSelect = async (field: "portfolioFiles" | "rateCardFiles", kind: "profile" | "ratecard", file: File) => {
+    setDetailFileUploads((u) => ({ ...u, [field]: { status: "uploading", name: file.name } }));
+    try {
+      const path = await uploadVendorFile(kind, file);
+      setDetail((d) => (d ? { ...d, [field]: path } : d));
+      setDetailFileUploads((u) => ({ ...u, [field]: { status: "done", name: file.name } }));
+    } catch (e: any) {
+      setDetailFileUploads((u) => ({ ...u, [field]: { status: "error", name: file.name, error: e?.message || "Upload failed" } }));
+    }
+  };
+
+  // Files may be a plain URL (older records) or a "supabase://vendor-files/…"
+  // path from the private bucket — those need a short-lived signed URL via the
+  // admin-guarded file-url route before they can be opened.
+  const openVendorFile = async (path: string) => {
+    if (!path.startsWith("supabase://")) {
+      window.open(path.startsWith("http") ? path : `https://${path}`, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setOpeningFile(path);
+    try {
+      const res = await adminFetch(`/api/partner-applications/file-url?path=${encodeURIComponent(path)}`);
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error || "Failed to open file");
+      window.open(data.url, "_blank", "noopener,noreferrer");
+    } catch {
+      alert("Could not open the file.");
+    } finally {
+      setOpeningFile(null);
+    }
+  };
 
   const openVendor = async (id: string) => {
     try {
@@ -325,6 +426,20 @@ export default function VendorsPage() {
         <div className="flex gap-2.5">
           <button
             onClick={() => {
+              setShowCoverage(!showCoverage);
+              if (!showCoverage) fetchCoverage();
+            }}
+            className={`flex items-center gap-2 px-4 py-2 border rounded-xl font-semibold text-xs tracking-wide transition-all shadow-sm ${
+              showCoverage
+                ? "bg-emerald-50 border-emerald-200 text-emerald-700"
+                : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
+            }`}
+          >
+            <Layers size={14} className={showCoverage ? "text-emerald-600" : "text-slate-500"} />
+            Coverage
+          </button>
+          <button
+            onClick={() => {
               setShowMatchEngine(!showMatchEngine);
               if (!showMatchEngine) runMatchingEngine();
             }}
@@ -374,6 +489,74 @@ export default function VendorsPage() {
             : "Every vendor in the network"}
         </span>
       </div>
+
+      {/* Network Coverage — vendors per category, flags gaps under target */}
+      <AnimatePresence>
+        {showCoverage && (
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            className="bg-white border border-emerald-200/60 rounded-2xl p-5 mb-6 shadow-sm shadow-emerald-500/5 relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-3">
+              <button onClick={() => setShowCoverage(false)} className="text-slate-400 hover:text-slate-600"><X size={16} /></button>
+            </div>
+            <div className="flex items-center gap-2 mb-1">
+              <div className="p-1 bg-emerald-100 text-emerald-700 rounded-lg"><Layers size={14} /></div>
+              <h2 className="text-sm font-semibold text-slate-800">Network Coverage</h2>
+            </div>
+            <p className="text-[10px] text-slate-400 mb-4 ms-7">
+              Vendors per category. Aim for {COVERAGE_TARGET}–3 each so you always have a fallback quote — amber = needs recruiting.
+            </p>
+
+            {coverageLoading ? (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {[1, 2, 3, 4, 5, 6].map((i) => <div key={i} className="h-14 bg-slate-50 animate-pulse rounded-xl border border-slate-100" />)}
+              </div>
+            ) : coverage.length === 0 ? (
+              <p className="text-[11px] text-slate-400 italic p-3 bg-white rounded-xl border border-dashed">No categories found.</p>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-3 text-[11px] font-semibold">
+                  <span className="text-amber-600">
+                    {coverage.filter((c) => c.count < COVERAGE_TARGET).length} categor{coverage.filter((c) => c.count < COVERAGE_TARGET).length === 1 ? "y" : "ies"} below target
+                  </span>
+                  <span className="text-slate-400">·</span>
+                  <span className="text-emerald-600">{coverage.filter((c) => c.count >= COVERAGE_TARGET).length} covered</span>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                  {coverage.map((c) => {
+                    const gap = c.count < COVERAGE_TARGET;
+                    return (
+                      <button
+                        key={c.id}
+                        onClick={() => { setCategoryId(c.id); setPage(1); setShowCoverage(false); }}
+                        title="Filter vendors by this category"
+                        className={`text-start p-3 rounded-xl border transition-all ${
+                          gap ? "bg-amber-50 border-amber-200 hover:border-amber-300" : "bg-slate-50 border-slate-200 hover:border-emerald-300"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`text-lg font-bold leading-none ${gap ? "text-amber-600" : "text-slate-800"}`}>{c.count}</span>
+                          {gap && <AlertTriangle size={13} className="text-amber-500 shrink-0" />}
+                          {!gap && <CheckCircle2 size={13} className="text-emerald-500 shrink-0" />}
+                        </div>
+                        <p className="text-[11px] font-semibold text-slate-600 mt-1.5 leading-tight line-clamp-2">{c.name}</p>
+                        {gap && (
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-amber-500 mt-1">
+                            {c.count === 0 ? "No vendor" : "Add " + (COVERAGE_TARGET - c.count) + " more"}
+                          </p>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* AI Vendor Matching Engine Widget */}
       <AnimatePresence>
@@ -949,6 +1132,49 @@ export default function VendorsPage() {
                     />
                   </div>
 
+                  {/* Attach files — for vendors whose profile/PDF arrived by email/WhatsApp
+                      instead of the onboarding form. Uploads to the private vendor-files bucket. */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {([
+                      ["portfolioFiles", "profile", "Company Profile / PDF"],
+                      ["rateCardFiles", "ratecard", "Rate Card / Pricing"],
+                    ] as const).map(([field, kind, label]) => {
+                      const upload = fileUploads[field];
+                      const attached = formData[field];
+                      return (
+                        <div key={field} className="space-y-1">
+                          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</label>
+                          {attached ? (
+                            <div className="flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
+                              <span className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 truncate">
+                                <FileText size={12} className="shrink-0" /> {upload?.name || "Attached"}
+                              </span>
+                              <button type="button" onClick={() => { setFormData((f) => ({ ...f, [field]: "" })); setFileUploads((u) => ({ ...u, [field]: undefined })); }} className="text-emerald-600 hover:text-emerald-800 shrink-0">
+                                <X size={12} />
+                              </button>
+                            </div>
+                          ) : (
+                            <label className="flex items-center justify-center gap-1.5 bg-slate-50 border border-dashed border-slate-300 rounded-xl px-3 py-2 text-[11px] font-semibold text-slate-500 hover:border-emerald-300 hover:text-emerald-600 cursor-pointer transition-all">
+                              {upload?.status === "uploading" ? (
+                                <><RefreshCw size={12} className="animate-spin" /> Uploading…</>
+                              ) : (
+                                <><Paperclip size={12} /> Upload PDF</>
+                              )}
+                              <input
+                                type="file"
+                                accept={kind === "profile" ? ".pdf" : ".pdf,.png,.jpg,.jpeg,.webp"}
+                                className="hidden"
+                                disabled={upload?.status === "uploading"}
+                                onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFileSelect(field, kind, f); }}
+                              />
+                            </label>
+                          )}
+                          {upload?.status === "error" && <p className="text-[10px] text-red-500">{upload.error}</p>}
+                        </div>
+                      );
+                    })}
+                  </div>
+
                   <div className="pt-2">
                     <button
                       type="submit"
@@ -1107,6 +1333,54 @@ export default function VendorsPage() {
                       onChange={(e) => setDetail({ ...detail, rateCardSummary: e.target.value })}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-400 resize-none" />
                   </div>
+                </div>
+
+                {/* Attached files — for vendors whose profile/PDF came by email/WhatsApp
+                    rather than the onboarding form. Attach here, then Save Changes. */}
+                <div className="grid grid-cols-2 gap-3">
+                  {([
+                    ["portfolioFiles", "profile", "Company Profile / PDF"],
+                    ["rateCardFiles", "ratecard", "Rate Card / Pricing"],
+                  ] as const).map(([field, kind, label]) => {
+                    const upload = detailFileUploads[field];
+                    const value = detail[field];
+                    return (
+                      <div key={field} className="space-y-1">
+                        <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</label>
+                        {value ? (
+                          <div className="flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2">
+                            <button
+                              type="button"
+                              onClick={() => openVendorFile(value)}
+                              disabled={openingFile === value}
+                              className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 hover:underline truncate disabled:opacity-60"
+                            >
+                              <FileText size={12} className="shrink-0" /> {upload?.name || "Open file"} <ExternalLink size={10} className="shrink-0" />
+                            </button>
+                            <button type="button" onClick={() => setDetail({ ...detail, [field]: "" })} className="text-emerald-600 hover:text-emerald-800 shrink-0">
+                              <X size={12} />
+                            </button>
+                          </div>
+                        ) : (
+                          <label className="flex items-center justify-center gap-1.5 bg-slate-50 border border-dashed border-slate-300 rounded-xl px-3 py-2 text-[11px] font-semibold text-slate-500 hover:border-emerald-300 hover:text-emerald-600 cursor-pointer transition-all">
+                            {upload?.status === "uploading" ? (
+                              <><RefreshCw size={12} className="animate-spin" /> Uploading…</>
+                            ) : (
+                              <><Paperclip size={12} /> Attach PDF</>
+                            )}
+                            <input
+                              type="file"
+                              accept={kind === "profile" ? ".pdf" : ".pdf,.png,.jpg,.jpeg,.webp"}
+                              className="hidden"
+                              disabled={upload?.status === "uploading"}
+                              onChange={(e) => { const f = e.target.files?.[0]; if (f) handleDetailFileSelect(field, kind, f); }}
+                            />
+                          </label>
+                        )}
+                        {upload?.status === "error" && <p className="text-[10px] text-red-500">{upload.error}</p>}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {/* Originating application(s) — read-only, avoids duplicating document storage */}

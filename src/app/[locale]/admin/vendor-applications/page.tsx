@@ -15,8 +15,11 @@ import {
   MapPin,
   Link as LinkIcon,
   ShieldCheck,
+  Send,
+  Users,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { buildPartnerWelcome } from "@/lib/partner-welcome";
 
 type Application = {
   id: string;
@@ -64,7 +67,7 @@ type Application = {
   isQuickRegistration?: boolean;
 };
 
-type VendorOption = { id: string; name: string; category: string };
+type VendorOption = { id: string; name: string; category: string; categories?: string[] };
 
 const STATUS_TABS = ["Pending", "Approved", "Rejected", "all"] as const;
 
@@ -144,6 +147,14 @@ export default function VendorApplicationsPage() {
   const [mergeVendorId, setMergeVendorId] = useState("");
   const [vendorOptions, setVendorOptions] = useState<VendorOption[]>([]);
   const [busy, setBusy] = useState(false);
+
+  // Welcome-email review modal — opened after a successful approval when the
+  // partner has an email on file. Nothing sends until the founder clicks Send.
+  const [emailDraft, setEmailDraft] = useState<
+    { to: string; subject: string; body: string; companyName: string } | null
+  >(null);
+  const [emailBusy, setEmailBusy] = useState(false);
+  const [emailDone, setEmailDone] = useState(false);
 
   const fetchApplications = async () => {
     setLoading(true);
@@ -226,6 +237,22 @@ export default function VendorApplicationsPage() {
 
   const [dupCandidates, setDupCandidates] = useState<{ vendor: VendorOption & { id: string }; matchedOn: string }[]>([]);
 
+  // Category-saturation check — surfaced before approval so the founder is
+  // never blindsided by a category quietly filling up with lookalike vendors.
+  // Non-blocking: purely informational, approve still requires her own click.
+  const categoryMatchesFor = (app: Application): { category: string; vendors: string[] }[] => {
+    const result: { category: string; vendors: string[] }[] = [];
+    for (const cat of app.categories) {
+      const catLower = cat.trim().toLowerCase();
+      if (!catLower) continue;
+      const matched = vendorOptions.filter(
+        (v) => v.category?.toLowerCase() === catLower || (v.categories || []).some((c) => c.toLowerCase() === catLower)
+      );
+      if (matched.length > 0) result.push({ category: cat, vendors: matched.map((v) => v.name) });
+    }
+    return result;
+  };
+
   const openApprovePanel = async (appId: string) => {
     setApproving(appId);
     setMergeVendorId("");
@@ -235,7 +262,7 @@ export default function VendorApplicationsPage() {
         const res = await adminFetch("/api/vendors?pageSize=100&sortBy=name");
         const data = await res.json();
         if (Array.isArray(data.vendors)) {
-          setVendorOptions(data.vendors.map((v: any) => ({ id: v.id, name: v.name, category: v.category })));
+          setVendorOptions(data.vendors.map((v: any) => ({ id: v.id, name: v.name, category: v.category, categories: v.categories || [] })));
         }
       } catch (e) {
         console.error("Failed to fetch vendors:", e);
@@ -243,7 +270,24 @@ export default function VendorApplicationsPage() {
     }
   };
 
-  const act = async (id: string, body: Record<string, unknown>, isQuickRegistration?: boolean) => {
+  // After a successful approval, offer the welcome email (only if we have an
+  // address to send to). The draft is fully editable and never auto-sends.
+  const offerWelcomeEmail = (approvedApp?: Application) => {
+    if (!approvedApp?.email) return;
+    const { subject, body } = buildPartnerWelcome({
+      contactPerson: approvedApp.contactPerson,
+      companyName: approvedApp.companyName,
+    });
+    setEmailDone(false);
+    setEmailDraft({ to: approvedApp.email, subject, body, companyName: approvedApp.companyName });
+  };
+
+  const act = async (
+    id: string,
+    body: Record<string, unknown>,
+    isQuickRegistration?: boolean,
+    approvedApp?: Application
+  ) => {
     setBusy(true);
     try {
       if (isQuickRegistration) {
@@ -257,6 +301,7 @@ export default function VendorApplicationsPage() {
           setApproving(null);
           setDupCandidates([]);
           await fetchApplications();
+          if (body.action === "approve") offerWelcomeEmail(approvedApp);
         } else {
           alert("Failed to update status");
         }
@@ -270,6 +315,7 @@ export default function VendorApplicationsPage() {
           setApproving(null);
           setDupCandidates([]);
           await fetchApplications();
+          if (body.action === "approve") offerWelcomeEmail(approvedApp);
         } else if (res.status === 409) {
           const data = await res.json();
           setDupCandidates(data.candidates || []);
@@ -280,6 +326,32 @@ export default function VendorApplicationsPage() {
       }
     } finally {
       setBusy(false);
+    }
+  };
+
+  const sendWelcome = async () => {
+    if (!emailDraft) return;
+    setEmailBusy(true);
+    try {
+      const res = await adminFetch(`/api/admin/partner-welcome`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: emailDraft.to,
+          subject: emailDraft.subject,
+          body: emailDraft.body,
+          companyName: emailDraft.companyName,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setEmailDone(true);
+        setTimeout(() => { setEmailDraft(null); setEmailDone(false); }, 1500);
+      } else {
+        alert(data.error || "Failed to send the welcome email.");
+      }
+    } finally {
+      setEmailBusy(false);
     }
   };
 
@@ -484,6 +556,20 @@ export default function VendorApplicationsPage() {
                                   ))}
                                 </select>
 
+                                {categoryMatchesFor(app).length > 0 && (
+                                  <div className="bg-sky-50 border border-sky-200 rounded-lg p-3 space-y-1.5">
+                                    <p className="text-[12px] font-bold text-sky-700 flex items-center gap-1.5">
+                                      <Users size={13} /> Category already has vendor{categoryMatchesFor(app).some((c) => c.vendors.length > 1) ? "s" : ""} on file
+                                    </p>
+                                    {categoryMatchesFor(app).map((c) => (
+                                      <p key={c.category} className="text-[12px] text-sky-800">
+                                        <strong>{c.category}</strong> — {c.vendors.join(", ")}
+                                      </p>
+                                    ))}
+                                    <p className="text-[11px] text-sky-600">Adding another is fine (more fallback options) — just confirming before you approve.</p>
+                                  </div>
+                                )}
+
                                 {dupCandidates.length > 0 && (
                                   <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 space-y-2">
                                     <p className="text-[12px] font-bold text-amber-700">
@@ -511,7 +597,7 @@ export default function VendorApplicationsPage() {
                                 <div className="flex gap-2">
                                   <button
                                     disabled={busy}
-                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined }, app.isQuickRegistration)}
+                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined }, app.isQuickRegistration, app)}
                                     className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 text-white rounded-lg text-[12px] font-semibold hover:bg-emerald-600 transition-all disabled:opacity-60"
                                   >
                                     <CheckCircle2 size={13} /> Confirm Approve
@@ -519,7 +605,7 @@ export default function VendorApplicationsPage() {
                                   {dupCandidates.length > 0 && !mergeVendorId && (
                                     <button
                                       disabled={busy}
-                                      onClick={() => act(app.id, { action: "approve", forceCreate: true }, app.isQuickRegistration)}
+                                      onClick={() => act(app.id, { action: "approve", forceCreate: true }, app.isQuickRegistration, app)}
                                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all disabled:opacity-60"
                                     >
                                       Create anyway (different company)
@@ -603,6 +689,95 @@ export default function VendorApplicationsPage() {
           })}
         </div>
       )}
+
+      {/* Welcome-email review — appears after approval, sends only on click */}
+      <AnimatePresence>
+        {emailDraft && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => !emailBusy && setEmailDraft(null)}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[100]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: 12 }}
+              transition={{ type: "spring", damping: 24, stiffness: 240 }}
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-xl bg-white rounded-2xl border border-slate-200 z-[101] shadow-2xl flex flex-col max-h-[88vh]"
+            >
+              <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-sm">
+                    <Mail size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 className="text-sm font-bold text-slate-800">Welcome email</h2>
+                    <p className="text-[11px] text-slate-400 truncate">
+                      Approved — review and send to <span className="font-semibold text-slate-500">{emailDraft.to}</span>
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => !emailBusy && setEmailDraft(null)}
+                  className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all"
+                >
+                  <XCircle size={18} />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-5 space-y-3">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Subject</label>
+                  <input
+                    type="text"
+                    value={emailDraft.subject}
+                    onChange={(e) => setEmailDraft({ ...emailDraft, subject: e.target.value })}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-[13px] font-medium text-slate-800 focus:outline-none focus:border-emerald-400"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Message</label>
+                  <textarea
+                    rows={14}
+                    value={emailDraft.body}
+                    onChange={(e) => setEmailDraft({ ...emailDraft, body: e.target.value })}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-[13px] text-slate-700 leading-relaxed focus:outline-none focus:border-emerald-400 resize-none"
+                  />
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  Sends from <span className="font-mono">info@saudieventmanagement.com</span>. Edit freely — nothing goes out until you click Send.
+                </p>
+              </div>
+
+              <div className="p-4 border-t border-slate-100 flex items-center justify-end gap-2">
+                <button
+                  onClick={() => setEmailDraft(null)}
+                  disabled={emailBusy}
+                  className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all disabled:opacity-60"
+                >
+                  Skip for now
+                </button>
+                <button
+                  onClick={sendWelcome}
+                  disabled={emailBusy || emailDone}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 text-white rounded-lg text-[12px] font-semibold hover:bg-emerald-600 transition-all disabled:opacity-60"
+                >
+                  {emailDone ? (
+                    <><CheckCircle2 size={14} /> Sent</>
+                  ) : emailBusy ? (
+                    <><RefreshCw size={14} className="animate-spin" /> Sending…</>
+                  ) : (
+                    <><Send size={14} /> Send welcome email</>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
