@@ -15,8 +15,11 @@ import {
   MapPin,
   Link as LinkIcon,
   ShieldCheck,
+  Send,
+  Users,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { buildPartnerWelcome } from "@/lib/partner-welcome";
 
 type Application = {
   id: string;
@@ -61,9 +64,10 @@ type Application = {
   extraNotes?: string | null;
   vendorId?: string | null;
   createdAt: string;
+  isQuickRegistration?: boolean;
 };
 
-type VendorOption = { id: string; name: string; category: string };
+type VendorOption = { id: string; name: string; category: string; categories?: string[] };
 
 const STATUS_TABS = ["Pending", "Approved", "Rejected", "all"] as const;
 
@@ -102,10 +106,10 @@ function LinkRow({ label, url }: { label: string; url?: string | null }) {
         type="button"
         onClick={openFile}
         disabled={opening}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-teal-50 border border-teal-200 rounded-lg text-[12px] font-medium text-teal-700 hover:border-teal-300 transition-all disabled:opacity-60"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-[12px] font-medium text-emerald-700 hover:border-emerald-300 transition-all disabled:opacity-60"
       >
         <LinkIcon size={11} /> {label} (uploaded){" "}
-        <ExternalLink size={10} className="text-teal-400" />
+        <ExternalLink size={10} className="text-emerald-400" />
       </button>
     );
   }
@@ -116,7 +120,7 @@ function LinkRow({ label, url }: { label: string; url?: string | null }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-teal-300 hover:text-teal-700 transition-all"
+      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[12px] font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-700 transition-all"
     >
       <LinkIcon size={11} /> {label} <ExternalLink size={10} className="text-slate-400" />
     </a>
@@ -144,15 +148,81 @@ export default function VendorApplicationsPage() {
   const [vendorOptions, setVendorOptions] = useState<VendorOption[]>([]);
   const [busy, setBusy] = useState(false);
 
+  // Welcome-email review modal — opened after a successful approval when the
+  // partner has an email on file. Nothing sends until the founder clicks Send.
+  const [emailDraft, setEmailDraft] = useState<
+    { to: string; subject: string; body: string; companyName: string } | null
+  >(null);
+  const [emailBusy, setEmailBusy] = useState(false);
+  const [emailDone, setEmailDone] = useState(false);
+
   const fetchApplications = async () => {
     setLoading(true);
     try {
+      // 1. Fetch formal Partner Applications
       const res = await adminFetch(`/api/partner-applications?status=${tab}`);
       const data = await res.json();
-      if (!data.error) {
-        setApplications(data.applications || []);
-        setCounts(data.counts || { pending: 0, approved: 0, rejected: 0 });
+      const formalApps: Application[] = !data.error ? data.applications || [] : [];
+      const baseCounts = data.counts || { pending: 0, approved: 0, rejected: 0 };
+
+      // 2. Fetch initial Vendor Registration inquiries
+      let vendorInquiries: Application[] = [];
+      try {
+        const inqRes = await fetch("/api/contact?audience=partner");
+        const inqData = await inqRes.json();
+        if (Array.isArray(inqData)) {
+          vendorInquiries = inqData.map((inq: any) => {
+            let pLink: string | null = null;
+            if (inq.message && inq.message.includes("Portfolio: ")) {
+              const match = inq.message.match(/Portfolio:\s*([^\s\n]+)/);
+              if (match) pLink = match[1];
+            }
+
+            return {
+              id: inq.id,
+              appNumber: "INQ-REG",
+              status: inq.status || "Pending",
+              companyName: inq.company || inq.name || "Vendor Registration",
+              contactPerson: inq.name,
+              whatsapp: inq.phone || "N/A",
+              phone: inq.phone,
+              email: inq.email,
+              city: inq.venueCity || "Saudi Arabia",
+              regionCoverage: [],
+              categories: [inq.eventType || "Vendor / Partnership"],
+              servicesDesc: inq.message,
+              portfolioLink: pLink,
+              permLogoUse: false,
+              permMediaUse: false,
+              permNonCircumvention: false,
+              featureOnSem: false,
+              createdAt: inq.createdAt,
+              isQuickRegistration: true,
+            };
+          });
+        }
+      } catch (inqErr) {
+        console.error("Failed to fetch vendor inquiries:", inqErr);
       }
+
+      const filteredInquiries = tab === "all"
+        ? vendorInquiries
+        : vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === tab.toLowerCase());
+
+      const combined = [...formalApps, ...filteredInquiries].sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      const inqPending = vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === "pending").length;
+      const inqApproved = vendorInquiries.filter((i) => (i.status || "").toLowerCase() === "approved").length;
+      const inqRejected = vendorInquiries.filter((i) => (i.status || "").toLowerCase() === "rejected").length;
+
+      setApplications(combined);
+      setCounts({
+        pending: baseCounts.pending + inqPending,
+        approved: baseCounts.approved + inqApproved,
+        rejected: baseCounts.rejected + inqRejected,
+      });
     } catch (e) {
       console.error("Failed to fetch applications:", e);
     } finally {
@@ -165,15 +235,34 @@ export default function VendorApplicationsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
 
+  const [dupCandidates, setDupCandidates] = useState<{ vendor: VendorOption & { id: string }; matchedOn: string }[]>([]);
+
+  // Category-saturation check — surfaced before approval so the founder is
+  // never blindsided by a category quietly filling up with lookalike vendors.
+  // Non-blocking: purely informational, approve still requires her own click.
+  const categoryMatchesFor = (app: Application): { category: string; vendors: string[] }[] => {
+    const result: { category: string; vendors: string[] }[] = [];
+    for (const cat of app.categories) {
+      const catLower = cat.trim().toLowerCase();
+      if (!catLower) continue;
+      const matched = vendorOptions.filter(
+        (v) => v.category?.toLowerCase() === catLower || (v.categories || []).some((c) => c.toLowerCase() === catLower)
+      );
+      if (matched.length > 0) result.push({ category: cat, vendors: matched.map((v) => v.name) });
+    }
+    return result;
+  };
+
   const openApprovePanel = async (appId: string) => {
     setApproving(appId);
     setMergeVendorId("");
+    setDupCandidates([]);
     if (vendorOptions.length === 0) {
       try {
-        const res = await adminFetch("/api/vendors");
+        const res = await adminFetch("/api/vendors?pageSize=100&sortBy=name");
         const data = await res.json();
-        if (Array.isArray(data)) {
-          setVendorOptions(data.map((v: any) => ({ id: v.id, name: v.name, category: v.category })));
+        if (Array.isArray(data.vendors)) {
+          setVendorOptions(data.vendors.map((v: any) => ({ id: v.id, name: v.name, category: v.category, categories: v.categories || [] })));
         }
       } catch (e) {
         console.error("Failed to fetch vendors:", e);
@@ -181,31 +270,103 @@ export default function VendorApplicationsPage() {
     }
   };
 
-  const act = async (id: string, body: Record<string, unknown>) => {
+  // After a successful approval, offer the welcome email (only if we have an
+  // address to send to). The draft is fully editable and never auto-sends.
+  const offerWelcomeEmail = (approvedApp?: Application) => {
+    if (!approvedApp?.email) return;
+    const { subject, body } = buildPartnerWelcome({
+      contactPerson: approvedApp.contactPerson,
+      companyName: approvedApp.companyName,
+    });
+    setEmailDone(false);
+    setEmailDraft({ to: approvedApp.email, subject, body, companyName: approvedApp.companyName });
+  };
+
+  const act = async (
+    id: string,
+    body: Record<string, unknown>,
+    isQuickRegistration?: boolean,
+    approvedApp?: Application
+  ) => {
     setBusy(true);
     try {
-      const res = await adminFetch(`/api/partner-applications/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (res.ok) {
-        setApproving(null);
-        await fetchApplications();
+      if (isQuickRegistration) {
+        const newStatus = body.action === "reject" ? "Rejected" : body.action === "reopen" ? "Pending" : "Approved";
+        const res = await fetch(`/api/contact?id=${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        });
+        if (res.ok) {
+          setApproving(null);
+          setDupCandidates([]);
+          await fetchApplications();
+          if (body.action === "approve") offerWelcomeEmail(approvedApp);
+        } else {
+          alert("Failed to update status");
+        }
       } else {
-        const data = await res.json();
-        alert(data.error || "Action failed");
+        const res = await adminFetch(`/api/partner-applications/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          setApproving(null);
+          setDupCandidates([]);
+          await fetchApplications();
+          if (body.action === "approve") offerWelcomeEmail(approvedApp);
+        } else if (res.status === 409) {
+          const data = await res.json();
+          setDupCandidates(data.candidates || []);
+        } else {
+          const data = await res.json();
+          alert(data.error || "Action failed");
+        }
       }
     } finally {
       setBusy(false);
     }
   };
 
-  const remove = async (id: string, appNumber: string) => {
-    if (!confirm(`Delete application ${appNumber}? This cannot be undone.`)) return;
+  const sendWelcome = async () => {
+    if (!emailDraft) return;
+    setEmailBusy(true);
+    try {
+      const res = await adminFetch(`/api/admin/partner-welcome`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: emailDraft.to,
+          subject: emailDraft.subject,
+          body: emailDraft.body,
+          companyName: emailDraft.companyName,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setEmailDone(true);
+        setTimeout(() => { setEmailDraft(null); setEmailDone(false); }, 1500);
+      } else {
+        alert(data.error || "Failed to send the welcome email.");
+      }
+    } finally {
+      setEmailBusy(false);
+    }
+  };
+
+  const remove = async (id: string, appNumber: string, vendorId?: string | null, isQuickRegistration?: boolean) => {
+    const warning = vendorId
+      ? `Delete application ${appNumber}? This only removes the application record — the vendor it already created stays in your Vendors list and must be deleted separately if unwanted. This cannot be undone.`
+      : `Delete submission ${appNumber}? This cannot be undone.`;
+    if (!confirm(warning)) return;
     setBusy(true);
     try {
-      await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
+      if (isQuickRegistration) {
+        await fetch(`/api/contact?id=${id}`, { method: "DELETE" });
+      } else {
+        await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
+      }
       await fetchApplications();
     } finally {
       setBusy(false);
@@ -218,11 +379,10 @@ export default function VendorApplicationsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <ClipboardList size={20} className="text-teal-600" /> Partner Applications
+            <ClipboardList size={20} className="text-emerald-600" /> Partner Applications & Vendor Registrations
           </h1>
           <p className="text-[12px] text-slate-400 mt-0.5">
-            Submissions from /partner-onboarding — approve to add to your vendor database.
-            Approval does <span className="font-semibold">not</span> publish anything on the website.
+            Submissions from /partner-onboarding and /vendor-registration — approve to manage in your vendor network.
           </p>
         </div>
         <button
@@ -243,7 +403,7 @@ export default function VendorApplicationsPage() {
               onClick={() => setTab(t)}
               className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all border ${
                 tab === t
-                  ? "bg-teal-50 border-teal-200 text-teal-700"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                   : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
               }`}
             >
@@ -279,6 +439,15 @@ export default function VendorApplicationsPage() {
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[13px] font-bold text-slate-900">{app.companyName}</span>
                       <span className="text-[10px] font-mono text-slate-400">{app.appNumber}</span>
+                      {app.isQuickRegistration ? (
+                        <span className="px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-blue-50 text-blue-700 border-blue-200">
+                          Vendor Registration
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-slate-50 text-slate-600 border-slate-200">
+                          Partner Profile
+                        </span>
+                      )}
                       <span className={`px-2 py-0.5 rounded-full border text-[10px] font-semibold ${statusBadge(app.status)}`}>
                         {app.status}
                       </span>
@@ -309,17 +478,17 @@ export default function VendorApplicationsPage() {
                             {app.contactPerson}{app.jobTitle ? ` — ${app.jobTitle}` : ""}
                           </span>
                           <span className="inline-flex items-center gap-1.5 text-[13px] text-slate-600">
-                            <Phone size={12} className="text-teal-600" /> {app.whatsapp}
+                            <Phone size={12} className="text-emerald-600" /> {app.whatsapp}
                           </span>
                           {app.email && (
                             <span className="inline-flex items-center gap-1.5 text-[13px] text-slate-600">
-                              <Mail size={12} className="text-teal-600" /> {app.email}
+                              <Mail size={12} className="text-emerald-600" /> {app.email}
                             </span>
                           )}
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-4">
-                          <Detail label="Services" value={app.servicesDesc} />
+                          <Detail label="Services / Details" value={app.servicesDesc} />
                           <Detail label="Coverage" value={app.regionCoverage.join(", ")} />
                           <Detail label="Business type" value={app.businessType} />
                           <Detail label="Years / Team / Languages" value={[app.yearsInBusiness && `${app.yearsInBusiness} yrs`, app.teamSize && `team ${app.teamSize}`, app.languages].filter(Boolean).join(" · ")} />
@@ -332,7 +501,7 @@ export default function VendorApplicationsPage() {
 
                         {/* Links */}
                         <div className="flex flex-wrap gap-2">
-                          <LinkRow label="Photos" url={app.portfolioLink} />
+                          <LinkRow label="Portfolio / Website" url={app.portfolioLink} />
                           <LinkRow label="Profile PDF" url={app.profileLink} />
                           <LinkRow label="Logo" url={app.logoLink} />
                           <LinkRow label="Video" url={app.videoLink} />
@@ -347,24 +516,26 @@ export default function VendorApplicationsPage() {
                         </div>
 
                         {/* Permissions */}
-                        <div className="flex flex-wrap gap-2">
-                          {[
-                            [app.permNonCircumvention, "Non-circumvention agreed"],
-                            [app.permMediaUse, "Media use permission"],
-                            [app.permLogoUse, "Logo display permission"],
-                            [app.featureOnSem, "Wants SEM feature"],
-                            [!!app.backlinkAnswer, `Backlink: ${app.backlinkAnswer || "—"}`],
-                          ].map(([ok, label], i) => (
-                            <span
-                              key={i}
-                              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full border text-[11px] font-medium ${
-                                ok ? "bg-emerald-50 border-emerald-200 text-emerald-700" : "bg-slate-50 border-slate-200 text-slate-400"
-                              }`}
-                            >
-                              <ShieldCheck size={11} /> {label}
-                            </span>
-                          ))}
-                        </div>
+                        {!app.isQuickRegistration && (
+                          <div className="flex flex-wrap gap-2">
+                            {[
+                              [app.permNonCircumvention, "Non-circumvention agreed"],
+                              [app.permMediaUse, "Media use permission"],
+                              [app.permLogoUse, "Logo display permission"],
+                              [app.featureOnSem, "Wants SEM feature"],
+                              [!!app.backlinkAnswer, `Backlink: ${app.backlinkAnswer || "—"}`],
+                            ].map(([ok, label], i) => (
+                              <span
+                                key={i}
+                                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full border text-[11px] font-medium ${
+                                  ok ? "bg-emerald-50 border-emerald-200 text-emerald-700" : "bg-slate-50 border-slate-200 text-slate-400"
+                                }`}
+                              >
+                                <ShieldCheck size={11} /> {label}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
                         {/* Actions */}
                         {app.status === "Pending" && (
@@ -377,23 +548,71 @@ export default function VendorApplicationsPage() {
                                 <select
                                   value={mergeVendorId}
                                   onChange={(e) => setMergeVendorId(e.target.value)}
-                                  className="w-full max-w-md px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[13px] text-slate-700 outline-none focus:border-teal-400"
+                                  className="w-full max-w-md px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-[13px] text-slate-700 outline-none focus:border-emerald-400"
                                 >
                                   <option value="">➕ Create as NEW vendor</option>
                                   {vendorOptions.map((v) => (
                                     <option key={v.id} value={v.id}>Merge into: {v.name} ({v.category})</option>
                                   ))}
                                 </select>
+
+                                {categoryMatchesFor(app).length > 0 && (
+                                  <div className="bg-sky-50 border border-sky-200 rounded-lg p-3 space-y-1.5">
+                                    <p className="text-[12px] font-bold text-sky-700 flex items-center gap-1.5">
+                                      <Users size={13} /> Category already has vendor{categoryMatchesFor(app).some((c) => c.vendors.length > 1) ? "s" : ""} on file
+                                    </p>
+                                    {categoryMatchesFor(app).map((c) => (
+                                      <p key={c.category} className="text-[12px] text-sky-800">
+                                        <strong>{c.category}</strong> — {c.vendors.join(", ")}
+                                      </p>
+                                    ))}
+                                    <p className="text-[11px] text-sky-600">Adding another is fine (more fallback options) — just confirming before you approve.</p>
+                                  </div>
+                                )}
+
+                                {dupCandidates.length > 0 && (
+                                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 space-y-2">
+                                    <p className="text-[12px] font-bold text-amber-700">
+                                      Possible duplicate{dupCandidates.length > 1 ? "s" : ""} — this looks like a vendor already in your database:
+                                    </p>
+                                    {dupCandidates.map((c) => (
+                                      <div key={c.vendor.id} className="flex items-center justify-between text-[12px] bg-white rounded-md px-2.5 py-1.5 border border-amber-100">
+                                        <span className="text-slate-700">
+                                          <strong>{c.vendor.name}</strong> ({c.vendor.category}) — matched on {c.matchedOn}
+                                        </span>
+                                        <button
+                                          onClick={() => setMergeVendorId(c.vendor.id)}
+                                          className="text-emerald-600 font-semibold hover:underline"
+                                        >
+                                          Merge into this
+                                        </button>
+                                      </div>
+                                    ))}
+                                    <p className="text-[11px] text-amber-600">
+                                      Sure it&apos;s a different company? Use &quot;Create anyway&quot; below instead of Confirm Approve.
+                                    </p>
+                                  </div>
+                                )}
+
                                 <div className="flex gap-2">
                                   <button
                                     disabled={busy}
-                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined })}
+                                    onClick={() => act(app.id, { action: "approve", mergeVendorId: mergeVendorId || undefined }, app.isQuickRegistration, app)}
                                     className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 text-white rounded-lg text-[12px] font-semibold hover:bg-emerald-600 transition-all disabled:opacity-60"
                                   >
                                     <CheckCircle2 size={13} /> Confirm Approve
                                   </button>
+                                  {dupCandidates.length > 0 && !mergeVendorId && (
+                                    <button
+                                      disabled={busy}
+                                      onClick={() => act(app.id, { action: "approve", forceCreate: true }, app.isQuickRegistration, app)}
+                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all disabled:opacity-60"
+                                    >
+                                      Create anyway (different company)
+                                    </button>
+                                  )}
                                   <button
-                                    onClick={() => setApproving(null)}
+                                    onClick={() => { setApproving(null); setDupCandidates([]); }}
                                     className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
                                   >
                                     Cancel
@@ -411,14 +630,14 @@ export default function VendorApplicationsPage() {
                                 </button>
                                 <button
                                   disabled={busy}
-                                  onClick={() => act(app.id, { action: "reject" })}
+                                  onClick={() => act(app.id, { action: "reject" }, app.isQuickRegistration)}
                                   className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-red-200 text-red-500 rounded-lg text-[12px] font-semibold hover:bg-red-50 transition-all"
                                 >
                                   <XCircle size={13} /> Reject
                                 </button>
                                 <button
                                   disabled={busy}
-                                  onClick={() => remove(app.id, app.appNumber)}
+                                  onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
                                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all ms-auto"
                                 >
                                   <Trash2 size={13} /> Delete (spam)
@@ -428,18 +647,38 @@ export default function VendorApplicationsPage() {
                           </div>
                         )}
                         {app.status === "Rejected" && (
-                          <button
-                            disabled={busy}
-                            onClick={() => act(app.id, { action: "reopen" })}
-                            className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
-                          >
-                            Reopen as Pending
-                          </button>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              disabled={busy}
+                              onClick={() => act(app.id, { action: "reopen" }, app.isQuickRegistration)}
+                              className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all"
+                            >
+                              Reopen as Pending
+                            </button>
+                            <button
+                              disabled={busy}
+                              onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
+                              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
+                            >
+                              <Trash2 size={13} /> Delete
+                            </button>
+                          </div>
                         )}
-                        {app.status === "Approved" && app.vendorId && (
-                          <p className="text-[12px] text-emerald-600 font-medium">
-                            ✓ Added to vendor database — see the Vendors page.
-                          </p>
+                        {app.status === "Approved" && (
+                          <div className="flex flex-wrap items-center gap-3">
+                            {app.vendorId && (
+                              <p className="text-[12px] text-emerald-600 font-medium">
+                                ✓ Added to vendor database — see the Vendors page.
+                              </p>
+                            )}
+                            <button
+                              disabled={busy}
+                              onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
+                              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 text-slate-400 rounded-lg text-[12px] font-semibold hover:text-red-500 hover:border-red-200 transition-all"
+                            >
+                              <Trash2 size={13} /> Delete application
+                            </button>
+                          </div>
                         )}
                       </div>
                     </motion.div>
@@ -450,6 +689,96 @@ export default function VendorApplicationsPage() {
           })}
         </div>
       )}
+
+      {/* Welcome-email review — appears after approval, sends only on click */}
+      <AnimatePresence>
+        {emailDraft && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => !emailBusy && setEmailDraft(null)}
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[100]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: 12 }}
+              transition={{ type: "spring", damping: 24, stiffness: 240 }}
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-xl bg-white rounded-2xl border border-slate-200 z-[101] shadow-2xl flex flex-col max-h-[88vh]"
+            >
+              <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="p-2 bg-emerald-500 rounded-xl text-white shadow-sm">
+                    <Mail size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 className="text-sm font-bold text-slate-800">Welcome email</h2>
+                    <p className="text-[11px] text-slate-400 truncate">
+                      Approved — review and send to <span className="font-semibold text-slate-500">{emailDraft.to}</span>
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => !emailBusy && setEmailDraft(null)}
+                  className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all"
+                >
+                  <XCircle size={18} />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-5 space-y-3">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Subject</label>
+                  <input
+                    type="text"
+                    value={emailDraft.subject}
+                    onChange={(e) => setEmailDraft({ ...emailDraft, subject: e.target.value })}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-[13px] font-medium text-slate-800 focus:outline-none focus:border-emerald-400"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Message</label>
+                  <textarea
+                    rows={14}
+                    value={emailDraft.body}
+                    onChange={(e) => setEmailDraft({ ...emailDraft, body: e.target.value })}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-[13px] text-slate-700 leading-relaxed focus:outline-none focus:border-emerald-400 resize-none"
+                  />
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  Sends from <span className="font-mono">info@saudieventmanagement.com</span>. Edit freely — nothing goes out until you click Send.
+                </p>
+              </div>
+
+              <div className="p-4 border-t border-slate-100 flex items-center justify-end gap-2">
+                <button
+                  onClick={() => setEmailDraft(null)}
+                  disabled={emailBusy}
+                  className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-500 hover:bg-slate-50 transition-all disabled:opacity-60"
+                >
+                  Skip for now
+                </button>
+                <button
+                  onClick={sendWelcome}
+                  disabled={emailBusy || emailDone}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 text-white rounded-lg text-[12px] font-semibold hover:bg-emerald-600 transition-all disabled:opacity-60"
+                >
+                  {emailDone ? (
+                    <><CheckCircle2 size={14} /> Sent</>
+                  ) : emailBusy ? (
+                    <><RefreshCw size={14} className="animate-spin" /> Sending…</>
+                  ) : (
+                    <><Send size={14} /> Send welcome email</>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+

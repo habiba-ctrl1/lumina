@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { logActivity } from '@/lib/logger';
 import { requireAdmin } from '@/lib/api-auth';
+import { findPossibleDuplicates } from '@/lib/vendor-dedupe';
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -51,7 +52,10 @@ export async function PATCH(request: Request, { params }: Params) {
 
     const { id } = await params;
     const body = await request.json();
-    const app = await prisma.vendorApplication.findUnique({ where: { id } });
+    const app = await prisma.vendorApplication.findUnique({
+      where: { id },
+      include: { categoryLinks: { select: { id: true } } },
+    });
     if (!app) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     if (body.action === 'reject') {
@@ -109,9 +113,33 @@ export async function PATCH(request: Request, { params }: Params) {
       // Written media permission from the form upgrades the flag, never downgrades.
       if (app.permMediaUse) fill.photoPermission = true;
 
+      if (app.categoryLinks.length > 0) {
+        await prisma.vendor.update({
+          where: { id: existing.id },
+          data: { categoryLinks: { connect: app.categoryLinks.map((c) => ({ id: c.id })) } },
+        });
+      }
       await prisma.vendor.update({ where: { id: existing.id }, data: fill });
       vendorId = existing.id;
     } else {
+      // Duplicate safety net — the exact gap that let the same real vendor get
+      // entered once by hand and again via this form. Non-blocking: the admin
+      // can still force a create if it's genuinely a new vendor.
+      if (!body.forceCreate) {
+        const candidates = await findPossibleDuplicates(prisma, {
+          name: app.companyName,
+          email: app.email,
+          phone: app.phone,
+          whatsapp: app.whatsapp,
+        });
+        if (candidates.length > 0) {
+          return NextResponse.json(
+            { error: 'Possible duplicate vendor found', candidates },
+            { status: 409 }
+          );
+        }
+      }
+
       const created = await prisma.vendor.create({
         data: {
           name: app.companyName,
@@ -135,6 +163,9 @@ export async function PATCH(request: Request, { params }: Params) {
           verificationStatus: 'Pending',
           meetingStatus: 'Contacted',
           availability: 'Available',
+          ...(app.categoryLinks.length > 0
+            ? { categoryLinks: { connect: app.categoryLinks.map((c) => ({ id: c.id })) } }
+            : {}),
         },
       });
       vendorId = created.id;

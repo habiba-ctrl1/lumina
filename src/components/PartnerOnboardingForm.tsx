@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Building2,
@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import type { CategoryOption } from "@/lib/categories";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Partner Onboarding Form — public, English-only (v1).
@@ -26,26 +27,11 @@ import { supabase } from "@/lib/supabase";
 // small vendors without a website or formal documents can still register.
 // Files are collected as LINKS (Drive/Dropbox/WeTransfer) — event-industry
 // portfolios are too heavy for direct upload.
+//
+// Categories are fetched from GET /api/categories (canonical taxonomy,
+// 2026-07) rather than hardcoded here — previously this form, the admin
+// filter, and the public vendors page each had their own drifted list.
 // ─────────────────────────────────────────────────────────────────────────────
-
-const CATEGORIES = [
-  "Venues",
-  "Catering",
-  "Decor & Floral",
-  "Lighting",
-  "AV & LED Screens",
-  "Event Production",
-  "Temporary Structures",
-  "Furniture Rental",
-  "Photography",
-  "Videography",
-  "Entertainment",
-  "Security",
-  "Staffing & Hostesses",
-  "Logistics & Transportation",
-  "Luxury Cars",
-  "Other",
-];
 
 const SAUDI_CITIES = [
   "Riyadh",
@@ -333,6 +319,14 @@ export default function PartnerOnboardingForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [showMoreSocials, setShowMoreSocials] = useState(false);
   const [showMoreCompany, setShowMoreCompany] = useState(false);
+  const [categoryOptions, setCategoryOptions] = useState<CategoryOption[]>([]);
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((r) => r.json())
+      .then((data) => { if (Array.isArray(data)) setCategoryOptions(data); })
+      .catch(() => {}); // non-fatal — the checkbox grid just stays empty, form still submits
+  }, []);
 
   const set = (field: keyof FormState, value: string | boolean | string[]) =>
     setForm((f) => ({ ...f, [field]: value }));
@@ -423,10 +417,13 @@ export default function PartnerOnboardingForm() {
     setErrorMsg("");
     setStatus("loading");
     try {
+      // categoryIds links to the canonical Category table; `form.categories`
+      // (names) is still sent too — kept as the historical free-text record.
+      const categoryIds = categoryOptions.filter((c) => form.categories.includes(c.name)).map((c) => c.id);
       const res = await fetch("/api/partner-applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, categoryIds }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Submission failed");
@@ -642,7 +639,7 @@ export default function PartnerOnboardingForm() {
               <>
                 <Field label="Which services do you provide?" required>
                   <CheckboxGrid
-                    options={CATEGORIES}
+                    options={categoryOptions.map((c) => c.name)}
                     selected={form.categories}
                     onToggle={(v) => toggle("categories", v)}
                   />
