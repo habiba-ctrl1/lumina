@@ -7,6 +7,7 @@ import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Brie
 
 type Inquiry = {
   id: string;
+  refNumber?: string | null;
   name: string;
   email: string;
   phone?: string;
@@ -128,7 +129,7 @@ export default function AdminInquiries() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search leads by name, email, company..."
+              placeholder="Search leads by name, email, company, or ref number..."
               className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 ps-9 pe-3 text-slate-800 text-xs font-semibold focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400"
             />
           </div>
@@ -237,7 +238,12 @@ export default function AdminInquiries() {
                   {inquiry.name.charAt(0)}
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xs font-bold text-slate-800 truncate max-w-[150px]">{inquiry.name}</h3>
+                  <div className="flex items-center gap-1.5">
+                    <h3 className="text-xs font-bold text-slate-800 truncate max-w-[150px]">{inquiry.name}</h3>
+                    {inquiry.refNumber && (
+                      <span className="text-[9px] font-bold text-slate-400 tracking-wide shrink-0">{inquiry.refNumber}</span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-1 mt-0.5">
                     <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded">
                       {inquiry.eventType || 'General'}

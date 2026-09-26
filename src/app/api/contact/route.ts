@@ -30,14 +30,25 @@ export async function POST(request: Request) {
     // All inbound client leads are routed to Habiba Asghar (single point of ownership).
     const randomAssignee = "Habiba Asghar";
 
+    // Human-readable reference, e.g. "SEM-2026-000123" — one shared sequence
+    // per year across all inquiries (client + vendor), so it's easy to say
+    // over the phone or search by. `count` is read inside the same
+    // transaction for the client path to avoid a race between two
+    // simultaneous submissions landing on the same number.
+    const refYear = new Date().getFullYear();
+    const refWindow = { gte: new Date(`${refYear}-01-01`), lt: new Date(`${refYear + 1}-01-01`) };
+    const makeRefNumber = (count: number) => `SEM-${refYear}-${(count + 1).toString().padStart(6, '0')}`;
+
     // 1. Save to Prisma using Transaction (All or Nothing)
     let inquiry: any;
     try {
       if (isVendor) {
         // Vendor / partner inquiry: store a record only — no estimate, no Client,
         // Lead, or QuoteRequest. Keeps the sales pipeline & quotes clean.
+        const vendorRefCount = await prisma.inquiry.count({ where: { createdAt: refWindow } });
         inquiry = await prisma.inquiry.create({
           data: {
+            refNumber: makeRefNumber(vendorRefCount),
             name,
             email,
             phone: phone || null,
@@ -50,10 +61,12 @@ export async function POST(request: Request) {
         });
       } else {
       inquiry = await prisma.$transaction(async (tx) => {
+        const clientRefCount = await tx.inquiry.count({ where: { createdAt: refWindow } });
         // 1a. Create the Inquiry record — real client data only, NO auto-quote.
         // Real quotes are produced manually via the Proposals / Quote Wizard.
         const createdInquiry = await tx.inquiry.create({
           data: {
+            refNumber: makeRefNumber(clientRefCount),
             name,
             email,
             phone: phone || null,
@@ -156,7 +169,7 @@ export async function POST(request: Request) {
               html: `
                 <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
                   <div style="background-color: #0d0d0d; padding: 28px 32px;">
-                    <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Partner / Vendor Inquiry</p>
+                    <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Partner / Vendor Inquiry · ${inquiry.refNumber || inquiry.id}</p>
                     <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">A supplier wants to partner with you</h1>
                   </div>
                   <div style="padding: 28px 32px;">
@@ -245,7 +258,7 @@ export async function POST(request: Request) {
 
                 <!-- Header -->
                 <div style="background-color: #0d0d0d; padding: 28px 32px;">
-                  <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Internal Lead Alert</p>
+                  <p style="color: #c5a059; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 6px 0;">Internal Lead Alert · ${inquiry.refNumber || inquiry.id}</p>
                   <h1 style="color: #ffffff; font-size: 20px; font-weight: 500; margin: 0;">New Client Inquiry Received</h1>
                 </div>
 
@@ -394,7 +407,8 @@ export async function GET(request: Request) {
         { name: { contains: search } },
         { email: { contains: search } },
         { message: { contains: search } },
-        { company: { contains: search } }
+        { company: { contains: search } },
+        { refNumber: { contains: search } }
       ];
     }
 

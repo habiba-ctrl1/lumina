@@ -52,6 +52,7 @@ type QuoteRequest = {
 type Proposal = {
   id: string;
   quoteNumber: string;
+  version: number;
   lineItems: string; // JSON string
   subtotal: number;
   vatAmount: number;
@@ -59,6 +60,7 @@ type Proposal = {
   validUntil: string;
   notes: string | null;
   status: string;
+  createdAt: string;
   emailStatus?: string; // pending | sent | failed
   emailError?: string | null;
 };
@@ -266,16 +268,25 @@ export default function AdminQuotes() {
   const formatDate = (d: string | Date) =>
     new Date(d).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
 
+  // "V1" is the normal case and stays unlabeled; only a genuine revision
+  // (v2+) gets called out on the document, matching the emailed copy.
+  const displayQuoteNumber = (quoteNumber: string, version?: number) =>
+    version && version > 1 ? `${quoteNumber} (Rev. ${version})` : quoteNumber;
+
   // Preview from the live builder form (works before the quote is even saved).
+  // The next quote created for this request would be one version past
+  // whatever's already on file, so the preview label matches what actually
+  // gets sent.
   const previewQuoteFromForm = () => {
     if (!selectedRequest) return;
     const subtotal = quoteForm.lineItems.reduce((a, b) => a + (b.total || 0), 0);
     const vatAmount = subtotal * 0.15;
+    const nextVersion = (selectedRequest.proposals[0]?.version || 0) + 1;
     const html = buildQuotationHtml({
       clientName: selectedRequest.clientName,
       scope: selectedRequest.eventType,
       location: selectedRequest.eventCity,
-      quoteNumber: selectedRequest.proposals[0]?.quoteNumber || "DRAFT",
+      quoteNumber: displayQuoteNumber(selectedRequest.proposals[0]?.quoteNumber || "DRAFT", nextVersion),
       date: formatDate(new Date()),
       validity: quoteForm.validUntil ? `Valid until ${formatDate(quoteForm.validUntil)}` : "—",
       lineItems: quoteForm.lineItems,
@@ -287,9 +298,9 @@ export default function AdminQuotes() {
     openQuotationWindow(html);
   };
 
-  // Preview an already-saved proposal (from the detail panel).
-  const previewSavedProposal = (req: QuoteRequest) => {
-    const p = req.proposals[0];
+  // Preview an already-saved proposal (from the detail panel or version history).
+  const previewSavedProposal = (req: QuoteRequest, proposal?: Proposal) => {
+    const p = proposal || req.proposals[0];
     if (!p) return;
     let lineItems: any[] = [];
     try { lineItems = JSON.parse(p.lineItems); } catch { lineItems = []; }
@@ -297,7 +308,7 @@ export default function AdminQuotes() {
       clientName: req.clientName,
       scope: req.eventType,
       location: req.eventCity,
-      quoteNumber: p.quoteNumber,
+      quoteNumber: displayQuoteNumber(p.quoteNumber, p.version),
       date: formatDate(p.createdAt || new Date()),
       validity: p.validUntil ? `Valid until ${formatDate(p.validUntil)}` : "—",
       lineItems,
@@ -611,7 +622,9 @@ export default function AdminQuotes() {
                 {/* Proposal Summary */}
                 {selectedRequest.proposals.length > 0 && (
                   <div className="space-y-4">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Active Proposal</span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
+                      Active Proposal{selectedRequest.proposals[0].version > 1 ? ` (V${selectedRequest.proposals[0].version})` : ""}
+                    </span>
                     <div className="bg-slate-900 rounded-2xl p-6 text-white space-y-4 shadow-xl shadow-slate-900/20">
                       <div className="flex justify-between items-center">
                         <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Quote #{selectedRequest.proposals[0].quoteNumber}</p>
@@ -626,6 +639,28 @@ export default function AdminQuotes() {
                         <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">✓ Emailed to client</p>
                       )}
                     </div>
+
+                    {/* Version History — every proposal ever created for this
+                        request, newest first (API already orders by version desc). */}
+                    {selectedRequest.proposals.length > 1 && (
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Version History</span>
+                        {selectedRequest.proposals.map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => previewSavedProposal(selectedRequest, p)}
+                            className="w-full flex items-center justify-between px-3 py-2 bg-white border border-slate-200 rounded-xl hover:border-emerald-300 transition-all text-left"
+                          >
+                            <span className="text-[11px] font-bold text-slate-700">
+                              V{p.version} · SAR {p.totalAmount.toLocaleString()}
+                            </span>
+                            <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                              {new Date(p.createdAt).toLocaleDateString(undefined, { day: "numeric", month: "short" })}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

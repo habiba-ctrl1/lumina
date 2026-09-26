@@ -111,12 +111,16 @@ export async function sendProposalEmail(proposalId: string, actorEmail?: string)
     lineItems = [];
   }
 
+  // "V1" is the normal case and stays unlabeled; only a genuine revision
+  // (v2+) gets called out, so most quotations look exactly as before.
+  const displayQuoteNumber = proposal.version > 1 ? `${proposal.quoteNumber} (Rev. ${proposal.version})` : proposal.quoteNumber;
+
   const quotationHtml = buildQuotationHtml(
     {
       clientName: proposal.request.clientName,
       scope: proposal.request.eventType,
       location: proposal.request.eventCity,
-      quoteNumber: proposal.quoteNumber,
+      quoteNumber: displayQuoteNumber,
       date: formatDate(proposal.createdAt),
       validity: `Valid until ${formatDate(proposal.validUntil)}`,
       lineItems,
@@ -132,8 +136,8 @@ export async function sendProposalEmail(proposalId: string, actorEmail?: string)
     from: FROM_EMAIL,
     to: [clientEmail],
     replyTo: ADMIN_EMAIL,
-    subject: `Your Quotation ${proposal.quoteNumber} — Saudi Event Management`,
-    html: buildClientEmailHtml(proposal),
+    subject: `Your Quotation ${displayQuoteNumber} — Saudi Event Management`,
+    html: buildClientEmailHtml({ ...proposal, quoteNumber: displayQuoteNumber }),
     attachments: [
       {
         filename: `Quotation-${proposal.quoteNumber}.html`,
