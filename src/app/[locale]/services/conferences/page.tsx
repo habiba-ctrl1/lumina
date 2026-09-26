@@ -84,7 +84,7 @@ const services = [
   {
     icon: Headphones,
     title: "Simultaneous Translation",
-    desc: "ISO-standard simultaneous interpretation booths for Arabic-English and multilingual sessions, serving diplomatic and international delegations.",
+    desc: "Professional-grade simultaneous interpretation booths for Arabic-English and multilingual sessions, serving diplomatic and international delegations.",
   },
   {
     icon: ClipboardList,
@@ -133,7 +133,7 @@ const faqs = [
   },
   {
     q: "How much does conference management cost in Saudi Arabia?",
-    a: "Conference management costs in Saudi Arabia start from approximately SAR 55,000 for a single-day summit for 100 delegates and scale significantly for multi-day events with international speakers and hybrid broadcasting. Contact us for a bespoke proposal tailored to your delegate count and technical requirements.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "Can you manage hybrid and virtual conferences in Saudi Arabia?",
@@ -145,7 +145,7 @@ const faqs = [
   },
   {
     q: "Do you provide simultaneous translation at conferences?",
-    a: "Yes. We provide ISO-standard simultaneous interpretation booths with professional interpreter teams for Arabic-English, French, Mandarin, and other languages. We also offer RSI (Remote Simultaneous Interpretation) for hybrid events.",
+    a: "Yes. We coordinate professional-grade simultaneous interpretation booths with experienced interpreter teams for Arabic-English, French, Mandarin, and other languages, through our vetted partner network. We also offer RSI (Remote Simultaneous Interpretation) for hybrid events.",
   },
   {
     q: "What AV setup do I need for a 1,000-person conference in Riyadh?",
@@ -172,7 +172,7 @@ const servicesAr = [
   { title: "إنتاج المسرح والصوت والصورة", desc: "صوت لاين-أراي بجودة الحفلات، وشاشات LED عالية الدقة، وتبديل مباشر متعدد الكاميرات، وإضاءة ذكية لجماهير من 50 إلى أكثر من 5000 مندوب." },
   { title: "إدارة المتحدثين", desc: "استقطاب متحدثين دوليين وإقليميين، وتنسيق غرف الاستعداد، وتلبية المتطلبات التقنية، وجدولة البروفات، ودعم ميداني يوم الفعالية." },
   { title: "الفعاليات الهجينة والبث المباشر", desc: "إنتاج فعاليات هجينة سلس ببث مباشر متعدد المنصات، وتصويت فوري، وغرف تواصل افتراضية، وأرشيف محتوى عند الطلب." },
-  { title: "الترجمة الفورية", desc: "كبائن ترجمة فورية بمعايير ISO للجلسات العربية-الإنجليزية ومتعددة اللغات، لخدمة الوفود الدبلوماسية والدولية." },
+  { title: "الترجمة الفورية", desc: "كبائن ترجمة فورية احترافية للجلسات العربية-الإنجليزية ومتعددة اللغات، لخدمة الوفود الدبلوماسية والدولية." },
   { title: "تسجيل المندوبين", desc: "بوابات مندوبين بهوية مخصصة، وطباعة بطاقات RFID، وتذاكر جلسات بتحكم بالدخول، ولوحات تحليلات حضور لحظية — مدعومة بشبكة شركاء ميدانيين متخصصين في التسجيل وإصدار البطاقات والتوظيف الميداني، تغطي الرياض وجدة والدمام ودول الخليج." },
   { title: "بروتوكول كبار الشخصيات والدبلوماسيين", desc: "تنسيق المواكب، والتنسيق مع الحماية المباشرة، وإدارة المحيط الآمن، وتغطية طبية وإسعافية مرخصة في الموقع، واستقبال كبار الشخصيات على المستوى الوزاري بإحاطات بروتوكولية كاملة." },
   { title: "إعلام ما بعد المؤتمر", desc: "أفلام مختصرة سينمائية، وتفريغ نصي حرفي، وتوزيع البيانات الصحفية، وحزم محتوى للتواصل الاجتماعي، وتقارير تنفيذية موجزة." },
@@ -188,10 +188,10 @@ const resourcesAr = [
 const faqsAr = [
   { q: "ما الذي تشمله إدارة المؤتمرات الاحترافية؟", a: "تشمل إدارة المؤتمرات الاحترافية (خدمات PCO) اختيار القاعة والتفاوض عليها، وإعداد نظام التسجيل، وتنسيق المتحدثين، والإنتاج الصوتي والمرئي، والترجمة الفورية، وإدارة بروتوكول كبار الشخصيات، والتوظيف الميداني، وتنسيق الضيافة، وتقارير ما بعد الفعالية. وتقدّم إدارة الفعاليات السعودية كل ذلك تحت سقف واحد." },
   { q: "ما أفضل قاعات المؤتمرات في الرياض؟", a: "تشمل أبرز قاعات المؤتمرات في الرياض مركز مؤتمرات الملك عبدالله المالي (KAFD) — الأنسب للقمم الوزارية الكبرى — ومركز الملك عبدالعزيز الدولي للمؤتمرات (KAICC)، وفندق الفيصلية، وريتز كارلتون الرياض، وجي دبليو ماريوت الرياض. ونتولى التنسيق والتفاوض على الأسعار في كل هذه القاعات نيابة عنك." },
-  { q: "كم تبلغ تكلفة إدارة المؤتمرات في السعودية؟", a: "تبدأ تكلفة إدارة المؤتمرات في السعودية من نحو 55,000 ريال لقمة ليوم واحد بـ 100 مندوب، وترتفع بشكل كبير للفعاليات متعددة الأيام بمتحدثين دوليين وبث هجين. تواصل معنا لعرض مخصّص يناسب عدد مندوبيك ومتطلباتك التقنية." },
+  { q: "كم تبلغ تكلفة إدارة المؤتمرات في السعودية؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
   { q: "هل يمكنكم إدارة المؤتمرات الهجينة والافتراضية في السعودية؟", a: "نعم. تقدّم إدارة الفعاليات السعودية حلول مؤتمرات هجينة بجودة بثّ احترافية تشمل إنتاجًا متعدد الكاميرات، ومنصات بث مؤسسية (Zoom Webinar وHopin وRTMP مخصص)، وتغذية ترجمة فورية، وميزات تفاعلية للمشاركين داخل القاعة وعبر الإنترنت." },
   { q: "كم عدد المندوبين الذين يمكنكم إدارتهم في مؤتمر واحد؟", a: "أنظمتنا لإدارة المندوبين مصمَّمة للتوسّع من 50 إلى أكثر من 5000 مندوب، بما في ذلك قمم حكومية بمسارات فرعية متعددة ومسارات وزارية لكبار الشخصيات تعمل في آنٍ واحد." },
-  { q: "هل توفّرون ترجمة فورية في المؤتمرات؟", a: "نعم. نوفّر كبائن ترجمة فورية بمعايير ISO مع فرق مترجمين محترفين للعربية-الإنجليزية والفرنسية والصينية وغيرها. كما نوفّر الترجمة الفورية عن بُعد (RSI) للفعاليات الهجينة." },
+  { q: "هل توفّرون ترجمة فورية في المؤتمرات؟", a: "نعم. ننسّق كبائن ترجمة فورية احترافية مع فرق مترجمين ذوي خبرة للعربية-الإنجليزية والفرنسية والصينية وغيرها، عبر شبكة شركائنا المعتمدين. كما نوفّر الترجمة الفورية عن بُعد (RSI) للفعاليات الهجينة." },
   { q: "ما إعداد الصوت والصورة الذي أحتاجه لمؤتمر بـ 1000 شخص في الرياض؟", a: "يتطلب مؤتمر بـ 1000 شخص عادةً نظام صوت لاين-أراي رئيسيًا، وشاشتي مراقبة LED للمتحدث، وشاشة عرض مركزية أو شاشة LED فائقة العرض، و3 إلى 5 مواقع كاميرات للتبديل المباشر، وميكروفونات لاسلكية ومنصة، وأنظمة استجابة جمهور لاسلكية، ومديرًا تقنيًا متفرّغًا. وسيصمّم فريقنا متطلبات تقنية كاملة لقاعتك." },
   { q: "منظّم مؤتمرات قريب مني في الرياض", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها مع فريق إنتاج مؤتمرات متفرّغ تحت الطلب. نوفّر جولات ميدانية ومعاينات للقاعات ولوجستيات استجابة سريعة لأي متطلب مؤتمر في العاصمة." },
   { q: "أفضل شركة لإدارة المؤتمرات في السعودية", a: "صُممت إدارة الفعاليات السعودية لتقديم إدارة مؤتمرات بمستوى عالمي في المملكة — من قمم الأعمال إلى المؤتمرات على المستوى الوزاري. وتضمن منهجية PCO لدينا وشركاؤنا المُنتقون بعناية في الصوت والصورة تنفيذًا احترافيًا ومتسقًا في أي حجم." },
@@ -200,7 +200,7 @@ const faqsAr = [
 
 const conferenceChallengesAr = [
   { c: "جدولة المسارات المتعددة وتدفّق المندوبين", s: "تُدمج الجلسات المتوازية واستراحات التواصل وأوقات الصلاة في أجندة رئيسية واحدة مع إرشاد واضح للاتجاهات، فيعرف جمهور يتجاوز 1000 مندوب أين يكون دائمًا." },
-  { c: "الترجمة الفورية العربية-الإنجليزية", s: "كبائن مترجمين بمعايير ISO، ومترجمون متخصصون موثوقون، وتغذية صوتية مُختبرة تتيح للمندوبين وكبار الشخصيات ثنائيي اللغة متابعة كل جلسة دون تأخير." },
+  { c: "الترجمة الفورية العربية-الإنجليزية", s: "كبائن ترجمة احترافية، ومترجمون متخصصون موثوقون، وتغذية صوتية مُختبرة تتيح للمندوبين وكبار الشخصيات ثنائيي اللغة متابعة كل جلسة دون تأخير." },
   { c: "لوجستيات المتحدثين وبروتوكول كبار الشخصيات", s: "حقائب إحاطة، وجدولة غرف الاستعداد، ومواعيد بروفات، وبروتوكول كبار الشخصيات يبقي الوزراء والمتحدثين الرئيسيين والمحاورين في الوقت وعلى الرسالة." },
   { c: "المشاركة الهجينة وعن بُعد", s: "بث بجودة احترافية، وأسئلة مباشرة، وأرشيف عند الطلب يوسّع الوصول إلى المندوبين حول العالم دون المساس بتجربة الحضور داخل القاعة." },
 ];
@@ -339,7 +339,7 @@ export default async function ConferencesPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "20+", label: "Vetted Vendors" },
+            { value: "50+", label: "Vetted Vendors" },
             { value: "10+", label: "Saudi Cities Covered" },
             { value: "2 Hours", label: "Quote Response" },
           ]}
@@ -585,7 +585,7 @@ export default async function ConferencesPage() {
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-4">
                   {[
-                    { label: "مورد معتمد", value: "20+" },
+                    { label: "مورد معتمد", value: "50+" },
                     { label: "مدينة سعودية نغطيها", value: "10+" },
                     { label: "توثيق الموردين", value: "100%" },
                   ].map((stat) => (
@@ -649,7 +649,7 @@ export default async function ConferencesPage() {
                 ? conferenceChallengesAr
                 : [
                 { c: "Multi-track scheduling & delegate flow", s: "Parallel sessions, networking breaks, and prayer times are sequenced into one master agenda with clear wayfinding, so a 1,000+ delegate audience always knows where to be." },
-                { c: "Simultaneous Arabic–English interpretation", s: "ISO-standard interpreter booths, vetted subject-matter interpreters, and tested audio feeds let bilingual delegates and dignitaries follow every session without lag." },
+                { c: "Simultaneous Arabic–English interpretation", s: "Professional interpreter booths, vetted subject-matter interpreters, and tested audio feeds let bilingual delegates and dignitaries follow every session without lag." },
                 { c: "Speaker & VIP protocol logistics", s: "Briefing packs, green-room scheduling, rehearsal slots, and dignitary protocol keep ministers, keynote speakers, and panelists on time and on message." },
                 { c: "Hybrid & remote participation", s: "Broadcast-grade streaming, live Q&A, and on-demand archives extend reach to global delegates without compromising the in-room experience." },
               ]).map((item) => (

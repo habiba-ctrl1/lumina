@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AlFursan Equestrian Village — AlUla Heritage Venue | Saudi Event Management",
+  title: { absolute: "AlFursan Equestrian Village — AlUla Heritage Venue | Saudi Event Management" },
   description:
     "Explore AlFursan Equestrian Village, a premier heritage destination and equestrian hub in AlUla.",
   alternates: {

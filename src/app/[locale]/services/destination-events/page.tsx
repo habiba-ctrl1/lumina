@@ -123,7 +123,7 @@ const jsonLd = {
           "name": "What is the cost of a destination wedding or event in AlUla?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Destination events in AlUla typically start from SAR 250,000 for an intimate gathering and can exceed SAR 2,000,000 for large-scale productions incorporating custom infrastructure, international talent, and luxury resort accommodation buyouts. Contact us for a tailored proposal.",
+            "text": "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
           },
         },
         {
@@ -229,7 +229,7 @@ const faqsAr = [
   { q: "ما أكثر قاعات الفعاليات إبهارًا في العلا؟", a: "تشمل أبهى قاعات العلا قاعة مرايا (أكبر مبنى مرآتي في العالم)، وموقع الحِجر التراثي العالمي، وأطلال دادان الأثرية، ومواقع الوديان الصحراوية الخاصة. وندير كامل عملية الوصول لكل هذه المواقع." },
   { q: "هل يمكنكم تنظيم فعاليات في نيوم للمندوبين الدوليين؟", a: "نعم. تدير إدارة الفعاليات السعودية ملتقيات الشركات وقمم الابتكار وتجارب العلامات داخل مشروع نيوم، وتتولّى كل التصاريح وسفر المندوبين والإقامة واللوجستيات الميدانية." },
   { q: "كيف تديرون لوجستيات الفعاليات الصحراوية النائية؟", a: "يدير فريق اللوجستيات النائية لدينا كل تسليم الإنتاج، وتوليد الطاقة، وإمداد المياه، والتكييف، وإدارة النفايات، والضيافة. وقد نفّذنا فعاليات في العلا وتبوك والربع الخالي بمعايير فخامة كاملة طوال الوقت." },
-  { q: "كم تكلفة فعالية وجهة في العلا؟", a: "تبدأ فعاليات الوجهات في العلا من 250,000 ريال للتجمّعات الحميمة وقد تتجاوز 2,000,000 ريال للإنتاجات الكبرى ببنية تحتية مخصّصة ونجوم عالميين وحجز إقامة منتجعات فاخرة كاملة. تواصل معنا لعرض مخصّص." },
+  { q: "كم تكلفة فعالية وجهة في العلا؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
   { q: "مخطط فعاليات وجهات قريب مني في السعودية", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها مع فرق فعاليات وجهات مخصّصة تعمل على مدار العام في العلا ونيوم وساحل البحر الأحمر والدرعية — أكثر شركات فعاليات الوجهات خبرة في السعودية." },
 ];
 
@@ -348,7 +348,7 @@ export default async function DestinationEventsPage() {
               <span className="text-white text-xs font-bold tracking-widest">ALULA HERITAGE SPECIALIST</span>
               <span className="text-white text-xs font-bold tracking-widest">DIRIYAH HERITAGE</span>
               <span className="text-white text-xs font-bold tracking-widest">RED SEA PROJECT</span>
-              <span className="text-white text-xs font-bold tracking-widest">NEOM APPROVED</span>
+              <span className="text-white text-xs font-bold tracking-widest">NEOM DESTINATION SPECIALIST</span>
             </div>
           </div>
         </section>
@@ -620,7 +620,7 @@ export default async function DestinationEventsPage() {
                 { q: "What are the most scenic event venues in AlUla?", a: "AlUla's most spectacular venues include the Maraya concert hall (world's largest mirrored building), the Hegra UNESCO heritage site, Dadan archaeological ruins, and private desert wadi settings. We manage the full access process for all of them." },
                 { q: "Can you organise events at NEOM for international delegates?", a: "Yes. Saudi Event Management manages corporate retreats, innovation summits, and brand experiences within the NEOM development, handling all permitting, delegate travel, accommodation, and on-site logistics." },
                 { q: "How do you manage logistics for remote desert events?", a: "Our remote logistics team manages all production delivery, power generation, water supply, climate control, waste management, and catering. We have executed events in AlUla, Tabuk, and the Empty Quarter with full luxury standards maintained throughout." },
-                { q: "What is the cost of a destination event in AlUla?", a: "Destination events in AlUla start from SAR 250,000 for intimate gatherings and can exceed SAR 2,000,000 for large-scale productions with custom infrastructure, international talent, and luxury resort accommodation buyouts. Contact us for a tailored proposal." },
+                { q: "What is the cost of a destination event in AlUla?", a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours." },
                 { q: "destination event planner near me Saudi Arabia", a: "Saudi Event Management is headquartered in Riyadh with dedicated destination event teams operating year-round across AlUla, NEOM, the Red Sea coast, and Diriyah — Saudi Arabia's most experienced destination event management company." },
               ]).map((faq, i) => (
                 <div key={i} className="bg-slate-50 p-8 border border-slate-200 rounded-sm">

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr
       ? { absolute: "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية" }
-      : "Event Management Company in Riyadh | Saudi Event Management",
+      : { absolute: "Event Management Company in Riyadh | Saudi Event Management" },
     description: isAr
       ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030، تصاريح هيئة الترفيه عبر شركاء موثوقين."
       : "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permit support through trusted partners.",
@@ -108,7 +108,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Corporate Event Management Riyadh",
-              "url": "https://saudieventmanagement.com/locations/riyadh/corporate-event-management",
+              "url": "https://saudieventmanagement.com/services/corporate-events-riyadh",
             },
           },
           {
@@ -116,7 +116,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Exhibition Management Riyadh RICEC",
-              "url": "https://saudieventmanagement.com/locations/riyadh/exhibition-management",
+              "url": "https://saudieventmanagement.com/services/exhibitions-riyadh",
             },
           },
           {
@@ -124,7 +124,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Luxury Wedding Planning Riyadh",
-              "url": "https://saudieventmanagement.com/locations/riyadh/luxury-wedding-planning",
+              "url": "https://saudieventmanagement.com/services/luxury-weddings-riyadh",
             },
           },
           {
@@ -132,7 +132,7 @@ const jsonLd = {
             "itemOffered": {
               "@type": "Service",
               "name": "Government & Vision 2030 Event Management Riyadh",
-              "url": "https://saudieventmanagement.com/locations/riyadh/corporate-event-management",
+              "url": "https://saudieventmanagement.com/services/corporate-events-riyadh",
             },
           },
           {
@@ -221,6 +221,30 @@ const jsonLd = {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Who organises gala dinners and award ceremonies in Riyadh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Saudi Event Management coordinates gala dinners and award ceremonies in Riyadh — turnkey production combining stage design, entertainment, and full run-of-show management — at venues including the Ritz-Carlton Riyadh, Four Seasons, and RICEC, delivered through our vetted partner network.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "How early should a corporate event be booked in Riyadh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For major Riyadh venues, book 6–12 months ahead: around 6 months for hotel ballrooms like the Ritz-Carlton and Four Seasons, and 8–12 months for the KAFD Conference Centre given its investment-forum demand. Permit lead times run in parallel — Amanah Ar-Riyad municipal permits take 2–3 weeks and GEA entertainment permits take 4–6 weeks — so Saudi Event Management begins permit coordination as soon as the venue and date are confirmed.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "What services can be arranged through Saudi Event Management's Riyadh vendor network?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Through our Riyadh partner network, clients can arrange venue sourcing, exhibition and stand production, event production (AV, staging, and lighting), catering, decor, entertainment, valet parking, and VIP transportation — coordinated as a single point of contact, with permits and compliance handled through trusted partners.",
           },
         },
       ],
@@ -347,25 +371,25 @@ const services = [
     icon: Building2,
     title: "Corporate Events & Conferences",
     text: "End-to-end management of corporate conferences, investment summits, and product launches at RICEC, KAICC, and the KAFD Conference Centre.",
-    href: "/locations/riyadh/corporate-event-management",
+    href: "/services/corporate-events-riyadh",
   },
   {
     icon: Trophy,
     title: "Exhibitions & Trade Shows",
     text: "Full exhibition management at RICEC — stand design, logistics, bilingual floor operations, and SECB compliance for LEAP, World Defense Show, and sector exhibitions.",
-    href: "/locations/riyadh/exhibition-management",
+    href: "/services/exhibitions-riyadh",
   },
   {
     icon: Star,
     title: "Luxury Weddings",
     text: "Bespoke wedding planning at Four Seasons, Ritz-Carlton, Waldorf Astoria, and St. Regis Riyadh. Full Najdi cultural expertise and bilingual Arabic-English coordination.",
-    href: "/locations/riyadh/luxury-wedding-planning",
+    href: "/services/luxury-weddings-riyadh",
   },
   {
     icon: MapPin,
     title: "Government & Vision 2030 Events",
     text: "Ministerial launches, national program events, and Vision 2030 corporate milestones. Experienced navigating GEA, SECB, MISA, and RCRC requirements.",
-    href: "/locations/riyadh/corporate-event-management",
+    href: "/services/corporate-events-riyadh",
   },
   {
     icon: Users,
@@ -377,7 +401,7 @@ const services = [
     icon: Calendar,
     title: "Gala Dinners & Award Ceremonies",
     text: "Turnkey production of corporate gala dinners, award nights, and Diriyah heritage galas combining Najdi architecture with contemporary luxury.",
-    href: "/services/corporate-events",
+    href: "/blog/gala-dinner-awards-ceremony-planning-saudi-arabia",
   },
 ];
 
@@ -409,6 +433,18 @@ const faqs = [
   {
     q: "Do you organise Vision 2030 events and seminars in Riyadh?",
     a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
+  },
+  {
+    q: "Who organises gala dinners and award ceremonies in Riyadh?",
+    a: "Saudi Event Management coordinates gala dinners and award ceremonies in Riyadh — turnkey production combining stage design, entertainment, and full run-of-show management — at venues including the Ritz-Carlton Riyadh, Four Seasons, and RICEC, delivered through our vetted partner network.",
+  },
+  {
+    q: "How early should a corporate event be booked in Riyadh?",
+    a: "For major Riyadh venues, book 6–12 months ahead: around 6 months for hotel ballrooms like the Ritz-Carlton and Four Seasons, and 8–12 months for the KAFD Conference Centre given its investment-forum demand. Permit lead times run in parallel — Amanah Ar-Riyad municipal permits take 2–3 weeks and GEA entertainment permits take 4–6 weeks — so Saudi Event Management begins permit coordination as soon as the venue and date are confirmed.",
+  },
+  {
+    q: "What services can be arranged through Saudi Event Management's Riyadh vendor network?",
+    a: "Through our Riyadh partner network, clients can arrange venue sourcing, exhibition and stand production, event production (AV, staging, and lighting), catering, decor, entertainment, valet parking, and VIP transportation — coordinated as a single point of contact, with permits and compliance handled through trusted partners.",
   },
 ];
 
@@ -528,7 +564,7 @@ export default async function RiyadhPage() {
                 financial infrastructure, and Vision 2030 decision-making in one
                 city. The{" "}
                 <strong>
-                  <Link href="/locations/riyadh/exhibition-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                  <Link href="/services/exhibitions-riyadh" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
                     Riyadh International Convention &amp; Exhibition Center
                     (RICEC)
                   </Link>
@@ -538,7 +574,7 @@ export default async function RiyadhPage() {
                 <strong>World Defense Show</strong>, and{" "}
                 <strong>Cityscape Saudi</strong>. The{" "}
                 <strong>
-                  <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                  <Link href="/services/corporate-events-riyadh" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
                     King Abdullah Financial District (KAFD)
                   </Link>
                 </strong>{" "}
@@ -549,7 +585,7 @@ export default async function RiyadhPage() {
               <p>
                 For government-level events, the{" "}
                 <strong>
-                  <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
+                  <Link href="/services/conference-management-riyadh" className="text-neutral-900 hover:text-[var(--primary)] transition-colors">
                     King Abdulaziz International Conference Center (KAICC)
                   </Link>
                 </strong>{" "}
@@ -954,29 +990,45 @@ export default async function RiyadhPage() {
                 Amanah Ar-Riyad permit processes for our clients. We
                 support <strong>Vision 2030</strong>-aligned program events,
                 Riyadh Season brand activations, and heritage galas in{" "}
-                <strong>Diriyah</strong>. As the host city of{" "}
+                <strong>
+                  <Link href="/locations/diriyah" className="hover:text-[var(--primary)] transition-colors">
+                    Diriyah
+                  </Link>
+                </strong>. As the host city of{" "}
                 <strong>World Expo 2030</strong>, Riyadh&apos;s event
                 infrastructure continues to expand — positioning our Riyadh
                 team for the largest event market in MENA.
               </p>
               <p>
                 Whether you need a{" "}
-                <Link href="/locations/riyadh/corporate-event-management" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
-                  corporate event organizer in Riyadh
-                </Link>
-                , a{" "}
-                <Link href="/locations/riyadh/luxury-wedding-planning" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                <Link href="/services/corporate-events-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  corporate event organizer
+                </Link>{" "}
+                or{" "}
+                <Link href="/services/conference-management-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  conference management team
+                </Link>{" "}
+                in Riyadh, a{" "}
+                <Link href="/services/luxury-weddings-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
                   wedding planner
                 </Link>{" "}
                 for a celebration at the Ritz-Carlton, or a full{" "}
-                <Link href="/locations/riyadh/exhibition-management" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                <Link href="/services/exhibitions-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
                   exhibition team
                 </Link>{" "}
                 at RICEC,{" "}
                 <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our Riyadh team</Link>{" "}
                 or{" "}
                 <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
-                to start planning.
+                to start planning. Our Riyadh specialists also cover large-scale{" "}
+                <Link href="/services/event-production-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  event production
+                </Link>{" "}
+                and{" "}
+                <Link href="/services/cultural-events-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
+                  cultural &amp; seasonal celebrations
+                </Link>{" "}
+                across the capital.
               </p>
             </div>
 
@@ -986,15 +1038,15 @@ export default async function RiyadhPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { name: "Corporate & Government Events in Riyadh", slug: "corporate-event-management" },
-                  { name: "Exhibition Management in Riyadh", slug: "exhibition-management" },
-                  { name: "Wedding Planner in Riyadh", slug: "luxury-wedding-planning" },
-                  { name: "Conference Organizer in Riyadh", slug: "conference-planning" },
-                  { name: "VIP Event Planning in Riyadh", slug: "vip-event-planning" },
+                  { name: "Corporate & Government Events in Riyadh", href: "/services/corporate-events-riyadh" },
+                  { name: "Exhibition Management in Riyadh", href: "/services/exhibitions-riyadh" },
+                  { name: "Wedding Planner in Riyadh", href: "/services/luxury-weddings-riyadh" },
+                  { name: "Conference Organizer in Riyadh", href: "/services/conference-management-riyadh" },
+                  { name: "VIP Event Planning in Riyadh", href: "/locations/riyadh/vip-event-planning" },
                 ].map((svc) => (
                   <Link
-                    key={svc.slug}
-                    href={`/locations/riyadh/${svc.slug}`}
+                    key={svc.href}
+                    href={svc.href}
                     className="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-full text-xs font-medium text-neutral-600 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
                   >
                     {svc.name}

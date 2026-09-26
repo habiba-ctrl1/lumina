@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AlMughayra Heritage Sport Village — AlUla Heritage Venue | Saudi Event Management",
+  title: { absolute: "AlMughayra Heritage Sport Village — AlUla Heritage Venue | Saudi Event Management" },
   description:
     "Explore AlMughayra Heritage Sport Village in AlUla — a world-class destination for traditional sports, camel racing, and cultural events.",
   alternates: {

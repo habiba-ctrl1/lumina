@@ -220,7 +220,7 @@ export function buildQuotationHtml(d: QuotationData): string {
   </div>
   <div class="page">
     <div class="band">
-      <img class="logo" alt="Saudi Event Management" src="/sem-logo-light.svg">
+      <img class="logo" alt="Saudi Event Management" src="/main-logo.webp">
       <div class="qmark">
         <h1>QUOTATION</h1>
         <div class="sub">saudieventmanagement.com<br>WhatsApp: +966 539 388 072<br>info@saudieventmanagement.com<br>Private &amp; Confidential</div>

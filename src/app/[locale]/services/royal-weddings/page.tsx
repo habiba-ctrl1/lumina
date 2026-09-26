@@ -88,21 +88,21 @@ const jsonLd = {
             name: "Elite Royal Wedding Package",
             description:
               "Full-service planning for intimate royal celebrations — up to 300 guests, curated venue, Nikah ceremony, and Walima reception at a five-star Riyadh hotel.",
-            priceRange: "SAR 250,000–500,000",
+            priceRange: "Custom quotation",
           },
           {
             "@type": "Offer",
             name: "Royal Grand Wedding Package",
             description:
               "Comprehensive planning for large royal celebrations — 300–1,000 guests, multi-day ceremonies, Zaffa procession, Laylat al-Henna, and dedicated VIP guest management.",
-            priceRange: "SAR 500,000–1,500,000",
+            priceRange: "Custom quotation",
           },
           {
             "@type": "Offer",
             name: "Imperial Royal Wedding Package",
             description:
               "The pinnacle of Saudi royal wedding planning — 1,000–3,000+ guests, palace venue or exclusive resort takeover in AlUla or NEOM, full royal protocol, cinematic production, and bespoke floral installations.",
-            priceRange: "SAR 1,500,000+",
+            priceRange: "Custom quotation",
           },
         ],
       },
@@ -125,7 +125,7 @@ const jsonLd = {
           name: "How much does a royal wedding cost in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Royal weddings in Saudi Arabia typically range from SAR 250,000 for an intimate elite celebration to over SAR 1,500,000 for a grand multi-day imperial event. Key cost drivers include the number of guests (typically 500–3,000 for royal occasions), venue exclusivity, custom floral installations, cinematic production, Zaffa performance, catering per-head costs at five-star venues (SAR 400–900 per guest), and bespoke entertainment such as Tarab orchestras and Oud soloists.",
+            text: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
           },
         },
         {
@@ -496,7 +496,7 @@ const packages = [
     tier: "Elite",
     arabic: "النخبة",
     guests: "Up to 300 guests",
-    price: "From SAR 250,000",
+    price: "Custom quotation",
     highlight: false,
     features: [
       "Nikah ceremony coordination",
@@ -513,7 +513,7 @@ const packages = [
     tier: "Royal",
     arabic: "الملكي",
     guests: "300–1,000 guests",
-    price: "From SAR 500,000",
+    price: "Custom quotation",
     highlight: true,
     features: [
       "All Elite inclusions",
@@ -531,7 +531,7 @@ const packages = [
     tier: "Imperial",
     arabic: "الإمبراطوري",
     guests: "1,000–3,000+ guests",
-    price: "From SAR 1,500,000",
+    price: "Custom quotation",
     highlight: false,
     features: [
       "All Royal inclusions",
@@ -554,7 +554,7 @@ const faqs = [
   },
   {
     q: "How much does a royal wedding cost in Saudi Arabia?",
-    a: "Royal wedding costs in KSA range from SAR 250,000 for intimate elite celebrations (up to 300 guests) to SAR 1.5M+ for grand imperial events (1,000–3,000+ guests). Key cost factors include venue exclusivity, multi-ceremony scope, entertainment calibre, and floral installation scale.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "What ceremonies are included in a Saudi royal wedding?",
@@ -746,7 +746,7 @@ const packagesAr = [
     tier: "النخبة",
     arabic: "Elite",
     guests: "حتى 300 ضيف",
-    price: "تبدأ من 250,000 ريال",
+    price: "عرض سعر مخصّص",
     highlight: false,
     features: [
       "تنسيق مراسم عقد القران",
@@ -763,7 +763,7 @@ const packagesAr = [
     tier: "الملكي",
     arabic: "Royal",
     guests: "300–1000 ضيف",
-    price: "تبدأ من 500,000 ريال",
+    price: "عرض سعر مخصّص",
     highlight: true,
     features: [
       "كل ما في باقة النخبة",
@@ -781,7 +781,7 @@ const packagesAr = [
     tier: "الإمبراطوري",
     arabic: "Imperial",
     guests: "1000–3000+ ضيف",
-    price: "تبدأ من 1,500,000 ريال",
+    price: "عرض سعر مخصّص",
     highlight: false,
     features: [
       "كل ما في الباقة الملكية",
@@ -804,7 +804,7 @@ const faqsAr = [
   },
   {
     q: "كم تكلفة العرس الملكي في السعودية؟",
-    a: "تتراوح تكاليف الأعراس الملكية في المملكة من 250,000 ريال لاحتفالات النخبة الحميمة (حتى 300 ضيف) إلى أكثر من 1.5 مليون ريال للفعاليات الإمبراطورية الكبرى (1000–3000+ ضيف). وتشمل أهم عوامل التكلفة حصرية القاعة، ونطاق المراسم المتعددة، ومستوى الترفيه، وحجم تركيبات الأزهار.",
+    a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة.",
   },
   {
     q: "ما المراسم التي يتضمّنها العرس الملكي السعودي؟",
@@ -874,7 +874,7 @@ export default async function RoyalWeddingsPage() {
           minHeight="large"
           enableParallax
           trustElements={[
-            { value: "20+", label: isAr ? "مورد معتمد" : "Vetted Vendors" },
+            { value: "50+", label: isAr ? "مورد معتمد" : "Vetted Vendors" },
             { value: "100%", label: isAr ? "توثيق الموردين" : "Vendor Vetting" },
             { value: "12", label: isAr ? "مدينة في عموم السعودية" : "Cities Across Saudi Arabia" },
           ]}
@@ -1025,16 +1025,12 @@ export default async function RoyalWeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-[var(--primary)]">20+</span>
+                <span className="text-3xl font-bold text-[var(--primary)]">50+</span>
                 <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>مورد<br/>معتمد</> : <>Vetted<br/>Vendors</>}</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-3xl font-bold text-[var(--primary)]">100%</span>
                 <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>توثيق<br/>الموردين</> : <>Vendor<br/>Vetting</>}</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-[var(--primary)]">4.9★</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-600 leading-tight">{isAr ? <>متوسط تقييم<br/>العملاء (148 تقييمًا)</> : <>Average Client<br/>Rating (148 reviews)</>}</span>
               </div>
               <div className="flex gap-8 grayscale opacity-40 items-center">
                 <span className="text-xs font-bold tracking-widest">RITZ-CARLTON</span>

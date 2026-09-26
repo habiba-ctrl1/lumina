@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr
       ? { absolute: "شركة إدارة فعاليات في جدة | إدارة الفعاليات السعودية" }
-      : "Event Management Company in Jeddah | Saudi Event Management",
+      : { absolute: "Event Management Company in Jeddah | Saudi Event Management" },
     description: isAr
       ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بجدة. مؤتمرات الشركات في مركز جدة للمعارض، وحفلات الزفاف الفاخرة في فورسيزونز وروزوود جدة، وتفعيلات على الكورنيش. إدارة فعاليات متكاملة في المنطقة الغربية."
       : "Saudi Event Management is Jeddah's premier event planning company. Corporate conferences at JCEC, luxury weddings at Four Seasons & Rosewood Jeddah, brand activations on the Corniche. Full-service event management across the Western Region of Saudi Arabia.",
@@ -189,7 +189,7 @@ const jsonLd = {
           "name": "How much does event management cost in Jeddah?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Event management costs in Jeddah depend on scale, venue, and scope. Corporate conferences typically start from SAR 50,000, luxury weddings from SAR 150,000, and large-scale brand activations from SAR 80,000. Contact Saudi Event Management for a tailored quote based on your specific requirements.",
+            "text": "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
           },
         },
       ],
@@ -332,6 +332,10 @@ const faqs = [
   {
     q: "What is the peak event season in Jeddah?",
     a: "Jeddah's peak event seasons are October–February (cooler Red Sea weather ideal for outdoor and waterfront events) and the summer Jeddah Season (July–August) which drives major brand activations and entertainment events. Ramadan evenings and Eid Al-Fitr are also high-demand periods.",
+  },
+  {
+    q: "How much does event management cost in Jeddah?",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "Do you provide bilingual Arabic-English event management in Jeddah?",

@@ -103,12 +103,12 @@ const services = [
 ];
 
 const priceGuide = [
-  { category: "AV Production (full-day event)", from: "SAR 18,000", inclusions: "Sound, screens, lighting, 2 techs" },
-  { category: "Stage Design & Build", from: "SAR 35,000", inclusions: "3D render, fabrication, install, strike" },
-  { category: "LED Wall Rental", from: "SAR 12,000", inclusions: "P2.6 pixel pitch, rigging, operator" },
-  { category: "Projection Mapping", from: "SAR 25,000", inclusions: "Content creation, mapping, show operation" },
-  { category: "Lighting Design Package", from: "SAR 15,000", inclusions: "Intelligent fixtures, programmer, dimmer racks" },
-  { category: "Live Broadcast Setup", from: "SAR 20,000", inclusions: "Cameras, vision mixer, graphics, stream" },
+  { category: "AV Production (full-day event)", from: "Quoted per event", inclusions: "Sound, screens, lighting, 2 techs" },
+  { category: "Stage Design & Build", from: "Quoted per event", inclusions: "3D render, fabrication, install, strike" },
+  { category: "LED Wall Rental", from: "Quoted per event", inclusions: "P2.6 pixel pitch, rigging, operator" },
+  { category: "Projection Mapping", from: "Quoted per event", inclusions: "Content creation, mapping, show operation" },
+  { category: "Lighting Design Package", from: "Quoted per event", inclusions: "Intelligent fixtures, programmer, dimmer racks" },
+  { category: "Live Broadcast Setup", from: "Quoted per event", inclusions: "Cameras, vision mixer, graphics, stream" },
 ];
 
 const resources = [
@@ -141,7 +141,7 @@ const faqs = [
   },
   {
     q: "How much does event production cost in Saudi Arabia?",
-    a: "Event production costs in Saudi Arabia vary significantly by scale and complexity. A single-day corporate event AV package starts from around SAR 18,000. A full-scale stage fabrication and production for a 1,000-person gala or concert may range from SAR 150,000 to SAR 500,000+. Contact us for a detailed itemised quote.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "Can you provide sound systems for outdoor events in Saudi Arabia?",
@@ -157,11 +157,11 @@ const faqs = [
   },
   {
     q: "What is the largest stage you have built in Saudi Arabia?",
-    a: "Our largest stage builds have included main stages spanning 60 metres wide for concert-scale productions. Our fabrication team uses certified structural steel and provides full engineering drawings and load calculations for venue approval.",
+    a: "Through our vetted production partner network, we coordinate main-stage builds for concert-scale productions, including structural engineering drawings and load calculations for venue approval.",
   },
   {
     q: "event production company near me Riyadh",
-    a: "Saudi Event Management's production warehouse and team are based in Riyadh, making us the ideal choice for any event production requirement in the capital — from a corporate theatre setup to a concert-scale festival production.",
+    a: "Saudi Event Management coordinates event production in Riyadh through our vetted production partner network, making us a strong choice for any event production requirement in the capital — from a corporate theatre setup to a concert-scale festival production.",
   },
   {
     q: "sound system rental Riyadh",
@@ -187,12 +187,12 @@ const servicesAr = [
 ];
 
 const priceGuideAr = [
-  { category: "إنتاج صوت وصورة (فعالية ليوم كامل)", inclusions: "صوت، شاشات، إضاءة، فنيان" },
-  { category: "تصميم وبناء المسرح", inclusions: "تصميم ثلاثي الأبعاد، تصنيع، تركيب، فك" },
-  { category: "تأجير جدار LED", inclusions: "كثافة بكسل P2.6، تركيب، مشغّل" },
-  { category: "إسقاط الصور على المباني", inclusions: "إنشاء محتوى، إسقاط، تشغيل العرض" },
-  { category: "باقة تصميم الإضاءة", inclusions: "إضاءة ذكية، مبرمج، وحدات تعتيم" },
-  { category: "إعداد بث مباشر", inclusions: "كاميرات، مازج فيديو، رسوميات، بث" },
+  { category: "إنتاج صوت وصورة (فعالية ليوم كامل)", from: "يُسعَّر حسب كل فعالية", inclusions: "صوت، شاشات، إضاءة، فنيان" },
+  { category: "تصميم وبناء المسرح", from: "يُسعَّر حسب كل فعالية", inclusions: "تصميم ثلاثي الأبعاد، تصنيع، تركيب، فك" },
+  { category: "تأجير جدار LED", from: "يُسعَّر حسب كل فعالية", inclusions: "كثافة بكسل P2.6، تركيب، مشغّل" },
+  { category: "إسقاط الصور على المباني", from: "يُسعَّر حسب كل فعالية", inclusions: "إنشاء محتوى، إسقاط، تشغيل العرض" },
+  { category: "باقة تصميم الإضاءة", from: "يُسعَّر حسب كل فعالية", inclusions: "إضاءة ذكية، مبرمج، وحدات تعتيم" },
+  { category: "إعداد بث مباشر", from: "يُسعَّر حسب كل فعالية", inclusions: "كاميرات، مازج فيديو، رسوميات، بث" },
 ];
 
 const resourcesAr = [
@@ -204,12 +204,12 @@ const resourcesAr = [
 
 const faqsAr = [
   { q: "ما هو الإنتاج الفعّالياتي؟", a: "يشمل الإنتاج الفعّالياتي جميع العناصر التقنية التي تُحيي الفعالية: تصميم المسرح، وهندسة الصوت، والإضاءة، والعروض المرئية (LED والإسقاط)، والتركيب الإنشائي، وإمداد الطاقة، والبث المباشر. وتنسّق إدارة الفعاليات السعودية كل التخصصات عبر شركاء إنتاج موثوقين لتنسيق سلس." },
-  { q: "كم تبلغ تكلفة الإنتاج الفعّالياتي في السعودية؟", a: "تتفاوت تكاليف الإنتاج الفعّالياتي في السعودية كثيرًا حسب الحجم والتعقيد. تبدأ باقة الصوت والصورة لفعالية شركات ليوم واحد من نحو 18,000 ريال. أما تصنيع مسرح وإنتاج متكامل لحفل أو حفلة موسيقية بـ 1000 شخص فقد يتراوح من 150,000 إلى أكثر من 500,000 ريال. تواصل معنا لعرض مفصّل." },
+  { q: "كم تبلغ تكلفة الإنتاج الفعّالياتي في السعودية؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
   { q: "هل توفّرون أنظمة صوت للفعاليات الخارجية في السعودية؟", a: "نعم. نوفّر أنظمة لاين-أراي مقاومة للطقس، وأبراج تأخير، ومصفوفات مضخّمات صوت مصمّمة للبيئات الخارجية، بما في ذلك مواقع الصحراء في العلا والقاعات الشاطئية على البحر الأحمر. وتشمل جميع الأنظمة مهندسي صوت ميدانيين وتنسيق RF." },
   { q: "هل يمكنكم تنفيذ إسقاط الصور في مواقع العلا أو الدرعية التراثية؟", a: "نعم. نفّذت إدارة الفعاليات السعودية تفعيلات إسقاط صور في مواقع تراثية. وندير كامل عملية تصاريح المواقع مع الجهات التراثية المعنية وبروتوكولات إنتاج دون أثر." },
   { q: "هل تعملون في عروض اليوم الوطني وموسم الرياض؟", a: "نعم. ننسّق تصنيع المسارح وجدران LED والإضاءة الذكية والإنتاج الصوتي والمرئي المتكامل لفعاليات بحجم اليوم الوطني (23 سبتمبر) وموسم الرياض وتفعيلات العلامات الكبرى." },
-  { q: "ما أكبر مسرح بنيتموه في السعودية؟", a: "شملت أكبر مسارحنا منصّات رئيسية بعرض 60 مترًا لإنتاجات بحجم الحفلات الموسيقية. ويستخدم فريق التصنيع لدينا فولاذًا إنشائيًا معتمدًا ويوفّر رسومات هندسية كاملة وحسابات أحمال لموافقة القاعة." },
-  { q: "شركة إنتاج فعاليات قريبة مني في الرياض", a: "يقع مستودع وفريق الإنتاج لدى إدارة الفعاليات السعودية في الرياض، ما يجعلنا الخيار الأمثل لأي متطلب إنتاج فعاليات في العاصمة — من إعداد مسرح مؤسسي إلى إنتاج مهرجان بحجم الحفلات." },
+  { q: "ما أكبر مسرح بنيتموه في السعودية؟", a: "ننسّق عبر شبكة شركائنا المعتمدين للإنتاج بناء منصّات رئيسية لإنتاجات بحجم الحفلات الموسيقية، بما يشمل رسومات هندسية إنشائية وحسابات أحمال لموافقة القاعة." },
+  { q: "شركة إنتاج فعاليات قريبة مني في الرياض", a: "تنسّق إدارة الفعاليات السعودية إنتاج الفعاليات في الرياض عبر شبكة شركائنا المعتمدين للإنتاج، ما يجعلنا خيارًا قويًا لأي متطلب إنتاج فعاليات في العاصمة — من إعداد مسرح مؤسسي إلى إنتاج مهرجان بحجم الحفلات." },
   { q: "تأجير أنظمة صوت في الرياض", a: "نوفّر تأجير أنظمة صوت بجودة الحفلات في الرياض تشمل أنظمة لاين-أراي (L-Acoustics وd&b audiotechnik)، وحزم ميكروفونات لاسلكية، وأنظمة مراقبة داخل الأذن، ودعم مشغّلي صوت وصورة لفعاليات بأي حجم." },
   { q: "قبل كم من الوقت يجب أن أحجز شركة إنتاج فعاليات؟", a: "للإنتاجات المعقّدة ببناء مسارح مخصّصة، نوصي بمهلة 8 إلى 12 أسبوعًا على الأقل. ولباقات الصوت والصورة القياسية، عادةً 3 إلى 4 أسابيع تكفي. أما الحفلات الكبرى أو تفعيلات اليوم الوطني، فمن 3 إلى 6 أشهر مثالية لإتاحة وقت للتصميم والتصاريح والتصنيع." },
 ];
@@ -225,7 +225,7 @@ const challengesAr = [
 const cAr = {
   ctaQuote: "احصل على عرض إنتاج",
   ctaTalk: "تحدّث إلى منتج",
-  credISO: "+20 مورد معتمد",
+  credISO: "+50 مورد معتمد",
   credISOsub: "شبكة إنتاج تقني موثقة",
   credQuote: "شريك تقني — تفعيلات موسم الرياض",
   servLabel: "الإنتاج التقني الرائد في السعودية",
@@ -314,7 +314,7 @@ const jsonLd = {
         { "@type": "HowToStep", "text": "Define your event scale, expected guest count, venue, and key technical requirements." },
         { "@type": "HowToStep", "text": "Share your event brief with Saudi Event Management for a technical rider and itemised quote." },
         { "@type": "HowToStep", "text": "Approve 3D stage renders and technical drawings. Confirm rigging loads with the venue." },
-        { "@type": "HowToStep", "text": "Our fabrication team begins stage construction. AV equipment is pre-rigged and tested in our warehouse." },
+        { "@type": "HowToStep", "text": "Stage construction begins through our production partner network. AV equipment is pre-rigged and tested ahead of load-in." },
         { "@type": "HowToStep", "text": "On-site build, full technical rehearsal, show day execution, and post-event de-rig." },
       ],
     },
@@ -362,9 +362,9 @@ export default async function EventProductionPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "60m", label: "Largest Stage Built" },
+            { value: "Concert-Scale", label: "Stage Builds" },
             { value: "4K", label: "LED & Projection Mapping" },
-            { value: "20+", label: "Vetted Vendors" },
+            { value: "50+", label: "Vetted Vendors" },
           ]}
         />
 
@@ -395,7 +395,7 @@ export default async function EventProductionPage() {
                   <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? cAr.credISO : "20+ Vetted Vendors"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? cAr.credISO : "50+ Vetted Vendors"}</p>
                   <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? cAr.credISOsub : "Technical Production Network"}</p>
                 </div>
               </div>
@@ -497,7 +497,7 @@ export default async function EventProductionPage() {
                   {priceGuide.map((row, i) => (
                     <tr key={i} className="hover:bg-neutral-50/70 transition-colors">
                       <td className="px-6 py-5 text-neutral-900 font-semibold text-sm">{isAr ? priceGuideAr[i].category : row.category}</td>
-                      <td className="px-6 py-5 text-[var(--primary)] font-bold text-sm">{row.from}</td>
+                      <td className="px-6 py-5 text-[var(--primary)] font-bold text-sm">{isAr ? priceGuideAr[i].from : row.from}</td>
                       <td className="px-6 py-5 text-neutral-500 text-xs hidden md:table-cell">{isAr ? priceGuideAr[i].inclusions : row.inclusions}</td>
                     </tr>
                   ))}

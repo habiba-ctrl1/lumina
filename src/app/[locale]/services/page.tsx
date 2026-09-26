@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: "summary_large_image",
       title: "Event Management Services in Saudi Arabia | Saudi Event Management",
       description:
-        "Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP events across the Kingdom. 20+ vetted vendors · 10+ Saudi cities.",
+        "Luxury weddings, corporate summits, exhibitions, conferences, destination & VIP events across the Kingdom. 50+ vetted vendors · 10+ Saudi cities.",
       images: ["/services/hero_bg.webp"],
     },
   };
@@ -212,7 +212,7 @@ const processSteps = [
   { step: "01", title: "Consultation & Brief", desc: "We map your objectives, audience, guest count, budget, preferred cities, and any regulatory requirements in a detailed discovery session." },
   { step: "02", title: "Concept & Design", desc: "Our creative team develops the event concept — theme, stage design, branding, programme flow, and bilingual content architecture." },
   { step: "03", title: "Planning & Permits", desc: "GEA permits, municipality approvals, and civil-defense clearances are sequenced early through trusted partners with zero client friction." },
-  { step: "04", title: "Venue & Vendor Sourcing", desc: "A curated venue shortlist with site inspections, plus a vetted network of 20+ trusted vendors at strong negotiated rates." },
+  { step: "04", title: "Venue & Vendor Sourcing", desc: "A curated venue shortlist with site inspections, plus a vetted network of 50+ trusted vendors at strong negotiated rates." },
   { step: "05", title: "Production & Execution", desc: "Full AV, staging, lighting, and rehearsals, followed by an on-day operations team that manages every minute of delivery." },
   { step: "06", title: "Post-Event Reporting", desc: "Guest feedback, media coverage, recordings, and ROI metrics delivered after the event, plus media distribution where required." },
 ];
@@ -264,7 +264,7 @@ const faqs = [
   },
   {
     q: "How much does event management cost in Saudi Arabia?",
-    a: "Event management costs in Saudi Arabia vary by event type and scale. Corporate events typically start from SAR 75,000; luxury weddings from SAR 150,000; exhibitions from SAR 40,000 for booth design; and conference management from SAR 55,000 for a full-day summit. Contact us for a detailed bespoke proposal.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "Can you manage both English and Arabic-language events?",
@@ -420,7 +420,7 @@ export default async function ServicesPage() {
         disableZoom
         minHeight="large"
         trustElements={[
-          { value: "20+", label: "Vetted Vendors" },
+          { value: "50+", label: "Vetted Vendors" },
           { value: "10+", label: "Saudi Cities Covered" },
           { value: "24 Hours", label: "Quote Response" },
         ]}

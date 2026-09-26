@@ -8,7 +8,7 @@ import { Handshake, ShieldCheck, Clock } from "lucide-react";
 // Private portal page — vendors receive this link directly on WhatsApp/email.
 // Deliberately noindex: it's an operations tool, not SEO content.
 export const metadata: Metadata = {
-  title: "Partner Onboarding | Saudi Event Management",
+  title: { absolute: "Partner Onboarding | Saudi Event Management" },
   description:
     "Join the Saudi Event Management partner network. Complete your partner profile to start receiving project opportunities across Saudi Arabia.",
   robots: { index: false, follow: false },

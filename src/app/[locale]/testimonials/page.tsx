@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const base = "https://saudieventmanagement.com";
   return {
-    title: 'Client Testimonials & Reviews | Saudi Event Management',
+    title: { absolute: 'Client Testimonials & Reviews | Saudi Event Management' },
     description: 'Client testimonials for Saudi Event Management — a Riyadh-based platform connecting clients with a personally vetted vendor network for weddings, corporate events, and VIP experiences across Saudi Arabia.',
     keywords: [
       "Saudi Event Management Reviews",
@@ -70,7 +70,7 @@ export default function TestimonialsPage() {
           <div className="flex flex-wrap justify-center gap-6 mt-10">
             <div className="flex items-center gap-2 px-4 py-2.5 bg-white border border-neutral-200/80 rounded-xl shadow-sm">
               <Shield size={16} className="text-[var(--primary)]" />
-              <span className="text-[13px] font-semibold text-neutral-900">20+ Vetted Vendors</span>
+              <span className="text-[13px] font-semibold text-neutral-900">50+ Vetted Vendors</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2.5 bg-white border border-neutral-200/80 rounded-xl shadow-sm">
               <Star size={16} className="text-[var(--primary)] fill-[var(--primary)]" />

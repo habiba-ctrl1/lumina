@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "20+", label: "Vetted Vendors" },
+  { value: "50+", label: "Vetted Vendors" },
   { value: "12", label: "Cities Covered" },
   { value: "90 Min", label: "Guaranteed Response" },
 ];

@@ -15,8 +15,8 @@ export async function generateMetadata({
       ? { absolute: "خدمات وقاعات الفعاليات في السعودية | الصوت والصورة والتموين والمسرح والديكور | إدارة الفعاليات السعودية" }
       : "Event Services & Venues Saudi Arabia | AV, Catering, Staging & Decoration",
     description: isAr
-      ? "إدارة فعاليات متكاملة في السعودية — اختيار قاعات راقية في الرياض، وإنتاج صوت وصورة معتمد من ISO، وتموين فاخر، وتصميم مسرح، وديكور فعاليات، وإنتاج إعلامي. مورّد من الفئة الأولى لأبرز قاعات المملكة."
-      : "Full-service event management in Saudi Arabia — premium venue sourcing in Riyadh, ISO-certified AV production, luxury catering, stage design, event decoration, and media production. Tier-1 vendor for KSA's top venues.",
+      ? "إدارة فعاليات متكاملة في السعودية — اختيار قاعات راقية في الرياض، وإنتاج صوت وصورة احترافي، وتموين فاخر، وتصميم مسرح، وديكور فعاليات، وإنتاج إعلامي، عبر شبكة شركائنا المعتمدين."
+      : "Full-service event management in Saudi Arabia — premium venue sourcing in Riyadh, professional AV production, luxury catering, stage design, event decoration, and media production, coordinated through our vetted partner network.",
     keywords: [
       "Event services Saudi Arabia",
       "Event venue Riyadh",
@@ -40,8 +40,8 @@ export async function generateMetadata({
         ? "خدمات وقاعات الفعاليات في السعودية | إدارة الفعاليات السعودية"
         : "Event Services & Venues Saudi Arabia | Saudi Event Management",
       description: isAr
-        ? "إدارة فعاليات متكاملة — اختيار قاعات راقية، وإنتاج صوت وصورة معتمد من ISO، وتموين فاخر، وتصميم مسرح، وديكور فعاليات في عموم السعودية."
-        : "Full-service event management — premium venue sourcing, ISO-certified AV production, luxury catering, stage design, and event decoration across Saudi Arabia.",
+        ? "إدارة فعاليات متكاملة — اختيار قاعات راقية، وإنتاج صوت وصورة احترافي، وتموين فاخر، وتصميم مسرح، وديكور فعاليات في عموم السعودية، عبر شبكة شركائنا المعتمدين."
+        : "Full-service event management — premium venue sourcing, professional AV production, luxury catering, stage design, and event decoration across Saudi Arabia, coordinated through our vetted partner network.",
       url: canonicalUrl,
       images: [
         {

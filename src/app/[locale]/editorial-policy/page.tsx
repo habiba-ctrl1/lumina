@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const base = "https://saudieventmanagement.com";
   return {
-    title: "Editorial Policy & Standards of Excellence | Saudi Event Management",
+    title: { absolute: "Editorial Policy & Standards of Excellence | Saudi Event Management" },
     description: "Learn about Saudi Event Management's commitment to quality, transparency, and editorial integrity. Our standards ensure every event and piece of content meets the highest benchmarks.",
     alternates: {
       canonical: `${base}${locale === "en" ? "" : "/ar"}/editorial-policy`,

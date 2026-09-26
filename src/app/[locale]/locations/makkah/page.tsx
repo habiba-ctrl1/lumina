@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr
       ? { absolute: "إدارة الفعاليات في مكة المكرمة | إدارة الفعاليات السعودية" }
-      : "Event Management in Makkah | Saudi Event Management",
+      : { absolute: "Event Management in Makkah | Saudi Event Management" },
     description: isAr
       ? "تقدّم إدارة الفعاليات السعودية مؤتمرات الشركات والمعارض الحلال وحفلات الزفاف الفاخرة والضيافة المؤسسية للحج في مكة المكرمة، بشبكة موردين مسلمين معتمدين تعمل وفق متطلبات أمانة مكة وهيئة تطوير مكة ووزارة الحج. القاعات: هيلتون مكة، وفيرمونت، ورافلز، وأبراج البيت."
       : "Saudi Event Management coordinates corporate conferences, halal exhibitions, luxury weddings, and Haj corporate hospitality in Makkah Al-Mukarramah, with a Muslim-vetted vendor network operating in line with Amanah Makkah, RCMC, and Ministry of Haj requirements. Venues: Hilton Makkah Convention Hotel, Fairmont, Raffles, Abraj Al-Bait.",

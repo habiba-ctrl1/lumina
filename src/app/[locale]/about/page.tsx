@@ -220,7 +220,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   const whyPoints = isAr
     ? [
-        "شبكة موردين من +20 شريكاً تخضع لمراجعة شخصية دقيقة في كل مدينة سعودية رئيسية",
+        "شبكة موردين من +50 شريكاً تخضع لمراجعة شخصية دقيقة في كل مدينة سعودية رئيسية",
         "منهجية منظّمة من خمس مراحل تبدأ من الاستشارة الأولى وحتى اللحظة الأخيرة",
         "مخطّط مخصّص واحد ونقطة تواصل واحدة مسؤولة",
         "معرفة محلية عميقة بالقاعات والموردين والتصاريح في كل مدينة",
@@ -228,7 +228,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         "سرّية مطلقة وبروتوكولات أمنية لعملاء كبار الشخصيات والعملاء الملكيين",
       ]
     : [
-        "A rigorously vetted network of 20+ partners across every major Saudi city",
+        "A rigorously vetted network of 50+ partners across every major Saudi city",
         "A disciplined, five-stage planning process from first consultation to final applause",
         "Single dedicated planner and one accountable point of contact",
         "Deep local knowledge of venues, vendors, and permits in every city",
@@ -279,7 +279,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           : "From Riyadh to the world, Saudi Event Management blends meticulous planning and elegant design to craft events that go beyond expectations."}
         backgroundImage="/riyadh_summit_people.webp"
         imageAlt={isAr ? "إعداد فعالية فاخرة احترافية مع الضيوف في المملكة العربية السعودية" : "Professional luxury event setup with guests in Saudi Arabia"}
-        badge={isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}
+        badge={isAr ? "+50 مورد معتمد" : "50+ Vetted Vendors"}
         breadcrumbs={[{ label: isAr ? "الرئيسية" : "Home", href: "/" }, { label: isAr ? "من نحن" : "About" }]}
         enableParallax
         minHeight="large"
@@ -384,7 +384,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 </div>
                 <div>
                   <h3 className="text-neutral-900 font-semibold text-[14px] mb-1" style={{ letterSpacing: "-0.01em" }}>{isAr ? "شبكة موردين مختارة" : "Vetted Network"}</h3>
-                  <p className="text-neutral-500 text-[13px] leading-snug">{isAr ? "أكثر من 20 شريكاً مختاراً بعناية في جميع أنحاء المملكة" : "20+ personally vetted partners across the Kingdom"}</p>
+                  <p className="text-neutral-500 text-[13px] leading-snug">{isAr ? "أكثر من 50 شريكاً مختاراً بعناية في جميع أنحاء المملكة" : "50+ personally vetted partners across the Kingdom"}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

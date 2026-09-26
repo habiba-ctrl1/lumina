@@ -200,7 +200,7 @@ const homeFaqs = [
   },
   {
     q: "How much does event management cost in Saudi Arabia?",
-    a: "It depends on event type and scale. As a guide, corporate events start from SAR 75,000, weddings from SAR 50,000, conferences from SAR 45,000, and exhibitions from SAR 80,000. We provide a bespoke proposal after a free consultation.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "Do you handle event permits and GEA compliance?",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Event Planning Glossary | Saudi Event Management",
+  title: { absolute: "Event Planning Glossary | Saudi Event Management" },
   description: "Understand the terminology of luxury event planning, corporate exhibitions, and VIP protocols in Saudi Arabia. Our comprehensive event management glossary.",
   keywords: [
     "Event Management Glossary",

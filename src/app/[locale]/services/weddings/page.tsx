@@ -70,7 +70,7 @@ export default function WeddingsPage() {
             "name": "How much does a Saudi wedding cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The cost of a Saudi wedding varies greatly depending on the scale and luxury level. High-end luxury weddings can range from SAR 150,000 to over SAR 1,000,000, factoring in custom decor, premium venues, and exclusive catering."
+              "text": "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours."
             }
           },
           {
@@ -252,7 +252,7 @@ export default function WeddingsPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex flex-wrap justify-between items-center gap-12">
               <div className="flex items-center gap-10">
-                <div className="text-3xl font-sans text-[var(--primary)] font-bold">20+</div>
+                <div className="text-3xl font-sans text-[var(--primary)] font-bold">50+</div>
                 <div className="text-[10px] uppercase tracking-widest text-slate-600">{isAr ? <>مورد <br/>معتمد</> : <>Vetted <br/>Vendors</>}</div>
               </div>
               <div className="text-xs font-medium tracking-widest text-slate-500 uppercase max-w-xs">
@@ -574,7 +574,7 @@ export default function WeddingsPage() {
               {(isAr
                 ? [
                 { q: "من هم أفضل مخطّطي الأعراس في الرياض؟", a: "يقدّم أفضل مخطّطي الأعراس في الرياض مزيجًا متناغمًا من الأصالة الثقافية والفخامة العصرية. وتحظى إدارة الفعاليات السعودية بتقييم عالٍ لتحويل قاعات راقية مثل ريتز كارلتون إلى تحف مخصّصة." },
-                { q: "كم تبلغ تكلفة الزفاف السعودي؟", a: "يتراوح الزفاف السعودي الفاخر عادةً من 150,000 ريال إلى ما يزيد على 1,000,000 ريال، ويشمل ذلك اختيار قاعات راقية وتصاميم أزهار مخصّصة وترفيهًا وضيافة عالمية المستوى." },
+                { q: "كم تبلغ تكلفة الزفاف السعودي؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
                 { q: "ما أفضل الفنادق للأعراس في جدة؟", a: "ريتز كارلتون جدة، وبارك حياة، ووالدورف أستوريا من أفضل فنادق الأعراس في جدة. ونتخصص في تأمين هذه القاعات الحصرية على البحر الأحمر بأسعار تفضيلية." },
                 { q: "مخطّط أعراس قريب مني في الرياض", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها، ما يضمن لك دائمًا دعمًا فوريًا وعمليًا لحفل زفافك المخصّص." },
                 { q: "من ينظّم الأعراس في جدة بالسعودية", a: "نخطّط وننفّذ أعراسًا مذهلة في جدة بفريق متخصص في الفخامة الساحلية." },
@@ -583,7 +583,7 @@ export default function WeddingsPage() {
                   ]
                 : [
                 { q: "What are the best wedding planners in Riyadh?", a: "The best wedding planners in Riyadh offer a seamless blend of cultural authenticity and modern luxury. Saudi Event Management is highly rated for transforming high-profile venues like the Ritz-Carlton into personalized masterpieces." },
-                { q: "How much does a Saudi wedding cost?", a: "A luxury Saudi wedding typically ranges from SAR 150,000 to upwards of SAR 1,000,000. This includes premium venue sourcing, custom floral designs, and world-class entertainment and catering." },
+                { q: "How much does a Saudi wedding cost?", a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours." },
                 { q: "Which hotels are best for weddings in Jeddah?", a: "The Ritz-Carlton Jeddah, Park Hyatt, and Waldorf Astoria are among the best hotels for weddings in Jeddah. We specialize in securing these exclusive Red Sea venues with preferred rates." },
                 { q: "wedding planner near me Riyadh", a: "Saudi Event Management is strategically based in Riyadh, ensuring you always have immediate, hands-on support for your personalized wedding event." },
                 { q: "who plans weddings in Jeddah Saudi Arabia", a: "We proudly plan and execute breathtaking weddings in Jeddah, providing a dedicated team of coastal luxury specialists." },

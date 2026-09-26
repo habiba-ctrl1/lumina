@@ -428,7 +428,7 @@ export default function Hero() {
             }}
           >
             {[
-              { num: "20+",  label: isRtl ? "مورد معتمد" : "Vetted Vendors" },
+              { num: "50+",  label: isRtl ? "مورد معتمد" : "Vetted Vendors" },
               { num: "10+",  label: isRtl ? "مدينة سعودية" : "Saudi Cities" },
               { num: "B2B",  label: isRtl ? "منصة"          : "Platform"     },
             ].map((s, i) => (

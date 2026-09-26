@@ -77,13 +77,13 @@
     "h1En": "Event Management Company in Saudi Arabia — Corporate Events, Conferences, Exhibitions & Weddings in Riyadh & Jeddah",
     "h1Ar": "شركة تنظيم فعاليات في السعودية | تنظيم مؤتمرات الرياض",
     "formLabel": "Free Consultation",
-    "formTitle": "Get a Free Quote",
+    "formTitle": "Get a Quote",
     "formResponseTime": "Guaranteed Response Within 90 Minutes",
     "formName": "Your Name",
     "formEmail": "Email Address",
     "formEventTypePlaceholder": "Event Type",
     "formEventTypes": ["Wedding", "Corporate Event", "Exhibition", "Conference", "Gala / VIP Event", "Government Event", "Other"],
-    "formSubmit": "Get a Free Quote",
+    "formSubmit": "Get a Quote",
     "formSubmitting": "Sending…",
     "formSuccess": "Request Received",
     "formSuccessMsg": "Our team will contact you within 90 minutes to discuss your event vision.",
@@ -224,7 +224,7 @@
       },
       {
         "title": "Elite Vendor Network",
-        "desc": "Access our curated network of 20+ premium vendors — florists, caterers, photographers — all vetted for excellence."
+        "desc": "Access our curated network of 50+ premium vendors — florists, caterers, photographers — all vetted for excellence."
       },
       {
         "title": "Timeline Mastery",

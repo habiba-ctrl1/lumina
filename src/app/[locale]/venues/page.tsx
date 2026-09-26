@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 import { ArrowRight, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Venue Portfolio — Saudi Event Management",
+  title: { absolute: "Venue Portfolio — Saudi Event Management" },
   description: "A showcase of premier destination venues in AlUla curated by Saudi Event Management.",
   robots: { index: false, follow: false },
 };

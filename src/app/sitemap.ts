@@ -23,7 +23,7 @@ const locationServices = [
 
 /* ─── Top cities to generate city×service matrix (avoids low-value combos) ─── */
 const primaryCities    = ["riyadh", "jeddah", "dammam", "alula"];
-const secondaryCities  = ["neom", "khobar", "makkah", "madinah", "diriyah"];
+const secondaryCities  = ["neom", "khobar", "makkah", "madinah", "diriyah", "taif", "abha", "tabuk"];
 
 /* ─── PSEO service×city slugs at /services/[slug] ──────────────────────────── */
 const pseoServiceSlugs = [
@@ -33,8 +33,10 @@ const pseoServiceSlugs = [
   "luxury-weddings-riyadh",
   "luxury-weddings-jeddah",
   "luxury-weddings-dammam",
+  "exhibitions-riyadh",
   "exhibitions-jeddah",
   "exhibitions-dammam",
+  "conference-management-riyadh",
   "conference-management-jeddah",
   "conference-management-dammam",
   "event-production-riyadh",
@@ -84,10 +86,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* ── Consolidation (2026-08-22): corporate-event-management (all cities) and
         conference-planning (all except Riyadh) are noindex,follow duplicates of the
         canonical /services pages — excluded from the sitemap so we never list a
-        noindexed URL. Mirror of the rule in /locations/[city]/[service]/page.tsx. */
+        noindexed URL. Mirror of the rule in /locations/[city]/[service]/page.tsx.
+        Riyadh luxury-wedding-planning added 2026-09-24 (Riyadh audit) — it already
+        has an outranking /services/luxury-weddings-riyadh twin. */
   const isConsolidatedNoindex = (city: string, service: string) =>
     service === "corporate-event-management" ||
-    (service === "conference-planning" && city !== "riyadh");
+    (service === "conference-planning" && city !== "riyadh") ||
+    (service === "luxury-wedding-planning" && city === "riyadh");
 
   /* ── Location city×service pages (primary cities: all services) ─────────── */
   const primaryCityServiceEntries = primaryCities.flatMap((city) =>

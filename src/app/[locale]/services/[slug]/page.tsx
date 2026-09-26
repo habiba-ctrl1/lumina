@@ -4,8 +4,10 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ServiceLeadForm from "@/components/ServiceLeadForm";
 import { notFound } from "next/navigation";
 import { ChevronRight, MapPin, CheckCircle } from "lucide-react";
+import { hreflangAlternates } from "@/lib/seo";
 
 // ─── PSEO Data Matrix ─────────────────────────────────────────────────────────
 // Each entry covers a Service × City combination optimised for local search,
@@ -31,6 +33,12 @@ const PSEO_DATA: Record<
     bulletPoints: string[];
     faqs: { q: string; a: string }[];
     relatedServices: { title: string; slug: string }[];
+    /** Optional single further-reading link into the blog, rendered under Related Services. */
+    relatedBlog?: { title: string; titleAr?: string; slug: string };
+    /** Optional single link back to a /locations/[city] hub, rendered under Related Services. */
+    relatedLocation?: { title: string; titleAr?: string; slug: string };
+    /** Optional structured lead-qualification form, rendered alongside the WhatsApp CTA. */
+    leadForm?: { defaultEventType: string; eventTypeOptions: string[] };
   }
 > = {
   // ── Corporate Events ──────────────────────────────────────────────────────
@@ -60,12 +68,27 @@ const PSEO_DATA: Record<
       { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management coordinates corporate events in Riyadh for the corporate and government sectors through a locally coordinated vendor network." },
       { q: "What are the best corporate event venues in Riyadh?", a: "The top corporate event venues in Riyadh include the KAFD Conference Center, KAICC, Ritz-Carlton, JW Marriott, and Al Faisaliah Hotel. We have strong working relationships across Riyadh's major venues." },
       { q: "corporate event company near me Riyadh", a: "Saudi Event Management is headquartered in Riyadh with a full-time team available for rapid on-site consultation and same-day event logistics support across the capital." },
+      { q: "How early should a corporate event in Riyadh be booked?", a: "Book major Riyadh venues 6–12 months ahead — around 6 months for hotel ballrooms like the Ritz-Carlton and Four Seasons, and 8–12 months for the KAFD Conference Centre given its investment-forum demand. Amanah Ar-Riyad municipal permits take 2–3 weeks and GEA entertainment permits take 4–6 weeks, so permit coordination begins as soon as the venue and date are confirmed." },
     ],
     relatedServices: [
-      { title: "Conference Management", slug: "conferences" },
-      { title: "Exhibitions & Trade Shows", slug: "exhibitions" },
-      { title: "Event Production", slug: "event-production" },
+      { title: "Conference Management in Riyadh", slug: "conference-management-riyadh" },
+      { title: "Exhibitions & Trade Shows in Riyadh", slug: "exhibitions-riyadh" },
+      { title: "Event Production in Riyadh", slug: "event-production-riyadh" },
     ],
+    leadForm: {
+      defaultEventType: "Executive Summit / Conference",
+      eventTypeOptions: [
+        "Annual General Meeting (AGM)",
+        "Executive Summit / Conference",
+        "Gala Dinner & Awards",
+        "Product Launch / Brand Activation",
+        "Hybrid Conference",
+        "Board Retreat",
+        "Vision 2030 Activation",
+        "Town Hall / All-Hands",
+        "Other",
+      ],
+    },
   },
   "corporate-events-jeddah": {
     city: "Jeddah",
@@ -159,14 +182,25 @@ const PSEO_DATA: Record<
     ],
     faqs: [
       { q: "Who are the best wedding planners in Riyadh?", a: "Saudi Event Management is consistently ranked among the best wedding planners in Riyadh, known for precision planning, cultural authenticity, and exclusive access to premiere venues like the Ritz-Carlton and Four Seasons." },
-      { q: "How much does a luxury wedding cost in Riyadh?", a: "Luxury weddings in Riyadh typically range from SAR 150,000 to SAR 1,500,000 depending on the venue, guest count, and production level. Our consultants provide bespoke proposals tailored to your vision and budget." },
+      { q: "How much does a luxury wedding cost in Riyadh?", a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours." },
       { q: "wedding planner near me Riyadh", a: "Saudi Event Management is based in Riyadh with a dedicated bridal team offering in-person consultations, venue tours, and personalised wedding planning services across the capital." },
     ],
     relatedServices: [
       { title: "Luxury & VIP Events", slug: "luxury-vip-events" },
-      { title: "Cultural & Religious Events", slug: "cultural-events" },
+      { title: "Cultural & Religious Events in Riyadh", slug: "cultural-events-riyadh" },
       { title: "Destination Events", slug: "destination-events" },
     ],
+    leadForm: {
+      defaultEventType: "Full Wedding Planning",
+      eventTypeOptions: [
+        "Full Wedding Planning",
+        "Nikah / Milka Ceremony",
+        "Wedding Reception",
+        "Destination Wedding",
+        "Engagement / Henna Night",
+        "Other",
+      ],
+    },
   },
   "luxury-weddings-jeddah": {
     city: "Jeddah",
@@ -236,6 +270,62 @@ const PSEO_DATA: Record<
   },
 
   // ── Exhibitions ───────────────────────────────────────────────────────────
+  "exhibitions-riyadh": {
+    city: "Riyadh",
+    cityAr: "الرياض",
+    service: "Exhibitions & Trade Shows",
+    parentSlug: "exhibitions",
+    titleTag: "Exhibition Management Company in Riyadh | Trade Show Organizer KSA",
+    metaDescription: "Riyadh's exhibition management company — RICEC trade shows, expo booth design, and stand building, coordinated through SEM's vetted partner network. SECB-compliant permits.",
+    h1: "Exhibition Management Company in Riyadh",
+    h2: "Exhibition Excellence at RICEC & Riyadh's Premier Venues",
+    heroImage: "/services/exhibition_hall_riyadh.webp",
+    heroImageAlt: "Exhibition management company Riyadh RICEC trade show booth Saudi Arabia",
+    schemaDescription: "Professional exhibition management in Riyadh — booth design, stand fabrication, RICEC venue coordination, and SECB permit compliance for trade shows and B2B expos.",
+    intro: "Saudi Event Management provides exhibition management in Riyadh for brands and organizations exhibiting at the Riyadh International Convention & Exhibition Center (RICEC) — Saudi Arabia's largest exhibition venue — and at KAICC and other Riyadh trade-show venues. From stand concept through SECB permit coordination, we manage the complete exhibition journey for exhibitors and organizers in the capital.",
+    details: "RICEC hosts the Kingdom's largest annual trade shows — LEAP, World Defense Show, Cityscape Saudi, and Saudi BUILD — across more than 200,000 sqm of exhibition space. Our Riyadh exhibition team coordinates booth design and stand fabrication through our vetted production partner network, manages SECB exhibition permits and floor logistics, and supports exhibitors from opening day through post-event reporting.",
+    bulletPoints: [
+      "Exhibition planning and stand-concept design for RICEC, KAICC, and Riyadh's trade-show venues",
+      "Booth and stand fabrication — including branding, signage, and decor — coordinated through our vetted production partner network",
+      "SECB exhibition permit coordination and fast-track compliance for Riyadh shows",
+      "RICEC hall and floor-space coordination for LEAP, World Defense Show, Cityscape Saudi, and Saudi BUILD",
+      "Exhibition logistics — shipping coordination and on-site move-in/move-out scheduling",
+      "AV, lighting, and stand technology coordinated with our Riyadh event production team",
+      "Opening-day and on-day floor operations support",
+      "Post-event reporting and exhibitor lead handover",
+    ],
+    faqs: [
+      { q: "Who manages exhibitions in Riyadh?", a: "Saudi Event Management coordinates exhibition management in Riyadh — booth design, stand fabrication, and floor logistics — through our vetted production partner network, for exhibitors and organizers at RICEC, KAICC, and the capital's trade-show venues." },
+      { q: "What does exhibition management in Riyadh include?", a: "Exhibition management in Riyadh with Saudi Event Management covers stand-concept design, booth and stand fabrication (including branding and signage), RICEC hall and floor-space coordination, SECB permit compliance, shipping and on-site move-in/move-out logistics, and post-event reporting — coordinated through our vetted production partner network." },
+      { q: "What exhibition venues are available in Riyadh?", a: "Riyadh's primary exhibition venue is the Riyadh International Convention & Exhibition Center (RICEC), Saudi Arabia's largest exhibition venue at over 200,000 sqm, hosting LEAP, World Defense Show, Cityscape Saudi, and Saudi BUILD. KAICC and the KAFD Conference Centre are used for smaller exhibitions and conference-format events." },
+      { q: "Can Saudi Event Management coordinate exhibition booth construction in Riyadh?", a: "Yes. We coordinate booth and stand fabrication — including custom design, branding, and signage — through our vetted production partner network, for stands of any scale at RICEC and other Riyadh venues." },
+      { q: "What permits are required for an exhibition at RICEC?", a: "Exhibitions at RICEC use the Saudi Exhibitions & Conventions Bureau (SECB) fast-track permit pathway. Any live entertainment or promotional activation within a booth requires a separate General Entertainment Authority (GEA) permit. Saudi Event Management arranges both processes through trusted partners." },
+      { q: "exhibition stand company near me Riyadh", a: "Saudi Event Management coordinates exhibition stand design and fabrication for Riyadh-based exhibitors through our vetted production partner network, with support from initial concept through on-site build and floor operations at RICEC." },
+      { q: "How much does exhibition management cost in Riyadh?", a: "Cost depends on stand size, fabrication complexity, and which services are included. Send us your exhibition requirements and we return a full quotation within 24 hours." },
+    ],
+    relatedServices: [
+      { title: "Exhibitions & Trade Shows", slug: "exhibitions" },
+      { title: "Corporate Events in Riyadh", slug: "corporate-events-riyadh" },
+      { title: "Event Production in Riyadh", slug: "event-production-riyadh" },
+      { title: "Conference Management in Riyadh", slug: "conference-management-riyadh" },
+    ],
+    relatedBlog: {
+      title: "How to Plan a Mega-Exhibition in Riyadh: Logistical Guide",
+      titleAr: "كيف تخطّط لمعرض ضخم في الرياض: دليل لوجستي",
+      slug: "plan-mega-exhibition-riyadh-logistics",
+    },
+    leadForm: {
+      defaultEventType: "Exhibition Space Booking",
+      eventTypeOptions: [
+        "Custom Stand Design & Build",
+        "Exhibition Space Booking",
+        "Full Trade Show Management",
+        "International Pavilion",
+        "B2B Matchmaking",
+        "Other",
+      ],
+    },
+  },
   "exhibitions-jeddah": {
     city: "Jeddah",
     cityAr: "جدة",
@@ -304,6 +394,68 @@ const PSEO_DATA: Record<
   },
 
   // ── Conference Management ─────────────────────────────────────────────────
+  "conference-management-riyadh": {
+    city: "Riyadh",
+    cityAr: "الرياض",
+    service: "Conference Management",
+    parentSlug: "conferences",
+    titleTag: "Conference Management Company in Riyadh | KAICC & KAFD PCO Services",
+    metaDescription: "Riyadh's conference management company — PCO services, KAICC & KAFD venue sourcing, speaker management, and hybrid streaming, coordinated through SEM's vetted partner network.",
+    h1: "Conference Management Company in Riyadh",
+    h2: "Professional Conference Organisation at KAICC, KAFD & the Capital's Premier Venues",
+    heroImage: "/services/premium_corporate_summit_hero.webp",
+    heroImageAlt: "Conference management company Riyadh KAICC KAFD PCO services Saudi Arabia",
+    schemaDescription: "Professional conference management (PCO services) in Riyadh — venue sourcing at KAICC and KAFD, delegate coordination, speaker management, AV production, and SECB/GEA permit compliance.",
+    intro: "Saudi Event Management provides conference management in Riyadh for organizations hosting B2B summits, government forums, and scientific congresses at the King Abdulaziz International Conference Center (KAICC), the KAFD Conference Centre, and the capital's premier hotel venues. From venue sourcing through delegate coordination and on-site production, we manage the complete conference journey in Riyadh.",
+    details: "KAICC in the Diplomatic Quarter is Riyadh's premier government and diplomatic conference facility, with capacity for up to 3,500 delegates; the KAFD Conference Centre serves investment forums and executive summits with capacity for up to 2,000. Our Riyadh conference team coordinates venue sourcing, speaker and delegate logistics, AV production, and simultaneous Arabic-English interpretation, arranging SECB and Amanah Ar-Riyad permit processes through trusted partners.",
+    bulletPoints: [
+      "Conference planning and PCO (Professional Conference Organiser) coordination for Riyadh events of any scale",
+      "Venue sourcing and negotiation at KAICC, KAFD Conference Centre, and Riyadh's premier hotel venues",
+      "Delegate registration coordinated through our event-technology and staffing partners",
+      "Speaker management, agenda design, and green-room coordination",
+      "AV production, staging, and lighting coordinated with our Riyadh event production team",
+      "Simultaneous Arabic-English interpretation for bilingual and international delegations",
+      "VIP protocol and dignitary hospitality for government and diplomatic conferences",
+      "SECB and Amanah Ar-Riyad permit coordination through trusted partners",
+      "Hybrid and live-streaming conference support, coordinated with our event production team",
+    ],
+    faqs: [
+      { q: "Who manages conferences in Riyadh?", a: "Saudi Event Management provides conference management (PCO services) in Riyadh, coordinating venue sourcing, delegate logistics, and on-site production for events at KAICC, KAFD, and the capital's premier venues, through our vetted partner network." },
+      { q: "What does conference management include?", a: "Conference management (PCO services) with Saudi Event Management in Riyadh includes venue sourcing at KAICC/KAFD, speaker management and agenda design, AV production, simultaneous Arabic-English interpretation, VIP protocol and hospitality, SECB/Amanah Ar-Riyad permit coordination, and hybrid/live-streaming support — with delegate registration coordinated through our event-technology and staffing partners." },
+      { q: "What are the best conference venues in Riyadh?", a: "The King Abdulaziz International Conference Center (KAICC) in the Diplomatic Quarter is Riyadh's premier government and diplomatic conference venue, with capacity for up to 3,500 delegates. The KAFD Conference Centre serves investment forums and executive summits with capacity for up to 2,000. For MICE exhibitions alongside a conference, RICEC in northern Riyadh is used." },
+      { q: "Do you provide event registration for conferences in Riyadh?", a: "Delegate registration is coordinated through our event-technology and staffing partners, including badge and check-in support for Riyadh conferences. Registration scope is confirmed per project based on delegate count and format." },
+      { q: "Can you organize a hybrid conference in Riyadh?", a: "Yes. Hybrid and live-streaming conference support is coordinated with our Riyadh event production team, extending in-room sessions to remote delegates." },
+      { q: "What permits are required for a conference in Riyadh?", a: "Conferences in Riyadh require an Amanah Ar-Riyad municipal permit (2–3 weeks processing) for venue-adjacent activities. Any live entertainment or promotional element requires a separate General Entertainment Authority (GEA) permit. Saudi Event Management arranges the complete permitting process through trusted partners." },
+      { q: "conference organizer near me Riyadh", a: "Saudi Event Management coordinates conference management for Riyadh-based and international organizers through our vetted partner network, from venue sourcing and delegate logistics through on-site production at KAICC, KAFD, and the capital's conference venues." },
+    ],
+    relatedServices: [
+      { title: "Conference Management", slug: "conferences" },
+      { title: "Corporate Events in Riyadh", slug: "corporate-events-riyadh" },
+      { title: "Event Production in Riyadh", slug: "event-production-riyadh" },
+      { title: "Exhibitions & Trade Shows in Riyadh", slug: "exhibitions-riyadh" },
+    ],
+    relatedBlog: {
+      title: "Best Corporate Event Venues in Riyadh 2026: The Complete Guide",
+      titleAr: "أفضل قاعات فعاليات الشركات في الرياض 2026: الدليل الكامل",
+      slug: "best-corporate-event-venues-riyadh-2026",
+    },
+    relatedLocation: {
+      title: "Explore Event Management in Riyadh",
+      titleAr: "استكشف إدارة الفعاليات في الرياض",
+      slug: "riyadh",
+    },
+    leadForm: {
+      defaultEventType: "B2B / Commercial Summit",
+      eventTypeOptions: [
+        "B2B / Commercial Summit",
+        "Government / Ministerial Conference",
+        "Scientific / Medical Congress",
+        "Hybrid / Virtual Conference",
+        "Awards & Gala Conference",
+        "Other",
+      ],
+    },
+  },
   "conference-management-jeddah": {
     city: "Jeddah",
     cityAr: "جدة",
@@ -385,7 +537,7 @@ const PSEO_DATA: Record<
     heroImageAlt: "Event production company Riyadh stage AV lighting Saudi Arabia",
     schemaDescription: "Full-scale event production in Riyadh — stage fabrication, AV systems, intelligent lighting, and LED projection mapping for any event scale.",
     intro: "Saudi Event Management is Riyadh's leading event production company, delivering concert-grade AV systems, custom stage fabrications, and intelligent lighting for the capital's most demanding events.",
-    details: "From National Day show productions and Riyadh Season activations to intimate board dinners at the Ritz-Carlton, our Riyadh-based production team provides ISO-certified technical excellence for every brief.",
+    details: "From National Day show productions and Riyadh Season activations to intimate board dinners at the Ritz-Carlton, our Riyadh event production team delivers technical excellence for every brief, coordinated through our vetted production partner network.",
     bulletPoints: [
       "Custom stage design and fabrication Riyadh",
       "Concert-grade sound engineering (L-Acoustics, d&b)",
@@ -396,14 +548,27 @@ const PSEO_DATA: Record<
     ],
     faqs: [
       { q: "Which event production companies operate in Riyadh?", a: "Saudi Event Management coordinates event production in Riyadh through vetted production partners, with experience supporting National Day and Riyadh Season productions." },
-      { q: "How much does AV production cost in Riyadh?", a: "AV production costs in Riyadh start from SAR 18,000 for a full-day corporate event package. Stage fabrication, LED walls, and projection mapping are priced separately based on scale and complexity." },
-      { q: "event production company near me Riyadh", a: "Our production warehouse and team are based in Riyadh, making us the most accessible event production company for any capital event requirement — from same-week AV packages to large-scale concert productions." },
+      { q: "How much does AV production cost in Riyadh?", a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours." },
+      { q: "event production company near me Riyadh", a: "Saudi Event Management coordinates event production in Riyadh through our vetted production partner network, making us an accessible option for any capital event requirement — from same-week AV packages to large-scale concert productions." },
     ],
     relatedServices: [
       { title: "Event Production", slug: "event-production" },
-      { title: "Corporate Events", slug: "corporate-events" },
-      { title: "Conference Management", slug: "conferences" },
+      { title: "Corporate Events in Riyadh", slug: "corporate-events-riyadh" },
+      { title: "Conference Management in Riyadh", slug: "conference-management-riyadh" },
     ],
+    leadForm: {
+      defaultEventType: "Full Turnkey Production",
+      eventTypeOptions: [
+        "Stage Design & Fabrication",
+        "Sound / AV Production",
+        "Lighting Design",
+        "LED Wall / Projection Mapping",
+        "Live Broadcast / Streaming",
+        "Full Turnkey Production",
+        "Concert / Festival",
+        "Other",
+      ],
+    },
   },
   "event-production-jeddah": {
     city: "Jeddah",
@@ -502,9 +667,22 @@ const PSEO_DATA: Record<
     ],
     relatedServices: [
       { title: "Cultural & Religious Events", slug: "cultural-events" },
-      { title: "Corporate Events", slug: "corporate-events" },
-      { title: "Luxury Weddings", slug: "weddings" },
+      { title: "Corporate Events in Riyadh", slug: "corporate-events-riyadh" },
+      { title: "Luxury Weddings in Riyadh", slug: "luxury-weddings-riyadh" },
     ],
+    leadForm: {
+      defaultEventType: "National Day Event",
+      eventTypeOptions: [
+        "National Day Event",
+        "National Day Gifts & Giveaways",
+        "Founding Day Event",
+        "Ramadan Iftar / Suhoor",
+        "Eid Celebration",
+        "Cultural Festival",
+        "Government / Community Event",
+        "Other",
+      ],
+    },
   },
   "cultural-events-jeddah": {
     city: "Jeddah",
@@ -713,6 +891,10 @@ const RELATED_TITLE_AR: Record<string, string> = {
   "cultural-events": "الفعاليات الثقافية والدينية",
   "luxury-vip-events": "الفعاليات الفاخرة وكبار الشخصيات",
   "destination-events": "فعاليات الوجهات",
+  "corporate-events-riyadh": "الفعاليات المؤسسية في الرياض",
+  "event-production-riyadh": "الإنتاج الفعّالياتي في الرياض",
+  "exhibitions-riyadh": "المعارض والمعارض التجارية في الرياض",
+  "conference-management-riyadh": "إدارة المؤتمرات في الرياض",
 };
 
 /* ─── Arabic long-form body, keyed by slug. Mirrors the English intro / details /
@@ -734,9 +916,10 @@ const PSEO_AR: Record<
       "بث مؤتمرات هجين وخدمات ترجمة",
     ],
     faqs: [
-      { q: "ما شركات إدارة الفعاليات العاملة في الرياض؟", a: "إدارة الفعاليات السعودية هي الشركة الرائدة في إدارة الفعاليات المؤسسية بالرياض، تخدم أرامكو السعودية وصندوق تنمية الموارد البشرية وسابك وكبرى الجهات الحكومية من خلال شبكة تنسيق محلية معتمدة." },
+      { q: "ما شركات إدارة الفعاليات العاملة في الرياض؟", a: "تنسّق إدارة الفعاليات السعودية الفعاليات المؤسسية في الرياض للقطاعين التجاري والحكومي من خلال شبكة تنسيق محلية معتمدة." },
       { q: "ما أفضل قاعات الفعاليات المؤسسية في الرياض؟", a: "تشمل أفضل قاعات الفعاليات المؤسسية في الرياض مركز كافد للمؤتمرات، ومركز الملك عبدالعزيز للمؤتمرات، والريتز كارلتون، وجي دبليو ماريوت، وفندق الفيصلية. ونحتفظ بشراكات مفضّلة مع كل قاعات الرياض الكبرى." },
       { q: "شركة فعاليات مؤسسية قريبة مني في الرياض", a: "مقرّ إدارة الفعاليات السعودية في الرياض بفريق متفرّغ متاح للاستشارة الميدانية السريعة ودعم لوجستيات الفعاليات في اليوم نفسه عبر العاصمة." },
+      { q: "متى يجب حجز فعالية مؤسسية في الرياض؟", a: "احجز قاعات الرياض الكبرى قبل 6–12 شهرًا — نحو 6 أشهر لقاعات الفنادق مثل الريتز كارلتون وفورسيزونز، و8–12 شهرًا لمركز كافد للمؤتمرات نظرًا لإقبال منتديات الاستثمار عليه. تصاريح أمانة الرياض البلدية تستغرق 2–3 أسابيع، وتصاريح الهيئة العامة للترفيه تستغرق 4–6 أسابيع، لذا يبدأ تنسيق التصاريح فور تأكيد القاعة والتاريخ." },
     ],
   },
   "corporate-events-jeddah": {
@@ -764,12 +947,12 @@ const PSEO_AR: Record<
       "حفلات أعمال وحفلات جوائز في المنطقة الشرقية",
       "جمعيات عمومية واجتماعات مساهمين للمؤسسات الإقليمية",
       "بناء فرق وملتقيات مؤسسية في المنطقة الشرقية",
-      "إدارة فعاليات متوافقة مع أرامكو السعودية وسابك",
+      "إدارة فعاليات متوافقة مع معايير قطاع الطاقة التشغيلية",
       "لوجستيات عبر الممر الدمام–الخبر–الظهران",
     ],
     faqs: [
       { q: "ما قاعات الفعاليات المؤسسية الموجودة في الدمام؟", a: "تشمل أبرز قاعات الدمام إنتركونتيننتال الخبر، وفور بوينتس باي شيراتون الدمام، وماريوت الدمام، وغرفة الدمام التجارية. وتحتفظ إدارة الفعاليات السعودية بوصول مفضّل لكل القاعات الكبرى." },
-      { q: "هل تديرون فعاليات مؤسسية لأرامكو السعودية؟", a: "نعم. لدى إدارة الفعاليات السعودية خبرة واسعة في إدارة فعاليات مؤسسية متوافقة مع معايير أرامكو السعودية التشغيلية، تشمل القمم التنفيذية، ومؤتمرات التدريب، وفعاليات الاحتفال المؤسسي في المنطقة الشرقية." },
+      { q: "هل تديرون فعاليات مؤسسية لقطاع الطاقة في الدمام؟", a: "نعم. تنسّق إدارة الفعاليات السعودية فعاليات مؤسسية متوافقة مع معايير قطاع الطاقة التشغيلية، تشمل القمم التنفيذية، ومؤتمرات التدريب، وفعاليات الاحتفال المؤسسي في المنطقة الشرقية." },
       { q: "شركة فعاليات مؤسسية قريبة مني في الدمام", a: "تقدّم إدارة الفعاليات السعودية دعمًا سريع الاستجابة للفعاليات المؤسسية عبر الدمام والخبر والظهران — بفريق مشاريع مخصّص للمنطقة الشرقية." },
     ],
   },
@@ -786,7 +969,7 @@ const PSEO_AR: Record<
     ],
     faqs: [
       { q: "من أفضل منظّمي الزفاف في الرياض؟", a: "تُصنَّف إدارة الفعاليات السعودية باستمرار بين أفضل منظّمي الزفاف في الرياض، معروفةً بدقّة التخطيط، والأصالة الثقافية، والوصول الحصري لقاعات نخبوية كالريتز كارلتون وفورسيزونز." },
-      { q: "كم تكلفة زفاف فاخر في الرياض؟", a: "تتراوح الأعراس الفاخرة في الرياض عادةً بين 150,000 و1,500,000 ريال حسب القاعة وعدد الضيوف ومستوى الإنتاج. ويقدّم مستشارونا عروضًا مخصّصة مصمّمة لرؤيتك وميزانيتك." },
+      { q: "كم تكلفة زفاف فاخر في الرياض؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
       { q: "منظّم زفاف قريب مني في الرياض", a: "مقرّ إدارة الفعاليات السعودية في الرياض بفريق عروس مخصّص يقدّم استشارات حضورية، وجولات قاعات، وخدمات تخطيط زفاف شخصية عبر العاصمة." },
     ],
   },
@@ -824,6 +1007,29 @@ const PSEO_AR: Record<
       { q: "منظّم زفاف قريب مني في الدمام", a: "لدى إدارة الفعاليات السعودية فريق مقرّه المنطقة الشرقية يقدّم دعمًا محليًا فوريًا لتخطيط الزفاف في الدمام والخبر والظهران." },
     ],
   },
+  "exhibitions-riyadh": {
+    intro: "تقدّم إدارة الفعاليات السعودية إدارة معارض في الرياض للعلامات والمؤسسات المشاركة في مركز الرياض الدولي للمؤتمرات والمعارض (RICEC) — أكبر قاعة معارض في السعودية — وفي KAICC وقاعات المعارض الأخرى في الرياض. من مفهوم الجناح إلى تنسيق تصاريح الهيئة السعودية للمعارض والمؤتمرات (SECB)، ندير رحلة المعرض الكاملة للعارضين والمنظّمين في العاصمة.",
+    details: "تستضيف RICEC أكبر المعارض التجارية السنوية في المملكة — LEAP، ومعرض الدفاع العالمي، وسيتي سكيب السعودية، وBig 5 Saudi BUILD — على مساحة تتجاوز 200,000 متر مربع. ينسّق فريق المعارض لدينا في الرياض تصميم الأجنحة وتصنيعها عبر شبكة شركائنا المعتمدين للإنتاج، ويدير تصاريح المعارض لدى SECB ولوجستيات الأرضية، ويدعم العارضين من يوم الافتتاح وحتى التقارير بعد الفعالية.",
+    bulletPoints: [
+      "تخطيط المعارض وتصميم مفهوم الجناح لمعارض RICEC وKAICC وقاعات الرياض التجارية",
+      "تصنيع الأجنحة والأكشاك — بما يشمل الهوية والعلامات التجارية والديكور — عبر شبكة شركائنا المعتمدين للإنتاج",
+      "تنسيق تصاريح المعارض لدى SECB والمسار السريع للامتثال في معارض الرياض",
+      "تنسيق قاعات ومساحات RICEC لمعارض LEAP ومعرض الدفاع العالمي وسيتي سكيب السعودية وBig 5 Saudi BUILD",
+      "لوجستيات المعارض — تنسيق الشحن وجدولة التركيب والتفكيك في الموقع",
+      "الصوت والإضاءة وتقنيات الأجنحة بالتنسيق مع فريق إنتاج الفعاليات لدينا في الرياض",
+      "دعم تشغيل أرضية المعرض يوم الافتتاح وخلال أيام الفعالية",
+      "التقارير بعد الفعالية وتسليم بيانات العملاء المحتملين للعارضين",
+    ],
+    faqs: [
+      { q: "من يدير المعارض في الرياض؟", a: "تنسّق إدارة الفعاليات السعودية إدارة المعارض في الرياض — تصميم الأجنحة وتصنيعها ولوجستيات الأرضية — عبر شبكة شركائنا المعتمدين للإنتاج، للعارضين والمنظّمين في RICEC وKAICC وقاعات المعارض التجارية في العاصمة." },
+      { q: "ماذا تشمل إدارة المعارض في الرياض؟", a: "تشمل إدارة المعارض في الرياض مع إدارة الفعاليات السعودية تصميم مفهوم الجناح، وتصنيع الأجنحة والأكشاك (بما يشمل الهوية والعلامات)، وتنسيق قاعات ومساحات RICEC، والامتثال لتصاريح SECB، ولوجستيات الشحن والتركيب والتفكيك، والتقارير بعد الفعالية — عبر شبكة شركائنا المعتمدين للإنتاج." },
+      { q: "ما قاعات المعارض المتاحة في الرياض؟", a: "القاعة الرئيسية للمعارض في الرياض هي مركز الرياض الدولي للمؤتمرات والمعارض (RICEC)، أكبر قاعة معارض في السعودية بمساحة تتجاوز 200,000 متر مربع، وتستضيف LEAP ومعرض الدفاع العالمي وسيتي سكيب السعودية وBig 5 Saudi BUILD. وتُستخدم KAICC ومركز مؤتمرات KAFD للمعارض الأصغر والفعاليات بصيغة المؤتمرات." },
+      { q: "هل يمكن لإدارة الفعاليات السعودية تنسيق بناء أجنحة المعارض في الرياض؟", a: "نعم. ننسّق تصنيع الأجنحة والأكشاك — بما يشمل التصميم المخصّص والهوية والعلامات — عبر شبكة شركائنا المعتمدين للإنتاج، لأجنحة بأي حجم في RICEC وقاعات الرياض الأخرى." },
+      { q: "ما التصاريح المطلوبة لمعرض في RICEC؟", a: "تستخدم المعارض في RICEC مسار SECB السريع للتصاريح. وأي عرض ترفيهي حي أو تفعيل ترويجي داخل الجناح يتطلّب تصريحًا منفصلًا من الهيئة العامة للترفيه (GEA). تتولّى إدارة الفعاليات السعودية ترتيب العمليتين عبر شركاء موثوقين." },
+      { q: "شركة أجنحة معارض قريبة مني في الرياض", a: "تنسّق إدارة الفعاليات السعودية تصميم وتصنيع أجنحة المعارض للعارضين في الرياض عبر شبكة شركائنا المعتمدين للإنتاج، بدعم من المفهوم الأولي وحتى البناء الميداني وتشغيل الأرضية في RICEC." },
+      { q: "كم تكلفة إدارة المعارض في الرياض؟", a: "تعتمد التكلفة على حجم الجناح ومدى تعقيد التصنيع والخدمات المشمولة. أرسل لنا متطلبات معرضك ونعيد إليك عرض سعر كامل خلال 24 ساعة." },
+    ],
+  },
   "exhibitions-jeddah": {
     intro: "تقدّم إدارة الفعاليات السعودية خدمات إدارة معارض رائدة في جدة، تربط العلامات الدولية بالأسواق السعودية عبر معارض تجارية مُنتجة باحتراف في مركز جدة للمنتديات والفعاليات.",
     details: "يقدّم فريق معارضنا في جدة خدمات متكاملة — من تصميم مفهوم الجناح إلى معالجة تصاريح الهيئة العامة للترفيه والتوفيق بين الشركات — لتضمن أن تستحوذ علامتك على الانتباه على مسرح جدة التجاري النابض.",
@@ -848,14 +1054,38 @@ const PSEO_AR: Record<
       "إدارة معارض قطاع النفط والغاز في الدمام",
       "تصميم أجنحة معارض صناعية تقنية",
       "معارض الأعمال وإطلاق المنتجات في المنطقة الشرقية",
-      "خدمات معارض متوافقة مع أرامكو السعودية وسابك",
+      "خدمات معارض متوافقة مع معايير قطاع الطاقة التشغيلية",
       "إدارة المندوبين وضيافة كبار الشخصيات",
       "تحليلات بعد المعرض ودعم تحويل العملاء",
     ],
     faqs: [
       { q: "ما قاعات المعارض الموجودة في الدمام؟", a: "تشمل قاعات المعارض الرئيسية في الدمام مبنى غرفة التجارة والصناعة وعددًا من مساحات مؤتمرات الفنادق الكبرى. وتسهّل إدارة الفعاليات السعودية أيضًا بناء معارض خارجية مخصّصة للمنطقة الشرقية." },
-      { q: "هل تديرون معارض النفط والغاز في السعودية؟", a: "نعم. لدى إدارة الفعاليات السعودية خبرة واسعة في تنظيم معارض قطاع النفط والغاز والمشاركة فيها، بما يشمل معارض الشرقية، والتنسيق بين اللاعبين العالميين ومنظومة سلسلة توريد أرامكو السعودية/سابك." },
+      { q: "هل تديرون معارض النفط والغاز في السعودية؟", a: "نعم. تنسّق إدارة الفعاليات السعودية معارض قطاع النفط والغاز والمشاركة فيها، بما يشمل معارض المنطقة الشرقية، والتنسيق بين اللاعبين العالميين ومنظومة سلسلة توريد قطاع الطاقة الإقليمية." },
       { q: "شركة معارض قريبة مني في الدمام", a: "فريقنا في المنطقة الشرقية مقرّه ممر الدمام–الخبر، يقدّم دعمًا محليًا فوريًا لكل متطلبات المعارض والعروض التجارية عبر المنطقة." },
+    ],
+  },
+  "conference-management-riyadh": {
+    intro: "تقدّم إدارة الفعاليات السعودية إدارة مؤتمرات في الرياض للمؤسسات التي تستضيف قممًا تجارية ومنتديات حكومية ومؤتمرات علمية في مركز الملك عبدالعزيز الدولي للمؤتمرات (KAICC)، ومركز مؤتمرات مركز الملك عبدالله المالي (KAFD)، وأبرز فنادق العاصمة. من توفير القاعة إلى تنسيق المندوبين والإنتاج الميداني، ندير رحلة المؤتمر الكاملة في الرياض.",
+    details: "يُعد KAICC في الحي الدبلوماسي قاعة المؤتمرات الحكومية والدبلوماسية الرئيسية في الرياض، بسعة تصل إلى 3,500 مندوب؛ بينما يخدم مركز مؤتمرات KAFD منتديات الاستثمار والقمم التنفيذية بسعة تصل إلى 2,000. ينسّق فريق المؤتمرات لدينا في الرياض توفير القاعات ولوجستيات المتحدثين والمندوبين، وإنتاج الصوت والصورة، والترجمة الفورية بين العربية والإنجليزية، مع ترتيب تصاريح SECB وأمانة الرياض عبر شركاء موثوقين.",
+    bulletPoints: [
+      "تخطيط المؤتمرات وتنسيق منظّم المؤتمرات المحترف (PCO) لفعاليات الرياض بأي حجم",
+      "توفير القاعات والتفاوض في KAICC ومركز مؤتمرات KAFD وأبرز فنادق الرياض",
+      "تسجيل المندوبين بالتنسيق مع شركائنا في التقنية والتوظيف الميداني",
+      "إدارة المتحدثين وتصميم الأجندة وتنسيق الغرف الخلفية",
+      "إنتاج الصوت والصورة والمسرح والإضاءة بالتنسيق مع فريق إنتاج الفعاليات لدينا في الرياض",
+      "الترجمة الفورية بين العربية والإنجليزية للوفود ثنائية اللغة والدولية",
+      "البروتوكول الخاص بكبار الشخصيات وضيافة الشخصيات الرسمية للمؤتمرات الحكومية والدبلوماسية",
+      "تنسيق تصاريح SECB وأمانة الرياض عبر شركاء موثوقين",
+      "دعم المؤتمرات الهجينة والبث المباشر بالتنسيق مع فريق إنتاج الفعاليات لدينا",
+    ],
+    faqs: [
+      { q: "من يدير المؤتمرات في الرياض؟", a: "تقدّم إدارة الفعاليات السعودية إدارة المؤتمرات (خدمات PCO) في الرياض، وتنسّق توفير القاعات ولوجستيات المندوبين والإنتاج الميداني لفعاليات في KAICC وKAFD وأبرز قاعات العاصمة، عبر شبكة شركائنا المعتمدين." },
+      { q: "ماذا تشمل إدارة المؤتمرات؟", a: "تشمل إدارة المؤتمرات (خدمات PCO) مع إدارة الفعاليات السعودية في الرياض توفير القاعات في KAICC وKAFD، وإدارة المتحدثين وتصميم الأجندة، وإنتاج الصوت والصورة، والترجمة الفورية بين العربية والإنجليزية، وبروتوكول كبار الشخصيات والضيافة، وتنسيق تصاريح SECB وأمانة الرياض، ودعم المؤتمرات الهجينة والبث المباشر — مع تنسيق تسجيل المندوبين عبر شركائنا في التقنية والتوظيف الميداني." },
+      { q: "ما أفضل قاعات المؤتمرات في الرياض؟", a: "مركز الملك عبدالعزيز الدولي للمؤتمرات (KAICC) في الحي الدبلوماسي هو القاعة الحكومية والدبلوماسية الرئيسية للمؤتمرات في الرياض، بسعة تصل إلى 3,500 مندوب. ويخدم مركز مؤتمرات KAFD منتديات الاستثمار والقمم التنفيذية بسعة تصل إلى 2,000. وتُستخدم RICEC في شمال الرياض للمعارض المصاحبة للمؤتمرات." },
+      { q: "هل تقدّمون خدمات تسجيل الحضور للمؤتمرات في الرياض؟", a: "يتم تنسيق تسجيل المندوبين عبر شركائنا في التقنية والتوظيف الميداني، بما يشمل دعم الشارات وتسجيل الوصول لمؤتمرات الرياض. ويُحدَّد نطاق التسجيل لكل مشروع بحسب عدد المندوبين والصيغة." },
+      { q: "هل يمكنكم تنظيم مؤتمر هجين في الرياض؟", a: "نعم. يُنسَّق دعم المؤتمرات الهجينة والبث المباشر مع فريق إنتاج الفعاليات لدينا في الرياض، لتمديد الجلسات الحضورية إلى المندوبين عن بُعد." },
+      { q: "ما التصاريح المطلوبة لعقد مؤتمر في الرياض؟", a: "تتطلّب المؤتمرات في الرياض تصريح أمانة الرياض البلدي (2–3 أسابيع معالجة) للأنشطة المصاحبة للقاعة. وأي عنصر ترفيهي أو ترويجي حي يتطلّب تصريحًا منفصلًا من الهيئة العامة للترفيه (GEA). تتولّى إدارة الفعاليات السعودية ترتيب عملية التصاريح كاملة عبر شركاء موثوقين." },
+      { q: "منظّم مؤتمرات قريب مني في الرياض", a: "تنسّق إدارة الفعاليات السعودية إدارة المؤتمرات للمنظّمين في الرياض والدوليين عبر شبكة شركائنا المعتمدين، من توفير القاعة ولوجستيات المندوبين إلى الإنتاج الميداني في KAICC وKAFD وقاعات مؤتمرات العاصمة." },
     ],
   },
   "conference-management-jeddah": {
@@ -894,7 +1124,7 @@ const PSEO_AR: Record<
   },
   "event-production-riyadh": {
     intro: "إدارة الفعاليات السعودية هي شركة الإنتاج الفعّالياتي الرائدة في الرياض، تقدّم أنظمة صوت وصورة بجودة الحفلات، وبناءات مسرح مخصّصة، وإضاءة ذكية لأكثر فعاليات العاصمة تطلّبًا.",
-    details: "من إنتاج عروض اليوم الوطني وتفعيلات موسم الرياض إلى عشاء مجلس الإدارة الحميم في الريتز كارلتون، يقدّم فريق إنتاجنا في الرياض تميّزًا تقنيًا معتمدًا من ISO لكل مشروع.",
+    details: "من إنتاج عروض اليوم الوطني وتفعيلات موسم الرياض إلى عشاء مجلس الإدارة الحميم في الريتز كارلتون، يقدّم فريق إنتاج الفعاليات لدينا في الرياض تميّزًا تقنيًا لكل مشروع، بالتنسيق عبر شبكة شركائنا المعتمدين للإنتاج.",
     bulletPoints: [
       "تصميم وتصنيع مسارح مخصّصة في الرياض",
       "هندسة صوت بجودة الحفلات (L-Acoustics، d&b)",
@@ -904,9 +1134,9 @@ const PSEO_AR: Record<
       "طاقم صوت وصورة ميداني ومديرون تقنيون",
     ],
     faqs: [
-      { q: "ما شركات الإنتاج الفعّالياتي العاملة في الرياض؟", a: "إدارة الفعاليات السعودية من شركات الإنتاج الفعّالياتي الرائدة في الرياض، بمستودع إنتاج داخلي متكامل، وطاقم تقني معتمد، وسجل أعمال مثبت في إنتاجات اليوم الوطني وموسم الرياض." },
-      { q: "كم تكلفة إنتاج الصوت والصورة في الرياض؟", a: "تبدأ تكاليف إنتاج الصوت والصورة في الرياض من 18,000 ريال لحزمة فعالية مؤسسية ليوم كامل. ويُسعّر تصنيع المسرح وشاشات LED والإسقاط الضوئي بشكل منفصل حسب الحجم والتعقيد." },
-      { q: "شركة إنتاج فعاليات قريبة مني في الرياض", a: "مستودع إنتاجنا وفريقنا في الرياض، ما يجعلنا شركة الإنتاج الفعّالياتي الأكثر قربًا لأي متطلب فعالية في العاصمة — من حزم الصوت والصورة في الأسبوع نفسه إلى إنتاجات الحفلات الكبرى." },
+      { q: "ما شركات الإنتاج الفعّالياتي العاملة في الرياض؟", a: "تنسّق إدارة الفعاليات السعودية إنتاج الفعاليات في الرياض عبر شبكة شركائنا المعتمدين للإنتاج، بسجل أعمال في إنتاجات اليوم الوطني وموسم الرياض." },
+      { q: "كم تكلفة إنتاج الصوت والصورة في الرياض؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
+      { q: "شركة إنتاج فعاليات قريبة مني في الرياض", a: "تنسّق إدارة الفعاليات السعودية إنتاج الفعاليات في الرياض عبر شبكة شركائنا المعتمدين للإنتاج، لأي متطلب فعالية في العاصمة — من حزم الصوت والصورة في الأسبوع نفسه إلى إنتاجات الحفلات الكبرى." },
     ],
   },
   "event-production-jeddah": {
@@ -1077,6 +1307,7 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflangAlternates(`/services/${slug}`),
     },
     openGraph: {
       title: ogTitle,
@@ -1256,6 +1487,20 @@ export default async function PseoServicePage({
                 {isAr ? "احصل على استشارة مجانية" : "Get a Free Consultation"}
               </a>
             </div>
+
+            {data.leadForm && (
+              <div className="mt-8 max-w-2xl mx-auto">
+                <ServiceLeadForm
+                  source={`${slug}_pseo`}
+                  defaultEventType={data.leadForm.defaultEventType}
+                  eventTypeOptions={data.leadForm.eventTypeOptions}
+                  eyebrow={isAr ? "اطلب عرضًا" : "Request a Proposal"}
+                  heading={isAr ? `أخبرنا عن فعاليتك في ${data.cityAr}` : `Tell us about your ${data.city} event`}
+                  subheading={isAr ? "شارك التفاصيل وسيردّ استشاري أول خلال ساعتين بعرض مخصّص." : "Share a few details and a senior consultant will respond within 2 hours with a tailored proposal."}
+                  submitLabel={isAr ? "اطلب عرضي" : "Request My Proposal"}
+                />
+              </div>
+            )}
           </div>
         </section>
 
@@ -1299,6 +1544,28 @@ export default async function PseoServicePage({
                 </Link>
               ))}
             </div>
+            {(data.relatedBlog || data.relatedLocation) && (
+              <div className="mt-6 flex flex-col gap-3">
+                {data.relatedBlog && (
+                  <Link
+                    href={`${arHref}/blog/${data.relatedBlog.slug}`}
+                    className="text-[var(--primary)] text-sm font-medium hover:underline inline-flex items-center gap-1"
+                  >
+                    {isAr ? (data.relatedBlog.titleAr ?? data.relatedBlog.title) : data.relatedBlog.title}
+                    <ChevronRight size={12} />
+                  </Link>
+                )}
+                {data.relatedLocation && (
+                  <Link
+                    href={`${arHref}/locations/${data.relatedLocation.slug}`}
+                    className="text-[var(--primary)] text-sm font-medium hover:underline inline-flex items-center gap-1"
+                  >
+                    {isAr ? (data.relatedLocation.titleAr ?? data.relatedLocation.title) : data.relatedLocation.title}
+                    <ChevronRight size={12} />
+                  </Link>
+                )}
+              </div>
+            )}
             <div className="mt-8 pt-8 border-t border-slate-200">
               <Link
                 href={`${arHref}/services`}

@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
-    return { title: "Post Not Found | Saudi Event Management" };
+    return { title: { absolute: "Post Not Found | Saudi Event Management" } };
   }
 
   const canonical = `${BASE}${locale === "en" ? "" : "/ar"}/blog/${slug}`;
