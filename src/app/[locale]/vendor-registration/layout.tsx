@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Register as an Event Vendor | Saudi Event Management",
+  title: { absolute: "Register as an Event Vendor | Saudi Event Management" },
   description: "Join Saudi Arabia's elite event vendor network. We partner with premium photographers, luxury caterers, and AV production experts across Riyadh and Jeddah.",
   keywords: [
     "Event Vendor Registration Saudi Arabia",

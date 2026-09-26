@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "20+",   label: "Vetted Vendors",      sub: "A trusted network of KSA event partners." },
+  { value: "50+",   label: "Vetted Vendors",      sub: "A trusted network of KSA event partners." },
   { value: "6+",    label: "Event Categories",    sub: "Covering corporate, cultural, and private events." },
   { value: "10+",   label: "Saudi Cities",        sub: "Connecting clients across the Kingdom." },
 ];

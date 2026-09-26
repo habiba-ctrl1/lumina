@@ -85,7 +85,7 @@ const services: Record<
       },
       {
         q: "How much does a luxury wedding cost in Saudi Arabia?",
-        a: "Luxury weddings in Saudi Arabia typically range from SAR 150,000 to SAR 2,000,000+ depending on guest count, venue, and production level. Our senior consultants provide bespoke proposals tailored to your exact vision and requirements.",
+        a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
       },
       {
         q: "Can I meet a wedding planner in person before booking?",
@@ -212,9 +212,13 @@ export async function generateMetadata({ params }: PageProps) {
   // city×service intent. Riyadh conference-planning is kept indexable (capital
   // market, no /services twin yet — a /services/conference-management-riyadh can
   // be added later to fold it in too).
+  // Riyadh luxury-wedding-planning added 2026-09-24 (Riyadh audit): it already has
+  // an outranking /services/luxury-weddings-riyadh twin. Only Riyadh is consolidated
+  // here — Jeddah/Dammam were not part of that audit's approved scope.
   const consolidatedDuplicate =
     service === "corporate-event-management" ||
-    (service === "conference-planning" && city !== "riyadh");
+    (service === "conference-planning" && city !== "riyadh") ||
+    (service === "luxury-wedding-planning" && city === "riyadh");
   return {
     ...(consolidatedDuplicate ? { robots: { index: false, follow: true } } : {}),
     title: `${serviceData.name} in ${cityData.name} | Saudi Event Management`,

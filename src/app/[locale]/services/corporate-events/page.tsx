@@ -81,21 +81,18 @@ const jsonLd = {
             name: "Corporate Summit Package",
             description:
               "Full-service executive summit or conference management — 50 to 500 delegates, AV production, simultaneous interpretation, and VIP protocol at Riyadh or Jeddah five-star venues.",
-            priceRange: "SAR 75,000–300,000",
           },
           {
             "@type": "Offer",
             name: "Gala Dinner & Awards Package",
             description:
               "Turnkey corporate gala dinner and award ceremony planning — bespoke décor, halal gourmet catering, entertainment, and full technical production for up to 1,000 guests.",
-            priceRange: "SAR 150,000–600,000",
           },
           {
             "@type": "Offer",
             name: "Vision 2030 Activation Package",
             description:
               "Large-scale brand activations, public-private partnership forums, and government-aligned events designed to align with Saudi Vision 2030, GEA, and National Transformation Program objectives.",
-            priceRange: "SAR 300,000+",
           },
         ],
       },
@@ -118,7 +115,7 @@ const jsonLd = {
           name: "How much does corporate event management cost in Saudi Arabia?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Corporate event management costs in Saudi Arabia vary by event type and scale. Executive summits typically start from SAR 75,000–300,000; gala dinners range from SAR 150,000–600,000; large-scale conferences at KAFD or RICEC for 500+ delegates typically range from SAR 300,000–1,500,000. Key cost drivers include venue hire, AV and technical production, catering per-head rates (SAR 200–600+ at five-star properties), entertainment, and simultaneous interpretation requirements.",
+            text: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
           },
         },
         {
@@ -378,7 +375,7 @@ const faqs = [
   },
   {
     q: "How much does corporate event management cost in Saudi Arabia?",
-    a: "Executive summits start from SAR 75,000–300,000. Gala dinners range from SAR 150,000–600,000. Large-scale KAFD or RICEC conferences for 500+ delegates typically range from SAR 300,000–1,500,000. Contact us for a bespoke proposal.",
+    a: "Cost depends on guest count, venue, and which services are included. Send us your requirements and we return a full quotation within 24 hours.",
   },
   {
     q: "What are the top corporate event venues in Riyadh?",
@@ -447,7 +444,7 @@ const planningStepsAr = [
 
 const faqsAr = [
   { q: "ما هي أفضل شركة لإدارة فعاليات الشركات في السعودية؟", a: "صُممت إدارة الفعاليات السعودية لتقديم تجربة رائدة في إدارة فعاليات الشركات بالمملكة — تنسيق كامل للقاعات في مركز الملك عبدالله المالي وRICEC، مدعومة بشبكة موردين مُنتقاة بعناية فائقة." },
-  { q: "كم تبلغ تكلفة إدارة فعاليات الشركات في السعودية؟", a: "تبدأ القمم التنفيذية من 75,000 إلى 300,000 ريال، وتتراوح حفلات العشاء الفاخرة من 150,000 إلى 600,000 ريال، أما المؤتمرات الكبرى في مركز الملك عبدالله المالي أو RICEC لأكثر من 500 مندوب فتتراوح عادةً من 300,000 إلى 1,500,000 ريال. تواصل معنا لعرض سعر مخصص." },
+  { q: "كم تبلغ تكلفة إدارة فعاليات الشركات في السعودية؟", a: "تعتمد التكلفة على عدد الضيوف والقاعة والخدمات المطلوبة. أرسل لنا متطلباتك وسنوافيك بعرض سعر كامل خلال 24 ساعة." },
   { q: "ما أبرز قاعات فعاليات الشركات في الرياض؟", a: "مركز مؤتمرات الملك عبدالله المالي (2500 مقعد)، وRICEC (أكبر مركز مؤتمرات ومعارض في السعودية)، وريتز كارلتون الرياض، وفورسيزونز برج المملكة، وفندق الفيصلية، وجي دبليو ماريوت الرياض، وفيرمونت الرياض KAFD." },
   { q: "ما هو منظِّم المؤتمرات الاحترافي (PCO) في السعودية؟", a: "منظِّم المؤتمرات الاحترافي (PCO) يدير دورة حياة المؤتمر كاملة — القاعة، والتسجيل، والصوت والصورة، والترجمة، والتصاريح، ولوجستيات المتحدثين. وتعمل إدارة الفعاليات السعودية كمنظِّم مؤتمرات متكامل الخدمة يدير كل مرحلة داخليًا." },
   { q: "هل تديرون فعاليات الشركات الهجينة في السعودية؟", a: "نعم — بث بجودة احترافية، وترجمة فورية عربية-إنجليزية، ومنصات أسئلة تفاعلية، وتواصل افتراضي، مصمّمة لدعم مؤتمرات بآلاف المندوبين عن بُعد حول العالم." },
@@ -474,7 +471,7 @@ const cAr = {
   introH2a: "نرتقي بإدارة فعاليات الشركات",
   introH2b: "في السعودية.",
   introP1: "إدارة الفعاليات السعودية تنسّق التجمّعات المؤسسية في أنحاء المملكة — من الجمعيات العمومية للشركات السعودية المدرجة، إلى القمم الكبرى في مركز الملك عبدالله المالي ومركز الرياض للمؤتمرات والمعارض (RICEC).",
-  introP2: "بُني نهجنا لخدمة مؤسسات تعمل بحجم أرامكو السعودية وسابك، ومطوّري مشاريع عملاقة مثل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — جهات لا تقبل أي هامش للخطأ، وتطلب قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
+  introP2: "بُني نهجنا لخدمة مؤسسات كبرى ومطوّري مشاريع عملاقة مثل نيوم ومشروع البحر الأحمر وهيئة تطوير بوابة الدرعية — جهات لا تقبل أي هامش للخطأ، وتطلب قدرة كاملة ثنائية اللغة وتوافقًا مع أهداف رؤية السعودية 2030.",
   introP3: "بصفتنا منظِّم مؤتمرات احترافيًا (PCO) متكامل الخدمة، ننسّق دورة حياة الفعالية كاملة — من تصاريح هيئة الترفيه عبر شركاء موثوقين والتفاوض على القاعات وصولًا إلى تحليلات ما بعد الفعالية والتوزيع الإعلامي — تحت جهة تنسيق واحدة مسؤولة.",
   evLabel: "خبرة في كل نوع فعالية",
   evH2a: "كل صيغة مؤسسية.",
@@ -549,7 +546,7 @@ export default async function CorporateEventsPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "20+", label: "Vetted Vendors" },
+            { value: "50+", label: "Vetted Vendors" },
             { value: "100%", label: "Vendor Vetting" },
             { value: "5,000+", label: "Max Delegate Capacity Managed" },
           ]}
@@ -648,9 +645,7 @@ export default async function CorporateEventsPage() {
                     <Link href="/locations/riyadh" className="text-[var(--primary)] hover:underline font-medium"> Riyadh International Convention and Exhibition Center (RICEC)</Link>.
                   </p>
                   <p>
-                    Our approach is built for organisations that operate at the scale of{" "}
-                    <strong className="text-neutral-900">Saudi Aramco</strong> and{" "}
-                    <strong className="text-neutral-900">SABIC</strong>, and giga-project
+                    Our approach is built for major organisations and giga-project
                     developers such as <strong className="text-neutral-900">NEOM</strong>,{" "}
                     <strong className="text-neutral-900">Red Sea Project</strong>, and{" "}
                     <strong className="text-neutral-900">Diriyah Gate Development Authority</strong> — organisations that
@@ -677,7 +672,7 @@ export default async function CorporateEventsPage() {
               {/* Stats column */}
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { value: "20+", label: "Vetted Vendors" },
+                  { value: "50+", label: "Vetted Vendors" },
                   { value: "100%", label: "Vendor Vetting" },
                   { value: "5,000+", label: "Max Delegates Managed" },
                   { value: "PCO", label: "Full-Service Delivery" },
@@ -1033,7 +1028,7 @@ export default async function CorporateEventsPage() {
               <p className="text-neutral-600 text-sm leading-loose">
                 نحن في سعودي إيفنت مانجمنت نقدم خدمات متكاملة لإدارة الفعاليات المؤسسية في المملكة العربية
                 السعودية — من الاجتماعات السنوية للمساهمين وحفلات الجوائز والقمم التنفيذية إلى المؤتمرات الهجينة
-                وإطلاق المنتجات وتنشيط العلامات التجارية. قدراتنا مصمّمة لخدمة مؤسسات بحجم أرامكو السعودية وسابك
+                وإطلاق المنتجات وتنشيط العلامات التجارية. قدراتنا مصمّمة لخدمة المؤسسات الكبرى
                 وكبرى الشركات السعودية، مع التزام تام بمعايير رؤية المملكة 2030.
               </p>
             </div>

@@ -203,7 +203,7 @@ export default async function RoyalRiyadhWeddingCaseStudy({
     testimonialBy: isAr ? "— فلسفتنا في كل حفل زفاف" : "— Our Approach to Every Wedding",
     relatedServices: isAr ? "خدمات ذات صلة" : "Related Services",
     links: [
-      { href: lp("/services/weddings"), label: isAr ? "تخطيط حفلات الزفاف الفاخرة" : "Luxury Wedding Planning" },
+      { href: lp("/services/luxury-weddings-riyadh"), label: isAr ? "تخطيط حفلات الزفاف الفاخرة" : "Luxury Wedding Planning" },
       { href: lp("/services/royal-weddings"), label: isAr ? "حفلات الزفاف الملكية" : "Royal Weddings & Ceremonies" },
       { href: lp("/services/luxury-vip-events"), label: isAr ? "فعاليات كبار الشخصيات الفاخرة" : "Luxury & VIP Events" },
       { href: lp("/locations/riyadh"), label: isAr ? "فعاليات في الرياض" : "Events in Riyadh" },

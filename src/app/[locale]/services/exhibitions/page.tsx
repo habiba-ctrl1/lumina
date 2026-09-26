@@ -224,8 +224,8 @@ export default function ExhibitionsPage() {
           minHeight="large"
           trustElements={[
             { value: "10+", label: "Saudi Cities Covered" },
-            { value: "20+", label: "Vetted Vendors" },
-            { value: "Award", label: "Winning Booth Design 2024" },
+            { value: "50+", label: "Vetted Vendors" },
+            { value: "Custom", label: "Booth Design & Build" },
           ]}
         />
 
@@ -256,7 +256,7 @@ export default function ExhibitionsPage() {
                   <Award className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+50 مورد معتمد" : "50+ Vetted Vendors"}</p>
                   <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "لوجستيات القاعات والدعم" : "Venue Logistics & Support"}</p>
                 </div>
               </div>

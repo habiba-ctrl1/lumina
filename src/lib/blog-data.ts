@@ -1747,7 +1747,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       "[Riyadh](/locations/riyadh) is quickly becoming one of the most competitive MICE destinations in the world, rivaling cities like Dubai and Singapore. With new conference centers, luxury hotel ballrooms, and heritage-site event spaces, [corporate event](/services/corporate-events) planners have incredible options. Here are our top venue picks for 2026.",
       "## 1. KAFD Conference Center — Best for Massive Summits",
-      "If you are hosting a huge international B2B summit or [government conference](/locations/riyadh/conference-planning), the KAFD Conference Center is the ultimate choice. It is Riyadh's premier large-format venue, featuring a 3,200-person plenary hall, 22 breakout rooms, and built-in 4K LED walls.",
+      "If you are hosting a huge international B2B summit or [government conference](/services/conference-management-riyadh), the KAFD Conference Center is the ultimate choice. It is Riyadh's premier large-format venue, featuring a 3,200-person plenary hall, 22 breakout rooms, and built-in 4K LED walls.",
       "**Capacity:** 3,200 (plenary hall) | **Best for:** International conferences and massive exhibitions",
       "## 2. The Ritz-Carlton Riyadh — Most Prestigious",
       "Set inside a breathtaking Najdi palace complex, the Al Faisaliah Ballroom at the Ritz-Carlton is the definition of prestige. With massive chandeliers and marble floors, it is the perfect setting for high-end [corporate galas](/services/corporate-events) or royal-level award ceremonies.",
@@ -1769,7 +1769,7 @@ export const blogPosts: BlogPost[] = [
     contentAr: [
       "تتحوّل [الرياض](/locations/riyadh) بسرعة إلى واحدة من أكثر وجهات المعارض والمؤتمرات تنافسية في العالم، تنافس مدنًا كدبي وسنغافورة. ومع مراكز مؤتمرات جديدة، وقاعات فنادق فاخرة، ومساحات فعاليات في مواقع تراثية، يملك منظّمو [الفعاليات المؤسسية](/services/corporate-events) خيارات مذهلة. وإليك أبرز اختياراتنا للقاعات في 2026.",
       "## 1. مركز كافد للمؤتمرات — الأفضل للقمم الضخمة",
-      "إن كنت تستضيف قمة دولية ضخمة بين الشركات أو [مؤتمرًا حكوميًا](/locations/riyadh/conference-planning)، فمركز كافد للمؤتمرات هو الخيار الأمثل. إنه قاعة الرياض الرائدة كبيرة الحجم، بقاعة عامة تتسع لـ3,200 شخص، و22 غرفة جانبية، وشاشات LED مدمجة بدقة 4K.",
+      "إن كنت تستضيف قمة دولية ضخمة بين الشركات أو [مؤتمرًا حكوميًا](/services/conference-management-riyadh)، فمركز كافد للمؤتمرات هو الخيار الأمثل. إنه قاعة الرياض الرائدة كبيرة الحجم، بقاعة عامة تتسع لـ3,200 شخص، و22 غرفة جانبية، وشاشات LED مدمجة بدقة 4K.",
       "**السعة:** 3,200 (القاعة العامة) | **الأنسب لـ:** المؤتمرات الدولية والمعارض الضخمة",
       "## 2. الريتز كارلتون الرياض — الأكثر هيبة",
       "داخل مجمّع قصر نجدي خلّاب، قاعة الفيصلية في الريتز كارلتون هي تعريف الهيبة. بثرياتها الضخمة وأرضياتها الرخامية، إنها الموقع المثالي لـ[الحفلات المؤسسية](/services/corporate-events) الراقية أو حفلات الجوائز بمستوى ملكي.",
@@ -2300,7 +2300,7 @@ export const blogPosts: BlogPost[] = [
     featured: true,
     content: [
       "Planning a mega-exhibition in [Riyadh](/locations/riyadh) is a completely different challenge from organizing a normal corporate event. Think of it more like a construction project! You are dealing with hundreds of exhibitors building custom booths, tons of freight coming from around the world, and thousands of visitors who all need to move smoothly through the venue.",
-      "Riyadh has become the top destination for [exhibitions](/services/exhibitions) in the region. With the expansion of RICEC (Riyadh International Convention and Exhibition Center), demand for [exhibition management in Riyadh](/locations/riyadh/exhibition-management) is higher than ever—so you need to book **12 to 18 months in advance**.",
+      "Riyadh has become the top destination for [exhibitions](/services/exhibitions) in the region. With the expansion of RICEC (Riyadh International Convention and Exhibition Center), demand for [exhibition management in Riyadh](/services/exhibitions-riyadh) is higher than ever—so you need to book **12 to 18 months in advance**.",
       "## 1. Picking the Right Venue",
       "For a truly mega-exhibition (1,000+ exhibitors, 50,000+ visitors), your options in Riyadh are limited. RICEC is the go-to choice. But before you sign a contract, make sure the venue has:",
       "- **High-density Wi-Fi** across the entire show floor (exhibitors will complain loudly without it!)",
@@ -2323,7 +2323,7 @@ export const blogPosts: BlogPost[] = [
     ],
     contentAr: [
       "تخطيط معرض ضخم في [الرياض](/locations/riyadh) تحدٍّ مختلف تمامًا عن تنظيم فعالية مؤسسية عادية. فكّر فيه أكثر كمشروع بناء! أنت تتعامل مع مئات العارضين يبنون أجنحة مخصّصة، وأطنانًا من الشحن من حول العالم، وآلاف الزوّار الذين يحتاجون جميعًا للتنقّل بسلاسة عبر القاعة.",
-      "أصبحت الرياض الوجهة الأولى لـ[المعارض](/services/exhibitions) في المنطقة. ومع توسّع مركز الرياض الدولي للمؤتمرات والمعارض، الطلب على [إدارة المعارض في الرياض](/locations/riyadh/exhibition-management) أعلى من أي وقت مضى — لذا تحتاج للحجز قبل **12 إلى 18 شهرًا**.",
+      "أصبحت الرياض الوجهة الأولى لـ[المعارض](/services/exhibitions) في المنطقة. ومع توسّع مركز الرياض الدولي للمؤتمرات والمعارض، الطلب على [إدارة المعارض في الرياض](/services/exhibitions-riyadh) أعلى من أي وقت مضى — لذا تحتاج للحجز قبل **12 إلى 18 شهرًا**.",
       "## 1. اختيار القاعة المناسبة",
       "لمعرض ضخم حقًا (1,000+ عارض، 50,000+ زائر)، خياراتك في الرياض محدودة. مركز الرياض الدولي للمؤتمرات والمعارض هو الخيار الأمثل. لكن قبل توقيع العقد، تأكّد أن القاعة لديها:",
       "- **واي فاي عالي الكثافة** عبر أرضية العرض كلها (سيشتكي العارضون بصوت عالٍ بدونه!)",

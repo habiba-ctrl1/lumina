@@ -171,7 +171,7 @@ export default async function LocationsPage() {
         trustElements={[
           { value: "12", label: "Cities Covered" },
           { value: "13+", label: "Saudi Regions Served" },
-          { value: "20+", label: "Vetted Vendors" },
+          { value: "50+", label: "Vetted Vendors" },
         ]}
       />
 

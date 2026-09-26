@@ -111,9 +111,16 @@ body {
 /* ── Typography ───────────────────────────────────────────────────────────────
    NOTE: these forced marketing-site heading sizes are scoped with
    :not(.admin-scope *) so they never leak into the admin panel, where headings
-   must follow their own Tailwind text-* / font-* utilities instead. */
-h1:not(.admin-scope *), h2:not(.admin-scope *), h3:not(.admin-scope *),
-h4:not(.admin-scope *), h5:not(.admin-scope *), h6:not(.admin-scope *) {
+   must follow their own Tailwind text-* / font-* utilities instead.
+   The exclusion is wrapped in :where() so it contributes ZERO specificity —
+   without it, "h3:not(.admin-scope *)" outweighs a plain Tailwind class like
+   .text-white (a class + type selector beats a class alone), so any heading
+   on a dark background that sets text-white/text-neutral-100/etc. silently
+   got forced back to the dark --heading color and became unreadable. With
+   :where(), this rule is still a real default (same specificity as a bare
+   "h1"), but any co-located Tailwind text-color utility now correctly wins. */
+h1:where(:not(.admin-scope *)), h2:where(:not(.admin-scope *)), h3:where(:not(.admin-scope *)),
+h4:where(:not(.admin-scope *)), h5:where(:not(.admin-scope *)), h6:where(:not(.admin-scope *)) {
   color:          var(--heading);
   font-family:    var(--font-sans), system-ui, -apple-system, sans-serif !important;
   font-weight:    600 !important;

@@ -138,7 +138,7 @@ export default function ProductionVenuesPage() {
           ]}
           minHeight="large"
           trustElements={[
-            { value: "20+", label: "Vetted Vendors" },
+            { value: "50+", label: "Vetted Vendors" },
             { value: "100%", label: "Vendor Vetting" },
             { value: "10+", label: "Saudi Cities Covered" },
           ]}
@@ -171,7 +171,7 @@ export default function ProductionVenuesPage() {
                   <Star className="text-[var(--primary)]" size={22} />
                 </div>
                 <div>
-                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+20 مورد معتمد" : "20+ Vetted Vendors"}</p>
+                  <p className="text-neutral-900 font-bold text-sm tracking-wide">{isAr ? "+50 مورد معتمد" : "50+ Vetted Vendors"}</p>
                   <p className="text-[10px] text-neutral-400 uppercase tracking-widest">{isAr ? "شركاء موثقون" : "Vetted Quality Partners"}</p>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function ProductionVenuesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {(isAr
                 ? [
-                { icon: Speaker, title: "إنتاج الصوت والصورة", desc: "إنتاج صوتي ومرئي معتمد من ISO لقمم بمستوى مركز الملك عبدالعزيز. صوت بجودة الحفلات ومرئيات LED سينمائية." },
+                { icon: Speaker, title: "إنتاج الصوت والصورة", desc: "إنتاج صوتي ومرئي احترافي لقمم بمستوى مركز الملك عبدالعزيز، بالتنسيق عبر شبكة شركائنا المعتمدين. صوت بجودة الحفلات ومرئيات LED سينمائية." },
                 { icon: Map, title: "اختيار القاعات", desc: "اختيار قاعات خبير في السعودية، يمنح وصولًا حصريًا لأرقى قاعات الرياض وخيارات مدينة الملك عبدالله الاقتصادية." },
                 { icon: Zap, title: "تصميم المسرح", desc: "تصميم مسارح حائز على جوائز في مدينة الفيصلية. بيئات معمارية غامرة للفعاليات الكبرى." },
                 { icon: Utensils, title: "التموين الفاخر", desc: "تموين فعاليات راقٍ في السعودية، بالتنسيق مع فرق طهي بخمس نجوم في جدة." },
@@ -240,7 +240,7 @@ export default function ProductionVenuesPage() {
                 { icon: Star, title: "ضيافة كبار الشخصيات", desc: "إدارة ضيوف كبار الشخصيات، وخدمات كونسيرج، ولوجستيات فعاليات موثوقة في المملكة في ريتز كارلتون وأبرز القاعات." },
                   ]
                 : [
-                { icon: Speaker, title: "AV Production", desc: "ISO-certified audio visual production events for KAICC level summits. Concert-grade audio and cinematic LED visuals." },
+                { icon: Speaker, title: "AV Production", desc: "Professional audio visual production for KAICC-level summits, coordinated through our vetted partner network. Concert-grade audio and cinematic LED visuals." },
                 { icon: Map, title: "Venue Sourcing", desc: "Expert venue sourcing Saudi Arabia, granting exclusive access to the finest event venue Riyadh and KAEC options." },
                 { icon: Zap, title: "Stage Design", desc: "Immersive event staging at Madinat Al Faisaliah. Architectural environments for high-profile events." },
                 { icon: Utensils, title: "Luxury Catering", desc: "Exquisite event catering Saudi Arabia, coordinated with five-star culinary teams across Jeddah." },
@@ -439,18 +439,18 @@ export default function ProductionVenuesPage() {
                 <tbody className="divide-y divide-neutral-100">
                   {(isAr
                     ? [
-                    { category: "إنتاج الصوت والصورة", price: "15,000 ريال", inclusions: "صوت، إضاءة، طاقم تقني" },
-                    { category: "تصميم وبناء المسرح", price: "35,000 ريال", inclusions: "تصاميم ثلاثية الأبعاد، تصنيع، تركيب" },
-                    { category: "التموين الفاخر", price: "450 ريال / ضيف", inclusions: "محطات حيّة، طاقم خدمة، أدوات فضية" },
-                    { category: "تأجير القاعة", price: "50,000 ريال", inclusions: "الموقع، الأمن، الإعداد الأساسي" },
-                    { category: "إعلام الفعالية", price: "8,500 ريال", inclusions: "تصوير، لقطات سينمائية" },
+                    { category: "إنتاج الصوت والصورة", price: "يُسعَّر حسب كل فعالية", inclusions: "صوت، إضاءة، طاقم تقني" },
+                    { category: "تصميم وبناء المسرح", price: "يُسعَّر حسب كل فعالية", inclusions: "تصاميم ثلاثية الأبعاد، تصنيع، تركيب" },
+                    { category: "التموين الفاخر", price: "يُسعَّر حسب كل فعالية", inclusions: "محطات حيّة، طاقم خدمة، أدوات فضية" },
+                    { category: "تأجير القاعة", price: "يُسعَّر حسب كل فعالية", inclusions: "الموقع، الأمن، الإعداد الأساسي" },
+                    { category: "إعلام الفعالية", price: "يُسعَّر حسب كل فعالية", inclusions: "تصوير، لقطات سينمائية" },
                       ]
                     : [
-                    { category: "AV Production", price: "SAR 15,000", inclusions: "Audio, Lighting, Technical Crew" },
-                    { category: "Stage Design & Build", price: "SAR 35,000", inclusions: "3D Renders, Fabrication, Install" },
-                    { category: "Luxury Catering", price: "SAR 450 / Guest", inclusions: "Live Stations, Staffing, Silverware" },
-                    { category: "Venue Rental", price: "SAR 50,000", inclusions: "Location, Security, Basic Setup" },
-                    { category: "Event Media", price: "SAR 8,500", inclusions: "Photography, Cinematic Highlights" },
+                    { category: "AV Production", price: "Quoted per event", inclusions: "Audio, Lighting, Technical Crew" },
+                    { category: "Stage Design & Build", price: "Quoted per event", inclusions: "3D Renders, Fabrication, Install" },
+                    { category: "Luxury Catering", price: "Quoted per event", inclusions: "Live Stations, Staffing, Silverware" },
+                    { category: "Venue Rental", price: "Quoted per event", inclusions: "Location, Security, Basic Setup" },
+                    { category: "Event Media", price: "Quoted per event", inclusions: "Photography, Cinematic Highlights" },
                   ]).map((row: any, i: number) => (
                     <tr key={i} className="hover:bg-neutral-50/80 transition-colors">
                       <td className="px-8 py-5 text-neutral-900 font-semibold">{row.category}</td>

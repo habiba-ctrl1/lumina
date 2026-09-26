@@ -28,7 +28,7 @@ export default function StickyLeadBar() {
           href={`${arHref}/contact`}
           className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--primary)] px-4 py-3 text-[14px] font-bold text-white shadow-[0_4px_14px_rgba(13,107,78,0.3)] active:scale-[0.98] transition-transform"
         >
-          {isAr ? "احصل على عرض سعر مجاني" : "Get a Free Quote"}
+          {isAr ? "احصل على عرض سعر" : "Get a Quote"}
           <ArrowRight size={16} className="rtl:rotate-180" />
         </Link>
         <a
