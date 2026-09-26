@@ -363,3 +363,36 @@ Founder sent live-site screenshots + direct feedback, confirming several previou
 - Please visually confirm the homepage hero card and "Get in Touch" section now render correctly (white text visible) on a real browser/deploy preview — I verified this at the CSS-cascade level but could not take an actual screenshot in this environment.
 - Confirm "50+" is the number you want live-published now, or whether you'd rather hold for something more precise once your CR/VAT-holding vendor count is finalized.
 - The Dammam page still has extensive Aramco/SABIC geographic language (dozens of mentions) — I judged these as truthful market-context, not false claims, and left them. Flag any specific line you still want softened and I'll take another pass.
+
+---
+
+## 2026-09-26 — DEPLOYED TO PRODUCTION (everything above, "plz deploy everything")
+
+**1. What I did**
+Before touching git, re-audited every file in the working tree diff (not just the ones I remembered editing) to confirm the full state was correct and complete — read every diff for all ~50 modified/added/deleted files, confirmed no half-finished edits, confirmed `tsc --noEmit` (0 errors) and a full `next build` (208 pages, 0 errors) both passed first.
+
+Staged and committed everything from this session's SEO/trust/UI work (the Riyadh cluster pages, the site-wide false-claim removal, the vendor-count update, the CSS contrast fix, the title-double-append fixes, the logo asset swap) as one commit (`1a22014`) on `draft/rcu-venues`, pushed it, then cherry-picked the same commit onto `main` via `lumina-main-worktree` (commit `b24091a`), and pushed `main` — this is what actually triggers the Vercel production deploy per the standing workflow.
+
+**Explicitly excluded from the commit** (confidential or unrelated to this session, left exactly as they were):
+- `Quotation-DXB-KWT.pdf` — a real client quotation sitting at repo root; committing it would leak confidential client data into git history.
+- `find_emerson.mjs` — a local debug script that reads `.env.local` directly; not app code, not meant to ship.
+- `src/app/api/admin/partner-welcome/`, `src/lib/partner-welcome.ts` (initially) — an unrelated pending admin feature the project ledger already flagged as "founder's concurrent work, don't touch" (see below for why this changed).
+- `.claude/settings.json` — Claude Code's own tool-permission config, not part of the deployed site.
+- `public/services/valet parking hero.jpeg` — an already-established stray untracked file per prior ledger entries.
+
+**2. The cherry-pick onto `main` hit one real conflict, resolved correctly**
+`main` has already deleted `/venues` and `/partners/rcu/*` entirely (evidently a prior, separate decision to keep that RCU work off the public site). My commit only carried a cosmetic title-tag fix on those same files. Resolved by keeping `main`'s deletion (`git rm` the 3 files in the cherry-pick) rather than reintroducing pages that were deliberately removed — did not second-guess or overturn that decision.
+
+**3. A genuine pre-existing bug surfaced during this deploy, unrelated to my session's work**
+Right after pushing `draft/rcu-venues`, Vercel's automatic preview build for that branch failed: `Module not found: Can't resolve '@/lib/partner-welcome'` in `src/app/[locale]/admin/vendor-applications/page.tsx` — a file I never touched. Investigated: that admin page has imported `@/lib/partner-welcome` since an earlier session, but the two files it needs (`src/lib/partner-welcome.ts`, `src/app/api/admin/partner-welcome/route.ts`) were only ever committed to `main` (`24978e7`), never to `draft/rcu-venues` — they existed on local disk (shared working directory across sessions) but were untracked on this branch, so every local build silently worked while a clean clone (exactly what Vercel does) could not. Confirmed both files are byte-for-byte identical to the already-live, already-proven `main` versions (only a CRLF/LF line-ending difference) before adding them — committed (`7d6a176`) and pushed to `draft/rcu-venues` as a separate, clearly-labeled fix commit, not folded into the SEO commit. This did not affect `main` or the production deploy (main already had these files); it only fixes `draft/rcu-venues`'s own build going forward.
+
+**4. Validation**
+- `tsc --noEmit`: 0 errors, both before committing and again on the `main` worktree after the cherry-pick.
+- `next build`: 208 pages on `draft/rcu-venues` (0 errors), 204 pages on `main` after cherry-pick (0 errors) — both clean. The page-count gap reflects routes that exist only on `draft/rcu-venues` for unrelated reasons (features never yet brought to `main`, independent of tonight's work), not a defect from this cherry-pick.
+- Runtime spot-check (started `next start` locally, curled, then stopped the server each time): homepage returns "Get a Quote" (not "Get a Free Quote") and "50+" vendor-count text; `/locations/riyadh`, `/services/exhibitions-riyadh`, `/services/conference-management-riyadh`, `/contact`, `/services/royal-weddings` all return 200.
+- eslint: 26 pre-existing errors surfaced (unused icon imports, `any` types, unescaped quotes) in files touched for one unrelated line each — none on lines I edited, consistent with this project's established "lint fails only on pre-existing, unrelated errors" baseline; did not attempt to fix these (out of scope, pre-existing, not something this session's instructions asked for).
+
+**5. Current state**
+- `main` pushed (`a7aa6f1..b24091a`) → Vercel production deploy should be building/live now.
+- `draft/rcu-venues` pushed twice (`3e1462c..1a22014`, then `1a22014..7d6a176`).
+- Nothing else pending from this deploy — the exclusions listed in §1 remain exactly as they were (untouched, unstaged, uncommitted), ready for a separate decision whenever Habiba wants them addressed.
