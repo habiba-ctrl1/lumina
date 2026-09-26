@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion } from "framer-motion";
 import { 
   TrendingUp, BarChart3, PieChart, Users, Award, 
@@ -33,7 +34,7 @@ export default function AnalyticsPage() {
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/stats/analytics");
+      const res = await adminFetch("/api/admin/stats/analytics");
       const json = await res.json();
       if (!json.error) setData(json);
     } catch (e) {

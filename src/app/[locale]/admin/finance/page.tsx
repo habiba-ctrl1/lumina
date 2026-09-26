@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Plus, DollarSign, Search, Filter, RefreshCw, X, CheckCircle2, 
@@ -49,7 +50,7 @@ export default function FinancePage() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ type: typeFilter });
-      const res = await fetch(`/api/admin/finance?${params.toString()}`);
+      const res = await adminFetch(`/api/admin/finance?${params.toString()}`);
       const data = await res.json();
       setRecords(Array.isArray(data) ? data : []);
     } catch (e) {
@@ -68,7 +69,7 @@ export default function FinancePage() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/admin/finance", {
+      const res = await adminFetch("/api/admin/finance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

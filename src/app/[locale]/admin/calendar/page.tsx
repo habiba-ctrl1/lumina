@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { CalendarDays, ChevronLeft, ChevronRight, MapPin, Clock, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -26,7 +27,7 @@ export default function CalendarPage() {
   const fetchEvents = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/events');
+      const response = await adminFetch('/api/events');
       const data = await response.json();
       setEvents(data.data || []);
     } catch (error) {

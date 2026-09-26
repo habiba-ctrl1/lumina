@@ -100,7 +100,11 @@ export function amountInWords(amount: number): string {
 }
 
 // ── HTML builder ──────────────────────────────────────────────────────────
-export function buildQuotationHtml(d: QuotationData): string {
+// `logoSrc` defaults to the site-relative path (fine when opened in a tab on
+// the site's own origin, e.g. the admin "Preview PDF" flow). Callers that ship
+// this HTML outside that context — an email attachment, opened locally —
+// must pass an absolute URL or the logo simply won't load.
+export function buildQuotationHtml(d: QuotationData, logoSrc: string = "/main-logo.webp"): string {
   const rows = d.lineItems
     .filter((it) => (it.service && it.service.trim()) || it.total)
     .map((it) => {
@@ -220,7 +224,7 @@ export function buildQuotationHtml(d: QuotationData): string {
   </div>
   <div class="page">
     <div class="band">
-      <img class="logo" alt="Saudi Event Management" src="/main-logo.webp">
+      <img class="logo" alt="Saudi Event Management" src="${esc(logoSrc)}">
       <div class="qmark">
         <h1>QUOTATION</h1>
         <div class="sub">saudieventmanagement.com<br>WhatsApp: +966 539 388 072<br>info@saudieventmanagement.com<br>Private &amp; Confidential</div>

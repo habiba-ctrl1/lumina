@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Trash2, X, Image as ImageIcon, Save, Loader2, Link as LinkIcon, Info, Filter, RefreshCw } from "lucide-react";
 
@@ -32,7 +33,7 @@ export default function AdminGallery() {
   const fetchGallery = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/gallery');
+      const response = await adminFetch('/api/gallery');
       const data = await response.json();
       setAssets(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -46,7 +47,7 @@ export default function AdminGallery() {
     e.preventDefault();
     setSaving(true);
     try {
-      const response = await fetch('/api/gallery', {
+      const response = await adminFetch('/api/gallery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -72,7 +73,7 @@ export default function AdminGallery() {
   const handleDelete = async (id: string) => {
     if (!confirm("Remove this asset from the gallery?")) return;
     try {
-      const response = await fetch(`/api/gallery?id=${id}`, { method: 'DELETE' });
+      const response = await adminFetch(`/api/gallery?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setAssets(assets.filter((a) => a.id !== id));
       } else {

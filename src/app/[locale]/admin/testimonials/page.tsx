@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Trash2, X, Star, Save, Loader2, MessageSquareQuote, CheckCircle2 } from "lucide-react";
 
@@ -27,7 +28,7 @@ export default function AdminTestimonials() {
   const fetchTestimonials = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/testimonials');
+      const response = await adminFetch('/api/testimonials');
       const data = await response.json();
       setTestimonials(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -65,7 +66,7 @@ export default function AdminTestimonials() {
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this testimonial?")) return;
     try {
-      const response = await fetch(`/api/testimonials?id=${id}`, { method: 'DELETE' });
+      const response = await adminFetch(`/api/testimonials?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setTestimonials(testimonials.filter((t) => t.id !== id));
       } else {

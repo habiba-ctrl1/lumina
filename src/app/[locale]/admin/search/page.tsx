@@ -31,11 +31,11 @@ function SearchResultsContent() {
     setLoading(true);
     try {
       const [inqRes, clientRes, vendorRes, eventRes, blogRes] = await Promise.all([
-        fetch(`/api/contact?search=${query}`),
-        fetch(`/api/clients?search=${query}`),
+        adminFetch(`/api/contact?search=${query}`),
+        adminFetch(`/api/clients?search=${query}`),
         adminFetch(`/api/vendors?search=${query}`),
-        fetch(`/api/events?search=${query}`),
-        fetch(`/api/blog`) // Blog API search not yet implemented, fetching all
+        adminFetch(`/api/events?search=${query}`),
+        adminFetch(`/api/blog`) // Blog API search not yet implemented, fetching all
       ]);
 
       const [inquiries, clients, vendors, events, blogs] = await Promise.all([

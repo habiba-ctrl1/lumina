@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion } from "framer-motion";
 import { Edit3, Plus, ExternalLink, Calendar, Clock, RefreshCw, FileText, Search, Filter } from "lucide-react";
 import Link from "next/link";
@@ -28,7 +29,7 @@ export default function AdminBlogPage() {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/blog');
+      const response = await adminFetch('/api/blog');
       const data = await response.json();
       setPosts(Array.isArray(data) ? data : []);
     } catch (error) {

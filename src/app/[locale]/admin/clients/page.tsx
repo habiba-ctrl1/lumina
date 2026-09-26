@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { Search, Filter, MoreVertical, Mail, Phone, Plus, UserPlus, Star, Award, Building } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -31,7 +32,7 @@ export default function ClientsPage() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ search, status });
-      const response = await fetch(`/api/clients?${params.toString()}`);
+      const response = await adminFetch(`/api/clients?${params.toString()}`);
       const data = await response.json();
       setClients(Array.isArray(data) ? data : []);
     } catch (error) {

@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { requireAdmin } from '@/lib/api-auth';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const requests = await prisma.quoteRequest.findMany({
       orderBy: { createdAt: 'desc' },
       include: { proposals: true }
@@ -36,8 +40,11 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const body = await request.json();
-    const { 
+    const {
       clientName, clientPhone, clientEmail, eventType, 
       eventDate, eventCity, guestCount, budgetRange, requirements 
     } = body;

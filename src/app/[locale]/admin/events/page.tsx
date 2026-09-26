@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Plus, Trash2, X, Calendar, MapPin, User, Info, DollarSign, 
+import {
+  Plus, Trash2, X, Calendar, MapPin, User, Info, DollarSign,
   Users, RefreshCw, Search, Briefcase, CheckCircle2, ChevronRight, Filter,
   CheckSquare, Square, Save, ArrowRight, Sparkles
 } from "lucide-react";
@@ -75,7 +76,7 @@ export default function AdminEvents() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ type, status });
-      const response = await fetch(`/api/events?${params.toString()}`);
+      const response = await adminFetch(`/api/events?${params.toString()}`);
       const data = await response.json();
       if (data.data) {
         setEvents(data.data);
@@ -89,7 +90,7 @@ export default function AdminEvents() {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch("/api/clients");
+      const response = await adminFetch("/api/clients");
       const data = await response.json();
       if (Array.isArray(data)) setClients(data);
     } catch (e) {
@@ -162,7 +163,7 @@ export default function AdminEvents() {
         clientId: formData.clientId || null
       };
       
-      const response = await fetch("/api/events", {
+      const response = await adminFetch("/api/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

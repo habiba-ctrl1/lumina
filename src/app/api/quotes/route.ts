@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { logActivity } from '@/lib/logger';
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function POST(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const body = await request.json();
     const { vendorId, eventId, details, amount } = body;
 
@@ -35,6 +39,9 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const quotes = await prisma.quote.findMany({
       orderBy: { createdAt: 'desc' },
       include: {
@@ -56,6 +63,9 @@ export async function GET(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const body = await request.json();
     const { id, status, amount } = body;
 

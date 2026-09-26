@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { adminFetch } from "@/lib/admin-fetch";
 import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2, Clock } from "lucide-react";
 
 type Inquiry = {
@@ -44,7 +45,7 @@ export default function AdminInquiries() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ search, status, category, startDate, endDate, audience });
-      const response = await fetch(`/api/contact?${params.toString()}`);
+      const response = await adminFetch(`/api/contact?${params.toString()}`);
       const data = await response.json();
       if (!data.error) setInquiries(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -57,7 +58,7 @@ export default function AdminInquiries() {
   const deleteInquiry = async (id: string) => {
     if (!confirm("Delete this inquiry?")) return;
     try {
-      const response = await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
+      const response = await adminFetch(`/api/contact?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setInquiries(inquiries.filter((i) => i.id !== id));
       } else {
@@ -209,7 +210,7 @@ export default function AdminInquiries() {
                   value={inquiry.status || 'Pending'}
                   onChange={async (e) => {
                     try {
-                      await fetch(`/api/contact?id=${inquiry.id}`, {
+                      await adminFetch(`/api/contact?id=${inquiry.id}`, {
                         method: 'PATCH',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ status: e.target.value })

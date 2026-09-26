@@ -31,6 +31,7 @@ export async function GET(request: Request) {
         id: true, name: true, category: true, categories: true, services: true,
         city: true, regionCoverage: true, verificationStatus: true, partnershipStatus: true, meetingStatus: true,
         internalRating: true, rating: true, preferred: true, agreementSigned: true,
+        categoryLinks: { select: { name: true } },
       },
     });
 
@@ -39,8 +40,16 @@ export async function GET(request: Request) {
       (v.city || '').toLowerCase().includes(city) ||
       v.regionCoverage.some((r) => r.toLowerCase().includes(city) || /saudi arabia/i.test(r));
 
+    // categoryLinks (the canonical Category relation — the same one the
+    // Coverage panel counts) is the primary signal, since the admin UI's
+    // "Service Needed" dropdown sends a real Category.name, not free text.
+    // Legacy text fields stay as a fallback for vendors not yet re-linked
+    // (founder's 2026-07 decision: no scripted backfill, vendors re-link via
+    // re-registration) — same dual-signal pattern already used for category
+    // filtering in /api/vendors/route.ts.
     const matchesService = (v: (typeof vendors)[number]) =>
       !service ||
+      v.categoryLinks.some((c) => c.name.toLowerCase() === service) ||
       [v.category, ...v.categories, v.services || ''].join(' ').toLowerCase().includes(service);
 
     const ranked = vendors

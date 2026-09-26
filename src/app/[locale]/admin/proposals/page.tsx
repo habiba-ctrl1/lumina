@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Plus, FileText, Search, Filter, RefreshCw, X, CheckCircle, 
@@ -60,7 +61,7 @@ export default function ProposalsPage() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ status: statusFilter });
-      const res = await fetch(`/api/admin/proposals?${params.toString()}`);
+      const res = await adminFetch(`/api/admin/proposals?${params.toString()}`);
       const data = await res.json();
       setProposals(Array.isArray(data) ? data : []);
     } catch (e) {
@@ -72,7 +73,7 @@ export default function ProposalsPage() {
 
   const fetchRequests = async () => {
     try {
-      const res = await fetch("/api/admin/quote-requests");
+      const res = await adminFetch("/api/admin/quote-requests");
       const data = await res.json();
       setQuoteRequests(Array.isArray(data) ? data : []);
     } catch (e) {
@@ -123,7 +124,7 @@ export default function ProposalsPage() {
         status: "draft"
       };
 
-      const res = await fetch("/api/admin/proposals", {
+      const res = await adminFetch("/api/admin/proposals", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -151,7 +152,7 @@ export default function ProposalsPage() {
 
   const handleUpdateStatus = async (id: string, newStatus: string) => {
     try {
-      const res = await fetch(`/api/admin/proposals`, {
+      const res = await adminFetch(`/api/admin/proposals`, {
         method: "POST", // Simulating status change via a post request or API override
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, status: newStatus }) // If endpoint is built for it
