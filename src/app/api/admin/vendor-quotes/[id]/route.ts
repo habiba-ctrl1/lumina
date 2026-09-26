@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
+import { logActivity } from '@/lib/logger';
 
 // /api/admin/vendor-quotes/[id] (PATCH, DELETE — admin only)
 
@@ -32,6 +33,16 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       data,
       include: { vendor: { select: VENDOR_PUBLIC_SELECT } },
     });
+
+    // Only a real status transition counts as a notification-worthy event —
+    // editing notes/cost/file alone shouldn't spam the activity feed.
+    if (typeof body.status === 'string') {
+      await logActivity(
+        'Vendor Quote Updated',
+        `${updated.vendor.name}'s quote for "${updated.service}" marked ${updated.status}`,
+        user.email || undefined
+      );
+    }
 
     return NextResponse.json({ data: updated });
   } catch (error) {

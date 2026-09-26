@@ -12,6 +12,7 @@ const EMPTY_FORM = {
 
 type Inquiry = {
   id: string;
+  refNumber?: string | null;
   name: string;
   email: string;
   phone?: string;
@@ -232,7 +233,7 @@ export default function AdminInquiries() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search leads by name, email, company..."
+              placeholder="Search leads by name, email, company, or ref number..."
               className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 ps-9 pe-3 text-slate-800 text-xs font-semibold focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400"
             />
           </div>
@@ -338,7 +339,12 @@ export default function AdminInquiries() {
                               {(inquiry.name || "?").charAt(0).toUpperCase()}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-semibold text-slate-800 truncate max-w-[220px]">{inquiry.name}</p>
+                              <div className="flex items-center gap-1.5">
+                                <p className="font-semibold text-slate-800 truncate max-w-[220px]">{inquiry.name}</p>
+                                {inquiry.refNumber && (
+                                  <span className="text-[9.5px] font-bold text-slate-400 tracking-wide shrink-0">{inquiry.refNumber}</span>
+                                )}
+                              </div>
                               <div className="flex items-center gap-1.5 text-[11px] text-slate-500 truncate max-w-[220px]">
                                 <Mail size={11} className="text-slate-400 shrink-0" />
                                 <span className="truncate">{inquiry.email || "—"}</span>

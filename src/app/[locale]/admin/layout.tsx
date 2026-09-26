@@ -119,6 +119,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [actionNeededCount, setActionNeededCount] = useState(0);
   const [todaysMeetingCount, setTodaysMeetingCount] = useState(0);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [notifLogs, setNotifLogs] = useState<{ id: string; action: string; details: string | null; createdAt: string }[]>([]);
+  const [unreadNotifCount, setUnreadNotifCount] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -171,6 +174,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         setTodaysMeetingCount(todaysCount);
       } catch (e) {
         console.error('Failed to fetch meetings count');
+      }
+      // Notification bell — real activity feed, no separate notifications
+      // table. "Unread" = entries newer than the last time this device
+      // opened the bell (tracked locally; this is a single-operator system).
+      try {
+        const res = await adminFetch('/api/logs');
+        const data = await res.json();
+        const logs = Array.isArray(data) ? data.slice(0, 10) : [];
+        setNotifLogs(logs);
+        const lastSeen = localStorage.getItem('sem_notif_last_seen');
+        const lastSeenTime = lastSeen ? new Date(lastSeen).getTime() : 0;
+        setUnreadNotifCount(logs.filter((l: { createdAt: string }) => new Date(l.createdAt).getTime() > lastSeenTime).length);
+      } catch (e) {
+        console.error('Failed to fetch notifications');
       }
     };
     fetchCounts();
@@ -376,9 +393,50 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="w-9 h-9 flex items-center justify-center text-brand-foreground-faint hover:text-brand-foreground-muted hover:bg-brand-surface-raised rounded-lg transition-all">
-              <Bell size={17} />
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => {
+                  const opening = !notifOpen;
+                  setNotifOpen(opening);
+                  if (opening) {
+                    localStorage.setItem('sem_notif_last_seen', new Date().toISOString());
+                    setUnreadNotifCount(0);
+                  }
+                }}
+                className="w-9 h-9 flex items-center justify-center text-brand-foreground-faint hover:text-brand-foreground-muted hover:bg-brand-surface-raised rounded-lg transition-all relative"
+              >
+                <Bell size={17} />
+                {unreadNotifCount > 0 && (
+                  <span className="absolute top-1 end-1 min-w-[15px] h-[15px] px-[3px] bg-status-critical text-white text-[8.5px] font-bold rounded-full flex items-center justify-center border-2 border-white">
+                    {unreadNotifCount > 9 ? '9+' : unreadNotifCount}
+                  </span>
+                )}
+              </button>
+              {notifOpen && (
+                <>
+                  <div className="fixed inset-0 z-[80]" onClick={() => setNotifOpen(false)} />
+                  <div className="absolute end-0 top-11 w-80 bg-white border border-brand-border rounded-xl shadow-2xl z-[90] overflow-hidden">
+                    <div className="px-4 py-3 border-b border-brand-border-subtle flex items-center justify-between">
+                      <span className="text-xs font-bold text-brand-heading">Recent Activity</span>
+                      <Link href="/admin/status" onClick={() => setNotifOpen(false)} className="text-[10px] font-bold text-brand-primary hover:text-brand-primary-dark uppercase tracking-wider">View all</Link>
+                    </div>
+                    <div className="max-h-80 overflow-y-auto divide-y divide-brand-border-subtle">
+                      {notifLogs.length === 0 ? (
+                        <p className="px-4 py-6 text-center text-[11px] text-brand-foreground-faint">No activity yet.</p>
+                      ) : (
+                        notifLogs.map((log) => (
+                          <div key={log.id} className="px-4 py-2.5">
+                            <p className="text-[11.5px] font-semibold text-brand-foreground">{log.action}</p>
+                            {log.details && <p className="text-[10.5px] text-brand-foreground-muted mt-0.5 truncate">{log.details}</p>}
+                            <p className="text-[9.5px] text-brand-foreground-faint mt-0.5">{new Date(log.createdAt).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</p>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
             <div className="h-6 w-px bg-brand-border mx-1" />
             <div className="flex items-center gap-2.5 group cursor-pointer hover:bg-brand-surface-raised rounded-lg px-2 py-1.5 transition-all">
               <div className="text-end hidden sm:block">

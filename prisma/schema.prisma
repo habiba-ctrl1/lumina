@@ -241,6 +241,11 @@ model Quote {
 
 model Inquiry {
   id          String   @id @default(uuid())
+  // Human-readable reference, e.g. "SEM-2026-000123" — nullable so existing
+  // rows (created before this field existed) aren't backfilled; new rows
+  // always get one (see /api/contact). Same generated-sequential pattern
+  // already used by VendorApplication.appNumber / Proposal.quoteNumber.
+  refNumber   String?  @unique
   name        String
   email       String
   phone       String?
@@ -386,7 +391,12 @@ model Proposal {
   id           String   @id @default(uuid())
   request      QuoteRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
   requestId    String
-  quoteNumber  String   @unique // e.g. "SEM-Q-2025-001"
+  quoteNumber  String   @unique // e.g. "SEM-Q-2025-001" — always a fresh number per Proposal row, never reused
+  // Which revision of the quote for THIS request this is (1, 2, 3…). A
+  // request can already carry multiple Proposal rows (one-to-many relation
+  // already existed); this just numbers them for display instead of relying
+  // on array order or quoteNumber, so "V2" reads as a revision, not a new quote.
+  version      Int      @default(1)
   lineItems    String   // JSON string of [{ service, description, qty, unitPrice, total }]
   subtotal     Float
   vatAmount    Float    // 15% VAT

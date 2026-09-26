@@ -64,6 +64,16 @@ export async function POST(request: Request) {
     });
     const quoteNumber = `SEM-Q-${year}-${(count + 1).toString().padStart(3, '0')}`;
 
+    // A request can already carry earlier proposal(s) — this is a revision,
+    // not a brand-new document, so number it accordingly (quoteNumber stays
+    // globally unique per row; `version` is what makes "V2" meaningful).
+    const latestForRequest = await prisma.proposal.findFirst({
+      where: { requestId },
+      orderBy: { version: 'desc' },
+      select: { version: true },
+    });
+    const version = (latestForRequest?.version || 0) + 1;
+
     // 3. Create Proposal — status starts "draft" (schema default) and only
     // becomes "sent" once the client email actually goes out, so "sent" is
     // never a lie (see sendProposalEmail).
@@ -71,6 +81,7 @@ export async function POST(request: Request) {
       data: {
         requestId,
         quoteNumber,
+        version,
         lineItems: JSON.stringify(lineItems),
         subtotal,
         vatAmount,
@@ -82,7 +93,7 @@ export async function POST(request: Request) {
 
     await logActivity(
       'Quote Created',
-      `Proposal ${quoteNumber} created for ${quoteRequest.clientName} — SAR ${totalAmount.toFixed(2)}`,
+      `Proposal ${quoteNumber}${version > 1 ? ` (v${version})` : ''} created for ${quoteRequest.clientName} — SAR ${totalAmount.toFixed(2)}`,
       user.email || undefined
     );
 

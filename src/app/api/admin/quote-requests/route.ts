@@ -9,7 +9,11 @@ export async function GET(request: Request) {
 
     const requests = await prisma.quoteRequest.findMany({
       orderBy: { createdAt: 'desc' },
-      include: { proposals: true }
+      // A request can carry multiple Proposal versions (revisions). Order
+      // newest-first so `proposals[0]` — what every admin page treats as
+      // "the" active proposal — is actually the latest, not just whichever
+      // row Postgres happened to return first.
+      include: { proposals: { orderBy: { version: 'desc' } } }
     });
 
     const pending = await prisma.quoteRequest.count({ where: { status: 'pending' } });
