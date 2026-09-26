@@ -41,6 +41,12 @@ function getTransporter() {
   return transporter;
 }
 
+type Attachment = {
+  filename: string;
+  content: string;
+  contentType?: string;
+};
+
 type SendArgs = {
   from: string;
   to: string | string[];
@@ -48,6 +54,7 @@ type SendArgs = {
   html?: string;
   text?: string;
   replyTo?: string;
+  attachments?: Attachment[];
 };
 
 /**
@@ -56,7 +63,7 @@ type SendArgs = {
  */
 export const resend = {
   emails: {
-    async send({ from, to, subject, html, text, replyTo }: SendArgs) {
+    async send({ from, to, subject, html, text, replyTo, attachments }: SendArgs) {
       try {
         const info = await getTransporter().sendMail({
           from,
@@ -65,6 +72,7 @@ export const resend = {
           html,
           text,
           replyTo,
+          attachments,
         });
         return { data: { id: info.messageId }, error: null as null };
       } catch (error) {

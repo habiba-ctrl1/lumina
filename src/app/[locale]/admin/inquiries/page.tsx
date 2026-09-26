@@ -121,7 +121,7 @@ export default function AdminInquiries() {
     setLoading(true);
     try {
       const params = new URLSearchParams({ search, status, category, startDate, endDate, audience });
-      const response = await fetch(`/api/contact?${params.toString()}`);
+      const response = await adminFetch(`/api/contact?${params.toString()}`);
       const data = await response.json();
       if (!data.error) setInquiries(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -134,7 +134,7 @@ export default function AdminInquiries() {
   const deleteInquiry = async (id: string) => {
     if (!confirm("Delete this inquiry?")) return;
     try {
-      const response = await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
+      const response = await adminFetch(`/api/contact?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setInquiries(inquiries.filter((i) => i.id !== id));
       } else {
@@ -149,7 +149,7 @@ export default function AdminInquiries() {
 
   const updateStatus = async (id: string, newStatus: string) => {
     try {
-      await fetch(`/api/contact?id=${id}`, {
+      await adminFetch(`/api/contact?id=${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),

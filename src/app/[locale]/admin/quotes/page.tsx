@@ -59,6 +59,14 @@ type Proposal = {
   validUntil: string;
   notes: string | null;
   status: string;
+  emailStatus?: string; // pending | sent | failed
+  emailError?: string | null;
+};
+
+type SendState = {
+  status: "idle" | "sending" | "sent" | "failed";
+  error?: string;
+  proposalId?: string;
 };
 
 export default function AdminQuotes() {
@@ -72,6 +80,11 @@ export default function AdminQuotes() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isManualModalOpen, setIsManualModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [sendState, setSendState] = useState<SendState>({ status: "idle" });
+
+  useEffect(() => {
+    if (isQuoteModalOpen) setSendState({ status: "idle" });
+  }, [isQuoteModalOpen]);
 
   // Forms
   const [manualForm, setManualForm] = useState({
@@ -172,7 +185,7 @@ export default function AdminQuotes() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/admin/quote-requests');
+      const response = await adminFetch('/api/admin/quote-requests');
       const data = await response.json();
       setRequests(data.requests || []);
       setCounts(data.counts || { pending: 0, quote_sent: 0, accepted: 0, total: 0, confirmedValue: 0 });
@@ -185,7 +198,7 @@ export default function AdminQuotes() {
 
   const updateStatus = async (id: string, status: string) => {
     try {
-      const response = await fetch(`/api/admin/quote-requests/${id}/status`, {
+      const response = await adminFetch(`/api/admin/quote-requests/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
@@ -202,7 +215,7 @@ export default function AdminQuotes() {
   const deleteRequest = async (id: string) => {
     if (!confirm("Are you sure you want to delete this request?")) return;
     try {
-      const response = await fetch(`/api/admin/quote-requests/${id}/status`, {
+      const response = await adminFetch(`/api/admin/quote-requests/${id}/status`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -220,7 +233,7 @@ export default function AdminQuotes() {
   const handleManualSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/admin/quote-requests', {
+      const response = await adminFetch('/api/admin/quote-requests', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(manualForm)
@@ -241,8 +254,10 @@ export default function AdminQuotes() {
   const handleQuoteSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedRequest) return;
+    if (sendState.status === "sending") return; // guard against double-click
+    setSendState({ status: "sending" });
     try {
-      const response = await fetch('/api/admin/quotes', {
+      const response = await adminFetch('/api/admin/quotes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -250,12 +265,45 @@ export default function AdminQuotes() {
           ...quoteForm
         })
       });
-      if (response.ok) {
-        setIsQuoteModalOpen(false);
-        fetchData();
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        setSendState({ status: "failed", error: data.error || "Failed to create quotation.", proposalId: data.proposal?.id });
+        return;
+      }
+      fetchData();
+      if (data.emailSent) {
+        setSendState({ status: "sent" });
+        setTimeout(() => setIsQuoteModalOpen(false), 1400);
+      } else {
+        setSendState({
+          status: "failed",
+          error: data.emailError || "Quotation saved, but the email failed to send.",
+          proposalId: data.proposal?.id,
+        });
       }
     } catch (error) {
       console.error("Quote creation failed:", error);
+      setSendState({ status: "failed", error: "Network error — please try again." });
+    }
+  };
+
+  const handleRetrySend = async () => {
+    if (!sendState.proposalId || sendState.status === "sending") return;
+    const proposalId = sendState.proposalId;
+    setSendState({ status: "sending", proposalId });
+    try {
+      const response = await adminFetch(`/api/admin/quotes/${proposalId}/send`, { method: 'POST' });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.emailSent) {
+        fetchData();
+        setSendState({ status: "sent" });
+        setTimeout(() => setIsQuoteModalOpen(false), 1400);
+      } else {
+        setSendState({ status: "failed", error: data.emailError || data.error || "Retry failed.", proposalId });
+      }
+    } catch (error) {
+      console.error("Retry send failed:", error);
+      setSendState({ status: "failed", error: "Network error — please try again.", proposalId });
     }
   };
 
@@ -753,6 +801,12 @@ export default function AdminQuotes() {
                       </div>
                       <h4 className="text-3xl font-bold text-emerald-500">SAR {selectedRequest.proposals[0].totalAmount.toLocaleString()}</h4>
                       <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Valid until: {new Date(selectedRequest.proposals[0].validUntil).toLocaleDateString()}</p>
+                      {selectedRequest.proposals[0].emailStatus === 'failed' && (
+                        <p className="text-[10px] text-red-400 font-bold uppercase tracking-widest">⚠ Not emailed — {selectedRequest.proposals[0].emailError || 'delivery failed'}</p>
+                      )}
+                      {selectedRequest.proposals[0].emailStatus === 'sent' && (
+                        <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">✓ Emailed to client</p>
+                      )}
                     </div>
                   </div>
                 )}
@@ -853,6 +907,11 @@ export default function AdminQuotes() {
                 <div>
                   <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Create Quotation</h2>
                   <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Client: {selectedRequest.clientName} | {selectedRequest.eventType}</p>
+                  {selectedRequest.clientEmail ? (
+                    <p className="text-[10px] text-slate-400 font-semibold mt-1">Will be emailed to {selectedRequest.clientEmail}</p>
+                  ) : (
+                    <p className="text-[10px] text-red-500 font-bold uppercase tracking-widest mt-1">⚠ No client email on file — add one before sending</p>
+                  )}
                 </div>
                 <button onClick={() => setIsQuoteModalOpen(false)} className="p-2 hover:bg-slate-50 rounded-full transition-colors text-slate-400"><X size={24} /></button>
               </div>
@@ -958,11 +1017,17 @@ export default function AdminQuotes() {
                         onChange={e => setQuoteForm({...quoteForm, validUntil: e.target.value})}
                       />
                     </div>
-                    <button 
-                      onClick={handleQuoteSubmit}
-                      className="w-full py-5 bg-emerald-500 text-white rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20"
+                    <button
+                      onClick={sendState.status === "failed" && sendState.proposalId ? handleRetrySend : handleQuoteSubmit}
+                      disabled={sendState.status === "sending" || !selectedRequest.clientEmail}
+                      className="w-full py-5 bg-emerald-500 text-white rounded-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-emerald-600 transition-all shadow-xl shadow-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      Send to Client
+                      {sendState.status === "sending" && <RefreshCw size={14} className="animate-spin" />}
+                      {sendState.status === "sending"
+                        ? "Sending…"
+                        : sendState.status === "failed" && sendState.proposalId
+                        ? "Retry Send"
+                        : "Send to Client"}
                     </button>
                     <button
                       type="button"
@@ -973,12 +1038,40 @@ export default function AdminQuotes() {
                     </button>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-10">
-                    <AlertCircle size={20} className="text-blue-500 shrink-0" />
-                    <p className="text-[10px] text-blue-700 font-bold leading-relaxed uppercase tracking-wider">
-                      Sending this quote will automatically update the request status to "Quote Sent" and notify the client via email.
-                    </p>
-                  </div>
+                  {sendState.status === "idle" && (
+                    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-10">
+                      <AlertCircle size={20} className="text-blue-500 shrink-0" />
+                      <p className="text-[10px] text-blue-700 font-bold leading-relaxed uppercase tracking-wider">
+                        Sending will save this quotation and email it to the client with the branded quotation attached.
+                      </p>
+                    </div>
+                  )}
+                  {sendState.status === "sending" && (
+                    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-10">
+                      <RefreshCw size={20} className="text-blue-500 shrink-0 animate-spin" />
+                      <p className="text-[10px] text-blue-700 font-bold leading-relaxed uppercase tracking-wider">
+                        Sending quotation to {selectedRequest.clientEmail}…
+                      </p>
+                    </div>
+                  )}
+                  {sendState.status === "sent" && (
+                    <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 flex gap-10">
+                      <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                      <p className="text-[10px] text-emerald-700 font-bold leading-relaxed uppercase tracking-wider">
+                        Quotation emailed to {selectedRequest.clientEmail}.
+                      </p>
+                    </div>
+                  )}
+                  {sendState.status === "failed" && (
+                    <div className="bg-red-50 border border-red-100 rounded-2xl p-5 flex gap-10">
+                      <XCircle size={20} className="text-red-500 shrink-0" />
+                      <p className="text-[10px] text-red-700 font-bold leading-relaxed uppercase tracking-wider">
+                        {sendState.proposalId ? "Email failed: " : "Could not create quotation: "}
+                        {sendState.error}
+                        {sendState.proposalId && " — the quotation was saved; use Retry Send above once fixed."}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

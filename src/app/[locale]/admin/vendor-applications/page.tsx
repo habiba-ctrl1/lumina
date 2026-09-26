@@ -168,7 +168,7 @@ export default function VendorApplicationsPage() {
       // 2. Fetch initial Vendor Registration inquiries
       let vendorInquiries: Application[] = [];
       try {
-        const inqRes = await fetch("/api/contact?audience=partner");
+        const inqRes = await adminFetch("/api/contact?audience=partner");
         const inqData = await inqRes.json();
         if (Array.isArray(inqData)) {
           vendorInquiries = inqData.map((inq: any) => {
@@ -292,7 +292,7 @@ export default function VendorApplicationsPage() {
     try {
       if (isQuickRegistration) {
         const newStatus = body.action === "reject" ? "Rejected" : body.action === "reopen" ? "Pending" : "Approved";
-        const res = await fetch(`/api/contact?id=${id}`, {
+        const res = await adminFetch(`/api/contact?id=${id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ status: newStatus }),
@@ -363,7 +363,7 @@ export default function VendorApplicationsPage() {
     setBusy(true);
     try {
       if (isQuickRegistration) {
-        await fetch(`/api/contact?id=${id}`, { method: "DELETE" });
+        await adminFetch(`/api/contact?id=${id}`, { method: "DELETE" });
       } else {
         await adminFetch(`/api/partner-applications/${id}`, { method: "DELETE" });
       }

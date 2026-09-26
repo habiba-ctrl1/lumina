@@ -394,10 +394,15 @@ model Proposal {
   currency     String   @default("SAR")
   validUntil   DateTime
   notes        String?
-  status       String   @default("draft") // draft | sent | accepted | rejected | expired
+  status       String   @default("draft") // draft | sent | accepted | rejected | expired — "sent" is only set once the client email actually goes out
   // Sum of the vendor costs feeding this quote (internal only, never in client PDF).
   // Commission = subtotal − vendorCostTotal. Defaults 0 until vendor costs are linked.
   vendorCostTotal Float @default(0)
+  // Email-delivery outcome — separate from `status` above so "the quote exists"
+  // and "the client actually received it" are never conflated (2026-09 fix).
+  emailStatus  String   @default("pending") // pending | sent | failed
+  emailSentAt  DateTime?
+  emailError   String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

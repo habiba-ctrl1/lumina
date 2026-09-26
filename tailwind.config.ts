@@ -90,6 +90,42 @@ const config: Config = {
           hover:   "var(--gold-hover)",
           muted:   "var(--gold-muted)",
         },
+
+        // ── Brand tokens for the admin panel (2026-09) ───────────────────────
+        // Point at the SAME --primary/--gold CSS vars already defined in
+        // globals.css. Added as new names rather than changing what `emerald`/
+        // `gold` resolve to, so nothing already using those scales (site-wide,
+        // 18+ admin pages) shifts color. Use `brand-*` for new admin UI only.
+        brand: {
+          primary:      "var(--primary)",
+          "primary-dark": "var(--primary-dark)",
+          "primary-light": "var(--primary-light)",
+          gold:         "var(--gold)",
+          "gold-hover": "var(--gold-hover)",
+          surface:      "var(--surface)",
+          "surface-raised": "var(--surface-raised)",
+          "surface-lifted": "var(--surface-lifted)",
+          border:       "var(--border)",
+          "border-subtle": "var(--border-subtle)",
+          heading:      "var(--heading)",
+          foreground:   "var(--foreground)",
+          "foreground-medium": "var(--foreground-medium)",
+          "foreground-muted":  "var(--foreground-muted)",
+          "foreground-faint":  "var(--foreground-faint)",
+        },
+
+        // ── Semantic status colors — separate from the brand accent so
+        // "on-brand" and "needs attention" are never confused. ───────────────
+        status: {
+          success:      "var(--status-success)",
+          "success-bg": "var(--status-success-bg)",
+          warning:      "var(--status-warning)",
+          "warning-bg": "var(--status-warning-bg)",
+          critical:     "var(--status-critical)",
+          "critical-bg":"var(--status-critical-bg)",
+          neutral:      "var(--status-neutral)",
+          "neutral-bg": "var(--status-neutral-bg)",
+        },
       },
 
       // ── TYPOGRAPHY ──────────────────────────────────────────────────────────

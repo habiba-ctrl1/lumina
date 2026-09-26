@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { adminFetch } from "@/lib/admin-fetch";
 import { motion } from "framer-motion";
 import { Activity, Trash2, RefreshCw, AlertCircle, Clock, CheckCircle2, Star, Target, Filter } from "lucide-react";
 
@@ -24,7 +25,7 @@ export default function StatusPage() {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/logs');
+      const response = await adminFetch('/api/logs');
       const data = await response.json();
       setLogs(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -38,7 +39,7 @@ export default function StatusPage() {
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this log entry?")) return;
     try {
-      const response = await fetch(`/api/logs?id=${id}`, { method: 'DELETE' });
+      const response = await adminFetch(`/api/logs?id=${id}`, { method: 'DELETE' });
       if (response.ok) {
         setLogs(logs.filter(l => l.id !== id));
       } else {

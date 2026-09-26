@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { resend, isResendConfigured, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/resend';
 import { logActivity } from '@/lib/logger';
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function POST(request: Request) {
   try {
@@ -369,6 +370,9 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search');
     const category = searchParams.get('category');
@@ -426,6 +430,9 @@ export async function GET(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
@@ -440,6 +447,9 @@ export async function DELETE(request: Request) {
 
 export async function PATCH(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });

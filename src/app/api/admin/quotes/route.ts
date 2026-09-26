@@ -1,10 +1,50 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { requireAdmin } from '@/lib/api-auth';
+import { logActivity } from '@/lib/logger';
+import { sendProposalEmail } from '@/lib/send-quote-email';
+
+// A genuine intentional resend of the same request within this window is
+// vanishingly unlikely for a human — this is the server-side guard against
+// an accidental double-click/double-submit creating two quotations.
+const DUPLICATE_WINDOW_MS = 10_000;
 
 export async function POST(request: Request) {
   try {
+    const user = await requireAdmin(request);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
     const body = await request.json();
     const { requestId, lineItems, validUntil, notes } = body;
+
+    if (!requestId || typeof requestId !== 'string') {
+      return NextResponse.json({ error: 'A client request is required.' }, { status: 400 });
+    }
+    if (!Array.isArray(lineItems) || lineItems.length === 0) {
+      return NextResponse.json({ error: 'At least one line item is required.' }, { status: 400 });
+    }
+    if (!validUntil || isNaN(new Date(validUntil).getTime())) {
+      return NextResponse.json({ error: 'A valid "valid until" date is required.' }, { status: 400 });
+    }
+
+    const quoteRequest = await prisma.quoteRequest.findUnique({ where: { id: requestId } });
+    if (!quoteRequest) {
+      return NextResponse.json({ error: 'Client request not found.' }, { status: 404 });
+    }
+
+    const recent = await prisma.proposal.findFirst({
+      where: { requestId, createdAt: { gte: new Date(Date.now() - DUPLICATE_WINDOW_MS) } },
+      orderBy: { createdAt: 'desc' },
+    });
+    if (recent) {
+      return NextResponse.json(
+        {
+          error: 'A quotation was just created for this request — please wait a moment before sending again.',
+          proposal: recent,
+        },
+        { status: 409 }
+      );
+    }
 
     // 1. Calculate totals
     // lineItems: [{ service, description, qty, unitPrice, total }]
@@ -24,7 +64,9 @@ export async function POST(request: Request) {
     });
     const quoteNumber = `SEM-Q-${year}-${(count + 1).toString().padStart(3, '0')}`;
 
-    // 3. Create Proposal
+    // 3. Create Proposal — status starts "draft" (schema default) and only
+    // becomes "sent" once the client email actually goes out, so "sent" is
+    // never a lie (see sendProposalEmail).
     const proposal = await prisma.proposal.create({
       data: {
         requestId,
@@ -35,17 +77,28 @@ export async function POST(request: Request) {
         totalAmount,
         validUntil: new Date(validUntil),
         notes,
-        status: 'sent'
       }
     });
 
-    // 4. Update Request Status
-    await prisma.quoteRequest.update({
-      where: { id: requestId },
-      data: { status: 'quote_sent' }
-    });
+    await logActivity(
+      'Quote Created',
+      `Proposal ${quoteNumber} created for ${quoteRequest.clientName} — SAR ${totalAmount.toFixed(2)}`,
+      user.email || undefined
+    );
 
-    return NextResponse.json(proposal, { status: 201 });
+    // 4. Attempt to email it to the client. QuoteRequest.status only advances
+    // to "quote_sent" inside sendProposalEmail, and only on real success.
+    const sendResult = await sendProposalEmail(proposal.id, user.email || undefined);
+    const finalProposal = await prisma.proposal.findUnique({ where: { id: proposal.id } });
+
+    return NextResponse.json(
+      {
+        proposal: finalProposal,
+        emailSent: sendResult.ok,
+        emailError: sendResult.ok ? undefined : sendResult.error,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error('Create Proposal Error:', error);
     return NextResponse.json({ error: 'Failed to create proposal' }, { status: 500 });
