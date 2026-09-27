@@ -13,7 +13,12 @@
       "mcp__claude_ai_Gmail__create_draft",
       "Bash(node scripts/ig-only.mjs)",
       "Bash(node -e ' *)",
-      "WebFetch(domain:saudieventmanagement.com)"
+      "WebFetch(domain:saudieventmanagement.com)",
+      "mcp__claude_ai_Gmail__trash_thread",
+      "Bash(tasklist)",
+      "Bash(pkill -f \"next start\")",
+      "Bash(pkill -f \"node\")",
+      "mcp__claude_ai_Gmail__create_label"
     ]
   }
 }
