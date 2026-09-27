@@ -58,3 +58,8 @@ client/
 
 # Vendor quotations (pricing PDFs) - confidential, NEVER push to remote
 VENDOR Quotations/
+
+# Stray client/debug files - never push to remote
+/Quotation-DXB-KWT.pdf
+/find_emerson.mjs
+/public/services/valet parking hero.jpeg
