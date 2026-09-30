@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 
 // ── Input micro-interaction helpers ─────────────────────────────────────────
-const focusStyle  = { border: "1px solid rgba(245,158,11,0.55)", background: "rgba(255,255,255,0.10)" };
+const focusStyle  = { border: "1px solid rgba(197,168,128,0.55)", background: "rgba(255,255,255,0.10)" };
 const blurStyle   = { border: "1px solid rgba(255,255,255,0.09)", background: "rgba(255,255,255,0.06)" };
 const inputBase   = "w-full px-4 py-3 rounded-xl text-[13px] text-white placeholder-white/35 outline-none transition-all duration-200";
 
@@ -20,22 +21,6 @@ export default function Hero() {
 
   const [form, setForm]     = useState({ name: "", email: "", eventType: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  // Scroll parallax — video moves at ~20% of scroll speed
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -160]);
-
-  // Only load the background showreel on desktop. Mobile shows the WebP poster
-  // instead — the MP4 is never fetched, protecting LCP and mobile data.
-  const [isDesktop, setIsDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,83 +51,43 @@ export default function Hero() {
   const rowReverse   = isRtl ? "flex-row-reverse" : "";
 
   return (
-    <div ref={heroRef} id="home" className="relative min-h-screen w-full flex overflow-hidden">
+    <div id="home" className="relative w-full flex overflow-hidden min-h-[640px] sm:min-h-[700px] lg:min-h-[800px]">
 
       {/* ══════════════════════════════════════════════════════════════════════
-          BACKGROUND — Parallax video
-          Video layer moves at ~20% scroll speed. Extended 160px top+bottom
-          so parallax movement never shows a gap at edges.
+          BACKGROUND — static premium hero photograph (replaces the prior
+          autoplay video: lighter, faster LCP, and easier to keep on-brand).
       ══════════════════════════════════════════════════════════════════════ */}
-      <motion.div
-        aria-hidden
-        className="absolute left-0 right-0 z-0 overflow-hidden"
-        style={{ top: -160, bottom: -160, y: bgY }}
-      >
-        {isDesktop ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            poster="/hero-mobile.webp"
-            className="pointer-events-none"
-            style={{
-              width: "100vw",
-              height: "56.25vw",
-              minHeight: "100%",
-              minWidth: "177.77vh",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              objectFit: "cover",
-            }}
-          >
-            <source src="/hero-video1.mp4" type="video/mp4" />
-            <source src="https://tawnmqiqbtbdiimvjrez.supabase.co/storage/v1/object/public/Videos/hero-video1.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          /* Mobile / SSR: lightweight WebP poster — MP4 never downloaded */
-          <img
-            src="/hero-mobile.webp"
-            alt={isRtl
-              ? "منصة زفاف فاخرة بالورود الحمراء والثريات الكريستالية من تنظيم إدارة الفعاليات السعودية"
-              : "Luxury wedding stage with red roses and crystal chandeliers by Saudi Event Management"}
-            fetchPriority="high"
-            className="pointer-events-none"
-            style={{
-              width: "100vw",
-              height: "56.25vw",
-              minHeight: "100%",
-              minWidth: "177.77vh",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              objectFit: "cover",
-            }}
-          />
-        )}
-      </motion.div>
+      <div aria-hidden className="absolute inset-0 z-0">
+        <Image
+          src="/hero-image.png"
+          alt={isRtl
+            ? "تصميم زفاف فاخر بقوس ذهبي وترتيبات زهرية وثريات، إدارة الفعاليات السعودية"
+            : "Luxury event stage design with a gold floral arch and chandeliers, Saudi Event Management"}
+          fill
+          priority
+          sizes="100vw"
+          quality={85}
+          className="object-cover"
+          style={{ objectPosition: "center 40%" }}
+        />
+      </div>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          OVERLAY STACK — lighter to let the video breathe,
-          fading to white at the bottom to merge with the light-theme site.
+          OVERLAY STACK — this photo is bright/high-key throughout (white
+          drapery, no natural dark zone), so a uniform wash is layered under
+          the directional text-side gradient to keep white text legible.
       ══════════════════════════════════════════════════════════════════════ */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Side gradient — text-side darker for legibility, video-side nearly open */}
+        <div className="absolute inset-0 bg-black/40" />
         <div
           className="absolute inset-0"
           style={{
             background: isRtl
-              ? "linear-gradient(250deg, rgba(2,8,14,0.68) 0%, rgba(4,8,16,0.25) 50%, rgba(6,10,18,0.00) 100%)"
-              : "linear-gradient(115deg, rgba(2,8,14,0.68) 0%, rgba(4,8,16,0.25) 50%, rgba(6,10,18,0.00) 100%)",
+              ? "linear-gradient(250deg, rgba(2,8,14,0.65) 0%, rgba(4,8,16,0.35) 50%, rgba(6,10,18,0.08) 100%)"
+              : "linear-gradient(115deg, rgba(2,8,14,0.65) 0%, rgba(4,8,16,0.35) 50%, rgba(6,10,18,0.08) 100%)",
           }}
         />
-        {/* Top vignette — nav legibility */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/25 to-transparent" />
-        {/* Bottom fade-to-white — blends seamlessly into the light site below */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/40 to-transparent" />
         <div
           className="absolute bottom-0 inset-x-0 h-64"
           style={{
@@ -156,7 +101,7 @@ export default function Hero() {
       ══════════════════════════════════════════════════════════════════════ */}
       <div
         className={`relative z-20 w-full flex flex-col lg:flex-row ${rowReverse} items-center
-                    min-h-screen px-6 md:px-12 xl:px-20 pt-28 pb-32 gap-10 lg:gap-14`}
+                    min-h-[640px] sm:min-h-[700px] lg:min-h-[800px] px-6 md:px-12 xl:px-20 pt-28 pb-16 lg:pb-20 gap-10 lg:gap-14`}
       >
         {/* ── LEFT / MAIN — Text content ──────────────────────────────────── */}
         <div className={`flex-1 flex flex-col justify-center ${contentAlign} min-w-0`}>
@@ -168,8 +113,8 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className={`flex items-center gap-3 mb-8 ${rowReverse}`}
           >
-            <span className="h-px w-7 bg-amber-400 shrink-0" />
-            <span className="text-[10px] font-bold text-amber-400 tracking-[0.22em] uppercase">
+            <span className="h-px w-7 shrink-0" style={{ background: "var(--gold)" }} />
+            <span className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: "var(--gold)" }}>
               {t("label")}
             </span>
           </motion.div>
@@ -215,10 +160,10 @@ export default function Hero() {
             {/* Primary — Free Consultation */}
             <Link
               href="/consultation"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[13px] font-bold text-ink-950 transition-transform duration-200 hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[13px] font-bold text-white transition-transform duration-200 hover:scale-[1.02]"
               style={{
-                background: "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
-                boxShadow: "0 4px 22px rgba(245,158,11,0.32), inset 0 1px 0 rgba(255,255,255,0.18)",
+                background: "var(--primary)",
+                boxShadow: "0 4px 22px rgba(13,107,78,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
                 letterSpacing: "0.02em",
               }}
             >
@@ -301,7 +246,7 @@ export default function Hero() {
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
                 >
-                  <CheckCircle className="text-amber-400 w-14 h-14" strokeWidth={1.5} />
+                  <CheckCircle className="w-14 h-14" style={{ color: "var(--gold)" }} strokeWidth={1.5} />
                 </motion.div>
                 <p className="text-white font-semibold text-[1.15rem]">{t("formSuccess")}</p>
                 <p className="text-white/50 text-[13px] leading-relaxed max-w-[260px]">
@@ -312,7 +257,7 @@ export default function Hero() {
               <>
                 {/* Form header */}
                 <div className={`mb-6 ${isRtl ? "text-right" : "text-left"}`}>
-                  <p className="text-[10px] font-bold text-amber-400 tracking-[0.22em] uppercase mb-2">
+                  <p className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2" style={{ color: "var(--gold)" }}>
                     {t("formLabel")}
                   </p>
                   <h3 className="text-white font-semibold text-[1.2rem] leading-tight">
@@ -394,8 +339,8 @@ export default function Hero() {
                     className="mt-1 w-full py-3.5 rounded-xl font-bold text-[13px] text-white
                                transition-opacity duration-200 disabled:opacity-60"
                     style={{
-                      background:    "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
-                      boxShadow:     "0 4px 22px rgba(245,158,11,0.30), inset 0 1px 0 rgba(255,255,255,0.14)",
+                      background:    "var(--primary)",
+                      boxShadow:     "0 4px 22px rgba(13,107,78,0.30), inset 0 1px 0 rgba(255,255,255,0.1)",
                       letterSpacing: "0.06em",
                     }}
                   >

@@ -293,28 +293,14 @@ function InternalLinkHub() {
 // Page-level schema only. Organization (#organization) and WebSite (#website)
 // are defined once in layout.tsx — re-declaring them here created two nodes with
 // the same @id but different properties, which confuses entity resolution. The
-// homepage now contributes only page-specific nodes: the hero VideoObject, the
-// FAQ (synced 1:1 with the visible FAQ section), and high-level Service entities.
+// homepage now contributes only page-specific nodes: the FAQ (synced 1:1 with
+// the visible FAQ section) and high-level Service entities.
+// NOTE: the hero VideoObject node was removed when the hero switched from an
+// autoplay video to a static image (2026-10) — keep structured data matching
+// what's actually on the page.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      // Makes the hero background video eligible for Google video indexing.
-      // (Update uploadDate when the showreel is replaced.)
-      "@type": "VideoObject",
-      "@id": "https://saudieventmanagement.com/#hero-video",
-      name: "Saudi Event Management — Luxury Event Production in Saudi Arabia",
-      description:
-        "Showreel of luxury weddings, royal ceremonies, corporate galas, and exhibitions produced by Saudi Event Management across Riyadh, Jeddah, Dammam, and AlUla.",
-      thumbnailUrl: ["https://saudieventmanagement.com/hero_bg.webp"],
-      uploadDate: "2026-06-01T09:00:00+03:00",
-      duration: "PT5S",
-      contentUrl: "https://saudieventmanagement.com/hero-video1.mp4",
-      url: "https://saudieventmanagement.com/",
-      isFamilyFriendly: true,
-      inLanguage: "en",
-      publisher: { "@id": "https://saudieventmanagement.com/#organization" },
-    },
     {
       // Synced 1:1 with the visible FAQ section (homeFaqs) so the structured
       // data always matches on-page content — a Google rich-results requirement.
