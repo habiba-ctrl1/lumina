@@ -112,7 +112,7 @@ export default function SeasonalEventsPage() {
         },
         "datePublished": "2026-06-07",
         "dateModified": "2026-09-04",
-        "image": "https://saudieventmanagement.com/blog/saudi_national_day_event_2026.webp",
+        "image": "https://saudieventmanagement.com/blog/diriyah_event_venues.webp",
         "url": "https://saudieventmanagement.com/blog/national-day-event-ideas-saudi-arabia-corporates",
         "description": "A practical guide to organising high-impact Saudi National Day galas, activations and corporate celebrations in Riyadh and across the Kingdom."
       },
@@ -185,7 +185,7 @@ export default function SeasonalEventsPage() {
               <div className="order-last lg:order-first">
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
                   <Image
-                    src="/blog/saudi_national_day_event_2026.webp"
+                    src="/blog/diriyah_event_venues.webp"
                     alt={isAr ? "احتفال اليوم الوطني السعودي للشركات في الرياض بهوية خضراء وبيضاء" : "Saudi National Day corporate celebration in Riyadh with green-and-white national branding"}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"

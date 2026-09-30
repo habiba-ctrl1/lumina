@@ -172,7 +172,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "royal-riyadh-wedding", "makkah-vip-retreat", "madinah-spiritual-event",
     "alula-desert-festival", "dammam-corporate-seminar", "executive-summit-jeddah",
     "global-tech-summit", "neom-future-summit", "riyadh-elite-majlis",
-    "riyadh-luxury-soiree", "alkhobar-corporate-retreat", "grand-wedding-ceremony",
+    "riyadh-luxury-soiree", "grand-wedding-ceremony",
     "jeddah-beach-wedding", "riyadh-government-summit",
     // Category pages (SEO-critical Arabic layer localized).
     "luxury-weddings", "corporate-events", "vision-2030",
@@ -260,7 +260,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/portfolio/madinah-spiritual-event',   freq: 'monthly', priority: 0.6  },
     { route: '/portfolio/riyadh-government-summit',  freq: 'monthly', priority: 0.65 },
     { route: '/portfolio/jeddah-beach-wedding',      freq: 'monthly', priority: 0.65 },
-    { route: '/portfolio/alkhobar-corporate-retreat',freq: 'monthly', priority: 0.6  },
     { route: '/portfolio/grand-wedding-ceremony',    freq: 'monthly', priority: 0.6  },
 
     // ── About ─────────────────────────────────────────────────────────────────
@@ -293,27 +292,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // NOTE: /admin/* intentionally excluded — blocked in robots.txt
   ];
 
+  // NOTE: the homepage hero switched from an autoplay video to a static image
+  // (2026-10), so the video sitemap entry (paired with the VideoObject schema
+  // that used to live on the page) was removed to match.
   const staticEntries = staticPages.map(({ route, freq, priority }) => ({
     url: `${BASE}${route}`,
     lastModified: new Date(),
     changeFrequency: freq,
     priority,
-    // Attach the hero showreel to the homepage entry so Google can discover and
-    // index it (paired with the VideoObject schema on the page itself).
-    ...(route === ''
-      ? {
-          videos: [
-            {
-              title:
-                'Saudi Event Management — Luxury Event Production in Saudi Arabia',
-              thumbnail_loc: `${BASE}/hero_bg.webp`,
-              description:
-                'Showreel of luxury weddings, royal ceremonies, corporate galas, and exhibitions produced by Saudi Event Management across Riyadh, Jeddah, Dammam, and AlUla.',
-              content_loc: `${BASE}/hero-video1.mp4`,
-            },
-          ],
-        }
-      : {}),
   }));
 
   const allEntries = [

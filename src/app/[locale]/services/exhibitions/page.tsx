@@ -212,8 +212,8 @@ export default function ExhibitionsPage() {
               ? "منظِّم رائد للمعارض التجارية وشركة متخصصة في إدارة المعارض بالسعودية — بالشراكة مع إكسبو السعودية 2030 وجايتكس السعودية وبيج 5 السعودية لحضورٍ عالمي المستوى في كل معرض."
               : "Premier trade show organizer and exhibition management company in Saudi Arabia — partnering with Saudi Expo 2030, GITEX Saudi Arabia, and Big 5 Saudi for world-class presence at every expo."
           }
-          backgroundImage="/services/premium_exhibition_hero.webp"
-          imageAlt="Large-scale international trade show and exhibition in Saudi Arabia with custom booths"
+          backgroundImage="/services/diriyah_event_venues.webp"
+          imageAlt="Exhibition and trade show management by Saudi Event Management in Saudi Arabia"
           enableParallax
           badge={isAr ? "المعارض والإكسبو" : "Exhibitions & Expos"}
           breadcrumbs={[
@@ -272,7 +272,7 @@ export default function ExhibitionsPage() {
         </section>
 
         {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
-        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/gallery_2.webp')" }} aria-label="Exhibition visual showcase">
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/diriyah_event_venues.webp')" }} aria-label="Exhibition visual showcase">
           <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">
@@ -373,7 +373,7 @@ export default function ExhibitionsPage() {
         />
 
         {/* ── LEAD FORM / EXPO ENQUIRY ── */}
-        <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }}>
+        <section id="expo-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/diriyah_event_venues.webp')" }}>
           <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -501,8 +501,8 @@ export default function ExhibitionsPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.15)]">
                 <Image
-                  src="/services/exhibition_hall_riyadh.webp"
-                  alt="مركز الرياض للمعارض والمؤتمرات - أجنحة عرض وتنظيم معارض تجارية في السعودية"
+                  src="/services/diriyah_event_venues.webp"
+                  alt="فريق إدارة الفعاليات السعودية في موقع فعالية بالرياض"
                   width={800}
                   height={500}
                   className="w-full h-full object-cover"

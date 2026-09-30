@@ -44,7 +44,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/blog/saudi_national_day_event_2026.webp",
+          url: "/blog/diriyah_event_venues.webp",
           width: 1200,
           height: 630,
           alt: "Saudi National Day corporate event in Riyadh with green-and-white national branding",

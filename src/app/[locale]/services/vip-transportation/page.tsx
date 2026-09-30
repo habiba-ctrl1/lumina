@@ -335,7 +335,7 @@ export default function VipTransportationPage() {
         </section>
 
         {/* ── LEAD FORM / TRANSPORT ENQUIRY ── */}
-        <section id="transport-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/gallery_2.webp')" }}>
+        <section id="transport-enquiry" className="py-24 md:py-28 relative overflow-hidden bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('/services/diriyah_event_venues.webp')" }}>
           <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,61,44,0.92) 0%, rgba(6,78,59,0.85) 55%, rgba(13,107,78,0.92) 100%)" }} />
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
