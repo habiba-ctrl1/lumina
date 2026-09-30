@@ -104,8 +104,8 @@ const serviceCategories = [
     arabic: "المعارض والملتقيات",
     desc: "Premier exhibition management and trade show organizing for LEAP, Big 5 Saudi, Index Saudi, and global B2B expos at RICEC and RECC.",
     tags: ["Booth Design", "Trade Shows", "B2B Expos"],
-    img: "/services/exhibition_hall_riyadh.webp",
-    imgAlt: "Large exhibition hall with branded trade show stands in Riyadh Saudi Arabia",
+    img: "/services/diriyah_event_venues.webp",
+    imgAlt: "Exhibition and trade show management team on-site at a venue in Riyadh Saudi Arabia",
   },
   {
     icon: Mic,

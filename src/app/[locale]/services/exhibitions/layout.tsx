@@ -47,10 +47,10 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/services/exhibition_hall_riyadh.webp",
+          url: "/services/diriyah_event_venues.webp",
           width: 1200,
           height: 630,
-          alt: "Exhibition management company Saudi Arabia — trade show booths at a Riyadh expo hall",
+          alt: "Exhibition management company Saudi Arabia — Saudi Event Management",
         },
       ],
     },

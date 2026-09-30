@@ -138,7 +138,7 @@ export default async function VendorsPage({ params }: PageProps) {
       <section className="relative bg-neutral-950 overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
         {/* Background image */}
         <Image
-  src="/alkhobar_corporate_people.webp"
+  src="/diriyah_event_venues.webp"
   alt="Premium event vendor partnership opportunity at luxury Saudi Arabia gala"
   fill
   className="object-cover opacity-40"

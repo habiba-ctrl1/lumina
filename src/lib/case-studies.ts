@@ -174,21 +174,6 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       location: "الرياض",
     },
   },
-  "alkhobar-corporate-retreat": {
-    slug: "alkhobar-corporate-retreat",
-    name: "Al Khobar Corporate Retreat",
-    description:
-      "A 120-delegate executive team-building and branding retreat in the Eastern Province, with full logistics, facilitation, and corporate hospitality.",
-    category: "Corporate Events",
-    location: "Al Khobar",
-    image: "/alkhobar_corporate_people.webp",
-    ar: {
-      name: "ملاذ الخبر للشركات",
-      description: "ملاذ تنفيذي لبناء الفرق والعلامة التجارية لـ 120 مندوبًا في المنطقة الشرقية، مع لوجستيات كاملة وتيسير وضيافة شركات.",
-      category: "فعاليات الشركات",
-      location: "الخبر",
-    },
-  },
   "grand-wedding-ceremony": {
     slug: "grand-wedding-ceremony",
     name: "Grand Wedding Ceremony",

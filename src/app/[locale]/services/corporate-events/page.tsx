@@ -55,7 +55,7 @@ const jsonLd = {
         "@type": "LocalBusiness",
         "@id": "https://saudieventmanagement.com#organization",
         name: "Saudi Event Management",
-        image: "https://saudieventmanagement.com/services/alkhobar_corporate_people.webp",
+        image: "https://saudieventmanagement.com/services/diriyah_event_venues.webp",
         url: "https://saudieventmanagement.com",
         telephone: "+966539388072",
         address: {
@@ -696,7 +696,7 @@ export default async function CorporateEventsPage() {
         </section>
 
         {/* ── PREMIUM PARALLAX STATEMENT BAND ── */}
-        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/exhibition_hall_riyadh.webp')" }} aria-label="Corporate event visual showcase">
+        <section className="relative isolate bg-fixed bg-cover bg-center py-24 overflow-hidden" style={{ backgroundImage: "url('/services/diriyah_event_venues.webp')" }} aria-label="Corporate event visual showcase">
           <div aria-hidden className="absolute inset-0 bg-slate-900/80" />
           <div className="relative z-10 flex flex-col items-center justify-center h-full">
             <div className="flex animate-marquee-slow whitespace-nowrap opacity-30 select-none">

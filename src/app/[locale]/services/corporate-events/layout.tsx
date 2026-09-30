@@ -61,7 +61,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${base}/services/alkhobar_corporate_people.webp`,
+          url: `${base}/services/diriyah_event_venues.webp`,
           width: 1200,
           height: 630,
           alt: "Corporate Event Management Saudi Arabia — Executive Summit at KAFD Riyadh",
@@ -73,7 +73,7 @@ export async function generateMetadata({
       title: "Corporate Event Management Saudi Arabia | Saudi Event Management",
       description:
         "AGMs, executive summits, gala dinners, and Vision 2030 activations — managed end-to-end across the Kingdom.",
-      images: [`${base}/services/alkhobar_corporate_people.webp`],
+      images: [`${base}/services/diriyah_event_venues.webp`],
     },
     // Route-aware: Arabic stays `noindex, follow` until this route is added to
     // TRANSLATED_AR_ROUTES in @/lib/seo. Matches the X-Robots-Tag header.
