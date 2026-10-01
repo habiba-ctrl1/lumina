@@ -7,6 +7,7 @@ import {
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
   Trophy, TrendingUp, ImageIcon, Building2, Info, Handshake,
   Crown, Mic, Gem, Music, Car, KeyRound, Cake,
+  MonitorPlay, Speaker, UtensilsCrossed,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
@@ -36,6 +37,9 @@ const services = [
   { key: "luxuryVip",         href: "/services/luxury-vip-events", icon: Gem },
   { key: "destinationEvents", href: "/services/destination-events",icon: MapPin },
   { key: "eventProduction",   href: "/services/event-production",  icon: Landmark },
+  { key: "ledScreens",        href: "/services/led-screens",       icon: MonitorPlay },
+  { key: "soundAudio",        href: "/services/sound-audio",       icon: Speaker },
+  { key: "eventCatering",     href: "/services/event-catering",    icon: UtensilsCrossed },
   { key: "productionVenues",  href: "/services/production-venues", icon: Building2 },
   { key: "entertainment",     href: "/services/entertainment",     icon: Music },
   { key: "vipTransportation", href: "/services/vip-transportation",icon: Car },
@@ -45,7 +49,7 @@ const services = [
 
 const locations = [
   // ── Primary markets (dedicated SEO pages) ──
-  { key: "riyadh",  name: "Riyadh",    href: "/locations/riyadh",  region: "Capital Region",      badge: "HQ"     },
+  { key: "riyadh",  name: "Riyadh",    href: "/locations/riyadh",  region: "Capital Region",      badge: "Hub"    },
   { key: "jeddah",  name: "Jeddah",    href: "/locations/jeddah",  region: "Western Province",    badge: ""       },
   { key: "makkah",  name: "Makkah",    href: "/locations/makkah",  region: "Holy Capital",        badge: "Muslim" },
   { key: "dammam",  name: "Dammam",    href: "/locations/dammam",  region: "Eastern Province",    badge: ""       },

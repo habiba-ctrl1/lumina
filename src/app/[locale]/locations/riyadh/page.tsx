@@ -18,6 +18,13 @@ import {
   CheckCircle2,
   ChevronRight,
   User,
+  UtensilsCrossed,
+  MonitorPlay,
+  Speaker,
+  Clapperboard,
+  Music,
+  Car,
+  KeyRound,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -181,7 +188,7 @@ const jsonLd = {
           "name": "Which event management companies in Riyadh specialize in Vision 2030 corporate events?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria Riyadh. We arrange SECB, GEA, and Amanah Ar-Riyad permit processes through trusted partners for full compliance on all engagements.",
+            "text": "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria Riyadh. Permit and compliance requirements are identified early and handled through the licensed Saudi partners and venues delivering each event.",
           },
         },
         {
@@ -213,7 +220,7 @@ const jsonLd = {
           "name": "What is the best corporate event venue in KAFD (King Abdullah Financial District)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management plans and produces corporate events at KAFD end-to-end: AV and stage production, GEA and Amanah Ar-Riyad permits, and bilingual delegate management.",
+            "text": "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management coordinates corporate events at KAFD end-to-end through Saudi-based production partners: AV and stage production, permit coordination via the licensed delivery partner, and bilingual delegate management.",
           },
         },
         {
@@ -221,7 +228,7 @@ const jsonLd = {
           "name": "Do you organise Vision 2030 events and seminars in Riyadh?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
+            "text": "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, coordinating agenda support, speaker and delegate logistics and Arabic-English interpretation through Saudi-based partners, with permits handled by the licensed delivery partner.",
           },
         },
         {
@@ -389,7 +396,7 @@ const services = [
   {
     icon: MapPin,
     title: "Government & Vision 2030 Events",
-    text: "Ministerial launches, national program events, and Vision 2030 corporate milestones. Experienced navigating GEA, SECB, MISA, and RCRC requirements.",
+    text: "Ministerial launches, national program events, and Vision 2030 corporate milestones. GEA, MISA and RCRC requirements are coordinated through licensed Saudi partners.",
     href: "/services/corporate-events-riyadh",
   },
   {
@@ -406,6 +413,19 @@ const services = [
   },
 ];
 
+// Commercial service categories coordinated in Riyadh. Each card links to the
+// authoritative service page (the hub routes buyers; the service pages convert).
+const eventServices = [
+  { icon: UtensilsCrossed, title: "Event Catering", text: "Corporate, conference, wedding and private event catering from suitable Riyadh caterers.", href: "/services/event-catering" },
+  { icon: MonitorPlay, title: "LED Screens", text: "Indoor and outdoor LED walls for stages, conferences and exhibitions.", href: "/services/led-screens" },
+  { icon: Speaker, title: "Sound & Audio", text: "Sound systems, wireless microphones and technicians for speech and music.", href: "/services/sound-audio" },
+  { icon: Clapperboard, title: "Staging & Production", text: "Stage builds, rigging, lighting and full technical production.", href: "/services/event-production" },
+  { icon: Music, title: "Entertainment", text: "Live bands, DJs and performers, subject to date and availability.", href: "/services/entertainment" },
+  { icon: KeyRound, title: "Valet Parking", text: "Uniformed valet teams and guest-arrival management for events.", href: "/services/valet-parking" },
+  { icon: Car, title: "VIP Transportation", text: "Chauffeured VIP, delegate and airport transfers for event guests.", href: "/services/vip-transportation" },
+  { icon: Trophy, title: "Exhibitions", text: "Exhibition and stand coordination for Riyadh trade shows.", href: "/services/exhibitions" },
+];
+
 const faqs = [
   {
     q: "What is the largest event venue in Riyadh for exhibitions and trade shows?",
@@ -413,11 +433,11 @@ const faqs = [
   },
   {
     q: "Which event management company in Riyadh handles Vision 2030-aligned corporate events?",
-    a: "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria. We coordinate directly with SECB, GEA, and Amanah Ar-Riyad for full compliance and permitting on every engagement.",
+    a: "Saudi Event Management specializes in Vision 2030-aligned corporate events in Riyadh, operating across KAFD, RICEC, KAICC, and premium hotel venues including Four Seasons, Ritz-Carlton, and Waldorf Astoria. Permit and compliance requirements are identified early and handled through the licensed Saudi partners and venues delivering each event.",
   },
   {
     q: "What permits are required to host a corporate event in Riyadh?",
-    a: "Corporate events in Riyadh require an Amanah Ar-Riyad municipal permit (2–3 weeks processing). Exhibitions at RICEC follow the SECB fast-track pathway. Entertainment-category brand activations require a GEA license (4–6 weeks). Events at Diriyah need Diriyah Gate Development Authority (DGDA) approval. Saudi Event Management manages the complete permitting process.",
+    a: "Corporate events in Riyadh require an Amanah Ar-Riyad municipal permit (2–3 weeks processing). Exhibitions at RICEC follow the SECB fast-track pathway. Entertainment-category brand activations require a GEA license (4–6 weeks). Events at Diriyah need Diriyah Gate Development Authority (DGDA) approval. Saudi Event Management helps identify which permits apply; the licensed partner or venue delivering the event manages the applications.",
   },
   {
     q: "What is the best luxury wedding venue in Riyadh?",
@@ -429,11 +449,11 @@ const faqs = [
   },
   {
     q: "What is the best corporate event venue in KAFD (King Abdullah Financial District)?",
-    a: "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management plans and produces corporate events at KAFD end-to-end: AV and stage production, GEA and Amanah Ar-Riyad permits, and bilingual delegate management.",
+    a: "The KAFD Conference Centre in the King Abdullah Financial District is Riyadh's premier corporate event venue for investment forums, fintech summits, and executive conferences, with capacity for up to 2,000 delegates. Located at the heart of Saudi Arabia's financial command centre — home to the Public Investment Fund (PIF) and the Saudi Tadawul Group — KAFD pairs Grade-A meeting facilities with premium corporate hospitality. Saudi Event Management coordinates corporate events at KAFD end-to-end through Saudi-based production partners: AV and stage production, permit coordination via the licensed delivery partner, and bilingual delegate management.",
   },
   {
     q: "Do you organise Vision 2030 events and seminars in Riyadh?",
-    a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, handling agenda design, speaker and delegate logistics, simultaneous Arabic-English interpretation, and full SECB and GEA permit coordination.",
+    a: "Yes. Saudi Event Management delivers Vision 2030-aligned seminars, government program launches, and corporate milestone events across Riyadh — at KAFD, RICEC, KAICC, and premium hotel venues, coordinating agenda support, speaker and delegate logistics and Arabic-English interpretation through Saudi-based partners, with permits handled by the licensed delivery partner.",
   },
   {
     q: "Who organises gala dinners and award ceremonies in Riyadh?",
@@ -592,19 +612,19 @@ export default async function RiyadhPage() {
                 </strong>{" "}
                 in the Diplomatic Quarter handles ministerial summits and the{" "}
                 <strong>Future Investment Initiative (FII)</strong>. Saudi Event
-                Management&apos;s Riyadh team arranges{" "}
+                Management helps clients understand which of the{" "}
                 <strong>GEA</strong>, <strong>SECB</strong>, and{" "}
-                <strong>Amanah Ar-Riyad</strong> permit processes through
-                trusted partners — the three authorities governing all Riyadh
-                event categories.
+                <strong>Amanah Ar-Riyad</strong> processes apply, with
+                applications handled by the licensed partner or venue — the
+                three authorities governing Riyadh event categories.
               </p>
             </div>
             <ul className="space-y-3">
               {[
-                "SECB permit-process experience for RICEC exhibition management",
-                "GEA permit coordination for Riyadh Season brand activations",
-                "Experience navigating KAICC government event requirements",
-                "Familiarity with Diriyah Gate Development Authority (DGDA) event requirements",
+                "Early guidance on SECB exhibition requirements at RICEC",
+                "GEA permit needs flagged up front for Riyadh Season brand activations",
+                "KAICC government-event requirements checked with the venue and partner",
+                "Diriyah Gate Development Authority (DGDA) requirements confirmed per venue",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-neutral-600 text-sm">
                   <CheckCircle2 size={16} className="text-[var(--primary)] mt-0.5 shrink-0" />
@@ -645,8 +665,8 @@ export default async function RiyadhPage() {
             </h2>
             <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
               From RICEC mega-exhibitions to intimate Diplomatic Quarter dinners
-              — our Riyadh team covers every event format with Vision 2030
-              compliance built in.
+              — SEM coordinates every event format through suitable Saudi-based
+              vendors and partners, from one point of contact.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -672,6 +692,40 @@ export default async function RiyadhPage() {
         </div>
       </section>
 
+      {/* Event Services Grid — routes buyers to the authoritative service pages */}
+      <section className="py-20 bg-white border-t border-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="section-label">Event Services</span>
+            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
+              Event Services SEM Coordinates{" "}
+              <span className="text-[var(--primary)]">in Riyadh</span>
+            </h2>
+            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
+              SEM coordinates event-service requirements in Riyadh through suitable
+              Saudi-based vendors and partners. Choose a service to see what can be
+              arranged and request options for your date.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {eventServices.map((item) => (
+              <Link
+                key={item.href}
+                href={`${arHref}${item.href}`}
+                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
+              >
+                <item.icon size={22} className="text-[var(--primary)]" />
+                <h3 className="font-display font-semibold text-neutral-900 text-sm">{item.title}</h3>
+                <p className="text-neutral-500 text-xs leading-relaxed flex-1">{item.text}</p>
+                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Get service options <ChevronRight size={12} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <LocationCTA city="Riyadh" />
 
       {/* Top Venues in Riyadh */}
@@ -684,8 +738,8 @@ export default async function RiyadhPage() {
           </h2>
           <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
             From RICEC — Saudi Arabia&apos;s largest exhibition centre — to the
-            Ritz-Carlton&apos;s Diplomatic Quarter ballrooms, our Riyadh venue
-            network covers every event scale and category.
+            Ritz-Carlton&apos;s Diplomatic Quarter ballrooms, these are the
+            venues Riyadh event briefs most often involve, at every scale.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -900,16 +954,16 @@ export default async function RiyadhPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
-                title: "GEA, SECB & Amanah Permit Expertise",
-                body: "Through our trusted partners, we arrange all three Riyadh permit processes on your behalf — GEA for entertainment events, SECB for MICE exhibitions, and Amanah Ar-Riyad for municipal permits. No delays, no compliance gaps.",
+                title: "Early Permit Guidance, Partner-Handled Applications",
+                body: "Riyadh events can involve GEA (entertainment), exhibition approvals and Amanah Ar-Riyad (municipal) permits. We flag what your event is likely to need at the enquiry stage, and the licensed Saudi partner or venue delivering your event handles the applications.",
               },
               {
-                title: "RICEC Event Coordination",
-                body: "We coordinate logistics and event management support around RICEC's major annual calendar, including LEAP, World Defense Show, and Cityscape Saudi — three of the largest annual events in Saudi Arabia.",
+                title: "Planning Around Riyadh's Peak Calendar",
+                body: "RICEC's major shows — LEAP, World Defense Show and Cityscape Saudi — tighten venue, hotel and supplier availability across Riyadh. We help you start enquiries early around these peaks so suitable partner options are still open.",
               },
               {
-                title: "Vision 2030 Delivery Infrastructure",
-                body: "Every event we manage in Riyadh is structured to meet Vision 2030 reporting and compliance standards, with experience supporting corporate events, MISA-aligned forums, and national program launches.",
+                title: "One Point of Contact, Saudi-Based Delivery",
+                body: "SEM is a remote coordination platform: we qualify your brief, request options from suitable Saudi-based vendors, and manage communication through to event day. Execution is delivered by the selected local partner, with availability confirmed per date.",
               },
             ].map((card, i) => (
               <div
@@ -982,13 +1036,13 @@ export default async function RiyadhPage() {
                 <strong>Waldorf Astoria Riyadh</strong>.
               </p>
               <p>
-                Through our trusted partners, we arrange{" "}
+                Through licensed Saudi partners, clients can arrange{" "}
                 <strong>
                   Saudi Exhibitions &amp; Conventions Bureau (SECB)
                 </strong>
                 , the{" "}
                 <strong>General Entertainment Authority (GEA)</strong>, and
-                Amanah Ar-Riyad permit processes for our clients. We
+                Amanah Ar-Riyad permit processes, while SEM coordinates the brief. We
                 support <strong>Vision 2030</strong>-aligned program events,
                 Riyadh Season brand activations, and heritage galas in{" "}
                 <strong>
@@ -997,8 +1051,8 @@ export default async function RiyadhPage() {
                   </Link>
                 </strong>. As the host city of{" "}
                 <strong>World Expo 2030</strong>, Riyadh&apos;s event
-                infrastructure continues to expand — positioning our Riyadh
-                team for the largest event market in MENA.
+                infrastructure continues to expand — making it the
+                largest event market SEM coordinates in.
               </p>
               <p>
                 Whether you need a{" "}
@@ -1018,10 +1072,10 @@ export default async function RiyadhPage() {
                   exhibition team
                 </Link>{" "}
                 at RICEC,{" "}
-                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact our Riyadh team</Link>{" "}
+                <Link href="/contact" className="text-[var(--primary)] underline underline-offset-4 font-medium">contact SEM</Link>{" "}
                 or{" "}
                 <Link href="/consultation" className="text-[var(--primary)] underline underline-offset-4 font-medium">book a free consultation</Link>{" "}
-                to start planning. Our Riyadh specialists also cover large-scale{" "}
+                to start planning. SEM also coordinates large-scale{" "}
                 <Link href="/services/event-production-riyadh" className="text-neutral-900 hover:text-[var(--primary)] font-medium underline underline-offset-4 decoration-neutral-200 hover:decoration-[var(--primary)] transition-all">
                   event production
                 </Link>{" "}

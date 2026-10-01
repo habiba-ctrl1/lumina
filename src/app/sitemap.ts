@@ -223,6 +223,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/vip-transportation',  freq: 'monthly', priority: 0.7  },
     { route: '/services/entertainment',       freq: 'monthly', priority: 0.7  },
     { route: '/services/birthday-party',      freq: 'monthly', priority: 0.7  },
+    // Main commercial service categories (2026-10, batch 1). EN only — their
+    // /ar versions are untranslated and stay noindex until added to TRANSLATED_AR_ROUTES.
+    { route: '/services/event-catering',      freq: 'monthly', priority: 0.8  },
+    { route: '/services/led-screens',         freq: 'monthly', priority: 0.8  },
+    { route: '/services/sound-audio',         freq: 'monthly', priority: 0.8  },
 
     // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
     { route: '/travel',                       freq: 'monthly', priority: 0.75 },
