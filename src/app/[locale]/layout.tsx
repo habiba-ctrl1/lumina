@@ -147,7 +147,10 @@ import StickyLeadBar from "@/components/StickyLeadBar";
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "EventVenue"],
+  // Organization only: SEM is a remote coordination platform — not a venue and
+  // not a walk-in local business. No street address, geo, opening hours or
+  // ratings are published (removed 2026-10: the rating was unverified).
+  "@type": "Organization",
   "@id": "https://saudieventmanagement.com/#organization",
   name: "Saudi Event Management",
   url: "https://saudieventmanagement.com",
@@ -159,32 +162,9 @@ const organizationSchema = {
   },
   image: "https://saudieventmanagement.com/hero_bg.webp",
   description:
-    "Premier event management company in Saudi Arabia specializing in corporate events, exhibitions, luxury weddings, conferences, and event production across Riyadh, Jeddah, and AlUla.",
+    "Saudi Event Management (SEM) is an event-services coordination platform for Saudi Arabia. SEM qualifies event requirements and coordinates suitable Saudi-based vendors and partners for corporate events, exhibitions, weddings, conferences, event production, catering, valet parking and VIP transportation, with Riyadh as its main market.",
   telephone: "+966539388072",
   email: "infosaudieventmanagement@gmail.com",
-  priceRange: "$$$$",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Riyadh",
-    addressCountry: "SA",
-    addressRegion: "Riyadh Province",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 24.7136,
-    longitude: 46.6753,
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "184",
-  },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    opens: "00:00",
-    closes: "23:59",
-  },
   areaServed: [
     {
       "@type": "City",

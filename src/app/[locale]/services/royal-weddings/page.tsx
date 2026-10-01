@@ -285,19 +285,6 @@ const jsonLd = {
       ],
     },
 
-    /* ── 5. AggregateRating ── */
-    {
-      "@type": "AggregateRating",
-      itemReviewed: {
-        "@type": "LocalBusiness",
-        name: "Saudi Event Management",
-        "@id": "https://saudieventmanagement.com#organization",
-      },
-      ratingValue: "4.9",
-      reviewCount: "148",
-      bestRating: "5",
-    },
-
     /* ── 6. BreadcrumbList ── */
     {
       "@type": "BreadcrumbList",

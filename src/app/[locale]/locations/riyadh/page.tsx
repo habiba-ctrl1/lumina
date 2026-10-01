@@ -72,26 +72,19 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "EventPlanner"],
+      // Service (not LocalBusiness): SEM coordinates Riyadh event services remotely
+      // through Saudi-based partners — no Riyadh office, address or geo point.
+      "@type": "Service",
       "@id":
-        "https://saudieventmanagement.com/locations/riyadh#business",
-      "name": "Saudi Event Management — Riyadh",
+        "https://saudieventmanagement.com/locations/riyadh#service",
+      "name": "Event Services in Riyadh",
+      "serviceType": "Event services coordination",
       "url": "https://saudieventmanagement.com/locations/riyadh",
+      "provider": { "@type": "Organization", "@id": "https://saudieventmanagement.com/#organization", "name": "Saudi Event Management" },
       "description":
-        "Saudi Event Management is Riyadh's premier event planning company, specializing in corporate conferences, government summits, exhibitions at RICEC, luxury weddings at Four Seasons and Ritz-Carlton, and Vision 2030-aligned brand activations across KAFD, Diriyah, and the Diplomatic Quarter.",
+        "Event services in Riyadh — catering, LED screens, sound, lighting, staging, décor, valet parking, VIP transportation and entertainment — coordinated by Saudi Event Management through suitable Saudi-based vendors and partners for corporate events, conferences, exhibitions and weddings.",
       "image":
         "https://saudieventmanagement.com/locations/riyadh-hero.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Riyadh",
-        "addressRegion": "Riyadh Province",
-        "addressCountry": "SA",
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "24.7136",
-        "longitude": "46.6753",
-      },
       "areaServed": [
         { "@type": "City", "name": "Riyadh" },
         { "@type": "AdministrativeArea", "name": "Riyadh Province" },
