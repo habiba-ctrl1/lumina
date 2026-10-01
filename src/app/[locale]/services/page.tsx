@@ -13,7 +13,7 @@ import Image from "next/image";
 import {
   Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
   Phone, CheckCircle2, ShieldCheck, Clock, Languages, Award, TrendingUp,
-  Layers, Landmark, Briefcase, Music, Car, KeyRound, Cake,
+  Layers, Landmark, Briefcase, Music, Car, KeyRound, Cake, MonitorPlay, Speaker, UtensilsCrossed,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -156,6 +156,36 @@ const serviceCategories = [
     tags: ["Stage Design", "AV Production", "Projection Mapping"],
     img: "/services/event_production_stage_riyadh.webp",
     imgAlt: "Concert-grade event production stage with LED screens and intelligent lighting in Riyadh",
+  },
+  {
+    icon: MonitorPlay,
+    slug: "led-screens",
+    title: "LED Screens",
+    arabic: "شاشات LED",
+    desc: "Indoor and outdoor LED walls for stages, conferences and exhibitions — specified for your venue and viewing distance, supplied and operated by Saudi-based production partners.",
+    tags: ["LED Walls", "Stage Backdrops", "Outdoor Screens"],
+    img: "/services/gallery_corporate_gala.webp",
+    imgAlt: "Wide LED video wall behind a conference stage in Riyadh",
+  },
+  {
+    icon: Speaker,
+    slug: "sound-audio",
+    title: "Sound & Audio",
+    arabic: "الصوت",
+    desc: "Sound systems, speakers, wireless microphones and technicians for conferences, weddings and live entertainment — coordinated through Saudi-based audio partners.",
+    tags: ["Sound Systems", "Microphones", "Conference Audio"],
+    img: "/services/event_production_stage_riyadh.webp",
+    imgAlt: "Line-array speakers and audio mixing desk at an event stage",
+  },
+  {
+    icon: UtensilsCrossed,
+    slug: "event-catering",
+    title: "Event Catering",
+    arabic: "تموين الفعاليات",
+    desc: "Corporate, conference, wedding and private event catering in Riyadh — buffets, plated dinners and canapé receptions from suitable Saudi-based caterers.",
+    tags: ["Corporate Catering", "Wedding Catering", "Canapés & Buffets"],
+    img: "/services/saudi_gala_table_alcohol_free.webp",
+    imgAlt: "Formal event dinner table with gold-rimmed tableware and floral centrepiece",
   },
   {
     icon: Music,

@@ -465,6 +465,23 @@ export default async function EventProductionPage() {
                 </div>
               ))}
             </div>
+
+            {/* Parent → child: dedicated pages for production disciplines */}
+            <div className="mt-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-neutral-50/70 border border-neutral-200/80 rounded-2xl p-6">
+              <p className="text-sm font-semibold text-neutral-900 md:w-56 shrink-0">
+                {isAr ? "صفحات خدمات مخصّصة" : "Need one discipline only?"}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { href: "/services/led-screens", label: isAr ? "شاشات LED" : "LED Screens & LED Walls" },
+                  { href: "/services/sound-audio", label: isAr ? "الصوت والأنظمة الصوتية" : "Sound & Audio Systems" },
+                ].map((l) => (
+                  <Link key={l.href} href={`${arHref}${l.href}`} className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--primary)] bg-white border border-neutral-200/80 rounded-full px-4 py-2 hover:border-[var(--primary)]/40">
+                    {l.label} <ChevronRight size={13} />
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

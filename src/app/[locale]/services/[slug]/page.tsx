@@ -67,7 +67,7 @@ const PSEO_DATA: Record<
     faqs: [
       { q: "Which event management companies operate in Riyadh?", a: "Saudi Event Management coordinates corporate events in Riyadh for the corporate and government sectors through a locally coordinated vendor network." },
       { q: "What are the best corporate event venues in Riyadh?", a: "The top corporate event venues in Riyadh include the KAFD Conference Center, KAICC, Ritz-Carlton, JW Marriott, and Al Faisaliah Hotel. We have strong working relationships across Riyadh's major venues." },
-      { q: "corporate event company near me Riyadh", a: "Saudi Event Management is headquartered in Riyadh with a full-time team available for rapid on-site consultation and same-day event logistics support across the capital." },
+      { q: "corporate event company near me Riyadh", a: "Saudi Event Management coordinates corporate events across Riyadh as a remote coordination platform: we qualify your brief, request options from suitable Riyadh-based vendors and partners, and keep one point of contact through to event day, with on-site delivery by the selected local partner." },
       { q: "How early should a corporate event in Riyadh be booked?", a: "Book major Riyadh venues 6–12 months ahead — around 6 months for hotel ballrooms like the Ritz-Carlton and Four Seasons, and 8–12 months for the KAFD Conference Centre given its investment-forum demand. Amanah Ar-Riyad municipal permits take 2–3 weeks and GEA entertainment permits take 4–6 weeks, so permit coordination begins as soon as the venue and date are confirmed." },
     ],
     relatedServices: [

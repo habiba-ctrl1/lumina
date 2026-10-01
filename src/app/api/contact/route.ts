@@ -9,8 +9,12 @@ export async function POST(request: Request) {
     const body = await request.json();
     const {
       name, email, phone, company, eventType, budget,
-      eventDate, guestCount, venueCity, message, source, inquiryType
+      eventDate, guestCount, venueCity, message, source, inquiryType, service
     } = body;
+
+    // Guest counts arrive as free text ("150", "200-250", "approx 80"); a NaN
+    // here would fail the whole QuoteRequest insert, so keep only a real number.
+    const parsedGuests = guestCount ? parseInt(String(guestCount).replace(/[^0-9]/g, " ").trim(), 10) : NaN;
 
     // A "vendor" submission is a supplier/partner pitching their services — NOT a
     // client booking an event. These must skip quote generation and the sales
@@ -111,7 +115,11 @@ export async function POST(request: Request) {
             eventDate: eventDate || null,
             source: 'website',
             status: 'New',
-            notes: budget ? `Client stated budget: ${budget}` : 'New website inquiry — awaiting consultation.'
+            notes: [
+              service ? `Service required: ${service}` : null,
+              budget ? `Client stated budget: ${budget}` : null,
+              `Source page: ${source || 'direct_contact'}`,
+            ].filter(Boolean).join(' · ') || 'New website inquiry — awaiting consultation.'
           }
         });
 
@@ -124,10 +132,12 @@ export async function POST(request: Request) {
             eventType: eventType || 'General',
             eventDate: eventDate ? new Date(eventDate) : null,
             eventCity: venueCity || 'Riyadh',
-            guestCount: guestCount ? parseInt(guestCount) : null,
+            guestCount: Number.isFinite(parsedGuests) ? parsedGuests : null,
             budgetRange: budget,
             requirements: message,
-            source: 'homepage_form',
+            // Real originating page (e.g. "led_screens_page") so leads can be
+            // attributed per service page — previously hardcoded "homepage_form".
+            source: source || 'website',
             status: 'pending'
           }
         });
