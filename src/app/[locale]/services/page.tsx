@@ -13,7 +13,7 @@ import Image from "next/image";
 import {
   Building2, Heart, Sun, Crown, Tent, Zap, Mic, Globe, ChevronRight, Gem,
   Phone, CheckCircle2, ShieldCheck, Clock, Languages, Award, TrendingUp,
-  Layers, Landmark, Briefcase, Music, Car, KeyRound, Cake, MonitorPlay, Speaker, UtensilsCrossed,
+  Layers, Landmark, Briefcase, Music, Car, KeyRound, Cake, MonitorPlay, Speaker, UtensilsCrossed, Lightbulb, Flower2,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -176,6 +176,26 @@ const serviceCategories = [
     tags: ["Sound Systems", "Microphones", "Conference Audio"],
     img: "/services/event_production_stage_riyadh.webp",
     imgAlt: "Line-array speakers and audio mixing desk at an event stage",
+  },
+  {
+    icon: Lightbulb,
+    slug: "event-lighting",
+    title: "Event Lighting",
+    arabic: "إضاءة الفعاليات",
+    desc: "Stage, ambient, architectural and decorative lighting for weddings, galas and conferences — supplied and operated by Saudi-based lighting partners.",
+    tags: ["Stage Lighting", "Uplighting", "Moving Heads"],
+    img: "/riyadh_luxury_reception_people.webp",
+    imgAlt: "Hotel ballroom with warm stage lighting and chandeliers",
+  },
+  {
+    icon: Flower2,
+    slug: "event-decoration",
+    title: "Event Decoration",
+    arabic: "تزيين الفعاليات",
+    desc: "Wedding and corporate décor, floral styling, table styling and event furniture in Riyadh — coordinated through Saudi-based décor partners.",
+    tags: ["Wedding Décor", "Floral Styling", "Event Furniture"],
+    img: "/saudi_event_decor_2026.webp",
+    imgAlt: "Styled event lounge with sofas, florals and lanterns",
   },
   {
     icon: UtensilsCrossed,

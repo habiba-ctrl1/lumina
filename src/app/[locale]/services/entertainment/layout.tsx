@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: isAr
       ? { absolute: "شركة ترفيه فعاليات في الرياض والسعودية | فرق موسيقية ومنسقو حفلات وفنانون | إدارة الفعاليات السعودية" }
-      : "Event Entertainment Company Riyadh & Saudi Arabia | Live Bands, DJs & Performers | Saudi Event Management",
+      : { absolute: "Event Entertainment Company Riyadh & Saudi Arabia | Live Bands, DJs & Performers | Saudi Event Management" },
     description: isAr
       ? "تنسيق ترفيه الفعاليات في الرياض وعموم السعودية — فرق موسيقية شرقية وغربية، وفنانون تفاعليون، ومنسقو حفلات (DJ)، وترفيه للأعراس وحفلات الشركات وحفلات الجوائز — عبر شبكة شركاء إدارة الفعاليات السعودية."
       : "Event entertainment coordination across Riyadh and Saudi Arabia — Eastern & Western live bands, interactive performers, and DJs for weddings, corporate events, and gala & awards nights — delivered through Saudi Event Management's partner network.",
@@ -43,7 +43,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/services/event_production_stage_riyadh.webp",
+          url: "/services/live_band_musicians_saudi.webp",
           width: 1200,
           height: 630,
           alt: "Event Entertainment Saudi Arabia",

@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: isAr
       ? { absolute: "تنظيم حفلات أعياد الميلاد في السعودية | تجهيز وترفيه وضيافة | إدارة الفعاليات السعودية" }
-      : "Birthday Party Planning Saudi Arabia | Setup, Kids Entertainment & Catering | Saudi Event Management",
+      : { absolute: "Birthday Party Planning Saudi Arabia | Setup, Kids Entertainment & Catering | Saudi Event Management" },
     description: isAr
       ? "تنظيم حفلات أعياد ميلاد متكاملة في الرياض وجدة والدمام — تجهيز وديكور، وترفيه وأنشطة للأطفال، وكشك تصوير، وضيافة، منسّق بالكامل عبر شبكة شركاء إدارة الفعاليات السعودية."
       : "Managed birthday party planning across Riyadh, Jeddah, and Dammam — setup and decor, kids entertainment and activities, photo booth, and catering, coordinated end-to-end through Saudi Event Management's partner network.",

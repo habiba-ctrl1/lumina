@@ -228,6 +228,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/event-catering',      freq: 'monthly', priority: 0.8  },
     { route: '/services/led-screens',         freq: 'monthly', priority: 0.8  },
     { route: '/services/sound-audio',         freq: 'monthly', priority: 0.8  },
+    { route: '/services/event-lighting',      freq: 'monthly', priority: 0.8  },
+    { route: '/services/event-decoration',    freq: 'monthly', priority: 0.75 },
 
     // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
     { route: '/travel',                       freq: 'monthly', priority: 0.75 },
