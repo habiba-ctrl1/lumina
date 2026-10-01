@@ -466,21 +466,62 @@ export default async function EventProductionPage() {
               ))}
             </div>
 
-            {/* Parent → child: dedicated pages for production disciplines */}
-            <div className="mt-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-6 bg-neutral-50/70 border border-neutral-200/80 rounded-2xl p-6">
-              <p className="text-sm font-semibold text-neutral-900 md:w-56 shrink-0">
-                {isAr ? "صفحات خدمات مخصّصة" : "Need one discipline only?"}
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { href: "/services/led-screens", label: isAr ? "شاشات LED" : "LED Screens & LED Walls" },
-                  { href: "/services/sound-audio", label: isAr ? "الصوت والأنظمة الصوتية" : "Sound & Audio Systems" },
-                ].map((l) => (
-                  <Link key={l.href} href={`${arHref}${l.href}`} className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--primary)] bg-white border border-neutral-200/80 rounded-full px-4 py-2 hover:border-[var(--primary)]/40">
-                    {l.label} <ChevronRight size={13} />
-                  </Link>
-                ))}
+            {/* Parent → child: the production hub. Disciplines with their own page link
+                down; the rest are covered here. Avoids duplicating child-page content. */}
+            <div className="mt-14 rounded-2xl border border-neutral-200/80 bg-neutral-50/70 p-6 md:p-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div className="max-w-2xl">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)]">{isAr ? "تخصصات الإنتاج" : "Production disciplines"}</p>
+                  <h3 className="mt-2 !text-2xl text-neutral-900">{isAr ? "كل ما يحتاجه المسرح — في طلب واحد" : "Everything the stage needs — in one enquiry"}</h3>
+                  <p className="mt-2 text-[15px] text-neutral-600">{isAr ? "إنتاج الفعاليات يجمع هذه التخصصات. للتخصصات التي لها صفحات مخصّصة، اطّلع على التفاصيل الكاملة هناك." : "Event production brings these disciplines together. Where a discipline has its own page, you'll find the full detail there."}</p>
+                </div>
               </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                {(isAr
+                  ? [
+                      { t: "تصميم المسرح", d: "مفاهيم وتصاميم ثلاثية الأبعاد" },
+                      { t: "بناء المسرح", d: "منصات وهياكل وخلفيات" },
+                      { t: "الهياكل والتعليق", d: "هياكل معدنية وتعليق معتمد" },
+                      { t: "الإنتاج السمعي البصري", d: "تكامل الشاشات والصوت والبث" },
+                      { t: "شاشات LED", d: "جدران وشاشات المسرح", href: "/services/led-screens" },
+                      { t: "إنتاج الصوت", d: "أنظمة صوت وميكروفونات", href: "/services/sound-audio" },
+                      { t: "إنتاج الإضاءة", d: "إضاءة المسرح والأجواء", href: "/services/event-lighting" },
+                      { t: "الطاقم التقني", d: "فنيون ومشغّلون" },
+                      { t: "التحكم بالعرض", d: "إدارة الفقرات والتوقيت" },
+                      { t: "الدعم التقني", d: "تجهيز واختبار وتفكيك" },
+                    ]
+                  : [
+                      { t: "Stage Design", d: "Concepts and 3D visuals" },
+                      { t: "Stage Construction", d: "Decks, structures, backdrops" },
+                      { t: "Truss & Rigging", d: "Truss and approved rigging" },
+                      { t: "AV Production", d: "Screens, audio and streaming integrated" },
+                      { t: "LED Screens", d: "Stage walls and displays", href: "/services/led-screens" },
+                      { t: "Sound Production", d: "PA systems and microphones", href: "/services/sound-audio" },
+                      { t: "Lighting Production", d: "Stage and ambient lighting", href: "/services/event-lighting" },
+                      { t: "Technical Crew", d: "Technicians and operators" },
+                      { t: "Show Control", d: "Cueing and run-of-show" },
+                      { t: "Technical Support", d: "Setup, testing, de-rig" },
+                    ]
+                ).map((item: { t: string; d: string; href?: string }) =>
+                  item.href ? (
+                    <Link key={item.t} href={`${arHref}${item.href}`} className="group rounded-xl border border-[var(--primary)]/25 bg-white p-4 hover:border-[var(--primary)] hover:shadow-md transition-all">
+                      <span className="flex items-center justify-between gap-2 text-[14.5px] font-semibold text-[var(--primary)]">{item.t} <ChevronRight size={15} className="transition-transform group-hover:translate-x-0.5 rtl:rotate-180" /></span>
+                      <span className="mt-1 block text-[12.5px] text-neutral-500">{item.d}</span>
+                    </Link>
+                  ) : (
+                    <div key={item.t} className="rounded-xl border border-neutral-200/80 bg-white p-4">
+                      <span className="block text-[14.5px] font-semibold text-neutral-900">{item.t}</span>
+                      <span className="mt-1 block text-[12.5px] text-neutral-500">{item.d}</span>
+                    </div>
+                  ),
+                )}
+              </div>
+              <p className="mt-6 text-[13.5px] text-neutral-600">
+                {isAr ? "تتكامل أيضًا مع " : "Production also connects with "}
+                <Link href={`${arHref}/services/entertainment`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "الترفيه" : "entertainment"}</Link>
+                {isAr ? " و" : " and "}
+                <Link href={`${arHref}/services/exhibitions`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "المعارض" : "exhibition stand builds"}</Link>.
+              </p>
             </div>
           </div>
         </section>
@@ -821,13 +862,13 @@ export default async function EventProductionPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(isAr
                 ? [
-                { title: "فعاليات الشركات", slug: "corporate-events", desc: "تخطيط متكامل لفعاليات الشركات مع فريق الإنتاج لدينا مدمجًا." },
-                { title: "إدارة المؤتمرات", slug: "conferences", desc: "خدمات منظِّم مؤتمرات تدمج قسم الإنتاج الصوتي والمرئي لدينا لتنفيذ سلس." },
+                { title: "فعاليات الشركات", slug: "corporate-events", desc: "تنسيق فعاليات الشركات مع دمج شركاء الإنتاج منذ البداية." },
+                { title: "إدارة المؤتمرات", slug: "conferences", desc: "تنسيق المؤتمرات مع شركاء الإنتاج السمعي البصري لتنفيذ سلس." },
                 { title: "خدمات وقاعات الفعاليات", slug: "production-venues", desc: "اختيار القاعات والتموين والديكور وإدارة الضيافة المتكاملة." },
                   ]
                 : [
-                { title: "Corporate Events", slug: "corporate-events", desc: "End-to-end corporate event planning with our production team embedded." },
-                { title: "Conference Management", slug: "conferences", desc: "PCO services integrating our AV production division for seamless delivery." },
+                { title: "Corporate Events", slug: "corporate-events", desc: "Corporate event coordination with production partners integrated from the start." },
+                { title: "Conference Management", slug: "conferences", desc: "Conference coordination with AV production partners for seamless delivery." },
                 { title: "Event Services & Venues", slug: "production-venues", desc: "Venue sourcing, catering, decoration, and full hospitality management." },
               ]).map((rel) => (
                 <Link

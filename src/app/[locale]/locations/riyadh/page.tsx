@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/lib/seo";
 import Navbar from "@/components/Navbar";
-import InternalPageHero from "@/components/InternalPageHero";
+import RiyadhHubTop from "@/components/riyadh/RiyadhHubTop";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import LocationCTA from "@/components/LocationCTA";
@@ -18,13 +18,6 @@ import {
   CheckCircle2,
   ChevronRight,
   User,
-  UtensilsCrossed,
-  MonitorPlay,
-  Speaker,
-  Clapperboard,
-  Music,
-  Car,
-  KeyRound,
 } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -35,10 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr
       ? { absolute: "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية" }
-      : { absolute: "Event Management Company in Riyadh | Saudi Event Management" },
+      : { absolute: "Event Services in Riyadh | Event Management Company | Saudi Event Management" },
     description: isAr
       ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030، تصاريح هيئة الترفيه عبر شركاء موثوقين."
-      : "Saudi Event Management is Riyadh's premier event planning company. Corporate conferences at RICEC, KAICC & KAFD, luxury weddings at Four Seasons & Ritz-Carlton, brand activations during Riyadh Season. Vision 2030-aligned. GEA & SECB permit support through trusted partners.",
+      : "Event services and event management in Riyadh — catering, LED screens, sound, lighting, staging, valet, VIP transportation and entertainment, coordinated through suitable Saudi-based partners. Request a quote for your date and venue.",
     keywords:
       "event management company in Riyadh, event planner in Riyadh, corporate event organizer in Riyadh, wedding planner in Riyadh, conference management Riyadh RICEC, KAFD events, KAICC conference, Riyadh Season brand activation, Vision 2030 events, تنظيم فعاليات الرياض",
     alternates: {
@@ -48,10 +41,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: isAr
         ? "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية"
-        : "Event Management Company in Riyadh | Saudi Event Management",
+        : "Event Services in Riyadh | Event Management Company | Saudi Event Management",
       description: isAr
         ? "الشركة الرائدة لإدارة الفعاليات في الرياض — مؤتمرات الشركات، والقمم الحكومية، والمعارض في RICEC، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون."
-        : "Riyadh's premier event management company — corporate conferences, government summits, exhibitions at RICEC, and luxury weddings at Four Seasons & Ritz-Carlton.",
+        : "Catering, LED screens, sound, lighting, staging, valet, VIP transportation and entertainment for Riyadh events — coordinated through suitable Saudi-based partners.",
       url: path,
       siteName: "Saudi Event Management",
       images: [
@@ -67,9 +60,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: "summary_large_image",
-      title: "Event Management Company in Riyadh | Saudi Event Management",
+      title: "Event Services in Riyadh | Event Management Company | Saudi Event Management",
       description:
-        "Riyadh's premier event management company for corporate conferences, exhibitions, luxury weddings & Vision 2030 brand activations.",
+        "Catering, LED, sound, lighting, valet, VIP transport and entertainment for Riyadh events — coordinated through Saudi-based partners.",
       images: ["https://saudieventmanagement.com/locations/riyadh-og.webp"],
     },
   };
@@ -413,19 +406,6 @@ const services = [
   },
 ];
 
-// Commercial service categories coordinated in Riyadh. Each card links to the
-// authoritative service page (the hub routes buyers; the service pages convert).
-const eventServices = [
-  { icon: UtensilsCrossed, title: "Event Catering", text: "Corporate, conference, wedding and private event catering from suitable Riyadh caterers.", href: "/services/event-catering" },
-  { icon: MonitorPlay, title: "LED Screens", text: "Indoor and outdoor LED walls for stages, conferences and exhibitions.", href: "/services/led-screens" },
-  { icon: Speaker, title: "Sound & Audio", text: "Sound systems, wireless microphones and technicians for speech and music.", href: "/services/sound-audio" },
-  { icon: Clapperboard, title: "Staging & Production", text: "Stage builds, rigging, lighting and full technical production.", href: "/services/event-production" },
-  { icon: Music, title: "Entertainment", text: "Live bands, DJs and performers, subject to date and availability.", href: "/services/entertainment" },
-  { icon: KeyRound, title: "Valet Parking", text: "Uniformed valet teams and guest-arrival management for events.", href: "/services/valet-parking" },
-  { icon: Car, title: "VIP Transportation", text: "Chauffeured VIP, delegate and airport transfers for event guests.", href: "/services/vip-transportation" },
-  { icon: Trophy, title: "Exhibitions", text: "Exhibition and stand coordination for Riyadh trade shows.", href: "/services/exhibitions" },
-];
-
 const faqs = [
   {
     q: "What is the largest event venue in Riyadh for exhibitions and trade shows?",
@@ -500,50 +480,14 @@ export default async function RiyadhPage() {
   const isAr = (await getLocale()) === "ar";
   const arHref = isAr ? "/ar" : "";
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
+    <main className="min-h-screen bg-white overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
 
-      <InternalPageHero
-        title={isAr ? "إدارة الفعاليات في " : "Event Management in "}
-        titleHighlight={isAr ? "الرياض" : "Riyadh"}
-        subtitle={
-          isAr
-            ? "من معارض RICEC إلى قمم مبادرة مستقبل الاستثمار، ومن حفلات الدرعية التراثية إلى حفلات الزفاف الفاخرة في فورسيزونز — الشركة الرائدة لإدارة الفعاليات في الرياض، نقدّم فعاليات متوافقة مع رؤية 2030 بأعلى المعايير."
-            : "From RICEC exhibitions to FII investment summits, Diriyah heritage galas to Four Seasons luxury weddings — Riyadh's premier event management company delivering Vision 2030-aligned events at the highest standard."
-        }
-        backgroundImage="/locations/riyadh-hero.webp"
-        imageAlt="Riyadh city skyline — event management company in Riyadh, Saudi Arabia"
-        badge={isAr ? "عاصمة السعودية | الرياض" : "Saudi Arabia's Capital | Riyadh"}
-        breadcrumbs={[
-          { label: isAr ? "الرئيسية" : "Home", href: arHref || "/" },
-          { label: isAr ? "المواقع" : "Locations", href: `${arHref}/locations` },
-          { label: isAr ? "الرياض" : "Riyadh" },
-        ]}
-        enableParallax
-        minHeight="large"
-      />
-
-      {/* CTA Bar */}
-      <div className="bg-white border-b border-neutral-100 py-6">
-        <div className="max-w-xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/contact"
-            className="btn-primary hover:scale-105 transition-all shadow-sm rounded-sm"
-          >
-            Request a Proposal
-          </Link>
-          <Link
-            href="/portfolio"
-            className="btn-outline hover:scale-105 transition-all rounded-sm"
-          >
-            View Our Riyadh Work
-          </Link>
-        </div>
-      </div>
+      <RiyadhHubTop isAr={isAr} prefix={arHref} />
 
       {/* Riyadh at a Glance — Entity Density Strip */}
       <section className="py-12 bg-[var(--surface-raised)] border-y border-neutral-100">
@@ -658,7 +602,7 @@ export default async function RiyadhPage() {
       <section className="py-20 bg-[var(--surface-raised)] border-t border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="section-label">Services in Riyadh</span>
+            <span className="section-label">Event Types in Riyadh</span>
             <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
               Full-Service Event Management{" "}
               <span className="text-[var(--primary)]">in Riyadh</span>
@@ -685,40 +629,6 @@ export default async function RiyadhPage() {
                 </p>
                 <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                   Learn more <ChevronRight size={12} />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Event Services Grid — routes buyers to the authoritative service pages */}
-      <section className="py-20 bg-white border-t border-neutral-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="section-label">Event Services</span>
-            <h2 className="font-display font-medium text-neutral-900 text-2xl md:text-3xl mt-4">
-              Event Services SEM Coordinates{" "}
-              <span className="text-[var(--primary)]">in Riyadh</span>
-            </h2>
-            <p className="text-neutral-500 text-sm mt-4 max-w-2xl mx-auto">
-              SEM coordinates event-service requirements in Riyadh through suitable
-              Saudi-based vendors and partners. Choose a service to see what can be
-              arranged and request options for your date.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {eventServices.map((item) => (
-              <Link
-                key={item.href}
-                href={`${arHref}${item.href}`}
-                className="group flex flex-col gap-3 p-6 bg-white border border-neutral-200/80 rounded-2xl shadow-sm hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all"
-              >
-                <item.icon size={22} className="text-[var(--primary)]" />
-                <h3 className="font-display font-semibold text-neutral-900 text-sm">{item.title}</h3>
-                <p className="text-neutral-500 text-xs leading-relaxed flex-1">{item.text}</p>
-                <span className="text-xs text-[var(--primary)] font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Get service options <ChevronRight size={12} />
                 </span>
               </Link>
             ))}

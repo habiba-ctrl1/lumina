@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: isAr
       ? { absolute: "نقل كبار الشخصيات في الرياض والسعودية | سائق خاص واستقبال مطارات ونقل فعاليات | إدارة الفعاليات السعودية" }
-      : "VIP Transportation Riyadh & Saudi Arabia | Chauffeur, Airport & Event Transfers | Saudi Event Management",
+      : { absolute: "VIP Transportation Riyadh & Saudi Arabia | Chauffeur, Airport & Event Transfers | Saudi Event Management" },
     description: isAr
       ? "نقل كبار الشخصيات بسائق خاص في الرياض وعموم السعودية — استقبال المطارات والفنادق، وتأجير سيارات فاخرة بسائقين، ومركبات تنفيذية مدرَّعة، وأساطيل لضيوف الشركات والمؤتمرات والأعراس، بتنسيق إدارة الفعاليات السعودية."
       : "VIP and chauffeur-driven transportation across Riyadh and Saudi Arabia — airport & hotel transfers, luxury car hire with drivers, armored executive cars, and corporate, conference & wedding guest fleets, coordinated by Saudi Event Management.",
@@ -46,7 +46,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/services/premium_luxury_vip_hero.webp",
+          url: "/services/vip_airport_chauffeur_riyadh.webp",
           width: 1200,
           height: 630,
           alt: "VIP Event Transportation Saudi Arabia",

@@ -150,8 +150,8 @@ export default function ExhibitionsPage() {
 
   const expoServices = [
     { icon: Briefcase, title: "Trade Show Organizing", desc: "End-to-end management for Index Saudi and Saudi Agriculture level industry expos with international delegations." },
-    { icon: PenTool, title: "Booth Design", desc: "Award-winning expo booth design KSA experts for GITEX and massive business fair pavilions." },
-    { icon: Layout, title: "Stand Building", desc: "Leading exhibition stand builder for Saudi Expo 2030, creating breathtaking exhibition pavilion Saudi structures." },
+    { icon: PenTool, title: "Booth Design", desc: "Expo booth design KSA concepts for GITEX and large business-fair pavilions, developed with experienced Saudi stand-design partners." },
+    { icon: Layout, title: "Stand Building", desc: "Exhibition stand building coordinated with Saudi fabrication partners — from shell-scheme upgrades to custom exhibition pavilion Saudi structures." },
     { icon: Globe, title: "International Expo", desc: "Strategic international expo organizer Saudi Arabia connecting global ADIPEC partners with KSA." },
     { icon: Monitor, title: "Digital Showcase", desc: "High-impact commercial display event and product showcase Saudi Arabia utilizing interactive AV and VR technologies." },
     { icon: Users, title: "B2B Matchmaking", desc: "Professional B2B expo planner Riyadh facilitating high-value networking for trade fair organizer Jeddah summits." },
@@ -166,16 +166,16 @@ export default function ExhibitionsPage() {
     { q: "We want to exhibit at a trade show in Riyadh — where should we start?", a: "The first step is to book exhibition space KSA early. Saudi Event Management provides end-to-end consulting, helping you select the best event, secure space, and manage all local logistics." },
     { q: "What are the upcoming major exhibitions in Saudi Arabia in 2025?", a: "2025 features LEAP, Saudi Agriculture, Index Saudi, and major summits aligned with Vision 2030. We can align your brand with the most relevant B2B opportunities." },
     { q: "How to design an exhibition booth for a Saudi audience?", a: "It requires balancing modern technology with cultural nuances, such as private Majlis meeting areas. Our exhibition stand design Riyadh team excels at creating culturally resonant, high-impact pavilions." },
-    { q: "trade show organizer near me Riyadh", a: "Saudi Event Management is strategically headquartered in Riyadh, offering rapid, on-the-ground support and logistics for any trade exhibition." },
+    { q: "trade show organizer near me Riyadh", a: "Saudi Event Management coordinates trade exhibition support in Riyadh as a remote coordination platform, working with Riyadh-based stand-build and logistics partners for on-the-ground delivery." },
     { q: "exhibition management company Saudi Arabia", a: "As a top-tier exhibition management company Saudi Arabia, we provide comprehensive services across the Kingdom for any industry expo or business fair." },
-    { q: "expo booth builder Jeddah", a: "Saudi Event Management operates extensively on the West Coast, acting as the premier expo booth builder Jeddah for custom commercial display events." },
+    { q: "expo booth builder Jeddah", a: "Saudi Event Management coordinates expo booth builds in Jeddah through stand-fabrication partners operating on the West Coast, for custom commercial display events." },
   ];
 
   // ── Arabic body content (phase 1b) — parallel to the English arrays above. ──
   const expoServicesAr = [
     { title: "تنظيم المعارض التجارية", desc: "إدارة متكاملة لمعارض بحجم إندكس السعودية والزراعة السعودية بوفود دولية." },
-    { title: "تصميم الأجنحة", desc: "خبراء حائزون على جوائز في تصميم أجنحة المعارض بالمملكة لجايتكس وأجنحة المعارض التجارية الكبرى." },
-    { title: "بناء المنصات", desc: "باني منصات معارض رائد لإكسبو السعودية 2030، نبتكر أجنحة عرض مبهرة في السعودية." },
+    { title: "تصميم الأجنحة", desc: "مفاهيم تصميم أجنحة المعارض في المملكة لجايتكس وأجنحة المعارض التجارية الكبرى، بالتعاون مع شركاء سعوديين ذوي خبرة في تصميم الأجنحة." },
+    { title: "بناء المنصات", desc: "بناء منصات المعارض بالتنسيق مع شركاء تصنيع سعوديين — من ترقية الأجنحة القياسية إلى أجنحة عرض مخصّصة في السعودية." },
     { title: "المعارض الدولية", desc: "منظِّم معارض دولي استراتيجي في السعودية يربط شركاء أديبك العالميين بالمملكة." },
     { title: "العرض الرقمي", desc: "فعاليات عرض تجارية مؤثّرة وعروض منتجات في السعودية بتقنيات صوت وصورة وواقع افتراضي تفاعلية." },
     { title: "المطابقة التجارية (B2B)", desc: "مخطّط معارض B2B محترف في الرياض يسهّل تواصلًا عالي القيمة لقمم المعارض في جدة." },
@@ -190,9 +190,9 @@ export default function ExhibitionsPage() {
     { q: "نريد المشاركة في معرض بالرياض — من أين نبدأ؟", a: "الخطوة الأولى هي حجز مساحة المعرض مبكرًا في المملكة. وتقدّم إدارة الفعاليات السعودية استشارات متكاملة تساعدك على اختيار الفعالية الأنسب وتأمين المساحة وإدارة جميع اللوجستيات المحلية." },
     { q: "ما أبرز المعارض القادمة في السعودية 2025؟", a: "يشهد 2025 معارض LEAP والزراعة السعودية وإندكس السعودية وقممًا كبرى متوافقة مع رؤية 2030. ويمكننا مواءمة علامتك مع أنسب الفرص التجارية." },
     { q: "كيف تصمّم جناح معرض لجمهور سعودي؟", a: "يتطلب ذلك موازنة التقنية الحديثة مع اللمسات الثقافية، مثل مناطق المجلس الخاصة. ويتميّز فريق تصميم أجنحة المعارض لدينا في الرياض بابتكار أجنحة مؤثّرة متناغمة ثقافيًا." },
-    { q: "منظّم معارض تجارية قريب مني في الرياض", a: "تتخذ إدارة الفعاليات السعودية من الرياض مقرًا لها، وتوفّر دعمًا ميدانيًا سريعًا ولوجستيات لأي معرض تجاري." },
+    { q: "منظّم معارض تجارية قريب مني في الرياض", a: "تنسّق إدارة الفعاليات السعودية دعم المعارض التجارية في الرياض بصفتها منصة تنسيق عن بُعد، بالعمل مع شركاء في الرياض لبناء الأجنحة واللوجستيات والتنفيذ الميداني." },
     { q: "شركة إدارة معارض في السعودية", a: "بصفتنا شركة إدارة معارض من الطراز الأول في السعودية، نقدّم خدمات شاملة في عموم المملكة لأي معرض صناعي أو تجاري." },
-    { q: "باني أجنحة معارض في جدة", a: "تعمل إدارة الفعاليات السعودية بكثافة على الساحل الغربي، بصفتها باني أجنحة المعارض الأول في جدة لفعاليات العرض التجارية المخصّصة." },
+    { q: "باني أجنحة معارض في جدة", a: "تنسّق إدارة الفعاليات السعودية بناء أجنحة المعارض في جدة عبر شركاء تصنيع أجنحة يعملون على الساحل الغربي، لفعاليات العرض التجارية المخصّصة." },
   ];
 
   return (
@@ -335,6 +335,62 @@ export default function ExhibitionsPage() {
                   <p className="text-neutral-500 text-sm leading-relaxed">{isAr ? expoServicesAr[i].desc : service.desc}</p>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── BOOTH & EXHIBITION SOLUTIONS — one place for stand requirements; links out to
+              the authoritative technical pages instead of duplicating them. No separate booth URLs. ── */}
+        <section className="py-20 md:py-24 bg-neutral-50/70 border-y border-neutral-200/80">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)]">{isAr ? "حلول الأجنحة والمعارض" : "Booth & exhibition solutions"}</p>
+              <h2 className="mt-3 text-neutral-900">{isAr ? "كل ما يحتاجه جناحك في المعرض" : "Everything your exhibition stand needs"}</h2>
+              <p className="mt-4 text-[16px] text-neutral-600">{isAr ? "ننسّق متطلبات الجناح مع شركاء سعوديين للتصميم والتصنيع والتقنيات — ويعتمد التوفّر على المعرض والتاريخ ومواصفات الجناح." : "SEM coordinates stand requirements with Saudi-based design, fabrication and technical partners — availability depends on the show, dates and stand specification."}</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {(isAr
+                ? [
+                    { t: "تصميم الأجنحة", d: "مفاهيم وتصاميم ثلاثية الأبعاد" },
+                    { t: "تأجير الأجنحة", d: "أجنحة جاهزة ومعيارية" },
+                    { t: "السمعيات والبصريات", d: "شاشات وصوت للعروض", href: "/services/sound-audio" },
+                    { t: "شاشات LED", d: "جدران فيديو للجناح", href: "/services/led-screens" },
+                    { t: "الإضاءة", d: "إضاءة الجناح والمنتجات", href: "/services/event-lighting" },
+                    { t: "الأثاث", d: "صالات وكاونترات وطاولات", href: "/services/event-decoration" },
+                    { t: "التسجيل", d: "كاونترات وأنظمة التسجيل" },
+                    { t: "طاقم المعرض", d: "مضيفون وفرق الجناح" },
+                    { t: "الهوية والجرافيك", d: "طباعة ولافتات ورسومات" },
+                    { t: "الإنتاج التقني", d: "هياكل وتعليق وطاقم", href: "/services/event-production" },
+                  ]
+                : [
+                    { t: "Booth Design", d: "Concepts and 3D visuals" },
+                    { t: "Booth Rental", d: "Modular and system stands" },
+                    { t: "Exhibition AV", d: "Screens and audio for demos", href: "/services/sound-audio" },
+                    { t: "LED Screens", d: "Video walls built into stands", href: "/services/led-screens" },
+                    { t: "Lighting", d: "Stand and product lighting", href: "/services/event-lighting" },
+                    { t: "Furniture", d: "Lounges, counters, tables", href: "/services/event-decoration" },
+                    { t: "Registration", d: "Counters and check-in" },
+                    { t: "Exhibition Staffing", d: "Hosts and stand teams" },
+                    { t: "Branding & Graphics", d: "Print, signage, graphics" },
+                    { t: "Technical Production", d: "Structures, rigging, crew", href: "/services/event-production" },
+                  ]
+              ).map((item: { t: string; d: string; href?: string }) =>
+                item.href ? (
+                  <Link key={item.t} href={`${arHref}${item.href}`} className="group rounded-xl border border-[var(--primary)]/25 bg-white p-4 hover:border-[var(--primary)] hover:shadow-md transition-all">
+                    <span className="flex items-center justify-between gap-2 text-[14.5px] font-semibold text-[var(--primary)]">{item.t} <ChevronRight size={15} className="transition-transform group-hover:translate-x-0.5 rtl:rotate-180" /></span>
+                    <span className="mt-1 block text-[12.5px] text-neutral-500">{item.d}</span>
+                  </Link>
+                ) : (
+                  <div key={item.t} className="rounded-xl border border-neutral-200/80 bg-white p-4">
+                    <span className="block text-[14.5px] font-semibold text-neutral-900">{item.t}</span>
+                    <span className="mt-1 block text-[12.5px] text-neutral-500">{item.d}</span>
+                  </div>
+                ),
+              )}
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="#expo-enquiry" className="inline-flex items-center justify-center h-12 px-7 rounded-xl bg-[var(--primary)] text-white hover:text-white hover:bg-[var(--primary-dark)] font-semibold text-[14px] transition-colors">{isAr ? "ناقش متطلبات جناحك" : "Discuss Your Stand Requirements"}</a>
+              <a href="https://wa.me/966539388072?text=Hi%20SEM%2C%20I%20need%20an%20exhibition%20stand%20in%20Riyadh." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl border border-neutral-300 bg-white text-neutral-800 hover:text-[var(--primary)] hover:border-[var(--primary)] font-semibold text-[14px] transition-colors"><Phone size={15} /> {isAr ? "راسلنا واتساب" : "WhatsApp SEM"}</a>
             </div>
           </div>
         </section>

@@ -13,7 +13,7 @@ export async function generateMetadata({
   return {
     title: isAr
       ? { absolute: "خدمة فاليه (صف السيارات) في الرياض والسعودية | فاليه أعراس وشركات ومؤتمرات | إدارة الفعاليات السعودية" }
-      : "Valet Parking Riyadh & Saudi Arabia | Event, Wedding & Corporate Valet | Saudi Event Management",
+      : { absolute: "Valet Parking Riyadh & Saudi Arabia | Event, Wedding & Corporate Valet | Saudi Event Management" },
     description: isAr
       ? "خدمة فاليه احترافية للفعاليات في الرياض وعموم السعودية — أعراس وشركات ومؤتمرات ومعارض: طاقم موحّد الزي، وإدارة مفاتيح آمنة، وأولوية وقوف، ومساعدة ذوي الإعاقة، بتنسيق إدارة الفعاليات السعودية."
       : "Professional event valet parking across Riyadh and Saudi Arabia — for weddings, corporate events, conferences & exhibitions: uniformed staff, secure key management, priority parking, and accessibility support, coordinated by Saudi Event Management.",
@@ -43,7 +43,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       images: [
         {
-          url: "/services/wedding_hall_grand_entrance.webp",
+          url: "/services/valet_golf_cart_guest_mobility.webp",
           width: 1200,
           height: 630,
           alt: "Event Valet Parking Saudi Arabia",

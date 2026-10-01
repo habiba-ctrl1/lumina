@@ -11,9 +11,15 @@ import { Send, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
  */
 export interface ServiceLeadField {
   name: string;
+  /** English label — always used in the composed CRM message so admin stays readable. */
   label: string;
+  /** Optional on-screen label (e.g. Arabic); falls back to `label`. */
+  displayLabel?: string;
   type: "select" | "text";
+  /** Option VALUES (English — these are what reach the CRM). */
   options?: string[];
+  /** Optional on-screen option labels, same order as `options`. */
+  optionLabels?: string[];
   placeholder?: string;
   /** Only show this field when one of these "Service Required" values is selected. Omit = always show. */
   showFor?: string[];
@@ -58,7 +64,19 @@ export interface ServiceLeadFormProps {
   serviceFields?: ServiceLeadField[];
   /** Budget range options (field is always optional). */
   budgetOptions?: string[];
+  /** On-screen labels for serviceOptions / eventTypeOptions (same order). Values stay English. */
+  serviceOptionLabels?: string[];
+  eventTypeOptionLabels?: string[];
+  /** UI language for the form labels. */
+  locale?: string;
 }
+
+const UI = {
+  en: { service: "Service Required", name: "Full Name", email: "Email", workEmail: "Work Email", whatsapp: "WhatsApp Number", phone: "Phone / WhatsApp", city: "City", venue: "Venue / Location", venuePh: "Venue name or district (if known)", budget: "Budget Range", optional: "(optional)", serviceDetails: "Service details", contact: "Preferred Contact Method", select: "Select...", namePh: "Your name", companyPh: "Company name", processing: "Processing...", footer: "Confidential · No obligation · Pricing confirmed only after supplier availability is checked", success: "Thank you — your request has been received. We'll review your requirements and contact you by your preferred method.", error: "Something went wrong. Please try again or message us on WhatsApp." },
+  ar: { service: "الخدمة المطلوبة", name: "الاسم الكامل", email: "البريد الإلكتروني", workEmail: "البريد الإلكتروني", whatsapp: "رقم واتساب", phone: "الهاتف / واتساب", city: "المدينة", venue: "الموقع / القاعة", venuePh: "اسم القاعة أو الحي (إن وُجد)", budget: "نطاق الميزانية", optional: "(اختياري)", serviceDetails: "تفاصيل الخدمة", contact: "طريقة التواصل المفضّلة", select: "اختر...", namePh: "اسمك", companyPh: "اسم الشركة", processing: "جارٍ الإرسال...", footer: "سرّي · دون التزام · تُؤكَّد الأسعار بعد التحقق من توفّر المزوّد", success: "شكرًا لك — استلمنا طلبك. سنراجع متطلباتك ونتواصل معك بالطريقة التي تفضّلها.", error: "حدث خطأ. يرجى المحاولة مرة أخرى أو مراسلتنا عبر واتساب." },
+} as const;
+
+const CONTACT_LABELS_AR: Record<string, string> = { WhatsApp: "واتساب", "Phone call": "اتصال هاتفي", Email: "البريد الإلكتروني" };
 
 const DEFAULT_EVENT_TYPES = [
   "Corporate Summit / Conference",
@@ -100,7 +118,12 @@ export default function ServiceLeadForm({
   defaultService = "",
   serviceFields = [],
   budgetOptions = DEFAULT_BUDGETS,
+  serviceOptionLabels,
+  eventTypeOptionLabels,
+  locale = "en",
 }: ServiceLeadFormProps) {
+  const isAr = locale === "ar";
+  const t = isAr ? UI.ar : UI.en;
   const qualified = Array.isArray(serviceOptions) && serviceOptions.length > 0;
 
   const emptyForm = () => ({
@@ -207,7 +230,7 @@ export default function ServiceLeadForm({
         {qualified && (
           <div className="space-y-2">
             <label htmlFor={`${source}-service`} className={labelClass}>
-              Service Required {required}
+              {t.service} {required}
             </label>
             <select
               id={`${source}-service`}
@@ -217,9 +240,9 @@ export default function ServiceLeadForm({
               className={`${inputClass("service")} appearance-none cursor-pointer`}
               {...focusProps("service")}
             >
-              <option value="">Select...</option>
-              {serviceOptions!.map((opt) => (
-                <option key={opt} value={opt}>{opt}</option>
+              <option value="">{t.select}</option>
+              {serviceOptions!.map((opt, i) => (
+                <option key={opt} value={opt}>{serviceOptionLabels?.[i] ?? opt}</option>
               ))}
             </select>
           </div>
@@ -228,13 +251,13 @@ export default function ServiceLeadForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-2">
             <label className={labelClass}>
-              Full Name {required}
+              {t.name} {required}
             </label>
             <input
               type="text"
               required
               autoComplete="name"
-              placeholder="Your name"
+              placeholder={t.namePh}
               className={inputClass("name")}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -244,7 +267,7 @@ export default function ServiceLeadForm({
 
           <div className="space-y-2">
             <label className={labelClass}>
-              {qualified ? "Email" : "Work Email"} {required}
+              {qualified ? t.email : t.workEmail} {required}
             </label>
             <input
               type="email"
@@ -262,7 +285,7 @@ export default function ServiceLeadForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-2">
             <label className={labelClass}>
-              {qualified ? <>WhatsApp Number {required}</> : "Phone / WhatsApp"}
+              {qualified ? <>{t.whatsapp} {required}</> : t.phone}
             </label>
             <input
               type="tel"
@@ -281,7 +304,7 @@ export default function ServiceLeadForm({
             <input
               type="text"
               autoComplete="organization"
-              placeholder="Company name"
+              placeholder={t.companyPh}
               className={inputClass("company")}
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -299,24 +322,24 @@ export default function ServiceLeadForm({
               className={`${inputClass("type")} appearance-none cursor-pointer`}
               {...focusProps("type")}
             >
-              <option value="">Select...</option>
-              {eventTypeOptions.map((opt) => (
+              <option value="">{t.select}</option>
+              {eventTypeOptions.map((opt, i) => (
                 <option key={opt} value={opt}>
-                  {opt}
+                  {eventTypeOptionLabels?.[i] ?? opt}
                 </option>
               ))}
             </select>
           </div>
 
           <div className="space-y-2">
-            <label className={labelClass}>City</label>
+            <label className={labelClass}>{t.city}</label>
             <select
               value={formData.venueCity}
               onChange={(e) => setFormData({ ...formData, venueCity: e.target.value })}
               className={`${inputClass("city")} appearance-none cursor-pointer`}
               {...focusProps("city")}
             >
-              <option value="">Select...</option>
+              <option value="">{t.select}</option>
               <option value="Riyadh">Riyadh</option>
               <option value="Jeddah">Jeddah</option>
               <option value="Dammam">Dammam</option>
@@ -354,10 +377,10 @@ export default function ServiceLeadForm({
         {qualified && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="space-y-2">
-              <label className={labelClass}>Venue / Location</label>
+              <label className={labelClass}>{t.venue}</label>
               <input
                 type="text"
-                placeholder="Venue name or district (if known)"
+                placeholder={t.venuePh}
                 className={inputClass("venue")}
                 value={formData.venue}
                 onChange={(e) => setFormData({ ...formData, venue: e.target.value })}
@@ -365,14 +388,14 @@ export default function ServiceLeadForm({
               />
             </div>
             <div className="space-y-2">
-              <label className={labelClass}>Budget Range <span className="text-neutral-400 font-normal">(optional)</span></label>
+              <label className={labelClass}>{t.budget} <span className="text-neutral-400 font-normal">{t.optional}</span></label>
               <select
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                 className={`${inputClass("budget")} appearance-none cursor-pointer`}
                 {...focusProps("budget")}
               >
-                <option value="">Select...</option>
+                <option value="">{t.select}</option>
                 {budgetOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
                 ))}
@@ -384,12 +407,12 @@ export default function ServiceLeadForm({
         {qualified && visibleFields.length > 0 && (
           <fieldset className="rounded-xl border border-neutral-200/80 bg-neutral-50/60 p-4 sm:p-5">
             <legend className="px-1 text-[12px] font-semibold uppercase tracking-wider text-[var(--primary)]">
-              {formData.service ? `${formData.service} details` : "Service details"}
+              {t.serviceDetails}
             </legend>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {visibleFields.map((f) => (
                 <div key={f.name} className="space-y-2">
-                  <label htmlFor={`${source}-${f.name}`} className={labelClass}>{f.label}</label>
+                  <label htmlFor={`${source}-${f.name}`} className={labelClass}>{f.displayLabel ?? f.label}</label>
                   {f.type === "select" ? (
                     <select
                       id={`${source}-${f.name}`}
@@ -398,9 +421,9 @@ export default function ServiceLeadForm({
                       className={`${inputClass(f.name)} appearance-none cursor-pointer bg-white`}
                       {...focusProps(f.name)}
                     >
-                      <option value="">Select...</option>
-                      {(f.options || []).map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
+                      <option value="">{t.select}</option>
+                      {(f.options || []).map((opt, i) => (
+                        <option key={opt} value={opt}>{f.optionLabels?.[i] ?? opt}</option>
                       ))}
                     </select>
                   ) : (
@@ -437,7 +460,7 @@ export default function ServiceLeadForm({
 
         {qualified && (
           <div className="space-y-2">
-            <span className={labelClass}>Preferred Contact Method</span>
+            <span className={labelClass}>{t.contact}</span>
             <div className="flex flex-wrap gap-2.5" role="radiogroup" aria-label="Preferred contact method">
               {CONTACT_METHODS.map((m) => (
                 <label
@@ -456,7 +479,7 @@ export default function ServiceLeadForm({
                     onChange={() => setFormData({ ...formData, preferredContact: m })}
                     className="sr-only"
                   />
-                  {m}
+                  {isAr ? CONTACT_LABELS_AR[m] : m}
                 </label>
               ))}
             </div>
@@ -477,7 +500,7 @@ export default function ServiceLeadForm({
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
-                Processing...
+                {t.processing}
               </>
             ) : (
               <>
@@ -487,7 +510,7 @@ export default function ServiceLeadForm({
             )}
           </motion.button>
           <p className="text-center text-neutral-400 text-[11px] mt-3">
-            Confidential · No obligation · Pricing confirmed only after supplier availability is checked
+            {t.footer}
           </p>
         </div>
 
@@ -500,7 +523,7 @@ export default function ServiceLeadForm({
               className="flex items-center gap-3 text-emerald-700 text-[13px] font-medium bg-emerald-50 px-6 py-4 rounded-xl border border-emerald-100"
             >
               <CheckCircle size={18} className="shrink-0 text-emerald-600" />
-              <span>Thank you — your request has been received. We&apos;ll review your requirements and contact you by your preferred method.</span>
+              <span>{t.success}</span>
             </motion.div>
           )}
 
@@ -512,7 +535,7 @@ export default function ServiceLeadForm({
               className="flex items-center gap-3 text-rose-700 text-[13px] font-medium bg-rose-50 px-6 py-4 rounded-xl border border-rose-100"
             >
               <AlertCircle size={18} className="shrink-0 text-rose-600" />
-              <span>Something went wrong. Please try again or message us on WhatsApp.</span>
+              <span>{t.error}</span>
             </motion.div>
           )}
         </AnimatePresence>

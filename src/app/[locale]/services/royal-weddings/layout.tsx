@@ -14,7 +14,7 @@ export async function generateMetadata({
   return {
     title: isAr
       ? { absolute: "مخطّط أعراس ملكية في السعودية | فخامة المراسم والبروتوكول الملكي | إدارة الفعاليات السعودية" }
-      : "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury & Royal Protocol | Saudi Event Management",
+      : { absolute: "Royal Wedding Planner Saudi Arabia | Ceremonial Luxury & Royal Protocol | Saudi Event Management" },
     description: isAr
       ? "كبار المتخصصين في تخطيط الأعراس الملكية بالسعودية. مراسم عقد القران، وحفلات وليمة لأكثر من 2000 ضيف، ومواكب الزفّة، وتجارب قصور مخصّصة — مصمّمة لأعرق عائلات المملكة في الرياض وجدة والعلا ونيوم."
       : "Saudi Arabia's foremost royal wedding planning specialists. Nikah ceremonies, Walima receptions for 2,000+ guests, Zaffa processions, and bespoke palace-venue experiences — designed for the Kingdom's most distinguished families in Riyadh, Jeddah, AlUla, and NEOM.",
