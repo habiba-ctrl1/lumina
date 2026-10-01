@@ -69,6 +69,8 @@ export const HUB_GROUPS: { id: HubGroup; label: string; blurb: string }[] = [
 /** "Build your event" sequence — each node links to the service that covers it. */
 export const EVENT_BUILD_STEPS: { label: string; note: string; href: string }[] = [
   { label: "Venue", note: "Hall, hotel or outdoor site", href: "/services/production-venues" },
+  { label: "Guest Arrival & Valet", note: "Drop-off, keys, parking", href: "/services/valet-parking" },
+  { label: "VIP Transportation", note: "Airport, hotel, convoys", href: "/services/vip-transportation" },
   { label: "Stage", note: "Structure, truss, backdrop", href: "/services/event-production" },
   { label: "LED", note: "Screens and video walls", href: "/services/led-screens" },
   { label: "Sound", note: "Speakers and microphones", href: "/services/sound-audio" },
@@ -76,5 +78,4 @@ export const EVENT_BUILD_STEPS: { label: string; note: string; href: string }[] 
   { label: "Décor", note: "Florals, styling, furniture", href: "/services/event-decoration" },
   { label: "Catering", note: "Food and hospitality", href: "/services/event-catering" },
   { label: "Entertainment", note: "Music and performers", href: "/services/entertainment" },
-  { label: "Guest Arrival", note: "Valet and VIP transport", href: "/services/valet-parking" },
 ];

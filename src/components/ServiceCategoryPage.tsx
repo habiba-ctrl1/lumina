@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ServiceLeadForm from "@/components/ServiceLeadForm";
+import EventIntentTabs from "@/components/services/EventIntentTabs";
+import RequirementBuilder from "@/components/services/RequirementBuilder";
 import {
   ArrowRight, CheckCircle2, ChevronDown, ChevronRight, MessageCircle, ShieldCheck, ClipboardList, Handshake,
   UtensilsCrossed, Coffee, ChefHat, Users, Clock, Leaf, Sparkles, Monitor, Sun, Layers, Play, Wrench, Truck,
@@ -50,6 +52,8 @@ const UI = {
     riyadh: "Riyadh", faq: "Frequently asked questions", related: "Related services", all: "All services",
     finalTitle: "Ready to check options for your event?", finalText: "Availability and pricing depend on the service, date, venue and supplier. Send your requirements and SEM will come back with suitable options.",
     eventDate: "Event Date", requirements: "Specific Requirements", eyebrow: "Request a Quote",
+    intentsLabel: "By event type", journeyLabel: "Guest journey", optionsLabel: "Options", builderLabel: "Requirement builder",
+    builderTitle: "What do you need for your event?", builderLead: "Three quick choices — we take you to the right enquiry form with your answers filled in.", subjectTo: "Subject to availability",
   },
   ar: {
     home: "الرئيسية", services: "الخدمات", quote: "اطلب عرض سعر", whatsapp: "راسلنا واتساب", discuss: "ناقش متطلباتك",
@@ -65,6 +69,8 @@ const UI = {
     riyadh: "الرياض", faq: "الأسئلة الشائعة", related: "خدمات ذات صلة", all: "جميع الخدمات",
     finalTitle: "جاهز للتحقق من الخيارات لفعاليتك؟", finalText: "يعتمد التوفّر والسعر على الخدمة والتاريخ والموقع والمزوّد. أرسل متطلباتك وسنعود إليك بخيارات مناسبة.",
     eventDate: "تاريخ الفعالية", requirements: "متطلبات إضافية", eyebrow: "اطلب عرض سعر",
+    intentsLabel: "حسب نوع الفعالية", journeyLabel: "رحلة الضيف", optionsLabel: "الخيارات", builderLabel: "منشئ المتطلبات",
+    builderTitle: "ما الذي تحتاجه لفعاليتك؟", builderLead: "ثلاثة اختيارات سريعة — ثم ننقلك إلى نموذج الطلب المناسب وقد عُبّئت إجاباتك.", subjectTo: "حسب التوفّر",
   },
 } as const;
 
@@ -338,6 +344,16 @@ export default function ServiceCategoryPage({ category: c, locale }: { category:
           </div>
         </section>
 
+        {/* EVENT INTENTS — how the service solves each event type */}
+        {x.eventIntents && (
+          <section className="pb-16 md:pb-24">
+            <div className={CONTAINER}>
+              <SectionHead eyebrow={t.intentsLabel} title={x.eventIntents.heading} lead={x.eventIntents.lead} />
+              <EventIntentTabs items={x.eventIntents.items} prefix={prefix} />
+            </div>
+          </section>
+        )}
+
         {/* Mid-page CTA */}
         <section className="pb-16 md:pb-24">
           <div className={CONTAINER}>
@@ -353,6 +369,79 @@ export default function ServiceCategoryPage({ category: c, locale }: { category:
             </div>
           </div>
         </section>
+
+        {/* GUEST JOURNEYS — visual flows; each node links to the service that covers it */}
+        {x.journeys && (
+          <section className="py-16 md:py-24 bg-neutral-950 text-white">
+            <div className={CONTAINER}>
+              <div className="mb-10 md:mb-14 max-w-3xl">
+                <Eyebrow light>{t.journeyLabel}</Eyebrow>
+                <h2 className="mt-3 text-white">{x.journeys.heading}</h2>
+                <p className="mt-4 text-[16px] text-white/65">{x.journeys.lead}</p>
+              </div>
+              <div className="space-y-12">
+                {x.journeys.flows.map((flow) => (
+                  <div key={flow.title}>
+                    <h3 className="!text-[1.15rem] text-[#C5A880]">{flow.title}</h3>
+                    <ol className="mt-5 flex snap-x gap-0 overflow-x-auto pb-3 -mx-4 px-4 sm:mx-0 sm:px-0">
+                      {flow.steps.map((st, i) => {
+                        const inner = (
+                          <>
+                            <span className="text-[11px] font-bold text-[#C5A880]">{String(i + 1).padStart(2, "0")}</span>
+                            <span className="mt-2 block text-[15px] font-semibold text-white">{st.label}</span>
+                            {st.note && <span className="mt-1 block text-[12.5px] leading-snug text-white/55">{st.note}</span>}
+                            {st.href && <ArrowRight size={14} className={`mt-auto pt-3 box-content text-white/40 group-hover:text-[#C5A880] ${ARROW}`} />}
+                          </>
+                        );
+                        return (
+                          <li key={st.label} className="flex shrink-0 snap-start items-stretch">
+                            {st.href ? (
+                              <Link href={href(st.href)} className="group flex w-44 flex-col rounded-xl border border-white/10 bg-white/[0.05] p-4 text-white hover:text-white hover:border-[#C5A880]/60 hover:bg-white/[0.09] transition-colors">{inner}</Link>
+                            ) : (
+                              <div className="flex w-44 flex-col rounded-xl border border-white/10 bg-white/[0.03] p-4">{inner}</div>
+                            )}
+                            {i < flow.steps.length - 1 && (
+                              <span aria-hidden className="flex w-7 shrink-0 items-center justify-center text-white/30"><ChevronRight size={16} className="rtl:rotate-180" /></span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* SERVICE / VEHICLE OPTIONS — categories only, availability-dependent */}
+        {x.options && (
+          <section id="options" className="py-16 md:py-24 scroll-mt-24">
+            <div className={CONTAINER}>
+              <SectionHead eyebrow={t.optionsLabel} title={x.options.heading} lead={x.options.lead} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {x.options.items.map((o) => (
+                  <div key={o.title} className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200/80 bg-white transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_20px_50px_-22px_rgba(15,23,42,0.35)]">
+                    {o.image ? (
+                      <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                        <Image src={o.image} alt={o.imageAlt || o.title} fill loading="lazy" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                      </div>
+                    ) : (
+                      <div className="relative flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-[var(--primary)]/[0.08] via-white to-[#C5A880]/[0.15]"><span className="scale-150"><IconBadge icon={o.icon} /></span></div>
+                    )}
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="!text-[16.5px] text-neutral-900">{o.title}</h3>
+                      <p className="mt-1.5 text-[13.5px] leading-relaxed text-neutral-600">{o.desc}</p>
+                      <p className="mt-3 text-[12.5px] text-neutral-500"><span className="font-semibold text-neutral-700">{t.typical}:</span> {o.suits}</p>
+                      <span className="mt-auto pt-4"><span className="inline-flex rounded-full bg-neutral-100 px-2.5 py-1 text-[11px] font-semibold text-neutral-600">{t.subjectTo}</span></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-[13px] text-neutral-500">{x.options.note}</p>
+            </div>
+          </section>
+        )}
 
         {/* 6 ── DECISION-FLOW INFOGRAPHIC */}
         <section className="py-16 md:py-20 bg-[var(--primary)]/[0.04] border-y border-[var(--primary)]/10">
@@ -378,6 +467,22 @@ export default function ServiceCategoryPage({ category: c, locale }: { category:
             </ol>
           </div>
         </section>
+
+        {/* REQUIREMENT BUILDER — routes to the right enquiry form, prefilled */}
+        {x.builder && (
+          <section className="py-16 md:py-24 bg-neutral-50/80 border-t border-neutral-200/70">
+            <div className={`${CONTAINER} grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start`}>
+              <div className="lg:col-span-4">
+                <Eyebrow>{t.builderLabel}</Eyebrow>
+                <h2 className="mt-3 text-neutral-900">{t.builderTitle}</h2>
+                <p className="mt-4 text-[16px] text-neutral-600">{t.builderLead}</p>
+              </div>
+              <div className="lg:col-span-8">
+                <RequirementBuilder locale={isAr ? "ar" : "en"} prefix={prefix} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 7 ── ENQUIRY FORM */}
         <section id="enquiry" className="relative scroll-mt-24 overflow-hidden py-16 md:py-24">

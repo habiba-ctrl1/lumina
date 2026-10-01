@@ -707,6 +707,22 @@ export default async function ConferencesPage() {
           </div>
         </section>
 
+        {/* ── Guest arrival & logistics — contextual links to transport / valet ── */}
+        <section className="py-10 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)] shrink-0">{isAr ? "وصول الضيوف واللوجستيات" : "Guest arrival & logistics"}</p>
+            <p className="text-[15px] text-neutral-600 leading-relaxed">
+              {isAr ? "يمكن تنسيق " : "SEM can also coordinate "}
+              <Link href={`${arHref}/services/vip-transportation`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "نقل المندوبين والمتحدثين" : "delegate and speaker transportation"}</Link>
+              {isAr ? "، و" : ", "}
+              <Link href={`${arHref}/services/valet-parking`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "فاليه المؤتمرات" : "conference valet parking"}</Link>
+              {isAr ? "، و" : " and "}
+              <Link href={`${arHref}/services/sound-audio`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "الصوت للمؤتمرات" : "conference sound & audio"}</Link>
+              {isAr ? " ضمن الطلب نفسه." : " within the same enquiry."}
+            </p>
+          </div>
+        </section>
+
         {/* ── Related Services ── */}
         <section className="py-20 bg-neutral-50/70 border-t border-neutral-200/70">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">

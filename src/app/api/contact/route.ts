@@ -8,9 +8,18 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const {
-      name, email, phone, company, eventType, budget,
+      name, email: rawEmail, phone, company, eventType, budget,
       eventDate, guestCount, venueCity, message, source, inquiryType, service
     } = body;
+
+    // Email is optional for WhatsApp-first leads. Inquiry.email / Client.email are
+    // required (Client is upserted by email), so a lead with only a phone gets a
+    // deterministic placeholder on the reserved .invalid TLD (never deliverable).
+    // No email is ever sent to it — see hasRealEmail below.
+    const trimmedEmail = typeof rawEmail === 'string' ? rawEmail.trim() : '';
+    const phoneDigits = phone ? String(phone).replace(/[^0-9]/g, '') : '';
+    const hasRealEmail = trimmedEmail.length > 0;
+    const email = hasRealEmail ? trimmedEmail : (phoneDigits ? `whatsapp-${phoneDigits}@no-email.invalid` : '');
 
     // Guest counts arrive as free text ("150", "200-250", "approx 80"); a NaN
     // here would fail the whole QuoteRequest insert, so keep only a real number.
@@ -28,7 +37,7 @@ export async function POST(request: Request) {
     console.log('Incoming Inquiry:', { name, email, eventType, inquiryType: isVendor ? 'vendor' : 'client' });
 
     if (!name || !email || !message) {
-      return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
+      return NextResponse.json({ error: 'Name, message, and an email or WhatsApp number are required.' }, { status: 400 });
     }
 
     // All inbound client leads are routed to Habiba Asghar (single point of ownership).
@@ -174,7 +183,7 @@ export async function POST(request: Request) {
             await resend.emails.send({
               from: FROM_EMAIL,
               to: [ADMIN_EMAIL],
-              replyTo: email,
+              replyTo: hasRealEmail ? email : ADMIN_EMAIL,
               subject: `🤝 New Partner Inquiry: ${name}${company ? ` · ${company}` : ''}`,
               html: `
                 <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
@@ -204,7 +213,7 @@ export async function POST(request: Request) {
             });
 
             // Acknowledgement to the vendor — partnership tone, no quote/SAR figure.
-            await resend.emails.send({
+            if (hasRealEmail) await resend.emails.send({
               from: FROM_EMAIL,
               to: [email],
               replyTo: ADMIN_EMAIL,
@@ -261,7 +270,7 @@ export async function POST(request: Request) {
           await resend.emails.send({
             from: FROM_EMAIL,
             to: [ADMIN_EMAIL],
-            replyTo: email,
+            replyTo: hasRealEmail ? email : ADMIN_EMAIL,
             subject: `🔔 New Lead: ${name} · ${safeEventType} · ${safeCity}`,
             html: `
               <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden;">
@@ -321,7 +330,7 @@ export async function POST(request: Request) {
           });
 
           // User Confirmation
-          await resend.emails.send({
+          if (hasRealEmail) await resend.emails.send({
             from: FROM_EMAIL,
             to: [email],
             replyTo: ADMIN_EMAIL,

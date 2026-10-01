@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
 
@@ -15,7 +15,7 @@ export interface ServiceLeadField {
   label: string;
   /** Optional on-screen label (e.g. Arabic); falls back to `label`. */
   displayLabel?: string;
-  type: "select" | "text";
+  type: "select" | "text" | "time";
   /** Option VALUES (English — these are what reach the CRM). */
   options?: string[];
   /** Optional on-screen option labels, same order as `options`. */
@@ -147,6 +147,22 @@ export default function ServiceLeadForm({
   const [details, setDetails] = useState<Record<string, string>>({});
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  // Prefill from the event requirement builder (?event=Wedding&need=...&city=Riyadh).
+  // Values only pre-select options that actually exist; everything else goes to the message.
+  useEffect(() => {
+    if (!qualified || typeof window === "undefined") return;
+    const p = new URLSearchParams(window.location.search);
+    const event = p.get("event"), need = p.get("need"), city = p.get("city");
+    if (!event && !need && !city) return;
+    setFormData((d) => ({
+      ...d,
+      eventType: event && eventTypeOptions.includes(event) ? event : d.eventType,
+      venueCity: city && ["Riyadh", "Jeddah", "Dammam", "AlUla", "NEOM", "Other"].includes(city) ? city : d.venueCity,
+      message: d.message || [event, need, city].filter(Boolean).join(" · ") + "\n",
+    }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const visibleFields = serviceFields.filter(
@@ -267,11 +283,11 @@ export default function ServiceLeadForm({
 
           <div className="space-y-2">
             <label className={labelClass}>
-              {qualified ? t.email : t.workEmail} {required}
+              {qualified ? <>{t.email} <span className="text-neutral-400 font-normal">{t.optional}</span></> : <>{t.workEmail} {required}</>}
             </label>
             <input
               type="email"
-              required
+              required={!qualified}
               autoComplete="email"
               placeholder="you@company.com"
               className={inputClass("email")}
@@ -429,7 +445,7 @@ export default function ServiceLeadForm({
                   ) : (
                     <input
                       id={`${source}-${f.name}`}
-                      type="text"
+                      type={f.type === "time" ? "time" : "text"}
                       placeholder={f.placeholder}
                       value={details[f.name] || ""}
                       onChange={(e) => setDetails({ ...details, [f.name]: e.target.value })}

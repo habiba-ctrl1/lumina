@@ -3,14 +3,24 @@ import type { ServiceCategory } from "./types";
 // Metadata for this route lives in app/[locale]/services/valet-parking/layout.tsx
 // (indexed EN + AR) — intentionally not duplicated here.
 const fields = [
-  { name: "vehicles", label: "Expected vehicles", displayLabel: "Expected vehicles", type: "select" as const, options: ["Under 50", "50–150", "150–300", "300+", "Not sure"] },
-  { name: "duration", label: "Event duration", displayLabel: "Event duration", type: "select" as const, options: ["Up to 3 hours", "3–6 hours", "Full day", "Multi-day"] },
-  { name: "vip", label: "VIP arrivals?", displayLabel: "VIP arrivals?", type: "select" as const, options: ["Yes", "No", "Not sure"] },
-  { name: "parking", label: "Parking available", displayLabel: "Parking available", type: "select" as const, options: ["Venue car park", "Nearby / overflow lot", "Street / limited", "Not sure"] },
-  { name: "addOns", label: "Add-ons of interest", displayLabel: "Add-ons of interest", type: "text" as const, placeholder: "e.g. golf carts, wheelchair assistance" },
+  { name: "startTime", label: "Start time", type: "time" as const },
+  { name: "duration", label: "Event duration", type: "select" as const, options: ["Up to 3 hours", "3–6 hours", "Full day", "Multi-day"] },
+  { name: "vehicles", label: "Estimated vehicles (if known)", type: "select" as const, options: ["Under 50", "50–150", "150–300", "300+", "Not sure"] },
+  { name: "vip", label: "VIP guests?", type: "select" as const, options: ["Yes", "No", "Not sure"] },
+  { name: "parking", label: "Parking arrangement", type: "select" as const, options: ["Venue car park", "Nearby / overflow lot", "Street / limited", "Not sure"] },
+  { name: "addOns", label: "Golf cart / accessibility needs", type: "select" as const, options: ["Golf carts", "Wheelchair / accessibility support", "Both", "None", "Not sure"] },
 ];
 
-const serviceOptions = ["Wedding Valet", "Corporate Event Valet", "Gala / VIP Valet", "Conference / Exhibition Valet", "Hotel / Venue Event Valet", "Private Event Valet", "Not sure — please advise"];
+const IMG = {
+  hotel: "/services/transport/chauffeur-hotel-arrival-riyadh-evening.webp",
+  arrival: "/services/transport/vip-chauffeur-arrival-riyadh-exhibition-centre.webp",
+  golf: "/services/valet_golf_cart_guest_mobility.webp",
+  wedding: "/riyadh_luxury_reception_people.webp",
+  summit: "/services/premium_corporate_summit_hero.webp",
+  shuttle: "/services/transport/delegate-shuttle-riyadh-convention-centre.webp",
+};
+
+const serviceOptions = ["Wedding Valet", "Corporate Event Valet", "Gala / VIP Valet", "Conference Valet", "Exhibition Valet", "Hotel Event Valet", "Private / Family Event Valet", "Golf Cart / Mobility Support", "Not sure — please advise"];
 const eventTypeOptions = ["Wedding", "Corporate Event / Gala", "Conference / Exhibition", "Hotel Event", "Private Event", "VIP Event", "Other"];
 
 export const valetParking: ServiceCategory = {
@@ -68,8 +78,77 @@ export const valetParking: ServiceCategory = {
         { icon: "star", title: "Private Event Valet", desc: "Valet for private homes, farms and family gatherings." },
         { icon: "accessibility", title: "Accessibility Assistance", desc: "Wheelchair and mobility support at arrival and departure." },
         { icon: "sparkles", title: "Premium Add-ons", desc: "Luggage help, umbrella service and car care where the partner offers them." },
+        { icon: "users", title: "Exhibition Valet", desc: "Visitor and exhibitor parking across show days.", href: "/services/exhibitions" },
+        { icon: "crown", title: "Executive Guest Arrival", desc: "Greeting and priority handling for executives." },
+        { icon: "star", title: "VIP Arrival Coordination", desc: "A dedicated lane and point for VIP cars.", href: "/services/vip-transportation" },
+        { icon: "route", title: "Guest Parking Flow", desc: "Drop-off, parking and retrieval zones planned." },
+        { icon: "key", title: "Key Management", desc: "Ticketed key control and retrieval." },
+        { icon: "clock", title: "Arrival / Departure Management", desc: "Staffing for both peaks, not just arrivals." },
+        { icon: "map", title: "Parking Coordination", desc: "Car park and overflow arrangements with the venue." },
+        { icon: "door", title: "Venue Entrance Coordination", desc: "Entrance flow aligned with greeters and security." },
+        { icon: "users", title: "High-Volume Arrival Planning", desc: "Peak planning for large weddings and summits." },
+        { icon: "users", title: "Family Event Valet", desc: "Valet for family gatherings and celebrations." },
+        { icon: "flower", title: "Luxury Wedding Arrival", desc: "A premium arrival experience for wedding guests.", href: "/services/weddings" },
+        { icon: "building", title: "Corporate Dinner / Gala Arrival", desc: "Staged arrivals for dinners and award nights.", href: "/services/corporate-events" },
       ],
     },
+    eventIntents: {
+      heading: "Valet parking for every type of event",
+      lead: "Arrival needs change with the event. Choose an event type to see what a valet plan typically covers.",
+      items: [
+        { id: "wedding", title: "Weddings", image: IMG.wedding, imageAlt: "Wedding reception ballroom", points: ["Guest arrival and greeting", "Key management", "Parking flow", "VIP / family entrance", "Separate entrances where needed", "Departure flow at the end of the night"], links: [{ label: "Wedding planning", href: "/services/weddings" }, { label: "Wedding guest transportation", href: "/services/vip-transportation" }] },
+        { id: "corporate", title: "Corporate", image: IMG.summit, imageAlt: "Corporate summit lounge", points: ["Executive arrival", "Employee and guest parking", "Parking coordination with the venue", "Venue entrance flow"], links: [{ label: "Corporate events", href: "/services/corporate-events" }, { label: "Executive transportation", href: "/services/vip-transportation" }] },
+        { id: "gala", title: "Gala / VIP", image: IMG.hotel, imageAlt: "Chauffeur at an illuminated hotel entrance at night", points: ["VIP arrival lane", "Priority parking for executive vehicles", "Dedicated valet point", "Smooth, staged departure"], links: [{ label: "Luxury & VIP events", href: "/services/luxury-vip-events" }, { label: "VIP transportation", href: "/services/vip-transportation" }] },
+        { id: "conference", title: "Conferences", image: IMG.shuttle, imageAlt: "Delegates arriving at a convention centre", points: ["Delegate arrival peaks", "Scheduled arrivals by session", "Venue parking coordination", "Accessibility support"], links: [{ label: "Conference coordination", href: "/services/conferences" }, { label: "Delegate shuttles", href: "/services/vip-transportation" }] },
+        { id: "hotel", title: "Hotel events", image: IMG.arrival, imageAlt: "Chauffeur holding a car door outside a Riyadh venue", points: ["Hotel event arrivals", "Ballroom / event entrance", "Guest flow alongside hotel traffic", "Vehicle hand-off and retrieval"], links: [{ label: "Event catering", href: "/services/event-catering" }, { label: "Event décor", href: "/services/event-decoration" }] },
+        { id: "outdoor", title: "Outdoor / Farm venues", image: IMG.golf, imageAlt: "Golf cart moving a guest to a venue entrance", points: ["Valet coordination at large sites", "Golf cart support where available", "Guest movement from distant parking", "Lighting and walkways checked with the venue"], links: [{ label: "Event lighting", href: "/services/event-lighting" }, { label: "Private celebrations", href: "/services/birthday-party" }] },
+      ],
+    },
+    journeys: {
+      heading: "How a smooth arrival is planned",
+      lead: "Valet is one link in the guest journey. Each step links to the service that covers it.",
+      flows: [
+        {
+          title: "Wedding arrival",
+          steps: [
+            { label: "Hotel / Home", note: "Family departs" },
+            { label: "VIP Transport", note: "Bridal party & family", href: "/services/vip-transportation" },
+            { label: "Drop-off", note: "Clear arrival point" },
+            { label: "Valet", note: "Keys & parking", href: "/services/valet-parking#options" },
+            { label: "Entrance", note: "Greeting & décor", href: "/services/event-decoration" },
+            { label: "Event", note: "Catering & music", href: "/services/event-catering" },
+            { label: "Departure", note: "Cars returned in order" },
+          ],
+        },
+        {
+          title: "Corporate gala arrival",
+          steps: [
+            { label: "Executive cars", note: "Chauffeured VIPs", href: "/services/vip-transportation" },
+            { label: "VIP lane", note: "Priority drop-off" },
+            { label: "Guest valet", note: "Self-driving guests" },
+            { label: "Red carpet", note: "Entrance & photos" },
+            { label: "Gala", note: "Stage, sound, lighting", href: "/services/event-production" },
+            { label: "Staged departure", note: "No long waits" },
+          ],
+        },
+      ],
+    },
+    options: {
+      heading: "Valet service options",
+      lead: "Add-ons and service levels that can be included in a valet plan.",
+      note: "Available subject to date, venue and partner availability. Team size is proposed by the partner for your guest flow.",
+      items: [
+        { title: "Uniformed valet team", desc: "Professional valet staff for arrival and departure.", suits: "All events", icon: "users" },
+        { title: "Valet counter & key control", desc: "A valet point with ticketed key management.", suits: "Weddings, galas, hotels", icon: "key" },
+        { title: "VIP arrival lane", desc: "Priority drop-off and parking for VIPs.", suits: "Galas, VIP dinners", icon: "crown" },
+        { title: "Golf cart mobility", desc: "Guest transfers between parking and entrance.", suits: "Large and outdoor venues", image: IMG.golf, imageAlt: "Golf cart carrying a guest to a venue entrance" },
+        { title: "Accessibility support", desc: "Wheelchair and mobility assistance.", suits: "Family events, conferences", icon: "accessibility" },
+        { title: "Guest care add-ons", desc: "Luggage help, umbrellas and door service.", suits: "Hotels, VIP events", icon: "sparkles" },
+        { title: "Vehicle care", desc: "Car washing and detailing during longer events.", suits: "Full-day events", icon: "wrench" },
+        { title: "Traffic & zone planning", desc: "Drop-off zones and parking flow planned with the venue.", suits: "High-volume arrivals", icon: "route" },
+      ],
+    },
+    builder: true,
     flow: {
       heading: "How a valet plan is sized",
       lead: "Staffing and layout follow these five inputs.",
@@ -118,8 +197,8 @@ export const valetParking: ServiceCategory = {
     clientChecklist: {
       heading: "What information is needed for a valet quote?",
       items: [
-        "Venue name and address",
-        "Event date and start/end times",
+        "City and venue name",
+        "Event date, start time and duration",
         "Guest count",
         "Estimated number of vehicles",
         "Available parking (venue car park, overflow lot)",
@@ -153,8 +232,8 @@ export const valetParking: ServiceCategory = {
       ],
     },
     feature: {
-      image: "/services/vip_airport_chauffeur_riyadh.webp",
-      alt: "Chauffeur in uniform opening an SUV door for a guest outside a hotel entrance in the evening",
+      image: IMG.hotel,
+      alt: "Chauffeur in white gloves holding a car door at an illuminated hotel entrance at night",
       caption: "Representative setup — attended guest arrival at a hotel entrance",
     },
     riyadh: {
@@ -177,6 +256,8 @@ export const valetParking: ServiceCategory = {
       { q: "Can golf carts be arranged for large venues?", a: "Yes, golf carts can be included to move guests between distant parking areas and the entrance." },
       { q: "How much does event valet cost in Riyadh?", a: "Pricing depends on vehicles, arrival peak, duration, parking distance and add-ons. SEM does not publish fixed prices; you receive a specific quotation once the requirement is confirmed." },
       { q: "How far in advance should valet be booked?", a: "We recommend at least 2–3 weeks ahead, and earlier for peak wedding season and Riyadh Season." },
+      { q: "Can valet parking be coordinated with VIP transportation?", a: "Yes. SEM can coordinate chauffeured arrivals for VIP guests alongside a valet team for self-driving guests, so the whole arrival is planned as one." },
+      { q: "What information is needed for a valet quote?", a: "City and venue, event date, start time and duration, guest count, estimated vehicles if known, VIP arrivals, the parking arrangement and any golf cart or accessibility needs." },
     ],
     related: [
       { title: "VIP Transportation", href: "/services/vip-transportation", desc: "Chauffeured transfers for VIP guests.", image: "/services/vip_airport_chauffeur_riyadh.webp" },
@@ -247,8 +328,77 @@ export const valetParking: ServiceCategory = {
         { icon: "star", title: "فاليه المناسبات الخاصة", desc: "للمنازل والمزارع والتجمعات العائلية." },
         { icon: "accessibility", title: "مساعدة ذوي الاحتياجات", desc: "كراسي متحركة ودعم التنقّل عند الوصول والمغادرة." },
         { icon: "sparkles", title: "خدمات إضافية متميّزة", desc: "مساعدة بالأمتعة، ومظلات، وعناية بالسيارات حين يوفّرها الشريك." },
+        { icon: "users", title: "فاليه المعارض", desc: "وقوف الزوّار والعارضين طوال أيام العرض.", href: "/services/exhibitions" },
+        { icon: "crown", title: "وصول الضيوف التنفيذيين", desc: "استقبال وتعامل بأولوية للتنفيذيين." },
+        { icon: "star", title: "تنسيق وصول كبار الشخصيات", desc: "مسار ونقطة مخصّصان لسيارات كبار الشخصيات.", href: "/services/vip-transportation" },
+        { icon: "route", title: "تدفّق وقوف الضيوف", desc: "تخطيط مناطق الإنزال والوقوف والاسترجاع." },
+        { icon: "key", title: "إدارة المفاتيح", desc: "تحكّم بالمفاتيح بنظام التذاكر واسترجاع منظّم." },
+        { icon: "clock", title: "إدارة الوصول والمغادرة", desc: "طاقم للذروتين، لا للوصول فقط." },
+        { icon: "map", title: "تنسيق المواقف", desc: "ترتيبات المواقف الأساسية والإضافية مع الموقع." },
+        { icon: "door", title: "تنسيق مدخل القاعة", desc: "تدفّق الدخول بالتنسيق مع المستقبلين والأمن." },
+        { icon: "users", title: "تخطيط الوصول بأعداد كبيرة", desc: "تخطيط الذروة للأعراس والقمم الكبيرة." },
+        { icon: "users", title: "فاليه المناسبات العائلية", desc: "فاليه للتجمعات والاحتفالات العائلية." },
+        { icon: "flower", title: "وصول فاخر لحفلات الزفاف", desc: "تجربة وصول مميّزة لضيوف الزفاف.", href: "/services/weddings" },
+        { icon: "building", title: "وصول عشاء وحفلات الشركات", desc: "وصول مرتّب لحفلات العشاء وليالي الجوائز.", href: "/services/corporate-events" },
       ],
     },
+    eventIntents: {
+      heading: "فاليه لكل نوع من الفعاليات",
+      lead: "تختلف احتياجات الوصول بحسب الفعالية. اختر نوع الفعالية لترى ما تشمله خطة الفاليه عادةً.",
+      items: [
+        { id: "wedding", title: "الأعراس", image: IMG.wedding, imageAlt: "قاعة استقبال زفاف", points: ["استقبال الضيوف والترحيب", "إدارة المفاتيح", "تنظيم تدفّق الوقوف", "مدخل لكبار الشخصيات والعائلة", "مداخل منفصلة عند الحاجة", "تنظيم المغادرة في نهاية الحفل"], links: [{ label: "تخطيط الأعراس", href: "/services/weddings" }, { label: "نقل ضيوف الزفاف", href: "/services/vip-transportation" }] },
+        { id: "corporate", title: "الشركات", image: IMG.summit, imageAlt: "صالة قمة شركات", points: ["وصول التنفيذيين", "وقوف الموظفين والضيوف", "تنسيق المواقف مع القاعة", "تنظيم الدخول إلى القاعة"], links: [{ label: "فعاليات الشركات", href: "/services/corporate-events" }, { label: "النقل التنفيذي", href: "/services/vip-transportation" }] },
+        { id: "gala", title: "الحفلات / كبار الشخصيات", image: IMG.hotel, imageAlt: "سائق عند مدخل فندق مضاء ليلًا", points: ["مسار وصول لكبار الشخصيات", "أولوية وقوف للمركبات التنفيذية", "نقطة فاليه مخصّصة", "مغادرة سلسة ومرتّبة"], links: [{ label: "فعاليات كبار الشخصيات", href: "/services/luxury-vip-events" }, { label: "نقل كبار الشخصيات", href: "/services/vip-transportation" }] },
+        { id: "conference", title: "المؤتمرات", image: IMG.shuttle, imageAlt: "مندوبون يصلون إلى مركز مؤتمرات", points: ["ذروة وصول المندوبين", "وصول مجدول حسب الجلسات", "تنسيق مواقف القاعة", "دعم ذوي الاحتياجات"], links: [{ label: "تنسيق المؤتمرات", href: "/services/conferences" }, { label: "حافلات المندوبين", href: "/services/vip-transportation" }] },
+        { id: "hotel", title: "فعاليات الفنادق", image: IMG.arrival, imageAlt: "سائق يمسك باب سيارة أمام قاعة في الرياض", points: ["وصول ضيوف فعاليات الفنادق", "مدخل القاعة / الفعالية", "تدفّق الضيوف بجانب حركة الفندق", "تسليم المركبات واسترجاعها"], links: [{ label: "تموين الفعاليات", href: "/services/event-catering" }, { label: "ديكور الفعاليات", href: "/services/event-decoration" }] },
+        { id: "outdoor", title: "المواقع الخارجية / المزارع", image: IMG.golf, imageAlt: "عربة جولف تنقل ضيفة إلى مدخل القاعة", points: ["تنسيق الفاليه في المواقع الكبيرة", "عربات جولف حين تتوفّر", "نقل الضيوف من المواقف البعيدة", "مراجعة الإضاءة والممرات مع الموقع"], links: [{ label: "إضاءة الفعاليات", href: "/services/event-lighting" }, { label: "الاحتفالات الخاصة", href: "/services/birthday-party" }] },
+      ],
+    },
+    journeys: {
+      heading: "كيف يُخطَّط وصول سلس",
+      lead: "الفاليه حلقة في رحلة الضيف. كل خطوة ترتبط بالخدمة التي تغطيها.",
+      flows: [
+        {
+          title: "وصول الزفاف",
+          steps: [
+            { label: "الفندق / المنزل", note: "انطلاق العائلة" },
+            { label: "نقل كبار الشخصيات", note: "موكب العروسين والعائلة", href: "/services/vip-transportation" },
+            { label: "نقطة الإنزال", note: "نقطة وصول واضحة" },
+            { label: "الفاليه", note: "المفاتيح والوقوف", href: "/services/valet-parking#options" },
+            { label: "المدخل", note: "الاستقبال والديكور", href: "/services/event-decoration" },
+            { label: "الحفل", note: "الضيافة والموسيقى", href: "/services/event-catering" },
+            { label: "المغادرة", note: "إعادة السيارات بالترتيب" },
+          ],
+        },
+        {
+          title: "وصول حفل الشركات",
+          steps: [
+            { label: "السيارات التنفيذية", note: "كبار الشخصيات بسائق", href: "/services/vip-transportation" },
+            { label: "مسار كبار الشخصيات", note: "إنزال بأولوية" },
+            { label: "فاليه الضيوف", note: "للقادمين بسياراتهم" },
+            { label: "السجادة الحمراء", note: "الدخول والتصوير" },
+            { label: "الحفل", note: "المسرح والصوت والإضاءة", href: "/services/event-production" },
+            { label: "مغادرة مرتّبة", note: "دون انتظار طويل" },
+          ],
+        },
+      ],
+    },
+    options: {
+      heading: "خيارات خدمة الفاليه",
+      lead: "إضافات ومستويات خدمة يمكن تضمينها في خطة الفاليه.",
+      note: "متاحة حسب التاريخ والموقع وتوفّر الشريك. يقترح الشريك حجم الفريق وفق تدفّق ضيوفك.",
+      items: [
+        { title: "فريق فاليه موحّد الزي", desc: "طاقم فاليه محترف للوصول والمغادرة.", suits: "جميع الفعاليات", icon: "users" },
+        { title: "كاونتر فاليه وإدارة المفاتيح", desc: "نقطة فاليه مع نظام تذاكر للمفاتيح.", suits: "الأعراس والحفلات والفنادق", icon: "key" },
+        { title: "مسار لكبار الشخصيات", desc: "إنزال ووقوف بأولوية لكبار الشخصيات.", suits: "الحفلات وعشاء كبار الشخصيات", icon: "crown" },
+        { title: "تنقّل بعربات الجولف", desc: "نقل الضيوف بين المواقف والمدخل.", suits: "المواقع الكبيرة والخارجية", image: IMG.golf, imageAlt: "عربة جولف تقل ضيفة إلى مدخل القاعة" },
+        { title: "دعم ذوي الاحتياجات", desc: "كراسي متحركة ومساعدة في التنقّل.", suits: "المناسبات العائلية والمؤتمرات", icon: "accessibility" },
+        { title: "خدمات رعاية الضيوف", desc: "مساعدة بالأمتعة ومظلات وفتح الأبواب.", suits: "الفنادق وفعاليات كبار الشخصيات", icon: "sparkles" },
+        { title: "العناية بالمركبات", desc: "غسيل وتلميع السيارات في الفعاليات الطويلة.", suits: "فعاليات اليوم الكامل", icon: "wrench" },
+        { title: "تخطيط الحركة والمناطق", desc: "مناطق الإنزال وتدفّق الوقوف بالتنسيق مع الموقع.", suits: "الوصول بأعداد كبيرة", icon: "route" },
+      ],
+    },
+    builder: true,
     flow: {
       heading: "كيف يُحدَّد حجم خطة الفاليه",
       lead: "يُبنى الطاقم والتخطيط على هذه المدخلات الخمسة.",
@@ -332,8 +482,8 @@ export const valetParking: ServiceCategory = {
       ],
     },
     feature: {
-      image: "/services/vip_airport_chauffeur_riyadh.webp",
-      alt: "سائق بالزي الرسمي يفتح باب سيارة لضيفة أمام مدخل فندق مساءً",
+      image: IMG.hotel,
+      alt: "سائق بقفازات بيضاء يمسك باب سيارة أمام مدخل فندق مضاء ليلًا",
       caption: "إعداد نموذجي — استقبال الضيوف عند مدخل فندق",
     },
     riyadh: {
@@ -356,6 +506,8 @@ export const valetParking: ServiceCategory = {
       { q: "هل يمكن توفير عربات جولف للمواقع الكبيرة؟", a: "نعم، يمكن إضافة عربات جولف لنقل الضيوف بين المواقف البعيدة والمدخل." },
       { q: "كم تكلفة خدمة الفاليه للفعاليات في الرياض؟", a: "يعتمد السعر على عدد المركبات وذروة الوصول والمدة وبُعد المواقف والإضافات. لا ننشر أسعارًا ثابتة؛ ستحصل على عرض سعر محدد بعد تأكيد المتطلبات." },
       { q: "قبل كم من الوقت يجب حجز الفاليه؟", a: "نوصي بالحجز قبل 2-3 أسابيع على الأقل، وأبكر خلال مواسم الأعراس وموسم الرياض." },
+      { q: "هل يمكن تنسيق الفاليه مع نقل كبار الشخصيات؟", a: "نعم. يمكننا تنسيق وصول كبار الضيوف بسائق إلى جانب فريق فاليه للضيوف القادمين بسياراتهم، ليُخطَّط الوصول كاملًا كوحدة واحدة." },
+      { q: "ما المعلومات المطلوبة لعرض سعر الفاليه؟", a: "المدينة والقاعة، وتاريخ الفعالية، ووقت البدء والمدة، وعدد الضيوف، والعدد التقريبي للمركبات إن عُرف، ووصول كبار الشخصيات، وترتيب المواقف، وأي حاجة لعربات جولف أو دعم ذوي الاحتياجات." },
     ],
     related: [
       { title: "النقل الفاخر لكبار الشخصيات", href: "/services/vip-transportation", desc: "نقل بسائق لضيوف كبار الشخصيات.", image: "/services/vip_airport_chauffeur_riyadh.webp" },
@@ -368,18 +520,19 @@ export const valetParking: ServiceCategory = {
       subheading: "شاركنا الموقع وتدفّق الضيوف، ونؤكد التوفّر مع شريك فاليه مناسب ونعود إليك بخطة الطاقم وعرض السعر.",
       submitLabel: "اطلب عرض الفاليه",
       serviceOptions,
-      serviceOptionLabels: ["فاليه حفلات الزفاف", "فاليه فعاليات الشركات", "فاليه الحفلات وكبار الشخصيات", "فاليه المؤتمرات والمعارض", "فاليه الفنادق والقاعات", "فاليه المناسبات الخاصة", "لست متأكدًا — أرجو النصيحة"],
+      serviceOptionLabels: ["فاليه حفلات الزفاف", "فاليه فعاليات الشركات", "فاليه الحفلات وكبار الشخصيات", "فاليه المؤتمرات", "فاليه المعارض", "فاليه فعاليات الفنادق", "فاليه المناسبات الخاصة / العائلية", "عربات جولف / دعم التنقّل", "لست متأكدًا — أرجو النصيحة"],
       eventTypeOptions,
       eventTypeOptionLabels: ["زفاف", "فعالية شركة / حفل", "مؤتمر / معرض", "فعالية فندقية", "مناسبة خاصة", "فعالية كبار الشخصيات", "أخرى"],
       guestCountLabel: "عدد الضيوف",
       messageLabel: "متطلبات إضافية",
       messagePlaceholder: "وقت الوصول، المداخل المنفصلة، تفاصيل كبار الشخصيات، أي معلومات من الموقع عن المواقف...",
       fields: [
-        { ...fields[0], displayLabel: "المركبات المتوقعة", optionLabels: ["أقل من 50", "50–150", "150–300", "أكثر من 300", "غير متأكد"] },
+        { ...fields[0], displayLabel: "وقت البدء" },
         { ...fields[1], displayLabel: "مدة الفعالية", optionLabels: ["حتى 3 ساعات", "3–6 ساعات", "يوم كامل", "عدة أيام"] },
-        { ...fields[2], displayLabel: "وصول كبار الشخصيات؟", optionLabels: ["نعم", "لا", "غير متأكد"] },
-        { ...fields[3], displayLabel: "المواقف المتاحة", optionLabels: ["موقف القاعة", "موقف قريب / إضافي", "مواقف محدودة", "غير متأكد"] },
-        { ...fields[4], displayLabel: "إضافات مطلوبة", placeholder: "مثل: عربات جولف، كراسي متحركة" },
+        { ...fields[2], displayLabel: "عدد المركبات المتوقع (إن عُرف)", optionLabels: ["أقل من 50", "50–150", "150–300", "أكثر من 300", "غير متأكد"] },
+        { ...fields[3], displayLabel: "ضيوف من كبار الشخصيات؟", optionLabels: ["نعم", "لا", "غير متأكد"] },
+        { ...fields[4], displayLabel: "ترتيب المواقف", optionLabels: ["موقف القاعة", "موقف قريب / إضافي", "مواقف محدودة", "غير متأكد"] },
+        { ...fields[5], displayLabel: "عربات جولف / دعم ذوي الاحتياجات", optionLabels: ["عربات جولف", "كراسي متحركة / دعم التنقّل", "كلاهما", "لا شيء", "غير متأكد"] },
       ],
       whatsappText: "مرحبًا، أرغب في عرض سعر لخدمة فاليه لفعالية في الرياض.",
     },

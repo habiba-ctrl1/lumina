@@ -57,6 +57,27 @@ export interface ServiceCategoryContent {
   coordination: { heading: string; paragraphs: string[] };
   quality: { heading: string; items: Card[] };
   useCases: { heading: string; items: Card[] };
+  /** Event-intent tabs: how the service solves each event type (sections, not separate URLs). */
+  eventIntents?: {
+    heading: string;
+    lead: string;
+    items: { id: string; title: string; image?: string; imageAlt?: string; points: string[]; links: { label: string; href: string }[] }[];
+  };
+  /** Visual guest journeys (e.g. wedding day, corporate mobility) — each node can link to a service. */
+  journeys?: {
+    heading: string;
+    lead: string;
+    flows: { title: string; steps: { label: string; note?: string; href?: string }[] }[];
+  };
+  /** Vehicle / service options — categories only, always availability-dependent. */
+  options?: {
+    heading: string;
+    lead: string;
+    note: string;
+    items: { title: string; desc: string; suits: string; image?: string; imageAlt?: string; icon?: IconKey }[];
+  };
+  /** Show the event requirement builder (event type → need → city → prefilled enquiry). */
+  builder?: boolean;
   /** Optional gallery — only when ≥3 genuinely relevant images exist. */
   gallery?: { heading: string; items: { image: string; alt: string; caption: string }[] };
   feature: { image: string; alt: string; caption: string };

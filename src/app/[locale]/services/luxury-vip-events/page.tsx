@@ -658,6 +658,22 @@ export default async function LuxuryVIPEventsPage() {
           </div>
         </section>
 
+        {/* ── Guest arrival & logistics — contextual links to transport / valet ── */}
+        <section className="py-10 bg-white border-t border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)] shrink-0">{isAr ? "وصول الضيوف واللوجستيات" : "Guest arrival & logistics"}</p>
+            <p className="text-[15px] text-neutral-600 leading-relaxed">
+              {isAr ? "يمكن تنسيق " : "SEM can also coordinate "}
+              <Link href={`${arHref}/services/vip-transportation`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "نقل كبار الشخصيات بسائق" : "chauffeured VIP transportation"}</Link>
+              {isAr ? "، و" : ", "}
+              <Link href={`${arHref}/services/valet-parking`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "وصول كبار الشخصيات بالفاليه" : "VIP valet arrival"}</Link>
+              {isAr ? "، و" : " and "}
+              <Link href={`${arHref}/services/event-decoration`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "ديكور الفعاليات الفاخرة" : "luxury event décor"}</Link>
+              {isAr ? " ضمن الطلب نفسه." : " within the same enquiry."}
+            </p>
+          </div>
+        </section>
+
         {/* ── Related Services ── */}
         <section className="py-20 bg-[var(--surface-warm)] border-t border-gold-200/60">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">

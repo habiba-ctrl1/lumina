@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ChevronRight, MessageCircle, ShieldCheck, Sofa, UserCheck } from "lucide-react";
 import ServiceExplorer from "./ServiceExplorer";
+import RequirementBuilder from "@/components/services/RequirementBuilder";
 import { EVENT_BUILD_STEPS, HUB_GROUPS, RIYADH_HUB_SERVICES, type HubService } from "@/lib/service-categories";
 
 /**
@@ -173,12 +174,28 @@ export default function RiyadhHubTop({ isAr, prefix }: { isAr: boolean; prefix: 
         <div className={CONTAINER}>
           <div className="mb-10 max-w-2xl">
             <span className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)]">
-              <span className="h-px w-6 bg-[var(--primary)]/60" /> Service finder
+              <span className="h-px w-6 bg-[var(--primary)]/60" /> Browse by area
             </span>
-            <h2 className="mt-3 text-neutral-900">What do you need for your event?</h2>
+            <h2 className="mt-3 text-neutral-900">Explore services by area</h2>
             <p className="mt-4 text-[16px] text-neutral-600">Choose an area to see the services SEM can coordinate for it.</p>
           </div>
           <ServiceExplorer groups={HUB_GROUPS} services={RIYADH_HUB_SERVICES} prefix={prefix} />
+        </div>
+      </section>
+
+      {/* ── REQUIREMENT BUILDER ── */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className={`${CONTAINER} grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start`}>
+          <div className="lg:col-span-4">
+            <span className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)]">
+              <span className="h-px w-6 bg-[var(--primary)]/60" /> Requirement builder
+            </span>
+            <h2 className="mt-3 text-neutral-900">What do you need for your event?</h2>
+            <p className="mt-4 text-[16px] text-neutral-600">Pick the event, what you need and the city — we&apos;ll take you to the right enquiry form with your answers filled in.</p>
+          </div>
+          <div className="lg:col-span-8">
+            <RequirementBuilder locale={isAr ? "ar" : "en"} prefix={prefix} />
+          </div>
         </div>
       </section>
 
@@ -194,15 +211,20 @@ export default function RiyadhHubTop({ isAr, prefix }: { isAr: boolean; prefix: 
               Most events are built in this order — from the venue to the moment guests arrive. Each step links to the service that covers it, and SEM can coordinate any combination in one enquiry.
             </p>
           </div>
-          <ol className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
+          <ol className="flex snap-x overflow-x-auto pb-3 -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-5 lg:gap-y-4 lg:overflow-visible">
             {EVENT_BUILD_STEPS.map((s, i) => (
-              <li key={s.label} className="relative">
-                <Link href={`${prefix}${s.href}`} className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 text-white hover:text-white hover:border-[#C5A880]/60 hover:bg-white/[0.08] transition-colors">
+              <li key={s.label} className="flex shrink-0 snap-start items-stretch">
+                <Link href={`${prefix}${s.href}`} className="group flex w-44 lg:w-auto lg:flex-1 flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 text-white hover:text-white hover:border-[#C5A880]/60 hover:bg-white/[0.08] transition-colors">
                   <span className="text-[11px] font-bold text-[#C5A880]">{String(i + 1).padStart(2, "0")}</span>
                   <span className="mt-2 text-[15px] font-semibold">{s.label}</span>
                   <span className="mt-1 text-[12px] leading-snug text-white/55">{s.note}</span>
                   <ArrowRight size={14} className={`mt-auto pt-3 box-content text-white/40 group-hover:text-[#C5A880] ${ARROW}`} />
                 </Link>
+                {i < EVENT_BUILD_STEPS.length - 1 && (
+                  <span aria-hidden className={`flex w-7 shrink-0 items-center justify-center text-white/30 ${(i + 1) % 5 === 0 ? "lg:hidden" : ""}`}>
+                    <ChevronRight size={16} />
+                  </span>
+                )}
               </li>
             ))}
           </ol>
