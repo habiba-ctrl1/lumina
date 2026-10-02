@@ -100,6 +100,7 @@ model Vendor {
   events       Event[]  @relation("EventVendors")
   quotes       Quote[]
   vendorQuotes VendorQuote[]
+  partnerDeals QuoteRequest[] @relation("PartnerDeals")
   applications VendorApplication[]
   categoryLinks Category[] @relation("VendorCategories")
   createdAt    DateTime @default(now())
@@ -357,10 +358,58 @@ model QuoteRequest {
   requirements String?
   source       String   @default("website")
   status       String   @default("pending") // pending | quote_sent | accepted | rejected | archived
+
+  // ── Pipeline / CRM fields (Phase 1, Oct 2026 — scripts/phase1-crm-pipeline.sql) ──
+  // One QuoteRequest = one deal, whatever channel it came from.
+  business       String   @default("SEM") // SEM | TAXI — shared WhatsApp number; TAXI rows are excluded everywhere
+  channel        String?  // whatsapp | email | website | referral | phone
+  clientCompany  String?
+  budgetMin      Float?
+  budgetMax      Float?
+  budgetKnown    Boolean  @default(false)
+  decisionMaker  String?
+  track          String?  // broker (SEM quotes, small/simple) | partner (Saudi partner leads, SEM earns hidden margin)
+  stage          String   @default("new") // new | qualifying | sourcing | quote_sent | negotiating | waiting_client | won | lost | parked
+  nextAction     String?
+  nextActionAt   DateTime?
+  lastContactAt  DateTime?
+  partner        Vendor?   @relation("PartnerDeals", fields: [partnerId], references: [id])
+  partnerId      String?
+  partnerHandedAt     DateTime?
+  partnerLastUpdateAt DateTime?
+  quotedAmount   Float?   // client price incl. VAT as last sent
+  quoteSentAt    DateTime?
+  semMarginPct   Float?
+  semMarginAmount Float?
+  lostReason     String?  // budget_mismatch | price | no_response | partner_slow | vendor_unavailable | cr_vat_required | payment_method | service_mismatch | date_change | lost_to_competitor | low_intent | other
+  lostNote       String?
+  wonValue       Float?
+  closedAt       DateTime?
+  updates        LeadUpdate[]
+
   proposals    Proposal[]
   vendorQuotes VendorQuote[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@index([stage, nextActionAt])
+}
+
+// Append-only timeline per deal: every call, client reply, partner update,
+// quote sent. This is where "what did the partner say?" gets recorded.
+model LeadUpdate {
+  id           String       @id @default(uuid())
+  request      QuoteRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  requestId    String
+  author       String       @default("SEM") // SEM | partner name
+  kind         String       // note | client_reply | partner_update | call | meeting | quote_sent | follow_up | status_change
+  channel      String?      // whatsapp | email | phone | meeting
+  summary      String
+  nextAction   String?
+  nextActionAt DateTime?
+  createdAt    DateTime     @default(now())
+
+  @@index([requestId, createdAt])
 }
 
 // A vendor's price TO SEM for a specific client request (the cost side of a deal).

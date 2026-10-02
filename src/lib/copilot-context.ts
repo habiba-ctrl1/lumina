@@ -1,3 +1,4 @@
+import { OPEN_STAGES } from '@/lib/pipeline';
 import prisma from '@/lib/prisma';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -24,7 +25,6 @@ const VENDOR_SOURCES = ['vendor_registration', 'become_one_partnership', 'vendor
 
 // Bounds — vendor network is ~2 dozen today, so these fit comfortably.
 const MAX_VENDORS = 80;
-const MAX_LEADS = 25;
 const MAX_INQUIRIES = 25;
 const MAX_QUOTE_REQUESTS = 25;
 const MAX_EVENTS = 15;
@@ -46,7 +46,7 @@ function clean(s: string | null | undefined, max = 120): string {
  */
 export async function buildSemContext(): Promise<string> {
   try {
-    const [vendors, inquiries, leads, quoteRequests, events] = await Promise.all([
+    const [vendors, inquiries, quoteRequests, events] = await Promise.all([
       // Private contact fields deliberately excluded (same rule as vendor-match).
       prisma.vendor.findMany({
         select: {
@@ -66,22 +66,19 @@ export async function buildSemContext(): Promise<string> {
           eventDate: true, guestCount: true, status: true, createdAt: true,
         },
       }),
-      prisma.lead.findMany({
-        where: { status: { in: ['New', 'Contacted', 'Proposal Sent', 'Negotiation'] } },
-        orderBy: { createdAt: 'desc' },
-        take: MAX_LEADS,
-        select: {
-          name: true, company: true, eventType: true, budget: true, eventDate: true,
-          source: true, status: true, createdAt: true,
-        },
-      }),
+      // The pipeline (QuoteRequest) is the single deal record for every
+      // channel — WhatsApp, email and website — so it replaces the legacy
+      // Lead/Inquiry lists as the Copilot's view of open business.
       prisma.quoteRequest.findMany({
-        where: { status: { in: ['pending', 'quote_sent'] } },
-        orderBy: { createdAt: 'desc' },
+        where: { business: 'SEM', stage: { in: [...OPEN_STAGES] } },
+        orderBy: [{ nextActionAt: { sort: 'asc', nulls: 'last' } }, { createdAt: 'desc' }],
         take: MAX_QUOTE_REQUESTS,
         select: {
-          clientName: true, eventType: true, eventCity: true, eventDate: true,
-          guestCount: true, budgetRange: true, status: true, createdAt: true,
+          clientName: true, clientCompany: true, eventType: true, eventCity: true, eventDate: true,
+          guestCount: true, budgetMin: true, budgetMax: true, stage: true, track: true,
+          nextAction: true, nextActionAt: true, quotedAmount: true, partnerLastUpdateAt: true,
+          partner: { select: { name: true } },
+          updates: { orderBy: { createdAt: 'desc' }, take: 1, select: { summary: true, createdAt: true } },
         },
       }),
       prisma.event.findMany({
@@ -127,17 +124,13 @@ export async function buildSemContext(): Promise<string> {
         ).join('\n')
       : '(none open)';
 
-    const leadLines = leads.length
-      ? leads.map((l) =>
-          `- ${l.name}${l.company ? ` (${l.company})` : ''} | ${l.eventType || 'event ?'} | budget ${l.budget || '?'} | ${l.eventDate || 'date ?'} | ${l.status} | src ${l.source || '?'} | in ${fmtDate(l.createdAt)}`
-        ).join('\n')
-      : '(none active)';
-
+    const budget = (min: number | null, max: number | null) =>
+      min || max ? `SAR ${min ?? '?'}–${max ?? '?'}` : 'budget ?';
     const qrLines = quoteRequests.length
       ? quoteRequests.map((q) =>
-          `- ${q.clientName} | ${q.eventType} | ${q.eventCity} | ${fmtDate(q.eventDate)} | ${q.guestCount ?? '?'} guests | budget ${q.budgetRange || '?'} | ${q.status}`
+          `- ${q.clientName}${q.clientCompany ? ` (${q.clientCompany})` : ''} | ${q.eventType} | ${q.eventCity} | ${fmtDate(q.eventDate)} | ${q.guestCount ?? '?'} guests | ${budget(q.budgetMin, q.budgetMax)} | stage ${q.stage} | track ${q.track || '?'}${q.partner ? ` | partner ${q.partner.name} (last update ${fmtDate(q.partnerLastUpdateAt)})` : ''}${q.quotedAmount ? ` | quoted SAR ${q.quotedAmount}` : ''} | next: ${clean(q.nextAction, 80) || '—'} by ${fmtDate(q.nextActionAt)}${q.updates[0] ? ` | latest: ${clean(q.updates[0].summary, 100)}` : ''}`
         ).join('\n')
-      : '(none pending)';
+      : '(no open deals)';
 
     const eventLines = events.length
       ? events.map((e) =>
@@ -155,13 +148,10 @@ export async function buildSemContext(): Promise<string> {
       'Vendors (contact details deliberately withheld):',
       vendorLines || '(no vendors)',
       '',
-      `### Open client inquiries — ${inquiries.length}`,
+      `### Raw website form submissions (each also appears as a pipeline deal) — ${inquiries.length}`,
       inquiryLines,
       '',
-      `### Active pipeline leads — ${leads.length}`,
-      leadLines,
-      '',
-      `### Pending quote requests — ${quoteRequests.length}`,
+      `### Open pipeline deals — ${quoteRequests.length} (sorted by next-action date)`,
       qrLines,
       '',
       `### Upcoming events — ${events.length}`,
