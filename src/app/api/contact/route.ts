@@ -147,7 +147,8 @@ export async function POST(request: Request) {
             // Real originating page (e.g. "led_screens_page") so leads can be
             // attributed per service page — previously hardcoded "homepage_form".
             source: source || 'website',
-            status: 'pending'
+            status: 'pending',
+            channel: 'website'
           }
         });
 

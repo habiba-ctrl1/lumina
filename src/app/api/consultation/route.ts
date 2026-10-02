@@ -51,7 +51,8 @@ export async function POST(request: Request) {
           budgetRange: budget,
           requirements: message,
           source: 'consultation_form',
-          status: 'pending'
+          status: 'pending',
+          channel: 'website'
         }
       });
     } catch (prismaError) {
