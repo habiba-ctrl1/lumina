@@ -39,6 +39,7 @@ import {
   Zap,
   Inbox,
   ListChecks,
+  CalendarClock,
   Bot
 } from "lucide-react";
 
@@ -75,6 +76,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/events", label: "Events", icon: CalendarDays },
       { href: "/admin/calendar", label: "Calendar", icon: CalendarDays },
+      { href: "/admin/meetings", label: "Meetings", icon: CalendarClock },
       { href: "/admin/gallery", label: "Gallery", icon: Image },
     ],
   },
@@ -91,6 +93,7 @@ const navGroups: NavGroup[] = [
     label: "Marketing",
     items: [
       { href: "/admin/blog", label: "Blog", icon: Sparkles },
+      { href: "/admin/social", label: "Social Publisher", icon: Megaphone },
       { href: "/admin/testimonials", label: "Testimonials", icon: Star },
     ],
   },
@@ -115,6 +118,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [pendingQuoteCount, setPendingQuoteCount] = useState(0);
   const [actionNeededCount, setActionNeededCount] = useState(0);
+  const [todaysMeetingCount, setTodaysMeetingCount] = useState(0);
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({});
   const [notifOpen, setNotifOpen] = useState(false);
   const [notifLogs, setNotifLogs] = useState<{ id: string; action: string; details: string | null; createdAt: string }[]>([]);
@@ -159,6 +163,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         if (data.counts) setActionNeededCount(data.counts.total || 0);
       } catch (e) {
         console.error('Failed to fetch action-needed count');
+      }
+      try {
+        const res = await adminFetch('/api/admin/meetings');
+        const data = await res.json();
+        const now = new Date();
+        const todaysCount = (data.data || []).filter((m: { startTime: string; status: string }) => {
+          const d = new Date(m.startTime);
+          return m.status === 'Scheduled' && d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+        }).length;
+        setTodaysMeetingCount(todaysCount);
+      } catch (e) {
+        console.error('Failed to fetch meetings count');
       }
       // Notification bell — real activity feed, no separate notifications
       // table. "Unread" = entries newer than the last time this device
@@ -293,6 +309,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             {item.href === "/admin/action-needed" && actionNeededCount > 0 && (
                               <span className="ms-auto px-1.5 py-0.5 bg-status-critical text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
                                 {actionNeededCount}
+                              </span>
+                            )}
+                            {item.href === "/admin/meetings" && todaysMeetingCount > 0 && (
+                              <span className="ms-auto px-1.5 py-0.5 bg-brand-primary text-white text-[9px] font-bold rounded-full min-w-[18px] text-center">
+                                {todaysMeetingCount}
                               </span>
                             )}
                             {isActive && (
