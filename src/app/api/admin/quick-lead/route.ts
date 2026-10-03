@@ -124,6 +124,10 @@ export async function POST(request: Request) {
           requirements: message || null,
           source: source,
           status: 'pending',
+          // Pipeline: Quick Add is the WhatsApp/manual intake path; due today.
+          channel: ['whatsapp', 'email', 'phone', 'referral'].find((c) => source.includes(c)) ?? null,
+          nextAction: 'Qualify: date, city, pax, budget, decision-maker',
+          nextActionAt: new Date(),
         },
       });
 
