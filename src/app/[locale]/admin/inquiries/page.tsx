@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { adminFetch } from "@/lib/admin-fetch";
-import { Mail, Calendar, User, Trash2, RefreshCw, Search, Phone, Building2, Briefcase, DollarSign, MapPin, Users2, Clock, Plus, Sparkles, X, Loader2 } from "lucide-react";
+import { LANES, laneFor, nextStepFor, type LaneKey } from "@/lib/lead-lanes";
+import { Mail, Calendar, Trash2, RefreshCw, Search, Phone, Building2, MapPin, Users2, Clock, Plus, Sparkles, X, Loader2, ChevronDown, MessageCircle, Zap, Archive } from "lucide-react";
 
 const EMPTY_FORM = {
   name: "", phone: "", email: "", company: "",
@@ -29,15 +30,31 @@ type Inquiry = {
   createdAt: string;
 };
 
+const STATUS_TONE: Record<string, string> = {
+  Pending: "bg-amber-50 text-amber-700 border-amber-200",
+  Contacted: "bg-sky-50 text-sky-700 border-sky-200",
+  Confirmed: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  Cancelled: "bg-slate-100 text-slate-500 border-slate-200",
+};
+
+function ago(iso: string) {
+  const mins = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
+  if (mins < 60) return `${Math.max(mins, 1)}m ago`;
+  if (mins < 60 * 24) return `${Math.floor(mins / 60)}h ago`;
+  return `${Math.floor(mins / 1440)}d ago`;
+}
+
 export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("all");
-  const [category, setCategory] = useState("all");
+  const [laneFilter, setLaneFilter] = useState<LaneKey | "all" | "quick">("all");
+  const [showNotClient, setShowNotClient] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [audience, setAudience] = useState<"client" | "partner">("client");
+  const [openId, setOpenId] = useState<string | null>(null);
 
   // ── Quick Add (manual WhatsApp/phone/email intake) ──────────────────────
   const [showAdd, setShowAdd] = useState(false);
@@ -115,12 +132,12 @@ export default function AdminInquiries() {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [search, status, category, startDate, endDate, audience]);
+  }, [search, status, startDate, endDate, audience]);
 
   const fetchInquiries = async () => {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ search, status, category, startDate, endDate, audience });
+      const params = new URLSearchParams({ search, status, category: "all", startDate, endDate, audience });
       const response = await adminFetch(`/api/contact?${params.toString()}`);
       const data = await response.json();
       if (!data.error) setInquiries(Array.isArray(data) ? data : []);
@@ -131,12 +148,25 @@ export default function AdminInquiries() {
     }
   };
 
-  const deleteInquiry = async (id: string) => {
-    if (!confirm("Delete this inquiry?")) return;
+  const setLeadStatus = async (id: string, next: string) => {
+    setInquiries((prev) => prev.map((i) => (i.id === id ? { ...i, status: next } : i)));
     try {
-      const response = await adminFetch(`/api/contact?id=${id}`, { method: 'DELETE' });
+      await adminFetch(`/api/contact?id=${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: next }),
+      });
+    } catch {
+      fetchInquiries();
+    }
+  };
+
+  const deleteInquiry = async (id: string) => {
+    if (!confirm("Delete this inquiry permanently? (Use Archive to keep a record.)")) return;
+    try {
+      const response = await adminFetch(`/api/contact?id=${id}`, { method: "DELETE" });
       if (response.ok) {
-        setInquiries(inquiries.filter((i) => i.id !== id));
+        setInquiries((prev) => prev.filter((i) => i.id !== id));
       } else {
         const data = await response.json().catch(() => ({}));
         alert(data.error || "Failed to delete inquiry");
@@ -147,21 +177,64 @@ export default function AdminInquiries() {
     }
   };
 
-  const categories = ["Wedding", "Corporate", "Private", "Culture", "Other"];
   const statusOptions = ["Pending", "Contacted", "Confirmed", "Cancelled"];
 
+  // Classify every lead once (display-only suggestion).
+  const rows = useMemo(
+    () => inquiries.map((i) => ({ i, lane: laneFor(i) })),
+    [inquiries]
+  );
+
+  const laneCounts = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const r of rows) {
+      if (audience === "client" && r.lane.key === "not_client") continue;
+      m[r.lane.key] = (m[r.lane.key] || 0) + 1;
+    }
+    return m;
+  }, [rows, audience]);
+
+  const notClientCount = useMemo(() => rows.filter((r) => r.lane.key === "not_client").length, [rows]);
+  const quickWinCount = useMemo(
+    () => rows.filter((r) => r.lane.quickWin && r.lane.key !== "not_client" && (r.i.status || "Pending") === "Pending").length,
+    [rows]
+  );
+
+  const visible = rows.filter((r) => {
+    if (audience === "client") {
+      if (r.lane.key === "not_client" && !showNotClient && laneFilter !== "not_client") return false;
+      if (laneFilter === "quick") return r.lane.quickWin && r.lane.key !== "not_client";
+      if (laneFilter !== "all" && r.lane.key !== laneFilter) return false;
+    }
+    return true;
+  });
+
+  const kpi = useMemo(() => {
+    const real = rows.filter((r) => r.lane.key !== "not_client");
+    return {
+      fresh: real.filter((r) => (r.i.status || "Pending") === "Pending").length,
+      contacted: real.filter((r) => r.i.status === "Contacted").length,
+      confirmed: real.filter((r) => r.i.status === "Confirmed").length,
+    };
+  }, [rows]);
+
+  const filtersActive = !!(search || status !== "all" || startDate || endDate || laneFilter !== "all");
+  const clearFilters = () => {
+    setSearch(""); setStatus("all"); setStartDate(""); setEndDate(""); setLaneFilter("all");
+  };
+
   return (
-    <div className="pb-16 max-w-[1440px] mx-auto text-slate-800">
+    <div className="pb-16 max-w-[1200px] mx-auto text-slate-800">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-5 gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 tracking-tight mb-1">
-            {audience === "client" ? "Lead Management" : "Partner Inquiries"}
+            {audience === "client" ? "Leads" : "Partner Inquiries"}
           </h1>
           <p className="text-sm text-slate-500">
             {audience === "client"
-              ? "Qualify, segment, and respond to incoming event leads."
-              : "Suppliers and partners who want to work with you — kept separate from client leads."}
+              ? "Every query sorted by service — handle the quick wins first."
+              : "Suppliers who wrote to you — kept separate from client leads."}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -183,19 +256,19 @@ export default function AdminInquiries() {
         </div>
       </div>
 
-      {/* Audience Tabs — separate client leads from vendor/partner inquiries */}
-      <div className="flex gap-2 mb-5">
+      {/* Audience tabs */}
+      <div className="flex gap-2 mb-4">
         {([
           { key: "client", label: "Client Leads" },
           { key: "partner", label: "Partner Inquiries" },
         ] as const).map((tab) => (
           <button
             key={tab.key}
-            onClick={() => setAudience(tab.key)}
+            onClick={() => { setAudience(tab.key); setLaneFilter("all"); }}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
               audience === tab.key
-                ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                : "bg-white text-slate-600 border-slate-200 hover:border-emerald-300"
+                ? "bg-slate-900 text-white border-slate-900 shadow-sm"
+                : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
             }`}
           >
             {tab.label}
@@ -203,211 +276,207 @@ export default function AdminInquiries() {
         ))}
       </div>
 
-      {/* Filters Bar */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 mb-6 shadow-sm">
-        <div className="flex flex-col lg:flex-row gap-3">
-          {/* Search */}
-          <div className="relative flex-grow min-w-[280px]">
+      {audience === "client" && (
+        <>
+          {/* At-a-glance numbers */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            {[
+              { label: "New — reply today", value: kpi.fresh, tone: "text-amber-600" },
+              { label: "Quick wins waiting", value: quickWinCount, tone: "text-emerald-600" },
+              { label: "In progress", value: kpi.contacted, tone: "text-sky-600" },
+              { label: "Confirmed", value: kpi.confirmed, tone: "text-slate-900" },
+            ].map((k) => (
+              <div key={k.label} className="bg-white border border-slate-200 rounded-2xl px-4 py-3 shadow-sm">
+                <div className={`text-2xl font-bold ${k.tone}`}>{k.value}</div>
+                <div className="text-[11px] font-semibold text-slate-500">{k.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Service lanes */}
+          <div className="flex gap-2 overflow-x-auto pb-2 mb-3 -mx-1 px-1">
+            <button
+              onClick={() => setLaneFilter("all")}
+              className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
+                laneFilter === "all" ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
+              }`}
+            >
+              All ({Object.entries(laneCounts).reduce((a, [, n]) => a + n, 0)})
+            </button>
+            <button
+              onClick={() => setLaneFilter("quick")}
+              className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all flex items-center gap-1 ${
+                laneFilter === "quick" ? "bg-emerald-600 text-white border-emerald-600" : "bg-emerald-50 text-emerald-700 border-emerald-200 hover:border-emerald-400"
+              }`}
+            >
+              <Zap size={11} /> Quick wins
+            </button>
+            {LANES.filter((l) => l.key !== "not_client" && laneCounts[l.key]).map((l) => (
+              <button
+                key={l.key}
+                onClick={() => setLaneFilter(laneFilter === l.key ? "all" : l.key)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
+                  laneFilter === l.key ? "bg-slate-900 text-white border-slate-900" : `${l.tone} hover:brightness-95`
+                }`}
+              >
+                {l.label} ({laneCounts[l.key]})
+              </button>
+            ))}
+            {laneCounts.other ? (
+              <button
+                onClick={() => setLaneFilter(laneFilter === "other" ? "all" : "other")}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
+                  laneFilter === "other" ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-500 border-slate-200"
+                }`}
+              >
+                Other ({laneCounts.other})
+              </button>
+            ) : null}
+          </div>
+        </>
+      )}
+
+      {/* Filters */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-3 mb-4 shadow-sm">
+        <div className="flex flex-col lg:flex-row gap-3 lg:items-center">
+          <div className="relative flex-grow min-w-[240px]">
             <Search size={14} className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search leads by name, email, company, or ref number..."
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 ps-9 pe-3 text-slate-800 text-xs font-semibold focus:outline-none focus:border-teal-400 transition-all placeholder:text-slate-400"
+              placeholder="Search name, email, company, ref number…"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 ps-9 pe-3 text-slate-800 text-xs font-semibold focus:outline-none focus:border-emerald-400 transition-all placeholder:text-slate-400"
             />
           </div>
-
-          <div className="flex flex-wrap gap-2.5 items-center justify-end">
-            <select 
+          <div className="flex flex-wrap gap-2 items-center">
+            <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-slate-700 text-xs font-semibold focus:outline-none focus:border-emerald-400 cursor-pointer min-w-[120px]"
+              className="bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-slate-700 text-xs font-semibold focus:outline-none focus:border-emerald-400 cursor-pointer"
             >
-              <option value="all">All Statuses</option>
-              {statusOptions.map((s: any) => <option key={s} value={s}>{s}</option>)}
+              <option value="all">All statuses</option>
+              {statusOptions.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
-
-            <select 
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-slate-700 text-xs font-semibold focus:outline-none focus:border-emerald-400 cursor-pointer min-w-[130px]"
-            >
-              <option value="all">All Categories</option>
-              {categories.map((c: any) => <option key={c} value={c}>{c}</option>)}
-            </select>
-
             <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2.5 h-[34px]">
-              <input 
-                type="date" 
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="bg-transparent text-slate-700 text-xs font-semibold focus:outline-none w-26 [color-scheme:light]"
-              />
+              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="bg-transparent text-slate-700 text-xs font-semibold focus:outline-none [color-scheme:light]" />
               <span className="text-slate-400 text-xs">—</span>
-              <input 
-                type="date" 
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="bg-transparent text-slate-700 text-xs font-semibold focus:outline-none w-26 [color-scheme:light]"
-              />
+              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="bg-transparent text-slate-700 text-xs font-semibold focus:outline-none [color-scheme:light]" />
             </div>
+            {audience === "client" && notClientCount > 0 && (
+              <label className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 cursor-pointer">
+                <input type="checkbox" checked={showNotClient} onChange={(e) => setShowNotClient(e.target.checked)} className="accent-emerald-600" />
+                Show spam / job seekers / pitches ({notClientCount})
+              </label>
+            )}
+            {filtersActive && (
+              <button onClick={clearFilters} className="text-[11px] font-bold text-emerald-700 hover:underline">Clear</button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Inquiries Grid */}
+      {/* List */}
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[1, 2, 3].map((i: any) => (
-            <div key={i} className="h-56 bg-white animate-pulse rounded-2xl border border-slate-200" />
+        <div className="space-y-2">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="h-20 bg-white animate-pulse rounded-2xl border border-slate-200" />
           ))}
         </div>
-      ) : inquiries.length === 0 ? (
+      ) : visible.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm">
           <Mail size={22} className="text-slate-400 mx-auto mb-3" />
-          <h3 className="text-sm font-semibold text-slate-800 mb-1">No Leads Found</h3>
+          <h3 className="text-sm font-semibold text-slate-800 mb-1">Nothing here</h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
-            {search || status !== 'all' || category !== 'all' || startDate || endDate
-              ? "We couldn't find any leads matching your filters." 
-              : "You haven't received any leads yet."}
+            {filtersActive ? "No leads match these filters." : "No leads yet."}
           </p>
-          {(search || status !== 'all' || category !== 'all' || startDate || endDate) && (
-            <button 
-              onClick={() => {setSearch(""); setStatus("all"); setCategory("all"); setStartDate(""); setEndDate("");}}
-              className="mt-4 text-emerald-600 text-xs font-bold hover:text-emerald-700 bg-emerald-50 px-4 py-2 rounded-xl transition-all"
-            >
-              Clear Filters
-            </button>
-          )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {inquiries.map((inquiry: any) => (
-            <motion.div
-              key={inquiry.id}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-slate-200/80 p-5 rounded-2xl hover:border-emerald-400 hover:shadow-md transition-all duration-300 flex flex-col h-full relative"
-            >
-              <div className="absolute top-4 end-4">
-                <select 
-                  value={inquiry.status || 'Pending'}
-                  onChange={async (e) => {
-                    try {
-                      await adminFetch(`/api/contact?id=${inquiry.id}`, {
-                        method: 'PATCH',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ status: e.target.value })
-                      });
-                      fetchInquiries();
-                    } catch (err) {}
-                  }}
-                  className={`px-2 py-0.5 rounded-lg text-[10px] font-bold border focus:outline-none cursor-pointer transition-all ${
-                    inquiry.status === 'Confirmed' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
-                    inquiry.status === 'Contacted' ? 'bg-blue-50 text-blue-600 border-blue-100' :
-                    inquiry.status === 'Cancelled' ? 'bg-red-50 text-red-650 border-red-100' :
-                    'bg-amber-50 text-amber-600 border-amber-100'
-                  }`}
-                >
-                  <option value="Pending" className="bg-white text-slate-800">Pending</option>
-                  <option value="Contacted" className="bg-white text-slate-800">Contacted</option>
-                  <option value="Confirmed" className="bg-white text-slate-800">Confirmed</option>
-                  <option value="Cancelled" className="bg-white text-slate-800">Cancelled</option>
-                </select>
-              </div>
-
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center border border-emerald-100 font-bold text-sm shadow-sm">
-                  {inquiry.name.charAt(0)}
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h3 className="text-xs font-bold text-slate-800 truncate max-w-[150px]">{inquiry.name}</h3>
-                    {inquiry.refNumber && (
-                      <span className="text-[9px] font-bold text-slate-400 tracking-wide shrink-0">{inquiry.refNumber}</span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.2 rounded">
-                      {inquiry.eventType || 'General'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-1.5 mb-4 flex-1 text-xs text-slate-600">
-                {inquiry.createdAt && (
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <Clock size={12} />
-                    <span>Submitted {new Date(inquiry.createdAt).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2 truncate">
-                  <Mail size={12} className="text-slate-400" />
-                  <span>{inquiry.email}</span>
-                </div>
-                {inquiry.phone && (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Phone size={12} className="text-slate-400" />
-                      <span>{inquiry.phone}</span>
+        <div className="space-y-2">
+          {visible.map(({ i: inquiry, lane }) => {
+            const st = inquiry.status || "Pending";
+            const open = openId === inquiry.id;
+            const wa = inquiry.phone ? `https://wa.me/${inquiry.phone.replace(/[^0-9]/g, "")}` : null;
+            return (
+              <div
+                key={inquiry.id}
+                className={`bg-white border rounded-2xl shadow-sm transition-colors ${open ? "border-emerald-300" : "border-slate-200 hover:border-slate-300"} ${st === "Cancelled" ? "opacity-60" : ""}`}
+              >
+                <div className="flex items-start gap-3 p-3.5 cursor-pointer" onClick={() => setOpenId(open ? null : inquiry.id)}>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="text-sm font-bold text-slate-900 truncate max-w-[220px]">{inquiry.name}</span>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${lane.tone}`}>{lane.label}</span>
+                      {lane.quickWin && lane.key !== "not_client" && st === "Pending" && (
+                        <span className="text-[10px] font-bold text-emerald-700 flex items-center gap-0.5"><Zap size={10} />quick win</span>
+                      )}
+                      {inquiry.refNumber && <span className="text-[10px] text-slate-400 font-semibold">{inquiry.refNumber}</span>}
+                      <span className="text-[10px] text-slate-400 ms-auto">{ago(inquiry.createdAt)}</span>
                     </div>
-                    <a 
-                      href={`https://wa.me/${inquiry.phone.replace(/[^0-9]/g, '')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 font-bold"
+                    <p className="text-xs text-slate-500 mt-1 line-clamp-2">{inquiry.message}</p>
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1.5 text-[11px] text-slate-500">
+                      {inquiry.venueCity && <span className="flex items-center gap-1"><MapPin size={11} className="text-slate-400" />{inquiry.venueCity}</span>}
+                      {inquiry.eventDate && <span className="flex items-center gap-1"><Calendar size={11} className="text-slate-400" />{inquiry.eventDate}</span>}
+                      {inquiry.guestCount && <span className="flex items-center gap-1"><Users2 size={11} className="text-slate-400" />{inquiry.guestCount}</span>}
+                      {inquiry.budget && <span className="font-semibold text-slate-700">{inquiry.budget}</span>}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
+                    {wa && (
+                      <a
+                        href={wa}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-100"
+                        title="WhatsApp"
+                      >
+                        <MessageCircle size={14} />
+                      </a>
+                    )}
+                    <select
+                      value={st}
+                      onChange={(e) => setLeadStatus(inquiry.id, e.target.value)}
+                      className={`px-2 py-1.5 rounded-lg text-[11px] font-bold border focus:outline-none cursor-pointer ${STATUS_TONE[st] || STATUS_TONE.Pending}`}
                     >
-                      WhatsApp
-                    </a>
+                      {statusOptions.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                    <ChevronDown size={14} className={`text-slate-400 transition-transform ${open ? "rotate-180" : ""}`} />
                   </div>
-                )}
-                {inquiry.company && (
-                  <div className="flex items-center gap-2 truncate">
-                    <Building2 size={12} className="text-slate-400" />
-                    <span>{inquiry.company}</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <Calendar size={12} className="text-slate-400" />
-                  <span>{inquiry.eventDate ? new Date(inquiry.eventDate).toLocaleDateString() : 'Date TBD'}</span>
                 </div>
-                {inquiry.venueCity && (
-                  <div className="flex items-center gap-2">
-                    <MapPin size={12} className="text-slate-400" />
-                    <span>{inquiry.venueCity}</span>
+
+                {open && (
+                  <div className="border-t border-slate-100 px-3.5 py-3 text-xs text-slate-600 space-y-3 bg-slate-50/60 rounded-b-2xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+                      <div className="flex items-center gap-2 truncate"><Mail size={12} className="text-slate-400" />{inquiry.email}</div>
+                      {inquiry.phone && <div className="flex items-center gap-2"><Phone size={12} className="text-slate-400" />{inquiry.phone}</div>}
+                      {inquiry.company && <div className="flex items-center gap-2 truncate"><Building2 size={12} className="text-slate-400" />{inquiry.company}</div>}
+                      <div className="flex items-center gap-2"><Clock size={12} className="text-slate-400" />{new Date(inquiry.createdAt).toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" })}</div>
+                      {inquiry.source && <div className="text-slate-400">Source: {inquiry.source}</div>}
+                      {inquiry.eventType && <div className="text-slate-400">Form type: {inquiry.eventType}</div>}
+                    </div>
+                    <div className="bg-white p-3 rounded-xl border border-slate-100 whitespace-pre-wrap leading-relaxed text-slate-600">{inquiry.message}</div>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-[11px] font-semibold text-slate-500">Next: <span className="text-slate-800">{nextStepFor(inquiry.status, lane, !!inquiry.phone)}</span></span>
+                      <div className="flex items-center gap-2">
+                        {st !== "Cancelled" && (
+                          <button onClick={() => setLeadStatus(inquiry.id, "Cancelled")} className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 text-[11px] font-bold flex items-center gap-1">
+                            <Archive size={12} /> Archive
+                          </button>
+                        )}
+                        <button onClick={() => deleteInquiry(inquiry.id)} className="px-3 py-1.5 rounded-lg text-red-600 hover:bg-red-50 text-[11px] font-bold flex items-center gap-1">
+                          <Trash2 size={12} /> Delete
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 )}
-                {inquiry.guestCount && (
-                  <div className="flex items-center gap-2">
-                    <Users2 size={12} className="text-slate-400" />
-                    <span>{inquiry.guestCount} Guests</span>
-                  </div>
-                )}
               </div>
-
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100 mb-4 min-h-[50px] text-[11px] leading-relaxed text-slate-500 italic">
-                "{inquiry.message}"
-              </div>
-
-              <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                <div className="flex flex-col">
-                  <span className="text-[9px] uppercase tracking-wider text-slate-400">Budget Limit</span>
-                  <span className="text-xs text-slate-800 font-semibold">{inquiry.budget || 'TBD'}</span>
-                </div>
-                <button
-                  onClick={() => deleteInquiry(inquiry.id)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-650 transition-colors"
-                  title="Delete Inquiry"
-                >
-                  <Trash2 size={13} />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       )}
+
 
       {/* Quick Add — paste a WhatsApp/email chat, auto-extract, review & save */}
       <AnimatePresence>
