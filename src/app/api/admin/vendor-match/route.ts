@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
 import { vendorScore } from '@/lib/vendor-ranking';
+import { loadOpsMap, isExcluded, roleRank } from '@/lib/vendor-ops';
 
 /**
  * Vendor matching engine (admin only).
@@ -52,9 +53,15 @@ export async function GET(request: Request) {
       v.categoryLinks.some((c) => c.name.toLowerCase() === service) ||
       [v.category, ...v.categories, v.services || ''].join(' ').toLowerCase().includes(service);
 
+    // Curation (VendorOps/VendorCapability): archived vendors and agency clients are never
+    // offered; preferred > secondary > backup breaks ties before the score. If the tables
+    // are not created yet, ops.map is empty and matching behaves exactly as before.
+    const ops = await loadOpsMap(prisma as never);
+
     const ranked = vendors
+      .filter((v) => !isExcluded(ops.map.get(v.id)))
       .filter((v) => (includeUnverified || v.verificationStatus !== 'Unverified') && coversCity(v) && matchesService(v))
-      .sort((a, b) => vendorScore(b) - vendorScore(a))
+      .sort((a, b) => roleRank(ops.map.get(b.id)) - roleRank(ops.map.get(a.id)) || vendorScore(b) - vendorScore(a))
       .slice(0, 5);
 
     return NextResponse.json({

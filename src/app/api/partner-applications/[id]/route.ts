@@ -45,6 +45,7 @@ function buildOnboardingNote(app: {
 
 // PATCH /api/partner-applications/:id
 // body.action: "approve" (optional body.mergeVendorId) | "reject" | "reopen"
+//             | "review" | "need_info" (optional body.note) | "duplicate" (optional body.vendorId, body.note)
 export async function PATCH(request: Request, { params }: Params) {
   try {
     const user = await requireAdmin(request);
@@ -70,8 +71,42 @@ export async function PATCH(request: Request, { params }: Params) {
     if (body.action === 'reopen') {
       const updated = await prisma.vendorApplication.update({
         where: { id },
-        data: { status: 'Pending', reviewedAt: null },
+        // A Duplicate was linked to an existing vendor only as a pointer — clear it on reopen.
+        data: { status: 'Pending', reviewedAt: null, ...(app.status === 'Duplicate' ? { vendorId: null } : {}) },
       });
+      return NextResponse.json(updated);
+    }
+
+    // ── Triage states (no migration — status is a plain string) ──
+    if (body.action === 'review' || body.action === 'need_info') {
+      const status = body.action === 'review' ? 'Under Review' : 'Need More Information';
+      const updated = await prisma.vendorApplication.update({ where: { id }, data: { status, reviewedAt: null } });
+      const note = typeof body.note === 'string' ? body.note.trim().slice(0, 300) : '';
+      await logActivity(`Partner Application — ${status}`, `${app.appNumber} — ${app.companyName}${note ? ` — ${note}` : ''}`, user.email || 'admin');
+      return NextResponse.json(updated);
+    }
+
+    if (body.action === 'duplicate') {
+      // Keeps the application as a consent/audit record and NEVER creates a second
+      // vendor. If an existing vendor is given, the application is linked to it as a
+      // pointer only — the vendor's own fields are not touched (use Approve → merge
+      // if you want its empty fields filled from this application).
+      let linkVendorId: string | null = null;
+      if (body.vendorId) {
+        const v = await prisma.vendor.findUnique({ where: { id: String(body.vendorId) }, select: { id: true } });
+        if (!v) return NextResponse.json({ error: 'Vendor not found' }, { status: 404 });
+        linkVendorId = v.id;
+      }
+      const updated = await prisma.vendorApplication.update({
+        where: { id },
+        data: { status: 'Duplicate', reviewedAt: new Date(), ...(linkVendorId ? { vendorId: linkVendorId } : {}) },
+      });
+      const note = typeof body.note === 'string' ? body.note.trim().slice(0, 300) : '';
+      await logActivity(
+        'Partner Application — Marked Duplicate',
+        `${app.appNumber} — ${app.companyName}${linkVendorId ? ` (linked to vendor ${linkVendorId})` : ' (repeat submission)'}${note ? ` — ${note}` : ''}`,
+        user.email || 'admin',
+      );
       return NextResponse.json(updated);
     }
 

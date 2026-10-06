@@ -103,6 +103,9 @@ model Vendor {
   partnerDeals QuoteRequest[] @relation("PartnerDeals")
   applications VendorApplication[]
   categoryLinks Category[] @relation("VendorCategories")
+  // Vendor-operations tables (2026-10) — see VendorCapability / VendorOps below.
+  capabilities VendorCapability[]
+  ops          VendorOps?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -118,6 +121,7 @@ model Category {
   sortOrder    Int      @default(0)
   vendors      Vendor[]            @relation("VendorCategories")
   applications VendorApplication[] @relation("ApplicationCategories")
+  capabilities VendorCapability[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -518,4 +522,58 @@ model Communication {
   contactName String?
   contactRef  String?  // Client or Lead ID
   createdAt   DateTime @default(now())
+}
+
+// ── Vendor operations (2026-10) ───────────────────────────────────────────────
+// Structured capability + reliability/commercial fields. These live in NEW tables on
+// purpose: adding columns to Vendor would break every existing Vendor query until the
+// SQL is run in production (the same schema-drift incident as VendorQuote, 2026-08).
+// New tables are touched only by new code, which degrades gracefully when they don't
+// exist yet. SQL: scripts/vendor-ops-tables.sql. All of this is INTERNAL — never public.
+
+// What a vendor can really deliver, per category, and whether SEM confirmed it.
+// Only status = "confirmed" counts toward STRONG coverage; "claimed" is the vendor's word.
+model VendorCapability {
+  id               String    @id @default(uuid())
+  vendor           Vendor    @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  vendorId         String
+  category         Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId       String?
+  isPrimary        Boolean   @default(false) // exactly one primary capability per vendor (the REAL primary category)
+  subcategories    String[]  @default([])    // e.g. "Live cooking", "Valet parking", "Mascots"
+  services         String?
+  cities           String[]  @default([])    // normalised: Riyadh, Jeddah, Dammam, … (lib/vendor-geo.ts)
+  eventTypes       String[]  @default([])    // wedding, corporate, conference, birthday, …
+  capacityNote     String?                   // as stated by the vendor
+  pricePositioning String    @default("Unknown") // Budget | Mid | Premium | Luxury | Unknown
+  packagesNote     String?                   // package availability (internal)
+  status           String    @default("claimed") // claimed | confirmed
+  confirmedAt      DateTime?
+  confirmedBy      String?
+  role             String    @default("candidate") // preferred | secondary | backup | candidate | inactive
+  evidence         String?                   // where this came from (note date / document)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([vendorId])
+  @@index([categoryId])
+}
+
+// One row per vendor: how reliable they are to work with, and the commercial terms.
+model VendorOps {
+  vendor              Vendor    @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  vendorId            String    @id
+  relationshipType    String    @default("vendor") // vendor | agency_client | inactive  (agency_client = not a supplier, e.g. an agency that sends RFQs)
+  responseSpeed       String    @default("Unknown") // Excellent | Good | Slow | Unknown
+  quoteTurnaround     String    @default("Unknown") // Same Day | 24 Hours | 48+ Hours | Unknown
+  reliability         String    @default("Unknown") // High | Medium | Low | Unknown
+  pricingStatus       String    @default("Unknown") // Partner | Competitive | Standard | Unknown
+  leadAcceptance      String    @default("Unknown") // Accepts most | Selective | Rarely | Unknown
+  availabilityNote    String?
+  commissionTerms     String?                       // internal ONLY — never shown to clients
+  partnerPricingNote  String?                       // internal ONLY
+  lastContactedAt     DateTime?
+  lastQuoteResponseAt DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
 }
