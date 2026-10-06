@@ -3,6 +3,7 @@ import prisma from '@/lib/prisma';
 import { resend, isResendConfigured, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/resend';
 import { logActivity } from '@/lib/logger';
 import { OPEN_STAGES, PARTNER_STALE_HOURS } from '@/lib/pipeline';
+import { OPEN_APPLICATION_STATUSES } from '@/lib/vendor-application-status';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // /api/cron/follow-up-digest — hit daily by Vercel Cron (see vercel.json).
@@ -54,7 +55,7 @@ export async function GET(request: Request) {
         include: { partner: { select: { name: true } } },
       }),
       prisma.vendorApplication.count({
-        where: { status: 'Pending', createdAt: { lt: daysAgo(VENDOR_APP_STALE_DAYS) } },
+        where: { status: { in: [...OPEN_APPLICATION_STATUSES] }, createdAt: { lt: daysAgo(VENDOR_APP_STALE_DAYS) } },
       }),
       prisma.emailLead.count({
         where: { status: 'New', createdAt: { lt: daysAgo(EMAIL_LEAD_STALE_DAYS) } },

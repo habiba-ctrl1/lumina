@@ -17,9 +17,14 @@ import {
   ShieldCheck,
   Send,
   Users,
+  Search,
+  AlertTriangle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { buildPartnerWelcome } from "@/lib/partner-welcome";
+import { normalizePlaces } from "@/lib/vendor-geo";
+import { canonicalCategoryNames } from "@/lib/vendor-categories";
+import { SEED_CATEGORY_NAMES } from "@/lib/categories";
 
 type Application = {
   id: string;
@@ -65,17 +70,32 @@ type Application = {
   vendorId?: string | null;
   createdAt: string;
   isQuickRegistration?: boolean;
+  // Added by GET /api/partner-applications (formal applications only)
+  categoryLinks?: { id: string; name: string }[];
+  flags?: {
+    existingVendors: { id: string; name: string; matchedOn: string; confidence: string }[];
+    repeats: { appNumber: string; status: string; createdAt: string; matchedOn: string }[];
+  };
 };
 
 type VendorOption = { id: string; name: string; category: string; categories?: string[] };
 
-const STATUS_TABS = ["Pending", "Approved", "Rejected", "all"] as const;
+const STATUS_TABS = ["Open", "Pending", "Under Review", "Need More Information", "Approved", "Rejected", "Duplicate", "all"] as const;
+const TAB_LABEL: Record<string, string> = { "Need More Information": "Need Info", all: "All" };
+const OPEN_STATUSES = ["Pending", "Under Review", "Need More Information"];
+const KNOWN_CATEGORY_NAMES = [...SEED_CATEGORY_NAMES, "Full-Service Event Management"];
 
 const statusBadge = (status: string) =>
   status === "Pending"
     ? "bg-amber-50 text-amber-600 border-amber-200"
+    : status === "Under Review"
+    ? "bg-blue-50 text-blue-600 border-blue-200"
+    : status === "Need More Information"
+    ? "bg-orange-50 text-orange-600 border-orange-200"
     : status === "Approved"
     ? "bg-emerald-50 text-emerald-600 border-emerald-200"
+    : status === "Duplicate"
+    ? "bg-slate-100 text-slate-500 border-slate-300"
     : "bg-red-50 text-red-500 border-red-200";
 
 function LinkRow({ label, url }: { label: string; url?: string | null }) {
@@ -139,9 +159,14 @@ function Detail({ label, value }: { label: string; value?: string | null }) {
 
 export default function VendorApplicationsPage() {
   const [applications, setApplications] = useState<Application[]>([]);
-  const [counts, setCounts] = useState({ pending: 0, approved: 0, rejected: 0 });
+  const [counts, setCounts] = useState<Record<string, number>>({ pending: 0, approved: 0, rejected: 0 });
   const [loading, setLoading] = useState(true);
-  const [tab, setTab] = useState<(typeof STATUS_TABS)[number]>("Pending");
+  const [tab, setTab] = useState<(typeof STATUS_TABS)[number]>("Open");
+  // Client-side triage filters (the list is a few dozen rows — no need to hit the API again)
+  const [search, setSearch] = useState("");
+  const [catFilter, setCatFilter] = useState("all");
+  const [cityFilter, setCityFilter] = useState("all");
+  const [flagFilter, setFlagFilter] = useState<"all" | "dup" | "repeat" | "nocat">("all");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [approving, setApproving] = useState<string | null>(null); // app id with approve panel open
   const [mergeVendorId, setMergeVendorId] = useState("");
@@ -160,7 +185,7 @@ export default function VendorApplicationsPage() {
     setLoading(true);
     try {
       // 1. Fetch formal Partner Applications
-      const res = await adminFetch(`/api/partner-applications?status=${tab}`);
+      const res = await adminFetch(`/api/partner-applications?status=${tab === "Open" ? "open" : tab}`);
       const data = await res.json();
       const formalApps: Application[] = !data.error ? data.applications || [] : [];
       const baseCounts = data.counts || { pending: 0, approved: 0, rejected: 0 };
@@ -205,8 +230,11 @@ export default function VendorApplicationsPage() {
         console.error("Failed to fetch vendor inquiries:", inqErr);
       }
 
+      // Quick registrations only ever have Pending / Approved / Rejected.
       const filteredInquiries = tab === "all"
         ? vendorInquiries
+        : tab === "Open"
+        ? vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === "pending")
         : vendorInquiries.filter((i) => (i.status || "Pending").toLowerCase() === tab.toLowerCase());
 
       const combined = [...formalApps, ...filteredInquiries].sort(
@@ -219,9 +247,12 @@ export default function VendorApplicationsPage() {
 
       setApplications(combined);
       setCounts({
+        ...baseCounts,
         pending: baseCounts.pending + inqPending,
+        open: (baseCounts.open ?? baseCounts.pending) + inqPending,
         approved: baseCounts.approved + inqApproved,
         rejected: baseCounts.rejected + inqRejected,
+        total: (baseCounts.total ?? 0) + vendorInquiries.length,
       });
     } catch (e) {
       console.error("Failed to fetch applications:", e);
@@ -329,6 +360,39 @@ export default function VendorApplicationsPage() {
     }
   };
 
+  // One-time, additive: link older applications to canonical categories. Dry-run first so
+  // the founder sees exactly what will be linked before anything is written.
+  const mapCategories = async () => {
+    setBusy(true);
+    try {
+      const dry = await adminFetch("/api/partner-applications/backfill-categories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dryRun: true }),
+      });
+      const preview = await dry.json();
+      if (!dry.ok) return alert(preview.error || "Preview failed");
+      const sample = (preview.plan as { appNumber: string; companyName: string; to: string[] }[])
+        .slice(0, 8)
+        .map((p) => `${p.appNumber} ${p.companyName.slice(0, 28)} → ${p.to.join(" + ")}`)
+        .join("\n");
+      const more = preview.plan.length > 8 ? "\n…" : "";
+      const msg = `Link ${preview.plan.length} older application(s) to canonical categories?\n\nAdditive only — nothing is removed or overwritten.\n\n${sample}${more}`;
+      if (!window.confirm(msg)) return;
+      const res = await adminFetch("/api/partner-applications/backfill-categories", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const out = await res.json();
+      if (!res.ok) return alert(out.error || "Failed");
+      alert(`Linked ${out.linked} application(s).`);
+      await fetchApplications();
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const sendWelcome = async () => {
     if (!emailDraft) return;
     setEmailBusy(true);
@@ -373,6 +437,31 @@ export default function VendorApplicationsPage() {
     }
   };
 
+  // ── Triage filtering ──
+  const effectiveCategories = (a: Application): string[] =>
+    a.categoryLinks && a.categoryLinks.length
+      ? a.categoryLinks.map((c) => c.name)
+      : canonicalCategoryNames(a.categories || [], KNOWN_CATEGORY_NAMES);
+  const appPlaces = (a: Application) => normalizePlaces(a.city, a.regionCoverage);
+
+  const categoryOptions = Array.from(new Set(applications.flatMap(effectiveCategories))).sort();
+  const cityOptions = Array.from(new Set(applications.flatMap(appPlaces))).sort();
+
+  const visible = applications.filter((a) => {
+    if (search.trim()) {
+      const q = search.trim().toLowerCase();
+      const hay = [a.companyName, a.contactPerson, a.appNumber, a.servicesDesc, a.city].filter(Boolean).join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (catFilter !== "all" && !effectiveCategories(a).includes(catFilter)) return false;
+    if (cityFilter !== "all" && !appPlaces(a).includes(cityFilter as never)) return false;
+    if (flagFilter === "dup" && !(a.flags?.existingVendors.length)) return false;
+    if (flagFilter === "repeat" && !(a.flags?.repeats.length)) return false;
+    if (flagFilter === "nocat" && (a.isQuickRegistration || (a.categoryLinks && a.categoryLinks.length))) return false;
+    return true;
+  });
+  const filtersActive = Boolean(search.trim()) || catFilter !== "all" || cityFilter !== "all" || flagFilter !== "all";
+
   return (
     <div className="space-y-5">
       {/* Header */}
@@ -385,48 +474,94 @@ export default function VendorApplicationsPage() {
             Submissions from /partner-onboarding and /vendor-registration — approve to manage in your vendor network.
           </p>
         </div>
-        <button
-          onClick={fetchApplications}
-          className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-600 hover:bg-slate-50 transition-all"
-        >
-          <RefreshCw size={13} className={loading ? "animate-spin" : ""} /> Refresh
-        </button>
+        <div className="flex items-center gap-2">
+          {(counts.uncategorised ?? 0) > 0 && (
+            <button
+              onClick={mapCategories}
+              disabled={busy}
+              title="Adds canonical category links to older applications that have none. Additive only — nothing is removed or overwritten."
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-amber-200 rounded-lg text-[12px] font-semibold text-amber-700 hover:bg-amber-50 transition-all disabled:opacity-60"
+            >
+              Map categories ({counts.uncategorised})
+            </button>
+          )}
+          <button
+            onClick={fetchApplications}
+            className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] font-semibold text-slate-600 hover:bg-slate-50 transition-all"
+          >
+            <RefreshCw size={13} className={loading ? "animate-spin" : ""} /> Refresh
+          </button>
+        </div>
       </div>
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-2">
         {STATUS_TABS.map((t) => {
-          const count = t === "Pending" ? counts.pending : t === "Approved" ? counts.approved : t === "Rejected" ? counts.rejected : counts.pending + counts.approved + counts.rejected;
+          const key = t === "Open" ? "open" : t === "Pending" ? "pending" : t === "Under Review" ? "underReview" : t === "Need More Information" ? "needInfo" : t === "Approved" ? "approved" : t === "Rejected" ? "rejected" : t === "Duplicate" ? "duplicate" : "total";
+          const count = counts[key] ?? 0;
           return (
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all border ${
+              className={`px-3.5 py-2 rounded-lg text-[12px] font-semibold transition-all border ${
                 tab === t
                   ? "bg-emerald-50 border-emerald-200 text-emerald-700"
                   : "bg-white border-slate-200 text-slate-500 hover:bg-slate-50"
               }`}
             >
-              {t === "all" ? "All" : t} <span className="opacity-60 ms-1">{count}</span>
+              {TAB_LABEL[t] ?? t} <span className="opacity-60 ms-1">{count}</span>
             </button>
           );
         })}
       </div>
 
+      {/* Filters */}
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="relative flex-1 min-w-[200px] max-w-sm">
+          <Search size={13} className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search company, contact, app no., services…"
+            className="w-full ps-8 pe-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] text-slate-700 outline-none focus:border-emerald-400"
+          />
+        </div>
+        <select value={catFilter} onChange={(e) => setCatFilter(e.target.value)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] text-slate-600 outline-none focus:border-emerald-400">
+          <option value="all">All categories</option>
+          {categoryOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+        </select>
+        <select value={cityFilter} onChange={(e) => setCityFilter(e.target.value)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] text-slate-600 outline-none focus:border-emerald-400">
+          <option value="all">All cities</option>
+          {cityOptions.map((c) => <option key={c} value={c}>{c}</option>)}
+        </select>
+        <select value={flagFilter} onChange={(e) => setFlagFilter(e.target.value as typeof flagFilter)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[12px] text-slate-600 outline-none focus:border-emerald-400">
+          <option value="all">All flags</option>
+          <option value="dup">Possible duplicate of a vendor</option>
+          <option value="repeat">Repeat submission</option>
+          <option value="nocat">No canonical category</option>
+        </select>
+        {filtersActive && (
+          <button onClick={() => { setSearch(""); setCatFilter("all"); setCityFilter("all"); setFlagFilter("all"); }} className="text-[11px] font-semibold text-slate-400 hover:text-slate-600">
+            Clear filters
+          </button>
+        )}
+        <span className="ms-auto text-[11px] text-slate-400">{visible.length} of {applications.length} shown</span>
+      </div>
+
       {/* List */}
       {loading ? (
         <div className="py-20 text-center text-slate-400 text-sm">Loading applications…</div>
-      ) : applications.length === 0 ? (
+      ) : visible.length === 0 ? (
         <div className="py-20 text-center bg-white border border-slate-200 rounded-xl">
           <ClipboardList size={28} className="mx-auto text-slate-300 mb-3" />
-          <p className="text-sm text-slate-500 font-medium">No {tab === "all" ? "" : tab.toLowerCase() + " "}applications yet</p>
+          <p className="text-sm text-slate-500 font-medium">{filtersActive ? "No applications match these filters" : `No ${tab === "all" ? "" : tab.toLowerCase() + " "}applications yet`}</p>
           <p className="text-[12px] text-slate-400 mt-1">
             Share the onboarding link with vendors: <span className="font-mono text-slate-500">saudieventmanagement.com/partner-onboarding</span>
           </p>
         </div>
       ) : (
         <div className="space-y-3">
-          {applications.map((app) => {
+          {visible.map((app) => {
             const isOpen = expanded === app.id;
             return (
               <div key={app.id} className="bg-white border border-slate-200 rounded-xl overflow-hidden">
@@ -451,6 +586,16 @@ export default function VendorApplicationsPage() {
                       <span className={`px-2 py-0.5 rounded-full border text-[10px] font-semibold ${statusBadge(app.status)}`}>
                         {app.status}
                       </span>
+                      {!!app.flags?.existingVendors.length && app.status !== "Duplicate" && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-amber-50 text-amber-700 border-amber-300" title="Matches a vendor already in your database">
+                          <AlertTriangle size={10} /> Possible duplicate · {app.flags.existingVendors[0].name}
+                        </span>
+                      )}
+                      {!!app.flags?.repeats.length && app.status !== "Duplicate" && (
+                        <span className="px-2 py-0.5 rounded-full border text-[10px] font-semibold bg-slate-50 text-slate-600 border-slate-200" title={app.flags.repeats.map((r) => `${r.appNumber} (${r.status})`).join(", ")}>
+                          Repeat · {app.flags.repeats.length + 1} submissions
+                        </span>
+                      )}
                     </div>
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-[11px] text-slate-500">
                       <span className="inline-flex items-center gap-1"><MapPin size={10} /> {app.city}</span>
@@ -537,8 +682,26 @@ export default function VendorApplicationsPage() {
                           </div>
                         )}
 
+                        {/* Duplicate evidence — shown above the actions so the decision is informed */}
+                        {(!!app.flags?.existingVendors.length || !!app.flags?.repeats.length) && (
+                          <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-3 space-y-1.5">
+                            <p className="text-[12px] font-bold text-amber-700 flex items-center gap-1.5"><AlertTriangle size={13} /> Duplicate check</p>
+                            {app.flags!.existingVendors.map((v) => (
+                              <p key={v.id} className="text-[12px] text-amber-800">
+                                Already a vendor: <b>{v.name}</b> <span className="text-amber-600">(matched on {v.matchedOn}, {v.confidence} confidence)</span>
+                              </p>
+                            ))}
+                            {app.flags!.repeats.length > 0 && (
+                              <p className="text-[12px] text-amber-800">
+                                Same company applied before: {app.flags!.repeats.map((r) => `${r.appNumber} (${r.status})`).join(", ")}
+                              </p>
+                            )}
+                            <p className="text-[11px] text-amber-600">Nothing is merged or deleted automatically. Use “Approve → merge into…” to add this to the existing vendor, or mark it a duplicate to keep it as a record only.</p>
+                          </div>
+                        )}
+
                         {/* Actions */}
-                        {app.status === "Pending" && (
+                        {OPEN_STATUSES.includes(app.status) && (
                           <div className="pt-2 border-t border-slate-100">
                             {approving === app.id ? (
                               <div className="space-y-3 pt-3">
@@ -635,6 +798,55 @@ export default function VendorApplicationsPage() {
                                 >
                                   <XCircle size={13} /> Reject
                                 </button>
+                                {!app.isQuickRegistration && app.status !== "Under Review" && (
+                                  <button
+                                    disabled={busy}
+                                    onClick={() => act(app.id, { action: "review" })}
+                                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-blue-200 text-blue-600 rounded-lg text-[12px] font-semibold hover:bg-blue-50 transition-all"
+                                  >
+                                    Mark under review
+                                  </button>
+                                )}
+                                {!app.isQuickRegistration && app.status !== "Need More Information" && (
+                                  <button
+                                    disabled={busy}
+                                    onClick={() => {
+                                      const note = window.prompt("What information is missing? (saved to the activity log)", "");
+                                      if (note === null) return;
+                                      act(app.id, { action: "need_info", note });
+                                    }}
+                                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-orange-200 text-orange-600 rounded-lg text-[12px] font-semibold hover:bg-orange-50 transition-all"
+                                  >
+                                    Need more information
+                                  </button>
+                                )}
+                                {!app.isQuickRegistration && (app.flags?.existingVendors || []).slice(0, 2).map((v) => (
+                                  <button
+                                    key={v.id}
+                                    disabled={busy}
+                                    onClick={() => {
+                                      if (window.confirm(`Mark ${app.appNumber} as a duplicate of the existing vendor “${v.name}”?\n\nThe application is kept as a record and NO second vendor is created. The vendor itself is not changed.`)) {
+                                        act(app.id, { action: "duplicate", vendorId: v.id });
+                                      }
+                                    }}
+                                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all"
+                                  >
+                                    Duplicate of {v.name.length > 22 ? v.name.slice(0, 22) + "…" : v.name}
+                                  </button>
+                                ))}
+                                {!app.isQuickRegistration && !(app.flags?.existingVendors.length) && !!app.flags?.repeats.length && (
+                                  <button
+                                    disabled={busy}
+                                    onClick={() => {
+                                      if (window.confirm(`Mark ${app.appNumber} as a repeat submission of an earlier application?\n\nIt is kept as a record; nothing is deleted.`)) {
+                                        act(app.id, { action: "duplicate" });
+                                      }
+                                    }}
+                                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-amber-300 text-amber-700 rounded-lg text-[12px] font-semibold hover:bg-amber-50 transition-all"
+                                  >
+                                    Mark as repeat submission
+                                  </button>
+                                )}
                                 <button
                                   disabled={busy}
                                   onClick={() => remove(app.id, app.appNumber, app.vendorId, app.isQuickRegistration)}
@@ -646,7 +858,7 @@ export default function VendorApplicationsPage() {
                             )}
                           </div>
                         )}
-                        {app.status === "Rejected" && (
+                        {(app.status === "Rejected" || app.status === "Duplicate") && (
                           <div className="flex flex-wrap gap-2">
                             <button
                               disabled={busy}

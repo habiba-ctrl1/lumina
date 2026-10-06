@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { logActivity } from '@/lib/logger';
 import { requireAdmin } from '@/lib/api-auth';
+import { resolveCategories } from '@/lib/vendor-categories';
+import { matchCandidates, type DedupeRow } from '@/lib/vendor-dedupe';
+import { OPEN_APPLICATION_STATUSES } from '@/lib/vendor-application-status';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // /api/partner-applications
@@ -84,6 +87,19 @@ export async function POST(request: Request) {
       );
     }
 
+    // Canonical category link. The new onboarding form sends categoryIds; the three
+    // legacy forms (/vendors, /vendor-registration, /partners/become-one) only send
+    // free-text labels, so map those onto the canonical taxonomy here — every
+    // application then lands categorised, whichever form it came from.
+    let categoryIds: string[] = Array.isArray(body.categoryIds) ? body.categoryIds.filter((x: unknown) => typeof x === 'string') : [];
+    if (categoryIds.length === 0) {
+      try {
+        categoryIds = (await resolveCategories(prisma, categories)).map((c) => c.id);
+      } catch (e) {
+        console.error('Category mapping failed (non-fatal):', e);
+      }
+    }
+
     // appNumber has a unique constraint — retry once on a rare collision.
     let application;
     for (let attempt = 0; attempt < 2; attempt++) {
@@ -129,9 +145,7 @@ export async function POST(request: Request) {
             featureOnSem: body.featureOnSem === true,
             backlinkAnswer: str(body.backlinkAnswer, 50),
             extraNotes: str(body.extraNotes, 2000),
-            ...(Array.isArray(body.categoryIds) && body.categoryIds.length
-              ? { categoryLinks: { connect: body.categoryIds.map((id: string) => ({ id })) } }
-              : {}),
+            ...(categoryIds.length ? { categoryLinks: { connect: categoryIds.map((id) => ({ id })) } } : {}),
           },
         });
         break;
@@ -163,20 +177,63 @@ export async function GET(request: Request) {
 
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
-    const where = status && status !== 'all' ? { status } : {};
+    const where =
+      status === 'open'
+        ? { status: { in: [...OPEN_APPLICATION_STATUSES] } }
+        : status && status !== 'all'
+        ? { status }
+        : {};
 
-    const applications = await prisma.vendorApplication.findMany({
-      where,
-      orderBy: { createdAt: 'desc' },
+    // One pass over vendors + all applications, matched in memory (hundreds of rows),
+    // so the list can show duplicate flags without a query per application.
+    const [applications, vendors, everyApp] = await Promise.all([
+      prisma.vendorApplication.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        include: { categoryLinks: { select: { id: true, name: true } } },
+      }),
+      prisma.vendor.findMany({
+        select: { id: true, name: true, email: true, phone: true, whatsapp: true, city: true, category: true },
+      }),
+      prisma.vendorApplication.findMany({
+        select: { id: true, appNumber: true, companyName: true, email: true, phone: true, whatsapp: true, status: true, createdAt: true },
+      }),
+    ]);
+
+    const appRows: (DedupeRow & { appNumber: string; status: string; createdAt: Date })[] = everyApp.map((o) => ({
+      id: o.id, name: o.companyName, email: o.email, phone: o.phone, whatsapp: o.whatsapp, city: null, category: '',
+      appNumber: o.appNumber, status: o.status, createdAt: o.createdAt,
+    }));
+
+    const enriched = applications.map((app) => {
+      const input = { name: app.companyName, email: app.email, phone: app.phone, whatsapp: app.whatsapp };
+      // Possible duplicate = matches a vendor that is NOT the one this application already became.
+      const existingVendors = matchCandidates(vendors.filter((v) => v.id !== app.vendorId), input).map((c) => ({
+        id: c.vendor.id, name: c.vendor.name, matchedOn: c.matchedOn, confidence: c.confidence,
+      }));
+      // Repeat submission = other applications from the same company (same email/phone/near-identical name).
+      const repeats = matchCandidates(appRows.filter((o) => o.id !== app.id), input).map((c) => {
+        const o = appRows.find((r) => r.id === c.vendor.id)!;
+        return { appNumber: o.appNumber, status: o.status, createdAt: o.createdAt, matchedOn: c.matchedOn };
+      });
+      return { ...app, flags: { existingVendors, repeats } };
     });
 
+    const uncategorised = await prisma.vendorApplication.count({ where: { categoryLinks: { none: {} } } });
+    const n = (st: string) => everyApp.filter((a) => a.status === st).length;
     const counts = {
-      pending: await prisma.vendorApplication.count({ where: { status: 'Pending' } }),
-      approved: await prisma.vendorApplication.count({ where: { status: 'Approved' } }),
-      rejected: await prisma.vendorApplication.count({ where: { status: 'Rejected' } }),
+      pending: n('Pending'),
+      underReview: n('Under Review'),
+      needInfo: n('Need More Information'),
+      approved: n('Approved'),
+      rejected: n('Rejected'),
+      duplicate: n('Duplicate'),
+      open: everyApp.filter((a) => (OPEN_APPLICATION_STATUSES as string[]).includes(a.status)).length,
+      total: everyApp.length,
+      uncategorised,
     };
 
-    return NextResponse.json({ applications, counts });
+    return NextResponse.json({ applications: enriched, counts });
   } catch (error) {
     console.error('Partner Applications Fetch Error:', error);
     return NextResponse.json({ error: 'Failed to fetch applications' }, { status: 500 });

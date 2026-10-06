@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
+import { OPEN_APPLICATION_STATUSES } from '@/lib/vendor-application-status';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // /api/admin/action-needed  (GET, admin only)
@@ -34,7 +35,7 @@ export async function GET(request: Request) {
           },
         }),
         prisma.vendorApplication.findMany({
-          where: { status: 'Pending' },
+          where: { status: { in: [...OPEN_APPLICATION_STATUSES] } },
           orderBy: { createdAt: 'desc' },
           take: 30,
           select: {

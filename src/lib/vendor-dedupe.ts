@@ -57,23 +57,19 @@ export type DuplicateCandidate = {
   confidence: 'high' | 'medium';
 };
 
-export async function findPossibleDuplicates(
-  prisma: PrismaClient,
-  input: { name?: string | null; email?: string | null; phone?: string | null; whatsapp?: string | null },
-  excludeId?: string
-): Promise<DuplicateCandidate[]> {
+export type DedupeInput = { name?: string | null; email?: string | null; phone?: string | null; whatsapp?: string | null };
+export type DedupeRow = { id: string; name: string; email: string | null; phone: string | null; whatsapp: string | null; city: string | null; category: string };
+
+/**
+ * Pure matcher — same rules as always, but over rows the caller already loaded.
+ * Lets list screens check many applications against the vendor table with ONE
+ * query instead of one per row.
+ */
+export function matchCandidates(candidates: DedupeRow[], input: DedupeInput): DuplicateCandidate[] {
   const email = normalizeEmail(input.email);
   const phone = normalizePhone(input.phone);
   const whatsapp = normalizePhone(input.whatsapp);
   const name = normalizeName(input.name);
-
-  // Pull a narrow candidate set (anyone with any contact info at all, minus
-  // the vendor being edited) and normalize in JS — cheap at hundreds/thousands
-  // of rows, avoids needing a Postgres extension for fuzzy matching.
-  const candidates = await prisma.vendor.findMany({
-    where: excludeId ? { id: { not: excludeId } } : undefined,
-    select: { id: true, name: true, email: true, phone: true, whatsapp: true, city: true, category: true },
-  });
 
   const results: DuplicateCandidate[] = [];
   for (const c of candidates) {
@@ -100,6 +96,20 @@ export async function findPossibleDuplicates(
       results.push({ vendor, matchedOn: 'name', confidence: 'medium' });
     }
   }
-
   return results;
+}
+
+export async function findPossibleDuplicates(
+  prisma: PrismaClient,
+  input: DedupeInput,
+  excludeId?: string
+): Promise<DuplicateCandidate[]> {
+  // Pull a narrow candidate set (anyone with any contact info at all, minus
+  // the vendor being edited) and normalize in JS — cheap at hundreds/thousands
+  // of rows, avoids needing a Postgres extension for fuzzy matching.
+  const candidates = await prisma.vendor.findMany({
+    where: excludeId ? { id: { not: excludeId } } : undefined,
+    select: { id: true, name: true, email: true, phone: true, whatsapp: true, city: true, category: true },
+  });
+  return matchCandidates(candidates, input);
 }

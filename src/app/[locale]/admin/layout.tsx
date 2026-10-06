@@ -36,6 +36,7 @@ import {
   Receipt,
   PieChart,
   ClipboardList,
+  Grid3x3,
   Zap,
   Inbox,
   ListChecks,
@@ -85,6 +86,7 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/admin/vendors", label: "Vendors", icon: Briefcase },
       { href: "/admin/vendor-applications", label: "Applications", icon: ClipboardList },
+      { href: "/admin/coverage", label: "Coverage", icon: Grid3x3 },
       { href: "/admin/email-leads", label: "Email Leads", icon: Inbox },
       { href: "/admin/quotes", label: "Quotes", icon: MessageSquareQuote },
     ],
