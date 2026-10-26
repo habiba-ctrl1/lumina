@@ -170,6 +170,7 @@ export default function TransportationPage() {
                 lead: "Private international road journeys between Saudi Arabia and neighbouring countries, handled as feasibility-reviewed enquiries.",
                 points: ["Corporate and executive travel", "Pre-arranged point-to-point transportation", "Route feasibility and vehicle confirmation before quotation"],
                 cta: "Enquire about a cross-border transfer",
+                href: "/transportation/cross-border-transfers",
               },
               {
                 icon: Route,
@@ -177,6 +178,7 @@ export default function TransportationPage() {
                 lead: "Chauffeured travel for executives, guests and delegations, with Riyadh as our primary area.",
                 points: ["Airport and hotel transfers", "City-to-city, hourly and full-day arrangements", "Conference, event and delegation mobility"],
                 cta: "Enquire about a chauffeur",
+                href: "/transportation/vip-chauffeur",
               },
             ].map((s, i) => (
               <Reveal key={s.title} delay={i * 90}>
@@ -189,9 +191,9 @@ export default function TransportationPage() {
                       <li key={p} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#c5a059]" aria-hidden />{p}</li>
                     ))}
                   </ul>
-                  <a href="#enquiry" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#0b1623] underline-offset-4 hover:underline">
+                  <Link href={s.href} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#0b1623] underline-offset-4 hover:underline">
                     {s.cta} <ArrowRight size={15} aria-hidden className="transition group-hover:translate-x-0.5" />
-                  </a>
+                  </Link>
                 </article>
               </Reveal>
             ))}
@@ -213,6 +215,7 @@ export default function TransportationPage() {
               <h2 className="mt-3 max-w-2xl font-serif text-3xl font-bold md:text-4xl">The right vehicle for the passengers and luggage</h2>
               <p className="mt-4 max-w-2xl text-[#1c2430]/75">
                 We work in vehicle classes. The exact vehicle, passenger capacity and luggage allowance are confirmed in your quotation, and all vehicles are subject to availability.
+                {" "}<Link href="/transportation/luxury-vehicles" className="font-medium underline underline-offset-4 hover:text-[#0b1623]">Compare the vehicle classes</Link>.
               </p>
             </Reveal>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -349,11 +352,11 @@ export default function TransportationPage() {
             <div>
               <h3 className="font-serif text-xl font-bold">Saudi Arabia — chauffeur enquiries</h3>
               <p className="mt-2 text-sm text-[#1c2430]/70">
-                Primary area: Riyadh. Also taken as enquiries, with availability checked per request: {COUNTRIES[0].cities.filter((c) => c !== "Riyadh").join(", ")}.
+                Primary area: <Link href="/transportation/vip-chauffeur/riyadh" className="font-medium underline underline-offset-4">Riyadh</Link>. Also taken as enquiries, with availability checked per request: {COUNTRIES[0].cities.filter((c) => c !== "Riyadh").join(", ")}.
               </p>
             </div>
             <div>
-              <h3 className="font-serif text-xl font-bold">Cross-border — enquiry only</h3>
+              <h3 className="font-serif text-xl font-bold"><Link href="/transportation/cross-border-transfers" className="hover:underline">Cross-border — enquiry only</Link></h3>
               <ul className="mt-2 space-y-1 text-sm text-[#1c2430]/75">
                 {COUNTRIES.filter((c) => c.key !== "SA").map((c) => (
                   <li key={c.key}>Saudi Arabia ⇄ {c.name} <span className="text-[#1c2430]/50">· feasibility review</span></li>

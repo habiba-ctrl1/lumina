@@ -234,6 +234,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Transportation division (2026-10, EN only; /ar stays noindex until translated) ─
     { route: '/transportation',              freq: 'monthly', priority: 0.8  },
     { route: '/transportation/request-a-quote', freq: 'monthly', priority: 0.7 },
+    { route: '/transportation/cross-border-transfers', freq: 'monthly', priority: 0.75 },
+    { route: '/transportation/vip-chauffeur', freq: 'monthly', priority: 0.75 },
+    { route: '/transportation/vip-chauffeur/riyadh', freq: 'monthly', priority: 0.75 },
+    { route: '/transportation/luxury-vehicles', freq: 'monthly', priority: 0.7 },
+    // /transportation/vip-chauffeur/jeddah is intentionally noindex + excluded until a Jeddah partner is confirmed.
 
     // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
     { route: '/travel',                       freq: 'monthly', priority: 0.75 },
