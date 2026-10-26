@@ -233,6 +233,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Transportation division (2026-10, EN only; /ar stays noindex until translated) ─
     { route: '/transportation',              freq: 'monthly', priority: 0.8  },
+    { route: '/transportation/request-a-quote', freq: 'monthly', priority: 0.7 },
 
     // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
     { route: '/travel',                       freq: 'monthly', priority: 0.75 },
