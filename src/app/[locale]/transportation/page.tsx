@@ -24,9 +24,9 @@ const PAGE_URL = `${SITE_URL}${PATH}`;
 const HERO_IMG = "/services/transport/vip-chauffeur-arrival-riyadh-exhibition-centre.webp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Executive Chauffeur & Private Transfers in Saudi Arabia | Saudi Event Management" },
+  title: { absolute: "Executive Chauffeur & Private Transfers | Saudi Event Management" },
   description:
-    "Pre-arranged executive chauffeur service in Saudi Arabia and private cross-border transfer enquiries for corporate travel, VIP guests, hotels and delegations. Request a tailored quotation.",
+    "Pre-arranged executive chauffeur service in Saudi Arabia and private cross-border transfer enquiries for corporate travel, VIP guests and delegations.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Executive Chauffeur & Private Transfers | Saudi Event Management",

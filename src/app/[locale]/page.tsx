@@ -174,6 +174,7 @@ const linkHub = {
     { label: "Royal Wedding Planning", href: "/services/royal-weddings" },
     { label: "Event Valet Parking", href: "/services/valet-parking" },
     { label: "VIP Event Transportation", href: "/services/vip-transportation" },
+    { label: "Executive Chauffeur & Private Transfers", href: "/transportation" },
     { label: "Event Entertainment Booking", href: "/services/entertainment" },
     { label: "Birthday Party Planning", href: "/services/birthday-party" },
   ],

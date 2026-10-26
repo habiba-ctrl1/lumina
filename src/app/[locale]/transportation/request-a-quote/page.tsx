@@ -12,9 +12,9 @@ import type { EnquiryInput } from "@/lib/transportation/enquiry";
 const PAGE_URL = `${SITE_URL}/transportation/request-a-quote`;
 
 export const metadata: Metadata = {
-  title: { absolute: "Request a Transportation Quote | Chauffeur & Private Transfers | Saudi Event Management" },
+  title: { absolute: "Request a Transportation Quote | Saudi Event Management" },
   description:
-    "Request a tailored quotation for executive chauffeur service in Saudi Arabia or a private cross-border transfer. Share your route, passengers and vehicle preference.",
+    "Request a tailored quotation for a chauffeur or private cross-border transfer. Share your route, passengers and vehicle preference.",
   alternates: { canonical: PAGE_URL },
 };
 

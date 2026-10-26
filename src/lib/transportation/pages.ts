@@ -45,9 +45,9 @@ const T = { name: "Transportation", href: "/transportation" };
 
 const crossBorder: TransportPage = {
   path: "/transportation/cross-border-transfers",
-  title: "Private Cross-Border Transfers from Saudi Arabia | Saudi Event Management",
+  title: "Private Cross-Border Transfers | Saudi Event Management",
   description:
-    "Enquire about pre-arranged private road transfers between Saudi Arabia and Bahrain, the UAE, Qatar, Kuwait and Jordan. Each route is reviewed for feasibility before a quotation.",
+    "Enquire about private road transfers between Saudi Arabia and Bahrain, the UAE, Qatar, Kuwait and Jordan. Each route is reviewed before we quote.",
   h1: "Private Cross-Border Transfers from Saudi Arabia",
   eyebrow: "Cross-border transfers",
   image: IMG.sedan,
@@ -129,7 +129,7 @@ const chauffeur: TransportPage = {
   path: "/transportation/vip-chauffeur",
   title: "VIP Chauffeur Service in Saudi Arabia | Saudi Event Management",
   description:
-    "Pre-arranged executive chauffeur service in Saudi Arabia: airport and hotel transfers, hourly and full-day hire, city-to-city journeys and delegation transport, coordinated through vetted partners.",
+    "Pre-arranged executive chauffeur service in Saudi Arabia: airport and hotel transfers, hourly hire and intercity journeys, with a written quotation.",
   h1: "VIP Chauffeur Service in Saudi Arabia",
   eyebrow: "VIP chauffeur",
   image: IMG.arrival,
@@ -205,9 +205,9 @@ const chauffeur: TransportPage = {
 
 const riyadh: TransportPage = {
   path: "/transportation/vip-chauffeur/riyadh",
-  title: "VIP Chauffeur Service in Riyadh | Airport & Executive Transfers | Saudi Event Management",
+  title: "VIP Chauffeur Service in Riyadh | Saudi Event Management",
   description:
-    "Executive chauffeur service in Riyadh: airport and hotel transfers, business-district meetings, conferences and hourly hire, coordinated through vetted partners with a written quotation.",
+    "Executive chauffeur service in Riyadh: airport and hotel transfers, business meetings, conferences and hourly hire, with a written quotation.",
   h1: "VIP Chauffeur Service in Riyadh",
   eyebrow: "VIP chauffeur · Riyadh",
   image: IMG.hotel,
@@ -280,7 +280,7 @@ const jeddah: TransportPage = {
   path: "/transportation/vip-chauffeur/jeddah",
   title: "Chauffeur Service Enquiries in Jeddah | Saudi Event Management",
   description:
-    "Request a chauffeur-driven transfer in Jeddah, including Jeddah Airport and Jeddah to Makkah journeys. Availability is checked per enquiry before a written quotation.",
+    "Request a chauffeur in Jeddah, including airport and Jeddah to Makkah journeys. Availability is checked per enquiry before we quote.",
   h1: "Chauffeur Service Enquiries in Jeddah",
   eyebrow: "VIP chauffeur · Jeddah",
   image: IMG.sedan,
@@ -343,9 +343,9 @@ const jeddah: TransportPage = {
 
 const vehicles: TransportPage = {
   path: "/transportation/luxury-vehicles",
-  title: "Executive Vehicle Classes for Chauffeur & Private Transfers | Saudi Event Management",
+  title: "Executive Vehicle Classes for Chauffeurs | Saudi Event Management",
   description:
-    "Executive sedans, premium SUVs, premium vans and group vehicles for chauffeur and private transfer requests in Saudi Arabia. See which class suits your passengers and luggage.",
+    "Executive sedans, premium SUVs, vans and group vehicles for chauffeur and private transfer requests. Find the right class for your passengers and luggage.",
   h1: "Executive Vehicle Classes for Chauffeur and Private Transfers",
   eyebrow: "Vehicle classes",
   image: IMG.vans,
