@@ -7,6 +7,9 @@ type TransportEvent =
   | "transport_service_select"
   | "transport_vehicle_select"
   | "transport_route_check"
+  | "transport_form_start"
+  | "transport_form_error"
+  | "transport_lead_submitted"
   | "transport_whatsapp_click"
   | "transport_email_click";
 

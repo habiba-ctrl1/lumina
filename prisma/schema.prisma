@@ -391,12 +391,38 @@ model QuoteRequest {
   closedAt       DateTime?
   updates        LeadUpdate[]
 
+  // ── Transportation division (Phase 2, Oct 2026 — scripts/phase2-transport-columns.sql) ──
+  // All nullable: only rows created by /api/transportation/enquiry populate them.
+  leadDepartment      String?   // "transportation" (business stays "SEM")
+  leadRef             String?   // customer-facing reference, same value as Inquiry.refNumber
+  serviceCategory     String?   // cross_border | vip_chauffeur | corporate_transportation
+  journeyType         String?
+  originCountry       String?
+  originCity          String?
+  destinationCountry  String?
+  destinationCity     String?
+  vehiclePreference   String?
+  sourceWebsite       String?
+  landingPage         String?
+  referrer            String?
+  utmSource           String?
+  utmMedium           String?
+  utmCampaign         String?
+  utmContent          String?
+  utmTerm             String?
+  attribution         Json?     // { first_touch, last_touch }
+  details             Json?     // full validated form payload (no consent/anti-spam fields)
+  notifyStatus        String?   // pending | sent | partial | failed
+  notifyAttempts      Int       @default(0)
+  notifyError         String?
+
   proposals    Proposal[]
   vendorQuotes VendorQuote[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   @@index([stage, nextActionAt])
+  @@index([leadDepartment, serviceCategory])
 }
 
 // Append-only timeline per deal: every call, client reply, partner update,

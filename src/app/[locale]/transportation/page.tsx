@@ -8,7 +8,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ServiceLeadForm, { type ServiceLeadField } from "@/components/ServiceLeadForm";
+import TransportEnquiryForm from "@/components/transportation/TransportEnquiryForm";
 import Reveal from "@/components/transportation/Reveal";
 import RouteSelector from "@/components/transportation/RouteSelector";
 import TransportTracker from "@/components/transportation/TransportTracker";
@@ -103,27 +103,6 @@ const jsonLd = {
     },
   ],
 };
-
-const SERVICE_OPTIONS = [
-  "Cross-border transfer",
-  "VIP chauffeur in Saudi Arabia",
-  "Corporate / delegation transportation",
-  "Not sure — please advise",
-];
-const CROSS_BORDER = ["Cross-border transfer"];
-const vehicleOptions = [...VEHICLE_CLASSES.map((v) => v.name), "Recommend a suitable vehicle"];
-
-const serviceFields: ServiceLeadField[] = [
-  { name: "journeyType", label: "Journey type", type: "select", options: ["One way", "Return", "Multiple stops", "Hourly chauffeur", "Full-day chauffeur", "Recurring corporate service", "Event / delegation"] },
-  { name: "pickup", label: "Pickup city and location", type: "text", placeholder: "e.g. Riyadh — King Khalid Airport, hotel name" },
-  { name: "destination", label: "Destination city and location", type: "text", placeholder: "e.g. Dammam — hotel, venue" },
-  { name: "destinationCountry", label: "Destination country", type: "select", options: COUNTRIES.map((c) => c.name), showFor: CROSS_BORDER },
-  { name: "pickupTime", label: "Pickup time", type: "time" },
-  { name: "passengers", label: "Passengers", type: "select", options: ["1–3", "4–7", "8–15", "16+"] },
-  { name: "luggage", label: "Luggage", type: "select", options: ["Hand luggage only", "1 bag per passenger", "2+ bags per passenger", "Not sure"] },
-  { name: "vehicle", label: "Vehicle preference", type: "select", options: vehicleOptions },
-  { name: "flexible", label: "Is the vehicle class mandatory?", type: "select", options: ["Equivalent acceptable", "This class only"] },
-];
 
 const eyebrow = "text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c5a059]";
 
@@ -398,24 +377,7 @@ export default function TransportationPage() {
               </a>
             </div>
             <div className="lg:col-span-7">
-              <ServiceLeadForm
-                source="transportation_hub"
-                eyebrow="Transportation enquiry"
-                heading="Tell us about the journey"
-                subheading="Share the details you have. We will come back with options, or tell you plainly if the journey can't be supported."
-                submitLabel="Request Your Tailored Quote"
-                serviceOptions={SERVICE_OPTIONS}
-                defaultService="VIP chauffeur in Saudi Arabia"
-                serviceFields={serviceFields}
-                eventTypeOptions={["Corporate", "Travel agency", "Hotel / hospitality", "Event organiser", "Individual", "Other"]}
-                eventTypeLabel="Booking purpose"
-                guestCountLabel="Passengers"
-                guestCountPlaceholder="e.g. 4"
-                dateLabel="Travel date"
-                companyLabel="Company"
-                messageLabel="Additional requirements"
-                messagePlaceholder="Itinerary, number of vehicles, special requirements, return journey details…"
-              />
+              <TransportEnquiryForm formId="transportation_hub" heading="Tell us about the journey" />
             </div>
           </div>
         </section>

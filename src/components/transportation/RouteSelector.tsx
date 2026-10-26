@@ -46,6 +46,14 @@ export default function RouteSelector() {
     vehicle: vehicleName,
   });
 
+  const quoteParams: Record<string, string> = {
+    service: category, oc: fromCountry, ocity: fromCity, dc: toCountry, dcity: toCity, pax: passengers || "1",
+  };
+  if (date) quoteParams.date = date;
+  if (time) quoteParams.time = time;
+  if (vehicle) quoteParams.vehicle = vehicle;
+  const quoteHref = `/transportation/request-a-quote?${new URLSearchParams(quoteParams).toString()}`;
+
   // One country change must keep city lists consistent.
   const pickFrom = (k: string) => {
     setFromCountry(k);
@@ -152,7 +160,7 @@ export default function RouteSelector() {
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <a
-              href="#enquiry"
+              href={quoteHref}
               className="inline-flex items-center gap-2 rounded-md bg-[#c5a059] px-4 py-2.5 font-semibold text-[#0b1623] hover:bg-[#d6b574]"
             >
               Request a quote <ArrowRight size={15} aria-hidden />
