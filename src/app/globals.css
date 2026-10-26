@@ -454,3 +454,13 @@ a:hover { color: var(--primary-dark); }
   from { opacity: 0; transform: scale(1.06); }
   to   { opacity: 0.45; transform: scale(1); }
 }
+
+/* Transportation pages: honour reduced-motion for every transition/animation. */
+@media (prefers-reduced-motion: reduce) {
+  .tx-root *, .tx-root *::before, .tx-root *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

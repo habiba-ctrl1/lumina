@@ -104,7 +104,8 @@ const jsonLd = {
   ],
 };
 
-const eyebrow = "text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c5a059]";
+const eyebrow = "text-[11px] font-semibold uppercase tracking-[0.2em] text-[#8a6d2f]"; // light backgrounds (AA contrast)
+const eyebrowDark = "text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c5a059]"; // navy backgrounds
 
 export default function TransportationPage() {
   const wa = buildTransportWhatsAppUrl({});
@@ -114,7 +115,7 @@ export default function TransportationPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <TransportTracker page="hub" />
-      <main className="min-h-screen overflow-hidden bg-[#faf7f1] text-[#1c2430]">
+      <main className="tx-root min-h-screen overflow-hidden bg-[#faf7f1] text-[#1c2430]">
         <Navbar darkHero />
 
         {/* HERO */}
@@ -132,7 +133,7 @@ export default function TransportationPage() {
             <nav aria-label="Breadcrumb" className="mb-6 text-xs text-white/60">
               <Link href="/" className="text-white/70 hover:text-white">Home</Link> <span aria-hidden>/</span> <span className="text-white/90">Transportation</span>
             </nav>
-            <p className={eyebrow}>Executive Mobility · Saudi Event Management</p>
+            <p className={eyebrowDark}>Executive Mobility · Saudi Event Management</p>
             <h1 className="mt-4 max-w-3xl font-serif text-4xl font-bold leading-[1.1] !text-white md:text-5xl lg:text-6xl">
               Executive Chauffeur &amp; Private Transfers Across Saudi Arabia and Beyond
             </h1>
@@ -245,7 +246,7 @@ export default function TransportationPage() {
         <section id="corporate" className="scroll-mt-24 bg-[#0b1623] py-16 text-white md:py-24">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
             <Reveal>
-              <p className={eyebrow}>Corporate mobility</p>
+              <p className={eyebrowDark}>Corporate mobility</p>
               <h2 className="mt-3 font-serif text-3xl font-bold !text-white md:text-4xl">Arrange Executive Transportation for Your Team or Guests</h2>
               <p className="mt-5 leading-relaxed text-white/75">
                 One point of contact, a structured itinerary, vehicle-class planning, coordinated pickups and a clear written quotation, for the people you are responsible for moving.
@@ -280,7 +281,7 @@ export default function TransportationPage() {
         <section className="bg-[#0e1c2d] pb-16 pt-4 md:pb-24">
           <div className="mx-auto max-w-6xl px-5">
             <Reveal>
-              <p className={`${eyebrow} pt-12`}>Route discovery</p>
+              <p className={`${eyebrowDark} pt-12`}>Route discovery</p>
               <h2 className="mt-3 max-w-2xl font-serif text-3xl font-bold !text-white md:text-4xl">Tell us the journey</h2>
               <p className="mt-4 mb-8 max-w-2xl text-white/70">
                 Select your pickup and destination. If a route isn&apos;t yet confirmed we&apos;ll say so, and offer a feasibility enquiry rather than a promise.
@@ -370,7 +371,7 @@ export default function TransportationPage() {
         <section id="enquiry" className="scroll-mt-24 bg-[#0b1623] py-16 md:py-24">
           <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-12">
             <div className="text-white lg:col-span-5">
-              <p className={eyebrow}>Request a quote</p>
+              <p className={eyebrowDark}>Request a quote</p>
               <h2 className="mt-3 font-serif text-3xl font-bold !text-white md:text-4xl">Planning Executive Travel or a Private Cross-Border Journey?</h2>
               <p className="mt-5 leading-relaxed text-white/75">
                 Our team reviews the route, passenger requirements, vehicle preference and timing before preparing a tailored quotation. Submitting an enquiry does not confirm availability or a booking.

@@ -48,7 +48,7 @@ export default async function RequestAQuotePage({ searchParams }: { searchParams
   return (
     <>
       <TransportTracker page="request_a_quote" />
-      <main className="min-h-screen bg-[#0b1623] text-white">
+      <main className="tx-root min-h-screen bg-[#0b1623] text-white">
         <Navbar darkHero />
         <div className="mx-auto max-w-3xl px-5 pb-20 pt-32 md:pt-40">
           <nav aria-label="Breadcrumb" className="mb-5 text-xs text-white/60">

@@ -16,11 +16,11 @@ type Lead = {
   originCity?: string | null; originCountry?: string | null; destinationCity?: string | null; destinationCountry?: string | null;
   eventDate?: string | null; guestCount?: number | null; vehiclePreference?: string | null; stage: string;
   nextAction?: string | null; nextActionAt?: string | null; quotedAmount?: number | null; source: string;
-  utmSource?: string | null; utmCampaign?: string | null; notifyStatus?: string | null; details?: Record<string, any> | null;
+  utmSource?: string | null; utmCampaign?: string | null; notifyStatus?: string | null; details?: { quoteDeadline?: string; quote?: QuoteMeta } | null;
   proposals?: { id: string; status: string; version: number; totalAmount: number; currency: string }[];
 };
 type Detail = Omit<Lead, "proposals"> & {
-  referrer?: string | null; landingPage?: string | null; utmMedium?: string | null; attribution?: any; requirements?: string | null;
+  referrer?: string | null; landingPage?: string | null; utmMedium?: string | null; attribution?: { first_touch?: { landing_page?: string; at?: string } } | null; requirements?: string | null;
   lostReason?: string | null; updates: { id: string; kind: string; author: string; summary: string; nextActionAt?: string | null; createdAt: string }[];
   proposals: { id: string; quoteNumber: string; version: number; totalAmount: number; currency: string; validUntil: string; status: string; emailStatus: string }[];
   vendorQuotes: { id: string; quoteNumber: string; service: string; vendorCost: number; currency: string; status: string; vendor: { name: string } }[];

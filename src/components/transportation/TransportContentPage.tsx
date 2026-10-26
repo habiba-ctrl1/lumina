@@ -65,7 +65,7 @@ export default function TransportContentPage({ page: p }: { page: TransportPage 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <TransportTracker page={p.path} />
-      <main className="min-h-screen overflow-hidden bg-[#faf7f1] text-[#1c2430]">
+      <main className="tx-root min-h-screen overflow-hidden bg-[#faf7f1] text-[#1c2430]">
         <Navbar darkHero />
 
         <section className="relative isolate bg-[#0b1623] text-white">
