@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
-import { CHANNELS, STAGES, TRACKS } from '@/lib/pipeline';
+import { ALL_STAGES, CHANNELS, TRACKS } from '@/lib/pipeline';
 
 // GET /api/admin/pipeline — every SEM deal with its partner and latest update,
 // plus the vendor list for the partner picker (names only — no contact fields).
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
         requirements: b.requirements?.trim() || null,
         channel: CHANNELS.includes(b.channel) ? b.channel : null,
         track: TRACKS.includes(b.track) ? b.track : null,
-        stage: STAGES.includes(b.stage) ? b.stage : 'new',
+        stage: (ALL_STAGES as readonly string[]).includes(b.stage) ? b.stage : 'new',
         nextAction: b.nextAction?.trim() || 'Qualify: date, city, pax, budget, decision-maker',
         nextActionAt: b.nextActionAt ? new Date(b.nextActionAt) : new Date(),
         source: b.channel ? `manual_${b.channel}` : 'manual_entry',

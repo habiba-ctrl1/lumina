@@ -13,7 +13,20 @@ export const STAGES = [
   'parked',         // real but on hold (date moved, "keep us in list")
 ] as const;
 
-export const OPEN_STAGES = STAGES.filter(s => !['won', 'lost', 'parked'].includes(s));
+// Extra stages used only by the transportation queue (/admin/transportation).
+// The event pipeline's stage dropdown keeps showing STAGES; ALL_STAGES is what
+// the API accepts, so a transport deal can also appear in the main pipeline.
+export const TRANSPORT_EXTRA_STAGES = [
+  'contacted',      // first reply sent
+  'route_review',   // cross-border: feasibility / permits / documents check
+  'vendor_pending', // waiting on partner availability + cost
+  'quote_prep',     // building the client quotation
+  'cancelled',      // client or SEM cancelled after confirmation
+] as const;
+
+export const ALL_STAGES = [...STAGES, ...TRANSPORT_EXTRA_STAGES] as const;
+
+export const OPEN_STAGES = ALL_STAGES.filter(s => !['won', 'lost', 'parked', 'cancelled'].includes(s));
 
 export const TRACKS = ['broker', 'partner'] as const; // broker = SEM quotes; partner = Saudi partner leads, SEM margin
 

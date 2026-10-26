@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { requireAdmin } from '@/lib/api-auth';
-import { CHANNELS, CLIENT_CONTACT_KINDS, LOST_REASONS, STAGES, TRACKS, UPDATE_KINDS, label } from '@/lib/pipeline';
+import { ALL_STAGES, CHANNELS, CLIENT_CONTACT_KINDS, LOST_REASONS, TRACKS, UPDATE_KINDS, label } from '@/lib/pipeline';
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -42,7 +42,7 @@ export async function PATCH(request: Request, { params }: Params) {
     const current = await prisma.quoteRequest.findUnique({ where: { id }, include: { partner: true } });
     if (!current) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-    if (b.stage !== undefined && !STAGES.includes(b.stage)) {
+    if (b.stage !== undefined && !(ALL_STAGES as readonly string[]).includes(b.stage)) {
       return NextResponse.json({ error: 'Invalid stage' }, { status: 400 });
     }
     if (b.stage === 'lost' && !(b.lostReason || current.lostReason)) {
@@ -72,7 +72,7 @@ export async function PATCH(request: Request, { params }: Params) {
 
     if (b.stage !== undefined && b.stage !== current.stage) {
       data.stage = b.stage;
-      if (['won', 'lost'].includes(b.stage)) data.closedAt = new Date();
+      if (['won', 'lost', 'cancelled'].includes(b.stage)) data.closedAt = new Date();
       else data.closedAt = null;
       const why = b.stage === 'lost' ? ` (${label(b.lostReason || current.lostReason || '')})` : '';
       timeline.push({ kind: 'status_change', summary: `Stage: ${label(current.stage)} → ${label(b.stage)}${why}` });

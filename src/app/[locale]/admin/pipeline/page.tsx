@@ -278,7 +278,7 @@ function DealPanel({ deal, partners, onClose, onChanged }: {
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div><label className={fieldLabel}>Stage</label>
             <select className={input} value={form.stage} onChange={set("stage")}>
-              {STAGES.map(s => <option key={s} value={s}>{label(s)}</option>)}
+              {(STAGES.includes(form.stage as typeof STAGES[number]) ? [...STAGES] : [...STAGES, form.stage]).map(s => <option key={s} value={s}>{label(s)}</option>)}
             </select></div>
           <div><label className={fieldLabel}>Track</label>
             <select className={input} value={form.track} onChange={set("track")}>
