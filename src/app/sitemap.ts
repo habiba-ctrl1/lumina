@@ -231,6 +231,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/event-lighting',      freq: 'monthly', priority: 0.8  },
     { route: '/services/event-decoration',    freq: 'monthly', priority: 0.75 },
 
+    // ── Transportation division (2026-10, EN only; /ar stays noindex until translated) ─
+    { route: '/transportation',              freq: 'monthly', priority: 0.8  },
+
     // ── Travel vertical (SEM Travel — leisure/tourism, distinct from event pages) ─
     { route: '/travel',                       freq: 'monthly', priority: 0.75 },
     { route: '/ar/travel',                    freq: 'monthly', priority: 0.6  },

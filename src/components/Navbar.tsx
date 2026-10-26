@@ -7,7 +7,7 @@ import {
   Landmark, Sparkles, Users, ArrowRight, UserPlus, MapPin,
   Trophy, TrendingUp, ImageIcon, Building2, Info, Handshake,
   Crown, Mic, Gem, Music, Car, KeyRound, Cake,
-  MonitorPlay, Speaker, UtensilsCrossed, Lightbulb, Flower2,
+  MonitorPlay, Speaker, UtensilsCrossed, Lightbulb, Flower2, Route,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
@@ -44,6 +44,7 @@ const services = [
   { key: "eventDecoration",   href: "/services/event-decoration",  icon: Flower2 },
   { key: "productionVenues",  href: "/services/production-venues", icon: Building2 },
   { key: "entertainment",     href: "/services/entertainment",     icon: Music },
+  { key: "executiveTransportation", href: "/transportation",         icon: Route },
   { key: "vipTransportation", href: "/services/vip-transportation",icon: Car },
   { key: "valetParking",      href: "/services/valet-parking",     icon: KeyRound },
   { key: "birthdayParty",     href: "/services/birthday-party",    icon: Cake },

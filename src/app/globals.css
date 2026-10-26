@@ -448,3 +448,9 @@ a:hover { color: var(--primary-dark); }
   direction: ltr;
   unicode-bidi: isolate;
 }
+
+/* Transportation hero: slow cinematic settle (wrapped in motion-safe: at use site) */
+@keyframes txHeroIn {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 0.45; transform: scale(1); }
+}

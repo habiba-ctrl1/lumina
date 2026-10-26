@@ -269,10 +269,10 @@ export const vipTransportation: ServiceCategory = {
       { q: "How much does VIP transportation cost in Riyadh?", a: "Pricing depends on vehicle type, number of vehicles, duration, route and security needs. SEM does not publish fixed prices; you receive a specific quotation once the itinerary is confirmed." },
     ],
     related: [
+      { title: "Executive Chauffeur & Private Transfers", href: "/transportation", desc: "Corporate chauffeur and cross-border transfer enquiries.", image: IMG.sedanCabin },
       { title: "Valet Parking", href: "/services/valet-parking", desc: "Event valet parking coordination at the venue.", image: IMG.golf },
       { title: "Corporate Events", href: "/services/corporate-events", desc: "Galas, launches and company events.", image: "/services/premium_corporate_summit_hero.webp" },
       { title: "Conferences", href: "/services/conferences", desc: "Conference coordination in Saudi Arabia.", image: "/services/premium_conference_management_hero.webp" },
-      { title: "Weddings", href: "/services/weddings", desc: "Wedding planning and coordination.", image: IMG.wedding },
     ],
     form: {
       heading: "Request a transport quote",
