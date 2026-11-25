@@ -179,7 +179,7 @@ const linkHub = {
     { label: "Birthday Party Planning", href: "/services/birthday-party" },
   ],
   locations: [
-    { label: "Event Management in Riyadh", href: "/locations/riyadh" },
+    { label: "Event Management Company in Riyadh", href: "/locations/riyadh" },
     { label: "Event Planning in Jeddah", href: "/locations/jeddah" },
     { label: "Events in Dammam", href: "/locations/dammam" },
     { label: "Destination Events in AlUla", href: "/locations/alula" },

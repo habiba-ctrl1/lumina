@@ -101,6 +101,11 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
             >
               {isAr ? "أرسل سيرتك الذاتية" : "Email Resume"} <Send size={14} className="rtl:rotate-180" />
             </a>
+            <p className="text-xs text-neutral-500 mt-4 leading-relaxed">
+              {isAr
+                ? "يُرجى إرسال طلبات التوظيف إلى careers@saudieventmanagement.com فقط. لا تتم مراجعة السير الذاتية المرسلة عبر نماذج طلبات العملاء أو البريد العام أو واتساب."
+                : "Please send applications to careers@saudieventmanagement.com only. CVs sent through client enquiry forms, our general inbox or WhatsApp are not reviewed."}
+            </p>
           </div>
         </div>
       </section>

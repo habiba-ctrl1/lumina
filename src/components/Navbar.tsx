@@ -79,7 +79,8 @@ const aboutItems = [
   { label: "Our Team",           href: "/about/our-team",           icon: Users,      desc: "Meet the people behind every event"   },
   { label: "Recognition & Standards", href: "/about/awards-accolades", icon: Trophy,   desc: "Our vendor vetting & quality process"  },
   { label: "Partner With Us",    href: "/partner-onboarding",       icon: Handshake,  desc: "Join our vendor & partner network"    },
-  { label: "Careers",            href: "/about/careers",            icon: Building2,  desc: "Grow with Saudi Event Management"     },
+  // Careers intentionally not in the main nav (Nov 2026): it was the #1 page in
+  // GA4 and flooded the client inbox with CVs. Still linked from /about.
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,5 +1,6 @@
 import { blogPosts } from "@/lib/blog-data";
 import { hreflangAlternates } from "@/lib/seo";
+import { notFound } from "next/navigation";
 
 const BASE = "https://saudieventmanagement.com";
 
@@ -36,6 +37,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default function BlogLayout({ children }: { children: React.ReactNode }) {
+export default async function BlogLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  // Unknown slugs must return a real 404 status. The client page's own
+  // "Article Not Found" view returned 200, which Google reports as soft 404s.
+  const { slug } = await params;
+  if (!blogPosts.some((p) => p.slug === slug)) notFound();
   return <>{children}</>;
 }

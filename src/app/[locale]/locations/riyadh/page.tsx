@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: isAr
       ? { absolute: "شركة إدارة فعاليات في الرياض | إدارة الفعاليات السعودية" }
-      : { absolute: "Event Services in Riyadh | Event Management Company | Saudi Event Management" },
+      : { absolute: "Event Management Company in Riyadh | Event Services | Saudi Event Management" },
     description: isAr
       ? "إدارة الفعاليات السعودية هي الشركة الرائدة في تنظيم الفعاليات بالرياض. مؤتمرات الشركات في RICEC وKAICC ومركز الملك عبدالله المالي، وحفلات الزفاف الفاخرة في فورسيزونز وريتز كارلتون، وتفعيلات موسم الرياض. متوافقون مع رؤية 2030، تصاريح هيئة الترفيه عبر شركاء موثوقين."
       : "Event services and event management in Riyadh — catering, LED screens, sound, lighting, staging, valet, VIP transportation and entertainment, coordinated through suitable Saudi-based partners. Request a quote for your date and venue.",

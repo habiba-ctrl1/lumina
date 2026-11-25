@@ -28,6 +28,28 @@ const nextConfig = {
       },
     ],
   },
+  // 301s for URLs Google still reports as 404 / soft 404 (GSC, Nov 2026).
+  // Each points to the closest live page; both locales are covered.
+  async redirects() {
+    const map = [
+      // Blog slugs renamed in the July 2026 content-accuracy cleanup.
+      ['/blog/weaving-luxury-lifestyle-saudi-arabia-elite-events', '/blog/weaving-exceptional-lifestyle-saudi-arabia-top-tier-events'],
+      ['/blog/luxury-wedding-cost-saudi-arabia-guide', '/blog/exceptional-wedding-cost-saudi-arabia-guide'],
+      ['/blog/2026-luxury-event-decor-trends-saudi-arabia', '/blog/2026-exceptional-event-decor-trends-saudi-arabia'],
+      ['/blog/elevating-corporate-events-guide', '/blog/elevating-corporate-events-riyadh-jeddah'],
+      // Retired programmatic service URLs.
+      ['/services/exhibition-management-saudi-arabia', '/services/exhibitions'],
+      ['/services/event-production-saudi-arabia', '/services/event-production'],
+      // Removed team-member profiles.
+      ['/about/our-team/fahad-al-sulaiman', '/about/our-team'],
+      ['/about/our-team/nadia-al-rashidi', '/about/our-team'],
+      ['/about/our-team/khalid-al-zahrani', '/about/our-team'],
+    ];
+    return map.flatMap(([from, to]) => [
+      { source: from, destination: to, permanent: true },
+      { source: `/ar${from}`, destination: `/ar${to}`, permanent: true },
+    ]);
+  },
   async headers() {
     return [
       {
