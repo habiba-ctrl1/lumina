@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : "Event Management Company in Saudi Arabia",
     description: isAr
       ? "شركة إدارة الفعاليات السعودية الرائدة في تنظيم المعارض والمؤتمرات وحفلات الزفاف الفاخرة والفعاليات المؤسسية في الرياض وجدة ومكة والعلا — تصاريح الهيئة العامة للترفيه عبر شركاء موثوقين. احصل على استشارة مجانية."
-      : "Saudi Arabia's full-service event management company — delivering corporate events, exhibitions, luxury weddings & conferences in Riyadh, Jeddah, Makkah & AlUla. GEA permit support through trusted partners. Get a free consultation.",
+      : "Event management and event consultancy in Saudi Arabia: corporate events, gala dinners, exhibitions, conferences and luxury weddings in Riyadh, Jeddah, Makkah & AlUla. GEA permit support through trusted partners. Get a free proposal.",
     keywords: isAr
       ? [
           "تنظيم معارض ومؤتمرات",
