@@ -230,6 +230,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/sound-audio',         freq: 'monthly', priority: 0.8  },
     { route: '/services/event-lighting',      freq: 'monthly', priority: 0.8  },
     { route: '/services/event-decoration',    freq: 'monthly', priority: 0.75 },
+    { route: '/services/gala-dinners-awards', freq: 'monthly', priority: 0.8  },
 
     // ── Transportation division (2026-10, EN only; /ar stays noindex until translated) ─
     { route: '/transportation',              freq: 'monthly', priority: 0.8  },

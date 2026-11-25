@@ -1200,6 +1200,8 @@ export default async function CorporateEventsPage() {
             <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--primary)] shrink-0">{isAr ? "وصول الضيوف واللوجستيات" : "Guest arrival & logistics"}</p>
             <p className="text-[15px] text-neutral-600 leading-relaxed">
               {isAr ? "يمكن تنسيق " : "SEM can also coordinate "}
+              <Link href={`${arHref}/services/gala-dinners-awards`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "حفلات العشاء وتوزيع الجوائز" : "gala dinners and awards ceremonies"}</Link>
+              {isAr ? "، و" : ", "}
               <Link href={`${arHref}/services/vip-transportation`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "نقل كبار الشخصيات لفعاليات الشركات" : "VIP transportation for corporate events"}</Link>
               {isAr ? "، و" : ", "}
               <Link href={`${arHref}/services/valet-parking`} className="font-semibold text-[var(--primary)] hover:underline">{isAr ? "فاليه لضيوف الشركات" : "event valet parking for corporate guests"}</Link>

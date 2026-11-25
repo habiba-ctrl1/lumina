@@ -7,11 +7,12 @@ import { eventDecoration } from "./event-decoration";
 import { valetParking } from "./valet-parking";
 import { vipTransportation } from "./vip-transportation";
 import { entertainment } from "./entertainment";
+import { galaDinnersAwards } from "./gala-dinners-awards";
 
 export type { ServiceCategory, ServiceCategoryContent } from "./types";
 
 export const SERVICE_CATEGORIES: Record<string, ServiceCategory> = Object.fromEntries(
-  [eventCatering, ledScreens, soundAudio, eventLighting, eventDecoration, valetParking, vipTransportation, entertainment].map((c) => [c.slug, c]),
+  [eventCatering, ledScreens, soundAudio, eventLighting, eventDecoration, valetParking, vipTransportation, entertainment, galaDinnersAwards].map((c) => [c.slug, c]),
 );
 
 export function getServiceCategory(slug: string): ServiceCategory {

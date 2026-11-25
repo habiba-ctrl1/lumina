@@ -2662,7 +2662,7 @@ export const blogPosts: BlogPost[] = [
       "[A] Yes. Any live music, band, or amplified MC requires a GEA entertainment permit, filed 4–8 weeks in advance. Our team can handle this alongside your venue booking.",
       "[Q] What is the ideal length for the awards segment itself?",
       "[A] Aim for under 45 minutes. Beyond that, audience attention drops sharply — trim the number of award categories rather than rushing the segment on the night.",
-      "[CTA] Planning a gala dinner or awards ceremony that needs to land perfectly? Our [corporate events team](/services/luxury-vip-events) handles venue sourcing, stage production, GEA permits, and full run-of-show management under one roof.",
+      "[CTA] Planning a gala dinner or awards ceremony that needs to land perfectly? See our [gala dinner & awards ceremony service](/services/gala-dinners-awards): venue sourcing, stage production, GEA permit support and full run-of-show management, coordinated through vetted Saudi partners under one point of contact.",
       "Ready to start planning? [Contact us](/contact) for a scoped proposal."
     ],
     contentAr: [
@@ -2692,7 +2692,7 @@ export const blogPosts: BlogPost[] = [
       "[A] نعم. أي موسيقى حية أو فرقة أو مقدّم حفل بصوت مكبّر يتطلّب تصريح ترفيه من الهيئة العامة للترفيه، يُقدَّم قبل 4–8 أسابيع. يمكن لفريقنا التعامل مع هذا جنبًا إلى جنب مع حجز قاعتك.",
       "[Q] ما المدة المثالية لجزء الجوائز نفسه؟",
       "[A] استهدف أقل من 45 دقيقة. فبعد ذلك، ينخفض انتباه الجمهور بشكل حاد — قلّل عدد فئات الجوائز بدلًا من استعجال الجزء ليلة الحفل.",
-      "[CTA] تخطّط لحفل عشاء فخم أو حفل توزيع جوائز يجب أن يكون مثاليًا؟ يتولّى [فريقنا المؤسسي](/services/luxury-vip-events) اختيار القاعة، والإنتاج المسرحي، وتصاريح الهيئة العامة للترفيه، وإدارة سير البرنامج بالكامل تحت سقف واحد.",
+      "[CTA] تخطّط لحفل عشاء فخم أو حفل توزيع جوائز يجب أن يكون مثاليًا؟ يتولّى [فريق حفلات العشاء وتوزيع الجوائز](/services/gala-dinners-awards) اختيار القاعة، والإنتاج المسرحي، وتصاريح الهيئة العامة للترفيه، وإدارة سير البرنامج بالكامل تحت سقف واحد.",
       "جاهز لبدء التخطيط؟ [تواصل معنا](/contact) للحصول على عرض مخصّص."
     ]
   },
