@@ -5,6 +5,7 @@ import { Mail, MessageCircle, MapPin, Send, Briefcase, CheckCircle, AlertCircle 
 import SectionWrapper from "./SectionWrapper";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { trackLead } from "@/lib/analytics";
 
 export default function ContactSection() {
   const t = useTranslations("contact");
@@ -26,6 +27,7 @@ export default function ContactSection() {
         body: JSON.stringify({ ...form, source: "homepage_contact_section" }),
       });
       if (!res.ok) throw new Error("Submission failed");
+      trackLead("homepage_contact_section", { event_type: form.eventType || undefined });
       setStatus("success");
       setForm({ name: "", email: "", eventType: "", message: "" });
       setTimeout(() => setStatus("idle"), 6000);

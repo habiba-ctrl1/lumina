@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
+import { trackLead } from "@/lib/analytics";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -33,6 +34,10 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error("Submission failed");
 
+      // Only client inquiries count as leads (vendor / other inquiry types do not).
+      if (formData.inquiryType === "client") {
+        trackLead(formData.source, { event_type: formData.eventType || undefined, venue_city: formData.venueCity || undefined });
+      }
       setStatus("success");
       setFormData({
         name: "",

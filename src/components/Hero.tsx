@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react";
+import { trackLead } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 
@@ -39,6 +40,7 @@ export default function Hero() {
           message:   "Quick quote request submitted via hero section.",
         }),
       });
+      if (res.ok) trackLead("hero_quick_quote", { event_type: form.eventType });
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
+import { trackLead } from "@/lib/analytics";
 
 /**
  * A service-specific qualification question (e.g. "Indoor or outdoor?" on the
@@ -205,6 +206,7 @@ export default function ServiceLeadForm({
 
       if (!res.ok) throw new Error("Submission failed");
 
+      trackLead(source, { service: formData.service || undefined, event_type: formData.eventType || undefined });
       setStatus("success");
       setFormData(emptyForm());
       setDetails({});

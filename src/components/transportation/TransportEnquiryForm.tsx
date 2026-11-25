@@ -10,6 +10,7 @@ import {
 } from "@/lib/transportation/enquiry";
 import { captureAttribution } from "@/lib/transportation/attribution";
 import { trackTransportEvent } from "@/lib/transportation/analytics";
+import { trackLead } from "@/lib/analytics";
 
 const STEPS = ["Journey", "Details", "Vehicle", "You", "Requirements", "Review"];
 
@@ -125,6 +126,7 @@ export default function TransportEnquiryForm({ formId, initial, heading = "Tell 
         setReference(json.reference);
         setStatus("success");
         trackTransportEvent("transport_lead_submitted", { service_category: data.serviceCategory, customer_type: data.bookingPurpose, form_id: formId });
+        trackLead(`transport_${formId}`, { service: data.serviceCategory });
         return;
       }
       if (res.ok && json.ok) {

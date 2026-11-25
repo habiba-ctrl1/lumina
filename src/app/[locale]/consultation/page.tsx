@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 import { 
   Clock, 
   CheckCircle, 
@@ -59,6 +60,7 @@ export default function ConsultationPage() {
         body: JSON.stringify(formData)
       });
       if (!res.ok) throw new Error("Failed");
+      trackLead("consultation_page", { event_type: formData.eventType || undefined });
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", company: "", eventType: "", eventDate: "", guestCount: "", budget: "", message: "" });
     } catch {
